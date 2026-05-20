@@ -2,7 +2,7 @@
 ! Description: NG Wordの正規表現と非表示にチェックを入れて、正規表現をコピー ＆ ペーストして登録
 ! Homepage: https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex
 ! License: CC0 (Public Domain)
-! Version: 20260414
+! Version: 20260520
 
 ! 一般的な英数字・ギリシャ文字・数学記号・各種記号、日本語（漢字・ひらがな・カタカナ・全角半角）、および指定範囲の絵文字・特殊文字のみを許可し、それ以外の入力文字をNGにします
 [^\u0000-\u00BF\u00D7-\u00D8\u00F7\u02B0-\u02FF\u0370-\u03FF\u1D00-\u1D7F\u1F00-\u1FFF\u2000-\u206F\u2100-\u214F\u2160-\u217F\u2190-\u21FF\u2200-\u22FF\u2460-\u24FF\u2500-\u257F\u25A0-\u25FF\u2605-\u2606\u2610-\u2612\u2640-\u2642\u2660-\u2667\u2669-\u266F\u2699\u26A0\u26D4\u2713-\u2716\u274C\u274E\u2753-\u2757\u2B00-\u2BFF\u2E80-\u2FDF\u3000-\u30FF\u3200-\u32FF\u3300-\u33FF\u3400-\u4DBF\u4E00-\u9FFF\uD800-\uDFFF\uF900-\uFAFF\uFE00-\uFE1F\uFF00-\uFFEF\x{1D400}-\x{1D7FF}\x{1F000}-\x{1F32C}\x{1F50E}\x{1F532}-\x{1F53D}\x{1F650}-\x{1F90F}\x{1FA00}-\x{1FAAF}]
