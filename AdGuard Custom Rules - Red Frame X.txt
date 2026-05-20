@@ -174,7 +174,7 @@ x.com##div[data-testid="inlinePrompt"]
 ! タイムライン：広告・トピック・トレンド・おすすめユーザー
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
-xx.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
+x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
 x.com##[data-testid="cellInnerDiv"]:has(div[data-testid="eventHero"])
 x.com##[data-testid="cellInnerDiv"]:has(h2:contains(おすすめ投稿))
 x.com##[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:contains(おすすめユーザー))
