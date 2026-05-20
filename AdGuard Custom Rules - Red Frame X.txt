@@ -174,10 +174,6 @@ x.com##div[data-testid="inlinePrompt"]
 ! タイムライン：広告・トピック・トレンド・おすすめユーザー
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
-x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"] span:contains(/さんがフォローしています/))
-x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"] span:contains(/人がフォローしています/))
-x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"] span:contains(さんがフォローしています))
-x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"] span:contains(人がフォローしています))
 x.com##[data-testid="cellInnerDiv"]:has(div[data-testid="eventHero"])
 x.com##[data-testid="cellInnerDiv"]:has(h2:contains(おすすめ投稿))
 x.com##[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:contains(おすすめユーザー))
@@ -195,9 +191,6 @@ x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerD
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label="タイムライン: 話題を検索"] div[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"] svg[data-testid="icon-verified"])
 x.com##[aria-label="タイムライン: 話題を検索"] div[data-testid="cellInnerDiv"]:has(h2:contains(おすすめユーザー))
-x.com##[data-testid="UserCell"]:has([data-testid$="-follow"] span:contains(フォロー)):not(:is([aria-label="タイムライン: 認証済みのフォロワー"], [aria-label="タイムライン: フォロワー"], [aria-label="タイムライン: フォロー中"], [aria-label="タイムライン: フォローする"], [aria-label="タイムライン: タイムラインを検索"]) *)
-x.com##div[data-testid="cellInnerDiv"]:not(:is([aria-label="タイムライン: 認証済みのフォロワー"], [aria-label="タイムライン: フォロワー"], [aria-label="タイムライン: フォロー中"]) *):has([data-testid="UserCell"]):has([data-testid$="-follow"])
-x.com##div[data-testid="cellInnerDiv"]:not(:is([aria-label^="タイムライン: ホーム"], [aria-label="タイムライン: 認証済みのフォロワー"], [aria-label="タイムライン: フォロー中"], [aria-label*="コミュニティ"], [aria-label="タイムライン: 通知"], [aria-label="タイムライン: 会話"], [aria-label^="タイムライン: "][aria-label$="さんのポスト"], [aria-label="タイムライン: タイムラインを検索"], [aria-label="タイムライン: フォロワー"], [aria-label="タイムライン: フォローする"], [aria-label="タイムライン: ポスト通知"]) *):has(button[data-testid="UserCell"] svg[data-testid="icon-verified"])
 ! タイムライン：個別ポスト・会話・検索結果
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
