@@ -6,7 +6,7 @@
 
 ! 汎用ルール
 ! 広告・迷惑要素の非表示・許可
-! ##.grecaptcha-badge
+##.grecaptcha-badge
 @@||data.service.paypal.com^$important
 @@||www.google-analytics.com^$important
 
