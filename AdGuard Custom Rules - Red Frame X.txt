@@ -2,11 +2,11 @@
 ! Description: Customize AdGuard filters for personal use.
 ! Homepage: https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex
 ! License: CC0 (Public Domain)
-! Version: 20260414
+! Version: 20260520
 
 ! 汎用ルール
 ! 広告・迷惑要素の非表示・許可
-##.grecaptcha-badge
+! ##.grecaptcha-badge
 @@||data.service.paypal.com^$important
 @@||www.google-analytics.com^$important
 
