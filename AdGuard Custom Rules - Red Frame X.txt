@@ -131,6 +131,7 @@ www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-ren
 x.com##a[data-testid="AppTabBar_DirectMessage_Link"]
 x.com##a[href$="/lists"][role="link"]
 x.com##a[href="/i/chat"][role="link"]
+x.com##a[href="/i/grok"][role="link"]
 x.com##a[href="/i/jf/creators/studio"][role="link"]
 x.com##a[href="/i/monetization"][role="link"]
 x.com##a[href="/i/premium"][role="link"]
