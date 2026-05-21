@@ -128,7 +128,7 @@ www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-ren
 
 ! x.com
 ! ナビゲーション：左サイドバー・メニュー
-
+x.com##a[href="/explore"][role="link"]
 x.com##a[data-testid="AppTabBar_DirectMessage_Link"]
 x.com##a[href$="/lists"][role="link"]
 x.com##a[href="/i/chat"][role="link"]
@@ -174,7 +174,6 @@ x.com##button[data-testid="grokImgGen"]
 x.com##div[data-testid="GrokDrawer"]
 x.com##div[data-testid="inlinePrompt"]
 ! タイムライン：広告・トピック・トレンド・おすすめユーザー
-x.com##[aria-label="おすすめユーザー"] button[data-testid="UserCell"]
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
 x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
