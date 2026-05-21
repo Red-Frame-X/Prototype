@@ -188,7 +188,7 @@ x.com##div[aria-label="タイムライン: Relevant people"]
 x.com##div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
 x.com##div:has(> a[href^="/i/jf/"][href$="/home"])
 ! タイムライン：ホーム・Explore（複雑な条件）
-
+[$path=/explore]x.com##button[data-testid="UserCell"]
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty):not([aria-label="タイムライン: フォロー中"] *)
