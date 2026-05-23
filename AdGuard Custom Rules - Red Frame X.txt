@@ -128,6 +128,7 @@ www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-ren
 
 ! x.com
 ! ナビゲーション：左サイドバー・メニュー
+
 x.com##a[data-testid="AppTabBar_DirectMessage_Link"]
 x.com##a[href$="/lists"][role="link"]
 x.com##a[href="/i/chat"][role="link"]
