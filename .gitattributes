@@ -1,3 +1,6 @@
 *.txt linguist-language=AdBlock linguist-detectable
 * text=auto eol=lf
 *.txt text eol=lf
+
+# ChMateの正規表現ファイルはAdBlock構文としてハイライトしない
+ChMate\ NG\ Word\ Regex.txt linguist-language=Text
