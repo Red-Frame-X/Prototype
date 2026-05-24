@@ -1,0 +1,8 @@
+# AGLintの設定ファイル
+root: true
+
+extends:
+  - aglint:recommended
+
+syntax:
+  - AdGuard
