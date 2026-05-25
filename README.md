@@ -5,7 +5,7 @@
 * その他メモ
 
 ### ChromeOS & Android 最適化ガイド
-* [**ChromeOS & Android OS Optimization Guide**](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex/wiki#chromeos--android-os-optimization-guide)
+* [**ChromeOS & Android Optimization Guide**](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex/wiki#chromeos--android-os-optimization-guide)
 
 ### Contact
 * **User Name**：Red Frame X
