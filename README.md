@@ -1,5 +1,5 @@
-# AdGuard User Rules UserScript Regex
-* AdGuardユーザールール
+# AdGuard Custom Rules UserScript Regex
+* AdGuard カスタムルール
 * ユーザースクリプト
 * ChMate NG Word用 正規表現
 * その他メモ
