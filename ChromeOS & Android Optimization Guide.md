@@ -793,7 +793,6 @@ https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomain
 
 ## Whitelisted Entries! ##
 
-!gs.statcounter.com
 !statcounter.com
 ```
 
