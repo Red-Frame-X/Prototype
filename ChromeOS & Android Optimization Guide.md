@@ -1049,7 +1049,7 @@ ChromeOS上での完全な動作保証はありません（[動作環境](https:
 GoogleによるManifest V3の変更でChromeOSの利便性が損なわれた場合、最終手段としてLinux® ディストリビューションへの移行を視野に入れています。
 
 **ChromeOSの今後の動向**
-* [10年サポートも維持とGoogle 幹部が明言](https://helentech.jp/news-80383/)
+* [Googlebook 正式発表後も Chromebook は継続。Google が改めて明言した 10 年サポートと移行方針](https://helentech.jp/news-80383/)
 * [Aluminium OSの完全リリースは2028年以降の可能性](https://helentech.jp/news-81647/)
 * [ChromeOSは2034年に段階的廃止へ](https://internet.watch.impress.co.jp/docs/yajiuma/2083598.html)
 * [Aluminium OSの展開。2026年後半リリース予定](https://helentech.jp/news-chromebook-82961/)
