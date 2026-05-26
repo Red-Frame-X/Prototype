@@ -1014,7 +1014,7 @@ AdGuard for Androidの質問テンプレ
 
 Modアプリ検知の強化によりログインが困難になっています（[Issue #714](https://github.com/crimera/piko/issues/714)）。
 * [導入方法解説](https://pfbcoconut.com/2024/04/21/twitter-x-revanced/) / [ログイン方法更新](https://kdroidwin.hatenablog.com/entry/2025/11/04/210359)
-* パッチ集: [crimera (Piko)](https://github.com/crimera/piko), [monsivamon](https://github.com/monsivamon/twitter-apk), [lluni](https://github.com/lluni/twitter-apk), [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
+* パッチ集：[crimera (Piko)](https://github.com/crimera/piko), [monsivamon](https://github.com/monsivamon/twitter-apk), [lluni](https://github.com/lluni/twitter-apk), [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
 
 **◆ 併用すると便利かもしれないAndroidアプリ**
 * **[File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager)**
