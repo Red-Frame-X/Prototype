@@ -682,7 +682,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 両方のフィルタのルールを全コピー & ペーストする必要があります。
 
 **! カスタムフィルタ・ユーザールール**
-* AdGuard Japanese filter Plus
+  * AdGuard Japanese filter Plus
 ```
 https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt
 ```
