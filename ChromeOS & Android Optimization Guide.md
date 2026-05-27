@@ -1,5 +1,5 @@
 # ChromeOS & Android Optimization Guide
-* ChromeOS & Android 最適化ガイド
+ChromeOS & Android 最適化ガイド
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
