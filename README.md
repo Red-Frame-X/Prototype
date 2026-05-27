@@ -7,7 +7,7 @@
 ### Contact
 * **User Name**：Red Frame X
 * **𝕏**：[Red Frame X@Red_Frame_X](https://x.com/Red_Frame_X)
-* **mond**：https://mond.how/ja/Red_Frame_X
+* **mond**：[Red Frame X@Red_Frame_X](https://mond.how/ja/Red_Frame_X)
 
 ### About Me
 「IT学習の一環」として、デバイス設定の記録やAdGuard Custom Rules / UserScript / Regexの作成などに取り組んでいます。
