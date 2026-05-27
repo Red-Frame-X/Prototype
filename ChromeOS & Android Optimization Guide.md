@@ -951,7 +951,8 @@ AdGuard for Androidの質問テンプレ
 
 * **新バージョン（推奨）:** 
 ```
-dns.adguard-dns.com`
+dns.adguard-dns.com
+
 * **旧バージョン:** `dns.adguard.com`
 
 コンテンツブロックの対象
