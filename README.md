@@ -17,8 +17,9 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 
 ---
 
+### Donate
 * [Support Morphe - Donate](https://morphe.software/donate)
   * あなたの貢献がMorpheの開発と改善を続けることを支えます
 
-* [Buy Gerd a coffee](https://buymeacoffee.com/hagezi)
-  * HaGeZi DNS Blocklists - より良いインターネットのために！
+* [Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)
+  * HaGeZi DNS Blocklists - より快適なインターネットのために！
