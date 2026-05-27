@@ -7,7 +7,7 @@
 // @author       Red Frame X
 // @match        https://www.youtube.com/*
 // @updateURL    https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc/raw/refs/heads/main/YouTube%20Description%20Auto%20Expander%20(SPA%20Support).user.js
-// @downloadURL  https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex/raw/refs/heads/main/YouTube%20Description%20Auto%20Expander%20(SPA%20Support).user.js
+// @downloadURL  https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc/raw/refs/heads/main/YouTube%20Description%20Auto%20Expander%20(SPA%20Support).user.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @grant        none
 // ==/UserScript==
