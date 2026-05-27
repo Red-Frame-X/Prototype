@@ -995,6 +995,7 @@ dns.adguard.com
 **コンテンツブロックの対象**
   * **ブラウザ**（ChromeでのWebブラウジングなど）
   * **各種アプリ**（アプリ内のバナー広告など）
+
 ---
 
 ## Android アプリ ReVanced・Morphe・URV（Android）
