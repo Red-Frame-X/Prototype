@@ -3,7 +3,7 @@ ChromeOS & Android 最適化ガイド
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex) |
+| **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc) |
 | **License** | CC0 (Public Domain) |
 | **Version** | 20260527 |
 
