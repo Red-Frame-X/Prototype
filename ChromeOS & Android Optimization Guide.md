@@ -460,7 +460,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 # HTMLソースコード
 ```
 
-### ◆ AdGuardユーザールールをUserScriptに変換
+### AdGuardユーザールールをUserScriptに変換
 作成したAdGuardユーザールールをコピー & ペースト（↲改行）
 
 ```text
