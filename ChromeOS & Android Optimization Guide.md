@@ -798,7 +798,7 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
   > 5ch.net 188.114.96.0
   > *.5ch.net 188.114.96.0
 
-##### AUTOMATIC ENTRIES BELOW! #####
+  ##### AUTOMATIC ENTRIES BELOW! #####
 
 ## Whitelisted Entries! ##
 
