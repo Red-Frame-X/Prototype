@@ -23,4 +23,4 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 
 ### [Buy Gerd a coffee]()
 * HaGeZi DNS Blocklists - より良いインターネットのために！
-* Support：https://buymeacoffee.com/hagezi
+* Support：
