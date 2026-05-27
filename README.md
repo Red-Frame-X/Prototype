@@ -22,5 +22,5 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 * Support：https://morphe.software/donate
 
 ### Gerd is HaGeZi DNS Blocklists
-* HaGeZi DNS Blocklists - より良いインターネットのために！
+* HaGeZi's DNS Blocklists - より良いインターネットのために！
 * Support：https://buymeacoffee.com/hagezi
