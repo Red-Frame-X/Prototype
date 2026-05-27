@@ -2,7 +2,7 @@
 
 GitHub Gistsを利用して、カスタムフィルタやUserScriptを各種拡張機能へ登録する手順です。
 
-| メタデータ | 情報 |
+| <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex) |
 | **License** | CC0 (Public Domain) |
