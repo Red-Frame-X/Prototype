@@ -6,7 +6,7 @@
 
 ### Contact
 * **User Name**：Red Frame X
-* **𝕏**：https://x.com/Red_Frame_X
+* **𝕏**：[Red Frame X@Red_Frame_X](https://x.com/Red_Frame_X)
 * **mond**：https://mond.how/ja/Red_Frame_X
 
 ### About Me
