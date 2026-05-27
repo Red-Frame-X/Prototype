@@ -760,7 +760,7 @@ https://raw.githubusercontent.com/Kdroidwin/uBlacklist-filter-by-kdroidwin/refs/
 /example\.(net|org)/
 title/Example Domain/
 ```
-例外ルール（再表示ルール）例：
+* 例外ルール（再表示ルール）例：
 ```text
 @*://*.example.com/*
 ```
