@@ -1,4 +1,4 @@
-# AdGuard Custom Rules UserScript Regex
+# AdGuard-Custom-Rules-UserScript-Regex-etc
 * AdGuard カスタムルール
 * ユーザースクリプト
 * ChMate NG Word用 正規表現
