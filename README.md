@@ -22,7 +22,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
   * あなたの貢献が**Morphe**の開発と改善を続けることを支えます
 
 * [Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)
-  * personalDNSfilter - より快適なインターネットのために！
+  * **personalDNSfilter - より快適なインターネットのために！
 
 * [Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)
   * HaGeZi DNS Blocklists - より快適なインターネットのために！
