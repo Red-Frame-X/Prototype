@@ -680,7 +680,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 * **[AdGuard ブラウザ拡張機能 MV3対応版の解説](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)**
 
-**◆ カスタムフィルタで購読する場合**
+**カスタムフィルタで購読する場合**
 
 `AdGuard module - not for independent use` は、`AdGuard Japanese filter Plus` のサブリストとして自動的にincludeされます。
 
