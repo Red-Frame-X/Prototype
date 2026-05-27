@@ -954,7 +954,7 @@ AdGuard for Androidの質問テンプレ
 dns.adguard-dns.com
 ```
 
-* **旧バージョン:** 
+**旧バージョン:** 
 ```
 dns.adguard.com
 ```
