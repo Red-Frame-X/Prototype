@@ -707,7 +707,7 @@ https://yuki2718.github.io/adblock2/japanese/jpfp-ag.txt
 **Chromeのアドレスバーから新しいタブでユーザールールを開く**
 
 アドレスバーに以下をコピー & ペーストして移動します：
-    ```
+  ```
 chrome-extension://bgnkhhnnamicmpeenaelnjfhikgbkllg/pages/fullscreen-user-rules.html?theme=system
 ```
 
