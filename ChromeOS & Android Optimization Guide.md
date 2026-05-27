@@ -707,7 +707,7 @@ https://yuki2718.github.io/adblock2/japanese/jpfp-ag.txt
   
   AdGuard Japanese filterを補完するフィルタ。迂回広告や悪質ポップアップ、一部のAnti-Adblockへの汎用的な追加対策。
 
-**◆ 開発者ツールと連動した手動ブロック機能**
+**開発者ツールと連動した手動ブロック機能**
 
 開発者ツールと連動した手動ブロック機能が搭載されています（[画像](https://imgur.com/DcEH4K4)）。作成したルールはユーザールールに格納されます。
 
