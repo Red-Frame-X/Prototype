@@ -754,7 +754,7 @@ https://raw.githubusercontent.com/Kdroidwin/uBlacklist-filter-by-kdroidwin/main/
 https://raw.githubusercontent.com/Kdroidwin/uBlacklist-filter-by-kdroidwin/refs/heads/main/uBlacklist-Exclusion.txt
 ```
 
-検索結果の非表示ルール例：
+* 検索結果の非表示ルール例：
 ```text
 *://*.example.com/*
 /example\.(net|org)/
