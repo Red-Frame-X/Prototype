@@ -737,7 +737,7 @@ chrome-extension://bgnkhhnnamicmpeenaelnjfhikgbkllg/pages/fullscreen-user-rules.
 
 YouTube Anti-Adblock回避ルールは、uBlock Origin開発チームの解析を参考にAdGuardが開発・調整しています。YouTube Premium未加入者がカスタムフィルタや拡張機能を使いすぎると、検知されやすくなります。無料利用する際は、公式ルールのみの使用が推奨されます。要件を満たさない報告はuBlock Origin開発チーム・Adguard開発チームの負担となります。Yuki2718氏はuBlock Origin開発チームに所属しながらWeb版YouTubの解析を行っています（[Issue #27415](https://github.com/uBlockOrigin/uAssets/issues/27415) / [Issue #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
 
-**◆ 𝕏/Twitter ルール作り資料｜uBlock Origin**
+**𝕏/Twitter ルール作り資料｜uBlock Origin**
 
 * [uAssets（𝕏投稿）](https://x.com/Red_Frame_X/status/2010925824636252329)
 * [uAssets / filters / filters-2023.txt](https://github.com/uBlockOrigin/uAssets/blob/e4933fdffaaaa318f58fb8a7a34d784220100ff2/filters/filters-2023.txt#L4284-L4288)
