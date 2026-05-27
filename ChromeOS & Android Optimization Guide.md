@@ -782,7 +782,7 @@ title/Example Domain/
 * **[Google Play](https://play.google.com/store/apps/details?id=dnsfilter.android)**
 * **[HP](https://www.zenz-solutions.de/personaldnsfilter-wp/)** / **[GitHub](https://github.com/IngoZenz/personaldnsfilter)** / **[FAQ](https://www.zenz-solutions.de/faq/)**
 
-**◆ personalDNSfilter（ローカルVPNモード）を安定して稼働させるための設定**
+**personalDNSfilter（ローカルVPNモード）を安定して稼働させるための設定**
 
 * Androidのステータスバー：通知右上⚙を押して、**通知をデフォルトからサイレント**に変更する
 * AndroidのVPN設定で **「常時接続VPN」を有効**にする
