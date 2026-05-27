@@ -6,7 +6,6 @@
 
 ! 汎用ルール
 ! 広告・迷惑要素の非表示・許可
-##.grecaptcha-badge
 @@||data.service.paypal.com^$important
 @@||www.google-analytics.com^$important
 
@@ -101,7 +100,7 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 
 ! web.nhk
 ! クッキー・同意ポップアップ関連処理
-||apps.web.nhk/ops/api/v1/common/registrationEnforcement.json$xhr
+||apps.web.nhk/ops/api/v1/common/registrationEnforcement.json$xhr,domain=web.nhk
 web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{"status":"optedin","entity":"household","area":{"areaId":"130","jisx0402":"13113","postal":"1508001","pref":"13"}}')
 web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{"sd":"2025-10-01T00:00:00.000Z","ed":"2050-12-31T23:59:59.999Z"}')
 
