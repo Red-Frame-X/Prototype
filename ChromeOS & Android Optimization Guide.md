@@ -708,8 +708,8 @@ https://yuki2718.github.io/adblock2/japanese/jpfp-ag.txt
 
 アドレスバーに以下をコピー & ペーストして移動します：
   ```
-chrome-extension://bgnkhhnnamicmpeenaelnjfhikgbkllg/pages/fullscreen-user-rules.html?theme=system
-```
+  chrome-extension://bgnkhhnnamicmpeenaelnjfhikgbkllg/pages/fullscreen-user-rules.html?theme=system
+  ```
 
 **参考サイト**
 * [はちまブログ > uBlock Origin](https://hachima25.hatenablog.com/archive/category/uBlock%20Origin)
