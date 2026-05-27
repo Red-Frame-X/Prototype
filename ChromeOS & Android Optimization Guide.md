@@ -722,8 +722,8 @@ chrome-extension://bgnkhhnnamicmpeenaelnjfhikgbkllg/pages/fullscreen-user-rules.
   
   YouTubeのホーム画面から、Shortsやおすすめなどの特別セクションを単なる非表示ではなくDOMから完全に削除（:remove()）するuBlock Origin用のフィルタです。動画サムネイル整列時の不自然な空白を防ぐ目的で使用されます
     ```
-  www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer:remove()
-  ```
+    www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer:remove()
+    ```
   [Enhancer for YouTube™](https://chromewebstore.google.com/detail/enhancer-for-youtube/ponfpcnoihfmfllpaingbgckeeldkhle) を使う場合、いくつかのUI調整ユーザールールは不要になります。
 
 **Web版YouTubeについての留意点**
