@@ -1,7 +1,7 @@
 # ChromeOS & Android Optimization Guide
 * ChromeOS & Android 最適化ガイド
 
-| メタデータ | 情報 |
+| <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex) |
 | **License** | CC0 (Public Domain) |
