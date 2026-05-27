@@ -25,4 +25,4 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
   * **personalDNSfilter** - より快適なインターネットのために！
 
 * [Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)
-  * **HaGeZi DNS Blocklists - より快適なインターネットのために！
+  * **HaGeZi DNS Blocklists** - より快適なインターネットのために！
