@@ -689,7 +689,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 * AdGuard module - not for independent use
   ```
   https://yuki2718.github.io/adblock2/japanese/jpfp-ag.txt
-```
+  ```
 
 **❗️留意点**
 
@@ -706,7 +706,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **Chromeのアドレスバーから新しいタブでユーザールールを開く**
 
-*アドレスバーに以下をコピー & ペーストして移動します：
+* アドレスバーに以下をコピー & ペーストして移動します：
   ```
   chrome-extension://bgnkhhnnamicmpeenaelnjfhikgbkllg/pages/fullscreen-user-rules.html?theme=system
   ```
