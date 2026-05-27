@@ -23,4 +23,4 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 
 ### Sponsor @hagezi on GitHub Sponsors
 * HaGeZi's DNS Blocklist - より良いインターネットのために！
-* Support：https://github.com/sponsors/hagezi
+* Support：https://buymeacoffee.com/hagezi
