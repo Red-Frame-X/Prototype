@@ -969,6 +969,8 @@ AdGuard for Androidの質問テンプレ
 * WebViewの影響は v4.10 以降で修正されました。OSによるタスクキル問題は常時接続VPNの有効化やMacroDroidの導入で対処します（[タスクキル対策ガイド](https://adguard.com/kb/ja/adguard-for-android/solving-problems/background-work/)）。
 
 
+
+
 ## AndroidのプライベートDNSを利用した広告ブロック
 
 スマートフォンの「プライベートDNS」設定に特定のホスト名を入力するだけで、端末全体に表示される広告を非表示にすることができます。
