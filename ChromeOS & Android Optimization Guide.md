@@ -820,7 +820,7 @@ https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomain
 ## Android アプリ 有償版 AdGuard for Android（Android）
 * **[HP](https://adguard.com/ja/adguard-android/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardForAndroid)**
 
-**◆ AdGuard for Android（ローカルVPNモード）を安定して稼働させるための設定**
+**AdGuard for Android（ローカルVPNモード）を安定して稼働させるための設定**
 * 設定 > アプリ > すべてのアプリ > AdGuard > アプリのバッテリー使用量 > **バックグラウンドでの使用を許可** > **制限なし**
 * Androidのステータスバー：通知右上⚙を押して、**通知をデフォルトからサイレント**に変更する
 * AndroidのVPN設定で **「常時接続VPN」を有効**にする
