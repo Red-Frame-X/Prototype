@@ -17,7 +17,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 
 ---
 
-### [Support Morphe - Donate]()
+### [Support Morphe - Donate](https://morphe.software/donate)
 * あなたの貢献がMorpheの開発と改善を続けることを支えます
 * Support：
 
