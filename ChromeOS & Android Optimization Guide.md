@@ -362,7 +362,7 @@ example.com##selector
 
 ▶ Issue reporting toolやGitHubのコメント欄では、[Markdown記法](https://qiita.com/oreo/items/82183bfbaac69971917f) が使用できます。
 
-### ◆ 作成したAdGuardユーザールールの整理
+### 作成したAdGuardユーザールールの整理
 作成したAdGuardユーザールールをコピー & ペースト（↲改行）
 
 ```text
