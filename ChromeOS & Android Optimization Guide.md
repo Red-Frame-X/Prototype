@@ -4,7 +4,7 @@ ChromeOS & Android 最適化ガイド
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc) |
-| **License** | CC0 (Public Domain) |
+| **License** | CC0Public Domain) |
 | **Version** | 20260527 |
 
 この備忘録は CC0 ライセンスの下で提供します（This work is licensed under CC0 1.0 Universal）
