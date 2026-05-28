@@ -89,6 +89,10 @@ rawkuma.net##a[href*="discord.gg"]:has(img)
 rawkuma.net##a[href*="ko-fi.com"]:has(img)
 rawkuma.net##iframe[src*="cbox.ws"]
 
+! sankei.com
+! 広告・迷惑要素の許可
+@@||buy-ap.piano.io/checkout/template/cacheableShow.html?*&offerId=fakeOfferId$domain=sankei.com
+
 ! topics.smt.docomo.ne.jp
 ! 広告・トラッキングのブロック
 ||alxc.addlv.smt.docomo.ne.jp^$script,domain=topics.smt.docomo.ne.jp
@@ -209,4 +213,3 @@ x.com##article[data-testid="tweet"] a[href^="https://linkneverdiel.com"]
 x.com#%#//scriptlet("json-prune", "promotedMetadata")
 x.com#%#//scriptlet("prevent-window-open", "/\\.php\\b.*_blank/")
 x.com#%#//scriptlet("prevent-window-open", "twitter.undefined")
-
