@@ -893,8 +893,8 @@ AdGuard内でDNSを設定します（Google Public DNS推奨）。
 ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネームサーバー > [Google ネームサーバー](https://developers.google.com/speed/public-dns/docs/using?hl=ja#chromeos) に変更。
 
 **トラブルシューティング**
-* **Wi-Fi接続不良:** IPv6フィルタリングをOFFにする。
-* **フィルタ自動更新不可:** ホーム画面の↻を手動タップ。
+* **Wi-Fi接続不良**：IPv6フィルタリングをOFFにする。
+* **フィルタ自動更新不可**：ホーム画面の↻を手動タップ。
 
 **報告先** 
 * [AdGuard for Android Issues](https://github.com/AdguardTeam/AdguardForAndroid/issues)
