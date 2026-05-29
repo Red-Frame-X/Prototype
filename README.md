@@ -17,7 +17,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 
 ---
 
-### **Contributing**
+### Contributing
 
 * [**AdguardTeam/AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
   * 広告トラッカーが実際にブロックされる場所。
@@ -30,7 +30,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 
 ---
 
-### Donate
+### Donation
 * [**Support Morphe - Donate**](https://morphe.software/donate)
   * あなたの貢献が [Morphe](https://github.com/morpheapp) の開発と改善を続けることを支えます。
 
