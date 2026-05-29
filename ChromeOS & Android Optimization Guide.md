@@ -653,7 +653,8 @@ AdGuardでの広告ブロック漏れ、Anti-Adblock Scriptによるコンテン
 Issues報告はGitHubアカウントがなくても可能ですが、GitHubアカウントがあるとIssuesやコメントの編集ができるようになります。報告の形式には自由記述形式とテンプレート形式があり、いずれも問題の切り分けと再現方法の説明に、ある程度の慣れが必要です。
 
 報告時に重要となるのは「**問題が発生するサイトのURL**」「**問題の再現手順**」「**問題発生時のスクリーンショット**」「**ロガーのスクリーンショット**」です。必要に応じてスクリーンショットにマーキングしたり、ログや設定ファイルを添付します。
-GitHubでのやり取りは基本的に英語ですが、ツールを使い分けるとスムーズです（Google翻訳で全体を把握し、DeepL翻訳を活用するなど）。[Issue例](https://github.com/AdguardTeam/AdguardFilters/issues/217897)
+GitHubでのやり取りは基本的に英語ですが、ツールを使い分けるとスムーズです（Google翻訳で全体を把握し、DeepL翻訳を活用するなど）。
+[Issue例](https://github.com/AdguardTeam/AdguardFilters/issues/217897)
 
 **Issues報告・補足**
 * [AdGuardフィルタポリシー](https://adguard.com/kb/ja/general/ad-filtering/filter-policy/) に従って処理されます。
