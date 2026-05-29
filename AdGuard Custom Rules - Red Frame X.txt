@@ -44,6 +44,17 @@ google.com,google.co.jp##div[data-lhcontainer]:has([role="heading"]:contains(AI 
 google.com,google.co.jp##div[data-ved]:has(> div > div > [role="heading"]:contains(関連する質問))
 google.com,google.co.jp##div[role="listitem"]:has(a[href*="udm=39"] span:contains(ショート動画))
 
+! hentaianimezone.com
+! 外部広告スクリプトとコンテナのブロック
+||afritmarryer.com^$script,third-party,domain=hentaianimezone.com
+||magsrv.com^$script,third-party,domain=hentaianimezone.com
+hentaianimezone.com##.sad
+hentaianimezone.com##ins[data-zoneid]
+
+! klz9.com
+! コメント要素の非表示
+klz9.com##div:has(> h2:contains(最近のコメント))
+
 ! m.youtube.com
 ! UI・各セクションの非表示
 m.youtube.com##.YtmCompactChannelRendererFeedItem
@@ -58,6 +69,11 @@ m.youtube.com##ytm-live-chat-renderer
 m.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)
 m.youtube.com##ytm-rich-section-renderer
 m.youtube.com##ytm-video-with-context-renderer:has(.big-shorts-singleton)
+
+! missav.ai
+! サードパーティ・迷惑要素のブロック
+||rallytrck.website^$domain=missav.ai,third-party
+missav.ai##div:has(> iframe[data-link*="rallytrck.website"])
 
 ! news.google.com
 ! UI・不要セクションの非表示
@@ -92,6 +108,10 @@ rawkuma.net##iframe[src*="cbox.ws"]
 ! sankei.com
 ! 広告・迷惑要素の許可
 @@||buy-ap.piano.io/checkout/template/cacheableShow.html?*&offerId=fakeOfferId$domain=sankei.com
+
+! theporndude.com
+! 広告・迷惑要素の非表示
+theporndude.com##.extension-widget
 
 ! topics.smt.docomo.ne.jp
 ! 広告・トラッキングのブロック
