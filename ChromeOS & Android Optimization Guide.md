@@ -105,7 +105,7 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 * ブラウザ拡張機能の競合をAdguard Filtersの問題と誤認して報告したIssue例：[#228169](https://github.com/AdguardTeam/AdguardFilters/issues/228169)
 * Gmail 「システムで問題が発生しました（#2014）」：[Reddit報告例](https://www.reddit.com/r/techsupport/comments/1b4rocl/oops_the_system_encountered_a_problem_2014/?tl=ja)
  
-▶ 断定はできませんが、[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod)が原因だった可能性が高く、同様のブラウザ拡張機能でも同じ不具合が起きるかもしれません。
+▶ 断定はできませんが、[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod) が原因だった可能性が高く、同様のブラウザ拡張機能でも同じ不具合が起きるかもしれません。
 
 ### コンテンツブロック・プライバシー関連
 * **[AdGuard Extra](https://github.com/AdguardTeam/AdGuardExtra)**：Anti-Adblocker対策用UserScript ‐ 対象サイトはFacebook、Twitchなど
