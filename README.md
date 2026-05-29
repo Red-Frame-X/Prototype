@@ -19,7 +19,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 
 ### Donate
 * [**Support Morphe - Donate**](https://morphe.software/donate)
-  * あなたの貢献が [Morphe](https://github.com/morpheapp)の開発と改善を続けることを支えます。
+  * あなたの貢献が [Morphe](https://github.com/morpheapp) の開発と改善を続けることを支えます。
 
 * [**Donations - Zenz Solutions**](https://www.zenz-solutions.de/donations/)
   * [personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - 暗号化されたDNS / サポートを備えたDNSフィルタ - プライバシーを保護します。
