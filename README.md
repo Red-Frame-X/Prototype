@@ -15,6 +15,8 @@ AdGuard Filters Issuesへの報告や、Google、𝕏、ソフトウェア開発
 MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 現在使用しているデバイスは、Acer Chromebook Plus 514とGoogle Pixel 7aで、5chのノートPC板（Chromebookスレ）、スマートフォン板（Pixel関連スレ）、Android板（AdGuard / personalDNSfilter / ReVanced / Morphe / ChMateスレ）、ソフトウェア板（コンテンツブロッカー関連スレ）、運用情報板（5ch不具合報告スレ）を時折訪れています。
 
+---
+
 ### **Contributing**
 
 * [**AdguardTeam/AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
