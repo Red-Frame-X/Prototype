@@ -15,7 +15,14 @@ AdGuard Filters Issuesへの報告や、Google、𝕏、ソフトウェア開発
 MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 現在使用しているデバイスは、Acer Chromebook Plus 514とGoogle Pixel 7aで、5chのノートPC板（Chromebookスレ）、スマートフォン板（Pixel関連スレ）、Android板（AdGuard / personalDNSfilter / ReVanced / Morphe / ChMateスレ）、ソフトウェア板（コンテンツブロッカー関連スレ）、運用情報板（5ch不具合報告スレ）を時折訪れています。
 
+### **Contributing**
 
+* [**AdguardTeam/AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
+  * 広告トラッカーが実際にブロックされる場所
+* [**Yuki2718/adblock2**](https://github.com/Yuki2718/adblock2)
+  * AdGuard/uBlock Origin用の個人用フィルターとルール
+* [**Kdroidwin/uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
+  * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外する
 
 ---
 
