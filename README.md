@@ -25,4 +25,4 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
   * [personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-)暗号化されたDNS / サポートを備えたDNSフィルタ - プライバシーを保護します。
 
 * [Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)
-  * [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists)- より快適なインターネットのために！
+  * [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists)より快適なインターネットのために！
