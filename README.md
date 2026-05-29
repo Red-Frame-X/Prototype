@@ -22,7 +22,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
   * あなたの貢献が[Morphe](https://github.com/morpheapp)の開発と改善を続けることを支えます。
 
 * [**Donations - Zenz Solutions**](https://www.zenz-solutions.de/donations/)
-  * [**personalDNSfilter**](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - 暗号化されたDNS / サポートを備えたDNSフィルタ - プライバシーを保護します。
+  * [**personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - 暗号化されたDNS / サポートを備えたDNSフィルタ - プライバシーを保護します。
 
 * [**Gerd is HaGeZi DNS Blocklists**](https://buymeacoffee.com/hagezi)
   * [**HaGeZi DNS Blocklists**](https://github.com/hagezi/dns-blocklists) - より快適なインターネットのために！
