@@ -21,7 +21,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
   * 広告トラッカーが実際にブロックされる場所
 
 * [**Yuki2718/adblock2**](https://github.com/Yuki2718/adblock2)
-  * AdGuard/uBlock Origin用の個人用フィルターとルール
+  * AdGuard / uBlock Origin用の個人用フィルターとルール
 
 * [**Kdroidwin/uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
   * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外する
