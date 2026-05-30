@@ -1,0 +1,20 @@
+# トップレベルの設定であることを宣言
+root = true
+
+# すべてのファイルに対する基本設定
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# マークダウンファイルに対する個別設定
+# （マークダウンは行末のスペース2つで改行を意味する場合があるため、行末スペース削除を無効化）
+[*.md]
+trim_trailing_whitespace = false
+
+# AdGuardルールやスクリプト等に対する個別設定
+[*.{txt,js,yaml,yml}]
+indent_size = 2
