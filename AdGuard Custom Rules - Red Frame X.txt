@@ -85,6 +85,10 @@ news.google.com##[role="tab"][aria-label="科学＆テクノロジー"]
 news.google.com##button[aria-label="候補 - ニュース提供元"]
 news.google.com##div[jsname="UXbvIb"]:contains(ショーケース)
 
+! news.yahoo.co.jp
+! コメント要素の非表示
+news.yahoo.co.jp###articleCommentModule
+
 ! officeforest.org
 ! 広告・迷惑要素の非表示
 officeforest.org##div[id^="offic-"]
