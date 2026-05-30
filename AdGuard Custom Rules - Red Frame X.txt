@@ -132,6 +132,10 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{"status":"optedin","entity":"household","area":{"areaId":"130","jisx0402":"13113","postal":"1508001","pref":"13"}}')
 web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{"sd":"2025-10-01T00:00:00.000Z","ed":"2050-12-31T23:59:59.999Z"}')
 
+! webtan.impress.co.jp
+! 広告・迷惑要素の非表示
+webtan.impress.co.jp##.ajs-dialog
+
 ! www.youtube.com
 ! 表示調整：Enhancer for YouTube™ 併用・フォント・スクロール
 www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !important; line-height: 1.8rem !important;)
