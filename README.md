@@ -18,7 +18,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 
 ---
 
-### Contributing
+### Contribute
 
 * [**AdguardTeam/AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
   * AdGuardやuBlock Originなどの広告ブロックソフトウェア用のフィルタを作成する場所。
