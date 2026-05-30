@@ -1,0 +1,44 @@
+# =========================
+# Operating System Files
+# =========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux / ChromeOS
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# =========================
+# Editor & IDE Files
+# =========================
+# VSCodium / VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# IntelliJ / WebStorm
+.idea/
+*.iml
+
+# =========================
+# Node.js & aglint (将来用)
+# =========================
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
