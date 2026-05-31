@@ -40,9 +40,9 @@
 
 ## 4. ブラウジング環境とコンテンツブロックの最適化構成
 
-**Chrome拡張機能「AdGuard Browser Extension MV3」とAndroidアプリ「personalDNSfilter」の併用**
+**Chrome拡張機能 `AdGuard Browser Extension MV3` と Androidアプリ `personalDNSfilter` の併用**
 
-&emsp;OSのAndroidベース化に伴う環境変化において、システム全体の通信制御をAndroidアプリ「personalDNSfilter」に任せ、ブラウザ内の要素隠蔽やスクリプト制御をChrome拡張機能「AdGuard Browser Extension MV3」で行う併用構成を採用することで、高いパフォーマンスとフィルタリング精度を両立できます。
+&emsp;OSのAndroidベース化に伴う環境変化において、システム全体の通信制御をAndroidアプリ `personalDNSfilter` に任せ、ブラウザ内の要素隠蔽やスクリプト制御をChrome拡張機能 `AdGuard Browser Extension MV3` で行う併用構成を採用することで、高いパフォーマンスとフィルタリング精度を両立できます。
 
 この併用環境下において、フィルタリングルールを軽量かつ効果的に機能させるための技術的要件は以下の通りです。
 
