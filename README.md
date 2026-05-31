@@ -29,7 +29,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
   * AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタを作成する場所。
 
 * [**AdguardTeam / AdGuardSDNSFilter**](https://github.com/AdguardTeam/AdGuardSDNSFilter)
-  * DNSレベルの広告ブロックとの互換性を高めるために簡略化されたフィルタ。
+  * DNSブロックとの互換性を高めるために簡略化されたフィルタ。
 
 * [**Yuki2718 / adblock2**](https://github.com/Yuki2718/adblock2)
   * AdGuard / uBlock Origin用の個人用フィルタとルール。
