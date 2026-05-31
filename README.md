@@ -7,7 +7,7 @@
 以下のものは、個人的に使用するために作成したものです。
 * AdGuard Custom Rules
 * UserScripts
-* ChMate NG Word用 正規表現
+* ChMate用 NG Word 正規表現
 * Markdown 備忘録
 
 ### Contact
