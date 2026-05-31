@@ -28,7 +28,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
 * [**AdguardTeam / AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
   * AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタを作成する場所。
 
-* [**AdguardTeam / AdguardFilters**](https://github.com/AdguardTeam/AdGuardSDNSFilter)
+* [AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)
   * AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタを作成する場所。
 
 * [**Yuki2718 / adblock2**](https://github.com/Yuki2718/adblock2)
