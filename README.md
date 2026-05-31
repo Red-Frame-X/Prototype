@@ -5,8 +5,8 @@
 
 # AdGuard-Custom-Rules-UserScript-Regex-etc
 以下のものは、個人的に使用するために作成したものです。
-* AdGuard カスタムルール
-* ユーザースクリプト
+* AdGuard Custom Rules
+* UserScript
 * ChMate NG Word用 正規表現
 * Markdown 備忘録
 
