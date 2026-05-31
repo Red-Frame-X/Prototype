@@ -29,7 +29,7 @@ MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
   * AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタを作成する場所。
 
 * [**Yuki2718 / adblock2**](https://github.com/Yuki2718/adblock2)
-  * AdGuard / uBlock Origin用の個人用フィルターとルール。
+  * AdGuard / uBlock Origin用の個人用フィルタとルール。
 
 * [**Kdroidwin / uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
   * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外します。
