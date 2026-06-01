@@ -4,5 +4,4 @@ root: true
 extends:
   - aglint:recommended
 
-syntax:
-  - AdGuard
+syntax: AdGuard
