@@ -1,5 +1,14 @@
 # =========================
-# Operating System Files
+# 1. High-Volume Directories (パフォーマンス最適化)
+# =========================
+# Gitが早期に走査を打ち切れるよう、内部ファイルが膨大なディレクトリを最上部に配置
+node_modules/
+.idea/
+.history/
+$RECYCLE.BIN/
+
+# =========================
+# 2. Operating System Files
 # =========================
 # macOS
 .DS_Store
@@ -11,7 +20,6 @@
 Thumbs.db
 ehthumbs.db
 Desktop.ini
-$RECYCLE.BIN/
 
 # Linux / ChromeOS
 *~
@@ -20,7 +28,7 @@ $RECYCLE.BIN/
 .Trash-*
 
 # =========================
-# Editor & IDE Files
+# 3. Editor & IDE Files
 # =========================
 # VSCodium / VSCode
 .vscode/*
@@ -29,16 +37,11 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
-.history/
-
-# IntelliJ / WebStorm
-.idea/
 *.iml
 
 # =========================
-# Node.js & aglint (将来用)
+# 4. Logs (Node.js & aglint)
 # =========================
-node_modules/
 npm-debug.log
 yarn-error.log
 .pnpm-debug.log
