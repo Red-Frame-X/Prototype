@@ -8,7 +8,7 @@
 * AdGuard Custom Rules
 * UserScript
 * ChMate用 NG Word 正規表現
-* Markdown 備忘録
+* [Markdown 備忘録](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc/tree/main/Markdown%20Notes)
 
 ### Contact
 * **User Name**：Red Frame X
