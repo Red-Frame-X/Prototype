@@ -264,6 +264,3 @@ x.com##article[data-testid="tweet"] a[href^="https://linkneverdiel.com"]
 x.com#%#//scriptlet("json-prune", "promotedMetadata")
 x.com#%#//scriptlet("prevent-window-open", "/\\.php\\b.*_blank/")
 x.com#%#//scriptlet("prevent-window-open", "twitter.undefined")
-! トラッキング・広告関連の許可
-@@||ads-api.x.com^$app=com.twitter.android
-@@||ads-api.x.com^$app=how.mond.app
