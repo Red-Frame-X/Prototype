@@ -267,8 +267,3 @@ x.com#%#//scriptlet("prevent-window-open", "twitter.undefined")
 ! トラッキング・広告関連の許可
 @@||ads-api.x.com^$app=com.twitter.android
 @@||ads-api.x.com^$app=how.mond.app
-@@||ads.x.com^$app=com.adguard.system
-
-! youtube.com
-! トラッキング・広告関連の許可
-@@||ads.youtube.com^$app=com.adguard.system
