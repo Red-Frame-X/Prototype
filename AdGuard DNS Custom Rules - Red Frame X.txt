@@ -7,8 +7,6 @@
 @@||a-adq.mediation.unity3d.com^|
 @@||ad.doubleclick.net^|
 @@||ad2.trafficgate.net^|
-@@||ads-api.x.com^
-@@||ads.youtube.com^|
 @@||analytics-ipv6.tiktokw.us^|
 @@||analytics.google.com^|
 @@||analytics.tiktok.com^|
