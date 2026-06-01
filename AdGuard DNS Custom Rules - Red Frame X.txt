@@ -4,11 +4,10 @@
 ! License: CC0 (Public Domain)
 ! Version: 20260601
 
-||ad-shield.cc^
-||html-load.cc^
 @@||a-adq.mediation.unity3d.com^|
 @@||ad.doubleclick.net^|
 @@||ad2.trafficgate.net^|
+@@||ads-api.x.com^
 @@||ads.youtube.com^|
 @@||analytics-ipv6.tiktokw.us^|
 @@||analytics.google.com^|
@@ -46,6 +45,7 @@
 @@||www.google-analytics.com^|
 ||5ch.net^$dnsrewrite=5ch.io
 ||ace.5ch.net^$dnsrewrite=ace.5ch.io
+||ad-shield.cc^
 ||agree.5ch.net^$dnsrewrite=agree.5ch.io
 ||asahi.5ch.net^$dnsrewrite=asahi.5ch.io
 ||be.5ch.net^$dnsrewrite=be.5ch.io
@@ -57,6 +57,7 @@
 ||greta.5ch.net^$dnsrewrite=greta.5ch.io
 ||hayabusa9.5ch.net^$dnsrewrite=hayabusa9.5ch.io
 ||headline.5ch.net^$dnsrewrite=headline.5ch.io
+||html-load.cc^
 ||info.5ch.net^$dnsrewrite=info.5ch.io
 ||itest.5ch.net^$dnsrewrite=itest.5ch.io
 ||jump.5ch.net^$dnsrewrite=jump.5ch.io
@@ -80,4 +81,3 @@
 ||tanuki.5ch.net^$dnsrewrite=tanuki.5ch.io
 ||uplift.5ch.net^$dnsrewrite=uplift.5ch.io
 ||www.5ch.net^$dnsrewrite=www.5ch.io
-@@||ads-api.x.com^
