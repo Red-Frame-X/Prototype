@@ -241,3 +241,5 @@ x.com##article[data-testid="tweet"] a[href^="https://linkneverdiel.com"]
 x.com#%#//scriptlet("json-prune", "promotedMetadata")
 x.com#%#//scriptlet("prevent-window-open", "/\\.php\\b.*_blank/")
 x.com#%#//scriptlet("prevent-window-open", "twitter.undefined")
+
+@@||ads-api.x.com^$app=com.twitter.android
