@@ -1,7 +1,7 @@
-![syntax: AdGuars](https://img.shields.io/badge/syntax-AdGuard-green)
-![syntax: UserScript](https://img.shields.io/badge/syntax-UserScript-orange)
+![syntax: AdGuard](https://img.shields.io/badge/syntax-AdGuard-green)
+![syntax: JavaScript](https://img.shields.io/badge/syntax-UserScript-orange)
 ![syntax: Regex](https://img.shields.io/badge/syntax-Regex-blue)
-![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white)
+![syntax: Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white)
 
 # AdGuard-Custom-Rules-UserScript-Regex-etc
 以下のものは、個人的に使用するために作成したものです。
