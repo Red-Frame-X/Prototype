@@ -1,6 +1,8 @@
-*.txt linguist-language=AdBlock linguist-detectable
+# デフォルトの改行コードをLFに統一
 * text=auto eol=lf
-*.txt text eol=lf
+
+# .txtファイルをAdBlockフィルタとして認識させ、言語統計に含める
+*.txt linguist-language=AdBlock linguist-detectable
 
 # ChMateの正規表現ファイルは「正規表現 (Regular Expression)」としてハイライトする
-NG\ Word\ Regex\ for\ ChMate.txt linguist-language=regex
+"NG Word Regex for ChMate.txt" linguist-language=regexp
