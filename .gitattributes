@@ -3,4 +3,4 @@
 *.txt text eol=lf
 
 # ChMateの正規表現ファイルは「正規表現 (Regular Expression)」としてハイライトする
-ChMate\ NG\ Word\ Regex.txt linguist-language=regex
+NG\ Word\ Regex\ for\ ChMate.txt linguist-language=regex
