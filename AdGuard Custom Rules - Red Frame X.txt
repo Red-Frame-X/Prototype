@@ -4,25 +4,17 @@
 ! License: CC0 (Public Domain)
 ! Version: 20260601
 
-! 汎用ルール
-! 広告・迷惑要素の非表示・許可
-@@||data.service.paypal.com^$important
-@@||www.google-analytics.com^$important
+! ads-twitter.com
+! トラッキング・広告関連の許可
+@@||static.ads-twitter.com^$app=jp.kappasushi.app
 
-! アプリ・システム用ルール
+! ads-x.com
+! トラッキング・広告関連の許可
+@@||static.ads-x.com^$app=jp.kappasushi.app
+
+! amazon-adsystem.com
 ! トラッキング・広告関連の許可
 @@||aax-fe.amazon-adsystem.com^$app=com.amazon.mShop.android.shopping
-@@||ads.twitter.com^$app=com.twitter.android
-@@||ads.x.com^$app=com.adguard.system
-@@||ads.youtube.com^$app=com.adguard.system
-@@||analytics.tiktok.com^$app=jp.kappasushi.app
-@@||google-analytics.com^$app=jp.kappasushi.app
-@@||googleads.g.doubleclick.net^$app=com.adguard.system
-@@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox
-@@||static.ads-twitter.com^$app=jp.kappasushi.app
-@@||static.ads-x.com^$app=jp.kappasushi.app
-@@||stats.g.doubleclick.net^$app=jp.kappasushi.app
-@@||uts-front.line-apps.com^$app=jp.naver.line.android
 
 ! blog.hatena.ne.jp
 ! 広告・迷惑要素の非表示
@@ -32,6 +24,17 @@ blog.hatena.ne.jp##.globalPage-ad
 blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
 blog.hatena.ne.jp##.recommendList-wrapper
 blog.hatena.ne.jp##aside.antenna-staffPicks
+
+! doubleclick.net
+! トラッキング・広告関連の許可
+@@||googleads.g.doubleclick.net^$app=com.adguard.system
+@@||stats.g.doubleclick.net^$app=jp.kappasushi.app
+
+! google-analytics.com
+! トラッキング・広告関連の許可
+@@||google-analytics.com^$app=jp.kappasushi.app
+! 広告・迷惑要素の非表示・許可
+@@||www.google-analytics.com^$important
 
 ! google.com,google.co.jp
 ! 検索結果のクリーンアップ
@@ -44,6 +47,10 @@ google.com,google.co.jp##div[data-lhcontainer]:has([role="heading"]:contains(AI 
 google.com,google.co.jp##div[data-ved]:has(> div > div > [role="heading"]:contains(関連する質問))
 google.com,google.co.jp##div[role="listitem"]:has(a[href*="udm=39"] span:contains(ショート動画))
 
+! googleapis.com
+! トラッキング・広告関連の許可
+@@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox
+
 ! hentaianimezone.com
 ! 外部広告スクリプトとコンテナのブロック
 ||afritmarryer.com^$script,third-party,domain=hentaianimezone.com
@@ -54,6 +61,10 @@ hentaianimezone.com##ins[data-zoneid]
 ! klz9.com
 ! コメント要素の非表示
 klz9.com##div:has(> h2:contains(最近のコメント))
+
+! line-apps.com
+! トラッキング・広告関連の許可
+@@||uts-front.line-apps.com^$app=jp.naver.line.android
 
 ! m.youtube.com
 ! UI・各セクションの非表示
@@ -102,6 +113,10 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 ! スクリプトレット処理
 pantieshub.net#%#//scriptlet("set-constant", "hls", "emptyObj")
 
+! paypal.com
+! 広告・迷惑要素の非表示・許可
+@@||data.service.paypal.com^$important
+
 ! rawkuma.net
 ! サードパーティ・迷惑要素のブロック
 ||cbox.ws^$third-party,domain=rawkuma.net
@@ -117,6 +132,10 @@ rawkuma.net##iframe[src*="cbox.ws"]
 ! 広告・迷惑要素の非表示
 theporndude.com##.extension-widget
 
+! tiktok.com
+! トラッキング・広告関連の許可
+@@||analytics.tiktok.com^$app=jp.kappasushi.app
+
 ! topics.smt.docomo.ne.jp
 ! 広告・トラッキングのブロック
 ||alxc.addlv.smt.docomo.ne.jp^$script,domain=topics.smt.docomo.ne.jp
@@ -125,6 +144,10 @@ topics.smt.docomo.ne.jp##.ad_middle05
 ! translate.google.com
 ! UI要素の非表示
 translate.google.com##[role="tab"][data-language-code="ko"]
+
+! twitter.com
+! トラッキング・広告関連の許可
+@@||ads.twitter.com^$app=com.twitter.android
 
 ! web.nhk
 ! クッキー・同意ポップアップ関連処理
@@ -241,5 +264,11 @@ x.com##article[data-testid="tweet"] a[href^="https://linkneverdiel.com"]
 x.com#%#//scriptlet("json-prune", "promotedMetadata")
 x.com#%#//scriptlet("prevent-window-open", "/\\.php\\b.*_blank/")
 x.com#%#//scriptlet("prevent-window-open", "twitter.undefined")
-
+! トラッキング・広告関連の許可
 @@||ads-api.x.com^$app=com.twitter.android
+@@||ads-api.x.com^$app=how.mond.app
+@@||ads.x.com^$app=com.adguard.system
+
+! youtube.com
+! トラッキング・広告関連の許可
+@@||ads.youtube.com^$app=com.adguard.system
