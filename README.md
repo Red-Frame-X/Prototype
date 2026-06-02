@@ -23,8 +23,8 @@
 * **フィードバック**：AdGuard Filters Issues / Google / 𝕏 / ソフトウェア開発者・サイト運営者様への報告
 
 #### 使用デバイス
-* **Laptop**：Acer Chromebook Plus 514 （MacBook Pro ➔ Dell Inspiron を経て移行）
-* **Smartphone**：Google Pixel 7a
+* **ラップトップ**：Acer Chromebook Plus 514 （MacBook Pro ▶ Dell Inspiron を経て移行）
+* **スマートフォン**：Google Pixel 7a
 
 #### 閲覧コミュニティ（5ch）
 * **ノートPC板**：Chromebookスレ
