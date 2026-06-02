@@ -16,10 +16,22 @@
 * **mond**：[Red Frame X@Red_Frame_X](https://mond.how/ja/Red_Frame_X)
 
 ### About Me
-「IT学習の一環」として、デバイス設定の記録やAdGuard Custom Rules / UserScript / Regex / Markdown 備忘録の作成などに取り組んでいます。
-AdGuard Filters Issuesへの報告や、Google、𝕏、ソフトウェア開発者様、サイト運営者様へのフィードバックも時々行っています。
-MacBook Pro、Dell Inspironを経て、Chromebookへ移行しました。
-現在使用しているデバイスは、Acer Chromebook Plus 514とGoogle Pixel 7aで、5chのノートPC板（Chromebookスレ）、スマートフォン板（Pixel関連スレ）、Android板（AdGuard / personalDNSfilter / ReVanced / Morphe / ChMateスレ）、ソフトウェア板（コンテンツブロッカー関連スレ）、運用情報板（5ch不具合報告スレ）を時折訪れています。
+
+「IT学習の一環」として、デバイス設定の記録、各種ファイルや備忘録の作成、およびコンテンツブロックに関するフィードバック活動を行っています。
+
+#### 取り組み・活動内容
+* **フィードバック**：AdGuard Filters Issues / Google / 𝕏 / ソフトウェア開発者・サイト運営者様への報告
+
+#### 使用デバイス
+* **Laptop**：Acer Chromebook Plus 514 （MacBook Pro ➔ Dell Inspiron を経て移行）
+* **Smartphone**：Google Pixel 7a
+
+#### 閲覧コミュニティ（5ch）
+* **ノートPC板**：Chromebookスレ
+* **スマートフォン板**：Pixel関連スレ
+* **Android板**：AdGuard / personalDNSfilter / ReVanced / Morphe / ChMateスレ
+* **ソフトウェア板**：コンテンツブロッカー関連スレ
+* **運用情報板**：5ch不具合報告スレ
 
 ---
 
