@@ -23,7 +23,7 @@
 * **フィードバック**：AdGuard Filters Issues / Google / 𝕏 / ソフトウェア開発者・サイト運営者様への報告
 
 #### 使用デバイス
-* **ラップトップ**：Acer Chromebook Plus 514（MacBook Pro ▶ Dell Inspiron を経て移行）
+* **ラップトップ**：Acer Chromebook Plus 514（MacBook Pro → Dell Inspiron を経て移行）
 * **スマートフォン**：Google Pixel 7a
 
 #### 閲覧コミュニティ（5ch）
@@ -47,7 +47,9 @@
   * AdGuard / uBlock Origin用の個人用フィルタとルール。
 
 * [**Kdroidwin / uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
-  * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外 / ブロックするフィルタ。
+  * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外するフィルタ
+    * uBlacklist用：uBlacklist-filter-by-kdroidwin → 検索結果を非表示
+    * uBlock Origin & AdGuard用：uB-filter-by-kdroidwin(uBO&AdGuard) → アクセス時に警告画面を表示してブロック
 
 ---
 
