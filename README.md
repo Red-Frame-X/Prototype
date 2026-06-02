@@ -38,16 +38,16 @@
 ### Contribute
 
 * [**AdguardTeam / AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
-  * AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタを作成する場所。
+  * AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタを作成する場所
 
 * [**AdguardTeam / AdGuardSDNSFilter**](https://github.com/AdguardTeam/AdGuardSDNSFilter)
-  * DNSブロックとの互換性を高めるために簡略化されたフィルタ。
+  * DNSブロックとの互換性を高めるために簡略化されたフィルタ
 
 * [**Yuki2718 / adblock2**](https://github.com/Yuki2718/adblock2)
-  * AdGuard / uBlock Origin用の個人用フィルタとルール。
+  * AdGuard / uBlock Origin用の個人用フィルタとルール
 
 * [**Kdroidwin / uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
-  * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外するフィルタ。
+  * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外するフィルタ
 
 ---
 
