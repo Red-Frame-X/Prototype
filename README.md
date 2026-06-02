@@ -48,10 +48,7 @@
 
 * [**Kdroidwin / uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
   * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外するフィルタ
-    * uBlacklist用：uBlacklist-filter-by-kdroidwin → 検索結果を非表示
-    * uBlock Origin & AdGuard用：uB-filter-by-kdroidwin(uBO&AdGuard) → アクセス時に警告画面を表示してブロック
 
-      AdGuard for AndroidではHTTPSフィルタリングを有効にする必要があります
 ---
 
 ### Donate
