@@ -51,6 +51,7 @@
     * uBlacklist用：uBlacklist-filter-by-kdroidwin → 検索結果を非表示
     * uBlock Origin & AdGuard用：uB-filter-by-kdroidwin(uBO&AdGuard) → アクセス時に警告画面を表示してブロック
 
+      AdGuard for AndroidではHTTPSフィルタリングを有効にする必要があります
 ---
 
 ### Donate
