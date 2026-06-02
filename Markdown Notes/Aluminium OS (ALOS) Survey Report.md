@@ -19,7 +19,7 @@
 
 ## 1. 基本概要
 
-&emsp;Aluminium OSは、Googleが2026年頃のリリースに向けて開発中と噂される、Android（Android 17ベース）とChromeOSを統合した次世代PC向けOSです。AI（Gemini）を中核に据え、スマートフォンのエコシステムをそのままPCで展開する野心的なプロジェクトですが、デスクトップUXの成熟やハードウェア要件の高騰など、今後の課題も指摘されています。
+Aluminium OSは、Googleが2026年頃のリリースに向けて開発中と噂される、Android（Android 17ベース）とChromeOSを統合した次世代PC向けOSです。AI（Gemini）を中核に据え、スマートフォンのエコシステムをそのままPCで展開する野心的なプロジェクトですが、デスクトップUXの成熟やハードウェア要件の高騰など、今後の課題も指摘されています。
 
 * **AIネイティブ設計**：OSレベルでGeminiなどのAIが深く統合され、文脈の先読みやサポートを前提とした設計。
 * **Android 17ベースの統合**：従来のChromeOS上の仮想環境ではなく、Androidがネイティブ動作。スマートフォン、タブレット、PC（Box等）でシームレスな体験を提供。
@@ -42,7 +42,7 @@
 
 **Chrome拡張機能 `AdGuard Browser Extension MV3` と Androidアプリ `personalDNSfilter` の併用**
 
-&emsp;OSのAndroidベース化に伴う環境変化において、システム全体の通信制御をAndroidアプリ `personalDNSfilter` に任せ、ブラウザ内の要素隠蔽やスクリプト制御をChrome拡張機能 `AdGuard Browser Extension MV3` で行う併用構成を採用することで、高いパフォーマンスとフィルタリング精度を両立できます。
+OSのAndroidベース化に伴う環境変化において、システム全体の通信制御をAndroidアプリ `personalDNSfilter` に任せ、ブラウザ内の要素隠蔽やスクリプト制御をChrome拡張機能 `AdGuard Browser Extension MV3` で行う併用構成を採用することで、高いパフォーマンスとフィルタリング精度を両立できます。
 
 この併用環境下において、フィルタリングルールを軽量かつ効果的に機能させるための技術的要件は以下の通りです。
 
