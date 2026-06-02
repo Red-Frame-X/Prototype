@@ -47,7 +47,7 @@
   * AdGuard / uBlock Origin用の個人用フィルタとルール。
 
 * [**Kdroidwin / uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
-  * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外します。
+  * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外 / ブロックするフィルタ。
 
 ---
 
