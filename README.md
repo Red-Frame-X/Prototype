@@ -15,6 +15,8 @@
 * **𝕏**：[Red Frame X@Red_Frame_X](https://x.com/Red_Frame_X)
 * **mond**：[Red Frame X@Red_Frame_X](https://mond.how/ja/Red_Frame_X)
 
+---
+
 ### About Me
 
 「IT学習の一環」として、デバイス設定の記録、各種ファイルや備忘録の作成、およびコンテンツブロック・ソフトウェアに関するフィードバック活動を行っています。
