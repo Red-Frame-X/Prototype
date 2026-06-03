@@ -162,7 +162,7 @@ www.youtube.com###teaser-carousel:contains(チャットのリプレイ)
 www.youtube.com###video-title.ytd-rich-grid-media, #video-title.ytd-rich-grid-slim-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)
 www.youtube.com###ytd-channel-renderer
 www.youtube.com##[page-subtype="channels"] ytd-item-section-renderer:not([use-height-hack]):has(ytd-reel-shelf-renderer)
-www.youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(#video-title-link:contains(/#short/i))
+www.youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(#video-title-link[title*="#short" i])
 www.youtube.com##[page-subtype="subscriptions"] ytd-rich-item-renderer:has([overlay-style="SHORTS"])
 www.youtube.com##body, ytd-app[scrolling]:style(overflow-x: hidden !important;)
 www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer
