@@ -19,14 +19,14 @@
 
 「IT学習の一環」として、デバイス設定の記録、各種ファイルや備忘録の作成、およびコンテンツブロック・ソフトウェアに関するフィードバック活動を行っています。
 
-#### 活動内容
+#### Activities
 * **フィードバック**：AdGuard Filters Issues / Google / 𝕏 / ソフトウェア開発者・サイト運営者様への報告
 
-#### 使用デバイス
+#### Device Used
 * **ラップトップ**：Acer Chromebook Plus 514（MacBook Pro → Dell Inspiron を経て移行）
 * **スマートフォン**：Google Pixel 7a
 
-#### 閲覧コミュニティ（5ch）
+#### Viewing Community（5ch）
 * **ノートPC板**：Chromebookスレ
 * **スマートフォン板**：Pixel関連スレ
 * **Android板**：AdGuard / personalDNSfilter / ReVanced / Morphe / ChMateスレ
@@ -36,7 +36,6 @@
 ---
 
 ### Contribute
-
 * [**AdguardTeam / AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
   * AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタを作成する場所
 
