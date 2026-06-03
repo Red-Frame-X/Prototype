@@ -1,5 +1,5 @@
 # Aluminium OS（ALOS）調査レポート 改訂版
-2026年5月31日時点で判明しているAluminium OS（ALOS）に関する情報。
+2026年5月31日時点で判明しているAluminium OS（ALOS）に関する情報
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
