@@ -1,5 +1,6 @@
 # Android 未確認デベロッパー向け「高度なフロー」詳細手順
 
+Androidの「高度なフロー（Advanced flow）」
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc) |
