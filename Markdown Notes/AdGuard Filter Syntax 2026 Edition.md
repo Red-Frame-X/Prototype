@@ -109,7 +109,7 @@ MV3（Manifest V3）が標準化された現在の拡張機能環境（厳格な
 
 ### 【基礎】仕組みと基本構文を知る
 
-* **[独自の広告フィルターを作成する方法 \| AdGuard Knowledge Base](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)**
+* **[独自の広告フィルタを作成する方法 \| AdGuard Knowledge Base](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)**
   * 公式による、ルール作成の第一歩となるドキュメントです。
 
 ### 【応用】実践的な記述テクニックとノウハウを学ぶ
@@ -117,7 +117,7 @@ MV3（Manifest V3）が標準化された現在の拡張機能環境（厳格な
 * **[AdGuard ブラウザ拡張機能 v5.2: 使いやすさと独自ルール機能を改善 \| AdGuard Blog](https://adguard.com/ja/blog/adguard-browser-extension-v5-2.html)**
   * MV3移行初期に制限されていた「カスタムフィルタの手動更新」機能が復活した背景や、User Scripts APIのサポートによりカスタムルールをどのように拡張機能に統合し、独自の高度なブロックを実装するかの最新手法を学べます。
 
-* **[広告ブロックの仕組み: フィルター開発の流れ \| AdGuard Blog](https://adguard.com/ja/blog/how-ad-blocking-is-done.html)**
+* **[広告ブロックの仕組み: フィルタ開発の流れ \| AdGuard Blog](https://adguard.com/ja/blog/how-ad-blocking-is-done.html)**
   * ネットワークフィルタリングやルール開発の裏側、ルールの適用プロセスなど、実運用に即した深い動作原理を理解できます。
 
 ### 【発展】実際のコードから設計を読み解く・最新動向を追う
