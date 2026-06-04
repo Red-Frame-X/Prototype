@@ -124,13 +124,13 @@ MV3（Manifest V3）が標準化された現在の拡張機能環境（厳格な
 
 広告ブロック技術の進化の歴史に沿ってソースを辿ることで、ルールの設計思想とその変遷を深く理解できます。
 
-* **[easylist/easylist](https://github.com/easylist/easylist)** （GitHub）
+* **[easylist / easylist](https://github.com/easylist/easylist)** （GitHub）
   * **【黎明期〜標準化】** 広告ブロックのデファクトスタンダードであり、すべての原点です。Adblock Plus時代から続く汎用的なネットワークルールが、現在のDNR上限に合わせてどのように統合・最適化されているか、その基礎と設計思想を学べます。
 
-* **[uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets)** （GitHub）
+* **[uBlockOrigin / uAssets](https://github.com/uBlockOrigin/uAssets)** （GitHub）
   * **【発展期〜高度化】** 軽量かつ強力なブロックツールとして台頭したuBlock Originの公式フィルタ。記法は異なりますが、動的な要素指定やアンチアドブロック突破のロジックなど、今日の高度なフィルタリング技術の最高峰の参考になります。
 
-* **[AdguardTeam/AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)** （GitHub）
+* **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)** （GitHub）
   * **【独自進化〜現代】** AdGuard公式フィルタのリポジトリ。システムレベルのブロック（Android等）への対応や、MV3時代に最適化された高度なスクリプトレットの回避策など、現在進行形の実例の宝庫です。
 
 * **[AdGuard Blog](https://adguard.com/en/blog/index.html)**
