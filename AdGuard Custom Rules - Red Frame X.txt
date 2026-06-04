@@ -27,7 +27,6 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! doubleclick.net
 ! トラッキング・広告関連の許可
-
 @@||stats.g.doubleclick.net^$app=jp.kappasushi.app
 
 ! google-analytics.com
