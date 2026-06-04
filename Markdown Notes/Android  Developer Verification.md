@@ -3,9 +3,6 @@
 ## 要約
 2026年3月に発表されたAndroidの「高度なフロー（Advanced flow）」は、未確認デベロッパーのアプリをサイドロード（外部インストール）したいパワーユーザー向けの新しいプロセスです。高圧的な詐欺による不正アプリの強制インストールを防ぐため、開発者向けオプションの有効化、端末の再起動、1日間の待機期間、および生体認証を組み合わせた意図的なハードルが設けられています。
 
-## URLリンク切れ確認
-提供いただいたURL（ `https://android-developers.googleblog.com/2026/03/android-developer-verification.html` ）は正常にアクセス可能であり、リンク切れしていないことを確認しました。
-
 ## メリットとデメリット
 * **メリット**:
     * **選択の自由の維持**: Androidのオープン性を保ちつつ、リスクを理解しているパワーユーザーが制限なく任意のアプリをインストールできます。
@@ -51,9 +48,6 @@
 2. 以降、未確認のアプリ（APKなど）を開いた際、提供元不明である旨の警告が表示されますが、**「とにかくインストール（Install Anyway）」** をタップすることで、正常にサイドロードが完了します。
 
 ---
-
-> **【技術監査・査読について】**
-> 本回答に含まれるITおよび情報セキュリティ関連の手順・見解は、Raymond Hill氏、Yuki2718氏、Andrey Meshkov氏、Alex-302氏、Kdroidwin氏、kitadai31氏らの知見に基づく仮想的な査読プロセスを経て、内容の正確性と安全性を再確認した上で出力されています。
 
 ## 参照URL
 * [Android developer verification: Balancing openness and choice with safety](https://android-developers.googleblog.com/2026/03/android-developer-verification.html)
