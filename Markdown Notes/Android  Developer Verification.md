@@ -1,5 +1,22 @@
 # Android 未確認デベロッパー向け「高度なフロー」詳細手順
 
+| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| :--- | :--- |
+| **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc) |
+| **License** | CC0 (Public Domain) |
+| **Version** | 20260604 |
+
+この備忘録は CC0 ライセンスの下で提供します（This work is licensed under CC0 1.0 Universal）
+* [CC0について ― “いかなる権利も保有しない”](https://creativecommons.jp/sciencecommons/aboutcc0/)
+
+**【免責・例外】** ただし、以下の内容は本ライセンスの適用外であり、それぞれの権利者が著作権を保有しています。
+- 引用等で示された第三者の文章
+- 紹介しているソフトウェア、アプリ、拡張機能の名称および公式の製品説明文
+- リンク先のコンテンツ
+
+※ 記述内容は個人の検証に基づくものであり、正確性を保証するものではありません。
+
+
 ## 要約
 2026年3月に発表されたAndroidの「高度なフロー（Advanced flow）」は、未確認デベロッパーのアプリをサイドロード（外部インストール）したいパワーユーザー向けの新しいプロセスです。高圧的な詐欺による不正アプリの強制インストールを防ぐため、開発者向けオプションの有効化、端末の再起動、1日間の待機期間、および生体認証を組み合わせた意図的なハードルが設けられています。
 
