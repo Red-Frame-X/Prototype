@@ -1,6 +1,11 @@
 # AdGuard Filter Syntax 2026 Edition
+MV3（Manifest V3）が標準化された現在の拡張機能環境（厳格なDNRルール上限）および AdGuard for Android 環境において、処理遅延とバッテリー消費を最小限に抑えつつ、ルールリソースを極限まで節約するカスタムルールを作成するためのリファレンスです。
 
-> **目的**: MV3（Manifest V3）が標準化された現在の拡張機能環境（厳格なDNRルール上限）および AdGuard for Android 環境において、処理遅延とバッテリー消費を最小限に抑えつつ、ルールリソースを極限まで節約するカスタムルールを作成するためのリファレンスです。
+| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| :--- | :--- |
+| **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc) |
+| **License** | CC0 (Public Domain) |
+| **Version** | 20260605 |
 
 ---
 
