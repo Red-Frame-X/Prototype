@@ -1,4 +1,5 @@
 # DNS Blocklist Guide
+DNSブロックリストのガイド
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
