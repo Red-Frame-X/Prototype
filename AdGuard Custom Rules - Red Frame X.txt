@@ -80,11 +80,6 @@ m.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)
 m.youtube.com##ytm-rich-section-renderer
 m.youtube.com##ytm-video-with-context-renderer:has(.big-shorts-singleton)
 
-! missav.ai
-! サードパーティ・迷惑要素のブロック
-||rallytrck.website^$domain=missav.ai,third-party
-missav.ai##div:has(> iframe[data-link*="rallytrck.website"])
-
 ! news.google.com
 ! UI・不要セクションの非表示
 news.google.com##.TPqh7b:contains(ショーケース)
