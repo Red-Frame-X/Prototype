@@ -1,7 +1,4 @@
 # AdGuard Filter Syntax
-
-**【要約】**
-
 MV3（Manifest V3）環境の厳格なDNR（Declarative Net Request）ルール上限や、AdGuard for Androidにおける処理遅延・バッテリー消費の極小化を前提とした、上級者向けのカスタムルール・リファレンスです。
 通信遮断、DOM操作、スクリプト注入の各アプローチについて、AdGuard専用の記法（`#$#`、`#?#`、`:contains`、`#%#//scriptlet` 等）を用いた最適な運用手法と注意点を整理しています。
 
