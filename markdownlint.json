@@ -1,7 +1,7 @@
 {
   "ul-indent": { "indent": 2 },
   "line-length": {
-    "stern": true,
+    "strict": true,
     "line_length": 120
   },
   "no-multiple-blanks": { "maximum": 2 },
