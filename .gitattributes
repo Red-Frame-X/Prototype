@@ -5,4 +5,6 @@
 *.txt linguist-language=AdBlock linguist-detectable
 
 # ChMateの正規表現ファイルは「正規表現 (Regular Expression)」としてハイライトする
-"NG Word Regex for ChMate.txt" linguist-language=regexp
+# "NG Word Regex for ChMate.txt" linguist-language=regexp
+# 修正案（ハイライトが効かなかった場合のみ）
+"NG Word Regex for ChMate.txt" linguist-language="Regular Expression"
