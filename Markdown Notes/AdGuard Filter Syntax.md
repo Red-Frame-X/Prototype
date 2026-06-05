@@ -1,6 +1,6 @@
 # AdGuard Filter Syntax
 
-* 本ドキュメントは、MV3（Manifest V3）環境の厳格なDNR（Declarative Net Request）ルール上限や、AdGuard for Androidにおける処理遅延・バッテリー消費の極小化を前提とした、上級者向けのカスタムルール・リファレンス
+* MV3（Manifest V3）環境の厳格なDNR（Declarative Net Request）ルール上限や、AdGuard for Androidにおける処理遅延・バッテリー消費の極小化を前提とした、上級者向けのカスタムルール・リファレンス
 * 通信遮断、DOM操作、スクリプト注入の各アプローチについて、メリットとデメリット（注意点）を網羅し、高度な記法（正規表現、拡張CSS、スクリプトレット）の最適な運用手法を解説
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
