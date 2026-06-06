@@ -50,7 +50,7 @@
 * [**Kdroidwin / uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
   * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外するフィルタ
 
-* [**Kdroidwin / uB-filter-by-kdroidwin**](https://issuetracker.google.com/home)
+* [**Google Issue Tracker**](https://issuetracker.google.com/home)
   * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外するフィルタ  
 
 ---
