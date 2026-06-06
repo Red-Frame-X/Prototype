@@ -519,7 +519,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 * [Chromebook ヘルプ](https://support.google.com/chromebook/?hl=ja#topic=)
 * [Google Pixel ヘルプ](https://support.google.com/pixelphone/?hl=ja#topic=)
 * [GitHub Status](https://www.githubstatus.com/)
-* [𝕏・バグ報告・ご要望](https://x.com/i/communities/1841382313667723737)
+* [𝕏 ヘルプセンター](https://help.x.com/ja)
 * [5chサーバ稼働状況](https://www.kyodemo.net/sdemo/k/5_?hs=1)
 * [偽 SPARROW AIM-7P Ver.1.00](https://5ch.ape.jp/SPARROW/)
 * [Imgur Removal Request](https://imgur.com/removalrequest)
