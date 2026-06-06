@@ -53,10 +53,8 @@
 * [**Google Issue Tracker**](https://issuetracker.google.com/home)
   * Googleが社内や特定の外部ユーザー向けに提供している、自社プロダクトのバグや機能リクエストを管理するシステム
 
-* [**𝕏・バグ報告・ご要望**](https://x.com/i/communities/1841382313667723737)
-  * X（旧Twitter）上でバグ報告や要望をユーザー同士で共有・投稿できる𝕏・バグ報告・ご要望コミュニティのページ
-
----
+* [**𝕏 ヘルプセンター**](https://help.x.com/ja)
+  * アカウントの操作や各種設定、トラブル時の対処法など、Xに関する疑問を解決するための𝕏（旧Twitter）の日本語版公式ヘルプセンター
 
 ### Donate
 * [**Support Morphe - Donate**](https://morphe.software/donate)
