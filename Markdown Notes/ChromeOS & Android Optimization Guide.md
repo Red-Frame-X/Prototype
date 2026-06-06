@@ -514,7 +514,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 * [Chromebook ヘルプ](https://support.google.com/chromebook/?hl=ja#topic=)
 * [Downdetector](https://downdetector.jp/)
 * [GitHub Status](https://www.githubstatus.com/)
-
+* [Google Pixel ヘルプ](https://support.google.com/pixelphone/?hl=ja#topic=)
 * [Google Pixel ヘルプ](https://support.google.com/pixelphone/?hl=ja#topic=)
 * [Google Workspace ステータス ダッシュボード](https://www.google.com/appsstatus/dashboard/#hl=ja&v=status)
 * [Google ヘルプ](https://support.google.com/?hl=ja)
