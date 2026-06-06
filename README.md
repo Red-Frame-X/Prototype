@@ -53,7 +53,7 @@
 * [**Google Issue Tracker**](https://issuetracker.google.com/home)
   * Googleが社内や特定の外部ユーザー向けに提供している、自社プロダクトのバグや機能リクエストを管理するシステム
 
-* [**Google Issue Tracker**](https://issuetracker.google.com/home)
+* [**𝕏・バグ報告・ご要望**](https://issuetracker.google.com/home)
   * Googleが社内や特定の外部ユーザー向けに提供している、自社プロダクトのバグや機能リクエストを管理するシステム
 
   [](https://x.com/i/communities/1841382313667723737)
