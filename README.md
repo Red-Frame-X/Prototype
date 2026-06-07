@@ -56,6 +56,8 @@
 * [**𝕏 ヘルプセンター**](https://help.x.com/ja)
   * アカウントの操作や各種設定、トラブル時の対処法など、Xに関する疑問を解決するための𝕏（旧Twitter）の日本語版公式ヘルプセンター
 
+---
+
 ### Donate
 * [**Support Morphe - Donate**](https://morphe.software/donate)
   * あなたの貢献が [Morphe](https://github.com/morpheapp) の開発と改善を続けることを支えます。
