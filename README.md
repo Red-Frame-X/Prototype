@@ -22,7 +22,7 @@
 「IT学習の一環」として、デバイス設定の記録、各種ファイルや備忘録の作成、およびコンテンツブロック・ソフトウェアに関するフィードバック活動を行っています。
 
 #### Activities
-* **Feedback**：AdGuard Filters Issues / Google / 𝕏 / ソフトウェア開発者・サイト運営者様への報告など
+* **Feedback**：AdGuard Filters Issues / Google / ソフトウェア開発者・サイト運営者様への報告など
 
 #### Device Used
 * **Laptop**：Acer Chromebook Plus 514（MacBook Pro → Dell Inspiron を経て移行）
@@ -52,9 +52,6 @@
 
 * [**Google Issue Tracker**](https://issuetracker.google.com/home)
   * Googleが社内や特定の外部ユーザー向けに提供している、自社プロダクトのバグや機能リクエストを管理するシステム
-
-* [**𝕏 ヘルプセンター**](https://help.x.com/ja)
-  * アカウントの操作や各種設定、トラブル時の対処法など、Xに関する疑問を解決するための𝕏（旧Twitter）の日本語版公式ヘルプセンター
 
 ---
 
