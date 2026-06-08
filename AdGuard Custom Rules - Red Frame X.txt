@@ -5,6 +5,7 @@
 ! Version: 20260608
 
 
+
 ! ads-twitter.com
 ! トラッキング・広告関連の許可
 @@||static.ads-twitter.com^$app=jp.kappasushi.app
