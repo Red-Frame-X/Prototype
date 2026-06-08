@@ -2,7 +2,7 @@
 ! Description: Customize AdGuard filters for personal use.
 ! Homepage: https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc
 ! License: CC0 (Public Domain)
-! Version: 202606-08
+! Version: 20260608
 
 ! ads-twitter.com
 ! トラッキング・広告関連の許可
