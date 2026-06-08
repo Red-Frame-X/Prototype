@@ -513,16 +513,16 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 * [Downdetector](https://downdetector.jp/)
 * [サイトはダウンしている？](https://www.websiteplanet.com/ja/webtools/down-or-not/)
 * [Yahoo!リアルタイム検索](https://search.yahoo.co.jp/realtime/)
-* [Google ヘルプ](https://support.google.com/?hl=ja)
 * [Google Workspace ステータス ダッシュボード](https://www.google.com/appsstatus/dashboard/#hl=ja&v=status)
 * [Google Issue Tracker](https://issuetracker.google.com/home)
+* [Google ヘルプ](https://support.google.com/?hl=ja)
 * [Chromebook ヘルプ](https://support.google.com/chromebook/?hl=ja#topic=)
 * [Google Pixel ヘルプ](https://support.google.com/pixelphone/?hl=ja#topic=)
 * [GitHub Status](https://www.githubstatus.com/)
 * [5chサーバ稼働状況](https://www.kyodemo.net/sdemo/k/5_?hs=1)
 * [偽 SPARROW AIM-7P Ver.1.00](https://5ch.ape.jp/SPARROW/)
-* [Imgur Removal Request](https://imgur.com/removalrequest)
 * [docomo オンライン手続きサポート](https://tetsuduki-support.docomo.ne.jp/)
+* [Imgur Removal Request](https://imgur.com/removalrequest)
 
 **画像・動画・ファイル編集・共有**
 * [123apps](https://123apps.com/ja/)
