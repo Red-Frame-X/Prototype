@@ -237,6 +237,7 @@ x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:contain
 ! コミュニティ関連
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(+ div > div > div > a[href^="/i/communities/"])
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(> div > div > a[href^="/i/communities/"])
+x.com##a[href$="/communities"][role="link"]
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(a[href="/i/communities/suggested"])
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:contains(新しいコミュニティを見つける))
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:not(:has(article)):has(a[href^="/i/communities/"])
@@ -250,5 +251,3 @@ x.com##article[data-testid="tweet"] a[href^="https://linkneverdiel.com"]
 x.com#%#//scriptlet("json-prune", "promotedMetadata")
 x.com#%#//scriptlet("prevent-window-open", "/\\.php\\b.*_blank/")
 x.com#%#//scriptlet("prevent-window-open", "twitter.undefined")
-
-x.com##a[href$="/communities"][role="link"]
