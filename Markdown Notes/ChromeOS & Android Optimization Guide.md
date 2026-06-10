@@ -481,7 +481,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 * **[Gemini](https://gemini.google.com/)**：汎用性 + マルチモーダル + 膨大な情報を高速で読み込み回答を出力
 * **[GitHub Copilot](https://github.com/features/copilot)**：コーディング用
 * **[Grok](https://grok.com/)**：汎用性 + 制限が緩い - 𝕏の投稿の信憑性をチェックするのに使えそう？
-  * xAI Support Teamへの問い合わせ先 `support@x.ai` 
+  * xAI Support Teamへの問い合わせ先 `support@x.ai` /
   * Contact: Get in Touch with xAI 
   * [xAIアカウントのMFAを紛失してログイン不能 → xAIアカウント削除のために問い合わせ中](https://docs.x.ai/console/faq/accounts#ive-forgotten-my-multi-factor-authentication-mfa-method-can-you-remove-it) ですが、対応は絶望的なようです
   * RedditでもxAIアカウントの削除に応じてもらえたという報告は皆無なので、もし対応してもらえたら𝕏とGitHubに報告しようと思います
