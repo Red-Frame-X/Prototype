@@ -36,15 +36,17 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 @@||www.google-analytics.com^$important
 
 ! google.com
-! 検索結果のクリーンアップ
-google.com###rso > div:has([role="heading"]:contains(ショート動画))
-google.com###rso > div:has([role="heading"]:contains(他の人はこちらも検索))
-google.com###rso > div:has([role="heading"]:contains(関連する質問))
-google.com###rso > div:has(h2:contains(こちらを検索しますか))
-! AI による概要（非同期読み込み用のシステム属性を指定）
-google.com##div[data-async-fc]:has([role="heading"]:contains(AI による概要))
+! 検索結果のクリーンアップ（誤爆完全防止・究極最適化版）
+google.com##[role="heading"]:contains(ショート動画):upward(div[data-hveid])
+google.com##[role="heading"]:contains(他の人はこちらも検索):upward(div[data-hveid])
+google.com##[role="heading"]:contains(関連する質問):upward(div[data-hveid])
+! 「こちらを検索しますか」の不要な制限を解除
+google.com##h2:contains(こちらを検索しますか):upward(div[data-hveid])
+! AI による概要（非同期/同期ローディングの両構え）
+google.com##[role="heading"]:contains(AI による概要):upward(div[data-async-fc])
+google.com##[role="heading"]:contains(AI による概要):upward(div[data-hveid])
 ! ショート動画（リストアイテム・パラメータ指定）
-google.com##div[role="listitem"]:has(a[href*="udm=39"] span:contains(ショート動画))
+google.com##a span:contains(ショート動画):upward(div[role="listitem"])
 
 ! googleapis.com
 ! トラッキング・広告関連の許可
