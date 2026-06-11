@@ -37,16 +37,15 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! google.com,google.co.jp
 ! 検索結果のクリーンアップ
-! google.com
-! 検索結果のクリーンアップ
-google.com###rso > div:has([role="heading"]:contains(ショート動画))
-google.com###rso > div:has([role="heading"]:contains(他の人はこちらも検索))
-google.com###rso > div:has([role="heading"]:contains(関連する質問))
-google.com###rso > div:has(h2:contains(こちらを検索しますか))
-! AI による概要（非同期読み込み用のシステム属性を指定）
-google.com##div[data-async-fc]:has([role="heading"]:contains(AI による概要))
-! ショート動画（リストアイテム・パラメータ指定）
-google.com##div[role="listitem"]:has(a[href*="udm=39"] span:contains(ショート動画))
+google.com,google.co.jp##.yf:has(div[data-container-id="model-response-placeholder"])
+google.com,google.co.jp##div[data-hveid]:has(> div > [role="heading"]:contains(ショート動画))
+google.com,google.co.jp##div[data-hveid]:has(> div > div > [role="heading"]:contains(他の人はこちらも検索))
+google.com,google.co.jp##div[data-hveid]:has(> div > div > [role="heading"]:contains(関連する質問))
+google.com,google.co.jp##div[data-hveid]:not([id]):has(h2:contains(こちらを検索しますか))
+google.com,google.co.jp##div[data-lhcontainer]:has([role="heading"]:contains(AI による概要))
+google.com,google.co.jp##div[data-ved]:has(> div > div > [role="heading"]:contains(関連する質問))
+google.com,google.co.jp##div[role="listitem"]:has(a[href*="udm=39"] span:contains(ショート動画))
+
 ! googleapis.com
 ! トラッキング・広告関連の許可
 @@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox
