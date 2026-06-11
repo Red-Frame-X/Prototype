@@ -36,7 +36,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 @@||www.google-analytics.com^$important
 
 ! google.com
-! 検索結果のクリーンアップ（誤爆完全防止・究極最適化版）
+! 検索結果のクリーンアップ（
 google.com##[role="heading"]:contains(ショート動画):upward(div[data-hveid])
 google.com##[role="heading"]:contains(他の人はこちらも検索):upward(div[data-hveid])
 google.com##[role="heading"]:contains(関連する質問):upward(div[data-hveid])
