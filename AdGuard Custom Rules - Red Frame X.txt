@@ -37,16 +37,13 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! google.com
 ! 検索結果のクリーンアップ（
-google.com##[role="heading"]:contains(ショート動画):upward(div[data-hveid])
-google.com##[role="heading"]:contains(他の人はこちらも検索):upward(div[data-hveid])
-google.com##[role="heading"]:contains(関連する質問):upward(div[data-hveid])
-! 「こちらを検索しますか」の不要な制限を解除
+! google.com
+google.com##span[role="heading"]:contains(他の人はこちらも検索):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(ショート動画):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(関連する質問):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(AI による概要):upward(div[data-hveid])
 google.com##h2:contains(こちらを検索しますか):upward(div[data-hveid])
-! AI による概要（非同期/同期ローディングの両構え）
-google.com##[role="heading"]:contains(AI による概要):upward(div[data-async-fc])
-google.com##[role="heading"]:contains(AI による概要):upward(div[data-hveid])
-! ショート動画（リストアイテム・パラメータ指定）
-google.com##a span:contains(ショート動画):upward(div[role="listitem"])
+google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
 ! googleapis.com
 ! トラッキング・広告関連の許可
