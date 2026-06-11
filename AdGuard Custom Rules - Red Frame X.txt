@@ -244,8 +244,3 @@ x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュ
 ||twitter.undefined^$popup,domain=x.com
 ||x.com/*.php*$popup,domain=x.com
 x.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"] > div:has([data-testid$="-impression-pixel"])
-x.com##a[href="https://twitter.undefined/"]
-x.com##article[data-testid="tweet"] a[href^="https://linkneverdiel.com"]
-x.com#%#//scriptlet("json-prune", "promotedMetadata")
-x.com#%#//scriptlet("prevent-window-open", "/\\.php\\b.*_blank/")
-x.com#%#//scriptlet("prevent-window-open", "twitter.undefined")
