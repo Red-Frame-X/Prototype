@@ -35,8 +35,6 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! 広告・迷惑要素の非表示・許可
 @@||www.google-analytics.com^$important
 
-! google.com,google.co.jp
-! 検索結果のクリーンアップ
 ! google.com
 ! 検索結果のクリーンアップ
 google.com###rso > div:has([role="heading"]:contains(ショート動画))
