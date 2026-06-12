@@ -1,5 +1,5 @@
-# Aluminium OS（ALOS）調査レポート 改訂版
-2026年5月31日時点で判明しているAluminium OS（ALOS）に関する情報
+# Aluminium OS（ALOS）/ Googlebook 調査レポート 改訂版
+2026年6月12日時点で判明しているAluminium OS（製品名：Googlebook）に関する情報
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
@@ -15,81 +15,65 @@
 - 紹介しているソフトウェア、アプリ、拡張機能の名称および公式の製品説明文
 - リンク先のコンテンツ
 
-※ 記述内容は「Kdroidwin氏の査読と解説」を反映していますが、Aluminium OS（ALOS）については未確定の情報も多く、情報の完全な正確性を保証するものではありません。
+※ 記述内容は「Kdroidwin氏の査読と解説」および最新の公開情報を反映していますが、一部推測やリーク情報を含むため、完全な正確性を保証するものではありません。
 
 ## 1. 基本概要
 
-Aluminium OSは、Googleが次世代PC向けに開発中とされるOSです。公開されている一次情報とリーク情報を区別して整理します [Kdroidwin氏の査読と解説]。
+Aluminium OSは、Googleが次世代PC向けに開発していたOSの開発コードネームです。2026年5月12日に「Googlebook」として正式発表されました。公開されている一次情報（確定事項）と、リーク・推測情報を明確に区別して整理します。
 
 **【公式発表に基づく確定事項】**
-* **AndroidベースとAI中核設計**：2025年末のGoogleの求人情報にて、「Android-based」「AI at the core」の新OSとして示されています [Kdroidwin氏の査読と解説]。
-* **ChromeOSとの共存**：当面の間はChromeOSと共存する方針です [Kdroidwin氏の査読と解説]。
-* **Googlebookの発表**：2026年5月12日にGoogleから発表された「Googlebook」では、AndroidとChromeOSを結びつけたGemini中心のラップトップであることが説明されています [Kdroidwin氏の査読と解説]。
+* **Googlebookの発表と名称**：2026年5月12日のGoogle I/Oにて、Aluminium OSを搭載したAIネイティブなノートPC「Googlebook」が発表されました（2026年秋発売予定）。
+* **AndroidとChromeOSの融合**：AndroidのアプリエコシステムとChromeOSの軽快なWeb体験を結びつけたハイブリッドな設計となっています。
+* **Gemini Intelligenceの中核化**：システム全体にGeminiが統合されています。カーソルを動かすだけで文脈に応じた提案を行う「マジックポインタ（Magic Pointer）」や、音声・テキスト指示で専用ダッシュボードを作る「カスタムウィジェットの作成（Create My Widget）」が実装されています。
 
 **【リーク・推測に基づく事項】**
-* **Android 17ベースの統合**：従来の仮想環境ではなくAndroid 17がネイティブ動作し、スマートフォン等とシームレスな体験を提供すると噂されています [Kdroidwin氏の査読と解説]。
-* **ローカルAI処理（NPU）とハードウェア要件**：クラウドに依存せずNPUを活用したローカル処理（翻訳、要約等）の実装や、それに伴う大容量RAMの必須化の可能性が高いと予測されていますが、確定事項ではありません [Kdroidwin氏の査読と解説]。
+* **Android 17ベースの統合**：従来の仮想環境ではなく、ネイティブ動作の基盤として「Android 17」が採用されると噂されていますが、現時点の公式発表ではOSの正確なナンバリングベースは明言されていません。
+* **ローカルAI処理（NPU）とハードウェア要件の高騰**：OEM各社（Acer、ASUS、Dell、HP、Lenovoなど）に対する厳格なハードウェア要件が確立されていることは事実ですが、「NPUによる完全なローカル処理」や「大容量RAMの絶対的な必須化」についての技術的な全容は、現段階では推測の域を出ない部分も含まれています。
 
 ## 2. メリットとデメリット
 
 | <div align="center">項目</div> | <div align="center">詳細</div> |
 | :--- | :--- |
-| **メリット** | **強大なエコシステム**：スマホと同じUI・アプリがネイティブ動作。<br>**プライバシーと速度（期待値）**：NPUによるローカル処理でデータ漏洩リスクを低減 [Kdroidwin氏の査読と解説]。<br>**自由度と省電力**：Android由来のバッテリー効率と、APKサイドロードの可能性。 |
-| **デメリット** | **デスクトップUXの未成熟**：モバイルUIの引き伸ばし感、マウス・キーボード操作時の「もっさり感」。<br>**ハードウェア要件の高騰（推測）**：システム全体のAI処理・ネイティブAndroid環境のため、大容量RAMとNPUが必須化する可能性 [Kdroidwin氏の査読と解説]。<br>**既存PCソフトとの互換性**：Windows / macOS向けの本格的な業務用ソフトウェアが動作しない懸念。 |
+| **メリット** | **強大なエコシステム**：Androidスマホと同じUI・アプリがシームレスに連携・ネイティブ動作し、スマホとPC間でタスクが途切れません。<br>**AIによる生産性向上**：OSレベルで統合されたGeminiが、ユーザーの意図を先読みし作業を大幅に効率化します。<br>**自由度と省電力**：Android由来のバッテリー効率と、アプリの幅広い選択肢が期待されます。 |
+| **デメリット** | **デスクトップUXの未成熟な部分**：モバイルUIの引き伸ばし感や、従来のデスクトップOS（Windows/macOS）に最適化された本格的な業務用ソフトウェアが動作しない懸念が残ります。<br>**ハードウェア要件の高騰（推測）**：プレミアムなAI体験を提供するため、システム全体のAI処理環境として大容量RAMとNPU等を要求され、端末価格が高額になる可能性があります。 |
 
 ## 3. コミュニティの反応（Reddit等）
 
 海外の主要Techコミュニティ（r/Android, r/chromeosなど）では、期待と懸念が二分しています。
 
-* **ポジティブな意見**：「[Samsung DeX](https://www.samsung.com/jp/apps/samsung-dex/)の究極進化系」「これでアプリ開発者もデスクトップ（大画面）対応を余儀なくされ、エコシステム全体が底上げされる」
-* **ネガティブな意見**：「UIデザインが散らかっている（タスクバーの不統一など）」「モバイルOSのPC市場参入は、過去の失敗（Windowsのモバイル参入の逆）を繰り返すのではないか」
+* **ポジティブな意見**：「Androidアーキテクチャのネイティブサポートにより、エミュレーションなしで動くのは素晴らしい」「これでアプリ開発者もデスクトップ（大画面）対応を余儀なくされ、エコシステム全体が底上げされる」
+* **ネガティブな意見**：「UIデザインが散らかっているのではないか」「モバイルOSのPC市場参入は、過去の失敗を繰り返すのではないか」「全てのChromebookがアップデートできるわけではない点への不満」
 
 ## 4. ブラウジング環境とコンテンツブロックの最適化構成
 
 **Chrome拡張機能 `AdGuard Browser Extension MV3` と Androidアプリ `personalDNSfilter` の併用**
 
-OSのAndroidベース化に伴う環境変化において、システム全体の通信制御をAndroidアプリ `personalDNSfilter` に任せ、ブラウザ内の要素隠蔽やスクリプト制御をChrome拡張機能 `AdGuard Browser Extension MV3` で行う併用構成を採用することで、高いパフォーマンスとフィルタリング精度を両立できます。
+OSのAndroidベース化に伴い、システム全体のトラフィック・ドメインレベルの通信制御を軽量なAndroidアプリ `personalDNSfilter` に任せ、ブラウザ内の要素隠蔽や高度なスクリプト制御をChrome拡張機能 `AdGuard Browser Extension MV3`（以下 `MV3`）で行う併用構成が効果的です。これにより、ブラウザ側の負荷を大幅に削減できます。
 
-`AdGuard Browser Extension MV3` は以下 `MV3` と表記します。
+この環境下において、AdGuardの公式仕様に基づいた正確な技術的要件（記法）は以下の通りです。
 
-この併用環境下において、フィルタリングルールを効果的に機能させるための技術的要件は以下の通りです。
-
-* **役割の分離とDNSブロック**：トラフィック・ドメインレベルのブロックは、軽量なシステムレベルDNSフィルタである `personalDNSfilter` に一任します。これにより、ブラウザ拡張機能側の処理負荷を大幅に削減できます。
-* **スクリプトレットの注入（MV3）**：ブラウザ上の高度な制御においては、`#%#//scriptlet(...)` を「scriptletルール」として記述して適用します [Kdroidwin氏の査読と解説]。
-* **テキスト要素の非表示（MV3）**：テキストベースの要素隠蔽では、拡張CSSの擬似クラスとしてサポートされている `:contains(...)` を採用します [Kdroidwin氏の査読と解説]。
-* **CSSの最適化（MV3）**：要素隠蔽は可能な限りシンプルな標準CSS構文 `##` で記述します。AdGuard公式の仕様に基づき、高度な制御では `#$#` （CSSルール）や `#?#` ､ `#$?#(...)` （拡張CSSルール）を使い分けます 。なお、`:has(...)` などの擬似クラスについては、最新のAdGuardではネイティブ実装が利用可能な環境ではそちらに寄せて処理負荷を下げる方針となっているため、一律に避けるのではなくブラウザの対応状況に応じて活用します [Kdroidwin氏の査読と解説]。
+* **スクリプトレットの注入（MV3）**：ブラウザ上の高度な制御においては、`#%#//scriptlet(...)` を「scriptletルール」として適用します。
+* **CSSによる要素隠蔽（MV3）**：要素隠蔽は可能な限りシンプルな標準CSS構文 `##` で記述します。高度な制御が必要な場合は、`#$#` を「CSSルール」として記述します。
+* **拡張CSSルール（MV3）**：標準CSSで対応できない複雑な要素には、`#?#` または `#$?#(...)` を「拡張CSSルール」として使用します。
+* **擬似クラスの最適化（MV3）**：
+  * テキストベースの要素隠蔽には、拡張CSSの擬似クラスとしてサポートされている `:contains(...)` を活用します。
+  * 状態を表す `:has(...)` については、最新のAdGuardでは**ブラウザのネイティブ実装が利用可能な環境（モダンブラウザ等）ではそちらに処理を寄せて負荷を下げる方針**となっています。そのため、一律に避けるのではなく、環境に応じて適切に活用することが推奨されます。
 
 ## 5. プライバシーとカスタマイズ性
 
-* **メリット**：APKのサイドロードにより、Morphe等のカスタマイズアプリの運用が容易になる。
-* **懸念点**：OSレベルでのAI（Gemini）常時稼働によるテレメトリ（データ収集）リスク。データ送信を最小限に抑え、NPUによる「完全ローカル処理」がどこまで徹底されるかが最大の焦点となる。
+* **メリット**：Androidベースであるため、Morphe等のカスタマイズアプリの運用やAPKサイドロードの恩恵を受けやすい環境になると期待されます。
+* **懸念点**：OSレベルでのAI（Gemini）常時稼働とインターネット連携（検索、Gmail、カレンダー等）によるデータ収集（テレメトリ）リスクがあります。データ送信を最小限に抑え、NPUによる「完全ローカル処理」がどこまで徹底・選択可能であるかが、プライバシー保護の最大の焦点となります。
 
 ## 6. 情報ソース
 
 * 関連ニュースメディア・公式情報
-    * [DIME](https://dime.jp/)
-    * [GIGAZINE](https://gigazine.net/)
-    * [9to5Google: Google's Android PC, Aluminium OS](https://9to5google-com.translate.goog/2025/11/24/google-android-pc-aluminium-os/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp) [Kdroidwin氏の査読と解説]
-    * [Android Authority: Will Aluminium OS avoid Android's early mistakes?](https://www-androidauthority-com.translate.goog/google-aluminium-os-avoid-android-early-mistakes-3663293/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp&_x_tr_hist=true) [Kdroidwin氏の査読と解説]
-    * [AdGuard Blog: Browser Extension updates](https://adguard-com.translate.goog/en/blog/adguard-browser-extension-v5-3.html?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp) [Kdroidwin氏の査読と解説]
+    * [DIME: 「Aluminium OS」とは何か？](https://dime.jp/genre/2072369/)
+    * [GIGAZINE: Gemini向けノートPC「Googlebook」の登場によってChromebookはどうなるのか？](https://gigazine.net/news/20260514-googlebooks-premium-focus/)
+    * [ケータイ Watch: グーグル、新たなノートパソコン「Googlebook」発表](https://k-tai.watch.impress.co.jp/docs/news/2106890.html)
+    * [Wikipedia: Aluminium OS](https://en.wikipedia.org/wiki/Aluminium_OS)
+    * [AdGuard Blog: Browser Extension updates](https://adguard.com/en/blog/adguard-browser-extension-v5-3.html)
+    * Yahoo!リアルタイム検索（※検索エンジン結果）: [Googlebook発表に関するSNSまとめ](https://search.yahoo.co.jp/realtime/search/matome/366bd24dae4a412284dee0f7dc285d73-1778609400)
 * 海外Redditコミュニティ
     * [r/Android](https://www.reddit.com/r/Android/)
     * [r/chromeos](https://www.reddit.com/r/chromeos/)
     * [r/windows](https://www.reddit.com/r/windows/)
-    * [r/Design](https://www.reddit.com/r/Design/)
-
----
- 
-## [7. レビュー](https://gist.github.com/Red-Frame-X/bdb94de10653edf1d11bd341d2eb2118?permalink_comment_id=6179721#gistcomment-6179721)
-
-査読結果としては、概念メモとしては使えるが、事実資料としての信頼度は中です。Googleは2025年末の求人でAluminium OSを「Android-based」「AI at the core」の新OSとして示し、ChromeOSと当面は共存するとされました。さらにGoogle自身も2026-05-12にGooglebookを発表し、AndroidとChromeOSを結びつけたGemini中心のlaptopsと説明しています。つまり「AndroidベースのPC向け新OS」という大筋はかなり整合的です。（[9to5Google](https://9to5google-com.translate.goog/2025/11/24/google-android-pc-aluminium-os/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)）
-
-ただし、レポートの強い断定のうち「Android 17ベース」「NPUによるローカルAI処理」「大容量RAM必須化」は、少なくとも今回確認した公式の公開ソースでは確定事項ではありません。ここは「リークではそう言われている」「そうなる可能性が高い」程度に落とすのが正確ですね。（[Android Authority](https://www-androidauthority-com.translate.goog/google-aluminium-os-avoid-android-early-mistakes-3663293/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp&_x_tr_hist=true)）
-
-ブラウザ / フィルタリングの節は比較的まともですが、記法の整理が甘いです。AdGuard 公式では、`#%#//scriptlet(...)` を scriptletルール、`#$#` を CSSルール、`#?# / #$?#` を拡張CSSルールとして説明しています。また、`:contains()` は拡張CSSの擬似クラスとしてサポートされています。なお `:has()` については、AdGuardの最新説明ではnative実装を使える場合はそちらに寄せて負荷を下げる方針なので、「重いから避ける」と一律に書くのは少し古めです。（[AdGuard](https://adguard-com.translate.goog/en/blog/adguard-browser-extension-v5-3.html?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)）
-
-要するに、このレポートは「大枠の方向性は当たるが、事実と予測、リークがかなり混線している」という評価です。公開一次情報に寄せて、確定事項・リーク事項・推測事項を分けて書き直せば、かなり信頼できる形になります。
-
-# タスク
-* Webを検索し、関連するドキュメントを参照して内容が適切かどうかを詳細に査読し、修正が必要な箇所を確認します。
-* 分かりやすい表現を心がけて直ちに修正を行い、全文をコードスニペットで出力してください。
