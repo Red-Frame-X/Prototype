@@ -1094,7 +1094,7 @@ ChromeOS上での完全な動作保証はありません（[動作環境](https:
 
 * Aluminium OS（通称：ALOS）: Androidのカーネルやフレームワークをベースに、デスクトップ環境（ChromeOSのUI/UX）と高度なAI（Gemini）をネイティブ統合した新世代OS。
 
-Googlebook: Aluminium OSを搭載し、2026年秋以降の展開が予定されている新しいプレミアムデバイス。
+* Googlebook: Aluminium OSを搭載し、2026年秋以降の展開が予定されている新しいプレミアムデバイス。
 
 既存のChromeOSは2034年頃まで段階的にサポート（セキュリティ保守等）が継続される見込みですが、Androidアプリのネイティブ動作やシステムレベルのAI統合においては、Aluminium OSへの移行が今後のメインストリームとなります。
 
