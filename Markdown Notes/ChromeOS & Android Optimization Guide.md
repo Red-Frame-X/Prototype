@@ -484,7 +484,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
   * xAI Support Teamへの問い合わせ先 `support@x.ai` / [Contact: Get in Touch with xAI](https://x.ai/contact) 
   * [xAIアカウントのMFAを紛失してログイン不能 → xAIアカウント削除のために問い合わせ中](https://docs.x.ai/console/faq/accounts#ive-forgotten-my-multi-factor-authentication-mfa-method-can-you-remove-it) ですが、対応は絶望的なようです
   * RedditでもxAIアカウントの削除に応じてもらえたという報告は皆無なので、もし対応してもらえたら𝕏とGitHubに報告しようと思います
-  * 主観による評価ですが生成AIのシェアやxAI
+  * 主観による評価ですが生成AIのシェアやxAIのサポート体制
   * MFA（多要素認証）を紛失しログイン不能になったxAIアカウントは、有料プランに加入していない場合、[1年以上（over a year）の非アクティブ状態が継続すると自動的に削除（または停止）される](https://x.ai/legal/terms-of-service#termination-suspension-discontinuation) 対象となります
   * 削除後、アカウントのデータは法的義務などの例外を除き、通常30日以内にシステムから消去されます
 * **[SDXL](https://stablediffusionweb.com/)**：狙い撃ち・人物や複雑な構図の生成で優秀
