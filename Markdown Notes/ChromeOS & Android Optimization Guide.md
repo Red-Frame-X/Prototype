@@ -1089,7 +1089,7 @@ ChromeOS上での完全な動作保証はありません（[動作環境](https:
 ---
 
 ## Aluminium OS / Googlebook / Linux
-2026年5月のGoogleによる公式発表（The Android Showなど）やリーク情報によって、ChromeOSの今後のロードマップが明確になりました。Linux®ディストリビューションの移行法についても少し触れておきます。
+2026年5月のGoogleによる公式発表（The Android Showなど）やリーク情報によって、ChromeOSの今後のロードマップが明確になりました。Linux®ディストリビューションの移行についても少し触れておきます。
 
 * Aluminium OS（通称：ALOS）: Androidのカーネルやフレームワークをベースに、デスクトップ環境（ChromeOSのUI/UX）と高度なAI（Gemini）をネイティブ統合した新世代OS。
 
