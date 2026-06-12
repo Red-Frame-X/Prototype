@@ -80,13 +80,13 @@ m.youtube.com##ytm-video-with-context-renderer:has(.big-shorts-singleton)
 
 ! news.google.com
 ! UI・不要セクションの非表示
-news.google.com##.TPqh7b:contains(ショーケース)
-news.google.com##[role="tab"][aria-label="エンタメ"]
-news.google.com##[role="tab"][aria-label="スポーツ"]
-news.google.com##[role="tab"][aria-label="ビジネス"]
-news.google.com##[role="tab"][aria-label="科学＆テクノロジー"]
+news.google.com##[role="tablist"] [role="tab"][aria-label="エンタメ"]
+news.google.com##[role="tablist"] [role="tab"][aria-label="スポーツ"]
+news.google.com##[role="tablist"] [role="tab"][aria-label="ビジネス"]
+news.google.com##[role="tablist"] [role="tab"][aria-label="科学＆テクノロジー"]
+news.google.com##[role="tablist"] [role="tab"][aria-label="ショーケース"]
 news.google.com##button[aria-label="候補 - ニュース提供元"]
-news.google.com##div[jsname="UXbvIb"]:contains(ショーケース)
+news.google.com##h3:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュース提供元をフォロー"])), div:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュース提供元をフォロー"]))
 
 ! news.yahoo.co.jp
 ! コメント要素の非表示
