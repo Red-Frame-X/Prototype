@@ -15,7 +15,7 @@
 - 紹介しているソフトウェア、アプリ、拡張機能の名称および公式の製品説明文
 - リンク先のコンテンツ
 
-※ 記述内容は(Kdroidwin氏の査読と解説)[https://gist.github.com/Red-Frame-X/bdb94de10653edf1d11bd341d2eb2118?permalink_comment_id=6179721#gistcomment-6179721]および最新の公開情報を反映していますが、一部推測やリーク情報を含むため、完全な正確性を保証するものではありません。
+※ 記述内容は([]Kdroidwin氏の査読と解説)[https://gist.github.com/Red-Frame-X/bdb94de10653edf1d11bd341d2eb2118?permalink_comment_id=6179721#gistcomment-6179721]および最新の公開情報を反映していますが、一部推測やリーク情報を含むため、完全な正確性を保証するものではありません。
 
 ## 1. 基本概要
 
