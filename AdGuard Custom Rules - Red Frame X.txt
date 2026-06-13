@@ -150,6 +150,7 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 ||apps.web.nhk/ops/api/v1/common/registrationEnforcement.json$xhr,domain=web.nhk
 web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{"status":"optedin","entity":"household","area":{"areaId":"130","jisx0402":"13113","postal":"1508001","pref":"13"}}')
 web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{"sd":"2025-10-01T00:00:00.000Z","ed":"2050-12-31T23:59:59.999Z"}')
+web.nhk##div:has(> a[href*="/nhkone/account/"])
 
 ! www.minnanosyougai.com
 ! 広告・迷惑要素の非表示
