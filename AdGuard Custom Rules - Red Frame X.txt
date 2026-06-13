@@ -29,7 +29,7 @@ blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
 blog.hatena.ne.jp##.recommendList-wrapper
 blog.hatena.ne.jp##aside.antenna-staffPicks
 
-! dekobokomura.net
+! www.minnanosyougai.com
 ! 広告・迷惑要素の非表示
 dekobokomura.net##aside.c-bnr-register
 
