@@ -257,3 +257,11 @@ x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュ
 ||twitter.undefined^$popup,domain=x.com
 ||x.com/*.php*$popup,domain=x.com
 x.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"] > div:has([data-testid$="-impression-pixel"])
+
+||html-load.com^$domain=daily.co.jp
+||error-report.com^$domain=daily.co.jp
+daily.co.jp#%#//scriptlet('remove-attr', 'onerror', 'script[src*="html-load.com"]')
+daily.co.jp#%#//scriptlet('remove-attr', 'onload', 'script[src*="html-load.com"]')
+daily.co.jp#%#//scriptlet('abort-current-inline-script', '];return e};const')
+daily.co.jp##div:has(> div > h2:contains(広告表示の許可をお願いします))
+daily.co.jp#$#body { overflow: auto !important; pointer-events: auto !important; }
