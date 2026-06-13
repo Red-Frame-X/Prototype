@@ -39,10 +39,10 @@
 
 ### Contribute
 * [**AdguardTeam / AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
-  * AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタを作成する場所
+  * AdGuard公式：AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタ
 
 * [**AdguardTeam / AdGuardSDNSFilter**](https://github.com/AdguardTeam/AdGuardSDNSFilter)
-  * DNSブロックとの互換性を高めるために簡略化されたフィルタ
+  * AdGuard公式：DNSブロックとの互換性を高めるために簡略化されたフィルタ
 
 * [**Yuki2718 / adblock2**](https://github.com/Yuki2718/adblock2)
   * AdGuard / uBlock Originの個人用フィルタとルール
