@@ -484,7 +484,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 * **[GitHub Copilot](https://github.com/features/copilot)**：コーディング用
 * **[Grok](https://grok.com/)**：汎用性 + 制限が緩い - 𝕏の投稿の信憑性をチェックするのに使えそう？
   * xAI Support Teamへの問い合わせ先 `support@x.ai` / [Contact: Get in Touch with xAI](https://x.ai/contact) 
-  * [xAIアカウントのMFAを紛失してログイン不能 → xAIアカウント削除のために問い合わせ中](https://docs.x.ai/console/faq/accounts#ive-forgotten-my-multi-factor-authentication-mfa-method-can-you-remove-it) て2ヶ月ほど待ちましたが音沙汰なく、対応は絶望的なようです
+  * [xAIアカウントのMFAを紛失してログイン不能 → xAIアカウント削除のために問い合わせ](https://docs.x.ai/console/faq/accounts#ive-forgotten-my-multi-factor-authentication-mfa-method-can-you-remove-it) て2ヶ月ほど待ちましたが音沙汰なく、対応は絶望的なようです
   * Reddit内でもをxAIアカウントの削除に応じてもらえたという報告が探した限り見当たらないので、もし対応してもらえたらここに追記で報告します
   * 主観的な評価ですが生成AIのシェアやxAIのサポート体制を考慮するのであれば、ChatGPTかGeminiのどちらか使ったほうが良いように思われます
   * MFA（多要素認証）を紛失しログイン不能になったxAIアカウントは、有料プランに加入していない場合、[1年以上（over a year）の非アクティブ状態が継続すると自動的に削除（または停止）される](https://x.ai/legal/terms-of-service#termination-suspension-discontinuation) 対象となります
