@@ -30,7 +30,7 @@ blog.hatena.ne.jp##.recommendList-wrapper
 blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! daily.co.jp
-! GeminiクオリティなShieldの処理
+! Geminiクオリティなあどしの処理
 ||html-load.com^$domain=daily.co.jp
 ||error-report.com^$domain=daily.co.jp
 daily.co.jp#%#//scriptlet('remove-attr', 'onerror', 'script[src*="html-load.com"]')
