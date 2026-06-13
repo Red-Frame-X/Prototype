@@ -103,7 +103,7 @@ news.google.com##button[aria-label="候補 - ニュース提供元"]
 news.google.com##h3:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュース提供元をフォロー"])), div:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュース提供元をフォロー"]))
 
 ! news.mynavi.jp
-! スクロール以上を修正するスクリプトレット処理
+! スクロール以上を修正するすくりぷと処理
 news.mynavi.jp#%#//scriptlet('prevent-addEventListener', 'DOMContentLoaded', 'registration_guide_modal')
 
 ! news.yahoo.co.jp
