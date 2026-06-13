@@ -126,6 +126,7 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 ### 検索・ブラウジング補助
 * **[Buster: Captcha Solver for Humans](https://chromewebstore.google.com/detail/buster-captcha-solver-for/mpbjkejclgfgadiemmefgebjfooflfhl)**：音声認証とAIを活用してreCAPTCHAを自動で突破する
 * **[google-search-title-qualified](https://chromewebstore.google.com/detail/google-search-title-quali/bjcnnhojddnonjmhlpdjcdcfmofliagb)**：Google検索結果にサイト本来のタイトルを表示させる
+* **[Search Result Previews](https://chromewebstore.google.com/detail/search-result-previews/cedcejfiniojnlhlfhcppenochinijfo)**：検索結果のリンク横にウェブサイトのプレビュー画像（サムネイル）を表示させる
 * **[simpleGestures](https://chromewebstore.google.com/detail/simplegestures/flfminafiamnggnldfpilnfnmbgmiegn)**：シンプルな設定と使い勝手にこだわったマウスジェスチャー
 * **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**：新しいタブを常にフォアグラウンド（最前面）で開く
 * **[VertiTab - 縦型タブ · AIブラウザエージェント](https://chromewebstore.google.com/detail/vertitab-vertical-tabs/chejfhdknideagdnddjpgamkchefjhoi)**：高度なタブ管理ツール、縦型タブ・ツリー型タブ・クラウド同期などを搭載
