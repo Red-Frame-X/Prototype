@@ -31,7 +31,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! www.minnanosyougai.com
 ! 広告・迷惑要素の非表示
-dekobokomura.net##aside.c-bnr-register
+www.minnanosyougai.com##aside.c-bnr-register
 
 ! doubleclick.net
 ! トラッキング・広告関連の許可
