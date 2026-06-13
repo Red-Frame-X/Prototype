@@ -29,6 +29,10 @@ blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
 blog.hatena.ne.jp##.recommendList-wrapper
 blog.hatena.ne.jp##aside.antenna-staffPicks
 
+! dekobokomura.net
+! 広告・迷惑要素の非表示
+dekobokomura.net##aside.c-bnr-register
+
 ! doubleclick.net
 ! トラッキング・広告関連の許可
 @@||stats.g.doubleclick.net^$app=jp.kappasushi.app
@@ -248,5 +252,3 @@ x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュ
 ||twitter.undefined^$popup,domain=x.com
 ||x.com/*.php*$popup,domain=x.com
 x.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"] > div:has([data-testid$="-impression-pixel"])
-
-dekobokomura.net##aside.c-bnr-register
