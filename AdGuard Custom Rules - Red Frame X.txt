@@ -29,10 +29,6 @@ blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
 blog.hatena.ne.jp##.recommendList-wrapper
 blog.hatena.ne.jp##aside.antenna-staffPicks
 
-! www.minnanosyougai.com
-! 広告・迷惑要素の非表示
-www.minnanosyougai.com##aside.c-bnr-register
-
 ! doubleclick.net
 ! トラッキング・広告関連の許可
 @@||stats.g.doubleclick.net^$app=jp.kappasushi.app
@@ -150,6 +146,10 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 ||apps.web.nhk/ops/api/v1/common/registrationEnforcement.json$xhr,domain=web.nhk
 web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{"status":"optedin","entity":"household","area":{"areaId":"130","jisx0402":"13113","postal":"1508001","pref":"13"}}')
 web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{"sd":"2025-10-01T00:00:00.000Z","ed":"2050-12-31T23:59:59.999Z"}')
+
+! www.minnanosyougai.com
+! 広告・迷惑要素の非表示
+www.minnanosyougai.com##aside.c-bnr-register
 
 ! www.youtube.com
 ! 表示調整：Enhancer for YouTube™ 併用・フォント・スクロール
