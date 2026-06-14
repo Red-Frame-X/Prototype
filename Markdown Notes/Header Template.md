@@ -4,7 +4,7 @@
 | **License** | CC0 (Public Domain) |
 | **Version** | yyyymmdd |
 
-この備忘録は CC0 ライセンスの下で提供します（This work is licensed under CC0 1.0 Universal）
+この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [CC0について ― “いかなる権利も保有しない”](https://creativecommons.jp/sciencecommons/aboutcc0/)
 
 **【免責・例外】** ただし、以下の内容は本ライセンスの適用外であり、それぞれの権利者が著作権を保有しています。
