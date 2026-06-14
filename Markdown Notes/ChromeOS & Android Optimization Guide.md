@@ -750,8 +750,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
   
   AdGuard Japanese filterを補完するフィルタ。迂回広告や悪質ポップアップ、一部のAnti-Adblockへの汎用的な追加対策。
 
-* [Kdroidwin / uB-filter-by-kdroidwin > 
-uB-filter-by-kdroidwin(uBO&AdGuard)](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
+* [Kdroidwin / uB-filter-by-kdroidwin > uB-filter-by-kdroidwin(uBO&AdGuard)](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
 
 **Filter Issues** 
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
