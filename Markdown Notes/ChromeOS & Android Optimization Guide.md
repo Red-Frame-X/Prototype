@@ -750,10 +750,6 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
   
   AdGuard Japanese filterを補完するフィルタ。迂回広告や悪質ポップアップ、一部のAnti-Adblockへの汎用的な追加対策。
 
-**❗️留意点**
-
- [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記3種以外は追加しないほうが良いです。
-
 **Filter Issues** 
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
 * [uB-filter-by-kdroidwin Issues](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues)
