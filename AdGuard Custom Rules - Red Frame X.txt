@@ -132,7 +132,7 @@ rawkuma.net##iframe[src*="cbox.ws"]
 @@||analytics.tiktok.com^$app=jp.kappasushi.app
 
 ! topics.smt.docomo.ne.jp
-! dメニューニュースのくうはくじょこ
+! dメニューニュースの空白除去
 ||alxc.addlv.smt.docomo.ne.jp^$script,domain=topics.smt.docomo.ne.jp
 topics.smt.docomo.ne.jp##.ad_middle05
 
