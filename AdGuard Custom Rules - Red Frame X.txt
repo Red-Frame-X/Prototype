@@ -13,7 +13,7 @@
 @@||static.ads-twitter.com^$app=jp.kappasushi.app
 
 ! ads-x.com
-! トラッキング・広告関連の許可
+! かっぱ寿司アプリの起動・通信エラー回避
 @@||static.ads-x.com^$app=jp.kappasushi.app
 
 ! amazon-adsystem.com
