@@ -118,7 +118,7 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 * **[SponsorBlock for YouTube-動画の広告シーンを自動スキップ](https://chromewebstore.google.com/detail/sponsorblock-for-youtube/mnjggcdmjocbbbhaepdhchncahnbgone)**：YouTube動画内のスポンサーセグメントやイントロなどを、ユーザーの報告に基づき自動でスキップする
 
 ### ショッピング関連
-* **[Amazonレビュー信頼度判定 & 無限スクロール（サクラ識別 / 品質チェック）](https://greasyfork.org/ja/scripts/561755)**：Amazonのレビュアー投稿履歴を分析し、信頼度をS〜Dランクで視覚化。信頼度フィルタリング機能や、レビュー一覧の無限スクロール化も提供
+* **[Amazonレビュー信頼度判定 & 無限スクロール（サクラ識別 / 品質チェック）](https://greasyfork.org/ja/scripts/561755)**：Amazonのレビュアー投稿履歴を分析し、信頼度をS〜Dランクで視覚化。信頼度フィルタリング機能や、レビュー一覧の無限スクロール化も提供。
 * **[Condler](https://chromewebstore.google.com/detail/condler/ejjdbndmmongojeafjlilnchmkppbeap)**：Amazon検索結果の左側サイドバーに、並び替えやAmazon公式出品のみに絞り込むボタンを追加する。
 * **[Keepa - Amazon Price Tracker](https://chromewebstore.google.com/detail/keepa-amazon-price-tracke/neebplgakaahbhdphmkckjjcegoiijjo)**：Amazon商品の価格履歴グラフをページ上に表示し、設定した価格になると通知を受け取れる。
 * **[サクラチェッカーをAmazon内に直接表示 🔍️](https://greasyfork.org/ja/scripts/533121)**：Amazonの商品ページに、サクラチェッカーのスコアと判定結果を高速で自動表示する。
