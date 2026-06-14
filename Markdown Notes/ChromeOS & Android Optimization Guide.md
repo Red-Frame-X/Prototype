@@ -295,7 +295,7 @@ IT・セキュリティ・広告ブロックに関連するプロンプトに対
 
 **QuickEdit Proの安全な推奨トークン権限（スコープ）の構成｜GitHub**
 
-* GitHubサイト・右上アイコン > Settings > Developer Settings > Personal access tokens > Tokens（classic）
+* GitHubサイト・右上アイコン > Settings > Developer Settings > Personal access tokens > Tokens（classic）。
 
 * 「repo」「gist」にのみチェックを入れる。
 
