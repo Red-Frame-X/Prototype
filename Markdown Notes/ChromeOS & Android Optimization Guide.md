@@ -129,7 +129,7 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 * **[Search Result Previews](https://chromewebstore.google.com/detail/search-result-previews/cedcejfiniojnlhlfhcppenochinijfo)**：検索結果のリンク横にウェブサイトのプレビュー画像（サムネイル）を表示させる
 * **[simpleGestures](https://chromewebstore.google.com/detail/simplegestures/flfminafiamnggnldfpilnfnmbgmiegn)**：シンプルな設定と使い勝手にこだわったマウスジェスチャー
 * **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**：新しいタブを常にフォアグラウンド（最前面）で開く
-* **[VertiTab - 縦型タブ · AIブラウザエージェント](https://chromewebstore.google.com/detail/vertitab-vertical-tabs/chejfhdknideagdnddjpgamkchefjhoi)**：高度なタブ管理ツール、縦型タブ・ツリー型タブ・クラウド同期などを搭載
+* **[VertiTab - 縦型タブ · AIブラウザエージェント](https://chromewebstore.google.com/detail/vertitab-vertical-tabs/chejfhdknideagdnddjpgamkchefjhoi)**：高度なタブ管理ツール、縦型タブ・ツリー型タブ・クラウド同期などを搭載。
 * **[ブックマークサイドバー](https://chromewebstore.google.com/detail/%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%90%E3%83%BC/jdbnofccmhefkmjbkkdkfiicjkgofkdh)**：ブラウザの端に切り替え可能なブックマークサイドバーを追加する。
 
 ### 特定サイト向け拡張
