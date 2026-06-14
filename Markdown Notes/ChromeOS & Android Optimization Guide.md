@@ -297,7 +297,7 @@ IT・セキュリティ・広告ブロックに関連するプロンプトに対
 
 * GitHubサイト・右上アイコン > Settings > Developer Settings > Personal access tokens > Tokens（classic）
 
-* 「repo」「gist」にのみチェックを入れる
+* 「repo」「gist」にのみチェックを入れる。
 
 **Issues報告**
 * [Visual Studio Code Issues](https://github.com/microsoft/vscode/issues)
