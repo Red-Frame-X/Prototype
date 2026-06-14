@@ -67,7 +67,7 @@ google.com##div[role="listitem"]:has(a:contains(ショート動画))
 klz9.com##div:has(> h2:contains(最近のコメント))
 
 ! line-apps.com
-! LINEアプリの通信エラー・バッテリー異常消費回避
+! LINEアプリの通信エラー・バッテリー異常消費の回避
 @@||uts-front.line-apps.com^$app=jp.naver.line.android
 
 ! m.youtube.com
