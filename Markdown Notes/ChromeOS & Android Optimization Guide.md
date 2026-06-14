@@ -734,7 +734,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **❗️留意点**
 
- [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記３種以外は追加しないほうが良いです。
+ [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記3種以外は追加しないほうが良いです。
 
 **参考サイト**
 * [Yuki2718 / adblock2 > AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)
