@@ -149,8 +149,8 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 * **[Google オフライン ドキュメント](https://chromewebstore.google.com/detail/google-%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3-%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/ghbmnnjooekpmoecnnnilnnbdlolhkhi)**：ドキュメント類をオフライン編集可能にする
 * **[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod)**：画像やURLにカーソルを合わせるだけで高画質拡大表示する
 * **[Shortcuts for Google™](https://chromewebstore.google.com/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd)**：Googleサービスへのショートカットボタンを表示する
-* **[Similarweb - Website Traffic, AI Traffic & SEO Checker](https://chromewebstore.google.com/detail/similarweb-website-traffi/hoklmmgfnpapgjgcpechhaamimifchmp)**：閲覧中サイトのトラフィック指標、検索キーワード、AI流入などの競合分析データを表示する
-* **[System Memory Usage](https://chromewebstore.google.com/detail/system-memory-usage/fdefaodljgbdlmdhobjlechpgpblooeh)**：システムのメモリ使用量をツールバーに表示する
+* **[Similarweb - Website Traffic, AI Traffic & SEO Checker](https://chromewebstore.google.com/detail/similarweb-website-traffi/hoklmmgfnpapgjgcpechhaamimifchmp)**：閲覧中サイトのトラフィック指標、検索キーワード、AI流入などの競合分析データを表示する。
+* **[System Memory Usage](https://chromewebstore.google.com/detail/system-memory-usage/fdefaodljgbdlmdhobjlechpgpblooeh)**：システムのメモリ使用量をツールバーに表示する。
 * **[ドキュメント、スプレッドシート、スライドで Office ファイルを編集](https://chromewebstore.google.com/detail/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%80%81%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%80%81%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E3%81%A7-off/gbkeegbaiigmenfmjfclcdgdpimamgkj)**：Chromeブラウザ上でMicrosoft Officeファイルを直接開いて編集可能にする。
 * **[ドライブ用アプリケーション ランチャー（Google）](https://chromewebstore.google.com/detail/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E7%94%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC%EF%BC%88googl/lmjegmlicamnimmfhcmpkclmigmmcbeh)**：ブラウザから直接、PCにインストールされた対応アプリケーションでGoogle Driveのファイルを開く。
 * **[設定（Settings）](https://chromewebstore.google.com/detail/settings/jkfjnjeniglhpiggnfpiombpaohknkie)**：Google設定、拡張機能、閲覧データの管理を一元化する。
