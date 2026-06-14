@@ -17,7 +17,7 @@
 @@||static.ads-x.com^$app=jp.kappasushi.app
 
 ! amazon-adsystem.com
-! 商品ページの読み込み失敗や、画面遷移時の通信エラーを防ぐ
+! Amazon商品ページの読み込み失敗や、画面遷移時の通信エラーを防ぐ
 @@||aax-fe.amazon-adsystem.com^$app=com.amazon.mShop.android.shopping
 
 ! blog.hatena.ne.jp
