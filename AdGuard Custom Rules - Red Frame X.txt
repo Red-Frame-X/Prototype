@@ -141,7 +141,7 @@ topics.smt.docomo.ne.jp##.ad_middle05
 translate.google.com##[role="tab"][data-language-code="ko"]
 
 ! twitter.com
-! トラッキング・広告関連の許可
+! 公式X(Twitter)アプリの通信エラー回避
 @@||ads.twitter.com^$app=com.twitter.android
 
 ! web.nhk
