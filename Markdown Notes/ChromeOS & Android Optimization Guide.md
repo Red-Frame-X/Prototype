@@ -138,7 +138,7 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 * **[Google Chatの改行・送信キー設定](https://chromewebstore.google.com/detail/google-chat%E3%81%AE%E6%94%B9%E8%A1%8C%E3%83%BB%E9%80%81%E4%BF%A1%E3%82%AD%E3%83%BC%E8%A8%AD%E5%AE%9A/kabocfciobpmopkcbiphmgdljpdlighk)**：Google Chatのキー設定をカスタマイズする
 * **[Shadowban Scanner for Twitter / X](https://chromewebstore.google.com/detail/shadowban-scanner-for-twi/enlganfikppbjhabhkkilafmkhifadjd)**：𝕏のアカウントやツイートのシャドウバン、センシティブ判定を検出する（[ろぼいんブログ](https://roboin.io/)）
 * **[Twitterᴾˡᵘˢ](https://greasyfork.org/ja/scripts/387969-twitter%E1%B4%BE%CB%A1%E1%B5%98%CB%A2)**：オリジナル品質の画像を表示し、スパムツイートの削除機能をカスタマイズする
-* **[𝕏 Spam Highlighter](https://github.com/shapoco/x-spam-highlighter)**：PC向けWeb版𝕏のフォロワー一覧画面で、スパム疑いのアカウントを赤くハイライト表示する
+* **[𝕏 Spam Highlighter](https://github.com/shapoco/x-spam-highlighter)**：PC向けWeb版𝕏のフォロワー一覧画面で、スパム疑いのアカウントを赤くハイライト表示する。
 
 ### 業務効率化
 * **[Advanced Font Settings](https://chromewebstore.google.com/detail/advanced-font-settings/caclkomlalccbpcdllchkeecicepbmbm?hl=ja)**：Webサイトのフォント設定を変更する
