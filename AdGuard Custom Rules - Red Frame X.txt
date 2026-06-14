@@ -31,7 +31,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! daily.co.jp
 ! GeminiクオリティなAdShield処理
-||html-load.com^$domain=daily.co.jp
+! ||html-load.com^$domain=daily.co.jp
 ||error-report.com^$domain=daily.co.jp
 daily.co.jp#%#//scriptlet('remove-attr', 'onerror', 'script[src*="html-load.com"]')
 daily.co.jp#%#//scriptlet('remove-attr', 'onload', 'script[src*="html-load.com"]')
