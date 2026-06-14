@@ -124,7 +124,7 @@ rawkuma.net##a[href*="ko-fi.com"]:has(img)
 rawkuma.net##iframe[src*="cbox.ws"]
 
 ! sankei.com
-! 有料プランに申し込むテキスト・申し込みボタン・ログインテキスト
+! 有料プランに申し込むテキスト・申し込みボタン・ログインテキストを表示
 ! @@||buy-ap.piano.io/checkout/template/cacheableShow.html?*&offerId=fakeOfferId$domain=sankei.com
 
 ! tiktok.com
