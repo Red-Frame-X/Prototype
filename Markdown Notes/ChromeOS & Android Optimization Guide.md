@@ -494,9 +494,9 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 ---
 
 ## 主要な生成AI
-* **[ChatGPT](https://chat.openai.com/)**：汎用性が高い + 多様なモード
-* **[Gemini](https://gemini.google.com/)**：汎用性 + マルチモーダル + 膨大な情報を高速で読み込み回答を出力
-* **[GitHub Copilot](https://github.com/features/copilot)**：コーディング用
+* **[ChatGPT](https://chat.openai.com/)**：汎用性が高い + 多様なモード。
+* **[Gemini](https://gemini.google.com/)**：汎用性 + マルチモーダル + 膨大な情報を高速で読み込み回答を出力。
+* **[GitHub Copilot](https://github.com/features/copilot)**：コーディング用。
 * **[Grok](https://grok.com/)**：汎用性 + 制限が緩い - 𝕏の投稿の信憑性をチェックするのに使えそう？
   * xAI Support Teamへの問い合わせ先 `support@x.ai` / [Contact: Get in Touch with xAI](https://x.ai/contact) 
   * [xAIアカウントのMFA（多要素認証）を紛失してログイン不能 → xAIアカウント削除のために問い合わせ](https://docs.x.ai/console/faq/accounts#ive-forgotten-my-multi-factor-authentication-mfa-method-can-you-remove-it) てから2ヶ月ほど待ちましたが、音沙汰なく、対応は期待できない状態です。
