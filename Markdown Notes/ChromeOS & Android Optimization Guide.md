@@ -134,7 +134,7 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 
 ### 特定サイト向け拡張
 * **[5CH STYLE FORMAT](https://chromewebstore.google.com/detail/5ch-style-format/aidnencnedgaflbgacmcbcokcpancdac?hl=ja)**：5chのスレッド記事の整形、URL直リンク化、画像・レスのPOP表示など
-* **[ChatGPT Ctrl + Enter Sender](https://chromewebstore.google.com/detail/chatgpt-ctrl+enter-sender/gbncgdhklmnckojlibfhdadpfbcdbnch?hl=ja)**：AIチャットにおいて、Enterキーを改行、Ctrl + Enterキーを送信に割り当て、誤送信を防ぐ
+* **[ChatGPT Ctrl + Enter Sender](https://chromewebstore.google.com/detail/chatgpt-ctrl+enter-sender/gbncgdhklmnckojlibfhdadpfbcdbnch?hl=ja)**：AIチャットにおいて、Enterキーを改行、Ctrl + Enterキーを送信に割り当て、誤送信を防ぐ。
 * **[Google Chatの改行・送信キー設定](https://chromewebstore.google.com/detail/google-chat%E3%81%AE%E6%94%B9%E8%A1%8C%E3%83%BB%E9%80%81%E4%BF%A1%E3%82%AD%E3%83%BC%E8%A8%AD%E5%AE%9A/kabocfciobpmopkcbiphmgdljpdlighk)**：Google Chatのキー設定をカスタマイズする。
 * **[Shadowban Scanner for Twitter / X](https://chromewebstore.google.com/detail/shadowban-scanner-for-twi/enlganfikppbjhabhkkilafmkhifadjd)**：𝕏のアカウントやツイートのシャドウバン、センシティブ判定を検出する。（[ろぼいんブログ](https://roboin.io/)）
 * **[Twitterᴾˡᵘˢ](https://greasyfork.org/ja/scripts/387969-twitter%E1%B4%BE%CB%A1%E1%B5%98%CB%A2)**：オリジナル品質の画像を表示し、スパムツイートの削除機能をカスタマイズする。
