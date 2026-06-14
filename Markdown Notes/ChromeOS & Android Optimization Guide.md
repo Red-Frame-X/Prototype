@@ -752,7 +752,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 * [Kdroidwin / uB-filter-by-kdroidwin > uB-filter-by-kdroidwin(uBO&AdGuard)](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
 
-  主に、詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外する
+  主に、詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外することが目的です。
 
 **Filter Issues** 
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
