@@ -113,7 +113,7 @@ old.klz9.com,klto9.com,jestful.net##.title_doctruyen:contains(Recent Comments)
 old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 
 ! paypal.com
-! ログイン不可を
+! ログイン不可をしゅ
 @@||data.service.paypal.com^$important
 
 ! rawkuma.net
