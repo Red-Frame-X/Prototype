@@ -20,6 +20,13 @@
 ! Amazon商品ページの読み込み失敗・画面遷移時の通信エラー回避
 @@||aax-fe.amazon-adsystem.com^$app=com.amazon.mShop.android.shopping
 
+! amazon.co.jp
+! 広告・迷惑要素の非表示
+||aax-fe.amazon.co.jp^$domain=amazon.co.jp
+amazon.co.jp##.ape-wrapper
+amazon.co.jp##.ad-center
+amazon.co.jp##[id^="desktop-ad-center-"]
+
 ! blog.hatena.ne.jp
 ! 広告・迷惑要素の非表示
 blog.hatena.ne.jp##.admin-subscribe-heading
