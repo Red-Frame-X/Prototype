@@ -752,6 +752,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 * [Kdroidwin / uB-filter-by-kdroidwin > uB-filter-by-kdroidwin(uBO&AdGuard)](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
 
+  
 
 **Filter Issues** 
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
