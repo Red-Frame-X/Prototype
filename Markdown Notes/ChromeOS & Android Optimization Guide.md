@@ -184,9 +184,9 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 * **[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android)** (\*)
   * 説明：主にChMateでの広告ブロックを目的とし、副次的にアプリやブラウザのトラッキングをブロックする軽量アプリ。（※ 詳細後述）
 * **[Google Home](https://play.google.com/store/apps/details?id=com.google.android.apps.chromecast.app)**
-  * 説明：スマートデバイスを一元管理し、ルーティンによる自動化を実現するハブアプリ
+  * 説明：スマートデバイスを一元管理し、ルーティンによる自動化を実現するハブアプリ。
 * **[Google フォト](https://play.google.com/store/apps/details?id=com.google.android.apps.photos)**
-  * 説明：クラウド自動バックアップで端末容量を節約し、AI検索や編集が可能なギャラリーアプリ
+  * 説明：クラウド自動バックアップで端末容量を節約し、AI検索や編集が可能なギャラリーアプリ。
 
 ---
 
