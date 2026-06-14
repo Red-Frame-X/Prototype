@@ -44,7 +44,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 @@||stats.g.doubleclick.net^$app=jp.kappasushi.app
 
 ! google-analytics.com
-! トラッキング・広告関連の許可
+! かっぱ寿司アプリの起動・通信エラー回避
 @@||google-analytics.com^$app=jp.kappasushi.app
 ! 各種アプリの起動・通信エラー回避
 @@||www.google-analytics.com^$important
