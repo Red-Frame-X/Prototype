@@ -59,7 +59,7 @@ google.com##h2:contains(こちらを検索しますか):upward(div[data-hveid])
 google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
 ! googleapis.com
-! トラッキング・広告関連の許可
+! Android版のGemini（およびGoogleアシスタント）を利用する際、プロンプト送信後や回答生成中に発生する通信エラーやタイムアウトを防ぐための例外ルール
 @@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox
 
 ! klz9.com
