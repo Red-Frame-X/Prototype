@@ -403,7 +403,7 @@ example.com##selector
 ```
 
 ### AdGuardユーザールールの変換
-uBlock Origin用のルール「`##+js(" スクリプトレット名, 引数 ")`」をコピー & ペースト。（↲改行）。
+uBlock Origin用のルール「`##+js(" スクリプトレット名, 引数 ")`」をコピー & ペースト。（↲改行）
 
 ```text
 # タスク
