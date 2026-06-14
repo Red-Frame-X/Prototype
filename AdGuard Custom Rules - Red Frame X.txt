@@ -128,7 +128,7 @@ rawkuma.net##iframe[src*="cbox.ws"]
 ! @@||buy-ap.piano.io/checkout/template/cacheableShow.html?*&offerId=fakeOfferId$domain=sankei.com
 
 ! tiktok.com
-jp.kappasushi.app
+! かっぱ寿司アプリの起動・通信エラー回避
 @@||analytics.tiktok.com^$app=jp.kappasushi.app
 
 ! topics.smt.docomo.ne.jp
