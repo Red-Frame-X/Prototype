@@ -706,7 +706,7 @@ v5.2.400以降、拡張機能と組み込み・カスタムフィルタは、「
 
 v5.2.400で強化された機能は、設定画面内でカスタムフィルタを手動で更新できるようにするものです。
 
-（※ Chromeの拡張機能管理画面での「更新ボタン↻」では、カスタムフィルタの再読み込みがトリガーされないケースが報告されています [Issue #2944](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2944)。 / [Issue #3016](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016)）
+（※ Chromeの拡張機能管理画面での「更新ボタン↻」では、カスタムフィルタの再読み込みがトリガーされないケースが報告されています [Issue #2944](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2944) / [Issue #3016](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016)）
 
 [AdGuard Browser Extension MV3 vv5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
 
