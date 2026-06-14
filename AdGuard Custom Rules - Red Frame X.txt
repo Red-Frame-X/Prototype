@@ -46,7 +46,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! google-analytics.com
 ! トラッキング・広告関連の許可
 @@||google-analytics.com^$app=jp.kappasushi.app
-! 様々なAndroidアプリにおいて通信エラー・起動不良を起こすのを防ぐ例外ルール
+! 各種アプリの起動・通信エラー回避
 @@||www.google-analytics.com^$important
 
 ! google.com
