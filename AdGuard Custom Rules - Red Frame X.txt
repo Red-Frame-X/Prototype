@@ -34,7 +34,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! ||html-load.com^$domain=daily.co.jp
 ! ||error-report.com^$domain=daily.co.jp
 ! daily.co.jp#%#//scriptlet('remove-attr', 'onerror', 'script[src*="html-load.com"]')
-！daily.co.jp#%#//scriptlet('remove-attr', 'onload', 'script[src*="html-load.com"]')
+! daily.co.jp#%#//scriptlet('remove-attr', 'onload', 'script[src*="html-load.com"]')
 daily.co.jp#%#//scriptlet('abort-current-inline-script', '];return e};const')
 daily.co.jp##div:has(> div > h2:contains(広告表示の許可をお願いします))
 daily.co.jp#$#body { overflow: auto !important; pointer-events: auto !important; }
