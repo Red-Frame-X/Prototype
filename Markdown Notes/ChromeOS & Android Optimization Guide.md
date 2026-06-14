@@ -485,7 +485,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 
 ```text
 # タスク
-このAdGuardユーザールールをUserScriptに変換してください
+このAdGuardユーザールールをUserScriptに変換してください。
 
 # 出力形式
 すぐにコピー＆ペーストして使える完全なJavaScriptコード（UserScriptメタデータブロックを含む）。
