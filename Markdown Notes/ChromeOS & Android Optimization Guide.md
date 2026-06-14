@@ -501,8 +501,8 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
   * xAI Support Teamへの問い合わせ先 `support@x.ai` / [Contact: Get in Touch with xAI](https://x.ai/contact) 
   * [xAIアカウントのMFA（多要素認証）を紛失してログイン不能 → xAIアカウント削除のために問い合わせ](https://docs.x.ai/console/faq/accounts#ive-forgotten-my-multi-factor-authentication-mfa-method-can-you-remove-it) てから2ヶ月ほど待ちましたが、音沙汰なく、対応は期待できない状態です
   * Reddit内でもxAIアカウントの削除に応じてもらえたという報告が見当たらないため、もし対応してもらえたらここに追記で報告します
-  * 主観的な評価ですが生成AIのシェアやxAIのサポート体制を考慮するのであれば、ChatGPTかGeminiのどちらか使ったほうが良いように思われます
-  * MFA（多要素認証）を紛失しログイン不能になったxAIアカウントは、有料プランに加入していない場合、[1年以上（over a year）の非アクティブ状態が継続すると自動的に削除（または停止）される](https://x.ai/legal/terms-of-service#termination-suspension-discontinuation) 対象となります
+  * 主観的な評価ですが生成AIのシェアやxAIのサポート体制を考慮するのであれば、ChatGPTかGeminiのどちらか使ったほうが良いように思われます。
+  * MFA（多要素認証）を紛失しログイン不能になったxAIアカウントは、有料プランに加入していない場合、[1年以上（over a year）の非アクティブ状態が継続すると自動的に削除（または停止）される](https://x.ai/legal/terms-of-service#termination-suspension-discontinuation) 対象となります。
   * 削除後、アカウントのデータは法的義務などの例外を除き、通常30日以内にシステムから消去されます。
 * **[SDXL](https://stablediffusionweb.com/)**：狙い撃ち・人物や複雑な構図の生成で優秀。
 * **[z.ai GLM-4.5](https://chat.z.ai/)**：無料でそこそこの性能・ローカルで動かせる。
