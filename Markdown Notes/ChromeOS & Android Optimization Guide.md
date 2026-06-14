@@ -731,6 +731,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
   ```
   https://yuki2718.github.io/adblock2/japanese/jpfp-ag.txt
   ```
+
 **! フィッシング詐欺サイト対策**
 * uB-filter-by-kdroidwin(uBO&AdGuard)
   ```
