@@ -33,13 +33,13 @@
 * **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 コンテンツブロック用フィルタ
 * **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 DNSブロック互換フィルタ
 * **[Yuki2718 / adblock2](https://github.com/Yuki2718/adblock2)**：AdGuard / uBlock Origin 個人用フィルタ
-* **[Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)**：詐欺・悪質サイト除外フィルタ
+* **[Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)**：詐欺・悪質サイトのブロックおよび非表示フィルタ
 * **[Google Issue Tracker](https://issuetracker.google.com/home)**：プロダクトのバグ・機能リクエスト管理
 
 ---
 
 ### Projects I Support
-私が日常的に使用しており、支援をした素晴らしいプロジェクトです。
+日常的に使用しており、支援をした素晴らしいプロジェクトです。
 
 * **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援
 * **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - プライバシーを保護するDNSフィルタ
