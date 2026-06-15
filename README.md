@@ -34,7 +34,7 @@
 * **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 DNSブロック互換フィルタ
 * **[Yuki2718 / adblock2](https://github.com/Yuki2718/adblock2)**：AdGuard / uBlock Origin 個人用フィルタ
 * **[Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)**：詐欺・悪質サイトのブロックおよび非表示フィルタ
-* **[Google Issue Tracker](https://issuetracker.google.com/home)**：プロダクトのバグ・機能リクエスト管理
+* **[Google Issue Tracker](https://issuetracker.google.com/home)**：Googleプロダクトのバグ・機能リクエスト管理
 
 ---
 
