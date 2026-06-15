@@ -22,7 +22,7 @@
 
 #### Activities & Environments
 * Report Filter Issues / Send feedback to Google / 開発者・サイト運営者様への報告
-* Testing Environments：ChromeOS / Android / Web Browsers
+* 動作環境：ChromeOS / Android / Google Chrome and other browsers
 * 情報収集：国内外の技術コミュニティやソフトウェア関連フォーラム
 
 ---
@@ -39,7 +39,7 @@
 ---
 
 ### Projects I Support
-日常的に使用しており、支援をした素晴らしいプロジェクトです。
+日常的に使用しており、支援をしたプロジェクトです。
 
 * **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援
 * **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - プライバシーを保護するDNSフィルタ
