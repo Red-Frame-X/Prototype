@@ -11,56 +11,36 @@
 * [Markdown 備忘録](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc/tree/main/Markdown%20Notes)
 
 ### Contact
-* **User Name**：Red Frame X
-* **𝕏**：[Red Frame X@Red_Frame_X](https://x.com/Red_Frame_X)
-* **mond**：[Red Frame X@Red_Frame_X](https://mond.how/ja/Red_Frame_X)
+* User Name：Red Frame X
+* 𝕏：[Red_Frame_X](https://x.com/Red_Frame_X)
+* mond：[Red Frame X](https://mond.how/ja/Red_Frame_X)
 
 ---
 
 ### About Me
-
 「IT学習の一環」として、デバイス設定の記録、各種ファイルや備忘録の作成、およびコンテンツブロック・ソフトウェアに関するフィードバック活動を行っています。
 
-#### Activities
-* **Feedback & Reports**：Report Filter Issues / Send feedback to Google / 開発者・サイト運営者様への報告
-
-#### Device Used
-* **Laptop**：Acer Chromebook Plus 514（MacBook Pro → Dell Inspiron を経て移行）
-* **Smartphone**：Google Pixel 7a
-
-#### Viewing Community（5ch）
-* **ノートPC板**：Chromebookスレ
-* **スマートフォン板**：Pixel関連スレ
-* **Android板**：AdGuard / personalDNSfilter / ReVanced / Morphe / ChMateスレ
-* **ソフトウェア板**：コンテンツブロッカー関連スレ
-* **運用情報板**：5ch不具合報告スレ
+#### Activities & Environments
+* Report Filter Issues / Send feedback to Google / 開発者・サイト運営者様への報告
+* Testing Environments：ChromeOS / Android / Web Browsers
+* 情報収集：国内外の技術コミュニティやソフトウェア関連フォーラム
 
 ---
 
-### Contribute
-* [**AdguardTeam / AdguardFilters**](https://github.com/AdguardTeam/AdguardFilters)
-  * AdGuard公式：AdGuardやuBlock Originなどのコンテンツブロックソフトウェア用のフィルタ
+### Open Source Contributions
+フィードバックやバグ報告を通じて関与しているプロジェクトです。
 
-* [**AdguardTeam / AdGuardSDNSFilter**](https://github.com/AdguardTeam/AdGuardSDNSFilter)
-  * AdGuard公式：DNSブロックとの互換性を高めるために簡略化されたフィルタ
-
-* [**Yuki2718 / adblock2**](https://github.com/Yuki2718/adblock2)
-  * AdGuard / uBlock Originの個人用フィルタとルール
-
-* [**Kdroidwin / uB-filter-by-kdroidwin**](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
-  * 詐欺サイトや偽サイト、悪質なアフィリエイトサイトを除外するフィルタ
-
-* [**Google Issue Tracker**](https://issuetracker.google.com/home)
-  * Googleが社内や特定の外部ユーザー向けに提供している、自社プロダクトのバグや機能リクエストを管理するシステム
+* **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 コンテンツブロック用フィルタ
+* **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 DNSブロック互換フィルタ
+* **[Yuki2718 / adblock2](https://github.com/Yuki2718/adblock2)**：AdGuard / uBlock Origin 個人用フィルタ
+* **[Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)**：詐欺・悪質サイト除外フィルタ
+* **[Google Issue Tracker](https://issuetracker.google.com/home)**：プロダクトのバグ・機能リクエスト管理
 
 ---
 
-### Donate
-* [**Support Morphe - Donate**](https://morphe.software/donate)
-  * あなたの貢献が [Morphe](https://github.com/morpheapp) の開発と改善を続けることを支えます。
+### Projects I Support
+私が日常的に使用しており、支援をした素晴らしいプロジェクトです。
 
-* [**Donations - Zenz Solutions**](https://www.zenz-solutions.de/donations/)
-  * [personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - 暗号化されたDNS / サポートを備えたDNSフィルタ - プライバシーを保護します。
-
-* [**Gerd is HaGeZi DNS Blocklists**](https://buymeacoffee.com/hagezi)
-  * [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) - より快適なインターネットのために！
+* **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援
+* **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - プライバシーを保護するDNSフィルタ
+* **[Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)**：[HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) - より快適なインターネットのためのブロックリスト
