@@ -30,8 +30,8 @@
 ### Open Source Contributions
 フィードバックやバグ報告を通じて、よく関与しているプロジェクトです。
 
-* **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 コンテンツブロック用フィルタ
-* **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 DNSブロック互換フィルタ
+* **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 - コンテンツブロック用フィルタ
+* **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 - DNSブロック互換フィルタ
 * **[Yuki2718 / adblock2](https://github.com/Yuki2718/adblock2)**：AdGuard / uBlock Origin 個人用フィルタ
 * **[Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)**：詐欺・悪質サイトのブロックおよび非表示フィルタ
 * **[Google Issue Tracker](https://issuetracker.google.com/home)**：Googleプロダクトのバグ・機能リクエスト管理
