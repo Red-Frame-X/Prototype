@@ -746,7 +746,6 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **Filter Issues** 
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
-* [uB-filter-by-kdroidwin Issues](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues)
 
 **開発者ツールと連動した手動ブロック機能**
 
