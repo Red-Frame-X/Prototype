@@ -1180,12 +1180,12 @@ ChromeOS上での完全な動作保証はありません。（[動作環境](htt
 * [Markdown記法一覧](https://qiita.com/oreo/items/82183bfbaac69971917f)
 
 **ブログ・情報サイト**
-* [Kdroidwinの日記](https://kdroidwin.hatenablog.com/archive)
 * [Chrome DevTools](https://developer.chrome.com/docs/devtools?hl=ja)
+* [9to5Google](https://9to5google.com/)
+* [Android Police](https://www.androidpolice.com/)
+* [Android Authority](https://www.androidauthority.com/)
+* [HelenTech](https://helentech.jp/) / [🌴 officeの杜 🥥](https://officeforest.org/wp/)
+* [Kdroidwinの日記](https://kdroidwin.hatenablog.com/archive)
 * [Chromium派生ブラウザ総合 まとめWiki](https://w.atwiki.jp/chromiumbased/pages/1.html)
 * [スマホブラウザ@ウィキ](https://w.atwiki.jp/sumaho_browser/pages/1.html)
-* [HelenTech](https://helentech.jp/) / [🌴 officeの杜 🥥](https://officeforest.org/wp/)
-* 5ch 各種スレッド：[Chromebook](https://ff5ch.syoboi.jp/?q=Chromebook) / [Google Pixel](https://ff5ch.syoboi.jp/?q=Google+Pixel)
-* [9to5google](https://9to5google.com/)
-* [Android Police](https://www.androidpolice.com/)
-* [9Android Authority](https://www.androidauthority.com/)
+* 5ch 各種スレッド検索結果：[Chromebook](https://ff5ch.syoboi.jp/?q=Chromebook) / [Google Pixel](https://ff5ch.syoboi.jp/?q=Google+Pixel)
