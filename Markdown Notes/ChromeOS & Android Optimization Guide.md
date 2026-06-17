@@ -740,14 +740,6 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
   https://yuki2718.github.io/adblock2/japanese/jpfp-ag.txt
   ```
 
-**! フィッシング詐欺サイト対策**
-* uB-filter-by-kdroidwin(uBO&AdGuard)
-  ```
-  https://raw.githubusercontent.com/Kdroidwin/uBlacklist-filter-by-kdroidwin/refs/heads/main/uBlockorigin.txt
-  ```
-
-  検索結果には表示されますがアクセスを防ぐことができます。ただし、強力であるため、関係のないサイトまでブロックされることがあります。
-
 **❗️留意点**
 
  [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記2種以外は追加しないほうが良いです。
