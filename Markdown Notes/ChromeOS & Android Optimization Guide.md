@@ -1188,4 +1188,4 @@ ChromeOS上での完全な動作保証はありません。（[動作環境](htt
 * 5ch 各種スレッド：[Chromebook](https://ff5ch.syoboi.jp/?q=Chromebook) / [Google Pixel](https://ff5ch.syoboi.jp/?q=Google+Pixel)
 * [9to5google](https://9to5google.com/)
 * [Android Police](https://www.androidpolice.com/)
-* [9to5google](https://9to5google.com/)
+* [9to5google](https://www.androidauthority.com/)
