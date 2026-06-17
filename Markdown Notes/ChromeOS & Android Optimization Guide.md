@@ -1186,3 +1186,4 @@ ChromeOS上での完全な動作保証はありません。（[動作環境](htt
 * [スマホブラウザ@ウィキ](https://w.atwiki.jp/sumaho_browser/pages/1.html)
 * [HelenTech](https://helentech.jp/) / [🌴 officeの杜 🥥](https://officeforest.org/wp/)
 * 5ch 各種スレッド：[Chromebook](https://ff5ch.syoboi.jp/?q=Chromebook) / [Google Pixel](https://ff5ch.syoboi.jp/?q=Google+Pixel)
+
