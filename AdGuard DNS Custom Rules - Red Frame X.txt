@@ -4,14 +4,10 @@
 ! License: CC0 (Public Domain)
 ! Version: 20260618
 
-@@||analytics-alv.google.com^|
-@@||analytics.google.com^|
-@@||statcounter.com^|
-@@||www-alv.google-analytics.com^|
-@@||www.google-analytics.com^|
 @@||a-adq.mediation.unity3d.com^|
 @@||ad.doubleclick.net^|
 @@||ad2.trafficgate.net^|
+@@||analytics-alv.google.com^|
 @@||analytics-ipv6.tiktokw.us^|
 @@||analytics.google.com^|
 @@||analytics.tiktok.com^|
