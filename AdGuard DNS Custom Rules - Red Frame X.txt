@@ -2,12 +2,14 @@
 ! Description: Rules for Modifying the AdGuard DNS filter.
 ! Homepage: https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc
 ! License: CC0 (Public Domain)
-! Version: 20260618
+! Version: 20260601
 
+@@||analytics.google.com^
+@@||www.google-analytics.com^
+@@||www-alv.google-analytics.com^
 @@||a-adq.mediation.unity3d.com^|
 @@||ad.doubleclick.net^|
 @@||ad2.trafficgate.net^|
-@@||analytics-alv.google.com^|
 @@||analytics-ipv6.tiktokw.us^|
 @@||analytics.google.com^|
 @@||analytics.tiktok.com^|
@@ -40,7 +42,6 @@
 @@||stats.g.doubleclick.net^|
 @@||trj.valuecommerce.com^|
 @@||uts-front.line-apps.com^|
-@@||www-alv.google-analytics.com^|
 @@||www.datadoghq-browser-agent.com^|
 @@||www.google-analytics.com^|
 ||5ch.net^$dnsrewrite=5ch.io
