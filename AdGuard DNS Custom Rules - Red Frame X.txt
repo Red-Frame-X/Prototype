@@ -8,7 +8,7 @@
 @@||analytics.google.com
 @@||statcounter.com
 @@||www-alv.google-analytics.com
-!www.google-analytics.com
+@@||www.google-analytics.com
 
 
 @@||a-adq.mediation.unity3d.com^|
