@@ -4,7 +4,7 @@
 ! License: CC0 (Public Domain)
 ! Version: 20260618
 
-!analytics-alv.google.com
+@@||analytics-alv.google.com
 !analytics.google.com
 !statcounter.com
 !www-alv.google-analytics.com
