@@ -66,5 +66,5 @@ Androidの「高度なフロー（Advanced flow）」
 
 ## 参照URL
 * [Android developer verification: Balancing openness and choice with safety](https://android-developers.googleblog.com/2026/03/android-developer-verification.html)
-* [Android developer verification: Building a safer ecosystem together](https://android-developers.googleblog.com/2026/03/android-developer-verification.html)
+* [Android developer verification: Building a safer ecosystem together](https://android-developers.googleblog.com/2026/06/android-developer-verification.html?m=1)
 
