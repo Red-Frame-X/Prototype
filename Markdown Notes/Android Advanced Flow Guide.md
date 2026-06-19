@@ -40,7 +40,7 @@
 1. Pixelのホーム画面から **「設定」** アプリを開きます。
 2. 画面を一番下までスクロールし、**「デバイス情報」** をタップします。
 3. 再び一番下までスクロールし、**「ビルド番号」** という項目を **7回連続でタップ** します。
-   * *※3回目付近から「開発者向けオプションが有効になるまであと○回です」とカウントダウンが表示されます。*
+   * ※ 3回目付近から「開発者向けオプションが有効になるまであと○回です」とカウントダウンが表示されます。
 4. 画面ロックの認証（PIN、パターン、または指紋）が求められるので入力します。
 5. 「これでデベロッパーになりました！」（または「開発者向けオプションが有効になりました」）と表示されたら準備完了です。
 
@@ -69,8 +69,8 @@
 ---
 
 ## 参照URL
-* [Android developer verification: Balancing openness and choice with safety](https://android-developers.googleblog.com/2026/03/android-developer-verification.html) (Google Developers Blog)
-* [Android developer verification: Building a safer ecosystem together](https://android-developers.googleblog.com/2026/06/android-developer-verification.html) (Google Developers Blog)
-* [Androidの開発者認証が間もなく実施予定、Googleがタイムラインと対応アプリストアを公表](https://gigazine.net/news/20260619-android-developer-verification-timeline/) (GIGAZINE)
-* [Advanced Flow will make Android sideloading safer](https://www.malwarebytes.com/blog/news/2026/03/advanced-flow-will-make-android-sideloading-safer) (Malwarebytes)
-* [Android Developer Verificationが与えるストア外配信への影響](https://zenn.dev/nttdata_tech/articles/ff3ee3201d5042) (Zenn)
+* [Android developer verification: Balancing openness and choice with safety](https://android-developers.googleblog.com/2026/03/android-developer-verification.html) （Google Developers Blog）
+* [Android developer verification: Building a safer ecosystem together](https://android-developers.googleblog.com/2026/06/android-developer-verification.html) （Google Developers Blog）
+* [Androidの開発者認証が間もなく実施予定、Googleがタイムラインと対応アプリストアを公表](https://gigazine.net/news/20260619-android-developer-verification-timeline/) （GIGAZINE）
+* [Advanced Flow will make Android sideloading safer](https://www.malwarebytes.com/blog/news/2026/03/advanced-flow-will-make-android-sideloading-safer) （Malwarebytes）
+* [Android Developer Verificationが与えるストア外配信への影響](https://zenn.dev/nttdata_tech/articles/ff3ee3201d5042) （Zenn）
