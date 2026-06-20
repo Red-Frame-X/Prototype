@@ -226,7 +226,6 @@ x.com##div[data-testid="GrokDrawer"]
 x.com##div[data-testid="inlinePrompt"]
 ! タイムライン：広告・トピック・トレンド・おすすめユーザー
 x.com##[aria-label="おすすめユーザー"] button[data-testid="UserCell"]
-x.com##button[data-testid="UserCell"]:has(button[data-testid$="-follow"])
 x.com##div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
 x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
