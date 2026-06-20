@@ -263,3 +263,4 @@ x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュ
 ||twitter.undefined^$popup,domain=x.com
 ||x.com/*.php*$popup,domain=x.com
 x.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"] > div:has([data-testid$="-impression-pixel"])
+
