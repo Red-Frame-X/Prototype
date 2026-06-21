@@ -182,7 +182,7 @@ Tampermonkeyを使用するためには、各拡張機能の内部設定から**
 * **[ChMate](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate)** (\*)
   * 説明：5ちゃんねるを高速・快適に閲覧できる多機能なAndroid専用ブラウザアプリ。（※ ChromeOSでの不具合は後述）
 * **[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android)** (\*)
-  * 説明：主にChMateでの広告ブロックを目的とし、副次的に他のAndroidアプリやChromeOS用Chromeブラウザのトラッキングをブロックする軽量アプリ。（※ 詳細後述）
+  * 説明：主にChMateでの広告ブロックを目的とし、副次的に他のAndroidアプリやChromeOS用Chrome ブラウザのトラッキングをブロックする軽量アプリ。（※ 詳細後述）
 * **[Google Home](https://play.google.com/store/apps/details?id=com.google.android.apps.chromecast.app)**
   * 説明：スマートデバイスを一元管理し、ルーティンによる自動化を実現するハブアプリ。
 * **[Google フォト](https://play.google.com/store/apps/details?id=com.google.android.apps.photos)**
