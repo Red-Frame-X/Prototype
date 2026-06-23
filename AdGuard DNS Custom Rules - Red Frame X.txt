@@ -4,7 +4,7 @@
 ! License: CC0 (Public Domain)
 ! Version: 20260624
 
-! ふぐ
+! 不具合修正
 @@||a-adq.mediation.unity3d.com^|
 @@||ad.doubleclick.net^|
 @@||ad2.trafficgate.net^|
