@@ -41,6 +41,8 @@
 @@||uts-front.line-apps.com^|
 @@||www.datadoghq-browser-agent.com^|
 @@||www.google-analytics.com^|
+
+
 ||5ch.net^$dnsrewrite=5ch.io
 ||ace.5ch.net^$dnsrewrite=ace.5ch.io
 ||agree.5ch.net^$dnsrewrite=agree.5ch.io
