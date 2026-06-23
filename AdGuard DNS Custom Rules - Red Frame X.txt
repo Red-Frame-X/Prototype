@@ -4,7 +4,7 @@
 ! License: CC0 (Public Domain)
 ! Version: 20260624
 
-! AdGuard DNS filterの既知の不具合を独自に修正
+! AdGuard DNS filterの既知の不具合を独自に修正する
 @@||a-adq.mediation.unity3d.com^|
 @@||ad.doubleclick.net^|
 @@||ad2.trafficgate.net^|
