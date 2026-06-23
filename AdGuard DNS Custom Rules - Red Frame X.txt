@@ -42,7 +42,7 @@
 @@||www.datadoghq-browser-agent.com^|
 @@||www.google-analytics.com^|
 
-! # [2026.3.6] 5ch.net → 5ch.io
+! [2026.3.6] 5ch.net → 5ch.io
 ||5ch.net^$dnsrewrite=5ch.io
 ||ace.5ch.net^$dnsrewrite=ace.5ch.io
 ||agree.5ch.net^$dnsrewrite=agree.5ch.io
