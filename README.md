@@ -28,7 +28,7 @@
 
 ---
 
-### Open Source Contributions
+### Community Contributions
 フィードバックやバグ報告を通じて、よく関与しているプロジェクトです。
 
 * **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 - コンテンツブロック用フィルタ
