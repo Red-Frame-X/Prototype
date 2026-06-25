@@ -45,7 +45,7 @@ As part of our "IT training," we are documenting device settings, creating vario
 ---
 
 ### Projects I Support
-日常的に使用している、支援中の主なプロジェクトです。
+日常的に使用しており、定期的に支援しているプロジェクトです。
 
 * **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援 ‐ Androidアプリのカスタマイズツール
 * **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - プライバシーを保護するDNSフィルタ
