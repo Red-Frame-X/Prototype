@@ -6,6 +6,9 @@
 
 # AdGuard-Custom-Rules-UserScript-Regex-etc
 以下のものは、個人的に使用するために作成したものです。
+
+The following items were created for my personal use.
+
 * AdGuard Custom Rules
 * UserScript
 * ChMate用 NG Word 正規表現
@@ -20,6 +23,8 @@
 
 ### About Me
 「IT学習の一環」として、デバイス設定の記録、各種ファイルや備忘録の作成、およびコンテンツブロック・ソフトウェアに関するフィードバック活動を行っています。
+
+As part of our "IT training," we are documenting device settings, creating various files and memos, and providing feedback on content-blocking software.
 
 #### Activities & Environments
 * Report Filter Issues / Send feedback to Google / 開発者・サイト運営者様への報告
