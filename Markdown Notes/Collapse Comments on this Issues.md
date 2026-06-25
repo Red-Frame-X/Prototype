@@ -1,13 +1,24 @@
 ### レポート
 （あなたの書いた導入文など）
+
 ```  
 <details>
-<summary>レポートのタイトル（クリックで展開）</summary>
+<summary> レポートのタイトル（クリックで展開）</summary>
 
-レポート全文をそのまま残す
+レポートの全文
 
 </details>
 ```
+
+```
+<details>
+<summary> Screenshot (クリックで展開) </summary>
+
+アップロードしたScreenshotのURL
+
+</details>
+```
+
 ### 手動での動作検証結果
 （あなたがやった検証結果を書く）
 
