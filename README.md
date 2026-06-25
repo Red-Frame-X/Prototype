@@ -36,6 +36,8 @@ As part of our "IT training," we are documenting device settings, creating vario
 ### Community Contributions
 フィードバックやバグ報告を通じて、よく関与しているプロジェクトです。
 
+This is a project I'm actively involved in through feedback and bug reports.
+
 * **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 - コンテンツブロック用フィルタ
 * **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 - DNSブロック互換フィルタ
 * **[Yuki2718 / adblock2](https://github.com/Yuki2718/adblock2)**：AdGuard / uBlock Origin 個人用フィルタ
@@ -46,6 +48,8 @@ As part of our "IT training," we are documenting device settings, creating vario
 
 ### Projects I Support
 日常的に使用しており、定期的に支援しているプロジェクトです。
+
+This is a project that I use on a daily basis and support regularly.
 
 * **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援 ‐ Androidアプリのカスタマイズツール
 * **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - プライバシーを保護するDNSフィルタ
