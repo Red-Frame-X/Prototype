@@ -1,3 +1,4 @@
+[![FLOSS Support](https://img.shields.io/badge/FLOSS-Supported-brightgreen?style=flat&logo=opensourceinitiative&logoColor=white)](https://opensource.org/)
 ![syntax: AdGuard](https://img.shields.io/badge/syntax-AdGuard-green)
 ![syntax: JavaScript](https://img.shields.io/badge/syntax-JavaScript-orange)
 ![syntax: Regex](https://img.shields.io/badge/syntax-Regex-blue)
