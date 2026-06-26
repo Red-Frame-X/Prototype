@@ -4,7 +4,7 @@
 ![syntax: Regex](https://img.shields.io/badge/syntax-Regex-009688)
 ![syntax: Markdown](https://img.shields.io/badge/syntax-Markdown-000000?style=flat&logo=markdown&logoColor=white)
 
-# AdGuard-Custom-Rules-UserScript-Regex-etc
+# AdGuard-UserScript-Regex-Markdown
 以下のものは、個人的に使用するために作成したものです。
 
 The following items were created for my personal use.
