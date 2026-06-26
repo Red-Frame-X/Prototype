@@ -1,8 +1,8 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Homepage: https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc
+! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown
 ! License: CC0 (Public Domain)
-! Version: 20260621
+! Version: 20260627
 
 ! Global
 ! 全サイト共通の非表示ルール
