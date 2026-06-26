@@ -1,6 +1,6 @@
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc) |
+| **Homepage** | [Red-Frame-X/AdGuard-UserScript-Regex-Markdown](https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown) |
 | **License** | CC0 (Public Domain) |
 | **Version** | yyyymmdd |
 
