@@ -52,7 +52,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! downdetector.jp
 ! 広告・迷惑要素の非表示
-! Reportsアプリは特殊文字をエスケープする
+! AdGuard SiteReportアプリは特殊文字をエスケープする
 ! downdetector.jp##[data-service-list-ad="true"]
 downdetector.jp##div[data-service-list-ad]
 
