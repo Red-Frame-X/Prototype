@@ -1,20 +1,20 @@
 ### 冒頭文
 （あなたの書いた導入文など）
 
-```  
-<details>
-<summary> レポートのタイトル（クリックで展開）</summary>
-
-レポートの全文
-
-</details>
-```
-
 ```
 <details>
 <summary> Screenshot (クリックで展開) </summary>
 
 アップロードしたScreenshotのURL
+
+</details>
+```
+
+```  
+<details>
+<summary> レポートのタイトル（クリックで展開）</summary>
+
+レポートの全文
 
 </details>
 ```
