@@ -2,6 +2,7 @@
 ![syntax: AdGuard](https://img.shields.io/badge/syntax-AdGuard-68BC71?logo=adguard&logoColor=white)
 ![syntax: JavaScript](https://img.shields.io/badge/syntax-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![syntax: Regex](https://img.shields.io/badge/syntax-Regex-009688)
+![syntax: Python](https://img.shields.io/badge/syntax-Python-3776AB?logo=python&logoColor=white)
 ![syntax: Markdown](https://img.shields.io/badge/syntax-Markdown-000000?style=flat&logo=markdown&logoColor=white)
 
 # AdGuard-UserScript-Regex-Markdown
