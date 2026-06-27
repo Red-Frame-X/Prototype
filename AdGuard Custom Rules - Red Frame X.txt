@@ -52,7 +52,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! downdetector.jp
 ! 広告・迷惑要素の非表示
-! Reports app escapes special characters.
+!Reportsアプリは特殊文字をエスケープします
 ! downdetector.jp##[data-service-list-ad="true"]
 downdetector.jp##div[data-service-list-ad]
 
