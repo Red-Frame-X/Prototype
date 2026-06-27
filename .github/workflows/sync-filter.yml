@@ -1,0 +1,40 @@
+name: Sync and Convert Filter
+
+on:
+  schedule:
+    - cron: '0 20 * * *' # 日本時間の毎日午前5時（UTCの20時）に自動実行
+  workflow_dispatch:     # 手動実行ボタンも有効化
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write      # リポジトリへの書き込み権限を付与
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python環境のセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: 出力用フォルダの作成と変換スクリプト実行
+        run: |
+          mkdir -p dist
+          python scripts/convert.py
+
+      - name: 変更内容を確認して自動コミット＆プッシュ
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add dist/adguard_filter.txt
+          
+          # 差分がある場合のみコミットを実行
+          if git diff --staged --quiet; then
+            echo "上流からの更新差分はありませんでした。"
+          else
+            git commit -m "chore: auto-sync and convert AdGuard filter [skip ci]"
+            git push
+          fi
