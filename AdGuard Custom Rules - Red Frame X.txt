@@ -4,8 +4,6 @@
 ! License: CC0 (Public Domain)
 ! Version: 20260627
 
-downdetector.jp##[data-service-list-ad="true"]
-
 ! Global
 ! 全サイト共通の非表示ルール
 ##.grecaptcha-badge
@@ -51,6 +49,10 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! doubleclick.net
 ! かっぱ寿司アプリの起動・通信エラー回避
 @@||stats.g.doubleclick.net^$app=jp.kappasushi.app
+
+! downdetector.jp
+! 広告・迷惑要素の非表示
+downdetector.jp##[data-service-list-ad="true"]
 
 ! google-analytics.com
 ! かっぱ寿司アプリの起動・通信エラー回避
@@ -156,9 +158,9 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 ! web.nhk
 ! クッキー・同意ポップアップ関連処理
 ||apps.web.nhk/ops/api/v1/common/registrationEnforcement.json$xhr,domain=web.nhk
+web.nhk##div:has(> a[href*="/nhkone/account/"])
 web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{"status":"optedin","entity":"household","area":{"areaId":"130","jisx0402":"13113","postal":"1508001","pref":"13"}}')
 web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{"sd":"2025-10-01T00:00:00.000Z","ed":"2050-12-31T23:59:59.999Z"}')
-web.nhk##div:has(> a[href*="/nhkone/account/"])
 
 ! www.minnanosyougai.com
 ! 広告・迷惑要素の非表示
@@ -186,6 +188,9 @@ www.youtube.com##ytd-watch-metadata #teaser-carousel
 www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-renderer:has(a[href^="/shorts/"])
 
 ! x.com
+! 高度なブロック処理：Scriptlet・スパム対策
+||twitter.undefined^$popup,domain=x.com
+||x.com/*.php*$popup,domain=x.com
 ! ナビゲーション：左サイドバー・メニュー
 x.com##a[data-testid="AppTabBar_DirectMessage_Link"]
 x.com##a[href="/explore"][role="link"]
@@ -228,7 +233,6 @@ x.com##div[data-testid="GrokDrawer"]
 x.com##div[data-testid="inlinePrompt"]
 ! タイムライン：広告・トピック・トレンド・おすすめユーザー
 x.com##[aria-label="おすすめユーザー"] button[data-testid="UserCell"]
-x.com##div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
 x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
 x.com##[data-testid="cellInnerDiv"]:has(div[data-testid="eventHero"])
@@ -246,6 +250,7 @@ x.com##[aria-label="タイムライン: 話題を検索"] div[data-testid="cellI
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty):not([aria-label="タイムライン: フォロー中"] *)
+x.com##div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
 ! タイムライン：個別ポスト・会話・検索結果
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
@@ -261,7 +266,4 @@ x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid=
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:contains(新しいコミュニティを見つける))
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:not(:has(article)):has(a[href^="/i/communities/"])
 x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュニティを探す))
-! 高度なブロック処理：Scriptlet・スパム対策
-||twitter.undefined^$popup,domain=x.com
-||x.com/*.php*$popup,domain=x.com
 x.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"] > div:has([data-testid$="-impression-pixel"])
