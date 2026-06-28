@@ -50,12 +50,12 @@ def convert_ubo_to_adguard():
     jst = timezone(timedelta(hours=+9), 'JST')
     current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
-    # 💡 Descriptionをご指定の英文に差し替え、Expires（更新間隔）行を削除しました
+    # 💡 HomepageのURLをご指定のもの（リポジトリのルート）に変更しました
     converted = [
         "! Title: uB-filter-by-kdroidwin",
         "! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.",
         f"! Version: {current_version}",
-        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
+        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
         "! License: GPL-3.0",
         "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
         "! Converted automatically via GitHub Actions\n"
