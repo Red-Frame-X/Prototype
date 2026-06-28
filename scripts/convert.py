@@ -33,9 +33,10 @@ def fetch_source_data():
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
-    # 💡 赤枠内を「! Title: uB-filter-by-kdroidwin」だけに完全固定
+    # 💡 ご希望のホームページURLを標準メタデータとして追加
     converted = [
         "! Title: uB-filter-by-kdroidwin",
+        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
         "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
         "! License: GPL-3.0",
         "! Converted automatically via GitHub Actions",
