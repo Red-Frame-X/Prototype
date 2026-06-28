@@ -1,34 +1,42 @@
-name: Sync and Convert Kdroidwin Filter
+name: Sync and Convert Filter
 
 on:
   schedule:
-    - cron: '0 20 * * *' # 毎日日本時間の朝5時に自動実行
-  workflow_dispatch: # 手動実行ボタンを有効化
+    - cron: '0 20 * * *' # 日本時間の毎日午前5時（UTCの20時）に自動実行
+  workflow_dispatch:     # 手動実行ボタン（Run workflow）を有効化
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # リポジトリへの書き込み権限を付与
+      contents: write    # リポジトリへの書き込み・コミット権限を付与
 
     steps:
-      - name: Checkout Repository
+      - name: リポジトリをチェックアウト
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Pythonのセットアップ
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Run Conversion Script
-        run: python scripts/convert.py
-
-      - name: Commit and Push if changed
+      - name: 出力用フォルダの作成と変換スクリプト実行
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p dist
+          python scripts/convert.py
+
+      - name: 変更内容を確認して自動コミット&プッシュ
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           
-          # 💡 保存する対象ファイルを新しい名前に書き換え
-          git add "dist/uB-filter-by-kdroidwin.txt"
-          
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update AdGuard filter" && git push)
+          # 【修正箇所】Python側が出力する新しいファイル名と完全に一致させる
+          git add dist/uB-filter-by-kdroidwin.txt
+
+          # 差分がある場合のみコミットを実行してプッシュ
+          if git diff --staged --quiet; then
+            echo "上流からの更新差分はありませんでした。"
+          else
+            git commit -m "chore: auto-sync and convert AdGuard filter [skip ci]"
+            git push
+          fi
