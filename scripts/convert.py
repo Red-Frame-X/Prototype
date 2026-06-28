@@ -3,6 +3,7 @@ from urllib.error import HTTPError
 import re
 import os
 import sys
+from datetime import datetime, timezone, timedelta
 
 # 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
 CANDIDATE_URLS = [
@@ -30,18 +31,13 @@ def fetch_source_data():
     sys.exit(1)
 
 def format_scriptlet_args(args_raw_str):
-    """
-    uBOの引数文字列を解析し、AdGuard仕様のシングルクォートラップに正規化するパーサー
-    """
     raw_args = [arg.strip() for arg in args_raw_str.split(',')]
     formatted_args = []
     
     for arg in raw_args:
         if not arg:
             continue
-        # 既存のクォート('や")を一旦除去
         clean_arg = re.sub(r'^[\'"]|[\'"]$', '', arg)
-        # AdGuard推奨のシングルクォートで包む（内部のクォートはエスケープ）
         escaped_arg = clean_arg.replace("'", "\\'")
         formatted_args.append(f"'{escaped_arg}'")
         
@@ -50,9 +46,15 @@ def format_scriptlet_args(args_raw_str):
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
-    # 💡 AdGuard公式チームおよびEasyListの標準規格に100%準拠した理想的な並び順
+    # 日本時間(JST)での現在時刻を「YYYYMMDDHHmm」形式で取得
+    jst = timezone(timedelta(hours=+9), 'JST')
+    current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
+
+    # 💡 Description（説明文）を分かりやすい日本語に書き換えました
     converted = [
         "! Title: uB-filter-by-kdroidwin",
+        "! Description: Kdroidwin氏のuBlock Origin用フィルタリストをAdGuard向けに最適化した非公式ミラーです",
+        f"! Version: {current_version}",
         "! Expires: 12 hours",
         "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
         "! License: GPL-3.0",
@@ -66,13 +68,11 @@ def convert_ubo_to_adguard():
         if not line or line.startswith('!'):
             continue
             
-        # 1. 例外（ホワイトリスト）スクリプトレットの構文変換
         if '#@#+js(' in line:
             prefix, args_part = line.split('#@#+js(', 1)
             args_raw = args_part.rstrip(')')
             line = f"{prefix}#@%#//scriptlet({format_scriptlet_args(args_raw)})"
             
-        # 2. 通常（ブロック）スクリプトレットの構文変換
         elif '##+js(' in line:
             prefix, args_part = line.split('##+js(', 1)
             args_raw = args_part.rstrip(')')
@@ -87,7 +87,7 @@ def convert_ubo_to_adguard():
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('\n'.join(converted) + '\n')
     
-    print(f"✔ 変換完了: {OUTPUT_FILE}")
+    print(f"✔ 変換完了: {OUTPUT_FILE} (Version: {current_version})")
 
 if __name__ == '__main__':
     convert_ubo_to_adguard()
