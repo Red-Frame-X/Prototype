@@ -25,7 +25,7 @@ def fetch_source_data():
         except Exception as e:
             print(f"  × 通信エラー: {e}")
 
-    print("\n[致命的エラー] 元データを取得できませんでした。")
+    print("\n[致命的エラー] 元データが取得できませんでした。")
     sys.exit(1)
 
 def format_scriptlet_args(args_raw_str):
@@ -49,13 +49,13 @@ def format_scriptlet_args(args_raw_str):
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
+    # 💡 ご要望に合わせ、不要な水平線（! ----...）の行を除去しました
     converted = [
         "! Title: uB-filter-by-kdroidwin",
         "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
         "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
         "! License: GPL-3.0",
-        "! Converted automatically via GitHub Actions",
-        "! ------------------------------------------------------------\n"
+        "! Converted automatically via GitHub Actions\n"
     ]
 
     print("構文変換処理を開始します...")
