@@ -3,8 +3,8 @@ import re
 import datetime
 
 # 上流（Kdroidwin氏）のuBlock Origin用フィルタのRaw URL
-UPSTREAM_URL = "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
-OUTPUT_PATH = "dist/adguard_filter.txt"
+UPSTREAM_URL = "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt"
+OUTPUT_PATH = "dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt"
 
 def convert_filter():
     # 1. 上流データの取得
@@ -16,7 +16,6 @@ def convert_filter():
     converted_lines = []
 
     for line in lines:
-        # メタデータのタイトルや説明文をAdGuard向けに調整
         if line.startswith("! Title:"):
             converted_lines.append("! Title: uB-filter-by-kdroidwin (AdGuard Optimized)")
             continue
