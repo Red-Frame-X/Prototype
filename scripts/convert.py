@@ -4,7 +4,7 @@ import datetime
 
 # 上流（Kdroidwin氏）のuBlock Origin用フィルタのRaw URL
 UPSTREAM_URL = "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
-OUTPUT_PATH = "dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt"
+OUTPUT_PATH = "dist/adguard_filter.txt"
 
 def convert_filter():
     # 1. 上流データの取得
