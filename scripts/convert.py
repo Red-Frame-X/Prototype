@@ -2,8 +2,8 @@ import urllib.request
 import re
 import datetime
 
-# 上流（Kdroidwin氏）のuBlock Origin用フィルタのRaw URL
-UPSTREAM_URL = "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt"
+# 【修正箇所】存在が確認されている有効な実在のRaw URLへ変更
+UPSTREAM_URL = "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uB-filter-by-kdroidwin.txt"
 OUTPUT_PATH = "dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt"
 
 def convert_filter():
