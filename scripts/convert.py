@@ -4,13 +4,12 @@ import re
 import os
 import sys
 
-# 取得元：Kdroidwin氏のuBlock Origin用フィルタURL（大文字・小文字の両方を検証）
+# 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
 CANDIDATE_URLS = [
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt",
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
 ]
 
-# 💡 出力先をシンプルなファイル名に変更
 OUTPUT_FILE = "dist/uB-filter-by-kdroidwin.txt"
 
 def fetch_source_data():
@@ -34,9 +33,10 @@ def fetch_source_data():
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
-    # フィルタのヘッダー情報
+    # 💡 ご希望のタイトルに変更 ＋ 開発者マナーとしてDescriptionを追加
     converted = [
-        "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
+        "! Title: uB-filter-by-kdroidwin",
+        "! Description: Unofficial AdGuard optimized version (Auto-converted)",
         "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
         "! License: GPL-3.0",
         "! Converted automatically via GitHub Actions",
@@ -49,13 +49,12 @@ def convert_ubo_to_adguard():
         if not line or line.startswith('!'):
             continue
             
-        # スクリプトレットの変換 (uBO: +js(...) -> AdGuard: #%#//scriptlet(...))
+        # スクリプトレットの変換
         if '+js(' in line:
             line = re.sub(r'\+js\((.*?)\)', r'#%#//scriptlet(\1)', line)
             
         converted.append(line)
 
-    # dist フォルダの自動作成
     output_dir = os.path.dirname(OUTPUT_FILE)
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir, exist_ok=True)
