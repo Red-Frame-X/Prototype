@@ -3,7 +3,7 @@ from urllib.error import HTTPError
 import re
 import os
 import sys
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta  # 💡 日時取得のために追加
 
 # 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
 CANDIDATE_URLS = [
@@ -46,14 +46,14 @@ def format_scriptlet_args(args_raw_str):
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
-    # 日本時間(JST)での現在時刻を「YYYYMMDDHHmm」形式で取得
+    # 💡 日本時間(JST)での現在時刻を「YYYYMMDDHHmm」形式で取得（例: 202606282256）
     jst = timezone(timedelta(hours=+9), 'JST')
     current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
-    # 💡 Description（説明文）を分かりやすい日本語に書き換えました
+    # 💡 AdGuard公式基準・EasyList準拠の完全版ヘッダーレイアウト
     converted = [
         "! Title: uB-filter-by-kdroidwin",
-        "! Description: Kdroidwin氏のuBlock Origin用フィルタリストをAdGuard向けに最適化した非公式ミラーです",
+        "! Description: Unofficial AdGuard optimized port of Kdroidwin's uBlock Origin filter list",
         f"! Version: {current_version}",
         "! Expires: 12 hours",
         "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
