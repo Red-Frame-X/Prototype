@@ -38,9 +38,7 @@ def format_scriptlet_args(args_raw_str):
     for arg in raw_args:
         if not arg:
             continue
-        # 既存のクォート('や")を一旦除去してクリーン化
         clean_arg = re.sub(r'^[\'"]|[\'"]$', '', arg)
-        # AdGuard推奨のシングルクォートで包み直す（内部のクォートはエスケープ保護）
         escaped_arg = clean_arg.replace("'", "\\'")
         formatted_args.append(f"'{escaped_arg}'")
         
@@ -49,9 +47,10 @@ def format_scriptlet_args(args_raw_str):
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
-    # 💡 ご要望に合わせ、不要な水平線（! ----...）の行を除去しました
+    # 💡 「! Expires: 12 hours」をヘッダーセクションに追記しました
     converted = [
         "! Title: uB-filter-by-kdroidwin",
+        "! Expires: 12 hours",
         "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
         "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
         "! License: GPL-3.0",
