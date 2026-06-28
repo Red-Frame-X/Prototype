@@ -1,4 +1,5 @@
 ! Title: uB-filter-by-kdroidwin
+! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main
 ! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin
 ! License: GPL-3.0
