@@ -1,4 +1,4 @@
-name: Sync and Convert Kdroidwin Filter
+name: Sync and Convert uB-filter-by-kdroidwin
 
 on:
   schedule:
@@ -31,4 +31,4 @@ jobs:
           # 💡 保存する対象ファイルを新しい名前に書き換え
           git add "dist/uB-filter-by-kdroidwin.txt"
           
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update AdGuard filter" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update uB-filter-by-kdroidwin" && git push)
