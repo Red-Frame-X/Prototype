@@ -1,1 +1,40 @@
+name: Sync and Convert Kdroidwin Filter
 
+on:
+  schedule:
+    # 毎日日本時間の朝5時（UTC 20:00）に自動的に実行されます
+    - cron: '0 20 * * *'
+  workflow_dispatch: # GitHubの画面から手動で実行できるボタンを有効化
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # GitHub Actionsにリポジトリへの書き込み権限を与えます
+
+    steps:
+      # 1. あなたのリポジトリのプログラムを読み込む
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. 実行環境に Python をセットアップ
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # 3. 先ほど作成した変換プログラムを実行
+      - name: Run Conversion Script
+        run: python scripts/convert.py
+
+      # 4. 変換されたフィルタファイルに変化があれば、自動的に保存（Push）する
+      - name: Commit and Push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # 💡 スペースやカッコが含まれるため、ファイルパス全体を "" で囲んで安全に指定します
+          git add "dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt"
+          
+          # 変更がある場合のみコミットと送信を行います（エラー防止）
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update AdGuard filter" && git push)
