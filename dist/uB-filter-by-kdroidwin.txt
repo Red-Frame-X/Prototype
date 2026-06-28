@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin
-! Description: Kdroidwin氏のuBlock Origin用フィルタリストをAdGuard向けに最適化した非公式ミラーです
-! Version: 202606282259
+! Description: Unofficial AdGuard optimized port of Kdroidwin's uBlock Origin filter list
+! Version: 202606282302
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main
 ! License: GPL-3.0
