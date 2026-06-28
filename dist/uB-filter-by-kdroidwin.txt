@@ -3,7 +3,6 @@
 ! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin
 ! License: GPL-3.0
 ! Converted automatically via GitHub Actions
-! ------------------------------------------------------------
 
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
