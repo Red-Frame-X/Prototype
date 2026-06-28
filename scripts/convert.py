@@ -4,7 +4,6 @@ import re
 import os
 import sys
 
-# 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
 CANDIDATE_URLS = [
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt",
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
@@ -14,26 +13,42 @@ OUTPUT_FILE = "dist/uB-filter-by-kdroidwin.txt"
 
 def fetch_source_data():
     req_headers = {'User-Agent': 'Mozilla/5.0'}
-    
     for url in CANDIDATE_URLS:
         print(f"接続試行中: {url}")
         try:
             req = urllib.request.Request(url, headers=req_headers)
             with urllib.request.urlopen(req) as res:
-                print("✔ データのダウンロードに成功しました！")
+                print("✔ 元データのダウンロードに成功しました")
                 return res.read().decode('utf-8').splitlines()
         except HTTPError as e:
-            print(f"  × スキップ ({e.code}): 見つかりませんでした")
+            print(f"  × スキップ ({e.code})")
         except Exception as e:
             print(f"  × 通信エラー: {e}")
 
-    print("\n[致命的エラー] 元データが取得できませんでした。URLを確認してください。")
+    print("\n[致命的エラー] 元データを取得できませんでした。")
     sys.exit(1)
+
+def format_scriptlet_args(args_raw_str):
+    """
+    uBOの引数文字列を解析し、AdGuard仕様のシングルクォートラップに正規化する査読対応パーサー
+    """
+    raw_args = [arg.strip() for arg in args_raw_str.split(',')]
+    formatted_args = []
+    
+    for arg in raw_args:
+        if not arg:
+            continue
+        # 既存のクォート('や")を一旦除去してクリーン化
+        clean_arg = re.sub(r'^[\'"]|[\'"]$', '', arg)
+        # AdGuard推奨のシングルクォートで包み直す（内部のクォートはエスケープ保護）
+        escaped_arg = clean_arg.replace("'", "\\'")
+        formatted_args.append(f"'{escaped_arg}'")
+        
+    return ", ".join(formatted_args)
 
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
-    # 💡 ご希望のホームページURLを標準メタデータとして追加
     converted = [
         "! Title: uB-filter-by-kdroidwin",
         "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
@@ -43,15 +58,24 @@ def convert_ubo_to_adguard():
         "! ------------------------------------------------------------\n"
     ]
 
-    print("uBlock Origin 構文から AdGuard 構文への変換処理を開始します...")
+    print("構文変換処理を開始します...")
     for line in lines:
         line = line.strip()
         if not line or line.startswith('!'):
             continue
             
-        if '+js(' in line:
-            line = re.sub(r'\+js\((.*?)\)', r'#%#//scriptlet(\1)', line)
+        # 1. 例外（ホワイトリスト）スクリプトレットの構文変換
+        if '#@#+js(' in line:
+            prefix, args_part = line.split('#@#+js(', 1)
+            args_raw = args_part.rstrip(')')
+            line = f"{prefix}#@%#//scriptlet({format_scriptlet_args(args_raw)})"
             
+        # 2. 通常（ブロック）スクリプトレットの構文変換
+        elif '##+js(' in line:
+            prefix, args_part = line.split('##+js(', 1)
+            args_raw = args_part.rstrip(')')
+            line = f"{prefix}#%#//scriptlet({format_scriptlet_args(args_raw)})"
+
         converted.append(line)
 
     output_dir = os.path.dirname(OUTPUT_FILE)
@@ -61,7 +85,7 @@ def convert_ubo_to_adguard():
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('\n'.join(converted) + '\n')
     
-    print(f"✔ 変換完了: {OUTPUT_FILE} を生成しました。")
+    print(f"✔ 変換完了: {OUTPUT_FILE}")
 
 if __name__ == '__main__':
     convert_ubo_to_adguard()
