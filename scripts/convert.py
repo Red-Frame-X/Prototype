@@ -1,77 +1,33 @@
 import urllib.request
 from urllib.error import HTTPError
-import json
 import re
 import os
 import sys
 from datetime import datetime, timezone, timedelta
 
-OUTPUT_FILE = "dist/uB-filter-by-kdroidwin.txt"
-
-# 探索対象の上流リポジトリ情報
-REPO_OWNER = "Kdroidwin"
-REPO_NAME = "uB-filter-by-kdroidwin"
-
-# API探索が万が一ブロックされた場合に備えた「総当たりフォールバック候補」
-FALLBACK_URLS = [
-    f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/master/uBlockOrigin.txt",
-    f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/master/ublockorigin.txt",
-    f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main/uBlockOrigin.txt",
-    f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main/ublockorigin.txt",
+# 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
+CANDIDATE_URLS = [
+    "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt",
+    "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
 ]
 
+OUTPUT_FILE = "dist/uB-filter-by-kdroidwin.txt"
+
 def fetch_source_data():
-    req_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-
-    # 【フェーズ1】GitHub REST APIによる実在ファイルの動的自動探索
-    api_url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents"
-    print(f"[フェーズ1] GitHub APIにて上流リポジトリの構成を自動探索中...\n接続先: {api_url}")
-    
-    try:
-        req = urllib.request.Request(api_url, headers=req_headers)
-        with urllib.request.urlopen(req) as res:
-            contents = json.loads(res.read().decode('utf-8'))
-            
-            # ライセンス等を除外した本物のフィルタ(.txt)を探し出す
-            ignore_list = ["license.txt", "readme.txt"]
-            for item in contents:
-                name_lower = item.get("name", "").lower()
-                if item.get("type") == "file" and name_lower.endswith(".txt") and name_lower not in ignore_list:
-                    target_url = item.get("download_url")
-                    print(f"✔ 実在するターゲットファイルを発見しました: {item['name']}")
-                    print(f"  ダウンロードを実行します: {target_url}")
-                    
-                    dl_req = urllib.request.Request(target_url, headers=req_headers)
-                    with urllib.request.urlopen(dl_req) as dl_res:
-                        return dl_res.read().decode('utf-8').splitlines()
-                        
-            print("  × ルートディレクトリにフィルタ(.txt)が見つかりません。フォールバックへ移行します。")
-
-    except HTTPError as e:
-        if e.code == 404:
-            print(f"\n=======================================================")
-            print(f"[根本原因が確定しました]")
-            print(f"GitHub上にリポジトリ 'https://github.com/{REPO_OWNER}/{REPO_NAME}' が存在しません。")
-            print(f"（※提供者によるリポジトリ名の変更、または削除・非公開化が原因です）")
-            print(f"=======================================================")
-            sys.exit(1)
-        print(f"  × API通信スキップ ({e.code})。フォールバックへ移行します。")
-    except Exception as e:
-        print(f"  × API探索エラー: {e}。フォールバックへ移行します。")
-
-    # 【フェーズ2】静的候補による総当たり試行（マスターブランチ等）
-    print("\n[フェーズ2] 静的URL候補の総当たりを試行します...")
-    for url in FALLBACK_URLS:
+    req_headers = {'User-Agent': 'Mozilla/5.0'}
+    for url in CANDIDATE_URLS:
         print(f"接続試行中: {url}")
         try:
             req = urllib.request.Request(url, headers=req_headers)
             with urllib.request.urlopen(req) as res:
-                print("✔ 静的フォールバックURLでの取得に成功しました！")
+                print("✔ 元データのダウンロードに成功しました")
                 return res.read().decode('utf-8').splitlines()
-        except HTTPError:
-            pass
+        except HTTPError as e:
+            print(f"  × スキップ ({e.code})")
+        except Exception as e:
+            print(f"  × 通信エラー: {e}")
 
-    print("\n[致命的エラー] 上流リポジトリから有効なテキストデータを一切取得できませんでした。")
+    print("\n[致命的エラー] 元データが取得できませんでした。")
     sys.exit(1)
 
 def format_scriptlet_args(args_raw_str):
@@ -90,28 +46,23 @@ def format_scriptlet_args(args_raw_str):
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
+    # 日本時間(JST)での現在時刻を「YYYYMMDDHHmm」形式で取得
     jst = timezone(timedelta(hours=+9), 'JST')
-    now = datetime.now(jst)
-    
-    current_version = now.strftime('%Y%m%d%H%M')
-    time_updated = now.strftime('%Y-%m-%dT%H:%M:%S+09:00')
+    current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
+    # 💡 Descriptionをご指定の英文に差し替えました
     converted = [
         "! Title: uB-filter-by-kdroidwin",
         "! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.",
         f"! Version: {current_version}",
-        f"! TimeUpdated: {time_updated}",
-        "! Expires: 1 day",
-        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
+        "! Expires: 12 hours",
+        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
         "! License: GPL-3.0",
-        "!",
-        "! --- Upstream & Build Attribution ---",
-        f"! Upstream repository: https://github.com/{REPO_OWNER}/{REPO_NAME}",
-        "! Converted automatically via GitHub Actions",
-        ""
+        "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
+        "! Converted automatically via GitHub Actions\n"
     ]
 
-    print("\n構文変換処理を開始します...")
+    print("構文変換処理を開始します...")
     for line in lines:
         line = line.strip()
         if not line or line.startswith('!'):
@@ -138,4 +89,5 @@ def convert_ubo_to_adguard():
     
     print(f"✔ 変換完了: {OUTPUT_FILE} (Version: {current_version})")
 
-if
+if __name__ == '__main__':
+    convert_ubo_to_adguard()
