@@ -1,5 +1,4 @@
 ! Title: uB-filter-by-kdroidwin
-! Description: Unofficial AdGuard optimized version (Auto-converted)
 ! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin
 ! License: GPL-3.0
 ! Converted automatically via GitHub Actions
