@@ -6,9 +6,10 @@ import sys
 from datetime import datetime, timezone, timedelta
 
 # 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
+# （※前回の404エラーを回避するため、実在確認済みのURLを最優先に指定）
 CANDIDATE_URLS = [
-    "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt",
-    "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
+    "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uB-filter-by-kdroidwin.txt",
+    "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt"
 ]
 
 OUTPUT_FILE = "dist/uB-filter-by-kdroidwin.txt"
@@ -46,20 +47,27 @@ def format_scriptlet_args(args_raw_str):
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
-    # 日本時間(JST)での現在時刻を「YYYYMMDDHHmm」形式で取得
+    # 日本時間(JST)での現在時刻を取得
     jst = timezone(timedelta(hours=+9), 'JST')
-    current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
+    now = datetime.now(jst)
+    
+    current_version = now.strftime('%Y%m%d%H%M')
+    time_updated = now.strftime('%Y-%m-%dT%H:%M:%S+09:00')
 
-    # 💡 Descriptionをご指定の英文に差し替えました
+    # ご指定の仕様に完全準拠したメタデータヘッダー生成
     converted = [
         "! Title: uB-filter-by-kdroidwin",
         "! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.",
         f"! Version: {current_version}",
-        "! Expires: 12 hours",
-        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
+        f"! TimeUpdated: {time_updated}",
+        "! Expires: 1 day",
+        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
         "! License: GPL-3.0",
-        "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
-        "! Converted automatically via GitHub Actions\n"
+        "!",
+        "! --- Upstream & Build Attribution ---",
+        "! Upstream repository: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
+        "! Converted automatically via GitHub Actions",
+        "" # ヘッダーとルール本体の間に空行を1つ挟むためのセパレータ
     ]
 
     print("構文変換処理を開始します...")
