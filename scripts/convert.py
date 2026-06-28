@@ -23,9 +23,9 @@ def fetch_source_data():
                 print("✔ 元データのダウンロードに成功しました")
                 return res.read().decode('utf-8').splitlines()
         except HTTPError as e:
-            print(f"  × スキップ ({e.code})")
+            print(f"   × スキップ ({e.code})")
         except Exception as e:
-            print(f"  × 通信エラー: {e}")
+            print(f"   × 通信エラー: {e}")
 
     print("\n[致命的エラー] 元データが取得できませんでした。")
     sys.exit(1)
@@ -50,12 +50,11 @@ def convert_ubo_to_adguard():
     jst = timezone(timedelta(hours=+9), 'JST')
     current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
-    # 💡 Descriptionをご指定の英文に差し替えました
+    # 💡 Descriptionをご指定の英文に差し替え、Expires（更新間隔）行を削除しました
     converted = [
         "! Title: uB-filter-by-kdroidwin",
         "! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.",
         f"! Version: {current_version}",
-        "! Expires: 12 hours",
         "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown/tree/main",
         "! License: GPL-3.0",
         "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
