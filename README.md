@@ -29,7 +29,7 @@ As part of our "IT training," we are documenting device settings, creating vario
 
 #### Activities & Environments
 * Report Filter Issues / Send feedback to Google / 開発者・サイト運営者様への報告
-* 動作環境：ChromeOS / Android / Google Chrome and other browsers
+* 動作環境：ChromeOS / Android / Google Chrome
 * 情報収集：国内外の技術コミュニティやソフトウェア関連フォーラム
 
 ---
