@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin
 ! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.
-! Version: 202606301658
+! Version: 202606301741
 ! Expires: 4 days
 ! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown
 ! License: GPL-3.0
@@ -3793,6 +3793,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gonlunuskm.online^$document
 ||gonmana.com^$document
 ||gonnbe.com^$document
+||goo.su^$document
 ||good-apps.jp^$document
 ||good-nantan.online^$document
 ||good-topic-map.com^$document
@@ -6266,6 +6267,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mirai-guide.com^$document
 ||mirai-tohoku.jp^$document
 ||miraie.org^$document
+||mirailab-blog.com^$document
 ||mirandadeutsch.com^$document
 ||mirandazrealtor.com^$document
 ||mirimari.net^$document
@@ -6954,6 +6956,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/afy2525^$document
 ||note.com/agile_pika4626^$document
 ||note.com/ai_business_navi^$document
+||note.com/ai_urawaza_lab^$document
 ||note.com/ai_zap^$document
 ||note.com/aichanworld^$document
 ||note.com/aitaku2510^$document
@@ -7080,6 +7083,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/hokanobeat^$document
 ||note.com/holy_beetle811^$document
 ||note.com/holy_pony5936^$document
+||note.com/honest_mink6721^$document
 ||note.com/honest_zinnia946^$document
 ||note.com/hongzilaoban2^$document
 ||note.com/honokamaison^$document
@@ -9655,6 +9659,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||takahashi-tokyo.com^$document
 ||takakonokazariya.com^$document
 ||takamaru1219.net^$document
+||takamitu.co.jp^$document
 ||takanome.blog^$document
 ||takara3.com^$document
 ||takarazuka-life.com^$document
@@ -10167,6 +10172,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||trendyossy.com^$document
 ||trendytalking.com^$document
 ||tri-tres.com^$document
+||tri.su^$document
 ||triarqest.com^$document
 ||tribol.pt^$document
 ||tricarelawncare.org^$document
@@ -10606,6 +10612,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||waido.fi^$document
 ||waiparavalleynz.com^$document
 ||waiwaiblog.com^$document
+||waka77renai.com^$document
 ||wakab.jp^$document
 ||wakamesan-blog.com^$document
 ||wakara.co.jp^$document
