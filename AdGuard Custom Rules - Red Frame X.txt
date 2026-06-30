@@ -205,7 +205,7 @@ x.com##a[href="/i/premium"][role="link"]
 x.com##a[href="/i/premium_sign_up"]
 ! x.com##a[href="/i/spaces/start"][role="link"]
 x.com##a[href^="/i/verified-orgs-signup"]
-x.com##a[href$="/lists"][role="link"]
+! x.com##a[href$="/lists"][role="link"]
 ! ナビゲーション：タブ・ヘッダー
 x.com##div[role="presentation"]:has(> a[href$="/articles"])
 x.com##div[role="presentation"]:has(> a[href$="/highlights"])
