@@ -203,7 +203,7 @@ x.com##a[href^="/i/jf/creators/studio"]
 x.com##a[href="/i/monetization"][role="link"]
 x.com##a[href="/i/premium"][role="link"]
 x.com##a[href="/i/premium_sign_up"]
-x.com##a[href="/i/spaces/start"][role="link"]
+! x.com##a[href="/i/spaces/start"][role="link"]
 x.com##a[href^="/i/verified-orgs-signup"]
 x.com##a[href$="/lists"][role="link"]
 ! ナビゲーション：タブ・ヘッダー
