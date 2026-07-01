@@ -30,9 +30,9 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
-      # 実行パスの指定 (リポジトリ直下に配置)
+      # 【修正箇所】実行パスを 'scripts/convert.py' に指定 (Exit Code 2 対策)
       - name: Run Conversion Script
-        run: python convert.py
+        run: python scripts/convert.py
 
       - name: Commit and Push if changed
         run: |
