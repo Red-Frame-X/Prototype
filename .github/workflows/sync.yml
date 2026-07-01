@@ -30,7 +30,7 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
-      # 【修正箇所】実行パスを 'scripts/convert.py' に指定 (Exit Code 2 対策)
+      # 実行パスを 'scripts/convert.py' に指定
       - name: Run Conversion Script
         run: python scripts/convert.py
 
@@ -39,7 +39,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # 正しい出力ファイル名を指定
+          # 【追加処理】不要になった古いファイルがGitリポジトリ内に存在する場合は削除する
+          if [ -f "dist/uB-filter-by-kdroidwin.txt" ]; then
+            git rm "dist/uB-filter-by-kdroidwin.txt" || true
+          fi
+          
+          # 正しい出力ファイル名のみを指定してステージング
           git add "dist/uB-filter-by-kdroidwin_AdG_Optimized.txt"
           
           # 差分がなければ終了、あればコミットしてプッシュ
