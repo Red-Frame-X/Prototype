@@ -513,7 +513,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 ---
 
 ## Web サービス
-**コンテンツブロック・セキュリティ・環境確認**
+**コンテンツブロック・セキュリティ・検索・環境確認**
 * [AdBlock Tester](https://adblock-tester.com/)
 * [AdGuard > サポートセンター](https://adguard.com/ja/support.html)
 * [AdGuard Status](https://status.adguard.com/)
