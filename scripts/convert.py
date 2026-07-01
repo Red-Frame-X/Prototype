@@ -2,6 +2,7 @@ import urllib.request
 from urllib.error import HTTPError, URLError
 import os
 import sys
+import ssl
 from datetime import datetime, timezone, timedelta
 
 # 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
@@ -17,19 +18,25 @@ def fetch_source_data():
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     }
     
+    # Pydroid 3 (Android) や macOS 等における SSL証明書検証エラーを回避するためのコンテキスト
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    
     for url in CANDIDATE_URLS:
         print(f"接続試行中: {url}")
         try:
             # タイムアウトを設定してハングアップを防止
             req = urllib.request.Request(url, headers=req_headers)
-            with urllib.request.urlopen(req, timeout=15) as res:
+            # context=ctx を指定して HTTPS通信を確立
+            with urllib.request.urlopen(req, timeout=15, context=ctx) as res:
                 print("✔ 元データのダウンロードに成功しました")
                 # BOM付きUTF-8にも対応できるよう utf-8-sig を使用
                 return res.read().decode('utf-8-sig').splitlines()
         except HTTPError as e:
             print(f"   × スキップ (HTTPエラー: {e.code} {e.reason})")
         except URLError as e:
-            print(f"   × スキップ (通信エラー: {e.reason})")
+            print(f"   × スキップ (通信/SSLエラー: {e.reason})")
         except Exception as e:
             print(f"   × スキップ (予期せぬエラー: {e})")
 
@@ -49,5 +56,4 @@ def build_adguard_filter():
         "! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.",
         f"! Version: {current_version}",
         "! Expires: 4 days",
-        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
-        "! License: GPL-
+        "! Homepage:
