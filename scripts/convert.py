@@ -121,7 +121,7 @@ class AdGuardOptimizer:
         current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
         converted = [
-            "! Title: uB-filter-by-kdroidwin",
+            "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
             "! Description: uBO filter highly optimized and linted for AdGuard CoreLibs.",
             f"! Version: {current_version}",
             "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
