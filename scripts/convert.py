@@ -2,6 +2,7 @@ import urllib.request
 from urllib.error import HTTPError
 import os
 import sys
+import re
 from datetime import datetime, timezone, timedelta
 
 # 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
@@ -10,65 +11,149 @@ CANDIDATE_URLS = [
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
 ]
 
-OUTPUT_FILE = "dist/uB-filter-by-kdroidwin.txt"
+OUTPUT_FILE = "dist/uB-filter-by-kdroidwin_AdG_Optimized.txt"
 
-def fetch_source_data():
-    req_headers = {'User-Agent': 'Mozilla/5.0'}
-    for url in CANDIDATE_URLS:
-        print(f"接続試行中: {url}")
-        try:
-            req = urllib.request.Request(url, headers=req_headers)
-            with urllib.request.urlopen(req) as res:
-                print("✔ 元データのダウンロードに成功しました")
-                return res.read().decode('utf-8').splitlines()
-        except HTTPError as e:
-            print(f"   × スキップ ({e.code})")
-        except Exception as e:
-            print(f"   × 通信エラー: {e}")
-
-    print("\n[致命的エラー] 元データが取得できませんでした。")
-    sys.exit(1)
-
-def convert_ubo_to_adguard():
-    lines = fetch_source_data()
-
-    # 日本時間(JST)での現在時刻を「YYYYMMDDHHmm」形式で取得
-    jst = timezone(timedelta(hours=+9), 'JST')
-    current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
-
-    # ヘッダーの生成
-    converted = [
-        "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
-        "! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.",
-        f"! Version: {current_version}",
-        "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
-        "! License: GPL-3.0",
-        "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
-        "! Converted automatically via GitHub Actions\n"
-    ]
-
-    print("フィルタの最適化処理を開始します...")
-    for line in lines:
-        line = line.strip()
+class AdGuardOptimizer:
+    def __init__(self):
+        # 1. 拡張CSS（Extended CSS）を必要とするuBOのプロシージャル・コスメティック修飾子
+        self.ext_css_keywords = [
+            ':has(', ':has-text(', ':contains(', ':matches-path(', ':matches-attr(', 
+            ':matches-property(', ':xpath(', ':min-text-length(', ':watch-attr(', 
+            ':matches-css(', ':matches-media(', ':upward(', ':remove()'
+        ]
         
-        # 空行や元のヘッダー（!から始まる行）はスキップ
+        # 2. AdGuardではサポート外、またはエラーの元となるuBO特有のスクリプトレット
+        # ※ここに挙げたものはAdGuard側で同等の動作をしないため、事前に無効化する
+        self.incompatible_scriptlets = [
+            'acis', 'spoof-css', 'trusted-replace-argument', 'trusted-set-cookie',
+            'alert-buster', 'trusted-click-element', 'webassembly-interference',
+            'm3u-prune', 'json-prune', 'json-prune-set'
+        ]
+        
+        # 3. 修飾子の置換マップ (uBO独自の修飾子をAdGuard互換の修飾子へ)
+        self.modifier_replacements = {
+            'queryprune': 'removeparam',
+            'redirect-rule=': 'redirect=',
+            'to=': 'domain=',  # uBOの `to=` はリダイレクト先制限だが、近似の `domain=` にフォールバック
+        }
+
+    def fetch_source(self):
+        req_headers = {'User-Agent': 'Mozilla/5.0'}
+        for url in CANDIDATE_URLS:
+            print(f"接続試行中: {url}")
+            try:
+                req = urllib.request.Request(url, headers=req_headers)
+                with urllib.request.urlopen(req) as res:
+                    print("✔ 元データのダウンロードに成功しました")
+                    return res.read().decode('utf-8').splitlines()
+            except HTTPError as e:
+                print(f"   × スキップ ({e.code})")
+            except Exception as e:
+                print(f"   × 通信エラー: {e}")
+
+        print("\n[致命的エラー] 元データが取得できませんでした。")
+        sys.exit(1)
+
+    def optimize_line(self, line):
+        original_line = line
+        line = line.strip()
+
+        # 空行や元のヘッダー（!から始まる行）は除外
         if not line or line.startswith('!'):
-            continue
+            return None  
+
+        # --- [Step A] 致命的な非互換ルールのパージ (Lint機能) ---
+        # uBOのHTMLフィルタ（##^）はAdGuardでは解釈できずパースエラーになるため無効化
+        if '##^' in line:
+            return f"! [Unsupported HTML Filter] {original_line}"
+
+        # スクリプトレットの互換性チェック
+        if '##+js(' in line or '#@#+js(' in line:
+            for bad_js in self.incompatible_scriptlets:
+                if f"+js({bad_js}" in line or f"+js({bad_js}," in line:
+                    return f"! [Incompatible Scriptlet] {original_line}"
+            # 互換性があるものはそのまま返す（AdGuard CoreLibsにパースを委ねる）
+            return line
+
+        # --- [Step B] コスメティックフィルタの拡張CSS（#?#）最適化 ---
+        if '##' in line or '#@#' in line:
+            separator = '##' if '##' in line else '#@#'
+            parts = line.split(separator, 1)
+            if len(parts) == 2:
+                domain_part, selector_part = parts
+                # uBOのプロシージャル演算子が含まれているか解析
+                if any(ext in selector_part for ext in self.ext_css_keywords):
+                    # AdGuardの拡張CSSセパレータ（#?# または #?@#）に明示的に置換
+                    new_separator = '#?#' if separator == '##' else '#?@#'
+                    return f"{domain_part}{new_separator}{selector_part}"
+            return line
+
+        # --- [Step C] ネットワークルールの修飾子最適化 ---
+        if '$' in line and not line.startswith('/') and not line.startswith('@@/'):
+            parts = line.rsplit('$', 1)
+            if len(parts) == 2:
+                rule, modifiers = parts
+                
+                # cname修飾子の除去（AdGuardではサポートされずエラーの一因になる）
+                mod_list = modifiers.split(',')
+                if 'cname' in mod_list:
+                    mod_list = [m for m in mod_list if m != 'cname']
+                    if not mod_list:
+                        return rule # 修飾子がなくなったらルール本体のみを返す
+                    modifiers = ','.join(mod_list)
+                
+                # 修飾子の置換処理（例: queryprune -> removeparam）
+                for ubo_mod, adg_mod in self.modifier_replacements.items():
+                    modifiers = re.sub(rf'\b{ubo_mod}', adg_mod, modifiers)
+
+                return f"{rule}${modifiers}"
+
+        return line
+
+    def run(self):
+        lines = self.fetch_source()
+        
+        jst = timezone(timedelta(hours=+9), 'JST')
+        current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
+
+        converted = [
+            "! Title: uB-filter-by-kdroidwin (AdGuard Optimized Ultimate)",
+            "! Description: uBO filter highly optimized and linted for AdGuard CoreLibs.",
+            f"! Version: {current_version}",
+            "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
+            "! License: GPL-3.0",
+            "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
+            "! Automatically converted & Linted by Advanced Python Compiler\n"
+        ]
+
+        print("フィルタの高度な最適化とLint（静的解析）処理を開始します...")
+        stats = {"converted": 0, "bypassed": 0, "commented": 0}
+
+        for line in lines:
+            optimized = self.optimize_line(line)
+            if optimized is None:
+                continue
             
-        # AdGuard CoreLibsはuBOの `##+js()` および `#@#+js()` 構文をネイティブサポートしているため、
-        # 破壊リスクのあるレガシー構文への置換処理を撤廃し、そのまま追加します。
-        converted.append(line)
+            converted.append(optimized)
+            
+            if optimized != line and not optimized.startswith('! ['):
+                stats["converted"] += 1
+            elif optimized.startswith('! ['):
+                stats["commented"] += 1
+            else:
+                stats["bypassed"] += 1
 
-    # 出力先ディレクトリの作成
-    output_dir = os.path.dirname(OUTPUT_FILE)
-    if output_dir and not os.path.exists(output_dir):
-        os.makedirs(output_dir, exist_ok=True)
+        output_dir = os.path.dirname(OUTPUT_FILE)
+        if output_dir and not os.path.exists(output_dir):
+            os.makedirs(output_dir, exist_ok=True)
 
-    # 書き込み
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(converted) + '\n')
-    
-    print(f"✔ 変換完了: {OUTPUT_FILE} (Version: {current_version})")
+        with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(converted) + '\n')
+        
+        print(f"✔ 変換完了: {OUTPUT_FILE} (Version: {current_version})")
+        print(f"  [統計] 最適化適用: {stats['converted']}件 | 無効化(パージ): {stats['commented']}件 | パス(そのまま): {stats['bypassed']}件")
+
 
 if __name__ == '__main__':
-    convert_ubo_to_adguard()
+    opt = AdGuardOptimizer()
+    opt.run()
