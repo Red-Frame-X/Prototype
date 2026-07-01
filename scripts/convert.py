@@ -23,7 +23,6 @@ class AdGuardOptimizer:
         ]
         
         # 2. AdGuardではサポート外、またはエラーの元となるuBO特有のスクリプトレット
-        # ※ここに挙げたものはAdGuard側で同等の動作をしないため、事前に無効化する
         self.incompatible_scriptlets = [
             'acis', 'spoof-css', 'trusted-replace-argument', 'trusted-set-cookie',
             'alert-buster', 'trusted-click-element', 'webassembly-interference',
@@ -34,7 +33,7 @@ class AdGuardOptimizer:
         self.modifier_replacements = {
             'queryprune': 'removeparam',
             'redirect-rule=': 'redirect=',
-            'to=': 'domain=',  # uBOの `to=` はリダイレクト先制限だが、近似の `domain=` にフォールバック
+            # 注: 'to=' は 'domain=' とスコープが逆転するためここでは置換せず、後段で安全にパージする
         }
 
     def fetch_source(self):
@@ -72,7 +71,7 @@ class AdGuardOptimizer:
             for bad_js in self.incompatible_scriptlets:
                 if f"+js({bad_js}" in line or f"+js({bad_js}," in line:
                     return f"! [Incompatible Scriptlet] {original_line}"
-            # 互換性があるものはそのまま返す（AdGuard CoreLibsにパースを委ねる）
+            # 互換性があるものはそのまま返す
             return line
 
         # --- [Step B] コスメティックフィルタの拡張CSS（#?#）最適化 ---
@@ -93,20 +92,25 @@ class AdGuardOptimizer:
             parts = line.rsplit('$', 1)
             if len(parts) == 2:
                 rule, modifiers = parts
-                
-                # cname修飾子の除去（AdGuardではサポートされずエラーの一因になる）
                 mod_list = modifiers.split(',')
+                
+                # cname修飾子の除去
                 if 'cname' in mod_list:
                     mod_list = [m for m in mod_list if m != 'cname']
-                    if not mod_list:
-                        return rule # 修飾子がなくなったらルール本体のみを返す
-                    modifiers = ','.join(mod_list)
+
+                # to=修飾子の検知 (リクエスト先とリクエスト元の意味論的相違による誤爆を防止)
+                if any(m.startswith('to=') for m in mod_list):
+                    return f"! [Unsupported Modifier: to=] {original_line}"
+
+                if not mod_list:
+                    return rule 
                 
                 # 修飾子の置換処理（例: queryprune -> removeparam）
+                modifiers_str = ','.join(mod_list)
                 for ubo_mod, adg_mod in self.modifier_replacements.items():
-                    modifiers = re.sub(rf'\b{ubo_mod}', adg_mod, modifiers)
+                    modifiers_str = re.sub(rf'\b{ubo_mod}', adg_mod, modifiers_str)
 
-                return f"{rule}${modifiers}"
+                return f"{rule}${modifiers_str}"
 
         return line
 
