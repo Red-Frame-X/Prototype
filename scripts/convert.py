@@ -4,6 +4,8 @@ import re
 import os
 import sys
 from datetime import datetime, timezone, timedelta
+import csv
+from io import StringIO
 
 # 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
 CANDIDATE_URLS = [
@@ -31,17 +33,30 @@ def fetch_source_data():
     sys.exit(1)
 
 def format_scriptlet_args(args_raw_str):
-    raw_args = [arg.strip() for arg in args_raw_str.split(',')]
-    formatted_args = []
+    """
+    スクリプトレットの引数をカンマで分割し、AdGuard用にフォーマットする。
+    文字列引数内のカンマで誤分割されないよう csv.reader を使用。
+    """
+    f = StringIO(args_raw_str)
+    # skipinitialspaceで引数間の不要な空白を無視し、シングルクォートを引用符として扱う
+    reader = csv.reader(f, skipinitialspace=True, quotechar="'")
     
-    for arg in raw_args:
-        if not arg:
-            continue
-        clean_arg = re.sub(r'^[\'"]|[\'"]$', '', arg)
-        escaped_arg = clean_arg.replace("'", "\\'")
-        formatted_args.append(f"'{escaped_arg}'")
-        
-    return ", ".join(formatted_args)
+    formatted_args = []
+    try:
+        raw_args = next(reader)
+        for arg in raw_args:
+            if not arg:
+                continue
+            # 前後の余白と不要なダブルクォーテーションを除去
+            clean_arg = arg.strip().strip('"')
+            # AdGuardの仕様に合わせ、内部のシングルクォートをエスケープ
+            escaped_arg = clean_arg.replace("'", "\\'")
+            # すべての引数をシングルクォートでラップする
+            formatted_args.append(f"'{escaped_arg}'")
+            
+        return ", ".join(formatted_args)
+    except StopIteration:
+        return ""
 
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
@@ -50,7 +65,7 @@ def convert_ubo_to_adguard():
     jst = timezone(timedelta(hours=+9), 'JST')
     current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
-    # 💡 AdGuard公式基準の並び順に沿ってメタデータを配置し、! Expiresを追加しました
+    # AdGuard公式基準の並び順に沿ってメタデータを配置
     converted = [
         "! Title: uB-filter-by-kdroidwin",
         "! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.",
