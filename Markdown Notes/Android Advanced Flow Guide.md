@@ -65,6 +65,7 @@
 リスクを評価した上で最終的な許可を与え、実際のインストールを行います。
 1. 未確認デベロッパーからのアプリインストール権限を「7日間のみ有効にする」か「無期限で有効にする」かを選択します。
 2. 以降、未確認のアプリ（APKなど）を開いた際、提供元不明である旨の警告が表示されますが、**「とにかくインストール（Install Anyway）」** をタップすることで、正常にサイドロードが完了します。
+3. 一度「無期限」設定を完了させれば、その後はGoogle Play以外から提供される任意のアプリファイル（APKファイル）をインストールするたびに、高度な認証プロセスを要求されることはありません。
 
 ---
 
@@ -72,4 +73,3 @@
 * [Android developer verification: Balancing openness and choice with safety](https://android-developers.googleblog.com/2026/03/android-developer-verification.html) （Google Developers Blog）
 * [Android developer verification: Building a safer ecosystem together](https://android-developers.googleblog.com/2026/06/android-developer-verification.html) （Google Developers Blog）
 * [Androidの開発者認証が間もなく実施予定、Googleがタイムラインと対応アプリストアを公表](https://gigazine.net/news/20260619-android-developer-verification-timeline/) （GIGAZINE）
-* [Android Developer Verificationが与えるストア外配信への影響](https://zenn.dev/nttdata_tech/articles/ff3ee3201d5042) （Zenn）
