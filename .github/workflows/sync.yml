@@ -2,14 +2,15 @@ name: Sync and Convert uB-filter-by-kdroidwin
 
 on:
   schedule:
-    - cron: '0 3,9,15,21 * * *' # 日本時間の12時(3)、18時(9)、0時(15)、6時(21)に自動実行
-  workflow_dispatch: # 手動実行ボタンを有効化
+    # 💡 負荷集中による遅延を防ぐため、0分を避けて15分に設定（日本時間の12:15, 18:15, 0:15, 6:15）
+    - cron: '15 3,9,15,21 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # リポジトリへの書き込み権限を付与
+      contents: write
 
     steps:
       - name: Checkout Repository
@@ -20,6 +21,16 @@ jobs:
         with:
           python-version: '3.x'
 
+      # 💡 スクリプトが外部ライブラリを必要とする場合のステップ（不要なら削除）
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # pip install requests など必要なライブラリを指定
+
+      # 💡 distディレクトリが存在しない場合のエラーを防ぐ
+      - name: Create dist directory
+        run: mkdir -p dist
+
       - name: Run Conversion Script
         run: python scripts/convert.py
 
@@ -28,7 +39,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # 💡 保存する対象ファイルを新しい名前に書き換え
           git add "dist/uB-filter-by-kdroidwin.txt"
           
+          # 差分がなければ終了、あればコミットしてプッシュ
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update uB-filter-by-kdroidwin" && git push)
