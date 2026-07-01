@@ -1,6 +1,5 @@
 import urllib.request
 from urllib.error import HTTPError
-import re
 import os
 import sys
 from datetime import datetime, timezone, timedelta
@@ -30,19 +29,6 @@ def fetch_source_data():
     print("\n[致命的エラー] 元データが取得できませんでした。")
     sys.exit(1)
 
-def format_scriptlet_args(args_raw_str):
-    raw_args = [arg.strip() for arg in args_raw_str.split(',')]
-    formatted_args = []
-    
-    for arg in raw_args:
-        if not arg:
-            continue
-        clean_arg = re.sub(r'^[\'"]|[\'"]$', '', arg)
-        escaped_arg = clean_arg.replace("'", "\\'")
-        formatted_args.append(f"'{escaped_arg}'")
-        
-    return ", ".join(formatted_args)
-
 def convert_ubo_to_adguard():
     lines = fetch_source_data()
 
@@ -50,9 +36,9 @@ def convert_ubo_to_adguard():
     jst = timezone(timedelta(hours=+9), 'JST')
     current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
-    # 💡 HomepageのURLをご指定のもの（リポジトリのルート）に変更しました
+    # ヘッダーの生成
     converted = [
-        "! Title: uB-filter-by-kdroidwin",
+        "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
         "! Description: This is an unofficial version of uB-filter-by-kdroidwin, optimised for AdGuard.",
         f"! Version: {current_version}",
         "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
@@ -61,28 +47,24 @@ def convert_ubo_to_adguard():
         "! Converted automatically via GitHub Actions\n"
     ]
 
-    print("構文変換処理を開始します...")
+    print("フィルタの最適化処理を開始します...")
     for line in lines:
         line = line.strip()
+        
+        # 空行や元のヘッダー（!から始まる行）はスキップ
         if not line or line.startswith('!'):
             continue
             
-        if '#@#+js(' in line:
-            prefix, args_part = line.split('#@#+js(', 1)
-            args_raw = args_part.rstrip(')')
-            line = f"{prefix}#@%#//scriptlet({format_scriptlet_args(args_raw)})"
-            
-        elif '##+js(' in line:
-            prefix, args_part = line.split('##+js(', 1)
-            args_raw = args_part.rstrip(')')
-            line = f"{prefix}#%#//scriptlet({format_scriptlet_args(args_raw)})"
-
+        # AdGuard CoreLibsはuBOの `##+js()` および `#@#+js()` 構文をネイティブサポートしているため、
+        # 破壊リスクのあるレガシー構文への置換処理を撤廃し、そのまま追加します。
         converted.append(line)
 
+    # 出力先ディレクトリの作成
     output_dir = os.path.dirname(OUTPUT_FILE)
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir, exist_ok=True)
 
+    # 書き込み
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('\n'.join(converted) + '\n')
     
