@@ -122,12 +122,12 @@ class AdGuardOptimizer:
 
         converted = [
             "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
-            "! Description: uBO filter highly optimized and linted for AdGuard CoreLibs.",
+            "! Description:  A filter that blocks scam sites, fake sites and malicious affiliate sites.",
             f"! Version: {current_version}",
             "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
             "! License: GPL-3.0",
             "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
-            "! Automatically converted & Linted by Advanced Python Compiler\n"
+            "! The rules were automatically converted by a custom Python script (convert.py) and then strictly linted by AGLint.\n"
         ]
 
         print("フィルタの高度な最適化とLint（静的解析）処理を開始します...")
