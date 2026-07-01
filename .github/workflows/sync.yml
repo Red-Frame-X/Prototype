@@ -6,6 +6,11 @@ on:
     - cron: '15 3,9,15,21 * * *'
   workflow_dispatch:
 
+# 💡 多重実行時の競合（Git Pushエラーなど）を防ぐための設定
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,13 +26,13 @@ jobs:
         with:
           python-version: '3.x'
 
-      # 💡 スクリプトが外部ライブラリを必要とする場合のステップ（不要なら削除）
+      # 💡 スクリプトが外部ライブラリを必要とする場合のステップ（不要ならブロックごと削除して構いません）
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # pip install requests など必要なライブラリを指定
+          # pip install requests など必要なライブラリがあればここに追記
 
-      # 💡 distディレクトリが存在しない場合のエラーを防ぐ
+      # 💡 クローン直後にdistディレクトリが存在しない場合のエラーを防ぐ
       - name: Create dist directory
         run: mkdir -p dist
 
