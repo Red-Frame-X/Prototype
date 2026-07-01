@@ -521,7 +521,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 * [AI性チェッカー](https://ai-tool.userlocal.jp/x_llm_match)
 * [Eylenburg's Tech Website](https://eylenburg.github.io/)
 * [Google あなたに関する検索結果](https://myactivity.google.com/results-about-you)
-* [Google あなたに関する検索結果](https://myactivity.google.com/results-about-you)
+* [Google ニュース提供元の優先度](https://myactivity.google.com/results-about-you)
 * [Norton Safe Web](https://safeweb.norton.com/)
 * [Octane 2.0 plus](https://octane.webmarks.info/ja/)
 * [Statcounter](https://gs.statcounter.com/)
