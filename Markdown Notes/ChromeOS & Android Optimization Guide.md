@@ -514,55 +514,56 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 
 ## Web サービス統合リスト
 
-### 1. ネットワーク環境・パフォーマンス診断
-接続元の基本情報や、ブラウザ・回線の処理能力を計測するツールです。
+### AdGuard 関連サービス・サポート群
+AdGuardドメイン（adguard.com系）で提供されている監査・ステータス・公式サポートを統合しています。
+* [AdGuard 診断ページ](https://adguard.com/ja/test.html)
+* [Webサイトをチェック (AdGuard)](https://reports.adguard.com/ja/welcome.html)
+* [AdGuard Status](https://status.adguard.com/)
+* [AdGuard > サポートセンター](https://adguard.com/ja/support.html)
+
+### Google 関連サービス・管理群
+Googleドメイン（google.com系）の検索・プライバシー管理、ステータス、各種ヘルプ・トラッカーを統合しています。
+* [Google あなたに関する検索結果](https://myactivity.google.com/results-about-you)
+* [Google ニュース提供元の優先度](https://www.google.com/preferences/source?hl=ja)
+* [Google Workspace ステータス ダッシュボード](https://www.google.com/appsstatus/dashboard/#hl=ja&v=status)
+* [Google Issue Tracker](https://issuetracker.google.com/home)
+* [Google ヘルプ](https://support.google.com/?hl=ja)
+* [Google Pixel ヘルプ](https://support.google.com/pixelphone/?hl=ja#topic=)
+* [Chromebook ヘルプ](https://support.google.com/chromebook/?hl=ja#topic=)
+
+### AI分析・診断ツール
+ユーザーローカル（userlocal.jp系）で提供されているAI関連の分析・診断ツールです。
+* [AI性チェッカー](https://ai-tool.userlocal.jp/x_llm_match)
+* [𝕏ポスト性格診断](https://ai-tool.userlocal.jp/x_shindan)
+
+### 画像共有・データ削除管理
+Imgur（imgur.com）のアップロード・削除申請、およびオンラインデータの削除リクエストツールです。
+* [imgur Upload](https://imgur.com/upload)
+* [Imgur Removal Request](https://imgur.com/removalrequest)
+* [Redact](https://redact.dev/)
+
+### ネットワーク環境・コンテンツブロック検証
+接続環境の性能評価や、広告ブロッカー・セキュリティ保護機能の有効性を確認する専門ツールです。
 * [確認君+（Plus）](https://env.b4iine.net/)
 * [インターネット回線スピードテスト | USEN GATE 02](https://speedtest.gate02.ne.jp/)
 * [Octane 2.0 plus](https://octane.webmarks.info/ja/)
-
-### 2. コンテンツブロック・セキュリティ検証
-広告ブロッカーのフィルタリング強度や、特定ドメインの安全性を監査します。
 * [AdBlock Tester](https://adblock-tester.com/)
 * [Test Ad Block - Toolz](https://adblock.turtlecute.org/)
-* [AdGuard 診断ページ](https://adguard.com/ja/test.html)
-* [Webサイトをチェック (AdGuard)](https://reports.adguard.com/ja/welcome.html)
 * [Norton Safe Web](https://safeweb.norton.com/)
 
-### 3. サービス稼働状況・障害検知 (ステータス確認)
-各種インフラやWebサービス、サーバーのリアルタイムな死活・障害状況を確認します。
-* [AdGuard Status](https://status.adguard.com/)
+### サービス稼働状況・障害検知
+外部インフラやSNS、掲示板などのリアルタイムな死活・障害状況・トレンドを確認します。
 * [Downdetector](https://downdetector.jp/)
 * [サイトはダウンしている？](https://www.websiteplanet.com/ja/webtools/down-or-not/)
 * [Yahoo!リアルタイム検索](https://search.yahoo.co.jp/realtime/)
-* [Google Workspace ステータス ダッシュボード](https://www.google.com/appsstatus/dashboard/#hl=ja&v=status)
 * [GitHub Status](https://www.githubstatus.com/)
 * [5chサーバ稼働状況](https://www.kyodemo.net/sdemo/k/5_?hs=1)
 * [偽 SPARROW AIM-7P Ver.1.00](https://5ch.ape.jp/SPARROW/)
 
-### 4. 公式サポート・バグトラッキング
-プラットフォームやデバイスの公式ヘルプ、および問題解決の窓口です。
-* [AdGuard > サポートセンター](https://adguard.com/ja/support.html)
-* [Google ヘルプ](https://support.google.com/?hl=ja)
-* [Google Issue Tracker](https://issuetracker.google.com/home)
-* [Google Pixel ヘルプ](https://support.google.com/pixelphone/?hl=ja#topic=)
-* [Chromebook ヘルプ](https://support.google.com/chromebook/?hl=ja#topic=)
-* [docomo オンライン手続きサポート](https://tetsuduki-support.docomo.ne.jp/)
-
-### 5. プライバシー制御・データ管理
-検索結果のパーソナライズ制御や、Web上からのデータ削除リクエストを行います。
-* [Google あなたに関する検索結果](https://myactivity.google.com/results-about-you)
-* [Google ニュース提供元の優先度](https://www.google.com/preferences/source?hl=ja)
-* [Imgur Removal Request](https://imgur.com/removalrequest)
-* [Redact](https://redact.dev/)
-
-### 6. ファイル共有・オンラインストレージ
-大容量ファイルの転送や、画像などのメディアデータをホスティングします。
+### ファイル共有・メディア編集ユーティリティ
+ブラウザ上で大容量ファイルの転送や、画像・動画・圧縮ファイルの加工・変換を行います。
 * [GigaFile便](https://gigafile.nu/)
 * [Gofile](https://gofile.io/home)
-* [imgur Upload](https://imgur.com/upload)
-
-### 7. メディア編集・処理ユーティリティ
-ブラウザ上で画像・動画・圧縮ファイルの加工や変換を行います。
 * [123apps](https://123apps.com/ja/)
 * [iLoveIMG](https://www.iloveimg.com/ja)
 * [Fotoramio](https://fotoram.io/jp)
@@ -570,18 +571,17 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 * [AddYoutube.com](https://addyoutube.com/)
 * [YouTubeMP3もどき](https://receive.shamimomo.net/YouTubeMP3modoki/)
 
-### 8. テキスト作成・マークダウンエディタ
-プレーンテキストやMarkdownの記述に特化したオンラインエディタです。
+### テキスト作成・マークダウンエディタ
+プレーンテキストやMarkdownの記述、共有に特化したオンラインエディタです。
 * [Dillinger](https://dillinger.io/)
 * [Writebox](https://write-box.appspot.com/)
 * [Writening](https://writening.net/)
 
-### 9. 統計・AI・ジェネレーター・情報メディア
-アクセス統計の確認、LLMの分析、自動生成ツール、および技術情報サイトです。
+### 統計・サポート・情報メディア・その他
+アクセス統計、各種ジェネレーター、通信キャリアの手続き、および技術情報サイトです。
 * [Statcounter](https://gs.statcounter.com/)
 * [Xranks](https://xranks.com/ja/)
-* [AI性チェッカー](https://ai-tool.userlocal.jp/x_llm_match)
-* [𝕏ポスト性格診断](https://ai-tool.userlocal.jp/x_shindan)
+* [docomo オンライン手続きサポート](https://tetsuduki-support.docomo.ne.jp/)
 * [VRSNS風ロゴジェネレーター](https://logo-bzr.pages.dev/)
 * [mond](https://mond.how/)
 * [Eylenburg's Tech Website](https://eylenburg.github.io/)
