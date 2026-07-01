@@ -1,5 +1,5 @@
 # Aluminium OS（ALOS）/ Googlebook 調査レポート 改訂版
-2026年6月27日時点で判明しているAluminium OS（製品名：Googlebook）に関する情報
+2026年6月12日時点で判明しているAluminium OS（製品名：Googlebook）に関する情報
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
