@@ -56,4 +56,4 @@ This is a project that I use on a daily basis and support regularly.
 
 * **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援 ‐ Androidアプリのカスタマイズツール
 * **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - プライバシーを保護するDNSフィルタ
-* **[Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)**：[HaGeZi's  DNS Blocklists](https://github.com/hagezi/dns-blocklists) - より快適なインターネットのためのブロックリスト
+* **[Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)**：[HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists) - より快適なインターネットのためのブロックリスト
