@@ -1,10 +1,12 @@
 # Android 未確認デベロッパー向け「高度なフロー」詳細手順
 
+Androidの「高度なフロー（Advanced Flow）」は、日本を含む世界各国で2026年8月から開始される予定です。
+
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-UserScript-Regex-Markdown](https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown) |
 | **License** | CC0 (Public Domain) |
-| **Version** | 20260701 |
+| **Version** | 20260702 |
 
 この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [CC0について ― “いかなる権利も保有しない”](https://creativecommons.jp/sciencecommons/aboutcc0/)
