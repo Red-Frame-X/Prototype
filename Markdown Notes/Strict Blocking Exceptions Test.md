@@ -1,6 +1,6 @@
 # My docomoにおけるStrict blockingの挙動と各種例外化ルールの互換性検証レポート
  
-AdGuardのユーザールール `||mydocomo.$document` の動作について
+AdGuard製品において、ユーザールール `||mydocomo.jp^$document` を適用した時の動作について
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
