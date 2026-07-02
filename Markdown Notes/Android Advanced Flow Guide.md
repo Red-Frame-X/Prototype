@@ -19,7 +19,7 @@ Androidの「高度なフロー（Advanced Flow）」は、日本を含む世界
 ※ 記述内容は個人の検証および公開されたベストプラクティスに基づくものであり、正確性を保証するものではありません。
 
 ## 要約
-「高度なフロー（Advanced flow）」は、Androidにおける未確認デベロッパーのアプリのサイドロード（外部インストール）プロセスを再定義する新たなセキュリティメカニズムです。2026年3月に詳細が発表され、同年6月の公式発表により、2026年9月30日からブラジル、インドネシア、シンガポール、タイの4カ国および7つのストアを対象に初期導入されることが確認されています。ソーシャルエンジニアリングを通じた悪意のある不正アプリの強制インストールを防ぐため、開発者向けオプションの手動有効化、端末の再起動、24時間の待機期間、および生体認証を組み合わせた意図的なハードル（フリクション）が設けられています。
+「高度なフロー（Advanced flow）」は、Androidにおける未確認デベロッパーのアプリのサイドロード（外部インストール）プロセスを再定義する新たなセキュリティメカニズムです。2026年3月に詳細が発表され、同年6月の公式発表により、2026年9月までにブラジル、インドネシア、シンガポール、タイの4カ国を対象に初期導入され、2027年にかけて世界展開されることが確認されています。ソーシャルエンジニアリングを通じた悪意のある不正アプリの強制インストールを防ぐため、開発者向けオプションの手動有効化、第三者からのコーチングの否定、端末の再起動、24時間の待機期間、および生体認証を組み合わせた意図的なハードル（フリクション）が設けられています。
 
 ## メリットとデメリット
 デバイスオーナーの自己決定権とプライバシー保護を重視する技術的観点（ユーザー主権の原則）から、この仕様には以下のメリットとデメリットが存在します。
@@ -30,8 +30,8 @@ Androidの「高度なフロー（Advanced Flow）」は、日本を含む世界
     * **プライバシーを保護するローカル認証**：プロセスの最終段階での生体認証やPIN入力はデバイス内でローカルに完結しており、外部サーバーへの不要なテレメトリ送信を伴わない、プライバシーバイデザインに配慮された設計です。
 
 * **デメリット**：
+    * **小規模開発者やOSSコミュニティへの影響**：匿名性を維持したまま広範にアプリを配布することが実質的に困難になります。学生や個人の愛好家向けの限定配布アカウント（Limited distribution accounts）ではインストール対象デバイスが最大20台に制限されており、身元確認を避けたい草の根のオープンソースプロジェクトの配布ハードルが著しく上がります。
     * **即時性の喪失とUXの低下**：初回設定時には必ず24時間の待機時間が生じるため、「今すぐ検証用アプリを入れたい」といったオンデマンドな用途では一時的に足止めを食うことになります。
-    * **小規模開発者やOSSコミュニティへの影響**：学生や個人の愛好家向けの限定配布アカウント（Limited distribution accounts）において、未確認状態でのインストール対象デバイスが最大20台に制限される仕様が追加されており、草の根のオープンソースプロジェクトやインディーズ開発者の配布ハードルが上がっています。
     * **操作の煩雑化**：開発者向けオプションの解放や、コーチングを受けていないことの明示的な意図確認チェックなど、通常は行わない非直感的な操作が求められます。
 
 ## Google Pixelでの具体的な詳細手順
@@ -73,5 +73,6 @@ Androidの「高度なフロー（Advanced Flow）」は、日本を含む世界
 
 ## 参照URL
 * [Android developer verification: Balancing openness and choice with safety](https://android-developers.googleblog.com/2026/03/android-developer-verification.html) （Google Developers Blog）
-* [Android developer verification: Building a safer ecosystem together](https://android-developers.googleblog.com/2026/06/android-developer-verification.html) （Google Developers Blog）
+* [Android developer verification: Rolling out to all developers on Play Console and Android Developer Console](https://developer.android.com/blog/posts/android-developer-verification-rolling-out-to-all-developers-on-play-console-and-android-developer-console) （Google Developers Blog）
+* [GoogleがAndroidで安全なAPKサイドローディングを実現する「Advanced Flow」の詳細を発表](https://gigazine.net/news/20260323-google-android-advanced-flow/) （GIGAZINE）
 * [Androidの開発者認証が間もなく実施予定、Googleがタイムラインと対応アプリストアを公表](https://gigazine.net/news/20260619-android-developer-verification-timeline/) （GIGAZINE）
