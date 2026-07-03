@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Shelf Force Expand (See More)
 // @namespace    http://tampermonkey.net/
-// @license      CC0 (Public Domain)
+// @license      CC0-1.0
 // @version      1.0
 // @description  YouTubeのシェルフの「もっと見る」を強制的に展開しボタンを隠す
 // @author       Red Frame X
