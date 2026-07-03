@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         𝕏 (Twitter) Spaces & Live Broadcast Blocker (Aggressive)
 // @namespace    http://tampermonkey.net/
-// @license      CC0 (Public Domain)
+// @license      CC0-1.0
 // @version      1.3
 // @description  「𝕏でライブ放送する」「スペース」バーを強制的に排除します（再表示防止・!important対応版）
 // @author       Red Frame X
