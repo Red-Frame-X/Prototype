@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         𝕏 (Twitter) Auto Select "Following" (Once)
 // @namespace    http://tampermonkey.net/
-// @license      CC0 (Public Domain)
+// @license      CC0-1.0
 // @version      1.3
 // @description  x.comのホーム画面アクセス時に、1回だけ「フォロー中」タブを自動クリックし、その後スクリプトを停止します
 // @author       Red Frame X
