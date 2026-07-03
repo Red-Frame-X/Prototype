@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Description Auto Expander (SPA Support)
 // @namespace    http://tampermonkey.net/
-// @license      CC0 (Public Domain)
+// @license      CC0-1.0
 // @version      1.1
 // @description  YouTubeの動画概要欄を自動で展開します（MutationObserver対応版）
 // @author       Red Frame X
