@@ -1,4 +1,8 @@
-# Android 未確認デベロッパー向け「高度なフロー」技術概要と詳細手順
+# Android Advanced Flow Guide
+
+Android 未確認デベロッパー向け「高度なフロー」技術概要と詳細手順
+
+---
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
