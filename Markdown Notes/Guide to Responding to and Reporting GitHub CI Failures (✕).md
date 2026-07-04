@@ -8,7 +8,7 @@ GitHubのCI失敗（✕）への対応と連絡
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-UserScript-Regex-Markdown](https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown) |
 | **License** | CC0-1.0 |
-| **Version** | yyyymmdd |
+| **Version** | 20260704 |
 
 この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
@@ -18,7 +18,7 @@ GitHubのCI失敗（✕）への対応と連絡
 - 紹介しているソフトウェア、アプリ、拡張機能の名称および公式の製品説明文
 - リンク先のコンテンツ
 
-※ 記述内容は個人の検証に基づくものであり、正確性を保証するものではありません。
+※ 本記述内容は、個人の検証およびIT学習資料として作成されたものであり、その正確性を保証するものではありません。
 
 ## 概要・要約
 
