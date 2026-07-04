@@ -2,6 +2,8 @@
 
 GitHub Gistsを利用して、カスタムフィルタやUserScriptを各種拡張機能（AdGuard、Tampermonkeyなど）へ登録する手順です。
 
+---
+
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-UserScript-Regex-Markdown](https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown) |
