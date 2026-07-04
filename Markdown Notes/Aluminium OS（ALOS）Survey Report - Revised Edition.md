@@ -1,4 +1,6 @@
-# Aluminium OS（ALOS）/ Googlebook 調査レポート 改訂版
+# Aluminium OS（ALOS）Survey Report - Revised Edition
+
+Aluminium OS（ALOS）/ Googlebook 調査レポート 改訂版
 
 2026年5月のGoogle I/OおよびAndroid Showにて正式発表された「Googlebook（開発コードネーム：Aluminium OS）」に関する最新情報のまとめです。
 AndroidのエコシステムとChromeOSの利便性をネイティブに統合し、AI（Gemini）をOSの基盤レベルで組み込んだ次世代ノートPC規格であり、2026年秋のリリースが予定されています。
