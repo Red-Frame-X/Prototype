@@ -1,6 +1,6 @@
-# Guide to Responding to and Reporting GitHub CI Failures (✕)
+# Handling and Reporting GitHub CI Failures (✕)
 
-GitHubのCI失敗（✕）への対応と連絡ガイド
+GitHubのCI失敗（✕）への対応と連絡
 
 ---
 
