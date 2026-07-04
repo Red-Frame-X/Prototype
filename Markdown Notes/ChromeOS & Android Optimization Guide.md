@@ -1,6 +1,8 @@
 # ChromeOS & Android Optimization Guide
 ChromeOS & Android 最適化ガイド
 
+---
+
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-UserScript-Regex-Markdown](https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown) |
