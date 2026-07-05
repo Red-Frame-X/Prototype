@@ -1,35 +1,36 @@
 import urllib.request
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 import os
 import sys
 import re
 from datetime import datetime, timezone, timedelta
+from typing import List, Optional
 
 # 取得元：Kdroidwin氏のuBlock Origin用フィルタURL
-CANDIDATE_URLS = [
+CANDIDATE_URLS: List[str] = [
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt",
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
 ]
 
-OUTPUT_FILE = "dist/uB-filter-by-kdroidwin_AdG_Optimized.txt"
+OUTPUT_FILE: str = "dist/uB-filter-by-kdroidwin_AdG_Optimized.txt"
 
 class AdGuardOptimizer:
-    def __init__(self):
+    def __init__(self) -> None:
         # 1. AdGuard Extended CSSでサポートされている疑似クラス
         # 参照: https://github.com/AdguardTeam/ExtendedCss
-        self.adg_supported_ext_css = [
+        self.adg_supported_ext_css: List[str] = [
             ':has(', ':has-text(', ':contains(', ':matches-css(', ':matches-css-after(',
             ':matches-css-before(', ':matches-attr(', ':matches-property(', ':xpath(', 
             ':nth-ancestor(', ':upward(', ':remove()', ':is(', ':not(', ':where('
         ]
         
         # 2. AdGuardでは未対応・挙動不一致となるuBO独自のプロシージャル演算子（パージ対象）
-        self.ubo_unsupported_ext_css = [
+        self.ubo_unsupported_ext_css: List[str] = [
             ':matches-path(', ':min-text-length(', ':watch-attr(', ':matches-media('
         ]
         
-        # 3. AdGuardではサポート外、またはエラー・セキュリティリスクの元となるuBO特有のスクリプトレット
-        self.incompatible_scriptlets = [
+        # 3. AdGuard（特にMV3/Android環境）で未対応、またはセキュリティ・エラーリスクとなるスクリプトレット
+        self.incompatible_scriptlets: List[str] = [
             'acis', 'spoof-css', 'trusted-replace-argument', 'trusted-set-cookie',
             'alert-buster', 'trusted-click-element', 'webassembly-interference',
             'm3u-prune', 'json-prune', 'json-prune-set'
@@ -41,8 +42,8 @@ class AdGuardOptimizer:
             'redirect-rule=': 'redirect=',
         }
 
-    def fetch_source(self):
-        req_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AdGuard-Optimizer/2.0'}
+    def fetch_source(self) -> List[str]:
+        req_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AdGuard-Optimizer/2.2-MV3-Android'}
         for url in CANDIDATE_URLS:
             print(f"接続試行中: {url}")
             try:
@@ -53,13 +54,15 @@ class AdGuardOptimizer:
                     return res.read().decode('utf-8').splitlines()
             except HTTPError as e:
                 print(f"   × スキップ (HTTP Error: {e.code})")
+            except URLError as e:
+                print(f"   × 通信エラー (URL Error): {e.reason}")
             except Exception as e:
-                print(f"   × 通信エラー: {e}")
+                print(f"   × 予期せぬエラー: {e}")
 
         print("\n[致命的エラー] 元データが取得できませんでした。")
         sys.exit(1)
 
-    def optimize_line(self, line):
+    def optimize_line(self, line: str) -> Optional[str]:
         original_line = line
         line = line.strip()
 
@@ -67,7 +70,7 @@ class AdGuardOptimizer:
         if not line or line.startswith('!'):
             return None  
 
-        # --- [Step A] 致命的な非互換ルールのパージ (Lint機能) ---
+        # --- [Step A-1] 致命的な非互換ルールのパージ (HTMLフィルタ等) ---
         # uBOのHTMLフィルタ（##^や#@#^）はAdGuardでは解釈できずパースエラーになるため無効化
         if '##^' in line or '#@#^' in line:
             return f"! [Unsupported HTML Filter] {original_line}"
@@ -79,6 +82,31 @@ class AdGuardOptimizer:
                     return f"! [Incompatible Scriptlet] {original_line}"
             return line
 
+        # --- [Step A-2] MV3 (RE2エンジン) および Android 向けの正規表現（Regex）厳格検証 ---
+        # 正規表現ルール（/で始まり、末尾または$の直前が/で終わるパターン）を安全に検出
+        is_regex_rule = False
+        pattern_str = ""
+        if line.startswith('/') or line.startswith('@@/'):
+            check_line = line[2:] if line.startswith('@@/') else line
+            if check_line.startswith('/'):
+                # スラッシュで囲まれているかを判定 (エスケープされた \/ は正しく除外)
+                parts = check_line.split('$')
+                rule_part = parts[0]
+                if len(rule_part) >= 2 and rule_part.startswith('/') and rule_part.endswith('/') and not rule_part.endswith('\\/'):
+                    is_regex_rule = True
+                    pattern_str = rule_part[1:-1] # 前後のスラッシュを除去
+        
+        if is_regex_rule:
+            # 1. MV3非互換チェック: Chrome MV3のRE2エンジンは「後読み（Lookbehind: (?<= や (?<! ）」を未サポート
+            # これが含まれるとMV3環境下でルール全体がパースエラーとなり破棄されるためパージする
+            if '(?<=' in pattern_str or '(?<!' in pattern_str:
+                return f"! [Unsupported MV3 Regex: Lookbehind not allowed in RE2] {original_line}"
+            
+            # 2. Android負荷チェック: モバイル端末でのバッテリー/メモリ消耗（ReDoS）を引き起こしやすいい
+            # 過剰なバックトラック（例: (.*)* や .+.+ のような二重量指定子）を検出して無効化
+            if re.search(r'(?:\.\*|\.\+){2,}|(?:\(?:[^)]*(?:\.\*|\.\+)[^)]*\)){2,}', pattern_str):
+                return f"! [High-Load Regex: Potential ReDoS / Battery Drain on Android] {original_line}"
+
         # --- [Step B] コスメティックフィルタの拡張CSS（#?#）最適化 ---
         if '##' in line or '#@#' in line:
             separator = '##' if '##' in line else '#@#'
@@ -86,11 +114,11 @@ class AdGuardOptimizer:
             if len(parts) == 2:
                 domain_part, selector_part = parts
                 
-                # AdGuard未対応のuBO独自修飾子が含まれる場合はパージ（CSSパーサーエラー防止）
+                # AdGuard未対応のuBO独自修飾子が含まれる場合はパージ（CSSパーサーエラー・表示崩れ防止）
                 if any(unsupported in selector_part for unsupported in self.ubo_unsupported_ext_css):
                     return f"! [Unsupported Extended CSS Modifier] {original_line}"
                 
-                # AdGuard対応の拡張CSS疑似クラスが含まれている場合、セパレータを変換
+                # AdGuard対応の拡張CSS疑似クラスが含まれている場合、セパレータを #?# へ自動変換
                 if any(ext in selector_part for ext in self.adg_supported_ext_css):
                     new_separator = '#?#' if separator == '##' else '#?@#'
                     return f"{domain_part}{new_separator}{selector_part}"
@@ -100,40 +128,41 @@ class AdGuardOptimizer:
         if '$' in line and not line.startswith('/') and not line.startswith('@@/'):
             parts = line.rsplit('$', 1)
             if len(parts) == 2:
-                rule, modifiers = parts
-                mod_list = modifiers.split(',')
+                rule, modifiers_str = parts
                 
-                # cname修飾子の除去 (AdGuard Web版等でのパースエラー回避)
-                if 'cname' in mod_list:
-                    mod_list = [m for m in mod_list if m != 'cname']
+                # 【重要】カンマ分割(split)を使わず、正規表現でセキュアにチェック・置換を行う
+                # domain=a.com,b.com や removeparam=a,b 等の値に含まれるカンマ破壊を防止
 
-                # to=修飾子の検知 (リクエスト先とリクエスト元の意味論的相違による誤爆を防止)
-                # Note: uBOの 'to=' (リクエスト先ホスト) と AdGuardの 'domain=' (発信元ホスト) は全く異なる
-                if any(m.startswith('to=') for m in mod_list):
+                # 1. to= 修飾子の検知（リクエスト先とリクエスト元の意味論的相違による過剰ブロック・誤爆防止）
+                if re.search(r'(?:^|,)\~?to=', modifiers_str):
                     return f"! [Unsupported Modifier: to=] {original_line}"
 
-                if not mod_list:
+                # 2. cname 修飾子の安全な除去 (AdGuard Web版および一部Android環境でのパースエラー回避)
+                modifiers_str = re.sub(r'(?:^|,)cname(?=,|$)', '', modifiers_str)
+                modifiers_str = modifiers_str.strip(',')
+                modifiers_str = re.sub(r',+', ',', modifiers_str) # 連続カンマの整理
+
+                if not modifiers_str:
                     return rule 
                 
-                # 修飾子の置換処理（例: queryprune -> removeparam）
-                modifiers_str = ','.join(mod_list)
+                # 3. 修飾子の置換処理（例: queryprune -> removeparam）
                 for ubo_mod, adg_mod in self.modifier_replacements.items():
-                    modifiers_str = re.sub(rf'\b{ubo_mod}', adg_mod, modifiers_str)
+                    modifiers_str = re.sub(rf'(?:^|,){re.escape(ubo_mod)}', lambda m: m.group(0).replace(ubo_mod, adg_mod), modifiers_str)
 
                 return f"{rule}${modifiers_str}"
 
         return line
 
-    def get_rule_signature(self, lines):
+    def get_rule_signature(self, lines: List[str]) -> List[str]:
         """コメント行と空行を除いた純粋なルール本文だけのリストを生成（差分比較用）"""
         return [l.strip() for l in lines if l.strip() and not l.strip().startswith('!')]
 
-    def run(self):
+    def run(self) -> None:
         lines = self.fetch_source()
         
-        print("フィルタの高度な最適化とLint（静的解析）処理を開始します...")
+        print("フィルタの高度な最適化とLint（静的解析・MV3/Android互換チェック）処理を開始します...")
         stats = {"converted": 0, "bypassed": 0, "commented": 0}
-        optimized_lines = []
+        optimized_lines: List[str] = []
 
         for line in lines:
             optimized = self.optimize_line(line)
@@ -168,14 +197,14 @@ class AdGuardOptimizer:
 
         header = [
             "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
-            "! Description: A filter that blocks scam sites, fake sites and malicious affiliate sites.",
+            "! Description: A filter that blocks scam sites, fake sites and malicious affiliate sites. Optimized for AdGuard MV3 & Android.",
             f"! Version: {current_version}",
-            "! Syntax: AdGuard",
+            "! Syntax: AdGuard (MV3 & Android Compatible)",
             "! Expires: 12 hours",
             "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
             "! License: GPL-3.0",
             "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
-            "! Disclaimer: This is an unofficial personal fork. The rules were automatically converted by a custom Python script (convert.py) and strictly linted by AGLint.",
+            "! Disclaimer: This is an unofficial personal fork. The rules were automatically converted by a custom Python script (convert.py) and strictly linted by AGLint for MV3 & Android compatibility.",
             "" # 空行でヘッダーとルール本文を分離
         ]
 
