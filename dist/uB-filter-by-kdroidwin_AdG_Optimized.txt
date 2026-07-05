@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: A filter that blocks scam sites, fake sites and malicious affiliate sites. Optimized for AdGuard MV3 & Android.
-! Version: 202607051550
+! Version: 202607052014
 ! Syntax: AdGuard (MV3 & Android Compatible)
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown
@@ -6574,6 +6574,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mybestblog1.com^$document
 ||mybloganik26.com^$document
 ||mybouzu.info^$document
+||mycardloan.com^$document
 ||mycolorfulcolor.com^$document
 ||myfavoritetopics.net^$document
 ||myfreesoft.ru^$document
