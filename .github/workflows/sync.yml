@@ -35,18 +35,16 @@ jobs:
 
       - name: Commit and Push if changed
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # 不要になった古いファイルがGitリポジトリ内に存在する場合は安全に削除
-          git rm --ignore-unmatch "dist/uB-filter-by-kdroidwin.txt"
-          
-          # 変更されたファイルのみをステージング
+          # 変更されたファイル（および新規ファイル）のみをステージング
           git add dist/
           
-          # 差分がない場合（スクリプトが更新をスキップした場合など）はコミットせずに終了
+          # 差分がない場合はコミットせずに終了
           if ! git diff --staged --quiet; then
-            git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized)"
+            git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized for MV3 & Android)"
             git push
           else
             echo "No changes detected. Skipping commit and push."
