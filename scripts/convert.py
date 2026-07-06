@@ -16,12 +16,14 @@ from urllib.error import HTTPError, URLError
 from datetime import datetime, timezone, timedelta
 from typing import List, Optional, Tuple, Dict, Pattern
 
+# スクリプト自身の場所を基準にプロジェクトルートと出力先パスを確定
+BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", "uB-filter-by-kdroidwin_AdG_Optimized.txt")
+
 CANDIDATE_URLS: List[str] = [
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockOrigin.txt",
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/main/uBlockorigin.txt"
 ]
-
-OUTPUT_FILE: str = "dist/uB-filter-by-kdroidwin_AdG_Optimized.txt"
 
 
 class AdGuardOptimizer:
@@ -61,6 +63,12 @@ class AdGuardOptimizer:
         self.re_cname: Pattern = re.compile(r'(?:^|,)cname(?=,|$)')
         self.re_multi_commas: Pattern = re.compile(r',+')
 
+        # スクリプトレット検知用正規表現の事前構築
+        scriptlets_escaped = [re.escape(s) for s in self.incompatible_scriptlets]
+        self.re_incompatible_js: Pattern = re.compile(
+            rf'\+js\(\s*(?:{"|".join(scriptlets_escaped)})(?:\s*|\s*[,)])'
+        )
+
     def fetch_source(self) -> List[str]:
         req_headers = {'User-Agent': 'Mozilla/5.0 AdGuard-Optimizer/3.0'}
         for url in CANDIDATE_URLS:
@@ -88,7 +96,7 @@ class AdGuardOptimizer:
     def _parse_regex_rule(self, line: str) -> Optional[Tuple[str, str, str]]:
         prefix = '@@' if line.startswith('@@') else ''
         check_line = line[len(prefix):]
-        
+
         if not check_line.startswith('/'):
             return None
 
@@ -98,9 +106,9 @@ class AdGuardOptimizer:
             if check_line[idx] == '/':
                 # バックスラッシュが偶数個ならエスケープされていない終端と判定
                 if self._count_consecutive_backslashes(check_line, idx) % 2 == 0:
-                    return (prefix, check_line[:idx + 1], check_line[idx + 1:])
+                    return prefix, check_line[:idx + 1], check_line[idx + 1:]
             idx += 1
-            
+
         return None
 
     def _contains_unsupported_backreference(self, pattern_str: str) -> bool:
@@ -115,8 +123,8 @@ class AdGuardOptimizer:
         return False
 
     def optimize_line(self, line: str) -> Optional[str]:
-        original_line = line
-        line = line.strip()
+        original_line = line.strip()
+        line = original_line
 
         if not line or line.startswith('!'):
             return None
@@ -127,9 +135,8 @@ class AdGuardOptimizer:
 
         # スクリプトレットの互換性チェック
         if '##+js(' in line or '#@#+js(' in line:
-            for bad_js in self.incompatible_scriptlets:
-                if re.search(rf'\+js\(\s*{re.escape(bad_js)}(?:\s*|\s*[,)])', line):
-                    return f"! [Incompatible Scriptlet] {original_line}"
+            if self.re_incompatible_js.search(line):
+                return f"! [Incompatible Scriptlet] {original_line}"
             return line
 
         # [Step A-2] MV3 (RE2) および Android 向け正規表現検証
@@ -185,7 +192,7 @@ class AdGuardOptimizer:
                 if not modifiers_str:
                     return f"{rule}$"
 
-            # to= 修飾子のパージ
+            # to= 修飾子のパージ (例外スコープ喪失による過剰ブロック防止)
             if self.re_unsupported_to.search(modifiers_str):
                 return f"! [Unsupported Modifier: to=] {original_line}"
 
@@ -237,9 +244,9 @@ class AdGuardOptimizer:
         if os.path.exists(OUTPUT_FILE):
             with open(OUTPUT_FILE, 'r', encoding='utf-8') as f:
                 existing_lines = f.read().splitlines()
-            
+
             if new_signature == self.get_rule_signature(existing_lines):
-                print("変更なし: ファイルの更新をスキップしました。")
+                print("変更なし: ルール本体に差分がないため、ファイルの更新をスキップしました。")
                 return
 
         jst = timezone(timedelta(hours=+9), 'JST')
