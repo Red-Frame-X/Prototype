@@ -245,7 +245,6 @@ class AdGuardOptimizer:
         jst = timezone(timedelta(hours=+9), 'JST')
         current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
-        # ホームページURLを含む最新のヘッダー構成
         header = [
             "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
             "! Description: Scam and malicious affiliate sites blocklist.",
