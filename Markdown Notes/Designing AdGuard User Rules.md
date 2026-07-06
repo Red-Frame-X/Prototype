@@ -1,6 +1,6 @@
-# Designing AdGuard User Rules
+# Designing AdGuard Custom Rules
 
-AdGuardユーザールールの設計
+AdGuardカスタムルールの設計
 
 ---
 
@@ -10,7 +10,7 @@ AdGuardユーザールールの設計
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/AdGuard-UserScript-Regex-Markdown](https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown) |
 | **License** | CC0-1.0 |
-| **Version** | 20260706 |
+| **Version** | 20260707 |
 
 この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
