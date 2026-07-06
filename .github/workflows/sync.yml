@@ -29,7 +29,7 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
-      # リポジトリの scripts/ フォルダにある convert.py を確実に実行
+      # scripts/ フォルダ内の convert.py を実行
       - name: Run Conversion Script
         run: python scripts/convert.py
 
