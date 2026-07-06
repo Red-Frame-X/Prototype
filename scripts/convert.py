@@ -245,13 +245,16 @@ class AdGuardOptimizer:
         jst = timezone(timedelta(hours=+9), 'JST')
         current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
+        # 簡潔かつ正確なライセンス表記・非公式フォーク免責事項を適用
         header = [
             "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
             "! Description: Scam and malicious affiliate sites blocklist optimized for AdGuard MV3 & Android.",
             f"! Version: {current_version}",
             "! Syntax: AdGuard",
             "! Expires: 12 hours",
+            "! License: GPL-3.0",
             "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
+            "! Disclaimer: Unofficial fork optimized for AdGuard MV3 & Android.",
             ""
         ]
 
