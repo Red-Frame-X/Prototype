@@ -1,6 +1,6 @@
 # AdGuard Custom Rules Reference
 
-AdGuardカスタムフィルタ作成ガイド
+AdGuardカスタムルール リファレンス
 
 ---
 
