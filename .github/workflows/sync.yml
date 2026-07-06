@@ -29,8 +29,9 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
+      # リポジトリ内の scripts/ フォルダにある convert.py を指定して実行
       - name: Run Conversion Script
-        run: python convert.py
+        run: python scripts/convert.py
 
       - name: Commit and Push if changed
         run: |
