@@ -1,11 +1,11 @@
 [![FLOSS Support](https://img.shields.io/badge/FLOSS-Supported-3DA639?style=flat&logo=opensourceinitiative&logoColor=white)](https://opensource.org/)
 
-![Syntax: AdGuard](https://img.shields.io/badge/syntax-AdGuard-68BC71?logo=adguard&logoColor=white)
-![Syntax: Regex](https://img.shields.io/badge/syntax-Regex-009688)
+![syntax: AdGuard](https://img.shields.io/badge/syntax-AdGuard-68BC71?logo=adguard&logoColor=white)
+![sntax: Regex](https://img.shields.io/badge/syntax-Regex-009688)
 
-![Language: JavaScript](https://img.shields.io/badge/language-JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![Language: Python](https://img.shields.io/badge/language-Python-3776AB?logo=python&logoColor=white)
-![Language: Markdown](https://img.shields.io/badge/language-Markdown-000000?style=flat&logo=markdown&logoColor=white)
+![language: JavaScript](https://img.shields.io/badge/language-JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![language: Python](https://img.shields.io/badge/language-Python-3776AB?logo=python&logoColor=white)
+![language: Markdown](https://img.shields.io/badge/language-Markdown-000000?style=flat&logo=markdown&logoColor=white)
 
 # AdGuard-UserScript-Regex-Markdown
 以下のものは、個人的に使用するために作成したものです。
