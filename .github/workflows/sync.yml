@@ -2,11 +2,10 @@ name: Sync and Convert uB-filter-by-kdroidwin
 
 on:
   schedule:
-    # 負荷集中による遅延を防ぐため、0分を避けて15分に設定（日本時間の12:15, 18:15, 0:15, 6:15）
+    # サーバー負荷分散のため0分を避けて15分に設定 (JST 12:15, 18:15, 0:15, 6:15)
     - cron: '15 3,9,15,21 * * *'
   workflow_dispatch:
 
-# 多重実行時の競合（Git Pushエラーなど）を防ぐための設定
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -14,6 +13,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
 
@@ -29,24 +29,19 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
-      # 実行パスを 'scripts/convert.py' に指定 (標準ライブラリのみ使用するためpip installは不要)
       - name: Run Conversion Script
-        run: python scripts/convert.py
+        run: python convert.py
 
       - name: Commit and Push if changed
         run: |
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # 変更されたファイル（および新規ファイル）のみをステージング
           git add dist/
           
-          # 差分がない場合はコミットせずに正常終了
           if ! git diff --staged --quiet; then
-            # 変更時間とバージョンを明記してコミット
-            git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized for MV3 & Android)"
+            git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized)"
             git push
           else
-            echo "No changes detected in filter content. Skipping commit and push."
+            echo "No changes detected. Skipping commit."
           fi
