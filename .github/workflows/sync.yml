@@ -38,11 +38,15 @@ jobs:
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # distディレクトリ全体をステージング
           git add dist/
           
+          # ステージングされた変更がある場合のみコミット＆プッシュを実行
           if ! git diff --staged --quiet; then
             git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized)"
             git push
+            echo "Changes committed and pushed successfully."
           else
-            echo "No changes detected. Skipping commit."
+            echo "No changes detected in filter rules. Skipping commit."
           fi
