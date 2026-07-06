@@ -29,7 +29,7 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
-      # 実行パスを 'scripts/convert.py' に指定
+      # 実行パスを 'scripts/convert.py' に指定 (標準ライブラリのみ使用するためpip installは不要)
       - name: Run Conversion Script
         run: python scripts/convert.py
 
@@ -42,10 +42,11 @@ jobs:
           # 変更されたファイル（および新規ファイル）のみをステージング
           git add dist/
           
-          # 差分がない場合はコミットせずに終了
+          # 差分がない場合はコミットせずに正常終了
           if ! git diff --staged --quiet; then
+            # 変更時間とバージョンを明記してコミット
             git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized for MV3 & Android)"
             git push
           else
-            echo "No changes detected. Skipping commit and push."
+            echo "No changes detected in filter content. Skipping commit and push."
           fi
