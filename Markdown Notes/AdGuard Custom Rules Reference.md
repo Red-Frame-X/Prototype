@@ -11,7 +11,7 @@ MV3（Manifest V3：ブラウザ拡張機能の最新API仕様で、セキュリ
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260706 |
+| **Version** | 20260707 |
 
 この備忘録は CC0 ライセンスの下で提供します。［This work is licensed under CC0 1.0 Universal］
 * [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
