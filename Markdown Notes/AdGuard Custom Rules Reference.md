@@ -9,7 +9,7 @@ MV3（Manifest V3：ブラウザ拡張機能の最新API仕様で、セキュリ
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/AdGuard-UserScript-Regex-Markdown](https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown) |
+| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
 | **Version** | 20260706 |
 
