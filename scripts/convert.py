@@ -258,7 +258,7 @@ class AdGuardOptimizer:
             f"! Version: {current_version}",
             "! Syntax: AdGuard",
             "! Expires: 12 hours",
-            "! Homepage: https://github.com/Red-Frame-X/AdGuard-UserScript-Regex-Markdown",
+            "! Homepage: https://github.com/Red-Frame-X/Prototype",
             "! License: GPL-3.0",
             "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
             "! Disclaimer: Unofficial fork optimized for AdGuard MV3 & Android.",
