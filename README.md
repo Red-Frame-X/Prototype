@@ -43,7 +43,7 @@ This is a project I'm actively involved in through feedback and bug reports.
 
 * **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 - コンテンツブロック用フィルタ
 * **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 - DNSブロック互換フィルタ
-* **[Yuki2718 / adblock2](https://github.com/Yuki2718/adblock2)**：AdGuard / uBlock Origin 個人用フィルタ
+* **[Yuki2718 / adblock2](https://github.com/Yuki2718/adblock2)**：AdGuard / uBlock Origin個人用フィルタ
 * **[Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)**：詐欺サイト・悪質アフィリエイトサイト対策用フィルタ
 * **[Google Issue Tracker](https://issuetracker.google.com/home)**：Googleプロダクトのバグ・機能リクエスト管理
 
