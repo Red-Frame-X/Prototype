@@ -7,7 +7,7 @@
 ![language: Python](https://img.shields.io/badge/language-Python-3776AB?logo=python&logoColor=white)
 ![language: Markdown](https://img.shields.io/badge/language-Markdown-000000?style=flat&logo=markdown&logoColor=white)
 
-# works
+# Prototype
 以下のものは、個人的に使用するために作成したものです。
 
 The following items were created for my personal use.
