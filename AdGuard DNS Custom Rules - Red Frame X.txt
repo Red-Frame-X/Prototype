@@ -1,11 +1,11 @@
 ! Title: AdGuard DNS Custom Rules - Red Frame X
 ! Description: Rules for Modifying the AdGuard DNS filter.
-! Version: 202607091749
+! Version: 202607091750
 ! Syntax: AdGuard DNS
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
 ! License: GPL-3.0
-! Original Source: https://yuki2718.github.io/adblock2/japanese/dns-unbreak.txt
+! Original Source: https://github.com/Yuki2718/adblock2
 ! Disclaimer: Unofficial fork of Yuki2718/adblock2’s ‘dns-unbreak’, combining the rules of the Japanese community with my own.
 
 ! AdGuard DNS filterの既知の不具合を独自に修正する例外ルール
