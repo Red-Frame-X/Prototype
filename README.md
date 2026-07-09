@@ -64,6 +64,8 @@ This is a project that I use on a daily basis and support regularly.
 
 本リポジトリで公開しているカスタムルールおよびフォーク版フィルタは、オリジナル作者の権利を尊重し、各ライセンスに準拠して配布されています。
 
+The custom rules and forked filters published in this repository are distributed in accordance with their respective licenses, respecting the rights of the original authors.
+
 * **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
   
   ※ `Yuki2718 / adblock2`、`Kdroidwin / uB-filter-by-kdroidwin` 等の改変物の配布および著作権表示の保持要件（Section 4, Section 5）の法的根拠です。
