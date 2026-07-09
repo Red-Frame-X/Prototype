@@ -5,7 +5,7 @@
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
 ! License: CC0-1.0
-! Disclaimer: Unofficial fork that combines community-led rules with my own.
+! Disclaimer: Unofficial fork that combines Japanese community-led rules with my own.
 
 ! Global
 ! 全サイト共通の非表示ルール
