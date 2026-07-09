@@ -57,3 +57,13 @@ This is a project that I use on a daily basis and support regularly.
 * **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援 ‐ Androidアプリのカスタマイズツール
 * **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - プライバシーを保護するDNSフィルタリングアプリ
 * **[Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)**：[HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists) - 誤検知の少ない厳選DNSブロックリスト
+
+---
+
+### License & Legal Notice
+
+本リポジトリで公開しているカスタムルールおよびフォーク版フィルタは、オリジナル作者の権利を尊重し、各ライセンスに準拠して配布されています。
+
+* **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
+  
+  ※ `Yuki2718 / adblock2`、`Kdroidwin / uB-filter-by-kdroidwin` 等の改変物の配布および著作権表示の保持要件（Section 4, Section 5）の法的根拠です。
