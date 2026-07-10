@@ -6,7 +6,7 @@
 ! Homepage: https://github.com/Red-Frame-X/Prototype
 ! License: GPL-3.0
 ! Original Source: https://github.com/Yuki2718/adblock2
-! Disclaimer: Unofficial fork of Yuki2718/adblock2’s ‘dns-unbreak’, combining the rules of the Japanese community with my own.
+! Credits: Unofficial fork of Yuki2718/adblock2’s ‘dns-unbreak’, combining the rules of the Japanese community with my own.
 
 ! AdGuard DNS filterの既知の不具合を独自に修正する例外ルール
 @@||a-adq.mediation.unity3d.com^|
