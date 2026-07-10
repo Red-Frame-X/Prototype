@@ -62,7 +62,7 @@ This is a project that I use on a daily basis and support regularly.
 
 ### License & Legal Notice
 
-本リポジトリで公開しているカスタムルールおよびフォーク版フィルタは、オリジナル作者の権利を尊重し、各ライセンスに準拠して配布されています。
+本リポジトリで公開しているAdGuard Custom Rulesおよびフォーク版フィルタは、オリジナル作者の権利を尊重し、各ライセンスに準拠して配布されています。
 
 The custom rules and forked filters published in this repository are distributed in accordance with their respective licenses, respecting the rights of the original authors.
 
