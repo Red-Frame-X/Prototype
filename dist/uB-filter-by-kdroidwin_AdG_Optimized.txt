@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202607102109
+! Version: 202607111449
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -3292,6 +3292,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||flgas.com^$document
 ||flhzjo.com^$document
 ||flix2day.com^$document
+||flixosm.com^$document
 ||float.fun^$document
 ||floatcenter.jp^$document
 ||floras.co.in^$document
@@ -3534,6 +3535,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gamegadget.jp^$document
 ||gamehub-lite.com^$document
 ||gamejksokuhou.com^$document
+||gamekillerapp.com^$document
 ||gamemodfree.com^$document
 ||gamenexus.jp/wutheringwaves/%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9Se^$document
 ||gamepcfull.com^$document
@@ -3682,6 +3684,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||getitintopc.com^$document
 ||getkmspico.com^$document
 ||getkmspico.medium.com^$document
+||getmodnow.com^$document
 ||getmodpc.net^$document
 ||getmodsapk.com/youtube-revanced-extended-mod-apk^$document
 ||getmodsapk.com^$document
@@ -7048,6 +7051,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.ambitiousai.co.jp^$document
 ||note.com/0219toton/n/n010fc309fe3e^$document
 ||note.com/1121raian^$document
+||note.com/1525qualified^$document
 ||note.com/24hs_ksrr44^$document
 ||note.com/2ch3ch^$document
 ||note.com/2choozumou^$document
@@ -7262,6 +7266,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/l_mrk^$document
 ||note.com/labo_rainbow^$document
 ||note.com/large_jaguar4528^$document
+||note.com/large_macaw8016^$document
 ||note.com/left^$document
 ||note.com/lenslover^$document
 ||note.com/light_right_^$document
@@ -7351,6 +7356,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/orangeitems^$document
 ||note.com/oripa_kensyo^$document
 ||note.com/orisusarusan^$document
+||note.com/oshabaku^$document
 ||note.com/otosan_creation^$document
 ||note.com/outdoorlifestyle^$document
 ||note.com/oyvn^$document
@@ -7482,6 +7488,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/vivid_cosmos9883^$document
 ||note.com/viwizard_jp^$document
 ||note.com/vpn_lab^$document
+||note.com/vs_item^$document
 ||note.com/wareomou_yueni^$document
 ||note.com/watab2000^$document
 ||note.com/wataru057/n/n1616ce92e51f^$document
@@ -7880,6 +7887,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||outletfinalsale.com^$document
 ||outlookfestival.jp^$document
 ||output-egl.com^$document
+||outputsblog.com^$document
 ||overcoder.net^$document
 ||overforty-man.com^$document
 ||overlack.jp^$document
@@ -10169,7 +10177,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tools.anquanclub.cn^$document
 ||toorublog.com^$document
 ||top.manga-ganma.com^$document
-! [Unsupported Modifier: to=] ||top^$document,to=~1stream.top|~adrules.top|~ambr.top|~asiaon.top|~audioforyou.top|~awavenue.top|~caitlin.top|~callmebymygender.top|~castlevania.top|~changlam10.top|~changlam11.top|~chillx.top|~corriente.top|~cpolar.top|~doubledouble.top|~edgeless.top|~galge.top|~gdtot.top|~hostingowy.top|~iboxs.top|~imxyz.top|~iwayado.toweb.top|~jp.jtube.top|~loveliveallstar.top|~magocoro.top|~maruiblog.top|~mastodon.top|~mianbeian.top|~miotele.top|~nfmirrorcdn.top|~nicenature.top|~ossme.top|~passt.top|~pdcdn1.top|~pegelinux.top|~polar.top|~pressplay.top|~qwertycxz.top|~reminder.top|~rept.hamakaze.top|~reyhub.top|~rifton.top|~rugaming.top|~saltwood.top|~shucks.top|~sobanomi-ikkanjin.top|~spoilerraw.top|~strims.top|~suiten.top|~t-satoru.top|~thedesk.top|~tokiwasushi.top|~voxel.top|~vsdb.top|~yggtorrent.top|~doujinantena.top|~www.minesweeper.top|~cqdh26.top|~mangakoma01.top|~kmansin09.top|~kiwami.top|~maguro.top|~golfgear.top|~yoshizuya.top|~kitaqhitorioya.top|~sakura-cl.top|~deen-hachinohe.top|~www.coolsymbol.top|~www.jsdelivr.top|~ja.amatorvideok.top|~ja.pornici.top|~2dfmax.top|~yokohama-shirahata.top|~zeri-m.top|~www.sayafx.top|~toweb.top|~piggparty.top|~jrac.top|~skinsalon-el.top|~www.nandemohonpotakeda.top|~www.7sense.top|~orangeline.top|~www.suiten.top|~mk-mimosa.top|~www.sowelu.top|~www.trickart.top|~mikata.top|~jpn.billxia.top|~u-sky.top|~xn--7br687a6xa056a.top|~xn--u8jxay6nn91xo2n1z1dx3ek5k.top|~www.fujisangyo.top|~www.9tsu.top|~kaien.top|~bullsailor.top|~freemagazines.top|~manhuavn.top|~aigto.top|~yoimiyalove.top|~green-office.top|~newsite.top|~www.xn--kck9c8a7d.top|~mxdj.top|~froghouse.top|~ekubo.top|~fukunoya.top|~zovo2.top|~kokugo-senka.top|~mathify.top|~duckify.top|~www.screensaver.top|~graphonline.top|~cutcut.top|~8kun.top|~www.2z2.top|~brainteaser.top|~hosts.gitcdn.top|~mcservers.top|~addressgenerator.top|~www.flamecho.top|~8kun.top|~lava.top|~laosheng.top|~toptruyen.top|~www.itrack.top|~wceui.top|~yggleak.top|~droply.top|~tsbox1.top|~tsboxby.top|~tsbox1.top|~tsbox2.top|~tsbox3.top|~tsbox4.top|~tsbox5.top|~tsbox6.top|~tsbox0.top|~gettsbox.top|~manga1000.top|~yanweb.top|~rikuramu.top|~yukapyon.top|~reien.top|~jacky.top|~genki.top|~oneminute.top|~iforest.top|~moshimobox.top|~raisuball.top|~www.kateholds.top|~www.hoshinosensei.top|~www.jumphigh.top|~gon6.top|~www.krnr.top|~r-style.top|~good-job.top|~www.mountainman.top|~fqegg.top|~www.tsuri.top|~chics.top|~s-s-k.top|~cscc-spk.top|~e-connect.top|~private-salon-shiny.top|~bag676.top|~lumbini-kashiwa.top|~mayumi.top|~www.tokei777.top|~www.reien.top|~futaba-en.top|~www.pride1yamaoka.top|~rawfree.top|~ta26.top|~xn--9ckkn.top|~hasanmap.top|~file-me.top|~tsboxapp.top|~x010x.top
+! [Unsupported Modifier: to=] ||top^$document,to=~1stream.top|~adrules.top|~ambr.top|~asiaon.top|~audioforyou.top|~awavenue.top|~caitlin.top|~callmebymygender.top|~castlevania.top|~changlam10.top|~changlam11.top|~chillx.top|~corriente.top|~cpolar.top|~doubledouble.top|~edgeless.top|~galge.top|~gdtot.top|~hostingowy.top|~iboxs.top|~imxyz.top|~iwayado.toweb.top|~jp.jtube.top|~loveliveallstar.top|~magocoro.top|~maruiblog.top|~mastodon.top|~mianbeian.top|~miotele.top|~nfmirrorcdn.top|~nicenature.top|~ossme.top|~passt.top|~pdcdn1.top|~pegelinux.top|~polar.top|~pressplay.top|~qwertycxz.top|~reminder.top|~rept.hamakaze.top|~reyhub.top|~rifton.top|~rugaming.top|~saltwood.top|~shucks.top|~sobanomi-ikkanjin.top|~spoilerraw.top|~strims.top|~suiten.top|~t-satoru.top|~thedesk.top|~tokiwasushi.top|~voxel.top|~vsdb.top|~yggtorrent.top|~doujinantena.top|~www.minesweeper.top|~cqdh26.top|~mangakoma01.top|~kmansin09.top|~kiwami.top|~maguro.top|~golfgear.top|~yoshizuya.top|~kitaqhitorioya.top|~sakura-cl.top|~deen-hachinohe.top|~www.coolsymbol.top|~www.jsdelivr.top|~ja.amatorvideok.top|~ja.pornici.top|~2dfmax.top|~yokohama-shirahata.top|~zeri-m.top|~www.sayafx.top|~toweb.top|~piggparty.top|~jrac.top|~skinsalon-el.top|~www.nandemohonpotakeda.top|~www.7sense.top|~orangeline.top|~www.suiten.top|~mk-mimosa.top|~www.sowelu.top|~www.trickart.top|~mikata.top|~jpn.billxia.top|~u-sky.top|~xn--7br687a6xa056a.top|~xn--u8jxay6nn91xo2n1z1dx3ek5k.top|~www.fujisangyo.top|~www.9tsu.top|~kaien.top|~bullsailor.top|~freemagazines.top|~manhuavn.top|~aigto.top|~yoimiyalove.top|~green-office.top|~newsite.top|~www.xn--kck9c8a7d.top|~mxdj.top|~froghouse.top|~ekubo.top|~fukunoya.top|~zovo2.top|~kokugo-senka.top|~mathify.top|~duckify.top|~www.screensaver.top|~graphonline.top|~cutcut.top|~8kun.top|~www.2z2.top|~brainteaser.top|~hosts.gitcdn.top|~mcservers.top|~addressgenerator.top|~www.flamecho.top|~8kun.top|~lava.top|~laosheng.top|~toptruyen.top|~www.itrack.top|~wceui.top|~yggleak.top|~droply.top|~tsbox1.top|~tsboxby.top|~tsbox1.top|~tsbox2.top|~tsbox3.top|~tsbox4.top|~tsbox5.top|~tsbox6.top|~tsbox0.top|~gettsbox.top|~manga1000.top|~yanweb.top|~rikuramu.top|~yukapyon.top|~reien.top|~jacky.top|~genki.top|~oneminute.top|~iforest.top|~moshimobox.top|~raisuball.top|~www.kateholds.top|~www.hoshinosensei.top|~www.jumphigh.top|~gon6.top|~www.krnr.top|~r-style.top|~good-job.top|~www.mountainman.top|~fqegg.top|~www.tsuri.top|~chics.top|~s-s-k.top|~cscc-spk.top|~e-connect.top|~private-salon-shiny.top|~bag676.top|~lumbini-kashiwa.top|~mayumi.top|~www.tokei777.top|~www.reien.top|~futaba-en.top|~www.pride1yamaoka.top|~rawfree.top|~ta26.top|~xn--9ckkn.top|~hasanmap.top|~file-me.top|~tsboxapp.top|~x010x.top|~outlands.top
 ||topcasinosdirectory.com^$document
 ||topfifty.uk^$document
 ||topgun.ffwpu.app^$document
@@ -11346,6 +11354,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.codenong.com^$document
 ||www.coder.work^$document
 ||www.coimbranoivos.com^$document
+||www.cola507.com^$document
 ||www.colomboezio.com^$document
 ||www.colorfulbox.jp^$document
 ||www.columbia-fit.com^$document
@@ -12110,6 +12119,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.mercedesme.jp^$document
 ||www.mercure.jp^$document
 ||www.mermaidsofearth.com^$document
+||www.metatvapk.com^$document
 ||www.micasaluxuries.com^$document
 ||www.michelesantarsiere.it^$document
 ||www.micolla.co.jp^$document
@@ -12965,6 +12975,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||xertinos.com^$document
 ||xharuchannel.com^$document
 ||xhentai.jp^$document
+||xiaohei.com^$document
 ||xingfulife.xyz^$document
 ||xiordiagonalbesos.com^$document
 ||xis2p9rqc.wydawnictwopbb.pl^$document
@@ -13478,7 +13489,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||zigzag77.biz^$document
 ||zimanin.blog.2nt.com^$document
 ||zimplow.co.zw^$document
-||zinroonline.wiki.fc2.com^$document
 ||zintosuru.com^$document
 ||zip.wew.jp^$document
 ||ziperto.me^$document
@@ -13520,9 +13530,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||zyupodotyu.com^$document
 ||zzaowbey.art^$document
 ||zzdusxkchhxzrbgs.com^$document
-@@://blog.*.top^$doc
 @@://pyrofork.*.top^$doc
 @@||esta.cbp.dhs.gov$document
-@@||masto*.top^$doc
 @@||smbc-card.com^$document
 @@||www.mcafee.com/blogs^$document
