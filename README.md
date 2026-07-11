@@ -62,9 +62,9 @@ This is a project that I use on a daily basis and support regularly.
 
 ### License & Legal Notice
 
-本リポジトリで公開しているAdGuard Custom Rulesおよびフォーク版フィルタは、オリジナル作者の権利を尊重し、各ライセンスに準拠して配布されています。
+本リポジトリのAdGuard Custom Rulesおよびフォーク版フィルタは、オリジナル作者の権利を尊重し各ライセンスに準拠した上で、主に作成者個人の環境で利用することを目的として管理されています。
 
-The custom rules and forked filters published in this repository are distributed in accordance with their respective licenses, respecting the rights of the original authors.
+The AdGuard Custom Rules and forked filters in this repository are maintained primarily for use in the individual creators' personal environments, while respecting the rights of the original authors and complying with the respective licenses.
 
 * **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
   
