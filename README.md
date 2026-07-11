@@ -64,7 +64,7 @@ These are projects that I use on a daily basis and support regularly.
 
 本リポジトリのAdGuard Custom Rulesおよびフォーク版フィルタは、オリジナル作者の権利を尊重し各ライセンスに準拠した上で、主に作成者個人の環境での利用を目的として管理されています。本ルールは完全無保証（AS IS）で提供され、Webサイトの表示崩れや不具合を含め、利用はすべて自己責任となります。
 
-The AdGuard Custom Rules and forked filters in this repository are managed with the aim of respecting the rights of the original authors and complying with the respective licences, primarily for use in my personal environment. These rules are provided on an ‘as is’ basis with no warranty whatsoever, and any use is entirely at your own risk, including any display issues or malfunctions on websites.
+The AdGuard Custom Rules and forked filters in this repository are managed with the aim of respecting the rights of the original authors and complying with the respective licenses, primarily for use in my personal environment. These rules are provided on an ‘AS IS’ basis with no warranty whatsoever, and any use is entirely at your own risk, including any display issues or malfunctions on websites.
 
 * **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
   
