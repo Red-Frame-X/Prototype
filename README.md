@@ -68,4 +68,4 @@ The AdGuard Custom Rules and forked filters in this repository are maintained pr
 
 * **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
   
-  `Yuki2718 / adblock2`、`Kdroidwin / uB-filter-by-kdroidwin` 等の改変物の配布および著作権表示の保持要件（Section 4, Section 5）の法的根拠です。
+  `Yuki2718 / adblock2`、`Kdroidwin / uB-filter-by-kdroidwin` 等の改変物の作成および著作権表示の保持要件（Section 4, Section 5）の法的根拠です。
