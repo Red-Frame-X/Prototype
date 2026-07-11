@@ -62,10 +62,10 @@ This is a project that I use on a daily basis and support regularly.
 
 ### License & Legal Notice
 
-本リポジトリのAdGuard Custom Rulesおよびフォーク版フィルタは、オリジナル作者の権利を尊重し各ライセンスに準拠した上で、主に作成者個人の環境で利用することを目的として管理されています。
+本リポジトリのAdGuard Custom Rulesおよびフォーク版フィルタは、オリジナル作者の権利を尊重し各ライセンスに準拠した上で、主に作成者個人の環境での利用を目的として管理されています。本ルールは完全無保証（AS IS）で提供され、Webサイトの表示崩れや不具合を含め、利用はすべて自己責任となります。
 
-The AdGuard Custom Rules and forked filters in this repository are maintained primarily for use in the individual creators' personal environments, while respecting the rights of the original authors and complying with the respective licenses.
+The AdGuard Custom Rules and forked filters in this repository are managed with the aim of respecting the rights of the original authors and complying with the respective licences, primarily for use in the authors’ personal environments. These rules are provided on an ‘as is’ basis with no warranty whatsoever, and any use is entirely at your own risk, including any display issues or malfunctions on websites.
 
 * **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
   
-  `Yuki2718 / adblock2`、`Kdroidwin / uB-filter-by-kdroidwin` 等の改変物の作成および著作権表示の保持要件（Section 4, Section 5）の法的根拠です。
+  `Yuki2718 / adblock2`、`Kdroidwin / uB-filter-by-kdroidwin` 等の改変物の作成および著作権表示の保持要件（Section 4, Section 5）および完全無保証（Section 15, 16）の法的根拠です。
