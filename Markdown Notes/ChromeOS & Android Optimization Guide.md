@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260708 |
+| **Version** | 20260714 |
 
 この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
