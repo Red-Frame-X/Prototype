@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202607161738
+! Version: 202607161903
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -44,7 +44,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! ||html-load.com^$domain=daily.co.jp
 ! ||error-report.com^$domain=daily.co.jp
 ! daily.co.jp#%#//scriptlet('remove-attr', 'onerror', 'script[src*="html-load.com"]')
-! daily.co.jp#%#//scriptlet('remove-attr', 'onload', 'script[src*="html-load.com"]')
+daily.co.jp#%#//scriptlet('remove-attr', 'onload', 'script[src*="html-load.com"]')
 ! daily.co.jp#%#//scriptlet('abort-current-inline-script', '];return e};const')
 ! daily.co.jp##div:has(> div > h2:contains(広告表示の許可をお願いします))
 ! daily.co.jp#$#body { overflow: auto !important; pointer-events: auto !important; }
@@ -174,7 +174,6 @@ www.minnanosyougai.com##aside.c-bnr-register
 ! www.youtube.com
 ! 表示調整：Enhancer for YouTube™ 併用・フォント・スクロール
 www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !important; line-height: 1.8rem !important;)
-www.youtube.com###teaser-carousel:contains(チャットのリプレイ)
 www.youtube.com###video-title.ytd-rich-grid-media, #video-title.ytd-rich-grid-slim-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)
 www.youtube.com###ytd-channel-renderer
 www.youtube.com##[page-subtype="channels"] ytd-item-section-renderer:not([use-height-hack]):has(ytd-reel-shelf-renderer)
@@ -203,7 +202,6 @@ x.com##a[href="/i/grok"][role="link"]
 x.com##a[href^="/i/jf/creators/studio"]
 x.com##a[href="/i/monetization"][role="link"]
 x.com##a[href="/i/premium"][role="link"]
-x.com##a[href="/i/premium_sign_up"]
 x.com##a[href="/i/spaces/start"][role="link"]
 x.com##a[href^="/i/verified-orgs-signup"]
 ! x.com##a[href="/explore"][role="link"]
@@ -253,7 +251,6 @@ x.com##div[aria-label="タイムライン: Relevant people"]
 x.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"] > div:has([data-testid$="-impression-pixel"])
 ! タイムライン：ホーム・Explore（複雑な条件）
 x.com##[aria-label="タイムライン: 話題を検索"] div[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"] svg[data-testid="icon-verified"])
-x.com##[aria-label="タイムライン: 話題を検索"] div[data-testid="cellInnerDiv"]:has(h2:contains(おすすめユーザー))
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty):not([aria-label="タイムライン: フォロー中"] *)
