@@ -4,7 +4,7 @@
 // @license      CC0-1.0
 // @version      1.3.1
 // @description  𝕏のタイムラインで「並べ替え」メニューが開かれるたびに「直近」を一度だけクリックして動作を解除し、別のメニューが開かれたら再び同様に動作します。
-// @author       Expert Developer
+// @author       Red-Frame-X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
 // @updateURL    https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/x-auto-select-latest.user.js
