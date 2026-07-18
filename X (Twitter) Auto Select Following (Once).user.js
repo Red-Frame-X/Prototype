@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         𝕏 (Twitter) Auto Select Following (Once)
+// @name         X (Twitter) Auto Select Following (Once)
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.3
