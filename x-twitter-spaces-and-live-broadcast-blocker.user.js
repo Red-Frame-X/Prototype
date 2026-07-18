@@ -7,8 +7,8 @@
 // @author       Red Frame X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
-// @updateURL    https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/%F0%9D%95%8F%20(Twitter)%20Spaces%20&%20Live%20Broadcast%20Blocker%20(Aggressive).user.js
-// @downloadURL  https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/%F0%9D%95%8F%20(Twitter)%20Spaces%20&%20Live%20Broadcast%20Blocker%20(Aggressive).user.js
+// @updateURL    https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-twitter-spaces-and-live-broadcast-blocker.user.js
+// @downloadURL  https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-twitter-spaces-and-live-broadcast-blocker.user.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=x.com
 // @grant        none
 // @run-at       document-idle
@@ -60,24 +60,18 @@
         });
 
         // 3. ボタン型通知（Space Bar / Live Notification）の除去 [新規追加]
-        // 提示されたHTMLのような button要素 を aria-label で特定します
-        // キーワード: "ライブ放送", "さんがホスト", "スペース"
         const spaceButtons = document.querySelectorAll('button[aria-label*="ライブ放送"], button[aria-label*="さんがホスト"], button[aria-label*="スペース"]');
 
         spaceButtons.forEach(btn => {
             if (btn.style.display === 'none') return;
 
             const label = btn.getAttribute('aria-label');
-            // 誤爆防止: 明らかにスペース/ライブの通知と思われるキーワードを厳密に確認
             if (label && (label.startsWith('ライブ放送') || label.includes('さんがホスト') || label.includes('リスニング中'))) {
 
-                // ケースA: タイムラインの中に埋め込まれている場合 (cellInnerDivごと消すときれいに消える)
                 const cellInner = btn.closest('[data-testid="cellInnerDiv"]');
                 if (cellInner) {
                     hideElement(cellInner);
-                }
-                // ケースB: 独立したバーとして表示されている場合 (ボタン自体を消す)
-                else {
+                } else {
                     hideElement(btn);
                 }
             }
