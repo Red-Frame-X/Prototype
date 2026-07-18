@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         𝕏 (Twitter) Spaces & Live Broadcast Blocker (Aggressive)
+// @name         X (Twitter) Spaces & Live Broadcast Blocker (Aggressive)
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.3
