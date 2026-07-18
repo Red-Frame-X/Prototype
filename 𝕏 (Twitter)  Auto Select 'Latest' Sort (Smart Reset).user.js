@@ -2,13 +2,13 @@
 // @name         𝕏 (Twitter) Auto Select 'Latest' Sort (Smart Reset)
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
-// @version      1.3.0
+// @version      1.3.1
 // @description  𝕏のタイムラインで「並べ替え」メニューが開かれるたびに「直近」を一度だけクリックして動作を解除し、別のメニューが開かれたら再び同様に動作します。
 // @author       Expert Developer
 // @match        https://x.com/*
 // @match        https://twitter.com/*
-// @updateURL    https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/%F0%9D%95%8F%20(Twitter)%20-%20Auto%20Select%20'Latest'%20Sort%20(Smart%20Reset).user.js
-// @downloadURL  https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/%F0%9D%95%8F%20(Twitter)%20-%20Auto%20Select%20'Latest'%20Sort%20(Smart%20Reset).user.js
+// @updateURL    https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/x-auto-select-latest.user.js
+// @downloadURL  https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/x-auto-select-latest.user.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=x.com
 // @grant        none
 // @run-at       document-idle
