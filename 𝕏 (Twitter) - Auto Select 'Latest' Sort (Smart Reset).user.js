@@ -7,8 +7,8 @@
 // @author       Expert Developer
 // @match        https://x.com/*
 // @match        https://twitter.com/*
-// @updateURL    
-// @downloadURL  
+// @updateURL    https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/%F0%9D%95%8F%20(Twitter)%20-%20Auto%20Select%20'Latest'%20Sort%20(Smart%20Reset).user.js
+// @downloadURL  https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/%F0%9D%95%8F%20(Twitter)%20-%20Auto%20Select%20'Latest'%20Sort%20(Smart%20Reset).user.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=x.com
 // @grant        none
 // @run-at       document-idle
