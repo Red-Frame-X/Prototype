@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         𝕏 (Twitter) - Auto Select 'Latest' Sort (Smart Reset)
+// @name         𝕏 (Twitter) Auto Select 'Latest' Sort (Smart Reset)
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.3.0
