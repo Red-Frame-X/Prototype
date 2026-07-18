@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202607160145
+! Version: 202607181436
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -10648,6 +10648,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||uravation.com^$document
 ||urayasu-brighton.netlify.app^$document
 ||ureba.jp^$document
+||ureluv.com^$document
 ||uriboumiracle.com^$document
 ||urls.g.forms.cn^$document
 ||urotanblog.com^$document
