@@ -255,7 +255,7 @@ x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerD
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty):not([aria-label="タイムライン: フォロー中"] *)
 x.com##div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
-x.com##[data-testid="primaryColumn"]:has(a[href^="/explore"]) [data-testid="UserCell"]:has([data-testid$="-follow"])
+x.com##main:has([role="tablist"] a[href^="/explore"]) [data-testid="UserCell"]:has([data-testid$="-follow"])
 ! タイムライン：個別ポスト・会話・検索結果
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
