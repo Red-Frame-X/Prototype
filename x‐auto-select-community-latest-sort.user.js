@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         X Auto Select Community Latest Sort
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      1.6.0
+// @version      1.6.1
 // @description  Xのタイムラインで「並べ替え」メニューが開かれるたびに、未選択であれば自動的に「直近」を選択し直し、その後は手動での変更も可能にします
 // @author       Red-Frame-X
 // @match        https://x.com/*
@@ -17,7 +17,7 @@
 (function () {
     'use strict';
 
-    // 対象となる項目名（将来的な英語UI等のサポートを考慮し配列化）
+    // 対象となる項目名（英語・日本語対応）
     const TARGET_TEXTS = ['直近', 'Latest'];
 
     /**
@@ -34,7 +34,6 @@
         if (menus.length === 0) return;
 
         for (const menu of menus) {
-            // 既にこのメニューDOMに対する判定・自動選択が処理済みである場合はスキップ
             if (menu.getAttribute('data-sort-handled') === 'true') {
                 continue;
             }
@@ -50,26 +49,21 @@
                 }
             }
 
-            // 「直近」を含まない全く別のメニュー（ツイートのオプション等）だった場合は無視
             if (!latestItem) continue;
 
-            // MutationObserverによる重複処理を防ぐため、対象のメニューであると判明した時点で処理済みマークを付与
             menu.setAttribute('data-sort-handled', 'true');
 
-            // 選択状態の判定（aria-checked属性 または SVGチェックマークの存在）
             const isAriaChecked = latestItem.getAttribute('aria-checked') === 'true';
             const hasCheckmarkSvg = latestItem.querySelector('svg') !== null;
 
             if (!isAriaChecked && !hasCheckmarkSvg) {
-                // 「直近」以外が選択されている（未選択の）場合のみ自動クリックを実行
                 latestItem.click();
             }
         }
     };
 
     const startObserver = () => {
-        // X (Twitter) のポップアップやメニューは原則として #layers 配下にマウントされるため、
-        // 監視対象を絞り込んでパフォーマンスの低下を防ぐ
+        // パフォーマンス最適化: Xのポップアップマウント先である #layers を優先監視
         const targetNode = document.getElementById('layers') || document.body;
 
         const observer = new MutationObserver((mutations) => {
