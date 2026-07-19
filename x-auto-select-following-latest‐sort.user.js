@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         X (Twitter) Auto Select Following Latest Sort
+// @name         X Auto Select Following Latest Sort
 // @namespace    http://tampermonkey.net/
 // @version      2.0
 // @description  Xのタイムラインで「並べ替え」メニューが開かれた際、未選択の場合に自動で「最新」を選択し、その後の手動変更を可能にします
