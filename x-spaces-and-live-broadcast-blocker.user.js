@@ -7,8 +7,8 @@
 // @author       Red Frame X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
-// @updateURL    https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-twitter-spaces-and-live-broadcast-blocker.user.js
-// @downloadURL  https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-twitter-spaces-and-live-broadcast-blocker.user.js
+// @updateURL    https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-spaces-and-live-broadcast-blocker.user.js
+// @downloadURL  https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-spaces-and-live-broadcast-blocker.user.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=x.com
 // @grant        none
 // @run-at       document-idle
