@@ -17,23 +17,8 @@
 (function () {
     'use strict';
 
-    // SPA（単一ページアプリケーション）のページ遷移を追跡し、
-    // 「現在のURL（タイムライン）につき1回だけ自動選択を行う」ための状態管理
-    let currentUrl = location.href;
-    let isAutoSelectedForCurrentUrl = false;
-
     // 対象となる項目名（将来的な英語UI等のサポートを考慮し配列化）
     const TARGET_TEXTS = ['直近', 'Latest'];
-
-    /**
-     * URLの変更を検知し、処理済みの状態をリセットする
-     */
-    const checkAndResetIfUrlChanged = () => {
-        if (currentUrl !== location.href) {
-            currentUrl = location.href;
-            isAutoSelectedForCurrentUrl = false;
-        }
-    };
 
     /**
      * 並べ替えメニューのDOMを評価・操作する
@@ -42,12 +27,6 @@
     const handleSortMenu = (rootNode) => {
         if (rootNode.nodeType !== Node.ELEMENT_NODE) return;
 
-        checkAndResetIfUrlChanged();
-
-        // 既に現在のページ（タイムライン）で自動選択を処理済みの場合は、
-        // ユーザーの手動操作を優先して一切の介入を行わない
-        if (isAutoSelectedForCurrentUrl) return;
-
         const menus = rootNode.getAttribute('role') === 'menu'
             ? [rootNode]
             : rootNode.querySelectorAll('[role="menu"]');
@@ -55,6 +34,11 @@
         if (menus.length === 0) return;
 
         for (const menu of menus) {
+            // 既にこのメニューDOMに対する判定・自動選択が処理済みである場合はスキップ
+            if (menu.getAttribute('data-sort-handled') === 'true') {
+                continue;
+            }
+
             const menuItems = menu.querySelectorAll('[role^="menuitem"]');
             let latestItem = null;
 
@@ -69,6 +53,9 @@
             // 「直近」を含まない全く別のメニュー（ツイートのオプション等）だった場合は無視
             if (!latestItem) continue;
 
+            // MutationObserverによる重複処理を防ぐため、対象のメニューであると判明した時点で処理済みマークを付与
+            menu.setAttribute('data-sort-handled', 'true');
+
             // 選択状態の判定（aria-checked属性 または SVGチェックマークの存在）
             const isAriaChecked = latestItem.getAttribute('aria-checked') === 'true';
             const hasCheckmarkSvg = latestItem.querySelector('svg') !== null;
@@ -77,11 +64,6 @@
                 // 「直近」以外が選択されている（未選択の）場合のみ自動クリックを実行
                 latestItem.click();
             }
-
-            // メニューの確認および自動選択が完了したためフラグを立てる
-            // （これ以降、同じタイムラインにいる間はメニューを再展開しても自動クリックされない）
-            isAutoSelectedForCurrentUrl = true;
-            break;
         }
     };
 
