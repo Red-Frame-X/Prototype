@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         YouTube Shelf Force Expand (See More)
+// @name         YouTube Shelf Force Expand
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.0
