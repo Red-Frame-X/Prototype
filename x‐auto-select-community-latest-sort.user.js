@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.6.0
-// @description  Xのタイムラインで「並べ替え」メニューが開かれた際、未選択の場合に自動で「直近」を選択し直し、その後の手動変更を可能にします
+// @description  Xのタイムラインで「並べ替え」メニューが開かれるたびに、未選択であれば自動的に「直近」を選択し直し、その後は手動での変更も可能にします
 // @author       Red-Frame-X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
