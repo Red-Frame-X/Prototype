@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         X (Twitter) Spaces & Live Broadcast Blocker
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      1.3
-// @description  「𝕏でライブ放送する」「スペース」バーを強制的に排除します（再表示防止・!important対応版）
+// @version      2.0.0
+// @description  「𝕏でライブ放送する」「スペース」バーを強制的に排除します（低負荷・CSS注入＆高堅牢性対応版）
 // @author       Red Frame X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
@@ -17,91 +17,87 @@
 (function() {
     'use strict';
 
-    // ログ出力用（動作確認したい場合は true にしてください）
-    const DEBUG = false;
+    /**
+     * 【ベストプラクティス適用】
+     * PC・モバイル端末のCPU・バッテリー負荷を最小化するため、
+     * JSのスクロール監視を廃止し、まずは静的なCSSルール（UserStyle）として非表示化を試みます。
+     */
+    const injectCSS = () => {
+        const styleId = 'x-spaces-live-blocker-style';
+        if (document.getElementById(styleId)) return;
+
+        const style = document.createElement('style');
+        style.id = styleId;
+        // 難読化クラスへの依存を避け、意味論的な属性セレクタで直接隠蔽
+        style.textContent = `
+            button[aria-label*="ライブ放送"],
+            button[aria-label*="さんがホスト"],
+            button[aria-label*="スペース"],
+            button[aria-label*="リスニング中"],
+            [data-testid="placementTracking"]:has(button[aria-label*="スペース"]) {
+                display: none !important;
+                height: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                min-height: 0 !important;
+                pointer-events: none !important;
+            }
+        `;
+        (document.head || document.documentElement).appendChild(style);
+    };
 
     /**
-     * 要素を強力に隠す関数
-     * Reactによるスタイル上書きに対抗するため !important を付与します
+     * CSSの:has()等で捕捉しきれない親要素コンテナ（cellInnerDiv）のみ、
+     * 最小限のJavaScriptで確実に折りたたむ
      */
-    const hideElement = (element) => {
-        if (element && element.style.display !== 'none') {
-            element.style.setProperty('display', 'none', 'important');
-            element.style.setProperty('height', '0', 'important');
-            element.style.setProperty('margin', '0', 'important');
-            element.style.setProperty('padding', '0', 'important');
-            element.style.setProperty('border', 'none', 'important');
-            element.style.setProperty('min-height', '0', 'important'); // 追加: コンテナの最小高さを潰す
-            if (DEBUG) console.log('𝕏 Live/Space Blocker: Hidden element', element);
-        }
+    const hideParentContainer = (element) => {
+        if (!element || element.style.display === 'none') return;
+        
+        const cellInner = element.closest('[data-testid="cellInnerDiv"]');
+        const target = cellInner || element;
+        
+        target.style.setProperty('display', 'none', 'important');
+        target.style.setProperty('height', '0', 'important');
+        target.style.setProperty('margin', '0', 'important');
+        target.style.setProperty('padding', '0', 'important');
+        target.style.setProperty('min-height', '0', 'important');
     };
 
-    const checkAndRemove = () => {
-        // 1. 見出し（Header）部分の除去
-        const headers = document.querySelectorAll('h2[role="heading"]');
+    const processDOM = () => {
+        // 見出し（Header）の処理: テキスト内容による判定が必要な部分のみ抽出
+        const headers = document.querySelectorAll('h2[role="heading"]:not([data-blocked="true"])');
         headers.forEach(h2 => {
-            if (h2.style.display === 'none') return;
+            h2.setAttribute('data-blocked', 'true');
             if (h2.textContent.includes('Xでライブ放送する')) {
-                const parentDiv = h2.closest('div.r-1wtj0ep') || h2.parentElement;
-                hideElement(parentDiv);
+                hideParentContainer(h2);
             }
         });
 
-        // 2. 本体（Card）部分の除去 (placementTracking)
-        const trackingElements = document.querySelectorAll('[data-testid="placementTracking"]');
-        trackingElements.forEach(element => {
-            if (element.style.display === 'none') return;
-            const textContent = element.textContent;
-            const spaceButton = element.querySelector('button[aria-label*="スペース"]');
-
-            if (textContent.includes('Xでライブ放送する') || spaceButton) {
-                hideElement(element);
-            }
-        });
-
-        // 3. ボタン型通知（Space Bar / Live Notification）の除去 [新規追加]
-        const spaceButtons = document.querySelectorAll('button[aria-label*="ライブ放送"], button[aria-label*="さんがホスト"], button[aria-label*="スペース"]');
-
+        // ボタンの親コンテナ折りたたみ処理（ボタン自体はCSSで不可視化済み）
+        const spaceButtons = document.querySelectorAll('button[aria-label*="ライブ放送"]:not([data-blocked="true"]), button[aria-label*="さんがホスト"]:not([data-blocked="true"]), button[aria-label*="スペース"]:not([data-blocked="true"])');
         spaceButtons.forEach(btn => {
-            if (btn.style.display === 'none') return;
-
-            const label = btn.getAttribute('aria-label');
-            if (label && (label.startsWith('ライブ放送') || label.includes('さんがホスト') || label.includes('リスニング中'))) {
-
-                const cellInner = btn.closest('[data-testid="cellInnerDiv"]');
-                if (cellInner) {
-                    hideElement(cellInner);
-                } else {
-                    hideElement(btn);
-                }
-            }
+            btn.setAttribute('data-blocked', 'true');
+            hideParentContainer(btn);
         });
     };
 
-    // 監視と実行の設定
+    // 1. 静的CSSの注入（最も高速な非表示化）
+    injectCSS();
+    processDOM();
 
-    // 1. 初回実行
-    checkAndRemove();
-
-    // 2. MutationObserverによる監視
-    const observer = new MutationObserver((mutations) => {
-        checkAndRemove();
+    // 2. スクロールイベント監視を廃止し、負荷を抑えたMutationObserverのみに統一
+    let timeoutId = null;
+    const observer = new MutationObserver(() => {
+        // スロットリング処理により、連続するDOM変化時のCPU負荷を低減
+        if (timeoutId) return;
+        timeoutId = requestAnimationFrame(() => {
+            processDOM();
+            timeoutId = null;
+        });
     });
 
     observer.observe(document.body, {
         childList: true,
         subtree: true
     });
-
-    // 3. スクロールイベント時にもチェック
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        if (!scrollTimeout) {
-            scrollTimeout = requestAnimationFrame(() => {
-                checkAndRemove();
-                scrollTimeout = null;
-            });
-        }
-    }, { passive: true });
-
 })();
