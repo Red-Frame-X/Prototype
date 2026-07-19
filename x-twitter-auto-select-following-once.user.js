@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         X (Twitter) Auto Select Following Latest Sort (Once)
+// @name         X (Twitter) Auto Select Following Latest Sort Once
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.5
