@@ -3,7 +3,7 @@
 // @namespace    https://greasyfork.org/ja/users/your-profile
 // @version      1.0.0
 // @description  Xのホームタイムラインで「並べ替え」メニューが開かれた際、自動的に「最新」を選択します。手動での変更も可能です。
-// @author       You
+// @author       Red-Frame-X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
 // @updateURL    https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-auto-select-following-latest-sort.user.js
