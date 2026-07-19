@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.5.0
-// @description  𝕏のタイムラインで「並べ替え」メニューが開かれた際、未選択の場合に「直近」を一度だけクリックして動作を解除し、手動での自由な選択を可能にします。
+// @description  Xのタイムラインで「並べ替え」メニューが開かれた際、未選択の場合に「直近」を一度だけクリックして動作を解除し、手動での自由な選択を可能にします。
 // @author       Red-Frame-X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
