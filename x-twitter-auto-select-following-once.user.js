@@ -2,8 +2,8 @@
 // @name         X (Twitter) Auto Select Following Latest Sort (Once)
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
-// @version      1.5
-// @description  Xのタイムラインで「並べ替え」メニューが開かれた際、一度だけ「最新」を自動選択し、その後の手動変更を可能にします
+// @version      2.0
+// @description  Xのタイムラインで「並べ替え」メニューが開かれた際、未選択の場合に一度だけ「最新」を自動選択し、その後の手動変更を可能にします。
 // @author       Red Frame X (Modified)
 // @match        https://x.com/*
 // @match        https://twitter.com/*
@@ -15,49 +15,66 @@
 (function() {
     'use strict';
 
-    // ターゲットとするメニューの完全なテキスト（UI表記に準拠）
     const TARGET_MENU_TEXT = "最新";
-    // 選択時に表示されるチェックマークアイコンの特有のパスデータ
-    const CHECKMARK_PATH_PREFIX = "M9.64 18.952";
-    
-    let hasClicked = false;
+
+    // SPAの画面遷移を考慮した実行状態管理
+    let hasProcessedForCurrentPage = false;
+    let currentUrl = location.href;
+
+    // URLの変更（画面遷移）を検知してフラグをリセットする
+    function checkUrlChange() {
+        if (location.href !== currentUrl) {
+            currentUrl = location.href;
+            hasProcessedForCurrentPage = false;
+        }
+    }
 
     function selectLatestSort() {
-        if (hasClicked) return;
+        // 現在の画面ですでに処理済み（自動選択 or 検知完了）の場合は手動操作を優先して中断
+        if (hasProcessedForCurrentPage) return;
 
-        // ドロップダウンメニューのアイテムを取得（生成前なら処理中断）
         const menuItems = document.querySelectorAll('div[role="menuitem"]');
         if (menuItems.length === 0) return;
 
         for (const item of menuItems) {
-            // 前後の余白を除去したテキストがターゲットと完全に一致するか判定
             const itemText = item.textContent ? item.textContent.trim() : "";
-            
+
             if (itemText === TARGET_MENU_TEXT) {
-                // チェックマークのSVGパスが存在するかで「選択済み」かを判定
-                const isSelected = Array.from(item.querySelectorAll('path')).some(path => {
-                    const d = path.getAttribute('d');
-                    return d && d.startsWith(CHECKMARK_PATH_PREFIX);
-                });
+                // 【改善ポイント】脆弱なSVGパス文字列ではなく「SVGノードの有無」で選択状態を判定
+                // 提示されたHTML構造上、選択中の項目にのみチェックマークの <svg> が存在する
+                const isSelected = item.querySelector('svg') !== null;
 
-                // 未選択の場合のみクリックを実行
                 if (!isSelected) {
-                    item.click();
+                    // Reactのイベントリスナーアタッチとの競合を防ぐため、描画フレームに同期してクリック
+                    requestAnimationFrame(() => {
+                        item.click();
+                    });
                 }
 
-                // 「最新」メニューを検知した時点で（クリック有無に関わらず）処理完了とし、監視を完全停止
-                hasClicked = true;
-                if (observer) {
-                    observer.disconnect();
-                }
+                // 「最新」メニューを検知した時点で同一ページ内での処理を完了とする
+                // これにより、以降ユーザーが手動でメニューを開いて「人気」に変更しても再干渉しない
+                hasProcessedForCurrentPage = true;
                 return;
             }
         }
     }
 
-    // メニューが開かれてDOMに追加されるタイミングを監視
-    const observer = new MutationObserver(() => {
-        selectLatestSort();
+    // MutationObserverの最適化
+    const observer = new MutationObserver((mutations) => {
+        checkUrlChange();
+
+        // ノードが追加された場合のみ検索処理を実行し、パフォーマンスを維持する
+        let hasAddedNodes = false;
+        for (const mutation of mutations) {
+            if (mutation.addedNodes.length > 0) {
+                hasAddedNodes = true;
+                break;
+            }
+        }
+
+        if (hasAddedNodes) {
+            selectLatestSort();
+        }
     });
 
     observer.observe(document.body, {
@@ -65,7 +82,5 @@
         subtree: true
     });
 
-    // 初期ロード時にすでにメニューが存在する場合を考慮した初回実行
     selectLatestSort();
-
 })();
