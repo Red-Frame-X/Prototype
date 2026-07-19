@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         X (Twitter) Spaces & Live Broadcast Blocker
+// @name         X Spaces & Live Broadcast Blocker
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
 // @version      2.0.0
