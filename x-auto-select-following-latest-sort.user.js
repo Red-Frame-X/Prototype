@@ -6,8 +6,8 @@
 // @author       You
 // @match        https://x.com/*
 // @match        https://twitter.com/*
-// @updateURL    https://example.com/script.meta.js
-// @downloadURL  https://example.com/script.user.js
+// @updateURL    https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-auto-select-following-latest-sort.user.js
+// @downloadURL  https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-auto-select-following-latest-sort.user.js
 // @icon         https://abs.twimg.com/favicons/twitter.3.ico
 // @grant        none
 // @run-at       document-idle
