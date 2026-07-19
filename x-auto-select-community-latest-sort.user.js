@@ -9,7 +9,7 @@
 // @match        https://twitter.com/*
 // @updateURL    https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-auto-select-community-latest-sort.user.js
 // @downloadURL  https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/x-auto-select-community-latest-sort.user.js
-// @icon         https://abs.twimg.com/favicons/twitter.3.ico
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=x.com
 // @grant        none
 // @run-at       document-idle
 // ==/UserScript==
