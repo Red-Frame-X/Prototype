@@ -478,8 +478,8 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 // ==/UserScript==
 
 # サイトのURL
- 
- 
+# サイトのURL 
+
 # HTMLソースコード
 ```
 
