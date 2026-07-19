@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         YouTube Description Auto Expander (SPA Support)
+// @name         YouTube Description Auto Expander
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.1
