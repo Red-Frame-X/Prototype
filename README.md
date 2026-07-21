@@ -55,6 +55,7 @@ These are projects I am actively involved in through feedback and bug reports.
 These are projects that I use on a daily basis and support regularly.
 
 * **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援 ‐ Androidアプリのカスタマイズツール
+  * [Morphe Community Patches](https://morphe-patches.software/) ：コミュニティが作成したパッチバンドル
 * **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-) - プライバシーを保護するDNSフィルタリングアプリ
 * **[Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)**：[HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists) - 誤検知の少ない厳選DNSブロックリスト
 
