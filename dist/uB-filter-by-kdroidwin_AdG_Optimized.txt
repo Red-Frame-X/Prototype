@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202607221505
+! Version: 202607230716
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -539,6 +539,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||adult-otona.tokyo^$document
 ||adult-select.com^$document
 ||adult.asoku.net^$document
+||adult.coideco.jp^$document
 ||adult.z-z.jp^$document
 ||adult21ero.com^$document
 ||adultdojin.jp^$document
@@ -730,6 +731,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||almoosahomehealthcare.org^$document
 ||alnaimistudios.com^$document
 ||alpha-box.jp^$document
+||alpha.hentai-raw.net^$document
 ||alpinearagon.com^$document
 ||alprazolamfaq.com^$document
 ||alps-stech.jp/products^$document
@@ -1417,6 +1419,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||besunet.com^$document
 ||bethelcc.net^$document
 ||better-information.com^$document
+||beyond-inc.jp^$document
 ||beypark7.com^$document
 ||bg-mania.jp^$document
 ||bh-clearance.com^$document
@@ -2371,7 +2374,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dekunoboh.com^$document
 ||delafosse.immo^$document
 ||delicious-info.com^$document
-||delishkitchen.tv^$document
 ||deliteapks.com^$document
 ||dellasanta.ch^$document
 ||delshahdriving.com^$document
@@ -2635,6 +2637,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||doujindayo.com^$document
 ||doujineroman.wpx.jp^$document
 ||doujinevent.com^$document
+||doujinfanza.com^$document
 ||doujinfree.com^$document
 ||doujingpt.com^$document
 ||doujinhook.net^$document
@@ -3273,6 +3276,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||feeb.jp^$document
 ||feizeus.com^$document
 ||feizeus2.com^$document
+||felice-co.jp^$document
 ||femimatsu.com^$document
 ||fenergybd.com^$document
 ||ferquem.com^$document
@@ -3518,6 +3522,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||fund.lifeplay.co.jp^$document
 ||fundacionbuenasemilla.org^$document
 ||funfuntanoshii.com^$document
+||funin-ryoritsu.jp^$document
 ||funlifehack.com^$document
 ||funmodapk.com^$document
 ||funmovelearn.com^$document
@@ -4266,6 +4271,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hentai-raw-manga.jp^$document
 ||hentai-raw.com^$document
 ||hentai-raw.net^$document
+||hentai-raw.wew.jp^$document
 ||hentai-tok.com^$document
 ||hentai.coffee-days.jp^$document
 ||hentai.gger.jp^$document
@@ -4396,6 +4402,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hitomi-raw-eromanga.com^$document
 ||hitomi-raw.cfbx.jp^$document
 ||hitomi-raw.lsrv.jp^$document
+||hitomi-raw2.wew.jp^$document
 ||hitomi-vg.com^$document
 ||hitomi.momonga-raw.com^$document
 ||hitomia.com^$document
@@ -4919,6 +4926,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||japex.ru^$document
 ||jardinesjusto.com^$document
 ||jaropan.pages.dev^$document
+||jav-mania.com^$document
 ||javelinmitsu.com^$document
 ||javten.com^$document
 ||javy.jp^$document
@@ -5244,6 +5252,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kekkon874.com^$document
 ||kekvr55qs.aarmarcalderas.es^$document
 ||kelsey-asbillenude.nude.com^$document
+||kelu.jp^$document
 ||kelvinshi.me^$document
 ||kemono-friends-shop.net^$document
 ||kemono-friendsbbs.com^$document
@@ -6131,6 +6140,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mangacafe-jupiter.com^$document
 ||mangachuuu.jp^$document
 ||mangacomic.wpx.jp^$document
+||mangadoujinero.net^$document
 ||mangafan.biz^$document
 ||mangakaiwai.com^$document
 ||mangakaiwai.wpx.jp^$document
@@ -6140,6 +6150,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mangan-king.com^$document
 ||mangan1.seesaa.net^$document
 ||manganista.net^$document
+||manganotatsujin.jp^$document
 ||mangaportal.jp^$document
 ||mangaroo.jp^$document
 ||mangasokuhou.com^$document
@@ -6218,6 +6229,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||master--endoflife-date.netlify.app^$document
 ||master--helm-dev.netlify.app^$document
 ||master.tech-camp.in^$document
+||masutabe.info^$document
 ||masyuo.com^$document
 ||mata-ashita.com^$document
 ||matce.cn^$document
@@ -6613,6 +6625,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||momonga-raw.com^$document
 ||momonga.hitomi-manga-hentai.com^$document
 ||momongaraw.jp^$document
+||momongarawhitomi.jp^$document
 ||momongasan.com^$document
 ||momongasan.wpx.jp^$document
 ||momonoyakata.com^$document
@@ -7105,6 +7118,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||nisanakadar.online^$document
 ||nishichibayk-dc.com^$document
 ||nishinono.com^$document
+||nishizawasatoshi.com^$document
 ||nissancagayandeoro.com^$document
 ||nisshin-kogyo.jp^$document
 ||nisshinne.life^$document
@@ -8098,6 +8112,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||otomeexpert.com^$document
 ||otona-comic.com^$document
 ||otona-freecomic.jp^$document
+||otona-radar.jp^$document
 ||otonaclub.mixh.jp^$document
 ||otonakensaku.com^$document
 ||otonano-erokatsu.net^$document
@@ -8428,6 +8443,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||positive-lab365days.com^$document
 ||positivelog.net^$document
 ||possi452.hateblo.jp^$document
+||possi452.hatenadiary.jp^$document
 ||postcrux.com^$document
 ||postly.app^$document
 ||pot-blog.com^$document
@@ -8626,8 +8642,10 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||r-press.su^$document
 ||r18-ai.com^$document
 ||r18.hotel3.jp^$document
+||r18.utsuru.jp^$document
 ||r18books.yogamotto.com^$document
 ||r18erodoujin.com^$document
+||r18index.net^$document
 ||r2.community.samsung.com^$document
 ||r25.jp^$document
 ||r27kt256.r.us-east-1.awstrack.me^$document
@@ -11399,6 +11417,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.amjad.xyz^$document
 ||www.amourinteriors.in^$document
 ||www.analytiqs.io^$document
+||www.andalyfe-cbd.jp^$document
 ||www.andbeans.jp^$document
 ||www.andresen-erhverv.dk^$document
 ||www.androeed.cc^$document
@@ -11733,6 +11752,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.directstrata.com^$document
 ||www.diskgarage.com^$document
 ||www.displayexpo.jp^$document
+||www.dj-adb.com^$document
 ||www.djengduedd.com^$document
 ||www.dm-s.co.jp^$document
 ||www.doctorgreen.com^$document
@@ -12528,6 +12548,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.nhyxmsy.cn^$document
 ||www.nicigas.shop^$document
 ||www.nigehbancompoundingpharmacy.com^$document
+||www.nijigen-mazoblog.com^$document
 ||www.niksonline.com^$document
 ||www.nishino-it-office.com^$document
 ||www.nishinomiya-city.jp^$document
@@ -13425,6 +13446,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||xvpn.io^$document
 ||xvxv-min.com^$document
 ||xxkaiwai.com^$document
+||xxx.coffee-days.jp^$document
 ||xxx.hotel3.jp^$document
 ||xxx.konan-connect.jp^$document
 ||xxx.oz-bread.com^$document
