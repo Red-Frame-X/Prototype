@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202607241504
+! Version: 202607251459
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -83,6 +83,7 @@ audiobookbay.lu#?#td:nth-of-type(n):has-text(/Direct|安全|Secured Download|直
 audiobookbay.lu#?#td:nth-of-type(n):has-text(Ad)
 audiobookbay.lu#?#td:nth-of-type(n):has-text(Download Files Now)
 audiobookbay.lu#?#td:nth-of-type(n):has-text(You could try out alternative bittorrent clients)
+ddownload.com##.dk-banner-row--pair.dk-banner-row
 filespayouts.com##.cb-ad-box
 fp.no-sheep.org/services##.main
 h2testw.org##.entry-content::before { content: "これは偽サイト　Fake Site"; position: fixed !important; top: 10px !important; left: 10px !important; z-index: 999999 !important; font-size: 32px !important; color: #fff !important; background: #c00 !important; font-weight: 900 !important; padding: 8px 12px !important; border-radius: 6px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important; }
@@ -137,7 +138,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||*bank-co-jp.com^$document
 ||*bank-co-jp.net^$document
 ||*bank-jp.site^$document
-||*cracked-games.*^$all
 ||*getintopc.com^$all
 ||*kickasstorrents.*^$all
 ! [Unsupported Modifier: to=] ||*kms-pico*.*^$all,to=~forums.mydigitallife.net
@@ -169,7 +169,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||-co-jp.wiki^$document
 ||-co-jp.work^$document
 ||-co-jp.xyz^$document
-||-jp.co^$document
 ||0-scholar-google-com.brum.beds.ac.uk^$document
 ||000webhostapp.com^$document
 ||009933.xyz^$document
@@ -591,6 +590,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ai-l.net^$document
 ||ai-lab-jp.com^$document
 ||ai-official.jp^$document
+||ai-plus.school^$document
 ||ai-skill-academy.netlify.app^$document
 ||ai-skill.jp^$document
 ||ai-uruoi.com^$document
@@ -599,6 +599,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ai.dounavi.net^$document
 ||ai4chat.co^$document
 ||aianimal.p2.weblife.me^$document
+||aiart-school.com^$document
 ||aiboku-com.vercel.app^$document
 ||aibus.co.uk^$document
 ||aichansblog.com^$document
@@ -763,6 +764,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||amaninmega-club.com^$document
 ||amanioil.com^$document
 ||amberdeer6769896.com^$document
+||ameblo.jp/64152966^$document
 ||ameblo.jp/akiaki150^$document
 ||ameblo.jp/am123456789a^$document
 ||ameblo.jp/and-gretel^$document
@@ -1097,6 +1099,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||arakure.net^$document
 ||araou.jp^$document
 ||arasa-mama.com^$document
+||arcanaapp.com^$document
 ||archimedes-movie.jp^$document
 ||archivando.jp^$document
 ||archive.org/details/Office2016PermanentActivatorUltimate1.7^$document
@@ -1170,6 +1173,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ashitamohare.com^$document
 ||ashitasekaiga.jp^$document
 ||ashradar.com^$document
+||asianoneta.blog.jp^$document
 ||asifkhanshakir.com^$document
 ||asilisas.buzz^$document
 ||asitanokakehasi.blog.ss-blog.jp^$document
@@ -1893,6 +1897,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||chatgpt.jp.net^$document
 ||chatgpt4000.com^$document
 ||chatgptjapan.org^$document
+||chatgptjapan.seesaa.net^$document
 ||chatgptjp.com^$document
 ||chatgptmod-apk.com^$document
 ||chatgptmodapk.com^$document
@@ -2069,6 +2074,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||codederg.com^$document
 ||codederg.org^$document
 ||codeerg.com^$document
+||codefree.kitashooo.com^$document
 ||codegrepr.com^$document
 ||codeguides.site^$document
 ||coderoad.ru^$document
@@ -2199,6 +2205,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||coronnoblog.com^$document
 ||cororotan.com^$document
 ||corosuke-anything-talk.net^$document
+||corowaku-memo.com^$document
 ||corp.omake.co.jp^$document
 ||corpsync365.pro^$document
 ||cosmosports.jp^$document
@@ -2671,6 +2678,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||doujinshinsaku.com^$document
 ||doujinsokuhou45.com^$document
 ||doujinwiki.com^$document
+||doukaiko.jp^$document
 ||doutera.com^$document
 ||douyasu.blog.jp^$document
 ||douzin-daisuki.com^$document
@@ -3294,6 +3302,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||felice-co.jp^$document
 ||femimatsu.com^$document
 ||fenergybd.com^$document
+||feparmtt.com^$document
 ||ferquem.com^$document
 ||fesoku.net^$document
 ||festy.jp^$document
@@ -3558,6 +3567,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||futanarist.com^$document
 ||futboltactix.com^$document
 ||futosoku.com^$document
+||future-next.com^$document
 ||future-sparkling.com^$document
 ||futurepark.team-lab.cn^$document
 ||futurerobot.online^$document
@@ -3729,6 +3739,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gen-shun.com^$document
 ||gen-zai.com^$document
 ||gen51.net^$document
+||genai.dmm.com^$document
 ||genalphaup.com^$document
 ||gendai-torendo.online^$document
 ||generative-agents.co.jp^$document
@@ -3740,6 +3751,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||genkimaru1.livedoor.blog^$document
 ||genkimorizou.com^$document
 ||genkimura.net^$document
+||genkipolitan.com^$document
 ||genkithings.jp^$document
 ||genovasmma.com^$document
 ||genremag.com^$document
@@ -3880,6 +3892,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||globalsun.jp^$document
 ||globaxiscorp.com^$document
 ||globeflightdeals.com^$document
+||globo-site.com^$document
 ||glocalnet.jp^$document
 ||glotoolhub.com^$document
 ||glowluxv.com^$document
@@ -4094,6 +4107,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||haku.blue^$document
 ||hakuraimobile.cart.fc2.com^$document
 ||hakusensha.tameshiyo.me^$document
+||hakushi-s-school.teachable.com^$document
 ||hal08.com^$document
 ||halilibrahimoslo.online^$document
 ||halnostyle.com^$document
@@ -4361,6 +4375,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hikoukigumo2024.com^$document
 ||hill-challenge.jp^$document
 ||hilokume.jp^$document
+||hima-labo.hatenablog.com^$document
 ||hima-po.com^$document
 ||himalayas.app^$document
 ||himamanga.com^$document
@@ -4454,6 +4469,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hm.info^$document
 ||hmaga-life.com^$document
 ||hman-hman.com^$document
+||hmanga-best.com^$document
 ||hmanganavi.com^$document
 ||hmd.site^$document
 ||hmfes.com^$document
@@ -4658,6 +4674,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ikari-movie.com^$document
 ||ikawamototaka.com^$document
 ||ike-net.jp^$document
+||ikeda-toshie.com^$document
 ||ikeda-yoshitaka.jp^$document
 ||ikedahayato.com^$document
 ||ikehaya.com^$document
@@ -4792,6 +4809,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||iorieightrsa.xyz^$document
 ||ioritenrsa.xyz^$document
 ||iowadotlandsales.com^$document
+||ipadmod.net^$document
 ||ipcgames.com/ocean-of-games/*
 ||iphglobal.com^$document
 ||iphone-displayreparatur.eu^$document
@@ -5400,6 +5418,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kitsac1001.com^$document
 ||kiyo0406.com^$document
 ||kiyoxmao.com^$document
+||kizuki.rainbow-school.info^$document
 ||kk-hiroshima.net^$document
 ||kk-information.com^$document
 ||kk1212.com^$document
@@ -5644,6 +5663,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kyoutei-report.com^$document
 ||kyoyo-renai.com^$document
 ||kyozon.net/list/vpn-recommended^$document
+||kyozon.net^$document
 ||kyun2-girls.com^$document
 ||kyushuoen-yahoo.co^$document
 ||kz20250129.com^$document
@@ -5951,6 +5971,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||lzz-mall.com^$document
 ||m-artist.net^$document
 ||m-lifeblog.com^$document
+||m-mami.jp^$document
 ||m-melody.jp^$document
 ||m-uroko.com^$document
 ||m-view.jp^$document
@@ -6712,6 +6733,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||moteo.best^$document
 ||motetsu.com^$document
 ||motochanblog.com^$document
+||motokase.com^$document
 ||motorlife-world.com^$document
 ||motorx6d.sarangkkb.com^$document
 ||motoyun-anl.com^$document
@@ -6735,6 +6757,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mrlmhcx4.r.eu-west-1.awstrack.me^$document
 ||mrs.seven-area.com^$document
 ||ms-engineer.jp^$document
+||ms.aiart-school.com^$document
 ||msfreeb.com^$document
 ||msfuturestories.ru^$document
 ||msk-radio.com^$document
@@ -7114,6 +7137,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||nigiwasu.com^$document
 ||nihon-ichi.jp^$document
 ||niigata.mypl.net^$document
+||niiuf1hckvrtyjxfsury.stores.jp^$document
 ||niji-doujin.jp^$document
 ||niji.e-r-o-anime.xyz^$document
 ||nijigen.joshiana-room.com^$document
@@ -7121,6 +7145,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||nijiholo-local.jp^$document
 ||nijihorosokuvtubermatome.com^$document
 ||nijiironosakana.com^$document
+||nijinogakko.jugem.jp^$document
 ||nijipaco.com^$document
 ||nijtbsupply.com^$document
 ||nikkan-shufu.com^$document
@@ -7131,6 +7156,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||nilebasin.org^$document
 ||nina.webapp.pink^$document
 ||ninnintrends.com^$document
+||ninnkidoujinnavnyki.com^$document
 ||nipponnowadai.com^$document
 ||niratamajournal.com^$document
 ||niravselection.com^$document
@@ -7272,6 +7298,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/chawanwabita^$document
 ||note.com/cheeky_thyme7377^$document
 ||note.com/chic_sorrel1534^$document
+||note.com/chiharu_aiart^$document
 ||note.com/chizuru1122^$document
 ||note.com/chocolateflower^$document
 ||note.com/cio_travel^$document
@@ -7412,6 +7439,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/japan_cio_info^$document
 ||note.com/japanpromos^$document
 ||note.com/jigami^$document
+||note.com/jijineta_world^$document
 ||note.com/jikenwo_kaimei^$document
 ||note.com/jitan_kurashi^$document
 ||note.com/jjka1414^$document
@@ -7591,6 +7619,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/penginadaafi^$document
 ||note.com/pet_supply^$document
 ||note.com/photograpy_tips^$document
+||note.com/picaso_youtube^$document
 ||note.com/pinchichan2^$document
 ||note.com/pixel8a9^$document
 ||note.com/planetofgori^$document
@@ -8112,6 +8141,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||osusume-matome.2chblog.jp^$document
 ||osusume.best^$document
 ||osusume.mynavi.jp^$document
+||osutaka.com^$document
 ||ot2512.com^$document
 ||ota-goods.info^$document
 ||otaetae.com^$document
@@ -8281,6 +8311,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||pelulog.com^$document
 ||penghuothgroup.com^$document
 ||penguinblog.work^$document
+||pentacles1.com^$document
 ||pentagonpapers-movie.jp^$document
 ||pentanews.net^$document
 ||pepms.icu^$document
@@ -8291,6 +8322,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||perla.si^$document
 ||persimmonichinaru.com^$document
 ||person.sakura.ne.jp^$document
+||personalgimmick.com^$document
 ||personifundas.com^$document
 ||perspective.wp-x.jp^$document
 ||pesktop.com/en/windows/kms-matrix^$document
@@ -8680,12 +8712,14 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||rabbanmoto.com^$document
 ||rabitsokuhou.2chblog.jp^$document
 ||rabwatalriyad.com^$document
+||radiojukebox.eu^$document
 ||radiolav.ru^$document
 ||radiopica.net^$document
 ||rafafernandezphotography.com^$document
 ||ragsoutfitters.com^$document
 ||raifuappu.com^$document
 ||rail-inn.com^$document
+||rainbow-school.info^$document
 ||rainbowtransfer.com^$document
 ||rainmakerofnews.com^$document
 ||rairai0707.com^$document
@@ -8799,6 +8833,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||reicherumama.com^$document
 ||reinforz.co.jp^$document
 ||reitoratube.com^$document
+||reiwa-ni-ikiru.com^$document
 ||reiwabook.blog^$document
 ||reiwanotora.jp^$document
 ||rekisiru.com^$document
@@ -8842,6 +8877,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||repsoku.net^$document
 ||rere.jp/beginners/249062^$document
 ||resditen.com^$document
+||resemom.jp^$document
 ||reservas.narbonawines.com^$document
 ||resoea.co^$document
 ||resource.gatecoin.online^$document
@@ -8941,6 +8977,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||rika333ep.com^$document
 ||rikeilifeblog.com^$document
 ||riko-ai.com^$document
+||rikutaro.jp^$document
 ||rillyblog.net^$document
 ||rily.miya-rin7.com^$document
 ||rimowakaigaitenbai.com^$document
@@ -9244,7 +9281,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||sbenny.com^$document
 ||sber.me^$document
 ||sblog51.net^$document
-! [Unsupported Modifier: to=] ||sbs^$doc,to=~tomandjerry.sbs|~trend-japan.sbs|~kemono.sbs|~tohokamiemitame.sbs|~manyouwo.sbs|~www.muzyl11.sbs|~zzb06.sbs|~www.zoucili.sbs|~wjyy498125.sbs|~www.abb1.sbs|~aaa.bm11.sbs|~aidou.henhenlu.sbs|~www.avesns3.sbs|~www.abb5.sbs|~zhfop.sbs|~awqjyn100.sbs|~moritake.sbs|~hiroruri.sbs|~sitterservice-beyond.sbs|~airbnb-o-hama.sbs|~javbus.sbs|~www.jilewangchao.sbs|~av4us.sbs|~kakyo.sbs|~ehimedoyoukai.sbs
+! [Unsupported Modifier: to=] ||sbs^$doc,to=~tomandjerry.sbs|~trend-japan.sbs|~kemono.sbs|~tohokamiemitame.sbs|~manyouwo.sbs|~www.muzyl11.sbs|~zzb06.sbs|~www.zoucili.sbs|~wjyy498125.sbs|~www.abb1.sbs|~aaa.bm11.sbs|~aidou.henhenlu.sbs|~www.avesns3.sbs|~www.abb5.sbs|~zhfop.sbs|~awqjyn100.sbs|~moritake.sbs|~hiroruri.sbs|~sitterservice-beyond.sbs|~airbnb-o-hama.sbs|~javbus.sbs|~www.jilewangchao.sbs|~av4us.sbs|~kakyo.sbs|~ehimedoyoukai.sbs|~endless.sbs
 ||scaleqa.com^$document
 ||scan.page^$document
 ||scarystories.jp^$document
@@ -9496,6 +9533,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||sikosiko.syokusamen.com^$document
 ||silkenfeline.com^$document
 ||silver-allure.com^$document
+||sim-fan.com^$document
 ||sim-studio-unify.com^$document
 ||simeji.me^$document
 ||simkids.jp^$document
@@ -9702,6 +9740,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||speeder-x.com^$document
 ||speedy-senkyo.hatenadiary.jp^$document
 ||speedycolt.com^$document
+||spicomi.net^$document
 ||spicymadonna.com^$document
 ||spinaltap.jp^$document
 ||spirit.aptty.com^$document
@@ -9775,6 +9814,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||sprunkikiss.cc^$document
 ||sprunkilove.org^$document
 ||sprunkisinner.cc^$document
+||sputnikglobe.com^$document
 ||sqlite.in^$document
 ||squallchannel.com^$document
 ||squashsite.world^$document
@@ -10062,6 +10102,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||t.me/s/OfficialFTUApps?before=466^$document
 ||t.me/sotaproject^$document
 ||t.spnews5.me^$document
+||t2-3d.jp^$document
 ||t2m.io^$document
 ||t3n.me^$document
 ||ta-see.com^$document
@@ -10209,6 +10250,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||techzapk.net^$document
 ||tecn.apice-tec.co.jp^$document
 ||tecnohumanismo.online^$document
+||teddyangel.com^$document
 ||tee1515.com^$document
 ||teeeerapon.com^$document
 ||teg.sesses.info^$document
@@ -10447,6 +10489,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tokuneta.info^$document
 ||tokupine.com^$document
 ||tokutas.com^$document
+||tokyo-ai-sch.com^$document
 ||tokyo-animetourism-2023.jp^$document
 ||tokyo-animetourism.jp^$document
 ||tokyo-city-girl.com^$document
@@ -10663,6 +10706,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tsuisoku.com^$document
 ||tsuji-papa.com^$document
 ||tsukae.ru^$document
+||tsukareme-ganseihirou8.com^$document
 ||tsuki-ai.co.jp^$document
 ||tsukiakari-boutique.com^$document
 ||tsukimiru.com^$document
@@ -10878,6 +10922,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||vabiruonline.com^$document
 ||vacancesmartinique.fr^$document
 ||vaccr.org^$document
+||vado-buy.com^$document
 ||vadunasy.xyz^$document
 ||vagabr.online^$document
 ||valor0code.com^$document
@@ -11033,6 +11078,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||vpnmentor.com^$document
 ||vpnnippon.jp^$document
 ||vpnserver.sakura.ne.jp^$document
+||vpnsetsu.com^$document
 ||vpnveteran.com^$document
 ||vr-mania.com^$document
 ||vrcl.uk^$document
@@ -11069,6 +11115,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||waarinbeleggen2021.nl^$document
 ||wacaru-net.co.jp^$document
 ||wacarunet.jp^$document
+||wacaruwifi.xsrv.jp^$document
 ||wack-idoll.com^$document
 ||wadai-are.com^$document
 ||wadai-journal.com^$document
@@ -11978,6 +12025,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.gameloop.com^$document
 ||www.gamesload.com^$document
 ||www.gamestorrents.app^$document
+||www.gamingdeputy.com^$document
 ||www.gangnamunni.com^$document
 ||www.gangniunnayanfoundation.org^$document
 ||www.gao200529.top^$document
@@ -12177,6 +12225,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.insta360.cn^$document
 ||www.instagram.cn^$document
 ||www.instagram.com/hianime.official^$document
+||www.instagram.com/myulier_aiart^$document
 ||www.intambwemedia.com^$document
 ||www.intel.cn^$document
 ||www.intel.ru^$document
@@ -12186,6 +12235,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.ippo.ne.jp^$document
 ||www.irigasi.info^$document
 ||www.iruka-travel.com^$document
+||www.ishamachi.com^$document
 ||www.ishidasui-ten.com^$document
 ||www.ishikikaikaku.jp^$document
 ||www.iskra-r.ru^$document
@@ -12763,6 +12813,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.rastanhealth.com^$document
 ||www.rayjonesdigital.com^$document
 ||www.rbbtoday.com^$document
+||www.rbth.com^$document
 ||www.rcv.co.jp^$document
 ||www.rdcjtws.cn^$document
 ||www.rdgstl.com^$document
@@ -12805,6 +12856,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.rizapgroup.com^$document
 ||www.rizinlog.shop^$document
 ||www.rmrs.info^$document
+||www.rnb.co.jp^$document
 ||www.roboticsafrica.com^$document
 ||www.rockajaponica.com^$document
 ||www.rocketflush.vip^$document
@@ -13366,6 +13418,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||xn--5cktamn1e3cza4749gkla.com^$document
 ||xn--7ck4axdc4icb0947dwse.com^$document
 ||xn--7frp6a51ujmfxo1adfzuzk37c.com^$document
+||xn--8stu92aslz3bk.net^$document
 ||xn--98jxb5dua6581cp0kbh0h.com^$document
 ||xn--b9jtjxa7aj6131e.com^$document
 ||xn--bdkyb7dr864au6ub.com^$document
@@ -13410,6 +13463,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||xn--n8jp1dzg801ngmaq12a4qui95g.com^$document
 ||xn--n8jtc6ad0nv19pp9cstj8xjljc.net^$document
 ||xn--n8jtcxe5c344rqxguyj4o1dj8yb.com^$document
+||xn--n8jv600a.net^$document
 ||xn--n8jyp3b884top8c.net^$document
 ||xn--nbkt22gzudwn9b.jp^$document
 ||xn--nckxaw3lrb7by753hi5c.net^$document
