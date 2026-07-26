@@ -66,13 +66,17 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 @@||www.google-analytics.com^$important
 
 ! google.com
-! 検索結果のクリーンアップ
-google.com##span[role="heading"]:contains(他の人はこちらも検索):upward(div[data-hveid])
-google.com##span[role="heading"]:contains(ショート動画):upward(div[data-hveid])
-google.com##span[role="heading"]:contains(関連する質問):upward(div[data-hveid])
-google.com##span[role="heading"]:contains(AI による概要):upward(div[data-hveid])
-google.com##h2:contains(こちらを検索しますか):upward(div[data-hveid])
-google.com##div[role="listitem"]:has(a:contains(ショート動画))
+! 1. 「他の人はこちらも検索」「関連する質問」を非表示（質問・関連検索モジュール）
+google.com###rso > div:has(span[role="heading"]:is(:contains(他の人はこちらも検索), :contains(関連する質問)))
+! 2. 「ショート動画」セクションを非表示（ナビバーの誤爆を防ぎ、検索結果の動画モジュールのみをターゲット）
+google.com###rso > div:has(:is(h2, span[role="heading"]):contains(ショート動画))
+google.com###rso > div:has(a[href^="https://www.youtube.com/shorts/"])
+! 3. 「AI による概要 (AI Overviews)」を非表示
+google.com###rso > div:has(span[role="heading"]:contains(AI による概要))
+! ※AI概要が#rsoの外に出力されるケースに備えた予備ルール（ナビバー #top_nav は除外）
+google.com###search div[data-hveid]:not(#top_nav *):has(span[role="heading"]:contains(AI による概要))
+! 4. 「こちらを検索しますか（もしかして）」を非表示
+google.com###rso > div:has(h2:contains(こちらを検索しますか))
 
 ! googleapis.com
 ! Gemini・Googleアシスタントの通信エラーとタイムアウト回避
