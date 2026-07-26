@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202607261929
+! Version: 202607261933
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -32,12 +32,12 @@ amazon.co.jp##[id^="desktop-ad-center-"]
 
 ! blog.hatena.ne.jp
 ! 広告・迷惑要素の非表示
-! blog.hatena.ne.jp##.admin-subscribe-heading
-! blog.hatena.ne.jp##.antenna-circle-list
-! blog.hatena.ne.jp##.globalPage-ad
-! blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
-! blog.hatena.ne.jp##.recommendList-wrapper
-! blog.hatena.ne.jp##aside.antenna-staffPicks
+blog.hatena.ne.jp##.admin-subscribe-heading
+blog.hatena.ne.jp##.antenna-circle-list
+blog.hatena.ne.jp##.globalPage-ad
+blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
+blog.hatena.ne.jp##.recommendList-wrapper
+blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! daily.co.jp
 ! GeminiクオリティなAdShield処理
@@ -67,7 +67,12 @@ amazon.co.jp##[id^="desktop-ad-center-"]
 
 ! google.com
 ! 検索結果のクリーンアップ
-
+google.com##span[role="heading"]:contains(他の人はこちらも検索):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(ショート動画):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(関連する質問):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(AI による概要):upward(div[data-hveid])
+google.com##h2:contains(こちらを検索しますか):upward(div[data-hveid])
+google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
 ! googleapis.com
 ! Gemini・Googleアシスタントの通信エラーとタイムアウト回避
