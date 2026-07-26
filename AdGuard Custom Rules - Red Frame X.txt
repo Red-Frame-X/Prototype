@@ -32,12 +32,12 @@ amazon.co.jp##[id^="desktop-ad-center-"]
 
 ! blog.hatena.ne.jp
 ! 広告・迷惑要素の非表示
-blog.hatena.ne.jp##.admin-subscribe-heading
-blog.hatena.ne.jp##.antenna-circle-list
-blog.hatena.ne.jp##.globalPage-ad
-blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
-blog.hatena.ne.jp##.recommendList-wrapper
-blog.hatena.ne.jp##aside.antenna-staffPicks
+! blog.hatena.ne.jp##.admin-subscribe-heading
+! blog.hatena.ne.jp##.antenna-circle-list
+! blog.hatena.ne.jp##.globalPage-ad
+! blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
+! blog.hatena.ne.jp##.recommendList-wrapper
+! blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! daily.co.jp
 ! GeminiクオリティなAdShield処理
