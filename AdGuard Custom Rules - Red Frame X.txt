@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202607261957
+! Version: 202607262013
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -64,6 +64,14 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 @@||google-analytics.com^$app=jp.kappasushi.app
 ! 各種アプリの起動・通信エラー回避
 @@||www.google-analytics.com^$important
+
+! google.com
+! 検索結果のクリーンアップ
+google.com##span[role="heading"]:contains(他の人はこちらも検索):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(ショート動画):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(関連する質問):upward(div[data-hveid])
+google.com##span[role="heading"]:contains(AI による概要):upward(div[data-hveid])
+google.com##h2:contains(こちらを検索しますか):upward(div[data-hveid])
 
 ! googleapis.com
 ! Gemini・Googleアシスタントの通信エラーとタイムアウト回避
