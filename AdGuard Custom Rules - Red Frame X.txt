@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202607271235
+! Version: 202607271657
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -64,6 +64,16 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 @@||google-analytics.com^$app=jp.kappasushi.app
 ! 各種アプリの起動・通信エラー回避
 @@||www.google-analytics.com^$important
+
+! google.com
+! 検索結果のクリーンアップ（見出しタグの揺らぎ・AI概要のdivタグに対応））
+google.com##:is(h1, h2, h3, [role="heading"]):contains(他の人はこちらも検索):upward(div[data-hveid])
+google.com##:is(h1, h2, h3, [role="heading"]):contains(ショート動画):upward(div[data-hveid])
+google.com##:is(h1, h2, h3, [role="heading"]):contains(関連する質問):upward(div[data-hveid])
+google.com##:is(h1, h2, h3, [role="heading"]):contains(AI による概要):upward(div[data-hveid])
+google.com##:is(h1, h2, h3, [role="heading"]):contains(こちらを検索しますか):upward(div[data-hveid])
+! 検索オプションタブ（サジェストバー）の「ショート動画」を非表示
+google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
 ! googleapis.com
 ! Gemini・Googleアシスタントの通信エラーとタイムアウト回避
