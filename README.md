@@ -12,7 +12,7 @@
 
 The following items were created for my personal use.
 
-* AdGuard Custom[] Rules
+* [] Rules
 * UserScript
 * NG Word Regex for ChMate
 * [Markdown Notes](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc/tree/main/Markdown%20Notes)
