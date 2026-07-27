@@ -65,11 +65,6 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! 各種アプリの起動・通信エラー回避
 @@||www.google-analytics.com^$important
 
-! google.com
-! 検索結果のクリーンアップ
-google.com##:is(h2, [role="heading"]):contains(/^(他の人はこちらも検索|関連する質問|AI による概要|こちらを検索しますか)$/):upward(div[data-hveid])
-google.com##div[role="listitem"]:has(> a[href*="udm=39"])
-
 ! googleapis.com
 ! Gemini・Googleアシスタントの通信エラーとタイムアウト回避
 @@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox
