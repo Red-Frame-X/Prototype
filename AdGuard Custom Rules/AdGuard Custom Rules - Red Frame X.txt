@@ -76,6 +76,7 @@ google.com##div[role="listitem"]:has(a:contains(ショート動画))
 ! klz9.com
 ! コメント要素の非表示
 klz9.com##div:has(> h2:contains(最近のコメント))
+klz9.com##button:contains(VIPを獲得する)
 
 ! line-apps.com
 ! LINEアプリの通信エラー・バッテリー異常消費回避
