@@ -265,3 +265,21 @@ x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid=
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:contains(新しいコミュニティを見つける))
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:not(:has(article)):has(a[href^="/i/communities/"])
 x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュニティを探す))
+
+! 投資詐欺（誇大フレーズまたは誘導語との組み合わせのみブロック）
+x.com##div[data-testid="cellInnerDiv"]:has-text(/元本保証|確実な資産形成|勝率99%|日利|月利|FX自動売買|EA無料|コピーインベスト|億り人|自動トレード|爆益|先生からの指示|投資グループ/)
+x.com##div[data-testid="cellInnerDiv"]:has-text(/投資|仮想通貨|暗号資産/):has-text(/固ツイ|プロフ|DM開放|レクチャー|先出し|LINE追加|公式LINE|アナリスト/)
+
+! 身分詐欺・個人情報／口座売買（単体で違法性が高いため全ブロック）
+x.com##div[data-testid="cellInnerDiv"]:has-text(/口座売買|口座買取|口座買い取り|SIM買取|SIM契約代行|名義貸し|契約代行|本人確認不要|身分証不要|不用口座|アカウント買取|KYC代行|レンタル口座|キャッシュカード買取|高価買取/)
+
+! ロマンス詐欺（特有の複合フレーズのみに限定）
+x.com##div[data-testid="cellInnerDiv"]:has-text(/将来のために投資|二人の将来|会う前に投資|荷物の受け取り金|関税が掛かる|戦地から送金|資産を共有|凍結解除費用|投資サイトで一緒に/)
+
+! 副業・特殊詐欺（隠語は単体ブロック、一般語は誘導・誇大語との共存のみブロック）
+x.comm##div[data-testid="cellInnerDiv"]:has-text(/高額バイト|即日即金|裏バイト|ホワイト案件|グレー案件|リスク0|ノーリスク|安全に稼げる|絶対に捕まらない|犯罪ではありません|コピペで稼げる|スキマ時間で高収入|闇バイト|タタキ|受け子|出し子|運び屋|手押し|日払い高収入|ブラックOK/)
+x.com##div[data-testid="cellInnerDiv"]:has-text(/副業|スマホ副業|簡単なお仕事/):has-text(/固ツイ|プロフ|DM|LINE|月収|日給|稼/)
+
+! 情報商材・支援金・誘導語句（誇大広告フレーズと配布誘導に限定）
+x.com##div[data-testid="cellInnerDiv"]:has-text(/支援金|当選金|誰でも簡単に|不労所得|月収100万|権利収入|ツール無料|弟子募集|コンサル生|マニュアル配布|救済金|譲渡金|お金配り/)
+x.com##div[data-testid="cellInnerDiv"]:has-text(/プレゼント企画|無料配布中/):has-text(/固ツイ|プロフ|DM|LINE|現金|PayPay|ビットコイン/)
