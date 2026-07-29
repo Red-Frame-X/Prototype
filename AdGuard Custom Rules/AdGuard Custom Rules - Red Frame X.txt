@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202607282016
+! Version: 202607291429
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -76,7 +76,6 @@ google.com##div[role="listitem"]:has(a:contains(ショート動画))
 ! klz9.com
 ! コメント要素の非表示
 klz9.com##div:has(> h2:contains(最近のコメント))
-klz9.com##button:contains(VIPを獲得する)
 
 ! line-apps.com
 ! LINEアプリの通信エラー・バッテリー異常消費回避
