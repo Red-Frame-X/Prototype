@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 20260730時刻
+! Version: 202607304:26
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
