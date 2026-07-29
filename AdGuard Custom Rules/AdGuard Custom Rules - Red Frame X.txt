@@ -67,7 +67,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! google.com
 ! Android版Chrome環境で「関連する質問」や「他の人はこちらも検索」を非表示にすると、後続の検索結果が正常に表示されなくなることがある
-! 使う時は必要なルールをコメントアウトして有効化する
+! 使用する際は、必要なルールをコメントアウトから外して有効化してください。
 ! 検索オプションタブ（サジェストバー）の「ショート動画」を非表示
 google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
