@@ -7,6 +7,22 @@
 ! License: CC0-1.0
 ! Note: Combination of Japan’s community-driven rules and my own rules.
 
+# タスク
+これらのAdGuardユーザールールを、「動作を一切変えずに」ドメインのヘッダーごとに整理し、論理的な並びになるようにしてください。
+疑わしいドメインも削除せず、AdGuardユーザールールを正確に整理してください。
+特定のルールをコメントアウトして無効にしないでください。
+コメントアウト済みのルールはそのまま維持してください。
+重複したルールは削除してください。
+
+# 出力形式
+以下の書き方を厳守してください。
+コードスニペットを必ず含めて、マウスのワンクリックでコピー ＆ ペーストできるようにしてください。
+ドメインが変わる時は1行空けてルールを記述してください。
+同ドメイン内でフィルタのカテゴリーが変わる時は、空行を詰めてルールを記述してください。
+必要：! example.com
+必要：! フィルタのカテゴリー
+不要：! ----------------------------------------------------------------------
+
 ! Global
 ! 全サイト共通の非表示ルール
 ##.grecaptcha-badge
@@ -67,6 +83,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! google.com
 ! 検索オプションタブ（サジェストバー）の「ショート動画」を非表示
+! 「関連する質問」や「他の人はこちらも検索」を非表示にすると、後続の検索結果が正常に表示されなくなる場合がある
 google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
 ! googleapis.com
@@ -268,3 +285,6 @@ x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid=
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:contains(新しいコミュニティを見つける))
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:not(:has(article)):has(a[href^="/i/communities/"])
 x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュニティを探す))
+! UserCellやポストを非表示にする複雑なルールを適用すると、Xの検索機能が壊れる
+! Cookieを削除した後にXからログアウトし、ある程度時間を経過させると直るが、甚大な副作用がある
+! x.com#?#div[data-testid="cellInnerDiv"]:contains(/口座(?:買取|売買|譲渡)|(?:掛け子|受け子|出し子|裏バイト|闇バイト|ホワイト案件|タタキ|手押し|運び屋)(?:募集|案件|紹介|参加|希望)|(?:キャッシュカード|通帳|荷物)を(?:預かる|受け取る|運ぶ)だけ|即日即金|スマホ(?:一|1)(?:つ|丁)で(?:稼|月収|日給)|不労所得(?:生活|教えます)|誰でも(?:簡単|確実)に稼|(?:プロフ|固ツイ)(?:見て|必読|確認)[^]{0,30}(?:稼|副業|公式LINE|DMで)|絶対に捕まらない/)
