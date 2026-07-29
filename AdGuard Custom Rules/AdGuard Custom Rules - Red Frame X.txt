@@ -68,7 +68,18 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! google.com
 ! Android版Chrome環境で「関連する質問」や「他の人はこちらも検索」を非表示にすると、後続の検索結果が正常に表示されなくなることがある
 ! 使用する際は、必要なルールをコメントアウトする
-
+google.com#?#span:contains(他の人はこちらも検索):upward(div[data-hveid][data-ved])
+google.com#?#span:contains(関連する質問):upward(div[data-hveid][data-ved])
+google.com#?#span:contains(注目されている商品):upward(div[data-hveid][data-ved])
+google.com#?#span:contains(関連商品):upward(div[data-hveid][data-ved])
+google.com#?#span:contains(これも検索されています):upward(div[data-hveid][data-ved])
+google.com#?#div[aria-level="2"][role="heading"]:contains(関連する質問):upward(div[data-hveid][data-ved])
+google.com#?#div[aria-level="2"][role="heading"]:contains(ショート動画):upward(div[data-hveid][data-ved])
+google.com#?#div[aria-level="2"][role="heading"]:contains(他の人はこちらも検索):upward(div[data-hveid][data-ved])
+google.com#?#div[aria-level="2"][role="heading"]:contains(レシピ):upward(div[data-hveid][data-ved])
+google.com#?#div[aria-level="2"][role="heading"]:contains(注目されている商品):upward(div[data-hveid][data-ved])
+google.com#?#div[aria-level="2"][role="heading"]:contains(関連商品):upward(div[data-hveid][data-ved])
+google.com#?#div[aria-level="2"][role="heading"]:contains(これも検索されています):upward(div[data-hveid][data-ved])
 ! 検索オプションタブ（サジェストバー）の「ショート動画」を非表示
 google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
