@@ -66,7 +66,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 @@||www.google-analytics.com^$important
 
 ! google.com
-! 「関連する質問」や「他の人はこちらも検索」を非表示にすると、後続の検索結果が正常に表示されなくなる場合がある
+! Android版Chrome環境で「関連する質問」や「他の人はこちらも検索」を非表示にすると、後続の検索結果が正常に表示されなくなることがある
 ! 検索オプションタブ（サジェストバー）の「ショート動画」を非表示
 google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
