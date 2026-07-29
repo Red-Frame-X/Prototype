@@ -282,6 +282,6 @@ x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid=
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:contains(新しいコミュニティを見つける))
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:not(:has(article)):has(a[href^="/i/communities/"])
 x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュニティを探す))
-! UserCellやポストを非表示にする複雑なルールを適用すると、Xの検索機能が壊れる
-! Cookieを削除した後にXからログアウトし、ある程度時間を経過させると直るが、甚大な副作用がある
+! UserCellやポストを非表示にする複雑なルールを適用すると、𝕏の検索機能が壊れる
+! Cookieを削除した後に𝕏からログアウトし、ある程度時間を経過させると直るが、甚大な副作用がある
 ! x.com#?#div[data-testid="cellInnerDiv"]:contains(/口座(?:買取|売買|譲渡)|(?:掛け子|受け子|出し子|裏バイト|闇バイト|ホワイト案件|タタキ|手押し|運び屋)(?:募集|案件|紹介|参加|希望)|(?:キャッシュカード|通帳|荷物)を(?:預かる|受け取る|運ぶ)だけ|即日即金|スマホ(?:一|1)(?:つ|丁)で(?:稼|月収|日給)|不労所得(?:生活|教えます)|誰でも(?:簡単|確実)に稼|(?:プロフ|固ツイ)(?:見て|必読|確認)[^]{0,30}(?:稼|副業|公式LINE|DMで)|絶対に捕まらない/)
