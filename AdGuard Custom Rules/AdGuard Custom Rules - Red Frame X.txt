@@ -80,7 +80,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! google.com#?#div[aria-level="2"][role="heading"]:contains(注目されている商品):upward(div[data-hveid][data-ved])
 ! google.com#?#div[aria-level="2"][role="heading"]:contains(関連商品):upward(div[data-hveid][data-ved])
 ! google.com#?#div[aria-level="2"][role="heading"]:contains(これも検索されています):upward(div[data-hveid][data-ved])
-! 検索オプションタブ（サジェストバー）の「ショート動画」を非表示
+! 検索タブの「ショート動画」を非表示
 google.com##div[role="listitem"]:has(a:contains(ショート動画))
 
 ! googleapis.com
