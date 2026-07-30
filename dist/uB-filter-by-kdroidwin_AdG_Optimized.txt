@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202607300138
+! Version: 202607301459
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -1369,6 +1369,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||bddy.me^$document
 ||be-3679.about.gitlab-review.app^$document
 ||be-marry.com^$document
+||beaconlink.jp^$document
 ||beadsxbeads.com^$document
 ||beararms.gr^$document
 ||beardsley-jp.com^$document
@@ -1768,6 +1769,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||calleo.be^$document
 ||caltechbd.com^$document
 ||cambridge-india.org^$document
+||camera-jct.com^$document
 ||cameronlorenc.com^$document
 ||camp.trainocate.co.jp^$document
 ||campanellafishing.shogic.xyz^$document
@@ -2448,6 +2450,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||different-cute-brain.glitch.me^$document
 ||digicamenote.com^$document
 ||digimaga.jp^$document
+||digirise.ai^$document
 ||digirise.school^$document
 ||digispacestudio.com^$document
 ||digital-mediablo.com^$document
@@ -5196,6 +5199,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kannao3939.com^$document
 ||kanohiro.com^$document
 ||kanpoucyayonchiyu.com^$document
+||kanritools.com/blog^$document
 ||kansai-u.tameshiyo.me^$document
 ||kansuke.doorblog.jp^$document
 ||kantaiki0219.com^$document
@@ -7357,6 +7361,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/gadget_maru^$document
 ||note.com/gadget_news^$document
 ||note.com/gadget_rupaso^$document
+||note.com/gadget_sale_^$document
+||note.com/gadget_soku^$document
 ||note.com/gadgeter_117^$document
 ||note.com/gadgetmaniacs^$document
 ||note.com/gadgettarou^$document
@@ -7714,6 +7720,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/side_hustle_40^$document
 ||note.com/sim_mobile^$document
 ||note.com/simsmagadget^$document
+||note.com/skkoto^$document
 ||note.com/sknet_sougou^$document
 ||note.com/skt0302^$document
 ||note.com/soh_ainsight^$document
@@ -7735,6 +7742,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/taisya^$document
 ||note.com/taka_matsu1^$document
 ||note.com/takako_yamane^$document
+||note.com/takaya76jp^$document
 ||note.com/takayanagi_koi^$document
 ||note.com/takkatw^$document
 ||note.com/takkxi^$document
@@ -7761,6 +7769,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/tokotoko_2025^$document
 ||note.com/tom485^$document
 ||note.com/torataka50^$document
+||note.com/toridai_com^$document
 ||note.com/totalnewsworld^$document
 ||note.com/toy_hobby^$document
 ||note.com/toyoshi_y1126^$document
@@ -8403,6 +8412,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||pittsburghdancexplosion.com^$document
 ||pixabay.com^$document
 ||pixel-leaker.com^$document
+||pixela.co.jp^$document
 ||pixibank.com^$document
 ||pixls.jp^$document
 ||pixt.me^$document
@@ -9326,6 +9336,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||second.ux-design.blog^$document
 ||secret-alone-time.com^$document
 ||securitysoft-vpn.news.mynavi.jp/category/vpn^$document
+||securitysoft-vpn.news.mynavi.jp^$document
 ||securitysoftguide.com^$document
 ||see-d.jp^$document
 ||seebeck.co.jp^$document
@@ -10610,6 +10621,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||toyota-phv.jp^$document
 ||tpb.party^$document
 ||tpw9le6.calanchipiceni.it^$document
+||tr.ee/youtube-ai$document
 ||tr.koreanshh.kr.ua^$document
 ||tr.koreansji.co.ua^$document
 ||trace-kyoto.com^$document
@@ -11072,6 +11084,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||vpn-labo.com^$document
 ||vpn-magazine.com^$document
 ||vpn-sensei.com^$document
+||vpn.co.jp^$document
 ||vpn.hikakusite.co.jp^$document
 ||vpn.jpn.com^$document
 ||vpn.nsspirt-cashf2.com^$document
@@ -13938,6 +13951,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||zjkqcbx.cn^$document
 ||zkimtm.com^$document
 ||zkteco-ea.com^$document
+||zl.webridge.net^$document
 ||zld.mjlhepii.biz^$document
 ||zlib-official.com^$document
 ||zlib.is^$document
