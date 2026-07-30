@@ -2,7 +2,7 @@
 // @name         X Spaces & Live Broadcast Blocker
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      2.0.0
+// @version      2.0.1
 // @description  「𝕏でライブ放送する」「スペース」バーを強制的に排除します（低負荷・CSS注入＆高堅牢性対応版）
 // @author       Red Frame X
 // @match        https://x.com/*
@@ -47,20 +47,24 @@
     };
 
     /**
-     * CSSの:has()等で捕捉しきれない親要素コンテナ（cellInnerDiv）のみ、
+     * CSSの:has()等で捕捉しきれない親要素コンテナのみ、
      * 最小限のJavaScriptで確実に折りたたむ
      */
     const hideParentContainer = (element) => {
         if (!element || element.style.display === 'none') return;
         
         const cellInner = element.closest('[data-testid="cellInnerDiv"]');
-        const target = cellInner || element;
+        
+        // 修正箇所: cellInnerDivが見つからない場合、直接の親要素(parentElement)を隠蔽対象とする
+        // これにより「Xでライブ放送する」の外枠となっている div.css-175oi2r 等の空白残りを防ぐ
+        const target = cellInner || element.parentElement || element;
         
         target.style.setProperty('display', 'none', 'important');
         target.style.setProperty('height', '0', 'important');
         target.style.setProperty('margin', '0', 'important');
         target.style.setProperty('padding', '0', 'important');
         target.style.setProperty('min-height', '0', 'important');
+        target.style.setProperty('border', 'none', 'important'); // 枠線の残存対策
     };
 
     const processDOM = () => {
@@ -68,7 +72,7 @@
         const headers = document.querySelectorAll('h2[role="heading"]:not([data-blocked="true"])');
         headers.forEach(h2 => {
             h2.setAttribute('data-blocked', 'true');
-            if (h2.textContent.includes('Xでライブ放送する')) {
+            if (h2.textContent.includes('Xでライブ放送する') || h2.textContent.includes('𝕏でライブ放送する')) {
                 hideParentContainer(h2);
             }
         });
@@ -85,10 +89,9 @@
     injectCSS();
     processDOM();
 
-    // 2. スクロールイベント監視を廃止し、負荷を抑えたMutationObserverのみに統一
+    // 2. スロットリングを用いたMutationObserverによる監視
     let timeoutId = null;
     const observer = new MutationObserver(() => {
-        // スロットリング処理により、連続するDOM変化時のCPU負荷を低減
         if (timeoutId) return;
         timeoutId = requestAnimationFrame(() => {
             processDOM();
