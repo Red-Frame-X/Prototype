@@ -78,8 +78,8 @@ In particular, modifications based on filters provided under the GPL-3.0 are gov
 
 The contents of this repository are provided “AS IS,” without warranty of any kind, express or implied, to the extent permitted by the applicable licenses and laws. The author assumes no liability, to the fullest extent permitted by applicable law, for any display errors, functional issues, or other damages arising from the use of this website. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
 
-**Third-Party GPL-3.0 Works**
+**GNU General Public License v3.0 (GPL-3.0)**
 
 * **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
   
-  GPL-3.0で提供される第三者作品を基にした改変物については、原作品のライセンス条件および著作権表示を維持します。
+  `Yuki2718 / adblock2`、`Kdroidwin / uB-filter-by-kdroidwin` 等、GPL-3.0で提供される第三者作品を基にした改変物については、原作品のライセンス条件および著作権表示を維持します。
