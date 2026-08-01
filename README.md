@@ -37,9 +37,9 @@ As part of my "IT learning," I am documenting device settings, creating various 
 ---
 
 ### Community Contributions
-フィードバックやバグ報告を通じて、よく関与しているプロジェクトです。
+これらは、私がフィードバックやバグ報告を通じて協力しているプロジェクトです。
 
-These are projects I am actively involved in through feedback and bug reports.
+These are the projects I contribute to by providing feedback and reporting bugs.
 
 * **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 - コンテンツブロック用フィルタ
 * **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 - DNSブロック互換フィルタ
@@ -62,10 +62,24 @@ These are projects that I use on a daily basis and support regularly.
 
 ### License & Legal Notice
 
-本リポジトリのAdGuard Custom Rulesおよびフォーク版フィルタは、オリジナル作者の権利を尊重し各ライセンスに準拠した上で、主に作成者個人の環境での利用を目的として管理されています。本ルールは完全無保証（AS IS）で提供され、Webサイトの表示崩れや不具合を含め、利用はすべて自己責任となります。
+本リポジトリには、作成者自身が作成したコンテンツと、第三者のオープンソース・FLOSSプロジェクトを基にした改変物が含まれる場合があります。
 
-The AdGuard Custom Rules and forked filters in this repository are managed with the aim of respecting the rights of the original authors and complying with the respective licenses, primarily for use in my personal environment. These rules are provided on an ‘AS IS’ basis with no warranty whatsoever, and any use is entirely at your own risk, including any display issues or malfunctions on websites.
+第三者の著作物またはその改変物については、各原著作者の著作権およびライセンス条件が適用されます。各ファイルまたはディレクトリに個別のライセンス表記がある場合は、その表記が優先されます。
+
+特に、GPL-3.0で提供されているフィルタを基にした改変物については、GNU General Public License v3.0の条件に従って取り扱います。原著作権表示等の保持、改変の明示、および改変版を配布する場合の条件については、GPL-3.0 Sections 4 and 5を参照してください。
+
+本リポジトリのコンテンツは、各適用ライセンスおよび法令で認められる範囲において、明示または黙示を問わず無保証（"AS IS"）で提供されます。使用によって生じたWebサイトの表示崩れ、機能上の問題、その他の損害について、作成者は適用法令で認められる最大限の範囲で責任を負いません。GPL-3.0対象物の無保証および責任制限については、Sections 15 and 16を参照してください。
+
+This repository may contain content created by the author, as well as modified works based on third-party open-source and FLOSS projects.
+
+With regard to third-party works or modifications thereof, the copyright and license terms of the respective original authors apply. If a specific license notice is included in a file or directory, that notice takes precedence.
+
+In particular, modifications based on filters provided under the GPL-3.0 are governed by the terms of the GNU General Public License v3.0. Please refer to Sections 4 and 5 of the GPL-3.0 regarding the retention of original copyright notices, the disclosure of modifications, and the conditions for distributing modified versions.
+
+The contents of this repository are provided “AS IS,” without warranty of any kind, express or implied, to the extent permitted by the applicable licenses and laws. The author assumes no liability, to the fullest extent permitted by applicable law, for any display errors, functional issues, or other damages arising from the use of this website. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
+
+**Third-Party GPL-3.0 Works**
 
 * **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
   
-  `Yuki2718 / adblock2`、`Kdroidwin / uB-filter-by-kdroidwin` 等の改変物の作成および著作権表示の保持要件（Section 4, Section 5）、および完全無保証（Section 15, Section 16）の法的根拠です。
+  GPL-3.0で提供される第三者作品を基にした改変物については、原作品のライセンス条件および著作権表示を維持します。
