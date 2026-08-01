@@ -78,8 +78,6 @@ In particular, modifications based on filters provided under the GPL-3.0 are gov
 
 The contents of this repository are provided “AS IS,” without warranty of any kind, either express or implied, to the extent permitted by applicable licenses and laws. The author assumes no liability, to the fullest extent permitted by applicable law, for any display errors, functional issues, or other damages arising from the use of this website. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
 
-Translated with DeepL.com (free version)
-
 **Third-Party Works Licensed under GPL-3.0**
 
 * **[GNU General Public License v3.0（GPL-3.0）](https://www.gnu.org/licenses/gpl-3.0.html)**
