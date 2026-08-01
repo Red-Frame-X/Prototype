@@ -76,7 +76,7 @@ With regard to third-party works or modifications thereof, the copyright and lic
 
 In particular, modifications based on filters provided under the GPL-3.0 are governed by the terms of the GNU General Public License v3.0. Please refer to Sections 4 and 5 of the GPL-3.0 regarding the retention of original copyright notices, the disclosure of modifications, and the conditions for distributing modified versions.
 
-The contents of this repository are provided “AS IS,” without warranty of any kind, either express or implied, to the extent permitted by applicable licenses and laws. The author shall not be liable, to the fullest extent permitted by applicable law, for any display errors, functional issues, or other damages arising from the use of this website. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
+The contents of this repository are provided “AS IS,” without warranty of any kind, either express or implied, to the extent permitted by applicable licenses and laws. The author shall not be liable, to the fullest extent permitted by applicable law, for any website display issues, functional problems, or other damages arising from the use of the contents of this repository. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
 
 **Third-Party Works Licensed under GPL-3.0**
 
