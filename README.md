@@ -64,7 +64,7 @@ These are projects that I use on a daily basis and support regularly.
 
 本リポジトリには、作成者自身が作成したコンテンツと、第三者のオープンソース・FLOSSプロジェクトを基にした改変物が含まれる場合があります。
 
-第三者の著作物またはその改変物については、各原著作者の著作権およびライセンス条件が適用されます。各ファイルまたはディレクトリに個別のライセンス表記がある場合は、その表記が優先されます。
+第三者の著作物またはその改変物については、各原著作者の著作権およびライセンス条件が適用されます。各ファイルまたはディレクトリに個別のライセンス表記がある場合は、当該ファイルまたはディレクトリについて、その表記が優先されます。
 
 特に、GPL-3.0で提供されているフィルタを基にした改変物については、GNU General Public License v3.0の条件に従って取り扱います。原著作権表示等の保持、改変の明示、および改変版を配布する場合の条件については、GPL-3.0 Sections 4 and 5を参照してください。
 
@@ -72,11 +72,13 @@ These are projects that I use on a daily basis and support regularly.
 
 This repository may contain content created by the author, as well as modified works based on third-party open-source and FLOSS projects.
 
-With regard to third-party works or modifications thereof, the copyright and license terms of the respective original authors apply. If a specific license notice is included in a file or directory, that notice takes precedence.
+With regard to third-party works or modifications thereof, the copyright and license terms of the respective original authors apply. If a specific license notice is included in a file or directory, that notice takes precedence for that file or directory.
 
 In particular, modifications based on filters provided under the GPL-3.0 are governed by the terms of the GNU General Public License v3.0. Please refer to Sections 4 and 5 of the GPL-3.0 regarding the retention of original copyright notices, the disclosure of modifications, and the conditions for distributing modified versions.
 
-The contents of this repository are provided “AS IS,” without warranty of any kind, express or implied, to the extent permitted by the applicable licenses and laws. The author assumes no liability, to the fullest extent permitted by applicable law, for any website display issues, functional problems, or other damages arising from the use of the contents of this repository. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
+The contents of this repository are provided “AS IS,” without warranty of any kind, either express or implied, to the extent permitted by applicable licenses and laws. The author assumes no liability, to the fullest extent permitted by applicable law, for any display errors, functional issues, or other damages arising from the use of this website. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
+
+Translated with DeepL.com (free version)
 
 **Third-Party Works Licensed under GPL-3.0**
 
