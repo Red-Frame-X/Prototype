@@ -70,13 +70,13 @@ These are projects that I use on a daily basis and support regularly.
 
 本リポジトリのコンテンツは、各適用ライセンスおよび法令で認められる範囲において、明示または黙示を問わず無保証（"AS IS"）で提供されます。使用によって生じたWebサイトの表示崩れ、機能上の問題、その他の損害について、作成者は適用法令で認められる最大限の範囲で責任を負いません。GPL-3.0対象物の無保証および責任制限については、Sections 15 and 16を参照してください。
 
-This repository may contain content created by the author, as well as modified works based on third-party open-source and FLOSS projects.
+This repository may contain content created by the author as well as modified works based on third-party open-source and FLOSS projects.
 
 With regard to third-party works or modifications thereof, the copyright and license terms of the respective original authors apply. If a specific license notice is included in a file or directory, that notice takes precedence for that file or directory.
 
 In particular, modifications based on filters provided under the GPL-3.0 are governed by the terms of the GNU General Public License v3.0. Please refer to Sections 4 and 5 of the GPL-3.0 regarding the retention of original copyright notices, the disclosure of modifications, and the conditions for distributing modified versions.
 
-The contents of this repository are provided “AS IS,” without warranty of any kind, either express or implied, to the extent permitted by applicable licenses and laws. The author assumes no liability, to the fullest extent permitted by applicable law, for any display errors, functional issues, or other damages arising from the use of this website. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
+The contents of this repository are provided “AS IS,” without warranty of any kind, either express or implied, to the extent permitted by applicable licenses and laws. The author shall not be liable, to the fullest extent permitted by applicable law, for any display errors, functional issues, or other damages arising from the use of this website. For the disclaimer of warranty and limitation of liability regarding GPL-3.0-covered works, please refer to Sections 15 and 16.
 
 **Third-Party Works Licensed under GPL-3.0**
 
