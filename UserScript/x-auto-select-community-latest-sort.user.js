@@ -2,7 +2,7 @@
 // @name         X Auto Select Community Latest Sort
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      1.6.3
+// @version      1.7.0
 // @description  Xのタイムラインで「並べ替え」メニューが開かれるたびに、未選択であれば自動的に「直近」を選択し直し、その後は手動での変更も可能にします
 // @author       Red-Frame-X
 // @match        https://x.com/*
@@ -18,91 +18,81 @@
     'use strict';
 
     const TARGET_TEXTS = new Set(['直近', 'Latest']);
+    const processedMenus = new WeakSet();
+    const pendingMenus = new Set();
+    let frameId = 0;
 
-    /**
-     * 並べ替えメニューのDOMを評価・操作する
-     * @param {Element} rootNode 
-     */
-    const handleSortMenu = (rootNode) => {
-        // パフォーマンス最適化: rootNode自身がmenuであるか、子要素にmenuを持つ可能性を評価
-        const menus = rootNode.getAttribute('role') === 'menu'
-            ? [rootNode]
-            : (rootNode.querySelectorAll ? rootNode.querySelectorAll('[role="menu"]') : []);
+    const handleMenu = (menu) => {
+        if (processedMenus.has(menu)) return;
 
-        if (menus.length === 0) return;
-
-        for (const menu of menus) {
-            if (menu.getAttribute('data-sort-handled') === 'true') {
-                continue;
+        let latestItem = null;
+        for (const item of menu.querySelectorAll('[role^="menuitem"]')) {
+            const text = item.textContent ? item.textContent.trim() : '';
+            if (TARGET_TEXTS.has(text)) {
+                latestItem = item;
+                break;
             }
+        }
 
-            const menuItems = menu.querySelectorAll('[role^="menuitem"]');
-            let latestItem = null;
+        if (!latestItem) return;
 
-            for (const item of menuItems) {
-                const text = item.textContent ? item.textContent.trim() : '';
-                if (TARGET_TEXTS.has(text)) {
-                    latestItem = item;
-                    break;
-                }
-            }
+        processedMenus.add(menu);
+        const isSelected = latestItem.getAttribute('aria-checked') === 'true'
+            || latestItem.querySelector('svg') !== null;
 
-            if (!latestItem) continue;
-
-            // 再帰発火や重複処理を防ぐためにフラグを確実に付与
-            menu.setAttribute('data-sort-handled', 'true');
-
-            const isAriaChecked = latestItem.getAttribute('aria-checked') === 'true';
-            const hasCheckmarkSvg = latestItem.querySelector('svg') !== null;
-
-            if (!isAriaChecked && !hasCheckmarkSvg) {
-                // ReactのDOMライフサイクルとの競合を避け、UIアニメーションを正常にするために1フレーム遅延させる
-                requestAnimationFrame(() => {
-                    latestItem.click();
-                });
-            }
+        if (!isSelected && latestItem.isConnected) {
+            latestItem.click();
         }
     };
 
-    /**
-     * DOM監視の最適化設計:
-     * タイムライン全体（document.body）の不要な監視を避け、ポップアップマウント先の #layers のみにスコープを絞る
-     */
-    const startObserver = () => {
-        let layersObserver = null;
+    const flushMenus = () => {
+        frameId = 0;
+        for (const menu of pendingMenus) {
+            handleMenu(menu);
+        }
+        pendingMenus.clear();
+    };
 
-        const attachLayersObserver = (layersNode) => {
-            if (layersObserver) return;
-            layersObserver = new MutationObserver((mutations) => {
-                for (const mutation of mutations) {
-                    if (mutation.addedNodes.length > 0) {
-                        for (const node of mutation.addedNodes) {
-                            if (node.nodeType === Node.ELEMENT_NODE) {
-                                handleSortMenu(node);
-                            }
-                        }
-                    }
-                }
-            });
-            // #layers の内部のみを監視（タイムラインのスクロール等によるDOM変更は完全に無視される）
-            layersObserver.observe(layersNode, { childList: true, subtree: true });
-        };
+    const queueMenu = (menu) => {
+        if (!menu || processedMenus.has(menu)) return;
 
-        const existingLayers = document.getElementById('layers');
-        if (existingLayers) {
-            attachLayersObserver(existingLayers);
-        } else {
-            // #layers がまだ生成されていない場合のみ、出現するまでドキュメント全体を一時的に軽量監視
-            const bodyObserver = new MutationObserver((mutations, observer) => {
-                const layersNode = document.getElementById('layers');
-                if (layersNode) {
-                    observer.disconnect(); // #layers が見つかり次第、重いbody監視を即座に破棄
-                    attachLayersObserver(layersNode);
-                }
-            });
-            bodyObserver.observe(document.documentElement, { childList: true, subtree: true });
+        pendingMenus.add(menu);
+        if (!frameId) {
+            frameId = requestAnimationFrame(flushMenus);
         }
     };
 
-    startObserver();
+    const inspectAddedNode = (node) => {
+        if (!(node instanceof Element)) return;
+
+        queueMenu(node.matches('[role="menu"]') ? node : node.closest('[role="menu"]'));
+        for (const menu of node.querySelectorAll('[role="menu"]')) {
+            queueMenu(menu);
+        }
+    };
+
+    const attachObserver = (layers) => {
+        const observer = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                for (const node of mutation.addedNodes) {
+                    inspectAddedNode(node);
+                }
+            }
+        });
+        observer.observe(layers, { childList: true, subtree: true });
+    };
+
+    const layers = document.getElementById('layers');
+    if (layers) {
+        attachObserver(layers);
+    } else {
+        const bootstrapObserver = new MutationObserver(() => {
+            const mountedLayers = document.getElementById('layers');
+            if (!mountedLayers) return;
+
+            bootstrapObserver.disconnect();
+            attachObserver(mountedLayers);
+        });
+        bootstrapObserver.observe(document.documentElement, { childList: true, subtree: true });
+    }
 })();
