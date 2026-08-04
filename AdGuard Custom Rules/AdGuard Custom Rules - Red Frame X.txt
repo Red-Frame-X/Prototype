@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608042109
+! Version: 202608042114
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -180,6 +180,11 @@ news.google.com##h3:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュ�
 news.web.nhk$$dialog[id="emergency-mode-info"]
 ! HTMLフィルタリング非対応製品向け：対象ダイアログを初期CSSで非表示
 news.web.nhk###emergency-mode-info
+! 画面上部の黄色い緊急時告知バナーを初期表示前に除去
+! HTMLフィルタリング対応製品向け：レスポンスからバナー外枠を除去
+news.web.nhk$div[id="under-header-element"]
+! HTMLフィルタリング非対応製品向け：バナー外枠を初期CSSで非表示
+news.web.nhk###under-header-element
 
 ! news.yahoo.co.jp
 ! コメント要素の非表示
