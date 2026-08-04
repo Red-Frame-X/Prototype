@@ -50,7 +50,6 @@ class AdGuardOptimizer:
         # uBO独自修飾子のAdGuard互換置換マップ
         self.modifier_replacements: Dict[str, str] = {
             'queryprune': 'removeparam',
-            'redirect-rule': 'redirect',
             '3p': 'third-party',
             '1p': '~third-party',
         }
@@ -231,6 +230,12 @@ class AdGuardOptimizer:
             # to= 修飾子のパージ (例外スコープ喪失による過剰ブロック防止)
             if self.re_unsupported_to.search(modifiers_str):
                 return f"! [Unsupported Modifier: to=] {original_line}"
+
+            # redirect-rule は別の基本ルールでブロックされた場合だけリダイレクトする。
+            # Chrome MV3で未対応だからといって redirect へ変換すると適用範囲が広がるため、
+            # 意味を安全に維持できないルールは無効化する。
+            if re.search(r'(?:^|,)~?redirect-rule(?:=|,|$)', modifiers_str):
+                return f"! [Unsupported MV3 Modifier: redirect-rule] {original_line}"
 
             # cname 修飾子の除去
             modifiers_str = self.re_cname.sub('', modifiers_str)
