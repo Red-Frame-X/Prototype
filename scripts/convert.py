@@ -50,7 +50,7 @@ class AdGuardOptimizer:
         # uBO独自修飾子のAdGuard互換置換マップ
         self.modifier_replacements: Dict[str, str] = {
             'queryprune': 'removeparam',
-            'redirect-rule=': 'redirect=',
+            'redirect-rule': 'redirect',
             '3p': 'third-party',
             '1p': '~third-party',
         }
