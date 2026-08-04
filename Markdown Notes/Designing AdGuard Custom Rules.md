@@ -224,53 +224,53 @@ Andrey Meshkov氏らAdGuard開発チームは、 **「機能の技術的意味�
 
 本レポートで使用されている専門用語の解説と、参照すべき公式・信頼性の高い正確なリファレンスURLです。
 
-* **[^1] アシスタントツール / 要素選択ツール**
+[^1]: **アシスタントツール / 要素選択ツール**
 
   画面上で消したい広告をマウスやタップで選択し、対応するブロックルールを自動生成するツール。AdGuardブラウザ拡張機能やuBlock Originに搭載されており、初学者の学習に最適です。
 
   * **参照**：[uBlock Origin Wiki - Element picker](https://github.com/gorhill/ublock/wiki/Element-picker) / [AdGuard ナレッジベース - 独自の広告フィルタを作成する方法](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)
 
-* **[^2] 汎用フィルタ（EasyList / AdGuard Base Filter）**
+[^2]: **汎用フィルタ（EasyList / AdGuard Base Filter）**
 
   世界中の一般的な広告やトラッカーを遮断するため、コミュニティやAdGuard公式チームによって日夜メンテナンスされている基準となるルールリスト。
 
   * **参照**：[EasyList Official](https://easylist.to/) / [AdGuard Filters Repository](https://github.com/AdguardTeam/AdguardFilters)
 
-* **[^3] 誤爆（False Positive）**
+[^3]: **誤爆（False Positive）**
 
   本来広告ではない正規のウェブコンテンツやアプリの必須機能（ログイン、動画再生、決済画面等）が、ブロックルールに誤って合致して機能不全に陥る現象。
 
   * **参照**：[AdGuard ナレッジベース - AdGuardフィルタ一覧と不具合・誤爆報告について](https://adguard.com/kb/general/ad-filtering/adguard-filters/)
 
-* **[^4] 応急処置（Workaround）**
+[^4]: **応急処置（Workaround）**
 
   フィルタの誤爆やサイト・アプリの破損が発生した際、公式リストで根本修正されるまでの間、ユーザーが独自にユーザールールへ追加する一時的な回避策や例外ルールのこと。
 
-* **[^5] フィルタリングログ（Filtering Log）**
+[^5]: **フィルタリングログ（Filtering Log）**
 
   AdGuardのブラウザ拡張機能やAndroidアプリに内蔵されている監視機能。どの通信が「どのフィルタリストのどのルール」によって遮断・許可されたかをリアルタイムに確認・デバッグできます。
 
   * **参照**：[AdGuard Blog - In-Depth Features Overview: AdGuard for Android](https://adguard.com/en/blog/in-depth-review-adguard-for-android.html)
 
-* **[^6] 特異度（Specificity）**
+[^6]: **特異度（Specificity）**
 
   CSSセレクタが「どれだけ詳細に特定の要素を指定しているか」を表す計算値。`:where()` 疑似クラスを使うと特異度を0にリセットでき、スタイルの競合やブラウザの計算負荷を最適化できます。
 
   * **参照**：[uBlock Origin Wiki - Static filter syntax](https://github.com/gorhill/ublock/wiki/static-filter-syntax)
 
-* **[^7] スクリプトレット（Scriptlet）**
+[^7]: **スクリプトレット（Scriptlet）**
 
   ページ読み込みの初期段階にAdGuardエンジンが注入する小さなJSプログラム。アンチアドブロックの検知関数をフックして無力化したり、インラインデータの広告を取り除きます。
 
   * **参照**：[AdGuard ナレッジベース - 独自の広告フィルタを作成する方法](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)
 
-* **[^8] MV3（Manifest V3）とDNR（Declarative Net Request）**
+[^8]: **MV3（Manifest V3）とDNR（Declarative Net Request）**
 
   ブラウザ拡張機能の最新セキュリティ仕様（MV3）。拡張機能が通信を直接改変する権限が制限され、事前に宣言したルール（DNR）に基づきブラウザ自身が高速にブロックする仕様です。ルール数に厳密な上限（3万〜30万）が存在します。
 
   * **参照**：[AdGuard ナレッジベース - 独自の広告フィルタを作成する方法（DNR互換性解説）](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)
 
-* **[^9] DOM（Document Object Model）**
+[^9]: **DOM（Document Object Model）**
 
   ウェブページを構成するHTMLやXMLの要素をツリー状の構造として表現した仕組み。コスメティックルールはこのDOMツリーを走査・評価して広告要素を見つけ出し非表示にします。
 
