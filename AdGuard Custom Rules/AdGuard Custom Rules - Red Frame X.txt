@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608042034
+! Version: 202608042037
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -61,7 +61,6 @@ chatgpt.com##aside:has(a[href*="/articles/11487775-apps-in-chatgpt"]):has(button
 
 ! google.com
 ! Google検索の補助モジュールを非表示にするルール
-! Android版Chrome環境では、これらを有効にすると後続の検索結果が正常に表示されなくなることがある
 ! 使用する際は、必要なルールの先頭にある「! 」を削除する
 
 ! Google検索 — 関連検索・関連する質問
