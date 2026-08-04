@@ -2,8 +2,8 @@
 
 Aluminium OS（ALOS）/ Googlebook 調査レポート 改訂版
 
-2026年5月のGoogle I/OおよびAndroid Showにて正式発表された「Googlebook（開発コードネーム：Aluminium OS）」に関する最新情報のまとめです。
-AndroidのエコシステムとChromeOSの利便性をネイティブに統合し、AI（Gemini）をOSの基盤レベルで組み込んだ次世代ノートPC規格であり、2026年秋のリリースが予定されています。
+2026年5月にGoogleが発表した「Googlebook」と、発表以前に報道された開発コードネーム「Aluminium」に関する情報のまとめです。
+Googleは、AndroidとChromeOSの長所を取り入れ、Geminiを中核に据えた新しいノートPCカテゴリとしてGooglebookを紹介し、2026年秋の発売を予告しています。発売前のため、公式発表と報道・推測を分けて記載します。
 本レポートでは、確定した公式仕様、プライバシーを保護しつつ高度な広告ブロックを両立する技術的最適化の手法、およびコミュニティの動向を客観的な視点から整理しています。
 
 ---
@@ -14,7 +14,7 @@ AndroidのエコシステムとChromeOSの利便性をネイティブに統合�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260712 |
+| **Version** | 20260804 |
 
 **【ライセンスおよび免責事項】**
 
@@ -28,20 +28,18 @@ AndroidのエコシステムとChromeOSの利便性をネイティブに統合�
 
 ## 1. 基本概要
 
-Aluminium OSは、Googleが次世代PC向けに開発していたOSの開発コードネーム（Project Aluminium / ALOS）です。2026年5月のGoogle I/OおよびAndroid Showにて新カテゴリ「Googlebook」の基盤システムとして正式発表されました。
+「Aluminium」は、GoogleのAndroidベースPCプロジェクトについて求人情報などから報道された開発コードネームです。Googleの2026年5月の公式発表は製品カテゴリ名を「Googlebook」としており、公式記事では「Aluminium OS」や「ALOS」を製品名として確定していません。
 
 ### 公式発表に基づく確定事項
-* **Googlebookの展開**：AndroidとChromeOSを融合。2026年秋よりOEM各社（Acer、ASUS、Dell、HP、Lenovoなど）から第一弾モデル発売。
+* **Googlebookの展開**：AndroidとChromeOSの長所を取り入れた新カテゴリ。Googleは主要パートナーによるプレミアムハードウェアと、2026年秋の発売を予告しています。公式記事では個別メーカー、発売日、価格は確定していません。
 * **Gemini Intelligence**：OSレベルでのAI統合。「マジックポインタ」による文脈提案や、音声・テキスト指示による「カスタムウィジェットの作成」を実装。
-* **スマホとのシームレス統合**：同一GoogleアカウントのAndroid端末内データ（写真・ファイル）を、PC側のウィンドウから直接参照・挿入可能。
-* **ネイティブなAndroid環境**：仮想化に頼らず、Androidアプリがネイティブ速度で動作。
-* **セキュアなLinux対応**：AVF（Android Virtualization Framework）を採用し、安全にLinux環境（Debian等）を仮想動作。
-* **既存Chromebookの移行**：RAM 8GB / ストレージ 128GB / Intel第12世代またはRyzen以上のプロセッサを搭載する「Chromebook Plus」相当の要件が必須（段階的サポート移行）。
+* **Android端末との連携**：スマートフォンのアプリやファイルへアクセスできる連携を予告しています。具体的な要件や対応範囲は未公表です。
 
 ### リーク・未確定事項
 * **ベースOS**：「Android 17」が基盤になると推測されるが、ナンバリングの公式明言はなし。
-* **展開スケジュール**：一般・法人向けの本格展開は2028年までずれ込む可能性（裁判資料・リークより）。
-* **ChromeOSの終焉**：既存端末のメンテナンスモードは10年保証に基づき継続。完全なフェーズアウトは2034年頃と推測。
+* **AndroidアプリとLinux環境**：実行方式、互換性、AVF採用の有無などの詳細は、現時点の公式紹介記事では確定していません。
+* **既存Chromebookの移行**：対象機種、最低RAM・ストレージ・CPU要件、移行時期は公式発表されていません。
+* **ChromeOSの将来**：既存端末は各モデルの自動更新期限に従いますが、Googlebook発表だけからChromeOSの終了時期を断定することはできません。
 
 ---
 
@@ -67,8 +65,8 @@ OSのネイティブAndroidベース化に伴い、通信制御とブラウザ�
 AdGuardの公式仕様に基づいたフィルタの記述ベストプラクティスは以下の通りです。
 
 * **スクリプトレット注入 (MV3)**：高度な制御には `#%#//scriptlet(...)` を適用。
-* **標準CSSによる要素隠蔽**：ブラウザ負荷の少ない標準構文 `##` を優先。Shadow DOMの突破などが必要な場合は `#$#` を使用。
-* **拡張CSSルール**：標準CSSで対応できない複雑な要素には `#?#` または `#$?#(...)` を使用。
+* **標準CSSによる要素隠蔽**：標準構文 `##` を優先。`#$#`はCSSスタイルを注入する構文であり、Shadow DOMを一律に越える構文ではありません。
+* **拡張CSSルール**：標準CSSで対応できない複雑な要素には `#?#` を使用します。スタイルを指定する拡張CSSルールは `example.com#$?#selector { property: value; }` の形で記述します。
 * **擬似クラスの最適化**：
   * テキスト隠蔽には `:contains(...)` を活用。
   * 状態を表す `:has(...)` は、モダンブラウザのネイティブ実装へ処理を寄せて負荷を下げる方針が推奨される。
@@ -80,17 +78,16 @@ AdGuardの公式仕様に基づいたフィルタの記述ベストプラクテ�
 Aluminium OS環境下におけるAdGuardの動作見通しは以下の通りです。
 
 * **AdGuard専用版の開発状況**：
-  * 2026年7月現在、「AdGuard for Aluminium OS」という専用アプリの開発計画は公式発表されていません。
+  * 2026年8月4日現在、「AdGuard for Aluminium OS」という専用アプリの開発計画は公式発表されていません。
 * **AdGuard for Android（APK版）のシステム全体保護**：
-  * Aluminium OSはAndroidアプリをネイティブ実行するため、従来の「AdGuard for Android（APK版）」がローカルVPNを用いて機能する可能性が高いです。
-  * 既存のChromeOSでもAndroid向けVPNアプリがシステム全体のトラフィック（Chromeブラウザの通信含む）をルーティングできる仕様があり、本OSでもこのアーキテクチャが踏襲されると見込まれます。
+  * Googlebook上で「AdGuard for Android（APK版）」のローカルVPNがシステム全体へ適用できるかは、OSのVPN実装とアプリ互換性が公表されるまで未確定です。
 
 ---
 
 ## 5. テレメトリとAI処理の境界
 
-完全なAndroidベースとなるため、高度なカスタマイズやAPKサイドロードの恩恵を受けやすい一方、プライバシー管理が重要になります。
-最大の焦点は、**システムレベルで稼働するAI（Gemini）のデータ処理の所在**です。NPUを活用した「完全ローカル処理」がアピールされていますが、ウェブ検索やGmail連携等のクラウド処理が混在するため、データ送信のオプトアウト制御が今後のセキュリティ監査における重要課題となります。
+OSの詳細設計は未公表ですが、Androidアプリや端末連携を扱う以上、プライバシー管理は重要になります。
+最大の焦点は、**Geminiの各機能が端末内とクラウドのどちらで処理されるか**です。公式発表は機能概要に留まるため、「完全ローカル処理」と断定せず、発売時のプライバシー説明、管理設定、データ保持方針を確認する必要があります。
 
 ---
 
@@ -109,6 +106,8 @@ Aluminium OS環境下におけるAdGuardの動作見通しは以下の通りで�
 ## 7. 関連情報ソース一覧 (2026年7月時点)
 
 ### 公式・技術報道
+* **Google公式ブログ**：
+  * [Introducing Googlebook, designed for Gemini Intelligence](https://blog.google/products-and-platforms/platforms/android/meet-googlebook/)
 * **ITmedia**：
   * [Googleが「Googlebook」をチラ見せ AndroidとChromeOSを“融合”した全く新しいノートPC 詳細は2026年後半に紹介](https://www.itmedia.co.jp/pcuser/articles/2605/13/news059.html)
 * **ケータイ Watch**：
