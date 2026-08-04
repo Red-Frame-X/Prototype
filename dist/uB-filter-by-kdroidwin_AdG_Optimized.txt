@@ -6,7 +6,8 @@
 ! Homepage: https://github.com/Red-Frame-X/Prototype
 ! License: GPL-3.0
 ! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin
-! Disclaimer: Unofficial fork optimized for AdGuard MV3 & Android.
+! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.
+! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.
 
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
