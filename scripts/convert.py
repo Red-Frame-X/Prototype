@@ -22,7 +22,7 @@ OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", "uB-filter-by-kdroidwin_AdG_Op
 
 CANDIDATE_URLS: List[str] = [
     "https://raw.githubusercontent.com/Kdroidwin/uBlacklist-filter-by-kdroidwin/refs/heads/main/uBlockorigin.txt",
-    "https://raw.githubusercontent.com/Kdroidwin/uBlacklist-filter-by-kdroidwin/refs/heads/main/uBlockorigin.txt"
+    "https://cdn.jsdelivr.net/gh/Kdroidwin/uBlacklist-filter-by-kdroidwin@main/uBlockorigin.txt"
 ]
 
 
