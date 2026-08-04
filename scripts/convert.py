@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""uB-filter-by-kdroidwin to AdGuard Optimizer & Linter
+"""uB-filter-by-kdroidwin to AdGuard Chrome MV3 Optimizer & Linter
 
-uBlock Origin用フィルタをAdGuard (MV3 / Android) 向けに最適化・静的解析(Lint)するスクリプト。
+uBlock Origin用フィルタをAdGuard for Chrome MV3向けに、安全性と互換性を優先して
+変換・静的解析(Lint)するスクリプト。生成物はAdGuard for Androidでも読み込めますが、
+CoreLibs固有機能の保持やAndroid向けの完全な最適化は保証しません。
 
 License: GPL-3.0
 Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin
@@ -40,7 +42,7 @@ class AdGuardOptimizer:
             ':matches-path(', ':min-text-length(', ':watch-attr(', ':matches-media(', ':others()'
         ]
 
-        # MV3/Android環境で未対応・エラーリスクとなるスクリプトレット
+        # Chrome MV3向け出力で未対応・エラーリスクとなるスクリプトレット
         self.incompatible_scriptlets: List[str] = [
             'acis', 'spoof-css', 'trusted-replace-argument', 'trusted-set-cookie',
             'alert-buster', 'trusted-click-element', 'webassembly-interference',
@@ -160,7 +162,7 @@ class AdGuardOptimizer:
                 return f"! [Incompatible Scriptlet] {original_line}"
             return line
 
-        # [Step A-2] MV3 (RE2) および Android 向け正規表現検証
+        # [Step A-2] Chrome MV3 (RE2) との互換性を優先した正規表現検証
         regex_data = self._parse_regex_rule(line)
         if regex_data:
             prefix, regex_part, modifier_part = regex_data
@@ -184,7 +186,7 @@ class AdGuardOptimizer:
                 domain_part, selector_part = parts
                 rule_scope = domain_part
 
-                # パス付きドメイン指定を、MV3/Android対応の非基本 $url 修飾子へ変換する。
+                # パス付きドメイン指定を、Chrome MV3対応の非基本 $url 修飾子へ変換する。
                 # ドメインだけに丸めると適用範囲が広がるため、必ず元のパスを維持する。
                 if '/' in domain_part:
                     if ',' in domain_part:
@@ -302,7 +304,8 @@ class AdGuardOptimizer:
             "! Homepage: https://github.com/Red-Frame-X/Prototype",
             "! License: GPL-3.0",
             "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
-            "! Disclaimer: Unofficial fork optimized for AdGuard MV3 & Android.",
+            "! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.",
+            "! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.",
             ""
         ]
 
