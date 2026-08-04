@@ -8,7 +8,7 @@ GitHub Gistsを利用して、カスタムフィルタやUserScriptを各種拡�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260707 |
+| **Version** | 20260804 |
 
 この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
@@ -51,8 +51,9 @@ GitHub Gistsを利用して、カスタムフィルタやUserScriptを各種拡�
 6. 短縮したURLをブラウザで開き直し、最新の内容が表示されるか確認してください。
    * **注意**: GitHubのRaw URLはキャッシュ（CDN）が効いているため、編集直後は内容が反映されない場合があります（数分程度のタイムラグがあります）。
 7. この短縮URLを、AdGuardの「カスタムフィルタ（またはDNSフィルタ）」として追加（インポート）します。
-8. 今後フィルタを更新する際は、ファイル内の `! Version:`（または `! TimeUpdated:`）の数値を、前回登録時より大きく書き換えてください（例：`2026010101` → `2026010201`）。
-   * 数値が増加していることでAdGuardが変更を検知し、自動更新が行われます。
+8. `! Version:`、`! TimeUpdated:`、`! Expires:`などのフィルタメタデータは、配布物の版や推奨更新間隔を利用者に示すために記述します。
+   * `! Version:`を増やすことだけがAdGuardの更新検知条件ではありません。登録したURLの再取得はAdGuard側の更新操作・更新スケジュールに従います。
+   * URLがコミットハッシュを含まないことと、取得先が最新内容を返すことを確認してください。反映直後は配信キャッシュの影響が残る場合があります。
 
 ---
 
