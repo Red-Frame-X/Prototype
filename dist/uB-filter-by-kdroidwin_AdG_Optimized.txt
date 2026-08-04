@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608041753
+! Version: 202608050203
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -1544,6 +1544,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||blog.livedoor.jp/zzcj^$document
 ||blog.lorentzca.me^$document
 ||blog.myplace-events.com^$document
+||blog.serverworks.co.jp^$document
 ||blog.triedge-lab.com^$document
 ||blogdemoai.com^$document
 ||blogjuicy.com^$document
@@ -3478,6 +3479,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||freelivemovies.net^$document
 ||freemoviespoint.com^$document
 ||freesamplemovie.net^$document
+||freesoft-100.com/download/iobit-uninstaller^$document
+||freesoft-100.com/publisher/iobit^$document
 ||freesoft.space^$document
 ||freevpn.one^$document
 ||freeworkroom.com^$document
@@ -4809,7 +4812,9 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||investor-350z.com^$document
 ||investor-u.net^$document
 ||inzak.jp^$document
+||iobit-unistaller.jp.uptodown.com^$document
 ||iobit.com^$document
+||iobitpartner.com^$document
 ||iodkdti.life^$document
 ||iolingjapan.netlify.app^$document
 ||iorieightrsa.xyz^$document
@@ -5010,6 +5015,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||jinenbo.info^$document
 ||jinkanra.com^$document
 ||jinpyo.jp^$document
+||jinrai.co.jp^$document
 ||jinsei-cinema.jp^$document
 ||jinsei0826.com^$document
 ||jisedai.me^$document
@@ -5072,6 +5078,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||jp.bignox.com/appcenter^$document
 ||jp.bitcomet.com^$document
 ||jp.dhgate.com^$document
+||jp.iobit.com^$document
 ||jp.itopvpn.com^$document
 ||jp.ldplayer.net/apps^$document
 ||jp.mobile.japex.ru^$document
@@ -7490,6 +7497,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/kadenz^$document
 ||note.com/kakaokakao1230^$document
 ||note.com/kakip0115^$document
+||note.com/kakumitsu^$document
 ||note.com/kamanyan01^$document
 ||note.com/kanasawa9420^$document
 ||note.com/kangaeru_genba^$document
@@ -7569,6 +7577,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/masa_wunder^$document
 ||note.com/masasan731^$document
 ||note.com/mayako_room^$document
+||note.com/mbbs^$document
 ||note.com/mdsmys^$document
 ||note.com/mens_strategy_k^$document
 ||note.com/mental_marcy^$document
@@ -7590,6 +7599,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/mofu_pan^$document
 ||note.com/mogushi^$document
 ||note.com/mokyuchan^$document
+||note.com/momotro018^$document
 ||note.com/monetking0209^$document
 ||note.com/morin4g4^$document
 ||note.com/moteotokolabo^$document
@@ -7660,6 +7670,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/planetofgori^$document
 ||note.com/pocketstudio^$document
 ||note.com/poi_nem^$document
+||note.com/poko_fukugyou^$document
 ||note.com/ponta0921^$document
 ||note.com/poppson^$document
 ||note.com/powertanishi^$document
@@ -8308,6 +8319,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||partshufu.com^$document
 ||parupunte-life.com^$document
 ||pas-pol-shop.com^$document
+||pas0na.com^$document
 ||pasinta.com^$document
 ||pasmo10.jp^$document
 ||pass.workhub.site^$document
@@ -8340,6 +8352,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||pcprogs.net^$document
 ||pcprogs.ru^$document
 ||pcprotect.com^$document
+||pcshop.vector.co.jp/service/catalogue/iobitui^$document
 ||pcshopwell.com^$document
 ||pdelect.com^$document
 ||pdf-to-brainrot.org^$document
@@ -9361,6 +9374,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||seamaxastillero.com^$document
 ||sean-j.com^$document
 ||search.google.sky4k.top^$document
+||search.rakuten.co.jp/search/mall/IOBit^$document
 ||seasea.xyz^$document
 ||sebastianoarmelibattana.com^$document
 ||second.jyoho-library.com^$document
@@ -9959,6 +9973,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||store.azki-official.com^$document
 ||store.breguet.cn^$document
 ||store.makuake.com^$document
+||store.shopping.yahoo.co.jp/allkeyshopjapan^$document
 ||store.shopping.yahoo.co.jp/norton^$document
 ||stores.chaumet.cn^$document
 ||storyoffilm-japan.com^$document
@@ -10643,6 +10658,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tottori-brotherandsister.jp^$document
 ||tottori-covid19.netlify.app^$document
 ||totutottuan.com^$document
+||touchai.jp^$document
 ||touhoku-shigoto.jp^$document
 ||touhokujrst.club^$document
 ||tourukaustoglee.net^$document
@@ -11548,6 +11564,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.alqalmouninstitute.com^$document
 ||www.alqfvxf.cn^$document
 ||www.amazon.bygg199.top^$document
+||www.amazon.co.jp/PC%E3%82%BD%E3%83%95%E3%83%88-iObit^$document
 ||www.amazon.co.jp/shop/influencer-2b79c26a$document
 ||www.amigolibreria.com^$document
 ||www.amjad.xyz^$document
@@ -12377,6 +12394,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.judymzungu.com^$document
 ||www.junipercre.com^$document
 ||www.justlanyards.ch^$document
+||www.justmyshop.com^$document
 ||www.juxtin.com^$document
 ||www.jvesign.com/shop^$document
 ||www.k-cooking.jp^$document
@@ -13953,6 +13971,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||zenmate.com^$document
 ||zenmate.jp.uptodown.com^$document
 ||zenn-news.net^$document
+||zenn.dev/tmasuyama1114^$document
 ||zenn.dev/watab2000^$document
 ||zennnews.com^$document
 ||zenpenkoukai.com^$document
