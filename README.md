@@ -15,7 +15,7 @@ The following items were created for my personal use.
 * [AdGuard Custom Rules](https://github.com/Red-Frame-X/Prototype/tree/main/AdGuard%20Custom%20Rules) 
 * [UserScript](https://github.com/Red-Frame-X/Prototype/tree/main/UserScript)
 * [NG Word Regex for ChMate](https://github.com/Red-Frame-X/Prototype/tree/main/NG%20Word%20Regex%20for%20ChMate)
-* [Markdown Notes](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex-etc/tree/main/Markdown%20Notes)
+* [Markdown Notes](https://github.com/Red-Frame-X/Prototype/tree/main/Markdown%20Notes)
 
 ### Contact
 * User Name：Red Frame X
