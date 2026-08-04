@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608042119
+! Version: 202608042139
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -174,23 +174,6 @@ news.google.com##h3:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュ�
 ! スクロール不可を修正するScriptlet処理
 ! news.mynavi.jp#%#//scriptlet('prevent-addEventListener', 'DOMContentLoaded', 'registration_guide_modal')
 
-! news.web.nhk
-! 画面下部の「ご利用にあたって」ポップアップを初期表示前に除去
-! HTMLフィルタリング対応製品向け：レスポンスから対象ダイアログを除去
-news.web.nhk$$dialog[id="emergency-mode-info"]
-! HTMLフィルタリング非対応製品向け：対象ダイアログを初期CSSで非表示
-news.web.nhk###emergency-mode-info
-! 画面上部の黄色い緊急時告知バナーを初期表示前に除去
-! HTMLフィルタリング対応製品向け：レスポンスからバナー外枠を除去
-news.web.nhk$$div[id="under-header-element"]
-! HTMLフィルタリング非対応製品向け：バナー外枠を初期CSSで非表示
-news.web.nhk###under-header-element
-! モバイルアプリのインストールを促すバナーを初期表示前に除去
-! HTMLフィルタリング対応製品向け：固有文言を含む案内領域をレスポンスから除去
-news.web.nhk$$div[role="region"]:contains(NHKの公式アプリ)
-! HTMLフィルタリング非対応製品向け：公式アプリアイコンを含む案内領域を初期CSSで非表示
-news.web.nhk##div[role="region"]:has(img[src*="/appbanner/artworkImages/news_app_icon.png"])
-
 ! news.yahoo.co.jp
 ! コメント要素の非表示
 news.yahoo.co.jp###articleCommentModule
@@ -243,6 +226,23 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 web.nhk##div:has(> a[href*="/nhkone/account/"])
 web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{"status":"optedin","entity":"household","area":{"areaId":"0","jisx0402":"0","postal":"0000000","pref":"0"}}')
 web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{"sd":"2025-10-01T00:00:00.000Z","ed":"2050-12-31T23:59:59.999Z"}')
+
+! news.web.nhk固有のポップアップ・バナー処理
+! 画面下部の「ご利用にあたって」ポップアップを初期表示前に除去
+! HTMLフィルタリング対応製品向け：レスポンスから対象ダイアログを除去
+news.web.nhk$$dialog[id="emergency-mode-info"]
+! HTMLフィルタリング非対応製品向け：対象ダイアログを初期CSSで非表示
+news.web.nhk###emergency-mode-info
+! 画面上部の黄色い緊急時告知バナーを初期表示前に除去
+! HTMLフィルタリング対応製品向け：レスポンスからバナー外枠を除去
+news.web.nhk$$div[id="under-header-element"]
+! HTMLフィルタリング非対応製品向け：バナー外枠を初期CSSで非表示
+news.web.nhk###under-header-element
+! モバイルアプリのインストールを促すバナーを初期表示前に除去
+! HTMLフィルタリング対応製品向け：固有文言を含む案内領域をレスポンスから除去
+news.web.nhk$$div[role="region"]:contains(NHKの公式アプリ)
+! HTMLフィルタリング非対応製品向け：公式アプリアイコンを含む案内領域を初期CSSで非表示
+news.web.nhk##div[role="region"]:has(img[src*="/appbanner/artworkImages/news_app_icon.png"])
 
 ! www.minnanosyougai.com
 ! 広告・迷惑要素の非表示
