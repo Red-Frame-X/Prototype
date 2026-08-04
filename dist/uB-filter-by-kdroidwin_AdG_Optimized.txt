@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608031535
+! Version: 202608041504
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -5939,6 +5939,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||lovewagonblog.wordpress.com^$document
 ||lowcostoutsource.com^$document
 ||lp.buzayookaki.com^$document
+||lp.solomon-world.jp^$document
 ||lps.nanoartmarket.com^$document
 ||lqvaqpeq.com^$document
 ||lrkdn.kvjody.biz^$document
@@ -7638,6 +7639,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/open_fennel6445^$document
 ||note.com/open_hare4661^$document
 ||note.com/orangeitems^$document
+||note.com/oren_46902^$document
 ||note.com/oripa_kensyo^$document
 ||note.com/orisusarusan^$document
 ||note.com/oshabaku^$document
@@ -8619,6 +8621,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||prometiz.xyz^$document
 ||promotion.weassist.jp^$document
 ||promotions.champs-sportsclub.com^$document
+||proof0309.com^$document
 ||proteamworks.com^$document
 ||protect-honor.hatenablog.com^$document
 ||protonge.com^$document
@@ -9731,6 +9734,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||solare-academy.com^$document
 ||solife-a.com^$document
 ||sollastudio.net^$document
+||solomon-world.jp^$document
 ||solutionsbyswain.com^$document
 ||solveforum.com^$document
 ||solvusoft.com^$document
@@ -11198,6 +11202,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||wakatte-tv.net^$document
 ||wakayama-johall.com^$document
 ||wake-up-neo.com^$document
+||wakurakulab.com^$document
 ||wakuwakuenta.com^$document
 ||walkable-2020.com^$document
 ||wallmountpros.com^$document
