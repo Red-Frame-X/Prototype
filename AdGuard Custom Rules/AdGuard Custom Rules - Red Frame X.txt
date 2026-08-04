@@ -273,7 +273,6 @@ x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ 
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty)
 x.com##div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:contains(もっと見つける))
-x.com##div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:contains(もっと見つける)) ~ div
 x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:contains(ユーザー))
 ! コミュニティ関連
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(+ div > div > div > a[href^="/i/communities/"])
