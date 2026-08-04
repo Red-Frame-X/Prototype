@@ -174,9 +174,10 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 
 ! web.nhk
 ! クッキー・同意ポップアップ関連処理
+! ポップアップ抑止に必要な同意状態のみ設定し、地域情報には非実在の中立値を使用
 ||apps.web.nhk/ops/api/v1/common/registrationEnforcement.json$xhr,domain=web.nhk
 web.nhk##div:has(> a[href*="/nhkone/account/"])
-web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{"status":"optedin","entity":"household","area":{"areaId":"130","jisx0402":"13113","postal":"1508001","pref":"13"}}')
+web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{"status":"optedin","entity":"household","area":{"areaId":"0","jisx0402":"0","postal":"0000000","pref":"0"}}')
 web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{"sd":"2025-10-01T00:00:00.000Z","ed":"2050-12-31T23:59:59.999Z"}')
 
 ! www.minnanosyougai.com
