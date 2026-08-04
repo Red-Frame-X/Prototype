@@ -28,6 +28,28 @@ class ModifierConversionTests(unittest.TestCase):
             "||example.com^$third-party,removeparam=utm_source",
         )
 
+    def test_unescaped_slash_in_regex_character_class_is_escaped(self):
+        rule = r"/^https?:\/\/[^/]*pay(?:[/?#]|$)/"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            r"/^https?:\/\/[^\/]*pay(?:[\/?#]|\$)/",
+        )
+
+    def test_unescaped_slash_outside_character_class_remains_delimiter(self):
+        rule = r"/^https?:\/\/example\.com\//$document"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
+    def test_cosmetic_rule_with_url_path_uses_url_modifier(self):
+        rule = "www.example.com/specific-path##.advertisement"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "[$url=||www.example.com/specific-path*]##.advertisement",
+        )
+
+    def test_cosmetic_rule_with_domain_scope_is_preserved(self):
+        rule = "www.example.com##.advertisement"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
 
 if __name__ == "__main__":
     unittest.main()

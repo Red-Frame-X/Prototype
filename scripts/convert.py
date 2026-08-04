@@ -102,11 +102,33 @@ class AdGuardOptimizer:
 
         idx = 1
         length = len(check_line)
+        in_character_class = False
+        normalized_pattern: List[str] = ['/']
+
         while idx < length:
-            if check_line[idx] == '/':
-                # バックスラッシュが偶数個ならエスケープされていない終端と判定
-                if self._count_consecutive_backslashes(check_line, idx) % 2 == 0:
-                    return prefix, check_line[:idx + 1], check_line[idx + 1:]
+            char = check_line[idx]
+            is_escaped = self._count_consecutive_backslashes(check_line, idx) % 2 == 1
+
+            if char == '[' and not is_escaped:
+                in_character_class = True
+            elif char == ']' and not is_escaped:
+                in_character_class = False
+            elif char == '/' and not is_escaped:
+                if in_character_class:
+                    # AdGuardの /.../ 区切りで文字クラス内の / が終端と誤認されないよう正規化
+                    normalized_pattern.append(r'\/')
+                    idx += 1
+                    continue
+
+                normalized_pattern.append('/')
+                return prefix, ''.join(normalized_pattern), check_line[idx + 1:]
+            elif char == '$' and not is_escaped:
+                # AdGuardでは正規表現内の $ も修飾子区切りとの曖昧さを避けるためエスケープする
+                normalized_pattern.append(r'\$')
+                idx += 1
+                continue
+
+            normalized_pattern.append(char)
             idx += 1
 
         return None
@@ -161,13 +183,27 @@ class AdGuardOptimizer:
             parts = line.split(separator, 1)
             if len(parts) == 2:
                 domain_part, selector_part = parts
+                rule_scope = domain_part
+
+                # パス付きドメイン指定を、MV3/Android対応の非基本 $url 修飾子へ変換する。
+                # ドメインだけに丸めると適用範囲が広がるため、必ず元のパスを維持する。
+                if '/' in domain_part:
+                    if ',' in domain_part:
+                        return f"! [Unsupported Mixed Cosmetic URL Scope] {original_line}"
+
+                    domain, path = domain_part.split('/', 1)
+                    if not domain or not path:
+                        return f"! [Invalid Cosmetic URL Scope] {original_line}"
+
+                    rule_scope = f"[$url=||{domain}/{path}*]"
 
                 if any(unsupported in selector_part for unsupported in self.ubo_unsupported_ext_css):
                     return f"! [Unsupported Extended CSS] {original_line}"
 
                 if any(ext in selector_part for ext in self.adg_supported_ext_css):
                     new_separator = '#?#' if separator == '##' else '#?@#'
-                    return f"{domain_part}{new_separator}{selector_part}"
+                    return f"{rule_scope}{new_separator}{selector_part}"
+                return f"{rule_scope}{separator}{selector_part}"
             return line
 
         # [Step C] ネットワークルールの修飾子最適化

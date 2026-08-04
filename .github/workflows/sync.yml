@@ -36,6 +36,14 @@ jobs:
       - name: Run Conversion Script
         run: python scripts/convert.py
 
+      # 公開前に生成物と管理対象のAdGuardルールを構文検証
+      - name: Run AGLint
+        run: >-
+          npx --yes @adguard/aglint@3.0.2
+          dist/uB-filter-by-kdroidwin_AdG_Optimized.txt
+          "AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt"
+          "AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt"
+
       - name: Commit and Push if changed
         run: |
           set -e

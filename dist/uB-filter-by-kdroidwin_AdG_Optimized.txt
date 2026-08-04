@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608041504
+! Version: 202608041753
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -18,29 +18,29 @@
 /%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9D%F0%9D%90%9E%F0%9D%90%B1\.%F0%9D%90%A1%F0%9D%90%AD%F0%9D%90%A6%F0%9D%90%A5/$document
 /^.*(qr-paydaygo).*\.com(/[a-z0-9_-]?.*)?$/$doc
 /^.*(qr-topayday).*\.com(/[a-z0-9_-]?.*)?$/$doc
-/^https:\/\/(?:jp\.)?[a-z-]{5,14}\.co.uk\/.*\?_g=\d+$/$document
-/^https:\/\/(?:jp\.)?[a-z-]{5,14}\.com.br\/.*\?_g=\d+$/$document
-/^https:\/\/(?:jp\.)?[a-z-]{5,14}\.com\/.*\?_g=\d+$/$document
-/^https?:\/\/(?!(?:[^\/]+\.)?toranoana\.shop(?:\/|$)|www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|online\.|discovery\.|park\.|book\.|info\.|help\.|lp\.|docs\.|about\.|news\.|[^\/]+\.base\.shop)[^\/]+\.[^\/]+\.shop(\/|$)/$document
-/^https?:\/\/(?!([^\/]+\.)?(hinode|twic|miyakojima|select-shop)\.pics(?:\/|$))(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|online\.|discovery\.|park\.|m\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.pics(\/|$)/$document
-/^https?:\/\/(?!hokusai\.anotherstory\.world\/)(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|lp\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.world(\/|$)/$document
-/^https?:\/\/(?!wangel\.aioilight\.space(?:\/|$))(?![^/]+\.manus\.space(?:\/|$))(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|lp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.space(\/|$)/
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|biz\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|go\.|m\.|lp\.|support\.|manga\.|video\.|sp\.|goodtree\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.|pubsure\.)[^\/]+\.[^\/]+\.life(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|kreva\.|siri\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|festival\.|my-private\.|park\.|m\.|lp\.|besty\.|info\.|help\.|docs\.|about\.|news\.|connect\.|college\.|mazzel\.|mstdn\.)[^\/]+\.[^\/]+\.club(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|home\.|lp\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|onsen\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.rest(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|home\.|lp\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.skin(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|living\.|lp\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.live(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|lp\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.cards(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|lp\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.homes(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|m\.|lp\.|video\.|sp\.|column\.|discovery\.|jp\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.beauty(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|m\.|lp\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.asia(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|aya0205\.|discovery\.|park\.|m\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.store(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|anime\.|lp\.|www3\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]*\.saitama\.vip|koei\.dolshipmaker\.vip|tr\.orjinalbetoffice\.vip)[^\/]+\.[^\/]+\.vip(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|manga\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]*\.est\.sale|[^\/]*\.youtuber\.sale|cherrypieweb\.noco\.sale|[^\/]*\.prozorro\.sale)[^\/]+\.[^\/]+\.sale(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|clinic\.|lp\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.|seitai\.)[^\/]+\.[^\/]+\.(\/|$)fit(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|ww3\.|lp\.|video\.|sp\.|m\.|discovery\.|sea\.|lp\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.surf(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|anime\.|lp\.|manga\.|video\.|sp\.|online\.|discovery\.|m\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]+\.fany\.lol|[^\/]+\.techaro\.lol)[^\/]+\.[^\/]+\.lol(\/|$)/$document
-/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|online\.|discovery\.|park\.|m\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]+\.littlehappy\.baby)[^\/]+\.[^\/]+\.baby(\/|$)/$document
+/^https:\/\/(?:jp\.)?[a-z-]{5,14}\.co.uk\/.*\?_g=\d+\$/$document
+/^https:\/\/(?:jp\.)?[a-z-]{5,14}\.com.br\/.*\?_g=\d+\$/$document
+/^https:\/\/(?:jp\.)?[a-z-]{5,14}\.com\/.*\?_g=\d+\$/$document
+/^https?:\/\/(?!(?:[^\/]+\.)?toranoana\.shop(?:\/|\$)|www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|online\.|discovery\.|park\.|book\.|info\.|help\.|lp\.|docs\.|about\.|news\.|[^\/]+\.base\.shop)[^\/]+\.[^\/]+\.shop(\/|\$)/$document
+/^https?:\/\/(?!([^\/]+\.)?(hinode|twic|miyakojima|select-shop)\.pics(?:\/|\$))(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|online\.|discovery\.|park\.|m\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.pics(\/|\$)/$document
+/^https?:\/\/(?!hokusai\.anotherstory\.world\/)(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|lp\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.world(\/|\$)/$document
+/^https?:\/\/(?!wangel\.aioilight\.space(?:\/|\$))(?![^\/]+\.manus\.space(?:\/|\$))(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|lp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.space(\/|\$)/
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|biz\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|go\.|m\.|lp\.|support\.|manga\.|video\.|sp\.|goodtree\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.|pubsure\.)[^\/]+\.[^\/]+\.life(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|kreva\.|siri\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|festival\.|my-private\.|park\.|m\.|lp\.|besty\.|info\.|help\.|docs\.|about\.|news\.|connect\.|college\.|mazzel\.|mstdn\.)[^\/]+\.[^\/]+\.club(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|home\.|lp\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|onsen\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.rest(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|home\.|lp\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.skin(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|living\.|lp\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.live(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|lp\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.cards(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|lp\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.homes(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|m\.|lp\.|video\.|sp\.|column\.|discovery\.|jp\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.beauty(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|m\.|lp\.|video\.|sp\.|m\.|discovery\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.asia(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|aya0205\.|discovery\.|park\.|m\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.store(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|anime\.|lp\.|www3\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]*\.saitama\.vip|koei\.dolshipmaker\.vip|tr\.orjinalbetoffice\.vip)[^\/]+\.[^\/]+\.vip(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|app\.|manga\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]*\.est\.sale|[^\/]*\.youtuber\.sale|cherrypieweb\.noco\.sale|[^\/]*\.prozorro\.sale)[^\/]+\.[^\/]+\.sale(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|video\.|sp\.|m\.|discovery\.|clinic\.|lp\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.|seitai\.)[^\/]+\.[^\/]+\.(\/|\$)fit(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|ww3\.|lp\.|video\.|sp\.|m\.|discovery\.|sea\.|lp\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.surf(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|anime\.|lp\.|manga\.|video\.|sp\.|online\.|discovery\.|m\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]+\.fany\.lol|[^\/]+\.techaro\.lol)[^\/]+\.[^\/]+\.lol(\/|\$)/$document
+/^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|online\.|discovery\.|park\.|m\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]+\.littlehappy\.baby)[^\/]+\.[^\/]+\.baby(\/|\$)/$document
 /^https?:\/\/([^\/]+\.)?(ur|url)\d+\.jp\//
 /^https?:\/\/([^\/]+\.)?qc-\d+\.cc\//
 /^https?:\/\/([^\/]+\.)?qc\d{2}\.jp\//
@@ -52,15 +52,15 @@
 /^https?:\/\/([^\/]+\.)?ur\d{3}\.jp\//
 /^https?:\/\/1link\.jp\/gofile[a-zA-Z0-9]*/$document
 /^https?:\/\/1link\.jp\/tiktok[a-zA-Z0-9]*/$document
-/^https?:\/\/[^\/]*pay(?=[^\/]*\d[^\/]*\d[^\/]*\d)[^\/]*\.com(?:[/?#]|$)/
+/^https?:\/\/[^\/]*pay(?=[^\/]*\d[^\/]*\d[^\/]*\d)[^\/]*\.com(?:[\/?#]|\$)/
 /^https?:\/\/[a-z0-9]{20,}\.[a-z0-9.-]*\.cn\//$document
 /^https?:\/\/[a-z0-9]{25,}\.[a-z0-9.-]*\.br\//$document
 /^https?:\/\/[a-z0-9]{25,}\.[a-z0-9.-]*\.online\//$document
 /^https?:\/\/[a-z0-9]{30,}\.[a-z0-9.-]*\.su\//$document
 /^https?:\/\/[a-z0-9]{32,}\.[a-z0-9.-]*\.au\//$document
-/^https?:\/\/pay\.pay[^/.]*\.[^/]+/
+/^https?:\/\/pay\.pay[^\/.]*\.[^\/]+/
 /^https?:\/\/videotwimgcom\.[^.]+\.net\//
-/https?:\/\/(?=[^.]{16,}\.)(?=.*[a-z])(?=.*[0-9])[a-z0-9-]+\.[a-z0-9-]{1,60}\.[a-z0-9-]{1,60}\.amazonaws\.com(\/|$)/$document
+/https?:\/\/(?=[^.]{16,}\.)(?=.*[a-z])(?=.*[0-9])[a-z0-9-]+\.[a-z0-9-]{1,60}\.[a-z0-9-]{1,60}\.amazonaws\.com(\/|\$)/$document
 /https?:\/\/[a-z0-9-]+-co-jp\.cn/
 /https?:\/\/[a-z0-9-]+-co-jp\.com/
 /https?:\/\/[a-z0-9-]+-co-jp\.mobi/
@@ -85,7 +85,7 @@ audiobookbay.lu#?#td:nth-of-type(n):has-text(Download Files Now)
 audiobookbay.lu#?#td:nth-of-type(n):has-text(You could try out alternative bittorrent clients)
 ddownload.com##.dk-banner-row--pair.dk-banner-row
 filespayouts.com##.cb-ad-box
-fp.no-sheep.org/services##.main
+[$url=||fp.no-sheep.org/services*]##.main
 h2testw.org##.entry-content::before { content: "これは偽サイト　Fake Site"; position: fixed !important; top: 10px !important; left: 10px !important; z-index: 999999 !important; font-size: 32px !important; color: #fff !important; background: #c00 !important; font-weight: 900 !important; padding: 8px 12px !important; border-radius: 6px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important; }
 hexload.com##.animated-button
 himebon.blog##.eye-catch-wrap
@@ -127,10 +127,10 @@ www.google.*#?##main div > div[data-hveid]:not([class]) div[class] > div[class]:
 www.grayporn.org##.eye-catch-wrap
 www.mangalear.blog##.eye-catch-wrap
 www.nijioma.blog##.eye-catch-wrap
-www.privacytools.io/encrypted-cloud-storage##div.container:nth-of-type(3)
-www.privacytools.io/privacy-vpn##div.container:nth-of-type(2)
-www.privacytools.io/privacy-vpn##div.container:nth-of-type(3)
-www.privacytools.io/secure-password-manager##div.container:nth-of-type(2)
+[$url=||www.privacytools.io/encrypted-cloud-storage*]##div.container:nth-of-type(3)
+[$url=||www.privacytools.io/privacy-vpn*]##div.container:nth-of-type(2)
+[$url=||www.privacytools.io/privacy-vpn*]##div.container:nth-of-type(3)
+[$url=||www.privacytools.io/secure-password-manager*]##div.container:nth-of-type(2)
 www.ryuugames.com##.ryuu-sl-download-wrap
 www.startpage.com#?#div.css-z73qjy.result:nth-of-type(n):has-text(HOT !)
 ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
