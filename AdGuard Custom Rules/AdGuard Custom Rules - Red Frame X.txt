@@ -182,7 +182,7 @@ news.web.nhk$$dialog[id="emergency-mode-info"]
 news.web.nhk###emergency-mode-info
 ! 画面上部の黄色い緊急時告知バナーを初期表示前に除去
 ! HTMLフィルタリング対応製品向け：レスポンスからバナー外枠を除去
-news.web.nhk$div[id="under-header-element"]
+news.web.nhk$$div[id="under-header-element"]
 ! HTMLフィルタリング非対応製品向け：バナー外枠を初期CSSで非表示
 news.web.nhk###under-header-element
 
