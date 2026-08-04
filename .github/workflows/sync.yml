@@ -29,6 +29,9 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
+      - name: Run Tests
+        run: python -m unittest discover -s tests -v
+
       # scripts/ フォルダ内の convert.py を実行
       - name: Run Conversion Script
         run: python scripts/convert.py
