@@ -156,7 +156,7 @@ GoogleはGMS（Google Mobile Services）およびGoogle Play Protectを通じ、
 
 ## 参照URL
 
-* [Android developer verification: Balancing openness and choice with safety](https://android-developers.googleblog.com/2026/03/android-developer-verification.html) （Google Developers Blog）
+* [Android developer verification: Balancing openness and choice with safety](https://developer.android.com/blog/posts/android-developer-verification-balancing-openness-and-choice-with-safety) （Android Developers）
 * [Android developer verification: Rolling out to all developers on Play Console and Android Developer Console](https://developer.android.com/blog/posts/android-developer-verification-rolling-out-to-all-developers-on-play-console-and-android-developer-console) （Google Developers Blog）
 * [GoogleがAndroidで安全なAPKサイドローディングを実現する「Advanced Flow」の詳細を発表](https://gigazine.net/news/20260323-google-android-advanced-flow/) （GIGAZINE）
 * [Androidの開発者認証が間もなく実施予定、Googleがタイムラインと対応アプリストアを公表](https://gigazine.net/news/20260619-android-developer-verification-timeline/) （GIGAZINE）
