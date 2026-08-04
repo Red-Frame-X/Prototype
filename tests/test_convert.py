@@ -1,6 +1,11 @@
 import unittest
 
-from scripts.convert import AdGuardOptimizer
+from scripts.convert import AdGuardOptimizer, CANDIDATE_URLS
+
+
+class SourceFallbackTests(unittest.TestCase):
+    def test_candidate_urls_are_unique(self):
+        self.assertEqual(len(CANDIDATE_URLS), len(set(CANDIDATE_URLS)))
 
 
 class ModifierConversionTests(unittest.TestCase):
