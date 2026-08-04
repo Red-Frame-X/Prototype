@@ -12,18 +12,25 @@ class ModifierConversionTests(unittest.TestCase):
     def setUp(self):
         self.optimizer = AdGuardOptimizer()
 
-    def test_redirect_rule_with_value_is_converted(self):
+    def test_redirect_rule_with_value_is_commented_out(self):
         rule = "||example.com/ad.js$script,redirect-rule=noopjs"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "||example.com/ad.js$script,redirect=noopjs",
+            "! [Unsupported MV3 Modifier: redirect-rule] " + rule,
         )
 
-    def test_redirect_rule_exception_is_converted(self):
+    def test_redirect_rule_exception_is_commented_out(self):
         rule = "@@||example.com/ad.js$redirect-rule=noopjs"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "@@||example.com/ad.js$redirect=noopjs",
+            "! [Unsupported MV3 Modifier: redirect-rule] " + rule,
+        )
+
+    def test_bare_redirect_rule_is_commented_out(self):
+        rule = "||example.com/ad.js$script,redirect-rule"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Unsupported MV3 Modifier: redirect-rule] " + rule,
         )
 
     def test_other_modifier_replacements_still_work(self):
