@@ -63,7 +63,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! かっぱ寿司アプリの起動・通信エラー回避
 @@||google-analytics.com^$app=jp.kappasushi.app
 ! 各種アプリの起動・通信エラー回避
-@@||www.google-analytics.com^$important
+@@||www.google-analytics.com^
 
 ! google.com
 ! Android版Chrome環境で「関連する質問」や「他の人はこちらも検索」を非表示にすると、後続の検索結果が正常に表示されなくなることがある
@@ -142,7 +142,7 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 
 ! paypal.com
 ! PayPalのログイン・決済不具合を修正
-@@||data.service.paypal.com^$important
+@@||data.service.paypal.com^
 
 ! rawkuma.net
 ! サードパーティ・迷惑要素のブロック
