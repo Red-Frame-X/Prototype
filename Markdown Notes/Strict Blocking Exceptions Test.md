@@ -1,5 +1,5 @@
 # My docomoにおけるStrict blockingの挙動と各種例外化ルールの互換性検証レポート
- 
+
 AdGuard製品において、ユーザールール `||mydocomo.jp^$document` を適用した時の動作について
 
 ---
@@ -82,5 +82,5 @@ My docomoのような状態管理が厳密なSPAにおいて、AdGuardのCoreLib
 * AdGuard製品を導入した環境では、`||mydocomo.$document` によりStrict blockingが発生してAdGuardの警告画面が表示され、`mydocomo.docomo.ne.jp` へのアクセスがブロックされます。→ ◯
 * AdGuard製品を導入している環境では、`||mydocomo.$document` が原因で `mydocomo.docomo.ne.jp` へアクセスするたびにエラーダイアログが出現し続けます。→ △
   * My docomoの公式ウェブサイト（mydocomo.docomo.ne.jp）のような状態管理が厳密なSPAにおいては、AdGuard製品のローカルVPNの影響で、エラーダイアログが出現することがあります。→ ◯
-  * `@@||mydocomo.docomo.ne.jp^$all` を例外ルールとして登録しても、AdGuard製品を導入した環境ではStrict blockingが発生してAdGuardの警告画面が表示され、`mydocomo.docomo.ne.jp` へのアクセスがブロックされます。→ ◯ 
+  * `@@||mydocomo.docomo.ne.jp^$all` を例外ルールとして登録しても、AdGuard製品を導入した環境ではStrict blockingが発生してAdGuardの警告画面が表示され、`mydocomo.docomo.ne.jp` へのアクセスがブロックされます。→ ◯
   * `@@||mydocomo.docomo.ne.jp^$document` を例外ルールとして登録しても、AdGuard製品を導入した環境ではエラーダイアログが出現し続けます。→ ◯

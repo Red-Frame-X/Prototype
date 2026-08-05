@@ -1,4 +1,6 @@
 import unittest
+from unittest.mock import MagicMock, patch
+from urllib.error import URLError
 
 from scripts.convert import AdGuardOptimizer, CANDIDATE_URLS
 
@@ -6,6 +8,19 @@ from scripts.convert import AdGuardOptimizer, CANDIDATE_URLS
 class SourceFallbackTests(unittest.TestCase):
     def test_candidate_urls_are_unique(self):
         self.assertEqual(len(CANDIDATE_URLS), len(set(CANDIDATE_URLS)))
+
+    @patch("scripts.convert.urllib.request.urlopen")
+    def test_fetch_source_falls_back_to_second_candidate(self, mock_urlopen):
+        successful_response = MagicMock()
+        successful_response.__enter__.return_value.read.return_value = b"rule-one\nrule-two\n"
+        mock_urlopen.side_effect = [URLError("primary unavailable"), successful_response]
+
+        source = AdGuardOptimizer().fetch_source()
+
+        self.assertEqual(source, ["rule-one", "rule-two"])
+        self.assertEqual(mock_urlopen.call_count, 2)
+        requested_urls = [call.args[0].full_url for call in mock_urlopen.call_args_list]
+        self.assertEqual(requested_urls, CANDIDATE_URLS)
 
 
 class ModifierConversionTests(unittest.TestCase):
