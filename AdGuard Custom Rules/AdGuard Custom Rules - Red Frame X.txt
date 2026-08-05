@@ -62,8 +62,6 @@ chatgpt.com##aside:has(a[href*="/articles/11487775-apps-in-chatgpt"]):has(button
 ! downdetector.jp##div[data-service-list-ad]
 
 ! google-analytics.com
-! かっぱ寿司アプリに限りgoogle-analytics.comへの通信を許可し、起動・通信エラーを回避
-@@||google-analytics.com^$app=jp.kappasushi.app
 ! 全アプリ・全サイトでwww.google-analytics.comへの通信を許可（既存の追跡防止ルールも解除されるため注意）
 @@||www.google-analytics.com^
 
