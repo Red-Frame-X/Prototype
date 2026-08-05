@@ -107,7 +107,7 @@ Violentmonkeyを使用するためには、設定 > 拡張機能 > Tampermonkey�
 
 * ブラウザ拡張機能の競合を疑いながらも問題の切り分けができず、AdGuard Filtersに相談したIssueの例。：[#228169](https://github.com/AdguardTeam/AdguardFilters/issues/228169)
 * Gmail 「システムで問題が発生しました（#2014）」。：[Reddit報告例](https://www.reddit.com/r/techsupport/comments/1b4rocl/oops_the_system_encountered_a_problem_2014/?tl=ja)
- 
+
 ▶ 断定はできませんが、[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod) が原因だった可能性が高く、同様のブラウザ拡張機能でも同じ不具合が起きるかもしれません。
 
 ### コンテンツブロック・プライバシー関連
@@ -328,7 +328,7 @@ IT、セキュリティ、広告ブロックに関する質問では、公式ド
   * 説明：リモートリポジトリをクローン、コミット、プッシュすることなく開いて編集できる拡張機能です。
 
 **Android アプリ**
-* **[QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)** / **[Help Center](https://rhmsoft.com/qedit/help.html)** 
+* **[QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)** / **[Help Center](https://rhmsoft.com/qedit/help.html)**
 
 **QuickEdit Proの安全な推奨トークン権限（スコープ）の構成｜GitHub**
 
@@ -535,7 +535,7 @@ AdGuardユーザールールで期待する動作が得られない場合、Gemi
 * **[Gemini](https://gemini.google.com/)**：汎用性 + マルチモーダル + 膨大な情報を高速で読み込み回答を出力（Gemini Pro）。
 * **[GitHub Copilot](https://github.com/features/copilot)**：コーディング用。
 * **[Grok](https://grok.com/)**：汎用性 + 制限が緩い - 𝕏の投稿の信憑性をチェックするのに使えそう？
-  * xAI Support Teamへの問い合わせ先 `support@x.ai` / [Contact: Get in Touch with xAI](https://x.ai/contact) 
+  * xAI Support Teamへの問い合わせ先 `support@x.ai` / [Contact: Get in Touch with xAI](https://x.ai/contact)
   * [xAIアカウントのMFA（多要素認証）を紛失してログイン不能 → xAIアカウント削除のために問い合わせ](https://docs.x.ai/console/faq/accounts#ive-forgotten-my-multi-factor-authentication-mfa-method-can-you-remove-it) てから5ヶ月後に [返信](https://imgur.com/a/rLKewye) がありました。
   * 問い合わせ用メールは下書きをGemini Proで推敲するも伝わらず、ChatGPT Plusに推敲させたものを再送しました。
   * MFA（多要素認証）を紛失しログイン不能になったxAIアカウントは、有料プランに加入していない場合、[1年以上（over a year）の非アクティブ状態が継続すると自動的に削除（または停止）される](https://x.ai/legal/terms-of-service#termination-suspension-discontinuation) 対象となります。
@@ -797,7 +797,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
  [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記2種以外は追加しないほうが良いです。
 
-**Filter Issues** 
+**Filter Issues**
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
 
 **開発者ツールと連動した手動ブロック機能**
@@ -865,7 +865,7 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
   @*://*.example.com/*
   ```
 
-**Filter Issues** 
+**Filter Issues**
 * [uB-filter-by-kdroidwin Issues](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues)
 
 **参考サイト**
@@ -967,14 +967,14 @@ Android版Chromeなどで高精度なブロックを行うには必須です。�
 
  [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記2種以外は追加しないほうが良いです。
 
-**Filter Issues** 
+**Filter Issues**
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
 
 **DNS通信を保護 > DNSフィルタ**
 
 [AdGuard DNS filter](https://github.com/AdguardTeam/AdGuardSDNSFilter) によるブロックはシステム全体に及びます（[DNS書き換えの基本](https://writening.net/page?keELEF)）。
 プライバシー関連のルールによる不具合（[Issue #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896), [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178)）を緩和する方法。
-   
+
 ① **[AdGuard DNS filter without privacy filters (Ads only)](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
 
 ② **[AdGuard_DNS_Filter_for_myself](https://github.com/monsivamon/AdGuard_DNS_Filter_for_myself)**
@@ -1036,7 +1036,7 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
 ② v4.7.1〜v4.9でウォッチドッグ機能を有効化。
 
 ③ **MacroDroidを利用したVPN自動再接続タスクの作成**（最も効果的）▶ [MacroDroid](https://play.google.com/store/search?q=MacroDroid&c=apps) をインストール ▶ マクロの作成（[画像参考](https://imgur.com/a/5Xi8h9r)）
- 
+
   * **AdGuard側**: 設定 ⚙ > 一般設定 > 詳細設定 > 自動化 > トグルONにし「パスワード」をメモ
   * **MacroDroid側 トリガー**：「VPN状態の変化時」> 無効
   * **MacroDroid側 アクション**：「インテントを送信」

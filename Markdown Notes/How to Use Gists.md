@@ -44,7 +44,7 @@ GitHub Gistsを利用して、カスタムフィルタやUserScriptを各種拡�
    `https://gist.githubusercontent.com/ユーザー名/GistID/raw/長い英数字の羅列(コミットハッシュ)/ファイル名.txt`
 
 4. URLから `長い英数字の羅列/`（コミットハッシュ）の部分を削除し、以下のような形式にします。
-   
+
    `https://gist.githubusercontent.com/ユーザー名/GistID/raw/ファイル名.txt`
    > **Note**: この処理を行うことで、特定の更新履歴に縛られず、常に最新版（HEAD）を参照するURLになります。
 
@@ -62,11 +62,11 @@ GitHub Gistsを利用して、カスタムフィルタやUserScriptを各種拡�
 1. GitHub Gistsで対象ファイルの **[Raw]** ボタンをクリックします。
    * **重要**: UserScriptとして正しく認識させるため、ファイル名は必ず `.user.js` で終わるようにしてください。
 2. ブラウザのアドレスバーでURLを確認します。通常は以下のようになっています。
-   
+
    `https://gist.githubusercontent.com/ユーザー名/GistID/raw/長い英数字の羅列(コミットハッシュ)/ファイル名.user.js`
 
 4. URLから `長い英数字の羅列/`（コミットハッシュ）の部分を削除し、以下のような形式にします。
-   
+
    `https://gist.githubusercontent.com/ユーザー名/GistID/raw/ファイル名.user.js`
    > **Note**: この処理を行うことで、特定の更新履歴に縛られず、常に最新版（HEAD）を参照するURLになります。
 
