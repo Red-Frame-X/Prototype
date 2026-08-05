@@ -32,8 +32,8 @@ jobs:
       - name: Run Tests
         run: python -m unittest discover -s tests -v
 
-      - name: Run Markdownlint
-        run: npx --yes markdownlint-cli2@0.18.1
+      - name: Install Node.js dependencies
+        run: npm ci
 
       # scripts/ フォルダ内の convert.py を実行
       - name: Run Conversion Script
@@ -42,7 +42,7 @@ jobs:
       # 公開前に生成物と管理対象のAdGuardルールを構文検証
       - name: Run AGLint
         run: >-
-          npx --yes @adguard/aglint@3.0.2
+          npx --no-install aglint
           dist/uB-filter-by-kdroidwin_AdG_Optimized.txt
           "AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt"
           "AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt"

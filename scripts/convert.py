@@ -60,14 +60,13 @@ class AdGuardOptimizer:
         self.re_redos_check: Pattern = re.compile(
             r'(?:\.\*|\.\+){2,}|(?:\(?:[^)]*(?:\.\*|\.\+)[^)]*\)){2,}'
         )
-        self.re_unsupported_to: Pattern = re.compile(r'(?:^|,)\~?to=(?:[^,]+|$)')
         self.re_cname: Pattern = re.compile(r'(?:^|,)cname(?=,|$)')
         self.re_multi_commas: Pattern = re.compile(r',+')
 
         # スクリプトレット検知用正規表現の事前構築
         scriptlets_escaped = [re.escape(s) for s in self.incompatible_scriptlets]
         self.re_incompatible_js: Pattern = re.compile(
-            rf'\+js\(\s*(?:{"|".join(scriptlets_escaped)})(?:\s*|\s*[,)])'
+            rf'\+js\(\s*(?:{"|".join(scriptlets_escaped)})(?=\s*(?:,|\)))'
         )
 
     def fetch_source(self) -> List[str]:
@@ -228,10 +227,6 @@ class AdGuardOptimizer:
 
                 if not modifiers_str:
                     return f"{rule}$"
-
-            # to= 修飾子のパージ (例外スコープ喪失による過剰ブロック防止)
-            if self.re_unsupported_to.search(modifiers_str):
-                return f"! [Unsupported Modifier: to=] {original_line}"
 
             # redirect-rule は別の基本ルールでブロックされた場合だけリダイレクトする。
             # Chrome MV3で未対応だからといって redirect へ変換すると適用範囲が広がるため、
