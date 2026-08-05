@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608051501
+! Version: 202608051658
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -141,8 +141,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||*bank-jp.site^$document
 ||*getintopc.com^$all
 ||*kickasstorrents.*^$all
-! [Unsupported Modifier: to=] ||*kms-pico*.*^$all,to=~forums.mydigitallife.net
-! [Unsupported Modifier: to=] ||*kmspico*.*^$all,to=~forums.mydigitallife.net
+||*kms-pico*.*^$all,to=~forums.mydigitallife.net
+||*kmspico*.*^$all,to=~forums.mydigitallife.net
 ||*softonic.*^$all
 ||-cc-jp.wiki^$document
 ||-co-jn.work^$document
@@ -1411,7 +1411,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||berrymoca.com^$document
 ||bert-bert.com^$document
 ||best-tax.site^$document
-! [Unsupported Modifier: to=] ||best^$doc,to=~www.ptt.best|~sekai.best|~do-my.best|~awe-some.best|~yuigon.best|~quiz-daijin.mygame.best|~sen.best|~tsubame.payitforward.best|~iga.best|~scratch.best|~nextwave.best|~onwa-office.best|~venus.best|~ocr.best|~arrows.best|~good-life.best
+||best^$doc,to=~www.ptt.best|~sekai.best|~do-my.best|~awe-some.best|~yuigon.best|~quiz-daijin.mygame.best|~sen.best|~tsubame.payitforward.best|~iga.best|~scratch.best|~nextwave.best|~onwa-office.best|~venus.best|~ocr.best|~arrows.best|~good-life.best
 ||bestcheerstone.com^$document
 ||bestfashionvalue.com^$document
 ||bestforandroid.com^$document
@@ -1611,7 +1611,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||bomberosvoluntariostequisquiapan.org^$document
 ||bonbabylon.stores.jp^$document
 ||bonblo.com^$document
-! [Unsupported Modifier: to=] ||bond^$doc,to=~kayac.bond|~indexjav.bond|~www.javindex.bond|~isplan.bond|~jamz.bond
+||bond^$doc,to=~kayac.bond|~indexjav.bond|~www.javindex.bond|~isplan.bond|~jamz.bond
 ||bondobondo.jp^$document
 ||bongdatv.lu^$document
 ||bonhikari.com^$document
@@ -1754,7 +1754,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||buzzscope.net^$document
 ||buzztopick.jp^$document
 ||buzzwriteyear.com^$document
-! [Unsupported Modifier: to=] ||by^$document,to=~ami.by|~kogda.by|~hoster.by|~edostavka.by|~dorors.by|~apte4ka.by|~belarusbank.by|~auto1.by|~avtoradio.by|~sosedi.by|~newgrodno.by|~mila.by|~praca.by|~niasvizh.by|~rikc.by|~autolight.by|~oz.by|~atriline.by|~ati.by|~energyexpo.by|~gsmu.by|~a1.by|~rozybel.by|~emall.by|~cherehapa.by|~kudapostupat.by|~hcdinamo.by|~procvetok.by|~pogoda.by|~stbank.by|~training.by|~av.by|~pinskdrev.by|~mak.by|~belpost.by|~armtek.by|~luxexpress.by|~nashaniva.by|~lesta.by|~autogrodno.by|~belgee.by|~brestcity.by|~ksk.by|~ems.by|~kartoteka.by|~markformelle.by|~glmkk.by|~cravt.by|~myclinic.by|~aks.by|~groshyk.by|~7745.by|~kapusta.by|~galanteya.by|~zubronok.by|~zap.by|~gdz.by|~zoobazar.by|~vanille.by|~evaclinic.by|~amihome.by|~rabota.by|~remzona.by|~evropochta.by|~belta.by|~diy.by|~bseu.by|~henderson.by|~talon.by|~alixpartners.by|~goldapple.by|~gemma.by|~vatican.by|~megatop.by|~sneakers.by|~7karat.by|~5element.by|~infoflot.by|~evroopt.by|~belmeta.by|~santaretail.by|~runin.by|~ozon.by|~cpmvd.by|~terranova.by|~megaplan.by|~pzz.by|~autodna.by|~sport5.by|~pm.by|~bntu.by|~drupal.by|~realt.onliner.by|~myfin.by|~slivki.by|~teztour.by|~sportedu.by|~marko.by|~pac.by|~imsha.by|~sport-tv.by|~bricoman.by|~shor.by|~lode.by|~vtb.by|~sb.by|~abw.by|~ely.by|~nces.by|~belavia.by|~ibank.belinvestbank.by|~auto.kufar.by|~tilda.by|~poundfit.by|~moduspark.by|~tem.by|~superresheba.by|~browser.yandex.by|~telegraf.by|~belapb.by|~vitebsk.rabota.by|~pdd.by|~tochka.by|~catalog.onliner.by|~order.talon.by|~msso.by|~bild-shop.by|~bsb.by|~microsoft.by|~domkrat.by|~tech.onliner.by|~momondo.by|~table.belavia.by|~tix.by|~gomel.rabota.by|~salon.av.by|~xerox.by|~mtbank.by|~bitrix24.by|~btrans.by|~fix-price.by|~alcon.by|~lamoda.by|~parts.av.by|~minsktrans.by|~calc.evropochta.by|~realt.by|~less-shop.by|~moto.av.by|~air-shop.by|~booking.belavia.by|~transfermarkt.by|~gov.by|~edu.by|~ac.by
+||by^$document,to=~ami.by|~kogda.by|~hoster.by|~edostavka.by|~dorors.by|~apte4ka.by|~belarusbank.by|~auto1.by|~avtoradio.by|~sosedi.by|~newgrodno.by|~mila.by|~praca.by|~niasvizh.by|~rikc.by|~autolight.by|~oz.by|~atriline.by|~ati.by|~energyexpo.by|~gsmu.by|~a1.by|~rozybel.by|~emall.by|~cherehapa.by|~kudapostupat.by|~hcdinamo.by|~procvetok.by|~pogoda.by|~stbank.by|~training.by|~av.by|~pinskdrev.by|~mak.by|~belpost.by|~armtek.by|~luxexpress.by|~nashaniva.by|~lesta.by|~autogrodno.by|~belgee.by|~brestcity.by|~ksk.by|~ems.by|~kartoteka.by|~markformelle.by|~glmkk.by|~cravt.by|~myclinic.by|~aks.by|~groshyk.by|~7745.by|~kapusta.by|~galanteya.by|~zubronok.by|~zap.by|~gdz.by|~zoobazar.by|~vanille.by|~evaclinic.by|~amihome.by|~rabota.by|~remzona.by|~evropochta.by|~belta.by|~diy.by|~bseu.by|~henderson.by|~talon.by|~alixpartners.by|~goldapple.by|~gemma.by|~vatican.by|~megatop.by|~sneakers.by|~7karat.by|~5element.by|~infoflot.by|~evroopt.by|~belmeta.by|~santaretail.by|~runin.by|~ozon.by|~cpmvd.by|~terranova.by|~megaplan.by|~pzz.by|~autodna.by|~sport5.by|~pm.by|~bntu.by|~drupal.by|~realt.onliner.by|~myfin.by|~slivki.by|~teztour.by|~sportedu.by|~marko.by|~pac.by|~imsha.by|~sport-tv.by|~bricoman.by|~shor.by|~lode.by|~vtb.by|~sb.by|~abw.by|~ely.by|~nces.by|~belavia.by|~ibank.belinvestbank.by|~auto.kufar.by|~tilda.by|~poundfit.by|~moduspark.by|~tem.by|~superresheba.by|~browser.yandex.by|~telegraf.by|~belapb.by|~vitebsk.rabota.by|~pdd.by|~tochka.by|~catalog.onliner.by|~order.talon.by|~msso.by|~bild-shop.by|~bsb.by|~microsoft.by|~domkrat.by|~tech.onliner.by|~momondo.by|~table.belavia.by|~tix.by|~gomel.rabota.by|~salon.av.by|~xerox.by|~mtbank.by|~bitrix24.by|~btrans.by|~fix-price.by|~alcon.by|~lamoda.by|~parts.av.by|~minsktrans.by|~calc.evropochta.by|~realt.by|~less-shop.by|~moto.av.by|~air-shop.by|~booking.belavia.by|~transfermarkt.by|~gov.by|~edu.by|~ac.by
 ||byodoji.live^$document
 ||byp.yongjoo.za.com^$document
 ||byqz.uzvkniid.love^$document
@@ -1860,9 +1860,9 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||cezardouvretoi.fr^$document
 ||cf2.top^$document
 ||cf962692.cloudfree.jp^$document
-! [Unsupported Modifier: to=] ||cf^$doc,to=~wacw.cf|~www.river.cf
+||cf^$doc,to=~wacw.cf|~www.river.cf
 ||cfbx.jp^$document
-! [Unsupported Modifier: to=] ||cfd^$document,to=~freedium-mirror.cfd|~ayurveda.cfd|~www.rebekka.cfd|~valuecrestoperators.cfd|~structurelineinsight.cfd|~lmez709825.cfd|~www.shaonvds.cfd|~www.omiaa.cfd|~mday787825.cfd|~mday774325.cfd|~lmez779125.cfd|~xn--3bs824g.nmaaa.cfd|~xn--vjq696j.nmaaa.cfd|~gdlink.cfd|~llw583425.cfd|~anime9-official.cfd|~potbellylistens.cfd|~mday478125.cfd|~komikcast.cfd|~llw602825.cfd|~ymhy913525.cfd|~ymhy798625.cfd|~xn--1104-1taohuasbs-vi98a.taohua31.cfd|~xn--1108-2taohuasbs-vi98a.taohua32.cfd|~xn--1113-2com-qq4pn60spifuw5fhdwc.mihe32.cfd|~www.hdj13.cfd|~xn--1113-1com-v76oj59ogexarp4gw5e.jisu32.cfd|~xn--1107-1taohuasbs-vi98a.taohua32.cfd|~xn--1105-2qq-0l7mr69jdmkmg5at8d.ikanxm31.cfd|~xn--1108-1com-qc6ny85ama7362bhq5c.tutu32.cfd|~xn--1025-2com-qc6ny85ama7362bhq5c.tutu31.cfd|~xn--0920-1com-qc6ny85ama7362bhq5c.tutu28.cfd|~onlykdrama.cfd|~freedium.cfd|~coremethodventures.cfd|~neworder.cfd|~turkhub.cfd|~31vakti65.cfd|~turkifsa41.cfd|~doeda54.cfd|~31vakti74.cfd|~turkifsa44.cfd|~hdabla45.cfd|~turkhub7.cfd|~55av.cfd|~a1.gscloud.cfd|~neko.cfd|~backtesting.cfd|~lunastream.cfd|~turkhub23.cfd|~turkhub8.cfd|~turkhub26.cfd|~turkhub18.cfd|~31vakti93.cfd|~doeda83.cfd|~doeda56.cfd|~nanobanana.cfd|~midjourney.cfd|~wn03.cfd|~draxelio.cfd
+||cfd^$document,to=~freedium-mirror.cfd|~ayurveda.cfd|~www.rebekka.cfd|~valuecrestoperators.cfd|~structurelineinsight.cfd|~lmez709825.cfd|~www.shaonvds.cfd|~www.omiaa.cfd|~mday787825.cfd|~mday774325.cfd|~lmez779125.cfd|~xn--3bs824g.nmaaa.cfd|~xn--vjq696j.nmaaa.cfd|~gdlink.cfd|~llw583425.cfd|~anime9-official.cfd|~potbellylistens.cfd|~mday478125.cfd|~komikcast.cfd|~llw602825.cfd|~ymhy913525.cfd|~ymhy798625.cfd|~xn--1104-1taohuasbs-vi98a.taohua31.cfd|~xn--1108-2taohuasbs-vi98a.taohua32.cfd|~xn--1113-2com-qq4pn60spifuw5fhdwc.mihe32.cfd|~www.hdj13.cfd|~xn--1113-1com-v76oj59ogexarp4gw5e.jisu32.cfd|~xn--1107-1taohuasbs-vi98a.taohua32.cfd|~xn--1105-2qq-0l7mr69jdmkmg5at8d.ikanxm31.cfd|~xn--1108-1com-qc6ny85ama7362bhq5c.tutu32.cfd|~xn--1025-2com-qc6ny85ama7362bhq5c.tutu31.cfd|~xn--0920-1com-qc6ny85ama7362bhq5c.tutu28.cfd|~onlykdrama.cfd|~freedium.cfd|~coremethodventures.cfd|~neworder.cfd|~turkhub.cfd|~31vakti65.cfd|~turkifsa41.cfd|~doeda54.cfd|~31vakti74.cfd|~turkifsa44.cfd|~hdabla45.cfd|~turkhub7.cfd|~55av.cfd|~a1.gscloud.cfd|~neko.cfd|~backtesting.cfd|~lunastream.cfd|~turkhub23.cfd|~turkhub8.cfd|~turkhub26.cfd|~turkhub18.cfd|~31vakti93.cfd|~doeda83.cfd|~doeda56.cfd|~nanobanana.cfd|~midjourney.cfd|~wn03.cfd|~draxelio.cfd
 ||cfksaklwnx.xyz^$document
 ||cg-corp.com^$document
 ||cg.hnt.co.jp^$document
@@ -2028,7 +2028,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||cleartechrecruiting.com^$document
 ||clibomanager.com^$document
 ||click.mail1.welcomebreak.online^$document
-! [Unsupported Modifier: to=] ||click^$document,to=~am-videos.click|~birahijab.click|~buybox.click|~chattering.click|~cpstest.click|~fasty.click|~gamei.click|~kaitouyoushi.click|~popcat.click|~popdog.click|~porsche.click|~qr-code.click|~ravelin.click|~watchtv.click|~wmg.click|~cybernote.click|~kotake.click|~cookai.click|~noriyuki.click|~wawawa.click|~kikou.click|~kotoba.click|~hayato.click|~utenti.click|~tokai.click|~seichi.click|~taikosim.click|~trpgsession.click|~tobigeri.click|~hal51.click|~yakushima.click|~8823.click|~www.hotoke.click|~jp.asus.click|~japanesearchery.click|~osushi.click|~storymaker.click|~carinfo.click|~bichiku.click|~signpost.click|~www.hiroshima-nekobugyou.click|~wecima.click|~asus.click|~mugen.click|~creators.click|~www.mugen.click|~www.creators.click|~testspeed.click|~clickclickclick.click|~reactiontime.click|~map-click.click|~randompicker.click|~randomweb.click|~lizard.click|~vclock.click|~www.gress.click|~neoneo.click|~www.mcrypt.click|~doshisha.click|~11874.click|~sumai.click|~ff11-ls.jis.click|~web.kanrikun.click|~chiken.click|~gensi.click|~www.kaitouyoushi.click|~kagaku.click|~kenkolab.click|~science-hub.click|~ima.click|~sexvideo.click|~miraitips.click|~here2.click|~ptpclatter.click|~twooca.click|~hiroblog.click|~rakumob.click|~kitaro.click|~shinya.click|~home-theater.click|~msx.click|~nakagawa.click|~tech-review.click|~3channel.click|~jobswitch.click|~gohan.click|~kenpachi-life.click|~iphonejan.click|~lumina.click|~func-wallet.click|~sashimi.click|~2018fx.click|~pochiru.click|~koneta.click|~local-china.click|~white-star.click|~figure.click|~koyuki.click|~novelgamewizard.jis.click|~ushiushi.click|~blogruoh.click|~game-player.click|~manga-zip.click|~otakatu.koyuki.click|~bellwether.click|~fujita-clinic.click|~satoken.click|~gracha.click|~acortar.click|~acortar.click|~fatturapro.click|~hoteljanken.click|~clicknupload.click|~technote.click|~clickon.click|~links.click|~sekibiyousitu1984.click|~bernhair.click|~yururisora.click|~kaito.click|~kotake.click|~onecall.click|~mishimaekimae.click|~koriyama-kankyobokin.click|~kyokuto-k.click|~istep.click|~amigos.click|~bangdoll.click|~crecer.click|~deepimpact.jp.click|~excel-template.click|~excell.click|~jis.click|~heiyudou.click|~l2e.click|~lolidouga.click|~m.kikou.click|~moderatolabs.click|~mochi.click|~news-enterme2025.click|~sakurai.click|~shimizuya.click|~timesharehotel-createur.click|~www.activehome.click|~www.novoazushin.ola.click|~www.sakai.click|~www.tabinosirusi.click|~www.wadosushirestaurant.ola.click|~jp.click|~flashlinkzone.click|~quickvaultflow.click
+||click^$document,to=~am-videos.click|~birahijab.click|~buybox.click|~chattering.click|~cpstest.click|~fasty.click|~gamei.click|~kaitouyoushi.click|~popcat.click|~popdog.click|~porsche.click|~qr-code.click|~ravelin.click|~watchtv.click|~wmg.click|~cybernote.click|~kotake.click|~cookai.click|~noriyuki.click|~wawawa.click|~kikou.click|~kotoba.click|~hayato.click|~utenti.click|~tokai.click|~seichi.click|~taikosim.click|~trpgsession.click|~tobigeri.click|~hal51.click|~yakushima.click|~8823.click|~www.hotoke.click|~jp.asus.click|~japanesearchery.click|~osushi.click|~storymaker.click|~carinfo.click|~bichiku.click|~signpost.click|~www.hiroshima-nekobugyou.click|~wecima.click|~asus.click|~mugen.click|~creators.click|~www.mugen.click|~www.creators.click|~testspeed.click|~clickclickclick.click|~reactiontime.click|~map-click.click|~randompicker.click|~randomweb.click|~lizard.click|~vclock.click|~www.gress.click|~neoneo.click|~www.mcrypt.click|~doshisha.click|~11874.click|~sumai.click|~ff11-ls.jis.click|~web.kanrikun.click|~chiken.click|~gensi.click|~www.kaitouyoushi.click|~kagaku.click|~kenkolab.click|~science-hub.click|~ima.click|~sexvideo.click|~miraitips.click|~here2.click|~ptpclatter.click|~twooca.click|~hiroblog.click|~rakumob.click|~kitaro.click|~shinya.click|~home-theater.click|~msx.click|~nakagawa.click|~tech-review.click|~3channel.click|~jobswitch.click|~gohan.click|~kenpachi-life.click|~iphonejan.click|~lumina.click|~func-wallet.click|~sashimi.click|~2018fx.click|~pochiru.click|~koneta.click|~local-china.click|~white-star.click|~figure.click|~koyuki.click|~novelgamewizard.jis.click|~ushiushi.click|~blogruoh.click|~game-player.click|~manga-zip.click|~otakatu.koyuki.click|~bellwether.click|~fujita-clinic.click|~satoken.click|~gracha.click|~acortar.click|~acortar.click|~fatturapro.click|~hoteljanken.click|~clicknupload.click|~technote.click|~clickon.click|~links.click|~sekibiyousitu1984.click|~bernhair.click|~yururisora.click|~kaito.click|~kotake.click|~onecall.click|~mishimaekimae.click|~koriyama-kankyobokin.click|~kyokuto-k.click|~istep.click|~amigos.click|~bangdoll.click|~crecer.click|~deepimpact.jp.click|~excel-template.click|~excell.click|~jis.click|~heiyudou.click|~l2e.click|~lolidouga.click|~m.kikou.click|~moderatolabs.click|~mochi.click|~news-enterme2025.click|~sakurai.click|~shimizuya.click|~timesharehotel-createur.click|~www.activehome.click|~www.novoazushin.ola.click|~www.sakai.click|~www.tabinosirusi.click|~www.wadosushirestaurant.ola.click|~jp.click|~flashlinkzone.click|~quickvaultflow.click
 ||clickfordetayiso.online^$document
 ||clicktrade.jp^$document
 ||clientes.selecmoda.com^$document
@@ -2043,7 +2043,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||clutch-blog.com^$document
 ||clutchmagjapan.com^$document
 ||cm-info.com^$document
-! [Unsupported Modifier: to=] ||cm^$document,to=~hair.cm|~aun.cm|~iyashinosato.cm|~caravan.cm|~reve.cm|~central.cm|~roland.cm|~met.cm|~ymn.cm|~estee.cm|~ppl.cm|~urbanight.jpn.cm|~horiken.cm|~zen.cm|~makoto.jpn.cm|~himawari.tyo.cm|~mall.hair.cm|~loewe.cm|~onlyone.tyo.cm|~enjoyy.est.cm|~palace.jpn.cm|~nagomi.cm|~byousoku5.cm|~dear.tyo.cm|~venus.tyo.cm|~kao.cm|~tyo.cm|~yuki.jpn.cm|~jpn.cm|~hair.cm|~rabbit.est.cm|~est.cm|~jps.cm|~otome-yubisaki.deri.cm|~gov.cm
+||cm^$document,to=~hair.cm|~aun.cm|~iyashinosato.cm|~caravan.cm|~reve.cm|~central.cm|~roland.cm|~met.cm|~ymn.cm|~estee.cm|~ppl.cm|~urbanight.jpn.cm|~horiken.cm|~zen.cm|~makoto.jpn.cm|~himawari.tyo.cm|~mall.hair.cm|~loewe.cm|~onlyone.tyo.cm|~enjoyy.est.cm|~palace.jpn.cm|~nagomi.cm|~byousoku5.cm|~dear.tyo.cm|~venus.tyo.cm|~kao.cm|~tyo.cm|~yuki.jpn.cm|~jpn.cm|~hair.cm|~rabbit.est.cm|~est.cm|~jps.cm|~otome-yubisaki.deri.cm|~gov.cm
 ||cmeventslimited.co.uk^$document
 ||cmlife2015.com^$document
 ||cmmhw.taobao.com^$document
@@ -2298,7 +2298,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||cybrigtejtreexrx.xyz^$document
 ||cymolb7h.cjfoodmanagement.com.my^$document
 ||cyoppaya.com^$document
-! [Unsupported Modifier: to=] ||cyou^$doc,to=~www.midori.cyou|~ac.miyoav.cyou|~rengougensen.cyou|~btmovi.cyou|~blog.chenx221.cyou|~www.xaavv.cyou|~tizu.cyou|~www.skunkgirl.cyou|~hmoegirl.cyou|~rasiku.cyou|~tksgym.cyou|~www.rtainbiim.cyou|~izumostyle.cyou|~www.telln.cyou|~tsuinawiki.cyou|~zoopornzoo.cyou|~2ero.cyou|~hammertime.cyou|~www.mixixxx696969.cyou|~ohayua.cyou|~ruikatsu.cyou|~gakutech.cyou|~chenx221.cyou
+||cyou^$doc,to=~www.midori.cyou|~ac.miyoav.cyou|~rengougensen.cyou|~btmovi.cyou|~blog.chenx221.cyou|~www.xaavv.cyou|~tizu.cyou|~www.skunkgirl.cyou|~hmoegirl.cyou|~rasiku.cyou|~tksgym.cyou|~www.rtainbiim.cyou|~izumostyle.cyou|~www.telln.cyou|~tsuinawiki.cyou|~zoopornzoo.cyou|~2ero.cyou|~hammertime.cyou|~www.mixixxx696969.cyou|~ohayua.cyou|~ruikatsu.cyou|~gakutech.cyou|~chenx221.cyou
 ||cyteka.com^$document
 ||czkawka.com^$document
 ||czumtabim.blog72.fc2.com^$document
@@ -2467,7 +2467,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||digital-mediablo.com^$document
 ||digital-shift.jp^$document
 ||digital-trend.reinforz.co.jp^$document
-! [Unsupported Modifier: to=] ||digital^$document,to=~triggerm.digital|~paradigma.digital|~mix.digital|~ascend.digital|~september.digital|~ryel.digital|~harper.digital|~koenig.digital|~senkron.digital|~belgradegets.digital|~ided.digital|~vecto.digital|~peopledaily.digital|~lernen.digital|~sculpt.digital|~arda.digital|~zendit.digital|~nuernberg.digital|~poli.digital|~botan.digital|~pallant.digital|~getsimpler.digital|~raket.digital|~copperbay.digital|~lichtblick.digital|~recargaunitv.digital|~getuncommon.digital|~tekna.digital|~think.digital|~wiser.digital|~bloc.digital|~bops.digital|~spiire.digital|~public.digital|~muendigkeit.digital|~becom.digital|~flair.digital|~vendi.digital|~serba.digital|~core1.digital|~mozi.digital|~freestyle.digital|~ed.digital|~zestcode.digital|~weedoit.digital|~myth.digital|~teorema.digital|~pazaz.digital|~gain.digital|~fingerprints.digital|~denkfabrik.digital|~dondiablo.digital|~republicfinance.digital|~pic.digital|~sheffield.digital|~datua.digital|~onx.digital|~theunderground.digital|~supple.digital|~abjudgeza.digital|~concanaco.digital|~clickforce.digital|~immedia.digital|~firewater.digital|~alchemy.digital|~gddf.digital|~kinegram.digital|~ps.digital|~offensive.digital|~hemispheres.digital|~identity.digital|~uof.digital|~niedersachsen.digital|~k24.digital|~reflektor.digital|~akumulator.digital|~rejigg.digital|~qore.digital|~etch.digital|~xanthos.digital|~purohitra.digital|~axxis.digital|~ipris.digital|~lantern.digital|~hida.digital|~reos.digital|~vandalia.digital|~eartheon.digital|~santanderbank.digital|~brooks.digital|~socialmonk.digital|~theelephant.digital|~rowan.digital|~gpm.digital|~unterrichten.digital|~nusservices.digital|~finsweet.digital|~ukps.digital|~nero.digital|~coeduca.digital|~vareo.digital|~tilt.digital|~allies.digital|~margin.digital|~ewings.digital|~ausbildungsmanagement.digital|~lafamilia.digital|~hv.digital|~innovationsforum.digital|~kinekt.digital|~beeldr.digital|~germantech.digital|~skyrocket.digital|~pepo.digital|~eurelis.digital|~thewave.digital|~stimmt.digital|~glauca.digital|~idx.digital|~truman.digital|~massa.digital|~acquisitioninternational.digital|~webster.digital|~admiral.digital|~porto.digital|~dpm.digital|~agefi.digital|~atmt.digital|~dac.digital|~dira.digital|~allgemeinarzt.digital|~cekolelulapartnersco.digital|~lifeloveloss.digital|~muld.digital|~sohub.digital|~mainstay.digital|~jtech.digital|~civica.digital|~kuarktek.digital|~mediaon.digital|~mittelalter.digital|~visart.digital|~viergrad.digital|~endo.digital|~tradezone.digital|~clubedoremo.digital|~neonex.digital|~monin.digital|~pagani.digital|~softwire.digital|~overdose.digital|~xfive.digital|~watchudoingbois.digital|~tallesttree.digital|~swiat.digital|~soyembajador.digital|~emercado.digital|~floormap.digital|~thecase.digital|~metinvest.digital|~hb.digital|~leitmotiv.digital|~etcs.digital|~flink.digital|~impiger.digital|~diia.digital|~blp.digital|~mckinney.digital|~femalefounders.digital|~passion.digital|~sprd.digital|~talewinddigital.digital|~cite.digital|~cosys.digital|~innovabeyond.digital|~oncenoticias.digital|~k-tdra.digital|~tomi.digital|~jrs.digital|~arasaka.digital|~arenamega.digital|~radioafrica.digital|~9anime.digital|~happybrand.digital|~okto.digital|~morizo.digital|~sawan789.digital|~gmb.digital|~hentaiz.digital
+||digital^$document,to=~triggerm.digital|~paradigma.digital|~mix.digital|~ascend.digital|~september.digital|~ryel.digital|~harper.digital|~koenig.digital|~senkron.digital|~belgradegets.digital|~ided.digital|~vecto.digital|~peopledaily.digital|~lernen.digital|~sculpt.digital|~arda.digital|~zendit.digital|~nuernberg.digital|~poli.digital|~botan.digital|~pallant.digital|~getsimpler.digital|~raket.digital|~copperbay.digital|~lichtblick.digital|~recargaunitv.digital|~getuncommon.digital|~tekna.digital|~think.digital|~wiser.digital|~bloc.digital|~bops.digital|~spiire.digital|~public.digital|~muendigkeit.digital|~becom.digital|~flair.digital|~vendi.digital|~serba.digital|~core1.digital|~mozi.digital|~freestyle.digital|~ed.digital|~zestcode.digital|~weedoit.digital|~myth.digital|~teorema.digital|~pazaz.digital|~gain.digital|~fingerprints.digital|~denkfabrik.digital|~dondiablo.digital|~republicfinance.digital|~pic.digital|~sheffield.digital|~datua.digital|~onx.digital|~theunderground.digital|~supple.digital|~abjudgeza.digital|~concanaco.digital|~clickforce.digital|~immedia.digital|~firewater.digital|~alchemy.digital|~gddf.digital|~kinegram.digital|~ps.digital|~offensive.digital|~hemispheres.digital|~identity.digital|~uof.digital|~niedersachsen.digital|~k24.digital|~reflektor.digital|~akumulator.digital|~rejigg.digital|~qore.digital|~etch.digital|~xanthos.digital|~purohitra.digital|~axxis.digital|~ipris.digital|~lantern.digital|~hida.digital|~reos.digital|~vandalia.digital|~eartheon.digital|~santanderbank.digital|~brooks.digital|~socialmonk.digital|~theelephant.digital|~rowan.digital|~gpm.digital|~unterrichten.digital|~nusservices.digital|~finsweet.digital|~ukps.digital|~nero.digital|~coeduca.digital|~vareo.digital|~tilt.digital|~allies.digital|~margin.digital|~ewings.digital|~ausbildungsmanagement.digital|~lafamilia.digital|~hv.digital|~innovationsforum.digital|~kinekt.digital|~beeldr.digital|~germantech.digital|~skyrocket.digital|~pepo.digital|~eurelis.digital|~thewave.digital|~stimmt.digital|~glauca.digital|~idx.digital|~truman.digital|~massa.digital|~acquisitioninternational.digital|~webster.digital|~admiral.digital|~porto.digital|~dpm.digital|~agefi.digital|~atmt.digital|~dac.digital|~dira.digital|~allgemeinarzt.digital|~cekolelulapartnersco.digital|~lifeloveloss.digital|~muld.digital|~sohub.digital|~mainstay.digital|~jtech.digital|~civica.digital|~kuarktek.digital|~mediaon.digital|~mittelalter.digital|~visart.digital|~viergrad.digital|~endo.digital|~tradezone.digital|~clubedoremo.digital|~neonex.digital|~monin.digital|~pagani.digital|~softwire.digital|~overdose.digital|~xfive.digital|~watchudoingbois.digital|~tallesttree.digital|~swiat.digital|~soyembajador.digital|~emercado.digital|~floormap.digital|~thecase.digital|~metinvest.digital|~hb.digital|~leitmotiv.digital|~etcs.digital|~flink.digital|~impiger.digital|~diia.digital|~blp.digital|~mckinney.digital|~femalefounders.digital|~passion.digital|~sprd.digital|~talewinddigital.digital|~cite.digital|~cosys.digital|~innovabeyond.digital|~oncenoticias.digital|~k-tdra.digital|~tomi.digital|~jrs.digital|~arasaka.digital|~arenamega.digital|~radioafrica.digital|~9anime.digital|~happybrand.digital|~okto.digital|~morizo.digital|~sawan789.digital|~gmb.digital|~hentaiz.digital
 ||digitrain.ru^$document
 ||digitspring.com^$document
 ||dignicolombia.org^$document
@@ -3356,12 +3356,12 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||fishinfortrimm.com^$document
 ||fit4u-training.com^$document
 ||fiteasy.jp^$document
-! [Unsupported Modifier: to=] ||fitgirl*repack*.*^$all,to=~fitgirl-repacks.site
+||fitgirl*repack*.*^$all,to=~fitgirl-repacks.site
 ||fitgirl-repack.com^$document
 ||fitgirl-repack.net^$document
 ||fitgirl-repack.org^$document
 ||fitgirl-repack.site^$document
-! [Unsupported Modifier: to=] ||fitgirl-repacks.$document,to=~fitgirl-repacks.site
+||fitgirl-repacks.$document,to=~fitgirl-repacks.site
 ||fitgirl-repacks.cc^$document
 ||fitgirl-repacks.in^$document
 ||fitgirl-repacks.pk^$document
@@ -3665,7 +3665,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||garantpost.ru^$document
 ||gardabhayangkara.online^$document
 ||gardasar.guru^$document
-! [Unsupported Modifier: to=] ||garden^$document,to=~eng.garden|~rickey.garden|~insect.garden|~imoto.garden|~nonohana.garden|~eaglegolf.garden|~nezu.garden|~yasuko.garden|~foglia.garden|~haircolor.garden|~officecafe.garden|~ezu.garden|~short-short.garden|~green-seek.garden|~ferrumbox.garden|~lotus.garden|~kanji.garden|~oniwa.garden|~sendai.garden|~estacion.garden|~radio.garden|~kamakuratorres.garden|~chachacha.garden|~hiro.garden|~att-home.garden|~jiro.garden|~goodlittle.garden|~poap.garden|~bordas.garden|~olly.garden|~salvage.garden|~design.garden|~plantae.garden|~prestige.garden|~maa.garden|~planter.garden|~gusta.garden|~patch.garden|~syntato.garden|~milwaukeebeer.garden|~social.garden|~mantis.garden|~staff.garden|~f168.garden|~toot.garden|~memex.garden|~boum.garden|~wobble.garden|~alices.garden|~cheekwood.garden|~solos.garden|~cyberlove.garden|~cast.garden|~coding.garden|~rose.garden|~zendesk.garden|~fedi.garden|~sunny.garden|~circles.garden|~untold.garden|~the.garden|~walworth.garden|~fieldmann.garden|~keywest.garden|~ellipse.garden|~manifold.garden|~hyperlink.garden|~palm.garden|~kingdom.garden|~smallsheds.garden|~jardinarium.garden|~common.garden|~labyrinth.garden|~mediterraneo.garden|~pointcloud.garden|~begma.garden|~garlic.garden|~tv.garden|~anita.garden|~fctv33hd.garden|~animes.garden|~dvdplay.garden|~moos.garden|~isaimini.garden|~pobreflixtv.garden|~lustmaza.garden|~coolmoviez.garden|~altadefinizionegratis.garden|~flow3r.garden|~plantura.garden|~shop.plantura.garden|~upstreamgallery.common.garden|~thisthewrongplacetodie.common.garden|~saito.garden|~beginners.garden|~glanta.garden|~zen.garden|~mastodon.garden
+||garden^$document,to=~eng.garden|~rickey.garden|~insect.garden|~imoto.garden|~nonohana.garden|~eaglegolf.garden|~nezu.garden|~yasuko.garden|~foglia.garden|~haircolor.garden|~officecafe.garden|~ezu.garden|~short-short.garden|~green-seek.garden|~ferrumbox.garden|~lotus.garden|~kanji.garden|~oniwa.garden|~sendai.garden|~estacion.garden|~radio.garden|~kamakuratorres.garden|~chachacha.garden|~hiro.garden|~att-home.garden|~jiro.garden|~goodlittle.garden|~poap.garden|~bordas.garden|~olly.garden|~salvage.garden|~design.garden|~plantae.garden|~prestige.garden|~maa.garden|~planter.garden|~gusta.garden|~patch.garden|~syntato.garden|~milwaukeebeer.garden|~social.garden|~mantis.garden|~staff.garden|~f168.garden|~toot.garden|~memex.garden|~boum.garden|~wobble.garden|~alices.garden|~cheekwood.garden|~solos.garden|~cyberlove.garden|~cast.garden|~coding.garden|~rose.garden|~zendesk.garden|~fedi.garden|~sunny.garden|~circles.garden|~untold.garden|~the.garden|~walworth.garden|~fieldmann.garden|~keywest.garden|~ellipse.garden|~manifold.garden|~hyperlink.garden|~palm.garden|~kingdom.garden|~smallsheds.garden|~jardinarium.garden|~common.garden|~labyrinth.garden|~mediterraneo.garden|~pointcloud.garden|~begma.garden|~garlic.garden|~tv.garden|~anita.garden|~fctv33hd.garden|~animes.garden|~dvdplay.garden|~moos.garden|~isaimini.garden|~pobreflixtv.garden|~lustmaza.garden|~coolmoviez.garden|~altadefinizionegratis.garden|~flow3r.garden|~plantura.garden|~shop.plantura.garden|~upstreamgallery.common.garden|~thisthewrongplacetodie.common.garden|~saito.garden|~beginners.garden|~glanta.garden|~zen.garden|~mastodon.garden
 ||gardenbest01.nyc3.cdn.digitaloceanspaces.com^$document
 ||gascumuapa.com^$document
 ||gaspa-web.jp^$document
@@ -4099,7 +4099,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hai-kai.com^$document
 ||haibandvd.com^$document
 ||haikara-syokudo.jp^$document
-! [Unsupported Modifier: to=] ||hair^$doc,to=~cattleya.hair|~uppercutdeluxe.hair|~soeur.hair|~hibi.hair|~frames.hair|~dorado.hair|~kiari.hair|~merry.hair|~carne.hair|~jako.hair|~isshy.hair|~cutkozo.hair|~roost.hair|~rutile.hair|~boiboi.hair|~erucala.hair|~haru.hair|~relive.hair|~mic.hair|~remilio.hair|~shiozawa.hair|~kema.hair|~www.sisi.hair|~www.blanca.hair|~kami-byoin.hair|~soleil.hair|~and-b.hair|~cut-jun.hair|~azzurri.hair|~www.success.hair|~nuu.hair|~hairroom-union.hair|~www.mauve.hair|~www.fivestar.hair|~www.azto.hair|~c-and.hair|~yuit.hair|~www.coco-2023.hair|~www.plus-moi.hair|~melon.salo.hair|~filer.salo.hair|~www.toh.hair|~lucas.salo.hair|~rebirth.hair|~www.lovest-kyoto.hair|~www.kamikiriya-kuro.hair|~mine.salo.hair|~tender.hair|~www.tender.hair|~elmo.hair|~kanaeru.hair|~wim.hair|~hadient.hair|~maisha.hair|~smilecc.hair|~jav.hair
+||hair^$doc,to=~cattleya.hair|~uppercutdeluxe.hair|~soeur.hair|~hibi.hair|~frames.hair|~dorado.hair|~kiari.hair|~merry.hair|~carne.hair|~jako.hair|~isshy.hair|~cutkozo.hair|~roost.hair|~rutile.hair|~boiboi.hair|~erucala.hair|~haru.hair|~relive.hair|~mic.hair|~remilio.hair|~shiozawa.hair|~kema.hair|~www.sisi.hair|~www.blanca.hair|~kami-byoin.hair|~soleil.hair|~and-b.hair|~cut-jun.hair|~azzurri.hair|~www.success.hair|~nuu.hair|~hairroom-union.hair|~www.mauve.hair|~www.fivestar.hair|~www.azto.hair|~c-and.hair|~yuit.hair|~www.coco-2023.hair|~www.plus-moi.hair|~melon.salo.hair|~filer.salo.hair|~www.toh.hair|~lucas.salo.hair|~rebirth.hair|~www.lovest-kyoto.hair|~www.kamikiriya-kuro.hair|~mine.salo.hair|~tender.hair|~www.tender.hair|~elmo.hair|~kanaeru.hair|~wim.hair|~hadient.hair|~maisha.hair|~smilecc.hair|~jav.hair
 ||hairandthere.frontwp.no^$document
 ||haisoku.jp^$document
 ||haitenjp.com.cutestat.com^$document
@@ -5901,7 +5901,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||lnovbsbw.digital^$document
 ||loadgames.org^$document
 ||loadpiece.xyz^$document
-! [Unsupported Modifier: to=] ||loan^$document,to=~4en.loan
+||loan^$document,to=~4en.loan
 ||locai.blog^$document
 ||local.jiheishou-e.xyz^$document
 ||locandroll.com^$document
@@ -6065,7 +6065,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||magisk.io^$document
 ||magisk.me^$document
 ||magisk.online^$document
-! [Unsupported Modifier: to=] ||magiskapp.$document,to=~topjohnwu.github.io
+||magiskapp.$document,to=~topjohnwu.github.io
 ||magiskapp.com^$document
 ||magiskapp.pro^$document
 ||magiskmanager.com^$document
@@ -6087,7 +6087,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mail.chocolateslacabana.com^$document
 ||mailorder-review.com^$document
 ||maimeng.taobao.com^$document
-! [Unsupported Modifier: to=] ||main.d*.amplifyapp.com$document,to=~d3pj6fh0snqwn5.amplifyapp.com|~main.d3pj6fh0snqwn5.amplifyapp.com|~main.d1igcrvx7q630j.amplifyapp.com|~main.d2us2bokgx1pfg.amplifyapp.com|~main.dk3u46v33deno.amplifyapp.com|~main.d21tditsu2tu27.amplifyapp.com|~main.dsbqh16e7ffxj.amplifyapp.com|~main.d3f3rriaypd9ye.amplifyapp.com|~main.dor8synqb1y7n.amplifyapp.com|~main.dvm5596s0pih6.amplifyapp.com|~main.d2jeihvqbavumv.amplifyapp.com|~main.d3qq5r4gs3mbsa.amplifyapp.com|~main.d3iv3dhnwdlv8z.amplifyapp.com|~main.dujntnkub78dt.amplifyapp.com|~main.d3qyy5iftduw62.amplifyapp.com|~main.d10hvwglabqq40.amplifyapp.com|~main.d2sentlakaqmzl.amplifyapp.com|~main.d1cqd1hdfismva.amplifyapp.com|~main.d1g5sbtvf24sh0.amplifyapp.com|~main.d1c8vszlhbmbbu.amplifyapp.com|~main.d17i4dgeb1exbe.amplifyapp.com|~main.dle2aoc5t2s70.amplifyapp.com|~main.d2fx6mvdms56av.amplifyapp.com|~main.dgnjki0y45r0t.amplifyapp.com|~main.d1yyvsdqt1xgm8.amplifyapp.com|~main.d1uuj48165lied.amplifyapp.com|~main.d17ogoxi1a96qk.amplifyapp.com|~main.dhfhlonm1iuas.amplifyapp.com|~main.d2vui9n6cgehzt.amplifyapp.com|~main.d1wlseuh2xfr3o.amplifyapp.com|~main.d2dsdt47gnp281.amplifyapp.com|~main.d3t2snls5j13bs.amplifyapp.com|~main.d1vxm3wjf3z77n.amplifyapp.com|~main.d1w9ca9l8djv60.amplifyapp.com|~main.d2t59be3e0ssoo.amplifyapp.com|~main.d3udfnrfdm3q44.amplifyapp.com|~main.d2faejhttni566.amplifyapp.com|~main.dfdb572nfpwo8.amplifyapp.com|~main.d1fw10kynsptbn.amplifyapp.com|~main.d1cdqee7v3jrv8.amplifyapp.com|~main.d3g0lcpbs9h04z.amplifyapp.com|~main.dunjdmij09cek.amplifyapp.com|~main.d2zpmzls6vr34t.amplifyapp.com|~main.d1vjpb003i6jce.amplifyapp.com|~main.dlmcbci0mgj8k.amplifyapp.com|~main.d2jd4tw9451bg7.amplifyapp.com|~main.d1a3lglfkaojbi.amplifyapp.com|~main.d3u9kb08cu2qij.amplifyapp.com|~main.d1hbu1v4ctf0ty.amplifyapp.com|~main.dfxd3miblx9ls.amplifyapp.com|~main.d1jquv8j0hus8p.amplifyapp.com|~main.d2tu0nmveuzuai.amplifyapp.com|~main.d3e3j4qemx6uzl.amplifyapp.com|~main.d2zqhqqa0yclkr.amplifyapp.com|~main.d2z3nkn8w98nlv.amplifyapp.com|~main.d1b1snbmg2f9h7.amplifyapp.com|~main.doj0ok0aiyn50.amplifyapp.com|~main.d2dlsy8g5j794c.amplifyapp.com|~main.d1eayks24rrvui.amplifyapp.com|~main.d1php5j88f6ojq.amplifyapp.com|~main.dboqxk32bbi0j.amplifyapp.com|~main.d67hc6wuiqdk6.amplifyapp.com|~main.d2rpzpnq7fb6p5.amplifyapp.com|~main.dj4a9a79kxn6v.amplifyapp.com|~main.d1bimkhp08yib8.amplifyapp.com|~main.d1uy79acngn6at.amplifyapp.com|~main.d2ch8by9jj785r.amplifyapp.com|~main.d308twj36si29a.amplifyapp.com|~main.dlwygh8jujrdd.amplifyapp.com|~main.d2cbahytdr4fvz.amplifyapp.com
+||main.d*.amplifyapp.com$document,to=~d3pj6fh0snqwn5.amplifyapp.com|~main.d3pj6fh0snqwn5.amplifyapp.com|~main.d1igcrvx7q630j.amplifyapp.com|~main.d2us2bokgx1pfg.amplifyapp.com|~main.dk3u46v33deno.amplifyapp.com|~main.d21tditsu2tu27.amplifyapp.com|~main.dsbqh16e7ffxj.amplifyapp.com|~main.d3f3rriaypd9ye.amplifyapp.com|~main.dor8synqb1y7n.amplifyapp.com|~main.dvm5596s0pih6.amplifyapp.com|~main.d2jeihvqbavumv.amplifyapp.com|~main.d3qq5r4gs3mbsa.amplifyapp.com|~main.d3iv3dhnwdlv8z.amplifyapp.com|~main.dujntnkub78dt.amplifyapp.com|~main.d3qyy5iftduw62.amplifyapp.com|~main.d10hvwglabqq40.amplifyapp.com|~main.d2sentlakaqmzl.amplifyapp.com|~main.d1cqd1hdfismva.amplifyapp.com|~main.d1g5sbtvf24sh0.amplifyapp.com|~main.d1c8vszlhbmbbu.amplifyapp.com|~main.d17i4dgeb1exbe.amplifyapp.com|~main.dle2aoc5t2s70.amplifyapp.com|~main.d2fx6mvdms56av.amplifyapp.com|~main.dgnjki0y45r0t.amplifyapp.com|~main.d1yyvsdqt1xgm8.amplifyapp.com|~main.d1uuj48165lied.amplifyapp.com|~main.d17ogoxi1a96qk.amplifyapp.com|~main.dhfhlonm1iuas.amplifyapp.com|~main.d2vui9n6cgehzt.amplifyapp.com|~main.d1wlseuh2xfr3o.amplifyapp.com|~main.d2dsdt47gnp281.amplifyapp.com|~main.d3t2snls5j13bs.amplifyapp.com|~main.d1vxm3wjf3z77n.amplifyapp.com|~main.d1w9ca9l8djv60.amplifyapp.com|~main.d2t59be3e0ssoo.amplifyapp.com|~main.d3udfnrfdm3q44.amplifyapp.com|~main.d2faejhttni566.amplifyapp.com|~main.dfdb572nfpwo8.amplifyapp.com|~main.d1fw10kynsptbn.amplifyapp.com|~main.d1cdqee7v3jrv8.amplifyapp.com|~main.d3g0lcpbs9h04z.amplifyapp.com|~main.dunjdmij09cek.amplifyapp.com|~main.d2zpmzls6vr34t.amplifyapp.com|~main.d1vjpb003i6jce.amplifyapp.com|~main.dlmcbci0mgj8k.amplifyapp.com|~main.d2jd4tw9451bg7.amplifyapp.com|~main.d1a3lglfkaojbi.amplifyapp.com|~main.d3u9kb08cu2qij.amplifyapp.com|~main.d1hbu1v4ctf0ty.amplifyapp.com|~main.dfxd3miblx9ls.amplifyapp.com|~main.d1jquv8j0hus8p.amplifyapp.com|~main.d2tu0nmveuzuai.amplifyapp.com|~main.d3e3j4qemx6uzl.amplifyapp.com|~main.d2zqhqqa0yclkr.amplifyapp.com|~main.d2z3nkn8w98nlv.amplifyapp.com|~main.d1b1snbmg2f9h7.amplifyapp.com|~main.doj0ok0aiyn50.amplifyapp.com|~main.d2dlsy8g5j794c.amplifyapp.com|~main.d1eayks24rrvui.amplifyapp.com|~main.d1php5j88f6ojq.amplifyapp.com|~main.dboqxk32bbi0j.amplifyapp.com|~main.d67hc6wuiqdk6.amplifyapp.com|~main.d2rpzpnq7fb6p5.amplifyapp.com|~main.dj4a9a79kxn6v.amplifyapp.com|~main.d1bimkhp08yib8.amplifyapp.com|~main.d1uy79acngn6at.amplifyapp.com|~main.d2ch8by9jj785r.amplifyapp.com|~main.d308twj36si29a.amplifyapp.com|~main.dlwygh8jujrdd.amplifyapp.com|~main.d2cbahytdr4fvz.amplifyapp.com
 ||mainichi-tocotoco.com^$document
 ||mainichigossip.com^$document
 ||mainitihanairo.com^$document
@@ -6282,12 +6282,12 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mashiqur.xyz^$document
 ||masquevinilo.com^$document
 ||massartcon.buzz^$document
-! [Unsupported Modifier: to=] ||massgrav.*^$all,to=~massgrave.dev|~massgrave.pages.dev|~massgrave.visualstudio.com
+||massgrav.*^$all,to=~massgrave.dev|~massgrave.pages.dev|~massgrave.visualstudio.com
 ||massgrav.shop^$document
 ||massgrav.zapto.org^$document
-! [Unsupported Modifier: to=] ||massgrave.*^$all,to=~massgrave.dev|~massgrave.pages.dev|~massgrave.visualstudio.com
+||massgrave.*^$all,to=~massgrave.dev|~massgrave.pages.dev|~massgrave.visualstudio.com
 ||massgrave.hopto.org^$document
-! [Unsupported Modifier: to=] ||massgraves.*^$all,to=~massgrave.dev|~massgrave.pages.dev|~massgrave.visualstudio.com
+||massgraves.*^$all,to=~massgrave.dev|~massgrave.pages.dev|~massgrave.visualstudio.com
 ||massgraves.online^$document
 ||masshunblog.com^$document
 ||massunchannel.com^$document
@@ -6682,7 +6682,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||molto15z.sarangkkb.com^$document
 ||molulabo.com^$document
 ||moluta.com^$document
-! [Unsupported Modifier: to=] ||mom^$document,to=~milfnut.mom|~porno124.mom|~pornoo.mom|~porno2x.mom|~porno3x.mom|~pornor.mom|~pornoxs.mom|~pornohb.mom|~pornoas.mom|~porno5x.mom|~pornol.mom|~sunpron.mom|~pornohot.mom|~pornoi.mom|~hdporn24.mom|~pornslotz.mom|~porno9x.mom|~pornop.mom|~pornvide.mom|~you-pron.mom|~free-pron.mom|~xxxbullet.mom|~best-prn.mom|~porn-vid.mom|~vip-porn.mom|~porn-clips.mom|~japansexfilms.mom|~hdsxyprn.mom|~ixxx.mom|~sex-vid.mom|~xxxporn.mom|~porn-tube.mom|~pornoj.mom|~pornoh.mom|~porno128.mom|~porno126.mom|~porno119.mom|~porno127.mom|~pornon.mom|~pornoxa.mom|~pornox.mom|~pornoxd.mom|~porno117.mom|~porno122.mom|~porno18.mom|~pornoq.mom|~hdporno14.mom|~porno98.mom|~porno87.mom|~hdporno40.mom|~hdporno45.mom|~pornoy.mom|~pornok.mom|~porno41.mom|~porno64.mom|~porno56.mom|~hdporno31.mom|~porno35.mom|~pornpath.mom|~desibf.mom|~pornroad.mom|~pornway.mom|~porno89.mom|~pornroute.mom|~pornplane.mom|~pornpark.mom|~pornguide.mom|~sukebei.nyaa.mom|~speedyservices.mom|~translate.mom|~canidateyour.mom|~harrison.mom|~omgflix.mom|~schiit.mom|~nyaa.mom|~brokensilenze.mom|~kinobadi.mom|~fullhdfilmizle.mom|~openagents.mom|~tugaflix.mom|~letflix.mom|~f.mom|~fullymaza.mom|~moviehax.mom|~libgen.mom|~kmmovies.mom|~pomo.mom|~cliver.mom|~ofilmywap.mom|~cb01uno.mom|~bollydrive.mom|~vegamovis.mom|~pelisflix200.mom
+||mom^$document,to=~milfnut.mom|~porno124.mom|~pornoo.mom|~porno2x.mom|~porno3x.mom|~pornor.mom|~pornoxs.mom|~pornohb.mom|~pornoas.mom|~porno5x.mom|~pornol.mom|~sunpron.mom|~pornohot.mom|~pornoi.mom|~hdporn24.mom|~pornslotz.mom|~porno9x.mom|~pornop.mom|~pornvide.mom|~you-pron.mom|~free-pron.mom|~xxxbullet.mom|~best-prn.mom|~porn-vid.mom|~vip-porn.mom|~porn-clips.mom|~japansexfilms.mom|~hdsxyprn.mom|~ixxx.mom|~sex-vid.mom|~xxxporn.mom|~porn-tube.mom|~pornoj.mom|~pornoh.mom|~porno128.mom|~porno126.mom|~porno119.mom|~porno127.mom|~pornon.mom|~pornoxa.mom|~pornox.mom|~pornoxd.mom|~porno117.mom|~porno122.mom|~porno18.mom|~pornoq.mom|~hdporno14.mom|~porno98.mom|~porno87.mom|~hdporno40.mom|~hdporno45.mom|~pornoy.mom|~pornok.mom|~porno41.mom|~porno64.mom|~porno56.mom|~hdporno31.mom|~porno35.mom|~pornpath.mom|~desibf.mom|~pornroad.mom|~pornway.mom|~porno89.mom|~pornroute.mom|~pornplane.mom|~pornpark.mom|~pornguide.mom|~sukebei.nyaa.mom|~speedyservices.mom|~translate.mom|~canidateyour.mom|~harrison.mom|~omgflix.mom|~schiit.mom|~nyaa.mom|~brokensilenze.mom|~kinobadi.mom|~fullhdfilmizle.mom|~openagents.mom|~tugaflix.mom|~letflix.mom|~f.mom|~fullymaza.mom|~moviehax.mom|~libgen.mom|~kmmovies.mom|~pomo.mom|~cliver.mom|~ofilmywap.mom|~cb01uno.mom|~bollydrive.mom|~vegamovis.mom|~pelisflix200.mom
 ||momed.work^$document
 ||mommy-kitchen.com^$document
 ||momo-admin.net^$document
@@ -6850,7 +6850,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||my.hintup.io^$document
 ||my199p.com^$document
 ||my90p.com^$document
-! [Unsupported Modifier: to=] ||my^$document,to=~cotoviaclinic.my|~vectorgroup.my|~randkuj.my|~gov.my|~frdl.my|~nunflix.my|~ypmaidam.my|~mcplus.my|~compasia.my|~sooka.my|~www.amway.my|~www.mudah.my|~radioonline.my|~bjak.my|~cathaypacific.com.my|~starplanet.com.my|~radio-online.my|~unifi.com.my|~rfi.my|~sysar.my|~www.lovisa.my|~www.ismiledental.my|~spx.com.my|~era.syok.my|~ecentral.my|~curtin.edu.my|~zakatpahang.my|~uec.dongzong.my|~mytownkl.com.my|~nyxcosmetics.com.my|~khatam.com.my|~www.unipin.my|~habra.com.my|~shinzushi.my|~www.thestar.com.my|~www.hmetro.com.my|~www.maybank2u.com.my|~www.sinarharian.com.my|~www.sinchew.com.my|~www.myeg.com.my|~www.cimbclicks.com.my|~iprice.my|~ch.ucsiuniversity.edu.my|~lib.ucsiuniversity.edu.my|~www.ssm4u.com.my|~astrogo.astro.com.my|~ipgkik.moe.edu.my|~library.apu.edu.my|~www.shinjiru.com.my|~ipgkba.moe.edu.my|~www.ecentral.my|~www.napei.org.my|~apcore.apu.edu.my|~ipgki.moe.edu.my|~forms.sites.apiit.edu.my|~enterprise.sites.apiit.edu.my|~shopee.com.my|~siakapkeli.my|~ticket2u.com.my|~apspace.sites.apiit.edu.my|~studentaffairs.apu.edu.my|~thesun.my|~my.utm.my|~sites.apiit.edu.my|~ezbiz.ssm.com.my|~masjidnetwork.my|~www.carlist.my|~mypolycc.edu.my|~www.purina.com.my|~edu.my|~msaj.my
+||my^$document,to=~cotoviaclinic.my|~vectorgroup.my|~randkuj.my|~gov.my|~frdl.my|~nunflix.my|~ypmaidam.my|~mcplus.my|~compasia.my|~sooka.my|~www.amway.my|~www.mudah.my|~radioonline.my|~bjak.my|~cathaypacific.com.my|~starplanet.com.my|~radio-online.my|~unifi.com.my|~rfi.my|~sysar.my|~www.lovisa.my|~www.ismiledental.my|~spx.com.my|~era.syok.my|~ecentral.my|~curtin.edu.my|~zakatpahang.my|~uec.dongzong.my|~mytownkl.com.my|~nyxcosmetics.com.my|~khatam.com.my|~www.unipin.my|~habra.com.my|~shinzushi.my|~www.thestar.com.my|~www.hmetro.com.my|~www.maybank2u.com.my|~www.sinarharian.com.my|~www.sinchew.com.my|~www.myeg.com.my|~www.cimbclicks.com.my|~iprice.my|~ch.ucsiuniversity.edu.my|~lib.ucsiuniversity.edu.my|~www.ssm4u.com.my|~astrogo.astro.com.my|~ipgkik.moe.edu.my|~library.apu.edu.my|~www.shinjiru.com.my|~ipgkba.moe.edu.my|~www.ecentral.my|~www.napei.org.my|~apcore.apu.edu.my|~ipgki.moe.edu.my|~forms.sites.apiit.edu.my|~enterprise.sites.apiit.edu.my|~shopee.com.my|~siakapkeli.my|~ticket2u.com.my|~apspace.sites.apiit.edu.my|~studentaffairs.apu.edu.my|~thesun.my|~my.utm.my|~sites.apiit.edu.my|~ezbiz.ssm.com.my|~masjidnetwork.my|~www.carlist.my|~mypolycc.edu.my|~www.purina.com.my|~edu.my|~msaj.my
 ||mybestblog1.com^$document
 ||mybloganik26.com^$document
 ||mybouzu.info^$document
@@ -7217,7 +7217,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||nnews.top^$document
 ||no-dorama-no-life.info^$document
 ||no-magazine.com^$document
-! [Unsupported Modifier: to=] ||no-sheep.org^$document,to=~fp.no-sheep.org
+||no-sheep.org^$document,to=~fp.no-sheep.org
 ||no-title-journal-next.com^$document
 ||no111777666.com^$document
 ||noacking.cl^$document
@@ -8745,7 +8745,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||qoo-weblife.com^$document
 ||qoob.name^$document
 ||qoupyoo771-ocn.xyz^$document
-! [Unsupported Modifier: to=] ||qpon^$document,to=~get.qpon
+||qpon^$document,to=~get.qpon
 ||qpqotbrxnr.shop^$document
 ||qqlink.ru^$document
 ||qqqnewww-ewcgfrh4ezbdbkc9.z01.azurefd.net^$document
@@ -9157,7 +9157,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||rtrend365.com^$document
 ||rttyinfo.com^$document
 ||ru-nestjs-docs.netlify.app^$document
-! [Unsupported Modifier: to=] ||ru.com^$document,to=~yflix.ru.com|~gogoanime.ru.com
+||ru.com^$document,to=~yflix.ru.com|~gogoanime.ru.com
 ||ru.happymod.cloud^$document
 ||rudrasurgiwell.online^$document
 ||rueproductions.com^$document
@@ -9224,7 +9224,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||s795530940.websitebuilder.online^$document
 ||s8000.works^$document
 ||sa-ta-mi.com^$document
-! [Unsupported Modifier: to=] ||sa.com^$document,to=~sfec.sa.com|~sac.sa.com
+||sa.com^$document,to=~sfec.sa.com|~sac.sa.com
 ||sa.rdy.jp^$document
 ||saabu.ba-koshi.com^$document
 ||sabucaru.com
@@ -9367,7 +9367,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||sbenny.com^$document
 ||sber.me^$document
 ||sblog51.net^$document
-! [Unsupported Modifier: to=] ||sbs^$doc,to=~tomandjerry.sbs|~trend-japan.sbs|~kemono.sbs|~tohokamiemitame.sbs|~manyouwo.sbs|~www.muzyl11.sbs|~zzb06.sbs|~www.zoucili.sbs|~wjyy498125.sbs|~www.abb1.sbs|~aaa.bm11.sbs|~aidou.henhenlu.sbs|~www.avesns3.sbs|~www.abb5.sbs|~zhfop.sbs|~awqjyn100.sbs|~moritake.sbs|~hiroruri.sbs|~sitterservice-beyond.sbs|~airbnb-o-hama.sbs|~javbus.sbs|~www.jilewangchao.sbs|~av4us.sbs|~kakyo.sbs|~ehimedoyoukai.sbs|~endless.sbs
+||sbs^$doc,to=~tomandjerry.sbs|~trend-japan.sbs|~kemono.sbs|~tohokamiemitame.sbs|~manyouwo.sbs|~www.muzyl11.sbs|~zzb06.sbs|~www.zoucili.sbs|~wjyy498125.sbs|~www.abb1.sbs|~aaa.bm11.sbs|~aidou.henhenlu.sbs|~www.avesns3.sbs|~www.abb5.sbs|~zhfop.sbs|~awqjyn100.sbs|~moritake.sbs|~hiroruri.sbs|~sitterservice-beyond.sbs|~airbnb-o-hama.sbs|~javbus.sbs|~www.jilewangchao.sbs|~av4us.sbs|~kakyo.sbs|~ehimedoyoukai.sbs|~endless.sbs
 ||scaleqa.com^$document
 ||scan.page^$document
 ||scarystories.jp^$document
@@ -10627,7 +10627,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||toorublog.com^$document
 ||top.manga-ganma.com^$document
 ||top.vpnpro.com^$document
-! [Unsupported Modifier: to=] ||top^$document,to=~1stream.top|~adrules.top|~ambr.top|~asiaon.top|~audioforyou.top|~awavenue.top|~caitlin.top|~callmebymygender.top|~castlevania.top|~changlam10.top|~changlam11.top|~chillx.top|~corriente.top|~cpolar.top|~doubledouble.top|~edgeless.top|~galge.top|~gdtot.top|~hostingowy.top|~iboxs.top|~imxyz.top|~iwayado.toweb.top|~jp.jtube.top|~loveliveallstar.top|~magocoro.top|~maruiblog.top|~mastodon.top|~mianbeian.top|~miotele.top|~nfmirrorcdn.top|~nicenature.top|~ossme.top|~passt.top|~pdcdn1.top|~pegelinux.top|~polar.top|~pressplay.top|~qwertycxz.top|~reminder.top|~rept.hamakaze.top|~reyhub.top|~rifton.top|~rugaming.top|~saltwood.top|~shucks.top|~sobanomi-ikkanjin.top|~spoilerraw.top|~strims.top|~suiten.top|~t-satoru.top|~thedesk.top|~tokiwasushi.top|~voxel.top|~vsdb.top|~yggtorrent.top|~doujinantena.top|~www.minesweeper.top|~cqdh26.top|~mangakoma01.top|~kmansin09.top|~kiwami.top|~maguro.top|~golfgear.top|~yoshizuya.top|~kitaqhitorioya.top|~sakura-cl.top|~deen-hachinohe.top|~www.coolsymbol.top|~www.jsdelivr.top|~ja.amatorvideok.top|~ja.pornici.top|~2dfmax.top|~yokohama-shirahata.top|~zeri-m.top|~www.sayafx.top|~toweb.top|~piggparty.top|~jrac.top|~skinsalon-el.top|~www.nandemohonpotakeda.top|~www.7sense.top|~orangeline.top|~www.suiten.top|~mk-mimosa.top|~www.sowelu.top|~www.trickart.top|~mikata.top|~jpn.billxia.top|~u-sky.top|~xn--7br687a6xa056a.top|~xn--u8jxay6nn91xo2n1z1dx3ek5k.top|~www.fujisangyo.top|~www.9tsu.top|~kaien.top|~bullsailor.top|~freemagazines.top|~manhuavn.top|~aigto.top|~yoimiyalove.top|~green-office.top|~newsite.top|~www.xn--kck9c8a7d.top|~mxdj.top|~froghouse.top|~ekubo.top|~fukunoya.top|~zovo2.top|~kokugo-senka.top|~mathify.top|~duckify.top|~www.screensaver.top|~graphonline.top|~cutcut.top|~8kun.top|~www.2z2.top|~brainteaser.top|~hosts.gitcdn.top|~mcservers.top|~addressgenerator.top|~www.flamecho.top|~8kun.top|~lava.top|~laosheng.top|~toptruyen.top|~www.itrack.top|~wceui.top|~yggleak.top|~droply.top|~tsbox1.top|~tsboxby.top|~tsbox1.top|~tsbox2.top|~tsbox3.top|~tsbox4.top|~tsbox5.top|~tsbox6.top|~tsbox0.top|~gettsbox.top|~manga1000.top|~yanweb.top|~rikuramu.top|~yukapyon.top|~reien.top|~jacky.top|~genki.top|~oneminute.top|~iforest.top|~moshimobox.top|~raisuball.top|~www.kateholds.top|~www.hoshinosensei.top|~www.jumphigh.top|~gon6.top|~www.krnr.top|~r-style.top|~good-job.top|~www.mountainman.top|~fqegg.top|~www.tsuri.top|~chics.top|~s-s-k.top|~cscc-spk.top|~e-connect.top|~private-salon-shiny.top|~bag676.top|~lumbini-kashiwa.top|~mayumi.top|~www.tokei777.top|~www.reien.top|~futaba-en.top|~www.pride1yamaoka.top|~rawfree.top|~ta26.top|~xn--9ckkn.top|~hasanmap.top|~file-me.top|~tsboxapp.top|~x010x.top|~outlands.top
+||top^$document,to=~1stream.top|~adrules.top|~ambr.top|~asiaon.top|~audioforyou.top|~awavenue.top|~caitlin.top|~callmebymygender.top|~castlevania.top|~changlam10.top|~changlam11.top|~chillx.top|~corriente.top|~cpolar.top|~doubledouble.top|~edgeless.top|~galge.top|~gdtot.top|~hostingowy.top|~iboxs.top|~imxyz.top|~iwayado.toweb.top|~jp.jtube.top|~loveliveallstar.top|~magocoro.top|~maruiblog.top|~mastodon.top|~mianbeian.top|~miotele.top|~nfmirrorcdn.top|~nicenature.top|~ossme.top|~passt.top|~pdcdn1.top|~pegelinux.top|~polar.top|~pressplay.top|~qwertycxz.top|~reminder.top|~rept.hamakaze.top|~reyhub.top|~rifton.top|~rugaming.top|~saltwood.top|~shucks.top|~sobanomi-ikkanjin.top|~spoilerraw.top|~strims.top|~suiten.top|~t-satoru.top|~thedesk.top|~tokiwasushi.top|~voxel.top|~vsdb.top|~yggtorrent.top|~doujinantena.top|~www.minesweeper.top|~cqdh26.top|~mangakoma01.top|~kmansin09.top|~kiwami.top|~maguro.top|~golfgear.top|~yoshizuya.top|~kitaqhitorioya.top|~sakura-cl.top|~deen-hachinohe.top|~www.coolsymbol.top|~www.jsdelivr.top|~ja.amatorvideok.top|~ja.pornici.top|~2dfmax.top|~yokohama-shirahata.top|~zeri-m.top|~www.sayafx.top|~toweb.top|~piggparty.top|~jrac.top|~skinsalon-el.top|~www.nandemohonpotakeda.top|~www.7sense.top|~orangeline.top|~www.suiten.top|~mk-mimosa.top|~www.sowelu.top|~www.trickart.top|~mikata.top|~jpn.billxia.top|~u-sky.top|~xn--7br687a6xa056a.top|~xn--u8jxay6nn91xo2n1z1dx3ek5k.top|~www.fujisangyo.top|~www.9tsu.top|~kaien.top|~bullsailor.top|~freemagazines.top|~manhuavn.top|~aigto.top|~yoimiyalove.top|~green-office.top|~newsite.top|~www.xn--kck9c8a7d.top|~mxdj.top|~froghouse.top|~ekubo.top|~fukunoya.top|~zovo2.top|~kokugo-senka.top|~mathify.top|~duckify.top|~www.screensaver.top|~graphonline.top|~cutcut.top|~8kun.top|~www.2z2.top|~brainteaser.top|~hosts.gitcdn.top|~mcservers.top|~addressgenerator.top|~www.flamecho.top|~8kun.top|~lava.top|~laosheng.top|~toptruyen.top|~www.itrack.top|~wceui.top|~yggleak.top|~droply.top|~tsbox1.top|~tsboxby.top|~tsbox1.top|~tsbox2.top|~tsbox3.top|~tsbox4.top|~tsbox5.top|~tsbox6.top|~tsbox0.top|~gettsbox.top|~manga1000.top|~yanweb.top|~rikuramu.top|~yukapyon.top|~reien.top|~jacky.top|~genki.top|~oneminute.top|~iforest.top|~moshimobox.top|~raisuball.top|~www.kateholds.top|~www.hoshinosensei.top|~www.jumphigh.top|~gon6.top|~www.krnr.top|~r-style.top|~good-job.top|~www.mountainman.top|~fqegg.top|~www.tsuri.top|~chics.top|~s-s-k.top|~cscc-spk.top|~e-connect.top|~private-salon-shiny.top|~bag676.top|~lumbini-kashiwa.top|~mayumi.top|~www.tokei777.top|~www.reien.top|~futaba-en.top|~www.pride1yamaoka.top|~rawfree.top|~ta26.top|~xn--9ckkn.top|~hasanmap.top|~file-me.top|~tsboxapp.top|~x010x.top|~outlands.top
 ||topcasinosdirectory.com^$document
 ||topfifty.uk^$document
 ||topgun.ffwpu.app^$document
@@ -11304,7 +11304,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||web-gaebal-jilmun-dabbyeon-db.com^$document
 ||web-maket.info^$document
 ||web-online-blog.com^$document
-! [Unsupported Modifier: to=] ||web.core.windows.net^$to=~minnadesonicmachisagashi.z11.web.core.windows.net|~browserpicker.z13.web.core.windows.net|~stkarteai1763705952.z11.web.core.windows.net|~pcjisyo.z11.web.core.windows.net|~koaladbstorage.z31.web.core.windows.net|~soundgarden.z11.web.core.windows.net
+||web.core.windows.net^$to=~minnadesonicmachisagashi.z11.web.core.windows.net|~browserpicker.z13.web.core.windows.net|~stkarteai1763705952.z11.web.core.windows.net|~pcjisyo.z11.web.core.windows.net|~koaladbstorage.z31.web.core.windows.net|~soundgarden.z11.web.core.windows.net
 ||web.illumina.com.cn^$document
 ||webdesignmagazine.net^$document
 ||webdevask.com^$document
@@ -13733,7 +13733,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||yolo-world.com^$document
 ||yomeno-tadaima.com^$document
 ||yomidou.com^$document
-! [Unsupported Modifier: to=] ||yomiuri.*^$document,to=~yomiuri.co.jp
+||yomiuri.*^$document,to=~yomiuri.co.jp
 ||yonayonafreedom.net^$document
 ||yoncoichi.com^$document
 ||yondanon.com^$document
@@ -13963,7 +13963,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||z-z.jp^$document
 ||z.ksmlc.cn^$document
 ||z56.nextguest.app^$document
-! [Unsupported Modifier: to=] ||za.com^$document,to=~9anime.za.com|~sentinel.za.com|~aad.za.com|~yaskawa.za.com
+||za.com^$document,to=~9anime.za.com|~sentinel.za.com|~aad.za.com|~yaskawa.za.com
 ||zaichan-blog.com
 ||zaichan-blog.com^$document
 ||zainale.net^$document

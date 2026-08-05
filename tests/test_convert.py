@@ -55,6 +55,32 @@ class ModifierConversionTests(unittest.TestCase):
             "||example.com^$third-party,removeparam=utm_source",
         )
 
+    def test_to_modifier_is_preserved_for_chrome_mv3(self):
+        rule = "||example.com^$document,to=target.example|~excluded.example"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
+    def test_negated_to_value_is_preserved_for_chrome_mv3(self):
+        rule = "||example.com^$document,to=~excluded.example"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
+    def test_incompatible_scriptlet_name_matches_exactly(self):
+        rule = "example.com##+js(acis)"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Incompatible Scriptlet] " + rule,
+        )
+
+    def test_incompatible_scriptlet_with_arguments_matches_exactly(self):
+        rule = "example.com##+js(json-prune, payload.ad)"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Incompatible Scriptlet] " + rule,
+        )
+
+    def test_scriptlet_with_longer_name_is_not_a_prefix_match(self):
+        rule = "example.com##+js(json-prune-fetch-response)"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
     def test_unescaped_slash_in_regex_character_class_is_escaped(self):
         rule = r"/^https?:\/\/[^/]*pay(?:[/?#]|$)/"
         self.assertEqual(

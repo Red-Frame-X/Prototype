@@ -1,0 +1,12 @@
+{
+  "name": "prototype-filter-tooling",
+  "private": true,
+  "scripts": {
+    "lint:adguard": "aglint dist/uB-filter-by-kdroidwin_AdG_Optimized.txt \"AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt\" \"AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt\"",
+    "lint:markdown": "markdownlint-cli2"
+  },
+  "devDependencies": {
+    "@adguard/aglint": "3.0.2",
+    "markdownlint-cli2": "0.23.2"
+  }
+}
