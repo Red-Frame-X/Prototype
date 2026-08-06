@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608061505
+! Version: 202608062033
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -1782,6 +1782,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||caltechbd.com^$document
 ||cambridge-india.org^$document
 ||camera-jct.com^$document
+||camera.shouhinlab.fun^$document
 ||cameronlorenc.com^$document
 ||camp.trainocate.co.jp^$document
 ||campanellafishing.shogic.xyz^$document
@@ -2623,6 +2624,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dougaguild.xsrv.jp^$document
 ||doujiiin.com^$document
 ||doujin-ai.com^$document
+||doujin-analytics.com^$document
 ||doujin-archive.com^$document
 ||doujin-authors.com^$document
 ||doujin-comics.toremani.com^$document
@@ -3049,6 +3051,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||erobooker.com^$document
 ||erobookjapan.com^$document
 ||erobooks.makianosaihu.com^$document
+||erobrowsergame.net^$document
 ||erocomi.kou-web.com^$document
 ||erocomic-love.net^$document
 ||erocomic-navi.com^$document
@@ -6251,6 +6254,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mapimark.com^$document
 ||mappifyerapp.com^$document
 ||maqamemansoor.com^$document
+||mar-labo.com^$document
 ||marathonman-europe.com^$document
 ||mariaugusto.com^$document
 ||mariayuri28.com^$document
@@ -7292,6 +7296,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/4jinooyaji^$document
 ||note.com/50it^$document
 ||note.com/5656remon5656^$document
+||note.com/777_001^$document
 ||note.com/88gold88^$document
 ||note.com/accha123^$document
 ||note.com/addness_recruit^$document
@@ -7306,6 +7311,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/ai_zap^$document
 ||note.com/aichanworld^$document
 ||note.com/aigadgetlab^$document
+||note.com/aishibox^$document
 ||note.com/aitaku2510^$document
 ||note.com/aiwriter0116^$document
 ||note.com/akagami^$document
@@ -7318,6 +7324,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/amagitsune^$document
 ||note.com/amasuki^$document
 ||note.com/amazon_sale_now^$document
+||note.com/anatato_jp^$document
 ||note.com/androiddimension^$document
 ||note.com/androidgeek^$document
 ||note.com/animedaisukiminn^$document
@@ -7342,6 +7349,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/bright_llama373^$document
 ||note.com/bright_stilt607^$document
 ||note.com/brisk_gnu6597^$document
+||note.com/camera_lab^$document
 ||note.com/carreer^$document
 ||note.com/cc21257^$document
 ||note.com/chaen_channel^$document
@@ -7360,6 +7368,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/clear_coot175^$document
 ||note.com/cocoryou886710^$document
 ||note.com/cool_egret501^$document
+||note.com/cos_cameraman1^$document
 ||note.com/counselor_risa^$document
 ||note.com/cozy_plover2302^$document
 ||note.com/cream_corone^$document
@@ -7375,6 +7384,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/daito2001^$document
 ||note.com/dapper_boar1528^$document
 ||note.com/dapper_phlox8142^$document
+||note.com/ddsatouattak^$document
 ||note.com/dear_pipit1400^$document
 ||note.com/decoboco_sisters^$document
 ||note.com/deft_hosta7020^$document
@@ -7387,12 +7397,14 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/dream1004^$document
 ||note.com/drneurosur^$document
 ||note.com/duppyclub^$document
+||note.com/ebe0911^$document
 ||note.com/egao_no_care_nao^$document
 ||note.com/ekokosu^$document
 ||note.com/elimaga^$document
 ||note.com/eru1881^$document
 ||note.com/f00b4r/n/n1fe7afacadd7^$document
 ||note.com/fair_godwit545^$document
+||note.com/fashere^$document
 ||note.com/females_db_park^$document
 ||note.com/fine_gerbil9006^$document
 ||note.com/fit_hyssop6243^$document
@@ -7405,6 +7417,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/fumiura^$document
 ||note.com/futamen^$document
 ||note.com/fuwari_daily^$document
+||note.com/gabugadget^$document
 ||note.com/gad_hammocchi^$document
 ||note.com/gadge_log^$document
 ||note.com/gadgesoji^$document
@@ -7509,6 +7522,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/jolly_dunlin344^$document
 ||note.com/jolly_stilt46^$document
 ||note.com/joxit^$document
+||note.com/joyfull_2525^$document
 ||note.com/joyous_kalmia512^$document
 ||note.com/juku_support^$document
 ||note.com/junjun_biyori^$document
@@ -7543,6 +7557,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/kei_music_gadget^$document
 ||note.com/keizai_kousatsu^$document
 ||note.com/kemuri123^$document
+||note.com/kemushi_san^$document
 ||note.com/ken_tsuiki^$document
 ||note.com/kenhonda^$document
 ||note.com/keshikakeuranai^$document
@@ -7580,6 +7595,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/light_hare9068^$document
 ||note.com/light_right_^$document
 ||note.com/like_bonobo2466^$document
+||note.com/limber_tapir7999^$document
 ||note.com/lithe_viper8252^$document
 ||note.com/lively_impala470^$document
 ||note.com/lofty_skink4202^$document
@@ -7645,6 +7661,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/naoki_iphone^$document
 ||note.com/naruhoneru^$document
 ||note.com/natsssssuki^$document
+||note.com/naturemotoken^$document
 ||note.com/nayoshi_engineer^$document
 ||note.com/neet_1226^$document
 ||note.com/nekoyorozu^$document
@@ -7686,6 +7703,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/otsuki_days^$document
 ||note.com/outdoorlifestyle^$document
 ||note.com/oyvn^$document
+||note.com/p_bunseki^$document
 ||note.com/parsonalsecret^$document
 ||note.com/paul1211^$document
 ||note.com/pc_masami^$document
@@ -7705,6 +7723,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/powertanishi^$document
 ||note.com/pragmalife^$document
 ||note.com/prime_codephone^$document
+||note.com/primu_20251202^$document
 ||note.com/proper_gnu4086^$document
 ||note.com/prorautatie^$document
 ||note.com/protect_ebay^$document
@@ -7724,6 +7743,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/ready_bison5376^$document
 ||note.com/ready_newt6023^$document
 ||note.com/realme_note^$document
+||note.com/reboot_ojisan^$document
 ||note.com/regal_allium4153^$document
 ||note.com/reiwamoney1^$document
 ||note.com/relaxmax^$document
@@ -7796,10 +7816,12 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/spiritual_taiken^$document
 ||note.com/sports_fun^$document
 ||note.com/startupm^$document
+||note.com/staybronze^$document
 ||note.com/strong_power^$document
 ||note.com/sugurukun_ai^$document
 ||note.com/sumaho_hikaku^$document
 ||note.com/sumahoseeker^$document
+||note.com/super_iris9045^$document
 ||note.com/super_whale223^$document
 ||note.com/super_whale4189^$document
 ||note.com/syashinsuki^$document
@@ -7829,6 +7851,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/teraweb^$document
 ||note.com/tetsunain_game^$document
 ||note.com/thase70^$document
+||note.com/thegadget^$document
 ||note.com/thehikaku^$document
 ||note.com/thug_business^$document
 ||note.com/tiger_stlv^$document
@@ -7837,6 +7860,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/tmobile_kevin^$document
 ||note.com/tokotoko_2025^$document
 ||note.com/tom485^$document
+||note.com/tomorrow56^$document
 ||note.com/torataka50^$document
 ||note.com/toridai_com^$document
 ||note.com/totalnewsworld^$document
@@ -7867,6 +7891,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/watechexplorers^$document
 ||note.com/webcommu_sub^$document
 ||note.com/wise_liger7796^$document
+||note.com/wise_moose8648^$document
 ||note.com/workwithai^$document
 ||note.com/writer_syota^$document
 ||note.com/xminami^$document
@@ -7904,8 +7929,10 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/yutori_kurashi^$document
 ||note.com/yuueki_osusume^$document
 ||note.com/yzrswork^$document
+||note.com/zap9488^$document
 ||note.com/zatsugaku_iroiro^$document
 ||note.com/zenipen^$document
+||note.com/zerohari^$document
 ||note.com/zerozero_x^$document
 ||note.com/zonzonzonmo_chan^$document
 ||notebookers.jp^$document
@@ -9598,6 +9625,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||shortcake.carepro.co.jp^$document
 ||shorturl.biz.weibo.cn^$document
 ||shoshinshanoyakata.com^$document
+||shouhinlab.fun^$document
 ||shounenki.jp^$document
 ||shouwano-idol.com^$document
 ||showa-g.org^$document
