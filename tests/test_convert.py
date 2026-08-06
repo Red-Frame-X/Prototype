@@ -9,6 +9,11 @@ class SourceFallbackTests(unittest.TestCase):
     def test_candidate_urls_are_unique(self):
         self.assertEqual(len(CANDIDATE_URLS), len(set(CANDIDATE_URLS)))
 
+    def test_candidate_urls_target_current_source_repository(self):
+        for url in CANDIDATE_URLS:
+            self.assertIn("/Kdroidwin/uB-filter-by-kdroidwin", url)
+            self.assertNotIn("uBlacklist-filter-by-kdroidwin", url)
+
     @patch("scripts.convert.urllib.request.urlopen")
     def test_fetch_source_falls_back_to_second_candidate(self, mock_urlopen):
         successful_response = MagicMock()
