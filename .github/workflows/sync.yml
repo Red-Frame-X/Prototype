@@ -32,22 +32,32 @@ jobs:
       - name: Run Tests
         run: python -m unittest discover -s tests -v
 
+      # 依存関係のインストール前に変換し、生成物の差分を判定
+      - name: Run Conversion Script
+        id: conversion
+        run: |
+          python scripts/convert.py
+
+          if git diff --quiet -- dist/uB-filter-by-kdroidwin_AdG_Optimized.txt; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No generated changes detected."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Generated filter changed."
+          fi
+
+      # 生成物に差分がある場合だけ、公開前検証に必要な依存関係を導入
       - name: Install Node.js dependencies
+        if: steps.conversion.outputs.changed == 'true'
         run: npm ci
 
-      # scripts/ フォルダ内の convert.py を実行
-      - name: Run Conversion Script
-        run: python scripts/convert.py
-
-      # 公開前に生成物と管理対象のAdGuardルールを構文検証
+      # 他の管理対象ルールは quality.yml で検証するため、ここでは生成物だけを検証
       - name: Run AGLint
-        run: >-
-          npx --no-install aglint
-          dist/uB-filter-by-kdroidwin_AdG_Optimized.txt
-          "AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt"
-          "AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt"
+        if: steps.conversion.outputs.changed == 'true'
+        run: npx --no-install aglint dist/uB-filter-by-kdroidwin_AdG_Optimized.txt
 
       - name: Commit and Push if changed
+        if: steps.conversion.outputs.changed == 'true'
         run: |
           set -e
           git config user.name "github-actions[bot]"
