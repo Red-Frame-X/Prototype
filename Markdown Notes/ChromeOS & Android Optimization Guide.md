@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260804 |
+| **Version** | 20260807 |
 
 この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
@@ -897,10 +897,6 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
   ```
 * 追加ホストの設定
   ```
-  # [2026.3.6] 5ch.net → 5ch.io
-  > 5ch.net 188.114.96.0
-  > *.5ch.net 188.114.96.0
-
   ##### AUTOMATIC ENTRIES BELOW! #####
 
   ## Whitelisted Entries! ##
