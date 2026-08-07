@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608062033
+! Version: 202608071912
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -90,6 +90,34 @@ filespayouts.com##.cb-ad-box
 h2testw.org##.entry-content::before { content: "これは偽サイト　Fake Site"; position: fixed !important; top: 10px !important; left: 10px !important; z-index: 999999 !important; font-size: 32px !important; color: #fff !important; background: #c00 !important; font-weight: 900 !important; padding: 8px 12px !important; border-radius: 6px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important; }
 hexload.com##.animated-button
 himebon.blog##.eye-catch-wrap
+jp.mercari.com#?#html:has(meta[name="description"][content*="Anti Spy Phone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="Anti Spy Phone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="Anti-spy phone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="AntiSpy Phone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="AntiSpyPhone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="AntiSpyphone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="AntiSpyPhone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="AntiSpyphone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="Antispyphone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="GrapheneOS"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="Grapheneos"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="GrapheneOS"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="Grapheneos"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="GRAPHENEOS"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="アンチスパイ"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="アンチスパイフォン"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="アンチスパイフォン"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="グラフェンOS"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="グラフェンオーエス"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="プライバシーフォン"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="写真だけ"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="写真のみ"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="写真のみの出品"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="写真をお送りします"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="画像だけ"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="画像のみ"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="画像のみの出品"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="画像をお送りします"])
 krakenfiles.com##.download-btn
 krakenfiles.com##.myardbox.nativebaner
 nswpedia.com##.file-download-btnn
@@ -2484,6 +2512,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dikegllelove.com^$document
 ||diomandeshoes.com^$document
 ||direct-app.onelink.me^$document
+||dis-1983.jp^$document
 ||disability-talent.com^$document
 ||disad.engyate.run^$document
 ||disagreeable.biz^$document
@@ -2667,6 +2696,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||doujin.yogamotto.com^$document
 ||doujin2.makianosaihu.com^$document
 ||doujin2026.wew.jp^$document
+||doujinanalytica.com^$document
 ||doujinbank.com^$document
 ||doujincco-ero.com^$document
 ||doujinclub.net^$document
@@ -4470,6 +4500,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hitomilla.com^$document
 ||hitomiman-momon.net^$document
 ||hitomimangaraw.wew.jp^$document
+||hitomin.dis-1983.jp^$document
 ||hitomin.wpx.jp^$document
 ||hitomiraw-manga01.com^$document
 ||hitomisiri.com^$document
@@ -5136,6 +5167,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||junchandream.com^$document
 ||juncook.com^$document
 ||junkfreeemail.com^$document
+||juno-beauty-pe-form.com^$document
 ||junpei-sugiyama.com^$document
 ||junrin.xyz^$document
 ||jupontyi.jettysuites.com^$document
@@ -6072,6 +6104,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||magazinehack.com^$document
 ||magi.camp^$document
 ||magic-panda.com^$document
+||magical.tokyo^$document
 ||magicwands1.com^$document
 ||magisk-manager.malavida.com^$document
 ||magisk-manager.softonic.ru^$document
@@ -9648,6 +9681,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||shumidon.com^$document
 ||shuminohaba.com^$document
 ||shun-tame.com^$document
+||shunsasahara.com^$document
 ||shusei-300.xyz^$document
 ||shuukatujyouhou.com^$document
 ||siaparseband.tistory.com^$document
