@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608071912
+! Version: 202608080109
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -99,12 +99,12 @@ jp.mercari.com#?#html:has(meta[name="description"][content*="AntiSpyphone"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="AntiSpyPhone"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="AntiSpyphone"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="Antispyphone"])
+jp.mercari.com#?#html:has(meta[name="description"][content*="antispyphone"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="GrapheneOS"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="Grapheneos"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="GrapheneOS"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="Grapheneos"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="GRAPHENEOS"])
-jp.mercari.com#?#html:has(meta[name="description"][content*="アンチスパイ"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="アンチスパイフォン"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="アンチスパイフォン"])
 jp.mercari.com#?#html:has(meta[name="description"][content*="グラフェンOS"])
@@ -727,6 +727,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||alharbistores.com^$document
 ||alhibah-plus.com^$document
 ||ali2.ru^$document
+||alicemama.kocorono-net.com^$document
 ||alicepatinvestments.com^$document
 ||aliexpress.ru^$document
 ||alife-lalala.com^$document
@@ -834,6 +835,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ameblo.jp/teihenmachi^$document
 ||ameblo.jp/unarigoe^$document
 ||ameblo.jp/uriutsu-123^$document
+||ameblo.jp/usaginobike^$document
 ||ameblo.jp/viwizardjp^$document
 ||ameblo.jp/wakukoro5656^$document
 ||ameblo.jp/windows-11-pc^$document
@@ -5212,6 +5214,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kagelife.com^$document
 ||kagerou-kazoku.com^$document
 ||kagoshima2023-sailing.com^$document
+||kagurazakamiracle.com^$document
 ||kaguyasama-movie.com^$document
 ||kaigaiceleb.com^$document
 ||kaigaijyunbi.xsrv.jp^$document
@@ -6623,6 +6626,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||missav39.jp^$document
 ||missav53.jp^$document
 ||missav55.jp^$document
+||missav58.jp^$document
 ||missavtv.com^$document
 ||missfanzaav.com^$document
 ||misuteri-enblog.com^$document
@@ -7803,6 +7807,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/rosy_puma879^$document
 ||note.com/royal_hawk3525^$document
 ||note.com/ruria_aria88^$document
+||note.com/rutasotorui^$document
 ||note.com/ryoutakaaan^$document
 ||note.com/ryuhat^$document
 ||note.com/ryuushin^$document
@@ -7882,6 +7887,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/techpapa_lab^$document
 ||note.com/tenorsharejp^$document
 ||note.com/teraweb^$document
+||note.com/teruko_jmyg^$document
 ||note.com/tetsunain_game^$document
 ||note.com/thase70^$document
 ||note.com/thegadget^$document
@@ -9192,6 +9198,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||romance-lab.jp^$document
 ||romeoandrosaline.com^$document
 ||romhacking.ru^$document
+||romptn.com^$document
 ||romsdroid.com^$document
 ||romsns.com^$document
 ||ronherman.shop^$document
@@ -11314,6 +11321,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||wakamesan-blog.com^$document
 ||wakara.co.jp^$document
 ||wakarannavi.com^$document
+||wakariyasukuosieruyo.blog^$document
 ||wakasiru.com^$document
 ||wakatte-tv.net^$document
 ||wakayama-johall.com^$document
@@ -12547,6 +12555,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.kitchensbyeileen.com^$document
 ||www.klsuperstore.com^$document
 ||www.kobe-studyabroad.jp^$document
+||www.kocorono-net.com^$document
 ||www.kodakalaris.cn^$document
 ||www.kodakaranoyu.jp^$document
 ||www.kokajin-wedding.com^$document
@@ -14041,6 +14050,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||z-library.wiki^$document
 ||z-z.jp^$document
 ||z.ksmlc.cn^$document
+||z3bd4217-stylesheet.hachepaille.fr^$document
 ||z56.nextguest.app^$document
 ||za.com^$document,to=~9anime.za.com|~sentinel.za.com|~aad.za.com|~yaskawa.za.com
 ||zainale.net^$document
