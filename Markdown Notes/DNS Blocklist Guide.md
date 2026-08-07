@@ -54,6 +54,8 @@ uBlock OriginやAdGuard等のブラウザ向け拡張機能で使われる構文
 ### AdGuard DNS filter（AdGuard for Android向け）
 AdGuard公式がメンテナンスする、DNSブロッキング特化のリストです（SDNSFilter）。
 
+* **購読用URL**：[AdGuard DNS filter（Optimized）](https://filters.adtidy.org/android/filters/15_optimized.txt)
+
 * **メリット**：DNSレイヤー向けに不要な構文を削ぎ落とした独自のABP構文を使用しており、AdGuard for Androidの最新パースエンジンをフル活用できます。高度な例外ルールや修飾子を解釈できるため、単体で軽量かつ最も高い精度を発揮します。
 * **デメリット**：personalDNSfilterや初期のPi-holeなど、高度なABP構文の解析を完全にサポートしていない他社製アプリにインポートすると、フォーマットエラーを起こすか、本来のブロック性能（特に例外ルール）が適用されず誤爆が増える場合があります。
 
