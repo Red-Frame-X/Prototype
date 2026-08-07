@@ -244,10 +244,6 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 ! 公式𝕏アプリの通信エラー回避
 @@||ads.twitter.com^$app=com.twitter.android
 
-! weathernews.jp
-! 画面に追従するPC向け動画広告枠（sticky_movie_pc）を非表示
-weathernews.jp###sticky_movie_pc
-
 ! web.nhk
 ! NHK ONEアカウント登録の強制状態を返すregistrationEnforcement API通信をブロック
 ! ポップアップ抑止に必要な同意状態のみ設定し、地域情報には非実在の中立値を使用
