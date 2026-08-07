@@ -891,19 +891,9 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
 ※ 実態はDNSブロッカーのため、ABP形式の構文（`||example.com^`）には対応していません。
 
 **! 購読済みのDNSブロックリスト・hostsファイル**
-* HaGeZi's Pro DNS Blocklist
+* HaGeZi's Normal DNS Blocklist
   ```
-  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt
-  ```
-* 追加ホストの設定
-  ```
-  ##### AUTOMATIC ENTRIES BELOW! #####
-
-  ## Whitelisted Entries! ##
-
-  !analytics.google.com
-  !statcounter.com
-  !www.google-analytics.com
+  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
 
 **参考サイト**
