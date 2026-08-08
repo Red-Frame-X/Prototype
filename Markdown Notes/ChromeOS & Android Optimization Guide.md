@@ -236,11 +236,11 @@ ChatGPTアプリで接続エラー、ログイン失敗、回答の停止など�
 
 ## ChatGPT WorkのGitHubプラグイン
 
-ChatGPT Workの[GitHubプラグイン（OpenAI公式）](https://openai.com/business/plugins/github/)を追加すると、Repositoryのファイル、ドキュメント、コミット履歴、Issue、Pull Requestを会話の文脈として参照し、Repositoryの把握、Issueの整理、変更内容とリスクの要約、テスト不足の確認、作業報告の作成などを効率化できます。
+ChatGPT Workの [GitHubプラグイン（OpenAI公式）](https://openai.com/business/plugins/github/) を追加すると、Repositoryのファイル、ドキュメント、コミット履歴、Issue、Pull Requestを会話の文脈として参照し、Repositoryの把握、Issueの整理、変更内容とリスクの要約、テスト不足の確認、作業報告の作成などを効率化できます。
 
 **GitHub接続とCodexの役割の違い**
 
-* ChatGPTのGitHub接続は、許可したRepositoryからコードやREADMEなどを検索・分析・引用する用途が中心です。OpenAIのヘルプでは、従来のGitHub App単体は読み取り専用であり、コードの編集やGitHubへのpushは[Codexを利用する](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt)と説明されています。
+* ChatGPTのGitHub接続は、許可したRepositoryからコードやREADMEなどを検索・分析・引用する用途が中心です。OpenAIのヘルプでは、従来のGitHub App単体は読み取り専用であり、コードの編集やGitHubへのpushは [Codexを利用する](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt) と説明されています。
 * GitHubプラグインは、Repository、Issue、Pull Requestを扱うためのスキルと連携機能をまとめたものです。利用できる読み取り・書き込み操作は、ChatGPTのプラン、Workの実行環境、GitHub側で許可したRepository、ワークスペース管理者の設定、操作時の承認によって異なります。
 * Codexを併用すると、対象ブランチでファイルを変更し、テストやlintを実行して、commit・push・Pull Request作成まで進められます。Pull Requestのコメントで `@codex review` を実行するレビュー機能や、Repository固有の確認事項を `AGENTS.md` に記載する仕組みもあります（[OpenAI公式：GitHub Pull Requestのレビュー](https://learn.chatgpt.com/docs/third-party/github)）。
 
@@ -274,7 +274,7 @@ Redditの利用者報告では、Issueを作業キュー、`AGENTS.md`を既定�
 * GitHub Appには「All repositories」ではなく、必要なRepositoryだけを許可します。機密情報、APIキー、Cookie、個人情報をRepository、Issue、プロンプト、ログへ含めないでください。
 * AIが作成した変更は誤修正、過剰変更、依存関係の見落としを含む可能性があります。削除、公開、merge、releaseなど戻しにくい操作は、対象と差分を確認してから実行します。
 * 個人向けプランでは、「Improve the model for everyone」の設定が有効な場合、送信した内容がモデル改善に利用される可能性があります。Business、Enterprise、Eduなどのビジネス向けサービスでは、既定で顧客コンテンツをモデル改善に使用しないとOpenAIは説明しています（[OpenAI公式：GitHub接続時のデータとプライバシー](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt)）。
-* プラグインの機能と権限は更新される可能性があります。導入時は[ChatGPTのプラグイン・Appsの公式説明](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)と、GitHubのApp権限画面を再確認してください。
+* プラグインの機能と権限は更新される可能性があります。導入時は [ChatGPTのプラグイン・Appsの公式説明](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt) と、GitHubのApp権限画面を再確認してください。
 
 ## 汎用プロンプト集
 
