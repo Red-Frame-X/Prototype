@@ -105,7 +105,7 @@ Violentmonkeyを使用するためには、設定 > 拡張機能 > Tampermonkey�
 
  以下のブラウザ拡張機能やUserScriptは、全てをインストールして使用しているわけではありません。ブラウザ拡張機能やUserScriptを入れすぎると競合を起こしてトラブルの原因になるため、数は少なければ少ないほど良いです。
 
-* ブラウザ拡張機能の競合を疑いながらも問題の切り分けができず、AdGuard Filtersに相談したIssueの例。：[#228169](https://github.com/AdguardTeam/AdguardFilters/issues/228169)
+* ブラウザ拡張機能の競合を疑いながらも問題の切り分けができず、AdGuard Filtersに相談したIssuesの例。：[#228169](https://github.com/AdguardTeam/AdguardFilters/issues/228169)
 * Gmail 「システムで問題が発生しました（#2014）」。：[Reddit報告例](https://www.reddit.com/r/techsupport/comments/1b4rocl/oops_the_system_encountered_a_problem_2014/?tl=ja)
 
 ▶ 断定はできませんが、[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod) が原因だった可能性が高く、同様のブラウザ拡張機能でも同じ不具合が起きるかもしれません。
@@ -236,12 +236,12 @@ ChatGPTアプリで接続エラー、ログイン失敗、回答の停止など�
 
 ## ChatGPT WorkのGitHubプラグイン
 
-ChatGPT Workの [GitHubプラグイン（OpenAI公式）](https://openai.com/business/plugins/github/) を追加すると、Repositoryのファイル、ドキュメント、コミット履歴、Issue、Pull Requestを会話の文脈として参照し、Repositoryの把握、Issueの整理、変更内容とリスクの要約、テスト不足の確認、作業報告の作成などを効率化できます。
+ChatGPT Workの [GitHubプラグイン（OpenAI公式）](https://openai.com/business/plugins/github/) を追加すると、Repositoryのファイル、ドキュメント、コミット履歴、Issues、Pull Requestを会話の文脈として参照し、Repositoryの把握、Issuesの整理、変更内容とリスクの要約、テスト不足の確認、作業報告の作成などを効率化できます。
 
 **GitHub接続とCodexの役割の違い**
 
 * ChatGPTのGitHub接続は、許可したRepositoryからコードやREADMEなどを検索・分析・引用する用途が中心です。OpenAIのヘルプでは、従来のGitHub App単体は読み取り専用であり、コードの編集やGitHubへのpushは [Codexを利用する](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt) と説明されています。
-* GitHubプラグインは、Repository、Issue、Pull Requestを扱うためのスキルと連携機能をまとめたものです。利用できる読み取り・書き込み操作は、ChatGPTのプラン、Workの実行環境、GitHub側で許可したRepository、ワークスペース管理者の設定、操作時の承認によって異なります。
+* GitHubプラグインは、Repository、Issues、Pull Requestを扱うためのスキルと連携機能をまとめたものです。利用できる読み取り・書き込み操作は、ChatGPTのプラン、Workの実行環境、GitHub側で許可したRepository、ワークスペース管理者の設定、操作時の承認によって異なります。
 * Codexを併用すると、対象ブランチでファイルを変更し、テストやlintを実行して、commit・push・Pull Request作成まで進められます。Pull Requestのコメントで `@codex review` を実行するレビュー機能や、Repository固有の確認事項を `AGENTS.md` に記載する仕組みもあります（[OpenAI公式：GitHub Pull Requestのレビュー](https://learn.chatgpt.com/docs/third-party/github)）。
 
 **追加・接続手順**
@@ -254,24 +254,24 @@ ChatGPT Workの [GitHubプラグイン（OpenAI公式）](https://openai.com/bus
 **Repository管理に適した作業例**
 
 * Repository全体を査読し、重要度、根拠、修正案、影響範囲を整理する。
-* IssueとPull Requestを確認し、重複、再現手順不足、未解決レビュー、CI失敗を分類する。
+* IssuesとPull Requestを確認し、重複、再現手順不足、未解決レビュー、CI失敗を分類する。
 * AdGuardフィルタ、UserScript、正規表現、Markdownの変更を小さな単位に分け、関連するlintやテストを実行する。
 * 変更前後の差分、実行したテスト、未検証事項をPull Requestにまとめる。
 * 最近のcommitとマージ済みPull Requestから、更新履歴や作業報告を作成する。
 
 **推奨ワークフロー**
 
-1. `README.md`、`AGENTS.md`、対象Issue、関連ファイルを先に読み、作業範囲と完了条件を固定する。
+1. `README.md`、`AGENTS.md`、対象Issues、関連ファイルを先に読み、作業範囲と完了条件を固定する。
 2. 1つの依頼に無関係な変更を混ぜず、専用ブランチで修正する。
 3. 自動テスト、lint、生成処理を実行し、生成物も含めて差分を確認する。
 4. draft Pull Requestを作成し、要約、理由、影響、テスト結果、残るリスクを記載する。
 5. 人間が差分とCI結果を確認してからマージする。AIによるレビューは、テスト、branch protection、必須レビューの代替にはなりません。
 
-Redditの利用者報告では、Issueを作業キュー、`AGENTS.md`を既定ルール、ChatGPTを計画・整理、Codexを実装・テスト・commit・push担当として分ける運用例があります（[Reddit：IssueとAGENTS.mdを使った運用例](https://www.reddit.com/r/ChatGPT/comments/1udz0r7/i_stopped_copypasting_between_chatgpt_and_codex/)）。一方、OrganizationのRepositoryが表示されない、ファイル取得に失敗するなどの報告もあります（[Reddit：Organization Repositoryの認証問題](https://www.reddit.com/r/codex/comments/1q4msm3/chatgpt_codex_only_shows_personal_github_repos/)、[Reddit：ファイル取得失敗の報告](https://www.reddit.com/r/ChatGPT/comments/1ok30fs/chatgpt_pro_with_github_connector_cannot_read_any/)）。これらはユーザー個別の体験談であり、現在の一般仕様や不具合の発生を保証する情報ではありません。
+Redditの利用者報告では、Issuesを作業キュー、`AGENTS.md`を既定ルール、ChatGPTを計画・整理、Codexを実装・テスト・commit・push担当として分ける運用例があります（[Reddit：IssuesとAGENTS.mdを使った運用例](https://www.reddit.com/r/ChatGPT/comments/1udz0r7/i_stopped_copypasting_between_chatgpt_and_codex/)）。一方、OrganizationのRepositoryが表示されない、ファイル取得に失敗するなどの報告もあります（[Reddit：Organization Repositoryの認証問題](https://www.reddit.com/r/codex/comments/1q4msm3/chatgpt_codex_only_shows_personal_github_repos/)、[Reddit：ファイル取得失敗の報告](https://www.reddit.com/r/ChatGPT/comments/1ok30fs/chatgpt_pro_with_github_connector_cannot_read_any/)）。これらはユーザー個別の体験談であり、現在の一般仕様や不具合の発生を保証する情報ではありません。
 
 **❗️セキュリティ・運用上の注意**
 
-* GitHub Appには「All repositories」ではなく、必要なRepositoryだけを許可します。機密情報、APIキー、Cookie、個人情報をRepository、Issue、プロンプト、ログへ含めないでください。
+* GitHub Appには「All repositories」ではなく、必要なRepositoryだけを許可します。機密情報、APIキー、Cookie、個人情報をRepository、Issues、プロンプト、ログへ含めないでください。
 * AIが作成した変更は誤修正、過剰変更、依存関係の見落としを含む可能性があります。削除、公開、merge、releaseなど戻しにくい操作は、対象と差分を確認してから実行します。
 * 個人向けプランでは、「Improve the model for everyone」の設定が有効な場合、送信した内容がモデル改善に利用される可能性があります。Business、Enterprise、Eduなどのビジネス向けサービスでは、既定で顧客コンテンツをモデル改善に使用しないとOpenAIは説明しています（[OpenAI公式：GitHub接続時のデータとプライバシー](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt)）。
 * プラグインの機能と権限は更新される可能性があります。導入時は [ChatGPTのプラグイン・Appsの公式説明](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt) と、GitHubのApp権限画面を再確認してください。
@@ -293,7 +293,7 @@ Redditの利用者報告では、Issueを作業キュー、`AGENTS.md`を既定�
 ※機密情報、認証情報、個人を特定できる情報、非公開のソースコードやログは入力しないでください。
 
 * **【不審サイト・ドメイン評価】**：以下のサイト（ドメイン名：〜）について、URL構造、ドメイン登録情報、証明書、運営主体、既知の悪評やインシデントをOSINTの範囲で調査してください。不審なサイトへログイン、ファイル送信、ダウンロード、スクリプト実行は行わず、確認できた事実とリスクの推測を分けて評価してください。
-* **【拡張機能のプライバシー・安全性調査】**：以下のブラウザ拡張機能（URL：〜）について、要求権限の必要性、開発元、プライバシーポリシー、外部通信、更新履歴、所有者変更、過去のマルウェア化やストア削除事例を調査してください。公式ストア、ソースコード、Issue、公開されたセキュリティ報告を優先し、利点と残存リスクを示してください。
+* **【拡張機能のプライバシー・安全性調査】**：以下のブラウザ拡張機能（URL：〜）について、要求権限の必要性、開発元、プライバシーポリシー、外部通信、更新履歴、所有者変更、過去のマルウェア化やストア削除事例を調査してください。公式ストア、ソースコード、Issues、公開されたセキュリティ報告を優先し、利点と残存リスクを示してください。
 * **【コード・ファイル静的解析】**：（解析対象を添付またはペースト）この内容を実行せずに静的解析し、難読化、認証情報、危険な権限、不審な外部通信、任意コード実行、脆弱性につながる処理がないか確認してください。証拠となるファイル名・行・コード断片を示し、確信度と誤検知の可能性も記載してください。
 
 ### テキスト処理・ドキュメント作成（Text Processing & Formatting）
@@ -335,7 +335,7 @@ ChatGPTの「設定」→「パーソナライズ」→「カスタム指示」�
 * **パーソナライズ設定：2（IT・セキュリティ・広告ブロック）**
 
 ```text
-IT、セキュリティ、広告ブロックに関する質問では、公式ドキュメント、公開されたソースコード、Issue、変更履歴を優先して確認してください。uBlock Origin、AdGuard、主要フィルタリストなどの公開された設計方針とベストプラクティスを参考にし、誤ブロック、互換性、性能、保守性、プライバシーのトレードオフを示してください。特定の開発者やフィルタ作者については、本人が公開した資料だけを根拠とし、未公開の見解、査読、承認を推測しないでください。
+IT、セキュリティ、広告ブロックに関する質問では、公式ドキュメント、公開されたソースコード、Issues、変更履歴を優先して確認してください。uBlock Origin、AdGuard、主要フィルタリストなどの公開された設計方針とベストプラクティスを参考にし、誤ブロック、互換性、性能、保守性、プライバシーのトレードオフを示してください。特定の開発者やフィルタ作者については、本人が公開した資料だけを根拠とし、未公開の見解、査読、承認を推測しないでください。
 ```
 
 **参考サイト**
@@ -809,7 +809,7 @@ v5.2.400以降、拡張機能と組み込み・カスタムフィルタは、「
 
 v5.2.400で強化された機能は、設定画面内でカスタムフィルタを手動で更新できるようにするものです。
 
-（※ Chromeの拡張機能管理画面での「更新ボタン↻」では、カスタムフィルタの再読み込みがトリガーされないケースが報告されています。 [Issue #2944](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2944)  / [Issue #3016](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016)）
+（※ Chromeの拡張機能管理画面での「更新ボタン↻」では、カスタムフィルタの再読み込みがトリガーされないケースが報告されています。 [Issues #2944](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2944)  / [Issues #3016](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016)）
 
 [AdGuard Browser Extension MV3 vv5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
 
@@ -870,7 +870,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **Web版YouTubeについての留意点**
 
-YouTube Anti-Adblock回避ルールは、uBlock Origin開発チームの解析を参考にAdGuardが開発・調整しています。YouTube Premium未加入者がカスタムフィルタや拡張機能を使いすぎると、検知されやすくなります。無料利用する際は、公式ルールのみの使用が推奨されます。要件を満たさない報告はuBlock Origin開発チーム・Adguard開発チームの負担となります。Yuki2718氏はuBlock Origin開発チームに所属しながらWeb版YouTubの解析を行っています（[Issue #27415](https://github.com/uBlockOrigin/uAssets/issues/27415)。 / [Issue #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
+YouTube Anti-Adblock回避ルールは、uBlock Origin開発チームの解析を参考にAdGuardが開発・調整しています。YouTube Premium未加入者がカスタムフィルタや拡張機能を使いすぎると、検知されやすくなります。無料利用する際は、公式ルールのみの使用が推奨されます。要件を満たさない報告はuBlock Origin開発チーム・Adguard開発チームの負担となります。Yuki2718氏はuBlock Origin開発チームに所属しながらWeb版YouTubの解析を行っています（[Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415)。 / [Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
 
 **𝕏/Twitter ルール作り資料｜uBlock Origin**
 
@@ -968,7 +968,7 @@ Android版Chromeなどで高精度なブロックを行うには必須です。�
 
 **HTTPSフィルタリング対象外Webサイト**
 
-予期せぬ不具合回避のため除外されているドメインがあります（例: [Issue #6016](https://github.com/AdguardTeam/AdguardForAndroid/issues/6016)）。
+予期せぬ不具合回避のため除外されているドメインがあります（例: [Issues #6016](https://github.com/AdguardTeam/AdguardForAndroid/issues/6016)）。
 
 **❗️留意点**
 
@@ -1001,7 +1001,7 @@ Android版Chromeなどで高精度なブロックを行うには必須です。�
 **DNS通信を保護 > DNSフィルタ**
 
 [AdGuard DNS filter](https://github.com/AdguardTeam/AdGuardSDNSFilter) によるブロックはシステム全体に及びます（[DNS書き換えの基本](https://writening.net/page?keELEF)）。
-プライバシー関連のルールによる不具合（[Issue #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896), [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178)）を緩和する方法。
+プライバシー関連のルールによる不具合（[Issues #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896), [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178)）を緩和する方法。
 
 ① **[AdGuard DNS filter without privacy filters (Ads only)](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
 
@@ -1076,9 +1076,9 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
     * エクストラ2：パラメーター名 `quiet` ｜ 値 `true`
 
 **Issuesの時系列**
-* [Issue #5598](https://github.com/AdguardTeam/AdguardForAndroid/issues/5598)（Base filterの不正確な説明）
-* [Issue #5593](https://github.com/AdguardTeam/AdguardForAndroid/issues/5593)（Android 15によるタスクキル）
-* [Issue #5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)（WebView更新時の無効化）
+* [Issues #5598](https://github.com/AdguardTeam/AdguardForAndroid/issues/5598)（Base filterの不正確な説明）
+* [Issues #5593](https://github.com/AdguardTeam/AdguardForAndroid/issues/5593)（Android 15によるタスクキル）
+* [Issues #5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)（WebView更新時の無効化）
 ▶ [AdGuard for Android v4.10 Nightly 4で修正](https://adguard.com/ja/versions/android/nightly.html#version-41019) されました。
 
 **結論**
@@ -1116,7 +1116,7 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
 
 **略称・ツール**
 * **[ReVanced 公式](https://revanced.app/)** / [GitHub](https://github.com/revanced)
-* **RVX**: inotia00氏版（[※開発終了 Issue #3334](https://github.com/inotia00/ReVanced_Extended/issues/3334)）
+* **RVX**: inotia00氏版（[※開発終了 Issues #3334](https://github.com/inotia00/ReVanced_Extended/issues/3334)）
 * **[Morphe 公式](https://morphe.software/)** / [GitHub](https://github.com/MorpheApp)（RVX開発陣も合流した新プロジェクト）
   * [Morphe Community Patches](https://morphe-patches.software/)（コミュニティが作成したパッチバンドル）
 * **[URV 公式](https://jmancentral.com/)** / [GitHub](https://github.com/Jman-Github)（使いやすい上位互換Manager）
@@ -1155,7 +1155,7 @@ Premium加入者は「動画ストリームを偽装（Spoof video streams）」
 
 **𝕏/Twitter ReVancedの使い方**
 
-Modアプリ検知の強化によりログインが困難になっています。（[Issue #714](https://github.com/crimera/piko/issues/714)）
+Modアプリ検知の強化によりログインが困難になっています。（[Issues #714](https://github.com/crimera/piko/issues/714)）
 * [導入方法解説](https://pfbcoconut.com/2024/04/21/twitter-x-revanced/) / [ログイン方法更新](https://kdroidwin.hatenablog.com/entry/2025/11/04/210359)
 * パッチ・ビルド済みapk：[crimera (Piko)](https://github.com/crimera/piko) / [monsivamon](https://github.com/monsivamon/twitter-apk) / [lluni](https://github.com/lluni/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
 
