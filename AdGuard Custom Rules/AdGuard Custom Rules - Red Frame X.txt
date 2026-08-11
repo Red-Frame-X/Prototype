@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608112141
+! Version: 202608112200
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -50,7 +50,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! プラグイン案内バナーの非表示
 chatgpt.com##aside:has(a[href*="/articles/11487775-apps-in-chatgpt"]):has(button[data-testid="close-button"])
 ! 「ChatGPT Work でさらに進める」と表示される案内バナーを非表示
-chatgpt.com##aside:has(h3:contains(ChatGPT Work でさらに進める)):has(button[data-testid="close-button"])
+chatgpt.com#?#aside:has(h3:contains(ChatGPT Work でさらに進める)):has(button[data-testid="close-button"])
 
 ! doubleclick.net
 ! かっぱ寿司アプリの起動・通信エラー回避
@@ -135,7 +135,7 @@ chatgpt.com##aside:has(h3:contains(ChatGPT Work でさらに進める)):has(butt
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*人気の目的地\s*$/):upward(div[data-hveid][data-ved])
 
 ! 検索タブの「ショート動画」を非表示
-google.com##div[role="listitem"]:has(a:contains(ショート動画))
+google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 
 ! googleapis.com
 ! Gemini・Googleアシスタントの通信エラーとタイムアウト回避
@@ -145,9 +145,9 @@ google.com##div[role="listitem"]:has(a:contains(ショート動画))
 ! キラキラアイコンと点滅表示を含むVIP訴求ボタンを非表示
 klz9.com##button:has(> svg.lucide-sparkles):has(> span.animate-ping)
 ! 「VIPを獲得する」と表示される加入ボタンを非表示
-klz9.com##button:contains(VIPを獲得する)
+klz9.com#?#button:contains(VIPを獲得する)
 ! 「最近のコメント」見出しを直下に持つコメント欄全体を非表示
-klz9.com##div:has(> h2:contains(最近のコメント))
+klz9.com#?#div:has(> h2:contains(最近のコメント))
 
 ! line-apps.com
 ! LINEアプリの通信エラー・バッテリー異常消費回避
@@ -158,15 +158,18 @@ klz9.com##div:has(> h2:contains(最近のコメント))
 m.youtube.com##.YtmCompactChannelRendererFeedItem
 ! 動画棚と一体化したトピックチップ棚を非表示
 m.youtube.com##chips-shelf-with-video-shelf-renderer
+! ライブチャット関連のクラスを持つ補助コンテナを非表示
 m.youtube.com##div[class^="ytm-live-chat-"]
 ! Shortsへのリンクを含むグリッド型動画棚を非表示
 m.youtube.com##grid-shelf-view-model:has([href*="/shorts/"])
+! コミュニティ投稿カードを非表示
 m.youtube.com##ytm-backstage-post-renderer
 ! 動画ページのコメント欄を非表示
 m.youtube.com##ytm-comment-section-renderer
 ! コメント欄への入口セクションを非表示
 m.youtube.com##ytm-item-section-renderer[section-identifier="comments-entry-point"]
-m.youtube.com##ytm-item-section-renderer:has(.ytCarouselTitleViewModelTitle:contains(コメント))
+! 「コメント」と表示されるカルーセル型コメント導線を非表示
+m.youtube.com#?#ytm-item-section-renderer:has(.ytCarouselTitleViewModelTitle:contains(コメント))
 ! ライブチャット本体を非表示
 m.youtube.com##ytm-live-chat-renderer
 ! 下部ナビゲーションのShortsタブを非表示
@@ -206,7 +209,7 @@ officeforest.org##div[id^="offic-"]
 
 ! old.klz9.com,klto9.com,jestful.net
 ! 「Recent Comments」と表示されるサイドバー見出しを非表示
-old.klz9.com,klto9.com,jestful.net##.title_doctruyen:contains(Recent Comments)
+old.klz9.com,klto9.com,jestful.net#?#.title_doctruyen:contains(Recent Comments)
 ! show_new_commentを直下に持つ新着コメントウィジェット全体を非表示
 old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 
@@ -284,20 +287,33 @@ www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !im
 www.youtube.com###video-title.ytd-rich-grid-media, #video-title.ytd-rich-grid-slim-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)
 ! チャンネル検索結果カードを非表示
 www.youtube.com###ytd-channel-renderer
+! チャンネル一覧ページに挿入されるShorts棚を非表示
 www.youtube.com##[page-subtype="channels"] ytd-item-section-renderer:not([use-height-hack]):has(ytd-reel-shelf-renderer)
+! ホームでタイトルにShorts用ハッシュタグを含む動画カードを非表示
 www.youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(#video-title-link[title*="#short" i])
+! 登録チャンネルでShortsオーバーレイを持つ動画カードを非表示
 www.youtube.com##[page-subtype="subscriptions"] ytd-rich-item-renderer:has([overlay-style="SHORTS"])
 ! ページ全体の横スクロールを無効化
 www.youtube.com##body, ytd-app[scrolling]:style(overflow-x: hidden !important;)
+! ホームに挿入される特集型リッチセクションを非表示
 www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer
+! 登録チャンネルに挿入される特集型リッチセクションを非表示
 www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-rich-section-renderer
+! ガイド内のShorts項目を非表示
 www.youtube.com##ytd-guide-entry-renderer:has(a[title="ショート"])
-www.youtube.com##ytd-guide-section-renderer:has(#guide-section-title:contains(YouTube の他のサービス))
+! ガイド内の「YouTube の他のサービス」セクションを非表示
+www.youtube.com#?#ytd-guide-section-renderer:has(#guide-section-title:contains(YouTube の他のサービス))
+! ミニガイド内のShorts項目を非表示
 www.youtube.com##ytd-mini-guide-entry-renderer:has(a[href="/shorts/"])
+! Shorts棚を非表示
 www.youtube.com##ytd-reel-shelf-renderer
+! 検索結果から動画・チャンネル・再生リスト・ラジオ以外の項目を非表示
 www.youtube.com##ytd-search ytd-item-section-renderer > #contents > :not(ytd-video-renderer, ytd-channel-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+! 検索結果の右側に表示される補助検索欄を非表示
 www.youtube.com##ytd-search ytd-secondary-search-container-renderer
+! 動画情報欄のティーザーカルーセルを非表示
 www.youtube.com##ytd-watch-metadata #teaser-carousel
+! 関連動画欄のShortsカードを非表示
 www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-renderer:has(a[href^="/shorts/"])
 
 ! x.com
@@ -322,7 +338,7 @@ x.com##div[role="presentation"]:has(> a[href$="/articles"])
 x.com##div[role="presentation"]:has(> a[href$="/highlights"])
 x.com##div[role="presentation"]:has(> a[href="/explore/tabs/entertainment"])
 x.com##div[role="presentation"]:has(> a[href="/explore/tabs/sports"])
-x.com##div[role="presentation"]:has(div[role="tab"] span:contains(おすすめ))
+x.com#?#div[role="presentation"]:has(div[role="tab"] span:contains(おすすめ))
 ! 右カラムの関連アカウント・おすすめユーザー・ニュース・速報タイムラインを非表示
 x.com##aside[aria-label="関連性の高いアカウント"]
 x.com##div:has(> aside[aria-label="おすすめユーザー"])
@@ -341,20 +357,20 @@ x.com##div:has(a[href$="/verified-profile-visits"])
 ! Grokのアクション・プロフィール要約・外部Grok案内・画像生成・ドロワー・インライン入力欄を非表示
 x.com##[aria-label="Grokのアクション"]
 x.com##[aria-label="プロフィールの要約"]
-x.com##button:contains(grok.comにアクセスするとさらに多くの機能が利用できます):has(svg)
+x.com#?#button:contains(grok.comにアクセスするとさらに多くの機能が利用できます):has(svg)
 x.com##button[data-testid="grokImgGen"]
 x.com##div[data-testid="GrokDrawer"]
 x.com##div[data-testid="inlinePrompt"]
 ! タイムライン内のおすすめユーザー、トピック、イベント、広告、トレンド、関連ユーザー各カードを非表示
 x.com##[aria-label="おすすめユーザー"] button[data-testid="UserCell"]
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
-x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
+x.com#?#[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
 x.com##[data-testid="cellInnerDiv"]:has(div[data-testid="eventHero"])
-x.com##[data-testid="cellInnerDiv"]:has(h2:contains(おすすめ投稿))
-x.com##[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:contains(おすすめユーザー))
+x.com#?#[data-testid="cellInnerDiv"]:has(h2:contains(おすすめ投稿))
+x.com#?#[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:contains(おすすめユーザー))
 x.com##[data-testid="cellInnerDiv"]:has(img[src*="global_trending_card_newest.png"])
-x.com##[data-testid="cellInnerDiv"]:has(span:contains(によるプロモーション))
-x.com##[data-testid="cellInnerDiv"]:has(span:contains(関連性の高いユーザー))
+x.com#?#[data-testid="cellInnerDiv"]:has(span:contains(によるプロモーション))
+x.com#?#[data-testid="cellInnerDiv"]:has(span:contains(関連性の高いユーザー))
 x.com##a[href^="https://ads.x.com"]
 x.com##div:has(> a[href^="/i/jf/"][href$="/home"])
 x.com##div[aria-label="タイムライン: Relevant people"]
@@ -370,12 +386,12 @@ x.com##[data-testid="cellInnerDiv"]:has([data-testid="UserCell"] [data-testid$="
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty)
-x.com##div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:contains(もっと見つける))
-x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:contains(ユーザー))
+x.com#?#div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:contains(もっと見つける))
+x.com#?#div[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:contains(ユーザー))
 ! コミュニティ検索・一覧に挿入されるおすすめコミュニティ、探索導線、記事を含まないコミュニティカードを非表示
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(+ div > div > div > a[href^="/i/communities/"])
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(> div > div > a[href^="/i/communities/"])
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(a[href="/i/communities/suggested"])
-x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:contains(新しいコミュニティを見つける))
+x.com#?#div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:contains(新しいコミュニティを見つける))
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:not(:has(article)):has(a[href^="/i/communities/"])
-x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュニティを探す))
+x.com#?#div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:contains(コミュニティを探す))
