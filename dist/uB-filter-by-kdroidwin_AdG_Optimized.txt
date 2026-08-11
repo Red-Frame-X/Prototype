@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608111340
+! Version: 202608120111
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -630,6 +630,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||aiboku-com.vercel.app^$document
 ||aibus.co.uk^$document
 ||aichansblog.com^$document
+||aichi-nagoya-startups.jp^$document
 ||aichi-sports-kenren.jp^$document
 ||aichi-waza.jp^$document
 ||aichiya.jp^$document
@@ -2064,6 +2065,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||claulimabrand.com^$document
 ||clean-scene.ca^$document
 ||cleangreenspk.com^$document
+||clearsky-japan.jp^$document
 ||cleartechrecruiting.com^$document
 ||clibomanager.com^$document
 ||click.mail1.welcomebreak.online^$document
@@ -2568,6 +2570,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dmpatent.com^$document
 ||dnbrchnk.com^$document
 ||dnrhoee.com^$document
+||dnscafe.jp^$document
 ||dntworkshop.com/detail^$document
 ||do.hiraku946.jp^$document
 ||do2512.com^$document
@@ -3268,6 +3271,10 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||expanet.jp^$document
 ||exploring4ever.com^$document
 ||expo-chikyu.com^$document
+||expo2025-myaku-po.jp^$document
+||expo2025-personalagent.com^$document
+||expo2025earthmart-cast.jp^$document
+||expo2025earthmart.jp^$document
 ||expomap.ru^$document
 ||express-vpn.jp.uptodown.com^$document
 ||expressbox.nl^$document
@@ -5178,6 +5185,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||junabroadinfo.com^$document
 ||junchandream.com^$document
 ||juncook.com^$document
+||juniorexpo2025.com^$document
 ||junkfreeemail.com^$document
 ||juno-beauty-pe-form.com^$document
 ||junpei-sugiyama.com^$document
@@ -5244,6 +5252,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kaizoku-movie.jp^$document
 ||kaji-amehare.com^$document
 ||kajjfawjagr.lfhfdfiehgg.com^$document
+||kakakutenka-nagoya.jp^$document
 ||kakegawacastle30.jp^$document
 ||kakeizunotobira.denshishosekidaio.com^$document
 ||kakusa.info^$document
@@ -5285,6 +5294,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kantaiki0219.com^$document
 ||kantan-douga.site^$document
 ||kanyako.com^$document
+||kaomai-shouhinken.com^$document
 ||kaonsb9v.virtual-na.org^$document
 ||kaori-happiness.jp^$document
 ||kaoriblog0808.com^$document
@@ -7992,6 +8002,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||notebookers.jp^$document
 ||notepm.jp^$document
 ||notsu08.com^$document
+||notten-miyazaki.jp^$document
 ||noudoofees.net^$document
 ||nougaku.saloon.jp^$document
 ||noureldin-lawfirm.com^$document
@@ -8867,12 +8878,14 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||quick-timez.com^$document
 ||quickget.jp^$document
 ||quitoko.com^$document
+||qulalimstella.com^$document
 ||qunque.work^$document
 ||quocardpay.onelink.me^$document
 ||qvdwmm1j.r.ap-northeast-1.awstrack.me^$document
 ||qwq-min.com^$document
 ||qxlqgdx.studio^$document
 ||qy62ijjz2.benecicios-bancorrientes.online^$document
+||r-gallery.jp^$document
 ||r-portal.gmo-research.ai^$document
 ||r-press.su^$document
 ||r18-ai.com^$document
@@ -11562,6 +11575,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ww38.torrent-file.top^$document
 ||ww38.vanced.app^$document
 ||ww4.fmovies.co^$document
+||ww547.expo2025-personalagent.com^$document
 ||ww9.fitgirl-repacks.xyz^$document
 ||wwrbbuk.bar^$document
 ||wwv-fmovies.com^$document
@@ -12154,6 +12168,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.excite.co.jp/news/article/Prtimes$document
 ||www.exogear.jp^$document
 ||www.expected-value.com^$document
+||www.expo2025-nakajima-attendant.jp^$document
 ||www.expomascotasyanimales.com^$document
 ||www.expressvpn.com^$document
 ||www.eyecontactoptician.com^$document
