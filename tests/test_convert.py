@@ -108,6 +108,35 @@ class ModifierConversionTests(unittest.TestCase):
         rule = "www.example.com##.advertisement"
         self.assertEqual(self.optimizer.optimize_line(rule), rule)
 
+    def test_extended_css_exception_uses_adguard_separator(self):
+        rule = "example.com#@#div:contains(sponsored)"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "example.com#?@#div:contains(sponsored)",
+        )
+
+    def test_mixed_cosmetic_url_scope_is_commented_out(self):
+        rule = "example.com/path,example.org##.advertisement"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Unsupported Mixed Cosmetic URL Scope] " + rule,
+        )
+
+    def test_cname_only_modifier_is_removed_cleanly(self):
+        rule = "||example.com^$cname"
+        self.assertEqual(self.optimizer.optimize_line(rule), "||example.com^")
+
+    def test_negated_third_party_alias_is_preserved(self):
+        rule = "||example.com^$~3p"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
+    def test_unsupported_scriptlet_exception_is_commented_out(self):
+        rule = "example.com#@#+js(acis)"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Incompatible Scriptlet] " + rule,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
