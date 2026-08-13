@@ -62,7 +62,7 @@ AdGuard公式がメンテナンスする、DNSブロッキング特化のリス�
 ### HaGeZi's Normal DNS Blocklist（personalDNSfilter向け）
 現在のコミュニティにおけるデファクトスタンダードとされる統合リストです。モバイル環境の安定性を保ちつつ高い効果を得るため、Normalバージョンが推奨されます。
 
-* **購読用URL**：[HaGeZi's Normal DNS Blocklist（Wildcard Domains）](https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt)
+* **購読用URL**：[HaGeZi's Normal DNS Blocklist（Domains only）](https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt)
 
 * **メリット**：強力なホワイトリストシステムが組み込まれており、高いブロック率を保ちながら誤爆が極めて少ないのが特徴です。Hostsや単一ドメイン形式など、シンプルなフォーマットでの配布が充実しているため、高度な構文を処理できない軽量アプリでも極めて安定して読み込めます。
 * **デメリット**：Ultimateなどの最も強力なバージョンを使用すると、スマートフォンのバックグラウンド通信やアプリの正常な挙動を阻害する「過剰ブロック」の可能性が高まります。そのため、ブロック率と安定性のバランスが取れた「Normal」バージョンの選定が推奨されます。
