@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608161300
+! Version: 202608161843
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,7 +9,6 @@
 ! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.
 ! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.
 
-||1link.jp/sasaharashun^$document
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -310,6 +309,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||1ine.me.$document
 ||1l5nbj1.cn^$document
 ||1link.jp/gofiilee^$document
+||1link.jp/sasaharashun^$document
 ||1m7z6nzzl.nordic-walking-schule-brita-becker.de^$document
 ||1mcl.xyz^$document
 ||1mmsusumu.com^$document
@@ -3222,6 +3222,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||eromanga-lab.com^$document
 ||eromanga-library.com^$document
 ||eromanga-mangacoo.com^$document
+||eromanga-memory.com^$document
 ||eromanga-muryou-hitomi-50.net^$document
 ||eromanga-muryou.jp^$document
 ||eromanga-navi.net^$document
@@ -3230,6 +3231,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||eromanga-rainbow.com^$document
 ||eromanga-station.com^$document
 ||eromanga-storage.jp^$document
+||eromanga-tanken.com^$document
 ||eromanga-vision.com^$document
 ||eromanga-yomitai.com^$document
 ||eromanga-yomitai.work^$document
@@ -4757,6 +4759,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hulu-manual.com^$document
 ||human-profile.hatenablog.com^$document
 ||human.happinessisthailand.com^$document
+||humi.jp^$document
 ||hunting4gold.com^$document
 ||hunyuanvideo.org^$document
 ||hurtlocker.jp^$document
@@ -6875,6 +6878,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||momonga-raw01.com^$document
 ||momonga-raw02.com^$document
 ||momonga.hitomi-manga-hentai.com^$document
+||momonga.humi.jp^$document
 ||momongaraw.jp^$document
 ||momongarawhitomi.jp^$document
 ||momongasan.com^$document
@@ -9091,6 +9095,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||rasu-t.jp^$document
 ||ratio.thyshopp.life^$document
 ||rausu-daiichi-hotel.jp^$document
+||raw-dotya.com^$document
 ||raw-missav19.tokyo^$document
 ||raw-momonga.com^$document
 ||raw-momonga01.com^$document
@@ -13086,6 +13091,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.pcprotect.com^$document
 ||www.pekebatu.com^$document
 ||www.pengh.cn^$document
+||www.pengininfo.com^$document
 ||www.peoples.ru^$document
 ||www.peradays.com^$document
 ||www.permutive.online^$document
