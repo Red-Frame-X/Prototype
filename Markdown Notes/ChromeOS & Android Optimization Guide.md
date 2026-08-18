@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260816 |
+| **Version** | 20260818 |
 
 この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
@@ -780,7 +780,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 * **[Online Malicious URL Blocklist](https://gitlab.com/malware-filter/urlhaus-filter)**：uBlock Origin ＆ AdGuardの標準セキュリティフィルタ。
 * **[uBlock Origin – Badware risks](https://github.com/uBlockOrigin/uAssets)**：Yuki2718氏がフィルタの監修に関わっています。
 
-※ Chrome 拡張機能 AdGuard Browser Extension MV3の静的ルールの上限は330,000です。
+※ ChromeのDNR静的ルールは、拡張機能ごとに30,000件以上が保証されます。保証枠を超えて利用できる件数は、他の拡張機能の使用状況などで変動するため、固定の上限として扱わず `getAvailableStaticRuleCount()` で確認する必要があります。
 
 **カスタムフィルタ・ユーザールール**
 * **カスタムフィルタ**
@@ -837,7 +837,7 @@ Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への
 * **[Chrome Web Store](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg)**
 * **[HP](https://adguard.com/ja/adguard-browser-extension/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardBrowserExtension)**
 
-Chrome 拡張機能 AdGuard Browser Extension MV3を使用するためには、拡張機能の内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。組み込みのフィルタリスト + カスタムフィルタは、Chrome 拡張機能本体が更新された際にアップデートされます。
+Chrome 拡張機能 AdGuard Browser Extension MV3でスクリプトレットを含む高度なルールを使用する場合は、拡張機能の内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。組み込み・カスタムフィルタは、拡張機能本体の更新に加え、対応バージョンではポップアップまたはフィルタ画面から手動更新を確認できます。
 
 v5.2.400以降、拡張機能と組み込み・カスタムフィルタは、「ツールバーのアイコン > 右上ポップアップの↻」または「フィルタ > ↻アップデートを確認する」から最新状態を確認できます。
 
@@ -845,9 +845,9 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 （※ Chromeの拡張機能管理画面での「更新ボタン↻」では、カスタムフィルタの再読み込みがトリガーされないケースが報告されています。 [Issues #2944](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2944)  / [Issues #3016](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016)）
 
-[AdGuard Browser Extension MV3 vv5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
+[AdGuard Browser Extension MV3 v5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
 
-ポップアップパネルの更新ボタン↻、またはフィルタセクションの更新ボタン↻から、カスタムフィルタを手動で更新できるようになりました（! Version: 必須）。
+ポップアップパネルの更新ボタン↻、またはフィルタセクションの更新ボタン↻から、カスタムフィルタを手動で更新できるようになりました。`! Version:` は版の識別と更新状況の確認に有用ですが、URLの再取得そのものを成立させる唯一の条件ではありません。
 
 * **[AdGuard ブラウザ拡張機能 MV3対応版の解説](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)**
 

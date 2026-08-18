@@ -90,8 +90,12 @@ class ModifierConversionTests(unittest.TestCase):
         rule = r"/^https?:\/\/[^/]*pay(?:[/?#]|$)/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            r"/^https?:\/\/[^\/]*pay(?:[\/?#]|\$)/",
+            r"/^https?:\/\/[^\/]*pay(?:[\/?#]|$)/",
         )
+
+    def test_end_anchor_in_regex_is_preserved(self):
+        rule = r"/tracker$/"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
 
     def test_unescaped_slash_outside_character_class_remains_delimiter(self):
         rule = r"/^https?:\/\/example\.com\//$document"

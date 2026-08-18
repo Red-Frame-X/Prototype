@@ -122,12 +122,6 @@ class AdGuardOptimizer:
 
                 normalized_pattern.append('/')
                 return prefix, ''.join(normalized_pattern), check_line[idx + 1:]
-            elif char == '$' and not is_escaped:
-                # AdGuardでは正規表現内の $ も修飾子区切りとの曖昧さを避けるためエスケープする
-                normalized_pattern.append(r'\$')
-                idx += 1
-                continue
-
             normalized_pattern.append(char)
             idx += 1
 
