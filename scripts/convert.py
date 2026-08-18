@@ -138,6 +138,27 @@ class AdGuardOptimizer:
             idx += 1
         return False
 
+    def _contains_embedded_end_anchor(self, pattern_str: str) -> bool:
+        """Return whether an unescaped $ anchor appears before the pattern end.
+
+        AGLint interprets an embedded ``$`` followed by regex tokens (for example
+        ``(?:/|$)``) as the start of AdGuard modifiers when the rule has no real
+        modifier section.  The affected source rules are document URL rules, so
+        adding an explicit ``$document`` modifier removes the ambiguity without
+        changing which top-level navigations they block.
+        """
+        in_character_class = False
+        for idx, char in enumerate(pattern_str):
+            is_escaped = self._count_consecutive_backslashes(pattern_str, idx) % 2 == 1
+            if char == '[' and not is_escaped:
+                in_character_class = True
+            elif char == ']' and not is_escaped:
+                in_character_class = False
+            elif char == '$' and not is_escaped and not in_character_class:
+                if idx != len(pattern_str) - 1:
+                    return True
+        return False
+
     def optimize_line(self, line: str) -> Optional[str]:
         original_line = line.strip()
         line = original_line
@@ -168,6 +189,11 @@ class AdGuardOptimizer:
             # ReDoS対策 (過剰なバックトラックのパージ)
             if self.re_redos_check.search(pattern_str):
                 return f"! [High-Load Regex] {original_line}"
+
+            # Bare regex rules containing an embedded end anchor are ambiguous
+            # to AGLint (it treats the anchor as the modifier separator).
+            if not modifier_part and self._contains_embedded_end_anchor(pattern_str):
+                modifier_part = '$document'
 
             line = f"{prefix}{regex_part}{modifier_part}"
 
