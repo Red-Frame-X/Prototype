@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260818 |
+| **Version** | 20260819 |
 
 この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
 * [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
@@ -1092,6 +1092,14 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
 * AdGuard for Android v4.7.1以上のプライベートブラウザが原因で、WebViewの更新後に自動再起動に失敗する現象がありました。
 
 **対処法（※ローカルVPNの安定化）**
+
+**Android 17の「デバイスの管理」を有効化（Pixel 10aで確認）**
+
+Android 17では、**設定 > セキュリティとプライバシー > デバイスの管理 > AdGuard** を開き、AdGuardのトグルをONにします。これにより、システムの最適化によってAdGuardがバックグラウンドで停止されにくくなり、アプリを閉じている間も保護を維持しやすくなります。
+
+* この項目が表示される端末・OSビルドでのみ設定できます。メーカーやAndroidのバージョンによって、項目名や経路が異なる場合があります。
+* バックグラウンド停止を完全に防ぐ保証はありません。Android 17では端末のRAM容量に応じたアプリのメモリ上限も導入されており、上限を超えたプロセスは終了される場合があります（[Android Developers](https://developer.android.com/about/versions/17/behavior-changes-all#app-memory-limits)）。
+* あわせて、Androidの**常時接続VPN**と**VPN以外の接続をブロック**を必要に応じて設定し、AdGuardのバッテリー使用量を**制限なし**にすると安定性の向上が期待できます（[AdGuard公式タスクキル対策ガイド](https://adguard.com/kb/ja/adguard-for-android/solving-problems/background-work/)）。ただし、「VPN以外の接続をブロック」を有効にすると、AdGuard停止時やVPN接続失敗時に通信できなくなる点に注意してください。
 
 ① v4.6.5以下（例: [v3.6.11](https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11)）へダウングレード。
 
