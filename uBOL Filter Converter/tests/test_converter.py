@@ -1,0 +1,65 @@
+import importlib.util
+import sys
+import unittest
+from pathlib import Path
+
+
+MODULE_PATH = Path(__file__).resolve().parents[1] / "converter_impl.py"
+if not MODULE_PATH.exists():
+    MODULE_PATH = Path(__file__).resolve().parents[2] / "scripts" / "convert_adguard_to_ubol.py"
+SPEC = importlib.util.spec_from_file_location("ubol_converter", MODULE_PATH)
+converter = importlib.util.module_from_spec(SPEC)
+assert SPEC and SPEC.loader
+sys.modules[SPEC.name] = converter
+SPEC.loader.exec_module(converter)
+
+
+class LineConversionTests(unittest.TestCase):
+    def test_plain_cosmetic_rule_is_preserved(self):
+        self.assertEqual(converter.convert_line("example.com##.ad").output, "example.com##.ad")
+
+    def test_native_has_rule_is_preserved(self):
+        rule = "example.com##section:has(> .promo)"
+        self.assertEqual(converter.convert_line(rule).output, rule)
+
+    def test_adguard_extended_separator_becomes_ubo_separator(self):
+        result = converter.convert_line("example.com#?#div:has(.promo)")
+        self.assertEqual(result.output, "example.com##div:has(.promo)")
+        self.assertEqual(result.status, "converted")
+
+    def test_contains_rule_is_excluded_instead_of_broadened(self):
+        result = converter.convert_line("example.com#?#div:contains(Promo)")
+        self.assertIsNone(result.output)
+        self.assertEqual(result.reason, "procedural-or-style-cosmetic")
+
+    def test_html_filter_is_excluded(self):
+        self.assertEqual(converter.convert_line('example.com$$div[id="ad"]').reason, "html-filtering")
+
+    def test_scriptlet_is_excluded(self):
+        self.assertEqual(converter.convert_line("example.com#%#//scriptlet('set-cookie')").reason, "scriptlet")
+
+    def test_app_modifier_is_excluded(self):
+        result = converter.convert_line("@@||example.com^$app=com.example.app")
+        self.assertIsNone(result.output)
+        self.assertEqual(result.reason, "modifier:app")
+
+    def test_xhr_alias_is_converted(self):
+        result = converter.convert_line("||example.com^$xhr,third-party")
+        self.assertEqual(result.output, "||example.com^$xmlhttprequest,third-party")
+
+    def test_unsupported_modifier_is_excluded(self):
+        result = converter.convert_line("||example.com^$script,replace=/a/b/")
+        self.assertIsNone(result.output)
+        self.assertEqual(result.reason, "modifier:replace")
+
+    def test_non_re2_regex_is_excluded(self):
+        self.assertEqual(converter.convert_line(r"/(?<=ad)tracker/").reason, "non-re2-regex")
+
+    def test_report_keeps_source_line_number(self):
+        output, excluded = converter.convert(["! comment", "example.com##.ad", "@@||api^$app=x"])
+        self.assertEqual(output, ["! comment", "example.com##.ad"])
+        self.assertEqual(excluded[0]["line"], 3)
+
+
+if __name__ == "__main__":
+    unittest.main()
