@@ -133,9 +133,10 @@ def read_source(source: str) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    default_dist = Path(__file__).resolve().parent / "dist"
     parser.add_argument("--input", default=DEFAULT_SOURCE, help="input file or HTTP(S) URL")
-    parser.add_argument("--output", default="dist/AdGuard_Custom_Rules_uBOL.txt")
-    parser.add_argument("--report", default="dist/AdGuard_Custom_Rules_uBOL.report.json")
+    parser.add_argument("--output", default=str(default_dist / "AdGuard_Custom_Rules_uBOL.txt"))
+    parser.add_argument("--report", default=str(default_dist / "AdGuard_Custom_Rules_uBOL.report.json"))
     args = parser.parse_args(argv)
 
     try:
