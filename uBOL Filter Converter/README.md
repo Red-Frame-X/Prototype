@@ -24,20 +24,20 @@ JSONレポートへ理由と元の行番号を記録します。
 Python 3.10以降、外部パッケージ不要です。
 
 ```bash
-python uBOL-Filter-Converter/converter.py
+python "uBOL Filter Converter/converter.py"
 ```
 
 ローカルファイルを変換する場合：
 
 ```bash
-python uBOL-Filter-Converter/converter.py \
+python "uBOL Filter Converter/converter.py" \
   --input "AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt"
 ```
 
 出力先を変更する場合：
 
 ```bash
-python uBOL-Filter-Converter/converter.py \
+python "uBOL Filter Converter/converter.py" \
   --output /path/to/filters.txt \
   --report /path/to/report.json
 ```
@@ -45,7 +45,7 @@ python uBOL-Filter-Converter/converter.py \
 ## テスト
 
 ```bash
-python -m unittest discover -s uBOL-Filter-Converter/tests -v
+python -m unittest discover -s "uBOL Filter Converter/tests" -v
 ```
 
 変換元の既存ファイルや、リポジトリ内の既存変換スクリプトは変更しません。
