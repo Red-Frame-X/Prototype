@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608201259
+! Version: 202608201850
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,6 +9,12 @@
 ! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.
 ! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.
 
+/https?:\/\/[^\/]*hitomi[^\/]*\.wew\.jp/$document
+/https?:\/\/[^\/]*raw[^\/]*\.wew\.jp/$document
+/https?:\/\/[^\/]*momon-ga[^\/]*\.wew\.jp/$document
+/https?:\/\/[^\/]*hitomi[^\/]*\.wpx\.jp/$document
+/https?:\/\/[^\/]*raw[^\/]*\.wpx\.jp/$document
+/https?:\/\/[^\/]*momon-ga[^\/]*\.wpx\.jp/$document
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -2687,6 +2693,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dojin-review-navi.com^$document
 ||dojin.holito-kouso.jp^$document
 ||dojin315.com^$document
+||dojindb.net^$document
 ||dojinfanza.com^$document
 ||dojingame.net^$document
 ||dojinmanga.net^$document
@@ -2789,6 +2796,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||doujin0807u.site^$document
 ||doujin2.makianosaihu.com^$document
 ||doujin2026.wew.jp^$document
+||doujinadult.com^$document
 ||doujinanalytica.com^$document
 ||doujinbank.com^$document
 ||doujincco-ero.com^$document
@@ -3144,6 +3152,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||epson.ru^$document
 ||eqon.app^$document
 ||eraption.com^$document
+||erdj-island.com^$document
 ||erertic.dojin.com^$document
 ||ericsonmobile.com^$document
 ||erimakee.com^$document
@@ -3593,6 +3602,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||footballwarr.com^$document
 ||footforwardfootwear.com^$document
 ||for-food.online^$document
+||forbarcelonalovers.com^$document
 ||forbiddenwhisper.com^$document
 ||forese.life^$document
 ||forest-life-japan.com^$document
@@ -4344,6 +4354,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||happycock.club^$document
 ||happyjounal888.com^$document
 ||happylife50s.com^$document
+||happylifelive.jp^$document
 ||happymod-bk5.softonic-th.com^$document
 ||happymod-extra.ar.uptodown.com^$document
 ||happymod-extra.br.uptodown.com^$document
@@ -4625,6 +4636,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hitomi-vg.com^$document
 ||hitomi.median-net.jp^$document
 ||hitomi.momonga-raw.com^$document
+||hitomi.raw.cfbx.jp^$document
 ||hitomia.com^$document
 ||hitomibazz.com^$document
 ||hitomibook.com^$document
@@ -4782,6 +4794,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||human-profile.hatenablog.com^$document
 ||human.happinessisthailand.com^$document
 ||humi.jp^$document
+||hungryz.app^$document
 ||hunting4gold.com^$document
 ||hunyuanvideo.org^$document
 ||hurtlocker.jp^$document
@@ -6501,6 +6514,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||masutabe.info^$document
 ||masyuo.com^$document
 ||mata-ashita.com^$document
+||matakana.jp^$document
 ||matce.cn^$document
 ||match-mote.jp^$document
 ||matching-affi.jp^$document
@@ -6911,6 +6925,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||momongarawhitomi.jp^$document
 ||momongasan.com^$document
 ||momongasan.wpx.jp^$document
+||momoniji.com^$document
 ||momonoyakata.com^$document
 ||momoon-ga.com^$document
 ||moms-happylife.com^$document
@@ -7385,6 +7400,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||niigata.mypl.net^$document
 ||niiuf1hckvrtyjxfsury.stores.jp^$document
 ||niji-doujin.jp^$document
+||niji-gazo.com/source/009^$document
 ||niji.e-r-o-anime.xyz^$document
 ||nijigen.joshiana-room.com^$document
 ||nijigenbomber.net^$document
@@ -9130,6 +9146,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ratio.thyshopp.life^$document
 ||rausu-daiichi-hotel.jp^$document
 ||raw-dotya.com^$document
+||raw-hitomi5.wew.jp^$document
 ||raw-manga.moe^$document
 ||raw-missav19.tokyo^$document
 ||raw-momonga.com^$document
@@ -12990,6 +13007,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.modroid-apk.store^$document
 ||www.moduloasr.com^$document
 ||www.moeasia.net^$document
+||www.moedb.net^$document
 ||www.mohammedmubinmallick.com^$document
 ||www.molly.online^$document
 ||www.momoshiro245.info^$document
