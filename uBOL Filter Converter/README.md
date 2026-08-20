@@ -71,6 +71,17 @@ python "uBOL Filter Converter/converter.py" \
 python -m unittest discover -s "uBOL Filter Converter/tests" -v
 ```
 
+## uBOL CHANGELOGの自動確認
+
+GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)を
+毎日03:37（JST）に取得します。上流CHANGELOGのSHA-256が変化した場合のみ、
+最新バージョン、確認日時、追跡している互換性情報を
+[`upstream/ubol-changelog.json`](upstream/ubol-changelog.json)へ自動反映します。
+
+取得失敗や予期しないCHANGELOG形式は正常終了として扱わず、誤ったメタデータで
+上書きしません。また、CHANGELOGの文章から変換ルールを推測して自動変更することは
+ありません。新しい構文や制限は内容を確認し、テストを追加してから変換処理へ反映します。
+
 変換元の既存ファイルや、リポジトリ内の既存変換スクリプトは変更しません。
 
 ## 参考資料
