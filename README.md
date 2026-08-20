@@ -1,6 +1,7 @@
 [![FLOSS Support](https://img.shields.io/badge/FLOSS-Supported-3DA639?style=flat&logo=opensourceinitiative&logoColor=white)](https://opensource.org/)
 
 ![syntax: AdGuard](https://img.shields.io/badge/syntax-AdGuard-68BC71?logo=adguard&logoColor=white)
+[![syntax: uBOL](https://img.shields.io/badge/syntax-uBOL-800000?logo=ublockorigin&logoColor=white)](https://github.com/Red-Frame-X/Prototype/tree/main/uBOL%20Filter%20Converter)
 ![syntax: Regex](https://img.shields.io/badge/syntax-Regex-009688)
 
 ![language: JavaScript](https://img.shields.io/badge/language-JavaScript-F7DF1E?logo=javascript&logoColor=black)
