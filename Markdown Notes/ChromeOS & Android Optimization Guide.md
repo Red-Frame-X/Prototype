@@ -974,7 +974,9 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
 
 **参考サイト**
 * [HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists)：世界で最も高評価な有志による統合型DNSブロックリスト。
-* [HaGeZi's DNS Blocklists Miror](https://gitlab.com/hagezi/mirror)：GitLab
+  * [GitLabミラー](https://gitlab.com/hagezi/mirror)：1日1回、GitHubと同期して更新。
+  * [Codebergミラー](https://codeberg.org/hagezi/mirror2)：1日1回、GitHubと同期して更新。
+  * [DNSBunkerミラー](https://hagezi-mirror.dnsbunker.org)：4〜8時間ごとに更新。
 
 ---
 
