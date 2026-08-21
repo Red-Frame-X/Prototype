@@ -14,7 +14,10 @@ from typing import Any
 
 BROWSER_CHANGELOG_URL = "https://raw.githubusercontent.com/AdguardTeam/AdguardBrowserExtension/refs/heads/master/CHANGELOG.md"
 ANDROID_RELEASES_URL = "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100"
-VERSION_RE = re.compile(r"(?im)^#{2,4}\s+(?:AdGuard(?: for Android)?\s+)?v?(\d+(?:\.\d+)+)\b")
+VERSION_RE = re.compile(
+    r"(?im)^#{2,4}\s+(?:AdGuard(?: for Android)?\s+)?\[?v?"
+    r"(\d+(?:\.\d+)+)\]?(?=\s|$)"
+)
 IMPACT_RE = re.compile(r"(?i)\b(?:filtering engine|corelibs|scriptlets?|extended css|cosmetic|modifier|filtering rules?|declarative net request|dnr|manifest v3|mv3|html filtering|redirect|removeparam|csp|regex|regular expression)\b")
 
 

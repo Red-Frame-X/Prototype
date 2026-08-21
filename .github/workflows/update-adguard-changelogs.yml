@@ -41,7 +41,7 @@ jobs:
             'upstream/adguard/metadata.json'
             'upstream/adguard/converter-review.md'
           )
-          if git diff --quiet -- "${paths[@]}"; then
+          if [[ -z "$(git status --porcelain -- "${paths[@]}")" ]]; then
             echo 'No upstream AdGuard changelog changes detected.'
             exit 0
           fi

@@ -12,7 +12,7 @@ module = importlib.util.module_from_spec(SPEC)
 assert SPEC and SPEC.loader
 SPEC.loader.exec_module(module)
 
-BROWSER = b"# Changelog\n\n## 5.2.0\n\n- MV3 filtering engine supports a new modifier.\n"
+BROWSER = b"# Changelog\n\n## [5.2.0] - 2026-08-21\n\n- MV3 filtering engine supports a new modifier.\n"
 ANDROID_JSON = json.dumps([{"name": "AdGuard for Android v4.13.1", "tag_name": "v4.13.1", "published_at": "2026-08-03T00:00:00Z", "html_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.1", "body": "CoreLibs and Scriptlets were updated."}]).encode()
 
 
@@ -21,6 +21,9 @@ class ChangelogUpdaterTests(unittest.TestCase):
         result = module.android_releases_to_markdown(ANDROID_JSON).decode()
         self.assertIn("## AdGuard for Android v4.13.1", result)
         self.assertEqual(module.latest_version(result), "4.13.1")
+
+    def test_browser_keep_a_changelog_heading(self):
+        self.assertEqual(module.latest_version(BROWSER.decode()), "5.2.0")
 
     def test_relevant_entries_are_flagged(self):
         self.assertEqual(len(module.relevant_lines(BROWSER.decode())), 1)
