@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "policy": "reviewed-only",
+  "targets": {
+    "adguard-browser-extension-mv3": {
+      "converter": "scripts/convert.py",
+      "regex_engine": "RE2",
+      "unsupported_rule_families": ["html-filtering", "redirect-rule"]
+    },
+    "adguard-for-android": {
+      "converter": "scripts/convert.py",
+      "compatibility": "best-effort",
+      "note": "CoreLibs-specific behavior must be verified independently of MV3."
+    },
+    "ublock-origin-lite": {
+      "converter": "uBOL Filter Converter/converter_impl.py",
+      "source": "uBO Lite changelog metadata"
+    }
+  }
+}
