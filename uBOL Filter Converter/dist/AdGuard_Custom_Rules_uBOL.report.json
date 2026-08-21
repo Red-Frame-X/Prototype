@@ -1,12 +1,11 @@
 {
-  "source": "AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt",
-  "generated": "2026-08-21T07:34:11+00:00",
+  "source": "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt",
   "input_lines": 397,
-  "output_lines_excluding_generated_header": 311,
-  "excluded_count": 34,
+  "output_lines_excluding_generated_header": 308,
+  "excluded_count": 35,
   "excluded_by_reason": {
     "html-filtering": 3,
-    "modifier:app": 8,
+    "modifier:app": 9,
     "procedural-or-style-cosmetic": 21,
     "scriptlet": 2
   },
@@ -35,6 +34,11 @@
       "line": 57,
       "reason": "modifier:app",
       "rule": "@@||stats.g.doubleclick.net^$app=jp.kappasushi.app"
+    },
+    {
+      "line": 67,
+      "reason": "modifier:app",
+      "rule": "@@||www.google-analytics.com^$app=jp.kappasushi.app"
     },
     {
       "line": 138,

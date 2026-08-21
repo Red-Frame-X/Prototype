@@ -3,6 +3,8 @@
 # =========================
 # Gitが早期に走査を打ち切れるよう、内部ファイルが膨大なディレクトリを最上部に配置
 node_modules/
+__pycache__/
+*.py[cod]
 .idea/
 .history/
 $RECYCLE.BIN/

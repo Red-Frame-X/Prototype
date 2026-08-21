@@ -42,10 +42,6 @@ chatgpt.com##aside:has(a[href*="/articles/11487775-apps-in-chatgpt"]):has(button
 ! downdetector.jp##[data-service-list-ad="true"]
 ! downdetector.jp##div[data-service-list-ad]
 
-! google-analytics.com
-! 全アプリ・全サイトでwww.google-analytics.comへの通信を許可（既存の追跡防止ルールも解除されるため注意）
-@@||www.google-analytics.com^
-
 ! google.com
 ! Google検索の補助モジュールを非表示にするルール
 ! 使用する際は、必要なルールの先頭にある「! 」を削除する
@@ -170,6 +166,7 @@ news.yahoo.co.jp###articleCommentModule
 ! IDがoffic-で始まる独自広告・案内コンテナを非表示
 officeforest.org##div[id^="offic-"]
 
+! old.klz9.com,klto9.com,jestful.net
 ! show_new_commentを直下に持つ新着コメントウィジェット全体を非表示
 old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 

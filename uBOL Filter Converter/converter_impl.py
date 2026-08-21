@@ -14,13 +14,18 @@ import sys
 import urllib.request
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
-DEFAULT_SOURCE = (
+CANONICAL_SOURCE = (
     "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/"
     "AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt"
+)
+REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_SOURCE = str(
+    REPOSITORY_ROOT
+    / "AdGuard Custom Rules"
+    / "AdGuard Custom Rules - Red Frame X.txt"
 )
 
 # AdGuard-only or non-declarative features which cannot be translated without
@@ -134,7 +139,10 @@ def convert(lines: Iterable[str]) -> tuple[list[str], list[dict[str, object]]]:
         for index, (number, raw_line) in enumerate(block):
             line = raw_line.strip()
             if line.startswith("!") or line.startswith("["):
-                if index == 0 and re.fullmatch(r"!\s+[A-Za-z0-9.-]+", line):
+                if index == 0 and re.fullmatch(
+                    r"!\s+[A-Za-z0-9.*_-]+(?:,[A-Za-z0-9.*_-]+)*",
+                    line,
+                ):
                     domain_heading = line
                 else:
                     pending_comments.append(line)
@@ -199,7 +207,6 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: {error}", file=sys.stderr)
         return 1
 
-    generated = datetime.now(timezone.utc).isoformat(timespec="seconds")
     # Subscription metadata only.  Operational notes live in README.md so the
     # downloaded filter stays compact and stable between builds.
     header = [
@@ -223,9 +230,13 @@ def main(argv: list[str] | None = None) -> int:
     output_path.write_text("\n".join(header + rules) + "\n", encoding="utf-8")
 
     reason_counts = Counter(str(item["reason"]) for item in excluded)
+    input_path = Path(args.input)
+    try:
+        is_repository_source = input_path.resolve() == Path(DEFAULT_SOURCE).resolve()
+    except OSError:
+        is_repository_source = False
     report = {
-        "source": args.input,
-        "generated": generated,
+        "source": CANONICAL_SOURCE if is_repository_source else args.input,
         "input_lines": len(source_text.splitlines()),
         "output_lines_excluding_generated_header": len(rules),
         "excluded_count": len(excluded),

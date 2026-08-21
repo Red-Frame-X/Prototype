@@ -71,6 +71,11 @@ python "uBOL Filter Converter/converter.py" \
 python -m unittest discover -s "uBOL Filter Converter/tests" -v
 ```
 
+変換元または変換コードをmainで更新すると、GitHub Actionsがテスト後にフィルタと
+JSONレポートを再生成します。Pull Requestでは同じ変換を実行し、コミット済みの
+生成物と一致しない場合に品質チェックを失敗させます。レポートから実行時刻を除外し、
+同じ入力から常に同じ内容を生成できるようにしています。
+
 ## uBOL CHANGELOGの自動確認
 
 GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)を

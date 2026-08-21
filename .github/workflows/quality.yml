@@ -31,6 +31,13 @@ jobs:
           python -m unittest discover -s tests -v
           python -m unittest discover -s "uBOL Filter Converter/tests" -v
 
+      - name: Verify committed uBOL outputs
+        run: |
+          python "uBOL Filter Converter/converter.py"
+          git diff --exit-code -- \
+            "uBOL Filter Converter/dist/AdGuard_Custom_Rules_uBOL.txt" \
+            "uBOL Filter Converter/dist/AdGuard_Custom_Rules_uBOL.report.json"
+
       - name: Run Markdownlint
         run: npm run lint:markdown
 
