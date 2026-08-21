@@ -60,6 +60,29 @@ class LineConversionTests(unittest.TestCase):
         self.assertEqual(output, ["! comment", "example.com##.ad"])
         self.assertEqual(excluded[0]["line"], 3)
 
+    def test_excluded_rule_removes_domain_and_description_comments(self):
+        output, excluded = converter.convert([
+            "! ads-x.com",
+            "! App compatibility exception",
+            "@@||static.ads-x.com^$app=example.app",
+        ])
+        self.assertEqual(output, [])
+        self.assertEqual(excluded[0]["line"], 3)
+
+    def test_mixed_domain_keeps_only_comments_for_surviving_rules(self):
+        output, _ = converter.convert([
+            "! example.com",
+            "! Removed app-only rule",
+            "@@||api.example.com^$app=example.app",
+            "! Visible ad container",
+            "example.com##.ad",
+        ])
+        self.assertEqual(output, ["! example.com", "! Visible ad container", "example.com##.ad"])
+
+    def test_standalone_section_comment_is_preserved(self):
+        output, _ = converter.convert(["! Global"])
+        self.assertEqual(output, ["! Global"])
+
 
 if __name__ == "__main__":
     unittest.main()
