@@ -81,7 +81,7 @@ JSONレポートを再生成します。Pull Requestでは同じ変換を実行�
 GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)を
 毎日03:37（JST）に取得します。上流CHANGELOGのSHA-256が変化した場合のみ、
 最新バージョン、確認日時、追跡している互換性情報を
-[`upstream/ubol-changelog.json`](upstream/ubol-changelog.json)へ自動反映します。
+[`upstream/ubol-changelog.json`](upstream/ubol-changelog.json)へ自動反映します。同時に、Argos TranslateをGitHub Actions内でオフライン実行し、公式CHANGELOG全体の日本語版を[`upstream/ubol-CHANGELOG.md`](upstream/ubol-CHANGELOG.md)へ生成します。APIキーや有料翻訳サービスは使用せず、コード、URL、バージョン番号を保護し、翻訳キャッシュによって新規・変更部分だけを処理します。
 
 取得失敗や予期しないCHANGELOG形式は正常終了として扱わず、誤ったメタデータで
 上書きしません。また、CHANGELOGの文章から変換ルールを推測して自動変更することは

@@ -58,9 +58,23 @@ def build_metadata(changelog: bytes, source: str, checked_at: str) -> dict[str, 
     }
 
 
-def update(source: str, output: Path, now: datetime | None = None) -> bool:
+def update(
+    source: str,
+    output: Path,
+    now: datetime | None = None,
+    source_output: Path | None = None,
+) -> bool:
     changelog = read_source(source)
     digest = hashlib.sha256(changelog).hexdigest()
+    source_changed = False
+    if source_output is not None:
+        source_output.parent.mkdir(parents=True, exist_ok=True)
+        source_changed = (
+            not source_output.exists() or source_output.read_bytes() != changelog
+        )
+        if source_changed:
+            source_output.write_bytes(changelog)
+
     if output.exists():
         try:
             current = json.loads(output.read_text(encoding="utf-8"))
@@ -68,7 +82,7 @@ def update(source: str, output: Path, now: datetime | None = None) -> bool:
             current = {}
         if current.get("changelog_sha256") == digest:
             print("No upstream changelog changes detected.")
-            return False
+            return source_changed
 
     timestamp = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
     metadata = build_metadata(changelog, source, timestamp)
@@ -90,9 +104,14 @@ def main() -> int:
         type=Path,
         default=base_dir / "upstream" / "ubol-changelog.json",
     )
+    parser.add_argument(
+        "--source-output",
+        type=Path,
+        default=base_dir / "upstream" / "ubol-CHANGELOG.source.md",
+    )
     args = parser.parse_args()
     try:
-        update(args.source, args.output)
+        update(args.source, args.output, source_output=args.source_output)
     except (OSError, UnicodeError, ValueError) as error:
         parser.error(str(error))
     return 0
