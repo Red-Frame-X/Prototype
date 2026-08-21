@@ -1,5 +1,7 @@
 import importlib.util
+import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -82,6 +84,44 @@ class LineConversionTests(unittest.TestCase):
     def test_standalone_section_comment_is_preserved(self):
         output, _ = converter.convert(["! Global"])
         self.assertEqual(output, ["! Global"])
+
+    def test_multi_domain_heading_is_preserved_for_surviving_rule(self):
+        output, _ = converter.convert([
+            "! one.example,two.example",
+            "! Removed procedural rule",
+            "one.example,two.example#?#div:contains(Ad)",
+            "! Surviving standard rule",
+            "one.example,two.example##.ad",
+        ])
+        self.assertEqual(output, [
+            "! one.example,two.example",
+            "! Surviving standard rule",
+            "one.example,two.example##.ad",
+        ])
+
+
+class MainOutputTests(unittest.TestCase):
+    def test_report_is_deterministic_and_contains_no_runtime_timestamp(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.txt"
+            output = root / "output.txt"
+            report = root / "report.json"
+            source.write_text("! example.com\n! Ad container\nexample.com##.ad\n", encoding="utf-8")
+            args = [
+                "--input", str(source),
+                "--output", str(output),
+                "--report", str(report),
+            ]
+
+            self.assertEqual(converter.main(args), 0)
+            first_output = output.read_bytes()
+            first_report = report.read_bytes()
+            self.assertEqual(converter.main(args), 0)
+
+            self.assertEqual(output.read_bytes(), first_output)
+            self.assertEqual(report.read_bytes(), first_report)
+            self.assertNotIn("generated", json.loads(first_report))
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608112200
+! Version: 202608211640
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -63,8 +63,8 @@ chatgpt.com#?#aside:has(h3:contains(ChatGPT Work でさらに進める)):has(but
 ! downdetector.jp##div[data-service-list-ad]
 
 ! google-analytics.com
-! 全アプリ・全サイトでwww.google-analytics.comへの通信を許可（既存の追跡防止ルールも解除されるため注意）
-@@||www.google-analytics.com^
+! かっぱ寿司アプリの起動・通信エラー回避（他のアプリ・Webサイトには適用しない）
+@@||www.google-analytics.com^$app=jp.kappasushi.app
 
 ! google.com
 ! Google検索の補助モジュールを非表示にするルール
