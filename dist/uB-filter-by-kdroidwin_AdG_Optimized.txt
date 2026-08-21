@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608211852
+! Version: 202608220049
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,7 +9,6 @@
 ! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.
 ! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.
 
-||pro^$document,to=~site.pro|~sitechecker.pro|~polylang.pro|~salebot.pro|~keenetic.pro|~webd.pro|~online.pro|~opus.pro|~awan.pro|~landbot.pro|~quiknode.pro|~hashvault.pro|~divisare.pro
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -5840,6 +5839,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ksarjouamaa.com^$document
 ||ksmlc.cn^$document
 ||ksualumnipoker.com^$document
+||kt-life.net^$document
 ||ktaj.jp^$document
 ||ktwoblog.com^$document
 ||kualumtech.com^$document
@@ -7054,6 +7054,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||murakamisayuri.jp^$document
 ||murasan-emblab.com^$document
 ||mure.pr.net^$document
+||murena.com^$document
 ||murphsmovieworld.com^$document
 ||musee-pla.com^$document
 ||museo.org^$document
@@ -8135,6 +8136,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/vast_rue955^$document
 ||note.com/vivid_cosmos9883^$document
 ||note.com/viwizard_jp^$document
+||note.com/volcano_youtube^$document
 ||note.com/vpn_lab^$document
 ||note.com/vpn_life^$document
 ||note.com/vs_item^$document
@@ -8790,6 +8792,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||pizzasta.jp^$document
 ||pkaki.com^$document
 ||pkshampoo.com^$document
+||plai-ai.com^$document
 ||planetacadiz.com^$document
 ||planetaverde.site^$document
 ||planningsolutions.in^$document
@@ -8939,6 +8942,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||private-note.jp^$document
 ||privatevpn.com^$document
 ||pro-woodfactory.com^$document
+||pro^$document,to=~site.pro|~sitechecker.pro|~polylang.pro|~salebot.pro|~keenetic.pro|~webd.pro|~online.pro|~opus.pro|~awan.pro|~landbot.pro|~quiknode.pro|~hashvault.pro|~divisare.pro
 ||product.info^$document
 ||product.torex.com.cn^$document
 ||products.swagelok.com.cn^$document
