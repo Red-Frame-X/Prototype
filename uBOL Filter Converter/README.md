@@ -81,7 +81,8 @@ JSONレポートを再生成します。Pull Requestでは同じ変換を実行�
 GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)を
 毎日03:37（JST）に取得します。上流CHANGELOGのSHA-256が変化した場合のみ、
 最新バージョン、確認日時、追跡している互換性情報を
-[`upstream/ubol-changelog.json`](upstream/ubol-changelog.json)へ自動反映します。同時に、Argos TranslateをGitHub Actions内でオフライン実行し、公式CHANGELOG全体の日本語版を[`upstream/ubol-CHANGELOG.md`](upstream/ubol-CHANGELOG.md)へ生成します。APIキーや有料翻訳サービスは使用せず、コード、URL、バージョン番号を保護し、翻訳キャッシュによって新規・変更部分だけを処理します。
+[`upstream/ubol-changelog.json`](upstream/ubol-changelog.json)へ自動反映し、英語原文を
+[`upstream/ubol-CHANGELOG.source.md`](upstream/ubol-CHANGELOG.source.md)へミラーします。
 
 取得失敗や予期しないCHANGELOG形式は正常終了として扱わず、誤ったメタデータで
 上書きしません。また、CHANGELOGの文章から変換ルールを推測して自動変更することは
@@ -91,9 +92,8 @@ GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home
 
 ## 参考資料
 
-- [uBOL Changelog](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)
 - [外部フィルタリスト購読機能の実装コミット](https://github.com/gorhill/uBlock/commit/06deb19dfa85c13e48ad44d2e6dc4f64a96d6cbc)
 
-## 日本語CHANGELOG
+## 英語CHANGELOG
 
-- [uBlock Origin Lite](upstream/ubol-CHANGELOG.md)
+- [uBlock Origin Lite](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)
