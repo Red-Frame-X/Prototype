@@ -4,8 +4,8 @@
       "product": "AdGuard Browser Extension",
       "source": "https://raw.githubusercontent.com/AdguardTeam/AdguardBrowserExtension/refs/heads/master/CHANGELOG.md",
       "latest_version": "5.5",
-      "sha256": "24ff1c18e6c375230af7ac97f57bb1bfc87ceb79b8040ecaf1a1b860cc36bb16",
-      "checked_at": "2026-08-21T12:08:29+00:00",
+      "sha256": "350cbb9a369dac92bff7284058253729ecfad1da745d7ff34d14a5b6d7ea70c1",
+      "checked_at": "2026-08-21T17:44:40+00:00",
       "converter_relevant_entries": [
         "- `$urltransform` modifier support [tsurlfilter#111].",
         "- `$removeparam` support for SPA navigations [tsurlfilter#188].",
