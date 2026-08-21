@@ -11,13 +11,14 @@ from pathlib import Path
 from typing import Callable
 
 CACHE_FORMAT = 1
-ENGINE = "argos-translate-1.11.0-en-ja"
+ENGINE = "argos-translate-1.11.0-en-ja-v2"
 PROTECTED_RE = re.compile(
     r"(" + chr(96) + r"+[^" + chr(96) + r"]*" + chr(96) + r"+|"
     r"https?://[^\s)>]+)"
 )
 TRANSLATABLE_RE = re.compile(r"[A-Za-z]{2,}")
 FENCE_RE = re.compile(r"^\s*(" + chr(96) * 3 + r"|~~~)")
+LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)]+)\)")
 
 
 def load_cache(path: Path) -> dict[str, str]:
@@ -64,6 +65,21 @@ def translate_piece(
     return cache[key]
 
 
+def translate_fragment(
+    text: str,
+    translator: Callable[[str], str],
+    cache: dict[str, str],
+) -> str:
+    output: list[str] = []
+    cursor = 0
+    for match in PROTECTED_RE.finditer(text):
+        output.append(translate_piece(text[cursor:match.start()], translator, cache))
+        output.append(match.group(0))
+        cursor = match.end()
+    output.append(translate_piece(text[cursor:], translator, cache))
+    return "".join(output)
+
+
 def translate_line(
     line: str,
     translator: Callable[[str], str],
@@ -82,11 +98,14 @@ def translate_line(
     body = line[len(prefix):]
     output: list[str] = [prefix]
     cursor = 0
-    for match in PROTECTED_RE.finditer(body):
-        output.append(translate_piece(body[cursor:match.start()], translator, cache))
-        output.append(match.group(0))
+    for match in LINK_RE.finditer(body):
+        output.append(
+            translate_fragment(body[cursor:match.start()], translator, cache)
+        )
+        label = translate_fragment(match.group(1), translator, cache)
+        output.append(f"[{label}]({match.group(2)})")
         cursor = match.end()
-    output.append(translate_piece(body[cursor:], translator, cache))
+    output.append(translate_fragment(body[cursor:], translator, cache))
     return "".join(output)
 
 

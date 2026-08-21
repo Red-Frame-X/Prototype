@@ -44,6 +44,18 @@ class MarkdownTranslationTests(unittest.TestCase):
             "## 変更",
         )
 
+    def test_markdown_link_structure_and_destination_are_preserved(self):
+        line = "- [Added feature](https://example.com/path)"
+        translated = module.translate_line(
+            line,
+            lambda text: text.replace("Added feature", "機能を追加"),
+            {},
+        )
+        self.assertEqual(
+            translated,
+            "- [機能を追加](https://example.com/path)",
+        )
+
     def test_translation_cache_avoids_duplicate_calls(self):
         calls = []
 
