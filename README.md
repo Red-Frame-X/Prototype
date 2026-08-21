@@ -65,4 +65,4 @@ These are projects that I use on a daily basis and support regularly.
 
 ### License
 
-自身で作成したコンテンツは原則として[CC0 1.0 Universal](LICENSE)で提供します。第三者作品を基にしたファイルには、原作品のライセンスが適用されます。対象範囲、GPL-3.0の派生物、例外および無保証については[`LICENSES.md`](LICENSES.md)を参照してください。
+自身で作成したコンテンツは原則として [CC0 1.0 Universal](LICENSE) で提供します。第三者作品を基にしたファイルには、原作品のライセンスが適用されます。対象範囲、GPL-3.0の派生物、例外および無保証については[`LICENSES.md`](LICENSES.md)を参照してください。
