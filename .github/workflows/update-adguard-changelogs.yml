@@ -38,24 +38,24 @@ jobs:
       - name: Translate changelogs into Japanese
         run: |
           python scripts/translate_changelog.py \
-            --source upstream/adguard/adguard-browser-extension-CHANGELOG.source.md \
-            --output upstream/adguard/adguard-browser-extension-CHANGELOG.md \
-            --cache upstream/adguard/adguard-browser-extension-translation-cache.json
+            --source "AdGuard Custom Rules/ChangeLog/adguard-browser-extension-CHANGELOG.source.md" \
+            --output "AdGuard Custom Rules/ChangeLog/adguard-browser-extension-CHANGELOG.md" \
+            --cache "AdGuard Custom Rules/ChangeLog/adguard-browser-extension-translation-cache.json"
           python scripts/translate_changelog.py \
-            --source upstream/adguard/adguard-for-android-CHANGELOG.source.md \
-            --output upstream/adguard/adguard-for-android-CHANGELOG.md \
-            --cache upstream/adguard/adguard-for-android-translation-cache.json
+            --source "AdGuard Custom Rules/ChangeLog/adguard-for-android-CHANGELOG.source.md" \
+            --output "AdGuard Custom Rules/ChangeLog/adguard-for-android-CHANGELOG.md" \
+            --cache "AdGuard Custom Rules/ChangeLog/adguard-for-android-translation-cache.json"
       - name: Run updater and converter tests
         run: python -m unittest discover -s tests -v
       - name: Commit mirrors and compatibility review if changed
         run: |
           paths=(
-            'upstream/adguard/adguard-browser-extension-CHANGELOG.source.md'
-            'upstream/adguard/adguard-browser-extension-CHANGELOG.md'
-            'upstream/adguard/adguard-browser-extension-translation-cache.json'
-            'upstream/adguard/adguard-for-android-CHANGELOG.source.md'
-            'upstream/adguard/adguard-for-android-CHANGELOG.md'
-            'upstream/adguard/adguard-for-android-translation-cache.json'
+            'AdGuard Custom Rules/ChangeLog/adguard-browser-extension-CHANGELOG.source.md'
+            'AdGuard Custom Rules/ChangeLog/adguard-browser-extension-CHANGELOG.md'
+            'AdGuard Custom Rules/ChangeLog/adguard-browser-extension-translation-cache.json'
+            'AdGuard Custom Rules/ChangeLog/adguard-for-android-CHANGELOG.source.md'
+            'AdGuard Custom Rules/ChangeLog/adguard-for-android-CHANGELOG.md'
+            'AdGuard Custom Rules/ChangeLog/adguard-for-android-translation-cache.json'
             'upstream/adguard/metadata.json'
             'upstream/adguard/converter-review.md'
           )

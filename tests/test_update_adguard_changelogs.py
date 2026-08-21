@@ -41,6 +41,25 @@ class ChangelogUpdaterTests(unittest.TestCase):
             self.assertFalse(module.update(output, "browser", "android", second))
             self.assertEqual((output / "metadata.json").read_text(encoding="utf-8"), before)
 
+    @patch.object(module, "fetch")
+    def test_update_separates_changelogs_from_review_metadata(self, mocked_fetch):
+        mocked_fetch.side_effect = [BROWSER, ANDROID_JSON]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            review_dir = root / "upstream"
+            changelog_dir = root / "ChangeLog"
+            module.update(
+                review_dir,
+                "browser",
+                "android",
+                changelog_dir=changelog_dir,
+            )
+            self.assertTrue((changelog_dir / "adguard-browser-extension-CHANGELOG.source.md").exists())
+            self.assertTrue((changelog_dir / "adguard-for-android-CHANGELOG.source.md").exists())
+            self.assertTrue((review_dir / "metadata.json").exists())
+            self.assertTrue((review_dir / "converter-review.md").exists())
+            self.assertFalse((review_dir / "adguard-browser-extension-CHANGELOG.source.md").exists())
+
     def test_invalid_release_payload_is_rejected(self):
         with self.assertRaises(ValueError):
             module.android_releases_to_markdown(b"[]")

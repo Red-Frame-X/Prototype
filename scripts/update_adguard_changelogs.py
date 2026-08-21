@@ -80,17 +80,24 @@ def build_review(items: list[dict[str, Any]]) -> bytes:
     return "\n".join(lines).encode("utf-8")
 
 
-def update(output_dir: Path, browser_source: str, android_source: str, now: datetime | None = None) -> bool:
+def update(
+    output_dir: Path,
+    browser_source: str,
+    android_source: str,
+    now: datetime | None = None,
+    changelog_dir: Path | None = None,
+) -> bool:
+    changelog_dir = changelog_dir or output_dir
     browser = fetch(browser_source)
     android = android_releases_to_markdown(fetch(android_source))
     checked_at = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
     products = [metadata("AdGuard Browser Extension", browser_source, browser, checked_at), metadata("AdGuard for Android", android_source, android, checked_at)]
     changed = write_if_changed(
-        output_dir / "adguard-browser-extension-CHANGELOG.source.md",
+        changelog_dir / "adguard-browser-extension-CHANGELOG.source.md",
         browser,
     )
     changed |= write_if_changed(
-        output_dir / "adguard-for-android-CHANGELOG.source.md",
+        changelog_dir / "adguard-for-android-CHANGELOG.source.md",
         android,
     )
     metadata_path = output_dir / "metadata.json"
@@ -116,9 +123,19 @@ def main() -> int:
     parser.add_argument("--browser-source", default=BROWSER_CHANGELOG_URL)
     parser.add_argument("--android-source", default=ANDROID_RELEASES_URL)
     parser.add_argument("--output-dir", type=Path, default=Path("upstream/adguard"))
+    parser.add_argument(
+        "--changelog-dir",
+        type=Path,
+        default=Path("AdGuard Custom Rules/ChangeLog"),
+    )
     args = parser.parse_args()
     try:
-        changed = update(args.output_dir, args.browser_source, args.android_source)
+        changed = update(
+            args.output_dir,
+            args.browser_source,
+            args.android_source,
+            changelog_dir=args.changelog_dir,
+        )
     except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
         parser.error(str(error))
     print("AdGuard changelog mirror updated." if changed else "No upstream changes detected.")

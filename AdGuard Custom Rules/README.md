@@ -19,6 +19,11 @@ uBlock Origin Liteで利用する場合は、互換性のないルールを除�
 
 ## CHANGELOG追跡とコンバータ更新
 
-[`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式CHANGELOGとAdGuard for Androidの公式GitHub Releasesを毎日取得し、`upstream/adguard/`へ原文ミラー、Argos Translateによる日本語版、翻訳キャッシュ、メタデータ、互換性レビュー候補を生成します。翻訳はGitHub Actions内でオフライン実行され、APIキーや有料翻訳サービスは使用しません。コード、URL、バージョン番号、Markdown参照定義は翻訳対象から除外します。
+[`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式CHANGELOGとAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ原文ミラー、Argos Translateによる日本語版、翻訳キャッシュを生成します。メタデータと互換性レビュー候補は`upstream/adguard/`へ生成します。翻訳はGitHub Actions内でオフライン実行され、APIキーや有料翻訳サービスは使用しません。コード、URL、バージョン番号、Markdown参照定義は翻訳対象から除外します。
 
 CHANGELOGは人向けの要約であり、フィルタ構文の実行可能な仕様ではありません。このため、文章からコンバータコードを自己変更する処理は行いません。新しい構文や挙動は、公式フィルタリング仕様・CoreLibs／Scriptletsの公開ソースまたは上流Issueで確認し、回帰テストを追加してから[`adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json)を更新します。これにより、誤変換や広すぎるブロックを防ぎます。
+
+## 日本語CHANGELOG
+
+- [AdGuard Browser Extension MV3](ChangeLog/adguard-browser-extension-CHANGELOG.md)
+- [AdGuard for Android](ChangeLog/adguard-for-android-CHANGELOG.md)
