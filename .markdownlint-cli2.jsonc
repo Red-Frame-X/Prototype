@@ -8,6 +8,8 @@
   },
   "globs": [
     "**/*.md",
-    "!node_modules/**"
+    "!node_modules/**",
+    "!upstream/adguard/**",
+    "!uBOL Filter Converter/upstream/**"
   ]
 }

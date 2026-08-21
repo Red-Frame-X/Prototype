@@ -6,14 +6,12 @@ import unittest
 from datetime import datetime, timezone
 from pathlib import Path
 
-
 MODULE_PATH = Path(__file__).resolve().parents[1] / "update_ubol_metadata.py"
 SPEC = importlib.util.spec_from_file_location("ubol_metadata", MODULE_PATH)
 metadata = importlib.util.module_from_spec(SPEC)
 assert SPEC and SPEC.loader
 sys.modules[SPEC.name] = metadata
 SPEC.loader.exec_module(metadata)
-
 
 CHANGELOG = b"""# Changelog
 
@@ -62,11 +60,29 @@ class MetadataTests(unittest.TestCase):
             output = Path(directory) / "metadata.json"
             source.write_bytes(CHANGELOG)
             metadata.update(str(source), output)
-            source.write_bytes(CHANGELOG.replace(b"2026.700.1000", b"2026.701.1000"))
+            source.write_bytes(
+                CHANGELOG.replace(b"2026.700.1000", b"2026.701.1000")
+            )
 
             self.assertTrue(metadata.update(str(source), output))
             result = json.loads(output.read_text(encoding="utf-8"))
             self.assertEqual(result["latest_version"], "2026.701.1000")
+
+    def test_writes_source_mirror_for_translation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "CHANGELOG.md"
+            output = Path(directory) / "metadata.json"
+            source_output = Path(directory) / "CHANGELOG.source.md"
+            source.write_bytes(CHANGELOG)
+
+            self.assertTrue(
+                metadata.update(
+                    str(source),
+                    output,
+                    source_output=source_output,
+                )
+            )
+            self.assertEqual(source_output.read_bytes(), CHANGELOG)
 
 
 if __name__ == "__main__":

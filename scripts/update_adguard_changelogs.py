@@ -85,8 +85,14 @@ def update(output_dir: Path, browser_source: str, android_source: str, now: date
     android = android_releases_to_markdown(fetch(android_source))
     checked_at = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
     products = [metadata("AdGuard Browser Extension", browser_source, browser, checked_at), metadata("AdGuard for Android", android_source, android, checked_at)]
-    changed = write_if_changed(output_dir / "adguard-browser-extension-CHANGELOG.md", browser)
-    changed |= write_if_changed(output_dir / "adguard-for-android-CHANGELOG.md", android)
+    changed = write_if_changed(
+        output_dir / "adguard-browser-extension-CHANGELOG.source.md",
+        browser,
+    )
+    changed |= write_if_changed(
+        output_dir / "adguard-for-android-CHANGELOG.source.md",
+        android,
+    )
     metadata_path = output_dir / "metadata.json"
     old: dict[str, Any] = {}
     if metadata_path.exists():
