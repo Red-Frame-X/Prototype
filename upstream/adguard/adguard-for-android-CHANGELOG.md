@@ -1,4757 +1,4757 @@
-# AdGuard for Android changelog mirror
+# アンドロイドのchangelogミラーのためのAdGuard
 
-> Source: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
-> Generated from official GitHub Releases; newest release first.
+> ソース:https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
+> GitHub リリースの公式リリースから、リリースを最初に作成します。
 
 ## 4.13.1
 
-- Published: 2026-08-03T16:50:17Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.1
+- 公表: 2026-08-03T16:50:17Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.1
 
-We recently released AdGuard for Android v4.13, and now we’re following up with a quick hotfix to address a couple of bugs.
+最近、Android v4.13用のAdGuardをリリースし、バグのカップルに対処するための迅速なホットフィックスでフォローしています。
 
-Please note that for Integration mode to work properly, you need to update both AdGuard and AdGuard VPN to their latest versions.
+統合モードが適切に機能するため、AdGuardとAdGuard VPNの両方を最新バージョンにアップデートする必要があります。
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.13
 
-- Published: 2026-07-28T14:04:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13
+- 公表: 2026-07-28T14:04:20Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13
 
-Please welcome the much anticipated AdGuard for Android v4.13! We set ambitious goals for this release, and did our best to deliver: a lot of work was done both in terms of big features as well as the usual behind the scenes routine of fixing bugs and oiling gears for a better performance. Let’s see the details below.
+Android v4.13で予想されるAdGuardをお待ちください! 私たちは、このリリースのための野心的な目標を設定しました, そして、配信するために最善を尽くしました: 多くの仕事は、大きな機能の面だけでなく、より良いパフォーマンスのためのバグや油着ギアの固定の場面のルーチンの背後にある両方の大きな機能で行われました. 詳しくは以下をご覧ください。
 
-With this release, we introduced differential filter updates to AdGuard for Android! To achieve this, we integrated the FiltersListManager library into the app. Now, your filters will load automatically without consuming tons of traffic and overloading servers.
+このリリースで、Android用のAdGuardに差異フィルタの更新を導入しました! これを実現するために、フィルタリストマネージャライブラリをアプリに統合しました。 これで、トラフィックとサーバーを過負荷することなく、自動的にフィルタがロードされます。
 
-We also added post-quantum cryptography support to DnsLibs. Now AdGuard for Android, like our other full ad-blocking products, keeps your DNS requests protected against future threats.
+また、DnsLibs にポスト量暗号化サポートを追加しました。 AdGuardは、他のフルアドブロック製品と同様に、将来の脅威からDNSリクエストを保護します。
 
-Another significant change is our adoption of CRLite by Mozilla to verify revoked certificates. Using this instead of the more outdated OCSP (Online Certificate Status Protocol) or letting the app check each certificate against the CRL (Certificate Revocation List) not only speeds up website loading, but also increases your privacy and safety while browsing.
+もう1つの重要な変更は、Revoked証明書を検証するためにMozillaによるCRLiteの採用です。 より古いOCSP(オンライン証明書ステータスプロトコル)の代わりに、またはCRL(証明書の取消リスト)に対する各証明書を、Webサイトの読み込みをスピードアップするだけでなく、閲覧中にプライバシーと安全を向上させることができます。
 
-To improve security in Integration mode with AdGuard VPN, we changed the connection protocol, introducing the use of credentials. With the release of AdGuard for Android v4.13, our ad blocker and VPN cooperate seamlessly and securely, with no additional action required on the user’s part for them to synchronize. No third-party apps will be able to spy on your activities, as an added bonus.
+AdGuard VPN との統合モードでのセキュリティを改善するために、接続プロトコルを変更し、認証情報の使用を導入しました。 Android v4.13 用の AdGuard のリリースでは、広告ブロッカーと VPN はシームレスに連携し、安全に連携し、同期させるためのユーザーの部分で必要な追加のアクションはありません。 サードパーティのアプリは、追加のボーナスとして、あなたの活動をスパイすることができません。
 
-In previous versions, in-app instructions for installing HTTPS certificates were added, as the process could differ in regards to your device’s make and model. In AdGuard for Android 4.13, we added support for ColorOS (Oppo) to those instructions.
+以前のバージョンでは、HTTPS 証明書をインストールするためのアプリ内指示が追加されました。このプロセスは、デバイスの作成とモデルに関して異なる可能性があるためです。 Android 4.13 用の AdGuard では、ColorOS (Oppo) のサポートを追加しました。
 
-And last, but not least, we have done a lot of work on our filtering engines and fixed bugs that had accumulated over time. Scriptlets and CoreLibs were updated for better app performance.
+そして最後に、しかし、少なくとも、我々は私たちのフィルタリングエンジンと時間をかけて蓄積した固定バグに多くの仕事をしてきました。 スクリプトとCoreLibsは、より良いアプリのパフォーマンスのために更新されました。
 
-You can consult the changelog below to see all the fixes and improvements.
+下記の変更履歴を参考にして、すべての修正と改善を見ることができます。
 
-## Changelog
+## 変更履歴
 
 
-### Improvements
-* Added possibility to copy an applied rule in request details in the filtering log [5637](https://github.com/AdguardTeam/AdguardForAndroid/issues/5637)
-* Added support for Google Backup [5879](https://github.com/AdguardTeam/AdguardForAndroid/issues/5879)
-* Excluded 2ndLine application from filtering by default [5116](https://github.com/AdguardTeam/AdguardForAndroid/issues/5116)
-* Displayed information about updated DNS filters in the DNS list [5519](https://github.com/AdguardTeam/AdguardForAndroid/issues/5519)
-* Added possibility to copy package_name in request details in the filtering log [5636](https://github.com/AdguardTeam/AdguardForAndroid/issues/5636)
-* Improved the *Check for updates* button’s behavior on the update check screen [5923](https://github.com/AdguardTeam/AdguardForAndroid/issues/5923)
-* Eliminated the possibility to add an empty user rule through the recent activity tab [5193](https://github.com/AdguardTeam/AdguardForAndroid/issues/5193)
-* Added color distinction for updated content on the *Updates* screen [5886](https://github.com/AdguardTeam/AdguardForAndroid/issues/5886)
-* Improved voicing of TalkBack voice assistant elements for *Private browser*
-* Restructured the inputs/dialogs in *Tracking protection*
-* Updated crash reports and app usage data names and dialogs
-* Added the option to find requests by applied rules in recent activity
-* Added validation to *Mask your IP* address screen
-* Added auto-refreshing of the webpage after toggling the *Website protection* switch for it in *Private browser*
-* Added authentication for the local proxy
-* Added possibility to clear `.hprof` when it’s not needed
-* Added an app update error screen for TV
-* Improved video playback in the YouTube player in the background and picture-in-picture (PiP) mode
+### 改善点
+* フィルタリングログ [5637] で詳細に適用される規則をコピーする可能性を追加しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/5637)
+* Googleバックアップのサポートを追加 [5879](https://github.com/AdguardTeam/AdguardForAndroid/issues/5879)
+* デフォルトでフィルタリングから2ndLineアプリケーションを除外 [5116](https://github.com/AdguardTeam/AdguardForAndroid/issues/5116)
+* DNS リストの DNS フィルターの更新に関する情報を表示 [5519](https://github.com/AdguardTeam/AdguardForAndroid/issues/5519)
+* フィルタリングログ [5636] の詳細は、package name のリクエストをコピーする可能性を追加しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/5636)
+* 更新チェック画面で*Check for update*ボタンの動作を改善しました [5923](https://github.com/AdguardTeam/AdguardForAndroid/issues/5923)
+* 最近の活動タブ[5193]を経由して空のユーザールールを追加する可能性を排除しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/5193)
+* *Updates*画面に更新されたコンテンツのカラー差別化を追加 [5886](https://github.com/AdguardTeam/AdguardForAndroid/issues/5886)
+* *プライベートブラウザ*のトークバックボイスアシスタントの要素の改善*
+* *追跡保護*の入力/ダイアログを再構成しました
+* クラッシュレポートとアプリの使用データ名とダイアログを更新
+* 最近の活動で適用される規則によって要求を見つけるオプションを追加しました
+* ※IP*アドレス画面をマークする
+* *Webサイト保護*スイッチを*プライベートブラウザ*に切り替えた後、Webページの自動更新を追加
+* ローカルプロキシの認証を追加
+* クリアする可能性を追加`.hprof`必要なくない場合
+* TV用のアプリ更新エラー画面を追加しました
+* 背景と画像画像画像(PiP)モードでYouTubeプレーヤーで動画再生を改善
 
-### Fixes
-* A blocking rule for the `$network` type is added via the *Add allowing rule* button in request details [5390](https://github.com/AdguardTeam/AdguardForAndroid/issues/5390)
-* The *Disable all?* popup appears on the *User rules* screen even if the rules list is empty [5175](https://github.com/AdguardTeam/AdguardForAndroid/issues/5175)
-* CA certificate installation instructions are not relevant for ColorOS [5827](https://github.com/AdguardTeam/AdguardForAndroid/issues/5827)
-* DNS filters shows `null` instead of the time of the last update [5902](https://github.com/AdguardTeam/AdguardForAndroid/issues/5902)
-* Firewall is activated automatically after granting the *Usage access* system permission [5927](https://github.com/AdguardTeam/AdguardForAndroid/issues/5927)
-* High battery consumption starting from v4.12 [5893](https://github.com/AdguardTeam/AdguardForAndroid/issues/5893)
-* Impossible to block a domain, unblocked in DNS filter, using the filtering log only [5880](https://github.com/AdguardTeam/AdguardForAndroid/issues/5880)
-* Incorrect subdomains appear in statistics [5868](https://github.com/AdguardTeam/AdguardForAndroid/issues/5868)
-* Many apps stop working when AdGuard is active [5617](https://github.com/AdguardTeam/AdguardForAndroid/issues/5617)
-* Recent activity log lags heavily after updating to v4.12.1 [5882](https://github.com/AdguardTeam/AdguardForAndroid/issues/5882)
-* Problems while editing extensions in language modes other than English [5914](https://github.com/AdguardTeam/AdguardForAndroid/issues/5914)
-* Recent activity log fails to be cleared instantly in AdGuard v4.14 nightly 4 [5908](https://github.com/AdguardTeam/AdguardForAndroid/issues/5908)
-* Subdomains duplicate in *Statistics* [5840](https://github.com/AdguardTeam/AdguardForAndroid/issues/5840)
-* The custom DNS server disappears after importing settings that were just exported [5892](https://github.com/AdguardTeam/AdguardForAndroid/issues/5892)
-* The title of videos doesn’t minimize when clicking the share button while in horizontal mode [5612](https://github.com/AdguardTeam/AdguardForAndroid/issues/5612)
-* Turning on AdGuard using tile closes the notification panel [5915](https://github.com/AdguardTeam/AdguardForAndroid/issues/5915)
-* Filters update without authorization [5309](https://github.com/AdguardTeam/AdguardForAndroid/issues/5309)
-* User regex in *Ad blocking* and *DNS filtering* rules breaks after AdGuard v4.14 nightly 5 [5916](https://github.com/AdguardTeam/AdguardForAndroid/issues/5916)
-* When attempting to update a beta version (e.g. RC), the update proceeds to the latest release version [5920](https://github.com/AdguardTeam/AdguardForAndroid/issues/5920)
-* Configuration can’t be imported via link, even if the versions are consistent [5912](https://github.com/AdguardTeam/AdguardForAndroid/issues/5912)
-* Rules duplicate themselves in the *Applied rules* section
-* Failed to move the AdGuard Personal CA to the system store via the *Move* button in the app
-* Custom content filter lists disappear after time
-* Protection resumes every few seconds with *HTTPS filtering* and *FakeDNS* enabled
-* An error snack appears after editing a userscript 
-* The switch on the Extensions setting does not respond when tapping the setting name 
-* After rebooting the phone, blocked URLs no longer show the reason why they were blocked in the log
-* The *Protection may not work properly while the hotspot is active* notification is displayed for Android 10+
-* Impossible to add a blocking rule with additional modifiers from *Recent activity*
-* Impossible to select a custom DNS server by tapping *Save and select*
-* Actual DNS protocol doesn’t match with what is shown on the *DNS server details* screen after settings import
-* Empty space below the navigation bar after opening extensions editor
-* AdGuard does not start after reboot
-* Incorrect display of onboarding for certificate installation when importing settings via a link
-* Integration mode dialogue doesn’t open consistently at app’s first launch
-* Search query is not displayed on the *Recent activity* screen if the header was not collapsed after returning from request details
-* The *Open* button for DNS providers opens the browser but not the website on Xiaomi TV Box
-* The *Can’t update license info* snack is not displayed on the *TV license* screen after license check timeout
-* Focus reset to default after pressing the *Refresh status* button on the *License* screen on TV
-* The *Certificate wasn’t installed* dialog is shown after certificate installation via settings sharing
-* Custom filter version is not updated after the filter update
-* Text clipping, header overlap, and content being covered by the keyboard in *Rule editor*
-* The YouTube button in the AdGuard player restarts video 
-* On the *Quick actions* screen firewall notifications are displayed for both blocked and allowed apps when the *Show blocked only* filter is selected
-* Scrolling *User rules* overlaps another view
-* Scroll focus moves out of viewport during rapid scrolling of *App management* on TV
-* Sharing from YouTube Music to AdGuard player doesn’t work
-* AdGuard’s notification brings the device’s screen out of sleep mode
-* *Private browser* does not open other apps from webpages
-* Filter rule editor accepts any non-empty string as valid rule without syntax validation
-* Dynamic theme does not apply to the AdGuard app after closing *Private browser*
+### フィックス
+* ブロックルール`$network`リクエスト詳細に規則*ボタンを許可する追加で追加されます[5390](https://github.com/AdguardTeam/AdguardForAndroid/issues/5390)
+* *Disable all?* ポップアップは、ルールリストが空の場合でも、*ユーザールール*画面に表示されます[5175](https://github.com/AdguardTeam/AdguardForAndroid/issues/5175)
+* CA 証明書のインストール手順は、ColorOS [5827] には関係ありません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/5827)
+* DNS フィルターの表示`null`最後の更新の代わりに [5902](https://github.com/AdguardTeam/AdguardForAndroid/issues/5902)
+* *Usage access* システム許可[5927]を付与した後に自動的に防火壁が活動化します(https://github.com/AdguardTeam/AdguardForAndroid/issues/5927)
+* v4.12(5893)から始まる高電池消費量https://github.com/AdguardTeam/AdguardForAndroid/issues/5893)
+* ドメインをブロックし、DNSフィルタでブロック解除し、フィルタリングログのみ[5880](https://github.com/AdguardTeam/AdguardForAndroid/issues/5880)
+* 誤ったサブドメインが統計で表示されます [5868](https://github.com/AdguardTeam/AdguardForAndroid/issues/5868)
+* 多くのアプリは、AdGuardがアクティブなときに動作を停止します [5617](https://github.com/AdguardTeam/AdguardForAndroid/issues/5617)
+* 最近の活動ログはv4.12.1に更新した後に大きく遅れる [5882](https://github.com/AdguardTeam/AdguardForAndroid/issues/5882)
+* 英語以外の言語モードで拡張機能を編集する際の問題 [5914](https://github.com/AdguardTeam/AdguardForAndroid/issues/5914)
+* 最近の活動ログは、AdGuard v4.14 夜 4 で即座に消去されなかった [5908](https://github.com/AdguardTeam/AdguardForAndroid/issues/5908)
+* *Statistics* [5840] で重複するサブドメイン (https://github.com/AdguardTeam/AdguardForAndroid/issues/5840)
+* カスタムDNSサーバーは、単にエクスポートされた設定をインポートした後に消え [5892](https://github.com/AdguardTeam/AdguardForAndroid/issues/5892)
+* 水平モード [5612] で共有ボタンをクリックすると、動画のタイトルが最小化されません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5612)
+* タイルを使用してAdGuardをオンにして通知パネルを閉じる[5915](https://github.com/AdguardTeam/AdguardForAndroid/issues/5915)
+* 許可なしのフィルター更新 [5309](https://github.com/AdguardTeam/AdguardForAndroid/issues/5309)
+* *Ad blocking* および *DNS filtering* のユーザレグテックスは、AdGuard v4.14 夜 5 [5916] 以降に動作します。https://github.com/AdguardTeam/AdguardForAndroid/issues/5916)
+* ベータ版(RCなど)を更新しようとすると、アップデートは最新のリリース版[5920]に進みます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5920)
+* 設定は、バージョンが一貫した場合でも、リンクを介してインポートできません[5912](https://github.com/AdguardTeam/AdguardForAndroid/issues/5912)
+* *適用規則*セクションで自分自身を複製するルール
+* AdGuard Personal CA をアプリの *Move* ボタンでシステムストアに移動できなかった
+* カスタムコンテンツフィルタリストは時間後に消えます
+* 保護は*HTTPSのろ過*および*FakeDNS*によって可能にされるあらゆる秒を再開します
+* userscript を編集した後にエラースナックが表示されます
+* 設定名をタップすると、拡張子設定のスイッチは応答しません
+* 電話を再起動した後、ブロックされたURLは、ログにブロックされた理由を示すことはありません
+* ※ホットスポットがアクティブである間、保護が正常に動作しない場合があります* 通知はAndroid 10以降で表示されます
+* *Recent アクティビティ* から追加の修飾子でブロックルールを追加できません。
+* *Saveとselect*をタップすることで、カスタムDNSサーバーを選択可能
+* 実際の DNS プロトコルは、設定のインポート後に *DNS サーバの詳細* 画面に表示されているものと一致しません。
+* 拡張エディタを開くと、ナビゲーションバーの下の空スペース
+* AdGuardは再起動後に起動しません
+* リンクを介して設定をインポートする際に、証明書のインストールのオンボーディングの誤った表示
+* 統合モード対話は、アプリの最初の起動時に一貫して開いていません
+* リクエスト詳細から返された後、ヘッダが崩壊しなかった場合は、*Recent アクティビティ*画面にクエリを検索しない
+* DNS プロバイダーの *Open* ボタンは、ブラウザが開いているが、Xiaomi TV Box の Web サイトが表示されない
+* ※ライセンスチェックタイムアウト後の*TVライセンス*画面にライセンス情報*スナックが表示されない
+* TVの*License*スクリーンの*Refreshの状態*ボタンを押した後にデフォルトに焦点を合わせて下さい
+* *証明書がインストールされていない*ダイアログは、設定共有による証明書のインストール後に表示されます。
+* フィルター更新後にカスタムフィルタバージョンが更新されていない
+* *Ruleエディタ*のキーボードによってカバーされるテキストのクリッピング、ヘッダーの重複、および内容
+* AdGuardプレーヤーのYouTubeボタンが動画を再起動します
+* *Quick action*画面ファイアウォール通知は、*Show blocked only*フィルタが選択されたときにブロックされたアプリと許可されたアプリの両方で表示されます。
+* スクロール *ユーザールール* 別のビューを重ねる
+* スクロールフォーカスは、テレビで*アプリ管理*の急激なスクロール中にビューポートから動き出します
+* YouTube MusicからAdGuardプレーヤーへの共有は機能しません
+* AdGuardの通知は、デバイスの画面をスリープモードから引き出します。
+* *プライベートブラウザ*は、他のアプリはWebページから開くことはありません。
+* フィルタルールエディタは、構文検証なしで有効なルールとして、任意の非空の文字列を受け入れます
+* ※プライベートブラウザ*を閉じた後、動的テーマはアドガードアプリには適用されません。
 
-* With Kazakh or Kyrgyz as system language, AdGuard erroneously displays it as Russian
-* The number of blocked requests is displayed incorrectly in notifications in languages ​​that use hieroglyphs
+* Kazakh または Kyrgyz をシステム言語として使用して、AdGuard はロシアとしてそれを誤って表示します
+* hieroglyphs を使用する言語の通知では、ブロックされたリクエストの数が誤って表示されます。
 
-### DnsLibs (DNS filtering engine)
-* Updated DnsLibs to v2.8.45 [5961](https://github.com/AdguardTeam/AdguardForAndroid/issues/5961)
+### DnsLibs (DNSのろ過エンジン)
+* DnsLibsをv2.8.45に更新 [5961](https://github.com/AdguardTeam/AdguardForAndroid/issues/5961)
 
-#### Improvements
-* Added Post-Quantum cryptography support to DnsLibs [245](https://github.com/AdguardTeam/DnsLibs/issues/245)
-* Added an option to remove `h3` from the `alpn` parameter of HTTPS RR [257](https://github.com/AdguardTeam/DnsLibs/issues/257)
- * Improved reliability of testing DoT upstream availability [263](https://github.com/AdguardTeam/DnsLibs/issues/263)
-* Improved DNS upstream list updates without reloading filters [248](https://github.com/AdguardTeam/DnsLibs/issues/248)
+#### 改善点
+* DnsLibs へのポスト量子暗号化サポートを追加 [245]()https://github.com/AdguardTeam/DnsLibs/issues/245)
+* 削除するオプションを追加`h3`から`alpn`HTTPS RRのパラメーター [257](https://github.com/AdguardTeam/DnsLibs/issues/257)
+ * テストの信頼性を改善しました。 DoT アップストリームの可用性 [263] (https://github.com/AdguardTeam/DnsLibs/issues/263)
+* フィルターをリロードすることなくDNSアップストリームリストの更新を改善 [248](https://github.com/AdguardTeam/DnsLibs/issues/248)
 
-#### Fixes
-* DNS unblocking rule does not work
-* At times system:// upstream replies failed to be accepted on Android [265](https://github.com/AdguardTeam/DnsLibs/issues/265)
-* Missing AdGuard certificate on some websites such as hitomi.la [2055](https://github.com/AdguardTeam/CoreLibs/issues/2055)
+#### フィックス
+* DNSのブロック解除ルールは動作しません
+* 時折、システム:// 上流応答は、Android上で受け入れられなかった [265](https://github.com/AdguardTeam/DnsLibs/issues/265)
+* hitomi.laのような一部のウェブサイトでAdGuardの証明書を見逃す [2055](https://github.com/AdguardTeam/CoreLibs/issues/2055)
 
-### CoreLibs (Filtering engine)
+### CoreLibs (フィルターエンジン)
 
-* Updated CoreLibs to v1.21.38
+* CoreLibsをv1.21.38に更新
 
-#### Improvements
-* Added support for decoding URLs in `$urltransform` [1915](https://github.com/AdguardTeam/CoreLibs/issues/1915)
-* Enabled HTTP/3 filtering by default in beta/nightly builds [2014](https://github.com/AdguardTeam/CoreLibs/issues/2014)
-* Added support for example.org/path cosmetic rules [2012](https://github.com/AdguardTeam/CoreLibs/issues/2012)
-* Added support for the new `$reason` modifier [1986](https://github.com/AdguardTeam/CoreLibs/issues/1986)
-* Improved *Do Not Track* behavior [1982](https://github.com/AdguardTeam/CoreLibs/issues/1982)
-* Prevented local.adguard.org DNS leakage after enabling protection [1854](https://github.com/AdguardTeam/CoreLibs/issues/1854)
-* Enabled HTTP/3 filtering by default in stable builds [2015](https://github.com/AdguardTeam/CoreLibs/issues/2015)
+#### 改善点
+* URL のデコードをサポート`$urltransform` [1915](https://github.com/AdguardTeam/CoreLibs/issues/1915)
+* ベータ/ナイトリービルドでデフォルトで HTTP/3 フィルタリングを有効にしました [2014](https://github.com/AdguardTeam/CoreLibs/issues/2014)
+* 例.org/path 化粧品規則 [2012] のサポートを追加しました。https://github.com/AdguardTeam/CoreLibs/issues/2012)
+* 新しいサポートを追加`$reason`修飾子 [1986](https://github.com/AdguardTeam/CoreLibs/issues/1986)
+* *Do Not Track* 動作改善 (1982)https://github.com/AdguardTeam/CoreLibs/issues/1982)
+* 保護を有効にした後、 local.adguard.org DNS の漏洩を防止 [1854](https://github.com/AdguardTeam/CoreLibs/issues/1854)
+* 安定ビルドでデフォルトで HTTP/3 フィルタリングを有効にしました [2015](https://github.com/AdguardTeam/CoreLibs/issues/2015)
 
-#### Fixes
-* Incorrect certificate serial number marshalling leads to false positive CRLite matches [5793](https://github.com/AdguardTeam/AdguardForWindows/issues/5793)
-* There is no AdGuard certificate if the advanced option *Check websites’ certificate transparency* is enabled [2046](https://github.com/AdguardTeam/CoreLibs/issues/2046)
-* Connection resets on CoreLibs v1.19 
-* Localhost is unreachable in manual proxy mode in v1.19 [2019](https://github.com/AdguardTeam/CoreLibs/issues/2019)
-* Incorrect destination address is shown in *Request details* when integration with AdGuard VPN is enabled [2021](https://github.com/AdguardTeam/CoreLibs/issues/2021)
-* Userscript import failure caused by BOM [2009](https://github.com/AdguardTeam/CoreLibs/issues/2009)
-* Broken injections when FakeDNS is used in proxy settings [2017](https://github.com/AdguardTeam/CoreLibs/issues/2017)
-* Broken handling of closing script tags with spaces [2042](https://github.com/AdguardTeam/CoreLibs/issues/2042)
-* Incorrect `$generichide` behavior for domain-scoped rules [2041](https://github.com/AdguardTeam/CoreLibs/issues/2041)
-* High latency in QUIC/HTTP/3 filtering causes protocol fallback to HTTP/2 [2062](https://github.com/AdguardTeam/CoreLibs/issues/2062)
+#### フィックス
+* 誤った証明書シリアル番号マーシャリングが偽陽性CRLiteマッチにつながり [5793](https://github.com/AdguardTeam/AdguardForWindows/issues/5793)
+* 高度なオプション*チェックウェブサイトの証明書の透明性*が有効になっている場合は、AdGuard証明書はありません[2046](https://github.com/AdguardTeam/CoreLibs/issues/2046)
+* CoreLibs v1.19の接続リセット
+* localhost は v1.19 [2019] の手動プロキシモードでは到達できません。https://github.com/AdguardTeam/CoreLibs/issues/2019)
+* AdGuard VPN との統合が有効になっている場合は、*Request の詳細* に間違った宛先アドレスが表示される [2021](https://github.com/AdguardTeam/CoreLibs/issues/2021)
+* BOM(2009年)によるユーザスクリプトのインポート失敗https://github.com/AdguardTeam/CoreLibs/issues/2009)
+* プロキシ設定でFakeDNSが使用されているときに壊れた注射[2017](https://github.com/AdguardTeam/CoreLibs/issues/2017)
+* スペースでスクリプトタグを閉じる壊れた処理[2042](https://github.com/AdguardTeam/CoreLibs/issues/2042)
+* エラー`$generichide`ドメインスコープルールの動作 [2041](https://github.com/AdguardTeam/CoreLibs/issues/2041)
+* QUIC/HTTP/3 フィルタリングの高レイテンシは、プロトコルが HTTP/2 [2062] にフォールバックする原因https://github.com/AdguardTeam/CoreLibs/issues/2062)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
-* Updated Scriptlets to v2.2.16
+### スクリプト(フィルタリングルールのJavaScript強化)
+* スクリプトをv2.2.16に更新
 
-#### Improvements
-* Added new scriptlet — `prevent-innerHTML` [488](https://github.com/AdguardTeam/Scriptlets/issues/488)
-* Improved `fingerprintjs2` — support window [541](https://github.com/AdguardTeam/Scriptlets/issues/541)
-* Added a parameter to increase duration of the `trusted-click-element` scriptlet’s execution duration [400](https://github.com/AdguardTeam/Scriptlets/issues/400)
+#### 改善点
+* 新しいスクリプトレットを追加 —`prevent-innerHTML` [488](https://github.com/AdguardTeam/Scriptlets/issues/488)
+* 改善しました`fingerprintjs2`— サポートウィンドウ [541](https://github.com/AdguardTeam/Scriptlets/issues/541)
+* 期間を増加させるパラメータを追加`trusted-click-element`scriptletの実行期間 [400](https://github.com/AdguardTeam/Scriptlets/issues/400)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.12.3
 
-- Published: 2026-02-20T18:11:04Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.3
+- 公表: 2026-02-20T18:11:04Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.3
 
-This is a technical update aimed to increase the app stability and fix minor bugs.
+アプリの安定性を高め、マイナーなバグを修正する技術アップデートです。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* No internet access when protection is enabled [#5897](https://github.com/AdguardTeam/AdguardForAndroid/issues/5897)
+### フィックス
+* 保護機能が有効になった場合、インターネットアクセスなし [#5897](https://github.com/AdguardTeam/AdguardForAndroid/issues/5897)
 
-### CoreLibs (Filtering engine)
+### CoreLibs (フィルターエンジン)
 
-* Updated CoreLibs to v1.19.48 [#6011](https://github.com/AdguardTeam/AdguardForAndroid/issues/6011)
+* 更新されたCoreLibsにv1.19.48 [#6011](https://github.com/AdguardTeam/AdguardForAndroid/issues/6011)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
+### スクリプト(フィルタリングルールのJavaScript強化)
 
-* Updated Scriptlets to v2.2.10
+* スクリプトをv2.2.10に更新
 
-### Improvements
-* Improve 'href-sanitizer ' — support uBO arguments [#493](https://github.com/AdguardTeam/Scriptlets/issues/493)
+### 改善点
+* 'href-sanitizer ' — uBO 引数をサポート [#493](https://github.com/AdguardTeam/Scriptlets/issues/493)
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.12.2
 
-- Published: 2025-12-12T17:57:02Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.2
+- 公表: 2025-12T17:57:02Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.2
 
-This is a technical update aimed to increase the app stability and fix minor bugs.
+アプリの安定性を高め、マイナーなバグを修正する技術アップデートです。
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.12.1
 
-- Published: 2025-10-14T09:37:46Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.1
+- 公表: 2025-10-14T09:37:46Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.1
 
-We found two bugs after the latest update of AdGuard for Android: the app didn’t launch automatically and filters stopped auto-updating for some users. We are now rolling out a quick fix to address these issues and get your ad-blocking back to normal.
+Android 用の AdGuard の最新の更新後、2 つのバグが見つかった: アプリは自動的に起動せず、一部のユーザーに対して自動更新を停止します。 私たちは、これらの問題に対処するために迅速な修正をロールアウトし、あなたの広告ブロックを正常に取得しています。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* The app stopped launching at system startup
+### フィックス
+* システム起動時にアプリが起動を停止
  [#5862](https://github.com/AdguardTeam/AdguardForAndroid/issues/5862)
-* Auto-update of filters doesn’t work
+* フィルターの自動更新は機能しません
  [#5866](https://github.com/AdguardTeam/AdguardForAndroid/issues/5866)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.12
 
-- Published: 2025-10-01T18:40:48Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12
+- 公開日: 2025-10-01T18:40:48Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12
 
-With this release, using AdGuard for Android on tablets has become more convenient — thanks to everyone who voted for the landscape mode. We’ve also added the new *Share settings* feature and made improvements to CoreLibs. Read more about the new features below and don’t forget to update to version 4.12!
-## Landscape mode
-As we always say, your feedback is really important to us, and this time we’ve added one of the most requested features — landscape mode. Using AdGuard on a tablet is now even more convenient.
-
-<p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.12/tablet_en.png" width="700">
-</p>
-
-Some screens still need polishing, but we’re actively working on them!
-
-## Share settings
-
-We’ve also added the Share settings feature. Now you don’t need to reconfigure everything on a new device or spend time describing your settings when reporting a missed ad — just share a link or scan a QR code.
+このリリースでは、タブレット上のAndroid用のAdGuardを使用して、より便利になりました。ランドスケープモードに投票した全員のおかげで。 また、新しい *Share 設定* 機能を追加し、CoreLibs の改善を行いました。 バージョン4.12へのアップデートを忘れずに、以下の新機能についてもっと読む!
+## 景観モード
+私たちはいつも言うように、あなたのフィードバックは私たちにとって本当に重要であり、今回は私たちが最も要求された機能の1つを追加しました。 タブレットでAdGuardを使うと、より便利になりました。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.12/share_en.png" width="300">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.12/tablet_en.png"幅="700">
 </p>
 
-To share your settings, go to Settings → Menu (⋮) → Share settings. If someone sends you a link, just open it in a browser and tap Import.
+研磨が必要な画面もありますが、積極的に取り組んでいます!
 
-## CoreLibs 
+## 共有設定
 
-The new CoreLibs release includes bug fixes and various improvements. For example, userscripts now work more reliably on [SPA (Single Page Application) websites](https://en.wikipedia.org/wiki/Single-page_application). Check the changelog for full details.
+共有設定機能も追加しました。 これで、新しいデバイスですべてを再構成したり、見逃された広告を報告するときに設定を記述する時間を費やす必要はありません。リンクを共有したり、QRコードをスキャンしたりできます。
 
-## Changelog
+<p align="center">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.12/share_en.png"幅="300">
+</p>
 
-### Improvements
-* Disabled “Route traffic through AdGuard” option for com.bKash.customerapp to ensure the app works correctly [#5788](https://github.com/AdguardTeam/AdguardForAndroid/issues/5788)
+設定を共有するには、[設定] → [メニュー (有料) → [設定を共有する] → [設定を共有する] に移動します。 誰かがリンクを送信したら、ブラウザで開くだけでインポートをタップします。
 
-### Fixes
-* CA certificate installation instructions are not relevant for Honor [#5779](https://github.com/AdguardTeam/AdguardForAndroid/issues/5779)
-* Impossible to add app-specific HTTPS exclusion [#5290](https://github.com/AdguardTeam/AdguardForAndroid/issues/5290)
-* Custom DNS filter is not shown in the Update section [#5821](https://github.com/AdguardTeam/AdguardForAndroid/issues/5821)
-* Tapping the cross on the snackbar about downloading a new app version doesn’t stop the download [#5760](https://github.com/AdguardTeam/AdguardForAndroid/issues/5760)
-* Some images are missing in a banking app due to AdGuard filtering [#5819](https://github.com/AdguardTeam/AdguardForAndroid/issues/5819)
+## コアライブラリ
 
-### CoreLibs (Filtering engine)
+新しいCoreLibsリリースには、バグ修正とさまざまな改善が含まれています。 例えば、ユーザスクリプトは、SPA(単一ページアプリケーション)のウェブサイト上でより確実に機能できるようになりました。https://en.wikipedia.org/wiki/Single-page_application)。 詳細は変更履歴をご確認ください。
 
-* Updated CoreLibs to v1.19.28 [#5830](https://github.com/AdguardTeam/AdguardForAndroid/issues/5830)
+## 変更履歴
 
-#### Improvements
-* Improved the `$app` modifier: added support for wildcards and regexps
+### 改善点
+* アプリが正しく動作するように、com.bKash.customerapp 用の「AdGuard によるルートトラフィック」オプションを無効にしました [#5788](https://github.com/AdguardTeam/AdguardForAndroid/issues/5788)
+
+### フィックス
+* CA 証明書のインストール手順は、名誉 [#5779] には関係ありません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/5779)
+* アプリ固有の HTTPS 除外 [#5290] を追加できません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5290)
+* 更新セクション[#5821]にカスタムDNSフィルタが表示されない(https://github.com/AdguardTeam/AdguardForAndroid/issues/5821)
+* スナックバーにクロスをタッピングして、新しいアプリバージョンをダウンロードしてもダウンロードを停止しない[#5760](https://github.com/AdguardTeam/AdguardForAndroid/issues/5760)
+* AdGuard のフィルタリング [#5819] による銀行アプリで一部の画像が欠落しています(https://github.com/AdguardTeam/AdguardForAndroid/issues/5819)
+
+### CoreLibs (フィルターエンジン)
+
+* 更新されたCoreLibsにv1.19.28 [#5830](https://github.com/AdguardTeam/AdguardForAndroid/issues/5830)
+
+#### 改善点
+* 改善された`$app`修飾語:ワイルドカードと正規表現のサポートを追加
 [#1906](https://github.com/AdguardTeam/CoreLibs/issues/1906)
-* Added support for ALPS extension [#1987](https://github.com/AdguardTeam/CoreLibs/issues/1987) 
+* ALPSエクステンションのサポートを追加 [#1987](https://github.com/AdguardTeam/CoreLibs/issues/1987) 
 
-#### Fixes
-* Wrong tracking protection option shown in the log [#5739](https://github.com/AdguardTeam/AdguardForAndroid/issues/5739)
-* Filtering disabled on some websites due to performance warnings (new.lewd.ninja) [#1994](https://github.com/AdguardTeam/CoreLibs/issues/1994)
-* “Use FakeDNS” option in Proxy Server interrupts the connection of bypassed apps [#5355](https://github.com/AdguardTeam/AdguardForAndroid/issues/5355)
-* Some extensions do not work after update to v2.17 [#1993](https://github.com/AdguardTeam/CoreLibs/issues/1993)
-* XHR timeout with the `immersivetranslate` userscript [#2000](https://github.com/AdguardTeam/CoreLibs/issues/2000)
-* Content-type modifiers do not work with the `$urltransform` modifier [#1978](https://github.com/AdguardTeam/CoreLibs/issues/1978)
-* DNS filters do not apply [#5851](https://github.com/AdguardTeam/AdguardForAndroid/issues/5851)
+#### フィックス
+* ログ[#5739]に表示されている間違った追跡保護オプション(https://github.com/AdguardTeam/AdguardForAndroid/issues/5739)
+* パフォーマンス警告(new.lewd.ninja)による一部のウェブサイトで無効なフィルタリング [#1994](https://github.com/AdguardTeam/CoreLibs/issues/1994)
+* プロキシサーバーの「FakeDNS」オプションは、バイパスされたアプリの接続を中断 [#5355](https://github.com/AdguardTeam/AdguardForAndroid/issues/5355)
+* 一部の拡張子はv2.17 [#1993](更新後に動作しません)https://github.com/AdguardTeam/CoreLibs/issues/1993)
+* XHRタイムアウトとXHRタイムアウト`immersivetranslate`ユーザスクリプト [#2000](https://github.com/AdguardTeam/CoreLibs/issues/2000)
+* コンテンツタイプの修飾子は機能しません`$urltransform`修飾子 [#1978] (https://github.com/AdguardTeam/CoreLibs/issues/1978)
+* DNS フィルターは適用しません [#5851] (https://github.com/AdguardTeam/AdguardForAndroid/issues/5851)
 
-### DnsLibs (DNS filtering engine)
+### DnsLibs (DNSのろ過エンジン)
 
-* Updated DnsLibs to v2.6.20 [#5834](https://github.com/AdguardTeam/AdguardForAndroid/issues/5834)
+* DnsLibsをv2.6.20に更新 [#5834](https://github.com/AdguardTeam/AdguardForAndroid/issues/5834)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
+### スクリプト(フィルタリングルールのJavaScript強化)
 
-* Updated Scriptlets to v2.2.9
+* スクリプトをv2.2.9に更新しました
 
-#### Improvements
-* Added a new scriptlet  — 'trusted-replace-argument' [#405](https://github.com/AdguardTeam/Scriptlets/issues/405)
+#### 改善点
+* 新しいスクリプトレットを追加 — 'trusted-replace-argument' [#405]()https://github.com/AdguardTeam/Scriptlets/issues/405)
 
-#### Fixes
-* 'prevent-element-src-loading' — TrustedScriptURL is not defined in Firefox  [#514](https://github.com/AdguardTeam/Scriptlets/issues/514)
-* 'trusted-replace-node-text' — quotes are escaped incorrectly [#517](https://github.com/AdguardTeam/Scriptlets/issues/517)
-* Compilation error in Safari 15 due to unsupported regex lookbehind [#519](https://github.com/AdguardTeam/Scriptlets/issues/519)
+#### フィックス
+* 'prevent-element-src-loading' — TrustedScriptURL は Firefox [#514] で定義されていません。https://github.com/AdguardTeam/Scriptlets/issues/514)
+* 'trusted-replace-node-text' — 引用符は正しくエスケープされます [#517](https://github.com/AdguardTeam/Scriptlets/issues/517)
+* 未サポートの正規表現によるSafari 15のコンパイルエラー [#519](https://github.com/AdguardTeam/Scriptlets/issues/519)
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.11
 
-- Published: 2025-08-26T15:38:16Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.11
+- 発行: 2025-08-26T15:38:16Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.11
 
-This release includes some under-the-hood improvements, a substantial number of bug fixes, and a CoreLibs update. As a result, overall app stability has been significantly improved.
+このリリースには、いくつかのアンダーフードの改善、バグ修正のかなりの数、およびCoreLibsの更新が含まれます。 その結果、アプリ全体の安定性が大幅に向上しました。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* The Create button overlaps the checkbox on the trial activation screen [#5039](https://github.com/AdguardTeam/AdguardForAndroid/issues/5039)
-* AdGuard player doesn’t open when sharing a video from the YouTube app [#5780](https://github.com/AdguardTeam/AdguardForAndroid/issues/5780)
-* AdGuard identifies AdGuard VPN as a third-party VPN in Integration mode [#5567](https://github.com/AdguardTeam/AdguardForAndroid/issues/5567)
-* Apps excluded by UID are routed through AdGuard [#5731](https://github.com/AdguardTeam/AdguardForAndroid/issues/5731)
-* Invalid filter update date format for Japanese, Korean, and Chinese [#5703](https://github.com/AdguardTeam/AdguardForAndroid/issues/5703)
-* Missing string for private browser notification [#5741](https://github.com/AdguardTeam/AdguardForAndroid/issues/5741)
-* Private browser onboarding is displayed twice [#5752](https://github.com/AdguardTeam/AdguardForAndroid/issues/5752)
-* Private browser crashes after tapping browser settings [#5781](https://github.com/AdguardTeam/AdguardForAndroid/issues/5781)
-* The “Nothing found” warning is missing on some screens [#5038](https://github.com/AdguardTeam/AdguardForAndroid/issues/5038)
-* The “Apps operating through proxy” screen is displayed in gray in Integration mode [#5732](https://github.com/AdguardTeam/AdguardForAndroid/issues/5732)
-* The app asks for permission to run in the background even though permission has already been granted [#5560](https://github.com/AdguardTeam/AdguardForAndroid/issues/5560)
-* Titles and descriptions of DNS servers, extensions, and filters are translated into the system language if a different language is selected in AdGuard [#5709](https://github.com/AdguardTeam/AdguardForAndroid/issues/5709)
-* Two similar graphs can be displayed at the same time [#4915](https://github.com/AdguardTeam/AdguardForAndroid/issues/4915)
-* The app icon does not fill the designed area on the Amazon Fire TV Stick 4K Max [#5476](https://github.com/AdguardTeam/AdguardForAndroid/issues/5476)
-* `com.carshering` is broken when routed through AdGuard [#5464](https://github.com/AdguardTeam/AdguardForAndroid/issues/5464)
-* Rules don’t get removed from the firewall after tapping “Remove rule” [#5613](https://github.com/AdguardTeam/AdguardForAndroid/issues/5613)
+### フィックス
+* Createボタンは、トライアルアクティベーション画面のチェックボックスをオーバーラップ [#5039](https://github.com/AdguardTeam/AdguardForAndroid/issues/5039)
+* YouTubeアプリから動画を共有するときにAdGuardプレーヤーが開いていない[#5780](https://github.com/AdguardTeam/AdguardForAndroid/issues/5780)
+* AdGuard は、統合モード [#5567] でサードパーティの VPN として AdGuard VPN を識別します(https://github.com/AdguardTeam/AdguardForAndroid/issues/5567)
+* UIDが除外するアプリは、AdGuard [#5731] を介してルーティングされています(https://github.com/AdguardTeam/AdguardForAndroid/issues/5731)
+* 日本語、韓国語、中国語の無効なフィルタ更新日フォーマット [#5703](https://github.com/AdguardTeam/AdguardForAndroid/issues/5703)
+* プライベートブラウザ通知の文字列を欠く [#5741](https://github.com/AdguardTeam/AdguardForAndroid/issues/5741)
+* 専用ブラウザのオンボーディングが2回表示されます[#5752](https://github.com/AdguardTeam/AdguardForAndroid/issues/5752)
+* ブラウザの設定をタップした後、プライベートブラウザがクラッシュ [#5781](https://github.com/AdguardTeam/AdguardForAndroid/issues/5781)
+* 「Nothing found」の警告は、いくつかの画面で欠落しています [#5038](https://github.com/AdguardTeam/AdguardForAndroid/issues/5038)
+* 「プロキシで動作するアプリ」画面は、インテグレーションモード[#5732]()で灰色で表示されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5732)
+* 許可が既に付与されているにもかかわらず、アプリはバックグラウンドで実行する許可を求める [#5560](https://github.com/AdguardTeam/AdguardForAndroid/issues/5560)
+* DNS サーバー、拡張機能、およびフィルタのタイトルと説明は、AdGuard [#5709] で異なる言語が選択されている場合、システム言語に翻訳されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5709)
+* 同じ時間に2つの類似のグラフを表示することができます [#4915](https://github.com/AdguardTeam/AdguardForAndroid/issues/4915)
+* アプリのアイコンは、Amazon Fire TV Stick 4K Max [#5476] にデザインされた領域を埋めません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5476)
+* `com.carshering`AdGuard [#5464] を経由してルーティングしたときに壊れています(https://github.com/AdguardTeam/AdguardForAndroid/issues/5464)
+* 「ルールを削除」をタップした後、規則はファイアウォールから削除されません [#5613](https://github.com/AdguardTeam/AdguardForAndroid/issues/5613)
 
-### CoreLibs (Filtering engine)
+### CoreLibs (フィルターエンジン)
 
-* CoreLibs updated to v1.18.28 [#5792](https://github.com/AdguardTeam/AdguardForAndroid/issues/5792)
+* CoreLibs が v1.18.28 に更新されました(#5792)(https://github.com/AdguardTeam/AdguardForAndroid/issues/5792)
 
-#### Improvements
+#### 改善点
 
-* Added support for ABP’s CSS injection syntax [#1927](https://github.com/AdguardTeam/CoreLibs/issues/1927)
-* Added permission to remove content with empty attribute [#1934](https://github.com/AdguardTeam/CoreLibs/issues/1934)
-* Improved content script performance by using the browser cache properly [#1929](https://github.com/AdguardTeam/CoreLibs/issues/1929)
-* Improved performance of content script loading [#1930](https://github.com/AdguardTeam/CoreLibs/issues/1930)
-* Removed complicated logic for the `$domain` modifier [#1875](https://github.com/AdguardTeam/CoreLibs/issues/1875)
-* Added encoding support for “zstd” [#1976](https://github.com/AdguardTeam/CoreLibs/issues/1976)
+* ABPのCSSインジェクション・シンタックス(#1927)のサポートを追加しました。https://github.com/AdguardTeam/CoreLibs/issues/1927)
+* 空の属性でコンテンツを削除する権限を追加 [#1934](https://github.com/AdguardTeam/CoreLibs/issues/1934)
+* ブラウザキャッシュを適切に使用することにより、コンテンツスクリプトのパフォーマンスを改善しました [#1929](https://github.com/AdguardTeam/CoreLibs/issues/1929)
+* コンテンツスクリプトの読み込みのパフォーマンスを改善しました [#1930](https://github.com/AdguardTeam/CoreLibs/issues/1930)
+* 複雑なロジックを削除`$domain`修飾子 [#1875] (https://github.com/AdguardTeam/CoreLibs/issues/1875)
+* 「zstd」のエンコーディングサポートを追加(#1976)https://github.com/AdguardTeam/CoreLibs/issues/1976)
 
-#### Fixes
+#### フィックス
 
-* `$removeparam` does not work when paired with the `$domain` modifier [#1999](https://github.com/AdguardTeam/CoreLibs/issues/1999)
-* Some React-based sites aren’t loaded correctly due to “Minified React error” [#1953](https://github.com/AdguardTeam/CoreLibs/issues/1953)
-* `urltransform` combined with `$~3p` doesn’t modify the request URL if it’s opened directly in the address bar [#1931](https://github.com/AdguardTeam/CoreLibs/issues/1931)
-* `paramountplus.com` is broken [#1937](https://github.com/AdguardTeam/CoreLibs/issues/1937)
-* `dailydot.com` is continually reloading [#1925](https://github.com/AdguardTeam/CoreLibs/issues/1925)
-* Content script is not injected in `www.huya.com` [#1897](https://github.com/AdguardTeam/CoreLibs/issues/1897)
-* Error in content script when the `$jsinject` exception is applied [#1960](https://github.com/AdguardTeam/CoreLibs/issues/1960)
+* `$removeparam`ペアリング時に動作しません`$domain`修飾子 [#1999] (https://github.com/AdguardTeam/CoreLibs/issues/1999)
+* 一部の React ベースのサイトは “Minified React error” [#1953] で正しく読み込まれません。https://github.com/AdguardTeam/CoreLibs/issues/1953)
+* `urltransform`組み合わせて`$~3p`アドレスバー[#1931]に直接開くとリクエストURLを変更しません()(https://github.com/AdguardTeam/CoreLibs/issues/1931)
+* `paramountplus.com`壊れた [#1937] (https://github.com/AdguardTeam/CoreLibs/issues/1937)
+* `dailydot.com`[#1925]を継続的にリロードします(https://github.com/AdguardTeam/CoreLibs/issues/1925)
+* コンテンツスクリプトは注入されません`www.huya.com` [#1897](https://github.com/AdguardTeam/CoreLibs/issues/1897)
+* コンテンツスクリプトのエラー`$jsinject`例外は適用されます [#1960] (https://github.com/AdguardTeam/CoreLibs/issues/1960)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
-* Scriptlets updated to v2.2.8
+### スクリプト(フィルタリングルールのJavaScript強化)
+* スクリプトはv2.2.8に更新しました
 
-#### Improvements
+#### 改善点
 
-* Add more examples to scriptlet docs [#392](https://github.com/AdguardTeam/Scriptlets/issues/392)
-* Add new scriptlet — 'trusted-replace-argument' [#405](https://github.com/AdguardTeam/Scriptlets/issues/405)
-* Improve 'prevent-fetch' — add ability to set random response content [#416](https://github.com/AdguardTeam/Scriptlets/issues/416)
-* Improve 'set-cookie' — add an empty object value [#497](https://github.com/AdguardTeam/Scriptlets/issues/497)
-* Update AGTree to v3 [#247](https://github.com/AdguardTeam/AGLint/issues/247)
+* scriptlet docs [#392] により多くの例を追加します。https://github.com/AdguardTeam/Scriptlets/issues/392)
+* 新しいスクリプトレットを追加 — 'trusted-replace-argument' [#405]()https://github.com/AdguardTeam/Scriptlets/issues/405)
+* 'prevent-fetch' を改良 — ランダムなレスポンスコンテンツをセットする機能を追加します。 [#416](https://github.com/AdguardTeam/Scriptlets/issues/416)
+* 'set-cookie' を改良 — 空のオブジェクト値 [#497](https://github.com/AdguardTeam/Scriptlets/issues/497)
+* AGTreeをv3に更新 [#247](https://github.com/AdguardTeam/AGLint/issues/247)
 
-#### Fixes
-* Fix 'inject-css-in-shadow-dom' — scriptlet does not work if adoptedStyleSheets is overridden [#477](https://github.com/AdguardTeam/Scriptlets/issues/477)
-* Fix 'json-prune' — handle 'null' values while checking specified key in object [#504](https://github.com/AdguardTeam/Scriptlets/issues/504)
-* Fix 'prevent-element-src-loading' —  TrustedScriptURL is not defined in Firefox [#514](https://github.com/AdguardTeam/Scriptlets/issues/514)
-* Fix 'spoof-css' — DOMRect is set incorrectly [#498](https://github.com/AdguardTeam/Scriptlets/issues/498)
-* Fix 'trusted-replace-node-text' — output literal quotes for escaped quotes [#440](https://github.com/AdguardTeam/Scriptlets/issues/440)
-* Fix 'trusted-replace-node-text' — some quotes are incorrectly escaped [#517](https://github.com/AdguardTeam/Scriptlets/issues/517)
-* Fix 'trusted-set-cookie-reload' — prevent infinite reload for constantly changing values [#489](https://github.com/AdguardTeam/Scriptlets/issues/489)
-* Fix 'trusted-suppress-native-method' — reset 'isMatchingSuspended' when stack is not matched [#496](https://github.com/AdguardTeam/Scriptlets/issues/496)
-* Fix scriptlets compilation error in Safari 15 due to unsupported regex lookbehind [#519](https://github.com/AdguardTeam/Scriptlets/issues/519)
+#### フィックス
+* 'inject-css-in-shadow-dom' — scriptlet は use が上書きされていれば動作しません [#477](https://github.com/AdguardTeam/Scriptlets/issues/477)
+* 'json-prune' を修正 — オブジェクトで指定されたキーをチェックしながら 'null' 値を扱う[#504](https://github.com/AdguardTeam/Scriptlets/issues/504)
+* 'prevent-element-src-loading' を修正 — TrustedScriptURL は Firefox [#514] で定義されていません(https://github.com/AdguardTeam/Scriptlets/issues/514)
+* Fix 'spoof-css' — DOMRect は正しく設定されます [#498](https://github.com/AdguardTeam/Scriptlets/issues/498)
+* 'trusted-replace-node-text' — エスケープされた引用符の出力 literal quotes [#440](https://github.com/AdguardTeam/Scriptlets/issues/440)
+* 'trusted-replace-node-text' を修正 — いくつかの引用符は正しくエスケープされます [#517](https://github.com/AdguardTeam/Scriptlets/issues/517)
+* 'trusted-set-cookie-reload' を修正 — 常に値を変更するための無限のリロードを防ぐ [#489](https://github.com/AdguardTeam/Scriptlets/issues/489)
+* Fix 'trusted-suppress-native-method' — スタックが一致していないときに'isMatchingSuspended'をリセットする[#496](https://github.com/AdguardTeam/Scriptlets/issues/496)
+* 未サポートのregexのlookbehindによるSafari 15のscriptletsコンパイルエラーを修正 [#519](https://github.com/AdguardTeam/Scriptlets/issues/519)
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.10
 
-- Published: 2025-06-25T17:22:52Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.10
+- 公表: 2025-06-25T17:22:52Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.10
 
-AdGuard for Android v4.10 introduces important improvements to the HTTPS certificate installation process, making it more intuitive and accessible for users. 
+Android v4.10用のAdGuardは、HTTPS証明書のインストールプロセスに重要な改善を導入し、ユーザーにとってより直感的でアクセスしやすいようにします。
 
-When you install AdGuard and launch the app for the first time, you’re prompted to install an HTTPS certificate. This step is essential because the certificate plays a key role in ensuring effective ad filtering in browsers. Without it, filtering quality is significantly reduced. That’s why it’s crucial for all users, beginner or advanced, to be able to complete the installation without difficulty.
+AdGuardをインストールし、アプリを初めて起動すると、HTTPS証明書をインストールする必要があります。 このステップは、証明書がブラウザで効果的な広告フィルタリングを確実にするために重要な役割を果たしているので不可欠です。 それなしで、ろ過の質はかなり減ります。 そのため、すべてのユーザー、初心者、または上級者にとって重要な理由で、インストールを難しさずに完了することができます。
 
-We knew there was room for improvement in the whole process — the previous instructions often didn’t reflect the actual settings found on devices from different manufacturers, and there was also a bug that prevented users from returning to the instructions after leaving the app.
+私たちは、プロセス全体の改善のための部屋があることを知っていた - 前の指示は、多くの場合、異なるメーカーからデバイス上で見つかった実際の設定を反映していないし、また、アプリを離れた後、ユーザーに指示に戻るのを防ぐバグがありました。
 
-To address these issues, we’ve added in-app guides for the most common devices — including Google Pixel, Samsung, Huawei, Xiaomi, and OnePlus — with adjustments based on Android OS version and user locale. We’ve also fixed the bug mentioned above.
+これらの問題に対処するため、Googleピクセル、Samsung、Huawei、Xiaomi、OnePlusなどの最も一般的なデバイス用のアプリ内ガイドを追加し、Android OSバージョンとユーザーロケールに基づいて調整します。 上記のバグも修正しました。
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Added HTTPS filtering by default for the Lemur browser [#5577](https://github.com/AdguardTeam/AdguardForAndroid/issues/5577)
+### 改善点
+* LemurブラウザのデフォルトでHTTPSフィルタリングを追加 [#5577](https://github.com/AdguardTeam/AdguardForAndroid/issues/5577)
 
-### Fixes
-* AdGuard gets disabled when WebView is stopped or updated [#5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)
-* After integration with Tor, Tor via Orbot isn’t the default proxy [#4908](https://github.com/AdguardTeam/AdguardForAndroid/issues/4908)
-* Updated filters aren’t displayed after the app is restarted [#5638](https://github.com/AdguardTeam/AdguardForAndroid/issues/5638)
-* QUIC filtering is disabled for WeChat and AliExpress [#5497](https://github.com/AdguardTeam/AdguardForAndroid/issues/5497)
-* WeChat is excluded from HTTPS filtering by default [#5689](https://github.com/AdguardTeam/AdguardForAndroid/issues/5689)
-* The app is not fully translated [#5418](https://github.com/AdguardTeam/AdguardForAndroid/issues/5418)
-* Filtering status is not saved if it’s changed twice [#5701](https://github.com/AdguardTeam/AdguardForAndroid/issues/5701)
-* Recent activity log lags when scrolling slowly [#5369](https://github.com/AdguardTeam/AdguardForAndroid/issues/5369)
-* Some parameters are not included in the link when reporting an incorrect blocking [#5520](https://github.com/AdguardTeam/AdguardForAndroid/issues/5520)
-* When opening a link in a browser, two AdGuard apps appear in the list of browsers, and one of which does not work as expected [#5592](https://github.com/AdguardTeam/AdguardForAndroid/issues/5592)
+### フィックス
+* WebViewが停止または更新されたときにAdGuardが無効になります [#5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)
+* Tor との統合後、Orbot 経由の Tor はデフォルトのプロキシではありません [#4908](https://github.com/AdguardTeam/AdguardForAndroid/issues/4908)
+* アプリが再起動した後に更新されたフィルタは表示されません [#5638](https://github.com/AdguardTeam/AdguardForAndroid/issues/5638)
+* QUIC のフィルタリングは WeChat および AliExpress [#5497] のために無効になります(https://github.com/AdguardTeam/AdguardForAndroid/issues/5497)
+* WeChat は、デフォルトで HTTPS フィルタリングから除外されます [#5689](https://github.com/AdguardTeam/AdguardForAndroid/issues/5689)
+* アプリが完全に翻訳されていない [#5418](https://github.com/AdguardTeam/AdguardForAndroid/issues/5418)
+* [#5701] を 2 回変更すると、フィルタリング状態が保存されません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5701)
+* 最近の活動ログはゆっくりとスクロールするときに遅れ [#5369] (https://github.com/AdguardTeam/AdguardForAndroid/issues/5369)
+* 誤ったブロックを報告するときにリンクにいくつかのパラメータは含まれていません [#5520](https://github.com/AdguardTeam/AdguardForAndroid/issues/5520)
+* ブラウザでリンクを開くと、2つのAdGuardアプリがブラウザのリストに表示され、そのうちの1つは期待どおりに動作しません[#5592](https://github.com/AdguardTeam/AdguardForAndroid/issues/5592)
 
-### CoreLibs (Filtering engine)
-* CoreLibs updated to v1.17.157 [#5725](https://github.com/AdguardTeam/AdguardForAndroid/issues/5725)
+### CoreLibs (フィルターエンジン)
+* CoreLibs が v1.17.157 に更新されました(#5725)(https://github.com/AdguardTeam/AdguardForAndroid/issues/5725)
 
-#### Fixes
-* Naver Smartstore cannot be accessed properly [#1971](https://github.com/AdguardTeam/CoreLibs/issues/1971)
-* Some React-based websites aren’t loaded correctly due to a `Minified React error` [#1953](https://github.com/AdguardTeam/CoreLibs/issues/1953)
-* User rule for domains does not block the request completely [#5539](https://github.com/AdguardTeam/AdguardForAndroid/issues/5539)
+#### フィックス
+* Naver Smartstore が正常にアクセスできない [#1971](https://github.com/AdguardTeam/CoreLibs/issues/1971)
+* React ベースのウェブサイトが正しくロードされていないものもあります。`Minified React error` [#1953](https://github.com/AdguardTeam/CoreLibs/issues/1953)
+* ドメインのユーザールールは完全にリクエストをブロックしない[#5539](https://github.com/AdguardTeam/AdguardForAndroid/issues/5539)
 
-### DnsLibs (DNS filtering engine)
-* DnsLibs updated to v2.6.6 [#5724](https://github.com/AdguardTeam/AdguardForAndroid/issues/5724)
+### DnsLibs (DNSのろ過エンジン)
+* DnsLibs が v2.6.6 に更新 [#5724](https://github.com/AdguardTeam/AdguardForAndroid/issues/5724)
 
-### Scriptlets (JavaScript enhancement for filtering rules) 
-* Scriptlets updated to v2.1.7
+### スクリプト(フィルタリングルールのJavaScript強化)
+* Scriptlets が v2.1.7 に更新されました。
 
-#### Improvements
-*  ’prevent-addEventListener’ — added ability to match specific element [#480](https://github.com/AdguardTeam/Scriptlets/issues/480)
+#### 改善点
+*  'prevent-addEventListener' — 特定の要素にマッチする機能を追加しました [#480](https://github.com/AdguardTeam/Scriptlets/issues/480)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.9
 
-- Published: 2025-04-03T18:22:43Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9
+- 公表: 2025-04-03T18:22:43Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9
 
-We’ve added a major feature in AdGuard v4.9 for Android: native support for userstyles. This feature has been available in AdGuard for Windows and AdGuard for Mac for a while, and now we are bringing it to AdGuard for Android!
+Android 用の AdGuard v4.9 で主要な機能を追加しました。: ユーザスタイルのためのネイティブサポート。 この機能は、しばらくの間、Mac用のWindowsとAdGuard用のAdGuardで利用可能であり、今ではAndroid用のAdGuardにそれを持参しています!
 
-Userstyles are similar to userscripts in a way, but they only focus on changing the appearance of websites using CSS, without getting into their code. Now customizing websites — like adding a dark theme — becomes an easy task. You can create your own userstyles in the app itself, or install ready-made styles from trusted [online sources](https://userstyles.world/).
+Userstyles は userscripts に似ていますが、CSS を使用してウェブサイトの外観を変更するだけに焦点を当てています。 今、ウェブサイトをカスタマイズ — 暗いテーマを追加するような - 簡単なタスクになります。 アプリ自体で独自のユーザースタイルを作成したり、信頼できる[オンラインソース]から既製のスタイルをインストールしたりできます。https://userstyles.world/).
 
-![Wikipedia with a userstyle](https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.9/styled_wikipedia.jpg)
+![Wikipedia with userstyle](ユーザースタイル)https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.9/styled_wikipedia.jpg)
 
-To add a userstyle, go to *Settings* → *Filtering* → *Extensions*→ *Add extension* → *Import from file or URL*. To create your own style, tap *Add extension* → *Create userstyle*.
+ユーザスタイルを追加するには、*Settings* → *Filtering* → *Extensions*→ *Add extension* → *ファイルやURL*からインポートします。 独自のスタイルを作成するには、*Add extension* → *Create userstyle* をタップします。
 
-![Install userstyle in app](https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.9/Userstyles_en.jpg)
+![アプリでユーザスタイルをインストール](https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.9/Userstyles_en.jpg)
 
-Also, some users might have recently faced a bug that was increasing statistics to ridiculously huge values. We fixed the issue, and once you install AdGuard v4.9 for Android, you will see normal numbers in the *Statistics* tab. 
+また、一部のユーザーは最近、巨大な値を取り除くために統計量が増えていたバグに直面している可能性があります。 問題を修正し、Android 用の AdGuard v4.9 をインストールしたら、 *Statistics* タブの正規番号が表示されます。
 
-> Please note that statistics accumulated earlier than the last 24 hours will be heavily pruned.
+> 過去24時間以上前に蓄積された統計は大きく剪定されますのでご注意ください。
 
-Aside from this serious issue, we have also worked on fixing smaller bugs. As always, we’ve updated CoreLibs and Scriptlets for better functionality of the app.
+この問題以外にも、小さなバグの修正にも取り組んでいます。 いつものように、アプリの機能性を改善するためにCoreLibsとScriptletsを更新しました。
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Added support for MSN browser as default [#5533](https://github.com/AdguardTeam/AdguardForAndroid/issues/5533)
-* Added com.irobot.home to routing exclusions [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
+### 改善点
+* デフォルトでMSNブラウザのサポートを追加しました [#5533](https://github.com/AdguardTeam/AdguardForAndroid/issues/5533)
+* com.irobot.home を追加 ルーティング 除外 [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
 
-### Fixes
-* Billion values on statistic counters do not convert to abbreviations [#5633](https://github.com/AdguardTeam/AdguardForAndroid/issues/5633)
-* Clicking AdGuard's protection status notification leads to mobile view on Amazon Fire TV stick [#5498](https://github.com/AdguardTeam/AdguardForAndroid/issues/5498)
-* DNS filters are able to be updated if the DNS filters switch is disabled [#5382](https://github.com/AdguardTeam/AdguardForAndroid/issues/5382)
-* Domain with the `$app` modifier fails to be added to HTTPS-filtered website exclusions [#5587](https://github.com/AdguardTeam/AdguardForAndroid/issues/5587)
-* Option *Filter secure DNS* changes by itself after rebooting [#5379](https://github.com/AdguardTeam/AdguardForAndroid/issues/5379)
-* Statistics bar overlaps the counter description in the *Statistics* tab [#5138](https://github.com/AdguardTeam/AdguardForAndroid/issues/5138)
-* Impossible to download the Android system update [#5651](https://github.com/AdguardTeam/AdguardForAndroid/issues/5651)
-* Unable to log in to the Adguard Ad Blocker app on Android TV
+### フィックス
+* 統計的なカウンターの請求値が省略に変換されない[#5633](https://github.com/AdguardTeam/AdguardForAndroid/issues/5633)
+* AdGuardの保護ステータス通知をクリックすると、Amazon Fire TV Stick [#5498] のモバイルビューが表示されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5498)
+* DNS フィルターの切り替えが無効になっていれば、DNS フィルターの更新ができるようになりました [#5382](https://github.com/AdguardTeam/AdguardForAndroid/issues/5382)
+* ドメインとドメイン`$app`modifier は HTTPS フィルタリングされたウェブサイトの除外 [#5587] に追加できません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5587)
+* オプション *Filter は、再起動後自身で DNS* の変更をセキュアにします [#5379](https://github.com/AdguardTeam/AdguardForAndroid/issues/5379)
+* 統計バーは、 *Statistics* タブ [#5138] のカウンターの説明をオーバーラップします(https://github.com/AdguardTeam/AdguardForAndroid/issues/5138)
+* Androidシステムの更新をダウンロードできません [#5651](https://github.com/AdguardTeam/AdguardForAndroid/issues/5651)
+* Android TVでAdguard Ad Blockerアプリにログインできない
 [#5669](https://github.com/AdguardTeam/AdguardForAndroid/issues/5669)
 
-### CoreLibs (filtering engine)
-* CoreLibs updated to v1.17.118 [#5654](https://github.com/AdguardTeam/AdguardForAndroid/issues/5654)
+### CoreLibs (フィルタリングエンジン)
+* CoreLibs が v1.17.118 に更新されました [#5654](https://github.com/AdguardTeam/AdguardForAndroid/issues/5654)
 
-#### Fixes
-* Handled ClientHello fragmentation [#1968](https://github.com/AdguardTeam/CoreLibs/issues/1968)
-* Corrected long processing time of large HTML [#1886](https://github.com/AdguardTeam/CoreLibs/issues/1886)
+#### フィックス
+* ハンドル付き ClientHello フラグメンテーション [#1968](https://github.com/AdguardTeam/CoreLibs/issues/1968)
+* 大きいHTMLの訂正された長い処理の時間[#1886] (https://github.com/AdguardTeam/CoreLibs/issues/1886)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
-* Scriptlets updated to v2.1.6
+### スクリプト(フィルタリングルールのJavaScript強化)
+* Scriptlets が v2.1.6 に更新
 
-#### Fixes
-* Fixed `json-prune` — content of array was incorrectly removed [#482](https://github.com/AdguardTeam/Scriptlets/issues/482)
+#### フィックス
+* 固定式`json-prune`— 配列の内容が誤って削除された[#482](https://github.com/AdguardTeam/Scriptlets/issues/482)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.7.2
 
-- Published: 2025-06-26T16:42:05Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7.2
+- 公表: 2025-06-26T16:42:05Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7.2
 
-In this update, we’ve fully fixed a problem that slipped through in the previous release: AdGuard protection would shut off whenever WebView was stopped or updated. With this version, Android 7 and 8 users can finally enjoy uninterrupted protection as well.
+このアップデートでは、以前のリリースでスリップした問題を完全に修正しました。AdGuard保護は、WebViewが停止または更新されたときにシャットオフされます。 このバージョンでは、Android 7 と 8 のユーザーは、最終的に途切れない保護を楽しむことができます。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* AdGuard gets disabled when WebView is stopped or updated [#5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)
+### フィックス
+* WebViewが停止または更新されたときにAdGuardが無効になります [#5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)
 
 ## 4.9 RC 1
 
-- Published: 2025-03-27T17:01:06Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9-rc-1
+- 公表: 2025-03-27T17:01:06Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9-rc-1
 
-We’ve added a major feature in this RC: please welcome native support for userstyles. This feature has been available in AdGuard for Windows and AdGuard for Mac for a while, and now we are bringing it to AdGuard for Android!
+このRCでの主な機能を追加しました: ユーザスタイルのネイティブサポートを歓迎します。 この機能は、しばらくの間、Mac用のWindowsとAdGuard用のAdGuardで利用可能であり、今ではAndroid用のAdGuardにそれを持参しています!
 
-Userstyles are similar in a way to userscripts, but they only focus on changing the appearance of websites using CSS, without getting into their code. Now customising the websites of your choice — like adding a dark theme — becomes an easy task. You can create your own userstyles in the app itself, or install ready-made styles from trusted [online sources](https://userstyles.world/).
+Userstyles は userscripts の代わりに似ていますが、CSS を使ってウェブサイトの外観を変更することだけに焦点を当てています。 今、選択したウェブサイトをカスタマイズする - 暗いテーマを追加するような - 簡単なタスクになります。 アプリ自体で独自のユーザースタイルを作成したり、信頼できる[オンラインソース]から既製のスタイルをインストールしたりできます。https://userstyles.world/).
 
-To add a userstyle, go to *Settings* → *Filtering* → *Extensions*→ *Add extension* → *Import from file or URL*. To create your own style, click *Add extension* → *Create userstyle*.
+ユーザスタイルを追加するには、*Settings* → *Filtering* → *Extensions*→ *Add extension* → *ファイルやURL*からインポートします。 独自のスタイルを作成するには、*Add extension* → *Create userstyle* をクリックします。
 
-We are continuing to make the app better while fixing bugs on the way and updating CoreLibs.
+バグの修正とCoreLibsの更新中にアプリをより良いものにし続けています。
 
-## Changelog
+## 変更履歴
 
-### CoreLibs
+### コアライブラリ
 
-* CoreLibs updated to 1.17.118 [#5673](https://github.com/AdguardTeam/AdguardForAndroid/issues/5673)
+* CoreLibs は 1.17.118 [#5673] に更新されました。https://github.com/AdguardTeam/AdguardForAndroid/issues/5673)
 
-#### Fixes
+#### フィックス
 
-* Fixed ClientHello fragmentation [#1968](https://github.com/AdguardTeam/CoreLibs/issues/1968)
+* 固定 ClientHello フラグメンテーション [#1968](https://github.com/AdguardTeam/CoreLibs/issues/1968)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.9 Beta 1
+## 4.9 ベータ 1
 
-- Published: 2025-03-20T17:35:30Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9-beta-1
+- 公開日: 2025-03-20T17:35:30Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9-beta-1
 
-In this beta version, we are continuing our quest on making the app better while fixing bugs and glitches in the UI, and bringing timely updates to our CoreLibs and Scriptlets modules. You will find full details in the сhangelog below.
+このベータ版では、UIのバグや不具合を修正し、CoreLibsとScriptletsモジュールにタイムリーなアップデートをもたらすと、アプリをより良いものにするためのクエストを継続しています。 以下は、タンジェログの詳しい内容です。
 
-## Changelog
+## 変更履歴
 
-### Improvements
+### 改善点
 
-* Added support for MSN browser as default [#5533](https://github.com/AdguardTeam/AdguardForAndroid/issues/5533)
-* Added `com.irobot.home` to route traffic through AdGuard exclusions [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
+* デフォルトでMSNブラウザのサポートを追加しました [#5533](https://github.com/AdguardTeam/AdguardForAndroid/issues/5533)
+* 追加`com.irobot.home`AdGuardの除外によるトラフィックのルート化 [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
 
-### Fixes
+### フィックス
 
-* Billion values on statistic counters do not convert to abbreviations [#5633](https://github.com/AdguardTeam/AdguardForAndroid/issues/5633)
-* Clicking AdGuard's protection status notification leads to mobile view on Amazon Fire TV stick [#5498](https://github.com/AdguardTeam/AdguardForAndroid/issues/5498)
-* DNS filters are marked as updated if the DNS filter switch is disabled [#5382](https://github.com/AdguardTeam/AdguardForAndroid/issues/5382)
-* Domain with `$app` modifier fails to be added to HTTPS-filtered website exclusions [#5587](https://github.com/AdguardTeam/AdguardForAndroid/issues/5587)
-* Option "Filter secure DNS" changes by itself after rebooting [#5379](https://github.com/AdguardTeam/AdguardForAndroid/issues/5379)
-* Statistics bar overlaps the counter description in Statistics tab [#5138](https://github.com/AdguardTeam/AdguardForAndroid/issues/5138)
+* 統計的なカウンターの請求値が省略に変換されない[#5633](https://github.com/AdguardTeam/AdguardForAndroid/issues/5633)
+* AdGuardの保護ステータス通知をクリックすると、Amazon Fire TV Stick [#5498] のモバイルビューが表示されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5498)
+* DNS フィルターが無効になっている場合は、DNS フィルターが更新されます[#5382](https://github.com/AdguardTeam/AdguardForAndroid/issues/5382)
+* ドメインとドメイン`$app`modifier は HTTPS フィルタリングされたウェブサイトの除外 [#5587] に追加できません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5587)
+* [#5379] を再起動した後、オプション "Filter secure DNS" 自体が変更されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/5379)
+* 統計バーは、統計タブでカウンターの説明をオーバーラップ [#5138](https://github.com/AdguardTeam/AdguardForAndroid/issues/5138)
 
-### CoreLibs (filtering engine)
-* CoreLibs updated to v1.17.108 [#5654](https://github.com/AdguardTeam/AdguardForAndroid/issues/5654)
+### CoreLibs (フィルタリングエンジン)
+* CoreLibs が v1.17.108 に更新されました [#5654](https://github.com/AdguardTeam/AdguardForAndroid/issues/5654)
 
-#### Fixes
+#### フィックス
 
-* Error in content-script when `$jsinject` exception is applied [#1960](https://github.com/AdguardTeam/CoreLibs/issues/1960)
-* Special whitelist exceptions for scriptlets not working correctly [#1959](https://github.com/AdguardTeam/CoreLibs/issues/1959)
+* コンテンツスクリプトのエラー`$jsinject`例外は適用されます [#1960] (https://github.com/AdguardTeam/CoreLibs/issues/1960)
+* スクリプトが正しく動作しない特別なホワイトリスト例外 [#1959](https://github.com/AdguardTeam/CoreLibs/issues/1959)
 
-#### Other
+#### その他
 
-* CoreLibs 1.17 blocks access to `ota.googlezip.net` [#1963](https://github.com/AdguardTeam/CoreLibs/issues/1963)
+* CoreLibs 1.17ブロックアクセス`ota.googlezip.net` [#1963](https://github.com/AdguardTeam/CoreLibs/issues/1963)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
-* Scriptlets updated to v1.11.27
+### スクリプト(フィルタリングルールのJavaScript強化)
+* Scriptlets が v1.11.27 に更新
 
-#### Fixes
+#### フィックス
 
-* Fixed `json-prune` — content of array is incorrectly removed [#482](https://github.com/AdguardTeam/Scriptlets/issues/482)
+* 固定式`json-prune`— 配列の内容が誤って削除される[#482](https://github.com/AdguardTeam/Scriptlets/issues/482)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.13 Beta 1
+## 4.13 ベータ 1
 
-- Published: 2026-07-17T11:41:50Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13-beta-1
+- 公表: 2026-07-17T11:41:50Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13-beta-1
 
-If this beta of AdGuard for Android v4.13 is rolling out after a bit of radio silence, it means that sometimes the goals we set are even bigger in reality than they were in our plans. A lot of work was done across the board to get ready for the next step: the release version.
+Android v4.13用のAdGuardのこのベータが少しのラジオサイレンス後に転がっている場合、私たちが設定した目標は、計画よりも現実的にさらに大きくなることを意味します。 ボード全体で多くの作業が行われ、次のステップの準備ができました。リリースバージョン。
 
-With this beta, we introduced differential filter updates to AdGuard for Android! To achieve this, we integrated the FiltersListManager library into the app. Now, your filters will load automatically without consuming tons of traffic.
+このベータ版では、Android用のAdGuardに差動フィルタの更新を導入しました! これを実現するために、フィルタリストマネージャライブラリをアプリに統合しました。 これで、たくさんのトラフィックを消費せずに自動的にフィルタがロードされます。
 
-We also added post-quantum cryptography support to DnsLibs. Now AdGuard for Android, like our other full ad-blocking products, keeps your DNS requests protected against future threats.
+また、DnsLibs にポスト量暗号化サポートを追加しました。 AdGuardは、他のフルアドブロック製品と同様に、将来の脅威からDNSリクエストを保護します。
 
-Another significant change is our: adoption of CRLite by Mozilla to verify revoked certificates. Using this instead of the more outdated OCSP (Online Certificate Status Protocol) or letting the app check each certificate against the CRL (Certificate Revocation List) not only speeds up website loading, but also increases your privacy and safety while browsing.
+もう1つの重要な変更は、MozillaによるCRLiteの採用によって、再発された証明書を検証することです。 より古いOCSP(オンライン証明書ステータスプロトコル)の代わりに、またはCRL(証明書の取消リスト)に対する各証明書を、Webサイトの読み込みをスピードアップするだけでなく、閲覧中にプライバシーと安全を向上させることができます。
 
-And last, but not least, we have done a lot of work on our filtering engines and fixed bugs that had accumulated over time. Scriptlets and CoreLibs were updated for better app performance.
+そして最後に、しかし、少なくとも、我々は私たちのフィルタリングエンジンと時間をかけて蓄積した固定バグに多くの仕事をしてきました。 スクリプトとCoreLibsは、より良いアプリのパフォーマンスのために更新されました。
 
-You can consult the extensive changelog below to see all the fixes and improvements.
+修正や改善の全てをご覧いただけます。
 
-## Changelog
+## 変更履歴
 
 
-### Improvements
-* Added possibility to copy an applied rule in request details in the filtering log [5637](https://github.com/AdguardTeam/AdguardForAndroid/issues/5637)
-* Added support for Google Backup [5879](https://github.com/AdguardTeam/AdguardForAndroid/issues/5879)
-* Excluded 2ndLine application from filtering by default [5116](https://github.com/AdguardTeam/AdguardForAndroid/issues/5116)
-* Displayed information about updated DNS filters in the DNS list [5519](https://github.com/AdguardTeam/AdguardForAndroid/issues/5519)
-* Added possibility to copy package_name in request details in the filtering log [5636](https://github.com/AdguardTeam/AdguardForAndroid/issues/5636)
-* Improved the update check screen for the *Check for updates* button [5923](https://github.com/AdguardTeam/AdguardForAndroid/issues/5923)
-* Eliminated the possibility to add an empty user rule through the recent activity tab [5193](https://github.com/AdguardTeam/AdguardForAndroid/issues/5193)
-* Added color distinction for updated content on the *Updates* screen [5886](https://github.com/AdguardTeam/AdguardForAndroid/issues/5886)
-* Improved voicing of TalkBack voice assistant elements for *Private browser*
-* Restructured the inputs/dialogs in *Tracking protection*
-* Updated crash reports and app usage data names and dialogs
-* Added the option to find requests by applied rules in recent activity
-* Added validation to *Mask your IP* address screen
-* Added auto-refreshing of the webpage after toggling the *Website protection* switch for it in *Private browser*
-* Added authentication for the local proxy
-* Added possibility to clear `.hprof` when it’s not needed
-* Added an app update error screen for TV
+### 改善点
+* フィルタリングログ [5637] で詳細に適用される規則をコピーする可能性を追加しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/5637)
+* Googleバックアップのサポートを追加 [5879](https://github.com/AdguardTeam/AdguardForAndroid/issues/5879)
+* デフォルトでフィルタリングから2ndLineアプリケーションを除外 [5116](https://github.com/AdguardTeam/AdguardForAndroid/issues/5116)
+* DNS リストの DNS フィルターの更新に関する情報を表示 [5519](https://github.com/AdguardTeam/AdguardForAndroid/issues/5519)
+* フィルタリングログ [5636] の詳細は、package name のリクエストをコピーする可能性を追加しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/5636)
+* 更新チェック画面を改善しました。*更新チェックボタン [5923](https://github.com/AdguardTeam/AdguardForAndroid/issues/5923)
+* 最近の活動タブ[5193]を経由して空のユーザールールを追加する可能性を排除しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/5193)
+* *Updates*画面に更新されたコンテンツのカラー差別化を追加 [5886](https://github.com/AdguardTeam/AdguardForAndroid/issues/5886)
+* *プライベートブラウザ*のトークバックボイスアシスタントの要素の改善*
+* *追跡保護*の入力/ダイアログを再構成しました
+* クラッシュレポートとアプリの使用データ名とダイアログを更新
+* 最近の活動で適用される規則によって要求を見つけるオプションを追加しました
+* ※IP*アドレス画面をマークする
+* *Webサイト保護*スイッチを*プライベートブラウザ*に切り替えた後、Webページの自動更新を追加
+* ローカルプロキシの認証を追加
+* クリアする可能性を追加`.hprof`必要なくない場合
+* TV用のアプリ更新エラー画面を追加しました
 
-### Fixes
-* A blocking rule for the `$network` type is added via the *Add allowing rule* button in request details [5390](https://github.com/AdguardTeam/AdguardForAndroid/issues/5390)
-* The *Disable all?* popup appears on the *User rules* screen even if the rules list is empty [5175](https://github.com/AdguardTeam/AdguardForAndroid/issues/5175)
-* CA certificate installation instructions are not relevant for ColorOS [5827](https://github.com/AdguardTeam/AdguardForAndroid/issues/5827)
-* DNS filters shows `null` instead of the time of the last update [5902](https://github.com/AdguardTeam/AdguardForAndroid/issues/5902)
-* Firewall is activated automatically after granting the *Usage access* system permission [5927](https://github.com/AdguardTeam/AdguardForAndroid/issues/5927)
-* High battery consumption starting from v4.12 [5893](https://github.com/AdguardTeam/AdguardForAndroid/issues/5893)
-* Impossible to block a domain, unblocked in DNS filter, using the filtering log only [5880](https://github.com/AdguardTeam/AdguardForAndroid/issues/5880)
-* Incorrect subdomains appear in statistics [5868](https://github.com/AdguardTeam/AdguardForAndroid/issues/5868)
-* Many apps stop working when AdGuard is active [5617](https://github.com/AdguardTeam/AdguardForAndroid/issues/5617)
-* Recent activity log lags heavily after updating to v4.12.1 [5882](https://github.com/AdguardTeam/AdguardForAndroid/issues/5882)
-* Problems while editing extensions in language modes other than English [5914](https://github.com/AdguardTeam/AdguardForAndroid/issues/5914)
-* Recent activity log fails to be cleared instantly in AdGuard v4.14 nightly 4 [5908](https://github.com/AdguardTeam/AdguardForAndroid/issues/5908)
-* Subdomains duplicate in *Statistics* [5840](https://github.com/AdguardTeam/AdguardForAndroid/issues/5840)
-* The custom DNS server disappears after importing settings that were just exported [5892](https://github.com/AdguardTeam/AdguardForAndroid/issues/5892)
-* The title of videos doesn’t minimize when clicking the share button while in horizontal mode [5612](https://github.com/AdguardTeam/AdguardForAndroid/issues/5612)
-* Turning on AdGuard using tile closes the notification panel [5915](https://github.com/AdguardTeam/AdguardForAndroid/issues/5915)
-* Filters update without authorization [5309](https://github.com/AdguardTeam/AdguardForAndroid/issues/5309)
-* User regex in *Ad blocking* and *DNS filtering* rules breaks after AdGuard v4.14 nightly 5 [5916](https://github.com/AdguardTeam/AdguardForAndroid/issues/5916)
-* When attempting to update a beta version (e.g. RC), the update proceeds to the latest release version [5920](https://github.com/AdguardTeam/AdguardForAndroid/issues/5920)
-* Configuration can’t be imported via link, even if the versions are consistent [5912](https://github.com/AdguardTeam/AdguardForAndroid/issues/5912)
-* Rules duplicate themselves in the *Applied rules* section
-* Failed to move the AdGuard Personal CA to the system store via the *Move* button in the app
-* Custom content filter lists disappear after time
-* Protection resumes every few seconds with *HTTPS filtering* and *FakeDNS* enabled
-* An error snack appears after editing a userscript 
-* The switch on the Extensions setting does not respond when tapping the setting name 
-* After rebooting the phone, blocked URLs no longer show the reason why they were blocked in the log
-* The *Protection may not work properly while the hotspot is active* notification is displayed for Android 10+
-* Impossible to add a blocking rule with additional modifiers from *Recent activity*
-* Impossible to select a custom DNS server by tapping *Save and select*
-* Actual DNS protocol doesn’t match with what is shown on the *DNS server details* screen after settings import
-* Empty space below the navigation bar after opening extensions editor
-* AdGuard does not start after reboot
-* Incorrect display of onboarding for certificate installation when importing settings via a link
-* Integration mode dialogue doesn’t open consistently at app’s first launch
-* Search query is not displayed on the *Recent activity* screen if the header was not collapsed after returning from request details
-* The *Open* button for DNS providers opens the browser but not the website on Xiaomi TV Box
-* The *Can’t update license info* snack is not displayed on the *TV license* screen after license check timeout
-* Focus reset to default after pressing the *Refresh status* button on the *License* screen on TV
-* The *Certificate wasn’t installed* dialog is shown after certificate installation via settings sharing
-* Custom filter version is not updated after the filter update
-* Text clipping, header overlap, and content being covered by the keyboard in *Rule editor*
-* The YouTube button in the AdGuard player restarts video 
-* On the *Quick actions* screen firewall notifications are displayed for both blocked and allowed apps when the *Show blocked only* filter is selected
-* Scrolling *User rules* overlaps another view
-* Scroll focus moves out of viewport during rapid scrolling of *App management* on TV
-* Sharing from YouTube Music to AdGuard player doesn’t work
-* AdGuard’s notification brings the device’s screen out of sleep mode
-* *Private browser* does not open other apps from webpages
-* Filter rule editor accepts any non-empty string as valid rule without syntax validation
-* Dynamic theme does not apply to the AdGuard app after closing *Private browser*
-* UI layering was corrected in PiP mode for the AdGuard player
-* With Kazakh or Kyrgyz as system language, AdGuard erroneously displays it as Russian
-* The number of blocked requests is displayed incorrectly in notifications in languages ​​that use hieroglyphs
+### フィックス
+* ブロックルール`$network`リクエスト詳細に規則*ボタンを許可する追加で追加されます[5390](https://github.com/AdguardTeam/AdguardForAndroid/issues/5390)
+* *Disable all?* ポップアップは、ルールリストが空の場合でも、*ユーザールール*画面に表示されます[5175](https://github.com/AdguardTeam/AdguardForAndroid/issues/5175)
+* CA 証明書のインストール手順は、ColorOS [5827] には関係ありません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/5827)
+* DNS フィルターの表示`null`最後の更新の代わりに [5902](https://github.com/AdguardTeam/AdguardForAndroid/issues/5902)
+* *Usage access* システム許可[5927]を付与した後に自動的に防火壁が活動化します(https://github.com/AdguardTeam/AdguardForAndroid/issues/5927)
+* v4.12(5893)から始まる高電池消費量https://github.com/AdguardTeam/AdguardForAndroid/issues/5893)
+* ドメインをブロックし、DNSフィルタでブロック解除し、フィルタリングログのみ[5880](https://github.com/AdguardTeam/AdguardForAndroid/issues/5880)
+* 誤ったサブドメインが統計で表示されます [5868](https://github.com/AdguardTeam/AdguardForAndroid/issues/5868)
+* 多くのアプリは、AdGuardがアクティブなときに動作を停止します [5617](https://github.com/AdguardTeam/AdguardForAndroid/issues/5617)
+* 最近の活動ログはv4.12.1に更新した後に大きく遅れる [5882](https://github.com/AdguardTeam/AdguardForAndroid/issues/5882)
+* 英語以外の言語モードで拡張機能を編集する際の問題 [5914](https://github.com/AdguardTeam/AdguardForAndroid/issues/5914)
+* 最近の活動ログは、AdGuard v4.14 夜 4 で即座に消去されなかった [5908](https://github.com/AdguardTeam/AdguardForAndroid/issues/5908)
+* *Statistics* [5840] で重複するサブドメイン (https://github.com/AdguardTeam/AdguardForAndroid/issues/5840)
+* カスタムDNSサーバーは、単にエクスポートされた設定をインポートした後に消え [5892](https://github.com/AdguardTeam/AdguardForAndroid/issues/5892)
+* 水平モード [5612] で共有ボタンをクリックすると、動画のタイトルが最小化されません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5612)
+* タイルを使用してAdGuardをオンにして通知パネルを閉じる[5915](https://github.com/AdguardTeam/AdguardForAndroid/issues/5915)
+* 許可なしのフィルター更新 [5309](https://github.com/AdguardTeam/AdguardForAndroid/issues/5309)
+* *Ad blocking* および *DNS filtering* のユーザレグテックスは、AdGuard v4.14 夜 5 [5916] 以降に動作します。https://github.com/AdguardTeam/AdguardForAndroid/issues/5916)
+* ベータ版(RCなど)を更新しようとすると、アップデートは最新のリリース版[5920]に進みます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5920)
+* 設定は、バージョンが一貫した場合でも、リンクを介してインポートできません[5912](https://github.com/AdguardTeam/AdguardForAndroid/issues/5912)
+* *適用規則*セクションで自分自身を複製するルール
+* AdGuard Personal CA をアプリの *Move* ボタンでシステムストアに移動できなかった
+* カスタムコンテンツフィルタリストは時間後に消えます
+* 保護は*HTTPSのろ過*および*FakeDNS*によって可能にされるあらゆる秒を再開します
+* userscript を編集した後にエラースナックが表示されます
+* 設定名をタップすると、拡張子設定のスイッチは応答しません
+* 電話を再起動した後、ブロックされたURLは、ログにブロックされた理由を示すことはありません
+* ※ホットスポットがアクティブである間、保護が正常に動作しない場合があります* 通知はAndroid 10以降で表示されます
+* *Recent アクティビティ* から追加の修飾子でブロックルールを追加できません。
+* *Saveとselect*をタップすることで、カスタムDNSサーバーを選択可能
+* 実際の DNS プロトコルは、設定のインポート後に *DNS サーバの詳細* 画面に表示されているものと一致しません。
+* 拡張エディタを開くと、ナビゲーションバーの下の空スペース
+* AdGuardは再起動後に起動しません
+* リンクを介して設定をインポートする際に、証明書のインストールのオンボーディングの誤った表示
+* 統合モード対話は、アプリの最初の起動時に一貫して開いていません
+* リクエスト詳細から返された後、ヘッダが崩壊しなかった場合は、*Recent アクティビティ*画面にクエリを検索しない
+* DNS プロバイダーの *Open* ボタンは、ブラウザが開いているが、Xiaomi TV Box の Web サイトが表示されない
+* ※ライセンスチェックタイムアウト後の*TVライセンス*画面にライセンス情報*スナックが表示されない
+* TVの*License*スクリーンの*Refreshの状態*ボタンを押した後にデフォルトに焦点を合わせて下さい
+* *証明書がインストールされていない*ダイアログは、設定共有による証明書のインストール後に表示されます。
+* フィルター更新後にカスタムフィルタバージョンが更新されていない
+* *Ruleエディタ*のキーボードによってカバーされるテキストのクリッピング、ヘッダーの重複、および内容
+* AdGuardプレーヤーのYouTubeボタンが動画を再起動します
+* *Quick action*画面ファイアウォール通知は、*Show blocked only*フィルタが選択されたときにブロックされたアプリと許可されたアプリの両方で表示されます。
+* スクロール *ユーザールール* 別のビューを重ねる
+* スクロールフォーカスは、テレビで*アプリ管理*の急激なスクロール中にビューポートから動き出します
+* YouTube MusicからAdGuardプレーヤーへの共有は機能しません
+* AdGuardの通知は、デバイスの画面をスリープモードから引き出します。
+* *プライベートブラウザ*は、他のアプリはWebページから開くことはありません。
+* フィルタルールエディタは、構文検証なしで有効なルールとして、任意の非空の文字列を受け入れます
+* ※プライベートブラウザ*を閉じた後、動的テーマはアドガードアプリには適用されません。
+* UI レイヤーは、AdGuard プレーヤーの PiP モードで修正されました
+* Kazakh または Kyrgyz をシステム言語として使用して、AdGuard はロシアとしてそれを誤って表示します
+* hieroglyphs を使用する言語の通知では、ブロックされたリクエストの数が誤って表示されます。
 
-### DnsLibs (DNS filtering engine)
-* Updated DnsLibs to v2.8.45 [5961](https://github.com/AdguardTeam/AdguardForAndroid/issues/5961)
+### DnsLibs (DNSのろ過エンジン)
+* DnsLibsをv2.8.45に更新 [5961](https://github.com/AdguardTeam/AdguardForAndroid/issues/5961)
 
-#### Improvements
-* Added Post-Quantum cryptography support to DnsLibs [245](https://github.com/AdguardTeam/DnsLibs/issues/245)
-* Added an option to remove `h3` from the `alpn` parameter of HTTPS RR [257](https://github.com/AdguardTeam/DnsLibs/issues/257)
- * Improved reliability of testing DoT upstream availability [263](https://github.com/AdguardTeam/DnsLibs/issues/263)
-* Improved DNS upstream list updates without reloading filters [248](https://github.com/AdguardTeam/DnsLibs/issues/248)
+#### 改善点
+* DnsLibs へのポスト量子暗号化サポートを追加 [245]()https://github.com/AdguardTeam/DnsLibs/issues/245)
+* 削除するオプションを追加`h3`から`alpn`HTTPS RRのパラメーター [257](https://github.com/AdguardTeam/DnsLibs/issues/257)
+ * テストの信頼性を改善しました。 DoT アップストリームの可用性 [263] (https://github.com/AdguardTeam/DnsLibs/issues/263)
+* フィルターをリロードすることなくDNSアップストリームリストの更新を改善 [248](https://github.com/AdguardTeam/DnsLibs/issues/248)
 
-#### Fixes
-* DNS unblocking rule does not work
-* At times system:// upstream replies failed to be accepted on Android [265](https://github.com/AdguardTeam/DnsLibs/issues/265)
-* Missing AdGuard certificate on some websites such as hitomi.la [2055](https://github.com/AdguardTeam/CoreLibs/issues/2055)
+#### フィックス
+* DNSのブロック解除ルールは動作しません
+* 時折、システム:// 上流応答は、Android上で受け入れられなかった [265](https://github.com/AdguardTeam/DnsLibs/issues/265)
+* hitomi.laのような一部のウェブサイトでAdGuardの証明書を見逃す [2055](https://github.com/AdguardTeam/CoreLibs/issues/2055)
 
-### CoreLibs (Filtering engine)
+### CoreLibs (フィルターエンジン)
 
-* Updated CoreLibs to v1.21.38
+* CoreLibsをv1.21.38に更新
 
-#### Improvements
-* Added support for decoding URLs in `$urltransform` [1915](https://github.com/AdguardTeam/CoreLibs/issues/1915)
-* Enabled HTTP/3 filtering by default in beta/nightly builds [2014](https://github.com/AdguardTeam/CoreLibs/issues/2014)
-* Added support for example.org/path cosmetic rules [2012](https://github.com/AdguardTeam/CoreLibs/issues/2012)
-* Added support for the new `$reason` modifier [1986](https://github.com/AdguardTeam/CoreLibs/issues/1986)
-* Improved *Do Not Track* behavior [1982](https://github.com/AdguardTeam/CoreLibs/issues/1982)
-* Prevented local.adguard.org DNS leakage after enabling protection [1854](https://github.com/AdguardTeam/CoreLibs/issues/1854)
-* Enabled HTTP/3 filtering by default in stable builds [2015](https://github.com/AdguardTeam/CoreLibs/issues/2015)
+#### 改善点
+* URL のデコードをサポート`$urltransform` [1915](https://github.com/AdguardTeam/CoreLibs/issues/1915)
+* ベータ/ナイトリービルドでデフォルトで HTTP/3 フィルタリングを有効にしました [2014](https://github.com/AdguardTeam/CoreLibs/issues/2014)
+* 例.org/path 化粧品規則 [2012] のサポートを追加しました。https://github.com/AdguardTeam/CoreLibs/issues/2012)
+* 新しいサポートを追加`$reason`修飾子 [1986](https://github.com/AdguardTeam/CoreLibs/issues/1986)
+* *Do Not Track* 動作改善 (1982)https://github.com/AdguardTeam/CoreLibs/issues/1982)
+* 保護を有効にした後、 local.adguard.org DNS の漏洩を防止 [1854](https://github.com/AdguardTeam/CoreLibs/issues/1854)
+* 安定ビルドでデフォルトで HTTP/3 フィルタリングを有効にしました [2015](https://github.com/AdguardTeam/CoreLibs/issues/2015)
 
-#### Fixes
-* Incorrect certificate serial number marshalling leads to false positive CRLite matches [5793](https://github.com/AdguardTeam/AdguardForWindows/issues/5793)
-* In the Request details, the *Destination address* is displayed as 127.0.0.1 if integration with AdGuard VPN is enabled
-* There is no AdGuard certificate if the advanced option *Check websites’ certificate transparency* is enabled [2046](https://github.com/AdguardTeam/CoreLibs/issues/2046)
-* Connection resets on CoreLibs v1.19 
-* Localhost is unreachable in manual proxy mode in v1.19 [2019](https://github.com/AdguardTeam/CoreLibs/issues/2019)
-* Incorrect destination address is shown in *Request details* when integration with AdGuard VPN is enabled [2021](https://github.com/AdguardTeam/CoreLibs/issues/2021)
-* Userscript import failure caused by BOM [2009](https://github.com/AdguardTeam/CoreLibs/issues/2009)
-* Broken injections when FakeDNS is used in proxy settings [2017](https://github.com/AdguardTeam/CoreLibs/issues/2017)
-* Broken handling of closing script tags with spaces [2042](https://github.com/AdguardTeam/CoreLibs/issues/2042)
-* Incorrect `$generichide` behavior for domain-scoped rules [2041](https://github.com/AdguardTeam/CoreLibs/issues/2041)
-* AdGuard certificate absent if the advanced option *Check websites’ certificate transparency* is enabled [2046](https://github.com/AdguardTeam/CoreLibs/issues/2046)
-* Incorrect certificate serial number marshalling leads to false positive CRLite matches [5793](https://github.com/AdguardTeam/AdguardForWindows/issues/5793)
-* High latency in QUIC/HTTP/3 filtering causes protocol fallback to HTTP/2 [2062](https://github.com/AdguardTeam/CoreLibs/issues/2062)
+#### フィックス
+* 誤った証明書シリアル番号マーシャリングが偽陽性CRLiteマッチにつながり [5793](https://github.com/AdguardTeam/AdguardForWindows/issues/5793)
+* リクエストの詳細では、AdGuard VPN との統合が有効になっている場合、*Destination アドレス* は 127.0.0.1 と表示されます。
+* 高度なオプション*チェックウェブサイトの証明書の透明性*が有効になっている場合は、AdGuard証明書はありません[2046](https://github.com/AdguardTeam/CoreLibs/issues/2046)
+* CoreLibs v1.19の接続リセット
+* localhost は v1.19 [2019] の手動プロキシモードでは到達できません。https://github.com/AdguardTeam/CoreLibs/issues/2019)
+* AdGuard VPN との統合が有効になっている場合は、*Request の詳細* に間違った宛先アドレスが表示される [2021](https://github.com/AdguardTeam/CoreLibs/issues/2021)
+* BOM(2009年)によるユーザスクリプトのインポート失敗https://github.com/AdguardTeam/CoreLibs/issues/2009)
+* プロキシ設定でFakeDNSが使用されているときに壊れた注射[2017](https://github.com/AdguardTeam/CoreLibs/issues/2017)
+* スペースでスクリプトタグを閉じる壊れた処理[2042](https://github.com/AdguardTeam/CoreLibs/issues/2042)
+* エラー`$generichide`ドメインスコープルールの動作 [2041](https://github.com/AdguardTeam/CoreLibs/issues/2041)
+* 高度なオプション*チェックウェブサイトの証明書の透明性*が有効になっている場合は、AdGuard証明書が不在です[2046](https://github.com/AdguardTeam/CoreLibs/issues/2046)
+* 誤った証明書シリアル番号マーシャリングが偽陽性CRLiteマッチにつながり [5793](https://github.com/AdguardTeam/AdguardForWindows/issues/5793)
+* QUIC/HTTP/3 フィルタリングの高レイテンシは、プロトコルが HTTP/2 [2062] にフォールバックする原因https://github.com/AdguardTeam/CoreLibs/issues/2062)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
-* Updated Scriptlets to v2.2.16
+### スクリプト(フィルタリングルールのJavaScript強化)
+* スクリプトをv2.2.16に更新
 
-#### Improvements
-* Added new scriptlet — `prevent-innerHTML` [488](https://github.com/AdguardTeam/Scriptlets/issues/488)
-* Improved `fingerprintjs2` — support window [541](https://github.com/AdguardTeam/Scriptlets/issues/541)
-* Added a parameter to increase duration of the `trusted-click-element` scriptlet’s execution duration [400](https://github.com/AdguardTeam/Scriptlets/issues/400)
+#### 改善点
+* 新しいスクリプトレットを追加 —`prevent-innerHTML` [488](https://github.com/AdguardTeam/Scriptlets/issues/488)
+* 改善しました`fingerprintjs2`— サポートウィンドウ [541](https://github.com/AdguardTeam/Scriptlets/issues/541)
+* 期間を増加させるパラメータを追加`trusted-click-element`scriptletの実行期間 [400](https://github.com/AdguardTeam/Scriptlets/issues/400)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.12 RC 1
 
-- Published: 2025-09-30T22:36:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12-rc-1
+- 公表: 2025-09-30T22:36:19Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12-rc-1
 
-A release candidate for the upcoming AdGuard for Android v4.12 is now available. For us, launching an RC version is a great way to test new features before their official release. For users, it’s an opportunity to be among the first to try them out. We hope you enjoy it!
+AdGuard for Android v4.12のリリース候補が公開されました。 弊社では、RCバージョンのリリースは、公式リリース前の新機能をテストするための素晴らしい方法です。 ユーザにとっては、最初に試してみる機会です。 皆様のお越しをお待ちしております!
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Disabled “Route traffic through AdGuard” option for com.bKash.customerapp to ensure the app works correctly [#5788](https://github.com/AdguardTeam/AdguardForAndroid/issues/5788)
+### 改善点
+* アプリが正しく動作するように、com.bKash.customerapp 用の「AdGuard によるルートトラフィック」オプションを無効にしました [#5788](https://github.com/AdguardTeam/AdguardForAndroid/issues/5788)
 
-### Fixes
-* CA certificate installation instructions are not relevant for Honor [#5779](https://github.com/AdguardTeam/AdguardForAndroid/issues/5779)
-* Impossible to add app-specific HTTPS exclusion [#5290](https://github.com/AdguardTeam/AdguardForAndroid/issues/5290)
-* Custom DNS filter is not shown in the Update section [#5821](https://github.com/AdguardTeam/AdguardForAndroid/issues/5821)
-* Tapping the cross on the snackbar about downloading a new app version doesn’t stop the download [#5760](https://github.com/AdguardTeam/AdguardForAndroid/issues/5760)
-* Some images are missing in a banking app due to AdGuard filtering [#5819](https://github.com/AdguardTeam/AdguardForAndroid/issues/5819)
-* Unable to connect to proxy server [#5794](https://github.com/AdguardTeam/AdguardForAndroid/issues/5794)
-* DNS filters do not apply [#5851](https://github.com/AdguardTeam/AdguardForAndroid/issues/5851)
+### フィックス
+* CA 証明書のインストール手順は、名誉 [#5779] には関係ありません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/5779)
+* アプリ固有の HTTPS 除外 [#5290] を追加できません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5290)
+* 更新セクション[#5821]にカスタムDNSフィルタが表示されない(https://github.com/AdguardTeam/AdguardForAndroid/issues/5821)
+* スナックバーにクロスをタッピングして、新しいアプリバージョンをダウンロードしてもダウンロードを停止しない[#5760](https://github.com/AdguardTeam/AdguardForAndroid/issues/5760)
+* AdGuard のフィルタリング [#5819] による銀行アプリで一部の画像が欠落しています(https://github.com/AdguardTeam/AdguardForAndroid/issues/5819)
+* プロキシサーバーに接続できない [#5794](https://github.com/AdguardTeam/AdguardForAndroid/issues/5794)
+* DNS フィルターは適用しません [#5851] (https://github.com/AdguardTeam/AdguardForAndroid/issues/5851)
 
-### CoreLibs (Filtering engine)
+### CoreLibs (フィルターエンジン)
 
-* Updated CoreLibs to v1.19.28 [#5830](https://github.com/AdguardTeam/AdguardForAndroid/issues/5830)
+* 更新されたCoreLibsにv1.19.28 [#5830](https://github.com/AdguardTeam/AdguardForAndroid/issues/5830)
 
-#### Improvements
+#### 改善点
 
-* Improved the `$app` modifier: added support for wildcards and regexps
+* 改善された`$app`修飾語:ワイルドカードと正規表現のサポートを追加
 [1906](https://github.com/AdguardTeam/CoreLibs/issues/1906)
-* Added support for ALPS extension [1987](https://github.com/AdguardTeam/CoreLibs/issues/1987) 
+* ALPSエクステンションのサポートを追加 [1987](https://github.com/AdguardTeam/CoreLibs/issues/1987) 
 
-#### Fixes
+#### フィックス
 
-* Wrong tracking protection option shown in the log [#5739](https://github.com/AdguardTeam/AdguardForAndroid/issues/5739)
-* Filtering disabled on some websites due to performance warnings (new.lewd.ninja) [1994](https://github.com/AdguardTeam/CoreLibs/issues/1994)
-* "Use FakeDNS" option in Proxy Server interrupts the connection of bypassed apps [5355](https://github.com/AdguardTeam/AdguardForAndroid/issues/5355)
-* Some extensions do not work after update to v2.17 [1993](https://github.com/AdguardTeam/CoreLibs/issues/1993)
-* XHR timeout with the `immersivetranslate` userscript [2000](https://github.com/AdguardTeam/CoreLibs/issues/2000)
-* Content-type modifiers do not work with the `$urltransform` modifier [1978](https://github.com/AdguardTeam/CoreLibs/issues/1978)
+* ログ[#5739]に表示されている間違った追跡保護オプション(https://github.com/AdguardTeam/AdguardForAndroid/issues/5739)
+* パフォーマンス警告(new.lewd.ninja)による一部のウェブサイトで無効なフィルタリング [1994](https://github.com/AdguardTeam/CoreLibs/issues/1994)
+* プロキシサーバーの「FakeDNS」オプションは、バイパスされたアプリの接続を中断 [5355](https://github.com/AdguardTeam/AdguardForAndroid/issues/5355)
+* 更新後にv2.17 [1993]( 更新後、一部の拡張子は動作しません)https://github.com/AdguardTeam/CoreLibs/issues/1993)
+* XHRタイムアウトとXHRタイムアウト`immersivetranslate`ユーザスクリプト [2000](https://github.com/AdguardTeam/CoreLibs/issues/2000)
+* コンテンツタイプの修飾子は機能しません`$urltransform`修飾子 [1978](https://github.com/AdguardTeam/CoreLibs/issues/1978)
 
-### DnsLibs (DNS filtering engine)
+### DnsLibs (DNSのろ過エンジン)
 
-* Updated DnsLibs to v2.6.20 [#5834](https://github.com/AdguardTeam/AdguardForAndroid/issues/5834)
+* DnsLibsをv2.6.20に更新 [#5834](https://github.com/AdguardTeam/AdguardForAndroid/issues/5834)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
+### スクリプト(フィルタリングルールのJavaScript強化)
 
-* Updated Scriptlets to v2.2.9
+* スクリプトをv2.2.9に更新しました
 
-#### Improvements
-* Added a new scriptlet  — 'trusted-replace-argument' [405](https://github.com/AdguardTeam/Scriptlets/issues/405)
+#### 改善点
+* 新しいスクリプトレットを追加 — 'trusted-replace-argument' [405]()https://github.com/AdguardTeam/Scriptlets/issues/405)
 
-#### Fixes
-* 'prevent-element-src-loading' — TrustedScriptURL is not defined in Firefox  [514](https://github.com/AdguardTeam/Scriptlets/issues/514)
-* 'trusted-replace-node-text' — quotes are escaped incorrectly [517](https://github.com/AdguardTeam/Scriptlets/issues/517)
-* Compilation error in Safari 15 due to unsupported regex lookbehind [519](https://github.com/AdguardTeam/Scriptlets/issues/519)
+#### フィックス
+* 'prevent-element-src-loading' — TrustedScriptURL は Firefox [514] で定義されていません。https://github.com/AdguardTeam/Scriptlets/issues/514)
+* 'trusted-replace-node-text' — 引用符は正しくエスケープされます [517](https://github.com/AdguardTeam/Scriptlets/issues/517)
+* 未サポートの正規表現によるSafari 15のコンパイルエラー [519](https://github.com/AdguardTeam/Scriptlets/issues/519)
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.12 Beta 1
+## 4.12 ベータ 1
 
-- Published: 2025-09-29T21:42:10Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12-beta-1
+- 公開日: 2025-09-29T21:42:10Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12-beta-1
 
-As we always say, your feedback is really important to us, and this time we’ve added one of the most requested features — landscape mode. Using AdGuard on a tablet is now even more convenient.
+私たちはいつも言うように、あなたのフィードバックは私たちにとって本当に重要であり、今回は私たちが最も要求された機能の1つを追加しました。 タブレットでAdGuardを使うと、より便利になりました。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.12/tablet_en.png" width="700">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.12/tablet_en.png"幅="700">
 </p>
 
-We’ve also introduced settings import via link. This feature saves you time: no need to reconfigure everything on a new device or spend time describing your setup when reporting missed ads — just share a link.
+リンクで設定インポートも導入しました。 この機能は時間を節約します。新しいデバイスですべてを再構成したり、ミスされた広告を報告するときにセットアップを記述する時間を費やす必要はありません。リンクを共有するだけです。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.12/share_en.png" width="300">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.12/share_en.png"幅="300">
 </p>
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Disabled “Route traffic through AdGuard” option for com.bKash.customerapp to ensure the app works correctly [#5788](https://github.com/AdguardTeam/AdguardForAndroid/issues/5788)
+### 改善点
+* アプリが正しく動作するように、com.bKash.customerapp 用の「AdGuard によるルートトラフィック」オプションを無効にしました [#5788](https://github.com/AdguardTeam/AdguardForAndroid/issues/5788)
 
-### Fixes
-* CA certificate installation instructions are not relevant for Honor [#5779](https://github.com/AdguardTeam/AdguardForAndroid/issues/5779)
-* Impossible to add app-specific HTTPS exclusion [#5290](https://github.com/AdguardTeam/AdguardForAndroid/issues/5290)
-* Custom DNS filter is not shown in the Update section [#5821](https://github.com/AdguardTeam/AdguardForAndroid/issues/5821)
-* Tapping the cross on the snackbar about downloading a new app version doesn’t stop the download [#5760](https://github.com/AdguardTeam/AdguardForAndroid/issues/5760)
-* Some images are missing in a banking app due to AdGuard filtering [#5819](https://github.com/AdguardTeam/AdguardForAndroid/issues/5819)
-* Unable to connect to proxy server [#5794](https://github.com/AdguardTeam/AdguardForAndroid/issues/5794)
-* DNS filters do not apply [#5851](https://github.com/AdguardTeam/AdguardForAndroid/issues/5851)
+### フィックス
+* CA 証明書のインストール手順は、名誉 [#5779] には関係ありません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/5779)
+* アプリ固有の HTTPS 除外 [#5290] を追加できません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5290)
+* 更新セクション[#5821]にカスタムDNSフィルタが表示されない(https://github.com/AdguardTeam/AdguardForAndroid/issues/5821)
+* スナックバーにクロスをタッピングして、新しいアプリバージョンをダウンロードしてもダウンロードを停止しない[#5760](https://github.com/AdguardTeam/AdguardForAndroid/issues/5760)
+* AdGuard のフィルタリング [#5819] による銀行アプリで一部の画像が欠落しています(https://github.com/AdguardTeam/AdguardForAndroid/issues/5819)
+* プロキシサーバーに接続できない [#5794](https://github.com/AdguardTeam/AdguardForAndroid/issues/5794)
+* DNS フィルターは適用しません [#5851] (https://github.com/AdguardTeam/AdguardForAndroid/issues/5851)
 
-### CoreLibs (Filtering engine)
+### CoreLibs (フィルターエンジン)
 
-* Updated CoreLibs to v1.19.28 [#5830](https://github.com/AdguardTeam/AdguardForAndroid/issues/5830)
+* 更新されたCoreLibsにv1.19.28 [#5830](https://github.com/AdguardTeam/AdguardForAndroid/issues/5830)
 
-#### Improvements
+#### 改善点
 
-* Improved the `$app` modifier: added support for wildcards and regexps
+* 改善された`$app`修飾語:ワイルドカードと正規表現のサポートを追加
 [1906](https://github.com/AdguardTeam/CoreLibs/issues/1906)
-* Added support for ALPS extension [1987](https://github.com/AdguardTeam/CoreLibs/issues/1987) 
+* ALPSエクステンションのサポートを追加 [1987](https://github.com/AdguardTeam/CoreLibs/issues/1987) 
 
-#### Fixes
+#### フィックス
 
-* Wrong tracking protection option shown in the log [#5739](https://github.com/AdguardTeam/AdguardForAndroid/issues/5739)
-* Filtering disabled on some websites due to performance warnings (new.lewd.ninja) [1994](https://github.com/AdguardTeam/CoreLibs/issues/1994)
-* "Use FakeDNS" option in Proxy Server interrupts the connection of bypassed apps [5355](https://github.com/AdguardTeam/AdguardForAndroid/issues/5355)
-* Some extensions do not work after update to v2.17 [1993](https://github.com/AdguardTeam/CoreLibs/issues/1993)
-* XHR timeout with the `immersivetranslate` userscript [2000](https://github.com/AdguardTeam/CoreLibs/issues/2000)
-* Content-type modifiers do not work with the `$urltransform` modifier [1978](https://github.com/AdguardTeam/CoreLibs/issues/1978)
+* ログ[#5739]に表示されている間違った追跡保護オプション(https://github.com/AdguardTeam/AdguardForAndroid/issues/5739)
+* パフォーマンス警告(new.lewd.ninja)による一部のウェブサイトで無効なフィルタリング [1994](https://github.com/AdguardTeam/CoreLibs/issues/1994)
+* プロキシサーバーの「FakeDNS」オプションは、バイパスされたアプリの接続を中断 [5355](https://github.com/AdguardTeam/AdguardForAndroid/issues/5355)
+* 更新後にv2.17 [1993]( 更新後、一部の拡張子は動作しません)https://github.com/AdguardTeam/CoreLibs/issues/1993)
+* XHRタイムアウトとXHRタイムアウト`immersivetranslate`ユーザスクリプト [2000](https://github.com/AdguardTeam/CoreLibs/issues/2000)
+* コンテンツタイプの修飾子は機能しません`$urltransform`修飾子 [1978](https://github.com/AdguardTeam/CoreLibs/issues/1978)
 
-### DnsLibs (DNS filtering engine)
+### DnsLibs (DNSのろ過エンジン)
 
-* Updated DnsLibs to v2.6.20 [#5834](https://github.com/AdguardTeam/AdguardForAndroid/issues/5834)
+* DnsLibsをv2.6.20に更新 [#5834](https://github.com/AdguardTeam/AdguardForAndroid/issues/5834)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
+### スクリプト(フィルタリングルールのJavaScript強化)
 
-* Updated Scriptlets to v2.2.9
+* スクリプトをv2.2.9に更新しました
 
-#### Improvements
-* Added a new scriptlet  — 'trusted-replace-argument' [405](https://github.com/AdguardTeam/Scriptlets/issues/405)
+#### 改善点
+* 新しいスクリプトレットを追加 — 'trusted-replace-argument' [405]()https://github.com/AdguardTeam/Scriptlets/issues/405)
 
-#### Fixes
-* 'prevent-element-src-loading' — TrustedScriptURL is not defined in Firefox  [514](https://github.com/AdguardTeam/Scriptlets/issues/514)
-* 'trusted-replace-node-text' — quotes are escaped incorrectly [517](https://github.com/AdguardTeam/Scriptlets/issues/517)
-* Compilation error in Safari 15 due to unsupported regex lookbehind [519](https://github.com/AdguardTeam/Scriptlets/issues/519)
+#### フィックス
+* 'prevent-element-src-loading' — TrustedScriptURL は Firefox [514] で定義されていません。https://github.com/AdguardTeam/Scriptlets/issues/514)
+* 'trusted-replace-node-text' — 引用符は正しくエスケープされます [517](https://github.com/AdguardTeam/Scriptlets/issues/517)
+* 未サポートの正規表現によるSafari 15のコンパイルエラー [519](https://github.com/AdguardTeam/Scriptlets/issues/519)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.11 Beta 1
+## 4.11 ベータ 1
 
-- Published: 2025-08-14T15:04:09Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.11-beta-1
+- 公開日: 2025-08-14T15:04:09Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.11-beta-1
 
-This beta includes some under-the-hood improvements, a substantial number of bug fixes, and a CoreLibs update. As a result, overall app stability has been significantly improved.
+このベータには、いくつかのアンダーフードの改善、大量のバグ修正、CoreLibsアップデートが含まれています。 その結果、アプリ全体の安定性が大幅に向上しました。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* The Create button overlaps the checkbox on the trial activation screen [#5039](https://github.com/AdguardTeam/AdguardForAndroid/issues/5039)
-* AdGuard player doesn’t open when sharing a video from the YouTube app [#5780](https://github.com/AdguardTeam/AdguardForAndroid/issues/5780)
-* AdGuard identifies AdGuard VPN as a third-party VPN in Integration mode [#5567](https://github.com/AdguardTeam/AdguardForAndroid/issues/5567)
-* Apps excluded by UID are routed through AdGuard [#5731](https://github.com/AdguardTeam/AdguardForAndroid/issues/5731)
-* Invalid filter update date format for Japanese, Korean, and Chinese [#5703](https://github.com/AdguardTeam/AdguardForAndroid/issues/5703)
-* Missing string for private browser notification [#5741](https://github.com/AdguardTeam/AdguardForAndroid/issues/5741)
-* Private browser onboarding is displayed twice [#5752](https://github.com/AdguardTeam/AdguardForAndroid/issues/5752)
-* Private browser crashes after tapping browser settings [#5781](https://github.com/AdguardTeam/AdguardForAndroid/issues/5781)
-* The “Nothing found” warning is missing on some screens [#5038](https://github.com/AdguardTeam/AdguardForAndroid/issues/5038)
-* The “Apps operating through proxy” screen is displayed in gray in Integration mode [#5732](https://github.com/AdguardTeam/AdguardForAndroid/issues/5732)
-* The app asks for permission to run in the background even though permission has already been granted [#5560](https://github.com/AdguardTeam/AdguardForAndroid/issues/5560)
-* Titles and descriptions of DNS servers, extensions, and filters are  translated into the system language if a different language is selected in AdGuard [#5709](https://github.com/AdguardTeam/AdguardForAndroid/issues/5709)
-* Two similar graphs can be displayed at the same time [#4915](https://github.com/AdguardTeam/AdguardForAndroid/issues/4915)
-* The app icon does not fill the designed area on the Amazon Fire TV Stick 4K Max [#5476](https://github.com/AdguardTeam/AdguardForAndroid/issues/5476)
-* `com.carshering` is broken when routed through AdGuard [#5464](https://github.com/AdguardTeam/AdguardForAndroid/issues/5464)
-* Rules don’t get removed from the firewall after tapping “Remove rule” [#5613](https://github.com/AdguardTeam/AdguardForAndroid/issues/5613)
+### フィックス
+* Createボタンは、トライアルアクティベーション画面のチェックボックスをオーバーラップ [#5039](https://github.com/AdguardTeam/AdguardForAndroid/issues/5039)
+* YouTubeアプリから動画を共有するときにAdGuardプレーヤーが開いていない[#5780](https://github.com/AdguardTeam/AdguardForAndroid/issues/5780)
+* AdGuard は、統合モード [#5567] でサードパーティの VPN として AdGuard VPN を識別します(https://github.com/AdguardTeam/AdguardForAndroid/issues/5567)
+* UIDが除外するアプリは、AdGuard [#5731] を介してルーティングされています(https://github.com/AdguardTeam/AdguardForAndroid/issues/5731)
+* 日本語、韓国語、中国語の無効なフィルタ更新日フォーマット [#5703](https://github.com/AdguardTeam/AdguardForAndroid/issues/5703)
+* プライベートブラウザ通知の文字列を欠く [#5741](https://github.com/AdguardTeam/AdguardForAndroid/issues/5741)
+* 専用ブラウザのオンボーディングが2回表示されます[#5752](https://github.com/AdguardTeam/AdguardForAndroid/issues/5752)
+* ブラウザの設定をタップした後、プライベートブラウザがクラッシュ [#5781](https://github.com/AdguardTeam/AdguardForAndroid/issues/5781)
+* 「Nothing found」の警告は、いくつかの画面で欠落しています [#5038](https://github.com/AdguardTeam/AdguardForAndroid/issues/5038)
+* 「プロキシで動作するアプリ」画面は、インテグレーションモード[#5732]()で灰色で表示されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5732)
+* 許可が既に付与されているにもかかわらず、アプリはバックグラウンドで実行する許可を求める [#5560](https://github.com/AdguardTeam/AdguardForAndroid/issues/5560)
+* DNS サーバー、拡張機能、およびフィルタのタイトルと説明は、AdGuard [#5709] で異なる言語が選択されている場合、システム言語に翻訳されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5709)
+* 同じ時間に2つの類似のグラフを表示することができます [#4915](https://github.com/AdguardTeam/AdguardForAndroid/issues/4915)
+* アプリのアイコンは、Amazon Fire TV Stick 4K Max [#5476] にデザインされた領域を埋めません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5476)
+* `com.carshering`AdGuard [#5464] を経由してルーティングしたときに壊れています(https://github.com/AdguardTeam/AdguardForAndroid/issues/5464)
+* 「ルールを削除」をタップした後、規則はファイアウォールから削除されません [#5613](https://github.com/AdguardTeam/AdguardForAndroid/issues/5613)
 
-### CoreLibs (Filtering engine)
-* CoreLibs updated to v1.18.28 [#5792](https://github.com/AdguardTeam/AdguardForAndroid/issues/5792)
+### CoreLibs (フィルターエンジン)
+* CoreLibs が v1.18.28 に更新されました(#5792)(https://github.com/AdguardTeam/AdguardForAndroid/issues/5792)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.10 Beta 1
+## 4.10 ベータ 1
 
-- Published: 2025-06-17T11:54:02Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.10-beta-1
+- 公表: 2025-06-17T11:54:02Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.10-beta-1
 
-This beta introduces important improvements to the HTTPS certificate installation process, making it more intuitive and accessible for users. 
+このベータは、HTTPS 証明書のインストールプロセスに重要な改善を導入し、より直感的でユーザーのためにアクセス可能にします。
 
-When you install AdGuard and launch the app for the first time, you’re prompted to install an HTTPS certificate. This step is essential because the certificate plays a key role in ensuring effective ad filtering in browsers. Without it, filtering quality is significantly reduced. That’s why it’s crucial for all users, beginner or advanced, to be able to complete the installation without difficulty.
+AdGuardをインストールし、アプリを初めて起動すると、HTTPS証明書をインストールする必要があります。 このステップは、証明書がブラウザで効果的な広告フィルタリングを確実にするために重要な役割を果たしているので不可欠です。 それなしで、ろ過の質はかなり減ります。 そのため、すべてのユーザー、初心者、または上級者にとって重要な理由で、インストールを難しさずに完了することができます。
 
-We knew there was room for improvement in the whole process — the previous instructions often didn’t reflect the actual settings found on devices from different manufacturers, and there was also a bug that prevented users from returning to the instructions after switching away from the app.
+私たちは、プロセス全体の改善のための部屋があることを知っていた - 前の指示は、多くの場合、異なるメーカーからデバイス上で見つかった実際の設定を反映していないし、また、ユーザーがアプリから離れて切り替えた後、指示に戻るのを防ぐバグがありました。
 
-To address these issues, we’ve added in-app video guides for the most common devices — including Google Pixel, Samsung, Huawei, Xiaomi, and OnePlus — with adjustments based on Android OS version and user locale. We’ve also fixed the bug mentioned above.
+これらの問題に対処するため、Googleピクセル、Samsung、Huawei、Xiaomi、OnePlusなどの最も一般的なデバイス用のアプリ内ビデオガイドを追加し、Android OSバージョンとユーザーロケールに基づいて調整します。 上記のバグも修正しました。
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Added HTTPS filtering by default for the Lemur browser [#5577](https://github.com/AdguardTeam/AdguardForAndroid/issues/5577)
+### 改善点
+* LemurブラウザのデフォルトでHTTPSフィルタリングを追加 [#5577](https://github.com/AdguardTeam/AdguardForAndroid/issues/5577)
 
-### Fixes
-* AdGuard gets disabled when WebView is stopped or updated [#5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)
-* After integration with Tor, Tor via Orbot isn’t the default proxy [#4908](https://github.com/AdguardTeam/AdguardForAndroid/issues/4908)
-* Updated filters aren’t displayed after the app is restarted [#5638](https://github.com/AdguardTeam/AdguardForAndroid/issues/5638)
-* QUIC filtering is disabled for WeChat and AliExpress [#5497](https://github.com/AdguardTeam/AdguardForAndroid/issues/5497)
-* WeChat is excluded from HTTPS filtering by default [#5689](https://github.com/AdguardTeam/AdguardForAndroid/issues/5689)
-* The app is not fully translated [#5418](https://github.com/AdguardTeam/AdguardForAndroid/issues/5418)
-* Filtering status is not saved if it’s changed twice [#5701](https://github.com/AdguardTeam/AdguardForAndroid/issues/5701)
-* Recent activity log lags when scrolling slowly [#5369](https://github.com/AdguardTeam/AdguardForAndroid/issues/5369)
-* Some parameters are not included in the link when reporting an incorrect blocking [#5520](https://github.com/AdguardTeam/AdguardForAndroid/issues/5520)
-* When opening a link in a browser, two AdGuard apps appear in the list of browsers, and one of which does not work as expected [#5592](https://github.com/AdguardTeam/AdguardForAndroid/issues/5592)
+### フィックス
+* WebViewが停止または更新されたときにAdGuardが無効になります [#5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)
+* Tor との統合後、Orbot 経由の Tor はデフォルトのプロキシではありません [#4908](https://github.com/AdguardTeam/AdguardForAndroid/issues/4908)
+* アプリが再起動した後に更新されたフィルタは表示されません [#5638](https://github.com/AdguardTeam/AdguardForAndroid/issues/5638)
+* QUIC のフィルタリングは WeChat および AliExpress [#5497] のために無効になります(https://github.com/AdguardTeam/AdguardForAndroid/issues/5497)
+* WeChat は、デフォルトで HTTPS フィルタリングから除外されます [#5689](https://github.com/AdguardTeam/AdguardForAndroid/issues/5689)
+* アプリが完全に翻訳されていない [#5418](https://github.com/AdguardTeam/AdguardForAndroid/issues/5418)
+* [#5701] を 2 回変更すると、フィルタリング状態が保存されません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5701)
+* 最近の活動ログはゆっくりとスクロールするときに遅れ [#5369] (https://github.com/AdguardTeam/AdguardForAndroid/issues/5369)
+* 誤ったブロックを報告するときにリンクにいくつかのパラメータは含まれていません [#5520](https://github.com/AdguardTeam/AdguardForAndroid/issues/5520)
+* ブラウザでリンクを開くと、2つのAdGuardアプリがブラウザのリストに表示され、そのうちの1つは期待どおりに動作しません[#5592](https://github.com/AdguardTeam/AdguardForAndroid/issues/5592)
 
-### CoreLibs (Filtering engine)
-* CoreLibs updated to v1.17.157 [#5725](https://github.com/AdguardTeam/AdguardForAndroid/issues/5725)
+### CoreLibs (フィルターエンジン)
+* CoreLibs が v1.17.157 に更新されました(#5725)(https://github.com/AdguardTeam/AdguardForAndroid/issues/5725)
 
-#### Fixes
-* Naver Smartstore cannot be accessed properly [#1971](https://github.com/AdguardTeam/CoreLibs/issues/1971)
-* Some React-based websites aren’t loaded correctly due to a `Minified React error` [#1953](https://github.com/AdguardTeam/CoreLibs/issues/1953)
-* User rule for domains does not block the request completely [#5539](https://github.com/AdguardTeam/AdguardForAndroid/issues/5539)
+#### フィックス
+* Naver Smartstore が正常にアクセスできない [#1971](https://github.com/AdguardTeam/CoreLibs/issues/1971)
+* React ベースのウェブサイトが正しくロードされていないものもあります。`Minified React error` [#1953](https://github.com/AdguardTeam/CoreLibs/issues/1953)
+* ドメインのユーザールールは完全にリクエストをブロックしない[#5539](https://github.com/AdguardTeam/AdguardForAndroid/issues/5539)
 
-### DnsLibs (DNS filtering engine)
-* DnsLibs updated to v2.6.6 [#5724](https://github.com/AdguardTeam/AdguardForAndroid/issues/5724)
+### DnsLibs (DNSのろ過エンジン)
+* DnsLibs が v2.6.6 に更新 [#5724](https://github.com/AdguardTeam/AdguardForAndroid/issues/5724)
 
-### Scriptlets (JavaScript enhancement for filtering rules) 
-* Scriptlets updated to v2.1.7
+### スクリプト(フィルタリングルールのJavaScript強化)
+* Scriptlets が v2.1.7 に更新されました。
 
-#### Improvements
-*  ’prevent-addEventListener’ — added ability to match specific element [#480](https://github.com/AdguardTeam/Scriptlets/issues/480)
+#### 改善点
+*  'prevent-addEventListener' — 特定の要素にマッチする機能を追加しました [#480](https://github.com/AdguardTeam/Scriptlets/issues/480)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.8
 
-- Published: 2025-02-17T17:20:34Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8
+- 公開日: 2025-02-17T17:20:34Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8
 
-We continue to unify the code base of our products, and AdGuard for Android is no exception. Updates will now be more stable and new features will be added faster. Also, in the new version we have accelerated the loading of large amounts of data in Statistics, as well as updated CoreLibs and DnsLibs.
+今後も、製品のコードベースを統一し、Android用のAdGuardは例外ではありません。 アップデートは、より安定化され、新機能が追加されます。 また、新しいバージョンでは、統計データやCoreLibsやDnsLibsの更新など、大量のデータの読み込みを加速しました。
 
-> From this version, AdGuard for Android only supports Android 9 or higher.
+> このバージョンから、Android用のAdGuardは、Android 9以上をサポートしています。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* Beeline Wi-Fi calls do not work [#5583](https://github.com/AdguardTeam/AdguardForAndroid/issues/5583)
-* The CPU background value increases drastically after a few series of quitting/starting the app [#5504](https://github.com/AdguardTeam/AdguardForAndroid/issues/5504)
-* Custom DNS does not work after importing settings [#5618](https://github.com/AdguardTeam/AdguardForAndroid/issues/5618)
+### フィックス
+* Beeline Wi-Fi 呼び出しは動作しません [#5583](https://github.com/AdguardTeam/AdguardForAndroid/issues/5583)
+* CPU 背景値が大幅に増加し、いくつかのシリーズの終了/アプリの開始 [#5504](https://github.com/AdguardTeam/AdguardForAndroid/issues/5504)
+* カスタムDNSは設定をインポートした後に動作しません[#5618](https://github.com/AdguardTeam/AdguardForAndroid/issues/5618)
 
-### CoreLibs (Filtering engine)
-* CoreLibs updated to v1.17.88 [#5620](https://github.com/AdguardTeam/AdguardForAndroid/issues/5620)
+### CoreLibs (フィルターエンジン)
+* CoreLibs が v1.17.88 に更新されました(#5620)(https://github.com/AdguardTeam/AdguardForAndroid/issues/5620)
 
-### DnsLibs (DNS filtering engine)
-* DnsLibs updated to v2.5.63 [#5607](https://github.com/AdguardTeam/AdguardForAndroid/issues/5607)
+### DnsLibs (DNSのろ過エンジン)
+* dnsLibs が v2.5.63 に更新 [#5607](https://github.com/AdguardTeam/AdguardForAndroid/issues/5607)
 
-#### Improvements
-* Added `matter._tcp.default.service.arpa` to the list of default exclusions [#230](https://github.com/AdguardTeam/DnsLibs/issues/230)
-* Block RFC9462 (_dns.resolver.arpa) queries [#228](https://github.com/AdguardTeam/DnsLibs/issues/228)
-* Use `pretty_str()` in errors reported in `DnsRequestProcessedEvent` [#223](https://github.com/AdguardTeam/DnsLibs/issues/223)
+#### 改善点
+* 追加`matter._tcp.default.service.arpa`デフォルト除外リストへ [#230](https://github.com/AdguardTeam/DnsLibs/issues/230)
+* ブロックRFC9462 ( dns.resolver.arpa) 問い合わせ [#228](https://github.com/AdguardTeam/DnsLibs/issues/228)
+* 使用条件`pretty_str()`エラーで報告`DnsRequestProcessedEvent` [#223](https://github.com/AdguardTeam/DnsLibs/issues/223)
 
-#### Fixes
-* Long waiting time for response when blocking by DNS [#1887](https://github.com/AdguardTeam/CoreLibs/issues/1887)
-* `$dnsrewrite=IPv4` rule does not block IPv6 resolution [#224](https://github.com/AdguardTeam/DnsLibs/issues/224)
+#### フィックス
+* DNS[#1887]でブロックするときの応答のための長い待ち時間(https://github.com/AdguardTeam/CoreLibs/issues/1887)
+* `$dnsrewrite=IPv4`ルールはIPv6解像度をブロックしません [#224](https://github.com/AdguardTeam/DnsLibs/issues/224)
 
-### UserscriptsWrapper 
+### ユーザースクリプトWrapper
 
-* UserscriptsWrapper updated to v2.0.1
+* UserscriptsWrapperがv2.0.1に更新
 
-### Scriptlets (JavaScript enhancement for filtering rules) 
+### スクリプト(フィルタリングルールのJavaScript強化)
 
-* Scriptlets updated to v2.1.4
+* スクリプトはv2.1.4に更新しました
 
-#### Improvements
-* `trusted-click-element` — check for `containsText` of all matched selectors [#468](https://github.com/AdguardTeam/Scriptlets/issues/468)
+#### 改善点
+* `trusted-click-element`— チェック`containsText`すべての一致したセレクター [#468](https://github.com/AdguardTeam/Scriptlets/issues/468)
 
-#### Fixes
-* `trusted-click-element` — element was removed and added again before it was clicked [#391](https://github.com/AdguardTeam/Scriptlets/issues/391)
+#### フィックス
+* `trusted-click-element`— 要素が削除され、[#391] をクリックする前に再び追加されました(https://github.com/AdguardTeam/Scriptlets/issues/391)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.8 RC 2
 
-- Published: 2025-02-15T11:47:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-rc-2
+- 公開日: 2025-02-15T11:47:20Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-rc-2
 
-Ad blocking was compromised, but not for long: we fixed [an annoying bug reported by users](https://github.com/AdguardTeam/AdguardForAndroid/issues/5604) and updated our libraries while we were at it.
+広告ブロックは妥協していたが、長期間は許さない:[ユーザーによって報告された迷惑なバグ]を修正しました()https://github.com/AdguardTeam/AdguardForAndroid/issues/5604) ライブラリを更新し、その中にライブラリを更新します。
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.8 RC 1
 
-- Published: 2025-02-11T17:31:57Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-rc-1
+- 公表: 2025-02-11T17:31:57Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-rc-1
 
-We continue to unify the code base of our products, and AdGuard for Android is no exception. Updates will now be more stable and new features will be added faster. Also, in the new version we have accelerated the loading of large amounts of data in Statistics, as well as updated CoreLibs and DnsLibs.
+今後も、製品のコードベースを統一し、Android用のAdGuardは例外ではありません。 アップデートは、より安定化され、新機能が追加されます。 また、新しいバージョンでは、統計データやCoreLibsやDnsLibsの更新など、大量のデータの読み込みを加速しました。
 
->  From this version, AdGuard for Android only supports Android 9 or higher.
+>  このバージョンから、Android用のAdGuardは、Android 9以上をサポートしています。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* Beeline Wi-Fi calls do not work [#5583](https://github.com/AdguardTeam/AdguardForAndroid/issues/5583)
+### フィックス
+* Beeline Wi-Fi 呼び出しは動作しません [#5583](https://github.com/AdguardTeam/AdguardForAndroid/issues/5583)
 
-### CoreLibs (Filtering engine)
-* CoreLibs updated to v1.17.82 [#5610](https://github.com/AdguardTeam/AdguardForAndroid/issues/5610)
+### CoreLibs (フィルターエンジン)
+* CoreLibs が v1.17.82 に更新されました(#5610)(https://github.com/AdguardTeam/AdguardForAndroid/issues/5610)
 
-### DnsLibs (DNS filtering engine)
-* DnsLibs updated to v2.5.63 [#5607](https://github.com/AdguardTeam/AdguardForAndroid/issues/5607)
+### DnsLibs (DNSのろ過エンジン)
+* dnsLibs が v2.5.63 に更新 [#5607](https://github.com/AdguardTeam/AdguardForAndroid/issues/5607)
 
-#### Improvements
-* Added matter._tcp.default.service.arpa to the list of default exclusions [#230](https://github.com/AdguardTeam/DnsLibs/issues/230 )
-* Block RFC9462 (_dns.resolver.arpa) queries [#228](https://github.com/AdguardTeam/DnsLibs/issues/228)
-* Use `pretty_str()` in errors reported in DnsRequestProcessedEvent [#223](https://github.com/AdguardTeam/DnsLibs/issues/223)
+#### 改善点
+* デフォルト除外の一覧に問題. tcp.default.service.arpa を追加しました [#230](https://github.com/AdguardTeam/DnsLibs/issues/230 )
+* ブロックRFC9462 ( dns.resolver.arpa) 問い合わせ [#228](https://github.com/AdguardTeam/DnsLibs/issues/228)
+* 使用条件`pretty_str()`DnsRequestProcessedEvent [#223] で報告されたエラーでhttps://github.com/AdguardTeam/DnsLibs/issues/223)
 
-#### Fixes
-* Long waiting time for response when blocking by DNS [#1887](https://github.com/AdguardTeam/CoreLibs/issues/1887 )
-* Rule `$dnsrewrite=IPv4` does not block IPv6 resolution [#224](https://github.com/AdguardTeam/DnsLibs/issues/224)
-## AdGuard for Android direct download links:
+#### フィックス
+* DNS[#1887]でブロックするときの応答のための長い待ち時間(https://github.com/AdguardTeam/CoreLibs/issues/1887 )
+* ルール`$dnsrewrite=IPv4`IPv6解像度をブロックしない [#224](https://github.com/AdguardTeam/DnsLibs/issues/224)
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.8 Beta 1
+## 4.8 ベータ 1
 
-- Published: 2025-02-07T17:27:43Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-beta-1
+- 公表: 2025-02-07T17:27:43Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-beta-1
 
-We continue to unify the code base of our products, and AdGuard for Android is no exception. Updates will now be more stable and new features will be added faster. Also in the new version we have accelerated the loading of large amounts of data in Statistics and updated CoreLibs. 
+今後も、製品のコードベースを統一し、Android用のAdGuardは例外ではありません。 アップデートは、より安定化され、新機能が追加されます。 また、新しいバージョンでは、統計データと更新されたCoreLibsの大量のデータの読み込みを加速しました。
 
-## Changelog
+## 変更履歴
 
-### Fixes
+### フィックス
 
-* Beeline Wi-Fi calls do not work [#5583](https://github.com/AdguardTeam/AdguardForAndroid/issues/5583)
+* Beeline Wi-Fi 呼び出しは動作しません [#5583](https://github.com/AdguardTeam/AdguardForAndroid/issues/5583)
 
-### CoreLibs (Filtering engine)
+### CoreLibs (フィルターエンジン)
 
-* CoreLibs updated to v1.16.58 [#5579](https://github.com/AdguardTeam/AdguardForAndroid/issues/5579)
+* CoreLibs が v1.16.58 に更新されました [#5579](https://github.com/AdguardTeam/AdguardForAndroid/issues/5579)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.7.1
 
-- Published: 2024-12-11T16:59:44Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7.1
+- 公表: 2024-12-11T16:59:44Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7.1
 
-In this update we've improved the stability of the app and fixed some minor bugs.
+このアップデートでは、アプリの安定性を改善し、いくつかのマイナーなバグを修正しました。
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.7
 
-- Published: 2024-12-03T15:41:02Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7
+- 公表: 2024-12-03T15:41:02Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7
 
-Today’s version is exactly what we love: it introduces a fresh feature we couldn’t wait to see on the app. And it’s no small release – we’re introducing an in-app privacy browser to the app! Let’s take a closer look at what’s new.
+今日のバージョンはまさに私たちが大好きなものです。アプリで見るのを待つことができない新しい機能を紹介します。 小さなリリースはありません。アプリ内プライバシーブラウザをアプリに導入しています! 新しいものを詳しく見ていきましょう。
 
-> AdGuard v4.7 is the last version that supports Android 7 and 8. Starting with the next release, we will only offer support for Android 9 or higher.
+> AdGuard v4.7は、Android 7と8をサポートする最終バージョンです。 次のリリースから、Android 9 以降のみ対応いたします。
 
-## A private browser, because there’s no such thing as too much privacy
-
-<p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.7/agpb_en.png" width="300">
-</p>
-
-Keeping privacy in mind while browsing has become an essential part of many users’ everyday life. We want our app to be part of that routine, and that’s why we’re rolling out the AdGuard private browser, bringing an extra layer of privacy to your daily web experience.
-
-So, what’s so cool about this browser?
-
-* Ad and tracker blocking (of course!)
-* Easy history deletion with a visible, accessible button. Also, your browser history is automatically cleared when you close the browser
-
-To explore this new feature, tap *Try our private browser* on the app's home screen. You can also access the browser through the *Protection* tab, where you can set a default search engine and even create a browser widget.
+## あまりプライバシーがないため、プライベートブラウザ
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.7/agmainpb_en.png" width="300">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.7/agpb_en.png"幅="300">
 </p>
 
-Just a heads-up: our private browser is still in the early stages of development and has a few limitations, like the inability to handle multiple sessions at once. In the future, we’ll offer a more comprehensive browsing experience, but for now, we suggest using it as a supplement to your usual browser’s Incognito Mode, rather than a replacement. Sounds good?
+多くのユーザーの日常生活において、プライバシーを念頭に置いています。 私たちは、アプリがそのルーチンの一部であることを望んでいます, そして、私たちはアドガードプライベートブラウザをロールアウトしている理由です, あなたの毎日のWeb体験に余分な層のプライバシーをもたらします.
 
-## Changelog
+それでは、このブラウザについてとてもクールなのでしょうか?
 
-### Improvements
-* Incorrect translation of Fanboy's Annoyance List description [#5423](https://github.com/AdguardTeam/AdguardForAndroid/issues/5423)
+* 広告と追跡者ブロック(もちろん!)
+* 目に見える、アクセス可能なボタンで簡単な履歴削除。 また、ブラウザを閉じるとブラウザの履歴が自動的に消去されます。
 
-### Fixes
-* “Allow app usage access” popup does not disappear after enabling the corresponding switch in the system settings on Android 9 [#4906](https://github.com/AdguardTeam/AdguardForAndroid/issues/4906)
-* Almost all apps are no longer logged as filtered [#5426](https://github.com/AdguardTeam/AdguardForAndroid/issues/5426)
-* Cursor barely visible at search bars in the Dark theme [#5397](https://github.com/AdguardTeam/AdguardForAndroid/issues/5397)
-* Enabling/disabling the switch “Trusted filter” doesn’t make protection restart [#5202](https://github.com/AdguardTeam/AdguardForAndroid/issues/5202)
-* Incorrect error message when trying to send a report with an invalid email on the Report a bug screen [#5160](https://github.com/AdguardTeam/AdguardForAndroid/issues/5160)
-* Magenta color of AdGuard notification if protection is paused [#5449](https://github.com/AdguardTeam/AdguardForAndroid/issues/5449)
-* Routing for problem apps in groups is enabled when you turn on this option for problem-free apps [#4918](https://github.com/AdguardTeam/AdguardForAndroid/issues/4918)
-* TCP keepalive for outgoing sockets screen doesn't scroll [#5415](https://github.com/AdguardTeam/AdguardForAndroid/issues/5415)
-* The user rules are positioned in the middle of the editor [#5422](https://github.com/AdguardTeam/AdguardForAndroid/issues/5422)
-* Translations are missing for Annoyances blocking notice [#5388](https://github.com/AdguardTeam/AdguardForAndroid/issues/5388)
-* The app crashes when Android WebView is unloaded [#5521](https://github.com/AdguardTeam/AdguardForAndroid/issues/5521)
+この新機能を探索するには、アプリのホーム画面で「*プライベートブラウザ*」をタップします。 *Protection*タブからブラウザにアクセスして、デフォルトの検索エンジンを設定したり、ブラウザウィジェットを作成したりすることもできます。
 
-### Other
-* `it.labfabrici.hub` does not work when protection is working [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
+<p align="center">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.7/agmainpb_en.png"幅="300">
+</p>
+
+ヘッドアップ:当社のプライベートブラウザはまだ開発初期段階にあり、複数のセッションを一度に処理できないような制限がいくつかあります。 将来的には、より包括的なブラウジング体験を提供しますが、今では、交換ではなく、通常のブラウザのIncognito Modeの補足として使用することをお勧めします。 よく聞こえますか?
+
+## 変更履歴
+
+### 改善点
+* FanboyのAnnoyanceリストの説明の誤った翻訳 [#5423](https://github.com/AdguardTeam/AdguardForAndroid/issues/5423)
+
+### フィックス
+* Android 9 [#4906] のシステム設定で対応するスイッチを有効にすると、ポップアップが消えません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4906)
+* ほとんどすべてのアプリはフィルタリングされた [#5426] として記録されません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5426)
+* ダークテーマの検索バーにカーソルをひいて表示 [#5397](https://github.com/AdguardTeam/AdguardForAndroid/issues/5397)
+* スイッチ「Trusted filter」の有効/無効化は、保護を再起動しない[#5202](https://github.com/AdguardTeam/AdguardForAndroid/issues/5202)
+* バグ画面のレポートに無効なメールでレポートを送信しようとすると、誤ったエラーメッセージ[#5160](https://github.com/AdguardTeam/AdguardForAndroid/issues/5160)
+* 保護がpausedならAdGuardの通知のマゼンタ色[#5449](https://github.com/AdguardTeam/AdguardForAndroid/issues/5449)
+* 問題のないアプリ [#4918] をオンにすると、グループ内の問題アプリのルーティングが有効になっています。https://github.com/AdguardTeam/AdguardForAndroid/issues/4918)
+* アウトゴットソケット画面のTCPは[#5415]をスクロールしません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5415)
+* ユーザルールはエディタの中央にある[#5422](https://github.com/AdguardTeam/AdguardForAndroid/issues/5422)
+* Annoyancesブロック通知の翻訳は欠落しています [#5388]()https://github.com/AdguardTeam/AdguardForAndroid/issues/5388)
+* Android WebViewがアンロードされたときにアプリがクラッシュ [#5521](https://github.com/AdguardTeam/AdguardForAndroid/issues/5521)
+
+### その他
+* `it.labfabrici.hub`保護が働いているとき、動作しません [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.6.5
 
-- Published: 2024-11-12T17:10:23Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.5
+- 公表: 2024-11-12T17:10:23Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.5
 
-Minor improvements to the statistics module.
+統計モジュールへのマイナーな改善。
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.7 RC 2
 
-- Published: 2024-11-30T08:51:08Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-rc-2
+- 公表: 2024-11-30T08:51:08Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-rc-2
 
-One more RC, one step closer to the final release. This time, we focused on improving our private browser by fixing the stats counting and implementing filtering rules. We also worked on a solid boost for the overall app performance. Almost there!
+最終リリースに近づく1つのステップはRCの1つ。 今回は、フィルタリングルールのカウントと実装をすることで、プライベートブラウザの改善に注力しました。 また、アプリ全体のパフォーマンス向上にも取り組んできました。 お問い合わせ
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Incorrect translation of Fanboy's Annoyance List description [#5423](https://github.com/AdguardTeam/AdguardForAndroid/issues/5423)
+### 改善点
+* FanboyのAnnoyanceリストの説明の誤った翻訳 [#5423](https://github.com/AdguardTeam/AdguardForAndroid/issues/5423)
 
-### Fixes
-* "Allow app usage access" popup does not disappear after enabling the corresponding switch in the system settings on Android 9 [#4906](https://github.com/AdguardTeam/AdguardForAndroid/issues/4906)
-* AdGuard crashes when Android WebView unloads [#5521](https://github.com/AdguardTeam/AdguardForAndroid/issues/5521)
-* Almost all apps are no longer logged as filtered [#5426](https://github.com/AdguardTeam/AdguardForAndroid/issues/5426)
-* Cursor barely visible at search bars in the Dark theme [#5397](https://github.com/AdguardTeam/AdguardForAndroid/issues/5397)
-* Enabling/disabling the switch “Trusted filter” doesn't make protection restart [#5202](https://github.com/AdguardTeam/AdguardForAndroid/issues/5202)
-* Incorrect error message when trying to send a report with an invalid email on the Report a bug screen [#5160](https://github.com/AdguardTeam/AdguardForAndroid/issues/5160)
-* Magenta color of AdGuard notification if protection is paused [#5449](https://github.com/AdguardTeam/AdguardForAndroid/issues/5449)
-* Routing for problem apps in groups is enabled when you turn on this option for problem-free apps [#4918](https://github.com/AdguardTeam/AdguardForAndroid/issues/4918)
-* TCP keepalive for outgoing sockets screen doesn't scroll [#5415](https://github.com/AdguardTeam/AdguardForAndroid/issues/5415)
-* The user rules are positioned in the middle of the editor [#5422](https://github.com/AdguardTeam/AdguardForAndroid/issues/5422)
-* Translations are missing for Annoyances blocking notice [#5388](https://github.com/AdguardTeam/AdguardForAndroid/issues/5388)
+### フィックス
+* Android 9 [#4906] のシステム設定で対応するスイッチを有効にすると、ポップアップが消えません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4906)
+* AdGuard が Android WebView のアンロード時にクラッシュ [#5521](https://github.com/AdguardTeam/AdguardForAndroid/issues/5521)
+* ほとんどすべてのアプリはフィルタリングされた [#5426] として記録されません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5426)
+* ダークテーマの検索バーにカーソルをひいて表示 [#5397](https://github.com/AdguardTeam/AdguardForAndroid/issues/5397)
+* スイッチ「Trusted filter」の有効/無効化は、保護を再起動しない[#5202](https://github.com/AdguardTeam/AdguardForAndroid/issues/5202)
+* バグ画面のレポートに無効なメールでレポートを送信しようとすると、誤ったエラーメッセージ[#5160](https://github.com/AdguardTeam/AdguardForAndroid/issues/5160)
+* 保護がpausedならAdGuardの通知のマゼンタ色[#5449](https://github.com/AdguardTeam/AdguardForAndroid/issues/5449)
+* 問題のないアプリ [#4918] をオンにすると、グループ内の問題アプリのルーティングが有効になっています。https://github.com/AdguardTeam/AdguardForAndroid/issues/4918)
+* アウトゴットソケット画面のTCPは[#5415]をスクロールしません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5415)
+* ユーザルールはエディタの中央にある[#5422](https://github.com/AdguardTeam/AdguardForAndroid/issues/5422)
+* Annoyancesブロック通知の翻訳は欠落しています [#5388]()https://github.com/AdguardTeam/AdguardForAndroid/issues/5388)
 
-### Other
-* `it.labfabrici.hub` does not work when protection is working [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
+### その他
+* `it.labfabrici.hub`保護が働いているとき、動作しません [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.7 RC 1
 
-- Published: 2024-11-21T17:36:35Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-rc-1
+- 公表: 2024-11-21T17:36:35Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-rc-1
 
-We’re so close to the release, we can practically hear the champagne cork popping... No new features have been added since the last beta, but we promise we weren’t slacking, just getting all the awesome stuff ready for the final version.
+リリースに近いので、シャンパンコルクのポップアップを実際に聞くことができます... 最後のベータ版以来、新機能は追加されていませんが、最終バージョンの準備が整っていないことを約束します。
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Incorrect translation of Fanboy's Annoyance List description [#5423](https://github.com/AdguardTeam/AdguardForAndroid/issues/5423)
+### 改善点
+* FanboyのAnnoyanceリストの説明の誤った翻訳 [#5423](https://github.com/AdguardTeam/AdguardForAndroid/issues/5423)
 
-### Fixes
-* "Allow app usage access" popup does not disappear after enabling the corresponding switch in the system settings on Android 9 [#4906](https://github.com/AdguardTeam/AdguardForAndroid/issues/4906)
-* Almost all apps are no longer logged as filtered [#5426](https://github.com/AdguardTeam/AdguardForAndroid/issues/5426)
-* Cursor barely visible at search bars in the Dark theme [#5397](https://github.com/AdguardTeam/AdguardForAndroid/issues/5397)
-* Enabling/disabling the switch “Trusted filter” doesn't make protection restart [#5202](https://github.com/AdguardTeam/AdguardForAndroid/issues/5202)
-* Incorrect error message when trying to send a report with an invalid email on the Report a bug screen [#5160](https://github.com/AdguardTeam/AdguardForAndroid/issues/5160)
-* Magenta color of AdGuard notification if protection is paused [#5449](https://github.com/AdguardTeam/AdguardForAndroid/issues/5449)
-* Routing for problem apps in groups is enabled when you turn on this option for problem-free apps [#4918](https://github.com/AdguardTeam/AdguardForAndroid/issues/4918)
-* TCP keepalive for outgoing sockets screen doesn't scroll [#5415](https://github.com/AdguardTeam/AdguardForAndroid/issues/5415)
-* The user rules are positioned in the middle of the editor [#5422](https://github.com/AdguardTeam/AdguardForAndroid/issues/5422)
-* Translations are missing for Annoyances blocking notice [#5388](https://github.com/AdguardTeam/AdguardForAndroid/issues/5388)
+### フィックス
+* Android 9 [#4906] のシステム設定で対応するスイッチを有効にすると、ポップアップが消えません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4906)
+* ほとんどすべてのアプリはフィルタリングされた [#5426] として記録されません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5426)
+* ダークテーマの検索バーにカーソルをひいて表示 [#5397](https://github.com/AdguardTeam/AdguardForAndroid/issues/5397)
+* スイッチ「Trusted filter」の有効/無効化は、保護を再起動しない[#5202](https://github.com/AdguardTeam/AdguardForAndroid/issues/5202)
+* バグ画面のレポートに無効なメールでレポートを送信しようとすると、誤ったエラーメッセージ[#5160](https://github.com/AdguardTeam/AdguardForAndroid/issues/5160)
+* 保護がpausedならAdGuardの通知のマゼンタ色[#5449](https://github.com/AdguardTeam/AdguardForAndroid/issues/5449)
+* 問題のないアプリ [#4918] をオンにすると、グループ内の問題アプリのルーティングが有効になっています。https://github.com/AdguardTeam/AdguardForAndroid/issues/4918)
+* アウトゴットソケット画面のTCPは[#5415]をスクロールしません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5415)
+* ユーザルールはエディタの中央にある[#5422](https://github.com/AdguardTeam/AdguardForAndroid/issues/5422)
+* Annoyancesブロック通知の翻訳は欠落しています [#5388]()https://github.com/AdguardTeam/AdguardForAndroid/issues/5388)
 
-### Other
-* `it.labfabrici.hub` does not work when protection is working [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
+### その他
+* `it.labfabrici.hub`保護が働いているとき、動作しません [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
 
-### CoreLibs (Filtering engine)
+### CoreLibs (フィルターエンジン)
 
-#### CoreLibs updated to to v1.16.53
+#### CoreLibs が v1.16.53 に更新
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.7 Beta 1
+## 4.7 ベータ 1
 
-- Published: 2024-11-15T15:23:10Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-beta-1
+- 公表: 2024-11-15T15:23:10Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-beta-1
 
-Today's beta version is exactly what we love: it introduces a fresh feature we can’t wait to see live in the main release. And it’s no small beta either: we’re introducing a privacy browser to the app! Let’s take a closer look at each of these.
+今日のベータ版はまさに私たちが大好きなものです。メインリリースでライブを見るのを待つことができない新しい機能を紹介します。 小さなベータがなくても、アプリにプライバシーブラウザを導入しています! それぞれ詳しく見ていきましょう。
 
-> AdGuard v4.7 is the last version that offers support for Android 7 and 8. From the next release, we will only offer support for Android 9 or superior.
+> AdGuard v4.7は、Android 7と8のサポートを提供する最後のバージョンです。 次のリリースから、Android 9 以降のみ対応いたします。
 
-## A private browser, because there’s no such thing as too much privacy
-
-<p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/privatebrowser2.png" width="300">
-</p>
-
-Keeping privacy in mind while browsing has become an essential part of many users’ everyday life. We’re rolling out the AdGuard private browser, bringing an extra layer of privacy to your daily web experience.
-
-So, what’s so cool about this browser?
-
-* Ad and tracker blocking (of course!)
-* Easy history deletion with a visible, accessible button. Also, your browser history is automatically cleared when you close a tab
-* The option to save a browsing session by creating a bookmark — something regular Incognito Mode doesn’t offer! If you want to pick up right where you left off without re-opening every tab or logging back in, this feature is for you. For this to work, though, we do store cookies and localStorage
-
-To explore this new feature, tap *Try our private browser* on the app's home screen. You can also access the browser through the *Protection* tab, where you can set a default search engine and even create a browser widget.
+## あまりプライバシーがないため、プライベートブラウザ
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/privatebrowser1.jpg" width="300">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/privatebrowser2.png"幅="300">
 </p>
 
-Just a heads-up: our private browser is still in the early stages of development and has a few limitations, like the inability to handle multiple sessions at once. In the future, we’ll offer a more comprehensive browsing experience, but for now, we suggest using it as a supplement to your usual browser’s Incognito Mode, rather than a replacement. Sounds good?
+多くのユーザーの日常生活において、プライバシーを念頭に置いています。 AdGuardのプライベートブラウザをロールアウトし、毎日のWebエクスペリエンスにプライバシーの余剰レイヤーをもたらします。
 
-## Changelog
+それでは、このブラウザについてとてもクールなのでしょうか?
 
-### Improvements
-* Incorrect translation of Fanboy's Annoyance List description [#5423](https://github.com/AdguardTeam/AdguardForAndroid/issues/5423)
+* 広告と追跡者ブロック(もちろん!)
+* 目に見える、アクセス可能なボタンで簡単な履歴削除。 また、タブを閉じるとブラウザの履歴が自動的に消去されます。
+* ブックマークを作成することで、閲覧セッションを保存するオプション — 通常の Incognito Mode は提供していません! すべてのタブを再開いたり、戻ってログインせずに退場する場所を選択したい場合は、この機能はあなたのためにあります。 そのためには、CookieやlocalStorageを保存します。
 
-### Fixes
-* "Allow app usage access" popup does not disappear after enabling the corresponding switch in the system settings on Android 9 [#4906](https://github.com/AdguardTeam/AdguardForAndroid/issues/4906)
-* Almost all apps are no longer logged as filtered [#5426](https://github.com/AdguardTeam/AdguardForAndroid/issues/5426)
-* Cursor barely visible at search bars in the Dark theme [#5397](https://github.com/AdguardTeam/AdguardForAndroid/issues/5397)
-* Enabling/disabling the switch “Trusted filter” doesn't make protection restart [#5202](https://github.com/AdguardTeam/AdguardForAndroid/issues/5202)
-* Incorrect error message when trying to send a report with an invalid email on the Report a bug screen [#5160](https://github.com/AdguardTeam/AdguardForAndroid/issues/5160)
-* Magenta color of AdGuard notification if protection is paused [#5449](https://github.com/AdguardTeam/AdguardForAndroid/issues/5449)
-* Routing for problem apps in groups is enabled when you turn on this option for problem-free apps [#4918](https://github.com/AdguardTeam/AdguardForAndroid/issues/4918)
-* TCP keepalive for outgoing sockets screen doesn't scroll [#5415](https://github.com/AdguardTeam/AdguardForAndroid/issues/5415)
-* The user rules are positioned in the middle of the editor [#5422](https://github.com/AdguardTeam/AdguardForAndroid/issues/5422)
-* Translations are missing for Annoyances blocking notice [#5388](https://github.com/AdguardTeam/AdguardForAndroid/issues/5388)
+この新機能を探索するには、アプリのホーム画面で「*プライベートブラウザ*」をタップします。 *Protection*タブからブラウザにアクセスして、デフォルトの検索エンジンを設定したり、ブラウザウィジェットを作成したりすることもできます。
 
-### Other
-* `it.labfabrici.hub` does not work when protection is working [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
+<p align="center">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/privatebrowser1.jpg"幅="300">
+</p>
 
-### CoreLibs (Filtering engine)
+ヘッドアップ:当社のプライベートブラウザはまだ開発初期段階にあり、複数のセッションを一度に処理できないような制限がいくつかあります。 将来的には、より包括的なブラウジング体験を提供しますが、今では、交換ではなく、通常のブラウザのIncognito Modeの補足として使用することをお勧めします。 よく聞こえますか?
 
-#### CoreLibs updated to to v1.16.51
+## 変更履歴
 
-## AdGuard for Android direct download links:
+### 改善点
+* FanboyのAnnoyanceリストの説明の誤った翻訳 [#5423](https://github.com/AdguardTeam/AdguardForAndroid/issues/5423)
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+### フィックス
+* Android 9 [#4906] のシステム設定で対応するスイッチを有効にすると、ポップアップが消えません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4906)
+* ほとんどすべてのアプリはフィルタリングされた [#5426] として記録されません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5426)
+* ダークテーマの検索バーにカーソルをひいて表示 [#5397](https://github.com/AdguardTeam/AdguardForAndroid/issues/5397)
+* スイッチ「Trusted filter」の有効/無効化は、保護を再起動しない[#5202](https://github.com/AdguardTeam/AdguardForAndroid/issues/5202)
+* バグ画面のレポートに無効なメールでレポートを送信しようとすると、誤ったエラーメッセージ[#5160](https://github.com/AdguardTeam/AdguardForAndroid/issues/5160)
+* 保護がpausedならAdGuardの通知のマゼンタ色[#5449](https://github.com/AdguardTeam/AdguardForAndroid/issues/5449)
+* 問題のないアプリ [#4918] をオンにすると、グループ内の問題アプリのルーティングが有効になっています。https://github.com/AdguardTeam/AdguardForAndroid/issues/4918)
+* アウトゴットソケット画面のTCPは[#5415]をスクロールしません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5415)
+* ユーザルールはエディタの中央にある[#5422](https://github.com/AdguardTeam/AdguardForAndroid/issues/5422)
+* Annoyancesブロック通知の翻訳は欠落しています [#5388]()https://github.com/AdguardTeam/AdguardForAndroid/issues/5388)
 
-## AdGuard for Android TV direct download links:
+### その他
+* `it.labfabrici.hub`保護が働いているとき、動作しません [#5284](https://github.com/AdguardTeam/AdguardForAndroid/issues/5284)
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+### CoreLibs (フィルターエンジン)
 
-## 4.6.4 Hotfix 
+#### CoreLibs が v1.16.51 に更新
 
-- Published: 2024-11-05T11:13:36Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4-hotfix
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-This hotfix update resolves the battery drain issue caused by usage of java.util.Calendar in specific time zones.
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
+
+## Android TVの直接ダウンロードリンクのためのAdGuard:
+
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
+
+## 4.6.4 ホットフィックス
+
+- 公表: 2024-11-05T11:13:36Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4-hotfix
+
+このHotfix アップデートは、Java.util の使用によるバッテリーのドレインの問題が解決します。 特定のタイムゾーンのカレンダー。
 
 ## 4.6.4
 
-- Published: 2024-10-31T15:57:15Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4
+- 公開日: 2024-10-31T15:57:15Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4
 
-If this release were a UFC fighter, it would go by the name “The Bugfixer” because it is all about squashing bugs. Let’s break down what we’ve accomplished here.
+このリリースが UFC の戦闘機だったら、スクワッシュバグのすべてだから「バグフィクサー」という名前で行きます。 ここの達成したものを破壊してみましょう。
 
-## DNS bug
+## DNS のバグ
 
-We’ve tackled a particularly eye-twitching bug that caused DNS — and, as a result, the Internet — to randomly fail when switching networks. It took some detective work on our part since the issue was unpredictable and only impacted a small number of users. But hey, no one should be left without DNS protection! 
+DNS を引き起こした特に目を引くバグを解決しました。その結果、インターネットはネットワークの切り替え時にランダムに失敗します。 問題が予測不可能で、少数のユーザー数にしか影響を与えたため、私たちの部分にいくつかの探偵作品を取りました。 しかし、ねえ、DNS保護なしでは誰も残るべきではありません!
 
-## Battery drain bug
+## バッテリードレインバグ
 
-Another irritating bug we discovered during beta testing: incorrect statistics calculations were leading to excessive battery drain. The system code was unable to calculate the date necessary for accurate statistics below a certain value. Thankfully, we’ve managed to work around this odd behavior in the system code, and now the stats are calculated correctly. They also now load faster and take up less RAM.
+ベータテスト中に発見した別の刺激的なバグ:誤った統計計算は、過度のバッテリードレインにつながりました。 システムコードは、特定の値の下の正確な統計に必要な日付を計算できませんでした。 ありがたいことに、このオッズ動作をシステムコードで実行し、現在、統計は正しく計算されます。 彼らはまた、より高速にロードし、より少ないRAMを取ります.
 
-This issue seemed to affect users on specific versions of Android. If you were using the nightly or beta version of AdGuard and ran into this problem, we recommend updating to the stable release.
+この問題は、特定のバージョンのAndroidでユーザーに影響を与えるようです。 AdGuardのナイトバージョンやベータ版を使って、この問題に遭遇した場合は、安定的なリリースへのアップデートをお勧めします。
 
-## Other fixes
+## その他の修正
 
-A number of bug fixes and improvements come with the latest version of the CoreLibs, along with improved filtering quality — you can see the details in the changelog below.
+バグ修正と改善の数は、CoreLibsの最新バージョンと改善されたフィルタリング品質で提供されます。変更ログの詳細は以下をご覧ください。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* AdGuard fails to export logs and settings due to statistics size [#5458](https://github.com/AdguardTeam/AdguardForAndroid/issues/5458)
-* AdGuard crashes when Recent activity log is opened in split screen [#5481](https://github.com/AdguardTeam/AdguardForAndroid/issues/5481)
-* AdGuard consumes too much battery since v4.6 [#5460](https://github.com/AdguardTeam/AdguardForAndroid/issues/5460)
+### フィックス
+* AdGuard は、統計サイズ [#5458] によるログと設定をエクスポートできません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/5458)
+* 最近の活動ログが分割画面で開くとAdGuardがクラッシュ [#5481](https://github.com/AdguardTeam/AdguardForAndroid/issues/5481)
+* AdGuard は v4.6 [#5460] 以降、あまりにも多くのバッテリーを消費します(https://github.com/AdguardTeam/AdguardForAndroid/issues/5460)
 
-### CoreLibs (Filtering engine)
-* CoreLibs updated to v1.16.44
+### CoreLibs (フィルターエンジン)
+* CoreLibs が v1.16.44 に更新
 
-#### Improvements
-* Enable post-quantum cryptography when it’s used by the filtered app [#1916](https://github.com/AdguardTeam/CoreLibs/issues/1916)
-* Support `strict-first-party` and `strict-third-party` modifier of uBO [#1874](https://github.com/AdguardTeam/CoreLibs/issues/1874)
-* Added possibility to allowlist scriptlets [#1862](https://github.com/AdguardTeam/CoreLibs/issues/1862)
-* Support redirection to the destination without tracking services as middleman [#1557](https://github.com/AdguardTeam/CoreLibs/issues/1557)
+#### 改善点
+* フィルタリングされたアプリで使用されているとき、後量暗号化を有効にします [#1916](https://github.com/AdguardTeam/CoreLibs/issues/1916)
+* サポート`strict-first-party`そして、`strict-third-party`uBOの修飾子 [#1874](https://github.com/AdguardTeam/CoreLibs/issues/1874)
+* スクリプトレットを許可する可能性を追加 [#1862](https://github.com/AdguardTeam/CoreLibs/issues/1862)
+* 追跡サービスなしで目的地へのリダイレクトをサポート ミドルマン [#1557](https://github.com/AdguardTeam/CoreLibs/issues/1557)
 
 
-#### Fixes
-* AdGuard content script is blocked by CSP on `uber.com` [#1903](https://github.com/AdguardTeam/CoreLibs/issues/1903)
-* Login is broken in Firefox on `sony.de` [#1867](https://github.com/AdguardTeam/CoreLibs/issues/1867)
-* GM_xmlhttpRequest doesn’t support the Referer header [#1899](https://github.com/AdguardTeam/CoreLibs/issues/1899)
-*AdGuard overrides User-Agent changes made by the browser, which reduces privacy [#1910](https://github.com/AdguardTeam/CoreLibs/issues/1910)
+#### フィックス
+* AdGuard コンテンツスクリプトは CSP によってブロックされます。`uber.com` [#1903](https://github.com/AdguardTeam/CoreLibs/issues/1903)
+* ログインはFirefoxで壊れています`sony.de` [#1867](https://github.com/AdguardTeam/CoreLibs/issues/1867)
+* GM xmlhttpRequest は、Referer ヘッダーをサポートしていません [#1899](https://github.com/AdguardTeam/CoreLibs/issues/1899)
+*AdGuardは、ブラウザによって行われたユーザーエージェントの変更をオーバーライドし、プライバシーを低減します[#1910](https://github.com/AdguardTeam/CoreLibs/issues/1910)
 
-### Scriptlets (JavaScript enhancement for filtering rules)
-* Scriptlets updated to v1.11.27
+### スクリプト(フィルタリングルールのJavaScript強化)
+* Scriptlets が v1.11.27 に更新
 
-#### Improvements
-* `set-local-storage-item` — added values `allowed` and `denied` [#445](https://github.com/AdguardTeam/Scriptlets/issues/445)
-* `abort-on-stack-trace` — support line number for `inlineScript` and `injectedScript` [#439](https://github.com/AdguardTeam/Scriptlets/issues/439)
-* `set cookie` — added values `checked` and `unchecked` [#444](https://github.com/AdguardTeam/Scriptlets/issues/444)
-* `trusted-click-element` — added `reload` option [#301](https://github.com/AdguardTeam/Scriptlets/issues/301)
-* Added new scriptlet `trusted-set-session-storage-item` [#426](https://github.com/AdguardTeam/Scriptlets/issues/426)
-* `set-cookie` — added `essential` and `nonessential` to supported values [#436](https://github.com/AdguardTeam/Scriptlets/issues/436)
-* `trusted-set-cookie` and `trusted-set-cookie-reload` — added `$currentISODate$` [#435](https://github.com/AdguardTeam/Scriptlets/issues/435)
-* `set-cookie` — added more supported values [#433](https://github.com/AdguardTeam/Scriptlets/issues/433)
-* `set-local-storage-item` — added more supported values [#429](https://github.com/AdguardTeam/Scriptlets/issues/429)
-* Improve logging in scriptlets [#411](https://github.com/AdguardTeam/Scriptlets/issues/411)
-* Show cosmetic rules in the filtering log [#180](https://github.com/AdguardTeam/CoreLibs/issues/180)
-* Added new scriptlet `trusted-dispatch-event` [#382](https://github.com/AdguardTeam/Scriptlets/issues/382)
-* Added new scriptlet `trusted-replace-outbound-text` [#410](https://github.com/AdguardTeam/Scriptlets/issues/410)
-* Added ability to validate redirects for AdGuard compatibility without the full rule text [#420](https://github.com/AdguardTeam/Scriptlets/issues/420)
-* `trusted-click-element` — added support for closed ShadowRoot [#423](https://github.com/AdguardTeam/Scriptlets/issues/423)
-* `trusted-click-element` — added an ability to click an element containing a given text [#409](https://github.com/AdguardTeam/Scriptlets/issues/409)
+#### 改善点
+* `set-local-storage-item`— 追加した値`allowed`そして、`denied` [#445](https://github.com/AdguardTeam/Scriptlets/issues/445)
+* `abort-on-stack-trace`— サポート行番号`inlineScript`そして、`injectedScript` [#439](https://github.com/AdguardTeam/Scriptlets/issues/439)
+* `set cookie`— 追加した値`checked`そして、`unchecked` [#444](https://github.com/AdguardTeam/Scriptlets/issues/444)
+* `trusted-click-element`— 追加`reload`オプション [#301](https://github.com/AdguardTeam/Scriptlets/issues/301)
+* 新しいスクリプトレットを追加`trusted-set-session-storage-item` [#426](https://github.com/AdguardTeam/Scriptlets/issues/426)
+* `set-cookie`— 追加`essential`そして、`nonessential`対応する値へ [#436](https://github.com/AdguardTeam/Scriptlets/issues/436)
+* `trusted-set-cookie`そして、`trusted-set-cookie-reload`— 追加`$currentISODate$` [#435](https://github.com/AdguardTeam/Scriptlets/issues/435)
+* `set-cookie`— 対応する値を追加 [#433](https://github.com/AdguardTeam/Scriptlets/issues/433)
+* `set-local-storage-item`— 対応する値を追加 [#429](https://github.com/AdguardTeam/Scriptlets/issues/429)
+* スクリプトでログアウトする [#411](https://github.com/AdguardTeam/Scriptlets/issues/411)
+* フィルタリングログ[#180]で化粧品のルールを表示する(https://github.com/AdguardTeam/CoreLibs/issues/180)
+* 新しいスクリプトレットを追加`trusted-dispatch-event` [#382](https://github.com/AdguardTeam/Scriptlets/issues/382)
+* 新しいスクリプトレットを追加`trusted-replace-outbound-text` [#410](https://github.com/AdguardTeam/Scriptlets/issues/410)
+* 完全なルールテキストなしでAdGuardの互換性のためのリダイレクトを検証する機能を追加 [#420](https://github.com/AdguardTeam/Scriptlets/issues/420)
+* `trusted-click-element`— クローズドShadowRootのサポートを追加しました [#423](https://github.com/AdguardTeam/Scriptlets/issues/423)
+* `trusted-click-element`— 与えられたテキストを含む要素をクリックする機能を追加しました [#409](https://github.com/AdguardTeam/Scriptlets/issues/409)
 
-#### Fixes
-* `log-on-stack-trace` — player is broken on `deltabit.co` [#384](https://github.com/AdguardTeam/Scriptlets/issues/384)
-* `trusted-create-element` — when using the `cleanupDelayMs` parameter, a removed element is re-added and removed several times [#434](https://github.com/AdguardTeam/Scriptlets/issues/434)
+#### フィックス
+* `log-on-stack-trace`— プレイヤーが壊れている`deltabit.co` [#384](https://github.com/AdguardTeam/Scriptlets/issues/384)
+* `trusted-create-element`— 使用するとき`cleanupDelayMs`パラメータ、削除された要素は再追加され、数回[#434]を削除されます(https://github.com/AdguardTeam/Scriptlets/issues/434)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.6.4 Beta 1
+## 4.6.4 ベータ 1
 
-- Published: 2024-10-04T08:08:05Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4-beta-1
+- 公開日: 2024-10-04T08:08:05Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4-beta-1
 
-This release is all about good vibes and improved filtering quality — the new version of the CoreLibs does just that. We’ve also optimized the way we handle statistics, so they load faster and use less RAM while the app is running. A few minor bugs were fixed as well.
+このリリースは、優れたバイブと改善されたフィルタリング品質に関するすべてです。CoreLibsの新しいバージョンはそれだけではありません。 また、統計処理の方法を最適化しました。そのため、アプリが実行している間、より高速に読み込み、RAMを削減します。 少数のバグも修正されました。
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.6.3
 
-- Published: 2024-09-09T16:58:37Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.3
+- 公表: 2024-09-09T16:58:37Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.3
 
-Here’s an additional technical update following the previous one. In it, we’ve fixed bugs and kept working on the app stability.
+前回以降の技術アップデートです。 そこで、バグを修正し、アプリの安定性に取り組んできました。
 
 &nbsp;
-### AdGuard for Android direct download links:
+### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-### AdGuard for Android TV direct download links:
+### Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.6.2
 
-- Published: 2024-08-21T15:01:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.2
+- 公開日: 2024-08-21T15:01:20Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.2
 
-Have you ever noticed how the app crashes even when you have a freshly updated version? Well, notice no more! This hotfix solves that problem. From now on, just pure ad blocking all the way.
+新しく更新されたバージョンを持っている場合でも、アプリがクラッシュする方法に気づくことはありませんか? お問い合わせ このホットフィックスは、その問題を解決します。 今から、すべての方法を妨げる純粋な広告。
 
 &nbsp;
-### AdGuard for Android direct download links:
+### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-### AdGuard for Android TV direct download links:
+### Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.6.1 
 
-- Published: 2024-07-26T10:36:02Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.1
+- 公表: 2024-07-26T10:36:02Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.1
 
-Filtering engines have been hit by [enemy bugs](https://github.com/AdguardTeam/AdguardForAndroid/issues/5405), but AdGuard is stronger than that. With this hotfix, updated libraries bring you a cleaner and safer web.
+フィルタリングエンジンは[敵のバグ]でヒットしました(https://github.com/AdguardTeam/AdguardForAndroid/issues/5405), しかし、AdGuardはそれよりも強いです. このホットフィックスにより、更新されたライブラリはクリーナーとより安全なWebを提供します。
 
 &nbsp;
-### AdGuard for Android direct download links:
+### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-### AdGuard for Android TV direct download links:
+### Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.6
 
-- Published: 2024-07-24T16:16:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6
+- 公表: 2024-07-24T16:16:20Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6
 
-As Vince Lombardi says, “Perfection is not attainable, but if we chase perfection we can catch excellence.” We do as he says, and try our best to make every update better. Today we are happy to release the new version of AdGuard for Android. Faster, stronger, and more efficient. Let’s take a look at the major changes.
+Vince Lombardi氏は次のように述べています。「Perfectionは達成できませんが、完璧を追いかけると卓越性をキャッチすることができます。」 私たちは彼が言うように、すべての更新をより良くするために最善を尽くします。 今日、私たちは、Android用のAdGuardの新しいバージョンをリリースするために満足しています。 より速く、より強く、より有効。 メジャーな変化を見てみましょう。
 
-With the updated filtering engine CoreLibs, we have been able to implement many new features that will improve your filtering experience. First of all, we’ve increased HTTPS filtering speed. Second, there are some handy enhancements for our filter developers and advanced users. We’ve added support for [`urltransform`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#urltransform-modifier) and [`xmlprune`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#xmlprune-modifier) modifiers. Now even more distracting elements on a page will be blocked.
+更新されたフィルタリングエンジンCoreLibsでは、フィルタリングエクスペリエンスを向上させる多くの新機能を実装できるようになりました。 まず、HTTPSフィルタリング速度を上げました。 第二に、当社のフィルター開発者と上級ユーザーのためのいくつかの便利な強化があります。 サポートを追加いたしました。`urltransform`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#urltransform-modifier) と [`xmlprune`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#xmlprune-modifier)修飾子。 ページの要素をさらに引き起こすとブロックされます。
 
-We have made some UI improvements to make our app more user friendly. Some Xiaomi users faced difficulties when trying to optimize battery usage. We thought about it and decided to add the guide.
+よりユーザーフレンドリーにするために、UIの改善を行いました。 バッテリー使用量を最適化しようとすると、Xiaomiユーザーは困難に直面しています。 それについて考え、ガイドを追加することにしました。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.6/Xiaomi_guide_en.png" width="300">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.6/Xiaomi_guide_en.png"幅="300">
 </p>
 
  
-Our developers didn’t rest on their laurels, so they also updated DnsLibs andUserscriptsWrapper and fixed a lot of bugs to make the app more stable.
+開発者は、そのラウレルに残りませんでしたので、DnsLibsとUserscriptsWrapperを更新し、アプリをより安定させるために多くのバグを修正しました。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* AdGuard YouTube player cannot open YouTube links or play the playlist [#5348](https://github.com/AdguardTeam/AdguardForAndroid/issues/5348)
-* App crashes when tapping the protection notification after quitting AdGuard [#5366](https://github.com/AdguardTeam/AdguardForAndroid/issues/5366)
-* Translations do not fit in the field [#5324](https://github.com/AdguardTeam/AdguardForAndroid/issues/5324)
-* The warning text “Not routed through AdGuard” does not disappear after resetting settings to default [#5340](https://github.com/AdguardTeam/AdguardForAndroid/issues/5340)
+### フィックス
+* AdGuard YouTubeプレーヤーは、YouTubeリンクを開くか、プレイリストを再生することはできません [#5348](https://github.com/AdguardTeam/AdguardForAndroid/issues/5348)
+* AdGuardを終了した後、保護通知をタップするとアプリがクラッシュ [#5366](https://github.com/AdguardTeam/AdguardForAndroid/issues/5366)
+* 翻訳はフィールドに合わない [#5324](https://github.com/AdguardTeam/AdguardForAndroid/issues/5324)
+* 警告テキスト “AdGuard を介してルーティングされていない” デフォルト [#5340] の設定をリセットした後、消えません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5340)
 
-### CoreLibs (filtering engine)
-* [CoreLibs](https://github.com/AdguardTeam/AdguardForAndroid/issues/5400) updated to v1.15.59
+### CoreLibs (フィルタリングエンジン)
+* 【コアリブ】(https://github.com/AdguardTeam/AdguardForAndroid/issues/5400)v1.15.59に更新
 
-#### Improvements
-* Added `$urltransform` (trusted) modifier support [#1364](https://github.com/AdguardTeam/CoreLibs/issues/1364)
-* Added `$xmlprune` modifier support [#473](https://github.com/AdguardTeam/CoreLibs/issues/473)
-* Added mobile browsers to the list of user agents that support `:has()` natively [#1870](https://github.com/AdguardTeam/CoreLibs/issues/1870)
-* Allowed ECDSA ciphers on the local side [#360](https://github.com/AdguardTeam/CoreLibs/issues/360)
-* Set up `Sec-Fetch-Dest header: fencedframe` [#1853](https://github.com/AdguardTeam/CoreLibs/issues/1853)
-* Support uBO's `/regex/` cosmetic rule format [#1844](https://github.com/AdguardTeam/CoreLibs/issues/1844)
+#### 改善点
+* 追加`$urltransform`(信頼)修飾子サポート [#1364]()https://github.com/AdguardTeam/CoreLibs/issues/1364)
+* 追加`$xmlprune`修飾子サポート [#473](https://github.com/AdguardTeam/CoreLibs/issues/473)
+* サポートするユーザーエージェントのリストにモバイルブラウザを追加`:has()`ネイティブ [#1870](https://github.com/AdguardTeam/CoreLibs/issues/1870)
+* ローカル側の ECDSA 暗号を許可 [#360](https://github.com/AdguardTeam/CoreLibs/issues/360)
+* セットアップ`Sec-Fetch-Dest header: fencedframe` [#1853](https://github.com/AdguardTeam/CoreLibs/issues/1853)
+* サポートuBO's`/regex/`化粧品の規則のフォーマット [#1844] (https://github.com/AdguardTeam/CoreLibs/issues/1844)
 
-#### Fixes
-* Adblock syntax rules with FQDN do not work [#210](https://github.com/AdguardTeam/DnsLibs/issues/210)
-* AdGuard and FTP connection error [#1864](https://github.com/AdguardTeam/CoreLibs/issues/1864)
-* Userscript XHR error [#1876](https://github.com/AdguardTeam/CoreLibs/issues/1876)
-* `$all` modifier does not work with non-domain-like URL part [#1860](https://github.com/AdguardTeam/CoreLibs/issues/1860)
-* URL blocking rules do not work correctly with the `$generichide` modifier [#1857](https://github.com/AdguardTeam/CoreLibs/issues/1857)
+#### フィックス
+* FQDN のアドブロックの構文ルールは [#210] は動作しません(https://github.com/AdguardTeam/DnsLibs/issues/210)
+* AdGuardとFTP接続エラー[#1864](https://github.com/AdguardTeam/CoreLibs/issues/1864)
+* ユーザスクリプト XHR エラー [#1876](https://github.com/AdguardTeam/CoreLibs/issues/1876)
+* `$all`modifier は非ドメイン URL 部分で動作しません [#1860](https://github.com/AdguardTeam/CoreLibs/issues/1860)
+* URLブロックルールは正しく機能しない`$generichide`修飾子 [#1857] (https://github.com/AdguardTeam/CoreLibs/issues/1857)
 
-### DnsLibs (DNS filtering engine)
-* [DnsLibs](https://github.com/AdguardTeam/AdguardForAndroid/issues/5357) updated to v2.5.33
+### DnsLibs (DNSのろ過エンジン)
+* [DnsLibs](DnsLibs)https://github.com/AdguardTeam/AdguardForAndroid/issues/5357)v2.5.33に更新される
 
-### UserscriptsWrapper
-* UserscriptsWrapper updated to v1.2.24
+### ユーザースクリプトWrapper
+* UserscriptsWrapperがv1.2.24に更新
 
-#### Fixes
-* `vk-metabot.user.js` does not work via AdGuard [#1871](https://github.com/AdguardTeam/CoreLibs/issues/1871)
+#### フィックス
+* `vk-metabot.user.js`AdGuard経由で動作しない [#1871](https://github.com/AdguardTeam/CoreLibs/issues/1871)
 
-### ContentScript
-* ContentScript updated to v2.0.6
+### コンテンツスクリプト
+* コンテンツスクリプトがv2.0.6に更新
 
-#### Fixes
-* Element hiding rules `##` and `#$#` do not apply to the `tv.rambler.ru` [#1865](https://github.com/AdguardTeam/CoreLibs/issues/1865)
+#### フィックス
+* 要素の隠れる規則`##`そして、`#$#`申請しない`tv.rambler.ru` [#1865](https://github.com/AdguardTeam/CoreLibs/issues/1865)
 
 
 &nbsp;
-### AdGuard for Android direct download links:
+### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-### AdGuard for Android TV direct download links:
+### Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.6 RC 1
 
-- Published: 2024-07-19T13:03:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6-rc-1
+- 公表: 2024-07-19T13:03:42Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6-rc-1
 
-Just one final tweak before the release. In this version we’ve successfully fixed one major issue. Some users were experiencing a problem when switching between mobile and Wi-Fi connections. The AdGuard protection would stop, so you’d have to start it again manually. We’ve also fixed some other bugs to make the application even more stable. Keep an eye out for more updates — the official release is just around the corner!
+リリース前の最終調整だけ。 このバージョンでは、大きな問題が解決しました。 モバイルとWi-Fi接続を切り替えると、一部のユーザーは問題が発生していました。 AdGuard保護が停止するので、手動で起動する必要があります。 また、より安定したアプリケーションを作るために他のバグを修正しました。 よりアップデートをお待ちください。正式リリースはすぐ角にあります!
 
-## Changelog
+## 変更履歴
 
-### CoreLibs (filtering engine)
-* [CoreLibs](https://github.com/AdguardTeam/AdguardForAndroid/issues/5400) updated to v1.15.59
+### CoreLibs (フィルタリングエンジン)
+* 【コアリブ】(https://github.com/AdguardTeam/AdguardForAndroid/issues/5400)v1.15.59に更新
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.6 Beta 1
+## 4.6 ベータ 1
 
-- Published: 2024-07-11T14:44:07Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/4.6-beta-1
+- 公表: 2024-07-11T14:44:07Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/4.6-beta-1
 
-As Vince Lombardi says, “Perfection is not attainable, but if we chase perfection we can catch excellence.” We do as he says, and try our best to make every update better. Today we are happy to release the new beta version of AdGuard for Android. Faster, stronger, and more efficient. Let’s take a look at the major changes.
+Vince Lombardi氏は次のように述べています。「Perfectionは達成できませんが、完璧を追いかけると卓越性をキャッチすることができます。」 私たちは彼が言うように、すべての更新をより良くするために最善を尽くします。 今日は、Android用のAdGuardの新しいベータ版をリリースするのを嬉しく思います。 より速く、より強く、より有効。 メジャーな変化を見てみましょう。
 
-With the updated filtering engine CoreLibs, we have been able to implement many new features that will improve your filtering experience. First of all, we increased HTTPS filtering speed. Second, we added support for `urltransform` and `xmlprune` modifiers. Now even more distracting elements on a page will be blocked.
+更新されたフィルタリングエンジンCoreLibsでは、フィルタリングエクスペリエンスを向上させる多くの新機能を実装できるようになりました。 まず、HTTPSフィルタリング速度が向上しました。 第二に、サポートを追加`urltransform`そして、`xmlprune`修飾子。 ページの要素をさらに引き起こすとブロックされます。
 
-Our developers didn't rest on their laurels, so they also updated DnsLibs, UserscriptsWrapper and fixed a lot of bugs to make the application more stable.
+開発者は、そのlaurelsに残りませんでしたので、DnsLibs、UserscriptsWrapperを更新し、アプリケーションをより安定させるために多くのバグを修正しました。
 
-## Changelog
+## 変更履歴
 
-### Fixes
-* AdGuard YouTube player cannot open YouTube links or play the playlist [#5348](https://github.com/AdguardTeam/AdguardForAndroid/issues/5348)
-* App crashes when tapping the protection notification after quitting AdGuard [#5366](https://github.com/AdguardTeam/AdguardForAndroid/issues/5366)
-* Translations do not fit in the field [#5324](https://github.com/AdguardTeam/AdguardForAndroid/issues/5324)
-* The warning text “Not routed through AdGuard” does not disappear after resetting settings to default [#5340](https://github.com/AdguardTeam/AdguardForAndroid/issues/5340)
+### フィックス
+* AdGuard YouTubeプレーヤーは、YouTubeリンクを開くか、プレイリストを再生することはできません [#5348](https://github.com/AdguardTeam/AdguardForAndroid/issues/5348)
+* AdGuardを終了した後、保護通知をタップするとアプリがクラッシュ [#5366](https://github.com/AdguardTeam/AdguardForAndroid/issues/5366)
+* 翻訳はフィールドに合わない [#5324](https://github.com/AdguardTeam/AdguardForAndroid/issues/5324)
+* 警告テキスト “AdGuard を介してルーティングされていない” デフォルト [#5340] の設定をリセットした後、消えません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5340)
 
-### CoreLibs (filtering engine)
-* [CoreLibs](https://github.com/AdguardTeam/AdguardForAndroid/issues/5381) updated to v1.15.54
+### CoreLibs (フィルタリングエンジン)
+* 【コアリブ】(https://github.com/AdguardTeam/AdguardForAndroid/issues/5381)v1.15.54に更新
 
-#### Improvements
-* Added `$urltransform` (trusted) modifier support [#1364](https://github.com/AdguardTeam/CoreLibs/issues/1364)
-* Added `$xmlprune modifier` support [#473](https://github.com/AdguardTeam/CoreLibs/issues/473)
-* Added mobile browsers to the list of user agents that support `:has()` natively [#1870](https://github.com/AdguardTeam/CoreLibs/issues/1870)
-* Allowed ECDSA ciphers on the local side [#360](https://github.com/AdguardTeam/CoreLibs/issues/360)
-* Set up `Sec-Fetch-Dest header: fencedframe` [#1853](https://github.com/AdguardTeam/CoreLibs/issues/1853)
-* Support uBO's `/regex/` cosmetic rule format [#1844](https://github.com/AdguardTeam/CoreLibs/issues/1844)
+#### 改善点
+* 追加`$urltransform`(信頼)修飾子サポート [#1364]()https://github.com/AdguardTeam/CoreLibs/issues/1364)
+* 追加`$xmlprune modifier`サポート [#473](https://github.com/AdguardTeam/CoreLibs/issues/473)
+* サポートするユーザーエージェントのリストにモバイルブラウザを追加`:has()`ネイティブ [#1870](https://github.com/AdguardTeam/CoreLibs/issues/1870)
+* ローカル側の ECDSA 暗号を許可 [#360](https://github.com/AdguardTeam/CoreLibs/issues/360)
+* セットアップ`Sec-Fetch-Dest header: fencedframe` [#1853](https://github.com/AdguardTeam/CoreLibs/issues/1853)
+* サポートuBO's`/regex/`化粧品の規則のフォーマット [#1844] (https://github.com/AdguardTeam/CoreLibs/issues/1844)
 
-#### Fixes
-* Adblock syntax rules with FQDN do not work [#210](https://github.com/AdguardTeam/DnsLibs/issues/210)
-* AdGuard and FTP connection error [#1864](https://github.com/AdguardTeam/CoreLibs/issues/1864)
-* Userscript XHR error [#1876](https://github.com/AdguardTeam/CoreLibs/issues/1876)
-* `$all` modifier does not work with non-domain-like URL part [#1860](https://github.com/AdguardTeam/CoreLibs/issues/1860)
-* URL blocking rules do not work correctly with the `$generichide` modifier [#1857](https://github.com/AdguardTeam/CoreLibs/issues/1857)
+#### フィックス
+* FQDN のアドブロックの構文ルールは [#210] は動作しません(https://github.com/AdguardTeam/DnsLibs/issues/210)
+* AdGuardとFTP接続エラー[#1864](https://github.com/AdguardTeam/CoreLibs/issues/1864)
+* ユーザスクリプト XHR エラー [#1876](https://github.com/AdguardTeam/CoreLibs/issues/1876)
+* `$all`modifier は非ドメイン URL 部分で動作しません [#1860](https://github.com/AdguardTeam/CoreLibs/issues/1860)
+* URLブロックルールは正しく機能しない`$generichide`修飾子 [#1857] (https://github.com/AdguardTeam/CoreLibs/issues/1857)
 
-### DnsLibs (DNS filtering engine)
-* [DnsLibs](https://github.com/AdguardTeam/AdguardForAndroid/issues/5357) updated to v2.5.33
+### DnsLibs (DNSのろ過エンジン)
+* [DnsLibs](DnsLibs)https://github.com/AdguardTeam/AdguardForAndroid/issues/5357)v2.5.33に更新される
 
-### UserscriptsWrapper
-* UserscriptsWrapper updated to v1.2.24
+### ユーザースクリプトWrapper
+* UserscriptsWrapperがv1.2.24に更新
 
-#### Fixes
-* `vk-metabot.user.js` does not work via AdGuard [#1871](https://github.com/AdguardTeam/CoreLibs/issues/1871)
+#### フィックス
+* `vk-metabot.user.js`AdGuard経由で動作しない [#1871](https://github.com/AdguardTeam/CoreLibs/issues/1871)
 
-### ContentScript
-* ContentScript updated to v2.0.6
+### コンテンツスクリプト
+* コンテンツスクリプトがv2.0.6に更新
 
-#### Fixes
-* Element hiding rules `##` and `#$#` do not apply to the `tv.rambler.ru` [#1865](https://github.com/AdguardTeam/CoreLibs/issues/1865)
+#### フィックス
+* 要素の隠れる規則`##`そして、`#$#`申請しない`tv.rambler.ru` [#1865](https://github.com/AdguardTeam/CoreLibs/issues/1865)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.5
 
-- Published: 2024-06-11T12:09:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.5
+- 公表: 2024-06-11T12:09:19Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.5
 
-This update brings our YouTube player’s usability to a whole new level: we added background playback, recommended videos, quality settings, and much more. Not so unskippable now, are you, ads? On top of that, this version includes some nice fixes for overall app performance, including the Android TV version.
+このアップデートは、YouTubeプレーヤーのユーザビリティを新しいレベル全体に引き上げます。背景再生、推奨動画、品質設定などを追加しました。 今のところ、あなたは、広告ですか? その上、このバージョンには、Android TVバージョンを含む全体的なアプリのパフォーマンスのためのいくつかの素晴らしい修正が含まれています。
 
-## A ton of improvements for AdGuard’s YouTube player
+## AdGuardのYouTubeプレーヤーの改善のトン
 
-Just look at what’s available now:
+今利用可能なものを見てみましょう:
 
-* Change video quality, playback speed, and subtitle settings using the gear ⚙ button
+* ギアを使用してビデオ品質、再生速度、およびサブタイトル設定を変更 ◀ ボタン
 
-![AG player video settings](https://cdn.adtidy.org/blog/new/jdwr7AG-player-video-settings.png)
+![AGプレーヤー動画設定](https://cdn.adtidy.org/blog/new/jdwr7AG-player-video-settings.png)
 
-* Picture-in-picture mode is now supported, which means you can shrink the video to a small window and keep playing it in the background while using other apps. Great for such things as listening to music or podcasts
+* ピクチャーインピクチャーモードがサポートされています。つまり、ビデオを小さなウィンドウに縮小し、他のアプリを使用してバックグラウンドで再生し続けることができます。 音楽やポッドキャストを聴くなど、素晴らしいこと
 
 <p align="center">
-<img src="https://cdn.adtidy.org/blog/new/x31y3AG-player-picture-in-picture.png" 
-width="300" height="600">
+<img src="">https://cdn.adtidy.org/blog/new/x31y3AG-player-picture-in-picture.png" 
+幅="300" 高さ="600">
 
-* View recommendations at the end of the video, while paused, or by tapping the lower right corner of the player (availability depends on the video)
+* ビデオの最後に推奨事項を表示し、パユース中、またはプレーヤーの右下隅をタップすることにより(ビデオに依存する)
 
-![AG player recommended videos](https://cdn.adtidy.org/blog/new/g64dbAG-player-recommended.png)
+![AGプレーヤー推奨動画](https://cdn.adtidy.org/blog/new/g64dbAG-player-recommended.png)
 
-* Double-tap the right or left side of the screen to skip 10 seconds forward or back correspondingly
+* 画面の右側または左サイドをダブルタップすると、10秒前後をスキップできます。
 
-> Quick reminder: to launch the AdGuard player, choose any video in the YouTube app, tap *Share* and select AdGuard Player (it’s likely that you will need to scroll right and tap *More* first). 
+> クイックリマインダー:AdGuardプレーヤーを起動するには、YouTubeアプリで任意のビデオを選択し、*共有*をタップし、AdGuard Playerを選択します(右スクロールして、*詳細*を最初にタップする必要があります)。
 >
-> Note: AdGuard player is based on the internal web browser that opens YouTube and has ad-blocking functionality built in. Therefore, the functioning and availability of its features depends on the web version of YouTube.
+> 注意: AdGuard プレーヤーは、YouTube を開く内部の Web ブラウザーに基づいており、内蔵されているアドブロック機能を備えています。 そのため、その機能の機能と可用性は、YouTubeのWebバージョンによって異なります。
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Focus now stays in the same place after opening the left-side menu of AdGuard for Android TV and closing it back [#5271](https://github.com/AdguardTeam/AdguardForAndroid/issues/5271)
+### 改善点
+* フォーカスは、Android TV用のAdGuardの左側のメニューを開き、それを閉じた後、同じ場所にとどまります [#5271](https://github.com/AdguardTeam/AdguardForAndroid/issues/5271)
 
-### Fixes
-* DNS protection settings fail to reset to default [#5322](https://github.com/AdguardTeam/AdguardForAndroid/issues/5322)
-* "Show DevTools on the main screen" toggle starts blinking after interacting with other toggles on the same screen [#5332](https://github.com/AdguardTeam/AdguardForAndroid/issues/5332)
-* Language-specific filter “Other, Other” [#5232](https://github.com/AdguardTeam/AdguardForAndroid/issues/5232)
-* Failed to reset to default  the “Show DevTools on the main screen” option in Low-level settings [#5331](https://github.com/AdguardTeam/AdguardForAndroid/issues/5331)
-* AdGuard for Android TV crashes when you try to add a custom DNS server using a link with "adguard:add_dns_server?address=" prefix [#5264](https://github.com/AdguardTeam/AdguardForAndroid/issues/5264)
+### フィックス
+* DNS 保護設定は、デフォルト [#5322] にリセットされません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5322)
+* 「メイン画面でDevToolsを表示する」トグルは、同じ画面で他のトグルと相互作用した後、点滅を開始します[#5332](https://github.com/AdguardTeam/AdguardForAndroid/issues/5332)
+* 言語固有のフィルタ「その他」 [#5232]()https://github.com/AdguardTeam/AdguardForAndroid/issues/5232)
+* 低レベルの設定で「メイン画面でDevToolsを表示する」オプションをデフォルトにリセットできなかった[#5331](https://github.com/AdguardTeam/AdguardForAndroid/issues/5331)
+* 「adguard:add dns server?address="プレフィックス [#5264]」() と連携して、カスタム DNS サーバーを追加しようとすると、Android TV のアドガードがクラッシュします。https://github.com/AdguardTeam/AdguardForAndroid/issues/5264)
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.4.1
 
-- Published: 2024-05-23T14:08:43Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4.1
+- 公表: 2024-05-23T14:08:43Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4.1
 
-This is a technical update aimed to increase the app stability and fix minor bugs.
+アプリの安定性を高め、マイナーなバグを修正する技術アップデートです。
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.4
 
-- Published: 2024-05-20T12:58:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4
+- 公表: 2024-05-20T12:58:19Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4
 
-Improved Firewall functionality and on-the-fly DoH filtering are the highlights of AdGuard v4.4 for Android. After extensive testing, we are ready to introduce the new version to you.
+ファイアウォール機能とオンザフライDohフィルタリングは、Android用のAdGuard v4.4のハイライトです。 豊富なテストの後、新しいバージョンをあなたに紹介する準備ができています。
 
-## Firewall on fire
+## 防火壁
 
-We like to think that we make the Internet cleaner and more enjoyable for users. But we are not ashamed to admit that sometimes we can send annoying notifications ourselves. Users have reported that they find using Firewall inconvenient: there are just too many notifications. As a result, people are turning them off for good in the system preferences.
+私たちは、インターネットクリーナーを作り、ユーザーにとってより楽しくなると思います。 しかし、我々は時々、私たちは自分自身に迷惑な通知を送ることができることを認めるために恥ずかしいではありません。 ユーザーは、ファイアウォールの不便で見つけたことを報告しています:通知が多すぎるだけです。 その結果、システム環境設定で優れている人々をオフにします。
 
-In response, we have improved Firewall functionality. Now you can customize and turn off firewall notifications for all applications or specific ones. 
-Don’t want to get notifications about Chrome connections? Open the notification shade, tap a notification about Chrome, and then tap *Mute*. All Firewall notifications for this app will be disabled.
-
-<p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/mute.png" 
-width="300" height="600">
-
-Alternatively, you can go to *Protection* → *Firewall* → *Notifications*and toggle off notifications for individual apps.
+対応にあたっては、ファイアウォール機能を改善しました。 これで、すべてのアプリケーションや特定のアプリケーションにファイアウォール通知をカスタマイズしてオフにすることができます。
+Chrome 接続に関する通知を受け取りたくないですか? 通知シェードを開き、Chromeに関する通知をタップし、*Mute*をタップします。 このアプリのすべてのファイアウォール通知は無効になります。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/settings.png" 
-width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/mute.png" 
+幅="300" 高さ="600">
 
-## DoH requests be flying
+あるいは、*Protection* → *Firewall* → *Notifications* にアクセスして、個々のアプリの通知を切り替えることができます。
 
-With the updated filtering engine, CoreLibs, we can implement on-the-fly DNS-over-HTTPS (DoH) connection filtering. Our [desktop apps](https://adguard.com/en/blog/adguard-v2-14-for-mac.html) have already gone this route and it seems to work fine. Why is this feature even necessary?
+<p align="center">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/settings.png" 
+幅="300" 高さ="600">
+
+## DoH リクエストは飛ぶ
+
+更新されたフィルタリングエンジンでは、CoreLibs では、on-the-fly DNS-over-HTTPS (DoH) 接続フィルタリングを実行できます。 デスクトップアプリhttps://adguard.com/en/blog/adguard-v2-14-for-mac.html) 既にこのルートをなくなってきて、うまくいくようです。 なぜこの機能は必要ですか?
  
-Before, if a user enabled DoH in their browser but not in AdGuard, we had to filter requests directly in the browser and send them to the unencrypted system DNS, which decreased security. Now, with on-the-fly DoH connection filtering, we can filter DNS requests in the browser without sending them to an unencrypted server.
+以前は、ユーザーがブラウザでDohを有効にしたが、AdGuardでない場合は、ブラウザに直接リクエストをフィルタリングし、暗号化されていないシステムDNSに送信し、セキュリティが低下しました。 現在、ON-the-fly DoH接続フィルタリングで、暗号化されていないサーバーに送信することなく、ブラウザでDNSリクエストをフィルタリングできます。
 
-> You can find the new feature in *Settings* → *General* → *Advanced* → *Low-level settings* → *Filter secure DNS*.
-
-<p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/dns_en.png" 
-width="300" height="600">
-
-We also fixed some minor bugs and updated UserscriptsWrapper and DnsLibs.
-
-## Changelog
-
-### Improvements
-* Enable HTTPS filtering on the Chromite browser for free [#4997](https://github.com/AdguardTeam/AdguardForAndroid/issues/4997)
-* Improved Developer Tools section [#5173](https://github.com/AdguardTeam/AdguardForAndroid/issues/5173)
-* Add the "Nothing to export" snack when trying to export rules with empty User rules list [#5176](https://github.com/AdguardTeam/AdguardForAndroid/issues/5176)
-* Added com.klook app to default HTTPS filtering exclusions [#5143](https://github.com/AdguardTeam/AdguardForAndroid/issues/5143)
-* Include com.nekki.shadowfightarena to QUIC bypass packages by default [#5158](https://github.com/AdguardTeam/AdguardForAndroid/issues/5158)
-
-### Fixes
-* The license key is not hidden [#4496](https://github.com/AdguardTeam/AdguardForAndroid/issues/4496)
-* Fixed the translation on `it` locale [#5180](https://github.com/AdguardTeam/AdguardForAndroid/issues/5180)
-* Autorun doesn’t work after rebooting Chromecast and Sony TV [#5156](https://github.com/AdguardTeam/AdguardForAndroid/issues/5156)
-* Large battery consumption [#4960](https://github.com/AdguardTeam/AdguardForAndroid/issues/4960)
-* Cache size grows quickly [#5125](https://github.com/AdguardTeam/AdguardForAndroid/issues/5125)
-* App crashes when making changes on the Userscript state and returning back [#5131](https://github.com/AdguardTeam/AdguardForAndroid/issues/5131)
-* App crashes when choosing the Indonesian language [#5236](https://github.com/AdguardTeam/AdguardForAndroid/issues/5236)
-* DNS server settings reset after resetting the settings in DNS filters tab [#5142](https://github.com/AdguardTeam/AdguardForAndroid/issues/5142)
-* Dialog about the certificate installation failure does not disappear after successful installation [#5194](https://github.com/AdguardTeam/AdguardForAndroid/issues/5194)
-* Downloading the application update takes more than 400 mAh of battery capacity [#5259](https://github.com/AdguardTeam/AdguardForAndroid/issues/5259)
-* Duplicates can be added to Websites allowlist using case difference [#5037](https://github.com/AdguardTeam/AdguardForAndroid/issues/5037)
-* Error while exporting settings [#5069](https://github.com/AdguardTeam/AdguardForAndroid/issues/5069)
-* Background images are blocked on com.opera.browser [#5096](https://github.com/AdguardTeam/AdguardForAndroid/issues/5096)
-* Meross device pairing error (com.meross.meross) [#4989](https://github.com/AdguardTeam/AdguardForAndroid/issues/4989)
-* Recent activity of the selected company with two components is not displayed [#5067](https://github.com/AdguardTeam/AdguardForAndroid/issues/5067)
-* Remove (.) character for all DNS entries [#4824](https://github.com/AdguardTeam/AdguardForAndroid/issues/4824)
-* Scroll area issue on the Browsing security screen [#5195](https://github.com/AdguardTeam/AdguardForAndroid/issues/5195)
-* Scrollbar thumb goes behind the bottom menu in Recent activity [#4901](https://github.com/AdguardTeam/AdguardForAndroid/issues/4901)
-* Snacks close due to minimizing the application [#5018](https://github.com/AdguardTeam/AdguardForAndroid/issues/5018)
-* Some custom filter properties don’t update properly [#5171](https://github.com/AdguardTeam/AdguardForAndroid/issues/5171)
-* Statistic cards on main screen doesn't fill full screen width [#5118](https://github.com/AdguardTeam/AdguardForAndroid/issues/5118)
-* The popups are displayed in the system language, while the whole application is in English [#5168](https://github.com/AdguardTeam/AdguardForAndroid/issues/5168)
-* The radio button state is not imported for the Bootstrap upstreams option [#5239](https://github.com/AdguardTeam/AdguardForAndroid/issues/5239)
-* Update loader is not working correctly [#5028](https://github.com/AdguardTeam/AdguardForAndroid/issues/5028)
-* Disabling via the notification shade will auto enable itself upon re-opening the app [#5146](https://github.com/AdguardTeam/AdguardForAndroid/issues/5146)
-* With AdGuard protection enabled, the app reports that there is no Internet connection [#5209](https://github.com/AdguardTeam/AdguardForAndroid/issues/5209)
-* Santander and Sainsburys Bank apps are breaking with HTTPS filtering on [#5058](https://github.com/AdguardTeam/AdguardForAndroid/issues/5058)
-* Update progress bar has wrong colors [#5308](https://github.com/AdguardTeam/AdguardForAndroid/issues/5308)
-
-### CoreLibs (Filtering engine) updated to v1.14.59 [#5316](https://github.com/AdguardTeam/AdguardForAndroid/issues/5316)
-
-#### Improvements
-* Added on-the-fly filtering of DoH connections [#198](https://github.com/AdguardTeam/DnsLibs/issues/198)
-* Added `GM.xmlhttpRequest` as alias of `GM_xmlhttpRequest` [#1785](https://github.com/AdguardTeam/CoreLibs/issues/1785)
-* Indicate that outbound proxy is used in the request processed event [#1385](https://github.com/AdguardTeam/CoreLibs/issues/1385)
-* Added support for passing host to outbound proxy [#1386](https://github.com/AdguardTeam/CoreLibs/issues/1386)
-* Added Firefox 121.0+ to the list of user agents, that natively support `:has()` [#1840](https://github.com/AdguardTeam/CoreLibs/issues/1840)
-* Added ECH parameters from intercepted DNS HTTPS queries [#1794](https://github.com/AdguardTeam/CoreLibs/issues/1794)
-* Improved HTML filtering performance [#1855](https://github.com/AdguardTeam/CoreLibs/issues/1855)
-* Added an option to use `|` as a separator in `$permissions` [#1850](https://github.com/AdguardTeam/CoreLibs/issues/1850)
-
-#### Fixes
-* Apply `$permissions` only to `document` [#1856](https://github.com/AdguardTeam/CoreLibs/issues/1856)
-* Cannot parse QUIC ClientHello split into two packets [#1861](https://github.com/AdguardTeam/CoreLibs/issues/1861)
-* VOT script doesn’t work in Google chrome [#1665](https://github.com/AdguardTeam/CoreLibs/issues/1665)
-* Request with Authorization header is not redirected [#1851](https://github.com/AdguardTeam/CoreLibs/issues/1851)
-* Support anti-DPI feature for Korea Telecom [#1789](https://github.com/AdguardTeam/CoreLibs/issues/1789)
-* Cookie rules with `[` and `]` in the name are invalid [#1843](https://github.com/AdguardTeam/CoreLibs/issues/1843)
-* Cosmetic rules are not applied in some cases when AdGuard works alongside AdGuard VPN browser extension [#1791](https://github.com/AdguardTeam/CoreLibs/issues/1791)
-* One of the subdomains is not filtered due to different site certificates [#1839](https://github.com/AdguardTeam/CoreLibs/issues/1839)
-* `$all` modifier does not work correctly [#1842](https://github.com/AdguardTeam/CoreLibs/issues/1842)
-* `mall.sk` content script is not injected [#1834](https://github.com/AdguardTeam/CoreLibs/issues/1834)
-* Blocking regex rule that has escaped slash in a character class doesn’t work [#1831](https://github.com/AdguardTeam/CoreLibs/issues/1831)
-* Content script is not injected if there is a tag (with embed attribute) before doctype declaration [#1825](https://github.com/AdguardTeam/CoreLibs/issues/1825)
-* `$path` modifier doesn’t work with query params [#1817](https://github.com/AdguardTeam/CoreLibs/issues/1817)
-* `$removeparam` on url with port redirects to url without port [#1818](https://github.com/AdguardTeam/CoreLibs/issues/1818)
-* `android-hilfe.de` brakes website [#1800](https://github.com/AdguardTeam/CoreLibs/issues/1800)
-* Cannot connect to wiki.cemu.info securely [#1821](https://github.com/AdguardTeam/CoreLibs/issues/1821)
-* AdGuard systematically crashes and freezes [#1880](https://github.com/AdguardTeam/CoreLibs/issues/1880)
-
-### Scriptlets (JavaScript enhancement for filtering rules) updated to v1.10.25
-
-#### Improvements
-* Improved google-analytics, added `ga.q` property [#355](https://github.com/AdguardTeam/Scriptlets/issues/355)
-* Improved google-ima3, added `OmidVerificationVendor` property [#353](https://github.com/AdguardTeam/Scriptlets/issues/353)
-* Added compatibility with uBO's set-cookie scriptlet [#332](https://github.com/AdguardTeam/Scriptlets/issues/332)
-* Added new scriptlet `href-sanitizer` [#327](https://github.com/AdguardTeam/Scriptlets/issues/327)
-* Added new scriptlet `json-prune-fetch-response` [#361](https://github.com/AdguardTeam/Scriptlets/issues/361)
-* Added new scriptlet `json-prune-xhr-response` [#360](https://github.com/AdguardTeam/Scriptlets/issues/360)
-* Added new scriptlet `trusted-suppress-native-method` [#383](https://github.com/AdguardTeam/Scriptlets/issues/383)
-* Added new scriptlet `no-protected-audience` [#395](https://github.com/AdguardTeam/Scriptlets/issues/395)
-* Improved `set-cookie`, increased a possible numeric value [#388](https://github.com/AdguardTeam/Scriptlets/issues/388)
-* Improved `trusted-click-element`, added support for finding selectors in shadowRoot [#323](https://github.com/AdguardTeam/Scriptlets/issues/323)
-* Use some redirects resources as scriptlets as well [#300](https://github.com/AdguardTeam/Scriptlets/issues/300)
-* Added possibility to allowlist scriptlets [#377](https://github.com/AdguardTeam/Scriptlets/issues/377)
-* Improved `prevent-fetch`, added `cors` responseType [#394](https://github.com/AdguardTeam/Scriptlets/issues/394)
-* Improved `set-cookie`, added `domain` parameter [#389](https://github.com/AdguardTeam/Scriptlets/issues/389)
-* Added new scriptlet `call-nothrow.js` [#333](https://github.com/AdguardTeam/Scriptlets/issues/333)
-* Added new scriptlet `spoof-css` [#317](https://github.com/AdguardTeam/Scriptlets/issues/317)
-* Added new scriptlet `trusted-create-element` [#278](https://github.com/AdguardTeam/Scriptlets/issues/278)
-* Improved `set-cookie`, added more supported values [#379](https://github.com/AdguardTeam/Scriptlets/issues/379)
-* Added new scriptlet `trusted-set-attr` [#281](https://github.com/AdguardTeam/Scriptlets/issues/281)
-
-#### Fixes
-* Fixed `set-constant` — setProxyTrap() [#403](https://github.com/AdguardTeam/Scriptlets/issues/403)
-* Fixed `set-cookie`, do not encode a cookie name [#408](https://github.com/AdguardTeam/Scriptlets/issues/408)
-* Fixed `set-local-storage-item` conversion, `$remove$` param [#404](https://github.com/AdguardTeam/Scriptlets/issues/404)
-
-### UserscriptsWrapper updated to v1.2.23
-
-### DnsLibs (DNS filtering engine) updated to v2.5.25 [#5306](https://github.com/AdguardTeam/AdguardForAndroid/issues/5306)
-
-#### Improvements
-* Allowed specifying tcp-only and udp-only DNS upstreams [#208](https://github.com/AdguardTeam/DnsLibs/issues/208)
-* Support passing hostname to outbound proxy instead of bootstrapping [#197](https://github.com/AdguardTeam/DnsLibs/issues/197)
-* Improved handling of HTTPS RRType [#215](https://github.com/AdguardTeam/DnsLibs/issues/215)
-* Restrict host normalization to DoH only [#219](https://github.com/AdguardTeam/DnsLibs/issues/219)
-
-#### Fixes
-* Cannot use DoH DNS server that use HTTP/1.1 after updating to v4.3 [#216](https://github.com/AdguardTeam/DnsLibs/issues/216)
-* Use Happy Eyeballs for IPv4/IPv6 in DoH [#217](https://github.com/AdguardTeam/DnsLibs/issues/217)
-* Adblock syntax rules with FQDN doesn’t work [#210](https://github.com/AdguardTeam/DnsLibs/issues/210)
-
-
-## AdGuard for Android direct download links:
-
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
-
-## AdGuard for Android TV direct download links:
-
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
-
-## 4.5 Beta 1
-
-- Published: 2024-05-30T15:22:00Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.5-beta-1
-
-This update brings our YouTube player’s usability to a whole new level. This update brings our YouTube player’s usability to a whole new level: we added background playback, recommended videos, quality settings, and much more. Not so unskippable now, are you, ads? On top of that, this version includes some nice fixes for overall app performance, including the Android TV version.
-
-## A ton of improvements for AdGuard’s YouTube player
-
-Just look at what’s available now:
-
-Change video quality, playback speed, and subtitle settings using the gear ⚙ button
-Picture-in-Picture mode is now supported, which means you can shrink the video to a small window and keep playing it in the background while using other apps. Great for such things as listening to music or podcasts
-View recommended videos at the end of the video or by pausing the video
-Double-tap the right or left side of the screen to skip 10 seconds forward or back correspondingly
-
-> Quick reminder: to launch the AdGuard player, choose any video in the YouTube app, tap “Share” and select AdGuard Player (it’s likely that you will need to scroll right and tap “More” first).
-
-## Changelog
-
-### Improvements
-* Focus now stays in the same place after opening the left-side menu of AdGuard for Android TV and closing it back [#5271](https://github.com/AdguardTeam/AdguardForAndroid/issues/5271)
-
-### Fixes
-* DNS protection settings fail to reset to default [#5322](https://github.com/AdguardTeam/AdguardForAndroid/issues/5322)
-* Language-specific filter "Other, Other" [#5232](https://github.com/AdguardTeam/AdguardForAndroid/issues/5232)
-* Failed to reset to default  the "Show DevTools on the main screen" option in Low-level settings [#5331](https://github.com/AdguardTeam/AdguardForAndroid/issues/5331)
-* AdGuard for Android TV crashes when you try to add a custom DNS server using a link with "adguard:add_dns_server?address=" prefix [#5264](https://github.com/AdguardTeam/AdguardForAndroid/issues/5264)
-
-
-
-## AdGuard for Android direct download links:
-
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
-
-## AdGuard for Android TV direct download links:
-
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
-
-## 4.4 Beta 1
-
-- Published: 2024-04-27T16:57:29Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4-beta-1
-
-Improved Firewall functionality is the highlight of AdGuard v4.4 for Android beta. We have been testing it for a long time and now we are ready to introduce it to you.
-
-Now you can select the apps you want to be notified about. Don't want to receive notifications about Chrome connections? Open the pull-down menu, tap a notification about Chrome, then tap *Mute*. All Firewall notifications for this app will be disabled.
+> *Settings* → *General* → *Advanced* → *Low-level設定* → *Filter は DNS* をしっかり確保します。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/mute.png" 
-width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/dns_en.png" 
+幅="300" 高さ="600">
+
+また、いくつかのマイナーなバグを修正し、UserscriptsWrapperとDnsLibsを更新しました。
+
+## 変更履歴
+
+### 改善点
+* ChromiteブラウザでHTTPSフィルタリングを有効にして、無料で[#4997](https://github.com/AdguardTeam/AdguardForAndroid/issues/4997)
+* 開発者ツールのセクションの改善 [#5173](https://github.com/AdguardTeam/AdguardForAndroid/issues/5173)
+* 空のユーザールールリストでルールをエクスポートしようとすると、「エクスポートする」スナックを追加する[#5176](https://github.com/AdguardTeam/AdguardForAndroid/issues/5176)
+* com.klookアプリをデフォルトHTTPSフィルタリング除外に追加 [#5143](https://github.com/AdguardTeam/AdguardForAndroid/issues/5143)
+* com.nekki.shadowfightarena を QUIC のバイパス パッケージにデフォルトで含める [#5158](https://github.com/AdguardTeam/AdguardForAndroid/issues/5158)
+
+### フィックス
+* ライセンスキーが隠されていない [#4496](https://github.com/AdguardTeam/AdguardForAndroid/issues/4496)
+* 翻訳の修正`it`ロケール [#5180](https://github.com/AdguardTeam/AdguardForAndroid/issues/5180)
+* AutorunはChromecastとSony TVを再起動した後に動作しません [#5156](https://github.com/AdguardTeam/AdguardForAndroid/issues/5156)
+* 大きい電池の消費[#4960] (https://github.com/AdguardTeam/AdguardForAndroid/issues/4960)
+* キャッシュサイズが急速に成長 [#5125](https://github.com/AdguardTeam/AdguardForAndroid/issues/5125)
+* Userscript の状態の変更を行い、戻ったときにアプリがクラッシュする [#5131](https://github.com/AdguardTeam/AdguardForAndroid/issues/5131)
+* インドネシア語を選択するとアプリがクラッシュ [#5236](https://github.com/AdguardTeam/AdguardForAndroid/issues/5236)
+* DNS サーバーの設定は、DNS フィルタ タブ [#5142] の設定をリセットした後にリセットされます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5142)
+* 証明書のインストールの失敗に関するダイアログは、成功したインストール後に消えません [#5194](https://github.com/AdguardTeam/AdguardForAndroid/issues/5194)
+* アプリケーション更新をダウンロードすると、バッテリー容量の400 mAh以上かかります[#5259](https://github.com/AdguardTeam/AdguardForAndroid/issues/5259)
+* ケースの差[#5037]を使ってウェブサイトの許可者に重複を追加できます(https://github.com/AdguardTeam/AdguardForAndroid/issues/5037)
+* 設定をエクスポートする際にエラー [#5069](https://github.com/AdguardTeam/AdguardForAndroid/issues/5069)
+* 背景画像は、com.opera.browser [#5096] でブロックされます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5096)
+* デバイスペアリングエラー(com.meross.meross) [#4989](https://github.com/AdguardTeam/AdguardForAndroid/issues/4989)
+* 2つのコンポーネントを持つ選択した会社の最近の活動が表示されない[#5067](https://github.com/AdguardTeam/AdguardForAndroid/issues/5067)
+* すべての DNS エントリの [#4824] (.) 文字を削除します。https://github.com/AdguardTeam/AdguardForAndroid/issues/4824)
+* ブラウジングセキュリティ画面のスクロール領域の問題[#5195](https://github.com/AdguardTeam/AdguardForAndroid/issues/5195)
+* スクロールバーの親指は、最近の活動の下部メニューの後ろに行きます [#4901](https://github.com/AdguardTeam/AdguardForAndroid/issues/4901)
+* 申し込みを最小限にすることでスナックを閉じる [#5018](https://github.com/AdguardTeam/AdguardForAndroid/issues/5018)
+* いくつかのカスタムフィルタプロパティが正しく更新しない[#5171](https://github.com/AdguardTeam/AdguardForAndroid/issues/5171)
+* メイン画面のスタディティスティックカードはフルスクリーンの幅を埋めません [#5118](https://github.com/AdguardTeam/AdguardForAndroid/issues/5118)
+* ポップアップはシステム言語で表示され、アプリケーション全体が英語[#5168]にある間(https://github.com/AdguardTeam/AdguardForAndroid/issues/5168)
+* 無線ボタンの状態はBootstrapの上流の選択[#5239]のために輸入されません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5239)
+* 更新ローダーが正しく機能しない[#5028](https://github.com/AdguardTeam/AdguardForAndroid/issues/5028)
+* 通知シェードを介して無効にすると、アプリの再オープン時に自動的に有効になります [#5146](https://github.com/AdguardTeam/AdguardForAndroid/issues/5146)
+* AdGuard保護機能により、インターネット接続がない場合のアプリレポート[#5209](https://github.com/AdguardTeam/AdguardForAndroid/issues/5209)
+* Santander と Sainsburys Bank アプリは HTTPS で [#5058] でフィルタリングします。https://github.com/AdguardTeam/AdguardForAndroid/issues/5058)
+* 更新履歴バーに誤った色 [#5308] (https://github.com/AdguardTeam/AdguardForAndroid/issues/5308)
+
+### CoreLibs (フィルターエンジン) を v1.14.59 に更新しました (#5316)()https://github.com/AdguardTeam/AdguardForAndroid/issues/5316)
+
+#### 改善点
+* DoH接続のon-the-flyフィルタリングを追加 [#198]()https://github.com/AdguardTeam/DnsLibs/issues/198)
+* 追加`GM.xmlhttpRequest`エイリアスとして`GM_xmlhttpRequest` [#1785](https://github.com/AdguardTeam/CoreLibs/issues/1785)
+* アウトバウンドプロキシは、リクエスト処理イベント(#1385)で使用されます。https://github.com/AdguardTeam/CoreLibs/issues/1385)
+* アウトバウンドプロキシにホストを渡すためのサポートを追加 [#1386](https://github.com/AdguardTeam/CoreLibs/issues/1386)
+* Firefox 121.0+ をユーザエージェントのリストに追加しました。`:has()` [#1840](https://github.com/AdguardTeam/CoreLibs/issues/1840)
+* インターセプトされた DNS HTTPS クエリから ECH パラメータを追加 [#1794]()https://github.com/AdguardTeam/CoreLibs/issues/1794)
+* 改善されたHTMLのろ過性能[#1855] (https://github.com/AdguardTeam/CoreLibs/issues/1855)
+* 使用するオプションを追加`|`分離器として`$permissions` [#1850](https://github.com/AdguardTeam/CoreLibs/issues/1850)
+
+#### フィックス
+* お問い合わせ`$permissions`お問い合わせ`document` [#1856](https://github.com/AdguardTeam/CoreLibs/issues/1856)
+* QUIC ClientHello を 2 つのパケットに分割できません。 [#1861](https://github.com/AdguardTeam/CoreLibs/issues/1861)
+* VOTスクリプトはGoogle chromeで動作しません [#1665](https://github.com/AdguardTeam/CoreLibs/issues/1665)
+* 正規化ヘッダでリクエストをリダイレクトしない[#1851](https://github.com/AdguardTeam/CoreLibs/issues/1851)
+* 韓国の電気通信のためのサポート反DPIの特徴[#1789] (https://github.com/AdguardTeam/CoreLibs/issues/1789)
+* クッキーに関するルール`[`そして、`]`お名前が無効です [#1843](https://github.com/AdguardTeam/CoreLibs/issues/1843)
+* AdGuardがAdGuard VPNブラウザの拡張機能と一緒に動作する場合、化粧品のルールは適用されません[#1791](https://github.com/AdguardTeam/CoreLibs/issues/1791)
+* サブドメインの1つは、異なるサイトの証明書[#1839]のためにフィルタリングされていません(https://github.com/AdguardTeam/CoreLibs/issues/1839)
+* `$all`修飾子が正しく機能しない[#1842](https://github.com/AdguardTeam/CoreLibs/issues/1842)
+* `mall.sk`コンテンツスクリプトは注入されません [#1834](https://github.com/AdguardTeam/CoreLibs/issues/1834)
+* キャラクタークラスでエスラッシュをエスケープした正規表現のブロックは動作しません[#1831](https://github.com/AdguardTeam/CoreLibs/issues/1831)
+* doctype宣言前のタグ(埋め込み属性)がある場合、コンテンツスクリプトは注入されません[#1825](https://github.com/AdguardTeam/CoreLibs/issues/1825)
+* `$path`修飾子はクエリパラメータで動作しません [#1817](https://github.com/AdguardTeam/CoreLibs/issues/1817)
+* `$removeparam`ポート付き url でポートなしで url にリダイレクト [#1818](https://github.com/AdguardTeam/CoreLibs/issues/1818)
+* `android-hilfe.de`ブレーキサイト [#1800](https://github.com/AdguardTeam/CoreLibs/issues/1800)
+* wiki.cemu.infoを安全に接続できません。 [#1821](https://github.com/AdguardTeam/CoreLibs/issues/1821)
+* AdGuardはシステム的にクラッシュし、フリーズ [#1880] (https://github.com/AdguardTeam/CoreLibs/issues/1880)
+
+### スクリプト(フィルタリングルールのJavaScriptの強化)をv1.10.25に更新
+
+#### 改善点
+* グーグルアナリティクスの改善、追加`ga.q`プロパティ [#355](https://github.com/AdguardTeam/Scriptlets/issues/355)
+* google-ima3の改善、追加`OmidVerificationVendor`プロパティ [#353](https://github.com/AdguardTeam/Scriptlets/issues/353)
+* uBO の set-cookie スクリプトレット [#332] との互換性を追加しました。https://github.com/AdguardTeam/Scriptlets/issues/332)
+* 新しいスクリプトレットを追加`href-sanitizer` [#327](https://github.com/AdguardTeam/Scriptlets/issues/327)
+* 新しいスクリプトレットを追加`json-prune-fetch-response` [#361](https://github.com/AdguardTeam/Scriptlets/issues/361)
+* 新しいスクリプトレットを追加`json-prune-xhr-response` [#360](https://github.com/AdguardTeam/Scriptlets/issues/360)
+* 新しいスクリプトレットを追加`trusted-suppress-native-method` [#383](https://github.com/AdguardTeam/Scriptlets/issues/383)
+* 新しいスクリプトレットを追加`no-protected-audience` [#395](https://github.com/AdguardTeam/Scriptlets/issues/395)
+* 改善しました`set-cookie`, 可能な数値を増加 [#388](https://github.com/AdguardTeam/Scriptlets/issues/388)
+* 改善しました`trusted-click-element`, shadowRootでセレクターを見つけるためのサポートを追加しました [#323](https://github.com/AdguardTeam/Scriptlets/issues/323)
+* リソースをスクリプトとしてリダイレクトするだけでなく、 [#300](https://github.com/AdguardTeam/Scriptlets/issues/300)
+* スクリプトレットを許可する可能性を追加 [#377](https://github.com/AdguardTeam/Scriptlets/issues/377)
+* 改善しました`prevent-fetch`, 追加`cors`responseType [#394]()https://github.com/AdguardTeam/Scriptlets/issues/394)
+* 改善しました`set-cookie`, 追加`domain`パラメーター [#389](https://github.com/AdguardTeam/Scriptlets/issues/389)
+* 新しいスクリプトレットを追加`call-nothrow.js` [#333](https://github.com/AdguardTeam/Scriptlets/issues/333)
+* 新しいスクリプトレットを追加`spoof-css` [#317](https://github.com/AdguardTeam/Scriptlets/issues/317)
+* 新しいスクリプトレットを追加`trusted-create-element` [#278](https://github.com/AdguardTeam/Scriptlets/issues/278)
+* 改善しました`set-cookie`, よりサポートされている値を追加 [#379](https://github.com/AdguardTeam/Scriptlets/issues/379)
+* 新しいスクリプトレットを追加`trusted-set-attr` [#281](https://github.com/AdguardTeam/Scriptlets/issues/281)
+
+#### フィックス
+* 固定式`set-constant`— setProxyTrap() [#403]()https://github.com/AdguardTeam/Scriptlets/issues/403)
+* 固定式`set-cookie`, クッキー名をエンコードしません [#408](https://github.com/AdguardTeam/Scriptlets/issues/408)
+* 固定式`set-local-storage-item`変換,`$remove$`パラメータ [#404](https://github.com/AdguardTeam/Scriptlets/issues/404)
+
+### UserscriptsWrapperがv1.2.23に更新
+
+### DnsLibs (DNS フィルタリングエンジン) v2.5.25 に更新 [#5306](https://github.com/AdguardTeam/AdguardForAndroid/issues/5306)
+
+#### 改善点
+* tcp-only と udp-only DNS 上流を指定できるようになりました [#208](https://github.com/AdguardTeam/DnsLibs/issues/208)
+* ブートストラップの代わりに、ホスト名をアウトバウンドプロキシに渡すサポート [#197](https://github.com/AdguardTeam/DnsLibs/issues/197)
+* HTTPS RRType [#215] の処理を改善しました(https://github.com/AdguardTeam/DnsLibs/issues/215)
+* ホスト正規化を DoH にのみ制限する [#219](https://github.com/AdguardTeam/DnsLibs/issues/219)
+
+#### フィックス
+* v4.3 [#216] に更新した後に HTTP/1.1 を使用する DoH DNS サーバーを使用できません。https://github.com/AdguardTeam/DnsLibs/issues/216)
+* DoHのIPv4/IPv6のための幸せな眼球を使用して下さい[#217] (https://github.com/AdguardTeam/DnsLibs/issues/217)
+* FQDN のアドブロック構文ルールは [#210] は動作しません。https://github.com/AdguardTeam/DnsLibs/issues/210)
+
+
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
+
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
+
+## Android TVの直接ダウンロードリンクのためのAdGuard:
+
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
+
+## 4.5 ベータ 1
+
+- 公開日: 2024-05-30T15:22:00Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.5-beta-1
+
+このアップデートは、YouTubeプレーヤーのユーザビリティを新しいレベル全体に引き上げます。 このアップデートは、YouTubeプレーヤーのユーザビリティを新しいレベル全体に引き上げます。背景再生、推奨動画、品質設定などを追加しました。 今のところ、あなたは、広告ですか? その上、このバージョンには、Android TVバージョンを含む全体的なアプリのパフォーマンスのためのいくつかの素晴らしい修正が含まれています。
+
+## AdGuardのYouTubeプレーヤーの改善のトン
+
+今利用可能なものを見てみましょう:
+
+ギアを使用してビデオ品質、再生速度、およびサブタイトル設定を変更 ◀ ボタン
+ピクチャー・イン・ピクチャー・モードがサポートされています。つまり、ビデオを小さなウィンドウに縮小し、他のアプリを使用してバックグラウンドで再生し続けることができます。 音楽やポッドキャストを聴くなど、素晴らしいこと
+ビデオの最後に、またはビデオのポーズで推奨ビデオを見る
+画面の右側または左サイドをダブルタップすると、10秒前後をスキップできます。
+
+> クイックリマインダー:AdGuardプレーヤーを起動するには、YouTubeアプリで任意のビデオを選択し、「共有」をタップし、AdGuard Playerを選択します(右スクロールして「もっと」をタップする必要があります)。
+
+## 変更履歴
+
+### 改善点
+* フォーカスは、Android TV用のAdGuardの左側のメニューを開き、それを閉じた後、同じ場所にとどまります [#5271](https://github.com/AdguardTeam/AdguardForAndroid/issues/5271)
+
+### フィックス
+* DNS 保護設定は、デフォルト [#5322] にリセットされません。https://github.com/AdguardTeam/AdguardForAndroid/issues/5322)
+* 言語固有のフィルタ "その他" [#5232](https://github.com/AdguardTeam/AdguardForAndroid/issues/5232)
+* 低レベルの設定で「メイン画面でDevToolsを表示する」オプションをデフォルトにリセットできなかった[#5331](https://github.com/AdguardTeam/AdguardForAndroid/issues/5331)
+* 「adguard:add dns server?address="プレフィックス [#5264]」() と連携して、カスタム DNS サーバーを追加しようとすると、Android TV のアドガードがクラッシュします。https://github.com/AdguardTeam/AdguardForAndroid/issues/5264)
+
+
+
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
+
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
+
+## Android TVの直接ダウンロードリンクのためのAdGuard:
+
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
+
+## 4.4 ベータ 1
+
+- 公表: 2024-04-27T16:57:29Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4-beta-1
+
+改善されたファイアウォール機能は、Androidベータ用のAdGuard v4.4のハイライトです。 長年に渡ってテストを続けてきましたが、今回ご紹介する準備が整いました。
+
+通知したいアプリを選択できるようになりました。 Chrome 接続に関する通知を受け取りたくないですか? プルダウンメニューを開き、Chromeに関する通知をタップし、*Mute*をタップします。 このアプリのすべてのファイアウォール通知は無効になります。
+
+<p align="center">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/mute.png" 
+幅="300" 高さ="600">
 </p>
 
-Alternatively, you can go to *Protection* → *Firewall* → *Notifications*. Select an app and toggle it off.
+あるいは、*Protection* → *Firewall* → *Notifications* に行くこともできます。 アプリを選択し、オフに切り替えます。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/settings.png" 
-width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.4/settings.png" 
+幅="300" 高さ="600">
 </p>
 
-We also fixed some minor bugs and updated UserscriptsWrapper, CoreLibs, and DNsLibs.
+また、いくつかのマイナーなバグを修正し、UserscriptsWrapper、CoreLibs、DNsLibsを更新しました。
 
-## Changelog
+## 変更履歴
 
-### Improvements
-* Enable HTTPS filtering on the Chromite browser for free [#4997](https://github.com/AdguardTeam/AdguardForAndroid/issues/4997)
-* Improved Developer Tools section [#5173](https://github.com/AdguardTeam/AdguardForAndroid/issues/5173)
-* Add the "Nothing to export" snack when trying to export rules with empty User rules list [#5176](https://github.com/AdguardTeam/AdguardForAndroid/issues/5176)
-* Added com.klook app to default HTTPS filtering exclusions [#5143](https://github.com/AdguardTeam/AdguardForAndroid/issues/5143)
-* Include com.nekki.shadowfightarena to QUIC bypass packages by default [#5158](https://github.com/AdguardTeam/AdguardForAndroid/issues/5158)
+### 改善点
+* ChromiteブラウザでHTTPSフィルタリングを有効にして、無料で[#4997](https://github.com/AdguardTeam/AdguardForAndroid/issues/4997)
+* 開発者ツールのセクションの改善 [#5173](https://github.com/AdguardTeam/AdguardForAndroid/issues/5173)
+* 空のユーザールールリストでルールをエクスポートしようとすると、「エクスポートする」スナックを追加する[#5176](https://github.com/AdguardTeam/AdguardForAndroid/issues/5176)
+* com.klookアプリをデフォルトHTTPSフィルタリング除外に追加 [#5143](https://github.com/AdguardTeam/AdguardForAndroid/issues/5143)
+* com.nekki.shadowfightarena を QUIC のバイパス パッケージにデフォルトで含める [#5158](https://github.com/AdguardTeam/AdguardForAndroid/issues/5158)
 
-### Fixes
-* The license key is not hidden [#4496](https://github.com/AdguardTeam/AdguardForAndroid/issues/4496)
-* Fixed the translation on `it` locale [#5180](https://github.com/AdguardTeam/AdguardForAndroid/issues/5180)
-* Autorun doesn’t work after rebooting Chromecast and Sony TV [#5156](https://github.com/AdguardTeam/AdguardForAndroid/issues/5156)
-* Large battery consumption [#4960](https://github.com/AdguardTeam/AdguardForAndroid/issues/4960)
-* Cache size grows quickly [#5125](https://github.com/AdguardTeam/AdguardForAndroid/issues/5125)
-* App crashes when making changes on the Userscript state and returning back [#5131](https://github.com/AdguardTeam/AdguardForAndroid/issues/5131)
-* App crashes when choosing the Indonesian language [#5236](https://github.com/AdguardTeam/AdguardForAndroid/issues/5236)
-* DNS server settings reset after resetting the settings in DNS filters tab [#5142](https://github.com/AdguardTeam/AdguardForAndroid/issues/5142)
-* Dialog about the certificate installation failure does not disappear after successful installation [#5194](https://github.com/AdguardTeam/AdguardForAndroid/issues/5194)
-* Downloading the application update takes more than 400 mAh of battery capacity [#5259](https://github.com/AdguardTeam/AdguardForAndroid/issues/5259)
-* Duplicates can be added to Websites allowlist using case difference [#5037](https://github.com/AdguardTeam/AdguardForAndroid/issues/5037)
-* Error while exporting settings [#5069](https://github.com/AdguardTeam/AdguardForAndroid/issues/5069)
-* Background images are blocked on com.opera.browser [#5096](https://github.com/AdguardTeam/AdguardForAndroid/issues/5096)
-* Meross device pairing error (com.meross.meross) [#4989](https://github.com/AdguardTeam/AdguardForAndroid/issues/4989)
-* Recent activity of the selected company with two components is not displayed [#5067](https://github.com/AdguardTeam/AdguardForAndroid/issues/5067)
-* Remove (.) character for all DNS entries [#4824](https://github.com/AdguardTeam/AdguardForAndroid/issues/4824)
-* Scroll area issue on the Browsing security screen [#5195](https://github.com/AdguardTeam/AdguardForAndroid/issues/5195)
-* Scrollbar thumb goes behind the bottom menu in Recent activity [#4901](https://github.com/AdguardTeam/AdguardForAndroid/issues/4901)
-* Snacks close due to minimizing the application [#5018](https://github.com/AdguardTeam/AdguardForAndroid/issues/5018)
-* Some custom filter properties don’t update properly [#5171](https://github.com/AdguardTeam/AdguardForAndroid/issues/5171)
-* Statistic cards on main screen doesn't fill full screen width [#5118](https://github.com/AdguardTeam/AdguardForAndroid/issues/5118)
-* The popups are displayed in the system language, while the whole application is in English [#5168](https://github.com/AdguardTeam/AdguardForAndroid/issues/5168)
-* The radio button state is not imported for the Bootstrap upstreams option [#5239](https://github.com/AdguardTeam/AdguardForAndroid/issues/5239)
-* Update loader is not working correctly [#5028](https://github.com/AdguardTeam/AdguardForAndroid/issues/5028)
-* Disabling via the notification shade will auto enable itself upon re-opening the app [#5146](https://github.com/AdguardTeam/AdguardForAndroid/issues/5146)
-* With AdGuard protection enabled, the app reports that there is no Internet connection [#5209](https://github.com/AdguardTeam/AdguardForAndroid/issues/5209)
-* Santander and Sainsburys Bank apps is braking with HTTPS Filtering on [#5058](https://github.com/AdguardTeam/AdguardForAndroid/issues/5058)
+### フィックス
+* ライセンスキーが隠されていない [#4496](https://github.com/AdguardTeam/AdguardForAndroid/issues/4496)
+* 翻訳の修正`it`ロケール [#5180](https://github.com/AdguardTeam/AdguardForAndroid/issues/5180)
+* AutorunはChromecastとSony TVを再起動した後に動作しません [#5156](https://github.com/AdguardTeam/AdguardForAndroid/issues/5156)
+* 大きい電池の消費[#4960] (https://github.com/AdguardTeam/AdguardForAndroid/issues/4960)
+* キャッシュサイズが急速に成長 [#5125](https://github.com/AdguardTeam/AdguardForAndroid/issues/5125)
+* Userscript の状態の変更を行い、戻ったときにアプリがクラッシュする [#5131](https://github.com/AdguardTeam/AdguardForAndroid/issues/5131)
+* インドネシア語を選択するとアプリがクラッシュ [#5236](https://github.com/AdguardTeam/AdguardForAndroid/issues/5236)
+* DNS サーバーの設定は、DNS フィルタ タブ [#5142] の設定をリセットした後にリセットされます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5142)
+* 証明書のインストールの失敗に関するダイアログは、成功したインストール後に消えません [#5194](https://github.com/AdguardTeam/AdguardForAndroid/issues/5194)
+* アプリケーション更新をダウンロードすると、バッテリー容量の400 mAh以上かかります[#5259](https://github.com/AdguardTeam/AdguardForAndroid/issues/5259)
+* ケースの差[#5037]を使ってウェブサイトの許可者に重複を追加できます(https://github.com/AdguardTeam/AdguardForAndroid/issues/5037)
+* 設定をエクスポートする際にエラー [#5069](https://github.com/AdguardTeam/AdguardForAndroid/issues/5069)
+* 背景画像は、com.opera.browser [#5096] でブロックされます。https://github.com/AdguardTeam/AdguardForAndroid/issues/5096)
+* デバイスペアリングエラー(com.meross.meross) [#4989](https://github.com/AdguardTeam/AdguardForAndroid/issues/4989)
+* 2つのコンポーネントを持つ選択した会社の最近の活動が表示されない[#5067](https://github.com/AdguardTeam/AdguardForAndroid/issues/5067)
+* すべての DNS エントリの [#4824] (.) 文字を削除します。https://github.com/AdguardTeam/AdguardForAndroid/issues/4824)
+* ブラウジングセキュリティ画面のスクロール領域の問題[#5195](https://github.com/AdguardTeam/AdguardForAndroid/issues/5195)
+* スクロールバーの親指は、最近の活動の下部メニューの後ろに行きます [#4901](https://github.com/AdguardTeam/AdguardForAndroid/issues/4901)
+* 申し込みを最小限にすることでスナックを閉じる [#5018](https://github.com/AdguardTeam/AdguardForAndroid/issues/5018)
+* いくつかのカスタムフィルタプロパティが正しく更新しない[#5171](https://github.com/AdguardTeam/AdguardForAndroid/issues/5171)
+* メイン画面のスタディティスティックカードはフルスクリーンの幅を埋めません [#5118](https://github.com/AdguardTeam/AdguardForAndroid/issues/5118)
+* ポップアップはシステム言語で表示され、アプリケーション全体が英語[#5168]にある間(https://github.com/AdguardTeam/AdguardForAndroid/issues/5168)
+* 無線ボタンの状態はBootstrapの上流の選択[#5239]のために輸入されません(https://github.com/AdguardTeam/AdguardForAndroid/issues/5239)
+* 更新ローダーが正しく機能しない[#5028](https://github.com/AdguardTeam/AdguardForAndroid/issues/5028)
+* 通知シェードを介して無効にすると、アプリの再オープン時に自動的に有効になります [#5146](https://github.com/AdguardTeam/AdguardForAndroid/issues/5146)
+* AdGuard保護機能により、インターネット接続がない場合のアプリレポート[#5209](https://github.com/AdguardTeam/AdguardForAndroid/issues/5209)
+* Santander と Sainsburys Bank アプリは HTTPS フィルタリング を [#5058] で括っています。https://github.com/AdguardTeam/AdguardForAndroid/issues/5058)
 
-### CoreLibs (Filtering engine) updated to v1.14.51 [#5280](https://github.com/AdguardTeam/AdguardForAndroid/issues/5280)
+### CoreLibs (フィルターエンジン) を v1.14.51 [#5280] に更新しました。https://github.com/AdguardTeam/AdguardForAndroid/issues/5280)
 
-#### Improvements
-* Added `GM.xmlhttpRequest` as alias of `GM_xmlhttpRequest` [#1785](https://github.com/AdguardTeam/CoreLibs/issues/1785)
-* Indicate that outbound proxy is used in the request processed event [#1385](https://github.com/AdguardTeam/CoreLibs/issues/1385)
-* Added support for passing host to outbound proxy [#1386](https://github.com/AdguardTeam/CoreLibs/issues/1386)
-* Added Firefox 121.0+ to the list of user agents, that natively support `:has()` [#1840](https://github.com/AdguardTeam/CoreLibs/issues/1840)
-* Added ECH parameters from intercepted DNS HTTPS queries [#1794](https://github.com/AdguardTeam/CoreLibs/issues/1794)
-* Improved HTML filtering performance [#1855](https://github.com/AdguardTeam/CoreLibs/issues/1855)
-* Added an option to use `|` as a separator in `$permissions` [#1850](https://github.com/AdguardTeam/CoreLibs/issues/1850)
+#### 改善点
+* 追加`GM.xmlhttpRequest`エイリアスとして`GM_xmlhttpRequest` [#1785](https://github.com/AdguardTeam/CoreLibs/issues/1785)
+* アウトバウンドプロキシは、リクエスト処理イベント(#1385)で使用されます。https://github.com/AdguardTeam/CoreLibs/issues/1385)
+* アウトバウンドプロキシにホストを渡すためのサポートを追加 [#1386](https://github.com/AdguardTeam/CoreLibs/issues/1386)
+* Firefox 121.0+ をユーザエージェントのリストに追加しました。`:has()` [#1840](https://github.com/AdguardTeam/CoreLibs/issues/1840)
+* インターセプトされた DNS HTTPS クエリから ECH パラメータを追加 [#1794]()https://github.com/AdguardTeam/CoreLibs/issues/1794)
+* 改善されたHTMLのろ過性能[#1855] (https://github.com/AdguardTeam/CoreLibs/issues/1855)
+* 使用するオプションを追加`|`分離器として`$permissions` [#1850](https://github.com/AdguardTeam/CoreLibs/issues/1850)
 
-#### Fixes
-* Apply `$permissions` only to `document` [#1856](https://github.com/AdguardTeam/CoreLibs/issues/1856)
-* Cannot parse QUIC ClientHello split into two packets [#1861](https://github.com/AdguardTeam/CoreLibs/issues/1861)
-* VOT script doesn’t work in Google chrome [#1665](https://github.com/AdguardTeam/CoreLibs/issues/1665)
-* Request with Authorization header is not redirected [#1851](https://github.com/AdguardTeam/CoreLibs/issues/1851)
-* Support anti-DPI feature for Korea Telecom [#1789](https://github.com/AdguardTeam/CoreLibs/issues/1789)
-* Cookie rules with `[` and `]` in the name are invalid [#1843](https://github.com/AdguardTeam/CoreLibs/issues/1843)
-* Cosmetic rules are not applied in some cases when AdGuard works alongside AdGuard VPN browser extension [#1791](https://github.com/AdguardTeam/CoreLibs/issues/1791)
-* One of the subdomains is not filtered due to different site certificates [#1839](https://github.com/AdguardTeam/CoreLibs/issues/1839)
-* `$all` modifier does not work correctly [#1842](https://github.com/AdguardTeam/CoreLibs/issues/1842)
-* `mall.sk` content script is not injected [#1834](https://github.com/AdguardTeam/CoreLibs/issues/1834)
-* Blocking regex rule that has escaped slash in a character class doesn’t work [#1831](https://github.com/AdguardTeam/CoreLibs/issues/1831)
-* Content script is not injected if there is a tag (with embed attribute) before doctype declaration [#1825](https://github.com/AdguardTeam/CoreLibs/issues/1825)
-* `$path` modifier doesn’t work with query params [#1817](https://github.com/AdguardTeam/CoreLibs/issues/1817)
-* `$removeparam` on url with port redirects to url without port [#1818](https://github.com/AdguardTeam/CoreLibs/issues/1818)
-* `android-hilfe.de` brakes website [#1800](https://github.com/AdguardTeam/CoreLibs/issues/1800)
-* Cannot connect to wiki.cemu.info securely [#1821](https://github.com/AdguardTeam/CoreLibs/issues/1821)
+#### フィックス
+* お問い合わせ`$permissions`お問い合わせ`document` [#1856](https://github.com/AdguardTeam/CoreLibs/issues/1856)
+* QUIC ClientHello を 2 つのパケットに分割できません。 [#1861](https://github.com/AdguardTeam/CoreLibs/issues/1861)
+* VOTスクリプトはGoogle chromeで動作しません [#1665](https://github.com/AdguardTeam/CoreLibs/issues/1665)
+* 正規化ヘッダでリクエストをリダイレクトしない[#1851](https://github.com/AdguardTeam/CoreLibs/issues/1851)
+* 韓国の電気通信のためのサポート反DPIの特徴[#1789] (https://github.com/AdguardTeam/CoreLibs/issues/1789)
+* クッキーに関するルール`[`そして、`]`お名前が無効です [#1843](https://github.com/AdguardTeam/CoreLibs/issues/1843)
+* AdGuardがAdGuard VPNブラウザの拡張機能と一緒に動作する場合、化粧品のルールは適用されません[#1791](https://github.com/AdguardTeam/CoreLibs/issues/1791)
+* サブドメインの1つは、異なるサイトの証明書[#1839]のためにフィルタリングされていません(https://github.com/AdguardTeam/CoreLibs/issues/1839)
+* `$all`修飾子が正しく機能しない[#1842](https://github.com/AdguardTeam/CoreLibs/issues/1842)
+* `mall.sk`コンテンツスクリプトは注入されません [#1834](https://github.com/AdguardTeam/CoreLibs/issues/1834)
+* キャラクタークラスでエスラッシュをエスケープした正規表現のブロックは動作しません[#1831](https://github.com/AdguardTeam/CoreLibs/issues/1831)
+* doctype宣言前のタグ(埋め込み属性)がある場合、コンテンツスクリプトは注入されません[#1825](https://github.com/AdguardTeam/CoreLibs/issues/1825)
+* `$path`修飾子はクエリパラメータで動作しません [#1817](https://github.com/AdguardTeam/CoreLibs/issues/1817)
+* `$removeparam`ポート付き url でポートなしで url にリダイレクト [#1818](https://github.com/AdguardTeam/CoreLibs/issues/1818)
+* `android-hilfe.de`ブレーキサイト [#1800](https://github.com/AdguardTeam/CoreLibs/issues/1800)
+* wiki.cemu.infoを安全に接続できません。 [#1821](https://github.com/AdguardTeam/CoreLibs/issues/1821)
 
-### Scriptlets (JavaScript enhancement for filtering rules) updated to v1.10.25
+### スクリプト(フィルタリングルールのJavaScriptの強化)をv1.10.25に更新
 
-#### Improvements
-* Improved google-analytics, added `ga.q` property [#355](https://github.com/AdguardTeam/Scriptlets/issues/355)
-* Improved google-ima3, added `OmidVerificationVendor` property [#353](https://github.com/AdguardTeam/Scriptlets/issues/353)
-* Added compatibility with uBO's set-cookie scriptlet [#332](https://github.com/AdguardTeam/Scriptlets/issues/332)
-* Added new scriptlet `href-sanitizer` [#327](https://github.com/AdguardTeam/Scriptlets/issues/327)
-* Added new scriptlet `json-prune-fetch-response` [#361](https://github.com/AdguardTeam/Scriptlets/issues/361)
-* Added new scriptlet `json-prune-xhr-response` [#360](https://github.com/AdguardTeam/Scriptlets/issues/360)
-* Added new scriptlet `trusted-suppress-native-method` [#383](https://github.com/AdguardTeam/Scriptlets/issues/383)
-* Added new scriptlet `no-protected-audience` [#395](https://github.com/AdguardTeam/Scriptlets/issues/395)
-* Improved `set-cookie`, increased a possible numeric value [#388](https://github.com/AdguardTeam/Scriptlets/issues/388)
-* Improved `trusted-click-element`, added support for finding selectors in shadowRoot [#323](https://github.com/AdguardTeam/Scriptlets/issues/323)
-* Use some redirects resources as scriptlets as well [#300](https://github.com/AdguardTeam/Scriptlets/issues/300)
-* Added possibility to allowlist scriptlets [#377](https://github.com/AdguardTeam/Scriptlets/issues/377)
-* Improved `prevent-fetch`, added `cors` responseType [#394](https://github.com/AdguardTeam/Scriptlets/issues/394)
-* Improved `set-cookie`, added `domain` parameter [#389](https://github.com/AdguardTeam/Scriptlets/issues/389)
-* Added new scriptlet  `call-nothrow.js` [#333](https://github.com/AdguardTeam/Scriptlets/issues/333)
-* Added new scriptlet `spoof-css` [#317](https://github.com/AdguardTeam/Scriptlets/issues/317)
-* Added new scriptlet `trusted-create-element` [#278](https://github.com/AdguardTeam/Scriptlets/issues/278)
-* Improved `set-cookie`, added more supported values [#379](https://github.com/AdguardTeam/Scriptlets/issues/379)
-* Added new scriptlet `trusted-set-attr` [#281](https://github.com/AdguardTeam/Scriptlets/issues/281)
+#### 改善点
+* グーグルアナリティクスの改善、追加`ga.q`プロパティ [#355](https://github.com/AdguardTeam/Scriptlets/issues/355)
+* google-ima3の改善、追加`OmidVerificationVendor`プロパティ [#353](https://github.com/AdguardTeam/Scriptlets/issues/353)
+* uBO の set-cookie スクリプトレット [#332] との互換性を追加しました。https://github.com/AdguardTeam/Scriptlets/issues/332)
+* 新しいスクリプトレットを追加`href-sanitizer` [#327](https://github.com/AdguardTeam/Scriptlets/issues/327)
+* 新しいスクリプトレットを追加`json-prune-fetch-response` [#361](https://github.com/AdguardTeam/Scriptlets/issues/361)
+* 新しいスクリプトレットを追加`json-prune-xhr-response` [#360](https://github.com/AdguardTeam/Scriptlets/issues/360)
+* 新しいスクリプトレットを追加`trusted-suppress-native-method` [#383](https://github.com/AdguardTeam/Scriptlets/issues/383)
+* 新しいスクリプトレットを追加`no-protected-audience` [#395](https://github.com/AdguardTeam/Scriptlets/issues/395)
+* 改善しました`set-cookie`, 可能な数値を増加 [#388](https://github.com/AdguardTeam/Scriptlets/issues/388)
+* 改善しました`trusted-click-element`, shadowRootでセレクターを見つけるためのサポートを追加しました [#323](https://github.com/AdguardTeam/Scriptlets/issues/323)
+* リソースをスクリプトとしてリダイレクトするだけでなく、 [#300](https://github.com/AdguardTeam/Scriptlets/issues/300)
+* スクリプトレットを許可する可能性を追加 [#377](https://github.com/AdguardTeam/Scriptlets/issues/377)
+* 改善しました`prevent-fetch`, 追加`cors`responseType [#394]()https://github.com/AdguardTeam/Scriptlets/issues/394)
+* 改善しました`set-cookie`, 追加`domain`パラメーター [#389](https://github.com/AdguardTeam/Scriptlets/issues/389)
+* 新しいスクリプトレットを追加`call-nothrow.js` [#333](https://github.com/AdguardTeam/Scriptlets/issues/333)
+* 新しいスクリプトレットを追加`spoof-css` [#317](https://github.com/AdguardTeam/Scriptlets/issues/317)
+* 新しいスクリプトレットを追加`trusted-create-element` [#278](https://github.com/AdguardTeam/Scriptlets/issues/278)
+* 改善しました`set-cookie`, よりサポートされている値を追加 [#379](https://github.com/AdguardTeam/Scriptlets/issues/379)
+* 新しいスクリプトレットを追加`trusted-set-attr` [#281](https://github.com/AdguardTeam/Scriptlets/issues/281)
 
-#### Fixes
-* Fixed `set-constant` — setProxyTrap() [#403](https://github.com/AdguardTeam/Scriptlets/issues/403)
-* Fixed `set-cookie`, do not encode a cookie name [#408](https://github.com/AdguardTeam/Scriptlets/issues/408)
-* Fixed `set-local-storage-item` conversion, `$remove$` param [#404](https://github.com/AdguardTeam/Scriptlets/issues/404)
+#### フィックス
+* 固定式`set-constant`— setProxyTrap() [#403]()https://github.com/AdguardTeam/Scriptlets/issues/403)
+* 固定式`set-cookie`, クッキー名をエンコードしません [#408](https://github.com/AdguardTeam/Scriptlets/issues/408)
+* 固定式`set-local-storage-item`変換,`$remove$`パラメータ [#404](https://github.com/AdguardTeam/Scriptlets/issues/404)
 
-### UserscriptsWrapper updated to v1.2.23
+### UserscriptsWrapperがv1.2.23に更新
 
-### DnsLibs (DNS filtering engine) updated to v2.5.4 [#5237](https://github.com/AdguardTeam/AdguardForAndroid/issues/5237)
+### DnsLibs (DNS フィルタリングエンジン) v2.5.4 [#5237] に更新https://github.com/AdguardTeam/AdguardForAndroid/issues/5237)
 
-#### Improvements
-* Allowed specifying tcp-only and udp-only DNS upstreams [#208](https://github.com/AdguardTeam/DnsLibs/issues/208)
-* Support passing hostname to outbound proxy instead of bootstrapping [#197](https://github.com/AdguardTeam/DnsLibs/issues/197)
-* Improved handling of HTTPS RRType [#215](https://github.com/AdguardTeam/DnsLibs/issues/215)
+#### 改善点
+* tcp-only と udp-only DNS 上流を指定できるようになりました [#208](https://github.com/AdguardTeam/DnsLibs/issues/208)
+* ブートストラップの代わりに、ホスト名をアウトバウンドプロキシに渡すサポート [#197](https://github.com/AdguardTeam/DnsLibs/issues/197)
+* HTTPS RRType [#215] の処理を改善しました(https://github.com/AdguardTeam/DnsLibs/issues/215)
 
-#### Fixes
-* Cannot use DoH DNS server that use HTTP/1.1 after updating to v4.3 [#216](https://github.com/AdguardTeam/DnsLibs/issues/216)
-* Use Happy Eyeballs for IPv4/IPv6 in DoH [#217](https://github.com/AdguardTeam/DnsLibs/issues/217)
+#### フィックス
+* v4.3 [#216] に更新した後に HTTP/1.1 を使用する DoH DNS サーバーを使用できません。https://github.com/AdguardTeam/DnsLibs/issues/216)
+* DoHのIPv4/IPv6のための幸せな眼球を使用して下さい[#217] (https://github.com/AdguardTeam/DnsLibs/issues/217)
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.3.1
 
-- Published: 2023-12-27T16:46:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3.1
+- 発行: 2023-12-27T16:46:42Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3.1
 
-Sometimes a release is so significant and exciting that it’s easy for a bug to slip through. The only thing left to do is to release a new version as quickly as possible. In this hotfix, we’ve fixed a major issue: the app would crash when HTTPS proxy is enabled in a browser. We also made sure that the `$all` modifier now works correctly, updated the CoreLibs and DnsLibs — our beloved filtering engines — and added a few improvements along the way. What else is there to say? Update and see for yourself!
+時々、リリースは非常に重要でエキサイティングで、バグが抜けるのが簡単です。 残りは、できるだけ早く新しいバージョンをリリースすることです。 このホットフィックスでは、HTTPSプロキシがブラウザで有効になっていると、メジャーな問題が修正されました。 また、必ずその旨をお伝えします。`$all`修飾子は正しく機能し、CoreLibs と DnsLibs をアップデートしました。私たちの最愛のフィルタリングエンジンは、いくつかの改善を加えました。 言うべきことはありますか? 更新して、自分で見る!
 
-## Changelog
+## 変更履歴
 
-### Fixes 
-* AdGuard crashes when HTTPS proxy is set in a browser [#5130](https://github.com/AdguardTeam/AdguardForAndroid/issues/5130)
-* “Stay always protected” card re-appears on Xiaomi devices [#5126](https://github.com/AdguardTeam/AdguardForAndroid/issues/5126)
+### フィックス
+* ブラウザで HTTPS プロキシが設定されている場合、AdGuard がクラッシュ [#5130](https://github.com/AdguardTeam/AdguardForAndroid/issues/5130)
+* Xiaomiデバイス上の「常に保護された」カード再登場[#5126](https://github.com/AdguardTeam/AdguardForAndroid/issues/5126)
 
-### CoreLibs (Filtering engine) 
-* CoreLibs updated to v1.13.115 [#5124](https://github.com/AdguardTeam/AdguardForAndroid/issues/5124) 
-* `$all` modifier does not work correctly [#1842](https://github.com/AdguardTeam/CoreLibs/issues/1842)
+### CoreLibs (フィルターエンジン)
+* CoreLibs は v1.13.115 [#5124] に更新されました。https://github.com/AdguardTeam/AdguardForAndroid/issues/5124) 
+* `$all`修飾子が正しく機能しない[#1842](https://github.com/AdguardTeam/CoreLibs/issues/1842)
 
-### DnsLibs (DNS filtering engine) 
-* DnsLibs updated to v2.4.37 [#5123](https://github.com/AdguardTeam/AdguardForAndroid/issues/5123) 
+### DnsLibs (DNSのろ過エンジン)
+* DnsLibs が v2.4.37 に更新 [#5123](https://github.com/AdguardTeam/AdguardForAndroid/issues/5123) 
 
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## 4.3.1 Beta 1
+## 4.3.1 ベータ 1
 
-- Published: 2023-12-26T14:10:44Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3.1-beta-1
+- 公開日: 2023-12-26T14:10:44Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3.1-beta-1
 
-Sometimes a release is so significant and exciting that it’s easy for a bug to slip through. The only thing left to do is to release a new version as quickly as possible. In this beta, we’ve fixed a major issue: the app would crash when HTTPS proxy is enabled in a browser. We also made sure that the `$all` modifier now works correctly, updated the CoreLibs and DnsLibs — our beloved filtering engines — and added a few improvements along the way. What else is there to say? Update and see for yourself!
+時々、リリースは非常に重要でエキサイティングで、バグが抜けるのが簡単です。 残りは、できるだけ早く新しいバージョンをリリースすることです。 このベータ版では、HTTPSプロキシがブラウザで有効になっていると、メジャーな問題が修正されました。 また、必ずその旨をお伝えします。`$all`修飾子は正しく機能し、CoreLibs と DnsLibs をアップデートしました。私たちの最愛のフィルタリングエンジンは、いくつかの改善を加えました。 言うべきことはありますか? 更新して、自分で見る!
 
-## Changelog
+## 変更履歴
 
-### Fixes 
-* AdGuard crashes when HTTPS proxy is set in browser [#5130](https://github.com/AdguardTeam/AdguardForAndroid/issues/5130)
+### フィックス
+* ブラウザでHTTPSプロキシが設定されている場合、AdGuardがクラッシュ [#5130](https://github.com/AdguardTeam/AdguardForAndroid/issues/5130)
 
-### CoreLibs (Filtering engine) 
-* CoreLibs updated to v1.13.115 [#5124](https://github.com/AdguardTeam/AdguardForAndroid/issues/5124) 
-* `$all` modifier does not work correctly [#1842](https://github.com/AdguardTeam/CoreLibs/issues/1842)
+### CoreLibs (フィルターエンジン)
+* CoreLibs は v1.13.115 [#5124] に更新されました。https://github.com/AdguardTeam/AdguardForAndroid/issues/5124) 
+* `$all`修飾子が正しく機能しない[#1842](https://github.com/AdguardTeam/CoreLibs/issues/1842)
 
-### DnsLibs (DNS filtering engine) 
-* DnsLibs updated to v2.4.37 [#5123](https://github.com/AdguardTeam/AdguardForAndroid/issues/5123)
+### DnsLibs (DNSのろ過エンジン)
+* DnsLibs が v2.4.37 に更新 [#5123](https://github.com/AdguardTeam/AdguardForAndroid/issues/5123)
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
 ## 4.3
 
-- Published: 2023-12-22T12:54:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3
+- 公表: 2023-12-22T12:54:19Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3
 
-AdGuard v4.3 for Android brings you something not only special, but unprecedented. It’s the same AdGuard you know and love, but now with a TV-sized twist – and we mean that quite literally: we’re glad to introduce the support for Android TV! Important updates and a new Developer tools section are also here to enhance your user experience with our app.
+Android用のAdGuard v4.3は、特別なだけでなく、前例のない何かをもたらします。 あなたが知っていると愛するのと同じAdGuardですが、今ではテレビサイズのツイストで - 私たちは、非常に文字通り:私たちは、Android TVのためのサポートを導入してうれしいです! 重要なアップデートと新しい開発者ツールセクションでは、アプリでユーザーエクスペリエンスを向上させることもできます。
 
-## Android TV support
+## アンドロイドテレビのサポート
 
-![AdGuard for Android TV](https://cdn.adguard.com/content/blog/articles/androidtv_en.png)
+![Android TV用ガード]https://cdn.adguard.com/content/blog/articles/androidtv_en.png)
 
-To provide full support for Android TV, we’ve developed a version of AdGuard for Android with the most essential features to enhance your browsing experience and content filtering on your TV. The new design, fully adapted for Android TV, includes:
+Android TVのフルサポートを提供するために、私たちはあなたのテレビ上での閲覧体験とコンテンツのフィルタリングを高めるために、最も必要な機能を備えたAndroid用のAdGuardのバージョンを開発しました。 新しいデザイン、完全にAndroid TVのために適応、以下を含みます:
 
-* Adapted onboarding
-* Home screen with statistics
-* Adapted Protection screen
-* Adapted settings
-* App management
-* DNS protection
+* 適応オンボーディング
+* 統計とホーム画面
+* 適応保護画面
+* 適応設定
+* アプリ管理
+* DNS保護
 
-DNS protection is a key feature on AdGuard for Android TV. Securing DNS traffic through encryption adds an extra layer of security and privacy to your browsing experience. With this update, you can now benefit from this safety also on the big screen. DNS-over-HTTPS is selected by default, but you can add your own server if a different protocol is needed.
+DNS保護は、Android TV用のAdGuardの重要な機能です。 暗号化によるDNSトラフィックの確保により、セキュリティとプライバシーの余剰レイヤーがあなたの閲覧体験に追加されます。 このアップデートでは、大きな画面でもこの安全にも恩恵を受けることができます。 DNS-over-HTTPS はデフォルトで選択されますが、異なるプロトコルが必要な場合は独自のサーバーを追加できます。
 
-Hold on to your remote, what you are about to experience is a brand new app! You can find the detailed instructions on how to install AdGuard for Android TV [in our blog post](https://adguard.com/en/blog/adguard-for-android-tv.html).
+リモートに持ち込むと、経験するのが新しいアプリです! あなたは、Android TV用のAdGuardをインストールする方法についての詳細な手順を見つけることができます [私たちのブログ投稿](https://adguard.com/en/blog/adguard-for-android-tv.html).
 
-> Note: You’ll need a license to use AdGuard for Android TV. But you can also try it for free — we offer a 7-day trial period.
+> 注意: Android TV用のAdGuardを使用するライセンスが必要です。 しかし、無料で試してみることもできます。7日間のトライアル期間を提供します。
 
-## Developer tools
+## 開発者ツール
 
 <p align="center">
-<img src="https://cdn.adguard.com/content/blog/articles/developertools_en.jpg" 
-width="300" height="600">
+<img src="">https://cdn.adguard.com/content/blog/articles/developertools_en.jpg" 
+幅="300" 高さ="600">
 </p>
 
-We invite our advanced users and filter developers who interact very actively with the app to explore our new Developer tools, a specialized section designed for quick navigation and switching between features. There you can quickly enable or disable custom filters, access logs, enable recording of different logs, and more. This feature can be enabled in *Low-level settings*.
+高度なユーザーを招待し、アプリと非常に積極的にやり取りする開発者をフィルタリングし、新しい開発者ツール、クイックナビゲーションと機能間の切り替え用に設計された専門セクションを探索します。 カスタムフィルタ、アクセスログ、異なるログの録画を有効にしたり、無効にしたりすることができます。 ※低レベル設定*でこの機能を有効にできます。
 
-## CoreLibs and DnsLibs updates
+## CoreLibsとDnsLibsのアップデート
 
-The recent CoreLibs v1.13 update boosts your browsing experience with improved HTML filtering, while the update of DnsLibs to v2.4 makes your connection more secure with support for HTTP basic authentication. 
+最近のCoreLibs v1.13 更新は、DnsLibs のアップデートが HTTP 基本認証をサポートすることで、閲覧体験を向上させます。
 
-## More transparency in HTTPS filtering
+## HTTPS フィルタリングの透明性
 
-To enhance the transparency of HTTPS filtering, AdGuard now offers the option to inspect the original certificate via *Recent Activity*. There you can view details of any web request, examine the encryption used by AdGuard, and inspect the original certificate.
+HTTPS フィルタリングの透明性を高めるため、AdGuard は *Recent アクティビティ* で元の証明書を検査するオプションを提供します。 任意のWebリクエストの詳細を表示したり、AdGuardが使用する暗号化を調べたり、元の証明書を調べたりすることができます。
 
-This feature stems from a major concern with HTTPS filtering. AdGuard validates the certificate (and does it well!), but there may be situations where you’d like to inspect the original certificate yourself. You can read more about this issue in our [Knowledge base](https://adguard.com/kb/general/https-filtering/known-issues/).  
+この機能は、HTTPS フィルタリングに大きな懸念を伴います。 AdGuardは証明書を検証します(そしてそれはうまくいきます!)が、元の証明書を自分で検査したい状況があるかもしれません。 「ナレッジベース」でこの問題についてもっと読むことができます(https://adguard.com/kb/general/https-filtering/known-issues/).  
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/tvapk)
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [リリースチャネル](https://agrd.io/tvapk)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## Changelog
+## 変更履歴
 
-### Features
-* Fulguris added to the list of browsers [#4969](https://github.com/AdguardTeam/AdguardForAndroid/issues/4969)
-* Added a list of Russian VoWiFi IPs to exclude [#4992](https://github.com/AdguardTeam/AdguardForAndroid/issues/4992)
-* Android TV OS support added [#3597](https://github.com/AdguardTeam/AdguardForAndroid/issues/3597)
-* Added a button to reset DNS Protection setting [#4735](https://github.com/AdguardTeam/AdguardForAndroid/issues/4735)
-* Added support for Macedonian (mk) to AdGuard for Android [#5086](https://github.com/AdguardTeam/AdguardForAndroid/issues/5086)
-* HTTPS filtering for com.kantarworldpanel.shoppix disabled by default [#4706](https://github.com/AdguardTeam/AdguardForAndroid/issues/4706)
-* Click area for back arrow buttons increased [#4789](https://github.com/AdguardTeam/AdguardForAndroid/issues/4789)
-* Sorting order for User rules improved [#4779](https://github.com/AdguardTeam/AdguardForAndroid/issues/4779)
-* Parse 'Title' metadata from filter list subscriptions [#4760](https://github.com/AdguardTeam/AdguardForAndroid/issues/4760)
-* Operating System name + version sent to ReportsWebApp [#5025](https://github.com/AdguardTeam/AdguardForAndroid/issues/5025)
+### 特徴:
+* ブラウザの一覧に Fulguris を追加しました [#4969](https://github.com/AdguardTeam/AdguardForAndroid/issues/4969)
+* 除外するロシアVoWiFi IPのリストを追加しました [#4992](https://github.com/AdguardTeam/AdguardForAndroid/issues/4992)
+* Android TV OS対応追加 [#3597](https://github.com/AdguardTeam/AdguardForAndroid/issues/3597)
+* DNS保護設定をリセットするボタンを追加[#4735](https://github.com/AdguardTeam/AdguardForAndroid/issues/4735)
+* アンドロイド用のAdGuardにMacedonian(mk)のサポートを追加しました [#5086]()https://github.com/AdguardTeam/AdguardForAndroid/issues/5086)
+* デフォルトで無効なcom.kantarworldpanel.shoppixのためのHTTPSのろ過[#4706](https://github.com/AdguardTeam/AdguardForAndroid/issues/4706)
+* バック矢印ボタンのエリアをクリックすると、[#4789]が増加しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/4789)
+* ユーザルールの順序をソートする 改善 [#4779](https://github.com/AdguardTeam/AdguardForAndroid/issues/4779)
+* フィルタリストサブスクリプションから'Title'メタデータをパース [#4760](https://github.com/AdguardTeam/AdguardForAndroid/issues/4760)
+* オペレーティング・システム名 + ReportWebAppに送信されたバージョン [#5025](https://github.com/AdguardTeam/AdguardForAndroid/issues/5025)
 
-### Fixes
-* "Slow work" notification disappears when enabling debug logging level [#5017](https://github.com/AdguardTeam/AdguardForAndroid/issues/5017)
-* Product type and AdGuard version are incorrectly detected in the "Report incorrect blocking" form [#4895](https://github.com/AdguardTeam/AdguardForAndroid/issues/4895)
-* Bootstrap upstreams setting doesn't reset after resetting low-level settings [#4907](https://github.com/AdguardTeam/AdguardForAndroid/issues/4907)
-* Deleting website from blocklist doesn't work properly [#4902](https://github.com/AdguardTeam/AdguardForAndroid/issues/4902)
-* In the free version, the status “Disabled Browsing security” appears as “Updated” when checking for updates [#4844](https://github.com/AdguardTeam/AdguardForAndroid/issues/4844)
-* Filters can be found in the search only using English [#5026](https://github.com/AdguardTeam/AdguardForAndroid/issues/5026)
-* Firewall works when it's disabled and there is no app usage access [#5012](https://github.com/AdguardTeam/AdguardForAndroid/issues/5012)
-* Google Play: `com.gpn.azs` app doesn't work [#4845](https://github.com/AdguardTeam/AdguardForAndroid/issues/4845)
-* Google Play: de.dkb.portalapp incorrect blocking [#3734](https://github.com/AdguardTeam/AdguardForAndroid/issues/3734)
-* Importing settings with another language doesn't work correctly [#5007](https://github.com/AdguardTeam/AdguardForAndroid/issues/5007)
-* Impossible to open and hear vocal messages in "Orange Téléphone" app [#4777](https://github.com/AdguardTeam/AdguardForAndroid/issues/4777)
-* In the snack that appears in all settings, "Undo" is not translated into other languages [#4880](https://github.com/AdguardTeam/AdguardForAndroid/issues/4880)
-* In tracking protection blinking at functions when pressing the switch [#4879](https://github.com/AdguardTeam/AdguardForAndroid/issues/4879)
-* Incorrect tab is highlighted when redirected to the protection section by long tapping the icon [#4860](https://github.com/AdguardTeam/AdguardForAndroid/issues/4860)
-* Infinite loader after tap on a snack from the Website allowlist/blocklist [#4843](https://github.com/AdguardTeam/AdguardForAndroid/issues/4843)
-* It is possible to make a two-line rule via the clipboard [#5009](https://github.com/AdguardTeam/AdguardForAndroid/issues/5009)
-* Keyboard lags and text cannot be entered in the search field after collapsing the top of the screen [#4979](https://github.com/AdguardTeam/AdguardForAndroid/issues/4979)
-* License expiry date is displayed incorrectly [#4856](https://github.com/AdguardTeam/AdguardForAndroid/issues/4856)
-* Logs upload changes login and password for Proxy server [#4884](https://github.com/AdguardTeam/AdguardForAndroid/issues/4884)
-* Long option names do not fit in the rule creation dialog [#4764](https://github.com/AdguardTeam/AdguardForAndroid/issues/4764)
-* Non-relevant results are also displayed on the "Language-specific ad blocking" screen [#4891](https://github.com/AdguardTeam/AdguardForAndroid/issues/4891)
-* Redirect from the assistant highlights the incorrect tab in the bar [#5001](https://github.com/AdguardTeam/AdguardForAndroid/issues/5001)
-* The "Add userscript" popup does not appear when redirected to AdGuard by the userscript link [#4913](https://github.com/AdguardTeam/AdguardForAndroid/issues/4913)
-* The cursor position in the search field resets after collapsing the top of the screen [#4892](https://github.com/AdguardTeam/AdguardForAndroid/issues/4892)
-* The loader is displayed on the search field on the Recent activity screen [#5035](https://github.com/AdguardTeam/AdguardForAndroid/issues/5035)
-* The same icon is used for unrelated purposes [#4737](https://github.com/AdguardTeam/AdguardForAndroid/issues/4737)
-* Unable to send a bug report when the checkbox "Send app logs..." is marked [#4894](https://github.com/AdguardTeam/AdguardForAndroid/issues/4894)
-* When adding a DNS filter from the system using a file, the input field is grayed out [#4882](https://github.com/AdguardTeam/AdguardForAndroid/issues/4882)
-* When adding custom DNS filters or Userscripts, the "Browse" button is grayed out [#4850](https://github.com/AdguardTeam/AdguardForAndroid/issues/4850)
-* When changing the setting of the disabled option the protection is restarted [#4762](https://github.com/AdguardTeam/AdguardForAndroid/issues/4762)
-* When importing DNS user rules containing empty lines, these lines are added [#4888](https://github.com/AdguardTeam/AdguardForAndroid/issues/4888)
-* When quickly switching switches in Firewall rules, the rule list lines glitch [#4885](https://github.com/AdguardTeam/AdguardForAndroid/issues/4885)
-* Wi-Fi calling issue on Xiaomi: add com.qualcomm.qti.cne to routing exclusions [#5029](https://github.com/AdguardTeam/AdguardForAndroid/issues/5029)
-* Clearing the statistics doesn't clear apps and companies sections only resets their counters to zero [#4748](https://github.com/AdguardTeam/AdguardForAndroid/issues/4748)
-* Impossible to log in to the ONECTA-Daikin app with AdGuard enabled [#4775](https://github.com/AdguardTeam/AdguardForAndroid/issues/4775)
+### フィックス
+* デバッグロギングレベルを有効にすると「スローワーク」通知が消えます [#5017](https://github.com/AdguardTeam/AdguardForAndroid/issues/5017)
+* 製品の種類とAdGuardバージョンは「報告誤ったブロック」フォームで誤って検出されます[#4895](https://github.com/AdguardTeam/AdguardForAndroid/issues/4895)
+* ブートストラップアップストリームの設定は、低レベルの設定をリセットした後にリセットされません [#4907](https://github.com/AdguardTeam/AdguardForAndroid/issues/4907)
+* ブロックリストからWebサイトを削除しても正常に動作しない [#4902](https://github.com/AdguardTeam/AdguardForAndroid/issues/4902)
+* 無料版では、更新チェック時に「無効なブラウジングセキュリティ」が「更新」と表示されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/4844)
+* フィルタは、英語のみで見つけることができます [#5026](https://github.com/AdguardTeam/AdguardForAndroid/issues/5026)
+* ファイアウォールは無効なときに機能し、アプリ使用アクセスがない[#5012](https://github.com/AdguardTeam/AdguardForAndroid/issues/5012)
+* Googleの演劇:`com.gpn.azs`アプリが動作しない [#4845](https://github.com/AdguardTeam/AdguardForAndroid/issues/4845)
+* Google Play: de.dkb.portalapp が正しくブロックされていない [#3734](https://github.com/AdguardTeam/AdguardForAndroid/issues/3734)
+* 別の言語で設定をインポートしても正しく機能しない[#5007](https://github.com/AdguardTeam/AdguardForAndroid/issues/5007)
+* 「Orange Téléphone」アプリ「#4777」でボーカルメッセージのオープンとリスニングが可能https://github.com/AdguardTeam/AdguardForAndroid/issues/4777)
+* すべての設定で表示されるスナックでは、「Undo」は他の言語に翻訳されていません [#4880](https://github.com/AdguardTeam/AdguardForAndroid/issues/4880)
+* スイッチを押すとき機能の追跡の保護点滅で[#4879] (https://github.com/AdguardTeam/AdguardForAndroid/issues/4879)
+* アイコンをタップして保護セクションにリダイレクトすると、間違ったタブが強調表示されます[#4860](https://github.com/AdguardTeam/AdguardForAndroid/issues/4860)
+* ウェブサイトのウィットリスト/ブロックリスト[#4843]からスナックをタップした後に無限のローダー()https://github.com/AdguardTeam/AdguardForAndroid/issues/4843)
+* クリップボード[#5009]で2行ルールを作ることができます(https://github.com/AdguardTeam/AdguardForAndroid/issues/5009)
+* 画面の上部を衝突した後、検索フィールドにキーボードのラグとテキストを入力することができません[#4979](https://github.com/AdguardTeam/AdguardForAndroid/issues/4979)
+* ライセンス有効期限が正しく表示されていない[#4856](https://github.com/AdguardTeam/AdguardForAndroid/issues/4856)
+* プロキシサーバー [#4884] で変更ログインとパスワードのアップロードをログに記録します(https://github.com/AdguardTeam/AdguardForAndroid/issues/4884)
+* 長いオプション名はルール作成ダイアログに合わない [#4764](https://github.com/AdguardTeam/AdguardForAndroid/issues/4764)
+* 「言語固有の広告ブロック」画面[#4891]に非関連性の結果も表示されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/4891)
+* アシスタントからのリダイレクトは、バー [#5001] の誤ったタブを強調します(https://github.com/AdguardTeam/AdguardForAndroid/issues/5001)
+* ユーザスクリプト link [#4913] で AdGuard にリダイレクトしたときに "Add userscript" ポップアップが表示されません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4913)
+* 検索フィールドのカーソル位置は、画面の上部を衝突した後にリセット [#4892](https://github.com/AdguardTeam/AdguardForAndroid/issues/4892)
+* 最近の活動画面の検索フィールドに loader が表示されます [#5035](https://github.com/AdguardTeam/AdguardForAndroid/issues/5035)
+* 関係のない目的のために同じアイコンが使用されます [#4737](https://github.com/AdguardTeam/AdguardForAndroid/issues/4737)
+* チェックボックス「Send app logs...」がマークされたときにバグ報告を送信できない[#4894](https://github.com/AdguardTeam/AdguardForAndroid/issues/4894)
+* ファイルを使用してシステムからDNSフィルタを追加すると、入力フィールドは[#4882]をグレーアウトします(https://github.com/AdguardTeam/AdguardForAndroid/issues/4882)
+* カスタムDNSフィルタやユーザースクリプトを追加すると、 "Browse" ボタンは [#4850] をグレーアウトします(https://github.com/AdguardTeam/AdguardForAndroid/issues/4850)
+* 無効なオプションの設定を変更すると、保護が再起動されます [#4762](https://github.com/AdguardTeam/AdguardForAndroid/issues/4762)
+* 空の行を含むDNSユーザールールをインポートすると、これらの行が [#4888] に追加されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/4888)
+* ファイアウォールルールのスイッチを素早く切り替えると、ルールリスト行の不具合 [#4885](https://github.com/AdguardTeam/AdguardForAndroid/issues/4885)
+* XiaomiでWi-Fiコールの問題:com.qualcomm.qti.cneを追加して除外をルーティングする[#5029](https://github.com/AdguardTeam/AdguardForAndroid/issues/5029)
+* 統計をクリアすると、アプリや企業セクションをクリアするだけで、カウンターをゼロにリセットしません[#4748](https://github.com/AdguardTeam/AdguardForAndroid/issues/4748)
+* AdGuard対応のONECTA-Daikinアプリにログイン可能[#4775]()https://github.com/AdguardTeam/AdguardForAndroid/issues/4775)
 ​
-## DnsLibs (DNS filtering engine)
+## DnsLibs (DNSのろ過エンジン)
 ​
-### DnsLibs updated to v2.4.16
-* On-the-fly filtering of DoH connections [#198](https://github.com/AdguardTeam/DnsLibs/issues/198)
+### DnsLibs が v2.4.16 に更新
+* DoH接続のオンザフライフィルタ [#198](https://github.com/AdguardTeam/DnsLibs/issues/198)
 ​
-### DnsLibs updated to v2.4.0
-​* Basic auth for DoH endpoints [#189](https://github.com/AdguardTeam/DnsLibs/issues/189)
-* Possible DoS attack against the local DNS proxy when it’s using a plain DNS upstream [#202](https://github.com/AdguardTeam/DnsLibs/issues/202)
+### DnsLibs が v2.4.0 に更新
+* DoH エンドポイントの基本的なオース [#189]()https://github.com/AdguardTeam/DnsLibs/issues/189)
+* プレーン DNS 上流 [#202] を使用しているときに、ローカル DNS プロキシに対して DoS 攻撃が可能https://github.com/AdguardTeam/DnsLibs/issues/202)
 ​
-### DnsLibs updated to v2.3.4
-* `127.0.0.1 local` is incorrectly interpreted as being for all .local address, breaking mDNS [#207](https://github.com/AdguardTeam/DnsLibs/issues/207)
-* Allow C# comments in domain name rules [#196](https://github.com/AdguardTeam/DnsLibs/issues/196)
-* DoH tries to use stale connection too much time [#200](https://github.com/AdguardTeam/DnsLibs/issues/200)
-* Properly filter type=HTTPS requests [#199](https://github.com/AdguardTeam/DnsLibs/issues/199)
+### DnsLibs が v2.3.4 に更新
+* `127.0.0.1 local`mDNS [#207] を区切る、すべての .local アドレスに対して正しく解釈されます。https://github.com/AdguardTeam/DnsLibs/issues/207)
+* ドメイン名規則でC#コメントを許可する [#196](https://github.com/AdguardTeam/DnsLibs/issues/196)
+* DoH は、ステープル接続を長時間使用しようとします [#200](https://github.com/AdguardTeam/DnsLibs/issues/200)
+* 適切なフィルタtype=HTTPSリクエスト [#199]()https://github.com/AdguardTeam/DnsLibs/issues/199)
 ​
-## CoreLibs (Filtering engine)
+## CoreLibs (フィルターエンジン)
 
-### CoreLibs updated to v1.13.98
-* Add `!#else` pre-processor directive support [#1806](https://github.com/AdguardTeam/CoreLibs/issues/1806)
-* Add `$extension` modifier disabling specific userscript [#1706](https://github.com/AdguardTeam/CoreLibs/issues/1706)
-* Adopt new rule priority scheme [#1768](https://github.com/AdguardTeam/CoreLibs/issues/1768)
-* Change sec-ch-ua headers to match user-agent when Stealth Mode is active [#1764](https://github.com/AdguardTeam/CoreLibs/issues/1764)
-* Improve HTML filtering performance [#1772](https://github.com/AdguardTeam/CoreLibs/issues/1772)
-* Improve HTML filtering rules `$$` -- allow CSS-like selectors [#94](https://github.com/AdguardTeam/CoreLibs/issues/94)
-* Support for cap_html_filtering condition [#1758](https://github.com/AdguardTeam/CoreLibs/issues/1758)
-* $denyallow does not allow blocking documents [#1809](https://github.com/AdguardTeam/CoreLibs/issues/1809)
-* $stealth exceptions do not work on the TCP stack level where we block STUN/TURN [#1737](https://github.com/AdguardTeam/CoreLibs/issues/1737)
-* Images are not displayed in Edge Bing Chat [#1744](https://github.com/AdguardTeam/CoreLibs/issues/1744)
-* The `网盘直链下载助手` user script is not working with AdGuard [#1780](https://github.com/AdguardTeam/CoreLibs/issues/1780)
-* Websites using SXG have no cosmetic filtering when opening from Google search [#1812](https://github.com/AdguardTeam/CoreLibs/issues/1812)
-* socks5 proxy not working with AdGuard v4.0 [#4812](https://github.com/AdguardTeam/AdguardForAndroid/issues/4812)
-* Content script is not injected into elements loaded in `object` tag [#1769](https://github.com/AdguardTeam/CoreLibs/issues/1769)
-* Detect website locale based on HTML "lang" attribute and language request HTTP headers [#1736](https://github.com/AdguardTeam/CoreLibs/issues/1736)
-* Increase limit for `$replace` rules [#1802](https://github.com/AdguardTeam/CoreLibs/issues/1802)
-* Moving certificate is not an option anymore [#277](https://github.com/AdguardTeam/CoreLibs/issues/277)
-*  Properly use ECH retry_configs [#1793](https://github.com/AdguardTeam/CoreLibs/issues/1793)
-*  Support anti-DPI feature for Korea Telecom [#1789](https://github.com/AdguardTeam/CoreLibs/issues/1789)
-*  UDP timeout is too small in TcpIpStack [#1796](https://github.com/AdguardTeam/CoreLibs/issues/1796)
+### CoreLibs が v1.13.98 に更新
+* 追加する`!#else`プリプロセッサディレクティブ サポート [#1806](https://github.com/AdguardTeam/CoreLibs/issues/1806)
+* 追加する`$extension`修飾子 特定のユーザスクリプトを無効に [#1706](https://github.com/AdguardTeam/CoreLibs/issues/1706)
+* 新たなルール優先スキーム[#1768](https://github.com/AdguardTeam/CoreLibs/issues/1768)
+* sec-ch-ua ヘッダーを変更して、Stealth モードがアクティブであるときにユーザエージェントにマッチする [#1764](https://github.com/AdguardTeam/CoreLibs/issues/1764)
+* HTML フィルタリング性能を改善 [#1772](https://github.com/AdguardTeam/CoreLibs/issues/1772)
+* HTMLフィルタリングルールを改善`$$`-- CSS のようなセレクターを許可します。 [#94](https://github.com/AdguardTeam/CoreLibs/issues/94)
+* cap html filtering 条件のサポート [#1758](https://github.com/AdguardTeam/CoreLibs/issues/1758)
+* $denyallow は文書のブロックを許可していません [#1809](https://github.com/AdguardTeam/CoreLibs/issues/1809)
+* $stealth 例外は、STUN/TURN [#1737] をブロックする TCP スタックレベルで動作しません。https://github.com/AdguardTeam/CoreLibs/issues/1737)
+* Edge Bing Chat [#1744] に画像が表示されません(https://github.com/AdguardTeam/CoreLibs/issues/1744)
+* ザ・オブ・ザ・`网盘直链下载助手`ユーザスクリプトは、AdGuard [#1780] で動作していません。https://github.com/AdguardTeam/CoreLibs/issues/1780)
+* SXGを使用したサイトでは、Google検索から開く際の化粧品のフィルタリングはありません[#1812](https://github.com/AdguardTeam/CoreLibs/issues/1812)
+* AdGuard v4.0 で動作しないソックス5プロキシ [#4812](https://github.com/AdguardTeam/AdguardForAndroid/issues/4812)
+* コンテンツスクリプトは読み込まれた要素に注入されない`object`タグ [#1769](https://github.com/AdguardTeam/CoreLibs/issues/1769)
+* HTML "lang" 属性と言語リクエスト HTTP ヘッダ [#1736] に基づいてウェブサイトのロケールを検知します。https://github.com/AdguardTeam/CoreLibs/issues/1736)
+* 限界を増加して下さい`$replace`ルール [#1802](https://github.com/AdguardTeam/CoreLibs/issues/1802)
+* 移行証明書はもうオプションではありません [#277](https://github.com/AdguardTeam/CoreLibs/issues/277)
+*  適切に ECH retry configs [#1793] を使用します。https://github.com/AdguardTeam/CoreLibs/issues/1793)
+*  韓国の電気通信のためのサポート反DPIの特徴[#1789] (https://github.com/AdguardTeam/CoreLibs/issues/1789)
+*  TcpIpStack [#1796] で UDP のタイムアウトが少なすぎる (https://github.com/AdguardTeam/CoreLibs/issues/1796)
 
-## 4.3 Beta 1
+## 4.3 ベータ 1
 
-- Published: 2023-12-15T19:07:07Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3-beta-1
+- 公表: 2023-12-15T19:07Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3-beta-1
 
-AdGuard v4.3 for Android beta brings you something not only special, but unprecedented. It’s the same AdGuard you know and love, but now with a TV-sized twist – and we mean that quite literally: we’re glad to introduce the support for Android TV! Important updates and a new Developer tools section are also here to enhance your user experience with our app
+Androidのベータ版のAdGuard v4.3は、特別なだけでなく、前例のない何かをもたらします。 あなたが知っていると愛するのと同じAdGuardですが、今ではテレビサイズのツイストで - 私たちは、非常に文字通り:私たちは、Android TVのためのサポートを導入してうれしいです! 重要なアップデートと新しい開発者ツールのセクションも、アプリでユーザーエクスペリエンスを向上させるためにここにあります
 
-## Android TV support
+## アンドロイドテレビのサポート
 
-To provide full support for Android TV, we’ve developed a simplified version of AdGuard for Android featuring the most essential features to enhance your browsing experience and content filtering on your TV. The new design, fully adapted for Android TV.
+Android TVのフルサポートを提供するために、私たちはあなたのテレビで閲覧経験とコンテンツのフィルタリングを高めるために最も必要な機能を備えたAndroid用のAdGuardのシンプルなバージョンを開発しました。 新しいデザイン、完全にAndroid TVに対応しました。
 
-Hold on to your remote, what you are about to experience is a brand new app!
+リモートに持ち込むと、経験するのが新しいアプリです!
 
-> Note: Android TV support is a feature exclusive to users with an AdGuard license.
+> 注意: Android TV サポートは、AdGuard ライセンスを持つユーザーに排他的な機能です。
 
-## Developer tools
+## 開発者ツール
 
-We invite our advanced users and filter developers who interact very actively with the app to explore our new Developer tools, a specialized section designed for quick navigation and switching between features. There you can quickly enable or disable custom filters, access logs, enable recording of different logs, and more. This feature can be enabled in *Low-level settings*.
+高度なユーザーを招待し、アプリと非常に積極的にやり取りする開発者をフィルタリングし、新しい開発者ツール、クイックナビゲーションと機能間の切り替え用に設計された専門セクションを探索します。 カスタムフィルタ、アクセスログ、異なるログの録画を有効にしたり、無効にしたりすることができます。 ※低レベル設定*でこの機能を有効にできます。
 
-## CoreLibs and DnsLibs updates
+## CoreLibsとDnsLibsのアップデート
 
-The recent CoreLibs v1.13 update boosts your browsing experience with improved HTML filtering, while the update of DnsLibs to v2.4 makes your connection more secure with support for HTTP basic authentication. 
+最近のCoreLibs v1.13 更新は、DnsLibs のアップデートが HTTP 基本認証をサポートすることで、閲覧体験を向上させます。
 
-## AdGuard for Android direct download links:
+## アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## AdGuard for Android TV direct download links:
+## Android TVの直接ダウンロードリンクのためのAdGuard:
 
-- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+- [ベータチャンネル ](https://agrd.io/ag_android_tv_beta)
 
-## Changelog
+## 変更履歴
 
-### Features
-* Fulguris browser added to the list of browsers [#4969](https://github.com/AdguardTeam/AdguardForAndroid/issues/4969)
-* A list of Russian VoWiFi IPs to exclude [#4992](https://github.com/AdguardTeam/AdguardForAndroid/issues/4992)
-* Android TV OS support added [#3597](https://github.com/AdguardTeam/AdguardForAndroid/issues/3597)
-* Add a button to reset DNS Protection setting [#4735](https://github.com/AdguardTeam/AdguardForAndroid/issues/4735)
-* Add support for Macedonian (mk) to AdGuard for Android [#5086](https://github.com/AdguardTeam/AdguardForAndroid/issues/5086)
-* HTTPS filtering for com.kantarworldpanel.shoppix disabled by default [#4706](https://github.com/AdguardTeam/AdguardForAndroid/issues/4706)
-* Click area for back arrow buttons increased [#4789](https://github.com/AdguardTeam/AdguardForAndroid/issues/4789)
-* Sorting order for User rules improved [#4779](https://github.com/AdguardTeam/AdguardForAndroid/issues/4779)
-* Parse 'Title' metadata from filter list subscriptions [#4760](https://github.com/AdguardTeam/AdguardForAndroid/issues/4760)
-* Operating System name + version sent to ReportsWebApp [#5025](https://github.com/AdguardTeam/AdguardForAndroid/issues/5025)
+### 特徴:
+* ブラウザの一覧にブラウザを追加しました [#4969](https://github.com/AdguardTeam/AdguardForAndroid/issues/4969)
+* 除外するロシアのVoWiFi IPのリスト [#4992](https://github.com/AdguardTeam/AdguardForAndroid/issues/4992)
+* Android TV OS対応追加 [#3597](https://github.com/AdguardTeam/AdguardForAndroid/issues/3597)
+* DNS保護設定をリセットするボタンを追加[#4735](https://github.com/AdguardTeam/AdguardForAndroid/issues/4735)
+* アンドロイド用のAdGuardにMacedonian(mk)のサポートを追加 [#5086](https://github.com/AdguardTeam/AdguardForAndroid/issues/5086)
+* デフォルトで無効なcom.kantarworldpanel.shoppixのためのHTTPSのろ過[#4706](https://github.com/AdguardTeam/AdguardForAndroid/issues/4706)
+* バック矢印ボタンのエリアをクリックすると、[#4789]が増加しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/4789)
+* ユーザルールの順序をソートする 改善 [#4779](https://github.com/AdguardTeam/AdguardForAndroid/issues/4779)
+* フィルタリストサブスクリプションから'Title'メタデータをパース [#4760](https://github.com/AdguardTeam/AdguardForAndroid/issues/4760)
+* オペレーティング・システム名 + ReportWebAppに送信されたバージョン [#5025](https://github.com/AdguardTeam/AdguardForAndroid/issues/5025)
 
-### Fixes
-* "Slow work" notification disappears when enabling debug logging level [#5017](https://github.com/AdguardTeam/AdguardForAndroid/issues/5017)
-* Product type and AdGuard version are incorrectly detected in the "Report incorrect blocking" form [#4895](https://github.com/AdguardTeam/AdguardForAndroid/issues/4895)
-* Bootstrap upstreams setting doesn't reset after resetting low-level settings [#4907](https://github.com/AdguardTeam/AdguardForAndroid/issues/4907)
-* Deleting website from blocklist doesn't work properly [#4902](https://github.com/AdguardTeam/AdguardForAndroid/issues/4902)
-* In the free version, the status “Disabled Browsing security” appears as “Updated” when checking for updates [#4844](https://github.com/AdguardTeam/AdguardForAndroid/issues/4844)
-* Filters can be found in the search only using English [#5026](https://github.com/AdguardTeam/AdguardForAndroid/issues/5026)
-* Firewall works when it's disabled and there is no app usage access [#5012](https://github.com/AdguardTeam/AdguardForAndroid/issues/5012)
-* Google Play: `com.gpn.azs` app doesn't work [#4845](https://github.com/AdguardTeam/AdguardForAndroid/issues/4845)
-* Google Play: de.dkb.portalapp incorrect blocking [#3734](https://github.com/AdguardTeam/AdguardForAndroid/issues/3734)
-* Importing settings with another language doesn't work correctly [#5007](https://github.com/AdguardTeam/AdguardForAndroid/issues/5007)
-* Impossible so open and hear vocal messages in "Orange Téléphone" app [#4777](https://github.com/AdguardTeam/AdguardForAndroid/issues/4777)
-* In the snack that appears in all settings, "Undo" is not translated into other languages [#4880](https://github.com/AdguardTeam/AdguardForAndroid/issues/4880)
-* In tracking protection blinking at functions when pressing the switch [#4879](https://github.com/AdguardTeam/AdguardForAndroid/issues/4879)
-* Incorrect tab is highlighted when redirected to the protection section by long tapping the icon [#4860](https://github.com/AdguardTeam/AdguardForAndroid/issues/4860)
-* Infinite loader after tap on a snack from the Website allowlist/blocklist [#4843](https://github.com/AdguardTeam/AdguardForAndroid/issues/4843)
-*It is possible to make a two-line rule via the clipboard [#5009](https://github.com/AdguardTeam/AdguardForAndroid/issues/5009)
-* Keyboard lags and text cannot be entered in the search field after collapsing the top of the screen [#4979](https://github.com/AdguardTeam/AdguardForAndroid/issues/4979)
-* License expiry date displayed incorrectly [#4856](https://github.com/AdguardTeam/AdguardForAndroid/issues/4856)
-* Logs upload changes login and password for Proxy server [#4884](https://github.com/AdguardTeam/AdguardForAndroid/issues/4884)
-* Long option names do not fit in the rule creation dialog [#4764](https://github.com/AdguardTeam/AdguardForAndroid/issues/4764)
-* Non-relevant results are also displayed on the "Language-specific ad blocking" screen [#4891](https://github.com/AdguardTeam/AdguardForAndroid/issues/4891)
-* Redirect from the assistant highlights the incorrect tab in the bar [#5001](https://github.com/AdguardTeam/AdguardForAndroid/issues/5001)
-* The "Add userscript" popup does not appear when redirected to AdGuard by the userscript link [#4913](https://github.com/AdguardTeam/AdguardForAndroid/issues/4913)
-* The cursor position in the search field resets after collapsing the top of the screen [#4892](https://github.com/AdguardTeam/AdguardForAndroid/issues/4892)
-* The loader is displayed on the search field on the Recent activity screen [#5035](https://github.com/AdguardTeam/AdguardForAndroid/issues/5035)
-* The same icon is used for unrelated purposes [#4737](https://github.com/AdguardTeam/AdguardForAndroid/issues/4737)
-* Unable to send a bug report when the checkbox "Send app logs.." is marked [#4894](https://github.com/AdguardTeam/AdguardForAndroid/issues/4894)
-* When adding a DNS filter from the system using a file, the input field is grayed out [#4882](https://github.com/AdguardTeam/AdguardForAndroid/issues/4882)
-* When adding custom DNS filters or Userscripts, the "Browse" button is grayed out [#4850](https://github.com/AdguardTeam/AdguardForAndroid/issues/4850)
-* When changing the setting of the disabled option the protection is restarted [#4762](https://github.com/AdguardTeam/AdguardForAndroid/issues/4762)
-* When importing DNS user rules containing empty lines, these lines are added [#4888](https://github.com/AdguardTeam/AdguardForAndroid/issues/4888)
-* When quickly switching switches in Firewall rules, the rule list lines glitch [#4885](https://github.com/AdguardTeam/AdguardForAndroid/issues/4885)
-* Wi-Fi calling issue on Xiaomi: add com.qualcomm.qti.cne to routing exclusions [#5029](https://github.com/AdguardTeam/AdguardForAndroid/issues/5029)
-* Clearing the statistics doesn't clear apps and companies sections only resets their counters to zero [#4748](https://github.com/AdguardTeam/AdguardForAndroid/issues/4748)
-* Impossible to log in to the ONECTA-Daikin app with AdGuard enabled [#4775](https://github.com/AdguardTeam/AdguardForAndroid/issues/4775)
+### フィックス
+* デバッグロギングレベルを有効にすると「スローワーク」通知が消えます [#5017](https://github.com/AdguardTeam/AdguardForAndroid/issues/5017)
+* 製品の種類とAdGuardバージョンは「報告誤ったブロック」フォームで誤って検出されます[#4895](https://github.com/AdguardTeam/AdguardForAndroid/issues/4895)
+* ブートストラップアップストリームの設定は、低レベルの設定をリセットした後にリセットされません [#4907](https://github.com/AdguardTeam/AdguardForAndroid/issues/4907)
+* ブロックリストからWebサイトを削除しても正常に動作しない [#4902](https://github.com/AdguardTeam/AdguardForAndroid/issues/4902)
+* 無料版では、更新チェック時に「無効なブラウジングセキュリティ」が「更新」と表示されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/4844)
+* フィルタは、英語のみで見つけることができます [#5026](https://github.com/AdguardTeam/AdguardForAndroid/issues/5026)
+* ファイアウォールは無効なときに機能し、アプリ使用アクセスがない[#5012](https://github.com/AdguardTeam/AdguardForAndroid/issues/5012)
+* Googleの演劇:`com.gpn.azs`アプリが動作しない [#4845](https://github.com/AdguardTeam/AdguardForAndroid/issues/4845)
+* Google Play: de.dkb.portalapp が正しくブロックされていない [#3734](https://github.com/AdguardTeam/AdguardForAndroid/issues/3734)
+* 別の言語で設定をインポートしても正しく機能しない[#5007](https://github.com/AdguardTeam/AdguardForAndroid/issues/5007)
+* 「Orange Téléphone」アプリ「#4777」で音声メッセージが開けて聞こえる可能性が高いhttps://github.com/AdguardTeam/AdguardForAndroid/issues/4777)
+* すべての設定で表示されるスナックでは、「Undo」は他の言語に翻訳されていません [#4880](https://github.com/AdguardTeam/AdguardForAndroid/issues/4880)
+* スイッチを押すとき機能の追跡の保護点滅で[#4879] (https://github.com/AdguardTeam/AdguardForAndroid/issues/4879)
+* アイコンをタップして保護セクションにリダイレクトすると、間違ったタブが強調表示されます[#4860](https://github.com/AdguardTeam/AdguardForAndroid/issues/4860)
+* ウェブサイトのウィットリスト/ブロックリスト[#4843]からスナックをタップした後に無限のローダー()https://github.com/AdguardTeam/AdguardForAndroid/issues/4843)
+※クリップボード[#5009]で2行ルールを作ることができます(https://github.com/AdguardTeam/AdguardForAndroid/issues/5009)
+* 画面の上部を衝突した後、検索フィールドにキーボードのラグとテキストを入力することができません[#4979](https://github.com/AdguardTeam/AdguardForAndroid/issues/4979)
+* ライセンス有効期限が正しく表示されていない [#4856](https://github.com/AdguardTeam/AdguardForAndroid/issues/4856)
+* プロキシサーバー [#4884] で変更ログインとパスワードのアップロードをログに記録します(https://github.com/AdguardTeam/AdguardForAndroid/issues/4884)
+* 長いオプション名はルール作成ダイアログに合わない [#4764](https://github.com/AdguardTeam/AdguardForAndroid/issues/4764)
+* 「言語固有の広告ブロック」画面[#4891]に非関連性の結果も表示されます。https://github.com/AdguardTeam/AdguardForAndroid/issues/4891)
+* アシスタントからのリダイレクトは、バー [#5001] の誤ったタブを強調します(https://github.com/AdguardTeam/AdguardForAndroid/issues/5001)
+* ユーザスクリプト link [#4913] で AdGuard にリダイレクトしたときに "Add userscript" ポップアップが表示されません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4913)
+* 検索フィールドのカーソル位置は、画面の上部を衝突した後にリセット [#4892](https://github.com/AdguardTeam/AdguardForAndroid/issues/4892)
+* 最近の活動画面の検索フィールドに loader が表示されます [#5035](https://github.com/AdguardTeam/AdguardForAndroid/issues/5035)
+* 関係のない目的のために同じアイコンが使用されます [#4737](https://github.com/AdguardTeam/AdguardForAndroid/issues/4737)
+* チェックボックス「Send app logs.」がマークされたときにバグ報告を送信できません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4894)
+* ファイルを使用してシステムからDNSフィルタを追加すると、入力フィールドは[#4882]をグレーアウトします(https://github.com/AdguardTeam/AdguardForAndroid/issues/4882)
+* カスタムDNSフィルタやユーザースクリプトを追加すると、 "Browse" ボタンは [#4850] をグレーアウトします(https://github.com/AdguardTeam/AdguardForAndroid/issues/4850)
+* 無効なオプションの設定を変更すると、保護が再起動されます [#4762](https://github.com/AdguardTeam/AdguardForAndroid/issues/4762)
+* 空の行を含むDNSユーザールールをインポートすると、これらの行が [#4888] に追加されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/4888)
+* ファイアウォールルールのスイッチを素早く切り替えると、ルールリスト行の不具合 [#4885](https://github.com/AdguardTeam/AdguardForAndroid/issues/4885)
+* XiaomiでWi-Fiコールの問題:com.qualcomm.qti.cneを追加して除外をルーティングする[#5029](https://github.com/AdguardTeam/AdguardForAndroid/issues/5029)
+* 統計をクリアすると、アプリや企業セクションをクリアするだけで、カウンターをゼロにリセットしません[#4748](https://github.com/AdguardTeam/AdguardForAndroid/issues/4748)
+* AdGuard対応のONECTA-Daikinアプリにログイン可能[#4775]()https://github.com/AdguardTeam/AdguardForAndroid/issues/4775)
 ​
-### DnsLibs updated to v2.4.16
+### DnsLibs が v2.4.16 に更新
 ​
-* On-the-fly filtering of DoH connections [#198](https://github.com/AdguardTeam/DnsLibs/issues/198)
-* Basic auth for DoH endpoints [#189](https://github.com/AdguardTeam/DnsLibs/issues/189)
-* Possible DoS attack against the local DNS proxy when it’s using a plain DNS upstream [#202](https://github.com/AdguardTeam/DnsLibs/issues/202)
-* `127.0.0.1 local` is incorrectly interpreted as being for all .local address, breaking mDNS [#207](https://github.com/AdguardTeam/DnsLibs/issues/207)
-* Allow C# comments in domain name rules [#196](https://github.com/AdguardTeam/DnsLibs/issues/196)
-* DoH tries to use stale connection too much time [#200](https://github.com/AdguardTeam/DnsLibs/issues/200)
-* Properly filter type=HTTPS requests [#199](https://github.com/AdguardTeam/DnsLibs/issues/199)
+* DoH接続のオンザフライフィルタ [#198](https://github.com/AdguardTeam/DnsLibs/issues/198)
+* DoH エンドポイントの基本的なオース [#189](https://github.com/AdguardTeam/DnsLibs/issues/189)
+* プレーン DNS 上流 [#202] を使用しているときに、ローカル DNS プロキシに対して DoS 攻撃が可能https://github.com/AdguardTeam/DnsLibs/issues/202)
+* `127.0.0.1 local`mDNS [#207] を区切る、すべての .local アドレスに対して正しく解釈されます。https://github.com/AdguardTeam/DnsLibs/issues/207)
+* ドメイン名規則でC#コメントを許可する [#196](https://github.com/AdguardTeam/DnsLibs/issues/196)
+* DoH は、ステープル接続を長時間使用しようとします [#200](https://github.com/AdguardTeam/DnsLibs/issues/200)
+* 適切なフィルタtype=HTTPSリクエスト [#199]()https://github.com/AdguardTeam/DnsLibs/issues/199)
 ​
-### CoreLibs updated to v1.13.98
+### CoreLibs が v1.13.98 に更新
 ​
-* Add `!#else` pre-processor directive support [#1806](https://github.com/AdguardTeam/CoreLibs/issues/1806)
-* Add `$extension` modifier disabling specific userscript [#1706](https://github.com/AdguardTeam/CoreLibs/issues/1706)
-* Adopt new rule priority scheme [#1768](https://github.com/AdguardTeam/CoreLibs/issues/1768)
-* Change sec-ch-ua headers to match user-agent when Stealth Mode is active [#1764](https://github.com/AdguardTeam/CoreLibs/issues/1764)
-* Improve HTML filtering performance [#1772](https://github.com/AdguardTeam/CoreLibs/issues/1772)
-* Improve HTML filtering rules `$$` -- allow CSS-like selectors [#94](https://github.com/AdguardTeam/CoreLibs/issues/94)
-* Support for cap_html_filtering condition [#1758](https://github.com/AdguardTeam/CoreLibs/issues/1758)
-* $denyallow does not allow blocking documents [#1809](https://github.com/AdguardTeam/CoreLibs/issues/1809)
-* $stealth exceptions do not work on the TCP stack level where we block STUN/TURN [#1737](https://github.com/AdguardTeam/CoreLibs/issues/1737)
-* Websites using SXG have no cosmetic filtering when opening from Google search [#1812](https://github.com/AdguardTeam/CoreLibs/issues/1812)
-* socks5 proxy not working with AdGuard v4.0 [#4812](https://github.com/AdguardTeam/AdguardForAndroid/issues/4812)
-* Content script is not injected into elements loaded in `object` tag [#1769](https://github.com/AdguardTeam/CoreLibs/issues/1769)
-* Detect website locale based on HTML "lang" attribute and language request HTTP headers [#1736](https://github.com/AdguardTeam/CoreLibs/issues/1736)
-* Increase limit for `$replace` rules [#1802](https://github.com/AdguardTeam/CoreLibs/issues/1802)
-* Moving certificate is not an option anymore [#277](https://github.com/AdguardTeam/CoreLibs/issues/277)
-*  Properly use ECH retry_configs [#1793](https://github.com/AdguardTeam/CoreLibs/issues/1793)
-*  Support anti-DPI feature for Korea Telecom [#1789](https://github.com/AdguardTeam/CoreLibs/issues/1789)
-*  UDP timeout is too small in TcpIpStack [#1796](https://github.com/AdguardTeam/CoreLibs/issues/1796)
+* 追加する`!#else`プリプロセッサディレクティブ サポート [#1806](https://github.com/AdguardTeam/CoreLibs/issues/1806)
+* 追加する`$extension`修飾子 特定のユーザスクリプトを無効に [#1706](https://github.com/AdguardTeam/CoreLibs/issues/1706)
+* 新たなルール優先スキーム[#1768](https://github.com/AdguardTeam/CoreLibs/issues/1768)
+* sec-ch-ua ヘッダーを変更して、Stealth モードがアクティブであるときにユーザエージェントにマッチする [#1764](https://github.com/AdguardTeam/CoreLibs/issues/1764)
+* HTML フィルタリング性能を改善 [#1772](https://github.com/AdguardTeam/CoreLibs/issues/1772)
+* HTMLフィルタリングルールを改善`$$`-- CSS のようなセレクターを許可します。 [#94](https://github.com/AdguardTeam/CoreLibs/issues/94)
+* cap html filtering 条件のサポート [#1758](https://github.com/AdguardTeam/CoreLibs/issues/1758)
+* $denyallow は文書のブロックを許可していません [#1809](https://github.com/AdguardTeam/CoreLibs/issues/1809)
+* $stealth 例外は、STUN/TURN [#1737] をブロックする TCP スタックレベルで動作しません。https://github.com/AdguardTeam/CoreLibs/issues/1737)
+* SXGを使用したサイトでは、Google検索から開く際の化粧品のフィルタリングはありません[#1812](https://github.com/AdguardTeam/CoreLibs/issues/1812)
+* AdGuard v4.0 で動作しないソックス5プロキシ [#4812](https://github.com/AdguardTeam/AdguardForAndroid/issues/4812)
+* コンテンツスクリプトは読み込まれた要素に注入されない`object`タグ [#1769](https://github.com/AdguardTeam/CoreLibs/issues/1769)
+* HTML "lang" 属性と言語リクエスト HTTP ヘッダ [#1736] に基づいてウェブサイトのロケールを検知します。https://github.com/AdguardTeam/CoreLibs/issues/1736)
+* 限界を増加して下さい`$replace`ルール [#1802](https://github.com/AdguardTeam/CoreLibs/issues/1802)
+* 移行証明書はもうオプションではありません [#277](https://github.com/AdguardTeam/CoreLibs/issues/277)
+*  適切に ECH retry configs [#1793] を使用します。https://github.com/AdguardTeam/CoreLibs/issues/1793)
+*  韓国の電気通信のためのサポート反DPIの特徴[#1789] (https://github.com/AdguardTeam/CoreLibs/issues/1789)
+*  TcpIpStack [#1796] で UDP のタイムアウトが少なすぎる (https://github.com/AdguardTeam/CoreLibs/issues/1796)
 
 ---
 
 ## 4.2
 
-- Published: 2023-10-23T12:02:32Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2
+- 公表: 2023-10-23T12:02:32Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2
 
-## AdGuard Dynamics
+## AdGuard ダイナミクス
 
-Get ready for a dynamic experience as AdGuard for Android makes its way to your screens with exciting new features! Now our app not only has [dynamic icons](https://github.com/AdguardTeam/AdguardForAndroid/issues/4317), it also has a dynamic theme.
+AdGuard for Android でダイナミックなエクスペリエンスを準備し、画面にエキサイティングな新機能が搭載されています。 このアプリは「動的アイコン」のみです。(https://github.com/AdguardTeam/AdguardForAndroid/issues/4317)、ダイナミックなテーマもあります。
 
-If you enable this option in the settings, the AdGuard app interface and icon will match the color of your smartphone interface.
+設定でこのオプションを有効にすると、AdGuardアプリインターフェイスとアイコンがスマートフォンインターフェイスの色にマッチします。
 
-> Please note that these features are only available on Android devices running version 12 or higher.
+> これらの機能は、バージョン12以上を実行しているAndroidデバイスでのみ利用可能です。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/dynamicicon.png?mw=500" 
-width="300" height="150">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/dynamicicon.png?mw=500" 
+幅="300" 高さ="150">
 </p>
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/4.2/themes/theme_en.png" 
-width="600" height="600">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/4.2/themes/theme_en.png" 
+幅="600" 高さ="600">
 </p>
 
-## HTTP/3 filtering support [#487](https://github.com/AdguardTeam/CoreLibs/issues/487)
+## HTTP/3 フィルタリングサポート [#487](https://github.com/AdguardTeam/CoreLibs/issues/487)
 
-AdGuard now not only filters HTTP/1.1 and HTTP/2 traffic. In this release, we have added **experimental** support for HTTP/3 filtering. The HTTP/3 protocol, powered by the QUIC network protocol, provides better privacy and security, as well as a more stable and faster Internet connection. By enabling HTTP/3 filtering, you can take advantage of the QUIC protocol and effectively block ads and trackers.
+AdGuard は HTTP/1.1 と HTTP/2 トラフィックのみをフィルタリングするようになりました。 このリリースでは、HTTP/3 フィルタリング用の**experimental**サポートを追加しました。 QUICネットワークプロトコルを搭載した HTTP/3 プロトコルは、より安定した高速なインターネット接続だけでなく、より優れたプライバシーとセキュリティを提供します。 HTTP/3フィルタリングを有効にすると、QUICプロトコルを利用し、広告やトラッカーを効果的にブロックすることができます。
 
-To enable HTTP/3 filtering, go to Settings → General → Advanced → Low-level settings → *Filter HTTP/3* and toggle the switch to the right.
+HTTP/3 フィルタリングを有効にするには、設定 → 全般 → 上級 → 低レベル設定 → *Filter HTTP/3* に移動し、スイッチを右に切り替えます。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/4.2/HTTP3filtering_en.png" 
-width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/4.2/HTTP3filtering_en.png" 
+幅="300" 高さ="600">
 </p>
 
-## Support for two HTTPS certificates
+## 2つのHTTPS証明書のサポート
 
-By implementing two HTTPS certificates, we have fixed an issue with HTTPS filtering in Chrome 100 and above on rooted devices. While the certificate in the system store will be responsible for filtering in most apps, the certificate in the user store will allow AdGuard to filter HTTPS traffic in Chromium-based browsers. 
+2つのHTTPS証明書を実装することにより、Chrome 100以上のルートデバイスでHTTPSフィルタリングの問題を修正しました。 システムストアの証明書はほとんどのアプリでフィルタリングを担当しますが、ユーザストアの証明書は、ChromiumベースのブラウザでHTTPSトラフィックをフィルタリングすることができます。
 
-Installing certificates has also become easier: we’ve added step-by-step instructions.
+証明書のインストールも容易になりました。ステップバイステップの指示を追加しました。
 
-To install the second certificate, go to Settings → Filtering → Network → HTTPS filtering → *Security сertificates* and follow the instructions.
+2番目の証明書をインストールするには、[設定] → [フィルタリング] → [ネットワーク] → [ HTTPS フィルタリング → *Security 認証*] に移動し、指示に従ってください。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/4.2/HTTP3filtering_en.png" 
-width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/4.2/HTTP3filtering_en.png" 
+幅="300" 高さ="600">
 </p>
 
-Our filters have become even more powerful and we have also fixed a bunch of bugs to ensure stable performance of the app. Hurry up to update!
+当社のフィルターはさらに強力になり、アプリの安定した性能を確保するために、たくさんのバグを修正しました。 更新までの流れ
 
-## Changelog
+## 変更履歴
 ​
-### Features
-* Enabled HTTPS filtering by default for the Opera browser [#4972](https://github.com/AdguardTeam/AdguardForAndroid/issues/4972)
+### 特徴:
+* Opera ブラウザのデフォルトで HTTPS フィルタリングを有効にしました。 [#4972](https://github.com/AdguardTeam/AdguardForAndroid/issues/4972)
 ​
-### Fixes
-* Exclude INETCOM.TV from routing by default [#4723](https://github.com/AdguardTeam/AdguardForAndroid/issues/4723)
-* AdGuard cannot start protection due to HTTPS certificate expiration [#4896](https://github.com/AdguardTeam/AdguardForAndroid/issues/4896)
-* Auto-update of custom filters doesn't work [#4961](https://github.com/AdguardTeam/AdguardForAndroid/issues/4961)
-* AdGuard logs users out of their accounts [#4959](https://github.com/AdguardTeam/AdguardForAndroid/issues/4959)
-* AdGuard notifications cause the locked screen to turn on while in sleep mode [#4778](https://github.com/AdguardTeam/AdguardForAndroid/issues/4778)
-* HTTPS filtering is disabled for the app after relaunching AdGuard if the certificate has been moved to the system storage [#5008](https://github.com/AdguardTeam/AdguardForAndroid/issues/5008)
-* Shadow around the main switch is missing on Android 8 [#4858](https://github.com/AdguardTeam/AdguardForAndroid/issues/4858)
-* Some elements are not announced correctly by TalkBack [#4809](https://github.com/AdguardTeam/AdguardForAndroid/issues/4809)
-* Switch sometimes disappears for 10-30 seconds, protection restarts for a long time [#4862](https://github.com/AdguardTeam/AdguardForAndroid/issues/4862)
-* The space at the bottom of the "How to block ads on YouTube" screen is missing on devices with small screens [#4866](https://github.com/AdguardTeam/AdguardForAndroid/issues/4866)
-* If the app is set to Traditional Chinese, the filters are displayed in Simplified Chinese after the update [#4949](https://github.com/AdguardTeam/AdguardForAndroid/issues/4949) 
-* Switching between firewall tabs causes AdGuard to crash [#4999](https://github.com/AdguardTeam/AdguardForAndroid/issues/4999)
-* Importing settings with a different language does not immediately change the language [#4984](https://github.com/AdguardTeam/AdguardForAndroid/issues/4984)
-* License is not imported when importing settings [#4985](https://github.com/AdguardTeam/AdguardForAndroid/issues/4985)
-* Non-working button in the snack about disabled notifications [#5002](https://github.com/AdguardTeam/AdguardForAndroid/issues/5002)
-* On the ‘Why filter HTTPS traffic’ screen, pressing Next again cancels the previous action [#4993](https://github.com/AdguardTeam/AdguardForAndroid/issues/4993)
-* A cross button doesn't remove the text in the search bar on the Language-specific ad blocking screen [#4978](https://github.com/AdguardTeam/AdguardForAndroid/issues/4978)
-* The text of imported/exported settings does not fit in the dialog box [#4981](https://github.com/AdguardTeam/AdguardForAndroid/issues/4981)
+### フィックス
+* デフォルトでルーティングからINETCOM.TVを除外 [#4723](https://github.com/AdguardTeam/AdguardForAndroid/issues/4723)
+* AdGuard は HTTPS の証明書の有効期限による保護を開始できません。 [#4896](https://github.com/AdguardTeam/AdguardForAndroid/issues/4896)
+* カスタムフィルタの自動更新は動作しません [496#1](https://github.com/AdguardTeam/AdguardForAndroid/issues/4961)
+* AdGuardはユーザーのアカウントからログアウト [#4959](https://github.com/AdguardTeam/AdguardForAndroid/issues/4959)
+* AdGuard 通知は、ロックされた画面がスリープモード [#4778] でしばらくオンにする原因となります。https://github.com/AdguardTeam/AdguardForAndroid/issues/4778)
+* 証明書がシステムストレージに移動されている場合、AdGuardの再発後にアプリでHTTPSフィルタリングが無効になります[#5008](https://github.com/AdguardTeam/AdguardForAndroid/issues/5008)
+* メインスイッチの周りのシャドウはAndroid 8で欠落しています [#4858](https://github.com/AdguardTeam/AdguardForAndroid/issues/4858)
+* TalkBack [#4809] では、いくつかの要素が正しく発表されていない (https://github.com/AdguardTeam/AdguardForAndroid/issues/4809)
+* スイッチは10-30秒間消え、保護は長時間[#4862]のために再開します(https://github.com/AdguardTeam/AdguardForAndroid/issues/4862)
+* 「YouTubeで広告をブロックする方法」画面の下部にあるスペースは、小さな画面でデバイスに欠落しています[#4866](https://github.com/AdguardTeam/AdguardForAndroid/issues/4866)
+* 繁体字にアプリが設定されている場合は、更新後に簡体字中国語でフィルタが表示されます[#4949](https://github.com/AdguardTeam/AdguardForAndroid/issues/4949) 
+* ファイアウォールタブ間の切り替えは、AdGuardがクラッシュする原因[#4999](https://github.com/AdguardTeam/AdguardForAndroid/issues/4999)
+* 異なる言語で設定をインポートするとすぐに言語を変更しない[#4984](https://github.com/AdguardTeam/AdguardForAndroid/issues/4984)
+* 設定をインポートする際にライセンスがインポートされていない[#4985](https://github.com/AdguardTeam/AdguardForAndroid/issues/4985)
+* 無効な通知に関するスナックの非作業ボタン [#5002](https://github.com/AdguardTeam/AdguardForAndroid/issues/5002)
+* 「HTTPSトラフィックをフィルタリングする」画面で、次いで前のアクションをキャンセル [#4993](https://github.com/AdguardTeam/AdguardForAndroid/issues/4993)
+* クロスボタンは、言語固有の広告ブロック画面の検索バーにテキストを削除しません[#4978](https://github.com/AdguardTeam/AdguardForAndroid/issues/4978)
+* インポート/エクスポートされた設定のテキストは、ダイアログボックス[#4981]に収まりません(https://github.com/AdguardTeam/AdguardForAndroid/issues/4981)
 
-### CoreLibs (Filtering engine) updated to v1.12.80 [#4966](https://github.com/AdguardTeam/AdguardForAndroid/issues/4966)
+### CoreLibs (フィルターエンジン) を v1.12.80 に更新しました [#4966](https://github.com/AdguardTeam/AdguardForAndroid/issues/4966)
 
-#### Improvements
-* User Agent stripping Improved [#1345](https://github.com/AdguardTeam/CoreLibs/issues/1345)
-* TCP/IP: Added new reject mode - ICMP administratively prohibited [#1774](https://github.com/AdguardTeam/CoreLibs/issues/1774)
-* Added support for uBO media queries [#1707](https://github.com/AdguardTeam/CoreLibs/issues/1707)
+#### 改善点
+* ユーザエージェント ストリッピング 改善 [#1345]()https://github.com/AdguardTeam/CoreLibs/issues/1345)
+* TCP/IP:新しい拒絶モードを追加 - ICMP管理禁止 [#1774](https://github.com/AdguardTeam/CoreLibs/issues/1774)
+* uBO メディアの問い合わせに対応しました [#1707](https://github.com/AdguardTeam/CoreLibs/issues/1707)
 
-#### Fixes
-* Connection is terminated by timer in have-result state [#1180](https://github.com/AdguardTeam/CoreLibs/issues/1180)
-* A few seconds delay when using ipTIME home routers [#1756](https://github.com/AdguardTeam/CoreLibs/issues/1756)
-* AdGuard slows down web page load time [#1522](https://github.com/AdguardTeam/CoreLibs/issues/1522)
-* Hide referrer with "Hide your search queries" option enabled when request is made by click [#1766](https://github.com/AdguardTeam/CoreLibs/issues/1766)
-* SOCKS5 proxy does not work with AdGuard 4.0 [#4812](https://github.com/AdguardTeam/AdguardForAndroid/issues/4812)
-* Enabled ECH GREASE when ECH is enabled [#1781](https://github.com/AdguardTeam/CoreLibs/issues/1781)
-* Fixed a bug with removing HTTP headers when decrypting book text [#1750](https://github.com/AdguardTeam/CoreLibs/issues/1750)
-* Preparation for XPC [#1675](https://github.com/AdguardTeam/CoreLibs/issues/1675)
-* DNS fallback helper sometimes returns 127.0.0.1 instead of provider servers [#1687](https://github.com/AdguardTeam/CoreLibs/issues/1687)
-* UDP timeout is too small in TcpIpStack [#1796](https://github.com/AdguardTeam/CoreLibs/issues/1796)
+#### フィックス
+* 応答状態のタイマーで接続が終了 [#1180](https://github.com/AdguardTeam/CoreLibs/issues/1180)
+* ipTIMEホームルータを使用する際の秒数遅延[#1756](https://github.com/AdguardTeam/CoreLibs/issues/1756)
+* AdGuardはWebページの読み込み時間を遅くします [#1522](https://github.com/AdguardTeam/CoreLibs/issues/1522)
+* リクエストが[#1766]をクリックしたときに「検索クエリを非表示」オプションを有効にします(https://github.com/AdguardTeam/CoreLibs/issues/1766)
+* SOCKS5 プロキシは AdGuard 4.0 で動作しません [#4812](https://github.com/AdguardTeam/AdguardForAndroid/issues/4812)
+* ECH が有効になったときに ECH グリースを有効にしました [#1781](https://github.com/AdguardTeam/CoreLibs/issues/1781)
+* 本テキストの復号化時にHTTPヘッダを削除したバグを修正しました[#1750](https://github.com/AdguardTeam/CoreLibs/issues/1750)
+* XPCの準備 [#1675] (https://github.com/AdguardTeam/CoreLibs/issues/1675)
+* DNSフォールバックヘルパーは、プロバイダーサーバーの代わりに127.0.0.1を返す[#1687](https://github.com/AdguardTeam/CoreLibs/issues/1687)
+* TcpIpStack [#1796] で UDP のタイムアウトが少なすぎる (https://github.com/AdguardTeam/CoreLibs/issues/1796)
 ​
-### DnsLibs (DNS filtering engine) updated to v2.2.24 [#4953](https://github.com/AdguardTeam/AdguardForAndroid/issues/4953)
+### DnsLibs (DNS フィルタリングエンジン) v2.2.24 [#4953] に更新https://github.com/AdguardTeam/AdguardForAndroid/issues/4953)
 
-#### Fixes
-* DoH tries to use stale connection for too long [#200](https://github.com/AdguardTeam/DnsLibs/issues/200)
-* CoreDNS DoQ server cannot be used by DnsLibs [#204](https://github.com/AdguardTeam/DnsLibs/issues/204)
-* sdns:// cert pinning is incorrect [#205](https://github.com/AdguardTeam/DnsLibs/issues/205)
+#### フィックス
+* DoH は、余りに長い [#200] の stale 接続を使用するしようとします(https://github.com/AdguardTeam/DnsLibs/issues/200)
+* CoreDNS DoQ サーバは DnsLibs [#204] では使用できません。https://github.com/AdguardTeam/DnsLibs/issues/204)
+* sdns:// cert pinning が間違っている [#205](https://github.com/AdguardTeam/DnsLibs/issues/205)
 
-### Important for filter maintainers
+### フィルターメンテナーの重要事項
 
-* Added `$referral-policy` modifier [#135](https://github.com/AdguardTeam/CoreLibs/issues/135)
-* Added `$method` modifier for basic rules [#1713](https://github.com/AdguardTeam/CoreLibs/issues/1713)
-* Allowed $stealth rules with an empty pattern [#1762](https://github.com/AdguardTeam/CoreLibs/issues/1762)
-* Added `$to` modifier [#1714](https://github.com/AdguardTeam/CoreLibs/issues/1714)
-* `$jsonprune`, `$replace`, and `$hls` do not work with non-GET/POST HTTP methods [#1743](https://github.com/AdguardTeam/CoreLibs/issues/1743)
-* Exception rules interfere with each other [#1749](https://github.com/AdguardTeam/CoreLibs/issues/1749)
-* `$path` modifier does not work on path market.yandex.ru [#1726](https://github.com/AdguardTeam/CoreLibs/issues/1726)
-* `$jsonprune` modifier should be able to handle quotes for jsonp [#1734](https://github.com/AdguardTeam/CoreLibs/issues/1734)
-* Consider `:has()`, `:not()`, and `:is()` as a standard pseudo-class if ExtendedCss usage is not forced by the `#?#` rule marker [#1683](https://github.com/AdguardTeam/CoreLibs/issues/1683)
-* Cosmetic rules do not work at mypikpak.com [#1767](https://github.com/AdguardTeam/CoreLibs/issues/1767)
+* 追加`$referral-policy`修飾子 [#135] (https://github.com/AdguardTeam/CoreLibs/issues/135)
+* 追加`$method`基本ルールの修飾語 [#1713](https://github.com/AdguardTeam/CoreLibs/issues/1713)
+* 空のパターンで$stealthルールを許可 [#1762](https://github.com/AdguardTeam/CoreLibs/issues/1762)
+* 追加`$to`修飾子 [#1714] (https://github.com/AdguardTeam/CoreLibs/issues/1714)
+* `$jsonprune`, `$replace`と`$hls`非 GET/POST HTTP メソッドで動作しない [#1743](https://github.com/AdguardTeam/CoreLibs/issues/1743)
+* 例外ルールは互いに干渉する [#1749](https://github.com/AdguardTeam/CoreLibs/issues/1749)
+* `$path`修飾子はパスmarket.yandex.ru [#1726]で動作しません()https://github.com/AdguardTeam/CoreLibs/issues/1726)
+* `$jsonprune`modifier は jsonp [#1734]() の引用符を扱うことができます。https://github.com/AdguardTeam/CoreLibs/issues/1734)
+* お問い合わせ`:has()`, `:not()`と`:is()`extendCss の使用が強制されていない場合、標準擬似クラスとして`#?#`ルールマーカー [#1683](https://github.com/AdguardTeam/CoreLibs/issues/1683)
+* 化粧品のルールはmypikpak.comで動作しません [#1767](https://github.com/AdguardTeam/CoreLibs/issues/1767)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 4.2 Beta 2
+## 4.2 ベータ 2
 
-- Published: 2023-10-13T13:10:35Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2-beta-2
+- 公開日: 2023-10-13T13:10:35Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2-beta-2
 
-Now our app not only has dynamic icons, it also has a dynamic theme. If you enable this option in the settings, the AdGuard app interface will match the color of your smartphone interface. Aside from external changes, we have fixed several bugs for a smoother user experience.
+ダイナミックなアイコンだけでなく、ダイナミックなテーマもあります。 設定でこのオプションを有効にすると、AdGuardアプリインターフェイスはスマートフォンインターフェイスの色と一致します。 外部の変化以外にも、よりスムーズなユーザー体験のためにいくつかのバグを修正しました。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/github/ad_blocker/android/protectiontheme1.png" width="300" height="600"> <img src="https://cdn.adtidy.org/content/github/ad_blocker/android/protectiontheme2.png" width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/github/ad_blocker/android/protectiontheme1.png"幅="300" 高さ="600"> <img src="https://cdn.adtidy.org/content/github/ad_blocker/android/protectiontheme2.png"幅="300" 高さ="600">
 </p>
 
-## Changelog
+## 変更履歴
 ​​
-### Fixes
+### フィックス
  
-* Switching between firewall tabs causes AdGuard to crash [#4999](https://github.com/AdguardTeam/AdguardForAndroid/issues/4999)
-* Importing settings with a different language does not immediately change the language [#4984](https://github.com/AdguardTeam/AdguardForAndroid/issues/4984)
-* License is not imported when importing settings [#4985](https://github.com/AdguardTeam/AdguardForAndroid/issues/4985)
-* Non-working button in the snack about disabled notifications [#5002](https://github.com/AdguardTeam/AdguardForAndroid/issues/5002)
-* On the Why filter HTTPS traffic' screen, pressing Next again cancels the previous action [#4993](https://github.com/AdguardTeam/AdguardForAndroid/issues/4993)
-* A cross button doesn't remove the text in the search bar on the Language-specific ad blocking screen [#4978](https://github.com/AdguardTeam/AdguardForAndroid/issues/4978)
-* The text of imported/exported settings does not fit in the dialog box [#4981](https://github.com/AdguardTeam/AdguardForAndroid/issues/4981)
+* ファイアウォールタブ間の切り替えは、AdGuardがクラッシュする原因[#4999](https://github.com/AdguardTeam/AdguardForAndroid/issues/4999)
+* 異なる言語で設定をインポートするとすぐに言語を変更しない[#4984](https://github.com/AdguardTeam/AdguardForAndroid/issues/4984)
+* 設定をインポートする際にライセンスがインポートされていない[#4985](https://github.com/AdguardTeam/AdguardForAndroid/issues/4985)
+* 無効な通知に関するスナックの非作業ボタン [#5002](https://github.com/AdguardTeam/AdguardForAndroid/issues/5002)
+* HTTPS トラフィックの画面をフィルタリングする理由で、次いで前のアクションをキャンセル [#4993](https://github.com/AdguardTeam/AdguardForAndroid/issues/4993)
+* クロスボタンは、言語固有の広告ブロック画面の検索バーにテキストを削除しません[#4978](https://github.com/AdguardTeam/AdguardForAndroid/issues/4978)
+* インポート/エクスポートされた設定のテキストは、ダイアログボックス[#4981]に収まりません(https://github.com/AdguardTeam/AdguardForAndroid/issues/4981)
 
 
-### CoreLibs updated to v1.12.80 [#5003](https://github.com/AdguardTeam/AdguardForAndroid/issues/5003)
-* Minor stability improvements
+### CoreLibs が v1.12.80 に更新されました [#5003](https://github.com/AdguardTeam/AdguardForAndroid/issues/5003)
+* マイナーな安定性の改善
 
 
 ---
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 4.2 Beta 1
+## 4.2 ベータ 1
 
-- Published: 2023-09-29T16:16:13Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2-beta-1
+- 発行: 2023-09-29T16:16:13Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2-beta-1
 
-## Dynamic icon [#4317](https://github.com/AdguardTeam/AdguardForAndroid/issues/4317)
+## 動的アイコン [#4317](https://github.com/AdguardTeam/AdguardForAndroid/issues/4317)
 
-AdGuard for Android now has a dynamic icon. If you are using themed icons on your smartphone, the AdGuard app will also match the color of your system. 
-
-<p align="center">
-<img src="https://cdn.adtidy.org/content/github/ad_blocker/android/dynamicicon.png" 
-width="300" height="150">
-</p>
-
-## HTTP/3 filtering support [#487](https://github.com/AdguardTeam/CoreLibs/issues/487)
-
-AdGuard now not only filters HTTP/1.1 and HTTP/2 traffic. In this beta we have added experimental support for HTTP/3 filtering. The HTTP/3 protocol, powered by the QUIC network protocol, provides better privacy and security, as well as a more stable and faster Internet connection. By enabling HTTP/3 filtering, you can take advantage of the QUIC protocol and effectively block ads and trackers.
-
-To enable HTTP/3 filtering, go to Settings → General → Advanced → Low-level settings → *Filter HTTP/3* and toggle the switch to the right.
+Android用のAdGuardは現在、動的アイコンを持っています。 スマートフォンでテーマアイコンを使用している場合、AdGuardアプリはシステムの色と一致します。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/github/ad_blocker/android/HTTP3.png" 
-width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/github/ad_blocker/android/dynamicicon.png" 
+幅="300" 高さ="150">
 </p>
 
-## Support for two HTTPS certificates
+## HTTP/3 フィルタリングサポート [#487](https://github.com/AdguardTeam/CoreLibs/issues/487)
 
-By implementing two HTTPS certificates, we have fixed an issue with HTTPS filtering in Chrome version 100 and above on rooted devices. While the certificate in the system store will be responsible for filtering in most apps, the certificate in the user store will allow AdGuard to filter HTTPS traffic in Chromium-based browsers. 
+AdGuard は HTTP/1.1 と HTTP/2 トラフィックのみをフィルタリングします。 このベータでは、HTTP/3フィルタリングの実験サポートを追加しました。 QUICネットワークプロトコルを搭載した HTTP/3 プロトコルは、より安定した高速なインターネット接続だけでなく、より優れたプライバシーとセキュリティを提供します。 HTTP/3フィルタリングを有効にすると、QUICプロトコルを利用し、広告やトラッカーを効果的にブロックすることができます。
 
-Installing certificates has also become easier: we've added step-by-step instructions.
-
-To install the second certificate, go to Settings → Filtering → Network → HTTPS filtering → *Security сertificates* and follow the instructions.
+HTTP/3 フィルタリングを有効にするには、設定 → 全般 → 上級 → 低レベル設定 → *Filter HTTP/3* に移動し、スイッチを右に切り替えます。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/github/ad_blocker/android/2certificates.png" 
-width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/github/ad_blocker/android/HTTP3.png" 
+幅="300" 高さ="600">
 </p>
 
-## Changelog
-​
-### Features
-* Enabled HTTPS filtering by default for Opera browser [#4972](https://github.com/AdguardTeam/AdguardForAndroid/issues/4972)
-​
-### Fixes
-* Exclude INETCOM.TV from routing by default [#4723](https://github.com/AdguardTeam/AdguardForAndroid/issues/4723)
-* AdGuard cannot start protection due to HTTPS certificate expiration [#4896](https://github.com/AdguardTeam/AdguardForAndroid/issues/4896)
-* Auto update of custom filters doesn't work [#4961](https://github.com/AdguardTeam/AdguardForAndroid/issues/4961)
-* AdGuard logs out of the account [#4959](https://github.com/AdguardTeam/AdguardForAndroid/issues/4959)
-* Shadow around the main switch is missing on Android 8 [#4858](https://github.com/AdguardTeam/AdguardForAndroid/issues/4858)
-* Some elements are not announced correctly by TalkBack [#4809](https://github.com/AdguardTeam/AdguardForAndroid/issues/4809)
-* Switch sometimes disappears for 10-30 seconds, protection restarts for a long time [#4862](https://github.com/AdguardTeam/AdguardForAndroid/issues/4862)
-* The space at the bottom of the "How to block ads on YouTube" screen is missing on devices with small screens [#4866](https://github.com/AdguardTeam/AdguardForAndroid/issues/4866)
-* If the app is set to Traditional Chinese, the filters are displayed in Simplified Chinese after the update [#4949](https://github.com/AdguardTeam/AdguardForAndroid/issues/4949)  
+## 2つのHTTPS証明書のサポート
 
-### CoreLibs
-* CoreLibs updated to v1.12.76 [#4966](https://github.com/AdguardTeam/AdguardForAndroid/issues/4966)
-* Connection is terminated by timer in have-result state [#1180](https://github.com/AdguardTeam/CoreLibs/issues/1180)
-* Improved User Agent stripping [#1345] (https://github.com/AdguardTeam/CoreLibs/issues/1345)
-* Added support for uBO media queries [#1707](https://github.com/AdguardTeam/CoreLibs/issues/1707)
-* A few seconds delay when using ipTIME home routers [#1756](https://github.com/AdguardTeam/CoreLibs/issues/1756)
-* AdGuard slows down web page load time [#1522](https://github.com/AdguardTeam/CoreLibs/issues/1522)
-* Hide referrer with "Hide your search queries" option enabled when request is made by click [#1766](https://github.com/AdguardTeam/CoreLibs/issues/1766)
-* SOCKS5 proxy does not work with AdGuard 4.0 [#4812](https://github.com/AdguardTeam/AdguardForAndroid/issues/4812)
-* Enabled ECH GREASE when ECH is enabled [#1781](https://github.com/AdguardTeam/CoreLibs/issues/1781)
-* Fixed a bug with removing HTTP headers when decrypting book text [#1750](https://github.com/AdguardTeam/CoreLibs/issues/1750)
-* Preparation for XPC [#1675](https://github.com/AdguardTeam/CoreLibs/issues/1675)
-* DNS fallback helper sometimes returns 127.0.0.1 instead of provider servers [#1687](https://github.com/AdguardTeam/CoreLibs/issues/1687)
-* TCP/IP: Added new reject mode - ICMP administratively prohibited [#1774](https://github.com/AdguardTeam/CoreLibs/issues/1774)
-* UDP timeout is too small in TcpIpStack [#1796](https://github.com/AdguardTeam/CoreLibs/issues/1796)
+2つのHTTPS証明書を実装することで、Chromeバージョン100以上でフィルタリングするHTTPSの問題を修正しました。 システムストアの証明書はほとんどのアプリでフィルタリングを担当しますが、ユーザストアの証明書は、ChromiumベースのブラウザでHTTPSトラフィックをフィルタリングすることができます。
+
+証明書のインストールも簡単になりました:ステップバイステップの指示を追加しました。
+
+2番目の証明書をインストールするには、[設定] → [フィルタリング] → [ネットワーク] → [ HTTPS フィルタリング → *Security 認証*] に移動し、指示に従ってください。
+
+<p align="center">
+<img src="">https://cdn.adtidy.org/content/github/ad_blocker/android/2certificates.png" 
+幅="300" 高さ="600">
+</p>
+
+## 変更履歴
 ​
-### DnsLibs
-* DnsLibs updated to v2.2.24 [#4953](https://github.com/AdguardTeam/AdguardForAndroid/issues/4953)
-* DoH tries to use stale connection for too long [#200](https://github.com/AdguardTeam/DnsLibs/issues/200)
-* CoreDNS DoQ server cannot be used by DnsLibs [#204](https://github.com/AdguardTeam/DnsLibs/issues/204)
-* sdns:// cert pinning is incorrect [#205](https://github.com/AdguardTeam/DnsLibs/issues/205)
+### 特徴:
+* Opera ブラウザのデフォルトで HTTPS フィルタを有効にする [#4972](https://github.com/AdguardTeam/AdguardForAndroid/issues/4972)
+​
+### フィックス
+* デフォルトでルーティングからINETCOM.TVを除外 [#4723](https://github.com/AdguardTeam/AdguardForAndroid/issues/4723)
+* AdGuard は HTTPS の証明書の有効期限による保護を開始できません。 [#4896](https://github.com/AdguardTeam/AdguardForAndroid/issues/4896)
+* カスタムフィルタの自動更新は動作しません [#4961](https://github.com/AdguardTeam/AdguardForAndroid/issues/4961)
+* AdGuardはアカウントからログアウト [#4959](https://github.com/AdguardTeam/AdguardForAndroid/issues/4959)
+* メインスイッチの周りのシャドウはAndroid 8で欠落しています [#4858](https://github.com/AdguardTeam/AdguardForAndroid/issues/4858)
+* TalkBack [#4809] では、いくつかの要素が正しく発表されていない (https://github.com/AdguardTeam/AdguardForAndroid/issues/4809)
+* スイッチは10-30秒間消え、保護は長時間[#4862]のために再開します(https://github.com/AdguardTeam/AdguardForAndroid/issues/4862)
+* 「YouTubeで広告をブロックする方法」画面の下部にあるスペースは、小さな画面でデバイスに欠落しています[#4866](https://github.com/AdguardTeam/AdguardForAndroid/issues/4866)
+* 繁体字にアプリが設定されている場合は、更新後に簡体字中国語でフィルタが表示されます[#4949](https://github.com/AdguardTeam/AdguardForAndroid/issues/4949)  
 
-### Important for filter maintainers
+### コアライブラリ
+* CoreLibs が v1.12.76 に更新されました(#4966)(https://github.com/AdguardTeam/AdguardForAndroid/issues/4966)
+* 応答状態のタイマーで接続が終了 [#1180](https://github.com/AdguardTeam/CoreLibs/issues/1180)
+* ユーザーエージェントのストリッピングを改善しました [#1345] ()https://github.com/AdguardTeam/CoreLibs/issues/1345)
+* uBO メディアの問い合わせに対応しました [#1707](https://github.com/AdguardTeam/CoreLibs/issues/1707)
+* ipTIMEホームルータを使用する際の秒数遅延[#1756](https://github.com/AdguardTeam/CoreLibs/issues/1756)
+* AdGuardはWebページの読み込み時間を遅くします [#1522](https://github.com/AdguardTeam/CoreLibs/issues/1522)
+* リクエストが[#1766]をクリックしたときに「検索クエリを非表示」オプションを有効にします(https://github.com/AdguardTeam/CoreLibs/issues/1766)
+* SOCKS5 プロキシは AdGuard 4.0 で動作しません [#4812](https://github.com/AdguardTeam/AdguardForAndroid/issues/4812)
+* ECH が有効になったときに ECH グリースを有効にしました [#1781](https://github.com/AdguardTeam/CoreLibs/issues/1781)
+* 本テキストの復号化時にHTTPヘッダを削除したバグを修正しました[#1750](https://github.com/AdguardTeam/CoreLibs/issues/1750)
+* XPCの準備 [#1675] (https://github.com/AdguardTeam/CoreLibs/issues/1675)
+* DNSフォールバックヘルパーは、プロバイダーサーバーの代わりに127.0.0.1を返す[#1687](https://github.com/AdguardTeam/CoreLibs/issues/1687)
+* TCP/IP:新しい拒絶モードを追加 - ICMP管理禁止 [#1774](https://github.com/AdguardTeam/CoreLibs/issues/1774)
+* TcpIpStack [#1796] で UDP のタイムアウトが少なすぎる (https://github.com/AdguardTeam/CoreLibs/issues/1796)
+​
+### DnsLibs(ドングリブ)
+* DnsLibs が v2.2.24 に更新されました [#4953](https://github.com/AdguardTeam/AdguardForAndroid/issues/4953)
+* DoH は、余りに長い [#200] の stale 接続を使用するしようとします(https://github.com/AdguardTeam/DnsLibs/issues/200)
+* CoreDNS DoQ サーバは DnsLibs [#204] では使用できません。https://github.com/AdguardTeam/DnsLibs/issues/204)
+* sdns:// cert pinning が間違っている [#205](https://github.com/AdguardTeam/DnsLibs/issues/205)
 
-* Added $referral-policy modifier [#135](https://github.com/AdguardTeam/CoreLibs/issues/135)
-* Added $method modifier for basic rules [#1713](https://github.com/AdguardTeam/CoreLibs/issues/1713)
-* Allowed $stealth rules with an empty pattern [#1762](https://github.com/AdguardTeam/CoreLibs/issues/1762)
-* Added $to modifier [#1714](https://github.com/AdguardTeam/CoreLibs/issues/1714)
-* $jsonprune, $replace, and $hls do not work with non-GET-POST HTTP methods [#1743](https://github.com/AdguardTeam/CoreLibs/issues/1743)
-* Exception rules interfere with each other [#1749](https://github.com/AdguardTeam/CoreLibs/issues/1749)
-* $path modifier does not work on path market.yandex.ru [#1726](https://github.com/AdguardTeam/CoreLibs/issues/1726)
-* $jsonprune modifier should be able to handle quotes for jsonp [#1734](https://github.com/AdguardTeam/CoreLibs/issues/1734)
-* Consider :has(), :not(), and :is() as a standard pseudo-class if ExtendedCss usage is not forced by the #?# rule marker [#1683](https://github.com/AdguardTeam/CoreLibs/issues/1683)
-* Cosmetic rules do not work at mypikpak.com [#1767](https://github.com/AdguardTeam/CoreLibs/issues/1767)
+### フィルターメンテナーの重要事項
+
+* $referral-policy修飾子を追加 [#135]()https://github.com/AdguardTeam/CoreLibs/issues/135)
+* 基本的なルールのための$method修飾子を追加 [#1713](https://github.com/AdguardTeam/CoreLibs/issues/1713)
+* 空のパターンで$stealthルールを許可 [#1762](https://github.com/AdguardTeam/CoreLibs/issues/1762)
+* 追加 $to修飾子 [#1714](https://github.com/AdguardTeam/CoreLibs/issues/1714)
+* $jsonprune, $replace, $hls は GET-POST HTTP メソッドで動作しません [#1743](https://github.com/AdguardTeam/CoreLibs/issues/1743)
+* 例外ルールは互いに干渉する [#1749](https://github.com/AdguardTeam/CoreLibs/issues/1749)
+* $path修飾子はパスmarket.yandex.ruで動作しません [#1726](https://github.com/AdguardTeam/CoreLibs/issues/1726)
+* $jsonprune修飾子は、jsonp [#1734] の引用符を扱うことができるはずです(https://github.com/AdguardTeam/CoreLibs/issues/1734)
+* :has(), :not(), and :is() は、#?# ルールマーカー [#1683]() で、ExendCss の使用が強制されていない場合、標準の擬似クラスとして考慮してください。https://github.com/AdguardTeam/CoreLibs/issues/1683)
+* 化粧品のルールはmypikpak.comで動作しません [#1767](https://github.com/AdguardTeam/CoreLibs/issues/1767)
 
 ---
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 4.1
 
-- Published: 2023-07-26T17:14:51Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.1
+- 公表: 2023-07-26T17:14:51Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.1
 
-With this release, we have made a number of improvements to the UI and internal workings of our app. For example, we've reworked the YouTube player to support all video formats, including Live Streams and Shorts. Actually, it's based on the internal web browser that opens YouTube and has ad-blocking functionality built in. Take a look at the Protection section for a detailed description of this feature. We also made it easier for you to access *App management*. It's now just one tap away via the button we've added to the tab bar menu at the bottom.
+今回のリリースでは、アプリのUIや内部の作業に多くの改善を行いました。 たとえば、ライブストリームとショートを含むすべてのビデオフォーマットをサポートするためにYouTubeプレーヤーを再構築しました。 実は、YouTubeを開いた内部のWebブラウザに基づいており、内蔵のアドブロック機能があります。 この機能の詳細な説明については、保護セクションをご覧ください。 ※アプリ管理*にアクセスしやすくなりました。 一番下にあるタブバーメニューに追加されたボタンを経由してタップするだけでなりました。
 
-## Changelog
+## 変更履歴
 
-### Features
-* Added `com.homeretailgroup.myargoscard` and related domains to exclusions [#3480](https://github.com/AdguardTeam/AdguardForAndroid/issues/3480)
-* Added support for com.quark.browser and com.qihoo.contents [#3673](https://github.com/AdguardTeam/AdguardForAndroid/issues/3673)
-* Easier access to App management [#4408](https://github.com/AdguardTeam/AdguardForAndroid/issues/4408)
+### 特徴:
+* 追加`com.homeretailgroup.myargoscard`除外するドメイン [#3480](https://github.com/AdguardTeam/AdguardForAndroid/issues/3480)
+* com.quark.browserとcom.qihoo.contentsのサポートを追加しました [#3673](https://github.com/AdguardTeam/AdguardForAndroid/issues/3673)
+* アプリ管理の簡単なアクセス [#4408](https://github.com/AdguardTeam/AdguardForAndroid/issues/4408)
 
-### Fixes
-* AdGuard player does not play a YouTube video when tapping the Share button in a browser [#3932](https://github.com/AdguardTeam/AdguardForAndroid/issues/3932)
-* Improved the behavior of bug report and feature request screens to prevent duplicates [#4814](https://github.com/AdguardTeam/AdguardForAndroid/issues/4814)
-* *Reset to default* in General settings doesn't work properly [#4719](https://github.com/AdguardTeam/AdguardForAndroid/issues/4719)
-* Added `com.apple.movetoios` to exclusions [#3676](https://github.com/AdguardTeam/AdguardForAndroid/issues/3676)
-* AdGuard v4.0 for Android frequently restarts protection [#4707](https://github.com/AdguardTeam/AdguardForAndroid/issues/4707)
-* When trying to go back after submitting a bug report, an infinite loader is displayed [#4792](https://github.com/AdguardTeam/AdguardForAndroid/issues/4792)
-* After updating the filters, the updated filters are displayed in a row [#4790](https://github.com/AdguardTeam/AdguardForAndroid/issues/4790)
-* Chrome Remote Desktop does not work unless filtering for the app is turned off [#4036](https://github.com/AdguardTeam/AdguardForAndroid/issues/4036)
-* Added `pl.tvn.player` to filtering exclusions [#3646](https://github.com/AdguardTeam/AdguardForAndroid/issues/3646)
-* Incorrect transition from the Use license key tab when entering a blocked key [#4562](https://github.com/AdguardTeam/AdguardForAndroid/issues/4562)
-* Switching to another tab via snack does not work [#4502](https://github.com/AdguardTeam/AdguardForAndroid/issues/4502)
-* On a small display, the buttons overlap the text on the Userscript screen [#4750](https://github.com/AdguardTeam/AdguardForAndroid/issues/4750)
-* The com.rapido.passenger app is not working [#3976](https://github.com/AdguardTeam/AdguardForAndroid/issues/3976)
-* When checking for updates, the Browsing Security Database should report "Up to date" if no update has been installed [#4725](https://github.com/AdguardTeam/AdguardForAndroid/issues/4725)
-* Added `com.inpost.fresh` to filtering exclusions [#3979](https://github.com/AdguardTeam/AdguardForAndroid/issues/3979)
+### フィックス
+* AdGuard プレーヤーは、ブラウザの [#3932] で [共有] ボタンをタップしたときに YouTube ビデオを再生しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/3932)
+* バグ報告と機能リクエスト画面の動作を改善し、重複を防ぐことができます。 [#4814](https://github.com/AdguardTeam/AdguardForAndroid/issues/4814)
+* *一般設定のデフォルト*へのリセットは正しく動作しません [#4719](https://github.com/AdguardTeam/AdguardForAndroid/issues/4719)
+* 追加`com.apple.movetoios`除外する [#3676](https://github.com/AdguardTeam/AdguardForAndroid/issues/3676)
+* 頻繁にAndroid用のAdGuard v4.0は保護を再開します [#4707](https://github.com/AdguardTeam/AdguardForAndroid/issues/4707)
+* バグ報告を提出した後に戻ろうとすると、無限のローダーが表示される[#4792](https://github.com/AdguardTeam/AdguardForAndroid/issues/4792)
+* フィルターの更新後、更新されたフィルターは列[#4790]で表示されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/4790)
+* Chromeリモートデスクトップは、アプリのフィルタリングが[#4036]をオフにされていない限り動作しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/4036)
+* 追加`pl.tvn.player`除外をフィルタリングするには [#3646](https://github.com/AdguardTeam/AdguardForAndroid/issues/3646)
+* ブロックされたキー[#4562]を入力すると、使用ライセンスキータブからの誤った遷移()https://github.com/AdguardTeam/AdguardForAndroid/issues/4562)
+* スナックを経由して別のタブに切り替える作業はしない [#4502](https://github.com/AdguardTeam/AdguardForAndroid/issues/4502)
+* 小さな表示では、ボタンはUserscript画面[#4750]のテキストをオーバーラップします(https://github.com/AdguardTeam/AdguardForAndroid/issues/4750)
+* com.rapido.passengerアプリは動作していません [#3976](https://github.com/AdguardTeam/AdguardForAndroid/issues/3976)
+* アップデートの確認時、Browsing Security Databaseはアップデートがインストールされていない場合は「最新の状態まで」を「#4725」に報告する必要があります。https://github.com/AdguardTeam/AdguardForAndroid/issues/4725)
+* 追加`com.inpost.fresh`除外をフィルタリングするには [#3979](https://github.com/AdguardTeam/AdguardForAndroid/issues/3979)
 
-### Design
-* Improved the technical info dialog [#4717](https://github.com/AdguardTeam/AdguardForAndroid/issues/4717)
-* Improved the app's language screen [#4718](https://github.com/AdguardTeam/AdguardForAndroid/issues/4718)
+### デザイン
+* テクニカル情報ダイアログ [#4717] の改善https://github.com/AdguardTeam/AdguardForAndroid/issues/4717)
+* アプリの言語画面を改善しました [#4718](https://github.com/AdguardTeam/AdguardForAndroid/issues/4718)
 
-### Versions
-* Upgraded CoreLibs to v1.11.113
-* Upgraded DnsLibs to v2.2.14
+### バージョン
+* アップグレードされたCoreLibsにv1.11.113
+* DnsLibs を v2.2.14 にアップグレード
 
-#### DnsLibs
+#### DnsLibs(ドングリブ)
 
-* Added `lb._dns-sd._udp.*.in-addr.arpa` to the default list of exclusions [#194](https://github.com/AdguardTeam/DnsLibs/issues/194)
-* `$denyallow` rules are not validated until additional modifiers are added [#191](https://github.com/AdguardTeam/DnsLibs/issues/191)
-* Fallback upstream is not enabled for invalid plain DNS upstream [#4820](https://github.com/AdguardTeam/AdguardForAndroid/issues/4820)
-* For IP-based DoT/DoQ connections, IP address is set for SNI [#186](https://github.com/AdguardTeam/DnsLibs/issues/186)
-* Overall timeout is bigger when multiple upstreams are added [#105](https://github.com/AdguardTeam/DnsLibs/issues/105)
-* Added XPC support [#174](https://github.com/AdguardTeam/DnsLibs/issues/174)
-* Added the `dnsproxy_settings::request_timeout setting` instead of the upstream-specific ones [#163](https://github.com/AdguardTeam/DnsLibs/issues/163)
-* DNS-over-QUIC upstream does not respect resolved_ip [#185](https://github.com/AdguardTeam/DnsLibs/issues/185)
-* Traffic is routed from DNS 127.0.0.1 to an outbound proxy server [#195](https://github.com/AdguardTeam/DnsLibs/issues/195)
-* Added SPKI fingerprint verification feature [#172](https://github.com/AdguardTeam/DnsLibs/issues/172)
+* 追加`lb._dns-sd._udp.*.in-addr.arpa`除外のデフォルトリストへ [#194](https://github.com/AdguardTeam/DnsLibs/issues/194)
+* `$denyallow`追加の修飾子が追加されるまでルールが検証されていない[#191](https://github.com/AdguardTeam/DnsLibs/issues/191)
+* フォールバックアップストリームが無効なプレーンDNS上流で有効化されていない[#4820](https://github.com/AdguardTeam/AdguardForAndroid/issues/4820)
+* IP ベースの DoT/DoQ 接続の場合、IP アドレスは SNI [#186] に設定されます。https://github.com/AdguardTeam/DnsLibs/issues/186)
+* 複数の上流を追加したときに全体的なタイムアウトが大きい [#105](https://github.com/AdguardTeam/DnsLibs/issues/105)
+* XPC サポートを追加 [#174](https://github.com/AdguardTeam/DnsLibs/issues/174)
+* 追加された`dnsproxy_settings::request_timeout setting`上流固有のものの代わりに [#163](https://github.com/AdguardTeam/DnsLibs/issues/163)
+* DNS-over-QUIC 上流はrequid ip [#185] を尊重しません(https://github.com/AdguardTeam/DnsLibs/issues/185)
+* トラフィックは、DNS 127.0.0.1からアウトバウンドプロキシサーバーにルーティングされます[#195](https://github.com/AdguardTeam/DnsLibs/issues/195)
+* SPKI指紋認証機能を追加(#172)(https://github.com/AdguardTeam/DnsLibs/issues/172)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 4.1 Beta 1
+## 4.1 ベータ 1
 
-- Published: 2023-07-21T18:37:51Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.1-beta-1
+- 公表: 2023-07-21T18:37:51Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.1-beta-1
 
-With this release, we have made a number of improvements to the UI and internal workings of our app. For example, we've redesigned the YouTube player to support all video formats, including live streams, regular videos and shorts. Have a look at the Protection section for a detailed description of this feature. We also made it easier for you to access Apps Management. It's now just one click away via the button we've added to the tab bar menu at the bottom.
+今回のリリースでは、アプリのUIや内部の作業に多くの改善を行いました。 たとえば、ライブストリーム、定期的なビデオ、ショートを含むすべてのビデオフォーマットをサポートするYouTubeプレーヤーを再設計しました。 この機能の詳細な説明については、保護セクションを参照してください。 また、Apps Managementにアクセスしやすくなりました。 一番下にあるタブバーメニューに追加したボタンでワンクリックでクリックします。
 
-## Changelog
+## 変更履歴
 
-### Features
-* Added com.homeretailgroup.myargoscard and associated domains to exclusions [#3480](https://github.com/AdguardTeam/AdguardForAndroid/issues/3480 )
-* Added support for com.quark.browser and com.qihoo.contents [#3673](https://github.com/AdguardTeam/AdguardForAndroid/issues/3673)
-* Easier access to Apps management [#4408](https://github.com/AdguardTeam/AdguardForAndroid/issues/4408)
+### 特徴:
+* com.homeretailgroup.myargoscard と関連するドメインを除外に追加 [#3480](https://github.com/AdguardTeam/AdguardForAndroid/issues/3480 )
+* com.quark.browserとcom.qihoo.contentsのサポートを追加しました [#3673](https://github.com/AdguardTeam/AdguardForAndroid/issues/3673)
+* 使いやすいアプリ管理 [#4408](https://github.com/AdguardTeam/AdguardForAndroid/issues/4408)
 
-### Fixes
-* Improved the behavior of bug report and feature request screens to prevent duplicates [#4814](https://github.com/AdguardTeam/AdguardForAndroid/issues/4814)
-* "Reset to default" in the General settings doesn't work as it should [#4719](https://github.com/AdguardTeam/AdguardForAndroid/issues/4719)
-* Added com.apple.movetoios to the exclusions [#3676](https://github.com/AdguardTeam/AdguardForAndroid/issues/3676)
-* AdGuard 4 nightly frequently restarts protection [#4707](https://github.com/AdguardTeam/AdguardForAndroid/issues/4707)
-* When trying to go back after submitting a bug report, an infinite loader is displayed [#4792](https://github.com/AdguardTeam/AdguardForAndroid/issues/4792)
-* After updating the filters, the updated filters are displayed in a row [#4790](https://github.com/AdguardTeam/AdguardForAndroid/issues/4790)
-* Chrome Remote Desktop does not work unless filtering for the app is turned off [#4036](https://github.com/AdguardTeam/AdguardForAndroid/issues/4036)
-* Added pl.tvn.player to the filtering exclusions [#3646](https://github.com/AdguardTeam/AdguardForAndroid/issues/3646)
-* Incorrect transition from the Use license key tab when entering a blocked key [#4562](https://github.com/AdguardTeam/AdguardForAndroid/issues/4562)
-* Switching to another tab via snack does not work [#4502](https://github.com/AdguardTeam/AdguardForAndroid/issues/4502)
-* On a small display, the buttons overlap the text on the Userscript screen [#4750](https://github.com/AdguardTeam/AdguardForAndroid/issues/4750)
-* The com.rapido.passenger app is not working [#3976](https://github.com/AdguardTeam/AdguardForAndroid/issues/3976)
-* When checking for updates, the Browsing Security Database should report "Up to date" if no update has been installed [#4725](https://github.com/AdguardTeam/AdguardForAndroid/issues/4725)
+### フィックス
+* バグ報告と機能リクエスト画面の動作を改善し、重複を防ぐことができます。 [#4814](https://github.com/AdguardTeam/AdguardForAndroid/issues/4814)
+* 一般設定の「デフォルト設定」は[#4719]()が動作しないhttps://github.com/AdguardTeam/AdguardForAndroid/issues/4719)
+* com.apple.movetoios を除外に追加 [#3676](https://github.com/AdguardTeam/AdguardForAndroid/issues/3676)
+* AdGuard 4 夜に頻繁に保護を再開 [#4707](https://github.com/AdguardTeam/AdguardForAndroid/issues/4707)
+* バグ報告を提出した後に戻ろうとすると、無限のローダーが表示される[#4792](https://github.com/AdguardTeam/AdguardForAndroid/issues/4792)
+* フィルターの更新後、更新されたフィルターは列[#4790]で表示されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/4790)
+* Chromeリモートデスクトップは、アプリのフィルタリングが[#4036]をオフにされていない限り動作しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/4036)
+* フィルタリング除外にpl.tvn.playerを追加 [#3646](https://github.com/AdguardTeam/AdguardForAndroid/issues/3646)
+* ブロックされたキー[#4562]を入力すると、使用ライセンスキータブからの誤った遷移()https://github.com/AdguardTeam/AdguardForAndroid/issues/4562)
+* スナックを経由して別のタブに切り替える作業はしない [#4502](https://github.com/AdguardTeam/AdguardForAndroid/issues/4502)
+* 小さな表示では、ボタンはUserscript画面[#4750]のテキストをオーバーラップします(https://github.com/AdguardTeam/AdguardForAndroid/issues/4750)
+* com.rapido.passengerアプリは動作していません [#3976](https://github.com/AdguardTeam/AdguardForAndroid/issues/3976)
+* アップデートの確認時、Browsing Security Databaseはアップデートがインストールされていない場合は「最新の状態まで」を「#4725」に報告する必要があります。https://github.com/AdguardTeam/AdguardForAndroid/issues/4725)
 
-* Added com.inpost.fresh to the filtering exclusions [#3979](https://github.com/AdguardTeam/AdguardForAndroid/issues/3979)
+* フィルタリング除外にcom.inpost.freshを追加しました [#3979](https://github.com/AdguardTeam/AdguardForAndroid/issues/3979)
 
-### Design
-* Improved the technical info dialog [#4717](https://github.com/AdguardTeam/AdguardForAndroid/issues/4717)
-* Improved the app's language screen [#4718](https://github.com/AdguardTeam/AdguardForAndroid/issues/4718)
+### デザイン
+* テクニカル情報ダイアログ [#4717] の改善https://github.com/AdguardTeam/AdguardForAndroid/issues/4717)
+* アプリの言語画面を改善しました [#4718](https://github.com/AdguardTeam/AdguardForAndroid/issues/4718)
 
-### Versions
-* Upgraded CoreLibs to v1.11.113
-* Upgraded DnsLibs to v2.2.14
+### バージョン
+* アップグレードされたCoreLibsにv1.11.113
+* DnsLibs を v2.2.14 にアップグレード
 
-#### DnsLibs
+#### DnsLibs(ドングリブ)
 
-* Added "lb._dns-sd._udp.*.in-addr.arpa" to the default list of exclusions [#194](https://github.com/AdguardTeam/DnsLibs/issues/194)
-* The $denyallow rules are not validated until additional modifiers are added [#191](https://github.com/AdguardTeam/DnsLibs/issues/191)
-* Fallback upstream not enabled for invalid plain DNS upstream [#4820](https://github.com/AdguardTeam/AdguardForAndroid/issues/4820)
-* For IP-based DoT/DoQ connections, IP address is set for SNI [#186](https://github.com/AdguardTeam/DnsLibs/issues/186)
-* Overall timeout is bigger when multiple upstreams are added [#105](https://github.com/AdguardTeam/DnsLibs/issues/105)
-* Added XPC support [#174](https://github.com/AdguardTeam/DnsLibs/issues/174)
-* Added the dnsproxy_settings::request_timeout setting instead of the upstream specific ones [#163](https://github.com/AdguardTeam/DnsLibs/issues/163)
-* Dns-over-QUIC upstream does not respect resolved_ip [#185](https://github.com/AdguardTeam/DnsLibs/issues/185)
-* Traffic is routed from DNS 127.0.0.1 to an outbound proxy server [#195](https://github.com/AdguardTeam/DnsLibs/issues/195)
-* Added SPKI fingerprint verification feature [#172](https://github.com/AdguardTeam/DnsLibs/issues/172)
+* 除外のデフォルトリストに「lb. dns-sd. udp.*.in-addr.arpa」を追加しました[#194](https://github.com/AdguardTeam/DnsLibs/issues/194)
+* 追加修飾子が追加されるまで$denyallowルールは検証されません[#191](https://github.com/AdguardTeam/DnsLibs/issues/191)
+* 無効なプレーンDNS上流でフォールバックアップストリームが有効でない[#4820](https://github.com/AdguardTeam/AdguardForAndroid/issues/4820)
+* IP ベースの DoT/DoQ 接続の場合、IP アドレスは SNI [#186] に設定されます。https://github.com/AdguardTeam/DnsLibs/issues/186)
+* 複数の上流を追加したときに全体的なタイムアウトが大きい [#105](https://github.com/AdguardTeam/DnsLibs/issues/105)
+* XPC サポートを追加 [#174](https://github.com/AdguardTeam/DnsLibs/issues/174)
+* dnsproxy settings::request timeout の設定を上流の特定のものの代わりに追加しました [#163](https://github.com/AdguardTeam/DnsLibs/issues/163)
+* Dns-over-QUIC 上流は、requid ip [#185] を尊重しません(https://github.com/AdguardTeam/DnsLibs/issues/185)
+* トラフィックは、DNS 127.0.0.1からアウトバウンドプロキシサーバーにルーティングされます[#195](https://github.com/AdguardTeam/DnsLibs/issues/195)
+* SPKI指紋認証機能を追加(#172)(https://github.com/AdguardTeam/DnsLibs/issues/172)
 
 ---
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 4.0
 
-- Published: 2023-06-13T18:10:45Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0
+- 公開日: 2023-06-13T18:10:45Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0
 
-## Remarkable сhanges in AdGuard v4.0 for Android
+## アンドロイド用のAdGuard v4.0で注目すべきチャンネル
 
-Finally, we are ready to reveal the result of titanic efforts! Let’s take a closer look at AdGuard v4.0 for Android and talk about what has changed since version 3.6. 
+最後に、ティタニックの努力の結果を明らかにする準備ができています! Android 用の AdGuard v4.0 を詳しく見て、バージョン 3.6 以降に何が変更されたかについて話しましょう。
 
-### Total reengineering
+### トータルリエンジニアリング
 
-We've overhauled the entire app, meticulously rewriting every line of code from the ground up. This transformative revamp has resulted in an app that's not only faster, but also smoother than ever before. 
+私たちは、アプリ全体をオーバーホールしました, 地面からコードのすべての行を慎重に書き換えます. この変換式刷新は、これまで以上に早くてもスムーズなアプリで起用しました。
 
-### Complete redesign 
+### 完全な再設計
 
 <p align="center">
-<img src="https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/ca756813-86ae-428b-8302-12a37266900a" width="300" height="600">
+<img src="">https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/ca756813-86ae-428b-8302-12a37266900a"幅="300" 高さ="600">
 </p>
 
 
-We've reimagined the design to make the app interface simpler and bring core features to the forefront. Now, to turn on Ad blocking, Tracking protection, Annoyance blocking, or DNS protection along with their filters, you can just tap the corresponding icon above the main switch.
+アプリインターフェイスをシンプルにし、コア機能をフロントに持ち込むために設計を再開しました。 今度は、広告ブロック、追跡保護、Annoyanceブロック、またはDNS保護をフィルタとともにオンにするには、メインスイッチの上の対応するアイコンをタップするだけでOKです。
 
 <p align="center">
-<img src="https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/831280e2-06fc-4beb-b9f5-bb6ff087097a" width="300" height="600">
-</p>
-
-
-
-We've also added a separate *Protection* section. Accessible by tapping the shield icon at the bottom of the screen, this section gives you even more control. Apart from the above-mentioned “core” features, this section allows you to manage *Firewall*, *Browsing Security*, and even AdGuard VPN. From the Protection screen, you can turn these modules on or off as you wish and access their settings.
-
-### Firewall
-
-<p align="center">
-<img src="https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/55680f16-6c0f-4e0b-9c74-becd45d0966c" width="300" height="600">
+<img src="">https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/831280e2-06fc-4beb-b9f5-bb6ff087097a"幅="300" 高さ="600">
 </p>
 
 
 
-We've uncovered an exciting feature from the depths of AdGuard for Android — *Firewall* – and given it a full-fledged, independent status. With it, you are the master of your domain, deciding which apps can indulge in mobile data or Wi-Fi when the screen is off. It is designed to keep you in the know with real-time notifications of app activities, so nothing escapes your attention.
+また、別々の *Protection* セクションを追加しました。 画面の下部にあるシールドアイコンをタップすることでアクセス可能で、このセクションではさらに多くの制御が可能になります。 上記の「コア」機能とは別に、このセクションでは、*Firewall*、*Browsing Security*、さらにはAdGuard VPNを管理することができます。 保護画面から、これらのモジュールをオンまたはオフにすることができます。
 
-And for those lightning-fast modifications, head over to the *Quick actions* section where updating firewall rules has never been simpler. With *Firewall*, you can also block apps from accessing the Internet while in roaming, saving your precious megabytes abroad.
-
-### Detailed statistics
+### 防火壁
 
 <p align="center">
-<img src="https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/8cc898c9-685b-4afe-b63c-858e56c0d910" width="300" height="1350">
+<img src="">https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/55680f16-6c0f-4e0b-9c74-becd45d0966c"幅="300" 高さ="600">
 </p>
 
 
 
+私たちは、Android用のAdGuardの深さからエキサイティングな機能を発見しました - *ファイアウォール* - それは本格的な独立したステータスを与えました。 ドメインのマスターで、画面が消えるときにアプリがモバイルデータやWi-Fiに侵入できるかを決定します。 アプリアクティビティのリアルタイム通知で把握できるように設計されているため、注意をエスケープしません。
 
-A dedicated tab offers comprehensive statistics about all apps, companies, and domains. Wondering which company's requests are blocked most often? Which apps are trying to send your data and to whom? You can quickly identify and block anything suspicious.
+これらの超高速修正のために、ファイアウォールルールを更新する*クイックアクション*セクションに向かいます。 *Firewall*では、ローミング時にインターネットにアクセスし、貴重なメガバイトを海外に保存するアプリをブロックすることもできます。
 
-### Integration with AdGuard VPN 
-
-As we wrote above, Integrated mode with AdGuard VPN was introduced in AdGuard v3.5 for Android. Until then, users had to go through seven circles of hell to get our ad blocker and VPN to work simultaneously. All because normally two different network-filtering apps can’t work alongside each other on Android.
-
-<p align="center">
-<img src="https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/e71cca1e-f1a6-4a06-87cb-0bebde89f1ab" width="300" height="600">
-</p>
-
-
-
-With the release of AdGuard v4.0 for Android, Integrated mode has become more stable than ever. Previously, each time AdGuard or AdGuard VPN was updated or reinstalled, Integrated mode had to be reconfigured. Now, you configure it once and it will withstand updates and reinstalls while maintaining the integration. In addition, more frequent information exchange between AdGuard Ad Blocker and AdGuard VPN enhances the stability of Integrated mode without affecting performance.
-
-> Changes in Integrated mode are synced between AdGuard v4.0 for Android and AdGuard VPN v2.3 for Android. Be sure to update both apps to the latest versions to enjoy their most stable and smooth simultaneous operation in Integrated mode. 
-
-### Selective app proxying
+### 詳細な統計情報
 
 <p align="center">
-<img src="https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/5dd58f40-a43b-4814-b62b-6e7169631e31" width="300" height="600">
+<img src="">https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/8cc898c9-685b-4afe-b63c-858e56c0d910"幅="300" 高さ="1350">
 </p>
 
 
 
 
-Before AdGuard v4.0 for Android, you could route all of your web traffic through a specified proxy server. With the *Apps operating through proxy* feature, located at *Settings → Filtering → Network → Proxy*, you can now choose which apps will work through your proxy. In addition, *Apps operating through proxy* allows you to specify which apps will route their traffic through AdGuard VPN when operating in Integrated mode. 
+専用のタブは、すべてのアプリ、企業、ドメインに関する包括的な統計情報を提供します。 会社の要求が最も頻繁にブロックされるのはなぜですか? どのアプリがデータを送信しようとしているのか? 疑わしいものを素早く識別し、ブロックすることができます。
 
-### Root access perks
+### AdGuard VPN との統合
 
-For all the tech enthusiasts out there, the term “root” is no stranger to you. Rooting is essentially unlocking your device to gain more privileged control. If your Android device is rooted, AdGuard v4.0 for Android offers you unprecedented capabilities beyond any previous version of AdGuard Ad Blocker.
-
-Traditionally, AdGuard routes network traffic to its CoreLibs filtering engine by establishing a local VPN. But now, with root access, you can switch AdGuard to the *Automatic proxy* mode. Just navigate to *Settings → Filtering → Network → Routing mode* and switch to *Automatic proxy*. This action takes local VPN out of the picture and instead configures iptables to accomplish the same goals. And there are several benefits to this change.
-
-Firstly, AdGuard is now able to apply DNS filtering to IPv6 requests, something that was not possible before. Secondly, we've ironed out a few issues that hampered AdGuard from accurately associating web requests with their respective apps. This fine-tuning will enhance the performance of Firewall, Filtering log, and so forth. For those of you with rooted devices, this AdGuard update takes your control and customization to a whole new level!
-
-### Low-level settings rework
-
-Diving into the realm of Low-level settings? Found under Settings → General → Advanced, these options are designed with the tech-savvy user in mind. It's a powerful playground, but it's also a place where it's all too easy to mess things up if you're not careful. Despite all the warnings we’ve placed, it's human nature to explore and experiment, often without fully understanding the consequences.
+上記のように、AdGuard VPN との統合モードは、Android 用の AdGuard v3.5 で導入されました。 それまで、ユーザーは、広告ブロッカーとVPNを同時に動作させるために、7つの地獄の円を通過しなければなりませんでした。 通常の2つの異なるネットワークフィルタリングアプリは、Android上で互いに動作することができないため、すべて。
 
 <p align="center">
-<img src="https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/723ce5f2-a8f5-474b-962d-67b82d552045" width="300" height="600">
+<img src="">https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/e71cca1e-f1a6-4a06-87cb-0bebde89f1ab"幅="300" 高さ="600">
 </p>
 
 
 
-In response to this, we've made the Low-level settings more user-friendly and intuitive. It's now easier to understand what each setting does, and even if you do make a mistake, we've implemented security measures like validation checks for entered values to protect you from major missteps.
+Android用のAdGuard v4.0のリリースでは、統合モードはこれまで以上に安定しています。 以前は、AdGuardまたはAdGuard VPNが更新または再インストールされたたびに、統合モードが再構成されなければなりませんでした。 これで、一度設定すると、統合を維持しながら更新と再インストールに耐えられます。 さらに、AdGuard Ad BlockerとAdGuard VPN間でより頻繁に情報交換が、パフォーマンスに影響を与えずに統合モードの安定性を高めます。
 
-As for the settings themselves, we've added new ones, retired old ones, and have continued to refine this advanced toolset. A [comprehensive guide on Low-level settings is available in our Knowledge base](https://adguard.com/kb/adguard-for-android/solving-problems/low-level-settings/). So get ready for an enhanced, yet safer deep dive into the depths of customization with AdGuard's advanced settings!
+> 統合モードの変更は、Android および AdGuard VPN v2.3 の AdGuard v4.0 と Android 間で同期されます。 両方のアプリを最新バージョンに更新して、統合モードで最も安定したスムーズな同時操作を楽しむようにしてください。
 
-#### AdGuard for Android direct download links:
+### 選択型アプリプロキシ
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+<p align="center">
+<img src="">https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/5dd58f40-a43b-4814-b62b-6e7169631e31"幅="300" 高さ="600">
+</p>
+
+
+
+
+Android 用の AdGuard v4.0 以前は、指定されたプロキシサーバーを介してすべての Web トラフィックをルーティングできます。 *Settings → [フィルタリング] → [ネットワーク] → [プロキシ] にあるプロキシ*機能を使用して動作する *Appsを使用すると、プロキシを通じてどのアプリが動作するかを選択できます。 また、*プロキシ*で動作するアプリは、統合モードで動作する場合、AdGuard VPNを介してトラフィックをルートするアプリを指定することができます。
+
+### ルートアクセス特典
+
+そこにあるすべての技術愛好家にとって、「root」という用語は、あなたに見知らぬ人ではありません。 ルーティングは、デバイスがより特権的なコントロールを獲得するために不可欠です。 あなたのAndroidデバイスが根ざしている場合は、Android用のAdGuard v4.0は、以前のバージョンのAdGuard Ad Blockerを超えて、非推奨の機能を提供します。
+
+伝統的に、AdGuard は、ローカル VPN を確立することで、コアリブのフィルタリングエンジンにネットワークトラフィックをルーティングします。 しかし、今ではrootアクセスで、AdGuardを*Automaticプロキシ*モードに切り替えることができます。 *Settings → フィルタリング → ネットワーク → ルーティング モード* に移動し、*Automatic プロキシ* に切り替えます。 このアクションは、ローカルVPNを画像から取り出し、代わりに、同じ目標を達成するためのiptablesを設定します。 この変更にはいくつかの利点があります。
+
+まず、AdGuard は IPv6 リクエストに DNS フィルタリングを適用できるようになりました。以前は不可能なものでした。 次に、AdGuardが各アプリでWebリクエストを正確に関連付けるという問題がいくつかありました。 この微調整は、ファイアウォール、フィルタリングログなどの性能を強化します。 根ざしたデバイスをお持ちのお客様には、このAdGuardアップデートでは、制御とカスタマイズをまったく新しいレベルに引き上げます!
+
+### 低レベルの設定作業
+
+低レベルの設定の領域に潜入しますか? [設定] → [全般] → [詳細] で、これらのオプションは、技術に精通したユーザーを念頭に置いて設計されています。 パワフルな遊び場ですが、気にしないと物事を混乱させるのもとても簡単です。 私たちが配置したすべての警告にもかかわらず、それは人間の性質を探求し、実験することです。多くの場合、その結果を完全に理解することなく。
+
+<p align="center">
+<img src="">https://github.com/AdguardTeam/AdguardForAndroid/assets/107266340/723ce5f2-a8f5-474b-962d-67b82d552045"幅="300" 高さ="600">
+</p>
+
+
+
+これにより、ユーザーフレンドリーで直感的な低レベル設定を実現しました。 各設定が何であるかを理解しやすくなりましたが、間違いを犯す場合でも、入力した値の検証チェックなどのセキュリティ対策を実施して、大きな間違いから保護します。
+
+設定自体は、新しいものを追加し、古いものを退職し、この高度なツールセットを改良し続けてきました。 知識ベースでは、低レベルの設定に関する総合ガイドがご利用いただけます。https://adguard.com/kb/adguard-for-android/solving-problems/low-level-settings/)。 そのため、AdGuardの高度な設定でカスタマイズの深さに強化された、まだより安全な深層ダイビングの準備ができました!
+
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
+
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 4.0 RC 1
 
-- Published: 2023-06-01T16:30:03Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-rc-1
+- 公開日: 2023-06-01T16:30:03Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-rc-1
 
-We are excited to present the first release candidate of AdGuard v4.0 for Android! In this update, we have addressed several issues to improve the overall performance and user experience.
+Android向けAdGuard v4.0の最初のリリース候補をプレゼント! 今回のアップデートでは、パフォーマンスとユーザーエクスペリエンスを向上させるために、いくつかの問題に対処しました。
 
-## Changelog
-### Fixes
-* Show a list of companies related to statistics records when tapping "Show all companies" [#4716](https://github.com/AdguardTeam/AdguardForAndroid/issues/4716)
-* In Integration mode, with Proxy enabled, the notification falsely reports the use of a proxy server [#4739](https://github.com/AdguardTeam/AdguardForAndroid/issues/4739)
-* Incorrect behavior of sorting order for Apps/Companies [#4730](https://github.com/AdguardTeam/AdguardForAndroid/issues/4730)
-* Incorrect behavior of AdGuard after enabling a third-party VPN [#4687](https://github.com/AdguardTeam/AdguardForAndroid/issues/4687)
-* Incorrect behavior of app switches in HTTPS-filtered apps [#4729](https://github.com/AdguardTeam/AdguardForAndroid/issues/4729)
-* Notification language changes after screen rotation [#4661](https://github.com/AdguardTeam/AdguardForAndroid/issues/4661)
-* Recent activity is cleared after quitting the app [#4705](https://github.com/AdguardTeam/AdguardForAndroid/issues/4705)
-* Remove parallel resolving from the "Add DNS server" dialogue [#4713](https://github.com/AdguardTeam/AdguardForAndroid/issues/4713)
-* Show snack or something like that on the "User rules" screen in some cases [#4712](https://github.com/AdguardTeam/AdguardForAndroid/issues/4712)
-* Snack blinks in "Apps operating through proxy" [#4728](https://github.com/AdguardTeam/AdguardForAndroid/issues/4728)
-* Some translations don't fit in the fields [#4623](https://github.com/AdguardTeam/AdguardForAndroid/issues/4623)
-* Technical version is displayed in the "What's new" popup [#4727](https://github.com/AdguardTeam/AdguardForAndroid/issues/4727)
-* The last item does not fit in the Proxy settings on compact devices [#4738](https://github.com/AdguardTeam/AdguardForAndroid/issues/4738)
-* The license is not reset after removing the device from the list in the AdGuard account [#4710](https://github.com/AdguardTeam/AdguardForAndroid/issues/4710)
-* The requests bar bounces when changing the period of statistics [#4720](https://github.com/AdguardTeam/AdguardForAndroid/issues/4720)
-* The update channel is not changed until the app is restarted [#4741](https://github.com/AdguardTeam/AdguardForAndroid/issues/4741)
-* Truncated list in HTTPS-filtered apps and apps operating through proxy [#4688](https://github.com/AdguardTeam/AdguardForAndroid/issues/4688)
+## 変更履歴
+### フィックス
+* 「すべての企業を表示」をタップしたときに統計記録に関連する企業のリストを表示します。 [#4716](https://github.com/AdguardTeam/AdguardForAndroid/issues/4716)
+* インテグレーションモードでは、プロキシが有効になっていると、通知は偽りプロキシサーバーの使用を報告します[#4739](https://github.com/AdguardTeam/AdguardForAndroid/issues/4739)
+* Apps/Companies [#4730] の注文をソートする誤った動作 (https://github.com/AdguardTeam/AdguardForAndroid/issues/4730)
+* サードパーティのVPNを有効にした後、AdGuardの誤った動作 [#4687](https://github.com/AdguardTeam/AdguardForAndroid/issues/4687)
+* HTTPS フィルタリングされたアプリでアプリのスイッチの誤った動作 [#4729](https://github.com/AdguardTeam/AdguardForAndroid/issues/4729)
+* 画面回転後の通知言語変更 [#4661](https://github.com/AdguardTeam/AdguardForAndroid/issues/4661)
+* 最近の活動は、アプリを終了した後にクリアされます [#4705](https://github.com/AdguardTeam/AdguardForAndroid/issues/4705)
+* 「DNSサーバーを追加」ダイアログから並列解決 [#4713](https://github.com/AdguardTeam/AdguardForAndroid/issues/4713)
+* 場合によっては「ユーザールール」画面の「スナック」や「いいね」などが表示されます。[#4712](https://github.com/AdguardTeam/AdguardForAndroid/issues/4712)
+* 「プロキシで動作するアプリ」のスナックブリンク [#4728](https://github.com/AdguardTeam/AdguardForAndroid/issues/4728)
+* 一部の翻訳はフィールドに収まらない [#4623](https://github.com/AdguardTeam/AdguardForAndroid/issues/4623)
+* 「What's new」ポップアップ[#4727]にテクニカルバージョンが表示されます。(https://github.com/AdguardTeam/AdguardForAndroid/issues/4727)
+* 最後のアイテムは、コンパクトなデバイスのプロキシ設定に合わない[#4738](https://github.com/AdguardTeam/AdguardForAndroid/issues/4738)
+* AdGuardアカウントの一覧からデバイスを削除した後、ライセンスはリセットされません[#4710](https://github.com/AdguardTeam/AdguardForAndroid/issues/4710)
+* 統計期間を変更するときにリクエストバーがバウンス [#4720](https://github.com/AdguardTeam/AdguardForAndroid/issues/4720)
+* アプリが再起動するまでの更新チャネルは変更されません。 [#4741](https://github.com/AdguardTeam/AdguardForAndroid/issues/4741)
+* プロキシを介して動作するHTTPSフィルタ付きアプリやアプリで Truncatedリスト [#4688]()https://github.com/AdguardTeam/AdguardForAndroid/issues/4688)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 4.0 beta 2
+## 4.0 ベータ 2
 
-- Published: 2023-05-25T14:23:44Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-beta-2
+- 公表: 2023-05-25T14:23:44Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-beta-2
 
-We’re now in the cleanup phase, so the changelog for the second beta of AdGuard v4.0 for Android is almost entirely bug fixes. This is where we need your help: if you find any problems with this version, please report a bug in the [Android repo](https://github.com/AdguardTeam/AdGuardforAndroid/issues) or vote for an existing bugfix.
+今、クリーンアップフェーズではあります。そのため、Android用のAdGuard v4.0の2番目のベータのchangelogはほぼ完全にバグ修正です。 このバージョンに問題がある場合は、ヘルプが必要な場合は、[Androidリポジトリ]のバグを報告してください。https://github.com/AdguardTeam/AdGuardforAndroid/issues) または既存のバグ修正の投票。
 
-Not forgetting the improvements: we updated CoreLibs and DnsLibs, added a couple of features, and worked on the stats screen.
+改善を忘れずに:CoreLibsとDnsLibsを更新し、いくつかの機能を追加し、統計画面で機能しました。
 
-## Changelog
+## 変更履歴
 
-### Features
+### 特徴:
 
-* Added fast scroll feature to the Recent activity screen [#4617](https://github.com/AdguardTeam/AdguardForAndroid/issues/4617)
-* Brought back `pref.proxy.disable.reconfigure` [#4636](https://github.com/AdguardTeam/AdguardForAndroid/issues/4636)
-* Changed wording of the stats notification [#4630](https://github.com/AdguardTeam/AdguardForAndroid/issues/4630)
-* Once AdGuard and AdGuard VPN are running in the *Integrated mode*, tapping the *Apps* section in the *Exclusions* tab in AdGuard VPN opens the *Apps operating through proxy* screen in AdGuard  [#281](https://github.com/AdguardTeam/AdGuardVPNForAndroid/issues/281)
-* Tap on the statistics numbers on the main screen leads to the *Statistics* screen [#4684](https://github.com/AdguardTeam/AdguardForAndroid/issues/4684)
-* Statistics numbers on the main screen and statistics screen are updated when AdGuard returns to the foreground [#4633](https://github.com/AdguardTeam/AdguardForAndroid/issues/4633)
+* 最近の活動画面に高速スクロール機能を追加 [#4617](https://github.com/AdguardTeam/AdguardForAndroid/issues/4617)
+* Brought バック`pref.proxy.disable.reconfigure` [#4636](https://github.com/AdguardTeam/AdguardForAndroid/issues/4636)
+* 統計通知の文言変更 [#4630](https://github.com/AdguardTeam/AdguardForAndroid/issues/4630)
+* AdGuard と AdGuard VPN が *Integrated mode* で実行されると、AdGuard VPN の *Exclusions* タブの *Apps* セクションをタップすると、AdGuard [#281] でプロキシ*画面で動作する *Apps が開きます。https://github.com/AdguardTeam/AdGuardVPNForAndroid/issues/281)
+* メイン画面の統計番号をタップすると、*Statistics*画面[#4684]になります(https://github.com/AdguardTeam/AdguardForAndroid/issues/4684)
+* AdGuardがフォアグラウンドに戻ると、メイン画面と統計画面の統計番号が更新されます[#4633](https://github.com/AdguardTeam/AdguardForAndroid/issues/4633)
 
-### Fixes
+### フィックス
 
-* The wrong rule is added through the *Add blocking rule* dialog [#4685](https://github.com/AdguardTeam/AdguardForAndroid/issues/4685)
-* Clicking *Buy license* closes the *You've already used your trial license* popup  [#4607](https://github.com/AdguardTeam/AdguardForAndroid/issues/4607)
-* The license promo is displayed instead of the filter details screen [#4647](https://github.com/AdguardTeam/AdguardForAndroid/issues/4647)
-* Adguard Extra does not work after resetting to default [#4602](https://github.com/AdguardTeam/AdguardForAndroid/issues/4602)
+* *「ブロックルールの追加」ダイアログ[#4685](https://github.com/AdguardTeam/AdguardForAndroid/issues/4685)
+* *Buyライセンス* をクリックすると、*トライアルライセンス* ポップアップ [#4607] が既に使用済みです。https://github.com/AdguardTeam/AdguardForAndroid/issues/4607)
+* フィルター詳細画面[#4647]の代わりにライセンスプロモーションが表示されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/4647)
+* Adguard Extra はデフォルト [#4602] にリセットした後は動作しません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4602)
 * В строке уведомлений всегда указано, что *Прокси работает*, независимо от состояния прокси [#4545](https://github.com/AdguardTeam/AdguardForAndroid/issues/4545)
-* Blinking text on the statistics tab [#4714](https://github.com/AdguardTeam/AdguardForAndroid/issues/4714)
-* Tapping the *Clear statistics* button does not remove data from the *Recent activity* section [#4715](https://github.com/AdguardTeam/AdguardForAndroid/issues/4715)
-* Disabling *Tracking protection* does not disable the corresponding filter lists [#4599](https://github.com/AdguardTeam/AdguardForAndroid/issues/4599)
-* Email auto-fill does not work with password managers [#4627](https://github.com/AdguardTeam/AdguardForAndroid/issues/4627)
-* Failed to export certificate into the device storage [#4609](https://github.com/AdguardTeam/AdguardForAndroid/issues/4609)
-* Green part of the downloading bar is slightly shifted to the left [#4625](https://github.com/AdguardTeam/AdguardForAndroid/issues/4625)
-* Logging in and out of a premium account does not restart protection [#4605](https://github.com/AdguardTeam/AdguardForAndroid/issues/4605)
-* The notification that protection is enabled can be dismissed [#4612](https://github.com/AdguardTeam/AdguardForAndroid/issues/4612)
-* Protection restarts after enabling the proxy switch with no proxy server on the list [#4681](https://github.com/AdguardTeam/AdguardForAndroid/issues/4681)
-* Protection status and icons positioning glitch [#4628](https://github.com/AdguardTeam/AdguardForAndroid/issues/4628)
-* Proxy hostname string fails to validate a correct domain name [#4603](https://github.com/AdguardTeam/AdguardForAndroid/issues/4603)
-* The list of proxy servers is not scrollable [#4654](https://github.com/AdguardTeam/AdguardForAndroid/issues/4654)
-* Proxy settings are not disabled when AdGuard works in the *Integration mode* [#4635](https://github.com/AdguardTeam/AdguardForAndroid/issues/4635)
-* Samsung Pay compatibility notification is shown not only to Korean users [#4629](https://github.com/AdguardTeam/AdguardForAndroid/issues/4629)
-* Scroll position is not saved in some cases when the *Recent activity* log is filtered by the keyword [#4699](https://github.com/AdguardTeam/AdguardForAndroid/issues/4699)
-* The search field is in the focus by default on Android 8 [#4618](https://github.com/AdguardTeam/AdguardForAndroid/issues/4618)
-* Snack glitch on the "Apps operating through proxy" screen [#4702](https://github.com/AdguardTeam/AdguardForAndroid/issues/4702)
-* Snacks in *Tracking protection* don't disappear [#4665](https://github.com/AdguardTeam/AdguardForAndroid/issues/4665)
-* AdGuard crashes on startup [#4649](https://github.com/AdguardTeam/AdguardForAndroid/issues/4649)
-* Statistics fail to be converted from GB to TB [#4638](https://github.com/AdguardTeam/AdguardForAndroid/issues/4638)
-* The statistics screen for a company is blank if no statistics have been registered for that company in the last 24 hours [#4642](https://github.com/AdguardTeam/AdguardForAndroid/issues/4642)
-* On small screens, texts overlap on the *Statistics* tab [#4664](https://github.com/AdguardTeam/AdguardForAndroid/issues/4664)
-* The summary is missing on the *Apps operating through proxy* screen [#4696](https://github.com/AdguardTeam/AdguardForAndroid/issues/4696)
-* The switch on the home screen changes position after loading statistics [#4678](https://github.com/AdguardTeam/AdguardForAndroid/issues/4678)
-* The tooltip for the *Recent activity log* is displayed at the wrong moment [#4701](https://github.com/AdguardTeam/AdguardForAndroid/issues/4701)
-* Transitive notification on the *Apps operating through proxy* screen in the *Integrated mode* [#4682](https://github.com/AdguardTeam/AdguardForAndroid/issues/4682)
-* Update button is hidden behind the tooltip [#4589](https://github.com/AdguardTeam/AdguardForAndroid/issues/4589)
-* Version number is shown on the *Updates screen* instead of the version name [#4690](https://github.com/AdguardTeam/AdguardForAndroid/issues/4690)
-* When exiting the Recent activity screen and returning back, the scroll position is retained [#4644](https://github.com/AdguardTeam/AdguardForAndroid/issues/4644)
-* The text entered in the custom search bar of the *Recent activity* screen remains after deleting when exiting the section and returning back [#4643](https://github.com/AdguardTeam/AdguardForAndroid/issues/4643)
-* The icons on the control panel blink when swiping between tabs in the Home tab [#4592](https://github.com/AdguardTeam/AdguardForAndroid/issues/4592)
-* Wrong alignment of a down arrow on the statistics screens [#4700](https://github.com/AdguardTeam/AdguardForAndroid/issues/4700)
-* Wrong underlying settings for the *Tracking protection* levels [#4632](https://github.com/AdguardTeam/AdguardForAndroid/issues/4632)
-* *App language* option disappears for devices with Chinese as the system language [#4666](https://github.com/AdguardTeam/AdguardForAndroid/issues/4666)
+* 統計タブのテキストを点滅 [#4714](https://github.com/AdguardTeam/AdguardForAndroid/issues/4714)
+* *Clear統計*ボタンをタップすると、*Recentアクティビティ*セクション[#4715]からデータを削除しません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4715)
+* *Tracking Protection* を無効にすると、対応するフィルタリスト [#4599] を無効にしません(https://github.com/AdguardTeam/AdguardForAndroid/issues/4599)
+* 電子メールの自動記入項目はパスワード マネージャーと働かなかった[#4627] (https://github.com/AdguardTeam/AdguardForAndroid/issues/4627)
+* デバイスストレージに証明書をエクスポートできなかった[#4609](https://github.com/AdguardTeam/AdguardForAndroid/issues/4609)
+* ダウンロードバーの緑色部分は左[#4625]に若干シフトされます(https://github.com/AdguardTeam/AdguardForAndroid/issues/4625)
+* プレミアムアカウントのログインとアウトが保護を再起動しない[#4605](https://github.com/AdguardTeam/AdguardForAndroid/issues/4605)
+* 保護が有効になっている通知は[#4612]を解除することができます(https://github.com/AdguardTeam/AdguardForAndroid/issues/4612)
+* プロキシ・スイッチをリストのプロキシ・サーバーなしで有効化した後の保護は再開します[#4681] (https://github.com/AdguardTeam/AdguardForAndroid/issues/4681)
+* 保護状態とグリッチの位置のアイコン [#4628](https://github.com/AdguardTeam/AdguardForAndroid/issues/4628)
+* プロキシのホスト名文字列は正しいドメイン名を検証できません [#4603](https://github.com/AdguardTeam/AdguardForAndroid/issues/4603)
+* プロキシサーバーのリストはスクロールできません [#4654](https://github.com/AdguardTeam/AdguardForAndroid/issues/4654)
+* AdGuard が *Integration モード* [#4635]( ) で動作する場合、プロキシ設定は無効化されません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4635)
+* サムスンペイの互換性通知は韓国のユーザーにのみ表示されます [#4629](https://github.com/AdguardTeam/AdguardForAndroid/issues/4629)
+* スクロール位置は、*Recent アクティビティ* ログがキーワード [#4699] によってフィルタリングされる場合、いくつかのケースでは保存されません。https://github.com/AdguardTeam/AdguardForAndroid/issues/4699)
+* 検索フィールドは、デフォルトでAndroid 8 [#4618](https://github.com/AdguardTeam/AdguardForAndroid/issues/4618)
+* 「プロキシを介して動作するアプリ」画面のスナックグリッチ[#4702](https://github.com/AdguardTeam/AdguardForAndroid/issues/4702)
+* *追跡保護*の軽食は消えません[#4665] (https://github.com/AdguardTeam/AdguardForAndroid/issues/4665)
+* スタートアップでAdGuardがクラッシュ [#4649](https://github.com/AdguardTeam/AdguardForAndroid/issues/4649)
+* 統計は、GBからTBに変換できない [#4638](https://github.com/AdguardTeam/AdguardForAndroid/issues/4638)
+* 会社の統計画面は、最後の24時間でその会社に統計が登録されていない場合は空白です[#4642](https://github.com/AdguardTeam/AdguardForAndroid/issues/4642)
+* 小さな画面では、*Statistics* タブ [#4664] に重なるテキスト (https://github.com/AdguardTeam/AdguardForAndroid/issues/4664)
+* 概要は、プロキシ*画面[#4696]を介して動作する*アプリで欠落しています(https://github.com/AdguardTeam/AdguardForAndroid/issues/4696)
+* 画面上のスイッチは、統計をロードした後の位置を変更します [#4678](https://github.com/AdguardTeam/AdguardForAndroid/issues/4678)
+* *Recent活動ログ*のツールチップは、間違った瞬間に表示されます[#4701](https://github.com/AdguardTeam/AdguardForAndroid/issues/4701)
+* *Integrated mode* [#4682] のプロキシ画面で動作する *Apps のトランジティブ通知https://github.com/AdguardTeam/AdguardForAndroid/issues/4682)
+* 更新ボタンはツールチップの後ろに隠されています [#4589](https://github.com/AdguardTeam/AdguardForAndroid/issues/4589)
+* バージョン番号は、バージョン名[#4690]の代わりに*Updates画面*に表示されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/4690)
+* 最近の活動画面を終了し、戻ってくると、スクロール位置が保持されます[#4644](https://github.com/AdguardTeam/AdguardForAndroid/issues/4644)
+* *Recent アクティビティ* 画面のカスタム検索バーに入力されたテキストは、セクションを終了し、[#4643] を返すときに削除した後に残します(https://github.com/AdguardTeam/AdguardForAndroid/issues/4643)
+* ホームタブのタブ間でスワイプすると、コントロールパネルのアイコン [#4592](https://github.com/AdguardTeam/AdguardForAndroid/issues/4592)
+* 統計画面のダウン矢印の間違った配列[#4700](https://github.com/AdguardTeam/AdguardForAndroid/issues/4700)
+* *Tracking Protection* レベル [#4632] のアンダーリング設定が間違っています。https://github.com/AdguardTeam/AdguardForAndroid/issues/4632)
+* *アプリ言語*は、中国語でシステム言語[#4666]としてデバイスが消えます。https://github.com/AdguardTeam/AdguardForAndroid/issues/4666)
 
-### Versions
+### バージョン
 
-* Updated CoreLibs to v1.11.106
-* Updated DnsLibs to 2.1.41 [#4675](https://github.com/AdguardTeam/AdguardForAndroid/issues/4675)
+* CoreLibsをv1.11.106に更新
+* DnsLibsを2.1.41に更新 [#4675](https://github.com/AdguardTeam/AdguardForAndroid/issues/4675)
 
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 4.0 beta 1
+## 4.0 ベータ 1
 
-- Published: 2023-04-24T15:04:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-beta-1
+- 公表: 2023-04-24T15:04:42Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-beta-1
 
-Remember when we talked about [the first Nightly of AdGuard v4.0 for Android](https://adguard.com/blog/adguard-v4-0-for-android-nightly.html)? It was the first version after a long break — with reworked design and texts, rewritten code, and new features.
+「アドガードv4.0の第1夜」について話した時を忘れないでください()https://adguard.com/blog/adguard-v4-0-for-android-nightly.html) ? 長い休憩の後の最初のバージョンでした - 再作業設計とテキスト、書き換えコード、および新機能。
 
-Thanks to our development, QA, design, and content teams, we’re releasing the first beta version: refreshed, significantly more stable, and available in multiple languages.
+開発、QA、デザイン、コンテンツチームのおかげで、最初のベータ版をリリースしています。
 
-Since the release of the first Nightly version, we’ve fixed more than 100 bugs! Though, it doesn't mean there are no more left (known issues are gathered on [GitHub](https://github.com/AdguardTeam/AdguardForAndroid/issues?q=is%3Aopen+label%3A%22Version%3A+AdGuard+v4.0%22+-label%3A%22Status%3A+Resolved%22)). If you encounter any, please let us know. Instructions on how to report bugs are below.
-## First Nightly updates
+初めてのNightlyバージョンのリリース以来、100以上のバグを修正しました! しかし、これ以上残らないとは言えません(既知の問題は[GitHub]にまとめられています)https://github.com/AdguardTeam/AdguardForAndroid/issues?q=is%3Aopen+label%3A%22Version%3A+AdGuard+v4.0%22+-label%3A%22Status%3A+Resolved%22)。 万が一遭遇した場合は、必ずお知らせください。 バグの報告方法の手順は以下の通りです。
+## 最初の夜間更新
 
-If you haven't read the post about Nightly, [take a look](https://adguard.com/blog/adguard-v4-0-for-android-nightly.html). We wrote a lot about the changes compared to v3.6, the last AdGuard version before v4.0. There’s something useful for those who are not very tech-savvy, as well as for those who understand the details and are willing to dig even into low-level settings.
+夜に投稿を読んでいないなら、【見てみる】(https://adguard.com/blog/adguard-v4-0-for-android-nightly.html)。 v3.6、v4.0以前の最後のAdGuardバージョンと比較して、変更について多く書いています。 テックに精通していない人や、詳細を理解している人や、低レベルの設定でも掘り下げることを喜んでいる人にとっては便利です。
 
-Here’s a brief overview of the improvements:
+改善の簡単な概要は次のとおりです。
 
-  * **Complete redesign**. We made the design lighter, more minimalist, and easier to understand, and put the most important features on a separate screen — now it will be much easier to access them.
+  * **完全な再設計**。 より軽やかでミニマリストなデザインを作り、理解しやすく、別の画面に最も重要な機能を置くことで、アクセスがはるかに簡単になります。
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/protection_en.jpg?0" width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/protection_en.jpg?0"幅="300" 高さ="600">
 </p>
 
-  * **Firewall**. Now you can control the access to the Internet for all your apps — if you wish, prevent them from using the Internet without your knowledge.
+  * **ファイアウォール**。 今、あなたはすべてのあなたのアプリのためのインターネットへのアクセスを制御することができます - あなたが望むなら、あなたの知識なしでインターネットを使用してそれらを防ぐことができます。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/firewall_en.jpg" width="300" height="600">
-</p>
-
-
-  * **Statistics**. Now you can view detailed stats for apps, companies, and domains. Complete transparency!
-
-<p align="center">
-<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/statistics_en.jpg?0" width="300" height="600">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/firewall_en.jpg"幅="300" 高さ="600">
 </p>
 
 
-  * **Integration with AdGuard VPN**. We’ve greatly enhanced the stability of the Integrated mode.
-  * **Selective app proxying**. Now you can exclude apps from your proxy — even from AdGuard VPN!
-  * **Root access perks**. On rooted devices, among other things, you can now apply DNS filtering to IPv6 requests — thanks to the *Automatic proxy* mode.
-  * **Easier-to-understand low-level settings**. We’ve updated the design and added clear descriptions as well as input validation so you can be sure that everything is working as it should.
-
-## What’s changed since the first Nightly
-### Support for multiple languages
-
-Now the app supports more than 15 languages. But we know there’s much to be improved. If you notice that some translations are missing or if the app is not translated into your language, we’ll be thankful for your contributions on Crowdin. Read more about how to translate AdGuard products in our [Knowledge base](https://adguard.com/kb/miscellaneous/contribute/translate/program/).
-### Firewall roaming support
-
-Although this feature was already in the first Nightly version, it didn’t actually work — a truly nightly experience. But now you can block access to the Internet for specific apps when roaming. Megabytes, especially valuable when you're traveling abroad, won't be wasted.
-### Import and export of user rules, blocklists, and allowlists
-
-In the first Nightly, you could only import settings as a whole. Now you can import user rules separately. It’s useful if you want to share your rules with someone or transfer them to your other AdGuard apps.
-
-## How to download beta
-
-Visit the [beta page](https://adguard.com/beta.html?platform=android), download the APK file of the beta version, and install it. Done! You’re ready to start exploring.
-
-![How to get the beta version](https://cdn.adtidy.org/content/release_notes/ad_blocker/android/beta_en.png)
-
-Alternatively, you can choose the beta channel right in the app. If you’ve used the Nightly channel, go to *Settings* → *General* → *App and filer updates* and switch to Beta.
-
-If you’re using the Release channel, open Settings* → *General* → *Updates* → *Update channel* and select *Beta*.
-
-> To switch back to the Release channel, you’ll need to reinstall the app.
-
-## Report bugs and vote for feature requests
-
-We’ve already talked about that earlier, so here’s a quick reminder:
-
-1. Check out the [Android repo](https://github.com/AdguardTeam/AdGuardforAndroid/issues) to make sure the issue hasn’t been reported yet.
-2. If the issue is new, open the [page for creating new issues](https://github.com/AdguardTeam/AdguardForAndroid/issues/new/choose) and select *Bug report*.
-3. [Describe the problem](https://adguard.com/kb/guides/report-bugs/#how-to-describe-a-problem). If possible, attach screenshots or a screen recording.
-
-If you want to support the implementation of a new feature or bugfix, you can vote for it on GitHub. To vote, just react with some emoji.
-
-> If you use AdGuard VPN and Ad Blocker in the Integrated mode, download the [beta version of AdGuard VPN](https://adguard-vpn.net/beta.html?platform=android&release=beta).
-
-## In conclusion
-
-We're one step closer to the release we hope you'll enjoy. We would like to thank all the beta testers and translators for their dedication — with your help, bugs get fixed and the app gets better.
-
-#### AdGuard for Android direct download links:
-
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
-
-## 4.0 Nightly 39
-
-- Published: 2023-01-30T16:59:40Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-nightly-39
-
-We haven't talked about AdGuard's mobile apps for a long time, but now we're ready to let you in on what we've been up to.
-
-The Android app has been improved so that everyone can enjoy its perks. It is now much simpler to use for people without any technical background and more packed with features for those who want complete control over their data.
-
-Moreover, we've completely rewritten the app so that it runs way faster and smoother.
-
-> Disclaimer: this is a Nightly version — so the app contains more bugs than usual (here's the [list of known issues](https://github.com/AdguardTeam/AdguardForAndroid/issues?q=is%3Aopen+label%3A%22Version%3A+AdGuard+v4.0%22+-label%3A%22Status%3A+Resolved%22)). If you're not ready to report bugs, better not take the risk and wait for the release — we're actively working on making the app more stable.
-
-## Updates useful for everyone
-
-### Full redesign
+  * **統計**。 アプリ、企業、ドメインの詳細な統計情報を表示できるようになりました。 完全な透明性!
 
 <p align="center">
-<img src="https://cdn.adtidy.org/blog/new/iqfm6main.jpg" width="300" height="650">
+<img src="">https://cdn.adtidy.org/content/release_notes/ad_blocker/android/statistics_en.jpg?0"幅="300" 高さ="600">
 </p>
 
-Originally, AdGuard for Android has a plethora of features — it serves as an all-purpose tool for blocking ads, trackers, and other threats. While redesigning it, we tried to simplify access to the "core" features, so that all of them are available with a single tap. Now, to turn on Ad blocking, Tracking protection, Annoyance blocking, or DNS protection along with their filters, you can just tap the corresponding icon above the main switch.
+
+  * **AdGuard VPNとの統合**。 統合モードの安定性を大幅に向上させました。
+  * **選択型アプリプロキシ**。 AdGuard VPNからアプリをプロキシから除外できるようになりました。
+  * **ルートアクセス特典**。 ルートされたデバイスでは、他のものの間で、DNS フィルタリングを IPv6 リクエストに適用できるようになりました。 *Automatic プロキシ* モードによります。
+  * **より簡単な低レベル設定**。 設計を更新し、明確な説明と入力検証を追加しました。そのため、すべてが動作していることを確認することができます。
+
+## 最初の夜から何が変わったのか
+### 複数の言語に対応
+
+このアプリは15以上の言語に対応しています。 しかし、我々は改善されるべき多くがあることを知っている。 一部の翻訳が欠落しているか、アプリが言語に翻訳されていない場合は、Crowdinへの貢献に感謝します。 AdGuard製品を「ナレッジベース」に翻訳する方法について詳しく読む(https://adguard.com/kb/miscellaneous/contribute/translate/program/).
+### 防火壁ローミングサポート
+
+この機能は既に最初のNightlyバージョンではありましたが、実際には動作していませんでした。 しかし、ローミング時に特定のアプリでインターネットへのアクセスをブロックすることができます。 メガバイト、特に海外に旅行するときに価値のある、無駄にしないでください。
+### ユーザールール、ブロックリスト、およびウィットリストのインポートとエクスポート
+
+最初のナイトリーでは、設定を全体としてインポートすることができます。 ユーザールールを別々にインポートできるようになりました。 ルールを誰かと共有したり、他のAdGuardアプリに転送したりしたい場合に便利です。
+
+## ベータ版をダウンロードする方法
+
+[beta page]にアクセスしてください(https://adguard.com/beta.html?platform=android)、ベータ版のAPKファイルをダウンロードしてインストールします。 お問い合わせ 探す準備が整いました。
+
+![ベータ版を取得する方法](https://cdn.adtidy.org/content/release_notes/ad_blocker/android/beta_en.png)
+
+または、アプリでベータチャネルを右に配置することもできます。 ナイトリーチャンネルを使用する場合は、*Settings* → *General* → *App と filer update* に移動し、ベータに切り替えます。
+
+リリースチャネルを使用している場合は、設定* → *一般* → *Updates* → *Update channel* を開き、*Beta* を選択します。
+
+> リリースチャネルに戻すには、アプリを再インストールする必要があります。
+
+## バグ報告と機能リクエストの投票
+
+先ほど話してきたので、こちらは簡単なリマインダーです。
+
+1. [Androidリポジトリ]をチェックします(https://github.com/AdguardTeam/AdGuardforAndroid/issues) 問題がまだ報告されていないことを確認してください。
+2. 問題が新しくなった場合は、[新しい問題を作成するためのページ]を開きます。(https://github.com/AdguardTeam/AdguardForAndroid/issues/new/choose) を選択し、*Bug Report* を選択します。
+3. [問題の記述](https://adguard.com/kb/guides/report-bugs/#how-to-describe-a-problem)。 可能であれば、スクリーンショットや画面録画を添付してください。
+
+新機能やバグ修正の実装をサポートしたい場合は、GitHubで投票できます。 投票するには、いくつかの絵文字で反応するだけです。
+
+> 統合モードでAdGuard VPNとAd Blockerを使用する場合は、[AdGuard VPNのベータ版]をダウンロードしてください。https://adguard-vpn.net/beta.html?platform=android&release=beta).
+
+## 結論として
+
+リリースの一歩を踏み出せば、楽しみたいと思っています。 私たちは、あなたの助けを借りて、バグが修正され、アプリがより良くなるため、ベータテスターと翻訳者に感謝したいと思います。
+
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
+
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
+
+## 4.0 夜 39
+
+- 発行: 2023-01-30T16:59:40Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-nightly-39
+
+AdGuardのモバイルアプリを長時間使用しても話せませんが、現在、今後数えきれないアプリを準備中です。
+
+誰もがその特典を楽しむことができるように、Androidアプリが改善されました。 技術的な背景がなく、データを完全に制御したい人のための機能が満載されている人のために使うのははるかに簡単です。
+
+また、アプリを完全に書き換えて、より早くスムーズな方法を実行します。
+
+> 免責事項: これはナイトリーバージョンです。そのため、アプリは通常のバグよりも多く含まれています(ここでは、既知の問題のリスト)(https://github.com/AdguardTeam/AdguardForAndroid/issues?q=is%3Aopen+label%3A%22Version%3A+AdGuard+v4.0%22+-label%3A%22Status%3A+Resolved%22)。 バグを報告する準備が整っていない場合、リスクをとらず、リリースを待ってください。アプリをより安定させるために積極的に取り組んでいます。
+
+## みんなに便利なアップデート
+
+### 完全な再設計
 
 <p align="center">
-<img src="https://cdn.adtidy.org/blog/new/la0mnprotection.jpg" width="300" height="650">
+<img src="">https://cdn.adtidy.org/blog/new/iqfm6main.jpg"幅="300" 高さ="650">
 </p>
 
-We've also added the *Protection* section. You can find it by tapping the shield icon at the bottom of the screen. Apart from the above-mentioned "core" features, this section allows you to manage Firewall, Browsing security, and even AdGuard VPN. On the Protection screen, you may turn these modules on or off as well as easily access their settings.
-
-### Detailed statistics
+もともと、Android用のAdGuardにはたくさんの機能があります。広告、トラッカー、その他の脅威をブロックするための汎用ツールとして機能します。 再設計中は「コア」機能へのアクセスを簡素化しようとしました。これにより、すべての機能が単一のタップで利用できます。 今度は、広告ブロック、追跡保護、Annoyanceブロック、またはDNS保護をフィルタとともにオンにするには、メインスイッチの上の対応するアイコンをタップするだけでOKです。
 
 <p align="center">
-<img src="https://cdn.adtidy.org/blog/new/qv07vstatistics.jpg" width="300" height="1200">
+<img src="">https://cdn.adtidy.org/blog/new/la0mnprotection.jpg"幅="300" 高さ="650">
 </p>
 
-This is not news that apps nowadays do whatever they want with your data and leak it all over the place. And it's quite logical that the user wants complete control over their data. With AdGuard, it's already possible — and now we're introducing a feature that would provide even more transparency! Which apps and companies would potentially leak your data?
-With Statistics, you'll now be able to track which apps send your data to global corporations — and block or allow some requests on the fly.
+*Protection*セクションも追加しました。 画面の下部にあるシールドアイコンをタップすることで見つけることができます。 上記の「コア」機能とは別に、このセクションでは、ファイアウォール、ブラウジングセキュリティ、さらにはアドガードVPNを管理することができます。 保護画面では、これらのモジュールをオンまたはオフにしたり、設定を簡単にアクセスすることができます。
 
-### Firewall
+### 詳細な統計情報
 
 <p align="center">
-<img src="https://cdn.adtidy.org/blog/new/40jm3firewall.jpg" width="300" height="650">
+<img src="">https://cdn.adtidy.org/blog/new/qv07vstatistics.jpg"幅="300" 高さ="1200">
 </p>
 
-The Android app used to have a functionality similar to Firewall earlier, but it was hidden deep inside the app — in the App management section. Now it's become a completely standalone feature with well-defined scope of actions.
+最近、アプリが自分のデータでやりたいことや、その場で漏れるのはニュースではありません。 ユーザーが自分のデータを完全に制御したいという非常に論理的です。 AdGuardでは、すでに対応可能です。さらに、より透明性のある機能を導入しています! どのアプリや企業がデータを漏洩する可能性はありますか?
+統計データでは、どのアプリがグローバル企業にデータを送信するかを追跡できるようになりました。また、一部のリクエストをブロックまたはブロックすることができます。
 
-Firewall allows you to control the apps' access to the Internet: decide which apps can use mobile data or Wi-Fi with screen off, get real-time notifications on app activity, and update firewall rules in the Quick actions section.
+### 防火壁
 
-> The Nightly version is filled to the brim with new features, and this is just the beginning. If you are curious to learn more, read the [blog post](https://adguard.com/en/blog/adguard-v4-0-for-android-nightly.html) — there we cover the advanced features in detail and share our plans for the future. 
+<p align="center">
+<img src="">https://cdn.adtidy.org/blog/new/40jm3firewall.jpg"幅="300" 高さ="650">
+</p>
 
-## Test it yourself
+以前のファイアウォールと同様の機能を持つために使用されるAndroidアプリは、アプリ内の深く隠されていました。アプリ管理セクション。 今、それは完全にスタンドアローン機能になり、明確に定義された行動範囲。
 
-We need your feedback! [Download](https://agrd.io/android_nightly) the Nightly version of AdGuard v4.0 for Android and (if you're using AdGuard VPN) the [Nightly version of AdGuard VPN](https://adguard-vpn.com/en/beta.html?platform=android&release=nightly), report issues, and send feature requests. Here's the info you might need.
+ファイアウォールを使用すると、アプリのインターネットへのアクセスを制御することができます。モバイルデータやWi-Fiを画面オフで使用できるアプリを決定し、アプリアクティビティのリアルタイム通知を取得し、クイックアクションセクションでファイアウォールルールを更新します。
 
-### How to report an issue
+> ナイトリーバージョンは、新しい機能でブリムに埋め込まれています。 興味をそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそも「ブログ記事」を読んでくださいね(笑)https://adguard.com/en/blog/adguard-v4-0-for-android-nightly.html)—私達は高度の特徴を細部にカバーし、未来のための私達の計画を共有します。
 
-If you've noticed a bug, please tell us about it by creating a [GitHub issue](https://github.com/AdguardTeam/AdguardForAndroid/issues/new/choose). Describe what you've found and share your logs with devteam@adguard.com — this'll make it easier for us to address the problem.
+## 自分でテストする
 
-To collect logs, tap *Settings* → *General* → *Advanced* and select *Export logs and system info*.
+フィードバックが必要です! [ダウンロード]https://agrd.io/android_nightly) Android および (AdGuard VPN を使用している場合) の AdGuard v4.0 の夜間バージョンの [Nightly バージョンの AdGuard VPN](https://adguard-vpn.com/en/beta.html?platform=android&release=nightly)、報告問題、機能リクエストの送信 お問い合わせ
 
-> There are things we're already working on — they don't need to be reported. Please consult the **[list of known issues](https://github.com/AdguardTeam/AdguardForAndroid/issues?q=is%3Aopen+label%3A%22Version%3A+AdGuard+v4.0%22+-label%3A%22Status%3A+Resolved%22)** if you're about to send us a bug report.
+### 問題を報告する方法
 
-### Vote for feature requests
+バグに気付いた場合、【GitHub 課題】の作成でお伝えください。https://github.com/AdguardTeam/AdguardForAndroid/issues/new/choose)。 見つけたものを記述し、 devteam@adguard.com でログを共有します。これは問題に対処するために簡単にします。
 
-![GitHub reactions](https://cdn.adtidy.org/blog/new/go9q3github_reaction.png)
+ログを収集するには、*Settings* → *General* → *Advanced* をタップし、*Export ログとシステム情報*を選択します。
 
-On [GitHub](https://github.com/AdguardTeam/AdguardForAndroid/issues?q=is%3Aopen+label%3A%22Feature+request%22+sort%3Areactions-%2B1-desc), you can leave your reactions on feature requests. That'll help us find out what most people are interested in. To leave your reaction, select the feature request you like and use an emoji to support its implementation.
+> 既に取り組んでいるものがありますが、報告する必要はありません。 ※「既知の問題のリスト」を参照してください。(https://github.com/AdguardTeam/AdguardForAndroid/issues?q=is%3Aopen+label%3A%22Version%3A+AdGuard+v4.0%22+-label%3A%22Status%3A+Resolved%22)** バグ報告をお送りする予定
 
-## In conclusion
+### 機能リクエストの投票
 
-We've never devoted this much attention to a single nightly version — and for a reason. They are usually of interest only to a small number of die-hard enthusiasts. But this time is different. This version heralds huge changes that will soon come to AdGuard Ad Blocker for Android for a lot of people, and we want to do it right.
+![GitHubの反応](https://cdn.adtidy.org/blog/new/go9q3github_reaction.png)
 
-With your help, the help of the community, we will be able to track down every single bug and tweak all the knobs just right, so that once the update ships to release, millions of AdGuard users will find it perfect.
+[GitHub] でhttps://github.com/AdguardTeam/AdguardForAndroid/issues?q=is%3Aopen+label%3A%22Feature+request%22+sort%3Areactions-%2B1-desc)、機能要求の反作用を残すことができます。 ほとんどの人が興味をそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそもそも 反応を離れるには、好きな機能のリクエストを選択し、 emoji を使用して実装をサポートしてください。
+
+## 結論として
+
+私たちは、この一晩バージョンにあまり注意を払っていません。 彼らは通常、小さな数のダイハード愛好家にのみ興味があります。 しかし、この時間は異なります。 このバージョンは、すぐに多くの人のためにAndroid用のAdGuard広告ブロッカーに来る巨大な変更をヘルドし、我々はそれを右にしたいです。
+
+あなたの助けを借りて, コミュニティの助け, 私たちは、すべての単一のバグを追跡し、ちょうど右のすべてのノブを微調整することができます, 更新がリリースするために出荷されると, AdGuardユーザーの万人は、それが完璧に見つけます.
 
 ## 3.6.11
 
-- Published: 2023-01-23T13:18:23Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11
+- 公表: 2023-01-23T13:18:23Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11
 
->Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+>Android用の免責事項 AdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-You must have been missing AdGuard for Android updates. Well, you won't be bored now, because we're breaking into 2023 with a new release of the product, and we'll only gain traction from there. 
+あなたは、AndroidのアップデートのためにAdGuardを欠いている必要があります。 まあ、製品の新しいリリースで2023にブレイクしているので、今は飽きませんし、そこからトラクションを得るだけです。
 
-The main changes in AdGuard v3.6.11 for Android were made in our core filtering engine – CoreLibs and DNSLibs. As for the rest, we’ve worked to enhance content filtering and made a bunch of minor changes to improve the application performance. 
+アンドロイド用のAdGuard v3.6.11の主な変更は、コアフィルタリングエンジン - CoreLibsとDNSLibsで作られました。 残りは、コンテンツのフィルタリングを強化し、アプリケーションのパフォーマンスを向上させるために、マイナーな変更を加えました。
 
-## Updated DnsLibs to v2.0.75 [#4324](https://github.com/AdguardTeam/AdguardForAndroid/issues/4324)
+## 更新されたDnsLibsにv2.0.75 [#4324](https://github.com/AdguardTeam/AdguardForAndroid/issues/4324)
 
-A significantly updated version of the DNS filtering library consumes less resources and runs faster. The DNS-over-QUIC protocol implementation now supports the [RFC 9250](https://datatracker.ietf.org/doc/rfc9250/) standard, and the experimental status was removed from the DoQ support.
+DNS フィルタリングライブラリのかなり更新されたバージョンはより少ないリソースを消費し、より速く実行します。 DNS-over-QUIC プロトコルの実装が [RFC 9250] に対応しました。https://datatracker.ietf.org/doc/rfc9250/)標準で、実験的な状態が DoQ サポートから削除されました。
 
-### First step to Encrypted ClientHello support [DL#161](https://github.com/AdguardTeam/DnsLibs/issues/161)
+### 暗号化された ClientHello サポート [DL#161] の最初のステップhttps://github.com/AdguardTeam/DnsLibs/issues/161)
 
-First of all, what is Encrypted ClientHello? Nowadays, almost every internet connection is encrypted and no one can see what's inside this encrypted connection. However, there is still one little issue with it: the very first packet of the connection indicates the name of the server you are connecting to. Say you want to open `www.google.com`, your ISP cannot see what exactly you send and receive from it, but they know what website you are communicating with. ECH (Encrypted ClientHello) is a new technology that is supposed to solve this issue and encrypt that last bit of unencrypted information.
+まず、暗号化された ClientHello とは何ですか? 今日では、ほぼすべてのインターネット接続が暗号化され、この暗号化された接続内のものを見ることができます。 ただし、接続の初期パケットは、接続しているサーバーの名前を示しています。 あなたが開いてみたいと言う`www.google.com`, あなたのISPは、あなたが送信し、それから受け取るものを見ることができません, しかし、彼らはあなたが通信しているウェブサイトを知っています. ECH(Encrypted ClientHello)は、この問題を解決し、暗号化されていない情報の最後のビットを暗号化する新しい技術です。
 
-So what would be the first step to supporting it from AdGuard? Surprisingly, it is to suppress ECH! This can be done by switching on both `pref.dns.block.ech` and `pref.https.redirect.doh` flags in the *Low-level settings*.
+AdGuardからサポートする最初のステップは? 驚くべきことに、ECHを抑制することです! 両方に切り替えることによってこれを行うことができます`pref.dns.block.ech`そして、`pref.https.redirect.doh`*低レベル設定*のフラグ。
 
-But fret not: what we want to achieve is to provide you with ECH support globally so that **all** your apps could benefit from ECH, not just your browser. To accomplish this, AdGuard makes your apps establish regular HTTPS connections with it, and then it will establish a ECH-enabled connection on their behalf. This experimental feature is planned for the next update so stay tuned.
+しかし、私たちは達成したいことは、ECHサポートをグローバルに提供することです。**すべての**あなたのアプリは、あなたのブラウザだけでなく、ECHの恩恵を受けることができます。 これを実現するために、AdGuardはアプリがそれに定期的なHTTPS接続を確立し、その代わりにECHを有効にした接続を確立します。 この実験機能は、次の更新のために計画されているため、調整されたままです。
 
-## Updated CoreLibs to v1.10.186
+## CoreLibsをv1.10.186に更新
 
-### DNS-over-HTTPS filtering
+### DNS-over-HTTPSフィルタリング
 
-**Added an option to redirect secure DNS requests to the local DNS proxy [#1563](https://github.com/AdguardTeam/CoreLibs/issues/1563)**
+**安全なDNS要求をローカルDNSプロキシにリダイレクトするオプションを追加 [#1563](https://github.com/AdguardTeam/CoreLibs/issues/1563)**
 
-Chrome and Firefox DNS queries sometimes could circumvent DNS filtering by using a DNS-over-HTTPS server. Now AdGuard can automatically filter DNS-over-HTTPS as well.
+ChromeとFirefox DNSのクエリは、DNS-over-HTTPSサーバーを使用してDNSフィルタリングを回避する場合があります。 AdGuard は DNS-over-HTTPS を自動フィルタリングできます。
 
-This feature is experimental and can be enabled in *Low-level settings*, its name is `pref.https.redirect.doh`. In the future versions we're planning to enable it by default.
+この機能は実験的であり、*低レベル設定*で有効にすることができます。`pref.https.redirect.doh`. 将来のバージョンでは、デフォルトで有効にする予定です。
 
-### Improved content filtering
+### コンテンツフィルタの改良
 
-The following new features are important to filter maintainers and provide advanced capabilities for content filtering. 
+次の新機能は、メンテナーをフィルタリングし、コンテンツをフィルタリングするための高度な機能を提供することが重要です。
 
-#### Enhancement
+#### 導入事例
 
-* Added a new [`$jsonprune` basic rule modifier](https://adguard.com/kb/general/ad-filtering/create-own-filters/#jsonprune-modifier). This modifier allows advanced filtering for JSON responses [#1447](https://github.com/AdguardTeam/CoreLibs/issues/1447)
-* Added a new [`$hls` basic rule modifier](https://adguard.com/kb/general/ad-filtering/create-own-filters/#hls-modifier). This modifier provides advanced filtering capabilities for modifying HTTP live streaming files which will help with preventing video ads. [#1434](https://github.com/AdguardTeam/CoreLibs/issues/1434)
-* Expanded capabilities of the `$stealth` modifier. Filters maintainers can now specify which Stealth Mode features should be disabled for a given URL. Before that change the only option was to completely disable Stealth Mode. [#1224](https://github.com/AdguardTeam/CoreLibs/issues/1224)
-* Added support for empty `$path` modifier for non-basic rules. [#1591](https://github.com/AdguardTeam/CoreLibs/issues/1591)
-* `$removeparam` can now be applied to POST requests. [#1573](https://github.com/AdguardTeam/CoreLibs/issues/1573)
+* 新規追加 [`$jsonprune`基本的な規則の修飾子>(https://adguard.com/kb/general/ad-filtering/create-own-filters/#jsonprune-modifier)。 この修飾子はJSON応答のための高度のろ過を可能にします [#1447] (https://github.com/AdguardTeam/CoreLibs/issues/1447)
+* 新規追加 [`$hls`基本的な規則の修飾子>(https://adguard.com/kb/general/ad-filtering/create-own-filters/#hls-modifier)。 この修飾子は、ビデオ広告の防止に役立つHTTPライブストリーミングファイルを変更するための高度なフィルタリング機能を提供します。 [#1434](https://github.com/AdguardTeam/CoreLibs/issues/1434)
+* 拡張された機能`$stealth`修飾子。 フィルタメンテナは、指定した URL に対して、Steeth Mode の機能が無効になっているかを指定できるようになりました。 唯一のオプションを変更する前に、ステルスモードを完全に無効化しました。 [#1224](https://github.com/AdguardTeam/CoreLibs/issues/1224)
+* 空のサポートを追加`$path`非基本ルールの修飾子。 [#1591](https://github.com/AdguardTeam/CoreLibs/issues/1591)
+* `$removeparam`POST リクエストに適用できるようになりました。 [#1573](https://github.com/AdguardTeam/CoreLibs/issues/1573)
 
-#### Fixed
+#### 固定式
 
-* *Hide your Referrer from third-parties* Stealth mode option interferes with the `$third-party` modifier [#1640](https://github.com/AdguardTeam/CoreLibs/issues/1640)
-* Cosmetic rules with `:where()` pseudo-class are rejected [#1609](https://github.com/AdguardTeam/CoreLibs/issues/1609)
-* Rules with `$third-party` modifier block resources from the site's own subdomain [#1637](https://github.com/AdguardTeam/CoreLibs/issues/1637)
-* Rules with the `$all` modifier do not block explicitly visited sites [#1590](https://github.com/AdguardTeam/CoreLibs/issues/1590)
+* ※レファラーを第三者から隠す* ステルスモードオプションは、`$third-party`修飾子 [#1640] (https://github.com/AdguardTeam/CoreLibs/issues/1640)
+* 化粧品のルールと`:where()`擬似クラスが拒否されます [#1609](https://github.com/AdguardTeam/CoreLibs/issues/1609)
+* ルールとルール`$third-party`modifier は、サイトのサブドメイン [#1637] からリソースをブロックします。https://github.com/AdguardTeam/CoreLibs/issues/1637)
+* ルールとルール`$all`修飾子は、明示的に訪問されたサイトをブロックしません [#1590](https://github.com/AdguardTeam/CoreLibs/issues/1590)
 
-## Other improvements
+## その他の改善
 
-* Enabled HTTPS filtering by default for Soul Browser [#4202](https://github.com/AdguardTeam/AdguardForAndroid/issues/4202)
+* デフォルトでSoul Browser [#4202] で HTTPS フィルタリングを有効にしました。https://github.com/AdguardTeam/AdguardForAndroid/issues/4202)
 
-## Other fixes
+## その他の修正
 
-* When confirming 2FA the code entry page disappears in some cases
-* AdGuard does not create a local VPN and protection does not start [#4269](https://github.com/AdguardTeam/AdguardForAndroid/issues/4269)
-* Internet fails to work when a network is changing from Wi-Fi to mobile data [#4265](https://github.com/AdguardTeam/AdguardForAndroid/issues/4265)
-* Compatibility issue with iRobot Home app [#4273](https://github.com/AdguardTeam/AdguardForAndroid/issues/4273)
+* 2FA確認時、コードエントリーページが消える
+* AdGuard はローカル VPN を作成せず、保護は [#4269] 起動しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/4269)
+* Wi-Fiからモバイルデータにネットワークが変化しているときにインターネットが機能しない[#4265](https://github.com/AdguardTeam/AdguardForAndroid/issues/4265)
+* iRobot Homeアプリとの互換性の問題 [#4273](https://github.com/AdguardTeam/AdguardForAndroid/issues/4273)
 
-AdGuard for Android direct download links:
+アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.11 beta 2
+## 3.6.11 ベータ 2
 
-- Published: 2023-01-18T16:58:16Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11-beta-2
+- 公表: 2023-01-18T16:58:16Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11-beta-2
 
->Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+>Android用の免責事項 AdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-They say that two betas before a release is a good sign. Today we are releasing the second beta of AdGuard v3.6.11 for Android with only one change: updated DnsLibs.
+リリース前の2つのベータは良い兆候であると言う。 今日は、AdGuard v3.6.11の2番目のベータを1つの変更のみでリリースしています。 DnsLibs.
 
-## Changelog
+## 変更履歴
 
 
-### Enhancement
-* Updated DnsLibs to v2.0.75 [#4324](https://github.com/AdguardTeam/AdguardForAndroid/issues/4324)
+### 導入事例
+* 更新されたDnsLibsにv2.0.75 [#4324](https://github.com/AdguardTeam/AdguardForAndroid/issues/4324)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.11 beta 1
+## 3.6.11 ベータ 1
 
-- Published: 2023-01-13T17:12:36Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11-beta-1
+- 公表: 2023-01-13T17:12:36Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11-beta-1
 
->Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+>Android用の免責事項 AdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-You must have been missing AdGuard for Android updates. Well, you won't be bored now, because we're breaking into 2023 with a new beta version of the product, and we'll only gain traction from there. 
+あなたは、AndroidのアップデートのためにAdGuardを欠いている必要があります。 まあ、2023年に新製品のベータ版で破綻しているので、今は飽きませんし、そこからだけ牽引を得るでしょう。
 
-The main changes in AdGuard v3.6.11 for Android beta were made in our core filtering engine – CoreLibs and DNSLibs. As for the rest, we’ve worked to enhance content filtering and made a bunch of minor changes to improve the application performance. 
+Androidのベータ版のAdGuard v3.6.11の主な変更は、コアフィルタリングエンジン - CoreLibsとDNSLibsで作られました。 残りは、コンテンツのフィルタリングを強化し、アプリケーションのパフォーマンスを向上させるために、マイナーな変更を加えました。
 
-## Updated DnsLibs to v2.0.66
+## DnsLibsをv2.0.66に更新
 
-A significantly updated version of the DNS filtering library consumes less resources and runs faster. The DNS-over-QUIC protocol implementation now supports the [RFC 9250](https://datatracker.ietf.org/doc/rfc9250/) standard, and the experimental status was removed from the DoQ support.
+DNS フィルタリングライブラリのかなり更新されたバージョンはより少ないリソースを消費し、より速く実行します。 DNS-over-QUIC プロトコルの実装が [RFC 9250] に対応しました。https://datatracker.ietf.org/doc/rfc9250/)標準で、実験的な状態が DoQ サポートから削除されました。
 
-### First step to Encrypted ClientHello support [DL#161](https://github.com/AdguardTeam/DnsLibs/issues/161)
+### 暗号化された ClientHello サポート [DL#161] の最初のステップhttps://github.com/AdguardTeam/DnsLibs/issues/161)
 
-First of all, what is Encrypted ClientHello? Nowadays, almost every internet connection is encrypted and no one can see what's inside this encrypted connection. However, there is still one little issue with it: the very first packet of the connection indicates the name of the server you are connecting to. Say you want to open `www.google.com`, your ISP cannot see what exactly you send and receive from it, but they know what website you are communicating with. ECH (Encrypted ClientHello) is a new technology that is supposed to solve this issue and encrypt only the last bit of unencrypted information.
+まず、暗号化された ClientHello とは何ですか? 今日では、ほぼすべてのインターネット接続が暗号化され、この暗号化された接続内のものを見ることができます。 ただし、接続の初期パケットは、接続しているサーバーの名前を示しています。 あなたが開いてみたいと言う`www.google.com`, あなたのISPは、あなたが送信し、それから受け取るものを見ることができません, しかし、彼らはあなたが通信しているウェブサイトを知っています. ECH(Encrypted ClientHello)は、この問題を解決し、暗号化されていない情報の最後のビットだけを暗号化する新しい技術です。
 
-So what would be the first step to supporting it from AdGuard? Surprisingly, it is to suppress it! This can be done by switching both `pref.dns.block.ech` and `pref.https.redirect.doh` flags in the *Low Level Settings*.
+AdGuardからサポートする最初のステップは? 意外に、それを抑制することです! これは両方を転換することによってすることができます`pref.dns.block.ech`そして、`pref.https.redirect.doh`*Low Level Settings* のフラグ
 
-But fret not: what we want to achieve is to provide you with ECH support globally so that **all** your apps could benefit from ECH, not just your browser. To accomplish this, AdGuard makes your apps establish regular HTTPS connections with it, and then it will establish a ECH-enabled connection on their behalf. This experimental feature is planned for the next update so stay tuned.
+しかし、私たちは達成したいことは、ECHサポートをグローバルに提供することです。**すべての**あなたのアプリは、あなたのブラウザだけでなく、ECHの恩恵を受けることができます。 これを実現するために、AdGuardはアプリがそれに定期的なHTTPS接続を確立し、その代わりにECHを有効にした接続を確立します。 この実験機能は、次の更新のために計画されているため、調整されたままです。
 
-## Updated CoreLibs to v1.10.186
+## CoreLibsをv1.10.186に更新
 
-### DNS-over-HTTPS filtering
+### DNS-over-HTTPSフィルタリング
 
-**Added an option to redirect secure DNS requests to the local DNS proxy [#1563](https://github.com/AdguardTeam/CoreLibs/issues/1563)**
+**安全なDNS要求をローカルDNSプロキシにリダイレクトするオプションを追加 [#1563](https://github.com/AdguardTeam/CoreLibs/issues/1563)**
 
-Chrome and Firefox DNS queries sometimes could circumvent DNS filtering by using a DNS-over-HTTPS server. Now AdGuard can automatically filter DNS-over-HTTPS as well.
+ChromeとFirefox DNSのクエリは、DNS-over-HTTPSサーバーを使用してDNSフィルタリングを回避する場合があります。 AdGuard は DNS-over-HTTPS を自動フィルタリングできます。
 
-This feature is experimental and can be enabled in *Low Level Settings*, its name is `pref.https.redirect.doh`. In the future versions we're planning to enable it by default.
+この機能は実験的であり、*Low Level Settings* で有効にすることができます。`pref.https.redirect.doh`. 将来のバージョンでは、デフォルトで有効にする予定です。
 
-### Improved content filtering
+### コンテンツフィルタの改良
 
-The following new features are important to filter maintainers and provide advanced capabilities for content filtering. 
+次の新機能は、メンテナーをフィルタリングし、コンテンツをフィルタリングするための高度な機能を提供することが重要です。
 
-#### Enhancement
+#### 導入事例
 
-* Added a new [`$jsonprune` basic rule modifier](https://adguard.com/kb/general/ad-filtering/create-own-filters/#jsonprune-modifier). This modifier allows advanced filtering for JSON responses [#1447](https://github.com/AdguardTeam/CoreLibs/issues/1447)
-* Added a new [`$hls` basic rule modifier](https://adguard.com/kb/general/ad-filtering/create-own-filters/#hls-modifier). This modifier provides advanced filtering capabilities for modifying HTTP live streaming files which will help with preventing video ads. [#1434](https://github.com/AdguardTeam/CoreLibs/issues/1434)
-* Expanded capabilities of the `$stealth` modifier. Filters maintainers can now specify which Stealth Mode features should be disabled for a given URL. Before that change the only option was to completely disable Stealth Mode. [#1224](https://github.com/AdguardTeam/CoreLibs/issues/1224)
-* Added support for empty `$path` modifier for non-basic rules. [#1591](https://github.com/AdguardTeam/CoreLibs/issues/1591)
-* `$removeparam` can now be applied to POST requests. [#1573](https://github.com/AdguardTeam/CoreLibs/issues/1573)
+* 新規追加 [`$jsonprune`基本的な規則の修飾子>(https://adguard.com/kb/general/ad-filtering/create-own-filters/#jsonprune-modifier)。 この修飾子はJSON応答のための高度のろ過を可能にします [#1447] (https://github.com/AdguardTeam/CoreLibs/issues/1447)
+* 新規追加 [`$hls`基本的な規則の修飾子>(https://adguard.com/kb/general/ad-filtering/create-own-filters/#hls-modifier)。 この修飾子は、ビデオ広告の防止に役立つHTTPライブストリーミングファイルを変更するための高度なフィルタリング機能を提供します。 [#1434](https://github.com/AdguardTeam/CoreLibs/issues/1434)
+* 拡張された機能`$stealth`修飾子。 フィルタメンテナは、指定した URL に対して、Steeth Mode の機能が無効になっているかを指定できるようになりました。 唯一のオプションを変更する前に、ステルスモードを完全に無効化しました。 [#1224](https://github.com/AdguardTeam/CoreLibs/issues/1224)
+* 空のサポートを追加`$path`非基本ルールの修飾子。 [#1591](https://github.com/AdguardTeam/CoreLibs/issues/1591)
+* `$removeparam`POST リクエストに適用できるようになりました。 [#1573](https://github.com/AdguardTeam/CoreLibs/issues/1573)
 
-#### Fixed
+#### 固定式
 
-* *Hide your Referrer from third-parties* Stealth mode option interferes with the `$third-party` modifier [#1640](https://github.com/AdguardTeam/CoreLibs/issues/1640)
-* Cosmetic rules with `:where()` pseudo-class are rejected [#1609](https://github.com/AdguardTeam/CoreLibs/issues/1609)
-* Rules with `$third-party` modifier block resources from the site's own subdomain [#1637](https://github.com/AdguardTeam/CoreLibs/issues/1637)
-* Rules with the `$all` modifier do not block explicitly visited sites [#1590](https://github.com/AdguardTeam/CoreLibs/issues/1590)
+* ※レファラーを第三者から隠す* ステルスモードオプションは、`$third-party`修飾子 [#1640] (https://github.com/AdguardTeam/CoreLibs/issues/1640)
+* 化粧品のルールと`:where()`擬似クラスが拒否されます [#1609](https://github.com/AdguardTeam/CoreLibs/issues/1609)
+* ルールとルール`$third-party`modifier は、サイトのサブドメイン [#1637] からリソースをブロックします。https://github.com/AdguardTeam/CoreLibs/issues/1637)
+* ルールとルール`$all`修飾子は、明示的に訪問されたサイトをブロックしません [#1590](https://github.com/AdguardTeam/CoreLibs/issues/1590)
 
-## Other improvements
+## その他の改善
 
-* Enabled HTTPS filtering by default for Soul Browser [#4202](https://github.com/AdguardTeam/AdguardForAndroid/issues/4202)
+* デフォルトでSoul Browser [#4202] で HTTPS フィルタリングを有効にしました。https://github.com/AdguardTeam/AdguardForAndroid/issues/4202)
 
-## Other fixes
+## その他の修正
 
-* When confirming 2FA the code entry page disappears in some cases
-* AdGuard does not create a local VPN and protection does not start [#4269](https://github.com/AdguardTeam/AdguardForAndroid/issues/4269)
-* Internet fails to work when a network is changing from Wi-Fi to mobile data [#4265](https://github.com/AdguardTeam/AdguardForAndroid/issues/4265)
-* Compatibility issue with iRobot Home app [#4273](https://github.com/AdguardTeam/AdguardForAndroid/issues/4273)
+* 2FA確認時、コードエントリーページが消える
+* AdGuard はローカル VPN を作成せず、保護は [#4269] 起動しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/4269)
+* Wi-Fiからモバイルデータにネットワークが変化しているときにインターネットが機能しない[#4265](https://github.com/AdguardTeam/AdguardForAndroid/issues/4265)
+* iRobot Homeアプリとの互換性の問題 [#4273](https://github.com/AdguardTeam/AdguardForAndroid/issues/4273)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.10
 
-- Published: 2022-08-26T16:36:40Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10
+- 公開日: 2022-08-26T16:36:40Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10
 
->Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+>Android用の免責事項 AdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-In this version we’ve improved connectivity check — now the app determines better whether there is internet connection.
+このバージョンでは、コネクティビティチェックを改善しました。このアプリは、インターネット接続があるかどうかを判断します。
 
-AdGuard for Android direct download links:
+アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.10 Beta 2
+## 3.6.10 ベータ 2
 
-- Published: 2022-08-25T18:14:18Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10-beta-2
+- 公表: 2022-08-25T18:14:18Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10-beta-2
 
->Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+>Android用の免責事項 AdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-This is a technical beta update aimed to fix minor bugs.
+マイナーなバグを修正する技術ベータアップデートです。
 
-**AdGuard for Android direct download links:**
+**Androidの直接ダウンロードリンクのためのAdGuard:**
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.10 Beta 1
+## 3.6.10 ベータ 1
 
-- Published: 2022-08-23T14:23:22Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10-beta-1
+- 公表: 2022-08-23T14:23:22Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10-beta-1
 
->Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+>Android用の免責事項 AdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-In AdGuard v3.6.10 for Android we’ve improved connectivity check — now the app determines better whether there is internet connection.
+Android用のAdGuard v3.6.10では、接続チェックを改善しました。このアプリは、インターネット接続があるかどうかを判断します。
 
-**AdGuard for Android direct download links:**
+**Androidの直接ダウンロードリンクのためのAdGuard:**
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.9
 
-- Published: 2022-08-02T21:14:15Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.9
+- 公開日: 2022-08-02T21:14:15Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.9
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-This is a technical update aimed to increase the app stability and fix minor bugs.
+アプリの安定性を高め、マイナーなバグを修正する技術アップデートです。
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.9 Beta 1
+## 3.6.9 ベータ 1
 
-- Published: 2022-08-01T20:11:15Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.9-beta-1
+- 公開日: 2022-08-01T20:11:15Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.9-beta-1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-This is a technical update aimed to increase the app stability and fix minor bugs.
+アプリの安定性を高め、マイナーなバグを修正する技術アップデートです。
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.8
 
-- Published: 2022-04-28T15:55:31Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.8
+- 公表: 2022-04-28T15:55:31Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.8
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-In this version we've added a new feature — 'Protect from DPI'. In a nutshell, it modifies your outgoing traffic to prevent ISP's Deep Packet Inspection systems from detecting the websites you visit. To make this feature visible and enable it, select 'Custom' in the Stealth Mode tab and scroll down.
+このバージョンでは、DPI の Protect という新機能を追加しました。 ナットシェルでは、ISPのディープパケット検査システムが訪問するウェブサイトを検出するのを防ぐため、発信トラフィックを変更します。 この機能が目に見えるようにし、有効にするには、Stealth Modeタブで「カスタム」を選択し、下にスクロールします。
 
-Besides, we've fixed extensions settings and enabled HTTPS filtering by default for Naver Whale Browser. Finally, CoreLibs and DnsLibs were updated.
+また、Naver Whale Browser のデフォルトで、拡張機能の設定と HTTPS のフィルタリングを固定しました。 最後に、CoreLibs と DnsLibs が更新されました。
 
-### Changelog
+### 変更履歴
 
-* [Fixed] AdGuard not turning on inside Samsung secure folder, Android 12 [#4073](https://github.com/AdguardTeam/AdguardForAndroid/issues/4073)
-* [Fixed] Replace the "Move certificate" with "AdGuard certificate" as a recommended Magisk module [#4126](https://github.com/AdguardTeam/AdguardForAndroid/issues/4126)
-* [Fixed] Check "pref.dns.blocking.type" translations, they seem to be outdated [#4133](https://github.com/AdguardTeam/AdguardForAndroid/issues/4133)
-* [Fixed] The URL in about wrongly includes the front words (zh-TW) [#3654](https://github.com/AdguardTeam/AdguardForAndroid/issues/3654)
-* [Fixed] Make sure that we open proper settings section when installing a certificate on Samsung devices [#4115](https://github.com/AdguardTeam/AdguardForAndroid/issues/4115) 
-* [Fixed] Add an DPI-bypass option to AdGuard Stealth Mode [#4131](https://github.com/AdguardTeam/AdguardForAndroid/issues/4131)
-* [Other] Update CoreLibs and DnsLibs to their latest versions
+* [修正] AdGuardは、Samsung の安全なフォルダー、Android 12 [#4073] の中をオンにしないhttps://github.com/AdguardTeam/AdguardForAndroid/issues/4073)
+* [修正済み] 推奨Magiskモジュール[#4126](「AdGuard証明書」で「証明書の移動」を置き換えます)https://github.com/AdguardTeam/AdguardForAndroid/issues/4126)
+* [修正済み] "pref.dns.blocking.type" の翻訳をチェックし、[#4133] を外しているように見えます。https://github.com/AdguardTeam/AdguardForAndroid/issues/4133)
+* [修正] 間違ったURLには、フロントワード(zh-TW) [#3654](https://github.com/AdguardTeam/AdguardForAndroid/issues/3654)
+* [修正] サムスンデバイスに証明書をインストールするときに適切な設定セクションを開くことを確認してください [#4115](https://github.com/AdguardTeam/AdguardForAndroid/issues/4115) 
+* [修正] DPI バイパスオプションをAdGuard Stealthモードに追加 [#4131](https://github.com/AdguardTeam/AdguardForAndroid/issues/4131)
+* [その他] CoreLibs と DnsLibs を最新バージョンにアップデート
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.8 beta 1
+## 3.6.8 ベータ 1
 
-- Published: 2022-04-25T15:42:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.8-beta-1
+- 公表: 2022-04-25T15:42:19Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.8-beta-1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-In this beta we've added a new feature — 'Protect from DPI'. In a nutshell, it modifies your outgoing traffic to prevent ISP's Deep Packet Inspection systems from detecting the websites you visit. To make this feature visible and enable it, select 'Custom' in the Stealth Mode tab and scroll down.
+このベータでは、DPI の Protect という新機能を追加しました。 ナットシェルでは、ISPのディープパケット検査システムが訪問するウェブサイトを検出するのを防ぐため、発信トラフィックを変更します。 この機能が目に見えるようにし、有効にするには、Stealth Modeタブで「カスタム」を選択し、下にスクロールします。
 
-Besides, we've fixed extensions settings and enabled HTTPS filtering by default for Naver Whale Browser. Finally, CoreLibs and DnsLibs were updated.
+また、Naver Whale Browser のデフォルトで、拡張機能の設定と HTTPS のフィルタリングを固定しました。 最後に、CoreLibs と DnsLibs が更新されました。
 
-### Changelog
+### 変更履歴
 
-* [Other] Update CoreLibs to 1.9.57 [#4135](https://github.com/AdguardTeam/AdguardForAndroid/issues/4135)
-* [Other] Update DnsLibs to 1.7.11 [#4121](https://github.com/AdguardTeam/AdguardForAndroid/issues/4121)
+* [その他] CoreLibs を 1.9.57 に更新 [#4135](https://github.com/AdguardTeam/AdguardForAndroid/issues/4135)
+* [その他] DnsLibsを1.7.11に更新 [#4121](https://github.com/AdguardTeam/AdguardForAndroid/issues/4121)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.7
 
-- Published: 2022-02-02T13:37:47Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.7
+- 公開日: 2022-02-02T13:37:47Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.7
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-📲  Lately some of our users experienced discomfort — they couldn’t make voice calls in WhatsApp when AdGuard v3.6.6 for Android is enabled. The CoreLibs team managed to combat this problem.
-:books: Besides, we’ve made several fixes to [the scriptlets library](https://github.com/AdguardTeam/Scriptlets). To recap, scriptlets are powerful blocking tools. In particular, they carry out a noble mission: to neutralize anti ad blockers. The previous version of AdGuard for Android had a scriptlet library that contained an incorrect fix for rules like `#%#/scriptlet(“abort-current-inline-script”, ...)`, which could break some web pages; now the problem is solved.
-Having dealt with all the issues, we’re ready to present a new version. Please meet v3.6.7, we’ve done our best for it to function smoothly. 
+突然、私たちのユーザーの何人かが不快感を経験した — 彼らはAndroid用のAdGuard v3.6.6が有効になっているとき、WhatsAppで音声通話を作成できませんでした。 CoreLibs チームはこの問題に対抗しました。
+:books: ほかに、スクリプトライブラリにいくつかの修正を行いました()https://github.com/AdguardTeam/Scriptlets)。 要約するには、スクリプトは強力なブロックツールです。 特に、彼らは高貴な使命を実行します:アンチ広告ブロッカーを中和します。 以前のバージョンの AdGuard for Android は、ルールの正しい修正が含まれているスクリプトレットライブラリを持っていた`#%#/scriptlet(“abort-current-inline-script”, ...)`, いくつかのWebページを破ることができます。; 今問題は解決されます。.
+すべての問題に対処するため、新しいバージョンを提示する準備ができています。 v3.6.7に会い、スムーズに機能するために最善を尽くしました。
 
-### Changelog
+### 変更履歴
 
-* [Fixed] AdGuard breaks calls in WhatsApp [#4080](https://github.com/AdguardTeam/AdguardForAndroid/issues/4080)
-* [Enhancement] CoreLibs to v1.8.285 [#4089](https://github.com/AdguardTeam/AdguardForAndroid/issues/4089)
+* [修正] AdGuard は WhatsApp [#4080] で呼び出しを破る (https://github.com/AdguardTeam/AdguardForAndroid/issues/4080)
+* [Enhancement] CoreLibs から v1.8.285 [#4089](https://github.com/AdguardTeam/AdguardForAndroid/issues/4089)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.7 beta 1
+## 3.6.7 ベータ 1
 
-- Published: 2022-01-25T12:13:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.7-beta-1
+- 公表: 2022-01-25T12:13:20Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.7-beta-1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-📲  Lately some of our users experienced discomfort — they couldn’t make voice calls in WhatsApp when AdGuard v3.6.6 for Android is enabled. The CoreLibs team managed to combat this problem.
-:books: Besides, we’ve made several fixes to [the scriptlets library](https://github.com/AdguardTeam/Scriptlets). To recap, scriptlets are powerful blocking tools. In particular, they carry out a noble mission: to neutralize anti ad blockers. The previous version of AdGuard for Android had a scriptlet library that contained an incorrect fix for rules like `#%#/scriptlet(“abort-current-inline-script”, ...)`, which could break some web pages; now the problem is solved.
-Having dealt with all the issues, we’re ready to present a new version. Please meet v3.6.7-beta, we’ve done our best for it to function smoothly. 
+突然、私たちのユーザーの何人かが不快感を経験した — 彼らはAndroid用のAdGuard v3.6.6が有効になっているとき、WhatsAppで音声通話を作成できませんでした。 CoreLibs チームはこの問題に対抗しました。
+:books: ほかに、スクリプトライブラリにいくつかの修正を行いました()https://github.com/AdguardTeam/Scriptlets)。 要約するには、スクリプトは強力なブロックツールです。 特に、彼らは高貴な使命を実行します:アンチ広告ブロッカーを中和します。 以前のバージョンの AdGuard for Android は、ルールの正しい修正が含まれているスクリプトレットライブラリを持っていた`#%#/scriptlet(“abort-current-inline-script”, ...)`, いくつかのWebページを破ることができます。; 今問題は解決されます。.
+すべての問題に対処するため、新しいバージョンを提示する準備ができています。 v3.6.7-betaに会い、スムーズに機能するために最善を尽くしました。
 
-### Changelog
+### 変更履歴
 
-* [Fixed] AdGuard breaks calls in WhatsApp [#4080](https://github.com/AdguardTeam/AdguardForAndroid/issues/4080)
-* [Enhancement] CoreLibs to v1.8.285 [#4089](https://github.com/AdguardTeam/AdguardForAndroid/issues/4089)
+* [修正] AdGuard は WhatsApp [#4080] で呼び出しを破る (https://github.com/AdguardTeam/AdguardForAndroid/issues/4080)
+* [Enhancement] CoreLibs から v1.8.285 [#4089](https://github.com/AdguardTeam/AdguardForAndroid/issues/4089)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.6
 
-- Published: 2021-12-30T10:55:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.6
+- 公開日: 2021-12-30T10:55:42Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.6
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-After the last update of AdGuard for Android, some users may have encountered the problem of the app crashing when using earlier versions of the Firefox browser. Well, we decided to close all debts this year and release the patch today. We also did something that no release can do without: we updated CoreLibs. 
+Android用のAdGuardの最後の更新後、一部のユーザーは、Firefoxブラウザの以前のバージョンを使用して、アプリのクラッシュの問題に遭遇した可能性があります。 さて、今年は全ての債務をクローズし、今日のパッチを解放することにしました。 CoreLibs はリリースなしでもできるものもしました。
 
-### Changelog
+### 変更履歴
 
-* [Fixed] AdGuard crashes while using earlier versions of FireFox browser [#4068](https://github.com/AdguardTeam/AdguardForAndroid/issues/4068)
-* [Enhancement] Updated CoreLibs to v1.8.281 [#4076](https://github.com/AdguardTeam/AdguardForAndroid/issues/4076)
+* [修正] 以前のバージョンのFireFoxブラウザを使用して、AdGuardがクラッシュ [#4068](https://github.com/AdguardTeam/AdguardForAndroid/issues/4068)
+* [Enhancement] CoreLibsをv1.8.281に更新しました [#4076](https://github.com/AdguardTeam/AdguardForAndroid/issues/4076)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.5
 
-- Published: 2021-12-17T11:39:26Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.5
+- 公表: 2021-12-17T11:39:26Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.5
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-It's time to release AdGuard v3.6.5 for Android. The biggest thing about this version is the enhanced Browsing Security module which now blocks requests to malicious and phishing sites better and faster! No less important point is that we’ve updated CoreLibs and DNSLibs to make the app perform more reliably, and fixed various minor bugs. Hope you will enjoy AdGuard v3.6.5 for Android! 
+Android用のAdGuard v3.6.5をリリースする時間です。 このバージョンの最大のことは、悪意のあるフィッシングサイトへのリクエストをブロックし、サイトをより速くする強化されたブラウジングセキュリティモジュールです! 重要なポイントは、CoreLibsとDNSLibsをアップデートして、アプリがより確実に実行し、さまざまなマイナーなバグを修正しました。 AndroidでAdGuard v3.6.5を楽しむことを願っています!
 
-* **[Enhancement] Enhanced Browsing Security module**
+* **[Enhancement]セキュリティモジュールの強化**
 
-With the implementation of new Safe Browsing API v2, Browsing Security module responsible for blocking requests to malicious and phishing sites has become more effective. The upgraded version of this module makes browsing the Internet safer than ever and leaves no chance for the malicious code to be executed.
+新しいセーフブラウジングAPI v2の実装では、悪意のあるフィッシングサイトへのリクエストをブロックする責任のあるセキュリティモジュールがより効果的になりました。 このモジュールのアップグレードされたバージョンは、インターネットを安全に閲覧し、悪意のあるコードが実行される可能性はありません。
 
-### Changelog
+### 変更履歴
 
-* [Fixed] Keenetic app compatibility issue with AdGuard [#4035](https://github.com/AdguardTeam/AdguardForAndroid/issues/4035)
-* [Fixed] Cosmote Greek carrier VoWiFi blocking [#3821](https://github.com/AdguardTeam/AdguardForAndroid/issues/3821)
-* [Enhancement] Add 360 browser to the list of browsers [#4040](https://github.com/AdguardTeam/AdguardForAndroid/issues/4040)
-* [Enhancement] Updated CoreLibs to v1.8.274 [#4061](https://github.com/AdguardTeam/AdguardForAndroid/issues/4061)
-* [Enhancement] Updated DnsLibs to v1.6.70 [#4051](https://github.com/AdguardTeam/AdguardForAndroid/issues/4051)
+* [修正] アドガードとのケネティックなアプリの互換性の問題 [#4035](https://github.com/AdguardTeam/AdguardForAndroid/issues/4035)
+* [修正] CosmoteギリシャキャリアVoWiFiブロック [#3821](https://github.com/AdguardTeam/AdguardForAndroid/issues/3821)
+* [参加] ブラウザの一覧に360ブラウザを追加 [#4040](https://github.com/AdguardTeam/AdguardForAndroid/issues/4040)
+* [Enhancement] コアリブを v1.8.274 に更新 [#4061](https://github.com/AdguardTeam/AdguardForAndroid/issues/4061)
+* [Enhancement] DnsLibsをv1.6.70に更新 [#4051](https://github.com/AdguardTeam/AdguardForAndroid/issues/4051)
 
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.5 beta
+## 3.6.5 ベータ
 
-- Published: 2021-12-02T12:51:50Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.5-beta
+- 公開日: 2021-12-02T12:51:50Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.5-beta
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Meet AdGuard v.3.6.5 for Android beta! There aren't many changes in it, but they're all pretty important. The main news is that we've upgraded the Safebrowsing module, so you can now surf the web feeling safer than ever before. What’s more? Of course, we’ve updated CoreLibs and DNSLibs (otherwise it wouldn't be a true release). Hope you’ll enjoy the new version! 
+Androidのベータ版でAdGuard v.3.6.5を満たしています! 変化は殆どありませんが、とても大切です。 メインニュースは、Safebrowsingモジュールをアップグレードしたので、これまで以上にWebの気持ちを安全にサーフできるようになりました。 詳しくはこちら もちろん、CoreLibs と DNSLibs をアップデートしました(ただし、真のリリースではありません)。 新しいバージョンをお楽しみ下さい!
 
-* **[Enhancement] Safebrowsing v2.0**
-Safebrowsing, which is responsible for blocking requests to malicious and phishing sites, has been upgraded. The new version of this module makes browsing the Internet safer than ever.
+* **[Enhancement] セーフブラウジングv2.0**
+悪意のあるフィッシングサイトへのリクエストをブロックする責任があるSafebrowsingは、アップグレードされています。 このモジュールの新しいバージョンでは、インターネットをより安全に閲覧できます。
 
-### Changelog
+### 変更履歴
 
-* [Fixed] Keenetic app compatibility issue with AdGuard [#4035](https://github.com/AdguardTeam/AdguardForAndroid/issues/4035)
-* [Fixed] Cosmote Greek carrier VoWiFi blocking [#3821](https://github.com/AdguardTeam/AdguardForAndroid/issues/3821)
-* [Enhancement] Add 360 browser to the list of browsers [#4040](https://github.com/AdguardTeam/AdguardForAndroid/issues/4040)
-* [Enhancement] Updated CoreLibs to v1.8.256 [#1000](https://github.com/AdguardTeam/AdguardForMac/issues/1000)
-* [Enhancement] Updated DnsLibs to v1.6.66 [#989](https://github.com/AdguardTeam/AdguardForMac/issues/989)
+* [修正] アドガードとのケネティックなアプリの互換性の問題 [#4035](https://github.com/AdguardTeam/AdguardForAndroid/issues/4035)
+* [修正] CosmoteギリシャキャリアVoWiFiブロック [#3821](https://github.com/AdguardTeam/AdguardForAndroid/issues/3821)
+* [参加] ブラウザの一覧に360ブラウザを追加 [#4040](https://github.com/AdguardTeam/AdguardForAndroid/issues/4040)
+* [Enhancement] コアリブを v1.8.256 に更新 [#1000](https://github.com/AdguardTeam/AdguardForMac/issues/1000)
+* [Enhancement] DnsLibsをv1.6.66に更新しました [#989](https://github.com/AdguardTeam/AdguardForMac/issues/989)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.4
 
-- Published: 2021-09-17T13:02:29Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.4
+- 公開日: 2021-09-17T13:02:29Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.4
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-This quick update fixes a bug that could have happened to our long-term users. If you have been using AdGuard for a few years and your security certificate expired, it could have lead to an HTTPS filtering failure. After this update, you will see a notification on the app’s main screen. Tap on it and follow on-screen instructions to reinstall the certificate and resume HTTPS filtering.
+このクイックアップデートは、長期的なユーザーに起こったバグを修正しました。 数年間AdGuardを使用していて、セキュリティ証明書が期限が切れた場合、HTTPSフィルタリングの失敗につながる可能性があります。 この更新後、アプリのメイン画面に通知が表示されます。 タップすると、画面上の指示に従って、証明書を再インストールし、HTTPSフィルタリングを再開します。
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.3
 
-- Published: 2021-09-08T14:53:39Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.3
+- 公開日: 2021-09-08T14:53:39Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.3
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-In this version we focused on updating CoreLibs. Namely, we dealt with the priority of existing modifiers and added several new ones: `$denyallow`, `$redirect-rule`, `$removeheader`, and `$specifichide`. It might be of interest to users who’d like to [create their own ad filters](https://kb.adguard.com/en/general/how-to-create-your-own-ad-filters). Besides, we’ve made userscript exclusions work properly and fixed all issues found.
-We know you are waiting for v4.0, so are we. Trust us, it’s worth it.
+このバージョンでは、CoreLibs の更新に重点を置いています。 つまり、既存の修飾子の優先順位に対処し、いくつかの新しいものを追加しました。`$denyallow`, `$redirect-rule`, `$removeheader`と`$specifichide`. [自分の広告フィルタを作成する] にしたいユーザーに興味があるかもしれません(https://kb.adguard.com/en/general/how-to-create-your-own-ad-filters)。 また、ユーザースクリプトの除外作業を適切に行い、見つかったすべての問題を修正しました。
+v4.0をお待ちしていますので、お待ちしています。 私たちを信頼してください。
 
-### Changelog
+### 変更履歴
 
-* [Fixed] Proxy gets disabled after each AdGuard VPN update [#3680](https://github.com/AdguardTeam/AdguardForAndroid/issues/3680)
-* [Fixed] Stealth mode settings configured in the setup wizard are not applied [#3747](https://github.com/AdguardTeam/AdguardForAndroid/issues/3747)
-* [Fixed] AdGuard doesn't let users of the MEGA app log in [#3837](https://github.com/AdguardTeam/AdguardForAndroid/issues/3837)
-* [Fixed] "NetworkCallback was not registered" error when stopping protection [#3870](https://github.com/AdguardTeam/AdguardForAndroid/issues/3870)
-* [Fixed] Instagram doesn't work in Local HTTP Proxy mode (root access) [#3879](https://github.com/AdguardTeam/AdguardForAndroid/issues/3879)
-* [Fixed] NektoMe doesn't work when AdGuard is enabled [#374](https://github.com/AdguardTeam/AdguardForAndroid/issues/374)
-* [Fixed] If a phone has access to an IPv6 connection, AdGuard for Android fails to connect to DNS-over-QUIC servers that are only accessible over IPv4 [#3927](https://github.com/AdguardTeam/AdguardForAndroid/issues/3927)
-* [Fixed] The issue with changing the language in the DNS section [#3731](https://github.com/AdguardTeam/AdguardForAndroid/issues/3731)
-* [Fixed] Root + Local HTTP proxy slowdown on Android 7 [#3844](https://github.com/AdguardTeam/AdguardForAndroid/issues/3844)
-* [Fixed] Check proxy connection status error [#3848](https://github.com/AdguardTeam/AdguardForAndroid/issues/3848)
-* [Fixed] TikTok doesn't work when AdGuard is enabled [#3866](https://github.com/AdguardTeam/AdguardForAndroid/issues/3866)
-* [Fixed] Wrong exclusions suggested for `$removeparam` rules in the filtering log [#3873](https://github.com/AdguardTeam/AdguardForAndroid/issues/3873)
-* [Fixed] Don't pass DNS64 settings to DNSLibs if IPv4 network interface is present [#3886](https://github.com/AdguardTeam/AdguardForAndroid/issues/3886)
-* [Fixed] Connection issues on Fujitsu devices
-* [Fixed] Issue with an expired security certificate
-* [Fixed] Extend public networks list to force IPv4 default route
-* [Fixed] `com.android.browser` connection issues on several devices
-* [Fixed] Stealth mode screen can't be scrolled
-* [Enhancement] Updated DnsLibs to v1.6.29 [#3952](https://github.com/AdguardTeam/AdguardForAndroid/issues/3952)
-* [Enhancement] DNS-over-QUIC (Removed "experimental" label) [#3842](https://github.com/AdguardTeam/AdguardForAndroid/issues/3842)
-* [Enhancement] Turkey - Turkcell VoWifi new IP address [#3864](https://github.com/AdguardTeam/AdguardForAndroid/issues/3864)
-* [Enhancement] Fanboy's Annoyance List's Subscription URL is broken [#3865](https://github.com/AdguardTeam/AdguardForAndroid/issues/3865)
-* [Enhancement] Enable HTTPS filtering by default for Edge Dev, Edge Beta, and Styx Browser [#3897](https://github.com/AdguardTeam/AdguardForAndroid/issues/3897)
-* [Enhancement] Do not hardcode excluding AdGuard VPN package from filtering [#3923](https://github.com/AdguardTeam/AdguardForAndroid/issues/3923)
-* [Enhancement] Added Yandex Browser to the list of browsers [#3951](https://github.com/AdguardTeam/AdguardForAndroid/issues/3951)
+* [修正] プロキシは、各 AdGuard VPN 更新 [#3680] 後に無効になります(https://github.com/AdguardTeam/AdguardForAndroid/issues/3680)
+* [修正済み] セットアップウィザードで設定されたステルスモードの設定は適用されません [#3747](https://github.com/AdguardTeam/AdguardForAndroid/issues/3747)
+* [修正] AdGuard は [#3837] で MEGA アプリのログのユーザを許可しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/3837)
+* [修正] 「ネットワークコールバックが登録されていない」 保護を停止したときにエラー [#3870](https://github.com/AdguardTeam/AdguardForAndroid/issues/3870)
+* [修正] Instagram はローカル HTTP プロキシ モード (root アクセス) [#3879] で動作しません。https://github.com/AdguardTeam/AdguardForAndroid/issues/3879)
+* [修正済み] AdGuardが有効になったときにNektoMeが機能しません [#374](https://github.com/AdguardTeam/AdguardForAndroid/issues/374)
+* [修正] 携帯電話がIPv6接続にアクセスしている場合, Android用のAdGuardは、IPv4経由でのみアクセス可能なDNS-over-QUICサーバーに接続できませんでした [#3927](https://github.com/AdguardTeam/AdguardForAndroid/issues/3927)
+* [修正] DNS セクションで言語を変更する問題 [#3731](https://github.com/AdguardTeam/AdguardForAndroid/issues/3731)
+* [修正] ルート + ローカル HTTP プロキシの減速 Android 7 [#3844](https://github.com/AdguardTeam/AdguardForAndroid/issues/3844)
+* [修正済み] プロキシ接続ステータスエラーチェック [#3848](https://github.com/AdguardTeam/AdguardForAndroid/issues/3848)
+* [修正済み] [#3866] を有効にしたときに TikTok が動作しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/3866)
+* [修正] 間違った除外を提案`$removeparam`フィルタリングログのルール [#3873](https://github.com/AdguardTeam/AdguardForAndroid/issues/3873)
+* [修正] IPv4 ネットワーク インターフェイスが [#3886] の場合、DNS64 の設定を DNSLibs に渡さないでください(https://github.com/AdguardTeam/AdguardForAndroid/issues/3886)
+* 【修正】富士通デバイスの接続問題
+* [修正] 期限切れのセキュリティ証明書での問題
+* [修正] IPv4のデフォルトルートを強制するパブリックネットワークリストを拡張する
+* [修正]`com.android.browser`複数のデバイスへの接続の問題
+* [修正] ステルスモード画面はスクロールできません
+* [Enhancement] DnsLibsをv1.6.29に更新 [#3952](https://github.com/AdguardTeam/AdguardForAndroid/issues/3952)
+* [Enhancement] DNS-over-QUIC (Removed "experimental" ラベル) [#3842]https://github.com/AdguardTeam/AdguardForAndroid/issues/3842)
+* [Enhancement] トルコ - トルクセルVoWifi新しいIPアドレス [#3864]()https://github.com/AdguardTeam/AdguardForAndroid/issues/3864)
+* [Enhancement] ファンボーイのAnnoyance ListのサブスクリプションURLが壊れています [#3865](https://github.com/AdguardTeam/AdguardForAndroid/issues/3865)
+* [Enhancement] Edge Dev、Edge Beta、Styx Browser のデフォルトで HTTPS フィルタリングを有効にする [#3897](https://github.com/AdguardTeam/AdguardForAndroid/issues/3897)
+* [参加] [#3923] をフィルタリングから AdGuard VPN パッケージを除外しないハードコードしないでください(https://github.com/AdguardTeam/AdguardForAndroid/issues/3923)
+* [Enhancement] Yandex Browser をブラウザーの一覧に追加 [#3951](https://github.com/AdguardTeam/AdguardForAndroid/issues/3951)
 
-### Updated CoreLibs to v1.8.163 [#3945](https://github.com/AdguardTeam/AdguardForAndroid/issues/3945)
+### CoreLibs を v1.8.163 [#3945] に更新しました。https://github.com/AdguardTeam/AdguardForAndroid/issues/3945)
 
-* [Fixed] Rule with `$important` modifier should has higher priority than rule with `$all` modifier [#1440](https://github.com/AdguardTeam/CoreLibs/issues/1440)
-* [Fixed] Userscript exclusions do not work as they should [#1425](https://github.com/AdguardTeam/CoreLibs/issues/1425)
-* [Enhancement] Add `$denyallow` modifier [#1304](https://github.com/AdguardTeam/CoreLibs/issues/1304)
-* [Enhancement] Add `$redirect-rule` modifier [#1303](https://github.com/AdguardTeam/CoreLibs/issues/1303)
-* [Enhancement] Add `$removeheader` modifier [#1427](https://github.com/AdguardTeam/CoreLibs/issues/1427)
-* [Enhancement] Add `$specifichide` modifier [#1166](https://github.com/AdguardTeam/CoreLibs/issues/1166)
-* [Enhancement] Add an option to send Global Privacy Control's Do NotSell signal to Stealth Mode [#1451](https://github.com/AdguardTeam/CoreLibs/issues/1451)
-* [Enhancement] Improve the way negation works for `$redirect` rules [#1388](https://github.com/AdguardTeam/CoreLibs/issues/1388)
-* [Other] Rules with `$extension` modifier unblock blocked requests [#1350](https://github.com/AdguardTeam/CoreLibs/issues/1350)
+* [修正] ルールと`$important`修飾子はルールよりも高い優先度を持っている必要があります`$all`修飾子 [#1440] (https://github.com/AdguardTeam/CoreLibs/issues/1440)
+* [修正済み] ユーザスクリプトの除外は [#1425] が動作しないhttps://github.com/AdguardTeam/CoreLibs/issues/1425)
+* [参加] 追加する`$denyallow`修飾子 [#1304] (https://github.com/AdguardTeam/CoreLibs/issues/1304)
+* [参加] 追加する`$redirect-rule`修飾子 [#1303] (https://github.com/AdguardTeam/CoreLibs/issues/1303)
+* [参加] 追加する`$removeheader`修飾子 [#1427] (https://github.com/AdguardTeam/CoreLibs/issues/1427)
+* [参加] 追加する`$specifichide`修飾子 [#1166] (https://github.com/AdguardTeam/CoreLibs/issues/1166)
+* [参加] グローバル・プライバシー・コントロールの「Do NotSell」信号をStees Mode[#1451]に送信するオプションを追加します。https://github.com/AdguardTeam/CoreLibs/issues/1451)
+* [参加] ネグエーションの仕組みを改善`$redirect`ルール [#1388](https://github.com/AdguardTeam/CoreLibs/issues/1388)
+* [その他] ルール`$extension`修飾子ブロック解除リクエスト [#1350](https://github.com/AdguardTeam/CoreLibs/issues/1350)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.3 beta
+## 3.6.3 ベータ
 
-- Published: 2021-08-31T15:11:34Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.3-beta-1
+- 公開日: 2021-08-31T15:11:34Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.3-beta-1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Do you remember the day when we solemnly announced that AdGuard v4.0 for Android is coming? Today, standing at the threshold of a new era and foreseeing bright prospects, we are finally releasing it... v3.6.3 beta. Ba-dum-tss!
+Android用のAdGuard v4.0が来ていると発表したのは、いつか覚えていますか? 今日、新しい時代のしきい値に立ち、明るい見通しを予見し、ついにそれを解放しています... v3.6.3ベータ。 バダムッツ!
 
-### Changelog
+### 変更履歴
 
-* [Fixed] Proxy gets disabled after each AdGuard VPN update [#3680](https://github.com/AdguardTeam/AdguardForAndroid/issues/3680)
-* [Fixed] Stealth mode settings configured in the setup wizard are not applied [#3747](https://github.com/AdguardTeam/AdguardForAndroid/issues/3747)
-* [Fixed] AdGuard doesn't let users of the MEGA app log in [#3837](https://github.com/AdguardTeam/AdguardForAndroid/issues/3837)
-* [Fixed] "NetworkCallback was not registered" error when stopping protection [#3870](https://github.com/AdguardTeam/AdguardForAndroid/issues/3870)
-* [Fixed] Instagram doesn't work in Local HTTP Proxy mode (root access) [#3879](https://github.com/AdguardTeam/AdguardForAndroid/issues/3879)
-* [Fixed] NektoMe doesn't work when AdGuard is enabled [#374](https://github.com/AdguardTeam/AdguardForAndroid/issues/374)
-* [Fixed] If a phone has access to an IPv6 connection, AdGuard for Android fails to connect to DNS-over-QUIC servers that are only accessible over IPv4 [#3927](https://github.com/AdguardTeam/AdguardForAndroid/issues/3927)
-* [Fixed] The issue with changing the language in the DNS section [#3731](https://github.com/AdguardTeam/AdguardForAndroid/issues/3731)
-* [Fixed] Root + Local HTTP proxy slowdown on Android 7 [#3844](https://github.com/AdguardTeam/AdguardForAndroid/issues/3844)
-* [Fixed] Check proxy connection status error [#3848](https://github.com/AdguardTeam/AdguardForAndroid/issues/3848)
-* [Fixed] TikTok doesn't work when AdGuard is enabled [#3866](https://github.com/AdguardTeam/AdguardForAndroid/issues/3866)
-* [Fixed] Wrong exclusions suggested for $removeparam rules in the filtering log [#3873](https://github.com/AdguardTeam/AdguardForAndroid/issues/3873)
-* [Fixed] Don't pass DNS64 settings to DNSLibs if IPv4 network interface is present [#3886](https://github.com/AdguardTeam/AdguardForAndroid/issues/3886)
-* [Fixed] Connection issues on Fujitsu devices
-* [Fixed] Issue with an expired security certificate
-* [Fixed] Extend public networks list to force IPv4 default route
-* [Fixed] com.android.browser connection issues on several devices
-* [Fixed] Stealth mode screen can't be scrolled
-* [Enhancement] Updated CoreLibs to v1.8.163 [#3945](https://github.com/AdguardTeam/AdguardForAndroid/issues/3945)
-* [Enhancement] Updated DnsLibs to v1.6.29 [#3952](https://github.com/AdguardTeam/AdguardForAndroid/issues/3952)
-* [Enhancement] DNS-over-QUIC (Removed "experimental" label) [#3842](https://github.com/AdguardTeam/AdguardForAndroid/issues/3842)
-* [Enhancement] Turkey - Turkcell VoWifi new IP address [#3864](https://github.com/AdguardTeam/AdguardForAndroid/issues/3864)
-* [Enhancement] Fanboy's Annoyance List's Subscription URL is broken [#3865](https://github.com/AdguardTeam/AdguardForAndroid/issues/3865)
-* [Enhancement] Enable HTTPS filtering by default for Edge Dev, Edge Beta, and Styx Browser [#3897](https://github.com/AdguardTeam/AdguardForAndroid/issues/3897)
-* [Enhancement] Do not hardcode excluding AdGuard VPN package from filtering [#3923](https://github.com/AdguardTeam/AdguardForAndroid/issues/3923)
-* [Enhancement] Added Yandex Browser to the list of browsers [#3951](https://github.com/AdguardTeam/AdguardForAndroid/issues/3951)
+* [修正] プロキシは、各 AdGuard VPN 更新 [#3680] 後に無効になります(https://github.com/AdguardTeam/AdguardForAndroid/issues/3680)
+* [修正済み] セットアップウィザードで設定されたステルスモードの設定は適用されません [#3747](https://github.com/AdguardTeam/AdguardForAndroid/issues/3747)
+* [修正] AdGuard は [#3837] で MEGA アプリのログのユーザを許可しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/3837)
+* [修正] 「ネットワークコールバックが登録されていない」 保護を停止したときにエラー [#3870](https://github.com/AdguardTeam/AdguardForAndroid/issues/3870)
+* [修正] Instagram はローカル HTTP プロキシ モード (root アクセス) [#3879] で動作しません。https://github.com/AdguardTeam/AdguardForAndroid/issues/3879)
+* [修正済み] AdGuardが有効になったときにNektoMeが機能しません [#374](https://github.com/AdguardTeam/AdguardForAndroid/issues/374)
+* [修正] 携帯電話がIPv6接続にアクセスしている場合, Android用のAdGuardは、IPv4経由でのみアクセス可能なDNS-over-QUICサーバーに接続できませんでした [#3927](https://github.com/AdguardTeam/AdguardForAndroid/issues/3927)
+* [修正] DNS セクションで言語を変更する問題 [#3731](https://github.com/AdguardTeam/AdguardForAndroid/issues/3731)
+* [修正] ルート + ローカル HTTP プロキシの減速 Android 7 [#3844](https://github.com/AdguardTeam/AdguardForAndroid/issues/3844)
+* [修正済み] プロキシ接続ステータスエラーチェック [#3848](https://github.com/AdguardTeam/AdguardForAndroid/issues/3848)
+* [修正済み] [#3866] を有効にしたときに TikTok が動作しません。(https://github.com/AdguardTeam/AdguardForAndroid/issues/3866)
+* [修正] フィルタリングログの $removeparam ルールのために提案された間違った除外 [#3873](https://github.com/AdguardTeam/AdguardForAndroid/issues/3873)
+* [修正] IPv4 ネットワーク インターフェイスが [#3886] の場合、DNS64 の設定を DNSLibs に渡さないでください(https://github.com/AdguardTeam/AdguardForAndroid/issues/3886)
+* 【修正】富士通デバイスの接続問題
+* [修正] 期限切れのセキュリティ証明書での問題
+* [修正] IPv4のデフォルトルートを強制するパブリックネットワークリストを拡張する
+* [修正] 複数のデバイス上のcom.android.browser接続の問題
+* [修正] ステルスモード画面はスクロールできません
+* [Enhancement] CoreLibsをv1.8.163に更新 [#3945](https://github.com/AdguardTeam/AdguardForAndroid/issues/3945)
+* [Enhancement] DnsLibsをv1.6.29に更新 [#3952](https://github.com/AdguardTeam/AdguardForAndroid/issues/3952)
+* [Enhancement] DNS-over-QUIC (Removed "experimental" ラベル) [#3842]https://github.com/AdguardTeam/AdguardForAndroid/issues/3842)
+* [Enhancement] トルコ - トルクセルVoWifi新しいIPアドレス [#3864]()https://github.com/AdguardTeam/AdguardForAndroid/issues/3864)
+* [Enhancement] ファンボーイのAnnoyance ListのサブスクリプションURLが壊れています [#3865](https://github.com/AdguardTeam/AdguardForAndroid/issues/3865)
+* [Enhancement] Edge Dev、Edge Beta、Styx Browser のデフォルトで HTTPS フィルタリングを有効にする [#3897](https://github.com/AdguardTeam/AdguardForAndroid/issues/3897)
+* [参加] [#3923] をフィルタリングから AdGuard VPN パッケージを除外しないハードコードしないでください(https://github.com/AdguardTeam/AdguardForAndroid/issues/3923)
+* [Enhancement] Yandex Browser をブラウザーの一覧に追加 [#3951](https://github.com/AdguardTeam/AdguardForAndroid/issues/3951)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.2
 
-- Published: 2021-05-13T14:29:46Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2
+- 公開日: 2021-05-13T14:29:46Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Well, well, 3.6.2 release arrived. One beta and two RCs have proved successful, we said, “Hooray,” and released the final version right away.
+まあ、よく、3.6.2リリースが届きました。 1つのベータと2つのRCが成功を収めました。私たちは「Hooray」と述べ、最終バージョンをすぐにリリースしました。
 
-So, what’s inside it? We could write about updated CoreLibs and DnsLibs, improved data collection for reports and minor issues like parsing SDNS links for DoQ servers, but honestly, not many people would understand what the hell it means. Trust us, the app has only gotten better!
+それでは、その中のものは何ですか? 当社は、更新されたCoreLibsとDnsLibsについて書き込むことができ、SDNSがDoQサーバーのリンクを解析するなどのレポートとマイナーな問題のデータ収集を改善しましたが、正直に、多くの人がそれが何を意味するのかを理解しているわけではありません。 信頼して、アプリはより良いものばかりになりました!
 
-P.S. v4.0 is coming. Hopefully, v3.6.2 will be the last way station before the new era.
+P.S. v4.0 がリリースされました。 うまくいけば、v3.6.2は新しい時代の前に最後の方法の駅になります。
 
-<img src="https://cdn.adguard.com/public/Adguard/Blog/Android/3-6/Starken.png">
+<img src="">https://cdn.adguard.com/public/Adguard/Blog/Android/3-6/Starken.png">
 
-### Changelog
+### 変更履歴
 
-* [Enhancement] Added Microsoft Edge Canary browser to the list of supported browsers [#3808](https://github.com/AdguardTeam/AdguardForAndroid/issues/3808)
-* [Enhancement] Added Iceraven Browser to the list of supported browsers [#3797](https://github.com/AdguardTeam/AdguardForAndroid/issues/3797)
-* [Enhancement] Added QQ and UC browsers to the list of supported browsers [#3707](https://github.com/AdguardTeam/AdguardForAndroid/issues/3707)
-* [Enhancement] Added Privacy Browser to the list of supported browsers [#3677](https://github.com/AdguardTeam/AdguardForAndroid/issues/3677)
-* [Enhancement] Added Vivaldi Snapshot to the HTTPS filtering list [#3741](https://github.com/AdguardTeam/AdguardForAndroid/issues/3741)
-* [Enhancement] Added popular Wi-Fi calling servers to the default exclusions list [#3742](https://github.com/AdguardTeam/AdguardForAndroid/issues/3742)
-* [Enhancement] Added posteitaliane.posteapp.appbpol to exclusions [#3756](https://github.com/AdguardTeam/AdguardForAndroid/issues/3756)
-* [Fixed] Built-in iptables is missing support for “-p dport” [#3782](https://github.com/AdguardTeam/AdguardForAndroid/issues/3782)
-* [Fixed] Disable HTTPS filtering for com.google.android.feedback [#3655](https://github.com/AdguardTeam/AdguardForAndroid/issues/3655)
-* [Fixed] Unable to get a trial period [#3691](https://github.com/AdguardTeam/AdguardForAndroid/issues/3691)
-* [Fixed] com.tomtom.amigo.huawei app incompatibility [#3767](https://github.com/AdguardTeam/AdguardForAndroid/issues/3767)
-* [Fixed] de.avm.android.fritzapp — VoIP/SIP issue [#3810](https://github.com/AdguardTeam/AdguardForAndroid/issues/3810)
-* [Fixed] Buffer was exhausted while reading /proc/net/tcp6 [#3832](https://github.com/AdguardTeam/AdguardForAndroid/issues/3832)
-* [Other] Added Kurdish localization [#3774](https://github.com/AdguardTeam/AdguardForAndroid/issues/3774)
-* [Other] Updated DnsLibs to v1.5.26 [#3829](https://github.com/AdguardTeam/AdguardForAndroid/issues/3829)
-* [Other] Added “UniFi Network” to the apps exclusions list
-#### Updated CoreLibs to v1.7.211
-* [Fixed] CSS rules with ```URL``` shouldn’t be allowed [#1431](https://github.com/AdguardTeam/CoreLibs/issues/1431)
-* [Fixed] HTTPS filtering issue at hepsiburada.com [#1406](https://github.com/AdguardTeam/CoreLibs/issues/1406)
+* [Enhancement] サポートされているブラウザーの一覧に Microsoft Edge Canary ブラウザーを追加しました [#3808](https://github.com/AdguardTeam/AdguardForAndroid/issues/3808)
+* [Enhancement] サポートされているブラウザーのリストに Iceraven Browser を追加しました [#3797](https://github.com/AdguardTeam/AdguardForAndroid/issues/3797)
+* [Enhancement] サポートされているブラウザーのリストに QQ および UC ブラウザーを追加しました [#3707](https://github.com/AdguardTeam/AdguardForAndroid/issues/3707)
+* [Enhancement] サポートされているブラウザの一覧にプライバシーブラウザを追加しました [#3677](https://github.com/AdguardTeam/AdguardForAndroid/issues/3677)
+* [Enhancement] HTTPS フィルタリングリストに Vivaldi スナップショットを追加 [#3741](https://github.com/AdguardTeam/AdguardForAndroid/issues/3741)
+* [Enhancement] 既定の除外リストに人気のWi-Fi呼び出しサーバーを追加しました [#3742](https://github.com/AdguardTeam/AdguardForAndroid/issues/3742)
+* [Enhancement] posteitaliane.posteapp.appbpolを除外に追加しました [#3756](https://github.com/AdguardTeam/AdguardForAndroid/issues/3756)
+* [修正] 組み込みのiptablesは、 "-p dport" [#3782] のサポートが不足しているhttps://github.com/AdguardTeam/AdguardForAndroid/issues/3782)
+* [修正] com.google.android.feedback [#3655] でフィルタリングを無効にするhttps://github.com/AdguardTeam/AdguardForAndroid/issues/3655)
+* [修正] 試用期間を取得することができません [#3691](https://github.com/AdguardTeam/AdguardForAndroid/issues/3691)
+* [修正] com.tomtom.amigo.huawei アプリの互換性 [#3767]()https://github.com/AdguardTeam/AdguardForAndroid/issues/3767)
+* [修正] de.avm.android.fritzapp — VoIP/SIP の問題 [#3810](https://github.com/AdguardTeam/AdguardForAndroid/issues/3810)
+* [修正] /proc/net/tcp6 [#3832] を読みながらバッファが疲れていました(https://github.com/AdguardTeam/AdguardForAndroid/issues/3832)
+* [その他] クルディッシュローカリゼーションを追加 [#3774](https://github.com/AdguardTeam/AdguardForAndroid/issues/3774)
+* [その他] DnsLibs を v1.5.26 に更新 [#3829](https://github.com/AdguardTeam/AdguardForAndroid/issues/3829)
+* [その他] アプリ除外リストに「ユニファイネットワーク」を追加
+#### CoreLibsをv1.7.211に更新
+* [修正] CSS ルールと```URL```許可されていない[#1431](https://github.com/AdguardTeam/CoreLibs/issues/1431)
+* [修正] hepsiburada.comでHTTPSフィルタリングの問題 [#1406]()https://github.com/AdguardTeam/CoreLibs/issues/1406)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.2 RC 2
 
-- Published: 2021-05-11T11:31:40Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-rc-2
+- 公開日: 2021-05-11T11:31:40Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-rc-2
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Here comes the second release candidate for AdGuard v3.6.2 for Android. We've made it so that AdGuard will perform better on the devices where multiple proxies are in use. Plus, DnsLibs have been updated one more time.
+ここでは、Android用のAdGuard v3.6.2用の2番目のリリース候補があります。 AdGuard は複数のプロキシが使用しているデバイスでより良い実行できるようにしました。 さらに、DnsLibs は1回以上更新されました。
 
-### Changelog
+### 変更履歴
 
-* [Fixed] Buffer was exhausted while reading /proc/net/tcp6 [#3832](https://github.com/AdguardTeam/AdguardForAndroid/issues/3832)
-* [Other] Updated DnsLibs to v1.5.26
+* [修正] /proc/net/tcp6 [#3832] を読みながらバッファが疲れていました(https://github.com/AdguardTeam/AdguardForAndroid/issues/3832)
+* [その他] DnsLibsをv1.5.26に更新
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.2 RC 1
 
-- Published: 2021-04-30T13:35:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-rc-1
+- 公表: 2021-04-30T13:35:19Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-rc-1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Meet the release candidate for AdGuard v3.6.2 for Android. Only two tasks separate it from the final version. Next stop, release.
+Android 用の AdGuard v3.6.2 のリリース候補をご紹介します。 最終バージョンから2つのタスクのみを分離します。 次の停止, リリース.
 
-### Changelog
+### 変更履歴
 
-* [Fixed] HTTPS filtering issue at hepsiburada.com [#1406](https://github.com/AdguardTeam/CoreLibs/issues/1406)
-* [Other] Updated DnsLibs to v1.5.24
+* [修正] hepsiburada.comでHTTPSフィルタリングの問題 [#1406]()https://github.com/AdguardTeam/CoreLibs/issues/1406)
+* [その他] DnsLibsをv1.5.24に更新
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.2 beta 1
+## 3.6.2 ベータ 1
 
-- Published: 2021-04-27T19:02:59Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-beta-1
+- 公表: 2021-04-27T19:02:59Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-beta-1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Meet AdGuard v3.6.2 for Android beta! In this version we’ve updated CoreLibs and DnsLibs to v1.7.211 and to v1.5.18 respectively, added a few apps to the list of exclusions, and improved data collection for submitting reports. Besides, we have fixed some other minor issues like parsing SDNS links for DoQ servers. 
+Androidのベータ版でAdGuard v3.6.2を満たしています! このバージョンでは、CoreLibs と DnsLibs を v1.7.211 に更新し、それぞれ v1.5.18 に更新しました。このバージョンでは、例外のリストにいくつかのアプリを追加し、レポートを提出するためのデータ収集を改善しました。 また、DoQサーバーのSDNSリンクを解析するなど、他のマイナーな問題を修正しました。
 
-### Changelog
+### 変更履歴
 
-* [Enhancement] Added Microsoft Edge Canary browser to the list of supported browsers [#3808](https://github.com/AdguardTeam/AdguardForAndroid/issues/3808)
-* [Enhancement] Added Iceraven Browser to the list of supported browsers [#3797](https://github.com/AdguardTeam/AdguardForAndroid/issues/3797)
-* [Enhancement] Added QQ and UC browsers to the list of supported browsers [#3707](https://github.com/AdguardTeam/AdguardForAndroid/issues/3707)
-* [Enhancement] Added Vivaldi Snapshot to the HTTPS filtering list [#3741](https://github.com/AdguardTeam/AdguardForAndroid/issues/3741)
-* [Enhancement] Privacy Browser Support [#3677](https://github.com/AdguardTeam/AdguardForAndroid/issues/3677)
-* [Enhancement] Added popular Wi-Fi calling servers to the default exclusions list [#3742](https://github.com/AdguardTeam/AdguardForAndroid/issues/3742)
-* [Enhancement] Added posteitaliane.posteapp.appbpol to exclusions [#3756](https://github.com/AdguardTeam/AdguardForAndroid/issues/3756)
-* [Enhancement] Updated CoreLibs to v1.7.180 [#3737](https://github.com/AdguardTeam/AdguardForAndroid/issues/3737)
-* [Fixed] Built-in iptables is missing support for “-p dport” [#3782](https://github.com/AdguardTeam/AdguardForAndroid/issues/3782)
-* [Fixed] Disable HTTPS filtering for com.google.android.feedback [#3655](https://github.com/AdguardTeam/AdguardForAndroid/issues/3655)
-* [Fixed] Unable to get a trial period [#3691](https://github.com/AdguardTeam/AdguardForAndroid/issues/3691)
-* [Fixed] com.tomtom.amigo.huawei app incompatibility [#3767](https://github.com/AdguardTeam/AdguardForAndroid/issues/3767)
-* [Fixed] de.avm.android.fritzapp — VoIP/SIP issue [#3810](https://github.com/AdguardTeam/AdguardForAndroid/issues/3810)
-* [Other] Added Kurdish localization [#3774](https://github.com/AdguardTeam/AdguardForAndroid/issues/3774)
-* [Other] Added “UniFi Network” to the apps exclusions list
-* [Other] Updated DnsLibs to v1.5.18 
-* [Other] Updated CoreLibs to v1.7.211
-* [Fixed] CSS rules with ```URL``` shouldn’t be allowed [#1431](https://github.com/AdguardTeam/CoreLibs/issues/1431)
+* [Enhancement] サポートされているブラウザーの一覧に Microsoft Edge Canary ブラウザーを追加しました [#3808](https://github.com/AdguardTeam/AdguardForAndroid/issues/3808)
+* [Enhancement] サポートされているブラウザーのリストに Iceraven Browser を追加しました [#3797](https://github.com/AdguardTeam/AdguardForAndroid/issues/3797)
+* [Enhancement] サポートされているブラウザーのリストに QQ および UC ブラウザーを追加しました [#3707](https://github.com/AdguardTeam/AdguardForAndroid/issues/3707)
+* [Enhancement] HTTPS フィルタリングリストに Vivaldi スナップショットを追加 [#3741](https://github.com/AdguardTeam/AdguardForAndroid/issues/3741)
+* [Enhancement] プライバシーブラウザのサポート [#3677](https://github.com/AdguardTeam/AdguardForAndroid/issues/3677)
+* [Enhancement] 既定の除外リストに人気のWi-Fi呼び出しサーバーを追加しました [#3742](https://github.com/AdguardTeam/AdguardForAndroid/issues/3742)
+* [Enhancement] posteitaliane.posteapp.appbpolを除外に追加しました [#3756](https://github.com/AdguardTeam/AdguardForAndroid/issues/3756)
+* [Enhancement] コアリブを v1.7.180 に更新 [#3737](https://github.com/AdguardTeam/AdguardForAndroid/issues/3737)
+* [修正] 組み込みのiptablesは、 "-p dport" [#3782] のサポートが不足しているhttps://github.com/AdguardTeam/AdguardForAndroid/issues/3782)
+* [修正] com.google.android.feedback [#3655] でフィルタリングを無効にするhttps://github.com/AdguardTeam/AdguardForAndroid/issues/3655)
+* [修正] 試用期間を取得することができません [#3691](https://github.com/AdguardTeam/AdguardForAndroid/issues/3691)
+* [修正] com.tomtom.amigo.huawei アプリの互換性 [#3767]()https://github.com/AdguardTeam/AdguardForAndroid/issues/3767)
+* [修正] de.avm.android.fritzapp — VoIP/SIP の問題 [#3810](https://github.com/AdguardTeam/AdguardForAndroid/issues/3810)
+* [その他] クルディッシュローカリゼーションを追加 [#3774](https://github.com/AdguardTeam/AdguardForAndroid/issues/3774)
+* [その他] アプリ除外リストに「ユニファイネットワーク」を追加
+* [その他] DnsLibsをv1.5.18に更新
+* [その他] CoreLibsをv1.7.211に更新
+* [修正] CSS ルールと```URL```許可されていない[#1431](https://github.com/AdguardTeam/CoreLibs/issues/1431)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6.1
 
-- Published: 2021-02-19T11:49:04Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.1
+- 公開日: 2021-02-19T11:49:04Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Another round of software release life cycle complete! This version of AdGuard for Android has made its way from an unsure of itself alpha to a confident release. We have routinely updated CoreLibs, fixed a couple of bugs and compatibility issues. This time, there are no shocking features like watching YouTube without ads but this release is no less important than the previous one. After all, we are getting better with every update!
+ソフトウェアリリースライフサイクルのもう1ラウンド完了! アンドロイド用のAdGuardのこのバージョンは、それ自体のアルファが自信を持ってリリースするのを確信しています。 CoreLibsを定期的に更新し、バグや互換性の問題のカップルを修正しました。 今回は、広告なしでYouTubeを見ているような衝撃的な機能はありませんが、このリリースは以前のものよりも重要ではありません。 結局のところ、私たちはすべての更新でより良い取得しています!
 
-### Changelog
+### 変更履歴
 
-* [Enhancement] CoreLibs updated to v1.7.189 [#3749](https://github.com/AdguardTeam/AdguardForAndroid/issues/3749)
-* [Fixed] Filtering doesn't work with 4G and IPv6 [#3527](https://github.com/AdguardTeam/AdguardForAndroid/issues/3527)
-* [Fixed] An error when trying to get a trial period via the app [#3691](https://github.com/AdguardTeam/AdguardForAndroid/issues/3691)
-* [Fixed] hepsiburada.com - HTTPS filtering issue [#1406](https://github.com/AdguardTeam/CoreLibs/issues/1406)
-* [Fixed] blockchain.com is broken [#1411](https://github.com/AdguardTeam/CoreLibs/issues/1411)
-* [Fixed] Compatibility issues
-* [Other] Several popular Wi-Fi calling servers added to the default exclusions list [#3742](https://github.com/AdguardTeam/AdguardForAndroid/issues/3742)
-* [Other] HTTPS filtering for Vivaldi Snapshot browser is enabled by default now [#3741](https://github.com/AdguardTeam/AdguardForAndroid/issues/3741)
+* [Enhancement] CoreLibs が v1.7.189 に更新されました [#3749](https://github.com/AdguardTeam/AdguardForAndroid/issues/3749)
+* [修正] 4GとIPv6でフィルタリングが動作しません [#3527](https://github.com/AdguardTeam/AdguardForAndroid/issues/3527)
+* [修正] アプリ経由で試用期間を取得しようとするとエラー [#3691](https://github.com/AdguardTeam/AdguardForAndroid/issues/3691)
+* [修正] hepsiburada.com - HTTPS フィルタリングの問題 [#1406]()https://github.com/AdguardTeam/CoreLibs/issues/1406)
+* [修正]blockchain.comが壊れています [#1411](https://github.com/AdguardTeam/CoreLibs/issues/1411)
+* [修正] 互換性の問題
+* [その他] 既定の除外リストに複数の一般的なWi-Fi呼び出しサーバーを追加しました [#3742](https://github.com/AdguardTeam/AdguardForAndroid/issues/3742)
+* [その他] Vivaldi スナップショット ブラウザの HTTPS フィルタリングがデフォルトで有効になっています [#3741](https://github.com/AdguardTeam/AdguardForAndroid/issues/3741)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
-## 3.6.1 beta 1
+## 3.6.1 ベータ 1
 
-- Published: 2021-02-15T16:15:08Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.1-beta-1
+- 公開日: 2021-02-15T16:15:08Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.1-beta-1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-This is the first beta on the way towards AdGuard v4.0. We fixed a couple of bugs, did a routine CoreLibs update, and made a few other changes.
+これは、AdGuard v4.0 への最初のベータです。 バグのカップルを修正し、定期的なCoreLibs更新を行い、他のいくつかの変更を行いました。
 
-### Changelog
+### 変更履歴
 
-* [Enhancement] CoreLibs updated to v1.7.188 [#3743](https://github.com/AdguardTeam/AdguardForAndroid/issues/3743)
-* [Fixed] Filtering doesn't work with 4G and IPv6 [#3527](https://github.com/AdguardTeam/AdguardForAndroid/issues/3527)
-* [Fixed] An error when trying to get a trial period via the app [#3691](https://github.com/AdguardTeam/AdguardForAndroid/issues/3691)
-* [Fixed] Compatibility issues
-* [Other] Several popular Wi-Fi calling servers added to the default exclusions list [#3742](https://github.com/AdguardTeam/AdguardForAndroid/issues/3742)
-* [Other] HTTPS filtering for Vivaldi Snapshot browser is enabled by default now [#3741](https://github.com/AdguardTeam/AdguardForAndroid/issues/3741)
+* [Enhancement] CoreLibs が v1.7.188 に更新されました [#3743](https://github.com/AdguardTeam/AdguardForAndroid/issues/3743)
+* [修正] 4GとIPv6でフィルタリングが動作しません [#3527](https://github.com/AdguardTeam/AdguardForAndroid/issues/3527)
+* [修正] アプリ経由で試用期間を取得しようとするとエラー [#3691](https://github.com/AdguardTeam/AdguardForAndroid/issues/3691)
+* [修正] 互換性の問題
+* [その他] 既定の除外リストに複数の一般的なWi-Fi呼び出しサーバーを追加しました [#3742](https://github.com/AdguardTeam/AdguardForAndroid/issues/3742)
+* [その他] Vivaldi スナップショット ブラウザの HTTPS フィルタリングがデフォルトで有効になっています [#3741](https://github.com/AdguardTeam/AdguardForAndroid/issues/3741)
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.6
 
-- Published: 2020-12-15T10:43:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6
+- 公開日: 2020-12-15T10:43:20Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-AdGuard for Android v3.6 is headlined by two pretty big changes, new features even. It's watching YouTube ad-free inside the app and DNS-over-QUIC protocol support. The first one is easy to grasp, the second one will take some explaining. 
-​
-
-**[Enhancement] An option to watch Youtube ad-free [#2994](https://github.com/AdguardTeam/AdguardForAndroid/issues/2994)**
-​
-Blocking ads in YouTube on Android has been exclusive to browsers for a long time, thanks to the restrictions Android OS imposes on filtering other apps' traffic. However, we found a way for you to avoid ads in YouTube app. Follow these easy steps:
-​
-<img src="https://cdn.adguard.com/public/Adguard/Blog/Android/3-6/share.gif" style="border: 1px solid #efefef; max-height: 700px; max-width: 350px; padding: 2px;">
-​
-1. Open the YouTube app and start the video you want to watch.
-2. Tap on the Share button and select AdGuard for Android from the list of apps.
-3. A new window will pop up where you'll be able to watch the video without being interrupted by ads! 
+Android v3.6 用の AdGuard は 2 つのかなり大きな変更、新しい機能によって見出しられます。 アプリとDNS-over-QUICプロトコルのサポートで、YouTubeのアドフリーを視聴しています。 最初の1つは把握が容易で、2つ目は説明します。
 ​
 
-**[Enhancement] DNS-over-QUIC support**
+**[活動内容] YouTubeの広告を視聴するオプション [#2994](https://github.com/AdguardTeam/AdguardForAndroid/issues/2994)**
 ​
-DNS-over-QUIC, or simply DoQ, is a DNS encryption protocol. You might have heard about DNS encryption protocols before, the most common ones are DNS-over-HTTPS and DNS-over-TLS (DoH and DoT correspondingly). So what makes DoQ so special? A bunch of things, really: out-of-the-box encryption, reduced connection times, and better performance in cases of lost data packets.
+AndroidでYouTubeで広告をブロックすることは、他のアプリのトラフィックをフィルタリングすることを妨げる制限のおかげで、長い間ブラウザに限定されています。 しかし、YouTubeアプリで広告を避けるための方法を見つけました。 これらの簡単な手順に従ってください:
 ​
-<img src="https://cdn.adguard.com/public/Adguard/Blog/Android/3-6/DNS-over-QUIC_en.png" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Blog/Android/3-6/share.gif"style="border: 1px ソリッド #efefefef; max-height: 700px; max-width: 350px; padding: 2px;">
 ​
-The feature is still experimental — AdGuard for Android is one of the first open-source implementations of DNS-over-QUIC — but it's perfectly functioning and we encourage you to try it. You'll find it under *DNS Filtering*. Select AdGuard DNS and choose DoQ from among the available encryption protocols.
+1. YouTubeアプリを開き、視聴したい動画を始めます。
+2. 共有ボタンをタップし、アプリのリストからAndroid用のAdGuardを選択します。
+3. 広告を中断することなくビデオを見ることができる新しいウィンドウがポップアップ表示されます!
 ​
-### Changelog
 
-* [Enhanced] HTTPS filtering for the Firefox Fenix browser is enabled forcibly [#3617](https://github.com/AdguardTeam/AdguardForAndroid/issues/3617)
-* [Enhanced] The "What's new" dialog is updated [#3638](https://github.com/AdguardTeam/AdguardForAndroid/issues/3638) 
-* [Fixed] Shadowsocks proxy gets removed automatically [#3641](https://github.com/AdguardTeam/AdguardForAndroid/issues/3641) 
+DNS-over-QUIC サポート
 ​
-#### DnsLibs updated to v1.4.14
-
-* [Enhanced] DoQ/DoH/DoT queries are retried before using the fallback [#86](https://github.com/AdguardTeam/DnsLibs/issues/86) 
-* [Other] DoQ support is added to DNS stamps [#84](https://github.com/AdguardTeam/DnsLibs/issues/84) 
+DNS-over-QUIC または単に DoQ は、DNS 暗号化プロトコルです。 DNS 暗号化プロトコルについては、DNS-over-HTTPS と DNS-over-TLS (DoH と DoT 対応) の最も一般的なプロトコルについて聞いたことがあります。 それでは、DoQを特別にするのは何か? 物事の束, 本当に: 受信トレイの暗号化, 接続時間を削減, 失われたデータパケットの場合、より良いパフォーマンス.
 ​
-#### AdGuard for Android direct download links:
+<img src="">https://cdn.adguard.com/public/Adguard/Blog/Android/3-6/DNS-over-QUIC_en.png"幅="300">
+​
+機能はまだ実験的です — アンドロイド用のAdGuardは、DNS-over-QUICの最初のオープンソースの実装の1つですが、それは完全に機能しており、試してみることをお勧めします。 *DNS フィルタリング* で確認します。 AdGuard DNS を選択し、利用可能な暗号化プロトコルの中から DoQ を選択します。
+​
+### 変更履歴
 
-- [Release channel](https://agrd.io/apk)
-- [Beta channel](https://agrd.io/apkb)
-- [Nightly channel](https://agrd.io/android_nightly)
+* [Enhanced] Firefox Fenix ブラウザーの HTTPS フィルタリングが強制的に [#3617](https://github.com/AdguardTeam/AdguardForAndroid/issues/3617)
+* [参加] "What's new" ダイアログが更新されました [#3638](https://github.com/AdguardTeam/AdguardForAndroid/issues/3638) 
+* [修正]シャドウ靴下プロキシは自動的に削除されます[#3641](https://github.com/AdguardTeam/AdguardForAndroid/issues/3641) 
+​
+#### DnsLibs が v1.4.14 に更新
+
+* [Enhanced] DoQ/DoH/DoT クエリはフォールバック [#86] を使用する前に取得されます。https://github.com/AdguardTeam/DnsLibs/issues/86) 
+* [その他] DNS スタンプ [#84] に DoQ サポートを追加しました(https://github.com/AdguardTeam/DnsLibs/issues/84) 
+​
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
+
+- [リリースチャネル](https://agrd.io/apk)
+- [ベータチャネル](https://agrd.io/apkb)
+- [ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.5.2
 
-- Published: 2020-11-20T14:16:26Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.2
+- 公開日: 2020-11-20T14:16:26Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.2
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Today we are launching a small but still very important hotfix. Namely, the compatibility with the new Chrome 87 was improved and the CoreLibs was updated.
+今日は小さいですが、まだ非常に重要なホットフィックスを立ち上げています。 つまり、新しいChrome 87との互換性が改善され、CoreLibsが更新されました。
 
-**[Other] ERR_HTTP2_PROTOCOL_ERROR on some websites #1374**
+**[その他] ERR HTTP2 PROTOCOL ERROR 一部のウェブサイト #1374**
 
-This week Chrome 87 was released, which has a compatibility problem with AdGuard when using the HTTP/2 filtering protocol - some sites may experience regular hangs and download errors. In this update we have improved HTTP/2 filtering compatibility with Chrome 87, it is recommended to upgrade to the new stable version as soon as possible. :)
+今週のChrome 87がリリースされました。この問題は、HTTP/2フィルタリングプロトコルを使用する際のAdGuardと互換性の問題です。一部のサイトでは、通常のハングとダウンロードエラーが発生することがあります。 このアップデートでは、Chrome 87 との互換性をフィルタリングする HTTP/2 が改善されました。新しい安定したバージョンにできるだけ早くアップグレードすることをお勧めします。 :)
 
-### Changelog
+### 変更履歴
 
-- [Enhancement] Add com.huawei.browser to the list of browsers #3495
-- [Enhancement] Enable forcibly HTTPs filtering for the Firefox Fenix browser #3617
-- [Other] Compatibility issues
+- [参加] ブラウザのリストにcom.huawei.browserを追加 #3495
+- [参加] Firefoxのフェニックスブラウザ #3617 用の強制 HTTP フィルタリングを有効にします。
+- [その他] 互換性の問題
 
-#### Upgraded CoreLibs to v1.7.150
+#### アップグレードされたCoreLibsからv1.7.150
 
-- [Enhancement] Improve socket connect with hostname provided (for Proxy mode) #123
-- [Enhancement] Indicate libraries versions #1150
-- [Fixed] `$badfilter` rules are sensitive to domain lists #1331
-- [Other] $generichide rule causes that assistant is showing that AdGuard is disabled #7
-- [Other] Connection error after waking computer from sleep mode #3412
+- [Enhancement] 提供されているホスト名(プロキシモード用)#123とソケットを接続する
+- [参加] ライブラリバージョン#1150
+- [修正]`$badfilter`ルールはドメインリストに敏感です #1331
+- [その他] $generichide ルールは、アシスタントが AdGuard が無効であることを示していることを引き起こします #7
+- [その他] 睡眠モードからコンピュータをwakingした後の接続エラー #3412
 
-#### AdGuard for Android direct download links:
+#### アンドロイド直接ダウンロードリンクのためのAdGuard:
 
-[Release channel](https://agrd.io/apk)
-[Beta channel](https://agrd.io/apkb)
-[Nightly channel](https://agrd.io/android_nightly)
+[リリースチャネル](https://agrd.io/apk)
+[ベータチャネル](https://agrd.io/apkb)
+[ナイトリーチャンネル](https://agrd.io/android_nightly)
 
 ## 3.5.1
 
-- Published: 2020-10-02T11:20:59Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.1
+- 公開日: 2020-10-02T11:20:59Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.1
 
-> Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> Android用の免責事項 AdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Meet the release version 3.5.1 of AdGuard for Android. We’ve been working on improving its integration with AdGuard VPN, and now it seems we’ve maintained their seamless cooperation. Besides, we’ve updated CoreLibs and Dnslibs. 
+Android用のAdGuardのリリースバージョン3.5.1を満たします。 AdGuard VPN との統合を改善し、シームレスな連携を維持するよう取り組んできました。 また、CoreLibs と Dnslibs を更新しました。
 
-## Changelog
+## 変更履歴
 
-* [Enhancement] Add Fennec F-Droid to the list of browsers  [#3587](https://github.com/AdguardTeam/AdguardForAndroid/issues/3587)
-* [Enhancement] Add com.huawei.browser to the list of browsers  [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495)
-* [Enhancement] Enable forcibly HTTPs filtering for the Firefox Fenix browser  [#3617](https://github.com/AdguardTeam/AdguardForAndroid/issues/3617)
-* [Fixed] Make the AdGuard application update work on Android 11  [#3564](https://github.com/AdguardTeam/AdguardForAndroid/issues/3564)
-* [Fixed] Thai Ads Filters always enabled if the Language Filters group is enabled  [#3520](https://github.com/AdguardTeam/AdguardForAndroid/issues/3520)
-* [Other] Update DnsLibs to the 1.3.24 version  [#3578](https://github.com/AdguardTeam/AdguardForAndroid/issues/3578)
-* [Other] ru.sogaz.tm - app is not working  [#3573](https://github.com/AdguardTeam/AdguardForAndroid/issues/3573)
+* [Enhancement] Fennec F-Droidをブラウザのリストに追加 [#3587](https://github.com/AdguardTeam/AdguardForAndroid/issues/3587)
+* [Enhancement] ブラウザのリストにcom.huawei.browserを追加 [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495)
+* [Enhancement] Firefox Fenix ブラウザーの強制 HTTP フィルタリングを有効にします。 [#3617](https://github.com/AdguardTeam/AdguardForAndroid/issues/3617)
+* [修正済み] Android 11 [#3564] で AdGuard アプリケーションの更新作業を行います(https://github.com/AdguardTeam/AdguardForAndroid/issues/3564)
+* [修正] タイの広告フィルタは、言語フィルタグループが有効になっている場合に常に有効に [#3520](https://github.com/AdguardTeam/AdguardForAndroid/issues/3520)
+* [その他] DnsLibs を 1.3.24 バージョンに更新 [#3578](https://github.com/AdguardTeam/AdguardForAndroid/issues/3578)
+* [その他] ru.sogaz.tm - アプリが動作していません [#3573](https://github.com/AdguardTeam/AdguardForAndroid/issues/3573)
 
-## Upgraded CoreLibs to v1.7.114
+## アップグレードされたCoreLibsからv1.7.114
 
-* [Enhancement] Add $ping content type  [#1258](https://github.com/AdguardTeam/CoreLibs/issues/1258)
-* [Enhancement] Check that trusted-types CSP does not break the content script  [#1320](https://github.com/AdguardTeam/CoreLibs/issues/1320)
-* [Fixed] AGFDVSocket doesn't return original peer address in case of outbound proxy set  [#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330)
-* [Fixed] AdGuard doesn't filter domains when HTTPS filtering is disabled  [#1343](https://github.com/AdguardTeam/CoreLibs/issues/1343)
-* [Fixed] AdGuard doesn't work with Youtube in Safari macOS Big Sur (infinity circle loader)  [#727](https://github.com/AdguardTeam/AdguardForMac/issues/727)
-* [Fixed] Exclusion with $elemhide,jsinject,extension disable HTML filtering rules  [#1337](https://github.com/AdguardTeam/CoreLibs/issues/1337)
-* [Fixed] Filtering log doesn't show information about cookies  [#3406](https://github.com/AdguardTeam/AdguardForWindows/issues/3406)
-* [Fixed] Problematic userscripts  [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
-* [Fixed] Redundant errors when local.adguard.org accessed from non-HTTPS-filtered processes  [#1056](https://github.com/AdguardTeam/CoreLibs/issues/1056)
-* [Fixed] Regexp rule doesn't match URL  [#1311](https://github.com/AdguardTeam/CoreLibs/issues/1311)
-* [Fixed] The foreign requests get into filtering log with enabled DNS module  [#3411](https://github.com/AdguardTeam/AdguardForWindows/issues/3411)
-* [Fixed] URL contains extra slash while matching against filters and some rules are not applied  [#1338](https://github.com/AdguardTeam/CoreLibs/issues/1338)
-* [Fixed] Wrong filter is shown in Filtering log  [#1312](https://github.com/AdguardTeam/CoreLibs/issues/1312)
-* [Fixed] &#96;$badfilter&#96; rules are sensitive to domain lists  [#1331](https://github.com/AdguardTeam/CoreLibs/issues/1331)
-* [Fixed] hkclubs.samsung.com  [#1340](https://github.com/AdguardTeam/CoreLibs/issues/1340)
-* [Other] AdGuard for Mac doesn't start protection without internet connection  [#1323](https://github.com/AdguardTeam/CoreLibs/issues/1323)
-* [Other] Fix errors encoding under Windows  [#79](https://github.com/AdguardTeam/DnsLibs/issues/79)
-* [Other] HTML is not detected on some sites  [#1308](https://github.com/AdguardTeam/CoreLibs/issues/1308)
-* [Other] local.adguard.org certificate is not re-issued when it expires [#1348](https://github.com/AdguardTeam/CoreLibs/issues/1348)
+* [参加] Add $pingコンテンツタイプ[#1258](https://github.com/AdguardTeam/CoreLibs/issues/1258)
+* [参加] 信頼できる型CSPがコンテンツスクリプトを破らないことを確認してください[#1320](https://github.com/AdguardTeam/CoreLibs/issues/1320)
+* [修正] AGFDVSocketは、アウトバウンドプロキシセットの場合、元のピアアドレスを返すことはありません[#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330)
+* [修正] AdGuard は HTTPS のフィルタリングが無効になったときにドメインをフィルタリングしません [#1343](https://github.com/AdguardTeam/CoreLibs/issues/1343)
+* [修正] AdGuardはSafari macOS Big Sur (無限円ローダー)でYoutubeと連携しません [#727](https://github.com/AdguardTeam/AdguardForMac/issues/727)
+* [修正] $ elemhide、jsinject、extension 無効な HTML フィルタリング規則 [#1337] による除外 (https://github.com/AdguardTeam/CoreLibs/issues/1337)
+* [修正] ログをフィルタリングすると、クッキーに関する情報が表示されません [#3406](https://github.com/AdguardTeam/AdguardForWindows/issues/3406)
+* [修正] 問題のあるユーザスクリプト [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
+* [修正] local.adguard.org が非 HTTPS フィルタリング プロセスからアクセスしたときに冗長エラー [#1056](https://github.com/AdguardTeam/CoreLibs/issues/1056)
+* [修正] RegexpルールはURLに一致しません [#1311](https://github.com/AdguardTeam/CoreLibs/issues/1311)
+* [修正] 外部リクエストは、有効なDNSモジュール[#3411]でログをフィルタリングするようになります(https://github.com/AdguardTeam/AdguardForWindows/issues/3411)
+* [修正] URL には、フィルタといくつかの規則に一致する間、追加のスラッシュが含まれています [#1338](https://github.com/AdguardTeam/CoreLibs/issues/1338)
+* [修正済み] フィルタリングログ [#1312] に間違ったフィルタが表示されるhttps://github.com/AdguardTeam/CoreLibs/issues/1312)
+* [修正] &#96;$badfilter&#96; ドメインリストに機密ルール [#1331](https://github.com/AdguardTeam/CoreLibs/issues/1331)
+* [修正] hkclubs.samsung.com [#1340]()https://github.com/AdguardTeam/CoreLibs/issues/1340)
+* [その他] Mac用のAdGuardは、インターネット接続なしで保護を開始しません[#1323](https://github.com/AdguardTeam/CoreLibs/issues/1323)
+* [その他] Windows でエラーエンコーディングを修正 [#79](https://github.com/AdguardTeam/DnsLibs/issues/79)
+* [その他] 一部のサイトでHTMLが検出されない[#1308](https://github.com/AdguardTeam/CoreLibs/issues/1308)
+* [その他] ローカル adguard.org の証明書は [#1348] が期限切れしたときに再発行されません。(https://github.com/AdguardTeam/CoreLibs/issues/1348)
 
-### **AdGuard for Android direct download links:**
+### **Androidの直接ダウンロードリンクのためのAdGuard:**
 
-**[Release channel](https://agrd.io/apk)**
+**[リースチャネル](https://agrd.io/apk)**
 
-**[Beta channel](https://agrd.io/apkb)**
+**[ベータチャンネル](https://agrd.io/apkb)**
 
-**[Nightly channel](https://agrd.io/android_nightly)**
+**[ナイトリーチャンネル](https://agrd.io/android_nightly)**
 
-## 3.5.1 beta 1
+## 3.5.1 ベータ 1
 
-- Published: 2020-09-28T16:25:59Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.1-beta-1
+- 公開日: 2020-09-28T16:25:59Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.1-beta-1
 
-This is an unscheduled update of AdGuard v3.5.1 for Android. Who would have thought that we’d do so, but double-checking doesn’t hurt, right? In this beta we fixed a few nasty bugs, updated CoreLibs and Dnslibs. Now it’s almost ready to be released.
+これは、Android用のAdGuard v3.5.1の予定されていないアップデートです。 誰がそうしようと思ったんですが、ダブルチェックが痛くないんですか? このベータでは、いくつかの厄介なバグを修正しました, 更新されたCoreLibsとDnslibs. リリース準備はほぼ完了です。
 
-## Changelog
+## 変更履歴
 
-* [Enhancement] Add Fennec F-Droid to the list of browsers  [#3587](https://github.com/AdguardTeam/AdguardForAndroid/issues/3587)
-* [Fixed] Thai Ads Filters are always enabled if the group is enabled  [#3520](https://github.com/AdguardTeam/AdguardForAndroid/issues/3520)
-* [Other] Updated CoreLibs to 1.7.114  [#3596](https://github.com/AdguardTeam/AdguardForAndroid/issues/3596) 
-* [Other] Updated DnsLibs to the 1.3.24 version  [#3578](https://github.com/AdguardTeam/AdguardForAndroid/issues/3578) 
+* [Enhancement] Fennec F-Droidをブラウザのリストに追加 [#3587](https://github.com/AdguardTeam/AdguardForAndroid/issues/3587)
+* [修正済み] グループが有効になっている場合は、タイの広告フィルタが常に有効になっています [#3520](https://github.com/AdguardTeam/AdguardForAndroid/issues/3520)
+* [その他]CoreLibsを1.7.114に更新しました [#3596](https://github.com/AdguardTeam/AdguardForAndroid/issues/3596) 
+* [その他] DnsLibs を 1.3.24 バージョンに更新 [#3578](https://github.com/AdguardTeam/AdguardForAndroid/issues/3578) 
 
-## CoreLibs
+## コアライブラリ
 
-### Upgraded CoreLibs to v1.7.114
+### アップグレードされたCoreLibsからv1.7.114
 
-* [Enhancement] Add $ping content type  [#1258](https://github.com/AdguardTeam/CoreLibs/issues/1258) 
-* [Enhancement] Check that trusted-types CSP does not break the content script  [#1320](https://github.com/AdguardTeam/CoreLibs/issues/1320) 
-* [Fixed] AGFDVSocket doesn't return original peer address in case of outbound proxy set  [#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330) 
-* [Fixed] AdGuard doesn't filter domains when HTTPS filtering is disabled  [#1343](https://github.com/AdguardTeam/CoreLibs/issues/1343) 
-* [Fixed] AdGuard doesn't work with Youtube in Safari macOS Big Sur (infinity circle loader)  [#727](https://github.com/AdguardTeam/AdguardForMac/issues/727) 
-* [Fixed] Exclusion with $elemhide, jsinject, extension disable HTML filtering rules  [#1337](https://github.com/AdguardTeam/CoreLibs/issues/1337) 
-* [Fixed] Filtering log doesn't show information about cookies  [#3406](https://github.com/AdguardTeam/AdguardForWindows/issues/3406) 
-* [Fixed] Redundant errors when local.adguard.org is accessed from non-HTTPS-filtered processes  [#1056](https://github.com/AdguardTeam/CoreLibs/issues/1056) 
-* [Fixed] Problematic userscripts  [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273) 
-* [Fixed] Regexp rule doesn't match URL  [#1311](https://github.com/AdguardTeam/CoreLibs/issues/1311) 
-* [Fixed] URL contains extra slash while matching against filters and some rules are not applied [#1338](https://github.com/AdguardTeam/CoreLibs/issues/1338) 
-* [Fixed] The foreign requests get into filtering log with enabled DNS module  [#3411](https://github.com/AdguardTeam/AdguardForWindows/issues/3411) 
-* [Fixed] &#96;$badfilter&#96; rules are sensitive to domain lists  [#1331](https://github.com/AdguardTeam/CoreLibs/issues/1331) 
-* [Fixed] hkclubs.samsung.com  [#1340](https://github.com/AdguardTeam/CoreLibs/issues/1340) 
-* [Other] HTML is not detected on some sites [#1308](https://github.com/AdguardTeam/CoreLibs/issues/1308) 
-* [Other] local.adguard.org certificate is not re-issued when it expires  [#1348](https://github.com/AdguardTeam/CoreLibs/issues/1348)
+* [参加] Add $pingコンテンツタイプ[#1258](https://github.com/AdguardTeam/CoreLibs/issues/1258) 
+* [参加] 信頼できる型CSPがコンテンツスクリプトを破らないことを確認してください[#1320](https://github.com/AdguardTeam/CoreLibs/issues/1320) 
+* [修正] AGFDVSocketは、アウトバウンドプロキシセットの場合、元のピアアドレスを返すことはありません[#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330) 
+* [修正] AdGuard は HTTPS のフィルタリングが無効になったときにドメインをフィルタリングしません [#1343](https://github.com/AdguardTeam/CoreLibs/issues/1343) 
+* [修正] AdGuardはSafari macOS Big Sur (無限円ローダー)でYoutubeと連携しません [#727](https://github.com/AdguardTeam/AdguardForMac/issues/727) 
+* [修正] $elemhide、jsinject、拡張機能で除外する [#1337](https://github.com/AdguardTeam/CoreLibs/issues/1337) 
+* [修正] ログをフィルタリングすると、クッキーに関する情報が表示されません [#3406](https://github.com/AdguardTeam/AdguardForWindows/issues/3406) 
+* [修正] local.adguard.org が HTTPS 以外のプロセスからアクセスしたときに冗長エラー [#1056](https://github.com/AdguardTeam/CoreLibs/issues/1056) 
+* [修正] 問題のあるユーザスクリプト [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273) 
+* [修正] RegexpルールはURLに一致しません [#1311](https://github.com/AdguardTeam/CoreLibs/issues/1311) 
+* [修正] URL には、フィルタといくつかの規則に一致する間、追加のスラッシュが含まれています [#1338](https://github.com/AdguardTeam/CoreLibs/issues/1338) 
+* [修正] 外部リクエストは、有効なDNSモジュール[#3411]でログをフィルタリングするようになります(https://github.com/AdguardTeam/AdguardForWindows/issues/3411) 
+* [修正] &#96;$badfilter&#96; ドメインリストに機密ルール [#1331](https://github.com/AdguardTeam/CoreLibs/issues/1331) 
+* [修正] hkclubs.samsung.com [#1340]()https://github.com/AdguardTeam/CoreLibs/issues/1340) 
+* [その他] 一部のサイトでHTMLが検出されない[#1308](https://github.com/AdguardTeam/CoreLibs/issues/1308) 
+* [その他] ローカル adguard.org の証明書は [#1348] が期限切れしたときに再発行されません。(https://github.com/AdguardTeam/CoreLibs/issues/1348)
 
 ## 3.5 
 
-- Published: 2020-09-08T13:12:00Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5
+- 公開日: 2020-09-08T13:12:00Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5
 
-It's time to release AdGuard v3.5 for Android. We took our time with this one: tested two betas and expanded the changelog. What's in there? Introduced compatibility mode with AdGuard VPN for Android, updated CoreLibs and a load-truck of fixed bugs.
+Android用のAdGuard v3.5をリリースする時間です。 今回は2つのベータをテストし、変更ログを拡張しました。 お問い合わせ Android用のAdGuard VPN、CoreLibsの更新、固定バグのロードトラックによる互換性モードを導入しました。
 
-**[Enhancement] Compatibility Mode with AdGuard VPN for Android app #3441**
+**[Enhancement] Androidアプリ用のAdGuard VPNと互換性モード #3441**
 
-Since AdGuard VPN for Android was first introduced, there was already a way to make it work along with AdGuard ad blocker. But to make the two apps coexist in peace, you were required to jump through some hoops. Anyone who went ahead and did the thing 100% has been waiting for a proper integration ever since — and we oblige.
+Android用のAdGuard VPNが最初に導入されたので、すでにAdGuard広告ブロッカーと一緒に動作させる方法がありました。 しかし、平和で共存する2つのアプリを作るためには、いくつかのフープをジャンプする必要があります。 先に行ってから100%をやり直した人は、以来、適切な統合を待っています。
 
-The best kind of compatibility is when you install two apps and they just start working together. We did exactly that. Presuming you already have AdGuard ad blocker installed, just download AdGuard VPN from Google Play Store (you can get there right from the ad blocker app, there's a new item in General Settings menu).
+2つのアプリをインストールし、一緒に作業を開始すると、最高の種類の互換性があります。 お問い合わせ すでにAdGuard広告ブロッカーがインストールされていると仮定して、Google PlayストアからAdGuard VPNをダウンロードしてください(広告ブロッカーアプリからすぐに入手できます。一般的な設定メニューに新しいアイテムがあります)。
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/settings.gif" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/settings.gif"幅="300">
 
-Both apps will detect each other and do everything that's needed for smooth joint work. All that will be left for you is to enjoy both ad-free Internet and all the benefits of a VPN. By the way, it works the other way around just as well: install AdGuard ad blocker on top of an already-running AdGuard VPN and you're good.
+どちらのアプリも互いに検出し、スムーズなジョイントワークに必要なすべての操作を行います。 アドフリーのインターネットとVPNのすべての利点の両方を楽しむために残されます。 ちなみに、他の方法も機能します: 既に実行中のAdGuard VPNの上にAdGuard広告ブロッカーをインストールし、あなたは良いです。
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/compatibility.gif" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/compatibility.gif"幅="300">
 
-If you'd like to disable Compatibility Mode for any reason, it's very simple to do so from AdGuard ad blocker settings, just toggle the switch. Additionally, you can add AdGuard ad blocker and AdGuard VPN tiles to your device's notification bar and toggle them in one tap at your own will — thanks to Compatibility Mode the configuration will change immediately and silently.
+何らかの理由でCompatibility Modeを無効にしたい場合は、AdGuard広告ブロッカーの設定から、スイッチを切り替えるだけです。 さらに、デバイスの通知バーにAdGuard広告ブロッカーとAdGuard VPNタイルを追加し、自分の意志でワンタップでそれらを切り替えることができます。Compatibility Modeのおかげで、設定はすぐに変更され、静かに変更されます。
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/tiles.png" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/tiles.png"幅="300">
 
-## Changelog
+## 変更履歴
 
-- [Enhancement] Adaptive icons for app shortcuts [#2656](https://github.com/AdguardTeam/AdguardForAndroid/issues/2656)
-- [Enhancement] Firefox Fenix browser added to the list of default browsers [#2861](https://github.com/AdguardTeam/AdguardForAndroid/issues/2861)
-- [Enhancement] New rules are now added to the top of User filter [#2962](https://github.com/AdguardTeam/AdguardForAndroid/issues/2962)
-- [Enhancement] 'Block' button now immediately switches to 'Unblock' after adding a custom rule via Filtering Log [#3012](https://github.com/AdguardTeam/AdguardForAndroid/issues/3012)
-- [Enhancement] Extended information written to state.txt when logs are exported [#3063](https://github.com/AdguardTeam/AdguardForAndroid/issues/3063)
-- [Enhancement] Enabled userscripts are now included in the query string for the web reporting tool [#3288](https://github.com/AdguardTeam/AdguardForAndroid/issues/3288)
-- [Enhancement] Updates screen now shown when "Check for updates" shortcut is used [#3318](https://github.com/AdguardTeam/AdguardForAndroid/issues/3318)
-- [Enhancement] Added automation API for proxy servers [#3363](https://github.com/AdguardTeam/AdguardForAndroid/issues/3363)
-- [Enhancement] Mozilla Reference browser added to the list of default browsers [#3408](https://github.com/AdguardTeam/AdguardForAndroid/issues/3408)
-- [Enhancement] Added an option to disable DNS fallback [#3447](https://github.com/AdguardTeam/AdguardForAndroid/issues/3447)
-- [Enhancement] AdGuard Simplified Domain Names filter renamed to AdGuard DNS filter [#3475](https://github.com/AdguardTeam/AdguardForAndroid/issues/3475)
-- [Enhancement] Rename adguard.crt to AdGuardCertificate.pem [#3489](https://github.com/AdguardTeam/AdguardForAndroid/issues/3489)
-- [Enhancement] Huawei browser added to the list of default browsers [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495)
-- [Enhancement] Add the "What's new" dialog [#3532](https://github.com/AdguardTeam/AdguardForAndroid/issues/3532) 
-- [Enhanced] Prepare AdGuard before the v3.5 release [#3546](https://github.com/AdguardTeam/AdguardForAndroid/issues/3546) 
-- [Fixed] First letter in the sentence is not capitalized automatically on the 'Message to support' screen [#3079](https://github.com/AdguardTeam/AdguardForAndroid/issues/3079)
-- [Fixed] AdGuard doesn't work on devices with Restricted Account [#3299](https://github.com/AdguardTeam/AdguardForAndroid/issues/3299)
-- [Fixed] Toast notification for "Checking for updates" shows late [#3343](https://github.com/AdguardTeam/AdguardForAndroid/issues/3343)
-- [Fixed] Unnecessary "Android Private DNS is enabled" notification on Android 11 [#3478](https://github.com/AdguardTeam/AdguardForAndroid/issues/3478)
-- [Fixed] Downloads in some apps don't work properly on Android 11 [#3516](https://github.com/AdguardTeam/AdguardForAndroid/issues/3516)
-- [Fixed] Wrong state of the disabled option [#3538](https://github.com/AdguardTeam/AdguardForAndroid/issues/3538)
-- [Fixed] Fix a bug related with a strange and small "m^" rule [#3548](https://github.com/AdguardTeam/AdguardForAndroid/issues/3548)
-- [Other] Updated options for default DNS resolvers [#3428](https://github.com/AdguardTeam/AdguardForAndroid/issues/3428)
-
-## DnsLibs 
+- [Enhancement] アプリのショートカット [#2656] のための適応アイコン (https://github.com/AdguardTeam/AdguardForAndroid/issues/2656)
+- [Enhancement] デフォルトブラウザの一覧にFirefox Fenixブラウザを追加しました [#2861](https://github.com/AdguardTeam/AdguardForAndroid/issues/2861)
+- [参加] ユーザーフィルタ[#2962]の上に新しいルールが追加されました(https://github.com/AdguardTeam/AdguardForAndroid/issues/2962)
+- [Enhancement] 'Block' ボタンは、フィルタリングログ[#3012]を介してカスタムルールを追加した後、すぐに「ブロック解除」に切り替えます(https://github.com/AdguardTeam/AdguardForAndroid/issues/3012)
+- [Enhancement] ログをエクスポートしたときにstate.txtに書き込まれた拡張情報 [#3063](https://github.com/AdguardTeam/AdguardForAndroid/issues/3063)
+- [参加] ウェブレポーティングツール [#3288] のクエリ文字列にユーザスクリプトを有効にしました。(https://github.com/AdguardTeam/AdguardForAndroid/issues/3288)
+- [参加] 「更新チェック」ショートカットが「#3318」で表示される画面を更新します(https://github.com/AdguardTeam/AdguardForAndroid/issues/3318)
+- [Enhancement] プロキシサーバーの自動化 API [#3363](https://github.com/AdguardTeam/AdguardForAndroid/issues/3363)
+- [Enhancement] デフォルトブラウザの一覧にMozilla Referenceブラウザを追加しました [#3408](https://github.com/AdguardTeam/AdguardForAndroid/issues/3408)
+- [参加] DNSフォールバックを無効にするオプションを追加しました [#3447](https://github.com/AdguardTeam/AdguardForAndroid/issues/3447)
+- [Enhancement] AdGuardは、ドメインネームフィルタをAdGuard DNSフィルタにリネームしました [#3475](https://github.com/AdguardTeam/AdguardForAndroid/issues/3475)
+- [Enhancement] adguard.crt を AdGuardCertificate.pem に変更 [#3489](https://github.com/AdguardTeam/AdguardForAndroid/issues/3489)
+- [Enhancement] デフォルトブラウザの一覧にHuaweiブラウザを追加しました [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495)
+- [参加] "What's new" ダイアログを追加します。 [#3532](https://github.com/AdguardTeam/AdguardForAndroid/issues/3532) 
+- [Enhanced] v3.5リリース前のAdGuardの準備 [#3546](https://github.com/AdguardTeam/AdguardForAndroid/issues/3546) 
+- [修正] 文の最初の文字が「メッセージがサポートする」画面に自動的に大文字化されていない[#3079](https://github.com/AdguardTeam/AdguardForAndroid/issues/3079)
+- [修正] AdGuardは、制限されたアカウントでデバイス上で動作しません [#3299](https://github.com/AdguardTeam/AdguardForAndroid/issues/3299)
+- [修正] 「更新のチェック」のトースト通知が遅く表示されます [#3343](https://github.com/AdguardTeam/AdguardForAndroid/issues/3343)
+- [修正済み] Android 11 [#3478] で不要な "Android Private DNS が有効になっています" 通知https://github.com/AdguardTeam/AdguardForAndroid/issues/3478)
+- [修正] Android 11で正常に動作しない一部のアプリでダウンロード [#3516](https://github.com/AdguardTeam/AdguardForAndroid/issues/3516)
+- [修正] 無効なオプションの間違った状態 [#3538](https://github.com/AdguardTeam/AdguardForAndroid/issues/3538)
+- [修正] 奇妙な小さな "m^" ルール [#3548] に関連するバグを修正しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/3548)
+- [その他] デフォルト DNS のリゾルバ [#3428] のオプションを更新しました。(https://github.com/AdguardTeam/AdguardForAndroid/issues/3428)
+
+## DnsLibs(ドングリブ)
 
-- [Enhancement] Added support for comments at the end of line in hosts rules [#75](https://github.com/AdguardTeam/DnsLibs/issues/75)
-- [Fixed] LDNS logging [#73](https://github.com/AdguardTeam/DnsLibs/issues/73)
-- [Other] Added upstreams sorting by RTT [#39](https://github.com/AdguardTeam/DnsLibs/issues/39)
+- [参加] ホストのルールの行の最後にコメントのサポートを追加しました [#75](https://github.com/AdguardTeam/DnsLibs/issues/75)
+- [修正] LDNS ロギング [#73](https://github.com/AdguardTeam/DnsLibs/issues/73)
+- [その他] RTT でソートする上流を追加 [#39](https://github.com/AdguardTeam/DnsLibs/issues/39)
 
-## Corelibs
+## コアリブ
 
-- [Enhancement] #@# without any domains specified should disable the rule completely [#1296](https://github.com/AdguardTeam/CoreLibs/issues/1296)
-- [Enhancement] Added verification for trusted-types CSP [#1320](https://github.com/AdguardTeam/CoreLibs/issues/1320)
-- [Fixed] Connection has timed out in state have-result [#1180](https://github.com/AdguardTeam/CoreLibs/issues/1180)
-- [Fixed] Problematic userscripts [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
-- [Fixed] Process name detection causes warnings in Windows Security [#1316](https://github.com/AdguardTeam/CoreLibs/issues/1316)
-- [Fixed] OCSP checks aren't passed through the selected DNS [#1328](https://github.com/AdguardTeam/CoreLibs/issues/1328)
-- [Fixed] AGFDVSocket doesn't return original peer address in case of outbound proxy set [#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330)
-- [Other] Connection speed is capped when AdGuard is enabled [#702](https://github.com/AdguardTeam/CoreLibs/issues/702)
+- [Enhancement] #@# 指定されたドメインなしで、ルールを完全に無効にする必要があります [#1296](https://github.com/AdguardTeam/CoreLibs/issues/1296)
+- [Enhancement] 信頼されるタイプCSP [#1320]の検証を追加しました(https://github.com/AdguardTeam/CoreLibs/issues/1320)
+- [修正済み] 接続は状態にタイムアウトしました [#1180]()https://github.com/AdguardTeam/CoreLibs/issues/1180)
+- [修正] 問題のあるユーザスクリプト [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
+- [修正] プロセス名検出は、Windows セキュリティの警告を引き起こします [#1316](https://github.com/AdguardTeam/CoreLibs/issues/1316)
+- [修正] OCSP チェックは、選択した DNS [#1328] を通過しない (https://github.com/AdguardTeam/CoreLibs/issues/1328)
+- [修正] AGFDVSocketは、アウトバウンドプロキシセットの場合、元のピアアドレスを返すことはありません[#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330)
+- [その他] AdGuardが有効になったときに接続速度がキャッピングされます[#702](https://github.com/AdguardTeam/CoreLibs/issues/702)
 
-## 3.3.3 Release
+## 3.3.3 リリース
 
-- Published: 2020-04-03T10:45:22Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.231
+- 公開日: 2020-04-03T10:45:22Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.231
 
-Yet another and hopefully the last fix before the fresh beta rolls out. Several domains have been added to SSL exceptions to fix compatibility issues with certain mobile carriers.
+しかし、新しいベータがロールアウトする前に、別のとうまく最後の修正を願っています。 SSL例外に複数のドメインを追加し、特定のモバイルキャリアとの互換性の問題を修正しました。
 
-* [Changed] The list of HTTPS exclusions has been updated
+* [変更] HTTPSの除外リストを更新しました
 
-## 3.4 Release
+## 3.4 リリース
 
-- Published: 2020-05-21T11:21:25Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-release
+- 公開日: 2020-05-21T11:21:25Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-release
 
-Meet AdGuard v3.4 for Android, it’s time for it to see the world! Having tested two betas, we feel confident to present this version to a wider audience. Spring is a time for renewal, and software is not an exception. We've fixed some old bugs, updated CoreLibs and made the app more compatible with Android TV.
+AndroidでAdGuard v3.4に会いましょう。世界を見るのは時間です! ベータを2つテストし、より広い聴衆にこのバージョンを提示することを確信しています。 春は更新に時間がかかり、ソフトウェアは例外ではありません。 古いバグを修正し、CoreLibs を更新し、Android TV とより互換性のあるアプリを作成しました。
 
-**[Fixed] AdGuard blocks Internet connection #2842**
+**[修正] AdGuardブロックインターネット接続#2842**
 
-This bug was a hard nut to crack. For a long time it appeared randomly (at least, it seemed so) on devices of AdGuard users. Still, the symptoms matched: smartphones lost any network completely while AdGuard was turned on. Of course, it was crucial for us to solve this problem, and at last, we've managed to do it. It’s beyond words how relieved we feel afterwards, let alone the affected users!
+このバグは割れにくいナットでした。 長い間、AdGuardユーザーのデバイス上でランダムに(少なくとも、それはそうだった)登場しました。 それでも、対応する症状:AdGuardがオンになった間にスマートフォンは完全にネットワークを失いました。 もちろん、この問題を解決するためには、この問題が重要でした。そして最後に、それを解決しました。 あとで気持ちを和らげる言葉を超えて、影響を受けたユーザーだけにしましょう!
 
-**[Fixed] Firewall's restrictions are ignored when WiFi gets enabled #3313**
+**[固定] ファイアウォールの制限は、WiFiが有効になったときに無視されます #3313**
 
-Another troublesome bug that deserves special attention. In the previous version 3.3, if you had specifically prohibited some apps from accessing the Internet via mobile data, the restrictions worked right up until you enabled Wi-Fi, which was not the intended behaviour.
+特別な注意に値する別の面倒なバグ。 以前のバージョン 3.3 では、モバイルデータを介してインターネットにアクセスするアプリが特に禁止されている場合は、意図した動作ではない Wi-Fi を有効にするまで、制限が正しく機能しました。
 
-**[Enhancement] Integration with DnsLibs #3229**
+**[Enhancement] DnsLibs #3229** との統合
 
-DnsLibs is a DNS proxy library that's required to provide DNS filtering. It supports all existing DNS protocols including DNS-over-TLS, DNS-over-HTTPS, and DNSCrypt. We developed it to replace the old DNSproxy, which had one serious flaw: it caused high battery resource consumption. DnsLibs is much better optimized and will ensure a longer lifespan for your phone's battery if you're using DNS filtering a lot.
+DnsLibs は DNS フィルタリングに必要な DNS プロキシライブラリです。 DNS-over-TLS、DNS-over-HTTPS、DNSCrypt などの既存の DNS プロトコルをサポートしています。 古いDNSproxyを置き換えるために開発しました。これは深刻な欠陥でした。それは高いバッテリーリソース消費を引き起こしました。 DnsLibsはより最適化され、DNSフィルタリングを多く使用している場合は、携帯電話のバッテリーの寿命が長くなります。
 
-**[Enhancement] Improved functionality on Android TV #3238**
+**[Enhancement] Android TV #3238**で機能を改善
 
-AdGuard for Android is first and foremost an app for mobile phones and tablets, but it can be installed on other Android devices, such as smart TVs. We have made several improvements for this specific case, for example:
+アンドロイド用のAdGuardは、まず、携帯電話やタブレット用のアプリを偽装していますが、スマートテレビなどの他のAndroidデバイスにインストールすることができます。 この特定のケースでは、以下のようないくつかの改善を行いました。
 
-- AdGuard now better works with lists
-- Better navigation between AG menus on smart TVs
-- Option to click on snackbars
-- Option to exit the promo screen
-- "Close" option for all dialogues
+- AdGuardは、リストでより良い作品を発表
+- スマートテレビのAGメニュー間のより良いナビゲーション
+- スナックバーをクリックするオプション
+- プロモーション画面を終了するオプション
+- すべてのダイアログの「閉じる」オプション
 
-Now AdGuard for Android will be much easier in use if you decide to install it on your smart TV. If you still encounter any bugs or inconsistent behaviour, please report it here.
+お使いのスマートテレビにインストールすることを決定した場合、Android用のAdGuardは、使用がはるかに簡単です。 それでもバグや矛盾する行動に遭遇した場合は、こちらに報告してください。
 
-## Changelog
+## 変更履歴
 
-- [Fixed] Application won’t start after the restart of the device #3286
-- [Fixed] Stealth mode preset changes after an update #3287
-- [Fixed] Locale change bug #3301
-- [Fixed] com.android.providers.downloads traffic isn't routed #3355
-- [Fixed] Filtering doesn’t work with AdGuard enabled on Android 11 #3377
-- [Fixed] Impossible to enable UDP through SOCKS5 proxy #3394
-- [Fixed] Impossible to create a hotspot without disabling DNS filtering #3187
-- [Fixed] "HTTPS filtering is off" Snackbar covers "Data Saved" stat on the Home screen #3292
-- [Fixed] The app crashes when switching from 4G to Wi-Fi in Local HTTP Proxy Mode #3431
-- [Fixed] 'Back' button on the Settings screen works incorrectly #3427
-- [Fixed] AdGuard doesn't launch #3430
-- [Enhancement] Custom adguard: scheme is now used for adding userscripts #3000
-- [Enhancement] "Cancel" button added to the "Add proxy" screen #3093
-- [Enhancement] stealth.enabled=false is now sent in query string if Stealth Mode is turned off when sending a report #3169
-- [Enhancement] Block ads in all apps parameter is now sent when sending a report #3350
-- [Enhancement] An option to suppress HTTPS filtering error notification #3225
-- [Enhancement] HTTPS filtering dialog has been improved #3284
-- [Enhancement] Romanian and Thai localizations have been added #3341
-- [Other] Acknowledgements page has been updated #82
-- [Other] Firefox Preview Nightly for developers has been added to the list of supported browsers #3333
-- [Other] Certificate installation sequence on Android 11 #3354
-- [Other] Cobra Browser has been added to the list of supported browsers #3357
-- [Other] Application crashes on Android 11 upon opening filtering log details #3366
-- [Other] Vivaldi Snapshot and Vivaldi Sopranos have been added to the list of supported browsers #3400
-- [Other] Add Brave Beta has been added to the list of supported browsers #3401
-- [Other] AdGuard crashes in local HTTP proxy mode #3416
-- [Other] HTTPS exclusions list has been updated #3419, #3425
-- [Other] Yuzu Browser Plus added to the list of supported browsers #3424
-- [Other] Brave Nightly added to the list of supported browsers #3432
-- [Other] The list of HTTPS exclusions has been updated
-- [Other] Translations have been updated
+- [修正] アプリケーションは、デバイスの再起動後に起動しません #3286
+- [修正] アップデート後のステルスモードプリセットの変更 #3287
+- [修正] ローカル変更バグ #3301
+- [修正] com.android.providers.downloads トラフィックが #3355 をルーティングされていない
+- [修正] フィルタリングは、Android 11で有効になっているAdGuardで動作しません #3377
+- [修正] SOCKS5プロキシ#3394を通じてUDPを有効にする不可
+- [修正] DNS フィルタ #3187 を解除せずにホットスポットを作成する不可
+- [修正] 「HTTPS フィルタリングがオフ」 スナックバーは、ホーム画面 #3292 の "データ保存" ステータスをカバー
+- [修正] ローカル HTTP プロキシ モード #3431 で 4G から Wi-Fi に切り替えると、アプリがクラッシュします。
+- [修正] 設定画面の「戻る」ボタンが正しく動作します #3427
+- [修正] AdGuardが#3430を起動しない
+- [Enhancement] カスタムアドガード: userscripts #3000 を追加するためにスキームが使われます
+- [Enhancement] 「Cancel」ボタンを「Add proxy」画面に追加 #3093
+- [Enhancement]ステルス.enabled=false は、Stealth Mode がレポート #3169 を送信したときにオフになっている場合、クエリ文字列に送信されます。
+- [参加] レポート#3350を送信すると、すべてのアプリパラメータで広告をブロックできるようになりました
+- [参加] HTTPS フィルタリングエラー通知を抑制するオプション #3225
+- [Enhancement] HTTPS フィルタリング ダイアログが #3284 を改善しました
+- [Enhancement] ルーマニア語とタイのローカリゼーションが #3341 を追加しました
+- [その他] アクノレッジページが更新されました #82
+- [その他] 開発者向けFirefox Preview Nightlyがサポートされているブラウザーの一覧に追加されました #3333
+- [その他] Android 11の証明書のインストールシーケンス #3354
+- [その他] サポートされているブラウザーの一覧に Cobra Browser を追加しました #3357
+- [その他] フィルタリングログ詳細を開くとAndroid 11でアプリケーションがクラッシュ #3366
+- [その他] Vivaldi スナップショットと Vivaldi Sopranos は、サポートされているブラウザーの一覧に追加されました。 #3400
+- [その他] サポートされているブラウザの一覧にBrave Betaを追加 #3401
+- [その他] ローカル HTTP プロキシモード #3416 で AdGuard がクラッシュ
+- [その他] HTTPS除外リストが更新されました #3419, #3425
+- [その他] ユズブラウザプラス 対応ブラウザの一覧に追加 #3424
+- [その他] サポートされているブラウザーの一覧にBrave Nightly追加 #3432
+- [その他] HTTPSの除外リストを更新しました
+- [その他] 翻訳更新
 
-## CoreLibs has been updated to v1.5.265
+## CoreLibs は v1.5.265 に更新されました。
 
-- [Fixed] Cosmetic rules can be used as CSS rules #1293
-- [Fixed] Rules selection algorithm works not as intended when HTTPS filtering is disabled #1291
-- [Fixed] Rules with restricted domains do not match requests without referer #1286
-- [Fixed] "Failed to initialize protocol filters" error #1282
-- [Fixed] Incorrect extended CSS rule causes problems with JS rules #1147
-- [Fixed] 'Proceed anyway' option doesn't work correctly if website is blocked by a rule with `$all` modifier #1267
+- [修正] 化粧品のルールは、CSSのルール#1293として使用できます
+- [修正] 規則の選択アルゴリズムは、HTTPS のフィルタリングが無効な場合意図されていないように動作します #1291
+- [修正] 制限されたドメインのルールは、参照者なしで要求に一致しません #1286
+- [修正] 「プロトコルフィルタの初期化に失敗しました」 エラー #1282
+- [修正] 拡張CSSのルールが間違っているとJSのルール#1147に問題が生じます
+- [修正] '予稿したとにかく' は、ウェブサイトが規則でブロックされている場合、正しく動作しません。`$all`修飾語 #1267
 
-## DnsLibs updated to v1.2.26
+## DnsLibs が v1.2.26 に更新
 
-- [Other] 'Unblock' button is not visible in Filtering Log details #3429
+- [その他] 'ブロック解除' ボタンは、ログのフィルタリングに表示されません #3429
 
-## 3.6 beta 1
+## 3.6 ベータ 1
 
-- Published: 2020-11-20T18:04:23Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6-beta-1
+- 公開日: 2020-11-20T18:04:23Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6-beta-1
 
-> **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
+> **免責** Android向けAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-Today we are launching a small but still very important beta. Namely, the compatibility with the new Chrome 87 was improved and the CoreLibs was updated.
+今日は小さいですが、まだ非常に重要なベータ版を立ち上げています。 つまり、新しいChrome 87との互換性が改善され、CoreLibsが更新されました。
 
-**[Other] ERR_HTTP2_PROTOCOL_ERROR on some websites [#1374](https://github.com/AdguardTeam/AdguardForAndroid/issues/1374)**
+**[その他] ERR HTTP2 PROTOCOL ERROR 一部のウェブサイト [#1374](https://github.com/AdguardTeam/AdguardForAndroid/issues/1374)**
 
-This week Chrome 87 was released, which has a compatibility problem with AdGuard when using the HTTP/2 filtering protocol - some sites may experience regular hangs and download errors. In this update we have improved HTTP/2 filtering compatibility with Chrome 87, it is recommended to upgrade to the new stable version as soon as possible. :)
+今週のChrome 87がリリースされました。この問題は、HTTP/2フィルタリングプロトコルを使用する際のAdGuardと互換性の問題です。一部のサイトでは、通常のハングとダウンロードエラーが発生することがあります。 このアップデートでは、Chrome 87 との互換性をフィルタリングする HTTP/2 が改善されました。新しい安定したバージョンにできるだけ早くアップグレードすることをお勧めします。 :)
 
-## Changelog
+## 変更履歴
 
-* [Enhancement] Add com.huawei.browser to the list of browsers  [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495) 
-* [Enhancement] Enable forcibly HTTPs filtering for the Firefox Fenix browser  [#3617](https://github.com/AdguardTeam/AdguardForAndroid/issues/3617)
-* [Enhancement] Option to watch Youtube videos ad-free by sharing them to AdGuard [#2994](https://github.com/AdguardTeam/AdguardForAndroid/issues/2994)
-* [Fixed] Does not filter plain HTTP when it uses a non-standard port  [#1366](https://github.com/AdguardTeam/CoreLibs/issues/1366)
-* [Fixed] Compatibility issues
+* [Enhancement] ブラウザのリストにcom.huawei.browserを追加 [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495) 
+* [Enhancement] Firefox Fenix ブラウザーの強制 HTTP フィルタリングを有効にします。 [#3617](https://github.com/AdguardTeam/AdguardForAndroid/issues/3617)
+* [Enhancement] AdGuardにそれらを共有することにより、Youtubeのビデオ広告を視聴するためのオプション [#2994](https://github.com/AdguardTeam/AdguardForAndroid/issues/2994)
+* [修正] 非標準ポート [#1366] を使用する場合は、プレーン HTTP をフィルタリングしません。https://github.com/AdguardTeam/CoreLibs/issues/1366)
+* [修正] 互換性の問題
 
-### Upgraded CoreLibs to v1.7.150
+### アップグレードされたCoreLibsからv1.7.150
 
-* [Enhancement] Improve socket connect with hostname provided (for Proxy mode) [#123](https://github.com/AdguardTeam/CoreLibs/issues/123) 
-* [Enhancement] Indicate libraries versions  [#1150](https://github.com/AdguardTeam/CoreLibs/issues/1150) 
-* [Fixed] &#96;$badfilter&#96; rules are sensitive to domain lists  [#1331](https://github.com/AdguardTeam/CoreLibs/issues/1331) 
-* [Other] $generichide rule causes that assistant is showing that AdGuard is disabled  [#7](https://github.com/AdguardTeam/BrowserAssistant/issues/7) 
-* [Other] Connection error after waking computer from sleep mode  [#3412](https://github.com/AdguardTeam/AdguardForWindows/issues/3412)
+* [Enhancement] 提供されているホスト名 (プロキシモードの場合) [#123] とソケット接続を改善します(https://github.com/AdguardTeam/CoreLibs/issues/123) 
+* [Enhancement] ライブラリバージョン [#1150] を示すhttps://github.com/AdguardTeam/CoreLibs/issues/1150) 
+* [修正] &#96;$badfilter&#96; ドメインリストに機密ルール [#1331](https://github.com/AdguardTeam/CoreLibs/issues/1331) 
+* [その他] $generichide ルールは、アシスタントが AdGuard が無効であることを示す原因 [#7](https://github.com/AdguardTeam/BrowserAssistant/issues/7) 
+* [その他] スリープモードからコンピュータを目覚めた後の接続エラー[#3412](https://github.com/AdguardTeam/AdguardForWindows/issues/3412)
 
-## 3.5 RC 1 
+## 3.5 RC 1
 
-- Published: 2020-08-26T14:28:28Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-rc-1
+- 公開日: 2020-08-26T14:28:28Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-rc-1
 
-A release candidate for the upcoming AdGuard v3.5 for Android is now available. We believe that exposing an RC version to trusted users is a great way to test new features before the release.
+Android用のAdGuard v3.5のリリース候補が公開されました。 信頼できるユーザーにRCバージョンを公開することは、リリース前の新機能をテストするための素晴らしい方法です。
 
-This update includes a couple of small fixes and a CoreLibs upgrade – we are eager to polish everything until it shines.   
+このアップデートには、小さな修正とCoreLibsのアップグレードのカップルが含まれています。輝きまですべてを磨くことに熱心です。
 
-## Changelog
+## 変更履歴
 
-* [Enhanced] Prepare AdGuard before the v3.5 release  [#3546](https://github.com/AdguardTeam/AdguardForAndroid/issues/3546) 
-* [Fixed] Provide an option to disable fallback  [#3447](https://github.com/AdguardTeam/AdguardForAndroid/issues/3447)
-* [Fixed] Fix a bug related with a strange and small "m^" rule  [#3548](https://github.com/AdguardTeam/AdguardForAndroid/issues/3548) 
+* [Enhanced] v3.5リリース前のAdGuardの準備 [#3546](https://github.com/AdguardTeam/AdguardForAndroid/issues/3546) 
+* [修正] フォールバックを無効にするオプション [#3447](https://github.com/AdguardTeam/AdguardForAndroid/issues/3447)
+* [修正] 奇妙な小さな "m^" ルール [#3548] に関連するバグを修正しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/3548) 
 
-## CoreLibs
+## コアライブラリ
 
-#### Upgraded CoreLibs to v1.7.64
+#### アップグレードされたCoreLibsからv1.7.64
 
-* [Fixed] Problematic userscripts  [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
-* [Fixed] AGFDVSocket doesn't return original peer address in case of outbound proxy set  [#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330)
+* [修正] 問題のあるユーザスクリプト [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
+* [修正] AGFDVSocketは、アウトバウンドプロキシセットの場合、元のピアアドレスを返すことはありません[#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330)
 
-## 3.5 beta 2
+## 3.5 ベータ 2
 
-- Published: 2020-08-21T10:56:44Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-2
+- 公開日: 2020-08-21T10:56:44Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-2
 
-In this update, we added a few finishing touches, updated CoreLibs filtering engine and fixed a couple of bugs. Almost there.
+このアップデートでは、いくつかの仕上げのタッチを追加し、CoreLibs フィルタリングエンジンを更新し、いくつかのバグを修正しました。 そこまで。
 
-## Changelog
+## 変更履歴
 
-* [Enhancement] Add the "What's new" dialog  [#3532](https://github.com/AdguardTeam/AdguardForAndroid/issues/3532)
-* [Enhancement] Rename adguard.crt to AdGuardCertificate.pem  [#3489](https://github.com/AdguardTeam/AdguardForAndroid/issues/3489)
-* [Fixed] Wrong state of the disabled option  [#3538](https://github.com/AdguardTeam/AdguardForAndroid/issues/3538)
+* [参加] "What's new" ダイアログを追加します。 [#3532](https://github.com/AdguardTeam/AdguardForAndroid/issues/3532)
+* [Enhancement] adguard.crt を AdGuardCertificate.pem に変更 [#3489](https://github.com/AdguardTeam/AdguardForAndroid/issues/3489)
+* [修正] 無効なオプションの間違った状態 [#3538](https://github.com/AdguardTeam/AdguardForAndroid/issues/3538)
 
-## CoreLibs
+## コアライブラリ
 
-#### Upgraded CoreLibs to v1.7.58
+#### アップグレードされたCoreLibsからv1.7.58
 
-* [Enhancement] #@# without any domains specified should disable the rule completely  [#1296](https://github.com/AdguardTeam/CoreLibs/issues/1296)
-* [Fixed] Connection has timed out in state have-result  [#1180](https://github.com/AdguardTeam/CoreLibs/issues/1180) 
-* [Fixed] OCSP checks aren't passed through the selected DNS  [#1328](https://github.com/AdguardTeam/CoreLibs/issues/1328)
+* [Enhancement] #@# 指定されたドメインなしで、ルールを完全に無効にする必要があります [#1296](https://github.com/AdguardTeam/CoreLibs/issues/1296)
+* [修正済み] 接続は状態にタイムアウトしました [#1180]()https://github.com/AdguardTeam/CoreLibs/issues/1180) 
+* [修正] OCSP チェックは、選択した DNS [#1328] を通過しない (https://github.com/AdguardTeam/CoreLibs/issues/1328)
 
-## 3.5 beta 1
+## 3.5 ベータ 1
 
-- Published: 2020-08-14T17:11:03Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-1
+- 公開日: 2020-08-14T17:11:03Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-1
 
-Today we release the first beta version of AdGuard v3.5 for Android. It features a long list of various impovements in its changelog, but the main focus is, without a doubt, on the freshly introduced compatibility mode with AdGuard VPN for Android.
+今日は、Android用のAdGuard v3.5の最初のベータ版をリリースしました。 それは、その変更ログにさまざまなインプラントの長いリストを備えていますが、主な焦点は、間違いなく、Android用のAdGuard VPNで新しく導入された互換性モードです。
 
-**[Enhancement] Compatibility Mode with AdGuard VPN Android app [#3441](https://github.com/AdguardTeam/AdguardForAndroid/issues/3441)**
+**[Enhancement] AdGuard VPN Androidアプリとの互換性モード [#3441](https://github.com/AdguardTeam/AdguardForAndroid/issues/3441)**
 
-Since AdGuard VPN for Android [was first introduced](https://adguard.com/en/blog/introducing-adguard-vpn-for-android.html), there was already a way to make it work along with AdGuard ad blocker. But to make the two apps coexist in peace, you were required to jump through some hoops. Anyone who went ahead and did the thing 100% has been waiting for a proper integration ever since — and we oblige.
+AdGuard VPN for Android が初めて導入されました。https://adguard.com/en/blog/introducing-adguard-vpn-for-android.html)、すでにAdGuard広告ブロッカーと一緒に動作させる方法がありました。 しかし、平和で共存する2つのアプリを作るためには、いくつかのフープをジャンプする必要があります。 先に行ってから100%をやり直した人は、以来、適切な統合を待っています。
 
-The best kind of compatibility is when you install two apps and they just start working together. We did exactly that. Presuming you already have AdGuard ad blocker installed, just download AdGuard VPN from [Play Store](https://play.google.com/store/apps/details?id=com.adguard.vpn) (you can get there right from the ad blocker app, there's a new item in General Settings menu). 
+2つのアプリをインストールし、一緒に作業を開始すると、最高の種類の互換性があります。 お問い合わせ 既にAdGuard広告ブロッカーがインストールされていると仮定して、 [Playストア] から AdGuard VPN をダウンロードします()https://play.google.com/store/apps/details?id=com.adguard.vpn) (広告ブロッカーアプリからすぐに入手できます。一般設定メニューに新しい項目があります)。
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/settings.gif" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/settings.gif"幅="300">
 
-Both apps will detect each other and do everything that's needed for smooth joint work. All that will be left for you is to enjoy both ad-free Internet and all the benefits of a VPN. By the way, it works the other way around just as well: install AdGuard ad blocker on top of an already-running AdGuard VPN and you're good.
+どちらのアプリも互いに検出し、スムーズなジョイントワークに必要なすべての操作を行います。 アドフリーのインターネットとVPNのすべての利点の両方を楽しむために残されます。 ちなみに、他の方法も機能します: 既に実行中のAdGuard VPNの上にAdGuard広告ブロッカーをインストールし、あなたは良いです。
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/compatibility.gif" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/compatibility.gif"幅="300">
 
-If you'd like to disable Compatibility Mode for any reason, it's very simple to do so from AdGuard ad blocker settings, just toggle the switch. Additionally, you can add AdGuard ad blocker and AdGuard VPN tiles to your device's notification bar and toggle them in one tap at your own will  — thanks to Compatibility Mode the configuration will change immediately and silently.
+何らかの理由でCompatibility Modeを無効にしたい場合は、AdGuard広告ブロッカーの設定から、スイッチを切り替えるだけです。 さらに、デバイスの通知バーにAdGuard広告ブロッカーとAdGuard VPNタイルを追加し、自分の意志でワンタップでそれらを切り替えることができます。Compatibility Modeのおかげで、設定はすぐに変更され、静かに変更されます。
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/tiles.png" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/tiles.png"幅="300">
 
-* [Enhancement] Adaptive icons for app shortcuts [#2656](https://github.com/AdguardTeam/AdguardForAndroid/issues/2656)
-* [Enhancement] New rules are now added to the top of User filter [#2962](https://github.com/AdguardTeam/AdguardForAndroid/issues/2962)
-* [Enhancement] Huawei browser added to the list of default browsers [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495)
-* [Enhancement] Firefox Fenix browser added to the list of default browsers [#2861](https://github.com/AdguardTeam/AdguardForAndroid/issues/2861)
-* [Enhancement] Mozilla Reference browser added to the list of default browsers [#3408](https://github.com/AdguardTeam/AdguardForAndroid/issues/3408)
-* [Enhancement] 'Block' button now immediately switches to 'Unblock' after adding a custom rule via Filtering Log [#3012](https://github.com/AdguardTeam/AdguardForAndroid/issues/3012)
-* [Enhancement] Added automation API for proxy servers [#3363](https://github.com/AdguardTeam/AdguardForAndroid/issues/3363)
-* [Enhancement] Added an option to disable DNS fallback [#3447](https://github.com/AdguardTeam/AdguardForAndroid/issues/3447)
-* [Enhancement] Extended information written to `state.txt` when logs are exported [#3063](https://github.com/AdguardTeam/AdguardForAndroid/issues/3063)
-* [Enhancement] AdGuard Simplified Domain Names filter renamed to AdGuard DNS filter [#3475](https://github.com/AdguardTeam/AdguardForAndroid/issues/3475)
-* [Enhancement] Enabled userscripts are now included in the query string for the web reporting tool [#3288](https://github.com/AdguardTeam/AdguardForAndroid/issues/3288)
-* [Enhancement] Updates screen now shown when "Check for updates" shortcut is used [#3318](https://github.com/AdguardTeam/AdguardForAndroid/issues/3318)
-* [Fixed] Downloads in some apps don't work properly on Android 11 [#3516](https://github.com/AdguardTeam/AdguardForAndroid/issues/3516)
-* [Fixed] AdGuard doesn't work on devices with Restricted Account [#3299](https://github.com/AdguardTeam/AdguardForAndroid/issues/3299)
-* [Fixed] First letter in the sentence is not capitalized automatically on the 'Message to support' screen [#3079](https://github.com/AdguardTeam/AdguardForAndroid/issues/3079)
-* [Fixed] Unnecessary "Android Private DNS is enabled" notification on Android 11 [#3478](https://github.com/AdguardTeam/AdguardForAndroid/issues/3478)
-* [Fixed] Toast notification for "Checking for updates" shows late [#3343](https://github.com/AdguardTeam/AdguardForAndroid/issues/3343)
-* [Other] Updated options for default DNS resolveres [#3428](https://github.com/AdguardTeam/AdguardForAndroid/issues/3428)
-* [Other] DnsLibs updated to v1.3.19
-* [Other] CoreLibs updated to v1.7.49
-* [Other] Compatibility issues
+* [Enhancement] アプリのショートカット [#2656] のための適応アイコン (https://github.com/AdguardTeam/AdguardForAndroid/issues/2656)
+* [参加] ユーザーフィルタ[#2962]の上に新しいルールが追加されました(https://github.com/AdguardTeam/AdguardForAndroid/issues/2962)
+* [Enhancement] デフォルトブラウザの一覧にHuaweiブラウザを追加しました [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495)
+* [Enhancement] デフォルトブラウザの一覧にFirefox Fenixブラウザを追加しました [#2861](https://github.com/AdguardTeam/AdguardForAndroid/issues/2861)
+* [Enhancement] デフォルトブラウザの一覧にMozilla Referenceブラウザを追加しました [#3408](https://github.com/AdguardTeam/AdguardForAndroid/issues/3408)
+* [Enhancement] 'Block' ボタンは、フィルタリングログ[#3012]を介してカスタムルールを追加した後、すぐに「ブロック解除」に切り替えます(https://github.com/AdguardTeam/AdguardForAndroid/issues/3012)
+* [Enhancement] プロキシサーバーの自動化 API [#3363](https://github.com/AdguardTeam/AdguardForAndroid/issues/3363)
+* [参加] DNSフォールバックを無効にするオプションを追加しました [#3447](https://github.com/AdguardTeam/AdguardForAndroid/issues/3447)
+* [参加] 書面による拡張情報`state.txt`ログがエクスポートされるとき [#3063](https://github.com/AdguardTeam/AdguardForAndroid/issues/3063)
+* [Enhancement] AdGuardは、ドメインネームフィルタをAdGuard DNSフィルタにリネームしました [#3475](https://github.com/AdguardTeam/AdguardForAndroid/issues/3475)
+* [参加] ウェブレポーティングツール [#3288] のクエリ文字列にユーザスクリプトを有効にしました。(https://github.com/AdguardTeam/AdguardForAndroid/issues/3288)
+* [参加] 「更新チェック」ショートカットが「#3318」で表示される画面を更新します(https://github.com/AdguardTeam/AdguardForAndroid/issues/3318)
+* [修正] Android 11で正常に動作しない一部のアプリでダウンロード [#3516](https://github.com/AdguardTeam/AdguardForAndroid/issues/3516)
+* [修正] AdGuardは、制限されたアカウントでデバイス上で動作しません [#3299](https://github.com/AdguardTeam/AdguardForAndroid/issues/3299)
+* [修正] 文の最初の文字が「メッセージがサポートする」画面に自動的に大文字化されていない[#3079](https://github.com/AdguardTeam/AdguardForAndroid/issues/3079)
+* [修正済み] Android 11 [#3478] で不要な "Android Private DNS が有効になっています" 通知https://github.com/AdguardTeam/AdguardForAndroid/issues/3478)
+* [修正] 「更新のチェック」のトースト通知が遅く表示されます [#3343](https://github.com/AdguardTeam/AdguardForAndroid/issues/3343)
+* [その他] 既定の DNS の決議のためのオプションを更新 [#3428](https://github.com/AdguardTeam/AdguardForAndroid/issues/3428)
+* [その他] DnsLibs が v1.3.19 に更新
+* [その他] CoreLibs が v1.7.49 に更新
+* [その他] 互換性の問題
 
-### DnsLibs
+### DnsLibs(ドングリブ)
 
-* [Enhancement] Added support for comments at the end of line in hosts rules [#75](https://github.com/AdguardTeam/DnsLibs/issues/75)
-* [Fixed] LDNS logging [#73](https://github.com/AdguardTeam/DnsLibs/issues/73)
-* [Other] Added upstreams sorting by RTT [#39](https://github.com/AdguardTeam/DnsLibs/issues/39)
+* [参加] ホストのルールの行の最後にコメントのサポートを追加しました [#75](https://github.com/AdguardTeam/DnsLibs/issues/75)
+* [修正] LDNS ロギング [#73](https://github.com/AdguardTeam/DnsLibs/issues/73)
+* [その他] RTT でソートする上流を追加 [#39](https://github.com/AdguardTeam/DnsLibs/issues/39)
 
-### CoreLibs
+### コアライブラリ
 
-* [Enhancement] Added verification for trusted-types CSP [#1320](https://github.com/AdguardTeam/CoreLibs/issues/1320)
-* [Fixed] Problematic userscripts [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
-* [Fixed] Process name detection causes warnings in Windows Security [#1316](https://github.com/AdguardTeam/CoreLibs/issues/1316)
-* [Other] Connection speed is capped when AdGuard is enabled [#702](https://github.com/AdguardTeam/CoreLibs/issues/702)
+* [Enhancement] 信頼されるタイプCSP [#1320]の検証を追加しました(https://github.com/AdguardTeam/CoreLibs/issues/1320)
+* [修正] 問題のあるユーザスクリプト [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
+* [修正] プロセス名検出は、Windows セキュリティの警告を引き起こします [#1316](https://github.com/AdguardTeam/CoreLibs/issues/1316)
+* [その他] AdGuardが有効になったときに接続速度がキャッピングされます[#702](https://github.com/AdguardTeam/CoreLibs/issues/702)
 
-## 3.4 beta 2
+## 3.4 ベータ 2
 
-- Published: 2020-05-14T13:18:29Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-2
+- 公開日: 2020-05-14T13:18:29Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-2
 
-In this run-of-the-mill beta we fix few bugs and update CoreLibs. It will transform into the next release version if all goes well.
+この実行-of-the-mill ベータでは、いくつかのバグを修正し、CoreLibs を更新します。 すべてがうまくいくと、次のリリースバージョンに変わります。
 
-## Changelog
+## 変更履歴
 
-* [Bug] 'Back' button on the Settings screen works incorrectly #3427
-* [Bug] The app crashes when switching from 4G to Wi-Fi in Local HTTP Proxy Mode #3431 
-* [Bug] AdGuard doesn't launch #3430
-* [Other] HTTPS exclusions list has been updated #3419, #3425
-* [Other] Brave Nightly added to the list of supported browsers #3432
-* [Other] Yuzu Browser Plus added to the list of supported browsers #3424
+* [バグ] 設定画面の「戻る」ボタンが正しく動作します #3427
+* [バグ] ローカル HTTP プロキシ モード #3431 で 4G から Wi-Fi に切り替えると、アプリがクラッシュします。
+* [バグ] AdGuardが#3430を起動しない
+* [その他] HTTPS除外リストが更新されました #3419, #3425
+* [その他] サポートされているブラウザーの一覧にBrave Nightly追加 #3432
+* [その他] ユズブラウザプラス 対応ブラウザの一覧に追加 #3424
 
-### CoreLibs updated to v1.5.265
+### CoreLibs が v1.5.265 に更新
 
-* [Bug] Incorrect extended CSS rule causes problems with JS rules #1147
-* [Bug] Cosmetic rules can be used as CSS rules #1293
-* [Bug] 'Proceed anyway' option doesn't work correctly if the website is blocked by a rule with `$all` modifier #1267
+* [バグ] 拡張された CSS ルールが JS ルール #1147 に問題を引き起こします
+* [バグ] 化粧品のルールは、CSSのルール#1293として使用できる
+* [Bug] 'とにかく承認' オプションは、Webサイトが規則でブロックされている場合は正しく動作しません`$all`修飾語 #1267
 
-### DnsLibs updated to v1.2.26
+### DnsLibs が v1.2.26 に更新
 
-* [Other] 'Unblock' button is not visible in Filtering Log details #3429
+* [その他] 'ブロック解除' ボタンは、ログのフィルタリングに表示されません #3429
 
-## 3.4 beta 1
+## 3.4 ベータ 1
 
-- Published: 2020-04-27T11:49:40Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-1
+- 公開日: 2020-04-27T11:49:40Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-1
 
-Please welcome the first beta version of AdGuard v3.4 for Android! To start things off, we've enhanced the app in a few directions, including fixing some of the oldest known bugs and improving Android TV compatibility. 
+まずは、アドガードv3.4のベータ版をAndroid版にてご確認下さい。 物事オフを開始するには、最も古い既知のバグを修正し、Android TVの互換性を向上させるなど、いくつかの方向でアプリを強化しました。
 
-**[Bug] AdGuard blocks Internet connection [#2842](https://github.com/AdguardTeam/AdguardForAndroid/issues/2842)**
+**[Bug] AdGuardブロックインターネット接続 [#2842](https://github.com/AdguardTeam/AdguardForAndroid/issues/2842)**
 
-This bug had been puzzling us for a very long time. It appeared on various devices of AdGuard users and was seemingly random. However, the symptoms were the same: the smartphone lost any network completely while AdGuard was turned on. Needless to say, it had been our top priority to fix this issue, and finally, we've managed to beat it. Not going to lie, it's a big relief not only for the affected users but for us too!
+このバグは非常に長い間私たちを驚かせていました。 AdGuardユーザーのさまざまなデバイスに登場し、ランダムに見えました。 しかし、この症状は同じでした。アドガードがオンになった間にスマートフォンは完全にネットワークを失いました。 言うまでもなく、この課題を解決する最優先事項であり、ついにそれを打ち負かしました。 信じるつもりではなく、影響を受けたユーザーだけでなく、私たちも大きな救済です!
 
-**[Enhancement] Integration with DnsLibs [#3229](https://github.com/AdguardTeam/AdguardForAndroid/issues/3229)**
+**[Enhancement] DnsLibs との統合 [#3229](https://github.com/AdguardTeam/AdguardForAndroid/issues/3229)**
 
-[DnsLibs](https://github.com/AdguardTeam/DnsLibs) is a DNS proxy library that's required to provide DNS filtering. It supports all existing DNS protocols including DNS-over-TLS, DNS-over-HTTPS, and DNSCrypt. We developed it to replace the old DNSproxy, which had one serious flow: it caused high battery resource consumption. DnsLibs is much better optimized and will ensure a longer lifespan for your phone's battery if you're using DNS filtering a lot. 
+[DnsLibs](DnsLibs)https://github.com/AdguardTeam/DnsLibs)DNS フィルタリングを提供する必要がある DNS プロキシライブラリです。 DNS-over-TLS、DNS-over-HTTPS、DNSCrypt などの既存の DNS プロトコルをサポートしています。 古いDNSproxyを置き換えるために開発しました。これは深刻な流れでした。それは高いバッテリーリソース消費を引き起こしました。 DnsLibsはより最適化され、DNSフィルタリングを多く使用している場合は、携帯電話のバッテリーの寿命が長くなります。
 
-**[Enhancement] Improved functionality on Android TV [#3238](https://github.com/AdguardTeam/AdguardForAndroid/issues/3238)**
+**[Enhancement] Android TVで機能を改善しました [#3238](https://github.com/AdguardTeam/AdguardForAndroid/issues/3238)**
 
-AdGuard for Android is first and foremost an app for mobile phones and tablets, but it can be installed on other Android devices, such as smart TVs. We have made several improvements for this specific case, for example:
+アンドロイド用のAdGuardは、まず、携帯電話やタブレット用のアプリを偽装していますが、スマートテレビなどの他のAndroidデバイスにインストールすることができます。 この特定のケースでは、以下のようないくつかの改善を行いました。
 
-- AdGuard now better works with lists
-- Better navigation between AG menus on smart TVs
-- Option to click on snackbars
-- Option to exit the promo screen
-- "Close" option for all dialogues
+- AdGuardは、リストでより良い作品を発表
+- スマートテレビのAGメニュー間のより良いナビゲーション
+- スナックバーをクリックするオプション
+- プロモーション画面を終了するオプション
+- すべてのダイアログの「閉じる」オプション
 
-Now AdGuard for Android will be much easier in use if you decide to install it on your smart TV. If you still encounter any bugs or inconsistent behavior, please report it [here](https://github.com/AdguardTeam/AdguardForAndroid/issues/new/choose).  
+お使いのスマートテレビにインストールすることを決定した場合、Android用のAdGuardは、使用がはるかに簡単です。 それでもバグや矛盾する行動に遭遇した場合は、その旨を報告してください。https://github.com/AdguardTeam/AdguardForAndroid/issues/new/choose).  
 
-**[Bug] Firewall's restriction are ignored when WiFi gets enabled [#3313](https://github.com/AdguardTeam/AdguardForAndroid/issues/3313)**
+**[Bug] ファイアウォールの制限は、WiFiが有効になったときに無視されます[#3313](https://github.com/AdguardTeam/AdguardForAndroid/issues/3313)**
 
-And another unpleasant bug that deserves a special mention. In v3.3, if you had specifically prohibited some apps from accessing the Internet via mobile data, the restrictions worked right up until you enabled WiFi, which was not the intended behaviour.
+特別な言及に値する別の不快なバグ。 v3.3 では、モバイルデータを介してインターネットにアクセスするアプリが特に禁止されている場合、制限は、意図した行動ではなく、WiFi を有効にするまで、適切に機能しました。
 
-## Changelog
+## 変更履歴
 
-* [Bug] Application won’t start after the restart of the device [#3286](https://github.com/AdguardTeam/AdguardForAndroid/issues/3286)
-* [Bug] Stealth mode preset changes after an update [#3287](https://github.com/AdguardTeam/AdguardForAndroid/issues/3287)
-* [Bug] Locale change bug [#3301](https://github.com/AdguardTeam/AdguardForAndroid/issues/3301)
-* [Bug] `com.android.providers.downloads` traffic isn't routed [#3355](https://github.com/AdguardTeam/AdguardForAndroid/issues/3355)
-* [Bug] Filtering doesn’t work with enabled AdGuard on Android 11 [#3377](https://github.com/AdguardTeam/AdguardForAndroid/issues/3377)
-* [Bug] Impossible to enable UDP through SOCKS5 proxy [#3394](https://github.com/AdguardTeam/AdguardForAndroid/issues/3394)
-* [Bug] You can't create a hotspot without disabling DNS filtering [#3187](https://github.com/AdguardTeam/AdguardForAndroid/issues/3187)
-* [Bug] "HTTPS filtering is off" SnackBar covers "Data Saved" stat on the Home screen [#3292](https://github.com/AdguardTeam/AdguardForAndroid/issues/3292)
-* [Enhancement] Custom `adguard:` scheme is now used for adding userscripts [#3000](https://github.com/AdguardTeam/AdguardForAndroid/issues/3000)
-* [Enhancement] "Cancel" button added to the "Add proxy" screen [#3093](https://github.com/AdguardTeam/AdguardForAndroid/issues/3093)
-* [Enhancement] `stealth.enabled=false` is now sent in query string if Stealth Mode is turned off when sending a report [#3169](https://github.com/AdguardTeam/AdguardForAndroid/issues/3169)
-* [Enhancement] `Block ads in all apps` parameter is now sent when sending a report [#3350](https://github.com/AdguardTeam/AdguardForAndroid/issues/3350)
-* [Enhancement] An option to suppress HTTPS filtering error notification [#3225](https://github.com/AdguardTeam/AdguardForAndroid/issues/3225)
-* [Enhancement] HTTPS filtering dialog has been improved [#3284](https://github.com/AdguardTeam/AdguardForAndroid/issues/3284)
-* [Enhancement] Romanian and Thai localizations have been added [#3341](https://github.com/AdguardTeam/AdguardForAndroid/issues/3341)
-* [Other] Firefox Preview Nightly for Developers has been added to the list of supported  browsers [#3333](https://github.com/AdguardTeam/AdguardForAndroid/issues/3333)
-* [Other] Cobra Browser has been added to the list of supported browsers [#3357](https://github.com/AdguardTeam/AdguardForAndroid/issues/3357)
-* [Other] Add Brave Beta has been added to the list of supported browsers [#3401](https://github.com/AdguardTeam/AdguardForAndroid/issues/3401)
-* [Other] Vivaldi Snapshot and Vivaldi Sopranos have been added to the list of supported browsers [#3400](https://github.com/AdguardTeam/AdguardForAndroid/issues/3400)
-* [Other] Certificate installation sequence on Android 11 [#3354](https://github.com/AdguardTeam/AdguardForAndroid/issues/3354)
-* [Other] Acknowledgements page has been updated [#82](https://github.com/AdguardTeam/AdguardForAndroid/issues/82)
-* [Other] AdGuard crashes in local HTTP proxy mode [#3416](https://github.com/AdguardTeam/AdguardForAndroid/issues/3416)
-* [Other] Application crashes on Android 11 upon opening filtering log details [#3366](https://github.com/AdguardTeam/AdguardForAndroid/issues/3366)
-* [Other] The list of HTTPS exclusions has been updated
-* [Other] Translations have been updated
+* [バグ] デバイスの再起動後にアプリケーションが起動しません[#3286](https://github.com/AdguardTeam/AdguardForAndroid/issues/3286)
+* [Bug] アップデート後のステルスモードプリセット変更 [#3287](https://github.com/AdguardTeam/AdguardForAndroid/issues/3287)
+* [バグ] ロケール変更バグ [#3301](https://github.com/AdguardTeam/AdguardForAndroid/issues/3301)
+* [バグ]`com.android.providers.downloads`トラフィックがルートされていない [#3355](https://github.com/AdguardTeam/AdguardForAndroid/issues/3355)
+* [バグ] Android 11でAdGuardを有効にしてフィルタリングが動作しません [#3377](https://github.com/AdguardTeam/AdguardForAndroid/issues/3377)
+* [バグ] UDP を SOCKS5 プロキシ経由で有効化可能 [#3394](https://github.com/AdguardTeam/AdguardForAndroid/issues/3394)
+* [バグ] DNSフィルタリングを解除せずにホットスポットを作成することはできません[#3187](https://github.com/AdguardTeam/AdguardForAndroid/issues/3187)
+* [バグ] 「HTTPS フィルタリングがオフ」スナックバーがホーム画面[#3292]の「データ保存」ステータスをカバーhttps://github.com/AdguardTeam/AdguardForAndroid/issues/3292)
+* [Enhancement] カスタム`adguard:`userscripts [#3000] を追加するためのスキームが使われます(https://github.com/AdguardTeam/AdguardForAndroid/issues/3000)
+* [Enhancement] 「Cancel」ボタンを「Add proxy」画面に追加 [#3093](https://github.com/AdguardTeam/AdguardForAndroid/issues/3093)
+* [参加]`stealth.enabled=false`レポート[#3169]を送信すると、Steeth Modeがオフになっている場合は、クエリ文字列に送信されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/3169)
+* [参加]`Block ads in all apps`レポート[#3350]の送信時にパラメータが送信されます(https://github.com/AdguardTeam/AdguardForAndroid/issues/3350)
+* [参加] HTTPS フィルタリングエラー通知を抑制するオプション [#3225](https://github.com/AdguardTeam/AdguardForAndroid/issues/3225)
+* [Enhancement] HTTPS フィルタリング ダイアログが [#3284] を改善しました(https://github.com/AdguardTeam/AdguardForAndroid/issues/3284)
+* [Enhancement] ルーマニア語とタイのローカリゼーションを追加しました [#3341](https://github.com/AdguardTeam/AdguardForAndroid/issues/3341)
+* [その他] 開発者向けFirefox Preview Nightly がサポートされているブラウザーのリストに追加されました [#3333](https://github.com/AdguardTeam/AdguardForAndroid/issues/3333)
+* [その他] サポートされているブラウザーのリストに Cobra Browser を追加しました [#3357](https://github.com/AdguardTeam/AdguardForAndroid/issues/3357)
+* [その他] サポートされているブラウザのリストにBrave Betaを追加 [#3401](https://github.com/AdguardTeam/AdguardForAndroid/issues/3401)
+* [その他] Vivaldi Snapshot と Vivaldi Sopranos は、サポートされているブラウザーのリストに追加されました [#3400](https://github.com/AdguardTeam/AdguardForAndroid/issues/3400)
+* [その他] Android 11の証明書のインストールシーケンス [#3354](https://github.com/AdguardTeam/AdguardForAndroid/issues/3354)
+* [その他] アクノレッジページが更新されました [#82](https://github.com/AdguardTeam/AdguardForAndroid/issues/82)
+* [その他] ローカル HTTP プロキシモード [#3416] で AdGuard がクラッシュhttps://github.com/AdguardTeam/AdguardForAndroid/issues/3416)
+* [その他] フィルタリングログ詳細を開くとAndroid 11でアプリケーションがクラッシュ [#3366](https://github.com/AdguardTeam/AdguardForAndroid/issues/3366)
+* [その他] HTTPSの除外リストを更新しました
+* [その他] 翻訳更新
 
-## CoreLibs has been updated to v1.5.249
+## CoreLibs は v1.5.249 に更新されました
 
-* [Bug] Cosmetic rules can be used as CSS rules [#1293](https://github.com/AdguardTeam/CoreLibs/issues/1293)
-* [Bug] Rules selection algorithm works not as intended when HTTPS filtering is disabled [#1291](https://github.com/AdguardTeam/CoreLibs/issues/1291)
-* [Bug] Rules with restricted domains do not match requests without referer [#1286](https://github.com/AdguardTeam/CoreLibs/issues/1286)   
-* [Bug] "Failed to initialize protocol filters" error [#1282](https://github.com/AdguardTeam/CoreLibs/issues/1282)
+* [バグ] 化粧品のルールは、CSS ルール [#1293] として使用できます(https://github.com/AdguardTeam/CoreLibs/issues/1293)
+* [バグ] 規則選択アルゴリズムは、HTTPS のフィルタリングが無効なときに意図しない [#1291](https://github.com/AdguardTeam/CoreLibs/issues/1291)
+* [バグ] 制限ドメインのルールは、レファなしのリクエストに一致しません [#1286](https://github.com/AdguardTeam/CoreLibs/issues/1286)   
+* [Bug] "プロトコルフィルタの初期化に失敗" エラー [#1282](https://github.com/AdguardTeam/CoreLibs/issues/1282)
 
-## 3.3.2 Release
+## 3.3.2 リリース
 
-- Published: 2020-02-13T16:26:35Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.230
+- 公開日: 2020-02-13T16:26:35Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.230
 
-In this small update, there’s only one but important fix and a few additions to the exclusions list.
+この小さなアップデートでは、重要な修正と除外リストへのいくつかの追加があります。
 
-* [Fixed] Protection doesn’t restart when an excluded app is installed #3340
-* [Changed] The list of HTTPS exclusions has been updated
+* [修正] 除外アプリがインストールされている場合、保護は再起動しません #3340
+* [変更] HTTPSの除外リストを更新しました
 
-## 3.3.1 Release
+## 3.3.1 リリース
 
-- Published: 2019-12-30T11:11:34Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.229
+- 公開日: 2019-12-30T11:11:34Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.229
 
-Recently we claimed to make the last release of the year, and it kinda was that. Ignore that this update is called a 'release', it's more of a 'hotfix'. Because you wouldn't call this tiny hotfix a release, right? Just a couple of bugsfixes, that's all.
+最近は、昨年のリリースを予定していたので、その年のリリースを予定していた。 このアップデートが'release' と呼ばれていると、'hotfix' の多くは無視されます。 この小さなホットフィックスがリリースを呼ばないので、正しいですか? バグ修正のカップルだけ、それだけです。
 
-- [Fixed] The protection doesn't start autimatically if you restart the phone right after checking for filter updates #3286
-- [Fixed] Stealth Mode configuration isn't saved after app update #3287
+- [修正] 保護は、フィルタの更新#3286をチェックした後、電話を右に再起動すると、誤って起動しません
+- [修正] Stealth Mode 設定はアプリ更新後保存されません #3287
 
-## 3.3 Release
+## 3.3 リリース
 
-- Published: 2019-12-26T13:21:38Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.228
+- 公開日: 2019-12-26T13:21:38Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.228
 
-The last AdGuard for Android release of the decade! This sounds solid. Anyway, it’s more of a coincidence than anything else that such a massive update falls right on Christmas. And don’t get us wrong: it is massive. Multiple major features and over 50 lesser ones — all in all it combines to make a nice Christmas gift for y’all!
+過去10年間のAndroidリリースのためのAdGuard! 強固な音です。 とにかく、そのような大規模なアップデートがクリスマスに正しく落ちる他のものよりも、それは偶然の多くです。 そして、私たちを間違って取得しないでください:それは巨大です。 複数の主要な機能と50以上のもの - すべてがそれがy'allのための素敵なクリスマスギフトを作るために結合します!
 
-**[Improved] Filtering engine**
+**[改良済み] フィルタリングエンジン**
 
-Version 3.3 brings scriptlets and `$redirect` modifiers support. Scriptlets is a powerful ad-blocking tool that helps to block ads on websites that use different circumvention techniques. `$redirect` modifier is another tool that allows substituting an ad with special ‘resources’ instead of blocking it. For instance, it can replace a banner with a transparent 1x1 image.
+バージョン 3.3 は scriptlets と`$redirect`修飾子のサポート。 Scriptletsは、さまざまな回避技術を使用するウェブサイト上の広告をブロックするのに役立つ強力な広告ブロックツールです。`$redirect`修飾子は、ブロックするのではなく、特別な「リソース」で広告を置換できる別のツールです。 例えば、透明な1x1画像でバナーを交換できます。
 
-**[Changed] The onboarding process #2895**
+**[変更] 搭載プロセス #2895**
 
-We sure love us some redesign! This time, we revamped the onboarding sequence (basically, what you see when you launch the app for the first time). Key changes:
+再設計を心よりお待ちしております。 今回は、オンボーディングのシーケンスを刷新しました(基本的には、最初にアプリを起動したときに表示されるもの)。 主な変更:
 
-- An option to choose a ‘quick’ or a ‘long’ configuration: you’ll be asked to either make only key decisions or set most of the settings manually
-- New option to allow sending some technical and interaction information that will help us further improve AdGuard
-- Better graphics!
+- 'quick' または ‘long’ の設定を選択するためのオプション: キーの決定だけをするか、手動で設定の大部分を手動で設定するように求められます
+- 弊社がAdGuardをさらに改善するのに役立つ技術的および相互作用情報を送信することを可能にする新しいオプション
+- より良いグラフィックス!
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/welcome.png" width="300"> <img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/create_vpn.png" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/welcome.png"<img src="300">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/create_vpn.png"幅="300">
 
-**[Added] New activation flow #2901**
+**[追加] 新規アクティベーションフロー #2901**
 
-Not a lot of Android users had a chance to see our AdGuard for iOS app, so they likely don’t know about the system that’s being used there for Premium features activation. But it recommended itself as one that’s convenient for users, so we adopted it for AdGuard for Android too.
+多くのAndroidユーザーがiOSアプリのAdGuardを見る機会がなかったため、Premium機能の有効化のためにそこに使用されているシステムについて知らなかった可能性があります。 しかし、それはユーザーにとって便利なものとしてそれ自体を推薦しました、従って私達はまた人間の特徴をもつAdGuardのためにそれを採用しました。
 
-<img src="https://cdn.adguard.com/public/Adguard/screenshots/android/activation_En_account.png?123" width="300"> <img src="https://cdn.adguard.com/public/Adguard/screenshots/android/activation_en_license.png" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/screenshots/android/activation_En_account.png?123"<img src="300">https://cdn.adguard.com/public/Adguard/screenshots/android/activation_en_license.png"幅="300">
 
-As you can see, there are now two options: enter a license key directly, or log into AdGuard personal account. If your account has a license key that can be used to activate Premium, it will get picked up automatically after you enter credentials.
-
-### Ad blocking
-
-- [Added] Preset Stealth Mode settings configurations #2625
-- [Added] abp:subscribe and adguard:subscribe links interception #2918
-- [Added] subscribe.adblockplus.org links interception #2930
-- [Changed] Internet connection availability checking method #3095
-- [Changed] Whale browser has been added to the known browsers list #3175
-- [Fixed] DNS User filter import bug #2972
-- [Fixed] Some legit hosts lists are not recognized as valid #2982
-- [Fixed] Error while checking updates of resources added from the local storage #2997
-- [Fixed] Quick Settings does not allow to choose a different Privacy protection Level #2768
-- [Fixed] “Exclude from filtering” button behavior #3052
-- [Fixed] Google Now can’t be updated with “Always-on-VPN” enabled #3039
-- [Fixed] AdGuard Extra enables automatically when there’s an available update #3216
-- [Fixed] The application causes a crash if custom filters were enabled #3258
-- [Fixed] AdGuard breaks some UDP connections on Samsung S10 devices with Android 10 #3259
-- [Improved] AdGuard now uses on-the-fly methods of applying settings changes without restarting the protection when possible #2881
-- [Improved] DNS filtering to block cloaked trackers #3228
-- [Improved] “Block phishing and malware” option now is enabled automatically when Premium gets activated #3249
-- [Improved] Now AdGuard can block AAAA requests in networks without IPv6 interface #3197
-
-### UI
-
-- [Added] An option to purchase a new license via the app #2897
-- [Added] Trial period and license activation via OAuth #3081, #3244
-- [Added] Whitelisting apps option to the Assistant dialog #2853
-- [Added] “On/Off” switch on some screens #2877
-- [Added] Notifications about certificate errors #2722
-- [Added] Ability to copy the current version number by tapping on it #2773
-- [Added] Link to Version history in the About tab #2774
-- [Added] System default theme option #2174
-- [Added] Silent update action as a long-tap on the update button #2890
-- [Added] “Failed to move the certificate” notification for rooted devices with Magisk firmware #2941
-- [Added] Empty field validation when adding a new extension #2983
-- [Added] “Refresh license status” button #2988
-- [Added] Restore purchases button: a notification if there’s nothing to restore #2990
-- [Changed] The imported filter list’s URL now won’t be stored if a content: link was used #2813
-- [Changed] Chrome custom tabs now open in the same window #3019
-- [Changed] Premium screens now can be viewed without Premium #2843
-- [Changed] Update notifications behavior #2922
-- [Changed] DNS request type is now displayed in the Filtering log even when there's no answer #2961
-- [Changed] Tap on filter category titles in search will bring you to the respective category’s screen #3035
-- [Changed] Toast notifications parameters #3087
-- [Changed] Proxy screen UI #3092
-- [Changed] AdGuard now remembers the selected type of data to display in Apps Management #3140
-- [Changed] Phrasing on activation screens #3141
-- [Changed] “Clear DNS statistics” warning description #3194
-- [Changed] Improve the in-app purchase design #3252
-- [Fixed] Minor UI issues #2879
-- [Fixed] Issue with distribution graphs on the main screen #2935
-- [Fixed] Search on Apps Managements screen is working slow #2951
-- [Fixed] Unexpected connections resets #2980
-- [Fixed] Incorrect filter locale is displayed after language change #2971
-- [Fixed] Scrolling issue in the Filtering log #2974
-- [Fixed] Wrong filters status is shown #2987
-- [Fixed] Incorrect updates status when the network is not available #3020
-- [Fixed] “Preparing to start protection” notification #3034
-- [Fixed] “Edit Filter” overlay bug #3045
-- [Fixed] Divider stripe is still shown when there are no updates available #3047
-- [Fixed] Cloudflare DNS description #3062
-- [Fixed] Wrong Chinese date format #3068
-- [Fixed] Application updates icon #3098
-- [Fixed] Missing button shadow #3109
-- [Fixed] Some buttons in the first start dialog boxes can’t be seen on certain device models #3114
-- [Fixed] The switch for Custom filters incorrectly represents the state of the filter group #3119
-- [Fixed] Pressing the “Buy one more license” button closes the current screen #3136
-- [Fixed] Certificate installation dialog is missing #3176
-- [Fixed] Wrong toast notification is displayed when the license expires #3183
-- [Fixed] “Missed ad” option in the Feedback section leads to an error if DuckDuckGo is selected as the default browser #3128
-- [Improved] HTTPS filtering-related UI changes #2896
-- [Improved] UI elements are now focusable on Android TV #2818
-- [Improved] Rich formatting added to some modules’ descriptions #2878
-- [Improved] Phrasing on onboarding screens #3248
-- [Improved] Phrasing in the Apps Management details activity #3250
-- [Improved] Localizations have been updated: #3271, #3188, #3161
-
-### Networking
-
-- [Added] A prevention system for connections overflow #2989
-- [Added] TLS v1.3 support for custom DNS servers #3132
-- [Changed] DNS-over-HTTPS connections number limit has been abolished #3224
-- [Fixed] Some apps don't see available WiFi networks when AdGuard local VPN is up #2836
-- [Improved] Interaction between AdGuard DNS settings and Private DNS #2797
-- [Improved] AdGuard’s network safety and stability #2995
-- [Improved] Connection error processing #3195
-
-### Other
-
-- [Added] Whitelist export feature #3069
-- [Fixed] Update window appears after a short inactivity period #3055
-- [Fixed] Userscripts updates are not tracked by the battery service #3073
-- [Fixed] AdGuard 3.2 does not launch #3076
-- [Fixed] “Include license data” option works incorrectly when you try to export settings #3067
-- [Fixed] Crash when the app runs scheduled tasks #3164
-- [Fixed] Crash in the Updates activity #3165
-- [Fixed] Crash when Android OS tries to load the icon #3166
-- [Fixed] Crash on some Android builds #3167
-- [Fixed] Crash in the main activity #3168
-- [Fixed] Crash when user communicates with the extensions activity #3171
-- [Fixed] Crash when the log is being collected #3212
-- [Fixed] Crash on MIUI phones with Ultra battery saver #3210
-- [Fixed] Max imported settings file size increased to 10 Mb #3203
-- [Improved] Target SDK level has been changed to 29 #3053
-- [Improved] CoreLibs has been updated to v1.5.74 #3105
+ご覧のとおり、ライセンスキーを直接入力するか、AdGuard個人アカウントにログインする2つのオプションがあります。 アカウントにPremiumを有効にするために使用できるライセンスキーがある場合、資格情報を入力すると自動的にピックアップされます。
+
+### 広告ブロック
+
+- [追加] Preset Stealth モード設定 #2625
+- [追加] abp:subscribe and adguard:subscribe link interception #2918
+- [追加]subscribe.adblockplus.orgリンクインターセプション#2930
+- [変更] インターネット接続の可用性チェック方法 #3095
+- [変更] 既知のブラウザリスト#3175にWhaleブラウザを追加しました
+- [修正] DNS ユーザーフィルタのインポートバグ #2972
+- [修正] 正当なホストリストが有効な#2982として認識されていないもの
+- [修正] ローカルストレージ #2997 から追加されたリソースの更新を確認するときにエラー
+- [修正] クイック設定は、異なるプライバシー保護レベルを選択することはできません #2768
+- [修正] 「フィルタリングから除外する」ボタン動作 #3052
+- [修正] Googleが「Always-on-VPN」を有効にして更新することはできません #3039
+- [修正済み] AdGuard Extraは、利用可能なアップデート#3216がある場合に自動的に有効
+- [修正] カスタムフィルタが有効になっている場合、アプリケーションはクラッシュを引き起こします #3258
+- [修正] AdGuardは、Android 10でSamsung S10デバイス上のいくつかのUDP接続を分割します #3259
+- [改善] AdGuardは、#2881時に保護を再起動することなく、設定の変更を適用する方法をオンザフライで使用できるようになりました
+- [改善] クロークトラッカーをブロックするDNSフィルタリング #3228
+- [Improved] Premiumがアクティブになったときに自動的に「Blockフィッシングとマルウェア」オプションが有効になっています #3249
+- [Improved] AdGuardはIPv6インタフェース#3197なしでネットワークでAAAリクエストをブロックできるようになりました
+
+### ログイン
+
+- [追加] アプリ #2897 経由で新しいライセンスを購入するオプション
+- [追加] OAuth #3081, #3244 による試用期間とライセンスの有効化
+- [追加] アシスタントダイアログ#2853へのアプリオプションのホワイトリスト
+- [追加] 一部の画面で「オン/オフ」スイッチ #2877
+- [追加] 証明書のエラーに関する通知 #2722
+- [追加] タップすることで現在のバージョン番号をコピーする能力 #2773
+- [追加] タブ内のバージョン履歴へのリンク #2774
+- [追加] システムデフォルトのテーマオプション #2174
+- [追加] 更新ボタンの長タップとして無声更新アクション #2890
+- [追加] Magisk ファームウェア #2941 で rooted デバイスの「証明書を移動する失敗」通知
+- [追加] 新しい拡張子を追加するときにフィールド検証を空にします #2983
+- [追加] 「リフレッシュライセンスステータス」ボタン #2988
+- [追加] 購入ボタンを復元する: #2990を復元する何もない場合の通知
+- [変更] インポートされたフィルタリストのURLは、コンテンツが使用されている場合は保存されません。リンクは#2813
+- [変更] 同じウィンドウで開くChromeカスタムタブ #3019
+- [変更] プレミアム画面がプレミアム#2843なしで表示できるようになりました
+- [変更] 通知の動作を更新する #2922
+- [変更] 回答がない場合でも、フィルタリングログに DNS リクエストタイプが表示されます #2961
+- [変更] 検索中のフィルタカテゴリのタイトルをタップすると、各カテゴリの画面#3035が表示されます
+- [変更] トースト通知パラメータ #3087
+- [変更] プロキシ画面 UI #3092
+- [変更] AdGuardは、選択したタイプのデータを記憶し、Apps Management #3140 に表示します。
+- [変更] 活性化画面のフレーズ#3141
+- [変更] 「DNS 統計をクリアする」 警告説明 #3194
+- [変更] アプリ内購入設計を改良 #3252
+- [修正] マイナーUIの問題 #2879
+- [修正] メイン画面の分布グラフの問題 #2935
+- [修正] アプリ管理画面で検索すると遅い #2951
+- [修正] 予想外の接続がリセット #2980
+- [修正] 言語変更後、正しくフィルタロケールが表示される #2971
+- [修正] フィルタリングログ #2974 のスクローリング問題
+- [修正] 間違ったフィルタの状態が #2987 を表示
+- [修正] ネットワークが利用できなくなった場合の更新状況が適切でない #3020
+- [修正] 「保護を開始する準備」通知 #3034
+- [修正] 「フィルタの編集」オーバーレイバグ #3045
+- [修正] アップデートがない場合、ディバイダーストライプはまだ表示されます #3047
+- [修正] Cloudflare DNS 説明 #3062
+- [修正] 中国語の日付形式が間違っている #3068
+- [修正] アプリケーション更新アイコン #3098
+- [修正] ミスボタンシャドウ #3109
+- [修正] 最初の開始ダイアログ ボックスのボタンは、特定のデバイスモデル #3114 で表示できません
+- [修正] カスタムフィルタのスイッチは誤ってフィルタグループ#3119の状態を表します
+- [修正] 現在の画面を閉じる「複数のライセンスを購入」ボタンを押します #3136
+- [修正] 証明書のインストールダイアログが欠落している #3176
+- [修正] ライセンスが #3183 を期限切れると、トースト通知が表示されない
+- [修正] フィードバックセクションの「Missed ad」オプションは、DuckDuckGoがデフォルトブラウザ#3128として選択されている場合、エラーになります
+- [改善] HTTPS フィルタリング関連 UI 変更 #2896
+- [改善] UI 要素が Android TV #2818 にフォーカスできるようになりました
+- [改善] いくつかのモジュールの記述に追加された豊富なフォーマット #2878
+- [改善] オンボーディング画面のフレーズ #3248
+- [改善] アプリ管理の詳細アクティビティでフレーズ #3250
+- [改善] ローカル化が更新されました: #3271, #3188, #3161
+
+### ネットワーク
+
+- [追加] 接続オーバーフロー防止システム #2989
+- [追加]カスタムDNSサーバー用のTLS v1.3サポート #3132
+- [変更] DNS-over-HTTPS接続数制限が廃止されました #3224
+- [修正] 一部のアプリは、AdGuardローカルVPNが#2836であるときに利用可能なWiFiネットワークが表示されない
+- [改善] AdGuard DNS設定とプライベートDNS #2797間のインタラクション
+- [改善] AdGuardのネットワークの安全性と安定性 #2995
+- [改善] 接続エラー処理 #3195
+
+### その他
+
+- [追加] ホワイトリストのエクスポート機能 #3069
+- [修正] 短い非アクティブ期間の後に更新ウィンドウが表示されます #3055
+- [修正] ユーザースクリプトの更新は、バッテリーサービス#3073によって追跡されません
+- [修正] AdGuard 3.2 が #3076 を起動しない
+- [修正] 「ライセンスデータを含める」オプションは、設定をエクスポートしようとすると誤って動作します #3067
+- [修正] アプリがスケジュールされたタスクを実行するとクラッシュ #3164
+- [修正] 更新アクティビティ #3165 のクラッシュ
+- [修正] Android OSがアイコン#3166をロードしようとするとクラッシュ
+- [修正] 一部のAndroidビルドでクラッシュ #3167
+- [修正] メインアクティビティでクラッシュ #3168
+- [修正済み] 拡張関数 #3171 と通信するときのクラッシュ
+- [修正] ログが収集されるとクラッシュ #3212
+- [修正]超バッテリーセーバー#3210でMIUI携帯電話上のクラッシュ
+- [修正] 最大インポート設定ファイルサイズが10 Mb #3203に増加
+- [改善] ターゲットSDKレベルは29 #3053に変更
+- [改良] CoreLibs が v1.5.74 #3105 に更新されました
 
 ## 3.2.150
 
-- Published: 2019-08-29T14:36:38Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.2.150
+- 公開日: 2019-08-29T14:36:38Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.2.150
 
->Disclaimer: AdGuard for Android is not an open source project. We use Github as an open bug tracker for users to see what developers are working on.
+>免責事項: Android用のAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-The previous hotfix dealt with some urgent bugs, so we had to act fast and couldn't fix the rest of the less important issues. After today's update all of them should go away.
+以前のホットフィックスは、いくつかの緊急のバグに対処するので、我々は高速に行動し、少ない重要な問題の残りを修正することはできませんでした。 本日のアップデート以降は、すべて消えるべきです。
 
-* [Fixed] DNS filtering breaks regular filtering on HTC devices #3014
-* [Fixed] AdGuard doesn't completely remove extensions #3015
-* [Fixed] Disabling network access globally blocks DNS requests #3025
-* [Fixed] Bypassing DNS requests breaks DNS filtering #3026
-* [Fixed] AdGuard fails to start protection after an update #3024
-* [Fixed] Facebook lite cannot detect that IPv6 is unreachable #3031
-* [Fixed] Blocked app notification works incorrectly #3032 
-* [Improved] dnsproxy library has been updated #3016
+* [修正] DNS フィルタリングは HTC デバイス #3014 で定期的なフィルタリングを解除します
+* [修正] AdGuardは完全にエクステンションを削除しません #3015
+* [修正] ネットワークアクセスをグローバルにブロックする DNS リクエスト #3025
+* [修正] DNS リクエストをバイパスすると、DNS フィルタリング #3026
+* [修正済み] AdGuardは更新#3024後に保護を開始できません
+* [修正] Facebook lite は IPv6 が到達できない #3031 を検出できません。
+* [修正] ブロックされたアプリ通知は誤って動作します #3032
+* [改善] dnsproxy ライブラリが更新されました #3016
 
-## 3.2.140 Hotfix
+## 3.2.140ホットフィックス
 
-- Published: 2019-08-24T10:43:56Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.2.140
+- 公開日: 2019-08-24T10:43:56Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.2.140
 
->Disclaimer: AdGuard for Android is not an open source project. We use Github as an open bug tracker for users to see what developers are working on.
+>免責事項: Android用のAdGuardはオープンソースプロジェクトではありません。 Github は、ユーザーがどの開発者が動作しているかを確認するために、オープンなバグトラッカーとして使用します。
 
-This is a small hotfix for the recent AdGuard for Android release. Mostly squashing bugs related to the new features introduced in v3.2.
+これは、Androidリリース用の最近のAdGuard用の小さなホットフィックスです。 v3.2 で導入された新機能に関連したバグをほとんどスカッシュします。
 
-* [Fixed] DNS filtering breaks regular filtering on HTC devices #3014 
-* [Fixed] AdGuard doesn't completely remove extensions #3015 
-* [Improved] dnsproxy library has been updated #3016
+* [修正] DNS フィルタリングは HTC デバイス #3014 で定期的なフィルタリングを解除します
+* [修正] AdGuardは完全にエクステンションを削除しません #3015
+* [改善] dnsproxy ライブラリが更新されました #3016
 
-## 3.3 beta 3.1
+## 3.3 ベータ 3.1
 
-- Published: 2019-12-09T21:49:53Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3-beta-3.1
+- 公開日: 2019-12-09T21:49:53Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3-beta-3.1
 
-A quick hotfix that fixes the crash of the application when the protection starts if custom filters have been enabled.
+カスタムフィルタが有効になっている場合、保護が開始されるときにアプリケーションのクラッシュを修正するクイックホットフィックス。
 
-- [Fixed] The application causes a crash if custom filters were enabled #3258
+- [修正] カスタムフィルタが有効になっている場合、アプリケーションはクラッシュを引き起こします #3258
 
-## 3.3 beta 3
+## 3.3 ベータ 3
 
-- Published: 2019-12-09T17:13:16Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3-beta-3
+- 公開日: 2019-12-09T17:13:16Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3-beta-3
 
-This beta of AdGuard for Android is a bit of an outlier, in the sense that it’s the third one for v3.3. Usually, by that point changelogs become shorter, big juicy tasks get left for later. The closer we’re to release, the more we focus on fixing existing bugs rather than creating new ones 😄 
+Android用のAdGuardのこのベータは、それがv3.3の3分の1だという意味で、少しのアウターです。 通常、その点で変更ログが短くなり、大きなジューシーなタスクは後で残します。 リリースするほど、新しいバグを作成するのではなく、既存のバグを修正することに重点を置いています。
 
-Not this time, though! We still got a lot left in us: new purchase flow, some serious ad blocking quality improvements. And of course, there’s no escaping the chores: multiple bugfixes, crash hunting etc.
+しかし、この時間ではありません! 私達はまだ私達で多くを残しました:新しい購入の流れ、質の改善を妨げる重大な広告。 もちろん、チョールのエスケープはありません:複数のバグフィックス、クラッシュハンティングなど。
 
-**[Added] An option to purchase a new license via the app #2897**
+**[追加] アプリ#2897**で新しいライセンスを購入するオプション
 
-We’ve already made it so you don’t need to leave the app to link your personal account, and from now on you can even purchase a license without ever minimizing AdGuard. Either when you start the app for the first time, or when you decide it’s time to activate Premium, you’ll face a familiar but different screen:
+私たちはすでにそれを作ったので、あなたの個人的なアカウントをリンクするためにアプリを離れる必要はありません、そして今からあなたは今までにAdGuardを最小限に抑えることなくライセンスを購入することができます。 初めてアプリを起動する場合、またはPremiumを起動する時間を決めた場合は、よく馴染みのある画面に直面します。
 
-<img src="https://cdn.adguard.com/public/Adguard/screenshots/android/PremEN.png" width="300"> <img src="https://cdn.adguard.com/public/Adguard/screenshots/android/SubEN.png" width="299.5">
+<img src="">https://cdn.adguard.com/public/Adguard/screenshots/android/PremEN.png"<img src="300">https://cdn.adguard.com/public/Adguard/screenshots/android/SubEN.png"幅="299.5">
 
-The app will offer you to choose the preferred type of license and its duration and will ask you to enter your email. So basically the same actions that you’d perform on the website but without extra clicks and new tabs in the browser. One thing to add is that you can’t renew or upgrade your license this way yet, but hey. There’s more versions to come.
+アプリは、希望するライセンスの種類とその期間を選択し、電子メールを入力するように要求します。 したがって、基本的には、ウェブサイト上で実行するだけでなく、ブラウザ内の追加のクリックや新しいタブなしで同じアクション。 追加する1つのことは、まだこの方法でライセンスを更新またはアップグレードすることはできませんが、heyです。 より多くのバージョンがあります。
 
-### Ad blocking
+### 広告ブロック
 
-- [Changed] Whale browser has been added to the known browsers list #3175
-- [Fixed] “Exclude from filtering” button behavior #3052
-- [Fixed] Google Now can’t be updated with “Always-on-VPN” enabled #3039
-- [Fixed] AdGuard Extra enables automatically when there’s an available update #3216
-- [Improved] DNS filtering to block cloaked trackers #3228
-- [Improved] “Block phishing and malware” option now is enabled automatically when Premium gets activated #3249
-- [Improved] Now AdGuard can block AAAA requests in networks without IPv6 interface #3197
+- [変更] 既知のブラウザリスト#3175にWhaleブラウザを追加しました
+- [修正] 「フィルタリングから除外する」ボタン動作 #3052
+- [修正] Googleが「Always-on-VPN」を有効にして更新することはできません #3039
+- [修正済み] AdGuard Extraは、利用可能なアップデート#3216がある場合に自動的に有効
+- [改善] クロークトラッカーをブロックするDNSフィルタリング #3228
+- [Improved] Premiumがアクティブになったときに自動的に「Blockフィッシングとマルウェア」オプションが有効になっています #3249
+- [Improved] AdGuardはIPv6インタフェース#3197なしでネットワークでAAAリクエストをブロックできるようになりました
 
-### UI
+### ログイン
 
-- [Added] “Failed to move the certificate” notification for rooted devices with Magisk firmware #2941
-- [Changed] AdGuard now remembers the selected type of data to display in Apps Management #3140
-- [Fixed] Search on Apps Managements screen is working slow #2951
-- [Fixed] Certificate installation dialog is missing #3176
-- [Fixed] Wrong toast notification is displayed when the license expires #3183
-- [Changed] “Clear DNS statistics” warning description #3194
-- [Improved] Phrasing on onboarding screens #3248
-- [Improved] Phrasing in the Apps Management details activity #3250
-- [Improved] Localizations have been updated
+- [追加] Magisk ファームウェア #2941 で rooted デバイスの「証明書を移動する失敗」通知
+- [変更] AdGuardは、選択したタイプのデータを記憶し、Apps Management #3140 に表示します。
+- [修正] アプリ管理画面で検索すると遅い #2951
+- [修正] 証明書のインストールダイアログが欠落している #3176
+- [修正] ライセンスが #3183 を期限切れると、トースト通知が表示されない
+- [変更] 「DNS 統計をクリアする」 警告説明 #3194
+- [改善] オンボーディング画面のフレーズ #3248
+- [改善] アプリ管理の詳細アクティビティでフレーズ #3250
+- [改善] 現地化が更新されました
 
-### Networking
+### ネットワーク
 
-- [Added] A prevention system for connections overflow #2989
-- [Changed] DNS-over-HTTPS connections number limit has been abolished  #3224
-- [Fixed] Some apps don't see available WiFi networks when AdGuard local VPN is up #2836
-- [Fixed] “Missed ad” option in the Feedback section leads to an error if DuckDuckGo is selected as the default browser #3128
-- [Fixed] Compatibility issues
-- [Improved] Connection error processing #3195
+- [追加] 接続オーバーフロー防止システム #2989
+- [変更] DNS-over-HTTPS接続数制限が廃止されました #3224
+- [修正] 一部のアプリは、AdGuardローカルVPNが#2836であるときに利用可能なWiFiネットワークが表示されない
+- [修正] フィードバックセクションの「Missed ad」オプションは、DuckDuckGoがデフォルトブラウザ#3128として選択されている場合、エラーになります
+- [修正] 互換性の問題
+- [改善] 接続エラー処理 #3195
 
- ### Other
+ ### その他
 
-- [Fixed] Crash when the app runs scheduled tasks #3164
-- [Fixed] Crash in the Updates activity #3165
-- [Fixed] Crash when Android OS tries to load the icon #3166
-- [Fixed] Crash on some Android builds #3167
-- [Fixed] Crash in the main activity #3168
-- [Fixed] Crash when user communicates with the extensions activity #3171
-- [Fixed] Crash when the log is being collected #3212
-- [Fixed] Crash on MIUI phones with Ultra battery saver #3210
-- [Fixed] Max imported settings file size increased to 10 Mb #3203
+- [修正] アプリがスケジュールされたタスクを実行するとクラッシュ #3164
+- [修正] 更新アクティビティ #3165 のクラッシュ
+- [修正] Android OSがアイコン#3166をロードしようとするとクラッシュ
+- [修正] 一部のAndroidビルドでクラッシュ #3167
+- [修正] メインアクティビティでクラッシュ #3168
+- [修正済み] 拡張関数 #3171 と通信するときのクラッシュ
+- [修正] ログが収集されるとクラッシュ #3212
+- [修正]超バッテリーセーバー#3210でMIUI携帯電話上のクラッシュ
+- [修正] 最大インポート設定ファイルサイズが10 Mb #3203に増加
 
-## 3.3 beta 2
+## 3.3 ベータ 2
 
-- Published: 2019-10-24T16:44:48Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3-beta-2
+- 公開日: 2019-10-24T16:44:48Z
+- リリース:https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3-beta-2
 
-It seems that the first AdGuard v3.3 beta has opened the floodgates, and now there’s no power in the world to stop our developers from releasing more and more. Only one week has passed since, and we’re already presenting the next one. This time, our designers had a say too, and this is reflected in several UI-related changes that you won’t be able to miss.
+第一次アドガードv3.3ベータがフラッドゲートをオープンしたようです。そして今では、開発者がより多くのリリースを阻止するために、世界中に電力はありません。 1週間に過ぎてから、次のいずれかを提示しています。 今回は、デザイナーの方もいらっしゃるし、見逃せないUI関連の変更に反映されています。
 
-**[Changed] The onboarding process #2895**
+**[変更] 搭載プロセス #2895**
 
-We sure love us some redesign! This time, we revamped the onboarding sequence (basically, what you see when you launch the app for the first time). Key changes:
+再設計を心よりお待ちしております。 今回は、オンボーディングのシーケンスを刷新しました(基本的には、最初にアプリを起動したときに表示されるもの)。 主な変更:
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/welcome.png" width="300"> <img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/create_vpn.png" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/welcome.png"<img src="300">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/create_vpn.png"幅="300">
 
-- An option to choose a ‘quick’ or a ‘long’ configuration: you’ll be asked to either make only key decisions or set most of the settings manually
-- New option to allow sending some technical and interaction information that will help us further improve AdGuard
-- Better graphics!
+- 'quick' または ‘long’ の設定を選択するためのオプション: キーの決定だけをするか、手動で設定の大部分を手動で設定するように求められます
+- 弊社がAdGuardをさらに改善するのに役立つ技術的および相互作用情報を送信することを可能にする新しいオプション
+- より良いグラフィックス!
 
-**[Added] HTTPs filtering dialog #2967**
+**[追加] HTTP フィルタリング ダイアログ #2967**
 
-HTTPS filtering is a cornerstone of AdGuard for Android. Without the permission to filter the HTTPS protocol the ad blocking power of AdGuard is severely crippled. That’s why we walk an extra mile to emphasize to users its importance. 
+HTTPS フィルタリングは、Android 用の AdGuard のコーナーストーンです。 HTTPS プロトコルをフィルタリングする権限がなければ、AdGuard のアドブロッキング パワーは厳しく crippled です。 そのため、ユーザーの重要性を強調するために、追加のマイルを歩いています。
 
-We show a notification on the main AdGuard screen if HTTPS filtering is not enabled yet, and when you click on it, we now show a simple yet informative GIF that explains how HTTPS filtering works and why we recommend so strongly to turn it on.
+HTTPS フィルタリングがまだ有効になっていない場合、メインの AdGuard 画面に通知が表示され、クリックすると、HTTPS フィルタリングの仕組みと、なぜ強くそれをオンにするかを説明するシンプルで有益な GIF が表示されます。
 
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/https_dialog.gif" width="300">
+<img src="">https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/https_dialog.gif"幅="300">
 
-- [Added] “Refresh license status” button #2988
-- [Added] TLS v1.3 support for custom DNS servers #3132
-- [Added] Restore purchases button: a notification if there’s nothing to restore #2990
-- [Changed] Phrasing on activation screens #3141
-- [Changed] Internet connection availability checking method #3095
-- [Fixed] Pressing the “Buy one more license” button closes the current screen #3136
-- [Fixed] Some buttons in the first start dialog boxes can’t be seen on certain device models #3114
-- [Fixed] The switch for Custom filters incorrectly represents the state of the filter group #3119
-- [Fixed] Compatibility issues
-- [Improved] CoreLibs has been updated to v1.5.84 #3143
+- [追加] 「リフレッシュライセンスステータス」ボタン #2988
+- [追加]カスタムDNSサーバー用のTLS v1.3サポート #3132
+- [追加] 購入ボタンを復元する: #2990を復元する何もない場合の通知
+- [変更] 活性化画面のフレーズ#3141
+- [変更] インターネット接続の可用性チェック方法 #3095
+- [修正] 現在の画面を閉じる「複数のライセンスを購入」ボタンを押します #3136
+- [修正] 最初の開始ダイアログ ボックスのボタンは、特定のデバイスモデル #3114 で表示できません
+- [修正] カスタムフィルタのスイッチは誤ってフィルタグループ#3119の状態を表します
+- [修正] 互換性の問題
+- [改善] CoreLibs が v1.5.84 #3143 に更新されました

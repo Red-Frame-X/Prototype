@@ -1,73 +1,73 @@
-# AdGuard Browser Extension Changelog
+# AdGuardブラウザ拡張変更ログ
 
-All notable changes to this project will be documented in this file.
+このプロジェクトへの通知変更は、このファイルで行われます。
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+フォーマットは[変更ログをキープ]に基づいています(https://keepachangelog.com/en/1.0.0/),
+そして、このプロジェクトは[Semantic Versioning]に準拠しています(https://semver.org/spec/v2.0.0.html).
 
 ## [5.5] - 2026-08-17
 
-### Added
+### 追加
 
-- `$urltransform` modifier support [tsurlfilter#111].
-- `$removeparam` support for SPA navigations [tsurlfilter#188].
-- Filter rule conversion error logging in MV2.
-- Default registered script is always added to local script rules [tsurlfilter#167].
-- New Rules Editor with dedicated list and editor views.
+- `$urltransform`修飾子サポート [tsurlfilter#111].
+- `$removeparam`SPAの運行のためのサポート[tsurlfilter#188]。
+- MV2のフィルタルール変換エラーロギング。
+- デフォルト登録スクリプトはローカルスクリプト規則[tsurlfilter#167]に常に追加されます。
+- 専用のリストとエディタビューを備えた新しいルールエディタ。
 
-### Changed
+### 変更内容
 
-- Migrated declarative network rule conversion from
-  `@adguard/tsurlfilter/es/declarative-converter` to the dedicated
-  `@adguard/dnr-converter` package.
-- Aligned internal `RuleSet`/`ruleSet` identifiers to `Ruleset`/`ruleset` to match
-  the renamed linked libraries (`@adguard/dnr-converter`, `@adguard/tswebextension`).
-- Filtering log now accumulates `declarativeRuleInfo.sourceRules` across multiple
-  DNR matches for the same event instead of overwriting the previous value.
-- Aligned `RuleActionType` enum casing to PascalCase (`BLOCK` → `Block`, etc.) to
-  match the `@adguard/dnr-converter` API.
-- User rules error reporting in MV3 now logs dynamic rule conversion errors.
-- Updated [@adguard/agtree] to v4.2.0.
-- Updated [@adguard/dnr-converter] to v1.1.0.
-- Updated [@adguard/rules-editor] to v2.0.0.
-- Updated [@adguard/scriptlets] to v2.5.0.
-- Updated [@adguard/tsurlfilter] to v6.0.2.
-- Updated [@adguard/tswebextension] to v5.0.0.
-- Updated [@adguard/extended-css] to v2.2.0 (sub-dependency of [@adguard/tswebextension]).
+- 移行された宣言的なネットワークルール変換から
+  `@adguard/tsurlfilter/es/declarative-converter`専用に
+  `@adguard/dnr-converter`パッケージ。
+- 内部を一直線に並べる`RuleSet`/`ruleSet`識別子`Ruleset`/`ruleset`マッチする
+リンクされたライブラリの名前を変更しました。`@adguard/dnr-converter`, `@adguard/tswebextension`).
+- ログをフィルタリングすると、`declarativeRuleInfo.sourceRules`複数の
+前の値を上書きするのではなく、同じイベントで DNR がマッチします。
+- サインイン`RuleActionType`PascalCase への enum ケーシング (`BLOCK` → `Block`等)への
+マッチする`@adguard/dnr-converter`API 。
+- MV3 のユーザルールのエラー報告では、動的ルール変換エラーが記録されます。
+- [@adguard/agtree] を v4.2.0 に更新しました。
+- [@adguard/dnr-converter] を v1.1.0 に更新しました。
+- [@adguard/rules-editor] を v2.0.0 に更新しました。
+- [@adguard/scriptlets] を v2.5.0 に更新しました。
+- [@adguard/tsurlfilter] を v6.0.2 に更新しました。
+- [@adguard/tswebextension] を v5.0.0 に更新しました。
+- [@adguard/extended-css] を v2.2.0 に更新しました([@adguard/tswebextension])。
 
-### Fixed
+### 固定式
 
-- Element hiding rules not being applied on fast page reload in MV3 [#3537].
-- Filtering log loses events during `window.open()` tab redirects [#2701].
-- Filtering log events for tabs closed by `$popup` modifier rules are now displayed
-  as linked to the background page [#1686].
-- "Send ad filters usage" option with CSS rules containing `::before` or `::after`
-  causes visible content on the page [#1486].
-- WebRTC IP handling policy changed from `disable_non_proxied_udp` to
-  `default_public_interface_only` to reduce VoIP breakage while still
-  preventing IP leaks.
-- Expanded wildcard TLD domains in DNR conversion for `$domain` and `$to`
-  modifiers [tsurlfilter#189].
-- Scriptlet exception rules with comma-containing arguments now work correctly
+- MV3 [#3537]の高速ページリロードで適用されていない要素の隠れる規則。
+- ログをフィルタリングするとイベントが失われる`window.open()`タブリダイレクト [#2701].
+- 閉じたタブのログイベントのフィルタリング`$popup`修飾ルールが表示されるようになりました
+背景ページへのリンク [#1686].
+- CSS ルールを含む「広告フィルタの使用状況を送信します」オプション`::before`または`::after`
+[#1486] ページに表示されたコンテンツを引き起こします。
+- WebRTC IPハンドリングポリシーが変更されました`disable_non_proxied_udp`お問い合わせ
+  `default_public_interface_only`まだVoIPの破損を減らすため
+IP漏洩を防ぐ
+- DNR変換でワイルドカードTLDドメインを拡大`$domain`そして、`$to`
+修飾子 [tsurlfilter#189].
+- comma-containing 引数の Scriptlet 例外ルールは正しく機能します
   ([#3533]).
-- Generic scriptlet rules (scriptlets without a domain restriction) now appear in
-  the filtering log [#2895].
-- Improved visibility of UI controls in OS high-contrast mode
-  (`forced-colors: active`): switches, action buttons, editor, dropdowns,
-  and modal-like cards on Options/Popup pages ([#3530]).
-- Firefox freezes when playing Douyin videos, triggered by custom filter rule all.txt [#3525].
-- Sites loading-slowly in Firefox 118 when AdGuard extension is enabled [#2524].
-- Scroll bar missing in the filtering log [#3558].
-- Allowlist editor now accepts bare compound public suffixes (e.g. `gov.br`,
-  `co.uk`, `com.au`) while still rejecting single-label TLDs [#3587].
-- The request for additional permissions is not asked when importing extension
-  settings [#2754].
-- monkeytype.com fails to load — requests stuck "Pending" with AdGuard MV2 enabled [#3565].
-- Cosmetic rules with a regex in the `$domain` modifier containing multiple escaped
-  separators (e.g. `[$domain=/example\d*\.(live\|com\|icu\|org)$/]##body`) not
-  being applied.
-- Popup statistics "Year" tab showed only the last 3 months and erased older
-  monthly history after a month rollover.
+- 一般的なスクリプトレットルール(ドメイン制限なしのスクリプト)が表示されるようになりました
+フィルタリングログ [#2895].
+- OS 高コントラストモードでUI制御の可視性を改善
+  (`forced-colors: active`):スイッチ、アクションボタン、エディタ、ドロップダウン、
+オプション/ポップアップページ ([#3530]) のカードとモダラのようなカード。
+- Firefoxは、Douyinビデオを再生するときに凍結します。カスタムフィルタルールall.txt [#3525]によってトリガーされます。
+- AdGuardの拡張機能が有効になったときにFirefox 118でサイト読み込みが遅い [#2524].
+- フィルタリングログで欠落しているバーをスクロール [#3558].
+- Allowlistエディタは、ベアコンパウンドパブリックサフィックス(例:)を受け入れます。`gov.br`,
+  `co.uk`, `com.au`) シングルラベル TLD をまだ拒否しながら [#3587].
+- 延長をインポートする際に追加リクエストの許可を求めることはありません
+設定 [#2754].
+- Monkeytype.com は読み込みに失敗します。 — AdGuard MV2 で "Pending" をスタックするリクエストは [#3565] を有効にしました。
+- 正規表現による化粧品規則`$domain`複数のエスケープを含む修飾子
+分離器(例)`[$domain=/example\d*\.(live\|com\|icu\|org)$/]##body`) なし
+応用されている。
+- ポップアップ統計「年」タブは、最後の3ヶ月だけを示し、古い消去
+月間ロールオーバー後の月間履歴。
 
 [5.5]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.4.3.0...v5.5.0.6
 [#3537]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3537
@@ -88,71 +88,71 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [tsurlfilter#188]: https://github.com/AdguardTeam/tsurlfilter/issues/188
 [tsurlfilter#189]: https://github.com/AdguardTeam/tsurlfilter/issues/189
 
-## [5.4 patch 2] - 2026-05-14
+## [5.4 パッチ 2] - 2026-05-14
 
-### Fixed
+### 固定式
 
-- False-negative CSS selector validation for comma-containing selectors
-  (e.g., `IMG[alt="Reklama"], .l-box--99.l-box > .text-center`). The browser's
-  `CSS.supports('selector(A, B)')` fails for top-level commas; the validator now
-  splits such selectors and validates each part individually.
+- comma-containingセレクター用のFalse-negative CSSセレクター検証
+  (e.g., `IMG[alt="Reklama"], .l-box--99.l-box > .text-center`)。 ブラウザの
+  `CSS.supports('selector(A, B)')`上位レベルのコンマで失敗します。 バリデータは現在
+これらのセレクターを分割し、各パートを個別に検証します。
 
 [5.4 patch 2]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.4.2.0...v5.4.3.0
 
-## [5.4 patch 1] - 2026-05-08
+## [5.4 パッチ 1] - 2026-05-08
 
-### Fixed
+### 固定式
 
-- Importing settings from shared URL doesn't work [#3517].
+- 共有URLからの設定をインポートしても[#3517]は動作しません。
 
 [5.4 patch 1]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.4.1.3...v5.4.2.0
 [#3517]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3517
 
 ## [5.4] - 2026-05-07
 
-### Added
+### 追加
 
-- Added beta suffix to the version in issue reports [#3330].
-- Handling speculative prerender requests.
-- Confirmation modal for inverting allowlist.
-- Independent update of custom filters in MV3
-  without waiting for the extension update availability [#2944].
-- Warning notification for Opera when "Allow access to search page results" permission is not granted [#2485].
-- Import settings from `adguard:import_user_configuration` links on reports.adguard.com.
-- Use HTTP `Last-Modified` header as fallback for custom filter update timestamps
-  when `TimeUpdated` metadata is missing [#3407].
-- `ROList` filter list in MV3 [#3473].
-- Share settings button on General page.
+- 問題報告でバージョンにベータサフィックスを追加しました [#3330].
+- 特定プレンダーリクエストの処理
+- シェルターを反転するための確認モーダル。
+- MV3のカスタムフィルタの独立した更新
+延長更新の可用性を待つことなく[#2944].
+- 「検索ページの結果へのアクセスを許可」権限が付与されていない場合は、オペラの警告通知 [#2485].
+- インポート設定から`adguard:import_user_configuration`Report.adguard.comへのリンク。
+- HTTP の使用`Last-Modified`カスタムフィルタ更新タイムスタンプのフォールバックとしてヘッダー
+いつか`TimeUpdated`メタデータは欠落しています [#3407].
+- `ROList`MV3のフィルタリスト [#3473].
+- 一般ページの設定ボタンをシェアする
 
-### Changed
+### 変更内容
 
-- Issue report URL updated to v4 scheme: comma-separated filter IDs, stealth values
-  as `1`/`0`, `ext.manifest_version` parameter, normalized browser name, ISO 8601
-  timestamp for `filters_last_update`, custom filters include title and URL.
-- Cookie self-destruct stealth params (`stealth.third_party_cookies_min`,
-  `stealth.first_party_cookies_min`) are now MV2-only in issue report URLs (not
-  supported on MV3).
-- Updated [@adguard/agtree] to v4.1.1.
-- Updated [@adguard/dnr-rulesets] to v4.2.1.
-- Updated [@adguard/filters-downloader] to v2.4.4.
-- Updated [@adguard/scriptlets] to v2.4.2.
-- Updated [@adguard/tsurlfilter] to v5.0.1.
-- Updated [@adguard/tswebextension] to v4.1.1.
+- 発行報告URLがv4スキームに更新:コンマ区切りフィルタID、ステルス値
+として`1`/`0`, `ext.manifest_version`変数、normalizedブラウザの名前、ISO 8601
+タイムスタンプ`filters_last_update`、カスタムフィルタにはタイトルとURLが含まれます。
+- Cookie 自己破壊ステルス パラム (Cookie self-destruct)`stealth.third_party_cookies_min`,
+  `stealth.first_party_cookies_min`) は、問題のレポート URL で MV2 だけになりました (not)
+MV3対応
+- [@adguard/agtree] を v4.1.1 に更新しました。
+- [@adguard/dnr-rulesets]をv4.2.1に更新しました。
+- [@adguard/filters-downloader] を v2.4.4 に更新しました。
+- [@adguard/scriptlets] を v2.4.2 に更新しました。
+- [@adguard/tsurlfilter] を v5.0.1 に更新しました。
+- [@adguard/tswebextension] を v4.1.1 に更新しました。
 
-### Fixed
+### 固定式
 
-- Update indicator arrow flickers when opening the popup [#3351].
-- $badfilter incorrectly negates rules with different $denyallow values [#3428].
-- Filtering log window size/pos not restored with zoom [#3255].
-- Blocking page incorrectly displayed for search results [#3414].
-- Allowlist editor now normalizes entries by extracting domains from URLs, so entries with protocols, paths, or trailing slashes work correctly [#3430].
-- Use of invalid CSS selectors in element hiding rules affects all injected styles [#3329].
-- "Hide Referer from third parties" stealth option now sets correct referrer value with trailing slash [#3393].
-- `$removeparam` rules not stripping all tracking parameters when multiple rules match the same URL in MV3 [#3444].
-- "Block ads manual" doesn't work on tabs opened before the update [#3452].
-- The extension doesn't always update filters after starting the browser [#3280].
-- Blocked requests in cross-domain iframes were not counted in the extension badge [#3446].
-- Custom filter subscription accepts URLs that return HTML pages instead of filter lists [#3501].
+- ポップアップを開くときにインジケータ矢印フリッカーを更新 [#3351].
+- $badfilter は異なる $denyallow 値 [#3428] でルールを無視します。
+- ログウィンドウのサイズ/pos をズームで復元しない [#3255] をフィルタリングします。
+- 検索結果[#3414]に正しく表示されないページをブロックします。
+- Allowlist エディタは、URL からドメインを抽出することでエントリを正規化します。そのため、プロトコル、パス、またはスラッシュの追跡が正しく機能します [#3430]。
+- 要素の隠れる規則の無効なCSSセレクターの使用は、すべての注入されたスタイル[#3329]に影響を与えます。
+- 「第三者からの名誉を隠す」ステルスオプションは、スラッシュ[#3393]を追跡して正しいレフリーラー値を設定しました。
+- `$removeparam`複数の規則がMV3 [#3444]の同じURLに一致したときに、すべての追跡パラメータを除去しないルール。
+- 「広告マニュアルのブロック」は更新の前に開いたタブで動作しません[#3452]。
+- ブラウザ[#3280]を起動すると、拡張機能は更新されません。
+- クロスドメインのiframeでブロックされたリクエストは、拡張子バッジ[#3446]でカウントされていない。
+- カスタムフィルタサブスクリプションは、フィルタリスト[#3501]の代わりにHTMLページを返すURLを受け入れます。
 
 [5.4]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.3.1.7...v5.4.1.3
 [#2485]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2485
@@ -173,23 +173,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#3473]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3473
 [#3501]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3501
 
-## [5.3 patch 1] - 2026-03-30
+## [5.3 パッチ 1] - 2026-03-30
 
-### Added
+### 追加
 
-- Opera MV3 extension support.
+- Opera MV3拡張サポート
 
-### Fixed
+### 固定式
 
-- Statistics tooltip appears in wrong position when hovering over chart columns [#3449].
-- Freeze on extensions startup [#3400].
+- チャートの列を上回るときに統計ツールチップが間違った位置に表示されます [#3449].
+- エクステンション起動時にフリーズ [#3400].
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/agtree] to v4.0.1.
-- Updated [@adguard/scriptlets] to v2.2.16.
-- Updated [@adguard/tsurlfilter] to v4.0.2.
-- Updated [@adguard/tswebextension] to v4.0.2.
+- [@adguard/agtree] を v4.0.1 に更新しました。
+- [@adguard/scriptlets] を v2.2.16 に更新しました。
+- [@adguard/tsurlfilter] を v4.0.2 に更新しました。
+- [@adguard/tswebextension] を v4.0.2 に更新しました。
 
 [5.3 patch 1]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.3.0.8...v5.3.1.7
 [#3449]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3449
@@ -197,41 +197,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.3.0.8] - 2026-02-10
 
-### Added
+### 追加
 
-- Beautification to exported settings JSON for improved readability [#3069].
-- Ability to keep filtering log records without size limitations when "Preserve log" is enabled [#3148].
-- Support of `:has()` pseudo-class as standard CSS conditionally:
-    - if there are no other extended pseudo-classes in the selector, or
-    - if the `#?#` separator is explicitly used in the rule [#2587].
-- Full CSS selector syntax support in HTML filtering rules [tsurlfilter#96].
+- 改善された可読性のためのJSONをエクスポートする美化[#3069].
+- 「ログを保存」が有効になっているときに、サイズ制限なしでログレコードをフィルタリングし続ける能力[#3148]。
+- サポート`:has()`標準的なCSSとして擬似クラス 条件付き:
+    - セレクタに他の拡張擬似クラスがない場合、または
+    - もし`#?#`分離器は規則[#2587]で明示的に使用されます。
+- HTML フィルタリングルール [tsurlfilter#96] で完全な CSS セレクターの構文のサポート。
 
-### Changed
+### 変更内容
 
-- Improved filters update logs readability, added version information before and after update [#2934].
-- Improved feature names and descriptions in Tracking protection (MV2).
-- Updated [@adguard/tsurlfilter] to v4.0.0.
-- Updated [@adguard/tswebextension] to v4.0.0.
-- Updated [@adguard/agtree] to v4.0.0.
-- Updated [@adguard/scriptlets] to v2.2.15.
-- Updated [@adguard/dnr-rulesets] to v4.0.
-- Improved filtering log performance by optimizing rule text retrieval.
+- [#2934] を更新する前に、更新ログの可読性、バージョン情報の追加を改善しました。
+- トラッキング保護(MV2)の機能名と説明を改善しました。
+- [@adguard/tsurlfilter] を v4.0.0 に更新しました。
+- [@adguard/tswebextension] を v4.0.0 に更新しました。
+- [@adguard/agtree] を v4.0.0 に更新しました。
+- [@adguard/scriptlets] を v2.2.15 に更新しました。
+- [@adguard/dnr-rulesets] を v4.0 に更新しました。
+- ルールテキスト検索を最適化することにより、ログのパフォーマンスをフィルタリング改善しました。
 
-### Fixed
+### 固定式
 
-- Dynamic rules limit duplicate notifications.
-- Network rules with `$important` modifier are applied even if protection is disabled [#3227].
-- Early save reactivation and missing exit prompt during active User Rules/Allowlist save [#3151].
-- Some requests are blocked in 'Inverted allowlist' mode even though there're no websites added to the Allowlist [#3193].
-- Do not enable any filters on settings import if `enabled-filters` is empty [#3136].
-- Settings applied notification appearing before settings are actually applied [#3278].
-- Preserve logs does not retain all records in the filtering log [#3148].
-- Tracking protection is also disabled in MV3 when protection is paused in extension.
-- Apply $document blocking rule even if specific exception rule is present [#3262].
-- Blocked iframes are not collapsed on Firefox [#3116].
-- The extension got an unexpected error on `[::]:8000` [#3360].
-- Toggle, that doesn't work in User Rules fullscreen mode [#3365].
-- Original rule text now correctly displays in filtering log when rules are converted.
+- 動的ルールは重複通知を制限します。
+- ネットワークルール`$important`保護を無効にしても修飾子が適用されます[#3227]。
+- アクティブユーザー規則/アローリスト保存時に再活性化と欠落した出口プロンプトを保存 [#3151].
+- Allowlist [#3193] にウェブサイトが追加されていないにもかかわらず、一部のリクエストは 'Inverted allowlist' モードでブロックされます。
+- 設定のインポートにフィルターを有効にしないでください`enabled-filters`空 [#3136] です。
+- 設定は、実際に[#3278]を適用される前に表示される通知を設定します。
+- ログを保存すると、フィルタリングログ[#3148]内のすべてのレコードを保持しません。
+- 保護が延長でpausedときMV3でまた保護を禁止します。
+- 特定の例外規則が[#3262]を提示しても$documentブロックルールを適用します。
+- ブロックされたiframeはFirefox [#3116] ではブロックされません。
+- 拡張は予期しないエラーが発生しました`[::]:8000` [#3360].
+- ユーザルールフルスクリーンモードでは動作しません [#3365]。
+- ルールが変換されたときにログをフィルタリングする際に、元のルールテキストが正しく表示されます。
 
 [5.3.0.8]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.3.0.8
 [#2934]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2934
@@ -250,18 +250,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.2.800] - 2025-12-25
 
-### Fixed
+### 固定式
 
-- Memory leak caused by storing data URL favicons in tab contexts [#2594].
+- タブのコンテキスト[#2594]にデータURLのファビコンを保存することにより、メモリリークが発生します。
 
 [5.2.800]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.2.800%2B1.build.20251216080045
 
 ## [5.2.600.3] - 2025-12-16
 
-### Fixed
+### 固定式
 
-- Made clipboard permissions optional for Firefox, with a prompt shown when needed in User Rules and Allowlist editors [#3364]
-- The extension doesn't work in browser 360 [#3058].
+- Firefox 用のクリップボード権限を生成し、ユーザー ルールと Allowlist エディタで必要なときに表示されたプロンプト [#3364]
+- ブラウザ 360 [#3058] では拡張子が動作しません。
 
 [5.2.600.3]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.2.600%2B3.build.20251209190042
 [#3364]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3364
@@ -269,132 +269,132 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.2.500] - 2025-12-05
 
-### Fixed
+### 固定式
 
-- The update promo banner does not persist dismissal and shows again after
-  the extension updates [#3385].
+- 更新promoの旗は主張のunmissalをし、の後で再度示しません
+拡張子の更新 [#3385].
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/agtree] to v3.3.1.
-- Updated [@adguard/assistant] to v4.3.77.
-- Updated [@adguard/scriptlets] to v2.2.13.
-- Updated [@adguard/tsurlfilter] to v3.5.1.
-- Updated [@adguard/tswebextension] to v3.2.16.
+- [@adguard/agtree] を v3.3.1 に更新しました。
+- [@adguard/assistant] を v4.3.77 に更新しました。
+- [@adguard/scriptlets] を v2.2.13 に更新しました。
+- [@adguard/tsurlfilter] を v3.5.1 に更新しました。
+- [@adguard/tswebextension] を v3.2.16 に更新しました。
 
 [5.2.500]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.2.500%2B0.build.20251127140045
 [#3385]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3385
 
 ## [5.2.400] - 2025-11-24
 
-### Added
+### 追加
 
-- New loading icon and animation for the extension popup.
-- Add ability to update custom filters in MV3 [#3016].
+- 拡張ポップアップ用の新しいロードアイコンとアニメーション。
+- MV3 [#3016] でカスタムフィルタを更新する機能を追加します。
 
-### Changed
+### 変更内容
 
-- Extension will apply auto-update in MV3 if update is available and browser
-  became idle for a while.
+- アップデートが利用可能でブラウザの場合、MV3で自動更新を適用します
+しばらくの間アイドルになった。
 
 [5.2.400]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.2.400%2B0.build.20251119090043
 [#3016]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016
 
 ## [5.2.113.0]
 
-### Fixed
+### 固定式
 
-- Removed clipboard permissions [#3362].
+- クリップボードの許可を削除します。 [#3362].
 
 [5.2.113.0]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/5.2.113%2B0.build.20251022090039
 [#3362]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3362
 
 ## [5.2.112.84] - 2025-10-25
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tswebextension] to v3.2.13.
+- [@adguard/tswebextension] を v3.2.13 に更新しました。
 
 [5.2.112.84]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.2.112%2B84.build.20251022090039
 
 ## [5.2.112.1] - 2025-10-14
 
-### Fixed
+### 固定式
 
-- The extension is failed to update via the popup [#3317].
+- 拡張子はポップアップ[#3317]を介して更新できませんでした。
 
 [5.2.112.1]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.2.112%2B1.build.20251009120050
 [#3317]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3317
 
 ## [5.2.112.0] - 2025-10-13
 
-### Changed
+### 変更内容
 
-- New 4 digits build versioning scheme: `major.minor.patch+buildTag`. `buildTag`
-  is incremented with every build.
+- 新しい4桁のビルドバージョン作成スキーム:`major.minor.patch+buildTag`. `buildTag`
+ビルドごとに増分されます。
 
-### Fixed
+### 固定式
 
-- Minimize the extension update fetch response size in MV3.
+- MV3 の拡張更新のフェッチ応答サイズを最小化します。
 
 [5.2.112.0]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.2.112%2B0.build.20251001190036
 
 ## [5.2.77] - 2025-09-22
 
-### Added
+### 追加
 
-- Support for Chrome's User Scripts API that allows more reliable script injection in MV3.
-- Support for custom filters is back again due to User Scripts API usage.
-- Send last filters update time during issue reporting [#3055].
-- Ability to exit editor by pressing `Escape` keyboard button [#2333].
-- Blocking page for requests blocked by `$document` rules in MV3.
-- Compatibility of `$header` modifier with `$match-case`
-  and `$third-party` modifiers in MV2 [#2942].
-- `zip` and `crx` artifacts for the extension builds [#3163], [#2488].
-- Ability to update the extension with filters manually in MV3.
+- MV3 でより信頼性の高いスクリプトインジェクションを可能にする Chrome のユーザースクリプト API のサポート。
+- ユーザースクリプト API の使用により、カスタムフィルタのサポートが再びバックアップされます。
+- 問題報告中に最後のフィルターの更新時間を[#3055]に送信します。
+- 押すことによってエディタを終了する能力`Escape`キーボードボタン [#2333].
+- リクエストのブロックページ`$document`MV3のルール
+- 互換性`$header`修飾子と`$match-case`
+そして、`$third-party`MV2の修飾子 [#2942].
+- `zip`そして、`crx`拡張ビルド用のアーティファクト [#3163], [#2488].
+- MV3 でフィルタを手動で更新する機能。
 
-### Changed
+### 変更内容
 
-- Updated blocking pages in MV2 extension for Safebrowsing and for web pages blocked by `$document` rules.
-- Improved accessibility for visually impaired users [#3035], [#2315], [#2332].
-- Decrease time period for temporary exceptions caused by clicking "Proceed anyway"
-  on a blocking page from 40 minutes to 10 seconds [#3263].
-- Updated [@adguard/agtree] to v3.2.3.
-- Updated [@adguard/assistant] to v4.3.75.
-- Updated [@adguard/dnr-rulesets] to v3.2.0.
-- Updated [@adguard/filters-downloader] to v2.4.2.
-- Updated [@adguard/logger] to v2.0.0.
-- Updated [@adguard/scriptlets] to v2.2.10.
-- Updated [@adguard/tsurlfilter] to v3.4.6.
-- Updated [@adguard/tswebextension] to v3.2.11.
+- Safebrowsing およびブロックされた Web ページ用の MV2 拡張機能のブロックページを更新`$document`ルール。
+- 視覚障がい者(#3035)、【#2315】、【#2332】のアクセシビリティの向上
+- 「とにかく進む」をクリックすることによって生じる一時的な例外の期間を短縮
+40分から10秒までのブロックページで [#3263].
+- [@adguard/agtree] を v3.2.3 に更新しました。
+- v4.3.75に[@adguard/assistant]を更新しました。
+- [@adguard/dnr-rulesets]をv3.2.0に更新しました。
+- [@adguard/filters-downloader] を v2.4.2 に更新しました。
+- [@adguard/logger] を v2.0.0 に更新しました。
+- [@adguard/scriptlets] を v2.2.10 に更新しました。
+- [@adguard/tsurlfilter] を v3.4.6 に更新しました。
+- v3.2.11に[@adguard/tswebextension]を更新しました。
 
-### Removed
+### 削除
 
-- AdGuard DNS filter and AdGuard Annoyances filter as deprecated.
+- AdGuard DNS フィルタと AdGuard Annoyances フィルタを非推奨にします。
 
-### Fixed
+### 固定式
 
-- Cursor moves to the end when saving user rules [#3145].
-- Cannot maximize Filtering log in Firefox for Windows [#2464].
-- Unable to paste text into user rules input field on Android [#3061].
-- Invalid HTML rule selectors are breaking site loading [#2646], [#2826].
-- Stealth mode's `Hide Referer from third parties` option may break some websites [#2839].
-- Filtering log: Resizing the right panel selects its contents [#2305].
-- Types of the blocked requests are not displayed in the popup (Firefox for Android) [#3157].
-- Switching to the "Statistics" tab shifts the "Actions" and "Statistics" buttons (Edge for Android) [#3158].
-- Filtering log: Request details panel is automatically closed when loading
-  a website in another window/tab [#2327].
-- Scriptlet rules are not displayed in the filtering log [#3164].
-- The filtering in Edge's split screen doesn't work [#2832].
-- Total blocked popup string translated incorrectly [#3204].
-- `$replace` rules may break some websites [#3122].
-- Increase file size limit to 10MB for `$replace` rules in Firefox [#3192].
-- Allow to specify attributes without value in selector for HTML filtering rules [tsurlfilter#147].
-- Missing space in the description of AdGuard German filter in the `de` locale [#3216].
-- OOM errors may occur when applying too many patches in a row in MV2 [#3230].
-- Extension initialization on browser startup in Firefox [#3189].
-- Wrong rule is displayed for page blocked by `$document` rule in MV3 [#3260].
-- Overflowing notification text in the options page.
+- カーソルは、ユーザルール[#3145]を保存したときに終了に移動します。
+- Firefox で Windows [#2464] でログをフィルタリングすることができません。
+- Android [#3061] のユーザルール入力欄にテキストを貼り付けることができません。
+- 無効なHTMLルールセレクターは、サイトの読み込みを中断しています [#2646], [#2826].
+- ステルスモードの`Hide Referer from third parties`オプションは、いくつかのウェブサイトを破る可能性があります [#2839].
+- フィルタリングログ: 右側のパネルのリサイズは、そのコンテンツ [#2305] を選択します。
+- ブロックされたリクエストの種類はポップアップ(Android用Firefox)[#3157]に表示されません。
+- "Statistics" タブに切り替えると、"Actions" と "Statistics" ボタン (Edge for Android) [#3158] がシフトされます。
+- ログをろ過して下さい: ローディングのとき要求の細部のパネルは自動的に閉鎖されます
+別のウィンドウ/タブ [#2327] にあるウェブサイト。
+- スクリプトルールは、フィルタリングログ[#3164]に表示されません。
+- Edge の分割画面のフィルタリングは [#2832] では動作しません。
+- 合計ブロックされたポップアップ文字列は誤って翻訳 [#3204].
+- `$replace`ルールは、いくつかのウェブサイトを破る可能性があります [#3122].
+- ファイルサイズ制限を10MBに増やす`$replace`Firefoxのルール [#3192].
+- HTML フィルタリングルール [tsurlfilter#147] のセレクターで値なしで属性を指定できます。
+- AdGuardのドイツ フィルターの記述のスペースを欠いて下さい`de`ロケール [#3216].
+- MV2 [#3230] の行に複数のパッチを適用すると、OMM エラーが発生することがあります。
+- Firefoxのブラウザ起動時の拡張初期化 [#3189].
+- ブロックされたページでは、間違ったルールが表示されます。`$document`MV3のルール [#3260].
+- オプションページの通知テキストをオーバーフローします。
 
 [5.2.77]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.2.77
 [#2305]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2305
@@ -428,110 +428,110 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.1.102] - 2025-06-15
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/filters-downloader] to v2.4.1.
+- [@adguard/filters-downloader] を v2.4.1 に更新しました。
 
-## Fixed
+## 固定式
 
-- OOM errors may occur when applying too many patches in a row in MV2 [#3230].
+- MV2 [#3230] の行に複数のパッチを適用すると、OMM エラーが発生することがあります。
 
 [5.1.102]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.1.94...v5.1.102
 [#3230]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3230
 
 ## [5.1.94] - 2025-05-29
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/agtree] to v3.2.0.
-- Updated [@adguard/tsurlfilter] to v3.3.3.
-- Updated [@adguard/tswebextension] to v3.1.0-alpha.3.
+- [@adguard/agtree] を v3.2.0 に更新しました。
+- [@adguard/tsurlfilter] を v3.3.3 に更新しました。
+- [@adguard/tswebextension] を v3.1.0-alpha.3 に更新しました。
 
 [5.1.94]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.1.88...v5.1.94
 
 ## [5.1.88] - 2025-05-23
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/agtree] to v3.1.3.
-- Updated [@adguard/dnr-rulesets] to v3.0.0-alpha.3.
-- Updated [@adguard/tsurlfilter] to v3.3.1.
-- Updated [@adguard/tswebextension] to v3.1.0-alpha.1.
+- [@adguard/agtree] を v3.1.3 に更新しました。
+- [@adguard/dnr-rulesets]をv3.0.0-alpha.3に更新しました。
+- [@adguard/tsurlfilter] を v3.3.1 に更新しました。
+- [@adguard/tswebextension] を v3.1.0-alpha.1 に更新しました。
 
 [5.1.88]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.1.79...v5.1.88
 
 ## [5.1.79] - 2025-04-28
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tsurlfilter] to v3.2.3.
-- Updated [@adguard/tswebextension] to v3.0.2.
+- [@adguard/tsurlfilter] を v3.2.3 に更新しました。
+- [@adguard/tswebextension] を v3.0.2 に更新しました。
 
 [5.1.79]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.1.70...v5.1.79
 
 ## [5.1.70] - 2025-03-19
 
-### Fixed
+### 固定式
 
-- Popup size issues in Android Edge.
+- Android Edge のポップアップサイズの問題。
 
 [5.1.70]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.1.68...v5.1.70
 
 ## [5.1.68] - 2025-03-07
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/scriptlets] to v2.1.6.
-- Updated [@adguard/tsurlfilter] to v3.2.1.
-- Updated [@adguard/tswebextension] to v3.0.1.
+- [@adguard/scriptlets] を v2.1.6 に更新しました。
+- [@adguard/tsurlfilter] を v3.2.1 に更新しました。
+- [@adguard/tswebextension] を v3.0.1 に更新しました。
 
 [5.1.68]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.1.62...v5.1.68
 
 ## [5.1.62] - 2025-02-28
 
-### Added
+### 追加
 
-- Unsafe dynamic rules limit for MV3 with value 5000.
-- Display dnr-rulesets version on About tab [#3054].
-- Ability to search tabs by domain in the Filtering log [#3028].
-- Ability to add filters from Google Drive [#2908].
+- 値5000でMV3の安全でない動的ルール制限。
+- dnr-rulesets バージョンを [#3054] タブで表示します。
+- フィルタリングログ[#3028]のドメインでタブを検索する機能。
+- Googleドライブ[#2908]からフィルタを追加する機能。
 
-### Changed
+### 変更内容
 
-- Minimum supported Chromium-based MV2 browsers version now 106+ for support
-  prerender requests.
-- Increased all dynamic rules limit to 30000 for MV3.
-- Error throwing for empty modifier list in network rules.
-- Store filter data in ruleset files exclusively for the MV3 extension
-  to allow updates where only the rulesets are modified.
-- Updated [@adguard/agtree] to v3.0.1.
-- Updated [@adguard/scriptlets] to v2.1.5.
-- Updated [@adguard/tsurlfilter] to v3.2.0.
-- Updated [@adguard/tswebextension] to v3.0.0.
+- サポートされている最小限のChromiumベースのMV2ブラウザバージョンが106以上になりました。
+プレンダーリクエスト。
+- MV3 の 30000 にすべての動的ルールを制限する。
+- ネットワークルールに空の修飾子リストをスローするエラー。
+- MV3拡張子専用のルールセットファイルでフィルタデータを保存
+規則のみが変更される更新を許可します。
+- [@adguard/agtree] を v3.0.1 に更新しました。
+- [@adguard/scriptlets] を v2.1.5 に更新しました。
+- [@adguard/tsurlfilter] を v3.2.0 に更新しました。
+- [@adguard/tswebextension] を v3.0.0 に更新しました。
 
-### Fixed
+### 固定式
 
-- Once allowlisted tab considers all following websites in the tab as allowlisted [#3020] [#3048].
-- Handling missing children data in the deserializer for certain nodes.
-- A rule from a disabled filter list disables another rule [#3002].
-- Notify user that rule was not applied because of the chrome limitations [#3004].
-- URI encoded `$removeparam` value is not removed in MV3 [#3014].
-- Cosmetic rules injecting into `about:blank` iframes in MV2.
-- Shortened name translation in `pt_BR` locale [#3075].
-- Allowlisted stealth rules are not shown in the filtering log [#2950].
-- `$removeparam` incorrectly removes parameters from encoded URLs [#3076].
-- Update extension icon on engine update.
-- Closing rule limits warning updates the extension icon for MV3.
-- Blocked counter on the popup updates for blocked requests from other tabs [#3050].
-- `$popup,third-party` modifiers cause document blocking [#3012].
-- Don't show lines for absent metadata when adding a custom filter [#3057].
-- Filtering log does not observe tab changes, openings, or closings.
-- Scriptlets and scripts are executed too late on website reload or navigation in MV2 [#2855].
-- Do not inject cosmetic rules into the Assistant frame in MV3.
+- 許可されたタブが許可された [#3020] [#3048] としてタブ内のすべての次のウェブサイトを検討したら。
+- 特定のノードのdeserializerに欠けている子供データを処理する。
+- 無効なフィルタリストからのルールは、別の規則[#3002]を無効にします。
+- クロームの制限[#3004]のためにルールが適用されていないユーザーを通知します。
+- URIエンコード`$removeparam`MV3 [#3014] では値が削除されません。
+- に注入する化粧品の規則`about:blank`MV2のiframes。
+- 短縮名翻訳`pt_BR`ロケール [#3075].
+- フィルタリングログ[#2950]にステルスルールが表示されない
+- `$removeparam`正しくエンコードされた URL [#3076] からパラメーターを削除します。
+- エンジンアップデートの拡張アイコンを更新します。
+- 終了ルールは、MV3の拡張アイコンの警告の更新を制限します。
+- 他のタブ [#3050] からブロックされたリクエストのポップアップ更新のカウンターをブロックしました。
+- `$popup,third-party`修飾子は [#3012] をブロックする文書を引き起こします。
+- カスタムフィルタ[#3057]を追加すると、不在なメタデータのための行を表示しないでください。
+- ログをフィルタリングすることは、タブの変更、開口部、閉鎖を観察しません。
+- スクリプトとスクリプトは、MV2 [#2855] でウェブサイトのリロードやナビゲーションに遅すぎると実行されます。
+- MV3のアシスタントフレームに化粧品ルールを注入しないでください。
 
-### Removed
+### 削除
 
-- Storage classes, because they were moved to the `@adguard/tswebextension` package.
+- ストレージクラスは、それらがに移動したので、`@adguard/tswebextension`パッケージ。
 
 [5.1.62]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.0.188...v5.1.62
 [#2855]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2855
@@ -552,78 +552,78 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.0.188] - 2025-02-05
 
-### Changed
+### 変更内容
 
-- Scriptlet rules are not limited to ones from the pre-built filters.
-- Updated [@adguard/tswebextension] to v2.4.0-alpha.11.
+- スクリプトルールは、既定のフィルタからのみに限定されません。
+- v2.4.0-alpha.11に[@adguard/tswebextension]を更新しました。
 
-### Removed
+### 削除
 
-- AdGuard Quick Fixes filter.
-- Custom filters are not available temporarily.
+- AdGuardクイックフィックスフィルタ。
+- カスタムフィルタは一時的に使用できません。
 
 [5.0.188]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.188
 
 ## [5.0.185] - 2025-01-22
 
-### Added
+### 追加
 
-- AdGuard Quick Fixes filter is back.
+- AdGuard クイックフィックスフィルターが返されます。
 
-### Changed
+### 変更内容
 
-- Scriptlet rules are available only from the pre-built filters now.
-- Updated [@adguard/tswebextension] to v2.4.0-alpha.10.
+- Scriptlet ルールは、既定のフィルターからのみ利用できます。
+- [@adguard/tswebextension] を v2.4.0-alpha.10 に更新しました。
 
-### Removed
+### 削除
 
-- Injection of remotely hosted scripts.
+- リモートでホストされているスクリプトの注入。
 
 [5.0.185]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.185
 
 ## [5.0.183] - 2025-01-14
 
-### Removed
+### 削除
 
-- AdGuard Quick Fixes filter.
-- Filters metadata update on the extension install.
+- AdGuardクイックフィックスフィルタ。
+- 拡張インストールでメタデータを更新します。
 
 [5.0.183]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.183
 
 ## [5.0.178] - 2024-12-24
 
-### Changed
+### 変更内容
 
-- Remade JS rules injections in MV3:
-    - use `chrome.scripting` API for injecting functions for script rules from the pre-built filters,
-    - use script tag injection only for script rules manually added by users —
-      rules from *User rules* and *Custom filters*.
-- Updated [@adguard/tswebextension] to v2.4.0-alpha.8.
+- MV3 で JS 規則の注入を作った:
+    - 使用方法`chrome.scripting`ビルド済みのフィルタからスクリプトルールの関数を注入するための API
+    - スクリプトのタグのインジェクションは、ユーザーが手動で追加するスクリプトルールのみを使用する —
+*ユーザールール*と*カスタムフィルタ*からのルール。
+- v2.4.0-alpha.8に[@adguard/tswebextension]を更新しました。
 
-### Removed
+### 削除
 
-- Ability to execute new `AG_` script rules from *User rules* and *Custom filters* in MV3.
+- 新たな実行能力`AG_`MV3 の *User ルール* と *Custom filter* からのスクリプトルール。
 
 [5.0.178]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.178
 
 ## [4.4.48] - 2024-11-25
 
-### Added
+### 追加
 
-- Send `manifest_version` during issues reporting for MV2.
+- お問い合わせ`manifest_version`MV2に関する問題報告
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/agtree] to v2.1.3.
-- Updated [@adguard/tsurlfilter] to v3.0.7.
-- Updated [@adguard/tswebextension] to v2.0.7.
+- [@adguard/agtree] を v2.1.3 に更新しました。
+- [@adguard/tsurlfilter] を v3.0.7 に更新しました。
+- [@adguard/tswebextension] を v2.0.7 に更新しました。
 
-### Fixed
+### 固定式
 
-- Optimized performance of parsing uBlock filter parameters [#2962].
-- `$removeparam` fails to match encoded URL params in MV2 [#3015].
-- Memory leak caused by multiple script injections on the same pages
-  after an event page in Firefox restarts in MV2 [#2594].
+- uBlock フィルタ パラメータ [#2962] の解析の最適化された性能。
+- `$removeparam`MV2 [#3015] でエンコードされた URL パラメータと一致しない。
+- 同じページの複数のスクリプトの注入によって引き起こされる記憶漏出
+Firefox でイベントページが MV2 [#2594] で再起動した後。
 
 [4.4.48]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.4.41...v4.4.48
 [#2962]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2962
@@ -631,75 +631,75 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.0.170] - 2024-10-30
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tswebextension] to v2.4.0-alpha.7.
+- v2.4.0-alpha.7に[@adguard/tswebextension]を更新しました。
 
-### Fixed
+### 固定式
 
-- Memory leak caused by multiple script injections on the same pages
-  after a service worker or event page restart in MV3 [#2594].
+- 同じページの複数のスクリプトの注入によって引き起こされる記憶漏出
+MV3 [#2594] でサービスワーカーまたはイベントページを再起動した後。
 
 [5.0.170]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.170
 [#2594]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2594
 
 ## [5.0.162] - 2024-10-30
 
-### Added
+### 追加
 
-- Send `manifest_version` during issues reporting for MV3.
+- お問い合わせ`manifest_version`MV3に関する問題報告
 
 [5.0.162]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.162
 
 ## [5.0.159] - 2024-10-23
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/logger] to v1.1.1.
-- Updated [@adguard/tsurlfilter] to v3.1.0-alpha.7.
-- Updated [@adguard/tswebextension] to v2.4.0-alpha.6.
+- [@adguard/logger] を v1.1.1 に更新しました。
+- [@adguard/tsurlfilter] を v3.1.0-alpha.7 に更新しました。
+- v2.4.0-alpha.6に[@adguard/tswebextension]を更新しました。
 
-### Fixed
+### 固定式
 
-- Correct import of `EXTENDED_CSS_VERSION`.
-- Excluding request types causes document blocking [#2992].
-- Selecting a single `$permissions` filtering log event selects all `$permissions` events.
+- 正しい輸入の`EXTENDED_CSS_VERSION`.
+- タイプのリクエストを除き、ドキュメントブロック [#2992] を引き起こします。
+- 単一の選択`$permissions`ログイベントのフィルタリングは、すべて選択します`$permissions`イベント
 
 [5.0.159]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.159
 [#2992]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2992
 
 ## [4.4.39] - 2024-10-21
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/logger] to v1.1.1.
-- Updated [@adguard/tswebextension] to v2.0.4.
+- [@adguard/logger] を v1.1.1 に更新しました。
+- [@adguard/tswebextension] を v2.0.4 に更新しました。
 
-### Fixed
+### 固定式
 
-- User rules scanning breaks extension popup [#2989].
-- Selecting a single `$permissions` filtering log event selects all `$permissions` events.
+- ユーザルールのスキャンは、拡張ポップアップ [#2989] を破棄します。
+- 単一の選択`$permissions`ログイベントのフィルタリングは、すべて選択します`$permissions`イベント
 
 [4.4.39]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.4.30...v4.4.39
 [#2989]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2989
 
 ## [5.0.138] - 2024-10-10
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/logger] to v1.1.0.
-- Updated [@adguard/tsurlfilter] to v3.1.0-alpha.6.
-- Updated [@adguard/tswebextension] to v2.4.0-alpha.3.
+- [@adguard/logger] を v1.1.0 に更新しました。
+- [@adguard/tsurlfilter] を v3.1.0-alpha.6 に更新しました。
+- v2.4.0-alpha.3に[@adguard/tswebextension]を更新しました。
 
-### Fixed
+### 固定式
 
-- Use MV3-specific filters in Edge browser if MV3 extension is installed [#2985].
-- Unable to add AdGuard Quick Fixes filter in MS Edge [#2963].
-- Cosmetic rules are not applied sometimes or are applied also to wrong domain [#2984].
-- JS rules are blocked by Trusted Types on some websites [#2980].
-- MV3 extension cannot apply rules to about:blank iframes [#2975].
-- Scriptlets logging does not work [#2977].
-- Content-type matching of `$permissions` and `$removeparam` rules [#2954].
+- MV3 拡張子が [#2985] をインストールすると、Edge ブラウザーで MV3 固有のフィルターを使用します。
+- MS Edge [#2963] に AdGuard クイックフィックス フィルターを追加できません。
+- 化粧品規則は、時々適用されず、または間違ったドメイン[#2984]にも適用されません。
+- JS ルールは、一部のウェブサイト [#2980] で Trusted Types によってブロックされます。
+- MV3拡張子は、以下の規則を適用することはできません:blank iframes [#2975].
+- スクリプトロギングは[#2977]は動作しません。
+- コンテンツタイプのマッチング`$permissions`そして、`$removeparam`ルール [#2954].
 
 [5.0.138]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.138
 [#2985]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2985
@@ -712,28 +712,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.0.128] - 2024-10-04
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/scriptlets] to v1.12.1.
-- Updated [@adguard/tsurlfilter] to v3.1.0-alpha.5.
-- Updated [@adguard/tswebextension] to v2.3.0-alpha.1.
+- [@adguard/scriptlets] を v1.12.1 に更新しました。
+- [@adguard/tsurlfilter] を v3.1.0-alpha.5 に更新しました。
+- [@adguard/tswebextension] を v2.3.0-alpha.1 に更新しました。
 
 [5.0.128]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.128
 
 ## [4.4.30] - 2024-10-02
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/agtree] to v2.1.2.
-- Updated [@adguard/logger] to v1.0.2.
-- Updated [@adguard/scriptlets] to v1.12.1.
-- Updated [@adguard/tsurlfilter] to v3.0.5.
-- Updated [@adguard/tswebextension] to v2.0.3.
+- [@adguard/agtree] を v2.1.2 に更新しました。
+- [@adguard/logger] を v1.0.2 に更新しました。
+- [@adguard/scriptlets] を v1.12.1 に更新しました。
+- [@adguard/tsurlfilter] を v3.0.5 に更新しました。
+- [@adguard/tswebextension] を v2.0.3 に更新しました。
 
-### Fixed
+### 固定式
 
-- The exception `$domain=~` filter rule is not working properly [#2912].
-- Scriptlets exclusion matching is not working properly for rules with arguments [#2947].
+- 例外`$domain=~`フィルタルールは正しく機能しない [#2912].
+- Scriptlets exclusion の一致は、引数 [#2947] のルールでは正しく機能しません。
 
 [4.4.30]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.4.22...v4.4.30
 [#2912]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2912
@@ -741,44 +741,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.0.112] - 2024-09-27
 
-### Changed
+### 変更内容
 
-- Disabled option in tracking protection for hiding search queries [#2969].
+- 検索クエリを隠すための保護を追跡する無効なオプション [#2969].
 
 [5.0.112]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.112
 [#2969]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2969
 
 ## [5.0.97] - 2024-09-23
 
-### Fixed
+### 固定式
 
-- The list of custom filters is passed to ReportsWebApp even if the Custom group is disabled [#2951].
-- The extension stopped working because of intersection of dynamic rules IDs [#2953].
+- カスタムグループが無効になっている場合でも、カスタムフィルタの一覧がReportWebAppに渡されます[#2951]。
+- 動的ルール ID [#2953] の交差点で動作を停止します。
 
 [5.0.97]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.97
-<!-- TODO: worth changing url after v5.0 branch merging into master -->
+<!--TODO: v5.0 ブランチをマスターにマージした後に URL を変更する価値 -->
 <!-- [5.0.97]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v5.0.91...v5.0.97 -->
 [#2951]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2951
 [#2953]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2953
 
 ## [5.0.91] - 2024-09-19
 
-The extension is now fully compatible with MV3.
+拡張子はMV3と完全に互換性があります。
 
 [5.0.91]: https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.0.91
 
 ## [4.4.22] - 2024-08-30
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tsurlfilter] to v3.0.1.
-- Updated [@adguard/tswebextension] to v2.0.1.
-- Updated [@adguard/scriptlets] to v1.11.16.
+- [@adguard/tsurlfilter] を v3.0.1 に更新しました。
+- [@adguard/tswebextension] を v2.0.1 に更新しました。
+- [@adguard/scriptlets] を v1.11.16 に更新しました。
 
-### Fixed
+### 固定式
 
-- Negated domains in the `$to` modifier are not working as expected [#2910].
-- Redirect rule blocks request in the Spotify player instead of redirecting [#2913].
+- ネゲートドメイン`$to`修飾子は期待どおりに動作しません [#2910].
+- [#2913] をリダイレクトする代わりに、Spotify プレーヤーで規則ブロックリクエストをリダイレクトします。
 
 [4.4.22]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.4.18...v4.4.22
 [#2910]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2910
@@ -786,34 +786,34 @@ The extension is now fully compatible with MV3.
 
 ## [4.4.18] - 2024-08-19
 
-### Added
+### 追加
 
-- `HybridStorage` for storing data via IndexedDB with fallback to `chrome.storage.local`.
-- Syntax highlighting for `$permissions` modifier in the rule editor.
-- [@adguard/agtree] for working with rules tree.
+- `HybridStorage`フォールバックでインデックス化されたDB経由でデータを保存するために`chrome.storage.local`.
+- Syntax のハイライト`$permissions`ルールエディタの修飾子。
+- [@adguard/agtree] ルールツリーと連携
 
-### Changed
+### 変更内容
 
-- Exported settings file name to standardized way to make it consistent with other AdGuard products [#2607].
-- Filter lists are now stored in a pre-processed format, which makes the engine start more efficiently,
-  since the engine does not need to convert or parse the rules.
-- Updated [@adguard/tswebextension] to v2.0.0.
-- Updated [@adguard/tsurlfilter] to v3.0.0.
-- Updated [@adguard/scriptlets] to v1.11.6.
+- エクスポートされた設定ファイル名は、他のAdGuard製品[#2607]と一致させるために標準化された方法で作成します。
+- フィルターリストは前処理されたフォーマットで保存され、エンジンがより効率的に始動させます、
+エンジンはルールを変換または解析する必要はありません。
+- [@adguard/tswebextension] を v2.0.0 に更新しました。
+- [@adguard/tsurlfilter] を v3.0.0 に更新しました。
+- [@adguard/scriptlets] を v1.11.6 に更新しました。
 
-### Fixed
+### 固定式
 
-- Filtering log gets refreshed when navigating yandex maps [#2519].
-- Filtering log is broken by `history.replaceState` [#2598].
-- Style filter is applied, but scriptlet filter is not in Firefox [#2782].
-- Missing info on custom filters when reporting issues [#2793].
-- Some filters are not updated when enabled [#2818].
-- Can't set notifications viewed.
-- Console errors on the background page when opening `chrome://new-tab-page/`.
-- `$permissions` rules are not shown in the filtering log.
-- Extension's action icon flickering on tab change.
-- Filters auto updates not refreshing `last updated date` field [#2726].
-- Extension's action icon flickering on tab change.
+- ヤンデックスマップ(#2519)をナビゲートすると、ログのフィルタリングがリフレッシュされます。
+- ログのフィルタリングは、`history.replaceState` [#2598].
+- スタイルフィルタは適用されますが、スクリプトレットフィルタはFirefox [#2782] ではありません。
+- [#2793] を報告するときにカスタムフィルタに関する情報を欠く。
+- [#2818] を有効にしたときに一部のフィルタは更新されません。
+- 表示された通知を設定することはできません。
+- 開いたときに背景ページのコンソールエラー`chrome://new-tab-page/`.
+- `$permissions`フィルタリングログにルールが表示されません。
+- タブ変更時に拡張機能のアクションアイコンがフリッカリングされます。
+- フィルター自動更新はさっぱりしない`last updated date`フィールド [#2726].
+- タブ変更時に拡張機能のアクションアイコンがフリッカリングされます。
 
 [4.4.18]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.3.64...v4.4.18
 [#2519]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2519
@@ -826,23 +826,23 @@ The extension is now fully compatible with MV3.
 
 ## [4.3.64] - 2024-07-10
 
-### Fixed
+### 固定式
 
-- Popup menu does not open in Firefox Nightly [#2817].
+- Firefox Nightly [#2817] でポップアップメニューが開きます。
 
 [4.3.64]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.3.53...v4.3.64
 [#2817]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2817
 
 ## [4.3.53]
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tswebextension] to v1.0.24.
+- [@adguard/tswebextension] を v1.0.24 に更新しました。
 
-### Fixed
+### 固定式
 
-- Do not throw an error during cookie setting if a cookie domain mismatches a request URL [#2683].
-- Script rules are not applied in Firefox due to CSP [#1733].
+- Cookie ドメインがリクエスト URL [#2683] と一致した場合、Cookie 設定中にエラーを投げないでください。
+- スクリプトルールは、CSP [#1733] による Firefox では適用されません。
 
 [4.3.53]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.3.46...v4.3.53
 [#2683]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2683
@@ -850,26 +850,26 @@ The extension is now fully compatible with MV3.
 
 ## [4.3.46] - 2024-04-08
 
-### Added
+### 追加
 
-- [@adguard/logger] for logging messages.
+- ログインメッセージの[@adguard/logger]
 
-### Changed
+### 変更内容
 
-- Raw filters are stored as strings.
-- Updated [@adguard/filters-downloader] to v2.2.0.
-- Updated [@adguard/tsurlfilter] to v2.2.18.
-- Updated [@adguard/tswebextension] to v1.0.22.
-- Updated [@adguard/scriptlets] to v1.10.25.
+- 未加工フィルターは文字列として保存されます。
+- [@adguard/filters-downloader] を v2.2.0 に更新しました。
+- [@adguard/tsurlfilter] を v2.2.18 に更新しました。
+- [@adguard/tswebextension] を v1.0.22 に更新しました。
+- [@adguard/scriptlets] を v1.10.25 に更新しました。
 
-### Fixed
+### 固定式
 
-- The install process stops if filters.js is unreachable [#2761].
-- Do not fetch diff updates until the next full update, if some fatal error occurred during the last update [#2717].
-- Check filter checksum after it was downloaded [#2681].
-- Assistant iframe styles are affected by cosmetic rules specific for websites [#1848].
-- Applying of modifiers `$popup` and `$all` [#2620], [#2728].
-- Update recommended filters on enabling group of filters and on locale detection [#2714].
+- インストールプロセスは、filter.js が到達不可能な場合は停止します [#2761]。
+- 最後の更新中にいくつかの致命的なエラーが発生した場合は、次のフルアップデートまでdiffの更新をフェッチしないでください[#2717]。
+- ダウンロード後にフィルターチェックサムをチェック [#2681].
+- アシスタント iframe スタイルは、ウェブサイト [#1848] に固有の化粧品規則の影響を受けます。
+- 修飾子の適用`$popup`そして、`$all` [#2620], [#2728].
+- 推奨フィルタを更新し、フィルタと局所検出のグループを有効にします [#2714].
 
 [4.3.46]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.3.35...v4.3.46
 [#2761]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2761
@@ -880,10 +880,10 @@ The extension is now fully compatible with MV3.
 
 ## [4.3.35] - 2024-03-28
 
-### Fixed
+### 固定式
 
-- Update notification leading to release notes when on beta [#2682].
-- The filters revert to the pre-installed ones when importing settings [#2735].
+- ベータ[#2682]のときにリリースノートにつながる通知を更新します。
+- 設定[#2735]をインポートすると、フィルタはプリインストールされたものに戻ります。
 
 [4.3.35]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.3.31...v4.3.35
 [#2682]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2682
@@ -891,23 +891,23 @@ The extension is now fully compatible with MV3.
 
 ## [4.3.31] - 2024-03-11
 
-### Changed
+### 変更内容
 
-- Check diff updates once in a hour.
-- Updated [@adguard/tswebextension] to v1.0.16.
-- Updated [@adguard/tsurlfilter] to v2.2.15.
-- Updated [@adguard/scriptlets] to v1.10.1.
+- 一度にdiffの更新をチェックしてください。
+- [@adguard/tswebextension] を v1.0.16 に更新しました。
+- [@adguard/tsurlfilter] を v2.2.15 に更新しました。
+- [@adguard/scriptlets] を v1.10.1 に更新しました。
 
-### Fixed
+### 固定式
 
-- Memory leak with parsed tags from filter rules.
-- Applying of `$all` modifier rules [#2620].
-- Settings fail to open on the very first attempt [#2712].
-- All groups and filters are disabled after installation [#2713].
-- Custom filter adding modal [#2715].
-- Send `stealth.block_trackers` during issues reporting [#2721].
-- `$popup` modifier block other types of resources [#2723].
-- `$popup` should not disable simple blocking rule [#2728].
+- フィルタールールからパースされたタグでメモリリーク。
+- 申し込み`$all`修飾子ルール [#2620].
+- 設定は最初の試み[#2712]で開くことができません。
+- すべてのグループとフィルタは、インストール後に無効になっています [#2713].
+- modal [#2715] を加える習慣 フィルター。
+- お問い合わせ`stealth.block_trackers`問題報告中 [#2721].
+- `$popup`修飾子は、他の種類のリソースをブロック [#2723].
+- `$popup`単純なブロックルール[#2728]を無効にしないでください。
 
 [4.3.31]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.3.13...v4.3.31
 [#2620]: https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2620
@@ -920,210 +920,210 @@ The extension is now fully compatible with MV3.
 
 ## [4.3.14] - 2024-06-02
 
-### Fixed
+### 固定式
 
-- Cosmetic rules do not work in Opera [#2704](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2704) and [#2705](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2705).
+- 化粧品規則はオペラで動作しません [#2704](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2704) および [#2705] (https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2705).
 
 ## [4.3.13] - 2024-01-30
 
-### Added
+### 追加
 
-- Added Edge and Opera dev build.
-- Detecting dangerous rules.
+- Edge と Opera dev のビルドを追加しました。
+- 危険なルールの検出
 
-### Fixed
+### 固定式
 
-- Not all Custom filters shown [#2693](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2693).
+- [#2693] を表示したすべてのカスタム フィルターではありません(https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2693).
 
 ## [4.3.10] - 2024-01-20
 
-### Fixed
+### 固定式
 
-- Automatic filters update does not work in mobile browsers [#2423](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2423).
+- 自動フィルタの更新は、モバイルブラウザで動作しません[#2423](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2423).
 
-## Changed
+## 変更内容
 
-- Updated [@adguard/filters-downloader] to v2.0.7.
+- [@adguard/filters-downloader] を v2.0.7 に更新しました。
 
 ## [4.3.4] - 2024-01-16
 
-### Added
+### 追加
 
-- Getting user consent on annoyances filter enabling.
+- 迷惑なフィルターを有効にして、ユーザーの同意を得ること。
 
-### Fixed
+### 固定式
 
-- Fixed compatibility for minimum supported versions [#2661](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2661).
-- Filters group not opening if some text is selected on the page [#2662](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2662).
+- 最小サポートバージョンの互換性を修正しました。 [#2661](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2661).
+- 一部のテキストがページ[#2662]で選択されていない場合は、グループが開かないようにします(https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2662).
 
-### Changed
+### 変更内容
 
-- Download and apply differential updates [#2586](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2586).
-- Updated [@adguard/tswebextension] to v1.0.8.
-- Updated [@adguard/tsurlfilter] to v2.2.9.
-- Updated [@adguard/scriptlets] to v1.9.105.
-- Updated [@adguard/filters-downloader] to v2.0.4.
+- 差分更新プログラムのダウンロードと適用 [#2586](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2586).
+- [@adguard/tswebextension] を v1.0.8 に更新しました。
+- [@adguard/tsurlfilter] を v2.2.9 に更新しました。
+- [@adguard/scriptlets] を v1.9.105 に更新しました。
+- [@adguard/filters-downloader] を v2.0.4 に更新しました。
 
 ## [4.2.240] - 2023-12-15
 
-### Added
+### 追加
 
-- Info about `@adguard/tswebextension`, `@adguard/tsurlfilter`, `@adguard/extended-css` and `@adguard/scriptlets` versions to the options page's About tab [#2237](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2237).
+- 新着情報`@adguard/tswebextension`, `@adguard/tsurlfilter`, `@adguard/extended-css`そして、`@adguard/scriptlets`[#2237] タブの [オプション] のページの [#2237] (https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2237).
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tswebextension] to v1.0.5.
-- Updated [@adguard/tsurlfilter] to v2.2.8.
-- Updated [@adguard/scriptlets] to v1.9.101.
+- [@adguard/tswebextension] を v1.0.5 に更新しました。
+- [@adguard/tsurlfilter] を v2.2.8 に更新しました。
+- [@adguard/scriptlets] を v1.9.101 に更新しました。
 
-### Fixed
+### 固定式
 
-- `$$` rules break encoding on some websites [#2249](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2249).
-- TSUrlFilter library loading by Fullscreen User Rules Editor
+- `$$`いくつかのウェブサイトでエンコーディングを区切るルール [#2249](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2249).
+- フルスクリーンユーザールールエディタによる TSUrlFilter ライブラリの読み込み
   [#2412](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2412).
-- Displaying of Stealth Mode modified cookie rules in Filtering log as "Modified".
+- Stealth Mode 変更された Cookie ルールを「修正」としてフィルタリングログに表示します。
   [#2512](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2512).
-- Highlighting of `$inline-font` and `$inline-script`
+- ハイライト`$inline-font`そして、`$inline-script`
   [#2609](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2609).
-- Scriptlets logging in browser console only if Filtering log is opened
+- フィルターログが開いた場合にのみブラウザコンソールでロギングスクリプト
   [#2584](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2584).
-- Filters updating notification styles
+- 通知スタイルを更新するフィルタ
   [#2309](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2309).
 
 ## [4.2.228] - 2023-11-27
 
-### Fixed
+### 固定式
 
-- Logging of cosmetic rules applying.
+- 化粧品規則の適用の記録。
 
 ## [4.2.226] - 2023-11-22
 
-### Added
+### 追加
 
-- Macedonian language support [#2574](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2574).
+- マケドニア語のサポート [#2574](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2574).
 
-### Changed
+### 変更内容
 
-- Remove "AdGuard settings..." from context menu on options.html [#2258](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2258).
-- Updated [@adguard/tswebextension] to v0.4.6.
-- Updated [@adguard/tsurlfilter] to v2.2.6.
-- Updated [@adguard/filters-downloader] to v1.1.23.
-- Updated [@adguard/scriptlets] to v1.9.96.
+- Options.html のコンテキストメニューから「管理設定...」を削除します。 [#2258](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2258).
+- [@adguard/tswebextension] を v0.4.6 に更新しました。
+- [@adguard/tsurlfilter] を v2.2.6 に更新しました。
+- [@adguard/filters-downloader] を v1.1.23 に更新しました。
+- [@adguard/scriptlets] を v1.9.96 に更新しました。
 
-### Fixed
+### 固定式
 
-- Filtering log not opening on Firefox for Android [#2563](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2536).
-- Firefox Mobile not being correctly picked on a `Report an issue` page [2250](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2250).
-- Filtering log crash on blocking requests, which were already allowlisted from applying `$removeparam`, `$removeheader` or `$csp` rules [#2534](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2534).
-- Do not use `zh-CN` localized metadata for `zh-TW` browser language
+- Android用Firefoxでログを開かないようにする [#2563](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2536).
+- Firefox Mobileは正しく選択されていない`Report an issue`ページ [2250](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2250).
+- ブロックリクエストでログのクラッシュをフィルタリングし、すでに許可されているため、申請から`$removeparam`, `$removeheader`または`$csp`ルール [#2534](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2534).
+- 使用しないでください`zh-CN`ローカライズされたメタデータ`zh-TW`ブラウザ言語
   [#2504](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2504).
-- Collect logs only when filtering log is open [#2544](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2544).
-- Cannot add a custom filter list with a .php URL [#1723](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/1723).
+- ログをフィルタリングする際にのみログを収集 [#2544](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2544).
+- .php URL [#1723] でカスタムフィルタリストを追加できません。(https://github.com/AdguardTeam/AdguardBrowserExtension/issues/1723).
 
 ## [4.2.209] - 2023-11-01
 
-### Fixed
+### 固定式
 
-- Resync event listeners after background page wakes up.
+- バックグラウンドページがウェイクアップした後、イベントリスナーを再同期します。
 
 ## [4.2.208] - 2023-10-23
 
-### Added
+### 追加
 
-- Send `system_version` during issues reporting
+- お問い合わせ`system_version`問題報告中
   [#2535](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2535).
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/filters-downloader] to v1.1.20.
-- Updated [@adguard/tswebextension] to v0.4.1.
-- Updated [@adguard/tsurlfilter] to v2.2.1.
-- Updated [@adguard/scriptlets] to v1.9.72.
-- Removed gutter of tab buttons on extension's settings page [#2198](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2198).
+- [@adguard/filters-downloader] を v1.1.20 に更新しました。
+- [@adguard/tswebextension] を v0.4.1 に更新しました。
+- [@adguard/tsurlfilter] を v2.2.1 に更新しました。
+- [@adguard/scriptlets] を v1.9.72 に更新しました。
+- 拡張設定画面のタブボタンの削除 [#2198]()https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2198).
 
-### Fixed
+### 固定式
 
-- Rule patterns and options not being clickable in rule wizard of filtering log [#2204](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2204).
+- ルールパターンとオプションは、フィルタリングログの規則ウィザードでクリックできません [#2204](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2204).
 
 ## [4.2.189] - 2023-10-09
 
-### Added
+### 追加
 
-- Fixed stealth mode toggle not triggering configuration reload.
-- CSP `trusted-types` directive modifying for response headers
+- 設定リロードをトリガーしないステルスモードのトグルを修正しました。
+- CSPについて`trusted-types`レスポンスヘッダ用のディレクティブ変更
   [#2068](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2068).
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tswebextension] to v0.3.21.
-- Updated [@adguard/tsurlfilter] to v2.1.12.
+- v0.3.21に[@adguard/tswebextension]を更新しました。
+- [@adguard/tsurlfilter] を v2.1.12 に更新しました。
 
-### Fixed
+### 固定式
 
-- Slow enabling of recommended filters on first group activation
+- 推奨フィルタをグループ1回有効に
   [#2431](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2431).
-- User rules not filtering duplicates on importing
+- インポート時に重複をフィルタリングしないユーザルール
   [#2446](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2446).
-- Rule wizard bug with advanced modifier rules
+- ルールウィザードのバグと高度な修飾ルール
   [#2456](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2456).
-- Translation language detection for Filter download page
+- フィルターダウンロード画面の翻訳言語検出
   [#2430](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2430)
-- Do not block a tab loading by `$popup` modifier rule on direct url navigation
+- タブの読み込みをブロックしないでください`$popup`直接URLナビゲーション上の修飾ルール
   [#2449](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2449).
-- Filtering log focus on the active tab
+- アクティブタブにログをフィルタリングする
   [#2482](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2482).
-- Displaying of applied Stealth Mode options in filtering log request details
+- ログリクエストの詳細をフィルタリングする際に適用されるステルスモードオプションの表示
   [#2455](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2455).
-- Updating of tab title in Filtering log's Tab selector
+- ログのタブセレクタをフィルタリングするタブタイトルの更新
   [#2428](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2428).
-- Displaying of Stealth Mode cookie filtering log events as applied by Stealth Mode
+- Stealth モードによって加えられるようにログでき事をろ過する Stealth モード Cookie の表示
   [#2487](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2487).
-- Csp rules breaking rule wizard on unblocking
+- ブロック解除のルールを破るCspルール
   [#2448](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2448).
-- AdGuard v4.2.168 is not working in the Firefox after update
+- AdGuard v4.2.168 は更新後に Firefox で動作しません
   [#2501](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2501).
 
 ## [4.2.168] - 2023-09-07
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tsurlfilter] to v2.1.11.
-- Updated [@adguard/tswebextension] to v0.3.16.
-- Updated [@adguard/scriptlets] to v1.9.72.
+- [@adguard/tsurlfilter] を v2.1.11 に更新しました。
+- [@adguard/tswebextension] を v0.3.16 に更新しました。
+- [@adguard/scriptlets] を v1.9.72 に更新しました。
 
-### Fixed
+### 固定式
 
-- Extension started downloading filters too often.
-- Custom filters names not displaying if added while filtering log is open.
-- Do not inject content scripts to the chrome web store pages on extension initialization.
-- Blocked CSP reports are not filtered by "Blocked" in the filtering log.
-- Redirects are not included into tab's blocked requests count
+- エクステンションは頻繁にフィルタのダウンロードを開始しました。
+- ログをフィルタリングしているときに追加されていないカスタムフィルタ名が開きます。
+- 拡張初期化の chrome の Web ストア ページにコンテンツ スクリプトを注入しないでください。
+- ブロックされたCSPレポートは、フィルタリングログの「ブロック」でフィルタリングされていません。
+- リダイレクトはタブのブロックされたリクエストカウントに含まれていません。
   [#2443](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2443).
 
 ## [4.2.162] - 2023-08-28
 
-### Changed
+### 変更内容
 
-- Updated [@adguard/tsurlfilter] to v2.1.10.
-- Updated [@adguard/tswebextension] to v0.3.11.
-- Updated [@adguard/scriptlets] to v1.9.70.
+- [@adguard/tsurlfilter] を v2.1.10 に更新しました。
+- [@adguard/tswebextension] を v0.3.11 に更新しました。
+- [@adguard/scriptlets] を v1.9.70 に更新しました。
 
-### Fixed
+### 固定式
 
-- Custom filters names not being displayed if added while filtering log is open.
-- Do not inject content scripts to the chrome web store pages on extension initialization.
+- ログをフィルタリング中に追加しても表示されていないカスタムフィルタ名。
+- 拡張初期化の chrome の Web ストア ページにコンテンツ スクリプトを注入しないでください。
 
 ## [4.2.151] - 2023-08-11
 
-### Added
+### 追加
 
-- [@adguard/tswebextension](https://github.com/AdguardTeam/tsurlfilter/blob/master/packages/tswebextension/README.md) MV2 integration.
+- [@adguard/tswebextension]()https://github.com/AdguardTeam/tsurlfilter/blob/master/packages/tswebextension/README.md) MV2の統合。
 
-### Changed
+### 変更内容
 
-- Moved Adguard API to separate package — [@adguard/api](https://www.npmjs.com/package/@adguard/api).
-- Updated [@adguard/tsurlfilter] to v2.1.7.
-- Updated [@adguard/scriptlets] to v1.9.62.
+- Adguard API を別のパッケージに移動しました。 [@adguard/api](https://www.npmjs.com/package/@adguard/api).
+- [@adguard/tsurlfilter] を v2.1.7 に更新しました。
+- [@adguard/scriptlets] を v1.9.62 に更新しました。
 
 [4.3.14]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.3.13...v4.3.14
 [4.3.13]: https://github.com/AdguardTeam/AdguardBrowserExtension/compare/v4.3.10...v4.3.13
