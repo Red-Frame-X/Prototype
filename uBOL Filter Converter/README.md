@@ -93,3 +93,7 @@ GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home
 
 - [uBOL Changelog](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)
 - [外部フィルタリスト購読機能の実装コミット](https://github.com/gorhill/uBlock/commit/06deb19dfa85c13e48ad44d2e6dc4f64a96d6cbc)
+
+## 日本語CHANGELOG
+
+- [uBlock Origin Lite](upstream/ubol-CHANGELOG.md)
