@@ -10,15 +10,7 @@ ChromeOS & Android 最適化ガイド
 | **License** | CC0-1.0 |
 | **Version** | 20260820 |
 
-この備忘録は CC0 ライセンスの下で提供します。（This work is licensed under CC0 1.0 Universal）
-* [コモンズ証 - CC0 1.0 全世界 - Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.ja)
-
-**【免責・例外】** ただし、以下の内容は本ライセンスの適用外であり、それぞれの権利者が著作権を保有しています。
-- 引用等で示された第三者の文章
-- 紹介しているソフトウェア、アプリ、拡張機能の名称および公式の製品説明文
-- リンク先のコンテンツ
-
-※ 記述内容は個人の検証に基づくものであり、正確性を保証するものではありません。
+ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
 ## Subscription
 Googleの多くのサービスでは、年額サブスクリプションを「月額 × 約10か月分」の料金で提供しており、割安になります。

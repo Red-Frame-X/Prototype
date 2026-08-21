@@ -24,3 +24,5 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 - [`Collapse Comments on this Issues.md`](Collapse%20Comments%20on%20this%20Issues.md)：Issueで長文を折りたたむためのスニペット
 
 各文書には作成時点の情報が含まれます。特にOS、アプリ、フィルタ構文は更新されるため、実行前に文書の日付とリンク先の公式情報も確認してください。
+
+文書のライセンス、第三者コンテンツの扱いおよび無保証については、共通の[`LICENSES.md`](../LICENSES.md)を参照してください。
