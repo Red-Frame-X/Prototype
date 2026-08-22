@@ -1,68 +1,99 @@
-[![FLOSS Support](https://img.shields.io/badge/FLOSS-Supported-3DA639?style=flat&logo=opensourceinitiative&logoColor=white)](https://opensource.org/)
-
-![syntax: AdGuard](https://img.shields.io/badge/syntax-AdGuard-68BC71?logo=adguard&logoColor=white)
-[![syntax: uBOL](https://img.shields.io/badge/syntax-uBOL-800000?logo=ublockorigin&logoColor=white)](https://github.com/Red-Frame-X/Prototype/tree/main/uBOL%20Filter%20Converter)
-![syntax: Regex](https://img.shields.io/badge/syntax-Regex-009688)
-
-![language: JavaScript](https://img.shields.io/badge/language-JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![language: Python](https://img.shields.io/badge/language-Python-3776AB?logo=python&logoColor=white)
-![language: Markdown](https://img.shields.io/badge/language-Markdown-000000?style=flat&logo=markdown&logoColor=white)
-
 # Prototype
-以下のものは、個人的に使用するために作成したものです。
 
-The following items were created for my personal use.
+[![Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml)
+[![Sync AdGuard filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml)
+[![Build uBO Lite filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml)
 
-* [AdGuard Custom Rules](https://github.com/Red-Frame-X/Prototype/tree/main/AdGuard%20Custom%20Rules)
-* [uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/tree/main/uBOL%20Filter%20Converter)
-* [uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/tree/main/dist)
-* [UserScript](https://github.com/Red-Frame-X/Prototype/tree/main/UserScript)
-* [NG Word Regex for ChMate](https://github.com/Red-Frame-X/Prototype/tree/main/NG%20Word%20Regex%20for%20ChMate)
-* [Markdown Notes](https://github.com/Red-Frame-X/Prototype/tree/main/Markdown%20Notes)
+ChromeOS・Android・コンテンツブロックに関する、個人利用向けのフィルタ、
+UserScript、正規表現、技術メモをまとめたリポジトリです。
 
-### Contact
-* User Name：Red Frame X
-* 𝕏：[Red_Frame_X](https://x.com/Red_Frame_X)
-* mond：[Red Frame X](https://mond.how/ja/Red_Frame_X)
+> [!IMPORTANT]
+> 個人環境で検証した内容であり、すべての端末・サイトでの動作は保証しません。
+> フィルタやスクリプトは、少数ずつ導入して誤ブロックや表示崩れを確認してください。
 
----
+## 目的から選ぶ
 
-### About Me
-「IT学習の一環」として、デバイス設定の記録、各種ファイルや備忘録の作成、およびコンテンツブロックフィルタやソフトウェアに関するフィードバック活動を行っています。
+| 目的 | 推奨コンテンツ | 対象 |
+| --- | --- | --- |
+| AdGuardで個人用ルールを使う | [AdGuard Custom Rules](AdGuard%20Custom%20Rules/) | AdGuard Browser Extension／Android／DNS |
+| AdGuard用ルールをuBO Liteで使う | [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/) | uBlock Origin Lite 2026.621.1813以降 |
+| kdroidwinフィルタをAdGuard MV3で使う | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | 主にAdGuard Browser Extension MV3 |
+| 𝕏・YouTubeの表示を調整する | [UserScript](UserScript/) | Tampermonkeyなど |
+| ChMateでNGワードを設定する | [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMate |
+| ChromeOS・Android等の手順を読む | [Markdown Notes](Markdown%20Notes/) | 技術メモ／調査資料 |
 
-As part of my "IT learning," I am documenting device settings, creating various files and memos, and providing feedback on content-blocking filters and software.
+## フィルタを購読する
 
-#### Activities & Environments
-* Report Filter Issues / Send feedback to Google / 開発者・サイト運営者様への報告
-* 動作環境：ChromeOS / Android / Google Chrome
-* 情報収集：国内外の技術コミュニティやソフトウェア関連フォーラム
+### AdGuard Custom Rules - Red Frame X
 
----
+```text
+https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt
+```
 
-### Community Contributions
-これらは、私がフィードバックやバグ報告を通じて協力しているプロジェクトです。
+### uBOL Filter - Red Frame X
 
-These are the projects I contribute to by providing feedback and reporting bugs.
+```text
+https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt
+```
 
-* **[AdguardTeam / AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**：AdGuard公式 - コンテンツブロック用フィルタ
-* **[AdguardTeam / AdGuardSDNSFilter](https://github.com/AdguardTeam/AdGuardSDNSFilter)**：AdGuard公式 - DNSブロック互換フィルタ
-* **[Yuki2718 / adblock2](https://github.com/Yuki2718/adblock2)**：AdGuard / uBlock Origin個人用フィルタ
-* **[Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)**：詐欺サイト・悪質アフィリエイトサイト対策用フィルタ
-* **[Google Issue Tracker](https://issuetracker.google.com/home)**：Googleプロダクトのバグ・機能リクエスト管理
+### uB-filter-by-kdroidwin (AdGuard Optimized)
 
----
+```text
+https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt
+```
 
-### Projects I Support
-日常的に使用しており、定期的に支援しているプロジェクトです。
+各フィルタの対応機能、導入手順、変換で除外されるルールは、リンク先のREADMEを
+確認してください。uBO Lite用生成版とAdGuard用生成版は、元フィルタと完全に同じ
+動作にはなりません。互換性を安全に判断できないルールは、誤変換を避けるため除外
+またはコメントアウトしています。
 
-These are projects that I use on a daily basis and support regularly.
+## リポジトリ構成
 
-* **[Support Morphe - Donate](https://morphe.software/donate)**：[Morphe](https://github.com/morpheapp) の開発・改善の支援 ‐ Androidアプリのカスタマイズツール
-* **[Donations - Zenz Solutions](https://www.zenz-solutions.de/donations/)**：[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android&hl=ja-JP) - プライバシーを保護するDNSフィルタリングアプリ
-* **[Gerd is HaGeZi DNS Blocklists](https://buymeacoffee.com/hagezi)**：[HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists) - 誤検知の少ない厳選DNSブロックリスト
+| パス | 内容 |
+| --- | --- |
+| `AdGuard Custom Rules/` | Webフィルタ、DNSルール、AdGuard CHANGELOGミラー |
+| `uBOL Filter Converter/` | uBO Lite向け変換処理、テスト、生成物、変換レポート |
+| `dist/` | kdroidwinフィルタのAdGuard向け生成物 |
+| `UserScript/` | 𝕏・YouTube向けUserScript |
+| `NG Word Regex for ChMate/` | ChMate向けJava正規表現 |
+| `Markdown Notes/` | ChromeOS、Android、広告ブロック、GitHub関連資料 |
+| `scripts/`、`tests/` | AdGuard向け変換・更新処理と回帰テスト |
+| `config/`、`upstream/` | 変換能力の定義と上流情報の追跡データ |
 
----
+## 自動更新と品質確認
 
-### License
+GitHub Actionsで次を自動化しています。
 
-自身で作成したコンテンツは原則として [CC0 1.0 Universal](LICENSE) で提供します。第三者作品を基にしたファイルには、原作品のライセンスが適用されます。対象範囲、GPL-3.0の派生物、例外および無保証については[`LICENSES.md`](LICENSES.md)を参照してください。
+- Pythonの回帰テスト、UserScript構文検査、Markdownlint、AGLint
+- `uB-filter-by-kdroidwin (AdGuard Optimized)`の定期同期と変換
+- `uBOL Filter - Red Frame X`の再生成と変換レポートの更新
+- AdGuardおよびuBO Liteの公式CHANGELOGの定期確認
+
+ローカルで主要な検査を実行する場合：
+
+```bash
+npm ci
+python -m unittest discover -s tests -v
+python -m unittest discover -s "uBOL Filter Converter/tests" -v
+npm run lint:markdown
+npm run lint:adguard
+```
+
+## 方針
+
+- 上流の仕様、公開ソース、CHANGELOGを優先して確認します。
+- 互換性を推測だけで拡張せず、回帰テストを追加してから変換処理を変更します。
+- 誤ブロック、互換性、性能、保守性のバランスを重視します。
+- 自動生成物は直接編集せず、原本または変換処理を修正します。
+
+## Contact
+
+- User Name: Red Frame X
+- 𝕏: [@Red_Frame_X](https://x.com/Red_Frame_X)
+- mond: [Red Frame X](https://mond.how/ja/Red_Frame_X)
+
+## License
+
+自身で作成したコンテンツは原則として[CC0 1.0 Universal](LICENSE)で提供します。
+第三者作品を基にしたファイルには原作品のライセンスが適用されます。対象範囲、
+GPL-3.0の派生物、例外、無保証については[LICENSES.md](LICENSES.md)を参照してください。
