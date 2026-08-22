@@ -22,31 +22,6 @@ UserScript、正規表現、技術メモをまとめたリポジトリです。
 | ChMateでNGワードを設定する | [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMate |
 | ChromeOS・Android等の手順を読む | [Markdown Notes](Markdown%20Notes/) | 技術メモ／調査資料 |
 
-## フィルタを購読する
-
-### AdGuard Custom Rules - Red Frame X
-
-```text
-https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt
-```
-
-### uBOL Filter - Red Frame X
-
-```text
-https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt
-```
-
-### uB-filter-by-kdroidwin (AdGuard Optimized)
-
-```text
-https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt
-```
-
-各フィルタの対応機能、導入手順、変換で除外されるルールは、リンク先のREADMEを
-確認してください。uBO Lite用生成版とAdGuard用生成版は、元フィルタと完全に同じ
-動作にはなりません。互換性を安全に判断できないルールは、誤変換を避けるため除外
-またはコメントアウトしています。
-
 ## リポジトリ構成
 
 | パス | 内容 |
