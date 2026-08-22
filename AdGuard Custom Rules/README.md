@@ -15,7 +15,7 @@ AdGuard向けの個人用フィルタです。Webページ用ルールとDNS用�
 
 これらは個人環境向けです。アプリ専用の`$app`、高度なコスメティックルール、許可ルールは環境により動作や副作用が異なります。必要なルールだけを選んで利用してください。
 
-uBlock Origin Liteで利用する場合は、互換性のないルールを除外した[`uBOL Filter Converter`](../uBOL%20Filter%20Converter/)の生成版を使用してください。
+uBlock Origin Liteで利用する場合は、互換性のないルールを除外した生成版[`uBOL Filter - Red Frame X`](../uBOL%20Filter%20Converter/)を使用してください。
 
 ## CHANGELOG追跡とコンバータ更新
 
