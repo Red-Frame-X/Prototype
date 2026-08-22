@@ -111,7 +111,11 @@ class MainOutputTests(unittest.TestCase):
             source = root / "source.txt"
             output = root / "output.txt"
             report = root / "report.json"
-            source.write_text("! example.com\n! Ad container\nexample.com##.ad\n", encoding="utf-8")
+            source.write_text(
+                "! Version: 202608221705\n"
+                "! example.com\n! Ad container\nexample.com##.ad\n",
+                encoding="utf-8",
+            )
             args = [
                 "--input", str(source),
                 "--output", str(output),
@@ -126,9 +130,24 @@ class MainOutputTests(unittest.TestCase):
             self.assertEqual(output.read_bytes(), first_output)
             self.assertEqual(report.read_bytes(), first_report)
             self.assertNotIn("generated", json.loads(first_report))
-            self.assertTrue(
-                first_output.startswith(b"! Title: uBOL Filter - Red Frame X\n")
-            )
+            expected_header = (
+                "! Title: uBOL Filter - Red Frame X\n"
+                "! Description: Customize uBOL filters for personal use.\n"
+                "! Version: 202608221705\n"
+                "! Syntax: uBOL\n"
+                "! Expires: 1 day\n"
+                "! Homepage: https://github.com/Red-Frame-X/Prototype\n"
+                "! License: CC0-1.0\n"
+                "! Note: Combination of Japan’s community-driven rules and my own rules.\n"
+            ).encode()
+            self.assertTrue(first_output.startswith(expected_header))
+
+    def test_missing_source_version_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.txt"
+            source.write_text("example.com##.ad\n", encoding="utf-8")
+            self.assertEqual(converter.main(["--input", str(source)]), 1)
 
 
 if __name__ == "__main__":
