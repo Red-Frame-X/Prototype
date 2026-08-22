@@ -195,6 +195,14 @@ def read_source(source: str) -> str:
     return Path(source).read_text(encoding="utf-8-sig")
 
 
+def extract_source_version(source_text: str) -> str:
+    """Return the canonical Version value from the AdGuard source metadata."""
+    match = re.search(r"^! Version:\s*(\S.*)$", source_text, flags=re.MULTILINE)
+    if not match:
+        raise ValueError("source filter is missing ! Version metadata")
+    return match.group(1).strip()
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     default_dist = Path(__file__).resolve().parent / "dist"
@@ -205,8 +213,9 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         source_text = read_source(args.input)
+        source_version = extract_source_version(source_text)
         rules, excluded = convert(source_text.splitlines())
-    except (OSError, UnicodeError) as error:
+    except (OSError, UnicodeError, ValueError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
 
@@ -214,10 +223,13 @@ def main(argv: list[str] | None = None) -> int:
     # downloaded filter stays compact and stable between builds.
     header = [
         f"! Title: {FILTER_TITLE}",
-        "! Description: AdGuard custom rules conservatively converted for uBO Lite.",
-        "! Homepage: https://github.com/Red-Frame-X/Prototype/tree/main/uBOL%20Filter%20Converter",
+        "! Description: Customize uBOL filters for personal use.",
+        f"! Version: {source_version}",
+        "! Syntax: uBOL",
         "! Expires: 1 day",
+        "! Homepage: https://github.com/Red-Frame-X/Prototype",
         "! License: CC0-1.0",
+        "! Note: Combination of Japan’s community-driven rules and my own rules.",
         "",
     ]
     source_metadata = re.compile(
