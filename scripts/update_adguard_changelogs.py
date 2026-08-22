@@ -6,8 +6,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import time
 import urllib.request
+from urllib.error import HTTPError, URLError
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -21,10 +24,29 @@ VERSION_RE = re.compile(
 IMPACT_RE = re.compile(r"(?i)\b(?:filtering engine|corelibs|scriptlets?|extended css|cosmetic|modifier|filtering rules?|declarative net request|dnr|manifest v3|mv3|html filtering|redirect|removeparam|csp|regex|regular expression)\b")
 
 
-def fetch(url: str) -> bytes:
-    request = urllib.request.Request(url, headers={"Accept": "application/vnd.github+json", "User-Agent": "Prototype-AdGuard-changelog-updater/1.0", "X-GitHub-Api-Version": "2022-11-28"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return response.read()
+def fetch(url: str, attempts: int = 4) -> bytes:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "Prototype-AdGuard-changelog-updater/1.0",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    request = urllib.request.Request(url, headers=headers)
+    for attempt in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return response.read()
+        except HTTPError as error:
+            # Authentication/format errors will not improve with retries.
+            if error.code in {400, 401, 404, 422} or attempt == attempts:
+                raise
+        except (URLError, TimeoutError):
+            if attempt == attempts:
+                raise
+        time.sleep(min(2 ** (attempt - 1), 8))
+    raise RuntimeError("unreachable")
 
 
 def android_releases_to_markdown(payload: bytes) -> bytes:

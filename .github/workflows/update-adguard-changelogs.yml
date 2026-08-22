@@ -13,8 +13,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Serialize every workflow that commits to main; this prevents bot push races.
+  group: repository-content-writers-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -30,6 +31,8 @@ jobs:
         with:
           python-version: '3.12'
       - name: Fetch official AdGuard changelogs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/update_adguard_changelogs.py
       - name: Run updater and converter tests
         run: python -m unittest discover -s tests -v

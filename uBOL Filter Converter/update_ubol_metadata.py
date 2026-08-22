@@ -6,8 +6,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import time
 import urllib.request
+from urllib.error import HTTPError, URLError
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -25,12 +28,24 @@ VERSION_RE = re.compile(r"^### (\d{4}\.\d+\.\d+)\s*$", re.MULTILINE)
 
 def read_source(source: str) -> bytes:
     if source.startswith(("https://", "http://")):
-        request = urllib.request.Request(
-            source,
-            headers={"User-Agent": "Prototype-uBOL-changelog-updater/1.0"},
-        )
-        with urllib.request.urlopen(request, timeout=30) as response:
-            return response.read()
+        headers = {"User-Agent": "Prototype-uBOL-changelog-updater/1.0"}
+        token = os.environ.get("GITHUB_TOKEN")
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+        request = urllib.request.Request(source, headers=headers)
+        attempts = 4
+        for attempt in range(1, attempts + 1):
+            try:
+                with urllib.request.urlopen(request, timeout=30) as response:
+                    return response.read()
+            except HTTPError as error:
+                if error.code in {400, 401, 404, 422} or attempt == attempts:
+                    raise
+            except (URLError, TimeoutError):
+                if attempt == attempts:
+                    raise
+            time.sleep(min(2 ** (attempt - 1), 8))
+        raise RuntimeError("unreachable")
     return Path(source).read_bytes()
 
 
