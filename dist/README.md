@@ -10,7 +10,7 @@
 AdGuard のカスタムフィルタ追加画面に、次のURLを登録してください。
 
 ```text
-https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin_AdG_Optimized.txt
+https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt
 ```
 
 ## 導入方法
@@ -46,7 +46,7 @@ AdGuard 側で更新がすぐに反映されない場合は、カスタムフィ
 ## 原典・ライセンス
 
 - 原典：[Kdroidwin/uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
-- 変換版：[uB-filter-by-kdroidwin_AdG_Optimized.txt](./uB-filter-by-kdroidwin_AdG_Optimized.txt)
+- 変換版：[uB-filter-by-kdroidwin (AdGuard Optimized).txt](./uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)
 - ライセンス：[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
 
 この変換版は無保証で提供されます。

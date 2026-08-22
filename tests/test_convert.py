@@ -2,7 +2,15 @@ import unittest
 from unittest.mock import MagicMock, patch
 from urllib.error import URLError
 
-from scripts.convert import AdGuardOptimizer, CANDIDATE_URLS
+from scripts.convert import AdGuardOptimizer, CANDIDATE_URLS, FILTER_NAME, OUTPUT_FILE
+
+
+class GeneratedFilterNamingTests(unittest.TestCase):
+    def test_filter_name_is_canonical(self):
+        self.assertEqual(FILTER_NAME, "uB-filter-by-kdroidwin (AdGuard Optimized)")
+
+    def test_output_filename_matches_filter_name(self):
+        self.assertTrue(OUTPUT_FILE.endswith(f"dist/{FILTER_NAME}.txt"))
 
 
 class SourceFallbackTests(unittest.TestCase):
