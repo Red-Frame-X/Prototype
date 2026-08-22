@@ -1,6 +1,6 @@
 ! Title: uBOL Filter - Red Frame X
 ! Description: Customize uBOL filters for personal use.
-! Version: 202608230037
+! Version: 202608230320
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -168,6 +168,10 @@ news.yahoo.co.jp###articleCommentModule
 ! njavtv.com
 ! 画面右下に固定表示されるt.rallytrck.websiteの広告iframeを含むコンテナを非表示
 njavtv.com##div.fixed.right-2.bottom-2:has(> div > iframe[src^="https://t.rallytrck.website/"])
+! mayzaent.comの728×90広告iframe通信をnjavtv.com上でブロック
+||go.mayzaent.com/smartpop/^$subdocument,domain=njavtv.com
+! ブロック後に残る728×90広告コンテナを非表示
+njavtv.com##div.mx-auto:has(> iframe[src^="https://go.mayzaent.com/smartpop/"])
 
 ! officeforest.org
 ! IDがoffic-で始まる独自広告・案内コンテナを非表示
