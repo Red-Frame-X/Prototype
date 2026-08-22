@@ -1,12 +1,12 @@
 {
   "source": "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt",
-  "input_lines": 402,
+  "input_lines": 404,
   "output_lines_excluding_generated_header": 313,
-  "excluded_count": 35,
+  "excluded_count": 36,
   "excluded_by_reason": {
     "html-filtering": 3,
     "modifier:app": 9,
-    "procedural-or-style-cosmetic": 21,
+    "procedural-or-style-cosmetic": 22,
     "scriptlet": 2
   },
   "excluded": [
@@ -166,22 +166,27 @@
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(span:contains(関連性の高いユーザー))"
     },
     {
-      "line": 394,
+      "line": 395,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[aria-label=\"タイムライン: 会話\"] [data-testid=\"cellInnerDiv\"]:has(h2:contains(もっと見つける))"
     },
     {
-      "line": 395,
+      "line": 396,
+      "reason": "procedural-or-style-cosmetic",
+      "rule": "x.com#?#div[aria-label=\"タイムライン: 会話\"] [data-testid=\"cellInnerDiv\"]:has(h2:contains(もっと見つける)) ~ div"
+    },
+    {
+      "line": 397,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"] > div span:contains(ユーザー))"
     },
     {
-      "line": 400,
+      "line": 402,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[aria-label=\"タイムライン: コミュニティ\"] div[data-testid=\"cellInnerDiv\"]:has(span:contains(新しいコミュニティを見つける))"
     },
     {
-      "line": 402,
+      "line": 404,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"]:contains(コミュニティを探す))"
     }
