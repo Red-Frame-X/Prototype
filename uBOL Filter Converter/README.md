@@ -1,7 +1,8 @@
-# AdGuard Custom Rules to uBlock Origin Lite Converter
+# uBOL Filter - Red Frame X
 
-AdGuard用カスタムフィルタを、uBlock Origin Lite（uBOL）で購読・利用できる
-外部フィルタリストへ保守的に変換します。
+`uBOL Filter - Red Frame X`は、AdGuard用カスタムフィルタを
+uBlock Origin Lite（uBOL）で購読・利用できる外部フィルタリストへ
+保守的に変換したものです。このディレクトリには生成用コンバータも含まれます。
 
 ## 購読方法（推奨）
 
@@ -10,7 +11,7 @@ URLで購読できます。uBOLのオプションを開き、`Filter lists`の
 `Add filter list…`へ次のRaw URLを入力してください。
 
 ```text
-https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/uBOL%20Filter%20Converter/dist/AdGuard_Custom_Rules_uBOL.txt
+https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt
 ```
 
 追加後は`Imported lists`に表示されます。リスト内のコスメティックフィルタを
@@ -26,7 +27,7 @@ https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/uBOL%20F
 - 汎用コスメティックフィルタ、厳格ブロック、`popup`など、一部機能には対応上の制限があります。
 - 信頼できるURLだけを追加してください。外部リストは更新時にも取得・再コンパイルされます。
 
-手動で使用する場合は、生成された`dist/AdGuard_Custom_Rules_uBOL.txt`の内容を
+手動で使用する場合は、生成された`dist/uBOL Filter - Red Frame X.txt`の内容を
 uBOLの`Custom filters`からインポートできます。ただし、通常は自動更新される
 URL購読を推奨します。
 

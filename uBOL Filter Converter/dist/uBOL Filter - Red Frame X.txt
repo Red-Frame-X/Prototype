@@ -1,4 +1,4 @@
-! Title: AdGuard Custom Rules - Red Frame X (uBO Lite Custom Filters)
+! Title: uBOL Filter - Red Frame X
 ! Description: AdGuard custom rules conservatively converted for uBO Lite.
 ! Homepage: https://github.com/Red-Frame-X/Prototype/tree/main/uBOL%20Filter%20Converter
 ! Expires: 1 day

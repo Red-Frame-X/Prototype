@@ -17,6 +17,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
+FILTER_TITLE = "uBOL Filter - Red Frame X"
+FILTER_BASENAME = "uBOL Filter - Red Frame X"
+
 CANONICAL_SOURCE = (
     "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/"
     "AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt"
@@ -196,8 +199,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     default_dist = Path(__file__).resolve().parent / "dist"
     parser.add_argument("--input", default=DEFAULT_SOURCE, help="input file or HTTP(S) URL")
-    parser.add_argument("--output", default=str(default_dist / "AdGuard_Custom_Rules_uBOL.txt"))
-    parser.add_argument("--report", default=str(default_dist / "AdGuard_Custom_Rules_uBOL.report.json"))
+    parser.add_argument("--output", default=str(default_dist / f"{FILTER_BASENAME}.txt"))
+    parser.add_argument("--report", default=str(default_dist / f"{FILTER_BASENAME}.report.json"))
     args = parser.parse_args(argv)
 
     try:
@@ -210,7 +213,7 @@ def main(argv: list[str] | None = None) -> int:
     # Subscription metadata only.  Operational notes live in README.md so the
     # downloaded filter stays compact and stable between builds.
     header = [
-        "! Title: AdGuard Custom Rules - Red Frame X (uBO Lite Custom Filters)",
+        f"! Title: {FILTER_TITLE}",
         "! Description: AdGuard custom rules conservatively converted for uBO Lite.",
         "! Homepage: https://github.com/Red-Frame-X/Prototype/tree/main/uBOL%20Filter%20Converter",
         "! Expires: 1 day",

@@ -41,8 +41,8 @@ jobs:
       - name: Commit generated outputs if changed
         run: |
           set -euo pipefail
-          output='uBOL Filter Converter/dist/AdGuard_Custom_Rules_uBOL.txt'
-          report='uBOL Filter Converter/dist/AdGuard_Custom_Rules_uBOL.report.json'
+          output='uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt'
+          report='uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json'
           if git diff --quiet -- "$output" "$report"; then
             echo 'No generated changes detected.'
             exit 0
@@ -51,5 +51,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- "$output" "$report"
-          git commit -m 'Auto-update: uBO Lite converted filter'
+          git commit -m 'Auto-update: uBOL Filter - Red Frame X'
           git push
