@@ -67,7 +67,6 @@ jobs:
         if: steps.conversion.outputs.changed == 'true'
         run: |
           set -euo pipefail
-          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
@@ -77,6 +76,7 @@ jobs:
           # ステージングされた変更がある場合のみコミット＆プッシュを実行
           if ! git diff --staged --quiet; then
             git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized)"
+            git pull --rebase origin main
             git push
             echo "Changes committed and pushed successfully."
           else
