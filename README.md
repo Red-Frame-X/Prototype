@@ -28,7 +28,7 @@ UserScript、正規表現、技術メモをまとめたリポジトリです。
 | --- | --- |
 | `AdGuard Custom Rules/` | Webフィルタ、DNSルール、AdGuard CHANGELOGミラー |
 | `uBOL Filter Converter/` | uBO Lite向け変換処理、テスト、生成物、変換レポート |
-| `dist/` | kdroidwinフィルタのAdGuard向け生成物 |
+| `dist/` | KdroidwinフィルタのAdGuard向け生成物 |
 | `UserScript/` | 𝕏・YouTube向けUserScript |
 | `NG Word Regex for ChMate/` | ChMate向けJava正規表現 |
 | `Markdown Notes/` | ChromeOS、Android、広告ブロック、GitHub関連資料 |
