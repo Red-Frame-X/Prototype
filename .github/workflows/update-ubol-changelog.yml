@@ -40,6 +40,7 @@ jobs:
 
       - name: Commit changelog metadata if changed
         run: |
+          set -euo pipefail
           paths=(
             'uBOL Filter Converter/upstream/ubol-changelog.json'
             'uBOL Filter Converter/upstream/ubol-CHANGELOG.source.md'

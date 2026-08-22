@@ -40,6 +40,7 @@ jobs:
 
       - name: Commit generated outputs if changed
         run: |
+          set -euo pipefail
           output='uBOL Filter Converter/dist/AdGuard_Custom_Rules_uBOL.txt'
           report='uBOL Filter Converter/dist/AdGuard_Custom_Rules_uBOL.report.json'
           if git diff --quiet -- "$output" "$report"; then
