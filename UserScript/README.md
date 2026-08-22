@@ -1,6 +1,6 @@
 # UserScript
 
-𝕏およびYouTubeの表示・操作を調整する個人用UserScriptです。TampermonkeyなどのUserScriptマネージャーで使用します。
+𝕏およびYouTubeの表示・操作を調整する個人用UserScriptです。ViolentmonkeyやTampermonkeyなどのUserScriptマネージャーで使用します。
 
 ## インストール
 
