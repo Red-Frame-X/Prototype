@@ -26,7 +26,7 @@ UserScript、正規表現、技術メモをまとめたリポジトリです。
 
 | パス | 内容 |
 | --- | --- |
-| `AdGuard Custom Rules/` | コンテンツブロックフィルタ、DNSルール、AdGuard CHANGELOGミラー |
+| `AdGuard Custom Rules/` | コンテンツブロックフィルタ、DNSフィルタ、AdGuard CHANGELOGミラー |
 | `uBOL Filter Converter/` | uBO Lite向け変換処理、テスト、生成物、変換レポート |
 | `dist/` | KdroidwinフィルタのAdGuard向け生成物 |
 | `UserScript/` | 𝕏・YouTube向けUserScript |
