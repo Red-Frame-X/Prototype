@@ -1,7 +1,7 @@
 {
   "source": "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt",
-  "input_lines": 399,
-  "output_lines_excluding_generated_header": 310,
+  "input_lines": 398,
+  "output_lines_excluding_generated_header": 309,
   "excluded_count": 35,
   "excluded_by_reason": {
     "html-filtering": 3,
@@ -131,57 +131,57 @@
       "rule": "www.youtube.com#?#ytd-guide-section-renderer:has(#guide-section-title:contains(YouTube の他のサービス))"
     },
     {
-      "line": 343,
+      "line": 342,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[role=\"presentation\"]:has(div[role=\"tab\"] span:contains(おすすめ))"
     },
     {
-      "line": 362,
+      "line": 361,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#button:contains(grok.comにアクセスするとさらに多くの機能が利用できます):has(svg)"
     },
     {
-      "line": 369,
+      "line": 368,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(button[data-testid=\"UserCell\"]:contains(フォローしています))"
     },
     {
-      "line": 371,
+      "line": 370,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(h2:contains(おすすめ投稿))"
     },
     {
-      "line": 372,
+      "line": 371,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"] span:contains(おすすめユーザー))"
     },
     {
-      "line": 374,
+      "line": 373,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(span:contains(によるプロモーション))"
     },
     {
-      "line": 375,
+      "line": 374,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(span:contains(関連性の高いユーザー))"
     },
     {
-      "line": 391,
+      "line": 390,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[aria-label=\"タイムライン: 会話\"] [data-testid=\"cellInnerDiv\"]:has(h2:contains(もっと見つける))"
     },
     {
-      "line": 392,
+      "line": 391,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"] > div span:contains(ユーザー))"
     },
     {
-      "line": 397,
+      "line": 396,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[aria-label=\"タイムライン: コミュニティ\"] div[data-testid=\"cellInnerDiv\"]:has(span:contains(新しいコミュニティを見つける))"
     },
     {
-      "line": 399,
+      "line": 398,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"]:contains(コミュニティを探す))"
     }
