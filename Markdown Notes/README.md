@@ -6,7 +6,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 
 - [`ChromeOS & Android Optimization Guide.md`](ChromeOS%20%26%20Android%20Optimization%20Guide.md)：設定、アプリ、拡張機能、プライバシー対策の総合ガイド
 - [`Android Advanced Flow Guide.md`](Android%20Advanced%20Flow%20Guide.md)：未確認デベロッパー向け高度なインストールフロー
-- [`Aluminium OS（ALOS）Survey Report - Revised Edition.md`](Aluminium%20OS%EF%BC%88ALOS%EF%BC%89Survey%20Report%20-%20Revised%20Edition.md)：Googlebook／Aluminium OSの調査
+- [`Aluminium OS（ALOS）Survey Report - Revised Edition.md`](Aluminium%20OS%EF%BC%88ALOS%EF%BC%89Survey%20Report%20-%20Revised%20Edition.md)：Googlebookと開発コードネームAluminiumの調査
 - [`Forced Updates via Crosh (Chrome OS Developer Shell).md`](Forced%20Updates%20via%20Crosh%20%28Chrome%20OS%20Developer%20Shell%29.md)：ChromeOS更新手順とCrosh利用上の注意
 
 ## コンテンツブロック

@@ -4,14 +4,13 @@ AdGuardカスタムルール リファレンス
 
 ---
 
-MV3（Manifest V3：ブラウザ拡張機能の最新API仕様で、セキュリティやパフォーマンス向上のためにバックグラウンド実行や通信監視の権限が厳しく制限された仕組み）環境の厳格なDNR（Declarative Net Request：拡張機能が通信を直接監視・変更する代わりに、事前に宣言したルール群に基づいてブラウザのエンジン自身が通信を評価・遮断・改変する高速な制御API）ルール上限や、AdGuard for Androidにおける処理遅延・バッテリー消費の極小化を前提とした、上級者向けのカスタムルール・リファレンスです。
-通信遮断、DOM（Document Object Model：WebページのHTMLやXMLをツリー状のオブジェクト構造として解析し、プログラムから要素を読み取り・操作・削除できるようにするための仕組み）操作、スクリプト注入の各アプローチについて、AdGuard専用の記法 `#$#`、`#?#`、`:contains`、`#%#//scriptlet` 等を用いた最適な運用手法と注意点を整理しています。
+MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能のルールと、CoreLibsを使うAdGuard for Androidのルールには、対応機能や制約の違いがあります。本書は主要構文の用途と注意点を確認するための補助リファレンスです。最終的な対応状況は[AdGuard公式構文リファレンス](https://adguard.com/kb/general/ad-filtering/create-own-filters/)を確認してください。
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260804 |
+| **Version** | 20260822 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -78,7 +77,7 @@ MV3（Manifest V3：ブラウザ拡張機能の最新API仕様で、セキュリ
 ### `$websocket` ［WebSocket接続の限定遮断］
 * **構文例**： `||example.com/live-track^$websocket`
 * **概要**： WebSocket（Web Real-Time Communicationとは異なる、ブラウザとWebサーバー間で一度確立したTCP接続を維持し、低遅延で双方向のデータ送受信を継続して行う通信プロトコル）による `ws://` および `wss://` 通信に対してのみルールを適用します。
-* **解説**： 近年のSPA（Single Page Application：Webページ全体の再読み込みを行わず、初期読み込みした単一のHTML上で、ユーザーの操作に応じて必要なデータのみを非同期通信で取得し、画面のDOMツリーを動的に書き換えるモダンなWebアプリケーション構成）において、通常のHTTP通信を回避し、リアルタイムで広告配信やトラッキングデータを継続的に流し込む攻撃手法が急増しています。これらをピンポイントで遮断することで、ページの通常ロードを妨げずに追跡を無力化できます。反面、カスタマーサポートのチャットウィジェットやライブ配信のリアルタイムコメント等、正規の双方向通信機能まで破損させるFalse Positiveリスクが高い点に留意が必要です。
+* **解説**： WebSocketを使う特定の通信だけを対象にできます。チャット、通知、共同編集、ライブ配信など正規機能にも使われるため、送信先と再現手順を確認してから限定的に適用します。
 
 ### `$webrtc` ［削除済み］
 * **構文例**： `example.com#%#//scriptlet('nowebrtc')`
@@ -124,7 +123,7 @@ MV3（Manifest V3：ブラウザ拡張機能の最新API仕様で、セキュリ
 ### `$cookie` ［Cookieの制御・削除］
 * **構文例**： `||example.com^$cookie=/.+/` ［対象ドメインの全Cookieを抑制］ / `@@||example.com^$cookie=/^session_/` ［特定Cookieの例外］
 * **概要**： 通信自体は遮断せず、対象ドメインでやり取りされるHTTPヘッダーのCookieおよびSet-Cookieを抑制・削除します。
-* **解説**： トラッキング用Cookieの付与を防ぐプライバシー保護のほか、訪問回数ベースで課金・ブロックを行うペイウォールの回避や、アンチアドブロック回避において通信を正常［200 OK］に見せかけつつ追跡のみを無効化する極めて高度で強力な手法です。反面、セッション維持やログイン認証に必要なCookieまで削除するとサイトへのログインや設定保存が一切できなくなる致命的な副作用があるため、正規表現や例外指定による厳格な対象限定が必須です。
+* **解説**： トラッキング用Cookieを対象にできますが、認証、設定、同意状態に使われるCookieを削除すると機能が壊れます。Cookie名、ドメイン、第三者性を限定し、サイトの利用条件を回避する目的では使用しません。
 
 ### `$header` / `$removeheader` ［HTTPヘッダーの操作と削除］
 * **構文例**： `||example.com^$removeheader=referer` / `||example.com^$header=set-cookie:tracking`

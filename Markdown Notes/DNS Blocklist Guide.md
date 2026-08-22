@@ -8,7 +8,7 @@ DNSブロックリストのガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260814 |
+| **Version** | 20260822 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -35,56 +35,56 @@ uBlock OriginやAdGuard等のブラウザ向け拡張機能で使われる構文
 
 * **挙動・特徴**： `||example.com^` でドメイン全体をブロックし、`@@||example.com^` で例外処理（ホワイトリスト化）を行います。
 * **メリット**：ブロックと例外ルールを複雑に組み合わせて制御できるため、フィルタのメンテナンス性が非常に高く、ブラウザ用とDNS用のリスト管理を共通化しやすいです。
-* **デメリット**：システム側での解析（パース）に専用のエンジンが必要となり、高い処理オーバーヘッドが発生します。また、ブラウザ用のURLパス指定（例: `/ads.js`）はDNSレイヤーでは機能しないため、ブラウザ用のリストをそのままDNSに流用すると、意図せぬ広範囲のブロッキングやパースエラーを引き起こす危険性があります。
+* **デメリット**：対応する解析エンジンが必要です。DNSフィルタが解釈できるのは製品が対応する構文だけであり、URLパスやリソース種別を扱うブラウザ向けルールをそのまま流用しても同じ結果にはなりません。
 
 ---
 
 ## 2. AdGuard for Android / personalDNSfilter 向け厳選リスト
 
-各アプリの仕様・パース能力に基づき、ブロック率と正常なサイトの維持（誤爆回避）を両立するための最適なリストを1つずつ選定しました。
+ここでは保守元、形式、利用環境との互換性が明確な候補を1つずつ示します。「最適」は端末性能、必要なサービス、誤ブロックの許容度で変わるため、ログを確認しながら選択してください。
 
 ### AdGuard DNS filter（AdGuard for Android向け）
 AdGuard公式がメンテナンスする、DNSブロッキング特化のリストです（SDNSFilter）。
 
 * **購読用URL**：[AdGuard DNS filter（Optimized）](https://filters.adtidy.org/android/filters/15_optimized.txt)
 
-* **メリット**：DNSレイヤー向けに不要な構文を削ぎ落とした独自のABP構文を使用しており、AdGuard for Androidの最新パースエンジンをフル活用できます。高度な例外ルールや修飾子を解釈できるため、単体で軽量かつ最も高い精度を発揮します。
+* **メリット**：AdGuard DNSフィルタリング向けに保守され、ブロックと例外をAdGuardのDNSルール構文で配布しています。AdGuard製品との構文互換性を確認しやすい候補です。
 * **デメリット**：personalDNSfilterや初期のPi-holeなど、高度なABP構文の解析を完全にサポートしていない他社製アプリにインポートすると、フォーマットエラーを起こすか、本来のブロック性能（特に例外ルール）が適用されず誤爆が増える場合があります。
 
 ### HaGeZi's Normal DNS Blocklist（personalDNSfilter向け）
-現在のコミュニティにおけるデファクトスタンダードとされる統合リストです。モバイル環境の安定性を保ちつつ高い効果を得るため、Normalバージョンが推奨されます。
+複数ソースを統合し、用途別の強度と複数の配布形式を提供するコミュニティ管理リストです。Normalは作者が「balanced protection」と位置付ける中間的な選択肢です。
 
 * **購読用URL**：[HaGeZi's Normal DNS Blocklist（Domains only）](https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt)
 
-* **メリット**：強力なホワイトリストシステムが組み込まれており、高いブロック率を保ちながら誤爆が極めて少ないのが特徴です。Hostsや単一ドメイン形式など、シンプルなフォーマットでの配布が充実しているため、高度な構文を処理できない軽量アプリでも極めて安定して読み込めます。
+* **メリット**：許可リストと偽陽性対応の仕組みが公開され、domains-onlyを含む複数形式からクライアントに合うものを選べます。
 * **デメリット**：Ultimateなどの最も強力なバージョンを使用すると、スマートフォンのバックグラウンド通信やアプリの正常な挙動を阻害する「過剰ブロック」の可能性が高まります。そのため、ブロック率と安定性のバランスが取れた「Normal」バージョンの選定が推奨されます。
 
 ---
 
-## 3. アプリ別の最適な構成案（最終結論）
+## 3. アプリ別の構成例
 
 ### AdGuard for Androidの場合
-アプリのネイティブな解析能力を最大限に引き出せる **「AdGuard DNS filter」** を単体で使用します。
-* **メリット**：アプリの開発元が提供する専用フィルタであるため、ソフトウェアとの親和性が最も高く、無駄なリソース消費なしに高度なブロッキングが可能です。
+まずは **「AdGuard DNS filter」** 単体から開始します。
+* **メリット**：アプリとフィルタの保守元が同じで、構文差による問題を切り分けやすくなります。
 * **デメリット**：AdGuardの独自エコシステムに依存するため、将来的に他の軽量DNSアプリに乗り換える際、同じルールセットをそのまま持ち出すことが難しい場合があります。
 
 ### personalDNSfilterの場合
 複雑なABP構文の処理制限を回避するため、シンプルで互換性の高いドメイン形式で配布されている **「HaGeZi's Normal DNS Blocklist」** を単体で指定します。
-* **メリット**：アプリ側のパース負荷（CPUおよびメモリ消費）を最小限に抑えられるため、バッテリー消費が厳しく問われるAndroidの常駐アプリとして極めて安定して稼働します。
-* **デメリット**：ドメイン完全一致ベースのリストとなるため、高度な正規表現を用いたブロックが行えず、一部の巧妙なトラッキングドメインをブロックしきれないケースが稀に発生します。
+* **メリット**：単純な入力形式で、ABP固有構文の互換性を考慮する必要がありません。
+* **デメリット**：例外を同じファイル内で表現できず、親ドメインとサブドメインの扱いはpersonalDNSfilter側の仕様に依存します。
 
 ---
 
 ## ソース・参考文献
 
-以下のリンクは、本ドキュメントの作成および技術検証にあたり、Google検索の検索結果（検索エンジンから抽出した情報）として取得・参照したソースです。
+仕様の確認には、各プロジェクトの公開資料を優先します。
 
-**Hosts vs Wildcard / ABP構文に関する議論（Google検索結果より）**
+**形式と構文**
 * [Reddit（r/pihole）：What are the similarities and differences between a hosts file and pi-hole](https://www.reddit.com/r/pihole/comments/nw9b9w/what_are_the_similarities_and_differences_between/)
 * [GitHub - DRSDavidSoft/additional-hosts](https://github.com/DRSDavidSoft/additional-hosts)
 * [Reddit（r/pihole）：Blocklist Syntax (Hosts vs ABP list)](https://www.reddit.com/r/pihole/comments/11spawr/blocklist_syntax/)
 * [Reddit（r/pihole）：Support AdGuard's DNS filtering rules syntax?](https://www.reddit.com/r/pihole/comments/n2gfeu/support_adguards_dns_filtering_rules_syntax/)
 
-**厳選DNSブロックリストの公式リポジトリ（Google検索結果より）**
+**フィルタの公式リポジトリ**
 * [AdGuard SDNSFilter (AdGuard DNS filter)](https://github.com/AdguardTeam/AdGuardSDNSFilter)
 * [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists)
