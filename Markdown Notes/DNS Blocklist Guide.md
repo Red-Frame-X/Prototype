@@ -48,7 +48,7 @@ AdGuard公式がメンテナンスする、DNSブロッキング特化のリス�
 
 * **購読用URL**：[AdGuard DNS filter（Optimized）](https://filters.adtidy.org/android/filters/15_optimized.txt)
 
-* **メリット**：AdGuard DNSフィルタリング向けに保守され、ブロックと例外をAdGuardのDNSルール構文で配布しています。AdGuard製品との構文互換性を確認しやすい候補です。
+* **メリット**：AdGuard DNSフィルタリング向けに保守され、ブロックと例外をAdGuardのDNSフィルタ構文で配布しています。AdGuard製品との構文互換性を確認しやすい候補です。
 * **デメリット**：personalDNSfilterや初期のPi-holeなど、高度なABP構文の解析を完全にサポートしていない他社製アプリにインポートすると、フォーマットエラーを起こすか、本来のブロック性能（特に例外ルール）が適用されず誤爆が増える場合があります。
 
 ### HaGeZi's Normal DNS Blocklist（personalDNSfilter向け）

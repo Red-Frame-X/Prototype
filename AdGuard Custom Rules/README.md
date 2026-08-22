@@ -1,11 +1,11 @@
 # AdGuard Custom Rules
 
-AdGuard向けの個人用フィルタです。コンテンツブロック用ルールとDNS用ルールは用途が異なるため、使用するAdGuard製品の該当機能へ個別に追加してください。
+AdGuard向けの個人用フィルタです。コンテンツブロックフィルタとDNSフィルタは用途が異なるため、使用するAdGuard製品の該当機能へ個別に追加してください。
 
 ## ファイル
 
 - [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：広告・不要要素の非表示、通信制御、互換性例外を含むAdGuardフィルタ
-- [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：AdGuard DNS／DNSフィルタリング向けルール
+- [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：AdGuard DNS／DNSフィルタリング用フィルタ
 
 ## 購読URL
 
