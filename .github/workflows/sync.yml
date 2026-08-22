@@ -66,6 +66,7 @@ jobs:
       - name: Commit and Push if changed
         if: steps.conversion.outputs.changed == 'true'
         run: |
+          set -euo pipefail
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

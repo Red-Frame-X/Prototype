@@ -35,6 +35,7 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Commit mirrors and compatibility review if changed
         run: |
+          set -euo pipefail
           paths=(
             'AdGuard Custom Rules/ChangeLog/adguard-browser-extension-CHANGELOG.source.md'
             'AdGuard Custom Rules/ChangeLog/adguard-for-android-CHANGELOG.source.md'
