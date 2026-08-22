@@ -14,7 +14,7 @@
 The following items were created for my personal use.
 
 * [AdGuard Custom Rules](https://github.com/Red-Frame-X/Prototype/tree/main/AdGuard%20Custom%20Rules)
-* [uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/tree/main/uBOL%20Filter%20Converter)
+* [uBOL Filter](https://github.com/Red-Frame-X/Prototype/tree/main/uBOL%20Filter%20Converter)
 * [uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/tree/main/dist)
 * [UserScript](https://github.com/Red-Frame-X/Prototype/tree/main/UserScript)
 * [NG Word Regex for ChMate](https://github.com/Red-Frame-X/Prototype/tree/main/NG%20Word%20Regex%20for%20ChMate)
