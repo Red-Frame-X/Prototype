@@ -13,9 +13,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Serialize every workflow that can push to main to avoid non-fast-forward races.
-  group: repository-content-writes-${{ github.ref }}
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   update:
@@ -59,5 +58,15 @@ jobs:
             exit 0
           fi
           git commit -m 'Auto-update: uBO Lite changelog'
-          git pull --rebase origin main
-          git push
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push; then
+              break
+            fi
+            if [[ "$attempt" -eq 5 ]]; then
+              echo 'Failed to push after 5 attempts.' >&2
+              exit 1
+            fi
+            echo "Push raced with another workflow; retrying ($attempt/5)."
+            sleep $((attempt * 2))
+          done
