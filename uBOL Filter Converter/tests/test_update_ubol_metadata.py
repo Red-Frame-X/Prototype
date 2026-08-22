@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import MagicMock, patch
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "update_ubol_metadata.py"
 SPEC = importlib.util.spec_from_file_location("ubol_metadata", MODULE_PATH)
@@ -26,6 +27,22 @@ CHANGELOG = b"""# Changelog
 
 
 class MetadataTests(unittest.TestCase):
+    def test_remote_source_retries_transient_network_failure(self):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = CHANGELOG
+        with (
+            patch.object(
+                metadata.urllib.request,
+                "urlopen",
+                side_effect=[metadata.URLError("temporary"), response],
+            ) as mocked_open,
+            patch.object(metadata.time, "sleep") as mocked_sleep,
+        ):
+            result = metadata.read_source("https://example.test/CHANGELOG.md")
+        self.assertEqual(result, CHANGELOG)
+        self.assertEqual(mocked_open.call_count, 2)
+        mocked_sleep.assert_called_once_with(1)
+
     def test_extracts_latest_version_and_feature_metadata(self):
         result = metadata.build_metadata(
             CHANGELOG,

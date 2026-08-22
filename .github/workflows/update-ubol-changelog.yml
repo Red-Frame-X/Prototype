@@ -13,8 +13,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Serialize every workflow that commits to main; this prevents bot push races.
+  group: repository-content-writers-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -33,6 +34,8 @@ jobs:
           python-version: '3.12'
 
       - name: Fetch uBO Lite changelog metadata
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: python "uBOL Filter Converter/update_ubol_metadata.py"
 
       - name: Run converter tests

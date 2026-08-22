@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "scripts" / "update_adguard_changelogs.py"
 SPEC = importlib.util.spec_from_file_location("adguard_changelogs", MODULE_PATH)
@@ -17,6 +17,21 @@ ANDROID_JSON = json.dumps([{"name": "AdGuard for Android v4.13.1", "tag_name": "
 
 
 class ChangelogUpdaterTests(unittest.TestCase):
+    def test_fetch_retries_transient_network_failure(self):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = BROWSER
+        with (
+            patch.object(
+                module.urllib.request,
+                "urlopen",
+                side_effect=[module.URLError("temporary"), response],
+            ) as mocked_open,
+            patch.object(module.time, "sleep") as mocked_sleep,
+        ):
+            self.assertEqual(module.fetch("https://example.test/changelog"), BROWSER)
+        self.assertEqual(mocked_open.call_count, 2)
+        mocked_sleep.assert_called_once_with(1)
+
     def test_android_release_conversion_and_version(self):
         result = module.android_releases_to_markdown(ANDROID_JSON).decode()
         self.assertIn("## AdGuard for Android v4.13.1", result)
