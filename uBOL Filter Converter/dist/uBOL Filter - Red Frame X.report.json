@@ -181,7 +181,7 @@
       "rule": "x.com#?#div[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"] > div span:contains(ユーザー))"
     },
     {
-      "line": 404,
+      "line": 402,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[aria-label=\"タイムライン: コミュニティ\"] div[data-testid=\"cellInnerDiv\"]:has(span:contains(新しいコミュニティを見つける))"
     },
