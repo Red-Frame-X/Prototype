@@ -14,9 +14,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Serialize every workflow that can push to main to avoid non-fast-forward races.
-  group: repository-content-writes-${{ github.ref }}
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -77,8 +76,18 @@ jobs:
           # ステージングされた変更がある場合のみコミット＆プッシュを実行
           if ! git diff --staged --quiet; then
             git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized)"
-            git pull --rebase origin main
-            git push
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin main
+              if git push; then
+                break
+              fi
+              if [[ "$attempt" -eq 5 ]]; then
+                echo 'Failed to push after 5 attempts.' >&2
+                exit 1
+              fi
+              echo "Push raced with another workflow; retrying ($attempt/5)."
+              sleep $((attempt * 2))
+            done
             echo "Changes committed and pushed successfully."
           else
             echo "No changes detected in filter rules. Skipping commit."

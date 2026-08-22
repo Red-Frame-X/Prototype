@@ -13,9 +13,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Serialize every workflow that can push to main to avoid non-fast-forward races.
-  group: repository-content-writes-${{ github.ref }}
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -53,5 +52,15 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- "$output" "$report"
           git commit -m 'Auto-update: uBOL Filter - Red Frame X'
-          git pull --rebase origin main
-          git push
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 5 ]]; then
+              echo 'Failed to push after 5 attempts.' >&2
+              exit 1
+            fi
+            echo "Push raced with another workflow; retrying ($attempt/5)."
+            sleep $((attempt * 2))
+          done
