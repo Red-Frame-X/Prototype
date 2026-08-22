@@ -31,13 +31,12 @@ jobs:
           python -m unittest discover -s tests -v
           python -m unittest discover -s "uBOL Filter Converter/tests" -v
 
-      # Direct pushes are followed by build-ubol.yml, which publishes generated files.
-      # Pull requests must include matching generated outputs before merge.
-      - name: Verify committed uBOL outputs
-        if: github.event_name == 'pull_request'
+      # Validate that the converter can regenerate both outputs on every change.
+      # build-ubol.yml publishes changed outputs after the change reaches main.
+      - name: Validate uBOL output generation
         run: |
           python "uBOL Filter Converter/converter.py"
-          git diff --exit-code -- \
+          git diff --check -- \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt" \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json"
 
