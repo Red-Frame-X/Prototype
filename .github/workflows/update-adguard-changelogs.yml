@@ -13,8 +13,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Serialize every workflow that can push to main to avoid non-fast-forward races.
+  group: repository-content-writes-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   update:
