@@ -258,7 +258,6 @@ x.com##a[href="/i/monetization"][role="link"]
 x.com##a[href="/i/premium"][role="link"]
 x.com##a[href="/i/spaces/start"][role="link"]
 x.com##a[href^="/i/verified-orgs-signup"]
-! 履歴への導線を非表示（現在は無効）
 ! x.com##a[href="/i/history"][role="link"]
 ! x.com##a[href="/explore"][role="link"]
 ! x.com##a[href$="/lists"][role="link"]
