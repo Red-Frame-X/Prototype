@@ -1,7 +1,7 @@
 {
   "source": "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt",
-  "input_lines": 404,
-  "output_lines_excluding_generated_header": 313,
+  "input_lines": 408,
+  "output_lines_excluding_generated_header": 317,
   "excluded_count": 36,
   "excluded_by_reason": {
     "html-filtering": 3,
@@ -71,122 +71,122 @@
       "rule": "m.youtube.com#?#ytm-item-section-renderer:has(.ytCarouselTitleViewModelTitle:contains(コメント))"
     },
     {
-      "line": 216,
+      "line": 220,
       "reason": "procedural-or-style-cosmetic",
       "rule": "old.klz9.com,klto9.com,jestful.net#?#.title_doctruyen:contains(Recent Comments)"
     },
     {
-      "line": 240,
+      "line": 244,
       "reason": "modifier:app",
       "rule": "@@||analytics.tiktok.com^$app=jp.kappasushi.app"
     },
     {
-      "line": 254,
+      "line": 258,
       "reason": "modifier:app",
       "rule": "@@||ads.twitter.com^$app=com.twitter.android"
     },
     {
-      "line": 263,
+      "line": 267,
       "reason": "scriptlet",
       "rule": "web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{\"status\":\"optedin\",\"entity\":\"household\",\"area\":{\"areaId\":\"0\",\"jisx0402\":\"0\",\"postal\":\"0000000\",\"pref\":\"0\"}}')"
     },
     {
-      "line": 264,
+      "line": 268,
       "reason": "scriptlet",
       "rule": "web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{\"sd\":\"2025-10-01T00:00:00.000Z\",\"ed\":\"2050-12-31T23:59:59.999Z\"}')"
     },
     {
-      "line": 269,
+      "line": 273,
       "reason": "html-filtering",
       "rule": "news.web.nhk$$dialog[id=\"emergency-mode-info\"]"
     },
     {
-      "line": 274,
+      "line": 278,
       "reason": "html-filtering",
       "rule": "news.web.nhk$$div[id=\"under-header-element\"]"
     },
     {
-      "line": 279,
+      "line": 283,
       "reason": "html-filtering",
       "rule": "news.web.nhk$$div[role=\"region\"]:contains(NHKの公式アプリ)"
     },
     {
-      "line": 289,
+      "line": 293,
       "reason": "procedural-or-style-cosmetic",
       "rule": "www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !important; line-height: 1.8rem !important;)"
     },
     {
-      "line": 291,
+      "line": 295,
       "reason": "procedural-or-style-cosmetic",
       "rule": "www.youtube.com###video-title.ytd-rich-grid-media, #video-title.ytd-rich-grid-slim-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)"
     },
     {
-      "line": 301,
+      "line": 305,
       "reason": "procedural-or-style-cosmetic",
       "rule": "www.youtube.com##body, ytd-app[scrolling]:style(overflow-x: hidden !important;)"
     },
     {
-      "line": 309,
+      "line": 313,
       "reason": "procedural-or-style-cosmetic",
       "rule": "www.youtube.com#?#ytd-guide-section-renderer:has(#guide-section-title:contains(YouTube の他のサービス))"
     },
     {
-      "line": 346,
+      "line": 350,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[role=\"presentation\"]:has(div[role=\"tab\"] span:contains(おすすめ))"
     },
     {
-      "line": 365,
+      "line": 369,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#button:contains(grok.comにアクセスするとさらに多くの機能が利用できます):has(svg)"
     },
     {
-      "line": 372,
+      "line": 376,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(button[data-testid=\"UserCell\"]:contains(フォローしています))"
     },
     {
-      "line": 374,
+      "line": 378,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(h2:contains(おすすめ投稿))"
     },
     {
-      "line": 375,
+      "line": 379,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"] span:contains(おすすめユーザー))"
     },
     {
-      "line": 377,
+      "line": 381,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(span:contains(によるプロモーション))"
     },
     {
-      "line": 378,
+      "line": 382,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#[data-testid=\"cellInnerDiv\"]:has(span:contains(関連性の高いユーザー))"
     },
     {
-      "line": 395,
+      "line": 399,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[aria-label=\"タイムライン: 会話\"] [data-testid=\"cellInnerDiv\"]:has(h2:contains(もっと見つける))"
     },
     {
-      "line": 396,
+      "line": 400,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[aria-label=\"タイムライン: 会話\"] [data-testid=\"cellInnerDiv\"]:has(h2:contains(もっと見つける)) ~ div"
     },
     {
-      "line": 397,
+      "line": 401,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"] > div span:contains(ユーザー))"
     },
     {
-      "line": 402,
+      "line": 406,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[aria-label=\"タイムライン: コミュニティ\"] div[data-testid=\"cellInnerDiv\"]:has(span:contains(新しいコミュニティを見つける))"
     },
     {
-      "line": 404,
+      "line": 408,
       "reason": "procedural-or-style-cosmetic",
       "rule": "x.com#?#div[data-testid=\"cellInnerDiv\"]:has(h2[role=\"heading\"]:contains(コミュニティを探す))"
     }
