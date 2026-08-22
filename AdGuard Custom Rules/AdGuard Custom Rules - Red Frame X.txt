@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608222331
+! Version: 202608230037
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -391,7 +391,9 @@ x.com##[data-testid="cellInnerDiv"]:has([data-testid="UserCell"] [data-testid$="
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty)
+! 「もっと見つける」見出しと、それ以降に挿入される会話ツリーと無関係なおすすめポストを非表示
 x.com#?#div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:contains(もっと見つける))
+x.com#?#div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:contains(もっと見つける)) ~ div
 x.com#?#div[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:contains(ユーザー))
 ! コミュニティ検索・一覧に挿入されるおすすめコミュニティ、探索導線、記事を含まないコミュニティカードを非表示
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(+ div > div > div > a[href^="/i/communities/"])
