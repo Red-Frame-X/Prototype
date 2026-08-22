@@ -63,12 +63,12 @@ npm run lint:adguard
 
 ## Contact
 
-- User Name: Red Frame X
-- 𝕏: [@Red_Frame_X](https://x.com/Red_Frame_X)
-- mond: [Red Frame X](https://mond.how/ja/Red_Frame_X)
+- User Name：Red Frame X
+- 𝕏：[@Red_Frame_X](https://x.com/Red_Frame_X)
+- mond：[Red Frame X](https://mond.how/ja/Red_Frame_X)
 
 ## License
 
-自身で作成したコンテンツは原則として[CC0 1.0 Universal](LICENSE)で提供します。
+自身で作成したコンテンツは原則として [CC0 1.0 Universal](LICENSE) で提供します。
 第三者作品を基にしたファイルには原作品のライセンスが適用されます。対象範囲、
-GPL-3.0の派生物、例外、無保証については[LICENSES.md](LICENSES.md)を参照してください。
+GPL-3.0の派生物、例外、無保証については [LICENSES.md](LICENSES.md) を参照してください。
