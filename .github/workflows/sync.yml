@@ -1,4 +1,4 @@
-name: Sync and Convert uB-filter-by-kdroidwin
+name: Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)
 
 on:
   push:
@@ -45,7 +45,7 @@ jobs:
         run: |
           python scripts/convert.py
 
-          if git diff --quiet -- dist/uB-filter-by-kdroidwin_AdG_Optimized.txt; then
+          if git diff --quiet -- 'dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt'; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No generated changes detected."
           else
@@ -61,7 +61,7 @@ jobs:
       # 他の管理対象ルールは quality.yml で検証するため、ここでは生成物だけを検証
       - name: Run AGLint
         if: steps.conversion.outputs.changed == 'true'
-        run: npx --no-install aglint dist/uB-filter-by-kdroidwin_AdG_Optimized.txt
+        run: npx --no-install aglint 'dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt'
 
       - name: Commit and Push if changed
         if: steps.conversion.outputs.changed == 'true'

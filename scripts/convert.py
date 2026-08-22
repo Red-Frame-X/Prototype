@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""uB-filter-by-kdroidwin to AdGuard Chrome MV3 Optimizer & Linter
+"""uB-filter-by-kdroidwin (AdGuard Optimized) generator and linter.
 
 uBlock Origin用フィルタをAdGuard for Chrome MV3向けに、安全性と互換性を優先して
 変換・静的解析(Lint)するスクリプト。生成物はAdGuard for Androidでも読み込めますが、
@@ -20,7 +20,8 @@ from typing import List, Optional, Tuple, Dict, Pattern
 
 # スクリプト自身の場所を基準にプロジェクトルートと出力先パスを確定
 BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", "uB-filter-by-kdroidwin_AdG_Optimized.txt")
+FILTER_NAME: str = "uB-filter-by-kdroidwin (AdGuard Optimized)"
+OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", f"{FILTER_NAME}.txt")
 
 CANDIDATE_URLS: List[str] = [
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/refs/heads/main/uBlockorigin.txt",
@@ -311,7 +312,7 @@ class AdGuardOptimizer:
         current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
         header = [
-            "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)",
+            f"! Title: {FILTER_NAME}",
             "! Description: Scam and malicious affiliate sites blocklist.",
             f"! Version: {current_version}",
             "! Syntax: AdGuard",
