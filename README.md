@@ -17,7 +17,7 @@ UserScript、正規表現、技術メモをまとめたリポジトリです。
 | --- | --- | --- |
 | AdGuardで個人用ルールを使う | [AdGuard Custom Rules](AdGuard%20Custom%20Rules/) | AdGuard Browser Extension／Android／DNS |
 | AdGuard用ルールをuBO Liteで使う | [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/) | uBlock Origin Lite 2026.621.1813以降 |
-| kdroidwinフィルタをAdGuard MV3で使う | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | 主にAdGuard Browser Extension MV3 |
+| KdroidwinフィルタをAdGuard MV3で使う | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | 主にAdGuard Browser Extension MV3 |
 | 𝕏・YouTubeの表示を調整する | [UserScript](UserScript/) | Tampermonkeyなど |
 | ChMateでNGワードを設定する | [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMate |
 | ChromeOS・Android等の手順を読む | [Markdown Notes](Markdown%20Notes/) | 技術メモ／調査資料 |
