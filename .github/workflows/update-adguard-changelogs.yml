@@ -13,8 +13,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Serialize every workflow that commits to main; this prevents bot push races.
-  group: repository-content-writers-${{ github.ref }}
+  # Keep each writer's queue independent. Cross-workflow push races are handled
+  # by the bounded pull/rebase/push retry loop below.
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
