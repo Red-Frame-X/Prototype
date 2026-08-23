@@ -144,16 +144,18 @@ class LineConversionTests(unittest.TestCase):
         output, _ = converter.convert(["! Global"])
         self.assertEqual(output, ["! Global"])
 
-    def test_multi_domain_heading_is_preserved_for_surviving_rule(self):
+    def test_multi_domain_heading_keeps_converted_and_standard_rules(self):
         output, _ = converter.convert([
             "! one.example,two.example",
-            "! Removed procedural rule",
+            "! Converted procedural rule",
             "one.example,two.example#?#div:contains(Ad)",
             "! Surviving standard rule",
             "one.example,two.example##.ad",
         ])
         self.assertEqual(output, [
             "! one.example,two.example",
+            "! Converted procedural rule",
+            "one.example,two.example##div:has-text(Ad)",
             "! Surviving standard rule",
             "one.example,two.example##.ad",
         ])
