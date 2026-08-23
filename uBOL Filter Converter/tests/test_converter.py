@@ -29,10 +29,28 @@ class LineConversionTests(unittest.TestCase):
         self.assertEqual(result.output, "example.com##div:has(.promo)")
         self.assertEqual(result.status, "converted")
 
-    def test_contains_rule_is_excluded_instead_of_broadened(self):
+    def test_contains_rule_is_converted_to_has_text(self):
         result = converter.convert_line("example.com#?#div:contains(Promo)")
-        self.assertIsNone(result.output)
-        self.assertEqual(result.reason, "procedural-or-style-cosmetic")
+        self.assertEqual(result.output, "example.com##div:has-text(Promo)")
+        self.assertEqual(result.status, "converted")
+
+    def test_nested_contains_rule_is_converted_to_has_text(self):
+        result = converter.convert_line(
+            "example.com#?#aside:has(h3:contains(Promo)):has(button.close)"
+        )
+        self.assertEqual(
+            result.output,
+            "example.com##aside:has(h3:has-text(Promo)):has(button.close)",
+        )
+
+    def test_upward_rule_is_preserved_for_ubol(self):
+        result = converter.convert_line(
+            "example.com#?#span:contains(Promo):upward(div.card)"
+        )
+        self.assertEqual(
+            result.output,
+            "example.com##span:has-text(Promo):upward(div.card)",
+        )
 
     def test_html_filter_is_excluded(self):
         self.assertEqual(converter.convert_line('example.com$$div[id="ad"]').reason, "html-filtering")
