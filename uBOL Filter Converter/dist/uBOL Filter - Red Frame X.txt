@@ -38,6 +38,10 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! chatgpt.com
 ! プラグイン案内バナーの非表示
 chatgpt.com##aside:has(a[href*="/articles/11487775-apps-in-chatgpt"]):has(button[data-testid="close-button"])
+! 「ChatGPT Work でさらに進める」と表示される案内バナーを非表示
+chatgpt.com##aside:has(h3:has-text(ChatGPT Work でさらに進める)):has(button[data-testid="close-button"])
+! 「初めての ChatGPT 広告を数分で作成」と表示される広告作成案内バナーを非表示
+chatgpt.com##aside:has(h3:has-text(初めての ChatGPT 広告を数分で作成)):has(button[data-testid="close-button"])
 
 ! downdetector.jp
 ! 以下は無効：サービス一覧に挿入される広告カードをdata-service-list-ad属性で非表示
@@ -113,9 +117,16 @@ chatgpt.com##aside:has(a[href*="/articles/11487775-apps-in-chatgpt"]):has(button
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*観光スポット\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*人気の目的地\s*$/):upward(div[data-hveid][data-ved])
 
+! 検索タブの「ショート動画」を非表示
+google.com##div[role="listitem"]:has(a:has-text(ショート動画))
+
 ! klz9.com
 ! キラキラアイコンと点滅表示を含むVIP訴求ボタンを非表示
 klz9.com##button:has(> svg.lucide-sparkles):has(> span.animate-ping)
+! 「VIPを獲得する」と表示される加入ボタンを非表示
+klz9.com##button:has-text(VIPを獲得する)
+! 「最近のコメント」見出しを直下に持つコメント欄全体を非表示
+klz9.com##div:has(> h2:has-text(最近のコメント))
 
 ! m.youtube.com
 ! チャンネル投稿を含むコンパクト型フィード項目を非表示
@@ -132,6 +143,8 @@ m.youtube.com##ytm-backstage-post-renderer
 m.youtube.com##ytm-comment-section-renderer
 ! コメント欄への入口セクションを非表示
 m.youtube.com##ytm-item-section-renderer[section-identifier="comments-entry-point"]
+! 「コメント」と表示されるカルーセル型コメント導線を非表示
+m.youtube.com##ytm-item-section-renderer:has(.ytCarouselTitleViewModelTitle:has-text(コメント))
 ! ライブチャット本体を非表示
 m.youtube.com##ytm-live-chat-renderer
 ! 下部ナビゲーションのShortsタブを非表示
@@ -178,6 +191,8 @@ njavtv.com##div.mx-auto:has(> iframe[src^="https://go.mayzaent.com/smartpop/"])
 officeforest.org##div[id^="offic-"]
 
 ! old.klz9.com,klto9.com,jestful.net
+! 「Recent Comments」と表示されるサイドバー見出しを非表示
+old.klz9.com,klto9.com,jestful.net##.title_doctruyen:has-text(Recent Comments)
 ! show_new_commentを直下に持つ新着コメントウィジェット全体を非表示
 old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 
@@ -242,6 +257,8 @@ www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer
 www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-rich-section-renderer
 ! ガイド内のShorts項目を非表示
 www.youtube.com##ytd-guide-entry-renderer:has(a[title="ショート"])
+! ガイド内の「YouTube の他のサービス」セクションを非表示
+www.youtube.com##ytd-guide-section-renderer:has(#guide-section-title:has-text(YouTube の他のサービス))
 ! ミニガイド内のShorts項目を非表示
 www.youtube.com##ytd-mini-guide-entry-renderer:has(a[href="/shorts/"])
 ! Shorts棚を非表示
@@ -278,6 +295,7 @@ x.com##div[role="presentation"]:has(> a[href$="/articles"])
 x.com##div[role="presentation"]:has(> a[href$="/highlights"])
 x.com##div[role="presentation"]:has(> a[href="/explore/tabs/entertainment"])
 x.com##div[role="presentation"]:has(> a[href="/explore/tabs/sports"])
+x.com##div[role="presentation"]:has(div[role="tab"] span:has-text(おすすめ))
 ! 右カラムの関連アカウント・おすすめユーザー・ニュース・速報タイムラインを非表示
 x.com##aside[aria-label="関連性の高いアカウント"]
 x.com##div:has(> aside[aria-label="おすすめユーザー"])
@@ -296,14 +314,20 @@ x.com##div:has(a[href$="/verified-profile-visits"])
 ! Grokのアクション・プロフィール要約・外部Grok案内・画像生成・ドロワー・インライン入力欄を非表示
 x.com##[aria-label="Grokのアクション"]
 x.com##[aria-label="プロフィールの要約"]
+x.com##button:has-text(grok.comにアクセスするとさらに多くの機能が利用できます):has(svg)
 x.com##button[data-testid="grokImgGen"]
 x.com##div[data-testid="GrokDrawer"]
 x.com##div[data-testid="inlinePrompt"]
 ! タイムライン内のおすすめユーザー、トピック、イベント、広告、トレンド、関連ユーザー各カードを非表示
 x.com##[aria-label="おすすめユーザー"] button[data-testid="UserCell"]
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
+x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:has-text(フォローしています))
 x.com##[data-testid="cellInnerDiv"]:has(div[data-testid="eventHero"])
+x.com##[data-testid="cellInnerDiv"]:has(h2:has-text(おすすめ投稿))
+x.com##[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:has-text(おすすめユーザー))
 x.com##[data-testid="cellInnerDiv"]:has(img[src*="global_trending_card_newest.png"])
+x.com##[data-testid="cellInnerDiv"]:has(span:has-text(によるプロモーション))
+x.com##[data-testid="cellInnerDiv"]:has(span:has-text(関連性の高いユーザー))
 x.com##a[href^="https://ads.x.com"]
 x.com##div:has(> a[href^="/i/jf/"][href$="/home"])
 x.com##div[aria-label="タイムライン: Relevant people"]
@@ -319,8 +343,14 @@ x.com##[data-testid="cellInnerDiv"]:has([data-testid="UserCell"] [data-testid$="
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty)
+! 「もっと見つける」見出しと、それ以降に挿入される会話ツリーと無関係なおすすめポストを非表示
+x.com##div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:has-text(もっと見つける))
+x.com##div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:has-text(もっと見つける)) ~ div
+x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:has-text(ユーザー))
 ! コミュニティ検索・一覧に挿入されるおすすめコミュニティ、探索導線、記事を含まないコミュニティカードを非表示
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(+ div > div > div > a[href^="/i/communities/"])
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(> div > div > a[href^="/i/communities/"])
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(a[href="/i/communities/suggested"])
+x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:has-text(新しいコミュニティを見つける))
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:not(:has(article)):has(a[href^="/i/communities/"])
+x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:has-text(コミュニティを探す))
