@@ -14,8 +14,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Serialize every workflow that commits to main; this prevents bot push races.
-  group: repository-content-writers-${{ github.ref }}
+  # Keep each writer's queue independent. Cross-workflow push races are handled
+  # by the bounded pull/rebase/push retry loop below.
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -74,14 +75,14 @@ jobs:
         if: steps.conversion.outputs.changed == 'true'
         run: |
           set -euo pipefail
+          output='dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt'
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # distディレクトリ全体をステージング
-          git add dist/
-          
-          # ステージングされた変更がある場合のみコミット＆プッシュを実行
-          if ! git diff --staged --quiet; then
+
+          # Stage only the generated artifact owned by this workflow.
+          git add -- "$output"
+
+          if ! git diff --staged --quiet -- "$output"; then
             git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized)"
             for attempt in 1 2 3 4 5; do
               git pull --rebase origin main

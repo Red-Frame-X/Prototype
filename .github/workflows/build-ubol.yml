@@ -13,8 +13,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Keep this workflow independent. A repository-wide concurrency group can
-  # cancel an older pending writer when another workflow enters the queue.
+  # Keep each writer's queue independent. Cross-workflow push races are handled
+  # by the bounded pull/rebase/push retry loop below.
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
