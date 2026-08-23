@@ -6,8 +6,7 @@
 
 [![Build uBO Lite filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml)
 
-ChromeOS・Android・コンテンツブロックに関する、個人利用向けのフィルタ、
-UserScript、正規表現、技術メモをまとめたリポジトリです。
+ChromeOS・Android環境での個人利用を目的に、AdGuard・uBlock Origin Lite向けのコンテンツブロックフィルタ、UserScript、ChMate用正規表現、関連する変換・自動更新ツール、技術メモをまとめたリポジトリです。
 
 > [!IMPORTANT]
 > 個人環境で検証した内容であり、すべての端末・サイトでの動作は保証しません。
