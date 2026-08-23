@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608230320
+! Version: 202608230904
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -51,6 +51,8 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 chatgpt.com##aside:has(a[href*="/articles/11487775-apps-in-chatgpt"]):has(button[data-testid="close-button"])
 ! 「ChatGPT Work でさらに進める」と表示される案内バナーを非表示
 chatgpt.com#?#aside:has(h3:contains(ChatGPT Work でさらに進める)):has(button[data-testid="close-button"])
+! 「初めての ChatGPT 広告を数分で作成」と表示される広告作成案内バナーを非表示
+chatgpt.com#?#aside:has(h3:contains(初めての ChatGPT 広告を数分で作成)):has(button[data-testid="close-button"])
 
 ! doubleclick.net
 ! かっぱ寿司アプリの起動・通信エラー回避
