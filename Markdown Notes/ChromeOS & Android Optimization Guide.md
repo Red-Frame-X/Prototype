@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260820 |
+| **Version** | 20260824 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -226,47 +226,57 @@ ChatGPTアプリで接続エラー、ログイン失敗、回答の停止など�
 
 > あなたはAndroidのネットワーク障害を調査する技術サポート担当者です。初心者向けに説明し、原因を断定せず、確認手順を影響の小さい順に提示してください。現在の仕様は公式ドキュメントで確認し、推測と確認済みの事実を分けてください。
 
-## ChatGPT WorkのGitHubプラグイン
+## ChatGPTのGitHubプラグインとCodex
 
-ChatGPT Workの [GitHubプラグイン（OpenAI公式）](https://openai.com/business/plugins/github/) を追加すると、Repositoryのファイル、ドキュメント、コミット履歴、Issues、Pull Requestを会話の文脈として参照し、Repositoryの把握、Issuesの整理、変更内容とリスクの要約、テスト不足の確認、作業報告の作成などを効率化できます。
+[GitHubプラグイン（OpenAI公式）](https://openai.com/business/plugins/github/) を追加すると、ChatGPTのChat・WorkおよびCodexから、許可したRepository、ファイル、commit、Issues、Pull Request、CIなどを参照・管理できます。プラグインはスキルとGitHubコネクタをまとめたもので、利用可能な操作は、ChatGPTのプランと画面、GitHub Appに付与したRepository・権限、ワークスペース管理者の設定、操作時の承認によって異なります（[OpenAI公式：Plugins](https://learn.chatgpt.com/docs/plugins)）。
 
-**GitHub接続とCodexの役割の違い**
+**Chat・Work・Codexの役割**
 
-* ChatGPTのGitHub接続は、許可したRepositoryからコードやREADMEなどを検索・分析・引用する用途が中心です。OpenAIのヘルプでは、従来のGitHub App単体は読み取り専用であり、コードの編集やGitHubへのpushは [Codexを利用する](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt) と説明されています。
-* GitHubプラグインは、Repository、Issues、Pull Requestを扱うためのスキルと連携機能をまとめたものです。利用できる読み取り・書き込み操作は、ChatGPTのプラン、Workの実行環境、GitHub側で許可したRepository、ワークスペース管理者の設定、操作時の承認によって異なります。
-* Codexを併用すると、対象ブランチでファイルを変更し、テストやlintを実行して、commit・push・Pull Request作成まで進められます。Pull Requestのコメントで `@codex review` を実行するレビュー機能や、Repository固有の確認事項を `AGENTS.md` に記載する仕組みもあります（[OpenAI公式：GitHub Pull Requestのレビュー](https://learn.chatgpt.com/docs/third-party/github)）。
+| 画面 | 適した用途 | 主な制約 |
+| :--- | :--- | :--- |
+| **Chat** | Repositoryやファイルの検索・説明、Issues・Pull Request・CIの確認、Issue整理、コメント、ラベル、レビュー、許可されたファイル更新など | GitHubプラグインが提供する操作と権限の範囲内。リポジトリ全体をローカル作業環境として実行・検証する用途には向かない |
+| **Work** | Chatで可能なGitHub操作に加え、複数の情報源やツールをまたぐ調査、長い査読、作業報告などの多段階タスク | 作業量に応じて時間・クレジットを多く使う場合がある（[OpenAI公式：ChatGPT Work](https://learn.chatgpt.com/docs/get-started-with-work)） |
+| **Codex** | Repositoryを作業環境で読み、複数ファイルを編集し、テスト・lint・生成処理を実行して、commit・push・Pull Request作成まで進める | 実行環境、sandbox、ネットワーク、GitHub権限、承認設定の制約を受ける |
+
+したがって、**ChatGPT ChatでもGitHub Repositoryの管理・運用はある程度可能**です。従来の「ChatGPTのGitHub接続は読み取り専用、書き込みはすべてCodex」という説明は、現在のGitHubプラグイン全体には当てはまりません。ただし、ChatからのAPI操作でファイルを更新できることと、checkoutしたRepositoryでテストまで行えることは別です。コード変更の再現性と検証が重要な作業ではCodexを使います。
 
 **追加・接続手順**
 
-1. ChatGPT Workの「Plugins Directory」からGitHubプラグインを追加します。
-2. GitHubで認証し、必要なRepositoryだけを選択してアクセスを許可します。
-3. 対象の会話で `@GitHub` とRepositoryまたはPull RequestのURLを指定し、調査・変更範囲・完了条件を明示します。
-4. 表示されないRepositoryは、GitHub側のApp設定、Organization管理者の承認、同期・検索インデックスの反映を確認します。接続直後は表示まで約5分、インデックス反映にはさらに時間がかかる場合があります（[OpenAI公式：GitHubをChatGPTへ接続](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt)）。
+1. ChatGPTの「Plugins」からGitHubプラグインを追加します。プラグインは対応するChat・Work・Codexで利用できます（[OpenAI公式：Plugins](https://learn.chatgpt.com/docs/plugins)）。
+2. GitHubで認証し、可能なら「All repositories」ではなく「Only select repositories」を選び、必要なRepositoryだけを許可します（[GitHub公式：GitHub Appのインストール](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party)）。
+3. 新しい会話で `@GitHub` を指定し、Repository、Issue、Pull RequestのURLと、調査・変更範囲、完了条件を伝えます。インストール後のプラグインは新しいChatまたはWorkで使用するのが確実です。
+4. Repositoryが表示されない場合は、GitHubのInstalled GitHub Appsで対象Repositoryと権限を確認し、Organization所有の場合は管理者によるインストール・承認も確認します（[GitHub公式：インストール済みAppの確認・変更](https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps)）。
+5. 書き込み操作が使えない場合は、GitHub Appの権限、ChatGPTワークスペースのAction controls、操作時の承認、使用中の画面でそのツールが提供されているかを確認します。具体的な反映時間は公式資料で一律に保証されていないため、「接続後5分」などの固定値は目安として断定しません。
 
 **Repository管理に適した作業例**
 
 * Repository全体を査読し、重要度、根拠、修正案、影響範囲を整理する。
 * IssuesとPull Requestを確認し、重複、再現手順不足、未解決レビュー、CI失敗を分類する。
-* AdGuardフィルタ、UserScript、正規表現、Markdownの変更を小さな単位に分け、関連するlintやテストを実行する。
-* 変更前後の差分、実行したテスト、未検証事項をPull Requestにまとめる。
-* 最近のcommitとマージ済みPull Requestから、更新履歴や作業報告を作成する。
+* ChatからIssueの作成・更新、コメント、ラベル、担当者、Pull Requestレビューなど、許可された管理操作を行う。
+* 小規模なMarkdownや設定ファイルを更新する。テストが必要なコード変更はCodexへ回す。
+* 最近のcommit、マージ済みPull Request、workflow結果から更新履歴や作業報告を作成する。
+* CodexでAdGuardフィルタ、UserScript、正規表現、Markdownを修正し、関連するlint・テスト・生成処理を実行する。
 
 **推奨ワークフロー**
 
-1. `README.md`、`AGENTS.md`、対象Issues、関連ファイルを先に読み、作業範囲と完了条件を固定する。
-2. 1つの依頼に無関係な変更を混ぜず、専用ブランチで修正する。
-3. 自動テスト、lint、生成処理を実行し、生成物も含めて差分を確認する。
-4. draft Pull Requestを作成し、要約、理由、影響、テスト結果、残るリスクを記載する。
-5. 人間が差分とCI結果を確認してからマージする。AIによるレビューは、テスト、branch protection、必須レビューの代替にはなりません。
+1. `README.md`、`AGENTS.md`、対象Issues、関連ファイルを読み、作業範囲と完了条件を固定します。
+2. ChatまたはWorkで現状調査、Issue整理、変更計画、リスク評価を行います。
+3. コード実行を伴わない軽微な管理・文書更新はGitHubプラグインで行い、複数ファイルの実装や検証はCodexで専用ブランチに行います。
+4. 自動テスト、lint、生成処理を実行し、生成物を含む差分を確認します。
+5. Pull Requestに要約、理由、影響、テスト結果、未検証事項、残るリスクを記載します。
+6. 人間が差分とCI結果を確認してからマージします。CodexのReviewは有用な追加チェックですが、テスト、branch protection、必須レビューの代替ではありません（[OpenAI公式：CodexによるGitHub Pull Requestレビュー](https://learn.chatgpt.com/docs/third-party/github)）。
 
-Redditの利用者報告では、Issuesを作業キュー、`AGENTS.md`を既定ルール、ChatGPTを計画・整理、Codexを実装・テスト・commit・push担当として分ける運用例があります（[Reddit：IssuesとAGENTS.mdを使った運用例](https://www.reddit.com/r/ChatGPT/comments/1udz0r7/i_stopped_copypasting_between_chatgpt_and_codex/)）。一方、OrganizationのRepositoryが表示されない、ファイル取得に失敗するなどの報告もあります（[Reddit：Organization Repositoryの認証問題](https://www.reddit.com/r/codex/comments/1q4msm3/chatgpt_codex_only_shows_personal_github_repos/)、[Reddit：ファイル取得失敗の報告](https://www.reddit.com/r/ChatGPT/comments/1ok30fs/chatgpt_pro_with_github_connector_cannot_read_any/)）。これらはユーザー個別の体験談であり、現在の一般仕様や不具合の発生を保証する情報ではありません。
+CodexのPull Requestレビューは、コメントで `@codex review` と依頼でき、Repository固有の確認事項は変更対象に最も近い `AGENTS.md` の `## Code Review Rules` に記載できます。機械的に判定できるformat・lintはCIへ残し、`AGENTS.md`には互換性、データ境界、副作用などRepository固有の判断基準を簡潔に記載します（[OpenAI公式：AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)）。
+
+Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`AGENTS.md`やチケット文書で作業範囲を固定する運用例があります（[Reddit：ChatGPTとCodexの併用](https://www.reddit.com/r/codex/comments/1vtmmjt/is_there_a_better_way_to_use_chatgpt_codex/)、[Reddit：AGENTS.mdを使った運用例](https://www.reddit.com/r/codex/comments/1tf4s07/my_best_workflow_so_far_for_building_projects/)）。一方、特定のChat画面やモデルではPrivate Repositoryの取得が安定しないという報告もあります（[Reddit：GitHub connectorの利用画面に関する報告](https://www.reddit.com/r/ChatGPTPro/comments/1ozf2jm/github_connector_only_works_in_deep_research/)）。これらは利用者個別の体験談であり、一般仕様や現在の障害を示す公式情報ではありません。
 
 **❗️セキュリティ・運用上の注意**
 
-* GitHub Appには「All repositories」ではなく、必要なRepositoryだけを許可します。機密情報、APIキー、Cookie、個人情報をRepository、Issues、プロンプト、ログへ含めないでください。
-* AIが作成した変更は誤修正、過剰変更、依存関係の見落としを含む可能性があります。削除、公開、merge、releaseなど戻しにくい操作は、対象と差分を確認してから実行します。
-* 個人向けプランでは、「Improve the model for everyone」の設定が有効な場合、送信した内容がモデル改善に利用される可能性があります。Business、Enterprise、Eduなどのビジネス向けサービスでは、既定で顧客コンテンツをモデル改善に使用しないとOpenAIは説明しています（[OpenAI公式：GitHub接続時のデータとプライバシー](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt)）。
-* プラグインの機能と権限は更新される可能性があります。導入時は [ChatGPTのプラグイン・Appsの公式説明](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt) と、GitHubのApp権限画面を再確認してください。
+* GitHub Appには必要最小限のRepositoryと権限だけを付与します。GitHub Appの権限は、APIで実行できる操作を決定します（[GitHub公式：GitHub Appの権限](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app)）。
+* APIキー、アクセストークン、Cookie、個人情報をRepository、Issues、Pull Request、プロンプト、ログへ含めません。誤ってcommitした秘密情報は、削除commitだけでなく認証情報の失効・再発行も行います。
+* AIが作成した変更には、誤修正、過剰変更、依存関係や生成物の見落としがあり得ます。削除、公開、merge、release、workflowの再実行など影響の大きい操作は、対象・差分・権限を確認してから実行します。
+* Chatから書き込めても、テストを実行していなければ動作確認済みとは扱いません。実行した検証と未検証事項を分けて記録します。
+* プラグインの機能、対応画面、権限は更新される可能性があります。導入時は [OpenAI公式：Plugins](https://learn.chatgpt.com/docs/plugins) とGitHubのInstalled GitHub Apps画面を再確認します。
 
 ## 汎用プロンプト集
 
