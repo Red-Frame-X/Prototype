@@ -36,7 +36,7 @@ DEFAULT_SOURCE = str(
 UNSUPPORTED_COSMETIC_TOKENS = (
     ":nth-ancestor(", ":xpath(",
     ":matches-attr(", ":matches-css(", ":matches-css-after(",
-    ":matches-css-before(", ":matches-property(", ":remove()", ":style(",
+    ":matches-css-before(", ":matches-property(", ":remove()",
 )
 UNSUPPORTED_MODIFIERS = {
     "app", "cname", "content", "csp", "hls", "jsonprune", "permissions",
