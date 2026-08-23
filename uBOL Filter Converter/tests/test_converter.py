@@ -52,6 +52,12 @@ class LineConversionTests(unittest.TestCase):
             "example.com##span:has-text(Promo):upward(div.card)",
         )
 
+    def test_style_rule_is_preserved_for_ubol(self):
+        rule = "example.com##.title:style(font-size: 1.2rem !important;)"
+        result = converter.convert_line(rule)
+        self.assertEqual(result.output, rule)
+        self.assertEqual(result.status, "preserved")
+
     def test_html_filter_is_excluded(self):
         self.assertEqual(converter.convert_line('example.com$$div[id="ad"]').reason, "html-filtering")
 

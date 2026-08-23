@@ -1,12 +1,11 @@
 {
   "source": "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt",
   "input_lines": 410,
-  "output_lines_excluding_generated_header": 347,
-  "excluded_count": 17,
+  "output_lines_excluding_generated_header": 353,
+  "excluded_count": 14,
   "excluded_by_reason": {
     "html-filtering": 3,
     "modifier:app": 9,
-    "procedural-or-style-cosmetic": 3,
     "scriptlet": 2
   },
   "excluded": [
@@ -79,21 +78,6 @@
       "line": 285,
       "reason": "html-filtering",
       "rule": "news.web.nhk$$div[role=\"region\"]:contains(NHKの公式アプリ)"
-    },
-    {
-      "line": 295,
-      "reason": "procedural-or-style-cosmetic",
-      "rule": "www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !important; line-height: 1.8rem !important;)"
-    },
-    {
-      "line": 297,
-      "reason": "procedural-or-style-cosmetic",
-      "rule": "www.youtube.com###video-title.ytd-rich-grid-media, #video-title.ytd-rich-grid-slim-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)"
-    },
-    {
-      "line": 307,
-      "reason": "procedural-or-style-cosmetic",
-      "rule": "www.youtube.com##body, ytd-app[scrolling]:style(overflow-x: hidden !important;)"
     }
   ]
 }

@@ -49,6 +49,9 @@ jobs:
           git diff --check -- \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt" \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json"
+          git diff --exit-code -- \
+            "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt" \
+            "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json"
 
       - name: Run Markdownlint
         run: npm run lint:markdown
