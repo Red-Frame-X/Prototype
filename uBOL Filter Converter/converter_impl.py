@@ -33,11 +33,9 @@ DEFAULT_SOURCE = str(
 
 # AdGuard-only or non-declarative features which cannot be translated without
 # changing behaviour.  False positives are worse than losing one cosmetic rule.
-UNSUPPORTED_COSMETIC_TOKENS = (
-    ":nth-ancestor(", ":xpath(",
-    ":matches-attr(", ":matches-css(", ":matches-css-after(",
-    ":matches-css-before(", ":matches-property(", ":remove()",
-)
+# AdGuard's :remove() removes matching DOM nodes instead of hiding them. uBOL
+# has no confirmed equivalent with the same lifecycle semantics.
+UNSUPPORTED_COSMETIC_TOKENS = (":remove()",)
 UNSUPPORTED_MODIFIERS = {
     "app", "cname", "content", "csp", "hls", "jsonprune", "permissions",
     "redirect", "redirect-rule", "removeheader", "replace", "urltransform",
@@ -84,6 +82,8 @@ def convert_line(raw_line: str) -> Result:
         # :has-text() procedural operator. uBOL supports custom procedural
         # cosmetic filters, including :has-text() and :upward().
         selector = selector.replace(":contains(", ":has-text(")
+        selector = selector.replace(":nth-ancestor(", ":upward(")
+        selector = selector.replace(":matches-property(", ":matches-prop(")
         if any(token in selector for token in UNSUPPORTED_COSMETIC_TOKENS):
             return Result(None, "excluded", "procedural-or-style-cosmetic")
         if separator == "#?#":

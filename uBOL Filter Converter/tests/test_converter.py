@@ -58,6 +58,41 @@ class LineConversionTests(unittest.TestCase):
         self.assertEqual(result.output, rule)
         self.assertEqual(result.status, "preserved")
 
+    def test_adguard_nth_ancestor_becomes_upward(self):
+        result = converter.convert_line(
+            "example.com#?#span:contains(Promo):nth-ancestor(2)"
+        )
+        self.assertEqual(
+            result.output,
+            "example.com##span:has-text(Promo):upward(2)",
+        )
+
+    def test_adguard_matches_property_becomes_matches_prop(self):
+        result = converter.convert_line(
+            "example.com#?#img:matches-property(naturalWidth=160)"
+        )
+        self.assertEqual(
+            result.output,
+            "example.com##img:matches-prop(naturalWidth=160)",
+        )
+
+    def test_ubo_procedural_operators_are_preserved(self):
+        rules = (
+            'example.com##button:matches-attr(class="/[a-z]{7}/")',
+            "example.com##div:matches-css(position: absolute)",
+            "example.com##div:matches-css-before(content: Promo)",
+            "example.com##div:matches-css-after(content: Promo)",
+            'example.com##:xpath(//div[@data-ad="true"])',
+        )
+        for rule in rules:
+            with self.subTest(rule=rule):
+                self.assertEqual(converter.convert_line(rule).output, rule)
+
+    def test_remove_action_remains_excluded(self):
+        result = converter.convert_line("example.com##.ad:remove()")
+        self.assertIsNone(result.output)
+        self.assertEqual(result.reason, "procedural-or-style-cosmetic")
+
     def test_html_filter_is_excluded(self):
         self.assertEqual(converter.convert_line('example.com$$div[id="ad"]').reason, "html-filtering")
 

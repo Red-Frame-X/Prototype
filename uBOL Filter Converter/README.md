@@ -36,13 +36,16 @@ URL購読を推奨します。
 誤変換によるサイト破損を避けるため、意味を維持できない次のルールは出力せず、
 JSONレポートへ理由と元の行番号を記録します。
 
-対応可能なコスメティックルールは、`:contains()`をuBO/uBOLの
-`:has-text()`へ変換し、`:upward()`と`:style()`は維持して出力します。
+対応可能なコスメティックルールは、`:contains()`を`:has-text()`、
+`:nth-ancestor()`を`:upward()`、`:matches-property()`を`:matches-prop()`へ
+変換します。`:style()`、`:matches-attr()`、`:matches-css*()`、`:xpath()`
+などuBO/uBOLが対応する演算子は維持して出力します。
 
 次のルールは意味または信頼境界を維持できないため除外します。
 
 - AdGuardアプリ専用の`$app`ルール
 - HTMLフィルタリング（`$$`）。同じ目的のCSSフォールバックがある場合はそちらを出力
+- `:remove()`。要素の非表示ではなくDOM削除となり、同じライフサイクルを保証できない
 - AdGuard scriptlet（`#%#`）。現在のルールは外部リストでは拒否されるtrusted scriptlet
 - `$replace`、`$redirect`、`$csp`など、uBOLへ安全に対応付けられない修飾子
 - ChromeのRE2で表現できない後読み・後方参照付き正規表現
