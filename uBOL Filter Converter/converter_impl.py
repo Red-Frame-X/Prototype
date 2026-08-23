@@ -34,7 +34,7 @@ DEFAULT_SOURCE = str(
 # AdGuard-only or non-declarative features which cannot be translated without
 # changing behaviour.  False positives are worse than losing one cosmetic rule.
 UNSUPPORTED_COSMETIC_TOKENS = (
-    ":contains(", ":has-text(", ":upward(", ":nth-ancestor(", ":xpath(",
+    ":nth-ancestor(", ":xpath(",
     ":matches-attr(", ":matches-css(", ":matches-css-after(",
     ":matches-css-before(", ":matches-property(", ":remove()", ":style(",
 )
@@ -80,6 +80,10 @@ def convert_line(raw_line: str) -> Result:
     cosmetic_match = re.match(r"^(.*?)(#\?#|#\?@#|##|#@#)(.*)$", line)
     if cosmetic_match:
         domains, separator, selector = cosmetic_match.groups()
+        # AdGuard's :contains() is equivalent to uBO's documented
+        # :has-text() procedural operator. uBOL supports custom procedural
+        # cosmetic filters, including :has-text() and :upward().
+        selector = selector.replace(":contains(", ":has-text(")
         if any(token in selector for token in UNSUPPORTED_COSMETIC_TOKENS):
             return Result(None, "excluded", "procedural-or-style-cosmetic")
         if separator == "#?#":
