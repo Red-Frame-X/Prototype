@@ -42,7 +42,7 @@ jobs:
           python -m unittest discover -s "uBOL Filter Converter/tests" -v
 
       # Validate that the converter can regenerate both outputs on every change.
-      # build-ubol.yml publishes changed outputs after the change reaches main.
+      # Pull requests must commit deterministic generated outputs; build-ubol.yml also repairs direct main pushes.
       - name: Validate uBOL output generation
         run: |
           python "uBOL Filter Converter/converter.py"
