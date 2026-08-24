@@ -41,14 +41,20 @@ jobs:
           python -m unittest discover -s tests -v
           python -m unittest discover -s "uBOL Filter Converter/tests" -v
 
-      # Validate that the converter can regenerate both outputs on every change.
-      # Pull requests must commit deterministic generated outputs; build-ubol.yml also repairs direct main pushes.
+      # Validate converter determinism everywhere, but require committed generated
+      # outputs to be fully synchronized only on pull requests. Direct pushes to
+      # main are repaired by build-ubol.yml, so failing here would create a race
+      # between the quality and auto-generation workflows.
       - name: Validate uBOL output generation
         run: |
           python "uBOL Filter Converter/converter.py"
           git diff --check -- \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt" \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json"
+
+      - name: Require synchronized uBOL outputs on pull requests
+        if: github.event_name == 'pull_request'
+        run: |
           git diff --exit-code -- \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt" \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json"
