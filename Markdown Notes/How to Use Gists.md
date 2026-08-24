@@ -1,4 +1,4 @@
-# GitHub Gistでフィルタ・UserScriptを配布する方法
+# Distributing Filters and UserScripts with GitHub Gist
 
 GitHub Gistを利用して、コンテンツブロックフィルタやUserScriptを配布・更新する際の手順と、推奨メタデータをまとめたメモです。
 
