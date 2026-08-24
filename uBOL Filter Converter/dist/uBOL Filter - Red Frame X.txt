@@ -1,6 +1,6 @@
 ! Title: uBOL Filter - Red Frame X
 ! Description: Customize uBOL filters for personal use.
-! Version: 202608241725
+! Version: 202608241738
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -77,7 +77,7 @@ chatgpt.com##aside:has(h3:has-text(初めての ChatGPT 広告を数分で作成
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*関連商品\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*商品\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*人気商品\s*$/):upward(div[data-hveid][data-ved])
-! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*おすすめの商品\s*$/):upward(div[data-hveid][data-ved])
+! google.com#?#div[role="headinging"][aria-level="2"]:contains(/^\s*おすすめの商品\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*ショッピング\s*$/):upward(div[data-hveid][data-ved])
 
 ! Google検索 — レシピ・飲食店
@@ -170,14 +170,6 @@ news.google.com##h3:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュ�
 ! news.yahoo.co.jp
 ! 記事ページのYahoo!ニュース コメント欄全体を非表示
 news.yahoo.co.jp###articleCommentModule
-
-! njavtv.com
-! 画面右下に固定表示されるt.rallytrck.websiteの広告iframeを含むコンテナを非表示
-njavtv.com##div.fixed.right-2.bottom-2:has(> div > iframe[src^="https://t.rallytrck.website/"])
-! mayzaent.comの728×90広告iframe通信をnjavtv.com上でブロック
-||go.mayzaent.com/smartpop/^$subdocument,domain=njavtv.com
-! ブロック後に残る728×90広告コンテナを非表示
-njavtv.com##div.mx-auto:has(> iframe[src^="https://go.mayzaent.com/smartpop/"])
 
 ! officeforest.org
 ! IDがoffic-で始まる独自広告・案内コンテナを非表示
