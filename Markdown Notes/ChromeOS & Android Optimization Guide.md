@@ -22,6 +22,7 @@ Googleの多くのサービスでは、年額サブスクリプションを「�
 
 * Amazon Prime（年額）
 * ChMate スタンダードプラン（月額）
+* ChatGPT Plus（月額）
 * Google AI Plus 200 GB（月額）
 * [mond｜Kdroidwinさんのメンバーシップ](https://mond.how/ja/kdroidwin)（Premium / 月額）
 * 𝕏プレミアム ベーシック（年額）
@@ -148,7 +149,7 @@ Violentmonkeyを使用するためには、設定 > 拡張機能 > Tampermonkey�
 * **[Shortcuts for Google™](https://chromewebstore.google.com/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd)**：Googleサービスへのショートカットボタンを表示する。
 * **[Similarweb - Website Traffic, AI Traffic & SEO Checker](https://chromewebstore.google.com/detail/similarweb-website-traffi/hoklmmgfnpapgjgcpechhaamimifchmp)**：閲覧中サイトのトラフィック指標、検索キーワード、AI流入などの競合分析データを表示する。
 * **[System Memory Usage](https://chromewebstore.google.com/detail/system-memory-usage/fdefaodljgbdlmdhobjlechpgpblooeh)**：システムのメモリ使用量をツールバーに表示する。
-* **[ドキュメント、スプレッドシート、スライドで Office ファイルを編集](https://chromewebstore.google.com/detail/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%80%81%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%80%81%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E3%81%A7-off/gbkeegbaiigmenfmjfclcdgdpimamgkj)**：Chromeブラウザ上でMicrosoft Officeファイルを直接開いて編集可能にする。
+* **[ドキュメント、スプレッドシート、スライドで Office ファイルを編集](https://chromewebstore.google.com/detail/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%80%81%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%80%81%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E3%81%A7-off/gbkeegbaiigmenfmjfclcdgdpimamgkj)**：Chromeブラウザ上でMicrosoft Officeファイルを直接開いて編集可能にする。
 * **[ドライブ用アプリケーション ランチャー（Google）](https://chromewebstore.google.com/detail/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E7%94%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC%EF%BC%88googl/lmjegmlicamnimmfhcmpkclmigmmcbeh)**：ブラウザから直接、PCにインストールされた対応アプリケーションでGoogle Driveのファイルを開く。
 * **[設定（Settings）](https://chromewebstore.google.com/detail/settings/jkfjnjeniglhpiggnfpiombpaohknkie)**：Google設定、拡張機能、閲覧データの管理を一元化する。
 * **[素晴らしい画面の並べ替えとスクリーンショット（Awesome Screenshot）](https://chromewebstore.google.com/detail/%E7%B4%A0%E6%99%B4%E3%82%89%E3%81%97%E3%81%84%E7%94%BB%E9%9D%A2%E3%81%AE%E4%B8%A6%E3%81%B9%E6%9B%BF%E3%81%88%E3%81%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88/nlipoenfbbikpbjkfpfillcgkoblgpmj)**：画面の録画やスクリーンショットのキャプチャを容易にし、注釈追加も可能にする。
@@ -1038,7 +1039,7 @@ Android版Chromeなどで高精度なブロックを行うには必須です。�
 
 **DNS通信を保護 > DNSフィルタ**
 
-[AdGuard DNS filter](https://github.com/AdguardTeam/AdGuardSDNSFilter) によるブロックはシステム全体に及びます（[DNS書き換えの基本](https://writening.net/page?keELEF)）。
+[AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) によるブロックはシステム全体に及びます（[DNS書き換えの基本](https://writening.net/page?keELEF)）。
 プライバシー関連のルールによる不具合（[Issues #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896), [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178)）を緩和する方法。
 
 ① **[AdGuard DNS filter without privacy filters (Ads only)](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
@@ -1219,7 +1220,7 @@ Modアプリ検知の強化によりログインが困難になっています�
 
 **参考サイト**
 * [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/)
-* [5ch Android Twitterクライアント](https://ff5ch.syoboi.jp/?q=Android+Twitter%E3%82%AF%E3%83%A9%E3%82%A2%E3%83%B3%E3%83%88) / [5ch 神アプリスレ](https://ff5ch.syoboi.jp/?q=Android%E3%81%AE%E7%A5%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E6%8C%99%E3%81%92%E3%82%8B%E3%82%B9%E3%83%AC) / [5ch Androidアプリ 質問スレ](https://ff5ch.syoboi.jp/?q=Android%E3%82%A2%E3%83%97%E3%83%AA%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC)
+* [5ch Android Twitterクライアント](https://ff5ch.syoboi.jp/?q=Android+Twitter%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88) / [5ch 神アプリスレ](https://ff5ch.syoboi.jp/?q=Android%E3%81%AE%E7%A5%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E6%8C%99%E3%81%92%E3%82%8B%E3%82%B9%E3%83%AC) / [5ch Androidアプリ 質問スレ](https://ff5ch.syoboi.jp/?q=Android%E3%82%A2%E3%83%97%E3%83%AA%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC)
 * [Kami-Android-app｜Kdroidwin](https://github.com/Kdroidwin/Kami-Android-app)
 
 ---
