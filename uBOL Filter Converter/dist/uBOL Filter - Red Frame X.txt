@@ -77,7 +77,7 @@ chatgpt.com##aside:has(h3:has-text(初めての ChatGPT 広告を数分で作成
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*関連商品\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*商品\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*人気商品\s*$/):upward(div[data-hveid][data-ved])
-! google.com#?#div[role="headinging"][aria-level="2"]:contains(/^\s*おすすめの商品\s*$/):upward(div[data-hveid][data-ved])
+! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*おすすめの商品\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*ショッピング\s*$/):upward(div[data-hveid][data-ved])
 
 ! Google検索 — レシピ・飲食店
