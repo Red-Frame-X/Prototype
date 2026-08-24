@@ -7,16 +7,16 @@ uBlock Origin Lite（uBOL）で購読・利用できる外部フィルタリス�
 ## 購読方法（推奨）
 
 uBOL `2026.621.1813`以降では、リモートサーバー上の外部フィルタリストを
-URLで購読できます。uBOLのオプションを開き、`Filter lists`の
-`Add filter list…`へ次のRaw URLを入力してください。
+URLで購読できます。uBOLのダッシュボードで`カスタムフィルター`を開き、
+`フィルターリストを追加…`へ次のRaw URLを入力してください。
 
 ```text
 https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt
 ```
 
-追加後は`Imported lists`に表示されます。リスト内のコスメティックフィルタを
-有効にするには、ブラウザの拡張機能設定でuBOLのユーザースクリプト実行を
-許可する必要があります。許可しない場合でも、対応するネットワークフィルタは
+追加後は`インポートしたリスト`に表示されます。リスト内の整形・スクリプトレットフィルターを
+適用するには、ブラウザの拡張機能設定でuBOLの`ユーザー スクリプトを許可する`を
+有効にする必要があります。許可しない場合でも、対応するネットワークフィルタは
 適用されます。
 
 ### 対応条件と制限
@@ -28,8 +28,8 @@ https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/uBOL%20F
 - 信頼できるURLだけを追加してください。外部リストは更新時にも取得・再コンパイルされます。
 
 手動で使用する場合は、生成された`dist/uBOL Filter - Red Frame X.txt`の内容を
-uBOLの`Custom filters`からインポートできます。ただし、通常は自動更新される
-URL購読を推奨します。
+uBOLの`カスタムフィルター`にある`インポート又はエクスポート`からインポートできます。
+ただし、通常は自動更新されるURL購読を推奨します。
 
 ## 変換方針
 
@@ -100,6 +100,7 @@ GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home
 
 ## 参考資料
 
+- [uBlock Origin Lite 日本語ロケール](https://github.com/gorhill/uBlock/blob/master/platform/mv3/extension/_locales/ja/messages.json)
 - [外部フィルタリスト購読機能の実装コミット](https://github.com/gorhill/uBlock/commit/06deb19dfa85c13e48ad44d2e6dc4f64a96d6cbc)
 
 ## 英語CHANGELOG
