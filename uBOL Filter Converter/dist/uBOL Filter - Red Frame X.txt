@@ -1,6 +1,6 @@
 ! Title: uBOL Filter - Red Frame X
 ! Description: Customize uBOL filters for personal use.
-! Version: 202608230904
+! Version: 202608241725
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -14,12 +14,6 @@
 ! amazon.co.jp
 ! Amazon商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
-! Amazon Publisher Servicesの広告枠（ape-wrapper）を非表示
-amazon.co.jp##.ape-wrapper
-! 中央配置の広告コンテナ（ad-center）を非表示
-amazon.co.jp##.ad-center
-! IDがdesktop-ad-center-で始まるデスクトップ用広告枠を非表示
-amazon.co.jp##[id^="desktop-ad-center-"]
 
 ! blog.hatena.ne.jp
 ! 購読管理画面の購読案内見出しを非表示
@@ -98,7 +92,6 @@ chatgpt.com##aside:has(h3:has-text(初めての ChatGPT 広告を数分で作成
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*近くのお店\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*クチコミ\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*イベント\s*$/):upward(div[data-hveid][data-ved])
-
 ! Google検索 — 求人・教育
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*求人\s*$/):upward(div[data-hveid][data-ved])
 ! google.com#?#div[role="heading"][aria-level="2"]:contains(/^\s*仕事\s*$/):upward(div[data-hveid][data-ved])
