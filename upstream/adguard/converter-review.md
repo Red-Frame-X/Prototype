@@ -2,8 +2,12 @@
 
 This file is generated. Changelog matches are review candidates, not proof that a rule syntax is supported.
 
-## AdGuard Browser Extension 5.5
+## AdGuard Browser Extension 5.5.1.0
 
+- - `$removeparam` rules without a value (e.g. `||example.org^$removeparam`)
+- blocked the whole site in MV3 instead of removing all query parameters [#3602].
+- - Unanchored `$urltransform` substitutions did not apply to query strings in MV3 [#3600].
+- or allow rules in MV3 [AdguardFilters#238305].
 - - `$urltransform` modifier support [tsurlfilter#111].
 - - `$removeparam` support for SPA navigations [tsurlfilter#188].
 - `@adguard/dnr-converter` package.
