@@ -65,6 +65,7 @@ npm run lint:adguard
 ## 主要な公式資料
 
 - [AdGuard ナレッジベース](https://adguard.com/kb/ja/)
+- [AdGuard ブラウザ拡張機能 MV3対応版](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
 - [AdGuard Browser Extension](https://github.com/AdguardTeam/AdguardBrowserExtension)
 - [uBlock Origin / uBO Lite source](https://github.com/gorhill/uBlock)
 - [uBlock Origin Lite CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)
