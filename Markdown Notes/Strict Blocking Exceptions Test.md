@@ -6,13 +6,13 @@ AdGuard製品で `||mydocomo.docomo.ne.jp^$document` を適用した際の実機
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260824 |
+| **Version** | 20260825 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
 ## 動作環境
 
-- **Desktop**：ChromeOS / Chrome / AdGuard Browser Extension MV3
+- **Desktop**：ChromeOS / Chrome / AdGuard ブラウザ拡張機能 MV3対応版
 - **Mobile**：Android / Chrome / AdGuard for Android
 
 ## 公式仕様

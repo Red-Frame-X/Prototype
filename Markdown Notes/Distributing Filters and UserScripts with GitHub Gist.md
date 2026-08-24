@@ -6,15 +6,15 @@ GitHub Gistを利用して、コンテンツブロックフィルタやUserScrip
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260824 |
+| **Version** | 20260825 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
-## GistとRepositoryの使い分け
+## Gistとリポジトリの使い分け
 
-Gistは少数のコード・テキストファイルを公開・共有する用途に向いており、各Gist自体がGit Repositoryとして履歴を持ちます。一方、通常のGitHub RepositoryはIssues、Pull Requests、GitHub Actionsなどを組み合わせた継続的な開発・保守に向いています。
+Gistは少数のコード・テキストファイルを公開・共有する用途に向いており、各Gist自体がGitリポジトリとして履歴を持ちます。一方、通常のGitHubリポジトリはIssues、Pull Requests、GitHub Actionsなどを組み合わせた継続的な開発・保守に向いています。
 
-フィルタやUserScriptを長期運用し、lint・テスト・Issue管理まで行う場合は通常のRepositoryの方が管理機能を利用しやすくなります。
+フィルタやUserScriptを長期運用し、lint・テスト・Issues管理まで行う場合は通常のリポジトリの方が管理機能を利用しやすくなります。
 
 ## Raw URLを使う
 
@@ -105,8 +105,8 @@ Gistなどから自動更新させる場合は、必要に応じて次の項目�
 | `@version` | 自動更新する場合は必須 | 更新版の比較に使われる。更新のたびに増加させる |
 | `@description` | 推奨 | スクリプトの目的を説明する |
 | `@author` | 任意 | 作者を示す |
-| `@homepageURL` | 推奨 | Repositoryや説明ページを示す |
-| `@supportURL` | 任意 | Issue trackerなど問い合わせ先を示す |
+| `@homepageURL` | 推奨 | リポジトリや説明ページを示す |
+| `@supportURL` | 任意 | GitHub Issuesなど問い合わせ先を示す |
 | `@match` | 強く推奨 | 実行対象URLを必要な範囲に限定する |
 | `@grant` | 明示推奨 | 使用するGM APIなどの権限を列挙する。不要なら `none` を明示する |
 | `@updateURL` | 任意 | 更新確認に使うURLを指定する |

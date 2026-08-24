@@ -4,13 +4,13 @@ AdGuardカスタムルールの設計
 
 ---
 
-本書は、AdGuardブラウザ拡張機能（MV3版）とAdGuard for Androidでカスタムルールを設計・検証するための学習手順と注意点をまとめたものです。対応状況は変わるため、構文の可否はAdGuard公式リファレンスと実際のフィルタリングログで確認します。
+本書は、AdGuard ブラウザ拡張機能 MV3対応版とAdGuard for Androidでカスタムルールを設計・検証するための学習手順と注意点をまとめたものです。対応状況は変わるため、構文の可否はAdGuard公式リファレンスと実際のフィルタリングログで確認します。
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260823 |
+| **Version** | 20260825 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -20,7 +20,7 @@ AdGuardカスタムルールの設計
 
 カスタムルールを作成する前に、実行環境における技術的な制限と強みを正しく理解することが不可欠です。
 
-| 機能・特性 | AdGuard ブラウザ拡張機能 (MV3) | AdGuard for Android (CoreLibs) |
+| 機能・特性 | AdGuard ブラウザ拡張機能 MV3対応版 | AdGuard for Android (CoreLibs) |
 | :--- | :--- | :--- |
 | **主な動作レイヤー** | ブラウザ内部（DNR API依存） | OSシステム全体（ローカルVPN / MITMプロキシ） |
 | **通信遮断の仕組み** | 事前宣言されたDNRルールによるブラウザエンジン処理 | ローカルプロキシでのリクエスト解析・遮断 |
@@ -216,7 +216,7 @@ Andrey Meshkov氏らAdGuard開発チームは、 **「機能の技術的意味�
 
 [^1]: **アシスタントツール / 要素選択ツール**
 
-  画面上で消したい広告をマウスやタップで選択し、対応するブロックルールを自動生成するツール。AdGuardブラウザ拡張機能やuBlock Originに搭載されており、初学者の学習に最適です。
+  画面上で消したい広告をマウスやタップで選択し、対応するブロックルールを自動生成するツール。AdGuard ブラウザ拡張機能やuBlock Originに搭載されており、初学者の学習に最適です。
 
   * **参照**：[uBlock Origin Wiki - Element picker](https://github.com/gorhill/ublock/wiki/Element-picker) / [AdGuard ナレッジベース - 独自の広告フィルタを作成する方法](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)
 

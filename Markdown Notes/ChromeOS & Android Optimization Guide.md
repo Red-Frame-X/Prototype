@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260824 |
+| **Version** | 20260825 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -105,7 +105,7 @@ Violentmonkeyを使用するためには、設定 > 拡張機能 > Tampermonkey�
 
 ### コンテンツブロック・プライバシー関連
 * **[AdGuard Extra](https://github.com/AdguardTeam/AdGuardExtra)**：Anti-Adblocker対策用UserScript ‐ 対象サイトはFacebook、Twitchなど。
-* **[AdGuard Browser Extension MV3](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ja)**：Chrome 拡張機能。（詳細後述）
+* **[AdGuard ブラウザ拡張機能 MV3対応版](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ja)**：Chrome 拡張機能。（詳細後述）
 * **[tinyShield](https://github.com/List-KR/tinyShield/blob/main/README.ja.md)**：Ad-Shield対策用のUserScript ‐ Tampermonkeyで購読して、Manifest V3のフィルタ更新制限を回避する。
 * **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**：検索結果のフィルタリング、指定したサイトの検索結果を非表示にする。（詳細後述）
 
@@ -235,25 +235,25 @@ ChatGPTアプリで接続エラー、ログイン失敗、回答の停止など�
 
 | 画面 | 適した用途 | 主な制約 |
 | :--- | :--- | :--- |
-| **Chat** | Repositoryやファイルの検索・説明、Issues・Pull Request・CIの確認、Issue整理、コメント、ラベル、レビュー、許可されたファイル更新など | GitHubプラグインが提供する操作と権限の範囲内。リポジトリ全体をローカル作業環境として実行・検証する用途には向かない |
+| **Chat** | リポジトリやファイルの検索・説明、Issues・Pull Request・CIの確認、Issues整理、コメント、ラベル、レビュー、許可されたファイル更新など | GitHubプラグインが提供する操作と権限の範囲内。リポジトリ全体をローカル作業環境として実行・検証する用途には向かない |
 | **Work** | Chatで可能なGitHub操作に加え、複数の情報源やツールをまたぐ調査、長い査読、作業報告などの多段階タスク | 作業量に応じて時間・クレジットを多く使う場合がある（[OpenAI公式：ChatGPT Work](https://learn.chatgpt.com/docs/get-started-with-work)） |
-| **Codex** | Repositoryを作業環境で読み、複数ファイルを編集し、テスト・lint・生成処理を実行して、commit・push・Pull Request作成まで進める | 実行環境、sandbox、ネットワーク、GitHub権限、承認設定の制約を受ける |
+| **Codex** | リポジトリを作業環境で読み、複数ファイルを編集し、テスト・lint・生成処理を実行して、commit・push・Pull Request作成まで進める | 実行環境、sandbox、ネットワーク、GitHub権限、承認設定の制約を受ける |
 
-したがって、**ChatGPT ChatでもGitHub Repositoryの管理・運用はある程度可能**です。従来の「ChatGPTのGitHub接続は読み取り専用、書き込みはすべてCodex」という説明は、現在のGitHubプラグイン全体には当てはまりません。ただし、ChatからのAPI操作でファイルを更新できることと、checkoutしたRepositoryでテストまで行えることは別です。コード変更の再現性と検証が重要な作業ではCodexを使います。
+したがって、**ChatGPT ChatでもGitHubリポジトリの管理・運用はある程度可能**です。従来の「ChatGPTのGitHub接続は読み取り専用、書き込みはすべてCodex」という説明は、現在のGitHubプラグイン全体には当てはまりません。ただし、ChatからのAPI操作でファイルを更新できることと、checkoutしたリポジトリでテストまで行えることは別です。コード変更の再現性と検証が重要な作業ではCodexを使います。
 
 **追加・接続手順**
 
 1. ChatGPTの「Plugins」からGitHubプラグインを追加します。プラグインは対応するChat・Work・Codexで利用できます（[OpenAI公式：Plugins](https://learn.chatgpt.com/docs/plugins)）。
-2. GitHubで認証し、可能なら「All repositories」ではなく「Only select repositories」を選び、必要なRepositoryだけを許可します（[GitHub公式：GitHub Appのインストール](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party)）。
-3. 新しい会話で `@GitHub` を指定し、Repository、Issue、Pull RequestのURLと、調査・変更範囲、完了条件を伝えます。インストール後のプラグインは新しいChatまたはWorkで使用するのが確実です。
-4. Repositoryが表示されない場合は、GitHubのInstalled GitHub Appsで対象Repositoryと権限を確認し、Organization所有の場合は管理者によるインストール・承認も確認します（[GitHub公式：インストール済みAppの確認・変更](https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps)）。
+2. GitHubで認証し、可能なら「All repositories」ではなく「Only select repositories」を選び、必要なリポジトリだけを許可します（[GitHub公式：GitHub Appのインストール](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party)）。
+3. 新しい会話で `@GitHub` を指定し、リポジトリ、Issues、Pull RequestのURLと、調査・変更範囲、完了条件を伝えます。インストール後のプラグインは新しいChatまたはWorkで使用するのが確実です。
+4. リポジトリが表示されない場合は、GitHubのInstalled GitHub Appsで対象リポジトリと権限を確認し、Organization所有の場合は管理者によるインストール・承認も確認します（[GitHub公式：インストール済みAppの確認・変更](https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps)）。
 5. 書き込み操作が使えない場合は、GitHub Appの権限、ChatGPTワークスペースのAction controls、操作時の承認、使用中の画面でそのツールが提供されているかを確認します。具体的な反映時間は公式資料で一律に保証されていないため、「接続後5分」などの固定値は目安として断定しません。
 
-**Repository管理に適した作業例**
+**リポジトリ管理に適した作業例**
 
-* Repository全体を査読し、重要度、根拠、修正案、影響範囲を整理する。
+* リポジトリ全体を査読し、重要度、根拠、修正案、影響範囲を整理する。
 * IssuesとPull Requestを確認し、重複、再現手順不足、未解決レビュー、CI失敗を分類する。
-* ChatからIssueの作成・更新、コメント、ラベル、担当者、Pull Requestレビューなど、許可された管理操作を行う。
+* ChatからIssuesの作成・更新、コメント、ラベル、担当者、Pull Requestレビューなど、許可された管理操作を行う。
 * 小規模なMarkdownや設定ファイルを更新する。テストが必要なコード変更はCodexへ回す。
 * 最近のcommit、マージ済みPull Request、workflow結果から更新履歴や作業報告を作成する。
 * CodexでAdGuardフィルタ、UserScript、正規表現、Markdownを修正し、関連するlint・テスト・生成処理を実行する。
@@ -261,20 +261,20 @@ ChatGPTアプリで接続エラー、ログイン失敗、回答の停止など�
 **推奨ワークフロー**
 
 1. `README.md`、`AGENTS.md`、対象Issues、関連ファイルを読み、作業範囲と完了条件を固定します。
-2. ChatまたはWorkで現状調査、Issue整理、変更計画、リスク評価を行います。
+2. ChatまたはWorkで現状調査、Issues整理、変更計画、リスク評価を行います。
 3. コード実行を伴わない軽微な管理・文書更新はGitHubプラグインで行い、複数ファイルの実装や検証はCodexで専用ブランチに行います。
 4. 自動テスト、lint、生成処理を実行し、生成物を含む差分を確認します。
 5. Pull Requestに要約、理由、影響、テスト結果、未検証事項、残るリスクを記載します。
 6. 人間が差分とCI結果を確認してからマージします。CodexのReviewは有用な追加チェックですが、テスト、branch protection、必須レビューの代替ではありません（[OpenAI公式：CodexによるGitHub Pull Requestレビュー](https://learn.chatgpt.com/docs/third-party/github)）。
 
-CodexのPull Requestレビューは、コメントで `@codex review` と依頼でき、Repository固有の確認事項は変更対象に最も近い `AGENTS.md` の `## Code Review Rules` に記載できます。機械的に判定できるformat・lintはCIへ残し、`AGENTS.md`には互換性、データ境界、副作用などRepository固有の判断基準を簡潔に記載します（[OpenAI公式：AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)）。
+CodexのPull Requestレビューは、コメントで `@codex review` と依頼でき、リポジトリ固有の確認事項は変更対象に最も近い `AGENTS.md` の `## Code Review Rules` に記載できます。機械的に判定できるformat・lintはCIへ残し、`AGENTS.md`には互換性、データ境界、副作用などリポジトリ固有の判断基準を簡潔に記載します（[OpenAI公式：AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)）。
 
-Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`AGENTS.md`やチケット文書で作業範囲を固定する運用例があります（[Reddit：ChatGPTとCodexの併用](https://www.reddit.com/r/codex/comments/1vtmmjt/is_there_a_better_way_to_use_chatgpt_codex/)、[Reddit：AGENTS.mdを使った運用例](https://www.reddit.com/r/codex/comments/1tf4s07/my_best_workflow_so_far_for_building_projects/)）。一方、特定のChat画面やモデルではPrivate Repositoryの取得が安定しないという報告もあります（[Reddit：GitHub connectorの利用画面に関する報告](https://www.reddit.com/r/ChatGPTPro/comments/1ozf2jm/github_connector_only_works_in_deep_research/)）。これらは利用者個別の体験談であり、一般仕様や現在の障害を示す公式情報ではありません。
+Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`AGENTS.md`やチケット文書で作業範囲を固定する運用例があります（[Reddit：ChatGPTとCodexの併用](https://www.reddit.com/r/codex/comments/1vtmmjt/is_there_a_better_way_to_use_chatgpt_codex/)、[Reddit：AGENTS.mdを使った運用例](https://www.reddit.com/r/codex/comments/1tf4s07/my_best_workflow_so_far_for_building_projects/)）。一方、特定のChat画面やモデルではプライベートリポジトリの取得が安定しないという報告もあります（[Reddit：GitHub connectorの利用画面に関する報告](https://www.reddit.com/r/ChatGPTPro/comments/1ozf2jm/github_connector_only_works_in_deep_research/)）。これらは利用者個別の体験談であり、一般仕様や現在の障害を示す公式情報ではありません。
 
 **❗️セキュリティ・運用上の注意**
 
-* GitHub Appには必要最小限のRepositoryと権限だけを付与します。GitHub Appの権限は、APIで実行できる操作を決定します（[GitHub公式：GitHub Appの権限](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app)）。
-* APIキー、アクセストークン、Cookie、個人情報をRepository、Issues、Pull Request、プロンプト、ログへ含めません。誤ってcommitした秘密情報は、削除commitだけでなく認証情報の失効・再発行も行います。
+* GitHub Appには必要最小限のリポジトリと権限だけを付与します。GitHub Appの権限は、APIで実行できる操作を決定します（[GitHub公式：GitHub Appの権限](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app)）。
+* APIキー、アクセストークン、Cookie、個人情報をリポジトリ、Issues、Pull Request、プロンプト、ログへ含めません。誤ってcommitした秘密情報は、削除commitだけでなく認証情報の失効・再発行も行います。
 * AIが作成した変更には、誤修正、過剰変更、依存関係や生成物の見落としがあり得ます。削除、公開、merge、release、workflowの再実行など影響の大きい操作は、対象・差分・権限を確認してから実行します。
 * Chatから書き込めても、テストを実行していなければ動作確認済みとは扱いません。実行した検証と未検証事項を分けて記録します。
 * プラグインの機能、対応画面、権限は更新される可能性があります。導入時は [OpenAI公式：Plugins](https://learn.chatgpt.com/docs/plugins) とGitHubのInstalled GitHub Apps画面を再確認します。
@@ -400,7 +400,7 @@ IT、セキュリティ、広告ブロックに関する質問では、公式ド
 
 1. 対象ページをデスクトップ版Google Chromeで開き、デベロッパーツール（Ctrl + Shift + I）の要素選択アイコンを有効にします（[Chrome DevTools公式](https://developer.chrome.com/docs/devtools/inspect-mode?hl=ja)）。
 2. 非表示にしたい要素を選択し、DOMツリーで右クリックして「Copy」>「Copy outerHTML」を選びます。必要なら親要素や、同種要素との違いが分かる周辺HTMLも取得します。
-3. ChatGPTに、対象URL、コピーしたHTML、使用製品（AdGuard Browser Extension MV3 / AdGuard for Android）、目的をまとめて入力します。スクリーンショットも補助資料になりますが、ルール作成にはHTMLのほうが適しています。
+3. ChatGPTに、対象URL、コピーしたHTML、使用製品（AdGuard ブラウザ拡張機能 MV3対応版 / AdGuard for Android）、目的をまとめて入力します。スクリーンショットも補助資料になりますが、ルール作成にはHTMLのほうが適しています。
 4. 次のプロンプトを貼り付け、プレースホルダーを置き換えます。
 
 ````text
@@ -408,7 +408,7 @@ IT、セキュリティ、広告ブロックに関する質問では、公式ド
 以下の対象だけを非表示またはブロックする、AdGuard用のユーザールールを提案してください。
 
 # 使用環境
-- 製品: AdGuard Browser Extension MV3 / AdGuard for Android（該当するものを残す）
+- 製品: AdGuard ブラウザ拡張機能 MV3対応版 / AdGuard for Android（該当するものを残す）
 - 対象URL: （URL）
 - 期待する動作: （消したい要素、残すべき要素、発生している問題）
 - 対象要素と周辺のHTML:
@@ -444,7 +444,7 @@ IT、セキュリティ、広告ブロックに関する質問では、公式ド
 5. 出力されたルールをユーザールールへ登録し、ページを再読み込みして確認します。対象が消えるだけでなく、ログイン、検索、再生、スクロール、リンク操作などが壊れていないかも確認します。
 6. 意図どおりでない場合は、実際の結果、コンソールエラー、追加のHTML、Network情報を同じチャットへ渡して修正を依頼します。ルールを一つずつ有効化・無効化すると原因を切り分けやすくなります。
 
-▶ 生成AIの出力は検証が必要です。一般の利用者にも影響する広告・トラッカー・迷惑要素は、再現手順とスクリーンショットを添えて [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) または [AdGuard reporting tool](https://reports.adguard.com/) へ報告する方法が適しています。報告前にリポジトリのIssueテンプレートとポリシーを確認してください。
+▶ 生成AIの出力は検証が必要です。一般の利用者にも影響する広告・トラッカー・迷惑要素は、再現手順とスクリーンショットを添えて [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) または [AdGuard reporting tool](https://reports.adguard.com/) へ報告する方法が適しています。報告前にリポジトリのIssuesテンプレートとポリシーを確認してください。
 
 ### 作成したAdGuardユーザールールの整理
 
@@ -478,7 +478,7 @@ uBlock OriginとAdGuardでは、同名に見えるScriptletでも引数、動作
 
 ```text
 # タスク
-以下のuBlock Origin用Scriptletルールを、AdGuard Browser Extension MV3で同じ目的と副作用になるAdGuard Scriptletルールへ変換可能か調査してください。
+以下のuBlock Origin用Scriptletルールを、AdGuard ブラウザ拡張機能 MV3対応版で同じ目的と副作用になるAdGuard Scriptletルールへ変換可能か調査してください。
 
 # 調査対象
 - uBlock Origin Resources Library:
@@ -792,7 +792,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
   * **[自作のカスタムフィルタ](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex)**：各フィルタ作者様のルールを参考にしたり、自作のルールと組み合わせたりして作成しています。
 
 **参考サイト**
-* [Yuki2718 / adblock2 > AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)
+* [Yuki2718/adblock2 > AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)
   
   AdGuard Japanese filterを補完するフィルタ。迂回広告や悪質ポップアップ、一部のAnti-Adblockへの汎用的な追加対策。
 
@@ -809,7 +809,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 
 **Issues報告**
 
-AdGuardでの広告ブロック漏れ、Anti-Adblock Scriptによるコンテンツブロッカー検出、コンテンツブロックフィルタの誤ブロックといったフィルタ関連の不具合は、以下のいずれかの方法でIssueを作成して報告してください。
+AdGuardでの広告ブロック漏れ、Anti-Adblock Scriptによるコンテンツブロッカー検出、コンテンツブロックフィルタの誤ブロックといったフィルタ関連の不具合は、以下のいずれかの方法でGitHub Issuesで報告してください。
 
 ▶ AdGuard for AndroidにおけるFilter Issuesは、HTTPSフィルタリングの使用が前提となって対処されます。
 
@@ -826,9 +826,9 @@ AdGuardでの広告ブロック漏れ、Anti-Adblock Scriptによるコンテン
 Issues報告はGitHubアカウントがなくても可能ですが、GitHubアカウントがあるとIssuesやコメントの編集ができるようになります。報告の形式には自由記述形式とテンプレート形式があり、いずれも問題の切り分けと再現方法の説明に、ある程度の慣れが必要です。
 
 報告時に重要となるのは「**問題が発生するサイトのURL**」「**問題の再現手順**」「**問題発生時のスクリーンショット**」「**ロガーのスクリーンショット**」です。必要に応じてスクリーンショットにマーキングしたり、ログや設定ファイルを添付します。
-GitHubでのやり取りは基本的に英語ですが、ツールを使い分けるとスムーズです（Google翻訳で全体を把握し、DeepL翻訳を活用するなど）。▶ [Issue例](https://github.com/AdguardTeam/AdguardFilters/issues/217897)
+GitHubでのやり取りは基本的に英語ですが、ツールを使い分けるとスムーズです（Google翻訳で全体を把握し、DeepL翻訳を活用するなど）。▶ [Issues例](https://github.com/AdguardTeam/AdguardFilters/issues/217897)
 
-Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への変換を依頼することもできます。▶ [Issue例](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues/11)
+Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への変換を依頼することもできます。▶ [Issues例](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues/11)
 
 **Issues報告・補足**
 * [AdGuardフィルタポリシー](https://adguard.com/kb/ja/general/ad-filtering/filter-policy/) に従って処理されます。
@@ -836,11 +836,11 @@ Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への
 
 ---
 
-## Chrome 拡張機能 AdGuard Browser Extension MV3
+## AdGuard ブラウザ拡張機能 MV3対応版
 * **[Chrome Web Store](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg)**
 * **[HP](https://adguard.com/ja/adguard-browser-extension/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardBrowserExtension)**
 
-Chrome 拡張機能 AdGuard Browser Extension MV3でスクリプトレットを含む高度なルールを使用する場合は、拡張機能の内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。組み込み・カスタムフィルタは、拡張機能本体の更新に加え、対応バージョンではポップアップまたはフィルタ画面から手動更新を確認できます。
+AdGuard ブラウザ拡張機能 MV3対応版でスクリプトレットを含む高度なルールを使用する場合は、拡張機能の内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。組み込み・カスタムフィルタは、拡張機能本体の更新に加え、対応バージョンではポップアップまたはフィルタ画面から手動更新を確認できます。
 
 v5.2.400以降、拡張機能と組み込み・カスタムフィルタは、「ツールバーのアイコン > 右上ポップアップの↻」または「フィルタ > ↻アップデートを確認する」から最新状態を確認できます。
 
@@ -848,7 +848,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 （※ Chromeの拡張機能管理画面での「更新ボタン↻」では、カスタムフィルタの再読み込みがトリガーされないケースが報告されています。 [Issues #2944](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2944)  / [Issues #3016](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016)）
 
-[AdGuard Browser Extension MV3 v5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
+[AdGuard ブラウザ拡張機能 MV3対応版 v5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
 
 ポップアップパネルの更新ボタン↻、またはフィルタセクションの更新ボタン↻から、カスタムフィルタを手動で更新できるようになりました。`! Version:` は版の識別と更新状況の確認に有用ですが、URLの再取得そのものを成立させる唯一の条件ではありません。
 
@@ -907,7 +907,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **Web版YouTubeについての留意点**
 
-YouTube Anti-Adblock回避ルールは、uBlock Origin開発チームの解析を参考にAdGuardが開発・調整しています。YouTube Premium未加入者がカスタムフィルタや拡張機能を使いすぎると、検知されやすくなります。無料利用する際は、公式ルールのみの使用が推奨されます。要件を満たさない報告はuBlock Origin開発チーム・Adguard開発チームの負担となります。Yuki2718氏はuBlock Origin開発チームに所属しながらWeb版YouTubの解析を行っています（[Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415)。 / [Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
+YouTube Anti-Adblock回避ルールは、uBlock Origin開発チームの解析を参考にAdGuardが開発・調整しています。YouTube Premium未加入者がカスタムフィルタや拡張機能を使いすぎると、検知されやすくなります。無料利用する際は、公式ルールのみの使用が推奨されます。要件を満たさない報告はuBlock Origin開発チーム・AdGuard開発チームの負担となります。Yuki2718氏はuBlock Origin開発チームに所属しながらWeb版YouTubの解析を行っています（[Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415)。 / [Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
 
 **𝕏/Twitter ルール作り資料｜uBlock Origin**
 
@@ -962,7 +962,7 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
 * Androidのステータスバー：通知右上⚙を押して、**通知をデフォルトからサイレント**に変更する。
 * AndroidのVPN設定で **「常時接続VPN」を有効**にする。
 * VPNの接続が不安定な時は、**「VPNプロファイル」を一度削除し、再設定する**。
-* ChromOSのプライバシーとセキュリティの設定で **「サイトのルックアップに安全な接続を使用する」を無効**にする。
+* ChromeOSのプライバシーとセキュリティの設定で **「サイトのルックアップに安全な接続を使用する」を無効**にする。
 * Android用ブラウザの設定にある **「セキュアDNSを使用」を無効**にする。
 
 ログのドメインを長押しすると、ブラック/ホワイトリストへの登録が可能です。
@@ -1283,7 +1283,7 @@ ChromeOS上での完全な動作保証はありません。（[動作環境](htt
 ## Credits
 * [5ch【広告除去】personalDNSfilter](https://ff5ch.syoboi.jp/?q=%E3%80%90%E5%BA%83%E5%91%8A%E9%99%A4%E5%8E%BB%E3%80%91personalDNSfilter)
 * [r/Adguard](https://www.reddit.com/r/Adguard/) / [r/uBlockOrigin](https://www.reddit.com/r/uBlockOrigin/)
-* [AdGuard Knowledgebase](https://adguard.com/kb/ja/) / [AdGuard（𝕏）](https://x.com/AdGuard) / [AdGuardJP（𝕏）](https://x.com/AdGuardJP) / [AdGuard ブログ](https://adguard-com.translate.goog/en/blog/index.html?_x_tr_sl=auto&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
+* [AdGuard ナレッジベース](https://adguard.com/kb/ja/) / [AdGuard（𝕏）](https://x.com/AdGuard) / [AdGuardJP（𝕏）](https://x.com/AdGuardJP) / [AdGuard ブログ](https://adguard-com.translate.goog/en/blog/index.html?_x_tr_sl=auto&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
 
 **コンテンツブロックに関するアナウンス**
 * [Yuki2718氏の𝕏アカウント](https://x.com/Yuki27183) / [Yuki2718’s gists](https://gist.github.com/Yuki2718)

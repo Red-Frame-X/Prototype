@@ -6,7 +6,7 @@ GitHubのステータスチェック失敗を確認・報告するためのメ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260824 |
+| **Version** | 20260825 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -14,7 +14,7 @@ GitHubのステータスチェック失敗を確認・報告するためのメ�
 
 GitHubでは、Pull RequestやコミットにChecks APIまたはCommit Status APIから状態が報告されます。Checks APIには `failure`、`timed_out`、`cancelled`、`action_required` などの結論があり、Commit Status APIには `error` と `failure` があります。
 
-`Verified` / `Unverified` はコミット署名の検証状態であり、CIのステータスチェックとは別の仕組みです。署名を必須とするRepositoryルールによってマージ可否に影響する場合はありますが、`Unverified` 自体をCI失敗とみなすのは不正確です。
+`Verified` / `Unverified` はコミット署名の検証状態であり、CIのステータスチェックとは別の仕組みです。署名を必須とするリポジトリルールによってマージ可否に影響する場合はありますが、`Unverified` 自体をCI失敗とみなすのは不正確です。
 
 ## 失敗時の確認手順
 
@@ -26,7 +26,7 @@ GitHubでは、Pull RequestやコミットにChecks APIまたはCommit Status AP
 
 CI失敗の原因を「コードの不具合」と「Workflowの構成不備」の2種類だけに限定することはできません。外部サービス障害、runner環境、依存関係、権限、Secretなども原因になり得るため、以前の版にあった二分類は統合しました。
 
-## Issue / Pull Requestで報告する場合
+## Issues / Pull Requestsで報告する場合
 
 最低限、次の情報を添えると原因を追いやすくなります。
 
@@ -37,7 +37,7 @@ CI失敗の原因を「コードの不具合」と「Workflowの構成不備」�
 - 再現条件または再実行結果
 - 原因を推測する場合は、確認済みの事実と分けて記載
 
-自分のPull Requestで発生した失敗は、まずそのPull Requestの文脈で共有します。既存のmainブランチや共通Workflow自体の問題と確認できた場合は、RepositoryのCONTRIBUTINGやIssueテンプレートに従って報告します。
+自分のPull Requestで発生した失敗は、まずそのPull Requestの文脈で共有します。既存のmainブランチや共通Workflow自体の問題と確認できた場合は、リポジトリのCONTRIBUTINGやIssuesテンプレートに従って報告します。
 
 ## 公式ドキュメント
 

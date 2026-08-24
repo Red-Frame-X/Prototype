@@ -42,7 +42,7 @@ uBlock Origin Liteで利用する場合は、互換性のないルールを保�
 
 [`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式CHANGELOGとAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ英語原文のミラーを生成します。メタデータと互換性レビュー候補は`upstream/adguard/`へ生成します。
 
-CHANGELOGは人向けの変更履歴であり、フィルタ構文の実行可能な仕様そのものではありません。このため、CHANGELOGの文章だけからコンバータコードを自己変更する処理は行いません。新しい構文や挙動は、AdGuard公式のフィルタリングルール仕様、公開ソース、上流Issueなどで確認し、回帰テストを追加してから[`adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json)を更新します。
+CHANGELOGは人向けの変更履歴であり、フィルタ構文の実行可能な仕様そのものではありません。このため、CHANGELOGの文章だけからコンバータコードを自己変更する処理は行いません。新しい構文や挙動は、AdGuard公式のフィルタリングルール仕様、公開ソース、上流Issuesなどで確認し、回帰テストを追加してから[`adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json)を更新します。
 
 ## 公式資料
 
