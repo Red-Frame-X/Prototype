@@ -1,4 +1,5 @@
 name: Update uBO Lite Changelog
+# Temporary marker for end-to-end workflow verification.
 
 on:
   push:

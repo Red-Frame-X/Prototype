@@ -1,4 +1,5 @@
 name: Update AdGuard Changelogs
+# Temporary marker for end-to-end workflow verification.
 
 on:
   push:
