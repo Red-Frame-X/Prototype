@@ -1,0 +1,54 @@
+name: Temporary Amazon filter cleanup
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/temp-amazon-filter-cleanup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+      - name: Remove obsolete Amazon cosmetic rules
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt')
+          s = p.read_text(encoding='utf-8')
+          old = '''! amazon.co.jp
+! Amazon商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
+||aax-fe.amazon.co.jp^$domain=amazon.co.jp
+! Amazon Publisher Servicesの広告枠（ape-wrapper）を非表示
+amazon.co.jp##.ape-wrapper
+! 中央配置の広告コンテナ（ad-center）を非表示
+amazon.co.jp##.ad-center
+! IDがdesktop-ad-center-で始まるデスクトップ用広告枠を非表示
+amazon.co.jp##[id^="desktop-ad-center-"]
+'''
+          new = '''! amazon.co.jp
+! Amazon商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
+||aax-fe.amazon.co.jp^$domain=amazon.co.jp
+'''
+          if old not in s:
+              raise SystemExit('Expected Amazon block not found; aborting')
+          s = s.replace(old, new, 1)
+          s = re.sub(r'^! Version: .*$', '! Version: 202608241720', s, count=1, flags=re.M)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit cleanup and remove temporary workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/temp-amazon-filter-cleanup.yml
+          git add 'AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt'
+          git commit -m 'Clean obsolete Amazon cosmetic filter rules'
+          git push origin HEAD:main
