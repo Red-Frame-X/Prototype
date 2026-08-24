@@ -1,6 +1,6 @@
-# How to Use Gists
+# GitHub Gistでフィルタ・UserScriptを配布する方法
 
-GitHub Gistを利用して、カスタムフィルタやUserScriptを配布する際のメモです。
+GitHub Gistを利用して、コンテンツブロックフィルタやUserScriptを配布・更新する際の手順と、推奨メタデータをまとめたメモです。
 
 | メタデータ | 情報 |
 | :--- | :--- |
