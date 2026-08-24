@@ -5,13 +5,18 @@ on:
     branches:
       - main
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
+  # Quality checks are status-bearing validation runs. Do not cancel an older
+  # run merely because another commit is pushed shortly afterwards: cancelled
+  # runs can make the Actions history and README badge look like a CI failure.
+  # GitHub will serialize runs in the same group instead.
   group: quality-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   quality:
@@ -64,7 +69,13 @@ jobs:
 
       - name: Check UserScript syntax
         run: |
-          for file in UserScript/*.js; do
+          shopt -s nullglob
+          files=(UserScript/*.js)
+          if (( ${#files[@]} == 0 )); then
+            echo 'No UserScript files found.' >&2
+            exit 1
+          fi
+          for file in "${files[@]}"; do
             node --check "$file"
           done
 
