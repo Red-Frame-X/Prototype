@@ -51,5 +51,6 @@ CHANGELOGは人向けの変更履歴であり、フィルタ構文の実行可�
 - [AdGuard for Android：DNS通信を保護](https://adguard.com/kb/ja/adguard-for-android/features/protection/dns-protection/)
 - [AdGuard ブラウザ拡張機能](https://adguard.com/kb/ja/adguard-browser-extension/)
 - [AdGuard ブラウザ拡張機能 MV3対応版](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
+- [AdGuard ブラウザ拡張機能 Release](https://adguard.com/ja/versions/browser-extension/release.html)
 - [AdGuard Browser Extension CHANGELOG](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/CHANGELOG.md)
 - [AdGuard for Android Releases](https://github.com/AdguardTeam/AdguardForAndroid/releases)
