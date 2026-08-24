@@ -4,7 +4,7 @@
 
 [![Sync AdGuard filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml)
 
-[![uBOL Filter - Red Frame X Build](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml)
+[![Build uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml)
 
 ChromeOS・Android環境での個人利用を目的に、AdGuard・uBlock Origin Lite向けのコンテンツブロックフィルタ、UserScript、ChMate用正規表現、関連する変換・自動更新ツール、技術メモをまとめたリポジトリです。
 
