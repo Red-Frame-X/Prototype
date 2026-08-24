@@ -1,5 +1,4 @@
 name: Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)
-# Temporary marker for end-to-end workflow verification.
 
 on:
   push:
