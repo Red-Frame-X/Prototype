@@ -18,7 +18,7 @@ ChromeOS・Android環境での個人利用を目的に、AdGuard・uBlock Origin
 | --- | --- | --- |
 | AdGuardで個人用ルールを使う | [AdGuard Custom Rules](AdGuard%20Custom%20Rules/) | AdGuard Browser Extension／Android／DNS |
 | AdGuard用ルールをuBO Liteで使う | [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/) | uBlock Origin Lite 2026.621.1813以降 |
-| KdroidwinフィルタをAdGuard MV3で使う | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | 主にAdGuard Browser Extension MV3 |
+| uB-filter-by-kdroidwinをAdGuard MV3で使う | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | 主にAdGuard Browser Extension MV3 |
 | 𝕏・YouTubeの表示を調整する | [UserScript](UserScript/) | Violentmonkey／Tampermonkeyなど |
 | ChMateでNGワードを設定する | [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMate |
 | ChromeOS・Android等の手順を読む | [Markdown Notes](Markdown%20Notes/) | 技術メモ／調査資料 |
@@ -29,7 +29,7 @@ ChromeOS・Android環境での個人利用を目的に、AdGuard・uBlock Origin
 | --- | --- |
 | `AdGuard Custom Rules/` | コンテンツブロックフィルタ、DNSフィルタ、AdGuard CHANGELOGミラー |
 | `uBOL Filter Converter/` | uBO Lite向け変換処理、テスト、生成物、変換レポート |
-| `dist/` | KdroidwinフィルタのAdGuard向け生成物 |
+| `dist/` | uB-filter-by-kdroidwinのAdGuard向け生成物 |
 | `UserScript/` | 𝕏・YouTube向けUserScript |
 | `NG Word Regex for ChMate/` | ChMate向けJava正規表現 |
 | `Markdown Notes/` | ChromeOS、Android、広告ブロック、GitHub関連資料 |
