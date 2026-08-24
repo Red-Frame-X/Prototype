@@ -88,10 +88,16 @@ class LineConversionTests(unittest.TestCase):
             with self.subTest(rule=rule):
                 self.assertEqual(converter.convert_line(rule).output, rule)
 
-    def test_remove_action_remains_excluded(self):
-        result = converter.convert_line("example.com##.ad:remove()")
-        self.assertIsNone(result.output)
-        self.assertEqual(result.reason, "procedural-or-style-cosmetic")
+    def test_remove_action_is_preserved(self):
+        rule = "example.com##.ad:remove()"
+        result = converter.convert_line(rule)
+        self.assertEqual(result.output, rule)
+        self.assertEqual(result.status, "preserved")
+
+    def test_adguard_extended_remove_action_is_converted(self):
+        result = converter.convert_line("example.com#?#.ad:remove()")
+        self.assertEqual(result.output, "example.com##.ad:remove()")
+        self.assertEqual(result.status, "converted")
 
     def test_html_filter_is_excluded(self):
         self.assertEqual(converter.convert_line('example.com$$div[id="ad"]').reason, "html-filtering")

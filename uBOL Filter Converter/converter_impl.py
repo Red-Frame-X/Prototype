@@ -31,11 +31,8 @@ DEFAULT_SOURCE = str(
     / "AdGuard Custom Rules - Red Frame X.txt"
 )
 
-# AdGuard-only or non-declarative features which cannot be translated without
-# changing behaviour.  False positives are worse than losing one cosmetic rule.
-# AdGuard's :remove() removes matching DOM nodes instead of hiding them. uBOL
-# has no confirmed equivalent with the same lifecycle semantics.
-UNSUPPORTED_COSMETIC_TOKENS = (":remove()",)
+# Features with no safe uBOL equivalent in this converter. When semantics cannot
+# be preserved, exclusion is preferred to silently widening or changing scope.
 UNSUPPORTED_MODIFIERS = {
     "app", "cname", "content", "csp", "hls", "jsonprune", "permissions",
     "redirect", "redirect-rule", "removeheader", "replace", "urltransform",
@@ -78,14 +75,11 @@ def convert_line(raw_line: str) -> Result:
     cosmetic_match = re.match(r"^(.*?)(#\?#|#\?@#|##|#@#)(.*)$", line)
     if cosmetic_match:
         domains, separator, selector = cosmetic_match.groups()
-        # AdGuard's :contains() is equivalent to uBO's documented
-        # :has-text() procedural operator. uBOL supports custom procedural
-        # cosmetic filters, including :has-text() and :upward().
+        # Direct semantic equivalents documented by uBO/uBOL syntax.
         selector = selector.replace(":contains(", ":has-text(")
         selector = selector.replace(":nth-ancestor(", ":upward(")
         selector = selector.replace(":matches-property(", ":matches-prop(")
-        if any(token in selector for token in UNSUPPORTED_COSMETIC_TOKENS):
-            return Result(None, "excluded", "procedural-or-style-cosmetic")
+        # uBO/uBOL supports :remove() as an action operator, so preserve it.
         if separator == "#?#":
             separator = "##"
         elif separator == "#?@#":
@@ -93,7 +87,6 @@ def convert_line(raw_line: str) -> Result:
         output = f"{domains}{separator}{selector}"
         return Result(output, "converted" if output != line else "preserved")
 
-    # AdGuard application scoping has no browser-extension equivalent.
     modifiers = _split_modifiers(line)
     if modifiers:
         pattern, tokens = modifiers
@@ -112,8 +105,6 @@ def convert_line(raw_line: str) -> Result:
         output = pattern + "$" + ",".join(converted_tokens)
         return Result(output, "converted" if output != line else "preserved")
 
-    # RE2 validity is decided by uBO Lite's own compiler.  Reject lookbehind and
-    # backreferences here because Chrome declarativeNetRequest cannot express them.
     regex_body = line[2:] if line.startswith("@@") else line
     if regex_body.startswith("/"):
         if "(?<=" in regex_body or "(?<!" in regex_body or re.search(r"(?<!\\)\\[1-9]", regex_body):
@@ -123,13 +114,7 @@ def convert_line(raw_line: str) -> Result:
 
 
 def convert(lines: Iterable[str]) -> tuple[list[str], list[dict[str, object]]]:
-    """Convert rules while removing comments orphaned by excluded rules.
-
-    Source files group each site with a ``! domain`` heading and place a
-    descriptive comment immediately before each rule.  Keeping those comments
-    after their rule is excluded makes the generated list misleading, so a
-    block is emitted only for rules that survive conversion.
-    """
+    """Convert rules while removing comments orphaned by excluded rules."""
     output: list[str] = []
     excluded: list[dict[str, object]] = []
     block: list[tuple[int, str]] = []
@@ -171,8 +156,6 @@ def convert(lines: Iterable[str]) -> tuple[list[str], list[dict[str, object]]]:
                 emitted.insert(0, domain_heading)
             output.extend(emitted)
         elif not has_rule:
-            # Preserve standalone section notes; generated metadata is supplied
-            # by ``main`` and is filtered there to avoid a duplicate header.
             output.extend(comment for _, comment in block)
 
         block.clear()
@@ -200,7 +183,6 @@ def read_source(source: str) -> str:
 
 
 def extract_source_version(source_text: str) -> str:
-    """Return the canonical Version value from the AdGuard source metadata."""
     match = re.search(r"^! Version:\s*(\S.*)$", source_text, flags=re.MULTILINE)
     if not match:
         raise ValueError("source filter is missing ! Version metadata")
@@ -223,8 +205,6 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: {error}", file=sys.stderr)
         return 1
 
-    # Subscription metadata only.  Operational notes live in README.md so the
-    # downloaded filter stays compact and stable between builds.
     header = [
         f"! Title: {FILTER_TITLE}",
         "! Description: Customize uBOL filters for personal use.",
