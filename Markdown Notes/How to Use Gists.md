@@ -1,69 +1,42 @@
 # How to Use Gists
 
-GitHub Gistsを利用して、カスタムフィルタやUserScriptを各種拡張機能（AdGuard、Tampermonkeyなど）へ登録する手順です。
+GitHub Gistを利用して、カスタムフィルタやUserScriptを配布する際のメモです。
 
----
-
-| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| メタデータ | 情報 |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260804 |
+| **Version** | 20260824 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
----
+## GistとRepositoryの使い分け
 
-## 運用方法の比較：GistsとGitHubリポジトリ
+Gistは少数のコード・テキストファイルを公開・共有する用途に向いており、各Gist自体がGit Repositoryとして履歴を持ちます。一方、通常のGitHub RepositoryはIssues、Pull Requests、GitHub Actionsなどを組み合わせた継続的な開発・保守に向いています。
 
-フィルタやスクリプトを管理するにあたり、GistsとGitHubリポジトリのどちらを使用するかは一長一短があります。
+フィルタやUserScriptを長期運用し、lint・テスト・Issue管理まで行う場合は通常のRepositoryの方が管理機能を利用しやすくなります。
 
-### GitHub Gists を使用する場合
-* **メリット**: アカウントさえあれば手軽に作成でき、単一のスクリプトやフィルタを即座に公開するのに向いています。
-* **デメリット**: 複数ファイルの管理が煩雑になります。Linter（構文チェック）やCI/CD（自動テスト・デプロイ）、Issueやプルリクエストの機能が使用できません。また、Raw URLのキャッシュが強いため、更新が反映されるまでに数分間のタイムラグが発生します。
+## Raw URLを使う
 
-### GitHub リポジトリ を使用する場合
-* **メリット**: バージョン管理（リビジョン管理）が厳密に行え、Linterの恩恵を受けられます。Issueを通じてユーザーからフィードバックを受けるなど、保守性が格段に高まり安全な運用が可能です。
-* **デメリット**: Gitの基本操作（commit, pushなど）やディレクトリ構造の知識が必要となり、単一ファイルを置くだけの用途としては初期設定のハードルが少し上がります。
+1. Gistで対象ファイルの **Raw** を開きます。
+2. 表示されたRaw URLを配布先で利用します。
+3. 特定のrevisionを固定したい場合は、そのrevisionを指すURLを使用します。
+4. 最新版を追従させる用途では、実際に利用するURLが更新後の内容を返すことを確認します。
 
----
+以前の版では「URLからコミットハッシュを削除すれば常にHEADを参照する」「Raw URLは数分間キャッシュされる」と具体的に断定していました。GitHub公式ドキュメントでこれらの配信挙動を安定した契約仕様として確認できなかったため、その断定は削除しました。
 
-## Description 1：AdGuard > カスタムフィルタの登録
+## AdGuardで利用する場合
 
-1. GitHub Gistsで対象ファイルの **[Raw]** ボタンをクリックします。
-2. ブラウザのアドレスバーでURLを確認します。通常は以下のようになっています。
+AdGuard Browser Extensionは、URLまたはローカルファイルからカスタムフィルタを追加できます。Gistを配布元にする場合も、最終的にはAdGuardが取得できるRaw URLを指定します。
 
-   `https://gist.githubusercontent.com/ユーザー名/GistID/raw/長い英数字の羅列(コミットハッシュ)/ファイル名.txt`
+フィルタの更新間隔やメタデータの解釈はGitHub GistではなくAdGuard側の仕様です。`! Version:` だけを更新検知の仕組みとみなさず、利用するAdGuard製品の公式仕様を確認してください。
 
-4. URLから `長い英数字の羅列/`（コミットハッシュ）の部分を削除し、以下のような形式にします。
+## UserScriptで利用する場合
 
-   `https://gist.githubusercontent.com/ユーザー名/GistID/raw/ファイル名.txt`
-   > **Note**: この処理を行うことで、特定の更新履歴に縛られず、常に最新版（HEAD）を参照するURLになります。
+TampermonkeyなどのUserScriptマネージャーでGistを利用する場合、インストール・自動更新の条件は各マネージャーの仕様に従います。`@version`、`@updateURL`、`@downloadURL`などの扱いも、利用するマネージャーの公式ドキュメントを確認してください。
 
-6. 短縮したURLをブラウザで開き直し、最新の内容が表示されるか確認してください。
-   * **注意**: GitHubのRaw URLはキャッシュ（CDN）が効いているため、編集直後は内容が反映されない場合があります（数分程度のタイムラグがあります）。
-7. この短縮URLを、AdGuardの「カスタムフィルタ（またはDNSフィルタ）」として追加（インポート）します。
-8. `! Version:`、`! TimeUpdated:`、`! Expires:`などのフィルタメタデータは、配布物の版や推奨更新間隔を利用者に示すために記述します。
-   * `! Version:`を増やすことだけがAdGuardの更新検知条件ではありません。登録したURLの再取得はAdGuard側の更新操作・更新スケジュールに従います。
-   * URLがコミットハッシュを含まないことと、取得先が最新内容を返すことを確認してください。反映直後は配信キャッシュの影響が残る場合があります。
+## 参照
 
----
-
-## Description 2：Tampermonkey > UserScriptの登録
-
-1. GitHub Gistsで対象ファイルの **[Raw]** ボタンをクリックします。
-   * **重要**: UserScriptとして正しく認識させるため、ファイル名は必ず `.user.js` で終わるようにしてください。
-2. ブラウザのアドレスバーでURLを確認します。通常は以下のようになっています。
-
-   `https://gist.githubusercontent.com/ユーザー名/GistID/raw/長い英数字の羅列(コミットハッシュ)/ファイル名.user.js`
-
-4. URLから `長い英数字の羅列/`（コミットハッシュ）の部分を削除し、以下のような形式にします。
-
-   `https://gist.githubusercontent.com/ユーザー名/GistID/raw/ファイル名.user.js`
-   > **Note**: この処理を行うことで、特定の更新履歴に縛られず、常に最新版（HEAD）を参照するURLになります。
-
-6. 短縮したURLをブラウザで開き直し、最新の内容が表示されるか確認してください。
-7. この短縮URLを、Tampermonkeyの管理画面の「URLからインポート」する欄へ貼り付けるか、直接ブラウザで開いて「インストール」をクリックします。
-8. 今後スクリプトを更新する際は、コード内のメタデータ `@version` の数値を、前回登録時より大きく書き換えてください（例：`1.0` → `1.1`）。
-   * 数値が増加していることで拡張機能が変更を検知し、自動更新が行われます。
-   * **推奨事項**: スクリプトのメタデータ（UserScriptヘッダ）内に `@updateURL` と `@downloadURL` を記述し、そこに上記「短縮したURL」を指定しておくと、更新チェックの挙動がより確実になります。
+- [GitHub Docs — Creating gists](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists)
+- [GitHub Docs — Forking and cloning gists](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/forking-and-cloning-gists)
+- [AdGuard Browser Extension — Filters](https://adguard.com/kb/adguard-browser-extension/features/filters/)

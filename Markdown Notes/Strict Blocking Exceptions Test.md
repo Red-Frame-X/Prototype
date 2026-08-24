@@ -1,78 +1,44 @@
-# My docomoにおけるStrict blockingの挙動と各種例外化ルールの互換性検証レポート
+# My docomoにおけるStrict blockingの挙動と例外ルール検証
 
-AdGuard製品において、ユーザールール `||mydocomo.jp^$document` を適用した時の動作について
+AdGuard製品で `||mydocomo.docomo.ne.jp^$document` を適用した際の実機検証メモです。
 
----
-
-| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| メタデータ | 情報 |
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260707 |
+| **Version** | 20260824 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
-## 1. 動作環境
+## 動作環境
 
-* **Desktop**：ChromeOS / Chrome / AdGuard Browser Extension MV3
-* **Mobile**：Android / Chrome / AdGuard for Android
+- **Desktop**：ChromeOS / Chrome / AdGuard Browser Extension MV3
+- **Mobile**：Android / Chrome / AdGuard for Android
 
----
+## 公式仕様
 
-## 2. `||mydocomo.$document` ルールと例外化の検証
+AdGuardの `$document` は、ブラウザタブに読み込まれるメインフレームのHTMLドキュメントを対象とします。ブロックルールに明示すると通常のmain-frame bypassを無効化してブロッキングページを表示します。
 
-`||mydocomo.$document` は、対象となるメインドキュメントの読み込みを強力に遮断する Strict blocking ルールです。
-このルールを例外化し、サイトアクセスを回復させる際の挙動には、各コンテンツブロッカーの構文解析（パーサー）の実装とアーキテクチャによる明確な違いが見られます。
+一方、`@@||example.com^$document` のような `$document` 例外は、AdGuard公式仕様では対象ページのフィルタリング全体を無効化するルールで、`$elemhide`、`$content`、`$urlblock`、`$jsinject`、`$extension` を同時に指定するのと同等です。
 
-### 2.1. AdGuardとuBlock Originにおける動作の違い
+したがって、以前の版にあった「`$document` 例外ではExtended CSSやScriptletが引き続き作動し、それがMy docomoのエラー原因になっている可能性が高い」という説明は公式仕様と整合しないため削除しました。
 
-* **uBlock Originの挙動**
-  
-  uBlock Originの設計思想において、Strict blocking を解除する場合は、ブロックルールと完全に対応する同一スコープの `@@||mydocomo.docomo.ne.jp^$document` を用いるか、あるいは修飾子を持たない `@@||mydocomo.docomo.ne.jp^` を用いるのが公式なベストプラクティスです。非標準的な `$all` を用いた場合でも内部的に解釈されてアクセスが可能になるケースはありますが、厳格なルール記述としては推奨されません。
+## 実機で確認した挙動
 
-* **AdGuardの挙動**
-  
-  AdGuardの仕様において、`$all` 修飾子はすべてのコンテンツタイプ（ `$popup` を含む）を指定する役割を持ちますが、明示的な `$document` ブロックを完全に上書き・解除できないケースがあり、警告画面が発火したままアクセスが遮断されることが確認されました。AdGuard環境で確実に Strict blocking を解除するには、同一スコープである `$document` 修飾子を指定する必要があります。
+以下は上記環境での観測結果であり、AdGuard全製品・全バージョンに一般化するものではありません。
 
----
+- `||mydocomo.docomo.ne.jp^$document`：AdGuardのブロッキングページが表示され、メインドキュメントが遮断される。
+- `@@||mydocomo.docomo.ne.jp^$all`：検証環境ではブロッキングページを回避できなかった。
+- `@@||mydocomo.docomo.ne.jp^$document`：メインドキュメントへのアクセスは回復したが、検証時にはサイト側でエラーダイアログが発生することがあった。
 
-### 2.2. 例外ルール適用時の挙動
+最後のエラーダイアログについて、HTTPSフィルタリング、DNS保護、Extended CSS、Scriptletなど特定の機能を原因と断定できる公開情報は確認できませんでした。そのため原因推測は削除し、観測事実だけを残します。
 
-#### `$all` による例外化（`@@||mydocomo.docomo.ne.jp^$all`）
+## 解釈上の注意
 
-* **挙動**：uBlock Originではアクセス可能となる場合があるが、AdGuardでは警告画面が回避できずアクセスが遮断される。
+AdGuardとuBlock Originは似たフィルタ構文を持ちますが、同じ修飾子名でも意味や例外処理が完全に同一とは限りません。クロスエンジン向けルールでは、それぞれの公式構文を個別に確認してください。
 
-* **メリット**：記述が機能する環境においては、単一のルールで複数のリクエストやポップアップを網羅的に許可できる即効性があります。
+## 参照
 
-* **デメリット**：エンジン間でパーサーの解釈違いが発生しやすく、意図した例外処理が行われない互換性のリスクを伴います。また、本来ブロックされるべきトラッキング通信まで許可してしまう「過剰な例外化」に繋がる恐れがあります。
-
-* **ベストプラクティス**：クロスプラットフォームで提供されるフィルタリストの保守においては、互換性とセキュリティの観点から `$all` の使用を避け、ブロックルールと対応する修飾子を指定するのが標準的です。
-
-#### `$document` による例外化（`@@||mydocomo.docomo.ne.jp^$document`）
-
-* **挙動**：AdGuard・uBlock Originともに警告画面は回避されHTMLの読み込みは可能となるが、AdGuardではページ上で不規則なエラーダイアログが頻発する。
-
-* **メリット**：エンジンを問わず、メインドキュメントに対する通信遮断（Strict blocking）を意図通りかつセキュアに解除できます。
-
-* **デメリット**：この指定はあくまで「ネットワークレベルでのHTMLドキュメントの許可」に限定されるため、その他の保護機能が引き続き作動し、サイトの機能に干渉する可能性が残ります。
-
----
-
-### 2.3. エラーの推測原因（`@@||mydocomo.docomo.ne.jp^$document` 適用時のAdGuard環境）
-
-My docomoのような状態管理が厳密なSPAにおいて、AdGuardのCoreLibsエンジンや拡張機能が動的に適用する高度な要素隠蔽ルール（Extended CSS）やスクリプトレット注入（Scriptlets）は、`$document` 例外のみでは無効化されません。これらがフロントエンドのDOM操作と競合している可能性が高いと考えられます。
-
-また、以下の要因によってサイト側の厳格なエラーハンドリングが予期せず発火しているケースも推測されます。
-
-* システムレベルのHTTPSフィルタリングによる介入
-* DNSモジュールによるバックグラウンドのテレメトリAPI通信の遮断
-
----
-
-### 2.4. エラーの追加検証
-
-* AdGuard製品を導入した環境では、`||mydocomo.$document` によりStrict blockingが発生してAdGuardの警告画面が表示され、`mydocomo.docomo.ne.jp` へのアクセスがブロックされます。→ ◯
-* AdGuard製品を導入している環境では、`||mydocomo.$document` が原因で `mydocomo.docomo.ne.jp` へアクセスするたびにエラーダイアログが出現し続けます。→ △
-  * My docomoの公式ウェブサイト（mydocomo.docomo.ne.jp）のような状態管理が厳密なSPAにおいては、AdGuard製品のローカルVPNの影響で、エラーダイアログが出現することがあります。→ ◯
-  * `@@||mydocomo.docomo.ne.jp^$all` を例外ルールとして登録しても、AdGuard製品を導入した環境ではStrict blockingが発生してAdGuardの警告画面が表示され、`mydocomo.docomo.ne.jp` へのアクセスがブロックされます。→ ◯
-  * `@@||mydocomo.docomo.ne.jp^$document` を例外ルールとして登録しても、AdGuard製品を導入した環境ではエラーダイアログが出現し続けます。→ ◯
+- [AdGuard — How to create your own ad filters](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+- [uBlock Origin Wiki — Static filter syntax](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax)
+- [uBlock Origin Wiki — Strict blocking](https://github.com/gorhill/uBlock/wiki/Strict-blocking)
