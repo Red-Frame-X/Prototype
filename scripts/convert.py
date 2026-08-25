@@ -10,18 +10,21 @@ License: GPL-3.0
 Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin
 """
 
+import json
 import os
-import sys
 import re
+import sys
 import urllib.request
+from datetime import datetime, timedelta, timezone
+from typing import Dict, List, Optional, Pattern, Tuple
 from urllib.error import HTTPError, URLError
-from datetime import datetime, timezone, timedelta
-from typing import List, Optional, Tuple, Dict, Pattern
 
 # スクリプト自身の場所を基準にプロジェクトルートと出力先パスを確定
 BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FILTER_NAME: str = "uB-filter-by-kdroidwin (AdGuard Optimized)"
 OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", f"{FILTER_NAME}.txt")
+CAPABILITY_FILE: str = os.path.join(BASE_DIR, "config", "adguard-converter-capabilities.json")
+CAPABILITY_TARGET: str = "adguard-browser-extension-mv3"
 
 CANDIDATE_URLS: List[str] = [
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/refs/heads/main/uBlockorigin.txt",
@@ -30,32 +33,20 @@ CANDIDATE_URLS: List[str] = [
 
 
 class AdGuardOptimizer:
-    def __init__(self) -> None:
+    def __init__(self, capability_file: str = CAPABILITY_FILE) -> None:
+        settings = self._load_converter_settings(capability_file)
+
         # AdGuard拡張CSSでJS解析が必須な疑似クラス (:is, :not, :where は標準CSSで処理可能なため除外)
-        self.adg_supported_ext_css: List[str] = [
-            ':has(', ':has-text(', ':contains(', ':matches-css(', ':matches-css-after(',
-            ':matches-css-before(', ':matches-attr(', ':matches-property(', ':xpath(',
-            ':nth-ancestor(', ':upward(', ':remove()'
-        ]
+        self.adg_supported_ext_css: List[str] = settings["adguard_extended_css"]
 
         # AdGuard未対応・挙動不一致のuBO独自演算子
-        self.ubo_unsupported_ext_css: List[str] = [
-            ':matches-path(', ':min-text-length(', ':watch-attr(', ':matches-media(', ':others()'
-        ]
+        self.ubo_unsupported_ext_css: List[str] = settings["unsupported_ubo_extended_css"]
 
         # Chrome MV3向け出力で未対応・エラーリスクとなるスクリプトレット
-        self.incompatible_scriptlets: List[str] = [
-            'acis', 'spoof-css', 'trusted-replace-argument', 'trusted-set-cookie',
-            'alert-buster', 'trusted-click-element', 'webassembly-interference',
-            'm3u-prune', 'json-prune', 'json-prune-set'
-        ]
+        self.incompatible_scriptlets: List[str] = settings["incompatible_scriptlets"]
 
         # uBO独自修飾子のAdGuard互換置換マップ
-        self.modifier_replacements: Dict[str, str] = {
-            'queryprune': 'removeparam',
-            '3p': 'third-party',
-            '1p': '~third-party',
-        }
+        self.modifier_replacements: Dict[str, str] = settings["modifier_replacements"]
 
         # 事前コンパイル済み正規表現 (処理速度向上・CPU負荷軽減)
         self.re_redos_check: Pattern = re.compile(
@@ -69,6 +60,52 @@ class AdGuardOptimizer:
         self.re_incompatible_js: Pattern = re.compile(
             rf'\+js\(\s*(?:{"|".join(scriptlets_escaped)})(?=\s*(?:,|\)))'
         )
+
+    @staticmethod
+    def _load_converter_settings(capability_file: str) -> Dict[str, object]:
+        """Load reviewed converter behavior from the repository capability profile.
+
+        The capability profile is the single source of truth for data-like
+        compatibility decisions. Invalid or incomplete settings fail fast so a
+        CI run cannot silently fall back to stale hard-coded behavior.
+        """
+        with open(capability_file, 'r', encoding='utf-8') as f:
+            profile = json.load(f)
+
+        try:
+            target = profile["targets"][CAPABILITY_TARGET]
+            settings = target["converter_settings"]
+        except (KeyError, TypeError) as e:
+            raise ValueError(
+                f"Invalid capability profile: missing {CAPABILITY_TARGET} converter settings"
+            ) from e
+
+        list_keys = (
+            "adguard_extended_css",
+            "unsupported_ubo_extended_css",
+            "incompatible_scriptlets",
+        )
+        for key in list_keys:
+            value = settings.get(key)
+            if not isinstance(value, list) or not value or not all(isinstance(item, str) for item in value):
+                raise ValueError(f"Invalid capability profile: {key} must be a non-empty string list")
+
+        replacements = settings.get("modifier_replacements")
+        if (
+            not isinstance(replacements, dict)
+            or not replacements
+            or not all(isinstance(k, str) and isinstance(v, str) for k, v in replacements.items())
+        ):
+            raise ValueError(
+                "Invalid capability profile: modifier_replacements must be a non-empty string map"
+            )
+
+        return {
+            "adguard_extended_css": list(settings["adguard_extended_css"]),
+            "unsupported_ubo_extended_css": list(settings["unsupported_ubo_extended_css"]),
+            "incompatible_scriptlets": list(settings["incompatible_scriptlets"]),
+            "modifier_replacements": dict(replacements),
+        }
 
     def fetch_source(self) -> List[str]:
         req_headers = {'User-Agent': 'Mozilla/5.0 AdGuard-Optimizer/3.0'}
