@@ -4,9 +4,11 @@
       "product": "AdGuard Browser Extension",
       "source": "https://raw.githubusercontent.com/AdguardTeam/AdguardBrowserExtension/refs/heads/master/CHANGELOG.md",
       "latest_version": "5.5.1.0",
-      "sha256": "63d2d6cc22bd7f4de782b3c1fd05f0c95e85d1a5ae570d9d3e07e0b2fd5ebec5",
-      "checked_at": "2026-08-24T19:38:11+00:00",
+      "sha256": "8ba00539b96403e226685d081be6127e76f8bb8a7af398b17e435ad70bf3eaee",
+      "checked_at": "2026-08-25T19:40:52+00:00",
       "converter_relevant_entries": [
+        "- Updated [@adguard/dnr-converter] to v1.1.2.",
+        "- Updated [@adguard/scriptlets] to v2.5.1.",
         "- `$removeparam` rules without a value (e.g. `||example.org^$removeparam`)",
         "blocked the whole site in MV3 instead of removing all query parameters [#3602].",
         "- Unanchored `$urltransform` substitutions did not apply to query strings in MV3 [#3600].",
