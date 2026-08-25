@@ -41,6 +41,9 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
+      - name: Validate canonical AdGuard filter integrity
+        run: python scripts/check_adguard_filter_integrity.py
+
       - name: Run Python tests
         run: |
           python -m unittest discover -s tests -v
