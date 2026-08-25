@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608251258
+! Version: 202608251419
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -310,6 +310,8 @@ www.youtube.com##ytd-watch-metadata #teaser-carousel
 www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-renderer:has(a[href^="/shorts/"])
 
 ! x.com
+! ホーム上部の「おすすめ」タブを非表示
+x.com#?#div[role="presentation"]:has(> div[role="tab"] span:contains(/^おすすめ$/))
 ! x.comから開かれるtwitter.undefinedドメインのポップアップをブロック
 ||twitter.undefined^$popup,domain=x.com
 ! x.com上で.phpを含むURLのポップアップをブロック

@@ -2,8 +2,8 @@
 // @name         X Auto Select Following Latest Sort
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      1.1.1
-// @description  Xのホームタイムラインで「並べ替え」メニューが開かれた際、自動的に「最新」を選択します。手動での変更も可能です。
+// @version      1.2.0
+// @description  Xのホームで「フォロー中」を既定選択し、並べ替えメニューでは自動的に「最新」を選択します。
 // @author       Red-Frame-X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
@@ -20,6 +20,41 @@
     const processedMenus = new WeakSet();
     const pendingMenus = new Set();
     let frameId = 0;
+
+    let followingFrameId = 0;
+    let lastPathname = location.pathname;
+    let followingSelectionRequested = false;
+
+    const selectFollowingTab = () => {
+        followingFrameId = 0;
+
+        if (location.pathname !== lastPathname) {
+            lastPathname = location.pathname;
+            followingSelectionRequested = false;
+        }
+        if (location.pathname !== '/home') return;
+
+        for (const tab of document.querySelectorAll('[role="tab"]')) {
+            const label = (tab.textContent || '').trim();
+            if (label !== 'フォロー中' && label !== 'Following') continue;
+
+            if (tab.getAttribute('aria-selected') === 'true') {
+                followingSelectionRequested = true;
+                return;
+            }
+            if (!followingSelectionRequested && tab.isConnected) {
+                followingSelectionRequested = true;
+                tab.click();
+            }
+            return;
+        }
+    };
+
+    const queueFollowingTabSelection = () => {
+        if (!followingFrameId) {
+            followingFrameId = requestAnimationFrame(selectFollowingTab);
+        }
+    };
 
     const handleMenu = (menu) => {
         if (processedMenus.has(menu)) return;
@@ -75,7 +110,9 @@
                 inspectAddedNode(node);
             }
         }
+        queueFollowingTabSelection();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
+    queueFollowingTabSelection();
 })();
