@@ -1,8 +1,18 @@
+import json
+import os
+import tempfile
 import unittest
 from unittest.mock import MagicMock, patch
 from urllib.error import URLError
 
-from scripts.convert import AdGuardOptimizer, CANDIDATE_URLS, FILTER_NAME, OUTPUT_FILE
+from scripts.convert import (
+    AdGuardOptimizer,
+    CANDIDATE_URLS,
+    CAPABILITY_FILE,
+    CAPABILITY_TARGET,
+    FILTER_NAME,
+    OUTPUT_FILE,
+)
 
 
 class GeneratedFilterNamingTests(unittest.TestCase):
@@ -11,6 +21,89 @@ class GeneratedFilterNamingTests(unittest.TestCase):
 
     def test_output_filename_matches_filter_name(self):
         self.assertTrue(OUTPUT_FILE.endswith(f"dist/{FILTER_NAME}.txt"))
+
+
+class CapabilityProfileTests(unittest.TestCase):
+    def test_repository_capability_profile_drives_optimizer_settings(self):
+        with open(CAPABILITY_FILE, "r", encoding="utf-8") as f:
+            profile = json.load(f)
+
+        settings = profile["targets"][CAPABILITY_TARGET]["converter_settings"]
+        optimizer = AdGuardOptimizer()
+
+        self.assertEqual(optimizer.adg_supported_ext_css, settings["adguard_extended_css"])
+        self.assertEqual(
+            optimizer.ubo_unsupported_ext_css,
+            settings["unsupported_ubo_extended_css"],
+        )
+        self.assertEqual(
+            optimizer.incompatible_scriptlets,
+            settings["incompatible_scriptlets"],
+        )
+        self.assertEqual(
+            optimizer.modifier_replacements,
+            settings["modifier_replacements"],
+        )
+
+    def test_custom_capability_profile_changes_converter_behavior(self):
+        profile = {
+            "targets": {
+                CAPABILITY_TARGET: {
+                    "converter_settings": {
+                        "adguard_extended_css": [":custom-ext("],
+                        "unsupported_ubo_extended_css": [":unsupported-ext("],
+                        "incompatible_scriptlets": ["custom-scriptlet"],
+                        "modifier_replacements": {"custommod": "translatedmod"},
+                    }
+                }
+            }
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            capability_path = os.path.join(temp_dir, "capabilities.json")
+            with open(capability_path, "w", encoding="utf-8") as f:
+                json.dump(profile, f)
+
+            optimizer = AdGuardOptimizer(capability_path)
+
+        self.assertEqual(
+            optimizer.optimize_line("example.com##div:custom-ext(value)"),
+            "example.com#?#div:custom-ext(value)",
+        )
+        self.assertEqual(
+            optimizer.optimize_line("example.com##div:unsupported-ext(value)"),
+            "! [Unsupported Extended CSS] example.com##div:unsupported-ext(value)",
+        )
+        self.assertEqual(
+            optimizer.optimize_line("example.com##+js(custom-scriptlet)"),
+            "! [Incompatible Scriptlet] example.com##+js(custom-scriptlet)",
+        )
+        self.assertEqual(
+            optimizer.optimize_line("||example.com^$custommod"),
+            "||example.com^$translatedmod",
+        )
+
+    def test_invalid_capability_profile_fails_fast(self):
+        profile = {
+            "targets": {
+                CAPABILITY_TARGET: {
+                    "converter_settings": {
+                        "adguard_extended_css": [],
+                        "unsupported_ubo_extended_css": [":unsupported("],
+                        "incompatible_scriptlets": ["custom-scriptlet"],
+                        "modifier_replacements": {"custommod": "translatedmod"},
+                    }
+                }
+            }
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            capability_path = os.path.join(temp_dir, "capabilities.json")
+            with open(capability_path, "w", encoding="utf-8") as f:
+                json.dump(profile, f)
+
+            with self.assertRaises(ValueError):
+                AdGuardOptimizer(capability_path)
 
 
 class SourceFallbackTests(unittest.TestCase):
