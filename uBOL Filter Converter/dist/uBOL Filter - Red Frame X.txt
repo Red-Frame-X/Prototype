@@ -1,6 +1,6 @@
 ! Title: uBOL Filter - Red Frame X
 ! Description: Customize uBOL filters for personal use.
-! Version: 202608241749
+! Version: 202608251258
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -30,12 +30,10 @@ blog.hatena.ne.jp##.recommendList-wrapper
 blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! chatgpt.com
-! プラグイン案内バナーの非表示
-chatgpt.com##aside:has(a[href*="/articles/11487775-apps-in-chatgpt"]):has(button[data-testid="close-button"])
-! 「ChatGPT Work でさらに進める」と表示される案内バナーを非表示
-chatgpt.com##aside:has(h3:has-text(ChatGPT Work でさらに進める)):has(button[data-testid="close-button"])
-! 入力欄上部の「初めての ChatGPT 広告を数分で作成」案内バナー全体を非表示
-chatgpt.com##[data-prompt-textarea-header]:has(h3:has-text(初めての ChatGPT 広告を数分で作成)):has(button[data-testid="close-button"])
+! 閉じるボタンを持つaside型の案内バナー（プラグイン案内・ChatGPT Work案内等）を初期CSSで非表示
+chatgpt.com##aside:has(button[data-testid="close-button"])
+! 入力欄上部の閉じるボタン付き案内バナーを初期CSSで非表示
+chatgpt.com##[data-prompt-textarea-header]:has(button[data-testid="close-button"])
 
 ! downdetector.jp
 ! 以下は無効：サービス一覧に挿入される広告カードをdata-service-list-ad属性で非表示
@@ -286,7 +284,7 @@ x.com##div[role="presentation"]:has(> a[href$="/articles"])
 x.com##div[role="presentation"]:has(> a[href$="/highlights"])
 x.com##div[role="presentation"]:has(> a[href="/explore/tabs/entertainment"])
 x.com##div[role="presentation"]:has(> a[href="/explore/tabs/sports"])
-x.com##div[role="presentation"]:has(div[role="tab"] span:has-text(おすすめ))
+x.com##div[role="presentation"]:has(> a[href="/explore/tabs/for-you"])
 ! 右カラムの関連アカウント・おすすめユーザー・ニュース・速報タイムラインを非表示
 x.com##aside[aria-label="関連性の高いアカウント"]
 x.com##div:has(> aside[aria-label="おすすめユーザー"])
@@ -318,10 +316,11 @@ x.com##[data-testid="cellInnerDiv"]:has(h2:has-text(おすすめ投稿))
 x.com##[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:has-text(おすすめユーザー))
 x.com##[data-testid="cellInnerDiv"]:has(img[src*="global_trending_card_newest.png"])
 x.com##[data-testid="cellInnerDiv"]:has(span:has-text(によるプロモーション))
-x.com##[data-testid="cellInnerDiv"]:has(span:has-text(関連性の高いユーザー))
 x.com##a[href^="https://ads.x.com"]
 x.com##div:has(> a[href^="/i/jf/"][href$="/home"])
 x.com##div[aria-label="タイムライン: Relevant people"]
+x.com##div[aria-label="タイムライン: 関連性の高いユーザー"]
+x.com##[data-testid="cellInnerDiv"]:has(span:has-text(関連性の高いユーザー))
 x.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"] > div:has([data-testid$="-impression-pixel"])
 ! ホームとExploreで挿入される認証済みおすすめユーザー、フォロー候補、ユーザー推薦カードと付随する空要素を非表示
 x.com##[aria-label="タイムライン: 話題を検索"] div[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"] svg[data-testid="icon-verified"])
