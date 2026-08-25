@@ -4,6 +4,8 @@ This file is generated. Changelog matches are review candidates, not proof that 
 
 ## AdGuard Browser Extension 5.5.1.0
 
+- - Updated [@adguard/dnr-converter] to v1.1.2.
+- - Updated [@adguard/scriptlets] to v2.5.1.
 - - `$removeparam` rules without a value (e.g. `||example.org^$removeparam`)
 - blocked the whole site in MV3 instead of removing all query parameters [#3602].
 - - Unanchored `$urltransform` substitutions did not apply to query strings in MV3 [#3600].
