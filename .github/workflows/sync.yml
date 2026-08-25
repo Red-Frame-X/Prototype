@@ -7,6 +7,7 @@ on:
     paths:
       - 'scripts/convert.py'
       - 'tests/test_convert.py'
+      - 'config/adguard-converter-capabilities.json'
       - '.github/workflows/sync.yml'
   schedule:
     # サーバー負荷分散のため0分を避けて15分に設定 (JST 12:15, 18:15, 0:15, 6:15)
