@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608241904
+! Version: 202608251300
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -702,6 +702,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ai-skill-academy.netlify.app^$document
 ||ai-skill.jp^$document
 ||ai-sns-strategy-lp.vercel.app^$document
+||ai-tokushima.jp^$document
 ||ai-uruoi.com^$document
 ||ai.45rina.com^$document
 ||ai.doujin-comic.com^$document
@@ -727,6 +728,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||aigazo.com^$document
 ||aigazou.blog.jp^$document
 ||aiiku3.com^$document
+||aijinmonogatari.com^$document
 ||aijobs.app^$document
 ||aikissingvideogenerator.org^$document
 ||aikiu.online^$document
@@ -1638,6 +1640,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||blockc*.pages.dev$document
 ||blockcheck*.page.dev$document
 ||blockchecker.github.io^$document
+||blockusers.github.io^$document
 ||blog-chiaki.com^$document
 ||blog.almaherbal.com^$document
 ||blog.codecamp.jp^$document
@@ -1991,6 +1994,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||cezardouvretoi.fr^$document
 ||cf2.top^$document
 ||cf504206.cloudfree.jp^$document
+||cf645694.cloudfree.jp^$document
 ||cf962692.cloudfree.jp^$document
 ||cf^$doc,to=~wacw.cf|~www.river.cf
 ||cfd^$document,to=~freedium-mirror.cfd|~ayurveda.cfd|~www.rebekka.cfd|~valuecrestoperators.cfd|~structurelineinsight.cfd|~lmez709825.cfd|~www.shaonvds.cfd|~www.omiaa.cfd|~mday787825.cfd|~mday774325.cfd|~lmez779125.cfd|~xn--3bs824g.nmaaa.cfd|~xn--vjq696j.nmaaa.cfd|~gdlink.cfd|~llw583425.cfd|~anime9-official.cfd|~potbellylistens.cfd|~mday478125.cfd|~komikcast.cfd|~llw602825.cfd|~ymhy913525.cfd|~ymhy798625.cfd|~xn--1104-1taohuasbs-vi98a.taohua31.cfd|~xn--1108-2taohuasbs-vi98a.taohua32.cfd|~xn--1113-2com-qq4pn60spifuw5fhdwc.mihe32.cfd|~www.hdj13.cfd|~xn--1113-1com-v76oj59ogexarp4gw5e.jisu32.cfd|~xn--1107-1taohuasbs-vi98a.taohua32.cfd|~xn--1105-2qq-0l7mr69jdmkmg5at8d.ikanxm31.cfd|~xn--1108-1com-qc6ny85ama7362bhq5c.tutu32.cfd|~xn--1025-2com-qc6ny85ama7362bhq5c.tutu31.cfd|~xn--0920-1com-qc6ny85ama7362bhq5c.tutu28.cfd|~onlykdrama.cfd|~freedium.cfd|~coremethodventures.cfd|~neworder.cfd|~turkhub.cfd|~31vakti65.cfd|~turkifsa41.cfd|~doeda54.cfd|~31vakti74.cfd|~turkifsa44.cfd|~hdabla45.cfd|~turkhub7.cfd|~55av.cfd|~a1.gscloud.cfd|~neko.cfd|~backtesting.cfd|~lunastream.cfd|~turkhub23.cfd|~turkhub8.cfd|~turkhub26.cfd|~turkhub18.cfd|~31vakti93.cfd|~doeda83.cfd|~doeda56.cfd|~nanobanana.cfd|~midjourney.cfd|~wn03.cfd|~draxelio.cfd
@@ -2766,6 +2770,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||doujin-archive.com^$document
 ||doujin-authors.com^$document
 ||doujin-comics.toremani.com^$document
+||doujin-dig.com^$document
 ||doujin-ero-manga.com^$document
 ||doujin-erofutanari.adult-h.com^$document
 ||doujin-erogazou.com^$document
@@ -3174,6 +3179,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ero-anime.cfbx.jp^$document
 ||ero-av-douga.com^$document
 ||ero-av-manga.xn--3kq96f810a.jp^$document
+||ero-comic-hunter.net^$document
 ||ero-comic.jp^$document
 ||ero-db-club.com^$document
 ||ero-dojin.net^$document
@@ -3214,6 +3220,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||erodojin.ero-info-antena.site^$document
 ||erodojinplus.com^$document
 ||erodouga-nadonado.com^$document
+||erodoujin-kuchikomireview.com^$document
 ||erodoujin-lab.com^$document
 ||erodoujin-manman.com^$document
 ||erodoujin-muryou.net^$document
@@ -3296,6 +3303,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||eromanga0728j.online^$document
 ||eromangadoujin.com^$document
 ||eromangagaga.wpx.jp^$document
+||eromangaizum.com^$document
 ||eromangajiru.com^$document
 ||eromangajukujo.com^$document
 ||eromangamania.com^$document
@@ -5390,6 +5398,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kae.me^$document
 ||kaeln.net^$document
 ||kafaco.co.tz^$document
+||kagawa-jiko.jp^$document
 ||kagawaumigomi.jp^$document
 ||kagelife.com^$document
 ||kagerou-kazoku.com^$document
@@ -5837,6 +5846,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kowai-torauma.unij.co.jp^$document
 ||kowani123.com^$document
 ||kowloonspecial.com^$document
+||koyoichi.com^$document
 ||koyoki-happy-life.com^$document
 ||kozutsumi.net^$document
 ||kozy2525.hatenablog.com^$document
@@ -6799,6 +6809,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mirai-h.com^$document
 ||mirai-tohoku.jp^$document
 ||miraiand.com^$document
+||miraideaimatch.com^$document
 ||miraie.org^$document
 ||mirailab-blog.com^$document
 ||mirandadeutsch.com^$document
@@ -7130,6 +7141,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mytrend.info^$document
 ||myuryoudoujinnsennbaisokuhou.com^$document
 ||myxstalk.lol^$document
+||n-ns.jp^$document
 ||n-trend.com^$document
 ||n-yu.com^$document
 ||n2-ch.com^$document
@@ -9897,6 +9909,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||shirashiratama-blog.com^$document
 ||shirashiru.com^$document
 ||shiratorimonogatari.jp^$document
+||shiro-av.com^$document
 ||shiro-mi.com^$document
 ||shiro.ousyukubai.com^$document
 ||shiro24.com^$document
@@ -10940,6 +10953,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||todayeiga.com^$document
 ||togashira7777.site^$document
 ||togisuma.com^$document
+||tokaishi-cashless.jp^$document
 ||tokinooto.jp^$document
 ||tokinotobila.com^$document
 ||tokiryo.net^$document
@@ -11423,6 +11437,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||vcardqr.in^$document
 ||vcaretitlellc.com^$document
 ||vcchristianchurch.com^$document
+||vdxzfgf.github.io^$document
 ||veeam.ru^$document
 ||veezlfa.biz^$document
 ||vefund.io^$document
@@ -11479,6 +11494,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||visasyst.com^$document
 ||vision-digital.co^$document
 ||visionvinylflooring.com^$document
+||visit-toyama.com^$document
 ||visual-foxpro-programmer.com^$document
 ||vitabase.jp^$document
 ||vitalness.jp^$document
@@ -12498,6 +12514,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.fujiya-avic.co.jp^$document
 ||www.fukkou-nebuta.jp^$document
 ||www.fukuoka-fa.com^$document
+||www.fukuoka3f.com^$document
 ||www.fuliivh.cn^$document
 ||www.fulimdk.cn^$document
 ||www.fuliolj.cn^$document
@@ -12832,6 +12849,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.karkasi.online^$document
 ||www.karzusp.net^$document
 ||www.kashi-mo.com^$document
+||www.kashiba-jyougesuidou.nara.jp^$document
 ||www.kawa.coffee^$document
 ||www.kazenodenwa.com^$document
 ||www.kaznao.com^$document
@@ -13253,6 +13271,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.powerautomate.cn^$document
 ||www.pplmw.cn^$document
 ||www.praveensivaprasad.com^$document
+||www.preftottori-bousai-view.jp^$document
 ||www.premier-enterprisesolutions.com^$document
 ||www.prerele.com^$document
 ||www.prime-service.info^$document
@@ -13295,6 +13314,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.quick-drink.at^$document
 ||www.quickporn.jp^$document
 ||www.qygzknr.cn^$document
+||www.r18index.net^$document
 ||www.rabbanmoto.com^$document
 ||www.raca.marketing^$document
 ||www.radiobijelopolje.me^$document
@@ -13826,6 +13846,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.yodersredbarn.com^$document
 ||www.yoko123.com^$document
 ||www.yoshi-mizumaki.jp^$document
+||www.yoshikan.jp^$document
 ||www.yoshimasa-hosoya.com^$document
 ||www.yosoku.website^$document
 ||www.youki8322.com^$document
@@ -13890,6 +13911,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||x11x.attractive69.com^$document
 ||x68000.q-e-d.net^$document
 ||xblock*.page.dev$document
+||xblock*.pages.dev$doc
+||xblock-xchecker.pages.dev^$document
 ||xbof*.pages.dev$document
 ||xbof.pages.dev^$document
 ||xbuba.com^$document
@@ -13905,6 +13928,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||xis2p9rqc.wydawnictwopbb.pl^$document
 ||xiywa.info^$document
 ||xjyzaty.life^$document
+||xkakuninn.pages.dev^$document
 ||xmnsqet.com^$document
 ||xmobile-allagi.jp^$document
 ||xmobile.ne.jp^$document
@@ -14067,6 +14091,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||yama.minato-yamaguchi.co.jp^$document
 ||yamabukisaaya.cn^$document
 ||yamagata-dainigeka.jp^$document
+||yamagata-domannaka.jp^$document
 ||yamahack.com^$document
 ||yamamii.com^$document
 ||yamanashi-med.ac.jp^$document
