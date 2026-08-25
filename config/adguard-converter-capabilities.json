@@ -1,11 +1,51 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "policy": "reviewed-only",
   "targets": {
     "adguard-browser-extension-mv3": {
       "converter": "scripts/convert.py",
       "regex_engine": "RE2",
-      "unsupported_rule_families": ["html-filtering", "redirect-rule"]
+      "unsupported_rule_families": ["html-filtering", "redirect-rule"],
+      "converter_settings": {
+        "adguard_extended_css": [
+          ":has(",
+          ":has-text(",
+          ":contains(",
+          ":matches-css(",
+          ":matches-css-after(",
+          ":matches-css-before(",
+          ":matches-attr(",
+          ":matches-property(",
+          ":xpath(",
+          ":nth-ancestor(",
+          ":upward(",
+          ":remove()"
+        ],
+        "unsupported_ubo_extended_css": [
+          ":matches-path(",
+          ":min-text-length(",
+          ":watch-attr(",
+          ":matches-media(",
+          ":others()"
+        ],
+        "incompatible_scriptlets": [
+          "acis",
+          "spoof-css",
+          "trusted-replace-argument",
+          "trusted-set-cookie",
+          "alert-buster",
+          "trusted-click-element",
+          "webassembly-interference",
+          "m3u-prune",
+          "json-prune",
+          "json-prune-set"
+        ],
+        "modifier_replacements": {
+          "queryprune": "removeparam",
+          "3p": "third-party",
+          "1p": "~third-party"
+        }
+      }
     },
     "adguard-for-android": {
       "converter": "scripts/convert.py",
