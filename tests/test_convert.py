@@ -45,6 +45,17 @@ class CapabilityProfileTests(unittest.TestCase):
             settings["modifier_replacements"],
         )
 
+    def test_adguard_compatible_scriptlets_are_not_marked_incompatible(self):
+        with open(CAPABILITY_FILE, "r", encoding="utf-8") as f:
+            profile = json.load(f)
+
+        incompatible = profile["targets"][CAPABILITY_TARGET]["converter_settings"][
+            "incompatible_scriptlets"
+        ]
+        for scriptlet in ("acis", "spoof-css", "m3u-prune", "json-prune"):
+            with self.subTest(scriptlet=scriptlet):
+                self.assertNotIn(scriptlet, incompatible)
+
     def test_custom_capability_profile_changes_converter_behavior(self):
         profile = {
             "targets": {
@@ -170,18 +181,29 @@ class ModifierConversionTests(unittest.TestCase):
         self.assertEqual(self.optimizer.optimize_line(rule), rule)
 
     def test_incompatible_scriptlet_name_matches_exactly(self):
-        rule = "example.com##+js(acis)"
+        rule = "example.com##+js(trusted-replace-argument)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
             "! [Incompatible Scriptlet] " + rule,
         )
 
     def test_incompatible_scriptlet_with_arguments_matches_exactly(self):
-        rule = "example.com##+js(json-prune, payload.ad)"
+        rule = "example.com##+js(trusted-set-cookie, consent, true)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
             "! [Incompatible Scriptlet] " + rule,
         )
+
+    def test_adguard_compatible_scriptlets_are_preserved(self):
+        rules = (
+            "example.com##+js(acis)",
+            "example.com##+js(spoof-css, display, block)",
+            "example.com##+js(m3u-prune, /ad/)",
+            "example.com##+js(json-prune, payload.ad)",
+        )
+        for rule in rules:
+            with self.subTest(rule=rule):
+                self.assertEqual(self.optimizer.optimize_line(rule), rule)
 
     def test_scriptlet_with_longer_name_is_not_a_prefix_match(self):
         rule = "example.com##+js(json-prune-fetch-response)"
@@ -247,7 +269,7 @@ class ModifierConversionTests(unittest.TestCase):
         self.assertEqual(self.optimizer.optimize_line(rule), rule)
 
     def test_unsupported_scriptlet_exception_is_commented_out(self):
-        rule = "example.com#@#+js(acis)"
+        rule = "example.com#@#+js(trusted-replace-argument)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
             "! [Incompatible Scriptlet] " + rule,
