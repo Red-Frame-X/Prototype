@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608251852
+! Version: 202608270133
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -944,6 +944,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||an1.co.in^$document
 ||anaary.guru^$document
 ||anaban-nana-shouta.jp^$document
+||anal.wpx.jp^$document
 ||analogkaka.com^$document
 ||analytics.slot47.online^$document
 ||ananantenna.blog.jp^$document
@@ -4658,6 +4659,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hitomi-missav02.com^$document
 ||hitomi-missav03.com^$document
 ||hitomi-missav04.com^$document
+||hitomi-missav05.com^$document
 ||hitomi-nhentai.com^$document
 ||hitomi-official.jp^$document
 ||hitomi-raw-eromanga.com^$document
@@ -4665,6 +4667,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hitomi-raw.cfbx.jp^$document
 ||hitomi-raw.lsrv.jp^$document
 ||hitomi-raw2.wew.jp^$document
+||hitomi-rawhentai06.com^$document
 ||hitomi-vg.com^$document
 ||hitomi.median-net.jp^$document
 ||hitomi.momonga-raw.com^$document
@@ -5653,6 +5656,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kinon-kamakura.com/products^$document
 ||kinoshita-reon.jp^$document
 ||kinsai.jp^$document
+||kinsin-archives.com^$document
 ||kintarogroup.com^$document
 ||kiokunashi-movie.jp^$document
 ||kiragamiteru.com^$document
@@ -6836,6 +6840,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||missav53.jp^$document
 ||missav55.jp^$document
 ||missav58.jp^$document
+||missav60.jp^$document
 ||missavtv.com^$document
 ||missfanzaav.com^$document
 ||misuteri-enblog.com^$document
@@ -7608,6 +7613,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/bostonmio^$document
 ||note.com/botemaker^$document
 ||note.com/brave_borage2759^$document
+||note.com/brave_hare514^$document
 ||note.com/bright_llama373^$document
 ||note.com/bright_stilt607^$document
 ||note.com/brisk_gnu6597^$document
@@ -9423,6 +9429,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ridgeways.shadelmontessoricentre.com^$document
 ||riekoblog.com^$document
 ||right-dlsite.com^$document
+||right-fan.com^$document
 ||riicoralis.com^$document
 ||rika333ep.com^$document
 ||rikeilifeblog.com^$document
@@ -13996,6 +14003,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||xn--n8jp1dzg801ngmaq12a4qui95g.com^$document
 ||xn--n8jtc6ad0nv19pp9cstj8xjljc.net^$document
 ||xn--n8jtcxe5c344rqxguyj4o1dj8yb.com^$document
+||xn--n8jtcxe5cwd5l9h247th9j196k.com^$document
 ||xn--n8jv600a.net^$document
 ||xn--n8jyp3b884top8c.net^$document
 ||xn--nbkt22gzudwn9b.jp^$document
