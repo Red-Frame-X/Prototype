@@ -3,6 +3,24 @@
 > Source: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > Generated from official GitHub Releases; newest release first.
 
+## 4.13.2
+
+- Published: 2026-08-26T12:41:15Z
+- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.2
+
+Here’s an additional technical update following the previous one. In it, we’ve fixed bugs and kept working on the app stability.
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.13.1
 
 - Published: 2026-08-03T16:50:17Z
@@ -4719,39 +4737,3 @@ The app will offer you to choose the preferred type of license and its duration 
 - [Fixed] Crash when the log is being collected #3212
 - [Fixed] Crash on MIUI phones with Ultra battery saver #3210
 - [Fixed] Max imported settings file size increased to 10 Mb #3203
-
-## 3.3 beta 2
-
-- Published: 2019-10-24T16:44:48Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3-beta-2
-
-It seems that the first AdGuard v3.3 beta has opened the floodgates, and now there’s no power in the world to stop our developers from releasing more and more. Only one week has passed since, and we’re already presenting the next one. This time, our designers had a say too, and this is reflected in several UI-related changes that you won’t be able to miss.
-
-**[Changed] The onboarding process #2895**
-
-We sure love us some redesign! This time, we revamped the onboarding sequence (basically, what you see when you launch the app for the first time). Key changes:
-
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/welcome.png" width="300"> <img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/create_vpn.png" width="300">
-
-- An option to choose a ‘quick’ or a ‘long’ configuration: you’ll be asked to either make only key decisions or set most of the settings manually
-- New option to allow sending some technical and interaction information that will help us further improve AdGuard
-- Better graphics!
-
-**[Added] HTTPs filtering dialog #2967**
-
-HTTPS filtering is a cornerstone of AdGuard for Android. Without the permission to filter the HTTPS protocol the ad blocking power of AdGuard is severely crippled. That’s why we walk an extra mile to emphasize to users its importance. 
-
-We show a notification on the main AdGuard screen if HTTPS filtering is not enabled yet, and when you click on it, we now show a simple yet informative GIF that explains how HTTPS filtering works and why we recommend so strongly to turn it on.
-
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/https_dialog.gif" width="300">
-
-- [Added] “Refresh license status” button #2988
-- [Added] TLS v1.3 support for custom DNS servers #3132
-- [Added] Restore purchases button: a notification if there’s nothing to restore #2990
-- [Changed] Phrasing on activation screens #3141
-- [Changed] Internet connection availability checking method #3095
-- [Fixed] Pressing the “Buy one more license” button closes the current screen #3136
-- [Fixed] Some buttons in the first start dialog boxes can’t be seen on certain device models #3114
-- [Fixed] The switch for Custom filters incorrectly represents the state of the filter group #3119
-- [Fixed] Compatibility issues
-- [Improved] CoreLibs has been updated to v1.5.84 #3143

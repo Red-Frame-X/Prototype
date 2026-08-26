@@ -112,7 +112,7 @@ This file is generated. Changelog matches are review candidates, not proof that 
 - [@adguard/dnr-rulesets]: https://github.com/AdguardTeam/tsurlfilter/blob/master/packages/dnr-rulesets/CHANGELOG.md
 - [@adguard/scriptlets]: https://github.com/AdguardTeam/Scriptlets/blob/master/CHANGELOG.md
 
-## AdGuard for Android 4.13.1
+## AdGuard for Android 4.13.2
 
 - And last, but not least, we have done a lot of work on our filtering engines and fixed bugs that had accumulated over time. Scriptlets and CoreLibs were updated for better app performance.
 - * User regex in *Ad blocking* and *DNS filtering* rules breaks after AdGuard v4.14 nightly 5 [5916](https://github.com/AdguardTeam/AdguardForAndroid/issues/5916)
