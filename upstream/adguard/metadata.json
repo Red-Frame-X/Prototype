@@ -121,9 +121,9 @@
     {
       "product": "AdGuard for Android",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100",
-      "latest_version": "4.13.1",
-      "sha256": "ec178754a0d354e88cd078f834369f119928163878c6c56b5907fb84662b72c4",
-      "checked_at": "2026-08-21T12:08:29+00:00",
+      "latest_version": "4.13.2",
+      "sha256": "dd87ca054fa98a73cc1b8b00c0feb87e53d0d1029bb5fad7d5cfa5aebf831227",
+      "checked_at": "2026-08-26T21:47:27+00:00",
       "converter_relevant_entries": [
         "And last, but not least, we have done a lot of work on our filtering engines and fixed bugs that had accumulated over time. Scriptlets and CoreLibs were updated for better app performance.",
         "* User regex in *Ad blocking* and *DNS filtering* rules breaks after AdGuard v4.14 nightly 5 [5916](https://github.com/AdguardTeam/AdguardForAndroid/issues/5916)",
