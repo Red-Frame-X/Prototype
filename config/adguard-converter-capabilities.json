@@ -29,15 +29,11 @@
           ":others()"
         ],
         "incompatible_scriptlets": [
-          "acis",
-          "spoof-css",
           "trusted-replace-argument",
           "trusted-set-cookie",
           "alert-buster",
           "trusted-click-element",
           "webassembly-interference",
-          "m3u-prune",
-          "json-prune",
           "json-prune-set"
         ],
         "modifier_replacements": {
