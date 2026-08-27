@@ -1,6 +1,6 @@
 ! Title: uBOL Filter - Red Frame X
 ! Description: Customize uBOL filters for personal use.
-! Version: 202608280822
+! Version: 202608280826
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -32,8 +32,8 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! chatgpt.com
 ! 閉じるボタンを持つaside型の案内バナー（プラグイン案内・ChatGPT Work案内等）を初期CSSで非表示
 chatgpt.com##aside:has(button[data-testid="close-button"])
-! 入力欄上部の閉じるボタン付き案内バナーを初期CSSで非表示
-chatgpt.com##[data-prompt-textarea-header]:has(button[data-testid="close-button"])
+! 入力欄上部の案内バナー領域を初期CSSで直接非表示し、描画後判定によるチラつきを回避
+chatgpt.com##[data-prompt-textarea-header]
 
 ! downdetector.jp
 ! 以下は無効：サービス一覧に挿入される広告カードをdata-service-list-ad属性で非表示
