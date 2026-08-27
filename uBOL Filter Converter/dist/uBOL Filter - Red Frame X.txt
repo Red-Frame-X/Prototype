@@ -1,6 +1,6 @@
 ! Title: uBOL Filter - Red Frame X
 ! Description: Customize uBOL filters for personal use.
-! Version: 202608271815
+! Version: 202608271833
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -16,6 +16,8 @@
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
 ! Amazonトップページのdesktop-wd-1スポンサー広告枠を非表示
 amazon.co.jp###ape_Gateway_desktop-wd-1_desktop_wrapper
+! Amazonトップページのdesktop-wd-1広告カード外枠を非表示
+amazon.co.jp###wd-shoppable-1
 
 ! blog.hatena.ne.jp
 ! 購読管理画面の購読案内見出しを非表示
