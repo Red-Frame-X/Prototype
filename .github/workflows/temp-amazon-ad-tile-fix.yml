@@ -1,0 +1,62 @@
+name: Temporary Amazon ad tile selector fix
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/temp-amazon-ad-tile-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+
+      - name: Refine Amazon ad tile selector and bump version
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('! Version: 202608271839', '! Version: 202608271844', 1)
+          old = '''! Amazonトップページのdesktop-wd-1広告カードを親コンテナ直下の構造で非表示
+          amazon.co.jp###gwm-window-xl-container > div.gwm-window-xl.gwm-window-tile.gwm-window-wrapper'''
+          new = '''! AmazonトップページでdisplayAds属性を持つ広告タイルのみ非表示
+          amazon.co.jp###gwm-window-xl-container > div.gwm-window-xl.gwm-window-tile.gwm-window-wrapper:has(> div[data-csa-c-painter="JavelinRenderingServiceClickTracking"][data-ref_="pd_hp_d_r_atf_displayAds"])'''
+          if old not in s:
+              raise SystemExit('Expected Amazon structural rule not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Regenerate uBOL outputs
+        run: python "uBOL Filter Converter/converter.py"
+
+      - name: Validate generated changes
+        run: |
+          python scripts/check_adguard_filter_integrity.py
+          git diff --check
+
+      - name: Commit synchronized filter updates
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            'AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt' \
+            'uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt' \
+            'uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json'
+          git commit -m 'Refine Amazon homepage ad tile cosmetic rule'
+          git pull --rebase origin main
+          git push
