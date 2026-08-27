@@ -25,6 +25,8 @@
 ! amazon.co.jp
 ! Amazon商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
+! Amazonトップページのdesktop-wd-1スポンサー広告枠を非表示
+amazon.co.jp###ape_Gateway_desktop-wd-1_desktop_wrapper
 
 ! blog.hatena.ne.jp
 ! 購読管理画面の購読案内見出しを非表示
