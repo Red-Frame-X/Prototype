@@ -49,10 +49,10 @@ jobs:
           python -m unittest discover -s tests -v
           python -m unittest discover -s "uBOL Filter Converter/tests" -v
 
-      # Validate converter determinism everywhere, but require committed generated
-      # outputs to be fully synchronized only on pull requests. Direct pushes to
-      # main are repaired by build-ubol.yml, so failing here would create a race
-      # between the quality and auto-generation workflows.
+      # Always validate that the converter runs successfully and produces
+      # whitespace-clean output. Generated files are synchronized automatically
+      # on pushes to main by build-ubol.yml, so PR validation must not fail only
+      # because committed dist files are one generation behind the source filter.
       - name: Validate uBOL output generation
         run: |
           python "uBOL Filter Converter/converter.py"
@@ -60,12 +60,17 @@ jobs:
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt" \
             "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json"
 
-      - name: Require synchronized uBOL outputs on pull requests
+      - name: Report unsynchronized uBOL outputs on pull requests
         if: github.event_name == 'pull_request'
         run: |
-          git diff --exit-code -- \
-            "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt" \
-            "uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json"
+          output='uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt'
+          report='uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json'
+          if git diff --quiet -- "$output" "$report"; then
+            echo 'Generated uBOL outputs are synchronized.'
+          else
+            echo '::notice title=uBOL generated outputs pending synchronization::Generated uBOL outputs differ from the committed files. build-ubol.yml will synchronize them automatically after the PR is merged to main.'
+            git diff -- "$output" "$report"
+          fi
 
       - name: Run Markdownlint
         run: npm run lint:markdown
