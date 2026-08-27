@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Customize AdGuard filters for personal use.
-! Version: 202608271833
+! Version: 202608271839
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -25,10 +25,8 @@
 ! amazon.co.jp
 ! Amazon商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
-! Amazonトップページのdesktop-wd-1スポンサー広告枠を非表示
-amazon.co.jp###ape_Gateway_desktop-wd-1_desktop_wrapper
-! Amazonトップページのdesktop-wd-1広告カード外枠を非表示
-amazon.co.jp###wd-shoppable-1
+! Amazonトップページのdesktop-wd-1広告カードを親コンテナ直下の構造で非表示
+amazon.co.jp###gwm-window-xl-container > div.gwm-window-xl.gwm-window-tile.gwm-window-wrapper
 
 ! blog.hatena.ne.jp
 ! 購読管理画面の購読案内見出しを非表示
