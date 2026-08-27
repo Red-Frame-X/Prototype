@@ -1,7 +1,7 @@
 {
   "source": "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt",
-  "input_lines": 400,
-  "output_lines_excluding_generated_header": 343,
+  "input_lines": 398,
+  "output_lines_excluding_generated_header": 341,
   "excluded_count": 14,
   "excluded_by_reason": {
     "html-filtering": 3,
@@ -25,57 +25,57 @@
       "rule": "@@||aax-fe.amazon-adsystem.com^$app=com.amazon.mShop.android.shopping"
     },
     {
-      "line": 55,
+      "line": 53,
       "reason": "modifier:app",
       "rule": "@@||stats.g.doubleclick.net^$app=jp.kappasushi.app"
     },
     {
-      "line": 65,
+      "line": 63,
       "reason": "modifier:app",
       "rule": "@@||www.google-analytics.com^$app=jp.kappasushi.app"
     },
     {
-      "line": 139,
+      "line": 137,
       "reason": "modifier:app",
       "rule": "@@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox"
     },
     {
-      "line": 151,
+      "line": 149,
       "reason": "modifier:app",
       "rule": "@@||uts-front.line-apps.com^$app=jp.naver.line.android"
     },
     {
-      "line": 233,
+      "line": 231,
       "reason": "modifier:app",
       "rule": "@@||analytics.tiktok.com^$app=jp.kappasushi.app"
     },
     {
-      "line": 247,
+      "line": 245,
       "reason": "modifier:app",
       "rule": "@@||ads.twitter.com^$app=com.twitter.android"
     },
     {
-      "line": 256,
+      "line": 254,
       "reason": "scriptlet",
       "rule": "web.nhk#%#//scriptlet('trusted-set-cookie', 'consentToUse', '{\"status\":\"optedin\",\"entity\":\"household\",\"area\":{\"areaId\":\"0\",\"jisx0402\":\"0\",\"postal\":\"0000000\",\"pref\":\"0\"}}')"
     },
     {
-      "line": 257,
+      "line": 255,
       "reason": "scriptlet",
       "rule": "web.nhk#%#//scriptlet('trusted-set-cookie', 'efm', '{\"sd\":\"2025-10-01T00:00:00.000Z\",\"ed\":\"2050-12-31T23:59:59.999Z\"}')"
     },
     {
-      "line": 262,
+      "line": 260,
       "reason": "html-filtering",
       "rule": "news.web.nhk$$dialog[id=\"emergency-mode-info\"]"
     },
     {
-      "line": 267,
+      "line": 265,
       "reason": "html-filtering",
       "rule": "news.web.nhk$$div[id=\"under-header-element\"]"
     },
     {
-      "line": 272,
+      "line": 270,
       "reason": "html-filtering",
       "rule": "news.web.nhk$$div[role=\"region\"]:contains(NHKの公式アプリ)"
     }
