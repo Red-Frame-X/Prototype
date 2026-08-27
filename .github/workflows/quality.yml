@@ -44,6 +44,15 @@ jobs:
       - name: Validate canonical AdGuard filter integrity
         run: python scripts/check_adguard_filter_integrity.py
 
+      - name: Preflight AdGuard user-rule edits
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+            python scripts/check_adguard_user_rule_edit.py --base-ref "origin/${{ github.base_ref }}"
+          else
+            python scripts/check_adguard_user_rule_edit.py
+          fi
+
       - name: Run Python tests
         run: |
           python -m unittest discover -s tests -v
