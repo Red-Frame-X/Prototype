@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608280925
+! Version: 202608290024
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -2093,6 +2093,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||chingqiu.com^$document
 ||chirkrpy.jettysuites.com^$document
 ||chisan-eco.jp^$document
+||chishikiya.blog^$document
 ||chiyuki.jp^$document
 ||chlog.work^$document
 ||chmate.en.greenxf.com^$document
@@ -5357,6 +5358,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||jukujomanga.wpx.jp^$document
 ||juliatrofimenko.ru^$document
 ||jump-netabare.love^$document
+||jumpjump.io^$document
 ||jumpscare.link^$document
 ||jumpu2021.com^$document
 ||junabroadinfo.com^$document
@@ -10763,6 +10765,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tenshoku-antenna.com^$document
 ||tenten-maron1.com^$document
 ||tenten-shop.com^$document
+||teppeifree.com^$document
 ||tera-jp.com^$document
 ||terajin.gger.jp^$document
 ||terakoya.sejuku.net^$document
@@ -11229,6 +11232,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tuition.tamilcube.com^$document
 ||tukuriba.jp^$document
 ||tunejpn.jwbni.com^$document
+||turbo-vpn.jp.uptodown.com^$document
 ||turbovpn.com^$document
 ||tureduresuzume.com^$document
 ||turezurenaru-zakki.com^$document
@@ -11578,6 +11582,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||vpnmedia.jp^$document
 ||vpnmentor.com^$document
 ||vpnnippon.jp^$document
+||vpnproxymaster.com^$document
 ||vpnserver.sakura.ne.jp^$document
 ||vpnsetsu.com^$document
 ||vpnveteran.com^$document
@@ -12722,6 +12727,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.i-dont-care-about-cookies.eu^$document
 ||www.ibaozhen.xyz^$document
 ||www.ichigo-macaron.com^$document
+||www.icomdirect.jp^$document
 ||www.icomu-master.info^$document
 ||www.idealhomeappliances.com^$document
 ||www.idobata.online^$document
