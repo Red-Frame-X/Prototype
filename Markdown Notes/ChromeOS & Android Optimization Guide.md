@@ -164,7 +164,9 @@ Violentmonkeyを使用するためには、設定 > 拡張機能 > Tampermonkey�
 
 ## ChromeOS Chrome テーマ
 * **[Chrome Web Store テーマ](https://chromewebstore.google.com/category/themes)**
-* **[Royal Desert Sand](https://chromewebstore.google.com/detail/royal-desert-sand/nnieplejkjaodhemceganohmdkfekkem)**
+* **[Royal Desert Sand Dark Tabs](../royal_desert_sand_dark_tabs.zip)**：Royal Desert Sand系の配色をベースに、バックグラウンドタブを濃いブルー系に調整し、アクティブタブと非アクティブタブを見分けやすくしたカスタムChromeテーマ。新しいタブページの背景はグレー系。
+
+ZIPを展開し、Chromeの「拡張機能」ページでデベロッパーモードを有効にして、展開したテーマフォルダを「パッケージ化されていない拡張機能を読み込む」から指定して利用します。
 
 ---
 
