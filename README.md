@@ -19,15 +19,8 @@ Chrome・ChromeOS・Android環境での個人利用を中心に、コンテン�
 | AdGuard用ルールをuBO Liteで使う | [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/) | uBlock Origin Lite 2026.621.1813以降 |
 | uB-filter-by-kdroidwinをAdGuardで使う | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | 主にAdGuard ブラウザ拡張機能 MV3対応版 |
 | 𝕏・YouTubeの表示を調整する | [UserScript](UserScript/) | Violentmonkey／Tampermonkeyなど |
-| Chromeのタブ配色を変更する | [Royal Desert Sand Dark Tabs](royal_desert_sand_dark_tabs.zip) | Chrome／ChromeOS |
 | ChMateでNGワードを設定する | [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMate |
 | ChromeOS・Android等の手順や技術情報を読む | [Markdown Notes](Markdown%20Notes/) | ChromeOS／Android／GitHub／コンテンツブロック関連資料 |
-
-## Royal Desert Sand Dark Tabs
-
-[royal_desert_sand_dark_tabs.zip](royal_desert_sand_dark_tabs.zip) は、Royal Desert Sand系の配色をベースに、バックグラウンドタブをより明確に見分けられるよう濃いブルー系に調整したChromeテーマです。新しいタブページの背景はグレー系とし、アクティブタブと非アクティブタブの視認性を重視しています。
-
-ZIPを展開し、Chromeの「拡張機能」ページでデベロッパーモードを有効にして、展開したテーマフォルダを「パッケージ化されていない拡張機能を読み込む」から指定して利用します。
 
 ## リポジトリ構成
 
@@ -39,7 +32,6 @@ ZIPを展開し、Chromeの「拡張機能」ページでデベロッパーモ�
 | `UserScript/` | 𝕏・YouTubeなどの表示や挙動を調整するUserScript |
 | `NG Word Regex for ChMate/` | ChMate向けJava正規表現 |
 | `Markdown Notes/` | ChromeOS、Android、コンテンツブロック、GitHubなどの技術メモ・調査資料 |
-| `royal_desert_sand_dark_tabs.zip` | Chrome向けカスタムテーマ「Royal Desert Sand Dark Tabs」 |
 | `scripts/`、`tests/` | フィルタ変換・更新処理と回帰テスト |
 | `config/`、`upstream/` | 変換能力の定義と上流情報の追跡データ |
 
