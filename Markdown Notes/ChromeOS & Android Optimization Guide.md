@@ -168,9 +168,9 @@ Violentmonkeyを使用するためには、設定 > 拡張機能 > Tampermonkey�
 * **[Royal Desert Sand](https://chromewebstore.google.com/detail/royal-desert-sand/nnieplejkjaodhemceganohmdkfekkem)**：オリジナルのChromeテーマ。
 * **[Royal Desert Sand Dark Tabs](../royal_desert_sand_dark_tabs.zip)**
 
-  **説明**：Royal Desert Sand系の配色をベースに、バックグラウンドタブを濃いブルー系に調整し、アクティブタブと非アクティブタブを見分けやすくしたカスタムChromeテーマ。新しいタブページの背景はグレー系。
+  * **説明**：Royal Desert Sand系の配色をベースに、バックグラウンドタブを濃いブルー系に調整し、アクティブタブと非アクティブタブを見分けやすくしたカスタムChromeテーマ。新しいタブページの背景はグレー系。
 
-  **導入手順**：ZIPを展開し、Chromeの「拡張機能」ページでデベロッパーモードを有効にして、展開したテーマフォルダを「パッケージ化されていない拡張機能を読み込む」から指定して利用します。
+  * **導入手順**：ZIPを展開し、Chromeの「拡張機能」ページでデベロッパーモードを有効にして、展開したテーマフォルダを「パッケージ化されていない拡張機能を読み込む」から指定して利用します。
 
 ---
 
