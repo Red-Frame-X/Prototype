@@ -1,6 +1,6 @@
 ! Title: uBOL Filter - Red Frame X
 ! Description: Customize uBOL filters for personal use.
-! Version: 202608280826
+! Version: 202608281715
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -14,6 +14,13 @@
 ! amazon.co.jp
 ! Amazon商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
+
+! 以下は検証用・無効化中：Amazonトップページのgwm-window-xl-container内にあるsingle-creative-card型広告タイルを非表示
+! amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-csa-c-painter="single-creative-card"] > div[data-acp-params] > div[class] > a[href*="dvm_crs"])
+! 以下は検証用・無効化中：上記single-creative-card型広告のうち、Primeロゴを含む広告タイルを対象に非表示
+! amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-csa-c-painter="single-creative-card"] > div[data-acp-params] > div[class] > a[href*="dvm_crs"] > div[class] > div[data-csa-c-element-type="header"] > div[class*="single-creative-card_style_logoGap"] > img[alt="Prime"])
+! 以下は検証用・無効化中：displayAdsとして配信されるAmazonトップページのタイルを識別するため、対象外枠にピンク色の点線ボーダーを付与
+! amazon.co.jp#$##gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-ref_$="_displayAds"]) { border: 12px dotted pink !important; }
 
 ! blog.hatena.ne.jp
 ! 購読管理画面の購読案内見出しを非表示
