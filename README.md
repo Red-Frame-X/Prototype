@@ -19,6 +19,7 @@ Chrome・ChromeOS・Android環境での個人利用を中心に、コンテン�
 | AdGuard用ルールをuBO Liteで使う | [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/) | uBlock Origin Lite 2026.621.1813以降 |
 | uB-filter-by-kdroidwinをAdGuardで使う | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | 主にAdGuard ブラウザ拡張機能 MV3対応版 |
 | 𝕏・YouTubeの表示を調整する | [UserScript](UserScript/) | Violentmonkey／Tampermonkeyなど |
+| Chromeのタブ配色を変更する | [Royal Desert Sand Dark Tabs](Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#chromeos-chrome-%E3%83%86%E3%83%BC%E3%83%9E) | Chrome／ChromeOS |
 | ChMateでNGワードを設定する | [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMate |
 | ChromeOS・Android等の手順や技術情報を読む | [Markdown Notes](Markdown%20Notes/) | ChromeOS／Android／GitHub／コンテンツブロック関連資料 |
 
