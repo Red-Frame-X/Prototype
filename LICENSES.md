@@ -16,6 +16,7 @@
 - [`AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)
 - [`dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt`](dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)
 - [`scripts/convert.py`](scripts/convert.py)
+- [`Markdown Notes/Content Blocking FAQ 2026.md`](Markdown%20Notes/Content%20Blocking%20FAQ%202026.md)
 
 原典や変更内容は、各ファイルのヘッダーおよび同じディレクトリのREADMEを参照してください。
 
