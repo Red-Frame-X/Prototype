@@ -44,6 +44,9 @@ jobs:
       - name: Validate canonical AdGuard filter integrity
         run: python scripts/check_adguard_filter_integrity.py
 
+      - name: Validate workflow safety
+        run: python scripts/check_workflow_safety.py
+
       - name: Preflight AdGuard user-rule edits
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
