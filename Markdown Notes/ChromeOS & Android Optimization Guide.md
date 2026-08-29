@@ -92,7 +92,7 @@ Chrome Web Store外から入手した拡張機能を自分でインストール�
 * **[Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)**
 * **[Greasy Fork‐便利で安全なUserScript](https://greasyfork.org/ja)**
 
-Violentmonkeyを使用するためには、設定 > 拡張機能 > Tampermonkeyの内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。
+Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions` > Violentmonkey > **詳細** > **ユーザースクリプトを許可する** を有効にします。Chrome 138未満では、代わりに拡張機能ページの**デベロッパーモード**を有効にする必要があります。
 
 **❗️留意点**
 
