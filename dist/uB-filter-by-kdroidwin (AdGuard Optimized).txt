@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608291210
+! Version: 202608291908
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -817,7 +817,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ali2.ru^$document
 ||alicemama.kocorono-net.com^$document
 ||alicepatinvestments.com^$document
-||aliexpress.ru^$document
 ||alife-lalala.com^$document
 ||alisonn.blog106.fc2.com^$document
 ||all-dojin.com^$document
@@ -901,6 +900,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ameblo.jp/jeda11^$document
 ||ameblo.jp/jishinyochi^$document
 ||ameblo.jp/jyoagold^$document
+||ameblo.jp/kaneshiro-honest-clinic^$document
 ||ameblo.jp/kashima1564^$document
 ||ameblo.jp/keepstreams^$document
 ||ameblo.jp/kimetu-manga^$document
@@ -3171,7 +3171,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||epochtimes.jp^$document
 ||eposexperts.com^$document
 ||epsmic81.hatenablog.com^$document
-||epson.ru^$document
 ||eqon.app^$document
 ||eraption.com^$document
 ||erdj-island.com^$document
@@ -3521,6 +3520,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||feynman.co.jp^$document
 ||fezyygqo.auslagerung-pastservice.de^$document
 ||ffo-pr.com^$document
+||fftgmania-symats.blog.jp^$document
 ||ffwpu.family^$document
 ||ffwpu.jp^$document
 ||fgaaaae.bar^$document
@@ -8997,7 +8997,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||private-note.jp^$document
 ||privatevpn.com^$document
 ||pro-woodfactory.com^$document
-||pro^$document,to=~site.pro|~sitechecker.pro|~polylang.pro|~salebot.pro|~keenetic.pro|~webd.pro|~online.pro|~opus.pro|~awan.pro|~landbot.pro|~quiknode.pro|~hashvault.pro|~divisare.pro
+||pro^$document,to=~site.pro|~sitechecker.pro|~polylang.pro|~salebot.pro|~keenetic.pro|~webd.pro|~online.pro|~opus.pro|~awan.pro|~landbot.pro|~quiknode.pro|~hashvault.pro|~divisare.pro|~ansur.pro
 ||product.info^$document
 ||product.torex.com.cn^$document
 ||products.swagelok.com.cn^$document
@@ -11936,7 +11936,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.abemame.com^$document
 ||www.about-test.info^$document
 ||www.absher-erp.com^$document
-||www.accenture.cn^$document
 ||www.accenture.ex1.https.443.ipv6.faw.com.cn^$document
 ||www.accessoryrail.com^$document
 ||www.acciyo.com^$document
@@ -12050,7 +12049,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.appbank.net/app-rank/useful/vpn-app^$document
 ||www.appbank.net^$document
 ||www.appbrain.com^$document
-||www.apple.com.cn^$document
 ||www.apple.com.https.443.362d2d3a6e.a.proxy1.ipv6.xiangtan.gov.cn^$document
 ||www.apple.ex1.https.443.ipv6.yunfu.gov.cn^$document
 ||www.apple.info^$document
@@ -12098,7 +12096,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.azbil.co.uk^$document
 ||www.azen-o.com^$document
 ||www.azfinsoft.com^$document
-||www.azure.cn^$document
 ||www.baawamusicfestival.com^$document
 ||www.babulilm.ie^$document
 ||www.baghdadacademydom.com^$document
@@ -12176,7 +12173,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.brenzebra.com^$document
 ||www.bright-sendai.com^$document
 ||www.brighteazy.com^$document
-||www.broadcom.cn^$document
 ||www.bronze-paradise-sun-lover.com^$document
 ||www.browsercam.com^$document
 ||www.btervbaranya.hu^$document
@@ -12498,7 +12494,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.ferflorest.com^$document
 ||www.feriosa.cl/detail^$document
 ||www.fernandoaugustoblog.com^$document
-||www.ferrari.cn^$document
 ||www.fiabpjm.cn^$document
 ||www.figures-makaizou.com^$document
 ||www.filehorse.com^$document
@@ -12560,7 +12555,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.gao200529.top^$document
 ||www.garagedoorrepairfortlee.co^$document
 ||www.gardenawakenings.com^$document
-||www.garmin.cn^$document
 ||www.gatahime.com^$document
 ||www.gatchaman-movie.jp^$document
 ||www.gaten-yoake.com^$document
@@ -12604,9 +12598,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.goldcoastwalker.com^$document
 ||www.golden-strike.ru^$document
 ||www.goma-books.com^$document
-||www.google.co.uk^$document
-||www.google.me^$document
-||www.google.ru^$document
 ||www.goship.cn^$document
 ||www.goyalgoyal.com^$document
 ||www.goyard.cn^$document
@@ -12669,7 +12660,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.hentaimanga.jp^$document
 ||www.herbstowing.ca^$document
 ||www.here.xyz^$document
-||www.hermes.cn^$document
 ||www.hero-sms.ai^$document
 ||www.hero-sms.cc^$document
 ||www.hero-sms.co^$document
@@ -12758,8 +12748,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.instagram.com/hianime.official^$document
 ||www.instagram.com/myulier_aiart^$document
 ||www.intambwemedia.com^$document
-||www.intel.cn^$document
-||www.intel.ru^$document
 ||www.interface.ru^$document
 ||www.interlink.or.jp^$document
 ||www.ipaccelerator.info^$document
@@ -12793,8 +12781,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.iwako-light.com^$document
 ||www.j-bronze.jp^$document
 ||www.j-love.info^$document
-||www.jabra.cn^$document
-||www.jaeger-lecoultre.cn^$document
 ||www.jaic-college.jp^$document
 ||www.jana-atur.com^$document
 ||www.january202024.com^$document
@@ -12972,7 +12958,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.locationsmart.info^$document
 ||www.locker-room.info^$document
 ||www.lodge-sansui.com^$document
-||www.logitech.com.cn^$document
 ||www.lojapastore.com^$document
 ||www.lojo.org^$document
 ||www.lokasi.live^$document
@@ -13119,7 +13104,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.moutamine.com^$document
 ||www.move-inc.jp^$document
 ||www.mqfdgqc.cn^$document
-||www.msdmanuals.cn^$document
 ||www.mskanak.com^$document
 ||www.msweeneynantucket.com^$document
 ||www.mtn-world.com^$document
@@ -13270,7 +13254,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.pilutkiewicz.pl^$document
 ||www.pincenter.com^$document
 ||www.pirateproxy-bay.com^$document
-||www.pirelli.cn^$document
 ||www.pixela.co.jp/products/pickup/tips/4ksmart_tips10_amazingapps.html^$document
 ||www.pixgenie.net^$document
 ||www.planetpixmedia.com^$document
@@ -13287,7 +13270,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.polybandas.cl^$document
 ||www.pondicherrychess.com^$document
 ||www.popculturepulse.website^$document
-||www.porsche.cn^$document
 ||www.positiveaction.info^$document
 ||www.potamus.tech^$document
 ||www.powaisaipooja.com^$document
@@ -13380,7 +13362,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.reinya.jp^$document
 ||www.reiya330.jp^$document
 ||www.rembertovaldes.cl^$document
-||www.renesas.cn^$document
 ||www.renovmobils.com^$document
 ||www.rentio.jp/matome/2024/05/temu-review^$document
 ||www.rentracks.jp^$document
@@ -13408,7 +13389,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.rocs-project.org^$document
 ||www.rogerdubuis.cn^$document
 ||www.rogervivier.cn^$document
-||www.rolex.cn^$document
 ||www.roomgirl.online^$document
 ||www.roots-barber.com^$document
 ||www.rosmersholm2023.com^$document
@@ -13450,7 +13430,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.santodomingovalparaiso.cl^$document
 ||www.sanwo.me^$document
 ||www.sanyo-heights.jp^$document
-||www.sap.cn^$document
 ||www.sarahzhuang.com^$document
 ||www.sarariinourabeya.com^$document
 ||www.sarveshinterior.in^$document
@@ -13587,7 +13566,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.supergenji.jp^$document
 ||www.superstarpledis.jp^$document
 ||www.supervpn.net^$document
-||www.suunto.cn^$document
 ||www.suyamatakuji.com^$document
 ||www.suzuco.net^$document
 ||www.sweden.cn^$document
@@ -13621,7 +13599,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.tcclinic.jp^$document
 ||www.team-logi.co.jp^$document
 ||www.teamos.xyz^$document
-||www.teamviewer.cn^$document
 ||www.technopat.net^$document
 ||www.techopedia.com^$document
 ||www.techspot.com/downloads^$document
@@ -13639,7 +13616,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.tensortechapps.com^$document
 ||www.teppan-tachibana.jp^$document
 ||www.teraqol.com^$document
-||www.tesla.cn^$document
 ||www.tesonline.ru^$document
 ||www.testmart.cn^$document
 ||www.testwebsite2024.online^$document
@@ -13660,7 +13636,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.theprospectvilla.com^$document
 ||www.therealbeefbuddies.com^$document
 ||www.thermocursos.com^$document
-||www.thermofisher.cn^$document
 ||www.therockstarworld.com^$document
 ||www.thestudioingatestone.com^$document
 ||www.thetravelingmaniac.com^$document
@@ -13675,7 +13650,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.timbukdo.in^$document
 ||www.tkoubaske.jp^$document
 ||www.tnfinskills.com^$document
-||www.toburailway.cn^$document
 ||www.tochigi-syokutonou.jp^$document
 ||www.todon.ru^$document
 ||www.todovulva.com^$document
@@ -13713,13 +13687,11 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.tsuzukiblog.org^$document
 ||www.tubeninja.net^$document
 ||www.tuberevanced.com^$document
-||www.tudorwatch.cn^$document
 ||www.tuma-no-himitsu.com^$document
 ||www.tungacademy.com^$document
 ||www.tunyafrika.com^$document
 ||www.turncent.com^$document
 ||www.turnorpvaautoparte.online^$document
-||www.tuvsud.cn^$document
 ||www.tweepsbook.com^$document
 ||www.twinarcus.com^$document
 ||www.twinrocktools.com^$document
@@ -13759,8 +13731,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.uzzf.com^$document
 ||www.v81entertainment.com^$document
 ||www.vaas-lt.com^$document
-||www.vacheron-constantin.cn^$document
-||www.vaisala.cn^$document
 ||www.val-de-cognac.com^$document
 ||www.value-press.com^$document
 ||www.valueadd.se^$document
@@ -13768,7 +13738,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.vanced.cloud^$document
 ||www.vanced.io^$document
 ||www.vanceneshop.com^$document
-||www.vancleefarpels.cn^$document
 ||www.vandyfxmw.net^$document
 ||www.varietynews.info^$document
 ||www.various-events.com^$document
@@ -13898,7 +13867,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.zakzak.co.jp^$document
 ||www.zare-kiji-tukai.com^$document
 ||www.zcastnmg.cn^$document
-||www.zebra.cn^$document
 ||www.zedload.com^$document
 ||www.zero-full.com^$document
 ||www.zerogo.jp^$document
