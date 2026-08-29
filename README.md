@@ -45,13 +45,22 @@ Chrome・ChromeOS・Android環境での個人利用を中心に、コンテン�
 | `UserScript/` | 𝕏・YouTubeなどの表示や挙動を調整するUserScript |
 | `NG Word Regex for ChMate/` | ChMate向けJava正規表現 |
 | `Markdown Notes/` | ChromeOS、Android、コンテンツブロック、GitHubなどの技術メモ・調査資料 |
-| `scripts/`、`tests/` | フィルタ変換・更新処理と回帰テスト |
+| `scripts/`、`tests/` | フィルタ変換・更新処理、整合性検査、回帰テスト |
 | `config/`、`upstream/` | 変換能力の定義と上流情報の追跡データ |
+
+## 編集・更新の原則
+
+- `AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt`はuBOL変換の原本でもあるため、ルール追加・削除時は`! Version:`も更新し、品質チェックを通してから反映します。
+- `uBOL Filter Converter/dist/`とルートの`dist/`はGitHub Actionsによる生成物です。原則として直接編集しません。
+- `AdGuard Custom Rules/ChangeLog/`と`upstream/`には上流プロジェクトの追跡・ミラー情報が含まれます。上流情報を根拠なく手動改変せず、取得スクリプトまたは追跡設定を修正します。
+- Markdown Notesは仕様変更で古くなりやすいため、更新時には公式資料と対象バージョンを再確認します。
 
 ## 自動更新と品質確認
 
 GitHub Actionsで、フィルタや変換ツールを中心とした更新・品質確認を自動化しています。
 
+- AdGuard原本フィルタのメタデータ・行数・ルール数などの整合性検査
+- AdGuardルール編集時の重複、改行、空白、大量削除などの事前検査
 - Pythonの回帰テスト、UserScript構文検査、Markdownlint、AGLint
 - `uB-filter-by-kdroidwin (AdGuard Optimized)`の定期同期と変換
 - `uBOL Filter - Red Frame X`の再生成と変換レポートの更新
@@ -61,6 +70,8 @@ GitHub Actionsで、フィルタや変換ツールを中心とした更新・品
 
 ```bash
 npm ci
+python scripts/check_adguard_filter_integrity.py
+python scripts/check_adguard_user_rule_edit.py
 python -m unittest discover -s tests -v
 python -m unittest discover -s "uBOL Filter Converter/tests" -v
 npm run lint:markdown

@@ -38,6 +38,22 @@ AdGuard for Androidでは「DNS通信を保護」の「DNSフィルタ」でカ�
 
 uBlock Origin Liteで利用する場合は、互換性のないルールを保守的に除外・変換した生成版[`uBOL Filter - Red Frame X`](../uBOL%20Filter%20Converter/)を使用してください。元のAdGuardフィルタをそのままuBO Liteへ読み込むことは前提としていません。
 
+## 編集時の品質確認
+
+`AdGuard Custom Rules - Red Frame X.txt`はuBOL生成フィルタの変換元でもあります。ルールを追加・削除・変更する場合は、ヘッダーの`! Version:`を`YYYYMMDDHHMM`形式で更新してください。
+
+リポジトリの品質チェックでは、原本フィルタの破損防止に加えて、重複した有効ルール、末尾空白、改行形式、意図しない大量削除などを検査します。ローカルでは次の順序で確認できます。
+
+```bash
+python scripts/check_adguard_filter_integrity.py
+python scripts/check_adguard_user_rule_edit.py
+npm run lint:adguard
+python -m unittest discover -s tests -v
+python -m unittest discover -s "uBOL Filter Converter/tests" -v
+```
+
+uBOL向け生成物はGitHub Actionsで同期されるため、通常は`uBOL Filter Converter/dist/`を直接編集しません。変換結果に問題がある場合は、原本ルール、コンバータ、能力定義またはテストを修正します。
+
 ## CHANGELOG追跡とコンバータ更新
 
 [`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式CHANGELOGとAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ英語原文のミラーを生成します。メタデータと互換性レビュー候補は`upstream/adguard/`へ生成します。
