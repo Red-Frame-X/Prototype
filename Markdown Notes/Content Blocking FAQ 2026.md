@@ -91,16 +91,27 @@ uBOLでは、サイト権限とフィルタリングモードを確認して使�
 - 同時に有効化できるフィルタ数に上限がある
 - 一部のネットワーク修飾子は非対応または制限付き
 - 通常版のFiltering logでは、DNR制約により実際に発火したルールを完全には特定できず、「発動したと想定されるルール」が表示される
-- MV3でDNR形式に組み込まれる通常フィルタは、拡張機能本体の更新に合わせて更新される
 
-AdGuardは緊急修正用に **AdGuard Quick Fixes filter** を用意しており、通常フィルタの更新を待てない重大な問題へ対応します。
+### Q. MV3版のフィルタはどのように更新されますか
+
+2026年8月29日時点では、**「通常フィルタはフル拡張機能更新時のみ更新され、Quick Fixes filterが差分更新を担う」という説明は現行仕様ではありません**。
+
+AdGuardはChrome Web StoreのMV3ポリシーへの対応過程で **AdGuard Quick Fixes filterを廃止** しました。現在は、組み込みフィルタのうちDNR rulesetとChromeが定義するsafe rulesだけで構成できる更新について、Chrome Web Storeの **fast-track / skip review** を利用した自動更新ビルドを配信する方式へ移行しています。AdGuard公式リポジトリでは、最新の `@adguard/dnr-rulesets` を定期的に取り込み、フィルタ更新版の拡張機能を自動ビルド・公開する仕組みが説明されています。
+
+この高速更新は通常の完全レビューを待たずに配信できますが、**script rulesの変更を含む更新には利用できません**。その場合は従来どおりChrome Web Storeの完全なレビューを伴う拡張機能更新が必要です。したがって、組み込みフィルタは「すべて同じ更新経路」ではなく、更新内容に応じて高速更新と完全更新に分かれます。
+
+また、**Custom filtersはAdGuard Browser Extension v5.4以降、MV3でも拡張機能本体の更新を待たず独立して更新可能**です。これは組み込みフィルタの更新方式とは別です。
+
+なお、AdGuard Knowledge BaseのMV3ページには現在も「自動および手動のフィルタ更新なし」「完全な拡張機能更新を通じてのみ更新」とする記述が残っていますが、AdGuard公式のより新しい製品記事、v5.4リリース情報、現行GitHubリポジトリの実装説明と一致しません。本書では、2026年8月29日時点の新しい一次情報を優先します。
 
 ユーザールールやカスタムフィルタを作成する場合は、AdGuard構文として正しいだけでなく、MV3/DNRで実装可能かも確認する必要があります。
 
 **参照**
 
+- [AdGuard: What happened to Custom filters and Quick Fixes filter](https://adguard.com/en/blog/review-issues-in-chrome-web-store.html)
+- [AdGuard Browser Extension v5.4](https://adguard.com/en/blog/adguard-browser-extension-v5-4.html)
+- [AdguardTeam/AdguardBrowserExtension](https://github.com/AdguardTeam/AdguardBrowserExtension)
 - [AdGuard Browser Extension MV3](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
-- [AdGuard Browser Extension for Chrome MV3: release version](https://adguard.com/en/blog/adguard-browser-extension-mv3-release.html)
 - [AdGuard filtering rules syntax](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
 
 ---
@@ -258,7 +269,7 @@ uBOのCNAME uncloakingは、DNS APIを利用できるFirefoxで提供されて�
 
 - MV3前提でuBO Lite、AdGuard Browser Extension MV3、ブラウザ内蔵ブロッカー等から選ぶ
 - uBO Liteではフィルタリングモードとサイト権限を確認する
-- AdGuard MV3ではDNR変換可否、ルール上限、更新方式を確認する
+- AdGuard MV3ではDNR変換可否、ルール上限、更新経路を確認する
 - フル版uBOとuBO Liteを同一機能の製品として扱わない
 
 ### Android
@@ -277,6 +288,9 @@ uBOのCNAME uncloakingは、DNS APIを利用できるFirefoxで提供されて�
 - [uBO Filter Performance](https://github.com/gorhill/uBlock/wiki/Filter-Performance)
 - [uBO Dashboard: Filter lists](https://github.com/gorhill/uBlock/wiki/Dashboard%3A-Filter-lists)
 - [AdGuard filtering rules syntax](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+- [AdGuard: What happened to Custom filters and Quick Fixes filter](https://adguard.com/en/blog/review-issues-in-chrome-web-store.html)
+- [AdGuard Browser Extension v5.4](https://adguard.com/en/blog/adguard-browser-extension-v5-4.html)
+- [AdguardTeam/AdguardBrowserExtension](https://github.com/AdguardTeam/AdguardBrowserExtension)
 - [AdGuard Browser Extension MV3](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
 - [AdGuard for Android DNS protection](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
 - [AdGuard DNS filtering rules syntax](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
