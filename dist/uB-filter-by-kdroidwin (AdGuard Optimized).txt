@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608291908
+! Version: 202608300332
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -1459,6 +1459,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||banapa.net^$document
 ||banban-comic.com^$document
 ||banbi-eye.com^$document
+||bandal-line-scratch.fly.dev^$document
 ||bangladeshnewsbd.com^$document
 ||bank.dmm-mania.com^$document
 ||banka-movie.com^$document
@@ -2023,6 +2024,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||chanko-shiki.com^$document
 ||chanmii.com^$document
 ||channel-rei.com^$document
+||channn.live-ph.cc^$document
 ||chaonoheya.com^$document
 ||chaos2ch.com^$document
 ||chapro.jp^$document
@@ -2122,6 +2124,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||chronictacos.jp^$document
 ||chubushoji.shop-pro.jp^$document
 ||chun-shufu.com^$document
+||chupaso.com^$document
 ||chupea-club.jp^$document
 ||churchfront.me^$document
 ||chushikoku-kaigokango.com^$document
@@ -5347,6 +5350,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||jtb-hotspringtickets.vip^$document
 ||jtb-hotspringtickets.xyz^$document
 ||jtbmusic.jp^$document
+||jtgkn.xsrv.jp^$document
 ||jtuto.com^$document
 ||ju.mc-info.jp^$document
 ||juanitomx.com^$document
@@ -6134,6 +6138,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||liupanlove.me^$document
 ||liv-futsal.jp^$document
 ||live-happily-blog.com^$document
+||live-ph.cc^$document
 ||live-pq.cc^$document
 ||live.doneru.jp^$document
 ||livecafe-jive.com^$document
@@ -10588,6 +10593,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||t.mailinboxes.me^$document
 ||t.me/s/OfficialFTUApps?before=466^$document
 ||t.me/sotaproject^$document
+||t.me/spyphone042lil$doc
 ||t.spnews5.me^$document
 ||t2-3d.jp^$document
 ||t2m.io^$document
@@ -11829,6 +11835,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||worldofwarships.ru^$document
 ||wovenmsz.bizandleisure.com^$document
 ||wow-parfait.com^$document
+||wow.live-ph.cc^$document
 ||wow.thu.cn^$document
 ||wowbz.taobao.com^$document
 ||wowdiy.taobao.com^$document
@@ -12102,6 +12109,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.baidexpharmacy.com^$document
 ||www.baidu.com^$document
 ||www.bakudanjohnny.com^$document
+||www.bandalgaming.com^$document
 ||www.banggraphix.com^$document
 ||www.banmexanh.com^$document
 ||www.barahaamen.org^$document
@@ -13473,7 +13481,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.shizutetsukanko.com^$document
 ||www.sho-t.net^$document
 ||www.shogogor.com^$document
-||www.shonengahosha.co.jp^$document
 ||www.shootingbar-ea.jp^$document
 ||www.shop2000.com.tw/Guan_Qun_Toys^$document
 ||www.shop666.ru^$document
