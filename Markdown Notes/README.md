@@ -11,10 +11,22 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 
 ## コンテンツブロック
 
+- [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)：2026年8月29日時点のuBlock Origin / uBO Lite / AdGuard MV3 / Brave / Vivaldi / DNS併用・フィルタ設計を一次情報で再整理したFAQ
 - [`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md)：AdGuardルールの設計・検証指針
 - [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)：AdGuard構文と実用例の補助リファレンス
-- [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md)：DNSブロックリストの形式、選択、運用
+- [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md)：DNSブロックリストの形式、選択、ブラウザ用コンテンツブロッカーとの役割分担・切り分け
 - [`Strict Blocking Exceptions Test.md`](Strict%20Blocking%20Exceptions%20Test.md)：Strict blockingと例外ルールの実機検証記録
+
+### コンテンツブロック資料の使い分け
+
+- **製品選択・MV3・フィルタ併用の考え方を確認する**：`Content Blocking FAQ 2026.md`
+- **AdGuardユーザールールの設計方法を学ぶ**：`Designing AdGuard Custom Rules.md`
+- **個別のAdGuard構文を確認する**：`AdGuard Custom Rules Reference.md`
+- **DNSレイヤーのブロックリストとブラウザブロッカーの違いを確認する**：`DNS Blocklist Guide.md`
+
+ブラウザ用コンテンツブロッカーを複数重ねることと、ブラウザブロッカーにDNSブロックを組み合わせることは区別してください。uBlock Origin公式は他のブラウザ用コンテンツブロッカーとの併用を非推奨としていますが、DNSブロックは別レイヤーです。DNS併用時は、誤ブロック発生時に各レイヤーを切り離して検証できる構成を推奨します。
+
+Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin、uBlock Origin Lite、AdGuard Browser Extension MV3を同じ機能の製品として扱わず、DNRへの変換可否、サイト権限、フィルタリングモード、更新方式の差を確認してください。
 
 ## GitHub・テンプレート
 
