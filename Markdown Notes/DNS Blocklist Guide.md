@@ -8,7 +8,7 @@ DNSブロックリストのガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260822 |
+| **Version** | 20260829 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -36,6 +36,8 @@ uBlock OriginやAdGuard等のブラウザ向け拡張機能で使われる構文
 * **挙動・特徴**： `||example.com^` でドメイン全体をブロックし、`@@||example.com^` で例外処理（ホワイトリスト化）を行います。
 * **メリット**：ブロックと例外ルールを複雑に組み合わせて制御できるため、フィルタのメンテナンス性が非常に高く、ブラウザ用とDNS用のリスト管理を共通化しやすいです。
 * **デメリット**：対応する解析エンジンが必要です。DNSフィルタが解釈できるのは製品が対応する構文だけであり、URLパスやリソース種別を扱うブラウザ向けルールをそのまま流用しても同じ結果にはなりません。
+
+AdGuard公式のDNS filtering syntaxでは、Adblock-style、`/etc/hosts`、domains-onlyの3方式を明示的に区別しています。ブラウザ用EasyList等を無変換でDNSへ投入すると、未対応modifierを含むルールは誤ブロック防止のため無視される場合があります。DNS用リストは「ブラウザ用フィルタの縮小版」ではなく、DNSで評価できる情報だけを使う別レイヤーのルールセットとして扱います。
 
 ---
 
@@ -75,15 +77,44 @@ AdGuard公式がメンテナンスする、DNSブロッキング特化のリス�
 
 ---
 
+## 4. ブラウザ用コンテンツブロッカーとの併用
+
+ブラウザ用コンテンツブロッカーとDNSブロックは、同じものを二重に動かす構成ではありません。DNSは名前解決段階、uBlock OriginやAdGuard Browser Extension等はブラウザ内のリクエスト・DOM・スクリプトレット等を扱います。
+
+### 併用の利点
+
+* ブラウザ外のアプリ通信にもDNSレベルの遮断を適用できる
+* 既知の広告・トラッキングドメインを早い段階で落とせる
+* ブラウザ側はURLパス、リソース種別、要素隠蔽、スクリプトレット等の細かい処理に集中できる
+
+### 併用の欠点
+
+* DNSで先に遮断された通信はブラウザ側Loggerに現れず、原因追跡が難しくなる場合がある
+* 同じサービスを両レイヤーで例外化しないと復旧できないことがある
+* 強いDNSリストを追加しすぎると、アプリのログイン、通知、決済、CDN等まで巻き込む可能性がある
+
+### トラブルシューティング
+
+誤ブロックやアンチ広告ブロックを調査するときは、構成を一時的に単純化します。
+
+1. ブラウザ用ブロッカーを1つに絞る
+2. 追加フィルタを最小構成へ戻す
+3. DNSブロックを一時的に外して再現性を確認する
+4. ブラウザ側Logger / AdGuard Filtering logとDNS側ログを別々に確認する
+5. 原因レイヤーが分かった後に最小の例外ルールを作成する
+
+uBlock Origin公式は、uBOと別のブラウザ用コンテンツブロッカーの併用を明確に非推奨としています。一方、DNSブロックは別レイヤーなので併用自体は可能ですが、切り分け可能な構成にしておくことが重要です。
+
+---
+
 ## ソース・参考文献
 
 仕様の確認には、各プロジェクトの公開資料を優先します。
 
 **形式と構文**
-* [Reddit（r/pihole）：What are the similarities and differences between a hosts file and pi-hole](https://www.reddit.com/r/pihole/comments/nw9b9w/what_are_the_similarities_and_differences_between/)
-* [GitHub - DRSDavidSoft/additional-hosts](https://github.com/DRSDavidSoft/additional-hosts)
-* [Reddit（r/pihole）：Blocklist Syntax (Hosts vs ABP list)](https://www.reddit.com/r/pihole/comments/11spawr/blocklist_syntax/)
-* [Reddit（r/pihole）：Support AdGuard's DNS filtering rules syntax?](https://www.reddit.com/r/pihole/comments/n2gfeu/support_adguards_dns_filtering_rules_syntax/)
+* [AdGuard DNS filtering rules syntax](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
+* [AdGuard for Android: DNS protection](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
+* [uBlock Origin README — 他のコンテンツブロッカーとの併用について](https://github.com/gorhill/uBlock/blob/master/README.md)
 
 **フィルタの公式リポジトリ**
 * [AdGuard SDNSFilter (AdGuard DNS filter)](https://github.com/AdguardTeam/AdGuardSDNSFilter)
