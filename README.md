@@ -11,26 +11,19 @@ Chrome・ChromeOS・Android環境での個人利用を中心に、コンテン�
 > [!IMPORTANT]
 > 個人環境で作成・検証した内容を含み、すべての端末・ブラウザ・サイトでの動作を保証するものではありません。フィルタ、スクリプト、テーマなどは内容を確認したうえで導入し、誤ブロック、表示崩れ、機能不全などがないことを確認してください。
 
-## 目的から選ぶ
+## コンテンツ一覧
 
-| 目的 | 推奨コンテンツ | 主な対象 |
+目的に応じて各READMEから詳細・導入方法を確認できます。すぐに利用できる主要ファイルがある項目には「直接リンク」も併記しています。
+
+| 目的・コンテンツ | 説明・主な対象 | 直接リンク |
 | --- | --- | --- |
-| AdGuardで個人用ルールを使う | [AdGuard Custom Rules](AdGuard%20Custom%20Rules/) | AdGuard ブラウザ拡張機能／AdGuard for Android／DNSフィルタリング |
-| AdGuard用ルールをuBO Liteで使う | [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/) | uBlock Origin Lite 2026.621.1813以降 |
-| uB-filter-by-kdroidwinをAdGuardで使う | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | 主にAdGuard ブラウザ拡張機能 MV3対応版 |
-| 𝕏・YouTubeの表示を調整する | [UserScript](UserScript/) | Violentmonkey／Tampermonkeyなど |
-| Chromeのタブ配色を変更する | [Royal Desert Sand Dark Tabs](Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#chromeos-chrome-%E3%83%86%E3%83%BC%E3%83%9E) | Chrome／ChromeOS |
-| ChMateでNGワードを設定する | [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMate |
-| ChromeOS・Android等の手順や技術情報を読む | [Markdown Notes](Markdown%20Notes/) | ChromeOS／Android／GitHub／コンテンツブロック関連資料 |
-
-## 主要コンテンツへの直接リンク
-
-- [AdGuard Custom Rules - Red Frame X](AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：AdGuard向けの個人用コンテンツブロックフィルタ
-- [AdGuard DNS Custom Rules - Red Frame X](AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：AdGuard向けDNSフィルタ
-- [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt)：uBlock Origin Lite向けに保守的に変換した生成フィルタ
-- [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)：uB-filter-by-kdroidwinをAdGuard向けに変換した非公式生成フィルタ
-- [Royal Desert Sand Dark Tabs](royal_desert_sand_dark_tabs.zip)：Chrome／ChromeOS向けのカスタムテーマ
-- [ChromeOS & Android Optimization Guide](Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md)：ChromeOS・Androidの設定、アプリ、拡張機能、プライバシー対策をまとめた総合ガイド
+| [AdGuard Custom Rules](AdGuard%20Custom%20Rules/) | AdGuard向けの個人用コンテンツブロックルールとDNSルール。AdGuard ブラウザ拡張機能／AdGuard for Android／DNSフィルタリング向け | [コンテンツブロック](AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)・[DNS](AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
+| [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/) | AdGuard用ルールをuBlock Origin Lite向けに保守的に変換した生成フィルタ。uBlock Origin Lite 2026.621.1813以降向け | [フィルタ](uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt) |
+| [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | uB-filter-by-kdroidwinをAdGuard向けに変換した非公式生成フィルタ。主にAdGuard ブラウザ拡張機能 MV3対応版向け | [フィルタ](dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
+| [UserScript](UserScript/) | 𝕏・YouTubeなどの表示や挙動を調整するスクリプト。Violentmonkey／Tampermonkeyなど向け | 各スクリプトはREADMEから選択 |
+| [Royal Desert Sand Dark Tabs](Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#chromeos-chrome-%E3%83%86%E3%83%BC%E3%83%9E) | Chrome／ChromeOSのタブ配色と視認性を調整するカスタムテーマ | [テーマZIP](royal_desert_sand_dark_tabs.zip) |
+| [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMateでNGワード・パターンを設定するためのJava正規表現 | READMEから用途別に確認 |
+| [Markdown Notes](Markdown%20Notes/) | ChromeOS、Android、GitHub、コンテンツブロックなどの技術メモ・調査資料 | [ChromeOS & Android Optimization Guide](Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md) |
 
 > [!NOTE]
 > `uBOL Filter Converter/dist/`およびルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換スクリプトを修正して再生成してください。
