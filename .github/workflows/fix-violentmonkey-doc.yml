@@ -1,9 +1,9 @@
 name: Apply Violentmonkey documentation fix
 
 on:
-  push:
+  pull_request:
     branches:
-      - fix/violentmonkey-user-scripts-doc
+      - main
     paths:
       - '.github/workflows/fix-violentmonkey-doc.yml'
 
@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   fix:
+    if: github.head_ref == 'fix/violentmonkey-user-scripts-doc'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
