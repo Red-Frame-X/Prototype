@@ -5,7 +5,7 @@
 ## インストール
 
 1. 使用するブラウザに対応したUserScriptマネージャーを導入します。
-2. 使用したい`.user.js`ファイルをGitHubで開き、`Raw`を選択します。
+2. 使用したい`.user.js`ファイルを下の一覧から開き、`Raw`を選択します。
 3. UserScriptマネージャーのインストール画面で、`@match`／`@include`などの適用先、要求権限、更新元を確認してからインストールします。
 
 > [!IMPORTANT]
@@ -13,11 +13,11 @@
 
 ## スクリプト一覧
 
-- `x-auto-select-community-latest-sort.user.js`：𝕏コミュニティの投稿一覧で新しい投稿を優先する並べ替えを自動選択
-- `x-auto-select-following-latest-sort.user.js`：𝕏の対象タイムラインで新しい投稿を優先する並べ替えを自動選択
-- `x-spaces-and-live-broadcast-blocker.user.js`：𝕏のスペース／ライブ放送関連UIを非表示
-- `youtube-description-auto-expander.user.js`：YouTubeの動画概要欄を自動展開
-- `youtube-shelf-force-expand.user.js`：YouTubeの対象シェルフを展開し、「もっと見る」操作を省略
+- [`x-auto-select-community-latest-sort.user.js`](x-auto-select-community-latest-sort.user.js)：𝕏コミュニティの投稿一覧で新しい投稿を優先する並べ替えを自動選択
+- [`x-auto-select-following-latest-sort.user.js`](x-auto-select-following-latest-sort.user.js)：𝕏の対象タイムラインで新しい投稿を優先する並べ替えを自動選択
+- [`x-spaces-and-live-broadcast-blocker.user.js`](x-spaces-and-live-broadcast-blocker.user.js)：𝕏のスペース／ライブ放送関連UIを非表示
+- [`youtube-description-auto-expander.user.js`](youtube-description-auto-expander.user.js)：YouTubeの動画概要欄を自動展開
+- [`youtube-shelf-force-expand.user.js`](youtube-shelf-force-expand.user.js)：YouTubeの対象シェルフを展開し、「もっと見る」操作を省略
 
 ## 更新と互換性
 
