@@ -22,7 +22,7 @@ Chrome・ChromeOS・Android環境での個人利用を中心に、コンテン�
 | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | uB-filter-by-kdroidwinをAdGuard向けに変換した非公式生成フィルタ。主にAdGuard ブラウザ拡張機能 MV3対応版向け | [フィルタ](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
 | [UserScript](UserScript/) | 𝕏・YouTubeなどの表示や挙動を調整するスクリプト。Violentmonkey／Tampermonkeyなど向け | [スクリプト一覧](UserScript/README.md#スクリプト一覧) |
 | [Royal Desert Sand Dark Tabs](Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#chromeos-chrome-%E3%83%86%E3%83%BC%E3%83%9E) | Chrome／ChromeOSのタブ配色と視認性を調整するカスタムテーマ | [テーマZIP](royal_desert_sand_dark_tabs.zip) |
-| [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMateでNGワード・パターンを設定するためのJava正規表現 | [正規表現ファイル](NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
+| [NG Word Regex for ChMate](NG%20Word%20Regex%20for%20ChMate/) | ChMateでNG Word・パターンを設定するためのJava正規表現 | [正規表現ファイル](NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
 | [Markdown Notes](Markdown%20Notes/) | ChromeOS、Android、GitHub、コンテンツブロックなどの技術メモ・調査資料 | [資料一覧](Markdown%20Notes/README.md) |
 
 > [!NOTE]
