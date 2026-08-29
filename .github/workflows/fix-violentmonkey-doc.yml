@@ -1,0 +1,42 @@
+name: Apply Violentmonkey documentation fix
+
+on:
+  push:
+    branches:
+      - fix/violentmonkey-user-scripts-doc
+    paths:
+      - '.github/workflows/fix-violentmonkey-doc.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: fix/violentmonkey-user-scripts-doc
+
+      - name: Fix Violentmonkey setup instructions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('Markdown Notes/ChromeOS & Android Optimization Guide.md')
+          text = path.read_text(encoding='utf-8')
+          old = 'Violentmonkeyを使用するためには、設定 > 拡張機能 > Tampermonkeyの内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。'
+          new = 'Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions` > Violentmonkey > **詳細** > **ユーザースクリプトを許可する** を有効にします。Chrome 138未満では、代わりに拡張機能ページの**デベロッパーモード**を有効にする必要があります。'
+          if text.count(old) != 1:
+              raise SystemExit(f'Expected exactly one target sentence, found {text.count(old)}')
+          path.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+
+      - name: Commit documentation fix
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- 'Markdown Notes/ChromeOS & Android Optimization Guide.md'
+          git commit -m 'Fix Violentmonkey user scripts setup instructions'
+          git push origin HEAD:fix/violentmonkey-user-scripts-doc
