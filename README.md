@@ -17,7 +17,7 @@ Chrome・ChromeOS・Android環境での個人利用を中心に、コンテン�
 
 | 目的・コンテンツ | 説明・主な対象 | 直接リンク |
 | --- | --- | --- |
-| [AdGuard Custom Rules](AdGuard%20Custom%20Rules/) | AdGuard向けの個人用コンテンツブロックルールとDNSルール。AdGuard ブラウザ拡張機能／AdGuard for Android／DNSフィルタリング向け | [コンテンツブロック](AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)・[DNS](AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
+| [AdGuard Custom Rules](AdGuard%20Custom%20Rules/) | AdGuard向けの個人用コンテンツブロックルールとDNSルール。AdGuard ブラウザ拡張機能／AdGuard for Android／DNSフィルタリング向け | [コンテンツブロックフィルタ](AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)・[DNSフィルタ](AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
 | [uBOL Filter - Red Frame X](uBOL%20Filter%20Converter/) | AdGuard用ルールをuBlock Origin Lite向けに保守的に変換した生成フィルタ。uBlock Origin Lite 2026.621.1813以降向け | [フィルタ](uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt) |
 | [uB-filter-by-kdroidwin (AdGuard Optimized)](dist/) | uB-filter-by-kdroidwinをAdGuard向けに変換した非公式生成フィルタ。主にAdGuard ブラウザ拡張機能 MV3対応版向け | [フィルタ](dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
 | [UserScript](UserScript/) | 𝕏・YouTubeなどの表示や挙動を調整するスクリプト。Violentmonkey／Tampermonkeyなど向け | 各スクリプトはREADMEから選択 |
