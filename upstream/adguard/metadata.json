@@ -4,8 +4,8 @@
       "product": "AdGuard Browser Extension",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases?per_page=100",
       "latest_version": "5.5.2.3",
-      "sha256": "c04fc1a38dce6fc53fb6bdd9e4a1a2bcc0fc7e3bdccec5bafb5824fc80576e0d",
-      "checked_at": "2026-08-30T08:00:29+00:00",
+      "sha256": "5ffacc494e2f45f50415953b35b7c3ab2ac81a6d0afd2411f2c64ef6e1b6764a",
+      "checked_at": "2026-08-30T21:53:28+00:00",
       "converter_relevant_entries": [
         "- Updated [@adguard/dnr-converter] to v1.1.2.",
         "- Updated [@adguard/scriptlets] to v2.5.1.",
