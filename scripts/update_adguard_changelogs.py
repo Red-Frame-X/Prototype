@@ -16,11 +16,13 @@ from pathlib import Path
 from typing import Any
 
 BROWSER_CHANGELOG_URL = "https://raw.githubusercontent.com/AdguardTeam/AdguardBrowserExtension/refs/heads/master/CHANGELOG.md"
+BROWSER_RELEASES_URL = "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases?per_page=100"
 ANDROID_RELEASES_URL = "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100"
 VERSION_RE = re.compile(
     r"(?im)^#{2,4}\s+(?:AdGuard(?: for Android)?\s+)?\[?v?"
     r"(\d+(?:\.\d+)+)\]?(?=\s|$)"
 )
+TAG_VERSION_RE = re.compile(r"v?(\d+(?:\.\d+)+)")
 IMPACT_RE = re.compile(r"(?i)\b(?:filtering engine|corelibs|scriptlets?|extended css|cosmetic|modifier|filtering rules?|declarative net request|dnr|manifest v3|mv3|html filtering|redirect|removeparam|csp|regex|regular expression)\b")
 
 
@@ -39,7 +41,6 @@ def fetch(url: str, attempts: int = 4) -> bytes:
             with urllib.request.urlopen(request, timeout=30) as response:
                 return response.read()
         except HTTPError as error:
-            # Authentication/format errors will not improve with retries.
             if error.code in {400, 401, 404, 422} or attempt == attempts:
                 raise
         except (URLError, TimeoutError):
@@ -49,10 +50,32 @@ def fetch(url: str, attempts: int = 4) -> bytes:
     raise RuntimeError("unreachable")
 
 
-def android_releases_to_markdown(payload: bytes) -> bytes:
+def parse_releases(payload: bytes, product: str) -> list[dict[str, Any]]:
     releases = json.loads(payload.decode("utf-8"))
     if not isinstance(releases, list) or not releases:
-        raise ValueError("Android releases response is empty or invalid")
+        raise ValueError(f"{product} releases response is empty or invalid")
+    return releases
+
+
+def latest_stable_release(payload: bytes, product: str) -> dict[str, Any]:
+    for release in parse_releases(payload, product):
+        if release.get("draft") or release.get("prerelease"):
+            continue
+        label = str(release.get("tag_name") or release.get("name") or "")
+        match = TAG_VERSION_RE.search(label)
+        if not match:
+            continue
+        return {
+            "version": match.group(1),
+            "published_at": release.get("published_at"),
+            "release_url": release.get("html_url"),
+            "tag_name": release.get("tag_name"),
+        }
+    raise ValueError(f"No stable {product} GitHub Release found")
+
+
+def android_releases_to_markdown(payload: bytes) -> bytes:
+    releases = parse_releases(payload, "Android")
     lines = ["# AdGuard for Android changelog mirror", "", f"> Source: {ANDROID_RELEASES_URL}", "> Generated from official GitHub Releases; newest release first.", ""]
     for release in releases:
         name = release.get("name") or release.get("tag_name")
@@ -78,9 +101,34 @@ def latest_version(text: str) -> str:
     return match.group(1)
 
 
-def metadata(name: str, source: str, content: bytes, checked_at: str) -> dict[str, Any]:
+def metadata(
+    name: str,
+    source: str,
+    content: bytes,
+    checked_at: str,
+    *,
+    version: str | None = None,
+    release: dict[str, Any] | None = None,
+    digest_extra: bytes = b"",
+) -> dict[str, Any]:
     text = content.decode("utf-8-sig")
-    return {"product": name, "source": source, "latest_version": latest_version(text), "sha256": hashlib.sha256(content).hexdigest(), "checked_at": checked_at, "converter_relevant_entries": relevant_lines(text), "automatic_code_changes": False, "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests."}
+    digest = hashlib.sha256(content + b"\0" + digest_extra).hexdigest()
+    result: dict[str, Any] = {
+        "product": name,
+        "source": source,
+        "latest_version": version or latest_version(text),
+        "sha256": digest,
+        "checked_at": checked_at,
+        "converter_relevant_entries": relevant_lines(text),
+        "automatic_code_changes": False,
+        "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests.",
+    }
+    if release:
+        result.update({
+            "release_url": release.get("release_url"),
+            "published_at": release.get("published_at"),
+        })
+    return result
 
 
 def write_if_changed(path: Path, content: bytes) -> bool:
@@ -108,20 +156,29 @@ def update(
     android_source: str,
     now: datetime | None = None,
     changelog_dir: Path | None = None,
+    browser_releases_source: str = BROWSER_RELEASES_URL,
 ) -> bool:
     changelog_dir = changelog_dir or output_dir
     browser = fetch(browser_source)
-    android = android_releases_to_markdown(fetch(android_source))
+    browser_releases = fetch(browser_releases_source)
+    browser_release = latest_stable_release(browser_releases, "Browser Extension")
+    android_payload = fetch(android_source)
+    android = android_releases_to_markdown(android_payload)
     checked_at = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
-    products = [metadata("AdGuard Browser Extension", browser_source, browser, checked_at), metadata("AdGuard for Android", android_source, android, checked_at)]
-    changed = write_if_changed(
-        changelog_dir / "adguard-browser-extension-CHANGELOG.source.md",
-        browser,
-    )
-    changed |= write_if_changed(
-        changelog_dir / "adguard-for-android-CHANGELOG.source.md",
-        android,
-    )
+    products = [
+        metadata(
+            "AdGuard Browser Extension",
+            browser_releases_source,
+            browser,
+            checked_at,
+            version=browser_release["version"],
+            release=browser_release,
+            digest_extra=browser_releases,
+        ),
+        metadata("AdGuard for Android", android_source, android, checked_at),
+    ]
+    changed = write_if_changed(changelog_dir / "adguard-browser-extension-CHANGELOG.source.md", browser)
+    changed |= write_if_changed(changelog_dir / "adguard-for-android-CHANGELOG.source.md", android)
     metadata_path = output_dir / "metadata.json"
     old: dict[str, Any] = {}
     if metadata_path.exists():
@@ -143,13 +200,10 @@ def update(
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--browser-source", default=BROWSER_CHANGELOG_URL)
+    parser.add_argument("--browser-releases-source", default=BROWSER_RELEASES_URL)
     parser.add_argument("--android-source", default=ANDROID_RELEASES_URL)
     parser.add_argument("--output-dir", type=Path, default=Path("upstream/adguard"))
-    parser.add_argument(
-        "--changelog-dir",
-        type=Path,
-        default=Path("AdGuard Custom Rules/ChangeLog"),
-    )
+    parser.add_argument("--changelog-dir", type=Path, default=Path("AdGuard Custom Rules/ChangeLog"))
     args = parser.parse_args()
     try:
         changed = update(
@@ -157,6 +211,7 @@ def main() -> int:
             args.browser_source,
             args.android_source,
             changelog_dir=args.changelog_dir,
+            browser_releases_source=args.browser_releases_source,
         )
     except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
         parser.error(str(error))
