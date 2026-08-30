@@ -2,10 +2,10 @@
   "products": [
     {
       "product": "AdGuard Browser Extension",
-      "source": "https://raw.githubusercontent.com/AdguardTeam/AdguardBrowserExtension/refs/heads/master/CHANGELOG.md",
-      "latest_version": "5.5.1.0",
-      "sha256": "8ba00539b96403e226685d081be6127e76f8bb8a7af398b17e435ad70bf3eaee",
-      "checked_at": "2026-08-25T19:40:52+00:00",
+      "source": "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases?per_page=100",
+      "latest_version": "5.5.2.3",
+      "sha256": "c04fc1a38dce6fc53fb6bdd9e4a1a2bcc0fc7e3bdccec5bafb5824fc80576e0d",
+      "checked_at": "2026-08-30T08:00:29+00:00",
       "converter_relevant_entries": [
         "- Updated [@adguard/dnr-converter] to v1.1.2.",
         "- Updated [@adguard/scriptlets] to v2.5.1.",
@@ -116,14 +116,16 @@
         "[@adguard/scriptlets]: https://github.com/AdguardTeam/Scriptlets/blob/master/CHANGELOG.md"
       ],
       "automatic_code_changes": false,
-      "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests."
+      "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests.",
+      "release_url": "https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.5.2.3",
+      "published_at": "2026-08-26T09:37:19Z"
     },
     {
       "product": "AdGuard for Android",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100",
       "latest_version": "4.13.2",
-      "sha256": "dd87ca054fa98a73cc1b8b00c0feb87e53d0d1029bb5fad7d5cfa5aebf831227",
-      "checked_at": "2026-08-26T21:47:27+00:00",
+      "sha256": "b52da2a3fccf4b6171c915e7839057e5dff6149a4e747401b48dc2f9413dbf43",
+      "checked_at": "2026-08-30T08:00:29+00:00",
       "converter_relevant_entries": [
         "And last, but not least, we have done a lot of work on our filtering engines and fixed bugs that had accumulated over time. Scriptlets and CoreLibs were updated for better app performance.",
         "* User regex in *Ad blocking* and *DNS filtering* rules breaks after AdGuard v4.14 nightly 5 [5916](https://github.com/AdguardTeam/AdguardForAndroid/issues/5916)",
