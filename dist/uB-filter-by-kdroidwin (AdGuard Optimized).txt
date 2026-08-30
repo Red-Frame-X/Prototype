@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608310338
+! Version: 202608310831
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,8 +9,6 @@
 ! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.
 ! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.
 
-||x-blo*.workers.dev$doc
-||x-blo*.pages.dev$doc
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -4670,6 +4668,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hitomi-missav04.com^$document
 ||hitomi-missav05.com^$document
 ||hitomi-missav06.com^$document
+||hitomi-missav07.com^$document
 ||hitomi-nhentai.com^$document
 ||hitomi-official.jp^$document
 ||hitomi-raw-eromanga.com^$document
@@ -13288,6 +13287,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.preftottori-bousai-view.jp^$document
 ||www.premier-enterprisesolutions.com^$document
 ||www.prerele.com^$document
+||www.prettymaid-girl.cfbx.jp^$document
 ||www.prime-service.info^$document
 ||www.primeaudits.com^$document
 ||www.prius01.tokyo^$document
@@ -13888,6 +13888,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||wwwjp.jorudan.com.cn^$document
 ||wyiiden.com^$document
 ||wzz.co.jp^$document
+||x-blo*.pages.dev$doc
+||x-blo*.workers.dev$doc
 ||x-bloc-check.page-ff4.workers.dev^$document
 ||x-border.co.jp^$document
 ||x-vpn-anti-track-and-unblock.jp.uptodown.com^$document
