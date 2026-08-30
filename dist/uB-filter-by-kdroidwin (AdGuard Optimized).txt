@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608301815
+! Version: 202608310338
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,6 +9,8 @@
 ! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.
 ! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.
 
+||x-blo*.workers.dev$doc
+||x-blo*.pages.dev$doc
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -65,7 +67,6 @@
 /^https?:\/\/[a-z0-9]{32,}\.[a-z0-9.-]*\.au\//$document
 /^https?:\/\/pay\.pay[^\/.]*\.[^\/]+/
 /^https?:\/\/videotwimgcom\.[^.]+\.net\//
-/https?:\/\/(?=[^.]{16,}\.)(?=.*[a-z])(?=.*[0-9])[a-z0-9-]+\.[a-z0-9-]{1,60}\.[a-z0-9-]{1,60}\.amazonaws\.com(\/|$)/$document
 /https?:\/\/[^\/]*.app\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.cfbx.jp\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.com/manga\/d_[0-9]{6}(?:\/|$)/$document
@@ -13887,6 +13888,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||wwwjp.jorudan.com.cn^$document
 ||wyiiden.com^$document
 ||wzz.co.jp^$document
+||x-bloc-check.page-ff4.workers.dev^$document
 ||x-border.co.jp^$document
 ||x-vpn-anti-track-and-unblock.jp.uptodown.com^$document
 ||x.com/comic_checker^$document
