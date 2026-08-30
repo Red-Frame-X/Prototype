@@ -2,7 +2,7 @@
 
 This file is generated. Changelog matches are review candidates, not proof that a rule syntax is supported.
 
-## AdGuard Browser Extension 5.5.1.0
+## AdGuard Browser Extension 5.5.2.3
 
 - - Updated [@adguard/dnr-converter] to v1.1.2.
 - - Updated [@adguard/scriptlets] to v2.5.1.
