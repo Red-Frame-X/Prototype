@@ -37,7 +37,7 @@ Chromium系では **uBlock Origin Lite（uBOL）** や **AdGuard Browser Extensi
 
 フル版uBOとuBOLは別実装です。uBOLはMV3のDeclarative Net Request（DNR）を利用しており、フル版uBOと同一の機能セットではありません。サイト権限とフィルタリングモードによって、コスメティックフィルタやスクリプトレットの適用範囲も変わります。
 
-フル版uBOのChromium版はGitHub Releases等から引き続き提供されていますが、Chrome Web Store版はGoogleのMV2廃止スケジュールにより **2026年8月31日に削除予定** とuBO公式READMEで案内されています。
+フル版uBOのChromium版はGitHub Releases等から引き続き提供されていますが、Chrome Web Store版はGoogleのMV2廃止スケジュールにより **2026年8月31日に削除** されるとuBO公式READMEで案内されています。Chrome / ChromeOSで通常利用する場合は、uBOLなどMV3対応の選択肢を前提にしてください。
 
 **参照**
 
