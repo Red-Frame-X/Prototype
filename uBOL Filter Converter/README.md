@@ -80,9 +80,10 @@ python -m unittest discover -s "uBOL Filter Converter/tests" -v
 ```
 
 変換元または変換コードをmainで更新すると、GitHub Actionsがテスト後にフィルタと
-JSONレポートを再生成します。Pull Requestでは同じ変換を実行し、コミット済みの
-生成物と一致しない場合に品質チェックを失敗させます。レポートから実行時刻を除外し、
-同じ入力から常に同じ内容を生成できるようにしています。
+JSONレポートを再生成します。Pull Requestでは同じ変換を実行して変換処理と出力の
+整合性を検証し、コミット済み生成物との差分がある場合はnoticeとして報告します。
+生成物の同期自体はmainへマージ後に`build-ubol.yml`が自動で行います。レポートから
+実行時刻を除外し、同じ入力から常に同じ内容を生成できるようにしています。
 
 ## uBOL CHANGELOGの自動確認
 
