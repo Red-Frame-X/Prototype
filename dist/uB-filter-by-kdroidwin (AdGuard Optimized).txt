@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202608310831
+! Version: 202608311847
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -6587,7 +6587,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||matilda2023.jp^$document
 ||matomabooks.jp^$document
 ||matomake.com^$document
-||matomame.jp^$document
 ||matome-entame.info^$document
 ||matome-plus.com^$document
 ||matome-plus.net^$document
@@ -6854,6 +6853,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||missav.com^$document
 ||missav2026-doujin.com^$document
 ||missav39.jp^$document
+||missav51.jp^$document
 ||missav53.jp^$document
 ||missav55.jp^$document
 ||missav58.jp^$document
@@ -7169,6 +7169,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||n-trend.com^$document
 ||n-yu.com^$document
 ||n2-ch.com^$document
+||n8h.com^$document
 ||nabe03.net^$document
 ||nabeaffiliate.com^$document
 ||nabeyan-media.com^$document
@@ -10762,6 +10763,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||telemarketingmadeeasy.com^$document
 ||telhasimperio.grupomarkat.com^$document
 ||temnonebo.org^$document
+||temrixa.com^$document
 ||temu.com^$document
 ||tenbus.info^$document
 ||tender-feelings.com^$document
