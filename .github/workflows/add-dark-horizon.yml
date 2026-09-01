@@ -1,0 +1,53 @@
+name: Add Dark Horizon theme
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-dark-horizon.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-guide:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add Dark Horizon to Chrome theme section
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("Markdown Notes/ChromeOS & Android Optimization Guide.md")
+          text = path.read_text(encoding="utf-8")
+
+          dark_horizon = "* **[Dark Horizon](https://chromewebstore.google.com/detail/dark-horizon/ncjjeokpcnllmmbbipeaagmdpdpiadin)**：Chrome標準テーマに近い外観を、より暗い配色にしたシンプルなダークテーマ。"
+          anchor = "* **[Chrome Web Store テーマ](https://chromewebstore.google.com/category/themes)**"
+
+          if dark_horizon in text:
+              print("Dark Horizon is already present; no change needed.")
+              raise SystemExit(0)
+
+          if text.count(anchor) != 1:
+              raise RuntimeError(f"Expected exactly one theme-section anchor, found {text.count(anchor)}")
+
+          text = text.replace(anchor, anchor + "\n" + dark_horizon, 1)
+          path.write_text(text, encoding="utf-8")
+
+      - name: Commit the verified one-line change
+        shell: bash
+        run: |
+          if git diff --quiet -- "Markdown Notes/ChromeOS & Android Optimization Guide.md"; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "Markdown Notes/ChromeOS & Android Optimization Guide.md"
+          git commit -m "docs: add Dark Horizon Chrome theme"
+          git push
