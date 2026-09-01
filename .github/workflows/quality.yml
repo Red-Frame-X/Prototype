@@ -47,6 +47,12 @@ jobs:
       - name: Validate workflow safety
         run: python scripts/check_workflow_safety.py
 
+      # GitHub may report "No jobs were run" when a workflow file is malformed
+      # before any job can start. Lint every workflow during normal CI so YAML,
+      # expressions, events, and embedded shell syntax fail with a useful error.
+      - name: Validate GitHub Actions workflow syntax
+        run: bash scripts/check_workflow_syntax.sh
+
       - name: Preflight AdGuard user-rule edits
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
