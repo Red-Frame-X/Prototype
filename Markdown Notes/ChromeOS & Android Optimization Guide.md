@@ -166,7 +166,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 ## ChromeOS Chrome テーマ
 * **[Chrome Web Store テーマ](https://chromewebstore.google.com/category/themes)**
 * **[Dark Horizon](https://chromewebstore.google.com/detail/dark-horizon/ncjjeokpcnllmmbbipeaagmdpdpiadin)**：Chrome標準テーマに近い外観を、より暗い配色にしたシンプルなダークテーマ。
-* **[Royal Desert Sand](https://chromewebstore.google.com/detail/royal-desert-sand/nnieplejkjaodhemceganohmdkfekkem)**：オリジナルのChromeテーマ。
+* **[Royal Desert Sand](https://chromewebstore.google.com/detail/royal-desert-sand/nnieplejkjaodhemceganohmdkfekkem)**：デザートサンド（砂漠の砂）系の落ち着いた暖色とロイヤルブルーを組み合わせた、シンプルで上品なChromeテーマ。
 * **[Royal Desert Sand Dark Tabs](../royal_desert_sand_dark_tabs.zip)**
 
   * **説明**：Royal Desert Sand系の配色をベースに、バックグラウンドタブを濃いブルー系に調整し、アクティブタブと非アクティブタブを見分けやすくしたカスタムChromeテーマ。新しいタブページの背景はグレー系。
