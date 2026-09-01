@@ -1,0 +1,44 @@
+name: Update Royal Desert Sand description
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-royal-desert-sand-description.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-guide:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update Royal Desert Sand description
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("Markdown Notes/ChromeOS & Android Optimization Guide.md")
+          text = path.read_text(encoding="utf-8")
+
+          old = "* **[Royal Desert Sand](https://chromewebstore.google.com/detail/royal-desert-sand/nnieplejkjaodhemceganohmdkfekkem)**：オリジナルのChromeテーマ。"
+          new = "* **[Royal Desert Sand](https://chromewebstore.google.com/detail/royal-desert-sand/nnieplejkjaodhemceganohmdkfekkem)**：デザートサンド（砂漠の砂）系の落ち着いた暖色とロイヤルブルーを組み合わせた、シンプルで上品なChromeテーマ。"
+
+          if text.count(old) != 1:
+              raise RuntimeError(f"Expected exactly one original Royal Desert Sand entry, found {text.count(old)}")
+
+          text = text.replace(old, new, 1)
+          path.write_text(text, encoding="utf-8")
+
+      - name: Commit verified change
+        shell: bash
+        run: |
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "Markdown Notes/ChromeOS & Android Optimization Guide.md"
+          git commit -m "docs: clarify Royal Desert Sand theme description"
+          git push
