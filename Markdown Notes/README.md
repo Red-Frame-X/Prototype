@@ -11,7 +11,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 
 ## コンテンツブロック
 
-- [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)：2026年8月29日時点のuBlock Origin / uBO Lite / AdGuard MV3 / Brave / Vivaldi / DNS併用・フィルタ設計を一次情報で再整理したFAQ
+- [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)：2026年9月1日時点のuBlock Origin / uBO Lite / AdGuard MV3 / Brave / Vivaldi / DNS併用・フィルタ設計を一次情報で再整理したFAQ
 - [`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md)：AdGuardルールの設計・検証指針
 - [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)：AdGuard構文と実用例の補助リファレンス
 - [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md)：DNSブロックリストの形式、選択、ブラウザ用コンテンツブロッカーとの役割分担・切り分け

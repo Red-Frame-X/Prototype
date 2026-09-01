@@ -4,7 +4,7 @@
 
 ---
 
-本書は、2026年8月29日時点で有効なコンテンツブロックの仕様・運用上の注意点を、公式ドキュメント、公開ソースコード、公式リポジトリを優先して整理したFAQです。
+本書は、2026年9月1日時点で確認できるコンテンツブロックの仕様・運用上の注意点を、公式ドキュメント、公開ソースコード、公式リポジトリを優先して整理したFAQです。
 
 [Yuki2718/adblock2 Wiki「よくある質問」](https://github.com/Yuki2718/adblock2/wiki/%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F)で扱われている主要論点を参考にしていますが、古い製品状況や過去仕様は残さず、現在確認できる情報だけで再構成しています。
 
@@ -12,7 +12,7 @@
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | GPL-3.0 |
-| **Version** | 20260829 |
+| **Version** | 20260901 |
 
 第三者コンテンツの扱いおよび無保証については [LICENSES.md](../LICENSES.md) を参照してください。
 
@@ -37,7 +37,7 @@ Chromium系では **uBlock Origin Lite（uBOL）** や **AdGuard Browser Extensi
 
 フル版uBOとuBOLは別実装です。uBOLはMV3のDeclarative Net Request（DNR）を利用しており、フル版uBOと同一の機能セットではありません。サイト権限とフィルタリングモードによって、コスメティックフィルタやスクリプトレットの適用範囲も変わります。
 
-フル版uBOのChromium版はGitHub Releases等から引き続き提供されていますが、Chrome Web Store版はGoogleのMV2廃止スケジュールにより **2026年8月31日に削除** されるとuBO公式READMEで案内されています。Chrome / ChromeOSで通常利用する場合は、uBOLなどMV3対応の選択肢を前提にしてください。
+フル版uBOのChromium版はGitHub Releases等で配布されていますが、Chrome Web Store版はuBO公式READMEが案内した **2026年8月31日の削除予定日を経過しています**。Chrome / ChromeOSで通常利用する場合は、ストア配布のMV3対応拡張であるuBOLなどを前提にし、フル版uBOを利用する場合は配布元と導入方式を確認してください。
 
 **参照**
 
@@ -93,15 +93,15 @@ uBOLでは、サイト権限とフィルタリングモードを確認して使�
 
 ### Q. MV3版のフィルタはどのように更新されますか
 
-**URLで購読したCustom filters（カスタムフィルタ）は、現在のMV3版でも拡張機能本体の更新を待たずに更新できます。** AdGuard Browser Extension v5.4系では、MV3でCustom filtersの独立更新が再び有効化されました。公式Knowledge Baseでも、Custom filtersはURLまたはローカルファイルから追加でき、独立して更新されると説明されています。
+**URLで購読したCustom filters（カスタムフィルタ）は、現行の公式Knowledge Baseでは拡張機能本体とは独立して更新される仕様として案内されています。** Custom filtersはURLまたはローカルファイルから追加できます。
 
-URLで購読しているカスタムフィルタを任意のタイミングで確認したい場合は、AdGuard Browser Extensionの更新操作を使用できます。公式Knowledge Baseでは、拡張機能のメイン画面右上にフィルタを手動更新する操作が用意されていることが案内されています。このため、URLで管理している自作・第三者フィルタは、拡張機能本体のリリースを待たずに更新確認できる点がMV3版の重要な運用上の利点です。
+URLで管理している自作・第三者フィルタは、拡張機能本体のリリースを待たずに更新されます。なお、旧MV3解説ページには「自動および手動のフィルタ更新なし」という説明も残っており、これは組み込みフィルタ中心の旧仕様説明と現行Custom filters仕様が併存している状態です。運用上は、Custom filtersと組み込みフィルタを分けて扱ってください。
 
 一方、**AdGuardが組み込みで提供するフィルタは、URL購読のCustom filtersとは更新経路が異なります。** 現行の公式GitHubリポジトリでは、MV3向け組み込みフィルタについて最新の `@adguard/dnr-rulesets` を定期的に取り込み、更新済みrulesetを含む拡張機能ビルドを自動公開する更新サイクルが説明されています。Chrome Web Storeのskip reviewを利用できる更新は迅速に公開できますが、filtering script rulesの変更を含む場合にはskip reviewを利用できないという制約があります。
 
 したがって、現時点で確証を持って区別できる更新方式は次のとおりです。
 
-- **URLで購読するCustom filters**: 拡張機能本体とは独立して更新可能。フィルタの手動更新操作も利用できる
+- **URLで購読するCustom filters**: 現行の公式Knowledge Baseでは拡張機能本体とは独立して更新される
 - **AdGuard組み込みフィルタ**: MV3用rulesetを取り込んだ拡張機能ビルドの更新サイクルで配信される。更新内容によってChrome Web Storeのskip reviewを利用できる範囲に制約がある
 
 ユーザールールやカスタムフィルタを作成する場合は、AdGuard構文として正しいだけでなく、MV3/DNRで実装可能かも確認する必要があります。
@@ -270,7 +270,7 @@ uBOのCNAME uncloakingは、DNS APIを利用できるFirefoxで提供されて�
 - MV3前提でuBO Lite、AdGuard Browser Extension MV3、ブラウザ内蔵ブロッカー等から選ぶ
 - uBO Liteではフィルタリングモードとサイト権限を確認する
 - AdGuard MV3ではDNR変換可否、ルール上限、組み込みフィルタとCustom filtersの更新経路の違いを確認する
-- URL購読のCustom filtersは独立更新と手動更新を利用できる
+- URL購読のCustom filtersは組み込みフィルタと更新経路が異なるため、別物として管理する
 - フル版uBOとuBO Liteを同一機能の製品として扱わない
 
 ### Android
