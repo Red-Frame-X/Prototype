@@ -1,6 +1,6 @@
 ! Title: uBOL Filter - Red Frame X
 ! Description: Customize uBOL filters for personal use.
-! Version: 202609011947
+! Version: 202609012004
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -240,7 +240,7 @@ www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !im
 ! ホーム等の動画タイトルを1.4rem・行高2remへ拡大
 www.youtube.com###video-title.ytd-rich-grid-media, #video-title.ytd-rich-grid-slim-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)
 ! チャンネル検索結果カードを非表示
-www.youtube.com###ytd-channel-renderer
+www.youtube.com##ytd-channel-renderer
 ! チャンネル一覧ページに挿入されるShorts棚を非表示
 www.youtube.com##[page-subtype="channels"] ytd-item-section-renderer:not([use-height-hack]):has(ytd-reel-shelf-renderer)
 ! ホームでタイトルにShorts用ハッシュタグを含む動画カードを非表示
