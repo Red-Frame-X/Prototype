@@ -1128,6 +1128,22 @@ Android 17では、**設設定 > セキュリティとプライバシー > そ�
     * エクストラ1：パラメーター名 `password` ｜ 値 `（メモしたパスワード）`
     * エクストラ2：パラメーター名 `quiet` ｜ 値 `true`
 
+
+
+④ **MacroDroidを利用したフィルタ更新タスクの作成**（③を複製してアクションのみ変更）
+
+  * **AdGuard側**: ③と同じく、設定 ⚙ > 一般設定 > 詳細設定 > 自動化をONにし、「パスワード」を使用
+  * **MacroDroid側**: ③のマクロを複製し、必要に応じて「1日1回」などの時刻トリガーへ変更
+  * **MacroDroid側 アクション**：「インテントを送信」
+    * ターゲット：Broadcast
+    * アクション：`update`
+    * パッケージ：com.adguard.android
+    * クラス：com.adguard.android.receiver.AutomationReceiver
+    * エクストラ1：パラメーター名 `password` ｜ 値 `（メモしたパスワード）`
+    * エクストラ2：パラメーター名 `quiet` ｜ 値 `true`
+
+  AdGuard公式の自動化インターフェースでは、`update` は「利用可能なフィルタとアプリの更新を確認する」アクションとして定義されています。追加データは不要ですが、各Intentには `password`、パッケージ名、クラス名が必要で、`quiet: true` を付けるとトーストを抑制できます。したがって、③の `start` を `update` に差し替える構成は公式仕様に沿っています。ただし、`update` はフィルタだけでなくAdGuardアプリ本体の更新確認も含む点に注意してください。（[AdGuard公式：Android版の自動化](https://adguard.com/kb/adguard-for-android/solving-problems/tasker/)）
+
 **Issuesの時系列**
 * [Issues #5598](https://github.com/AdguardTeam/AdguardForAndroid/issues/5598)（Base filterの不正確な説明）
 * [Issues #5593](https://github.com/AdguardTeam/AdguardForAndroid/issues/5593)（Android 15によるタスクキル）
