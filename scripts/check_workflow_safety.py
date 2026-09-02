@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Reject pull-request workflows that can push back into the repository.
+"""Enforce read-only GitHub Actions policy for pull-request validation.
 
-A pull-request validation workflow should not mutate its own source branch with
-GITHUB_TOKEN. Keeping validation read-only avoids races, duplicate runs, and
-state-dependent failures when the branch has already been modified.
+Pull-request validation must not receive repository write permissions, regardless
+of the command or API client used later in the workflow. The repository also
+forbids pull_request_target because that event runs in the base-repository
+security context and can expose privileged credentials to unsafe workflow logic.
 """
 
 from __future__ import annotations
@@ -22,30 +23,43 @@ def _without_comment_only_lines(text: str) -> str:
     )
 
 
-def _has_pull_request_trigger(text: str) -> bool:
-    """Return whether a workflow runs for pull_request or pull_request_target."""
-    event = r"pull_request(?:_target)?"
+def _has_event(text: str, event: str) -> bool:
+    """Return whether a workflow declares the given GitHub Actions event."""
     return bool(
-        re.search(rf"(?m)^\s{{0,2}}{event}\s*:", text)
-        or re.search(rf"(?m)^\s{{0,2}}on\s*:\s*\[[^\]]*\b{event}\b", text)
+        re.search(rf"(?m)^\s{{0,2}}{re.escape(event)}\s*:", text)
+        or re.search(
+            rf"(?m)^\s{{0,2}}on\s*:\s*\[[^\]]*\b{re.escape(event)}\b",
+            text,
+        )
     )
 
 
-def _has_repository_write_permission(text: str) -> bool:
-    """Return whether workflow- or job-level permissions grant repository write."""
+def _has_write_permission(text: str) -> bool:
+    """Return whether workflow- or job-level permissions grant any write scope."""
     return bool(
         re.search(r"(?m)^\s*permissions\s*:\s*write-all\s*(?:#.*)?$", text)
-        or re.search(r"(?m)^\s*contents\s*:\s*write\s*(?:#.*)?$", text)
+        or re.search(
+            r"(?m)^\s*[A-Za-z][A-Za-z0-9_-]*\s*:\s*write\s*(?:#.*)?$",
+            text,
+        )
     )
 
 
 def is_unsafe_pull_request_writer(text: str) -> bool:
-    """Return True for PR-triggered workflows that have write access and push."""
+    """Return True when a workflow violates the repository PR safety policy."""
     text = _without_comment_only_lines(text)
-    has_pull_request = _has_pull_request_trigger(text)
-    has_repository_write = _has_repository_write_permission(text)
-    has_git_push = bool(re.search(r"(?m)^\s*[^#\n]*\bgit\s+push\b", text))
-    return has_pull_request and has_repository_write and has_git_push
+
+    # Fail closed on pull_request_target. This event executes in the context of
+    # the base repository and is unnecessary for this repository's validation
+    # workflows. Requiring a deliberate policy change before introducing it is
+    # safer than trying to recognize every possible repository mutation command.
+    if _has_event(text, "pull_request_target"):
+        return True
+
+    # Ordinary pull_request validation is allowed only with read-only token
+    # scopes. Detect write permission directly instead of relying on downstream
+    # command matching (git push, gh api, curl, custom actions, and so on).
+    return _has_event(text, "pull_request") and _has_write_permission(text)
 
 
 def find_unsafe_workflows(directory: Path = WORKFLOW_DIR) -> list[Path]:
@@ -61,15 +75,15 @@ def main() -> int:
     unsafe = find_unsafe_workflows()
     if unsafe:
         print(
-            "Unsafe pull-request workflow(s) detected: PR validation must not "
-            "combine repository write permissions with git push.",
+            "Unsafe pull-request workflow(s) detected: pull_request workflows "
+            "must remain read-only and pull_request_target is not permitted.",
             file=sys.stderr,
         )
         for path in unsafe:
             print(f" - {path}", file=sys.stderr)
         print(
             "Move repository-writing automation to push/schedule/workflow_dispatch "
-            "or keep the pull_request workflow read-only.",
+            "and keep pull-request validation explicitly read-only.",
             file=sys.stderr,
         )
         return 1
