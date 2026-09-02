@@ -6,7 +6,7 @@
 
 [![Build uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml)
 
-Chrome・ChromeOS・Android環境での個人利用を中心に、コンテンツブロックフィルタ、UserScript、Chromeテーマ、ChMate用正規表現、変換・自動更新ツール、技術メモなどをまとめたリポジトリです。AdGuardやuBlock Origin Liteをはじめ、ブラウザや端末を使いやすく調整するための設定・ツール・資料を収録しています。
+Chrome・ChromeOS・Android環境での個人利用を中心に、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、変換・自動更新ツール、技術メモなどをまとめたリポジトリです。AdGuardやuBlock Origin Liteをはじめ、ブラウザや端末を使いやすく調整するための設定・ツール・資料を収録しています。
 
 > [!IMPORTANT]
 > 個人環境で作成・検証した内容を含み、すべての端末・ブラウザ・サイトでの動作を保証するものではありません。フィルタ、スクリプト、テーマなどは内容を確認したうえで導入し、誤ブロック、表示崩れ、機能不全などがないことを確認してください。
@@ -77,23 +77,3 @@ npm run lint:adguard
 - 誤ブロック、互換性、視認性、性能、保守性、プライバシーなどのトレードオフを考慮します。
 - 自動生成物は原則として直接編集せず、原本または変換処理を修正して再生成します。
 - 製品のUI名や機能名を記載する場合は、可能な限り対象バージョンの公式表記に合わせます。
-
-## 主要な公式資料
-
-- [AdGuard ナレッジベース](https://adguard.com/kb/ja/)
-- [AdGuard ブラウザ拡張機能 MV3対応版](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
-- [AdGuard Browser Extension](https://github.com/AdguardTeam/AdguardBrowserExtension)
-- [uBlock Origin / uBO Lite source](https://github.com/gorhill/uBlock)
-- [uBlock Origin Lite CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)
-
-各サブディレクトリのREADMEには、その内容に直接関係する上流資料を記載しています。
-
-## Contact
-
-- User Name：Red Frame X
-- 𝕏：[@Red_Frame_X](https://x.com/Red-Frame-X)
-- mond：[@Red Frame X](https://mond.how/ja/Red_Frame_X)
-
-## License
-
-自身で作成したコンテンツは原則として[CC0 1.0 Universal](LICENSE)で提供します。第三者作品を基にしたファイルには原作品のライセンスが適用されます。対象範囲、GPL-3.0の派生物、例外、無保証については[LICENSES.md](LICENSES.md)を参照してください。
