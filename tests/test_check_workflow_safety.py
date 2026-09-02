@@ -19,6 +19,55 @@ jobs:
 """
         self.assertTrue(is_unsafe_pull_request_writer(workflow))
 
+    def test_rejects_pull_request_target_workflow_that_writes_and_pushes(self):
+        workflow = """
+on:
+  pull_request_target:
+permissions:
+  contents: write
+jobs:
+  fix:
+    steps:
+      - run: git push origin HEAD:branch
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
+    def test_rejects_write_all_permissions_with_git_push(self):
+        workflow = """
+on: [pull_request, workflow_dispatch]
+permissions: write-all
+jobs:
+  fix:
+    steps:
+      - run: git push
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
+    def test_rejects_job_level_write_all_permissions_with_git_push(self):
+        workflow = """
+on:
+  pull_request:
+jobs:
+  fix:
+    permissions: write-all
+    steps:
+      - run: git push
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
+    def test_rejects_contents_write_with_inline_comment(self):
+        workflow = """
+on:
+  pull_request:
+permissions:
+  contents: write # needed by an old fixer
+jobs:
+  fix:
+    steps:
+      - run: git push
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
     def test_allows_read_only_pull_request_workflow(self):
         workflow = """
 on:
@@ -58,6 +107,18 @@ jobs:
 """
         self.assertTrue(is_unsafe_pull_request_writer(workflow))
 
+    def test_supports_inline_pull_request_target_event_list(self):
+        workflow = """
+on: [workflow_dispatch, pull_request_target]
+permissions:
+  contents: write
+jobs:
+  fix:
+    steps:
+      - run: git push
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
     def test_comments_do_not_trigger_detection(self):
         workflow = """
 on:
@@ -68,6 +129,7 @@ jobs:
   quality:
     steps:
       # contents: write
+      # permissions: write-all
       # git push origin main
       - run: echo ok
 """
