@@ -19,6 +19,30 @@ jobs:
 """
         self.assertTrue(is_unsafe_pull_request_writer(workflow))
 
+    def test_rejects_scalar_pull_request_with_write_permission(self):
+        workflow = """
+on: pull_request
+permissions:
+  contents: write
+jobs:
+  fix:
+    steps:
+      - run: echo ok
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
+    def test_rejects_scalar_pull_request_with_inline_comment_and_write_permission(self):
+        workflow = """
+on: pull_request # validate changes
+permissions:
+  issues: write
+jobs:
+  triage:
+    steps:
+      - run: echo ok
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
     def test_rejects_pull_request_with_non_contents_write_scope(self):
         workflow = """
 on:
@@ -82,6 +106,18 @@ jobs:
 """
         self.assertTrue(is_unsafe_pull_request_writer(workflow))
 
+    def test_rejects_scalar_pull_request_target(self):
+        workflow = """
+on: pull_request_target
+permissions:
+  contents: read
+jobs:
+  inspect:
+    steps:
+      - run: echo ok
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
     def test_rejects_inline_pull_request_target_event_list(self):
         workflow = """
 on: [workflow_dispatch, pull_request_target]
@@ -104,6 +140,18 @@ jobs:
   quality:
     steps:
       - run: git diff --check
+"""
+        self.assertFalse(is_unsafe_pull_request_writer(workflow))
+
+    def test_allows_scalar_read_only_pull_request_workflow(self):
+        workflow = """
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  quality:
+    steps:
+      - run: echo ok
 """
         self.assertFalse(is_unsafe_pull_request_writer(workflow))
 

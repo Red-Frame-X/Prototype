@@ -25,10 +25,15 @@ def _without_comment_only_lines(text: str) -> str:
 
 def _has_event(text: str, event: str) -> bool:
     """Return whether a workflow declares the given GitHub Actions event."""
+    event_re = re.escape(event)
     return bool(
-        re.search(rf"(?m)^\s{{0,2}}{re.escape(event)}\s*:", text)
+        re.search(rf"(?m)^\s{{0,2}}{event_re}\s*:", text)
         or re.search(
-            rf"(?m)^\s{{0,2}}on\s*:\s*\[[^\]]*\b{re.escape(event)}\b",
+            rf"(?m)^\s{{0,2}}on\s*:\s*{event_re}\s*(?:#.*)?$",
+            text,
+        )
+        or re.search(
+            rf"(?m)^\s{{0,2}}on\s*:\s*\[[^\]]*\b{event_re}\b",
             text,
         )
     )
