@@ -4,8 +4,8 @@
       "product": "AdGuard Browser Extension",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases?per_page=100",
       "latest_version": "5.5.2.3",
-      "sha256": "84e41f6ea0b43dc31a8b34f06dc9fa927b7f8ab36eae50e81a6b38919dd1f7f3",
-      "checked_at": "2026-09-02T08:20:29+00:00",
+      "sha256": "a1433e12a143c86e6e789ba717b8b02abfb74ef9cb8dca2e6c0e4f110abcd6d9",
+      "checked_at": "2026-09-02T21:45:51+00:00",
       "converter_relevant_entries": [
         "* Unanchored $urltransform patterns do not match query strings in MV3 [#3600](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3600)",
         "* \"$removeparam for all query parameters\" blocks whole site [#3602](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3602)",
