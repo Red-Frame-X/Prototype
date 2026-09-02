@@ -20,6 +20,7 @@ BROWSER_RELEASES_JSON = json.dumps([
         "tag_name": "v5.5.2.3",
         "published_at": "2026-08-26T00:00:00Z",
         "html_url": "https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.5.2.3",
+        "body": "Updated MV3 filtering engine behavior.",
         "draft": False,
         "prerelease": False,
     },
@@ -28,6 +29,7 @@ BROWSER_RELEASES_JSON = json.dumps([
         "tag_name": "v5.6.0-beta.1",
         "published_at": "2026-08-27T00:00:00Z",
         "html_url": "https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.6.0-beta.1",
+        "body": "Beta Scriptlets update.",
         "draft": False,
         "prerelease": True,
     },
@@ -38,7 +40,51 @@ ANDROID_JSON = json.dumps([{
     "published_at": "2026-08-03T00:00:00Z",
     "html_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.1",
     "body": "CoreLibs and Scriptlets were updated.",
+    "draft": False,
+    "prerelease": False,
 }]).encode()
+
+BROWSER_RELEASES_NO_RELEVANT = json.dumps([
+    {
+        "name": "AdGuard Browser Extension v5.5.2.3",
+        "tag_name": "v5.5.2.3",
+        "published_at": "2026-08-26T00:00:00Z",
+        "html_url": "https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.5.2.3",
+        "body": "UI colors and translations were updated.",
+        "draft": False,
+        "prerelease": False,
+    }
+]).encode()
+
+ANDROID_RELEASES_WITH_HISTORY = json.dumps([
+    {
+        "name": "AdGuard for Android v4.14.0-beta.1",
+        "tag_name": "v4.14.0-beta.1",
+        "published_at": "2026-08-30T00:00:00Z",
+        "html_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14.0-beta.1",
+        "body": "Beta Scriptlets changes.",
+        "draft": False,
+        "prerelease": True,
+    },
+    {
+        "name": "AdGuard for Android v4.13.2",
+        "tag_name": "v4.13.2",
+        "published_at": "2026-08-26T00:00:00Z",
+        "html_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.2",
+        "body": "UI stability improvements.",
+        "draft": False,
+        "prerelease": False,
+    },
+    {
+        "name": "AdGuard for Android v4.13.1",
+        "tag_name": "v4.13.1",
+        "published_at": "2026-08-03T00:00:00Z",
+        "html_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.1",
+        "body": "Updated CoreLibs and Scriptlets.",
+        "draft": False,
+        "prerelease": False,
+    },
+]).encode()
 
 
 class ChangelogUpdaterTests(unittest.TestCase):
@@ -68,6 +114,7 @@ class ChangelogUpdaterTests(unittest.TestCase):
     def test_browser_latest_stable_release_comes_from_github_releases(self):
         release = module.latest_stable_release(BROWSER_RELEASES_JSON, "Browser Extension")
         self.assertEqual(release["version"], "5.5.2.3")
+        self.assertEqual(release["body"], "Updated MV3 filtering engine behavior.")
         self.assertEqual(
             release["release_url"],
             "https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.5.2.3",
@@ -113,6 +160,34 @@ class ChangelogUpdaterTests(unittest.TestCase):
             self.assertEqual(
                 browser["release_url"],
                 "https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.5.2.3",
+            )
+
+    @patch.object(module, "fetch")
+    def test_review_entries_only_use_latest_stable_release_body(self, mocked_fetch):
+        mocked_fetch.side_effect = [
+            BROWSER,
+            BROWSER_RELEASES_NO_RELEVANT,
+            ANDROID_RELEASES_WITH_HISTORY,
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory)
+            module.update(output, "browser", "android", browser_releases_source="browser-releases")
+            data = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
+            browser, android = data["products"]
+
+            # The Browser changelog contains MV3/filtering keywords, but the
+            # latest stable release body does not, so historical entries must
+            # not be attributed to v5.5.2.3.
+            self.assertEqual(browser["latest_version"], "5.5.2.3")
+            self.assertEqual(browser["converter_relevant_entries"], [])
+
+            # A newer beta and an older stable contain Scriptlets/CoreLibs, but
+            # the latest stable v4.13.2 does not. Neither may leak into 4.13.2.
+            self.assertEqual(android["latest_version"], "4.13.2")
+            self.assertEqual(android["converter_relevant_entries"], [])
+            self.assertEqual(
+                android["release_url"],
+                "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.2",
             )
 
     @patch.object(module, "fetch")

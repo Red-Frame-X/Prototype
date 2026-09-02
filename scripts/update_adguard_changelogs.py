@@ -70,6 +70,7 @@ def latest_stable_release(payload: bytes, product: str) -> dict[str, Any]:
             "published_at": release.get("published_at"),
             "release_url": release.get("html_url"),
             "tag_name": release.get("tag_name"),
+            "body": str(release.get("body") or ""),
         }
     raise ValueError(f"No stable {product} GitHub Release found")
 
@@ -110,16 +111,18 @@ def metadata(
     version: str | None = None,
     release: dict[str, Any] | None = None,
     digest_extra: bytes = b"",
+    relevant_text: str | None = None,
 ) -> dict[str, Any]:
     text = content.decode("utf-8-sig")
     digest = hashlib.sha256(content + b"\0" + digest_extra).hexdigest()
+    review_text = text if relevant_text is None else relevant_text
     result: dict[str, Any] = {
         "product": name,
         "source": source,
         "latest_version": version or latest_version(text),
         "sha256": digest,
         "checked_at": checked_at,
-        "converter_relevant_entries": relevant_lines(text),
+        "converter_relevant_entries": relevant_lines(review_text),
         "automatic_code_changes": False,
         "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests.",
     }
@@ -140,11 +143,11 @@ def write_if_changed(path: Path, content: bytes) -> bool:
 
 
 def build_review(items: list[dict[str, Any]]) -> bytes:
-    lines = ["# AdGuard converter compatibility review", "", "This file is generated. Changelog matches are review candidates, not proof that a rule syntax is supported.", ""]
+    lines = ["# AdGuard converter compatibility review", "", "This file is generated. Latest stable release-note matches are review candidates, not proof that a rule syntax is supported.", ""]
     for item in items:
         lines.extend([f"## {item['product']} {item['latest_version']}", ""])
         entries = item["converter_relevant_entries"]
-        lines.extend((f"- {entry}" for entry in entries) if entries else ["- No converter-relevant keywords detected."])
+        lines.extend((f"- {entry}" for entry in entries) if entries else ["- No converter-relevant keywords detected in the latest stable release notes."])
         lines.append("")
     lines.extend(["## Required verification before converter changes", "", "1. Confirm behavior in official AdGuard filtering documentation, CoreLibs/Scriptlets source, or a linked upstream issue.", "2. Add positive, negative, and false-positive regression tests.", "3. Update `config/adguard-converter-capabilities.json` in a reviewed pull request.", "4. Rebuild generated filters and run AGLint plus unit tests.", ""])
     return "\n".join(lines).encode("utf-8")
@@ -163,6 +166,7 @@ def update(
     browser_releases = fetch(browser_releases_source)
     browser_release = latest_stable_release(browser_releases, "Browser Extension")
     android_payload = fetch(android_source)
+    android_release = latest_stable_release(android_payload, "Android")
     android = android_releases_to_markdown(android_payload)
     checked_at = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
     products = [
@@ -174,8 +178,17 @@ def update(
             version=browser_release["version"],
             release=browser_release,
             digest_extra=browser_releases,
+            relevant_text=browser_release["body"],
         ),
-        metadata("AdGuard for Android", android_source, android, checked_at),
+        metadata(
+            "AdGuard for Android",
+            android_source,
+            android,
+            checked_at,
+            version=android_release["version"],
+            release=android_release,
+            relevant_text=android_release["body"],
+        ),
     ]
     changed = write_if_changed(changelog_dir / "adguard-browser-extension-CHANGELOG.source.md", browser)
     changed |= write_if_changed(changelog_dir / "adguard-for-android-CHANGELOG.source.md", android)
