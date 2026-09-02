@@ -1,0 +1,48 @@
+name: Remove Royal Desert Sand Dark Tabs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Remove archive and documentation
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("Markdown Notes/ChromeOS & Android Optimization Guide.md")
+          text = path.read_text(encoding="utf-8")
+          lines = [
+              "* **[Royal Desert Sand Dark Tabs](../royal_desert_sand_dark_tabs.zip)**",
+              "",
+              "  * **説明**：Royal Desert Sand系の配色をベースに、バックグラウンドタブを濃いブルー系に調整し、アクティブタブと非アクティブタブを見分けやすくしたカスタムChromeテーマ。新しいタブページの背景はグレー系。",
+              "",
+              "  * **導入手順**：ZIPを展開し、Chromeの「拡張機能」ページでデベロッパーモードを有効にして、展開したテーマフォルダを「パッケージ化されていない拡張機能を読み込む」から指定して利用します。",
+              "",
+          ]
+          block = "\n".join(lines)
+          if text.count(block) != 1:
+              raise SystemExit(f"expected exactly one theme documentation block, found {text.count(block)}")
+          path.write_text(text.replace(block, ""), encoding="utf-8")
+
+      - name: Commit cleanup
+        run: |
+          git rm royal_desert_sand_dark_tabs.zip
+          git rm .github/workflows/remove-royal-desert-sand-dark-tabs.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "Markdown Notes/ChromeOS & Android Optimization Guide.md"
+          git commit -m "Remove Royal Desert Sand Dark Tabs"
+          git push
