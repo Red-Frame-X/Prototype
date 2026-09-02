@@ -12,9 +12,11 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 FILTER = ROOT / "AdGuard Custom Rules" / "AdGuard Custom Rules - Red Frame X.txt"
 
+
 def fail(message: str) -> None:
     print(f"error: {message}", file=sys.stderr)
     raise SystemExit(1)
+
 
 def active_rules(text: str) -> list[str]:
     return [
@@ -23,11 +25,23 @@ def active_rules(text: str) -> list[str]:
         if line.strip() and not line.lstrip().startswith(("!", "["))
     ]
 
+
 def read(path: Path) -> str:
     try:
-        return path.read_text(encoding="utf-8-sig")
+        raw = path.read_bytes()
     except OSError as exc:
         fail(f"cannot read {path}: {exc}")
+
+    # Check the raw bytes before Python's universal-newline translation can
+    # normalize CRLF or CR into LF and hide the original line-ending format.
+    if b"\r" in raw:
+        fail("CR characters detected; canonical filter must use LF line endings")
+
+    try:
+        return raw.decode("utf-8-sig")
+    except UnicodeError as exc:
+        fail(f"cannot decode {path} as UTF-8: {exc}")
+
 
 def git_show(ref: str, path: Path) -> str | None:
     rel = path.relative_to(ROOT).as_posix()
@@ -40,15 +54,13 @@ def git_show(ref: str, path: Path) -> str | None:
     )
     return proc.stdout if proc.returncode == 0 else None
 
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-ref", default=None)
     args = parser.parse_args()
 
     text = read(FILTER)
-
-    if "\r" in text:
-        fail("CR characters detected; canonical filter must use LF line endings")
 
     # Do not fail solely on a legacy missing final newline. When comparing a PR,
     # only reject if the base had a final newline and the edit removed it.
@@ -96,6 +108,7 @@ def main() -> int:
 
     print(f"AdGuard edit preflight OK: {len(rules)} active rules, no duplicates")
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

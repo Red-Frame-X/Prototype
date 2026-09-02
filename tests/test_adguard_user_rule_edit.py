@@ -7,8 +7,9 @@ import unittest
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "check_adguard_user_rule_edit.py"
 
+
 class AdGuardEditPreflightTests(unittest.TestCase):
-    def run_script(self, text: str):
+    def run_script(self, content: str | bytes):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             target = root / "AdGuard Custom Rules"
@@ -16,7 +17,11 @@ class AdGuardEditPreflightTests(unittest.TestCase):
             (root / "scripts").mkdir()
             script = root / "scripts" / SCRIPT.name
             script.write_text(SCRIPT.read_text(encoding="utf-8"), encoding="utf-8")
-            (target / "AdGuard Custom Rules - Red Frame X.txt").write_text(text, encoding="utf-8")
+            filter_path = target / "AdGuard Custom Rules - Red Frame X.txt"
+            if isinstance(content, bytes):
+                filter_path.write_bytes(content)
+            else:
+                filter_path.write_text(content, encoding="utf-8", newline="\n")
             return subprocess.run(
                 ["python", str(script)],
                 cwd=root,
@@ -40,6 +45,26 @@ example.org##.promo
 """
         result = self.run_script(text)
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_rejects_crlf_line_endings(self):
+        content = (
+            "! Title: AdGuard Custom Rules - Red Frame X\r\n"
+            "! Description: Test\r\n"
+            "example.com##.ad\r\n"
+        ).encode("utf-8")
+        result = self.run_script(content)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("CR characters detected", result.stderr)
+
+    def test_rejects_cr_line_endings(self):
+        content = (
+            "! Title: AdGuard Custom Rules - Red Frame X\r"
+            "! Description: Test\r"
+            "example.com##.ad\r"
+        ).encode("utf-8")
+        result = self.run_script(content)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("CR characters detected", result.stderr)
 
     def test_rejects_duplicate_active_rule(self):
         text = """! Title: AdGuard Custom Rules - Red Frame X
@@ -73,6 +98,7 @@ example.com##.ad
         result = self.run_script(text)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("trailing whitespace", result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()
