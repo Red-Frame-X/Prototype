@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202609011709
+! Version: 202609021655
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -2828,6 +2828,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||doujinbank.com^$document
 ||doujincco-ero.com^$document
 ||doujinclub.net^$document
+||doujindata.com^$document
 ||doujindayo.com^$document
 ||doujineroman.wpx.jp^$document
 ||doujinevent.com^$document
@@ -7007,6 +7008,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mondra.jp^$document
 ||monesblog.com^$document
 ||monet-grading.studio.site^$document
+||money-animation-dorama.hatenablog.com^$document
 ||money101.cn^$document
 ||moneysey.com^$document
 ||moneytalk.tokyo^$document
@@ -7682,6 +7684,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/ddsatouattak^$document
 ||note.com/dear_pipit1400^$document
 ||note.com/decoboco_sisters^$document
+||note.com/deep_lupine8918^$document
 ||note.com/deft_hosta7020^$document
 ||note.com/denka_life^$document
 ||note.com/der3^$document
@@ -7772,6 +7775,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/hirohikonotes^$document
 ||note.com/hirokazumineral^$document
 ||note.com/hirotoinfo^$document
+||note.com/hisho_nana_1998^$document
 ||note.com/hit_ranking^$document
 ||note.com/hitobashira_^$document
 ||note.com/hitotsu_ai^$document
@@ -7909,6 +7913,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/lover_soul1001^$document
 ||note.com/loverobo^$document
 ||note.com/loyal_otter6207^$document
+||note.com/loyal_violet6423^$document
 ||note.com/lucid_weasel5472^$document
 ||note.com/lucky_ai^$document
 ||note.com/lulu_noah^$document
@@ -8163,6 +8168,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/takumi_hakata^$document
 ||note.com/taraco_mom^$document
 ||note.com/tasty_holly7883^$document
+||note.com/tasty_human1981^$document
 ||note.com/tasty_okapi8736^$document
 ||note.com/tasty_rhino5561^$document
 ||note.com/tbola^$document
@@ -10576,6 +10582,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||syn-ad.com^$document
 ||synergetic.ru^$document
 ||syntaxfix.com^$document
+||syntelligence.jp/article^$document
 ||synthesistorren.blog2.fc2.com^$document
 ||syokubunka-studio.jp^$document
 ||syokusamen.com^$document
@@ -10809,6 +10816,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tetsuya-next.com^$document
 ||tetu-hop.com^$document
 ||tetumemo.com^$document
+||tetumemo.m-newsletter.com^$document
 ||tevetamw.com^$document
 ||texasoutlawsusa.com^$document
 ||tfg-fc.net^$document
@@ -10932,6 +10940,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tiktakmodapk.com^$document
 ||tiktikpremium.com^$document
 ||tiktikpremiumapk.com^$document
+||tiktok.com/ug/incentive/share/$all
 ||tiktok.com/ug^$document
 ||tiktokliveapk.com^$document
 ||tiktokmodapk.net^$document
@@ -11508,7 +11517,10 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||victorraulrr.info^$document
 ||victorraulrr.net^$document
 ||video-distribution.jp^$document
+||video-twimg*.com^$document
 ||video-twimg-eroman.mystrikingly.com^$document
+||video-twiming*.com^$document
+||video-twiming-mp4.com^$document
 ||video.twimg.jp^$document
 ||video.twimg.link^$document
 ||videoder.en.uptodown.com^$document
