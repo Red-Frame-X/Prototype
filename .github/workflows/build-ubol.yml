@@ -8,7 +8,7 @@ on:
       - 'AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt'
       - 'uBOL Filter Converter/converter.py'
       - 'uBOL Filter Converter/converter_impl.py'
-      - 'uBOL Filter Converter/tests/test_converter.py'
+      - 'uBOL Filter Converter/tests/**'
       - '.github/workflows/build-ubol.yml'
   workflow_dispatch:
 
