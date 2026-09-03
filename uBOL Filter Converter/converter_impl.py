@@ -52,11 +52,40 @@ def _modifier_name(token: str) -> str:
     return token.split("=", 1)[0].lower()
 
 
-def _split_modifiers(line: str) -> tuple[str, list[str]] | None:
-    """Split the last modifier section; regex filters are rejected separately."""
-    if "$" not in line:
+def _regex_closing_slash_index(line: str) -> int | None:
+    """Return the closing delimiter for a network regex rule, if present."""
+    start = 2 if line.startswith("@@") else 0
+    if start >= len(line) or line[start] != "/":
         return None
-    pattern, raw = line.rsplit("$", 1)
+
+    for index in range(start + 1, len(line)):
+        if line[index] != "/":
+            continue
+
+        backslashes = 0
+        previous = index - 1
+        while previous >= start and line[previous] == "\\":
+            backslashes += 1
+            previous -= 1
+        if backslashes % 2 == 0:
+            return index
+
+    return None
+
+
+def _split_modifiers(line: str) -> tuple[str, list[str]] | None:
+    """Split modifiers without treating ``$`` inside a regex as a separator."""
+    closing_slash = _regex_closing_slash_index(line)
+    if closing_slash is not None:
+        suffix = line[closing_slash + 1:]
+        if not suffix.startswith("$"):
+            return None
+        pattern = line[:closing_slash + 1]
+        raw = suffix[1:]
+    else:
+        if "$" not in line:
+            return None
+        pattern, raw = line.rsplit("$", 1)
     return pattern, [part.strip() for part in raw.split(",") if part.strip()]
 
 
@@ -87,6 +116,13 @@ def convert_line(raw_line: str) -> Result:
         output = f"{domains}{separator}{selector}"
         return Result(output, "converted" if output != line else "preserved")
 
+    regex_start = 2 if line.startswith("@@") else 0
+    closing_slash = _regex_closing_slash_index(line)
+    if closing_slash is not None:
+        regex_pattern = line[regex_start + 1:closing_slash]
+        if "(?<=" in regex_pattern or "(?<!" in regex_pattern or re.search(r"(?<!\\)\\[1-9]", regex_pattern):
+            return Result(None, "excluded", "non-re2-regex")
+
     modifiers = _split_modifiers(line)
     if modifiers:
         pattern, tokens = modifiers
@@ -104,11 +140,6 @@ def convert_line(raw_line: str) -> Result:
             converted_tokens.append(("~" if negated else "") + mapped + equals + value)
         output = pattern + "$" + ",".join(converted_tokens)
         return Result(output, "converted" if output != line else "preserved")
-
-    regex_body = line[2:] if line.startswith("@@") else line
-    if regex_body.startswith("/"):
-        if "(?<=" in regex_body or "(?<!" in regex_body or re.search(r"(?<!\\)\\[1-9]", regex_body):
-            return Result(None, "excluded", "non-re2-regex")
 
     return Result(line, "preserved")
 
