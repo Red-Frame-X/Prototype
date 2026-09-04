@@ -1,45 +1,27 @@
 # uBOL Filter - Red Frame X
 
-`uBOL Filter - Red Frame X`は、AdGuard用カスタムフィルタを
-uBlock Origin Lite（uBOL）で購読・利用できる外部フィルタリストへ
-保守的に変換したものです。このディレクトリには生成用コンバータも含まれます。
+`uBOL Filter - Red Frame X`は、自分が管理しているAdGuard用カスタムフィルタをuBlock Origin Lite（uBOL）向けに保守的に変換するための個人用生成物です。このディレクトリには、変換処理、テスト、生成フィルタ、上流CHANGELOG追跡データを保存しています。
 
-## 購読方法（推奨）
+> [!IMPORTANT]
+> このディレクトリは一般向けの配布や導入ガイドを目的としていません。主な目的は、変換ロジックの学習・検証と、自分の環境を再構成するためのバックアップです。文章の下書きはChatGPTで推敲・整理しているため、説明に誤り、古い情報、環境依存の内容が含まれる可能性があります。uBOLの仕様や制限は公式CHANGELOG、公開ソース、実際の挙動で再確認します。
 
-uBOL `2026.621.1813`以降では、リモートサーバー上の外部フィルタリストを
-URLで購読できます。uBOLのダッシュボードで`カスタムフィルター`を開き、
-`フィルターリストを追加…`へ次のRaw URLを入力してください。
+## 自分の環境での利用メモ
+
+uBOLの外部フィルタリスト購読機能を利用できる環境では、次のRaw URLを自分のカスタムフィルターとして登録しています。
 
 ```text
 https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt
 ```
 
-追加後は`インポートしたリスト`に表示されます。リスト内の整形・スクリプトレットフィルターを
-適用するには、ブラウザの拡張機能設定でuBOLの`ユーザー スクリプトを許可する`を
-有効にする必要があります。許可しない場合でも、対応するネットワークフィルタは
-適用されます。
+外部リスト購読やインポートしたリストの適用条件はuBOLのバージョンやブラウザ機能に依存します。Safari版、Offscreen API、動的DNRルール上限、サイト権限、ユーザースクリプト許可などの条件は、保存時点のメモだけで判断せず、使用中バージョンの公式情報と実際のUIを確認します。
 
-### 対応条件と制限
-
-- 外部リスト購読にはuBOL `2026.621.1813`以降が必要です。
-- Safari版は必要なOffscreen APIがないため、外部リスト購読に対応していません。
-- インポートしたリストは動的DNRルールへ変換されるため、ブラウザの動的ルール上限の影響を受けます。
-- 汎用コスメティックフィルタ、厳格ブロック、`popup`など、一部機能には対応上の制限があります。
-- 信頼できるURLだけを追加してください。外部リストは更新時にも取得・再コンパイルされます。
-
-手動で使用する場合は、生成された`dist/uBOL Filter - Red Frame X.txt`の内容を
-uBOLの`カスタムフィルター`にある`インポート又はエクスポート`からインポートできます。
-ただし、通常は自動更新されるURL購読を推奨します。
+必要に応じて、生成された`dist/uBOL Filter - Red Frame X.txt`を手動インポートすることもありますが、自分の通常運用では更新追従のためURL購読を使います。
 
 ## 変換方針
 
-誤変換によるサイト破損を避けるため、意味を維持できない次のルールは出力せず、
-JSONレポートへ理由と元の行番号を記録します。
+誤変換によるサイト破損を避けるため、意味を維持できないルールは出力せず、JSONレポートへ理由と元の行番号を記録します。
 
-対応可能なコスメティックルールは、`:contains()`を`:has-text()`、
-`:nth-ancestor()`を`:upward()`、`:matches-property()`を`:matches-prop()`へ
-変換します。`:style()`、`:matches-attr()`、`:matches-css*()`、`:xpath()`
-などuBO/uBOLが対応する演算子は維持して出力します。
+対応可能なコスメティックルールは、`:contains()`を`:has-text()`、`:nth-ancestor()`を`:upward()`、`:matches-property()`を`:matches-prop()`へ変換します。`:style()`、`:matches-attr()`、`:matches-css*()`、`:xpath()`などuBO/uBOLが対応する演算子は維持して出力します。
 
 次のルールは意味または信頼境界を維持できないため除外します。
 
@@ -50,7 +32,7 @@ JSONレポートへ理由と元の行番号を記録します。
 - `$replace`、`$redirect`、`$csp`など、uBOLへ安全に対応付けられない修飾子
 - ChromeのRE2で表現できない後読み・後方参照付き正規表現
 
-## 実行
+## 実行メモ
 
 Python 3.10以降、外部パッケージ不要です。
 
@@ -79,31 +61,16 @@ python "uBOL Filter Converter/converter.py" \
 python -m unittest discover -s "uBOL Filter Converter/tests" -v
 ```
 
-変換元または変換コードをmainで更新すると、GitHub Actionsがテスト後にフィルタと
-JSONレポートを再生成します。Pull Requestでは同じ変換を実行して変換処理と出力の
-整合性を検証し、コミット済み生成物との差分がある場合はnoticeとして報告します。
-生成物の同期自体はmainへマージ後に`build-ubol.yml`が自動で行います。レポートから
-実行時刻を除外し、同じ入力から常に同じ内容を生成できるようにしています。
+変換元または変換コードをmainで更新すると、GitHub Actionsがテスト後にフィルタとJSONレポートを再生成します。Pull Requestでは同じ変換を実行して変換処理と出力の整合性を確認し、生成物の同期自体はmainへマージ後に`build-ubol.yml`が行います。レポートから実行時刻を除外し、同じ入力から同じ内容を生成できるようにしています。
 
 ## uBOL CHANGELOGの自動確認
 
-GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)を
-毎日03:37（JST）に取得します。上流CHANGELOGのSHA-256が変化した場合のみ、
-最新バージョン、確認日時、追跡している互換性情報を
-[`upstream/ubol-changelog.json`](upstream/ubol-changelog.json)へ自動反映し、英語原文を
-[`upstream/ubol-CHANGELOG.source.md`](upstream/ubol-CHANGELOG.source.md)へミラーします。
+GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)を毎日03:37（JST）に取得します。上流CHANGELOGのSHA-256が変化した場合のみ、最新バージョン、確認日時、追跡している互換性情報を[`upstream/ubol-changelog.json`](upstream/ubol-changelog.json)へ反映し、英語原文を[`upstream/ubol-CHANGELOG.source.md`](upstream/ubol-CHANGELOG.source.md)へミラーします。
 
-取得失敗や予期しないCHANGELOG形式は正常終了として扱わず、誤ったメタデータで
-上書きしません。また、CHANGELOGの文章から変換ルールを推測して自動変更することは
-ありません。新しい構文や制限は内容を確認し、テストを追加してから変換処理へ反映します。
-
-変換元の既存ファイルや、リポジトリ内の既存変換スクリプトは変更しません。
+取得失敗や予期しないCHANGELOG形式は正常終了として扱わず、誤ったメタデータで上書きしません。また、CHANGELOGの文章から変換ルールを推測して自動変更することはありません。新しい構文や制限は内容を確認し、テストを追加してから変換処理へ反映します。
 
 ## 参考資料
 
 - [uBlock Origin Lite 日本語ロケール](https://github.com/gorhill/uBlock/blob/master/platform/mv3/extension/_locales/ja/messages.json)
 - [外部フィルタリスト購読機能の実装コミット](https://github.com/gorhill/uBlock/commit/06deb19dfa85c13e48ad44d2e6dc4f64a96d6cbc)
-
-## 英語CHANGELOG
-
-- [uBlock Origin Lite](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)
+- [uBlock Origin Lite CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)
