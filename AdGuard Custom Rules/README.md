@@ -1,48 +1,51 @@
 # AdGuard Custom Rules
 
-AdGuard向けの個人用フィルタです。通常のコンテンツブロック用フィルタとDNSフィルタは処理する層・構文・適用場所が異なるため、使用するAdGuard製品の対応する機能へ個別に追加してください。
+AdGuard向けに自分の環境で使用・検証している個人用フィルタと、その保守メモです。通常のコンテンツブロック用フィルタとDNSフィルタは処理する層・構文・適用場所が異なるため、このREADMEでは自分の設定を再現するときに混同しないための記録として整理しています。
+
+> [!IMPORTANT]
+> このディレクトリは個人の設定バックアップと検証記録です。一般向けの配布や導入手順を目的としていません。記述の下書きはChatGPTで推敲・整理しているため、内容に誤り、古い情報、環境依存の挙動が含まれる可能性があります。重要な仕様はAdGuard公式資料、公開ソース、実環境で再確認します。
 
 ## ファイル
 
-- [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：広告・不要要素の非表示、ネットワーク通信制御、互換性のための例外などを含むAdGuardフィルタ
-- [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：DNSレベルのブロックに使用するAdGuard DNSフィルタ
+- [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：広告・不要要素の非表示、ネットワーク通信制御、互換性のための例外などを含む個人用AdGuardフィルタ
+- [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：DNSレベルのブロックに使用している個人用AdGuard DNSフィルタ
 
-## 購読URL
+## 自分の環境での登録先メモ
 
 ### コンテンツブロックフィルタ
 
-AdGuardの「カスタムフィルタ」へ追加します。
+自分の環境では、AdGuardのカスタムフィルタとして次のRaw URLを登録しています。
 
 ```text
 https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt
 ```
 
-AdGuard for Androidでは「広告ブロック」→「フィルタ」→「カスタムフィルタ」から追加できます。AdGuard ブラウザ拡張機能でもカスタムフィルタとして購読できます。MV3対応版ではUser Scripts APIなどブラウザ側の制約が関係するため、表示される案内に従って必要な権限を有効にしてください。
+AdGuard for Androidでは「広告ブロック」→「フィルタ」→「カスタムフィルタ」、AdGuard ブラウザ拡張機能ではカスタムフィルタとして扱います。MV3対応版ではUser Scripts APIなどブラウザ側の制約が関係するため、必要な権限や挙動は使用中バージョンの公式資料と実際のUIで確認します。
 
 ### DNSフィルタ
 
-AdGuard for Androidなど、カスタムDNSフィルタを利用できる製品の「DNSフィルタ」へ追加します。
+自分の環境では、カスタムDNSフィルタとして次のRaw URLを使用しています。
 
 ```text
 https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt
 ```
 
-AdGuard for Androidでは「DNS通信を保護」の「DNSフィルタ」でカスタムDNSフィルタを追加できます。
+AdGuard for Androidでは「DNS通信を保護」の「DNSフィルタ」で管理します。
 
 > [!IMPORTANT]
-> コンテンツブロックフィルタとDNSフィルタは相互に置き換えられません。DNSフィルタを通常のカスタムフィルタへ追加したり、コンテンツブロックフィルタをDNSフィルタとして追加したりしないでください。
+> コンテンツブロックフィルタとDNSフィルタは相互に置き換えられません。自分の環境を再構成するときも、それぞれ対応する機能へ登録します。
 
-## 利用上の注意
+## 検証時の注意
 
-これらは個人環境向けです。`$app`のようなアプリ固有ルール、高度な整形ルール、scriptlet、許可ルールなどは、製品・プラットフォーム・フィルタリングエンジンによって対応状況や副作用が異なります。必要なルールだけを利用し、導入後は誤ブロックや表示崩れがないか確認してください。
+`$app`のようなアプリ固有ルール、高度な整形ルール、scriptlet、許可ルールなどは、製品・プラットフォーム・フィルタリングエンジンによって対応状況や副作用が異なります。変更時は自分の環境で誤ブロック、表示崩れ、機能不全がないかを確認します。
 
-uBlock Origin Liteで利用する場合は、互換性のないルールを保守的に除外・変換した生成版[`uBOL Filter - Red Frame X`](../uBOL%20Filter%20Converter/)を使用してください。元のAdGuardフィルタをそのままuBO Liteへ読み込むことは前提としていません。
+uBlock Origin Lite向けには、互換性のないルールを保守的に除外・変換した生成版[`uBOL Filter - Red Frame X`](../uBOL%20Filter%20Converter/)を別途生成しています。元のAdGuardフィルタをそのままuBO Liteへ読み込む構成にはしていません。
 
 ## 編集時の品質確認
 
-`AdGuard Custom Rules - Red Frame X.txt`はuBOL生成フィルタの変換元でもあります。ルールを追加・削除・変更する場合は、ヘッダーの`! Version:`を`YYYYMMDDHHMM`形式で更新してください。
+`AdGuard Custom Rules - Red Frame X.txt`はuBOL生成フィルタの変換元でもあります。ルールを追加・削除・変更する場合は、ヘッダーの`! Version:`を`YYYYMMDDHHMM`形式で更新します。
 
-リポジトリの品質チェックでは、原本フィルタの破損防止に加えて、重複した有効ルール、末尾空白、改行形式、意図しない大量削除などを検査します。ローカルでは次の順序で確認できます。
+リポジトリの品質チェックでは、原本フィルタの破損防止に加えて、重複した有効ルール、末尾空白、改行形式、意図しない大量削除などを検査します。ローカルで確認する場合は次を実行します。
 
 ```bash
 python scripts/check_adguard_filter_integrity.py
@@ -52,7 +55,7 @@ python -m unittest discover -s tests -v
 python -m unittest discover -s "uBOL Filter Converter/tests" -v
 ```
 
-uBOL向け生成物はGitHub Actionsで同期されるため、通常は`uBOL Filter Converter/dist/`を直接編集しません。変換結果に問題がある場合は、原本ルール、コンバータ、能力定義またはテストを修正します。
+uBOL向け生成物はGitHub Actionsで同期するため、通常は`uBOL Filter Converter/dist/`を直接編集しません。変換結果に問題がある場合は、原本ルール、コンバータ、能力定義またはテストを修正します。
 
 ## CHANGELOG追跡とコンバータ更新
 
