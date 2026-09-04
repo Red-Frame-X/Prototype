@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202609031704
+! Version: 202609041659
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -491,6 +491,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||74n5c4m7.r.eu-west-1.awstrack.me^$document
 ||7544645.slot27.online^$document
 ||757038.8b.io^$document
+||75millon.info^$document
 ||7665329.slot31.online^$document
 ||774neet.com^$document
 ||774route.com^$document
@@ -670,6 +671,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||affiliatebook.net^$document
 ||afghaehego.com^$document
 ||afghan-info.com^$document
+||afi-support.net^$document
 ||afi7.xsrv.jp^$document
 ||afiri-star.com^$document
 ||aflciopokerroom.com^$document
@@ -939,6 +941,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||amorcos.ocnk.net^$document
 ||amour-takarazuka.jp^$document
 ||amp.amebaownd.com^$document
+||amplis.jp^$document
 ||amprime.hatenablog.com^$document
 ||amulai.blog^$document
 ||amy1181.com^$document
@@ -1725,6 +1728,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||blugre.amebaownd.com^$document
 ||blvxder.com^$document
 ||bm-shopcafe.jp^$document
+||bmieoahe.click^$document
 ||boardingstablesforsale.com^$document
 ||boatrace-kuchikomi.com^$document
 ||bobnee.com^$document
@@ -3039,6 +3043,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ekort.org^$document
 ||ekoushi.online^$document
 ||el-clan.jp^$document
+||el-lp01.com^$document
 ||elcus.org^$document
 ||elearning-art.net^$document
 ||elecart.in/products^$document
@@ -3606,6 +3611,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||flakep1l.cvs.com.my^$document
 ||flashff-blog.com^$document
 ||flathub.org/apps/org.polymc.PolyMC^$document
+||flavor-books.com^$document
 ||fleuri.jp^$document
 ||flfillettables.com^$document
 ||flgas.com^$document
@@ -3802,6 +3808,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||futosoku.com^$document
 ||future-next.com^$document
 ||future-sparkling.com^$document
+||future7.jp^$document
 ||futurepark.team-lab.cn^$document
 ||futurerobot.online^$document
 ||fuwa-toro.com^$document
@@ -4123,6 +4130,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gladent-med.online^$document
 ||glaube-hoffnung-liebe.com^$document
 ||glblctzn.me^$document
+||gld-information-lp.com^$document
 ||glintgizmo.com^$document
 ||gllosqf.work^$document
 ||global-funlife.com^$document
@@ -5564,6 +5572,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||keeztwelversa.xyz^$document
 ||kei-siroikumo.com^$document
 ||kei31.com^$document
+||keiba-labo.info^$document
 ||keibariron.com^$document
 ||keijserskoning.com^$document
 ||keikeikei.com^$document
@@ -6231,6 +6240,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||lowcostoutsource.com^$document
 ||lp.buzayookaki.com^$document
 ||lp.solomon-world.jp^$document
+||lpro-pm4.com^$document
+||lpro-pm6.com^$document
 ||lps.nanoartmarket.com^$document
 ||lqvaqpeq.com^$document
 ||lrkdn.kvjody.biz^$document
@@ -7911,6 +7922,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/light_right_^$document
 ||note.com/like_bonobo2466^$document
 ||note.com/limber_tapir7999^$document
+||note.com/lipt0n_afi^$document
 ||note.com/lithe_viper8252^$document
 ||note.com/lively_impala470^$document
 ||note.com/lofty_skink4202^$document
@@ -7957,6 +7969,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/mingaje333^$document
 ||note.com/mippasan^$document
 ||note.com/mitsubachi0088^$document
+||note.com/mizuki_myrtle47^$document
 ||note.com/mizuu_note1^$document
 ||note.com/mnb196748^$document
 ||note.com/mocchan^$document
@@ -8879,6 +8892,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||pizzasta.jp^$document
 ||pkaki.com^$document
 ||pkshampoo.com^$document
+||plai-ai.co.jp^$document
 ||plai-ai.com^$document
 ||planetacadiz.com^$document
 ||planetaverde.site^$document
@@ -9751,6 +9765,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||sato-jewelry.com^$document
 ||sato-yokohama.jp^$document
 ||satobayashi.net^$document
+||satokotadesign.com^$document
 ||satomin.club^$document
 ||satomoka.com^$document
 ||satomusubi.jp^$document
