@@ -220,6 +220,20 @@ class ModifierConversionTests(unittest.TestCase):
         rule = r"/tracker$/"
         self.assertEqual(self.optimizer.optimize_line(rule), rule)
 
+    def test_positive_lookahead_regex_is_commented_out(self):
+        rule = r"/pay(?=ment)/"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Unsupported MV3 Regex] " + rule,
+        )
+
+    def test_negative_lookahead_regex_is_commented_out(self):
+        rule = r"/tracker(?!safe)/"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Unsupported MV3 Regex] " + rule,
+        )
+
     def test_bare_regex_with_embedded_end_anchor_gets_document_modifier(self):
         rule = r"/^https?:\/\/example\.com(?:[\/?#]|$)/"
         self.assertEqual(
