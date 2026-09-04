@@ -23,6 +23,16 @@ class RegexModifierParsingTests(unittest.TestCase):
         self.assertIsNone(result.output)
         self.assertEqual(result.reason, "non-re2-regex")
 
+    def test_positive_lookahead_regex_is_excluded(self):
+        result = converter.convert_line(r"/pay(?=ment)/")
+        self.assertIsNone(result.output)
+        self.assertEqual(result.reason, "non-re2-regex")
+
+    def test_negative_lookahead_regex_is_excluded(self):
+        result = converter.convert_line(r"/tracker(?!safe)/")
+        self.assertIsNone(result.output)
+        self.assertEqual(result.reason, "non-re2-regex")
+
     def test_re2_regex_end_anchor_is_not_treated_as_modifier_separator(self):
         rule = r"/tracker$/"
         result = converter.convert_line(rule)

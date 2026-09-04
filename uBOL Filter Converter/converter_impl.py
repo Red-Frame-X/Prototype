@@ -120,7 +120,13 @@ def convert_line(raw_line: str) -> Result:
     closing_slash = _regex_closing_slash_index(line)
     if closing_slash is not None:
         regex_pattern = line[regex_start + 1:closing_slash]
-        if "(?<=" in regex_pattern or "(?<!" in regex_pattern or re.search(r"(?<!\\)\\[1-9]", regex_pattern):
+        if (
+            "(?=" in regex_pattern
+            or "(?!" in regex_pattern
+            or "(?<=" in regex_pattern
+            or "(?<!" in regex_pattern
+            or re.search(r"(?<!\\)\\[1-9]", regex_pattern)
+        ):
             return Result(None, "excluded", "non-re2-regex")
 
     modifiers = _split_modifiers(line)

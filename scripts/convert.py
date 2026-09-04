@@ -220,8 +220,14 @@ class AdGuardOptimizer:
             prefix, regex_part, modifier_part = regex_data
             pattern_str = regex_part[1:-1]
 
-            # RE2未サポート構文 (後読み・後方参照) のパージ
-            if '(?<=' in pattern_str or '(?<!' in pattern_str or self._contains_unsupported_backreference(pattern_str):
+            # RE2未サポート構文 (先読み・後読み・後方参照) のパージ
+            if (
+                '(?=' in pattern_str
+                or '(?!' in pattern_str
+                or '(?<=' in pattern_str
+                or '(?<!' in pattern_str
+                or self._contains_unsupported_backreference(pattern_str)
+            ):
                 return f"! [Unsupported MV3 Regex] {original_line}"
 
             # ReDoS対策 (過剰なバックトラックのパージ)
