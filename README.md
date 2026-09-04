@@ -13,28 +13,42 @@ Chrome・ChromeOS・Android環境で試した設定、コンテンツブロッ�
 >
 > フィルタ、スクリプト、設定、技術メモなどは、自分の環境での確認結果を残すことを目的としており、一般向けの手順書や配布物としての利用を想定していません。
 
+## 主要リンク
+
+よく参照する場所へ直接移動できるよう、主要なディレクトリと生成物へのリンクをまとめています。
+
+| 項目 | リンク | 内容 |
+| --- | --- | --- |
+| AdGuard Custom Rules | [README](./AdGuard%20Custom%20Rules/README.md) / [コンテンツブロックフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [DNSフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) | AdGuard用の個人ルール、DNSルール、検証・保守メモ |
+| uBOL Filter Converter | [README](./uBOL%20Filter%20Converter/README.md) / [生成フィルタ](./uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt) | AdGuardルールからuBlock Origin Lite向けフィルタを生成 |
+| uB-filter-by-kdroidwin (AdGuard Optimized) | [README](./dist/README.md) / [生成フィルタ](./dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) | 上流フィルタをAdGuard向けに変換した生成物 |
+| UserScript | [README](./UserScript/README.md) / [ディレクトリ](./UserScript/) | 𝕏、YouTubeなどで使用するUserScript |
+| NG Word Regex for ChMate | [README](./NG%20Word%20Regex%20for%20ChMate/README.md) / [正規表現](./NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) | ChMateで使用するNG用Java正規表現 |
+| Markdown Notes | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) | ChromeOS、Android、GitHub、コンテンツブロックなどの技術メモ |
+| GitHub Actions | [Actions](../../actions) | 品質確認、同期、変換、CHANGELOG追跡などのWorkflow |
+
 ## 内容
 
 | パス | 記録している内容 |
 | --- | --- |
-| `AdGuard Custom Rules/` | AdGuard向けの個人用コンテンツブロックルール、DNSルール、関連CHANGELOG |
-| `uBOL Filter Converter/` | AdGuard用ルールをuBlock Origin Lite向けに変換する処理、テスト、自動生成物、変換レポート |
-| `dist/` | uB-filter-by-kdroidwinをAdGuard向けに変換した自動生成物 |
-| `UserScript/` | 𝕏・YouTubeなどの表示や挙動を調整する個人用UserScript |
-| `NG Word Regex for ChMate/` | ChMateで使用するJava正規表現 |
-| `Markdown Notes/` | ChromeOS、Android、GitHub、コンテンツブロックなどの学習・調査メモ |
-| `scripts/`、`tests/` | フィルタ変換・更新処理、整合性検査、回帰テスト |
-| `config/`、`upstream/` | 変換能力の定義と上流情報の追跡データ |
+| [`AdGuard Custom Rules/`](./AdGuard%20Custom%20Rules/) | AdGuard向けの個人用コンテンツブロックルール、DNSルール、関連CHANGELOG |
+| [`uBOL Filter Converter/`](./uBOL%20Filter%20Converter/) | AdGuard用ルールをuBlock Origin Lite向けに変換する処理、テスト、自動生成物、変換レポート |
+| [`dist/`](./dist/) | uB-filter-by-kdroidwinをAdGuard向けに変換した自動生成物 |
+| [`UserScript/`](./UserScript/) | 𝕏・YouTubeなどの表示や挙動を調整する個人用UserScript |
+| [`NG Word Regex for ChMate/`](./NG%20Word%20Regex%20for%20ChMate/) | ChMateで使用するJava正規表現 |
+| [`Markdown Notes/`](./Markdown%20Notes/) | ChromeOS、Android、GitHub、コンテンツブロックなどの学習・調査メモ |
+| [`scripts/`](./scripts/)、[`tests/`](./tests/) | フィルタ変換・更新処理、整合性検査、回帰テスト |
+| [`config/`](./config/)、[`upstream/`](./upstream/) | 変換能力の定義と上流情報の追跡データ |
 
 > [!NOTE]
 > `uBOL Filter Converter/dist/`およびルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換スクリプトを修正して再生成します。
 
 ## 編集・更新の原則
 
-- `AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt`はuBOL変換の原本でもあるため、ルール追加・削除時は`! Version:`も更新し、品質チェックを通してから反映します。
-- `uBOL Filter Converter/dist/`とルートの`dist/`はGitHub Actionsによる生成物のため、原則として直接編集しません。
-- `AdGuard Custom Rules/ChangeLog/`と`upstream/`には上流プロジェクトの追跡・ミラー情報が含まれるため、取得スクリプトまたは追跡設定を修正します。
-- `Markdown Notes/`は学習・調査時点の記録を含みます。更新時には、可能な限り公式資料、公開ソース、対象バージョンを再確認します。
+- [`AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt`](./AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)はuBOL変換の原本でもあるため、ルール追加・削除時は`! Version:`も更新し、品質チェックを通してから反映します。
+- [`uBOL Filter Converter/dist/`](./uBOL%20Filter%20Converter/dist/)とルートの[`dist/`](./dist/)はGitHub Actionsによる生成物のため、原則として直接編集しません。
+- [`AdGuard Custom Rules/ChangeLog/`](./AdGuard%20Custom%20Rules/ChangeLog/)と[`upstream/`](./upstream/)には上流プロジェクトの追跡・ミラー情報が含まれるため、取得スクリプトまたは追跡設定を修正します。
+- [`Markdown Notes/`](./Markdown%20Notes/)は学習・調査時点の記録を含みます。更新時には、可能な限り公式資料、公開ソース、対象バージョンを再確認します。
 - ChatGPTによる推敲後の文章も、そのまま正しいとはみなさず、重要な技術情報は一次情報と実環境で再確認します。
 
 ## 自動更新と品質確認
@@ -47,6 +61,8 @@ GitHub Actionsで、個人用フィルタや変換処理の更新・整合性確
 - `uB-filter-by-kdroidwin (AdGuard Optimized)`の定期同期と変換
 - `uBOL Filter - Red Frame X`の再生成と変換レポートの更新
 - AdGuardおよびuBO Liteの公式CHANGELOGの定期確認
+
+[GitHub Actions一覧](../../actions)から各Workflowの実行結果を確認できます。
 
 ローカルで主要な検査を実行する場合：
 
