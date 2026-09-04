@@ -1,19 +1,26 @@
+# GitHub Issues / Pull Request 長文折りたたみメモ
+
+自分がGitHub IssuesやPull Requestへ長い検証結果・スクリーンショットを投稿するときに使う`<details>`スニペットの控えです。
+
+> [!NOTE]
+> 個人用の作業メモとして保存しています。一般向けテンプレートや投稿ガイドを意図したものではありません。
+
 ### 冒頭文
 
-（あなたの書いた導入文など）
+（自分で作成した導入文）
 
-```
+```html
 <details>
-<summary> Screenshot (クリックで展開) </summary>
+<summary>Screenshot（クリックで展開）</summary>
 
 アップロードしたScreenshotのURL
 
 </details>
 ```
 
-```  
+```html
 <details>
-<summary> レポートのタイトル（クリックで展開）</summary>
+<summary>レポートのタイトル（クリックで展開）</summary>
 
 レポートの全文
 
@@ -21,7 +28,9 @@
 ```
 
 ### 手動での動作検証結果
-（あなたがやった検証結果を書く）
 
-### 私の見解
-（あなたの見解を書く）
+（自分で確認した結果を記録）
+
+### 自分の見解
+
+（確認済みの事実と推測を分けて記録）
