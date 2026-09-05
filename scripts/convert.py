@@ -166,14 +166,24 @@ class AdGuardOptimizer:
         return None
 
     def _contains_unsupported_backreference(self, pattern_str: str) -> bool:
+        """Return whether a regex contains an unescaped RE2-incompatible backreference."""
         idx = 0
         length = len(pattern_str)
-        while idx < length - 1:
-            if pattern_str[idx] == '\\' and pattern_str[idx + 1].isdigit() and pattern_str[idx + 1] != '0':
-                # バックスラッシュが奇数個なら本物の後方参照 (\1 ~ \9)
-                if self._count_consecutive_backslashes(pattern_str, idx + 1) % 2 == 1:
+        while idx < length:
+            if pattern_str[idx] != '\\':
+                idx += 1
+                continue
+
+            run_end = idx
+            while run_end < length and pattern_str[run_end] == '\\':
+                run_end += 1
+
+            if (run_end - idx) % 2 == 1 and run_end < length:
+                token_start = pattern_str[run_end]
+                if token_start in '123456789gk':
                     return True
-            idx += 1
+
+            idx = run_end
         return False
 
     def _contains_embedded_end_anchor(self, pattern_str: str) -> bool:
