@@ -1,8 +1,8 @@
 {
   "source": "https://raw.githubusercontent.com/uBlockOrigin/uBOL-home/refs/heads/main/CHANGELOG.md",
-  "latest_version": "2026.825.1619",
-  "changelog_sha256": "05f6451724faa85c8bf56e87a11a51a3e8ca5b831fb7c13c2ed064d42cc04eb7",
-  "checked_at": "2026-09-01T21:14:36+00:00",
+  "latest_version": "2026.901.1442",
+  "changelog_sha256": "1c3146b0aab15e4131b8756bbc168951252131b762decd5be714b7f47e53ff91",
+  "checked_at": "2026-09-05T20:38:20+00:00",
   "tracked_features": {
     "remote_filter_list_subscriptions": {
       "supported_since": "2026.621.1813",
