@@ -73,6 +73,27 @@ def _regex_closing_slash_index(line: str) -> int | None:
     return None
 
 
+def _contains_unsupported_backreference(pattern: str) -> bool:
+    """Return whether a regex contains an unescaped RE2-incompatible backreference."""
+    index = 0
+    while index < len(pattern):
+        if pattern[index] != "\\":
+            index += 1
+            continue
+
+        run_end = index
+        while run_end < len(pattern) and pattern[run_end] == "\\":
+            run_end += 1
+
+        if (run_end - index) % 2 == 1 and run_end < len(pattern):
+            token_start = pattern[run_end]
+            if token_start in "123456789gk":
+                return True
+
+        index = run_end
+    return False
+
+
 def _split_modifiers(line: str) -> tuple[str, list[str]] | None:
     """Split modifiers without treating ``$`` inside a regex as a separator."""
     closing_slash = _regex_closing_slash_index(line)
@@ -125,7 +146,7 @@ def convert_line(raw_line: str) -> Result:
             or "(?!" in regex_pattern
             or "(?<=" in regex_pattern
             or "(?<!" in regex_pattern
-            or re.search(r"(?<!\\)\\[1-9]", regex_pattern)
+            or _contains_unsupported_backreference(regex_pattern)
         ):
             return Result(None, "excluded", "non-re2-regex")
 
