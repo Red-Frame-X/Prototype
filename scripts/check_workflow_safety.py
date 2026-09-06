@@ -9,62 +9,80 @@ security context and can expose privileged credentials to unsafe workflow logic.
 
 from __future__ import annotations
 
-import re
 import sys
 from pathlib import Path
+from typing import Any
+
+import yaml
 
 WORKFLOW_DIR = Path(".github/workflows")
 
 
-def _without_comment_only_lines(text: str) -> str:
-    """Remove comment-only lines while preserving inline YAML content."""
-    return "\n".join(
-        line for line in text.splitlines() if not line.lstrip().startswith("#")
-    )
+def _parse_workflow(text: str) -> dict[str, Any]:
+    """Parse GitHub Actions YAML without YAML 1.1 boolean coercion of ``on``."""
+    try:
+        data = yaml.load(text, Loader=yaml.BaseLoader)
+    except yaml.YAMLError as error:
+        raise ValueError(f"invalid workflow YAML: {error}") from error
+    if not isinstance(data, dict):
+        raise ValueError("workflow YAML must contain a top-level mapping")
+    return data
 
 
-def _has_event(text: str, event: str) -> bool:
-    """Return whether a workflow declares the given GitHub Actions event."""
-    event_re = re.escape(event)
-    return bool(
-        re.search(rf"(?m)^\s{{0,2}}{event_re}\s*:", text)
-        or re.search(
-            rf"(?m)^\s{{0,2}}on\s*:\s*{event_re}\s*(?:#.*)?$",
-            text,
+def _declared_events(workflow: dict[str, Any]) -> set[str]:
+    """Return event names declared by a workflow's top-level ``on`` value."""
+    value = workflow.get("on")
+    if isinstance(value, str):
+        return {value}
+    if isinstance(value, list):
+        return {item for item in value if isinstance(item, str)}
+    if isinstance(value, dict):
+        return {key for key in value if isinstance(key, str)}
+    return set()
+
+
+def _permission_value_grants_write(value: Any) -> bool:
+    if isinstance(value, str):
+        return value == "write-all"
+    if isinstance(value, dict):
+        return any(
+            isinstance(permission, str) and permission == "write"
+            for permission in value.values()
         )
-        or re.search(
-            rf"(?m)^\s{{0,2}}on\s*:\s*\[[^\]]*\b{event_re}\b",
-            text,
-        )
-    )
+    return False
 
 
-def _has_write_permission(text: str) -> bool:
+def _has_write_permission(workflow: dict[str, Any]) -> bool:
     """Return whether workflow- or job-level permissions grant any write scope."""
-    return bool(
-        re.search(r"(?m)^\s*permissions\s*:\s*write-all\s*(?:#.*)?$", text)
-        or re.search(
-            r"(?m)^\s*[A-Za-z][A-Za-z0-9_-]*\s*:\s*write\s*(?:#.*)?$",
-            text,
-        )
+    if _permission_value_grants_write(workflow.get("permissions")):
+        return True
+
+    jobs = workflow.get("jobs")
+    if not isinstance(jobs, dict):
+        return False
+    return any(
+        isinstance(job, dict)
+        and _permission_value_grants_write(job.get("permissions"))
+        for job in jobs.values()
     )
 
 
 def is_unsafe_pull_request_writer(text: str) -> bool:
     """Return True when a workflow violates the repository PR safety policy."""
-    text = _without_comment_only_lines(text)
+    workflow = _parse_workflow(text)
+    events = _declared_events(workflow)
 
     # Fail closed on pull_request_target. This event executes in the context of
     # the base repository and is unnecessary for this repository's validation
     # workflows. Requiring a deliberate policy change before introducing it is
     # safer than trying to recognize every possible repository mutation command.
-    if _has_event(text, "pull_request_target"):
+    if "pull_request_target" in events:
         return True
 
     # Ordinary pull_request validation is allowed only with read-only token
-    # scopes. Detect write permission directly instead of relying on downstream
-    # command matching (git push, gh api, curl, custom actions, and so on).
-    return _has_event(text, "pull_request") and _has_write_permission(text)
+    # scopes. Inspect structured permission mappings so valid YAML formatting
+    # cannot bypass the policy check.
+    return "pull_request" in events and _has_write_permission(workflow)
 
 
 def find_unsafe_workflows(directory: Path = WORKFLOW_DIR) -> list[Path]:
@@ -77,7 +95,12 @@ def find_unsafe_workflows(directory: Path = WORKFLOW_DIR) -> list[Path]:
 
 
 def main() -> int:
-    unsafe = find_unsafe_workflows()
+    try:
+        unsafe = find_unsafe_workflows()
+    except ValueError as error:
+        print(f"Workflow safety check failed: {error}", file=sys.stderr)
+        return 1
+
     if unsafe:
         print(
             "Unsafe pull-request workflow(s) detected: pull_request workflows "

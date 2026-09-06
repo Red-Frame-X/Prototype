@@ -31,18 +31,6 @@ jobs:
 """
         self.assertTrue(is_unsafe_pull_request_writer(workflow))
 
-    def test_rejects_scalar_pull_request_with_inline_comment_and_write_permission(self):
-        workflow = """
-on: pull_request # validate changes
-permissions:
-  issues: write
-jobs:
-  triage:
-    steps:
-      - run: echo ok
-"""
-        self.assertTrue(is_unsafe_pull_request_writer(workflow))
-
     def test_rejects_pull_request_with_non_contents_write_scope(self):
         workflow = """
 on:
@@ -75,19 +63,6 @@ jobs:
   fix:
     permissions:
       contents: write
-    steps:
-      - run: echo ok
-"""
-        self.assertTrue(is_unsafe_pull_request_writer(workflow))
-
-    def test_rejects_contents_write_with_inline_comment(self):
-        workflow = """
-on:
-  pull_request:
-permissions:
-  contents: write # needed by an old fixer
-jobs:
-  fix:
     steps:
       - run: echo ok
 """
@@ -127,6 +102,53 @@ jobs:
   inspect:
     steps:
       - run: echo ok
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
+    def test_rejects_flow_style_permissions(self):
+        workflow = """
+on: [pull_request, workflow_dispatch]
+permissions: {contents: write}
+jobs:
+  fix:
+    steps:
+      - run: echo ok
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
+    def test_rejects_job_level_flow_style_permissions(self):
+        workflow = """
+on: pull_request
+jobs:
+  fix:
+    permissions: {issues: write}
+    steps:
+      - run: echo ok
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
+    def test_rejects_quoted_event_key(self):
+        workflow = """
+on:
+  'pull_request':
+permissions: {contents: write}
+jobs:
+  fix:
+    steps:
+      - run: echo ok
+"""
+        self.assertTrue(is_unsafe_pull_request_writer(workflow))
+
+    def test_rejects_unusual_but_valid_indentation(self):
+        workflow = """
+on:
+    pull_request:
+permissions:
+      contents: write
+jobs:
+    fix:
+        steps:
+          - run: echo ok
 """
         self.assertTrue(is_unsafe_pull_request_writer(workflow))
 
@@ -195,6 +217,10 @@ jobs:
       - run: echo ok
 """
         self.assertFalse(is_unsafe_pull_request_writer(workflow))
+
+    def test_invalid_yaml_fails_closed(self):
+        with self.assertRaises(ValueError):
+            is_unsafe_pull_request_writer("on: [pull_request\npermissions: write-all\n")
 
     def test_find_unsafe_workflows_reports_only_matching_files(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -54,6 +54,26 @@ class RegexModifierParsingTests(unittest.TestCase):
         self.assertEqual(result.output, r"/path\/tracker$/$xmlhttprequest")
         self.assertEqual(result.status, "converted")
 
+    def test_slash_inside_character_class_does_not_close_regex_early(self):
+        result = converter.convert_line(r"/foo[/?#]bar/$xhr")
+        self.assertEqual(result.output, r"/foo[/?#]bar/$xmlhttprequest")
+        self.assertEqual(result.status, "converted")
+
+    def test_slash_inside_character_class_still_allows_unsupported_modifier_detection(self):
+        result = converter.convert_line(r"/foo[/]bar/$app=com.example")
+        self.assertIsNone(result.output)
+        self.assertEqual(result.reason, "modifier:app")
+
+    def test_escaped_brackets_do_not_start_or_end_character_class(self):
+        result = converter.convert_line(r"/foo\[bar\]/$xhr")
+        self.assertEqual(result.output, r"/foo\[bar\]/$xmlhttprequest")
+        self.assertEqual(result.status, "converted")
+
+    def test_escaped_closing_bracket_inside_character_class_does_not_end_it(self):
+        result = converter.convert_line(r"/foo[/\]]bar/$xhr")
+        self.assertEqual(result.output, r"/foo[/\]]bar/$xmlhttprequest")
+        self.assertEqual(result.status, "converted")
+
 
 if __name__ == "__main__":
     unittest.main()
