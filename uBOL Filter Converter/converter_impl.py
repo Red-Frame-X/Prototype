@@ -58,16 +58,23 @@ def _regex_closing_slash_index(line: str) -> int | None:
     if start >= len(line) or line[start] != "/":
         return None
 
+    in_character_class = False
     for index in range(start + 1, len(line)):
-        if line[index] != "/":
-            continue
-
         backslashes = 0
         previous = index - 1
         while previous >= start and line[previous] == "\\":
             backslashes += 1
             previous -= 1
-        if backslashes % 2 == 0:
+        is_escaped = backslashes % 2 == 1
+
+        char = line[index]
+        if char == "[" and not is_escaped:
+            in_character_class = True
+            continue
+        if char == "]" and not is_escaped and in_character_class:
+            in_character_class = False
+            continue
+        if char == "/" and not is_escaped and not in_character_class:
             return index
 
     return None
