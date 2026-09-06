@@ -9,6 +9,7 @@ on:
       - 'tests/test_convert.py'
       - 'config/adguard-converter-capabilities.json'
       - '.github/workflows/sync.yml'
+      - 'requirements-ci.txt'
   schedule:
     # サーバー負荷分散のため0分を避けて15分に設定 (JST 12:15, 18:15, 0:15, 6:15)
     - cron: '15 3,9,15,21 * * *'
@@ -35,6 +36,12 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
+
+      # The repository-wide test suite imports scripts that use CI-only Python
+      # packages (currently PyYAML). Keep this workflow on the same pinned
+      # dependency manifest as quality.yml so scheduled runs cannot diverge.
+      - name: Install Python dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements-ci.txt
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
