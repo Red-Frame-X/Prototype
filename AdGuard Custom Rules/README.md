@@ -20,7 +20,11 @@ AdGuard向けに自分の環境で使用・検証している個人用フィル�
 https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt
 ```
 
-AdGuard for Androidでは「広告ブロック」→「フィルタ」→「カスタムフィルタ」、AdGuard ブラウザ拡張機能ではカスタムフィルタとして扱います。MV3対応版ではUser Scripts APIなどブラウザ側の制約が関係するため、必要な権限や挙動は使用中バージョンの公式資料と実際のUIで確認します。
+AdGuard for Androidでの登録先：
+
+**ボトムバーの ⚙ → 「フィルタリング」→「フィルタ」→「カスタムフィルタ」→「＋ カスタムフィルタを追加する」**
+
+AdGuard ブラウザ拡張機能ではカスタムフィルタとして扱います。MV3対応版ではUser Scripts APIなどブラウザ側の制約が関係するため、必要な権限や挙動は使用中バージョンの公式資料と実際のUIで確認します。
 
 ### DNSフィルタ
 
@@ -30,7 +34,9 @@ AdGuard for Androidでは「広告ブロック」→「フィルタ」→「カ�
 https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt
 ```
 
-AdGuard for Androidでは「DNS通信を保護」の「DNSフィルタ」で管理します。
+AdGuard for Androidでの登録先：
+
+**ボトムバーの 🛡️ → 「DNS通信を保護」→「DNSフィルタ」→「＋ DNSフィルターを追加する」**
 
 > [!IMPORTANT]
 > コンテンツブロックフィルタとDNSフィルタは相互に置き換えられません。自分の環境を再構成するときも、それぞれ対応する機能へ登録します。
