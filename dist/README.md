@@ -17,13 +17,21 @@ https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-k
 
 ### AdGuard ブラウザ拡張機能 MV3対応版
 
-自分の再設定時は、AdGuardの「フィルタ」→「カスタムフィルタ」で上記URLを登録し、必要な権限やUser Scripts APIの状態を使用中バージョンのUIと公式資料で確認します。
+自分の再設定時は、次の順序で上記URLを登録します。
+
+**AdGuard アイコン → ⚙ → フィルタ → カスタムフィルタ → カスタムフィルタを追加する**
+
+登録後は、必要な権限やUser Scripts APIの状態を、使用中バージョンのUIと公式資料で確認します。
 
 AdGuard ブラウザ拡張機能 v5.2以降では、MV3でカスタムフィルタを扱うためにUser Scripts APIが使用されています。仕様確認用としてAdGuard公式の[User Scripts API](https://adguard.com/kb/ja/adguard-browser-extension/user-scripts-api/)を参照します。
 
 ### AdGuard for Android
 
-Android側で試す場合も「広告ブロック」→「フィルタ」→「カスタムフィルタ」で管理します。ただし、この生成物は主にAdGuard ブラウザ拡張機能 MV3対応版との互換性を確認する目的で変換しており、CoreLibs固有機能の保持やAndroid向けの完全な最適化は前提としていません。
+Android側で試す場合は、次の順序で上記URLを登録します。
+
+**ボトムバーの ⚙ → フィルタリング → フィルタ → カスタムフィルタ → ＋ カスタムフィルタを追加する**
+
+ただし、この生成物は主にAdGuard ブラウザ拡張機能 MV3対応版との互換性を確認する目的で変換しており、CoreLibs固有機能の保持やAndroid向けの完全な最適化は前提としていません。
 
 ## 更新記録
 
