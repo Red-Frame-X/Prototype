@@ -10,6 +10,7 @@ import os
 import re
 import time
 import urllib.request
+from urllib.parse import urlsplit
 from urllib.error import HTTPError, URLError
 from datetime import datetime, timezone
 from pathlib import Path
@@ -30,9 +31,11 @@ def read_source(source: str) -> bytes:
     if source.startswith(("https://", "http://")):
         headers = {"User-Agent": "Prototype-uBOL-changelog-updater/1.0"}
         token = os.environ.get("GITHUB_TOKEN")
-        if token:
-            headers["Authorization"] = f"Bearer {token}"
         request = urllib.request.Request(source, headers=headers)
+        parsed = urlsplit(request.full_url)
+        if token and parsed.scheme == "https" and parsed.netloc == "api.github.com":
+            # Never forward credentials to a redirected request, even on the same host.
+            request.add_unredirected_header("Authorization", f"Bearer {token}")
         attempts = 4
         for attempt in range(1, attempts + 1):
             try:
