@@ -67,6 +67,8 @@ python -m unittest discover -s "uBOL Filter Converter/tests" -v
 
 GitHub Actionsが[uBOL公式CHANGELOG](https://github.com/uBlockOrigin/uBOL-home/blob/main/CHANGELOG.md)を毎日03:37（JST）に取得します。上流CHANGELOGのSHA-256が変化した場合のみ、最新バージョン、確認日時、追跡している互換性情報を[`upstream/ubol-changelog.json`](upstream/ubol-changelog.json)へ反映し、英語原文を[`upstream/ubol-CHANGELOG.source.md`](upstream/ubol-CHANGELOG.source.md)へミラーします。
 
+取得処理では、`GITHUB_TOKEN`が設定されている場合も、認証情報を付与するのは`https://api.github.com`への直接のリクエストだけです。Raw URLや外部サイトには付与せず、同一ホストを含むリダイレクト先にも転送しません。認証が必要な取得先を指定する場合は、リダイレクトを経由しないGitHub API URLを使用します。
+
 取得失敗や予期しないCHANGELOG形式は正常終了として扱わず、誤ったメタデータで上書きしません。また、CHANGELOGの文章から変換ルールを推測して自動変更することはありません。新しい構文や制限は内容を確認し、テストを追加してから変換処理へ反映します。
 
 ## 参考資料

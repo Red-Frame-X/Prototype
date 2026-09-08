@@ -54,6 +54,8 @@ uBlock Origin Lite向けには、互換性のないルールを保守的に除�
 リポジトリの品質チェックでは、原本フィルタの破損防止に加えて、重複した有効ルール、末尾空白、改行形式、意図しない大量削除などを検査します。ローカルで確認する場合は次を実行します。
 
 ```bash
+npm ci
+python -m pip install -r requirements-ci.txt
 python scripts/check_adguard_filter_integrity.py
 python scripts/check_adguard_user_rule_edit.py
 npm run lint:adguard
@@ -66,6 +68,8 @@ uBOL向け生成物はGitHub Actionsで同期するため、通常は`uBOL Filte
 ## CHANGELOG追跡とコンバータ更新
 
 [`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式CHANGELOGとAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ英語原文のミラーを生成します。メタデータと互換性レビュー候補は`upstream/adguard/`へ生成します。
+
+取得処理では、`GITHUB_TOKEN`が設定されている場合も、認証情報を付与するのは`https://api.github.com`への直接のリクエストだけです。Raw URLや外部サイトには付与せず、同一ホストを含むリダイレクト先にも転送しません。認証が必要な取得先を指定する場合は、リダイレクトを経由しないGitHub API URLを使用します。
 
 CHANGELOGは人向けの変更履歴であり、フィルタ構文の実行可能な仕様そのものではありません。このため、CHANGELOGの文章だけからコンバータコードを自己変更する処理は行いません。新しい構文や挙動は、AdGuard公式のフィルタリングルール仕様、公開ソース、上流Issuesなどで確認し、回帰テストを追加してから[`adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json)を更新します。
 

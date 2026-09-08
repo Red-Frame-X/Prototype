@@ -55,6 +55,7 @@ GitHub Actionsで、個人用フィルタや変換処理の更新・整合性確
 
 ```bash
 npm ci
+python -m pip install -r requirements-ci.txt
 python scripts/check_adguard_filter_integrity.py
 python scripts/check_adguard_user_rule_edit.py
 python -m unittest discover -s tests -v
