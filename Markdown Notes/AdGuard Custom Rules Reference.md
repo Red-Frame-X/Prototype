@@ -10,7 +10,7 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260825 |
+| **Version** | 20260908 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -133,7 +133,7 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 ### `$urltransform` ［リクエストURLの動的書き換え］
 * **構文例**： `||example.org^$urltransform=/(pref\/).*\/(suf)/$1$2/i`
 * **概要**： 正規表現とキャプチャグループを用いて、リクエストURLを送信前に別のURLへ動的に変換・リダイレクトさせます。
-* **解説**： トラッキング用の中継URLや追跡パラメータを改変できますが、正規表現の誤りで無関係なURLを破損させる危険があります。信頼済みフィルタ専用で、CoreLibs系製品のみ対応し、ブラウザ拡張機能では動作しません。
+* **解説**： トラッキング用の中継URLや追跡パラメータを改変できますが、正規表現の誤りで無関係なURLを破損させる危険があります。信頼済みフィルタ専用です。CoreLibs系製品に加え、AdGuard Browser ExtensionおよびAdGuard for Chrome MV3でもv5.5以降で対応していますが、MV3ではDNR由来の制限があるため、公式ドキュメントの制約を確認して使用してください。
 
 ### `$removeparam` ［トラッキングパラメータの高度な削除］
 * **構文例**： `||example.com^$removeparam=/^utm_[a-z]+=/`
