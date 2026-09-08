@@ -50,7 +50,8 @@ def main() -> int:
     rules = [
         line.strip()
         for line in lines
-        if line.strip() and not line.lstrip().startswith(("!", "["))
+        if line.strip() and not line.lstrip().startswith("!")
+        and (not line.lstrip().startswith("[") or line.lstrip().startswith("[$"))
     ]
     if len(rules) < MIN_NONCOMMENT_RULES:
         return fail(

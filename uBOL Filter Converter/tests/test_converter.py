@@ -17,6 +17,16 @@ SPEC.loader.exec_module(converter)
 
 
 class LineConversionTests(unittest.TestCase):
+    def test_non_basic_modifier_is_excluded_and_reported(self):
+        rule = "[$app=com.example.app]##.ad"
+        self.assertEqual(converter.convert_line(rule).reason, "non-basic-modifier")
+        output, excluded = converter.convert(["! App-only hiding", rule])
+        self.assertEqual(output, [])
+        self.assertEqual(excluded[0]["line"], 2)
+
+    def test_list_header_is_preserved(self):
+        self.assertEqual(converter.convert_line("[Adblock Plus 2.0]").output, "[Adblock Plus 2.0]")
+
     def test_plain_cosmetic_rule_is_preserved(self):
         self.assertEqual(converter.convert_line("example.com##.ad").output, "example.com##.ad")
 

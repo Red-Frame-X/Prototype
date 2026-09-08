@@ -85,6 +85,18 @@ class MetadataTests(unittest.TestCase):
             result = json.loads(output.read_text(encoding="utf-8"))
             self.assertEqual(result["latest_version"], "2026.701.1000")
 
+    def test_invalid_download_preserves_both_saved_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source, output, mirror = (root / name for name in ("source", "meta.json", "mirror"))
+            source.write_bytes(CHANGELOG)
+            metadata.update(str(source), output, source_output=mirror)
+            before = (output.read_bytes(), mirror.read_bytes())
+            source.write_bytes(b"<html>temporary upstream error</html>")
+            with self.assertRaises(ValueError):
+                metadata.update(str(source), output, source_output=mirror)
+            self.assertEqual((output.read_bytes(), mirror.read_bytes()), before)
+
     def test_writes_source_mirror_for_translation(self):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "CHANGELOG.md"

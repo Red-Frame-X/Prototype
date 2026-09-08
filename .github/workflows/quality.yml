@@ -11,10 +11,8 @@ permissions:
   contents: read
 
 concurrency:
-  # Quality checks are status-bearing validation runs. Do not cancel an older
-  # run merely because another commit is pushed shortly afterwards: cancelled
-  # runs can make the Actions history and README badge look like a CI failure.
-  # GitHub will serialize runs in the same group instead.
+  # Running checks are retained. With the default single pending slot, a new
+  # run can still replace an older pending run in this group.
   group: quality-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 

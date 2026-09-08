@@ -264,7 +264,7 @@ AdGuard for Androidでも軽く動作させるため、可能な限りシンプ�
 
 ### `#%#//scriptlet('json-prune', ...)` / `json-prune` ［JSONデータの動的クレンジング］
 * **構文例**： `example.com#%#//scriptlet('json-prune', 'ad_tags *.sponsor', 'ads_enabled')`
-* **概要**： `fetch()` や `XMLHttpRequest` を介して受信されるJSONレスポンスをインターセプトし、指定したプロパティや広告データをパース直後に削除・改変します。
+* **概要**： `JSON.parse()` と `Response.prototype.json()` の戻り値から、条件に合うプロパティを削除します。すべてのXHRレスポンスを直接処理する機能ではありません。対象APIは[公式ソース](https://github.com/AdguardTeam/Scriptlets/blob/master/src/scriptlets/json-prune.js)で確認できます。
 * **解説**： 動画プラットフォームやモダンなSPA、アプリ内通信において、データ構造の中に組み込まれた広告情報だけを外科手術のように正確に除去できます。ただし、対象となるJSONスキーマ（JSON Schema：JSONフォーマットのデータ構造において、キーの名前、データの型、階層構造などの必須構文ルールや構造定義を記述した仕様書）が変わると機能しなくなるため、サイト側の更新頻度が高い場合は定期的なメンテナンスが必要です。
 
 ### `#%#//scriptlet('prevent-fetch', ...)` / `#%#//scriptlet('prevent-xhr', ...)` ［非同期通信のJSレイヤー遮断］
@@ -277,10 +277,10 @@ AdGuard for Androidでも軽く動作させるため、可能な限りシンプ�
 * **概要**： `addEventListener` を介した特定のイベント（`click`、`scroll`、`copy` 等）へのイベントリスナー登録を、指定文字列に合致する関数に限定して初期段階でブロックします。
 * **解説**： ユーザーの画面クリックやスクロールをトリガーとして発動するトラッキングスクリプトや、右クリック・コピー禁止・デバッガ検知といったAnnoyances（Annoyances：広告とは異なるものの、ユーザーのWebブラウジング体験を妨げるCookie同意バナー、ニュースレター登録依頼、右クリックやコピー禁止等の迷惑機能の総称）をピンポイントで無力化できます。反面、サイトの正規のクリック操作やスクロール連動UIの処理関数を誤って巻き込んでブロックすると、リンク遷移や画面スクロール自体が不可能になる重篤なFalse Positiveを招くリスクがあります。
 
-### `#%#//scriptlet('set-local-storage-item', ...)` / `#%#//scriptlet('set-cookie', ...)` ［ストレージとCookieの強制設定・固定］
+### `#%#//scriptlet('set-local-storage-item', ...)` / `#%#//scriptlet('set-cookie', ...)` ［ストレージとCookieの設定］
 * **構文例**： `example.com#%#//scriptlet('set-local-storage-item', 'adblock_warning_shown', 'true')`
-* **概要**： ブラウザの `localStorage` や `sessionStorage`、あるいは `document.cookie` に任意のキーと値を強制的に書き込み、サイトスクリプトによる上書きを阻止します。
-* **解説**： CMP（Consent Management Platform：ユーザーに対して個人データ収集やCookie使用への同意を求めるプライバシーポップアップバナーを表示・管理するツールおよびプラットフォーム）による同意バナーの強制表示フラグや、アンチアドブロックの警告表示完了フラグを「表示済・同意済（ただしデータ収集は拒否）」の状態に偽装できます。通信やDOMを破壊せずに迷惑バナーや制限を無効化できるため極めて安全で処理負荷も軽い反面、サイトがストレージのキー名を変更した際には即座に再調査とルール更新が必要になります。
+* **概要**： `set-local-storage-item` は `localStorage`、`set-cookie` はCookieに指定値を書き込みます。通常版で指定できる値には制限があり、後からサイトが上書きすることを阻止する機能ではありません。`sessionStorage` は別のスクリプトレットで扱います。[公式ストレージ実装](https://github.com/AdguardTeam/Scriptlets/blob/master/src/scriptlets/set-local-storage-item.js)・[公式Cookie実装](https://github.com/AdguardTeam/Scriptlets/blob/master/src/scriptlets/set-cookie.js)
+* **解説**： CMP（Consent Management Platform：ユーザーに対して個人データ収集やCookie使用への同意を求めるプライバシーポップアップバナーを表示・管理するツールおよびプラットフォーム）による同意バナーの強制表示フラグや、アンチアドブロックの警告表示完了フラグを設定済みの状態に変更できる場合があります。ただし、同意・拒否の意味はサイト側のキーと値に依存し、バナー非表示だけではデータ収集の拒否を保証できません。通信やDOMを直接変更せずに済む反面、サイトがストレージのキー名を変更した際には即座に再調査とルール更新が必要になります。
 
 ### `#%#//scriptlet('abort-on-property-read', ...)` / `#%#//scriptlet('abort-on-property-write', ...)` ［プロパティアクセス時のスクリプト強制停止］
 * **構文例**： `example.com#%#//scriptlet('abort-on-property-read', 'window.adblockDetector')`

@@ -22,7 +22,8 @@ def active_rules(text: str) -> list[str]:
     return [
         line.strip()
         for line in text.splitlines()
-        if line.strip() and not line.lstrip().startswith(("!", "["))
+        if line.strip() and not line.lstrip().startswith("!")
+        and (not line.lstrip().startswith("[") or line.lstrip().startswith("[$"))
     ]
 
 

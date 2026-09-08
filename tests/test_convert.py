@@ -274,9 +274,14 @@ class ModifierConversionTests(unittest.TestCase):
             "! [Unsupported Mixed Cosmetic URL Scope] " + rule,
         )
 
-    def test_cname_only_modifier_is_removed_cleanly(self):
+    def test_cname_only_modifier_is_disabled(self):
         rule = "||example.com^$cname"
-        self.assertEqual(self.optimizer.optimize_line(rule), "||example.com^")
+        self.assertEqual(self.optimizer.optimize_line(rule), "! [Unsupported MV3 Modifier: cname] " + rule)
+
+    def test_cname_exception_never_becomes_general_allow_rule(self):
+        for rule in ("@@*$cname", "@@||example.com^$cname,domain=example.org", "@@*$~cname"):
+            with self.subTest(rule=rule):
+                self.assertEqual(self.optimizer.optimize_line(rule), "! [Unsupported MV3 Modifier: cname] " + rule)
 
     def test_negated_third_party_alias_is_preserved(self):
         rule = "||example.com^$~3p"

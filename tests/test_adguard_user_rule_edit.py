@@ -83,6 +83,11 @@ example.com##.ad
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("duplicate active rule", result.stderr)
 
+    def test_rejects_duplicate_non_basic_modifier_rule(self):
+        result = self.run_script("[$app=com.example.app]##.ad\n" * 2)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("duplicate active rule", result.stderr)
+
     def test_rejects_trailing_whitespace(self):
         text = """! Title: AdGuard Custom Rules - Red Frame X
 ! Description: Test

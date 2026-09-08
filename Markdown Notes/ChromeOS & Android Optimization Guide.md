@@ -984,7 +984,7 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
   ```
 
 **参考サイト**
-* [HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists)：世界で最も高評価な有志による統合型DNSブロックリスト。
+* [HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists)：複数の強度・配布形式を提供する有志による統合型DNSブロックリスト。
   * [gitlab.com/hagezi/mirror](https://gitlab.com/hagezi/mirror)：1日1回、GitHubと同期して更新。
   * [codeberg.org/hagezi/mirror2](https://codeberg.org/hagezi/mirror2)：1日1回、GitHubと同期して更新。
   * [hagezi-mirror.dnsbunker.org](https://hagezi-mirror.dnsbunker.org)：4〜8時間ごとに更新。
@@ -1029,13 +1029,13 @@ Android版Chromeなどで高精度なブロックを行うには必須です。�
 
 **❗️留意点**
 
- HTTPSフィルタリングの有効化は、AdGuard社への根本的な信頼が前提となります（[参考回答](https://mond.how/ja/topics/2e44jvg4wahf54j/oupbjuuxjlg4tjl)）。OFFにするとドメイン単位のブロックのみとなります。金融・決済系アプリは「アプリの除外設定」「仕事用プロファイル」「プライベートスペース」への隔離運用がおすすめです。
+ HTTPSフィルタリングの有効化は、AdGuard社への根本的な信頼が前提となります（[参考回答](https://mond.how/ja/topics/2e44jvg4wahf54j/oupbjuuxjlg4tjl)）。OFFにするとHTTPSのURLパスや本文を使ったフィルタリングはできませんが、DNSなどによるドメイン単位のブロックは利用できます。平文HTTPまでドメイン単位に限定されるわけではありません（[公式：HTTPSフィルタリング](https://adguard.com/kb/general/https-filtering/what-is-https-filtering/)）。金融・決済系アプリは「アプリの除外設定」「仕事用プロファイル」「プライベートスペース」への隔離運用がおすすめです。
 
-**ローカルVPNによる監視を行わず、強力な内蔵ブロッカー単体で遮断できるブラウザ**
+**ローカルVPNを使わず、ブラウザ内の機能・拡張機能で遮断する選択肢**
 * [Brave](https://play.google.com/store/apps/details?id=com.brave.browser) ▶ [AdGuard Mobile Ads filter](https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt) を追加
 * [Cromite](https://github.com/uazo/cromite)
 * [Elixir Browser](https://github.com/SF-FLAM/ElixirBrowser)
-* [Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
+* [Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox)：広告除去にはuBlock Originなどの拡張機能を併用（[uBO公式](https://github.com/gorhill/uBlock)）。
 
 * 参考：[HTTPSフィルタリングについて（Wiki）](https://wikiwiki.jp/nanj-adguard/HTTPS%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6) / [中間者攻撃とは](https://www.nri-secure.co.jp/glossary/mtm-attack)
 
@@ -1072,7 +1072,7 @@ AdGuard内でDNSを設定します（Google Public DNS推奨）。
 ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネームサーバー > [Google ネームサーバー](https://developers.google.com/speed/public-dns/docs/using?hl=ja#chromeos) に変更。
 
 **トラブルシューティング**
-* **Wi-Fi接続不良**：IPv6フィルタリングをOFFにする。
+* **Wi-Fi接続不良**：まず電波状態やAdGuard停止時の再現性を確認します。IPv6フィルタリングの変更は原因切り分けが必要な場合に限定し、改善しなければ元へ戻します。一律にOFFにする対策ではありません（[公式：ローレベル設定の注意事項](https://adguard.com/kb/adguard-for-android/features/low-level-settings/)）。
 * **フィルタ自動更新不可**：ホーム画面の↻を手動タップ。
 
 **拡張機能（有償）**
