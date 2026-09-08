@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202609071720
+! Version: 202609081706
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,7 +9,6 @@
 ! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.
 ! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.
 
-apkpure.com##.fast-download-start-btn.btn
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -155,6 +154,7 @@ a2zapk.io##[href^="https://beta-app-sprout.xyz"] > button
 androplus.jp##fieldset
 apkcombo.com##.apkcombo_mobile_300x250_bottom.apkcombo_desktop_300x250_right.ad-pss-bottom-right.ad-pss
 apkpure.com##.d-fast-download-game-one.fast-download-start-btn.btn
+apkpure.com##.fast-download-start-btn.btn
 apkpure.net##.fast-download-start-btn.btn
 audiobookbay.lu#?#.torrent_info span:has-text(/今すぐ|直接|Start Direct Download|Download Files Now/)
 audiobookbay.lu#?#td:nth-of-type(n):has-text(/Direct|安全|Secured Download|直接|Tips|ヒント|場合によっては|Sometimes the torrent health/i)
@@ -2988,6 +2988,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||earth-c.jp^$document
 ||earthquake.esy.es^$document
 ||earthquakenet.jp^$document
+||earthreview.net^$document
 ||eat.badate.work^$document
 ||ebisu-selection.com^$document
 ||ebook-house.com^$document
@@ -4195,6 +4196,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gokigenteikoku.jp^$document
 ||goku-tsuma.net^$document
 ||gokyuzuvebalon.com^$document
+||golden-tamatama.com^$document
 ||goldenevent.pl^$document
 ||goldenheartmediation.com^$document
 ||goldenkings.bl.kuroco-img.app^$document
@@ -4712,6 +4714,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hitomi-missav05.com^$document
 ||hitomi-missav06.com^$document
 ||hitomi-missav07.com^$document
+||hitomi-missav12.com^$document
 ||hitomi-nhentai.com^$document
 ||hitomi-official.jp^$document
 ||hitomi-raw-eromanga.com^$document
@@ -5546,6 +5549,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||karanpc.info^$document
 ||karanpc.me^$document
 ||karaoke-yumex.jp^$document
+||karapaia.com^$document
 ||karasugaming.com^$document
 ||kare-kanojo.blog.ss-blog.jp^$document
 ||karikari.xyz^$document
@@ -6194,6 +6198,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||liskul.com^$document
 ||lissora-jp.com^$document
 ||lit.link/ginzacocolo^$document
+||lite-ra.com^$document
 ||lite.tiktok.com^$document
 ||little-busters.ldblog.jp^$document
 ||littlelittlelife.com^$document
@@ -7471,6 +7476,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||news-media-life.com^$document
 ||news-news-news.net^$document
 ||news-us.jp^$document
+||news-us.org^$document
 ||news-vision.jp^$document
 ||news-wakaru.com^$document
 ||news.2chblog.jp^$document
@@ -8490,6 +8496,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ogiri.moshimobox.top^$document
 ||ohanasi-blog.com^$document
 ||ohisamaso.com^$document
+||ohmikonan-alps.jp^$document
 ||ohogoe.org^$document
 ||oidon-cup.com^$document
 ||oioi-min.com^$document
@@ -10915,6 +10922,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||the-greatest-dj-of-all-time.technobit.online^$document
 ||the-jet-sleeper.com^$document
 ||the-personal-gym.com^$document
+||the-playhouse.jp^$document
 ||the-promised-neverland-movie.jp^$document
 ||the-zafiro-simulator-of-g-b-a-glass-edition.softonic.ru^$document
 ||the.chozai-cosme.jp^$document
@@ -11914,6 +11922,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||winlator.io^$document
 ||winoogov.com^$document
 ||wiple-service.com/column^$document
+||wisdomkeeper.livedoor.blog^$document
 ||wise-media-factory.com^$document
 ||wisteriablog.net^$document
 ||wittmann.digital^$document
@@ -12819,6 +12828,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.hokuto-no-ken-musical.com^$document
 ||www.hollandsvastgoed.com^$document
 ||www.homefiks.no^$document
+||www.honmotakeshi.com^$document
 ||www.honnonihohi.jp^$document
 ||www.hospicedefrance.fr^$document
 ||www.hotdebrid.com^$document
