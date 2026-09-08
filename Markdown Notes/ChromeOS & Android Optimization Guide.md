@@ -959,13 +959,17 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
 * **[Google Play](https://play.google.com/store/apps/details?id=dnsfilter.android)**
 * **[HP](https://www.zenz-solutions.de/personaldnsfilter-wp/)** / **[GitHub](https://github.com/IngoZenz/personaldnsfilter)** / **[FAQ](https://www.zenz-solutions.de/faq/)**
 
-**personalDNSfilter（ローカルVPNモード）を安定して稼働させるための設定**
+**personalDNSfilter（ローカルVPNモード）の常駐・DNS設定**
 
-* Androidのステータスバー：通知右上⚙を押して、**通知をデフォルトからサイレント**に変更する。
-* AndroidのVPN設定で **「常時接続VPN」を有効**にする。
-* VPNの接続が不安定な時は、**「VPNプロファイル」を一度削除し、再設定する**。
-* ChromeOSのプライバシーとセキュリティの設定で **「サイトのルックアップに安全な接続を使用する」を無効**にする。
-* Android用ブラウザの設定にある **「セキュアDNSを使用」を無効**にする。
+Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設定メモです。ChromeOS上のAndroid環境では、設定項目の有無やDNSが処理される範囲を実機で確認します。
+
+* **常駐対策**：personalDNSfilterをバッテリー最適化の対象から除外し、バックグラウンド動作を許可します。ローカルVPNモードでは、AndroidのVPN設定で「常時接続VPN」を有効にします。設定名・導線はOSや端末によって異なり、停止を完全に防ぐ保証はありません。
+* **「VPNなしの接続をブロック」は無効のままにします**。personalDNSfilterはDNS問い合わせだけを処理するため、この設定を有効にすると通常のインターネット通信が遮断されると公式FAQに明記されています。
+* **DNSフィルタリングの迂回対策**：Androidの「プライベートDNS」と、Android版Chromeの「セキュアDNSを使用」を無効にします。これはDNS問い合わせをpersonalDNSfilterに処理させるための設定であり、VPNの停止を防ぐ設定ではありません。
+* **DNS通信の暗号化**：OS・ブラウザ側の暗号化DNSを無効にする場合は、personalDNSfilter側でDoHまたはDoTの上流DNSを設定します。[公式製品説明](https://www.zenz-solutions.de/personaldnsfilter-wp/)に両方式の対応が記載されています。
+* **ChromeOS側の設定**：「サイトのルックアップに安全な接続を使用する」の無効化は、上記のAndroid向けFAQからChromeOS全体へ一律に適用しません。ChromeOS側のDNSもpersonalDNSfilterで処理する構成では、設定変更前後の問い合わせがアプリのログに記録されるか確認します。Android環境内で動作しているだけでは、ChromeOS全体への適用を確認したことにはなりません。
+
+通知のサイレント化は、通知音などを抑えるための任意設定です。VPNの安定化対策には含めません（[Android公式：通知の管理](https://support.google.com/android/answer/9079661?hl=ja)）。VPNプロファイルの削除・再設定も、公式FAQで一般的な安定化対策として確認できないため、常用手順には含めません。
 
 ログのドメインを長押しすると、ブラック/ホワイトリストへの登録が可能です。
 
@@ -988,14 +992,22 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
 ## Android アプリ 有償版 AdGuard for Android（Android）
 * **[HP](https://adguard.com/ja/adguard-android/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardForAndroid)**
 
-**AdGuard for Android（ローカルVPNモード）を安定して稼働させるための設定**
-* 設定 > アプリ > すべてのアプリ > AdGuard > アプリのバッテリー使用量 > **バックグラウンドでの使用を許可** > **制限なし**。
-* Androidのステータスバー：通知右上⚙を押して、**通知をデフォルトからサイレント**に変更する。
-* AndroidのVPN設定で **「常時接続VPN」を有効**にする。
-* VPNの接続が不安定な時は、**「VPNプロファイル」を一度削除し、再設定する**。
-* Androidのネットワーク設定で **「プライベートDNS」を無効**にする。
-* Androidのネットワーク設定で **「接続の自動調整」にある設定を全て無効**にする。
-* Android用ブラウザの設定にある **「セキュアDNSを使用」を無効**にする。
+**AdGuard for Android（ローカルVPNモード）の常駐・DNS設定**
+
+**常駐・再起動対策**
+* AdGuardのバックグラウンド動作を許可し、バッテリー最適化の対象から除外します。Pixelでの設定例：設定 > アプリ > AdGuard > アプリのバッテリー使用量 > バックグラウンドでの使用を許可 > 制限なし。設定名・導線はAndroidのバージョンや端末によって異なります。
+* バックグラウンドで停止する場合は、AndroidのVPN設定でAdGuardの「常時接続VPN」を有効にします。[AdGuard公式のメーカー別対処手順](https://adguard.com/kb/adguard-for-android/solving-problems/background-work/)でもPixelなどに案内されています。有効化後も、端末再起動後にアプリの保護状態を確認します。
+* **「VPNなしの接続をブロック」は別機能です**。有効にするとVPNから除外したアプリも通信できなくなるため、安定化目的では有効にしません（[Android公式：VPN](https://developer.android.com/develop/connectivity/vpn#blocked-connections)）。
+
+**AdGuardのDNS保護を利用する場合**
+* DNS処理をAdGuardに集約する場合は、Androidの「プライベートDNS」を無効にします。AdGuard公式は、Android 10以降のプライベートDNSによるDNS処理の迂回を説明しています。これはDNSフィルタリングの整合性を保つための設定です（[公式互換性情報](https://adguard.com/kb/adguard-for-android/solving-problems/compatibility-issues/#private-dns)）。
+* ブラウザの「セキュアDNSを使用」の無効化は、DNS設定をAdGuardに集約する方法の一つです。ただし必須ではありません。AdGuardのローレベル設定「Filter secure DNS」には、ブラウザ指定のDNSを利用したままDoHを処理する方式と、AdGuardのDNSプロキシへ転送する方式があります。利用するブラウザ・設定でDNS問い合わせが処理されるか確認します（[公式仕様](https://adguard.com/kb/adguard-for-android/features/low-level-settings/#filter-secure-dns)）。
+* OS・ブラウザ側の暗号化DNSを無効にする場合は、AdGuardのDNS保護でDoH・DoTなどの暗号化DNSサーバーを設定します。代替の暗号化を設定せずに無効化すると、DNS問い合わせが暗号化されない可能性があります（[公式：DNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)）。
+
+**任意設定・不具合時の切り分け**
+* 通知のサイレント化は通知音などを抑えるための任意設定で、VPN維持のための設定ではありません（[Android公式：通知の管理](https://support.google.com/android/answer/9079661?hl=ja)）。
+* 「接続の自動調整」は一律に無効化しません。Googleは省電力のための有効化を案内しています。接続切り替え時に不具合がある場合だけ、該当項目を一つずつ変更して再現性を比較し、改善しなければ元に戻します。これは切り分け案であり、AdGuard公式の必須設定ではありません（[Google公式：ネットワーク設定](https://support.google.com/pixelphone/answer/2819583?hl=ja)）。
+* VPNプロファイルの削除・再設定は、一般的な安定化対策として公式の裏付けを確認できないため、常用手順には含めません。停止が続く場合は、メーカー別の常駐設定を確認し、発生時刻と[デバッグログ](https://adguard.com/kb/adguard-for-android/solving-problems/log/)を記録して原因を調べます。
 
 ⚙ > 一般設定 > 詳細設定 > ローレベル設定 > その他の設定 - 「メイン画面にデベロッパーツールを表示する」をONにすると、ホーム画面右上にレンチアイコンが表示され設定アクセスが容易になります（[画像](https://imgur.com/UKGTVnZ)）。
 
