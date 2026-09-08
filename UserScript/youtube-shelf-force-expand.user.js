@@ -2,7 +2,7 @@
 // @name         YouTube Shelf Force Expand
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
-// @version      1.1.0
+// @version      1.1.1
 // @description  YouTubeのシェルフの「もっと見る」を強制的に展開しボタンを隠す
 // @author       Red Frame X
 // @match        https://www.youtube.com/*
@@ -31,7 +31,7 @@
     }
 
     const applyAttributes = () => {
-        for (const item of document.querySelectorAll('ytd-rich-item-renderer[hidden]')) {
+        for (const item of document.querySelectorAll('ytd-rich-shelf-renderer ytd-rich-item-renderer[hidden]')) {
             item.removeAttribute('hidden');
         }
 

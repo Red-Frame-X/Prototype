@@ -81,6 +81,9 @@ def update(
 ) -> bool:
     changelog = read_source(source)
     digest = hashlib.sha256(changelog).hexdigest()
+    # Validate before changing either saved artifact.
+    timestamp = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
+    metadata = build_metadata(changelog, source, timestamp)
     source_changed = False
     if source_output is not None:
         source_output.parent.mkdir(parents=True, exist_ok=True)
@@ -99,8 +102,6 @@ def update(
             print("No upstream changelog changes detected.")
             return source_changed
 
-    timestamp = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
-    metadata = build_metadata(changelog, source, timestamp)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(
         json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",

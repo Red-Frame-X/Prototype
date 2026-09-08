@@ -52,7 +52,6 @@ class AdGuardOptimizer:
         self.re_redos_check: Pattern = re.compile(
             r'(?:\.\*|\.\+){2,}|(?:\(?:[^)]*(?:\.\*|\.\+)[^)]*\)){2,}'
         )
-        self.re_cname: Pattern = re.compile(r'(?:^|,)cname(?=,|$)')
         self.re_multi_commas: Pattern = re.compile(r',+')
 
         # スクリプトレット検知用正規表現の事前構築
@@ -306,8 +305,11 @@ class AdGuardOptimizer:
             if re.search(r'(?:^|,)~?redirect-rule(?:=|,|$)', modifiers_str):
                 return f"! [Unsupported MV3 Modifier: redirect-rule] {original_line}"
 
-            # cname 修飾子の除去
-            modifiers_str = self.re_cname.sub('', modifiers_str)
+            # Dropping cname would broaden a CNAME-only exception into a normal
+            # allow rule. Preserve the source as a disabled diagnostic instead.
+            # https://github.com/gorhill/uBlock/wiki/Static-filter-syntax#cname
+            if re.search(r'(?:^|,)~?cname(?:=|,|$)', modifiers_str):
+                return f"! [Unsupported MV3 Modifier: cname] {original_line}"
             modifiers_str = modifiers_str.strip(',')
             modifiers_str = self.re_multi_commas.sub(',', modifiers_str)
 

@@ -21,16 +21,16 @@ https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/uBOL%20F
 
 誤変換によるサイト破損を避けるため、意味を維持できないルールは出力せず、JSONレポートへ理由と元の行番号を記録します。
 
-対応可能なコスメティックルールは、`:contains()`を`:has-text()`、`:nth-ancestor()`を`:upward()`、`:matches-property()`を`:matches-prop()`へ変換します。`:style()`、`:matches-attr()`、`:matches-css*()`、`:xpath()`などuBO/uBOLが対応する演算子は維持して出力します。
+対応可能なコスメティックルールは、`:contains()`を`:has-text()`、`:nth-ancestor()`を`:upward()`、`:matches-property()`を`:matches-prop()`へ変換します。`:remove()`、`:style()`、`:matches-attr()`、`:matches-css*()`、`:xpath()`などuBO/uBOLが対応する演算子は維持して出力します。
 
 次のルールは意味または信頼境界を維持できないため除外します。
 
 - AdGuardアプリ専用の`$app`ルール
 - HTMLフィルタリング（`$$`）。同じ目的のCSSフォールバックがある場合はそちらを出力
-- `:remove()`。要素の非表示ではなくDOM削除となり、同じライフサイクルを保証できない
-- AdGuard scriptlet（`#%#`）。現在のルールは外部リストでは拒否されるtrusted scriptlet
+- `[$app=...]`、`[$url=...]`などの非基本ルール修飾子。現在の変換器では適用範囲を安全に対応付けられない
+- スクリプトレットルールとその例外（`#%#`、`#@%#`、`##+js`、`#@#+js`）。現在の変換器では種類を問わず除外
 - `$replace`、`$redirect`、`$csp`など、uBOLへ安全に対応付けられない修飾子
-- ChromeのRE2で表現できない後読み・後方参照付き正規表現
+- ChromeのRE2で表現できない先読み・後読み・後方参照付き正規表現
 
 ## 実行メモ
 

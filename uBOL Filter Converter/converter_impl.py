@@ -121,7 +121,9 @@ def convert_line(raw_line: str) -> Result:
     line = raw_line.strip()
     if not line:
         return Result("", "preserved")
-    if line.startswith("!") or line.startswith("["):
+    if line.startswith("[$"):
+        return Result(None, "excluded", "non-basic-modifier")
+    if line.startswith("!") or re.fullmatch(r"\[Adblock(?: Plus)?(?: [\d.]+)?\]", line):
         return Result(line, "preserved")
 
     if "$$" in line or "#@$#" in line:
@@ -195,7 +197,7 @@ def convert(lines: Iterable[str]) -> tuple[list[str], list[dict[str, object]]]:
 
         for index, (number, raw_line) in enumerate(block):
             line = raw_line.strip()
-            if line.startswith("!") or line.startswith("["):
+            if line.startswith("!") or re.fullmatch(r"\[Adblock(?: Plus)?(?: [\d.]+)?\]", line):
                 if index == 0 and re.fullmatch(
                     r"!\s+[A-Za-z0-9.*_-]+(?:,[A-Za-z0-9.*_-]+)*",
                     line,
