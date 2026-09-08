@@ -115,10 +115,8 @@ class AdGuardOptimizer:
                 req = urllib.request.Request(url, headers=req_headers)
                 with urllib.request.urlopen(req, timeout=15) as res:
                     return res.read().decode('utf-8').splitlines()
-            except (HTTPError, URLError) as e:
+            except (HTTPError, URLError, TimeoutError, UnicodeDecodeError) as e:
                 print(f"  -> Failed: {e}")
-            except Exception as e:
-                print(f"  -> Error: {e}")
 
         print("Error: 元データの取得に失敗しました。")
         sys.exit(1)
