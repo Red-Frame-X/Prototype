@@ -186,11 +186,8 @@ class AdGuardOptimizer:
     def _contains_embedded_end_anchor(self, pattern_str: str) -> bool:
         """Return whether an unescaped $ anchor appears before the pattern end.
 
-        AGLint interprets an embedded ``$`` followed by regex tokens (for example
-        ``(?:/|$)``) as the start of AdGuard modifiers when the rule has no real
-        modifier section.  The affected source rules are document URL rules, so
-        adding an explicit ``$document`` modifier removes the ambiguity without
-        changing which top-level navigations they block.
+        Used only for a narrowly scoped AGLint diagnostic suppression. The
+        anchor must never change the resource types or exception semantics.
         """
         in_character_class = False
         for idx, char in enumerate(pattern_str):
@@ -240,11 +237,6 @@ class AdGuardOptimizer:
             # ReDoS対策 (過剰なバックトラックのパージ)
             if self.re_redos_check.search(pattern_str):
                 return f"! [High-Load Regex] {original_line}"
-
-            # Bare regex rules containing an embedded end anchor are ambiguous
-            # to AGLint (it treats the anchor as the modifier separator).
-            if not modifier_part and self._contains_embedded_end_anchor(pattern_str):
-                modifier_part = '$document'
 
             line = f"{prefix}{regex_part}{modifier_part}"
 
@@ -341,6 +333,12 @@ class AdGuardOptimizer:
             if optimized is None:
                 continue
 
+            regex_data = self._parse_regex_rule(optimized)
+            if (regex_data and not regex_data[2]
+                    and self._contains_embedded_end_anchor(regex_data[1][1:-1])):
+                # AGLint 3.0.2 mistakes the embedded anchor for a modifier.
+                # Suppress only that diagnostic; retain the actual rule unchanged.
+                optimized_lines.append('! aglint-disable-next-line invalid-modifiers')
             optimized_lines.append(optimized)
 
             if optimized != line and not optimized.startswith('! ['):

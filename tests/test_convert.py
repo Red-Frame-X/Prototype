@@ -213,7 +213,7 @@ class ModifierConversionTests(unittest.TestCase):
         rule = r"/^https?:\/\/[^/]*pay(?:[/?#]|$)/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            r"/^https?:\/\/[^\/]*pay(?:[\/?#]|$)/$document",
+            r"/^https?:\/\/[^\/]*pay(?:[\/?#]|$)/",
         )
 
     def test_end_anchor_in_regex_is_preserved(self):
@@ -234,12 +234,32 @@ class ModifierConversionTests(unittest.TestCase):
             "! [Unsupported MV3 Regex] " + rule,
         )
 
-    def test_bare_regex_with_embedded_end_anchor_gets_document_modifier(self):
+    def test_bare_regex_with_embedded_end_anchor_keeps_scope(self):
         rule = r"/^https?:\/\/example\.com(?:[\/?#]|$)/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            r"/^https?:\/\/example\.com(?:[\/?#]|$)/$document",
+            r"/^https?:\/\/example\.com(?:[\/?#]|$)/",
         )
+
+    def test_bare_regex_exception_does_not_disable_page_filtering(self):
+        rule = r"@@/example(?:/|$)/"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
+    def test_generated_bare_regex_keeps_scope_with_narrow_lint_directive(self):
+        rules = [r"/tracker(?:foo|$)/", r"@@/safe(?:foo|$)/", r"/plain$/"]
+        with tempfile.TemporaryDirectory() as directory:
+            output = os.path.join(directory, "filter.txt")
+            with patch.object(self.optimizer, "fetch_source", return_value=rules), patch(
+                "scripts.convert.OUTPUT_FILE", output
+            ):
+                self.optimizer.run()
+            with open(output, encoding="utf-8") as generated:
+                text = generated.read()
+        self.assertNotIn("$document", text)
+        self.assertEqual(self.optimizer.get_rule_signature(text.splitlines()), rules)
+        for rule in rules[:2]:
+            self.assertIn("! aglint-disable-next-line invalid-modifiers\n" + rule, text)
+        self.assertEqual(text.count("! aglint-disable-next-line"), 2)
 
     def test_existing_modifier_after_embedded_end_anchor_is_preserved(self):
         rule = r"/^https?:\/\/example\.com(?:[\/?#]|$)/$document"

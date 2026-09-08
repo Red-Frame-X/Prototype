@@ -10,6 +10,7 @@ import os
 import re
 import time
 import urllib.request
+from urllib.parse import urlsplit
 from urllib.error import HTTPError, URLError
 from datetime import datetime, timezone
 from pathlib import Path
@@ -33,9 +34,11 @@ def fetch(url: str, attempts: int = 4) -> bytes:
         "X-GitHub-Api-Version": "2022-11-28",
     }
     token = os.environ.get("GITHUB_TOKEN")
-    if token:
-        headers["Authorization"] = f"Bearer {token}"
     request = urllib.request.Request(url, headers=headers)
+    parsed = urlsplit(request.full_url)
+    if token and parsed.scheme == "https" and parsed.netloc == "api.github.com":
+        # Never forward credentials to a redirected request, even on the same host.
+        request.add_unredirected_header("Authorization", f"Bearer {token}")
     for attempt in range(1, attempts + 1):
         try:
             with urllib.request.urlopen(request, timeout=30) as response:
