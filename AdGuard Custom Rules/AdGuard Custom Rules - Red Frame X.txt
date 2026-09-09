@@ -1,4 +1,4 @@
-! Title: AdGuard カスタムルール - Red Frame X
+! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuardカスタムルール。
 ! Version: 202609012022
 ! Syntax: AdGuard
