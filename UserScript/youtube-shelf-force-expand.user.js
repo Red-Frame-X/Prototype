@@ -16,6 +16,7 @@
 (function () {
     'use strict';
 
+    // 「もっと見る」ボタンを非表示
     const css = `
         ytd-rich-shelf-renderer .button-container {
             display: none !important;
@@ -30,6 +31,7 @@
         document.documentElement.appendChild(style);
     }
 
+    // 非表示項目を表示してシェルフを展開
     const applyAttributes = () => {
         for (const item of document.querySelectorAll('ytd-rich-shelf-renderer ytd-rich-item-renderer[hidden]')) {
             item.removeAttribute('hidden');
@@ -50,6 +52,7 @@
         });
     };
 
+    // 動的更新に合わせて再適用
     const observer = new MutationObserver(scheduleApply);
 
     const start = () => {
