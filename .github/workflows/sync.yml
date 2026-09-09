@@ -16,9 +16,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # すべてのmain書き込みワークフローを同じキューで直列化し、
-  # 自動生成コミット同士のpush競合を防ぐ。
-  group: repository-writer-${{ github.ref }}
+  # 同一ワークフローの重複実行だけを直列化する。異なる書き込みワークフローを
+  # 同じgroupにすると、GitHub Actionsが古いpending runをキャンセルするため共有しない。
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -32,76 +32,56 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      # キュー待機中にmainが更新されても、必ず最新状態を基点に変換する。
-      - name: Synchronize with latest main
-        run: |
-          git fetch --no-tags origin main
-          git checkout -B main origin/main
-
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
-
-      # リポジトリ全体のテストスイートは、CI専用のPythonパッケージ（現在はPyYAML）を
-      # 使用するスクリプトをインポートする。定期実行時に依存関係が乖離しないよう、
-      # このワークフローでもquality.ymlと同じ固定済み依存関係マニフェストを使用する。
-      - name: Install Python dependencies
-        run: python -m pip install --disable-pip-version-check -r requirements-ci.txt
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '24'
 
-      - name: Create dist directory
-        run: mkdir -p dist
-
-      - name: Run Tests
-        run: python -m unittest discover -s tests -v
-
-      # 依存関係のインストール前に変換し、生成物の差分を判定
-      - name: Run Conversion Script
-        id: conversion
-        run: |
-          python scripts/convert.py
-
-          if git diff --quiet -- 'dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt'; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No generated changes detected."
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Generated filter changed."
-          fi
-
-      # 生成物に差分がある場合だけ、公開前検証に必要な依存関係を導入
-      - name: Install Node.js dependencies
-        if: steps.conversion.outputs.changed == 'true'
-        run: npm ci
-
-      # 他の管理対象ルールは quality.yml で検証するため、ここでは生成物だけを検証
-      - name: Run AGLint
-        if: steps.conversion.outputs.changed == 'true'
-        run: npx --no-install aglint 'dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt'
-
-      - name: Commit and Push if changed
-        if: steps.conversion.outputs.changed == 'true'
+      - name: Convert, validate, and publish
         run: |
           set -euo pipefail
           output='dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt'
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # このワークフローが管理する生成物だけをステージする。
-          git add -- "$output"
+          for attempt in 1 2 3 4 5; do
+            # push競合時は最新mainへ戻し、依存関係・テスト・生成・検証をやり直す。
+            git fetch --no-tags origin main
+            git reset --hard origin/main
 
-          if ! git diff --staged --quiet -- "$output"; then
+            python -m pip install --disable-pip-version-check -r requirements-ci.txt
+            mkdir -p dist
+            python -m unittest discover -s tests -v
+            python scripts/convert.py
+
+            if git diff --quiet -- "$output"; then
+              echo 'No generated changes detected.'
+              exit 0
+            fi
+
+            npm ci
+            npx --no-install aglint "$output"
+            git add -- "$output"
+            if git diff --cached --quiet -- "$output"; then
+              echo 'No changes remain after Git normalization.'
+              exit 0
+            fi
+
             git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized)"
-            if ! git push origin HEAD:main; then
-              echo 'main advanced outside the shared writer queue; rerun the workflow to regenerate from the latest main.' >&2
+            if git push origin HEAD:main; then
+              echo 'Changes committed and pushed successfully.'
+              exit 0
+            fi
+
+            if [[ "$attempt" -eq 5 ]]; then
+              echo 'Failed to publish after 5 regenerate-and-push attempts.' >&2
               exit 1
             fi
-            echo "Changes committed and pushed successfully."
-          else
-            echo "No changes detected in filter rules. Skipping commit."
-          fi
+            echo "main advanced during publication; regenerating from latest main ($attempt/5)."
+            sleep $((attempt * 2))
+          done
