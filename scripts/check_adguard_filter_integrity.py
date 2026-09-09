@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail fast when the canonical AdGuard filter is structurally corrupted."""
+"""標準AdGuardフィルタの構造破損を早期検出する。"""
 
 from __future__ import annotations
 
@@ -17,7 +17,9 @@ REQUIRED_METADATA = {
     "Title": "AdGuard Custom Rules - Red Frame X",
     "Syntax": "AdGuard",
 }
+# 全置換や切り詰め事故を検出するため、最低限の有効ルール数を要求する。
 MIN_NONCOMMENT_RULES = 25
+# VersionはYYYYMMDDHHMM形式に固定する。
 VERSION_RE = re.compile(r"^! Version:\s*\d{12}$", re.MULTILINE)
 
 
