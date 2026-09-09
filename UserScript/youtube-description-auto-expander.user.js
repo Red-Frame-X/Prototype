@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         YouTube Description Auto Expander
+// @name         YouTube 概要欄自動展開
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
 // @version      1.2.0

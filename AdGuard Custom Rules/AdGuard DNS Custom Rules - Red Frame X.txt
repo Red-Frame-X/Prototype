@@ -1,5 +1,5 @@
-! Title: AdGuard DNS Custom Rules - Red Frame X
-! Description: Rules for Modifying the AdGuard DNS filter.
+! Title: AdGuard DNS カスタムルール - Red Frame X
+! Description: AdGuard DNSフィルタを調整する個人用ルール。
 ! Version: 202609082144
 ! Syntax: AdGuard DNS
 ! Expires: 1 day
