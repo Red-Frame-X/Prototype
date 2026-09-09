@@ -22,7 +22,7 @@ from urllib.error import HTTPError, URLError
 # スクリプト自身の場所を基準にプロジェクトルートと出力先パスを確定
 BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FILTER_NAME: str = "uB-filter-by-kdroidwin (AdGuard Optimized)"
-FILTER_TITLE: str = "uB-filter-by-kdroidwin（AdGuard最適化）"
+FILTER_TITLE: str = FILTER_NAME
 OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", f"{FILTER_NAME}.txt")
 CAPABILITY_FILE: str = os.path.join(BASE_DIR, "config", "adguard-converter-capabilities.json")
 CAPABILITY_TARGET: str = "adguard-browser-extension-mv3"
@@ -349,24 +349,11 @@ class AdGuardOptimizer:
             else:
                 stats["bypassed"] += 1
 
-        # [Step D] スマート差分検知
+        # [Step D] スマート差分検知。ルール本体だけでなく、固定メタデータの変更も反映する。
         new_signature = self.get_rule_signature(optimized_lines)
-
-        if os.path.exists(OUTPUT_FILE):
-            with open(OUTPUT_FILE, 'r', encoding='utf-8') as f:
-                existing_lines = f.read().splitlines()
-
-            if new_signature == self.get_rule_signature(existing_lines):
-                print("変更なし: ルール本体に差分がないため、ファイルの更新をスキップしました。")
-                return
-
-        jst = timezone(timedelta(hours=+9), 'JST')
-        current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
-
-        header = [
+        expected_metadata = [
             f"! Title: {FILTER_TITLE}",
             "! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。",
-            f"! Version: {current_version}",
             "! Syntax: AdGuard",
             "! Expires: 12 hours",
             "! Homepage: https://github.com/Red-Frame-X/Prototype",
@@ -374,6 +361,25 @@ class AdGuardOptimizer:
             "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
             "! Disclaimer: AdGuard for Chrome MV3向けに最適化した非公式フォーク。",
             "! Compatibility: AdGuard for Androidはベストエフォート対応。CoreLibs固有機能は省略される場合があります。",
+        ]
+
+        if os.path.exists(OUTPUT_FILE):
+            with open(OUTPUT_FILE, 'r', encoding='utf-8') as f:
+                existing_lines = f.read().splitlines()
+
+            metadata_matches = all(line in existing_lines[:12] for line in expected_metadata)
+            if new_signature == self.get_rule_signature(existing_lines) and metadata_matches:
+                print("変更なし: ルール本体と固定メタデータに差分がないため、ファイルの更新をスキップしました。")
+                return
+
+        jst = timezone(timedelta(hours=+9), 'JST')
+        current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
+
+        header = [
+            expected_metadata[0],
+            expected_metadata[1],
+            f"! Version: {current_version}",
+            *expected_metadata[2:],
             ""
         ]
 

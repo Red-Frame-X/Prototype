@@ -1,4 +1,4 @@
-! Title: ChMate NGワード正規表現
+! Title: NG Word Regex for ChMate
 ! Description: ChMateのNGワード用正規表現。正規表現と非表示を有効にして登録。
 ! Version: 202608041720
 ! Syntax: Java Regex (ChMate NG)
