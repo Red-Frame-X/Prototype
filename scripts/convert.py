@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""uB-filter-by-kdroidwin (AdGuard Optimized) generator and linter.
+"""uB-filter-by-kdroidwin (AdGuard Optimized) の生成・Lintスクリプト。
 
 uBlock Origin用フィルタをAdGuard for Chrome MV3向けに、安全性と互換性を優先して
 変換・静的解析(Lint)するスクリプト。生成物はAdGuard for Androidでも読み込めますが、
@@ -62,11 +62,11 @@ class AdGuardOptimizer:
 
     @staticmethod
     def _load_converter_settings(capability_file: str) -> Dict[str, object]:
-        """Load reviewed converter behavior from the repository capability profile.
+        """査読済みの互換性プロファイルから変換設定を読み込む。
 
-        The capability profile is the single source of truth for data-like
-        compatibility decisions. Invalid or incomplete settings fail fast so a
-        CI run cannot silently fall back to stale hard-coded behavior.
+        データ形式の互換性判断はこのプロファイルを唯一の基準とする。
+        不正または不足した設定は即時に失敗させ、古いハードコードへ
+        暗黙にフォールバックしないようにする。
         """
         with open(capability_file, 'r', encoding='utf-8') as f:
             profile = json.load(f)
@@ -163,7 +163,7 @@ class AdGuardOptimizer:
         return None
 
     def _contains_unsupported_backreference(self, pattern_str: str) -> bool:
-        """Return whether a regex contains an unescaped RE2-incompatible backreference."""
+        """RE2非互換の未エスケープ後方参照が含まれるか判定する。"""
         idx = 0
         length = len(pattern_str)
         while idx < length:
@@ -184,10 +184,10 @@ class AdGuardOptimizer:
         return False
 
     def _contains_embedded_end_anchor(self, pattern_str: str) -> bool:
-        """Return whether an unescaped $ anchor appears before the pattern end.
+        """正規表現末尾より前に未エスケープの``$``アンカーがあるか判定する。
 
-        Used only for a narrowly scoped AGLint diagnostic suppression. The
-        anchor must never change the resource types or exception semantics.
+        AGLintの誤検知を限定的に抑制するためだけに使用する。
+        リソース種別や例外ルールの意味は変更しない。
         """
         in_character_class = False
         for idx, char in enumerate(pattern_str):
@@ -297,8 +297,8 @@ class AdGuardOptimizer:
             if re.search(r'(?:^|,)~?redirect-rule(?:=|,|$)', modifiers_str):
                 return f"! [Unsupported MV3 Modifier: redirect-rule] {original_line}"
 
-            # Dropping cname would broaden a CNAME-only exception into a normal
-            # allow rule. Preserve the source as a disabled diagnostic instead.
+            # cnameを削除するとCNAME限定の例外が通常の許可ルールへ広がるため、
+            # 元ルールを無効化した診断コメントとして保持する。
             # https://github.com/gorhill/uBlock/wiki/Static-filter-syntax#cname
             if re.search(r'(?:^|,)~?cname(?:=|,|$)', modifiers_str):
                 return f"! [Unsupported MV3 Modifier: cname] {original_line}"
@@ -336,8 +336,8 @@ class AdGuardOptimizer:
             regex_data = self._parse_regex_rule(optimized)
             if (regex_data and not regex_data[2]
                     and self._contains_embedded_end_anchor(regex_data[1][1:-1])):
-                # AGLint 3.0.2 mistakes the embedded anchor for a modifier.
-                # Suppress only that diagnostic; retain the actual rule unchanged.
+                # AGLint 3.0.2が埋め込みアンカーを修飾子と誤認する場合だけ、
+                # 該当診断を抑制し、実際のルール本体は変更しない。
                 optimized_lines.append('! aglint-disable-next-line invalid-modifiers')
             optimized_lines.append(optimized)
 
