@@ -1,6 +1,6 @@
 ! Title: uBOL フィルター - Red Frame X
 ! Description: 個人用のuBOLカスタムフィルター。
-! Version: 202609012022
+! Version: 202609091454
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -51,6 +51,10 @@ chatgpt.com##[data-prompt-textarea-header]
 ! google.com
 ! 検索タブの「ショート動画」を非表示
 google.com##div[role="listitem"]:has(a:has-text(ショート動画))
+
+! jetstream.blog
+! 画面下部に表示されるPWAアプリのインストール案内バナーを非表示
+jetstream.blog###pwa-install-banner
 
 ! klz9.com
 ! キラキラアイコンと点滅表示を含むVIP訴求ボタンを非表示
