@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         X コミュニティ最新順自動選択
+// @name         X Auto Select Community Latest Sort
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
 // @version      1.7.0
