@@ -3,6 +3,62 @@
 > Source: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > Generated from official GitHub Releases; newest release first.
 
+## 4.14
+
+- Published: 2026-09-09T18:24:42Z
+- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14
+
+AdGuard for Android v4.14 is focused on improving compatibility and making ad blocking work seamlessly with the privacy tools you rely on every day.
+
+## A smarter *Recent activity* screen
+
+*Recent activity* is becoming more flexible and customizable. With the upcoming filtering options, you’'ll be able to refine which network requests are displayed based on criteria such as applications, companies, event types, and statuses. This makes it easier to focus on the information that matters most and navigate large activity logs more efficiently, giving you greater control over how network activity is presented.
+
+## Better filtering
+
+Filtering for browser proxy and VPN extensions has also been significantly improved. Previously, traffic from these extensions had to be downgraded to HTTP/1 for filtering. AdGuard now supports full filtering over HTTP/2 and HTTP/3, providing better compatibility, more reliable protection, and a smoother browsing experience without sacrificing performance.
+
+## Changelog
+### Improvements
+* Added a new button to export filtering log [#1327](https://github.com/AdguardTeam/AdguardForAndroid/issues/1327) 
+* Added a new version available notification as a red dot above the AdGuard icon [#5283](https://github.com/AdguardTeam/AdguardForAndroid/issues/5283)
+* Added status indicators for apps in the *App Management* section [#5286](https://github.com/AdguardTeam/AdguardForAndroid/issues/5286)
+* Added AdGuard to the list of Device administration apps in system settings [#5320](https://github.com/AdguardTeam/AdguardForAndroid/issues/5320)
+* Allowed encrypted fallback and bootstrap DNS servers [#5653](https://github.com/AdguardTeam/AdguardForAndroid/issues/5653) 
+* Added the *Search* field on the *Websites exclusions* screen [#5758](https://github.com/AdguardTeam/AdguardForAndroid/issues/5758)
+* Added a filter to *Recent activity* to hide duplicate entries [#5849](https://github.com/AdguardTeam/AdguardForAndroid/issues/5849)
+* Implemented smart search for the *Recent activity* screen [#4505](https://github.com/AdguardTeam/AdguardForAndroid/issues/4505)
+
+
+### Fixes
+* Several issues in *Recent activity* (TLS details), including inconsistent wording and missing ClientHello and TLS version information ([#5117](https://github.com/AdguardTeam/AdguardForAndroid/issues/5117))
+* The *Add blocking rule* button is incorrectly displayed for QUIC connections blocked by the *Filter HTTP/3* option [#5451](https://github.com/AdguardTeam/AdguardForAndroid/issues/5451)
+* The router’s web interface is inaccessible after a reboot when the Wi-Fi gateway route is unexpectedly included in the VPN [#6031](https://github.com/AdguardTeam/AdguardForAndroid/issues/6031)
+* Screen rotation glitches in landscape mode when using video players in the private browser [#6044](https://github.com/AdguardTeam/AdguardForAndroid/issues/6044)
+* Holding down backspace in the *Add blocking rule* field does not trigger continuous character deletion [#6064](https://github.com/AdguardTeam/AdguardForAndroid/issues/6064)
+* AdGuard protection is not automatically enabled after reboot when using *Always-on VPN* [#6084](https://github.com/AdguardTeam/AdguardForAndroid/issues/6084)
+* Background playback doesn’t work in AdGuard’s YouTube Player [#6098](https://github.com/AdguardTeam/AdguardForAndroid/issues/6098)
+* AdGuard protection gets stuck in a restart loop [#6100](https://github.com/AdguardTeam/AdguardForAndroid/issues/6100)
+
+
+### CoreLibs (Filtering engine)
+* CoreLibs updated to v1.22.28 [#6187](https://github.com/AdguardTeam/AdguardForAndroid/issues/6187)
+
+
+### DnsLibs (DNS filtering engine)
+* DnsLibs updated to v2.10.1 [#6155](https://github.com/AdguardTeam/AdguardForAndroid/issues/6155)
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.13.2
 
 - Published: 2026-08-26T12:41:15Z
@@ -4725,12 +4781,3 @@ This is a small hotfix for the recent AdGuard for Android release. Mostly squash
 * [Fixed] DNS filtering breaks regular filtering on HTC devices #3014 
 * [Fixed] AdGuard doesn't completely remove extensions #3015 
 * [Improved] dnsproxy library has been updated #3016
-
-## 3.3 beta 3.1
-
-- Published: 2019-12-09T21:49:53Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3-beta-3.1
-
-A quick hotfix that fixes the crash of the application when the protection starts if custom filters have been enabled.
-
-- [Fixed] The application causes a crash if custom filters were enabled #3258
