@@ -13,8 +13,10 @@ FILTER_PATH = (
     / "AdGuard Custom Rules - Red Frame X.txt"
 )
 
+# 表示名は運用上変更される可能性があるため固定値にはしない。
+# 一方、Title自体の欠落・空値は購読時の識別性を損なうため検出する。
+TITLE_RE = re.compile(r"^! Title:\s*\S.*$", re.MULTILINE)
 REQUIRED_METADATA = {
-    "Title": "AdGuard Custom Rules - Red Frame X",
     "Syntax": "AdGuard",
 }
 # 全置換や切り詰め事故を検出するため、最低限の有効ルール数を要求する。
@@ -41,12 +43,16 @@ def main() -> int:
             "possible truncation or whole-file replacement"
         )
 
+    header = "\n".join(lines[:20])
+    if not TITLE_RE.search(header):
+        return fail("missing or empty ! Title metadata")
+
     for key, expected in REQUIRED_METADATA.items():
         marker = f"! {key}: {expected}"
         if marker not in lines[:20]:
             return fail(f"missing or invalid required metadata: {marker}")
 
-    if not VERSION_RE.search(text):
+    if not VERSION_RE.search(header):
         return fail("missing or invalid ! Version metadata (expected YYYYMMDDHHMM)")
 
     rules = [
