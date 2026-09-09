@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mirror official AdGuard changelogs and flag converter-relevant changes."""
+"""公式AdGuard CHANGELOGをミラーし、コンバーターに関係する変更候補を抽出する。"""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ def fetch(url: str, attempts: int = 4) -> bytes:
     request = urllib.request.Request(url, headers=headers)
     parsed = urlsplit(request.full_url)
     if token and parsed.scheme == "https" and parsed.netloc == "api.github.com":
-        # Never forward credentials to a redirected request, even on the same host.
+        # リダイレクト先には、同一ホストであっても認証情報を引き継がない。
         request.add_unredirected_header("Authorization", f"Bearer {token}")
     for attempt in range(1, attempts + 1):
         try:
