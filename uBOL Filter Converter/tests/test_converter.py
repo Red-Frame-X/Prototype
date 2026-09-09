@@ -215,9 +215,15 @@ class MainOutputTests(unittest.TestCase):
                 "! Expires: 1 day\n"
                 "! Homepage: https://github.com/Red-Frame-X/Prototype\n"
                 "! License: CC0-1.0\n"
-                "! Note: Combination of Japan’s community-driven rules and my own rules.\n"
+                "! Note: 日本のコミュニティ主導ルールと自作ルールを組み合わせたものです。\n"
             ).encode()
             self.assertTrue(first_output.startswith(expected_header))
+
+    def test_generated_header_matches_canonical_note(self):
+        self.assertIn(
+            "! Note: 日本のコミュニティ主導ルールと自作ルールを組み合わせたものです。",
+            converter.main.__code__.co_consts,
+        )
 
     def test_missing_source_version_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
