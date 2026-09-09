@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch the official uBO Lite changelog and update deterministic metadata."""
+"""公式uBO Lite CHANGELOGを取得し、再現可能なメタデータを更新する。"""
 
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ def read_source(source: str) -> bytes:
         request = urllib.request.Request(source, headers=headers)
         parsed = urlsplit(request.full_url)
         if token and parsed.scheme == "https" and parsed.netloc == "api.github.com":
-            # Never forward credentials to a redirected request, even on the same host.
+            # リダイレクト先には、同一ホストであっても認証情報を引き継がない。
             request.add_unredirected_header("Authorization", f"Bearer {token}")
         attempts = 4
         for attempt in range(1, attempts + 1):
@@ -84,7 +84,7 @@ def update(
 ) -> bool:
     changelog = read_source(source)
     digest = hashlib.sha256(changelog).hexdigest()
-    # Validate before changing either saved artifact.
+    # 保存済みファイルを書き換える前に、取得内容を検証する。
     timestamp = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
     metadata = build_metadata(changelog, source, timestamp)
     source_changed = False
