@@ -25,6 +25,7 @@
     let lastPathname = location.pathname;
     let followingSelectionRequested = false;
 
+    // ホームの「フォロー中」を自動選択
     const selectFollowingTab = () => {
         followingFrameId = 0;
 
@@ -56,6 +57,7 @@
         }
     };
 
+    // 並べ替えメニューの「最新」を自動選択
     const handleMenu = (menu) => {
         if (processedMenus.has(menu)) return;
 
@@ -104,6 +106,7 @@
         }
     };
 
+    // DOM更新時に選択状態を再確認
     const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
             for (const node of mutation.addedNodes) {
