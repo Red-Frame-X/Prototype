@@ -22,6 +22,7 @@ from urllib.error import HTTPError, URLError
 # スクリプト自身の場所を基準にプロジェクトルートと出力先パスを確定
 BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FILTER_NAME: str = "uB-filter-by-kdroidwin (AdGuard Optimized)"
+FILTER_TITLE: str = "uB-filter-by-kdroidwin（AdGuard最適化）"
 OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", f"{FILTER_NAME}.txt")
 CAPABILITY_FILE: str = os.path.join(BASE_DIR, "config", "adguard-converter-capabilities.json")
 CAPABILITY_TARGET: str = "adguard-browser-extension-mv3"
@@ -363,16 +364,16 @@ class AdGuardOptimizer:
         current_version = datetime.now(jst).strftime('%Y%m%d%H%M')
 
         header = [
-            f"! Title: {FILTER_NAME}",
-            "! Description: Scam and malicious affiliate sites blocklist.",
+            f"! Title: {FILTER_TITLE}",
+            "! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。",
             f"! Version: {current_version}",
             "! Syntax: AdGuard",
             "! Expires: 12 hours",
             "! Homepage: https://github.com/Red-Frame-X/Prototype",
             "! License: GPL-3.0",
             "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
-            "! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.",
-            "! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.",
+            "! Disclaimer: AdGuard for Chrome MV3向けに最適化した非公式フォーク。",
+            "! Compatibility: AdGuard for Androidはベストエフォート対応。CoreLibs固有機能は省略される場合があります。",
             ""
         ]
 

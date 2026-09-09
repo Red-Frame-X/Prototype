@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         X Auto Select Following Latest Sort
+// @name         X フォロー中・最新順自動選択
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
 // @version      1.2.0

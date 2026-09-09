@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
-FILTER_TITLE = "uBOL Filter - Red Frame X"
+FILTER_TITLE = "uBOL フィルター - Red Frame X"
 FILTER_BASENAME = "uBOL Filter - Red Frame X"
 
 CANONICAL_SOURCE = (
@@ -277,7 +277,7 @@ def main(argv: list[str] | None = None) -> int:
 
     header = [
         f"! Title: {FILTER_TITLE}",
-        "! Description: Customize uBOL filters for personal use.",
+        "! Description: 個人用のuBOLカスタムフィルター。",
         f"! Version: {source_version}",
         "! Syntax: uBOL",
         "! Expires: 1 day",
