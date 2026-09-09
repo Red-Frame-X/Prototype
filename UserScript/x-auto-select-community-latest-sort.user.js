@@ -22,6 +22,7 @@
     const pendingMenus = new Set();
     let frameId = 0;
 
+    // 並べ替えメニューの「直近」を自動選択
     const handleMenu = (menu) => {
         if (processedMenus.has(menu)) return;
 
@@ -71,6 +72,7 @@
         }
     };
 
+    // 動的に追加されるメニューを監視
     const attachObserver = (layers) => {
         const observer = new MutationObserver((mutations) => {
             for (const mutation of mutations) {
