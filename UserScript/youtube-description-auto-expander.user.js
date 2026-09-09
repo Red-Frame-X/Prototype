@@ -15,6 +15,7 @@
 (function () {
     'use strict';
 
+    // 未展開の概要欄を自動で開く
     const tryExpandDescription = () => {
         const expander = document.querySelector('ytd-text-inline-expander');
 
@@ -36,6 +37,7 @@
         });
     };
 
+    // YouTubeの動的更新を監視
     const observer = new MutationObserver(scheduleExpand);
 
     const observeApp = (app) => {
@@ -62,6 +64,7 @@
         bootstrapObserver.observe(document.documentElement, { childList: true, subtree: true });
     }
 
+    // ページ内遷移後にも再確認
     let navigationTimer = 0;
     document.addEventListener('yt-navigate-finish', () => {
         clearTimeout(navigationTimer);
