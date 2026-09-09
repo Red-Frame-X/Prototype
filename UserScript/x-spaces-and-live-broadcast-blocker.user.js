@@ -17,6 +17,7 @@
 (function () {
     'use strict';
 
+    // 対象UIをCSSで非表示
     const style = document.createElement('style');
     style.id = 'x-spaces-live-blocker-style';
     style.textContent = `
@@ -46,6 +47,7 @@
         'button[aria-label*="スペース"]'
     ].join(',');
 
+    // 対象要素を含むコンテナごと非表示
     const hideParentContainer = (element) => {
         const target = element.closest('[data-testid="cellInnerDiv"]')
             || element.parentElement
@@ -89,6 +91,7 @@
         pendingRoots.clear();
     };
 
+    // 動的に追加される対象UIを監視
     let frameId = 0;
     const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
