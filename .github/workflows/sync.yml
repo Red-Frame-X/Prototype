@@ -16,9 +16,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # 各書き込みワークフローのキューを独立させる。ワークフロー間のpush競合は、
-  # 下記の回数制限付きpull/rebase/push再試行ループで処理する。
-  group: ${{ github.workflow }}-${{ github.ref }}
+  # すべてのmain書き込みワークフローを同じキューで直列化し、
+  # 自動生成コミット同士のpush競合を防ぐ。
+  group: repository-writer-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -31,6 +31,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # キュー待機中にmainが更新されても、必ず最新状態を基点に変換する。
+      - name: Synchronize with latest main
+        run: |
+          git fetch --no-tags origin main
+          git checkout -B main origin/main
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -91,18 +97,10 @@ jobs:
 
           if ! git diff --staged --quiet -- "$output"; then
             git commit -m "Auto-update: uB-filter-by-kdroidwin (AdGuard Optimized)"
-            for attempt in 1 2 3 4 5; do
-              git pull --rebase origin main
-              if git push; then
-                break
-              fi
-              if [[ "$attempt" -eq 5 ]]; then
-                echo 'Failed to push after 5 attempts.' >&2
-                exit 1
-              fi
-              echo "Push raced with another workflow; retrying ($attempt/5)."
-              sleep $((attempt * 2))
-            done
+            if ! git push origin HEAD:main; then
+              echo 'main advanced outside the shared writer queue; rerun the workflow to regenerate from the latest main.' >&2
+              exit 1
+            fi
             echo "Changes committed and pushed successfully."
           else
             echo "No changes detected in filter rules. Skipping commit."
