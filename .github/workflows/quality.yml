@@ -11,8 +11,8 @@ permissions:
   contents: read
 
 concurrency:
-  # Running checks are retained. With the default single pending slot, a new
-  # run can still replace an older pending run in this group.
+  # 実行中のチェックは維持する。保留中の実行は1件だけ保持されるため、
+  # 同じグループに新しい実行が入ると古い保留中の実行が置き換わる場合がある。
   group: quality-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
@@ -48,9 +48,8 @@ jobs:
       - name: Validate workflow safety
         run: python scripts/check_workflow_safety.py
 
-      # GitHub may report "No jobs were run" when a workflow file is malformed
-      # before any job can start. Lint every workflow during normal CI so YAML,
-      # expressions, events, and embedded shell syntax fail with a useful error.
+      # ワークフロー構文が壊れていると、ジョブ開始前に「No jobs were run」とだけ表示されることがある。
+      # 通常CIで全ワークフローを検証し、YAML・式・イベント・埋め込みShellの問題を明示的に検出する。
       - name: Validate GitHub Actions workflow syntax
         run: bash scripts/check_workflow_syntax.sh
 
@@ -68,10 +67,8 @@ jobs:
           python -m unittest discover -s tests -v
           python -m unittest discover -s "uBOL Filter Converter/tests" -v
 
-      # Always validate that the converter runs successfully and produces
-      # whitespace-clean output. Generated files are synchronized automatically
-      # on pushes to main by build-ubol.yml, so PR validation must not fail only
-      # because committed dist files are one generation behind the source filter.
+      # 変換処理が完走し、生成物に不要な空白差分がないことを常に確認する。
+      # mainへのpush後はbuild-ubol.ymlが生成物を同期するため、PRでは生成物の遅延だけを理由に失敗させない。
       - name: Validate uBOL output generation
         run: |
           python "uBOL Filter Converter/converter.py"
