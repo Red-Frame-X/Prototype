@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202609091434
+! Version: 202609091710
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -10,8 +10,6 @@
 ! Compatibility: AdGuard for Androidはベストエフォート対応。CoreLibs固有機能は省略される場合があります。
 
 ##a[href*="google.com/preferences/source"]
-||www-xbl*.pages.dev$doc
-||trafficgate.net^
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -1526,6 +1524,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||bcsredcross.com^$document
 ||bd.vizeo.eu^$document
 ||bddy.me^$document
+||bdlive.jp^$document
 ||be-3679.about.gitlab-review.app^$document
 ||be-habit.com^$document
 ||be-marry.com^$document
@@ -1835,6 +1834,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||bread-everyday.com^$document
 ||break-place.net^$document
 ||breaking-news.jp^$document
+||breakingdown.jp^$document
 ||breamerpainting.xyz^$document
 ||breezesmile.com^$document
 ||brendahousecleaning.com^$document
@@ -3209,6 +3209,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||enxgeki.com^$document
 ||eotqvfnp.hair^$document
 ||epicmaterialdays.com^$document
+||eplus.jp/breakingdown21^doc
 ||epochtimes.jp^$document
 ||eposexperts.com^$document
 ||epsmic81.hatenablog.com^$document
@@ -11235,6 +11236,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tracey.egyptianculture.net/^$document
 ||track-nationalchampionships.jp^$document
 ||track.japex.ru^$document
+||trafficgate.net^
 ||trafficnews.jp^$document
 ||trainwithkodi.com^$document
 ||tramb.info^$document
@@ -12025,6 +12027,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www-facultyfocus-ex1-https-443-g0.gues.edu.cn^$document
 ||www-linkedin-com-443.webvpn.scu.edu.cn^$document
 ||www-westjr.rfrjxm.com^$document
+||www-xbl*.pages.dev$doc
 ||www-xblock-checker2026.pages.dev^$document
 ||www.011789.xyz^$document
 ||www.0669.top^$document
