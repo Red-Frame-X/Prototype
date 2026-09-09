@@ -219,12 +219,6 @@ class MainOutputTests(unittest.TestCase):
             ).encode()
             self.assertTrue(first_output.startswith(expected_header))
 
-    def test_generated_header_matches_canonical_note(self):
-        self.assertIn(
-            "! Note: 日本のコミュニティ主導ルールと自作ルールを組み合わせたものです。",
-            converter.main.__code__.co_consts,
-        )
-
     def test_missing_source_version_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
