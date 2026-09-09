@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""Enforce read-only GitHub Actions policy for pull-request validation.
-
-Pull-request validation must not receive repository write permissions, regardless
-of the command or API client used later in the workflow. The repository also
-forbids pull_request_target because that event runs in the base-repository
-security context and can expose privileged credentials to unsafe workflow logic.
-"""
+"""プルリクエスト検証用GitHub Actionsを読み取り専用に保つ。"""
 
 from __future__ import annotations
 
@@ -19,7 +13,7 @@ WORKFLOW_DIR = Path(".github/workflows")
 
 
 def _parse_workflow(text: str) -> dict[str, Any]:
-    """Parse GitHub Actions YAML without YAML 1.1 boolean coercion of ``on``."""
+    """YAML 1.1による``on``の真偽値変換を避けてGitHub Actions YAMLを解析する。"""
     try:
         data = yaml.load(text, Loader=yaml.BaseLoader)
     except yaml.YAMLError as error:
@@ -30,7 +24,7 @@ def _parse_workflow(text: str) -> dict[str, Any]:
 
 
 def _declared_events(workflow: dict[str, Any]) -> set[str]:
-    """Return event names declared by a workflow's top-level ``on`` value."""
+    """ワークフロー最上位の``on``で宣言されたイベント名を返す。"""
     value = workflow.get("on")
     if isinstance(value, str):
         return {value}
@@ -53,7 +47,7 @@ def _permission_value_grants_write(value: Any) -> bool:
 
 
 def _has_write_permission(workflow: dict[str, Any]) -> bool:
-    """Return whether workflow- or job-level permissions grant any write scope."""
+    """ワークフローまたはジョブに書き込み権限があるか判定する。"""
     if _permission_value_grants_write(workflow.get("permissions")):
         return True
 
@@ -68,20 +62,17 @@ def _has_write_permission(workflow: dict[str, Any]) -> bool:
 
 
 def is_unsafe_pull_request_writer(text: str) -> bool:
-    """Return True when a workflow violates the repository PR safety policy."""
+    """ワークフローがPR安全ポリシーに違反する場合はTrueを返す。"""
     workflow = _parse_workflow(text)
     events = _declared_events(workflow)
 
-    # Fail closed on pull_request_target. This event executes in the context of
-    # the base repository and is unnecessary for this repository's validation
-    # workflows. Requiring a deliberate policy change before introducing it is
-    # safer than trying to recognize every possible repository mutation command.
+    # pull_request_targetはベースリポジトリの権限コンテキストで実行されるため禁止する。
+    # 導入時は安全性を明示的に再検討できるよう、既定では許可しない。
     if "pull_request_target" in events:
         return True
 
-    # Ordinary pull_request validation is allowed only with read-only token
-    # scopes. Inspect structured permission mappings so valid YAML formatting
-    # cannot bypass the policy check.
+    # 通常のpull_request検証は読み取り専用トークンだけを許可する。
+    # YAMLの書式差で回避されないよう、permissionsを構造として確認する。
     return "pull_request" in events and _has_write_permission(workflow)
 
 
