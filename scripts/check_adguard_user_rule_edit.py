@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preflight checks for edits to the canonical AdGuard user-rule filter."""
+"""標準AdGuardユーザールール編集前の安全チェックを行う。"""
 
 from __future__ import annotations
 
@@ -33,8 +33,8 @@ def read(path: Path) -> str:
     except OSError as exc:
         fail(f"cannot read {path}: {exc}")
 
-    # Check the raw bytes before Python's universal-newline translation can
-    # normalize CRLF or CR into LF and hide the original line-ending format.
+    # Pythonの改行正規化より前に生バイトを確認し、CRLF/CRがLFへ変換されて
+    # 元の改行形式が隠れないようにする。
     if b"\r" in raw:
         fail("CR characters detected; canonical filter must use LF line endings")
 
@@ -63,8 +63,8 @@ def main() -> int:
 
     text = read(FILTER)
 
-    # Do not fail solely on a legacy missing final newline. When comparing a PR,
-    # only reject if the base had a final newline and the edit removed it.
+    # 既存ファイルが末尾改行なしでも、それだけでは失敗させない。
+    # PR比較時は、ベースにあった末尾改行を編集で削除した場合だけ拒否する。
     lines = text.splitlines()
     trailing = [i for i, line in enumerate(lines, 1) if line.rstrip() != line]
     if trailing:
@@ -84,6 +84,7 @@ def main() -> int:
 
             before = active_rules(base)
             removed = len(before) - len(rules)
+            # 大量削除は全置換や切り詰め事故の可能性があるため拒否する。
             if removed > max(10, len(before) // 4):
                 fail(
                     "suspiciously large active-rule reduction detected "
@@ -92,6 +93,7 @@ def main() -> int:
 
             header_before = base.splitlines()[:9]
             header_after = lines[:9]
+            # Version以外の主要メタデータは意図しない変更から保護する。
             stable_prefixes = (
                 "! Title:",
                 "! Description:",
