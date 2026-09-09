@@ -1,15 +1,17 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
-! Description: Scam and malicious affiliate sites blocklist.
-! Version: 202609091353
+! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
+! Version: 202609091434
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
 ! License: GPL-3.0
 ! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin
-! Disclaimer: Unofficial fork optimized primarily for AdGuard for Chrome MV3.
-! Compatibility: AdGuard for Android is supported on a best-effort basis; CoreLibs-specific features may be omitted.
+! Disclaimer: AdGuard for Chrome MV3向けに最適化した非公式フォーク。
+! Compatibility: AdGuard for Androidはベストエフォート対応。CoreLibs固有機能は省略される場合があります。
 
+##a[href*="google.com/preferences/source"]
 ||www-xbl*.pages.dev$doc
+||trafficgate.net^
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
