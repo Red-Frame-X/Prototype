@@ -1,5 +1,5 @@
-! Title: uBOL Filter - Red Frame X
-! Description: Customize uBOL filters for personal use.
+! Title: uBOL フィルター - Red Frame X
+! Description: 個人用のuBOLカスタムフィルター。
 ! Version: 202609012022
 ! Syntax: uBOL
 ! Expires: 1 day
