@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         X スペース・ライブ放送非表示
+// @name         X Spaces & Live Broadcast Blocker
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
 // @version      2.1.0
