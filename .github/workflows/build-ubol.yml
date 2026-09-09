@@ -13,8 +13,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Keep each writer's queue independent. Cross-workflow push races are handled
-  # by the bounded pull/rebase/push retry loop below.
+  # 各書き込みワークフローのキューを独立させる。ワークフロー間のpush競合は、
+  # 下記の回数制限付きpull/rebase/push再試行ループで処理する。
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
