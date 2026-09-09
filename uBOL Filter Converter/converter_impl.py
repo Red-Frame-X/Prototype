@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Convert an AdGuard user-filter file to a conservative uBO Lite filter list.
+"""AdGuardユーザーフィルタを保守的なuBO Liteフィルタへ変換する。
 
-The output can be subscribed to by URL through uBO Lite's ``Filter lists``
-pane (uBO Lite 2026.621.1813 or newer), or imported manually.
+出力はuBO Lite 2026.621.1813以降の「Filter lists」からURL購読できるほか、
+手動インポートにも使用できる。
 """
 
 from __future__ import annotations
@@ -31,8 +31,8 @@ DEFAULT_SOURCE = str(
     / "AdGuard Custom Rules - Red Frame X.txt"
 )
 
-# Features with no safe uBOL equivalent in this converter. When semantics cannot
-# be preserved, exclusion is preferred to silently widening or changing scope.
+# uBOLで安全に同等表現へ変換できない修飾子。
+# 意味や適用範囲が変わる可能性がある場合は、変換せず除外する。
 UNSUPPORTED_MODIFIERS = {
     "app", "cname", "content", "csp", "hls", "jsonprune", "permissions",
     "redirect", "redirect-rule", "removeheader", "replace", "urltransform",
@@ -53,7 +53,7 @@ def _modifier_name(token: str) -> str:
 
 
 def _regex_closing_slash_index(line: str) -> int | None:
-    """Return the closing delimiter for a network regex rule, if present."""
+    """ネットワーク正規表現ルールの終端スラッシュ位置を返す。"""
     start = 2 if line.startswith("@@") else 0
     if start >= len(line) or line[start] != "/":
         return None
@@ -81,7 +81,7 @@ def _regex_closing_slash_index(line: str) -> int | None:
 
 
 def _contains_unsupported_backreference(pattern: str) -> bool:
-    """Return whether a regex contains an unescaped RE2-incompatible backreference."""
+    """RE2非互換の未エスケープ後方参照が含まれるか判定する。"""
     index = 0
     while index < len(pattern):
         if pattern[index] != "\\":
@@ -102,7 +102,7 @@ def _contains_unsupported_backreference(pattern: str) -> bool:
 
 
 def _split_modifiers(line: str) -> tuple[str, list[str]] | None:
-    """Split modifiers without treating ``$`` inside a regex as a separator."""
+    """正規表現内部の``$``を区切りと誤認せずに修飾子を分離する。"""
     closing_slash = _regex_closing_slash_index(line)
     if closing_slash is not None:
         suffix = line[closing_slash + 1:]
@@ -126,6 +126,7 @@ def convert_line(raw_line: str) -> Result:
     if line.startswith("!") or re.fullmatch(r"\[Adblock(?: Plus)?(?: [\d.]+)?\]", line):
         return Result(line, "preserved")
 
+    # uBOLで同等の意味を安全に維持できないHTMLフィルタ・スクリプトレットは除外する。
     if "$$" in line or "#@$#" in line:
         return Result(None, "excluded", "html-filtering")
     if "#%#" in line or "#@%#" in line or "##+js(" in line or "#@#+js(" in line:
@@ -134,11 +135,11 @@ def convert_line(raw_line: str) -> Result:
     cosmetic_match = re.match(r"^(.*?)(#\?#|#\?@#|##|#@#)(.*)$", line)
     if cosmetic_match:
         domains, separator, selector = cosmetic_match.groups()
-        # Direct semantic equivalents documented by uBO/uBOL syntax.
+        # uBO/uBOL構文で意味が直接対応する疑似クラスだけを置換する。
         selector = selector.replace(":contains(", ":has-text(")
         selector = selector.replace(":nth-ancestor(", ":upward(")
         selector = selector.replace(":matches-property(", ":matches-prop(")
-        # uBO/uBOL supports :remove() as an action operator, so preserve it.
+        # :remove()はuBO/uBOLでもアクション演算子として利用できるため保持する。
         if separator == "#?#":
             separator = "##"
         elif separator == "#?@#":
@@ -150,6 +151,7 @@ def convert_line(raw_line: str) -> Result:
     closing_slash = _regex_closing_slash_index(line)
     if closing_slash is not None:
         regex_pattern = line[regex_start + 1:closing_slash]
+        # Chrome MV3のRE2で利用できない先読み・後読み・後方参照を除外する。
         if (
             "(?=" in regex_pattern
             or "(?!" in regex_pattern
@@ -181,7 +183,7 @@ def convert_line(raw_line: str) -> Result:
 
 
 def convert(lines: Iterable[str]) -> tuple[list[str], list[dict[str, object]]]:
-    """Convert rules while removing comments orphaned by excluded rules."""
+    """除外ルールだけに紐づく孤立コメントを残さず変換する。"""
     output: list[str] = []
     excluded: list[dict[str, object]] = []
     block: list[tuple[int, str]] = []
@@ -195,6 +197,7 @@ def convert(lines: Iterable[str]) -> tuple[list[str], list[dict[str, object]]]:
         emitted: list[str] = []
         has_rule = False
 
+        # 空行単位のブロックとして扱い、除外されたルール専用コメントを一緒に破棄する。
         for index, (number, raw_line) in enumerate(block):
             line = raw_line.strip()
             if line.startswith("!") or re.fullmatch(r"\[Adblock(?: Plus)?(?: [\d.]+)?\]", line):
@@ -280,7 +283,7 @@ def main(argv: list[str] | None = None) -> int:
         "! Expires: 1 day",
         "! Homepage: https://github.com/Red-Frame-X/Prototype",
         "! License: CC0-1.0",
-        "! Note: Combination of Japan’s community-driven rules and my own rules.",
+        "! Note: 日本のコミュニティ主導ルールと自作ルールを組み合わせたものです。",
         "",
     ]
     source_metadata = re.compile(
