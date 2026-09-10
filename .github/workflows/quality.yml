@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -52,6 +54,17 @@ jobs:
       # 通常CIで全ワークフローを検証し、YAML・式・イベント・埋め込みShellの問題を明示的に検出する。
       - name: Validate GitHub Actions workflow syntax
         run: bash scripts/check_workflow_syntax.sh
+
+      - name: Guard against large content loss
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+            python scripts/check_large_content_loss.py --base-ref "origin/${{ github.base_ref }}"
+          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+            python scripts/check_large_content_loss.py --base-ref HEAD^
+          else
+            echo 'No parent commit available; skipping large-content-loss comparison.'
+          fi
 
       - name: Preflight AdGuard user-rule edits
         run: |
