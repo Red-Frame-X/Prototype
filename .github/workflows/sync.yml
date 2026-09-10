@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'scripts/convert.py'
-      - 'tests/test_convert.py'
+      - 'tests/**'
       - 'config/adguard-converter-capabilities.json'
       - '.github/workflows/sync.yml'
       - 'requirements-ci.txt'
