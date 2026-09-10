@@ -1284,6 +1284,10 @@ Modアプリ検知の強化によりログインが困難になっています�
 **IOMate**
 * [IOMate](https://github.com/kitadai31/IOMate)
   * 5ch.io対応前の古いChMateで5ch.ioに読み書きするためのローカルプロキシアプリです。
+ 
+**Haiagaru Morphe patch for ChMate 0.8.10.241-243**
+* [Haiagaru Morphe patch for ChMate 0.8.10.241-243](https://github.com/areteruhiro/Haiagaru-Morphe)
+  * ChMate 0.8.10.241 / 0.8.10.242 dev / 0.8.10.243 dev 対応のMorpheパッチです。
 
 ChromeOS上での完全な動作保証はありません。（[動作環境](https://chmate.airfront.co.jp/docs/supported-os/#%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6)）
 * [Android アプリ ChMate 不具合修正済みメモ](https://writening.net/page?DW58re)
