@@ -1,0 +1,87 @@
+name: Remove HTTPS DNS section (temporary)
+
+on:
+  push:
+    branches:
+      - docs/remove-https-dns-section
+    paths:
+      - .github/workflows/remove-https-dns-section-temp.yml
+
+permissions:
+  contents: write
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: docs/remove-https-dns-section
+          fetch-depth: 0
+
+      - name: Remove only the requested section
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('Markdown Notes/ChromeOS & Android Optimization Guide.md')
+          text = path.read_text(encoding='utf-8')
+          marker = '## HTTPSフィルタリング・DNSフィルタリング'
+          next_heading = '## 【解決済み】Android System WebView 問題'
+
+          if text.count(marker) != 1:
+              raise SystemExit(f'expected exactly one target section, found {text.count(marker)}')
+
+          start = text.index(marker)
+          end = text.index(next_heading, start)
+
+          # Remove the target heading/body and the separator immediately before the next H2.
+          prefix = text[:start]
+          suffix = text[end:]
+          while prefix.endswith('\n'):
+              prefix = prefix[:-1]
+          if prefix.endswith('---'):
+              # Keep the existing separator before the target section and remove only the
+              # target section plus its following separator.
+              prefix += '\n\n'
+          else:
+              raise SystemExit('unexpected document structure before target section')
+
+          # The target body currently ends with a horizontal rule before the next heading.
+          target = text[start:end]
+          target = target.rstrip()
+          if not target.endswith('---'):
+              raise SystemExit('unexpected document structure after target section')
+
+          new_text = prefix + suffix
+          old_lines = text.count('\n') + 1
+          new_lines = new_text.count('\n') + 1
+          removed = old_lines - new_lines
+          if not (4 <= removed <= 10):
+              raise SystemExit(f'unexpected line-count change: removed {removed} lines')
+          if marker in new_text:
+              raise SystemExit('target section still present after edit')
+          if next_heading not in new_text:
+              raise SystemExit('next section was lost')
+          if len(text) - len(new_text) > 1000:
+              raise SystemExit('unexpectedly large content loss')
+
+          path.write_text(new_text, encoding='utf-8', newline='\n')
+          print(f'Removed {removed} lines; document preserved: {new_lines} lines remain')
+          PY
+
+          git diff --check
+          git diff --stat
+          git diff -- 'Markdown Notes/ChromeOS & Android Optimization Guide.md'
+
+      - name: Commit exact edit and remove temporary workflow
+        shell: bash
+        run: |
+          git rm .github/workflows/remove-https-dns-section-temp.yml
+          git add 'Markdown Notes/ChromeOS & Android Optimization Guide.md'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'docs: remove duplicate HTTPS and DNS filtering section'
+          git push origin HEAD:docs/remove-https-dns-section
