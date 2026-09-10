@@ -11,7 +11,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 
 ## コンテンツブロック
 
-- [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)：2026年9月1日時点のuBlock Origin / uBO Lite / AdGuard MV3 / Brave / Vivaldi / DNS併用・フィルタ設計を一次情報で再整理したFAQ
+- [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)：uBlock Origin / uBO Lite / AdGuard MV3 / Brave / Vivaldi / DNS併用・フィルタ設計を一次情報で再整理したFAQ
 - [`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md)：AdGuardルールの設計・検証指針と学習メモ
 - [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)：AdGuard構文と実用例の補助リファレンス
 - [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md)：DNSブロックリストの形式、選択、ブラウザ用コンテンツブロッカーとの役割分担・切り分け
@@ -40,6 +40,8 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 各文書では、対象製品・プロジェクトの公式ドキュメント、公式リポジトリ、公開ソースコード、CHANGELOG、Issuesなどの一次情報を優先します。公式資料だけで確認できない事項は、信頼できる複数の情報源や実機検証を補助的に用い、事実・観測結果・推測を区別します。
 
 実機検証やユーザー報告は、それ自体を一般仕様として扱いません。根拠を確認できない原因推測や将来予測は断定せず、仕様変更によって古くなった記述は参照元を再確認したうえで更新または削除します。
+
+日付付きの「2026年○月○日時点」という表現は、更新履歴として必要な場合を除き固定せず、本文のメタデータ `Version` と参照先の一次情報を優先します。将来の査読時に、本文だけが古い基準日のまま残ることを避けます。
 
 文章の下書きや整理にChatGPTを利用することがありますが、生成・推敲された文章をそのまま正しいとはみなさず、重要な技術情報は一次情報や実環境で再確認します。
 
