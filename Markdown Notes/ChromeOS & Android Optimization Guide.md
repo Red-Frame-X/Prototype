@@ -176,6 +176,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 
 ## ChromeOS Chrome アプリ
 * **[Chrome アプリのサポート終了（順次終了済み）](https://support.google.com/chrome/a/answer/15950395?hl=ja)**
+* **[Text](https://chromewebstore.google.com/detail/text/mmfbcljfglbokpmkimbfghdkjmjhdgbg)**：ChromeOSではChromeアプリのサポート終了後も現在利用できるテキストエディタ。
 
 ---
 
@@ -375,7 +376,7 @@ IT、セキュリティ、広告ブロックに関する質問では、公式ド
   * 説明：VS Code上でGitHub Gistを直接管理・編集できる拡張機能です。
 * **[Virtual Git extension pack](https://marketplace.visualstudio.com/items?itemName=CarloCardella.vscode-virtualgit)** / **[GitHub](https://github.com/carlocardella/vscode-VirtualGit)**
   * 説明：端末にGit環境を構築しなくても、ブラウザから直接GitHubやGistのファイルを編集・保存できるようになる便利なパックです。
-* **[Virtual Repositories for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=CarloCardella.vscode-VirtualRepos)** / **[GitHub](https://github.com/carlocardella/vscode-VirtualRepos)**
+* **[Virtual Repositories for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=CarloCardella.vscode-virtualrepos)** / **[GitHub](https://github.com/carlocardella/vscode-VirtualRepos)**
   * 説明：リモートリポジトリをクローン、コミット、プッシュすることなく開いて編集できる拡張機能です。
 
 **Android アプリ**
