@@ -202,6 +202,18 @@ class AdGuardOptimizer:
                     return True
         return False
 
+    @staticmethod
+    def _rewrite_re2_safe_lookahead(pattern_str: str) -> str:
+        """意味を厳密に維持できる既知の先読みだけRE2互換形へ変換する。
+
+        `pay` 以降かつスラッシュ以前に数字が3個以上存在することを確認する
+        positive lookahead は、同じ範囲を実際に消費する表現へ展開できる。
+        一般のlookaroundを推測変換すると一致集合が変わり得るため扱わない。
+        """
+        digit_triplet_lookahead = r'(?=[^\/]*\d[^\/]*\d[^\/]*\d)[^\/]*\.com'
+        digit_triplet_consuming = r'[^\/]*\d[^\/]*\d[^\/]*\d[^\/]*\.com'
+        return pattern_str.replace(digit_triplet_lookahead, digit_triplet_consuming)
+
     def optimize_line(self, line: str) -> Optional[str]:
         original_line = line.strip()
         line = original_line
@@ -224,6 +236,12 @@ class AdGuardOptimizer:
         if regex_data:
             prefix, regex_part, modifier_part = regex_data
             pattern_str = regex_part[1:-1]
+
+            # 一般のlookaroundを拒否する前に、意味を厳密に維持できる既知形だけ展開する。
+            rewritten_pattern = self._rewrite_re2_safe_lookahead(pattern_str)
+            if rewritten_pattern != pattern_str:
+                pattern_str = rewritten_pattern
+                regex_part = f"/{pattern_str}/"
 
             # RE2未サポート構文 (先読み・後読み・後方参照) のパージ
             if (
