@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202609091827
+! Version: 202609101656
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,6 +9,7 @@
 ! Disclaimer: AdGuard for Chrome MV3向けに最適化した非公式フォーク。
 ! Compatibility: AdGuard for Androidはベストエフォート対応。CoreLibs固有機能は省略される場合があります。
 
+##.google-preferred-source-container
 ##a[href*="google.com/preferences/source"]
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
@@ -58,7 +59,8 @@
 /^https?:\/\/1link\.jp\/gofile[a-zA-Z0-9]*/$document
 /^https?:\/\/1link\.jp\/tiktok[a-zA-Z0-9]*/$document
 /^https?:\/\/[^\/]*\.cloudfree\.jp\/hitomi-doujin-raw\/d_\d{6}.*$/$document
-! [Unsupported MV3 Regex] /^https?:\/\/[^\/]*pay(?=[^\/]*\d[^\/]*\d[^\/]*\d)[^\/]*\.com(?:[/?#]|$)/
+! aglint-disable-next-line invalid-modifiers
+/^https?:\/\/[^\/]*pay[^\/]*\d[^\/]*\d[^\/]*\d[^\/]*\.com(?:[\/?#]|$)/
 /^https?:\/\/[a-z0-9]{20,}\.[a-z0-9.-]*\.cn\//$document
 /^https?:\/\/[a-z0-9]{25,}\.[a-z0-9.-]*\.br\//$document
 /^https?:\/\/[a-z0-9]{25,}\.[a-z0-9.-]*\.online\//$document
@@ -2027,6 +2029,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||cezardouvretoi.fr^$document
 ||cf2.top^$document
 ||cf504206.cloudfree.jp^$document
+||cf552292.cloudfree.jp^$document
 ||cf645694.cloudfree.jp^$document
 ||cf962692.cloudfree.jp^$document
 ||cf^$doc,to=~wacw.cf|~www.river.cf
@@ -5274,6 +5277,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||japananimetour.com^$document
 ||japanbaconfestival.jp^$document
 ||japancreatorbank.com^$document
+||japanero.jp^$document
 ||japanese-archery.hateblo.jp^$document
 ||japanese.cri.cn^$document
 ||japanknowledge-com-443.webvpn.zisu.edu.cn^$document
@@ -5499,6 +5503,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kairaku-comic.com^$document
 ||kaiten-portal.jp^$document
 ||kaitori-janiyard.jp^$document
+||kaitoriton.base.shop^$document
 ||kaitouranmei.com^$document
 ||kaiuntrip.co.jp^$document
 ||kaizoku-movie.jp^$document
@@ -9118,6 +9123,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||pro^$document,to=~site.pro|~sitechecker.pro|~polylang.pro|~salebot.pro|~keenetic.pro|~webd.pro|~online.pro|~opus.pro|~awan.pro|~landbot.pro|~quiknode.pro|~hashvault.pro|~divisare.pro|~ansur.pro
 ||product.info^$document
 ||product.torex.com.cn^$document
+||production-cdn.site^$document
 ||products.swagelok.com.cn^$document
 ||profile-news.net^$document
 ||profile.shuheimurakami.com^$document
@@ -9312,6 +9318,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||rakutens-jp.shop^$document
 ||ramcoenterprises.com^$document
 ||ranariosaoluis.com^$document
+||randomain-card.com^$document
 ||randomkeygen.com^$document
 ||rank-king.jp^$document
 ||ranking.goo.ne.jp^$document
@@ -9355,6 +9362,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||raw2.dmm-mania.com^$document
 ||rawapk.com^$document
 ||rawcomic.wew.jp^$document
+||rawcomic8.wew.jp^$document
 ||rawdoujin.wew.jp^$document
 ||rawhentai.wpx.jp^$document
 ||rawmanga.jp^$document
@@ -9540,6 +9548,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||revolt-tokyo.com^$document
 ||rexdl.com^$document
 ||rexdlbox.com^$document
+||rezent-ai-pages.vercel.app^$document
 ||rezentsns.com^$document
 ||rhc-web-app.vercel.app^$document
 ||rhino3d.online^$document
