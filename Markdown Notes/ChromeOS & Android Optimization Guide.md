@@ -154,7 +154,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 * **[Shortcuts for Google™](https://chromewebstore.google.com/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd)**：Googleサービスへのショートカットボタンを表示する。
 * **[Similarweb - Website Traffic, AI Traffic & SEO Checker](https://chromewebstore.google.com/detail/similarweb-website-traffi/hoklmmgfnpapgjgcpechhaamimifchmp)**：閲覧中サイトのトラフィック指標、検索キーワード、AI流入などの競合分析データを表示する。
 * **[System Memory Usage](https://chromewebstore.google.com/detail/system-memory-usage/fdefaodljgbdlmdhobjlechpgpblooeh)**：システムのメモリ使用量をツールバーに表示する。
-* **[ドキュメント、スプレッドシート、スライドで Office ファイルを編集](https://chromewebstore.google.com/detail/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%80%81%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%80%81%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E3%81%A7-off/gbkeegbaiigmenfmjfclcdgdpimamgkj)**：Chromeブラウザ上でMicrosoft Officeファイルを直接開いて編集可能にする。
+* **[ドキュメント、スプレッドシート、スライドで Office ファイルを編集](https://chromewebstore.google.com/detail/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%80%81%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%80%81%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E3%81%A7-off/gbkeegbaiigmenfmjfclcdgdpimamgkj)**：Chromeブラウザ上でMicrosoft Officeファイルを直接開いて編集可能にする。
 * **[ドライブ用アプリケーション ランチャー（Google）](https://chromewebstore.google.com/detail/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E7%94%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC%EF%BC%88googl/lmjegmlicamnimmfhcmpkclmigmmcbeh)**：ブラウザから直接、PCにインストールされた対応アプリケーションでGoogle Driveのファイルを開く。
 * **[設定（Settings）](https://chromewebstore.google.com/detail/settings/jkfjnjeniglhpiggnfpiombpaohknkie)**：Google設定、拡張機能、閲覧データの管理を一元化する。
 * **[素晴らしい画面の並べ替えとスクリーンショット（Awesome Screenshot）](https://chromewebstore.google.com/detail/%E7%B4%A0%E6%99%B4%E3%82%89%E3%81%97%E3%81%84%E7%94%BB%E9%9D%A2%E3%81%AE%E4%B8%A6%E3%81%B9%E6%9B%BF%E3%81%88%E3%81%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88/nlipoenfbbikpbjkfpfillcgkoblgpmj)**：画面の録画やスクリーンショットのキャプチャを容易にし、注釈追加も可能にする。
@@ -1188,7 +1188,7 @@ Android 17では、**設設定 > セキュリティとプライバシー > そ�
 
 **設定するホスト名**
   * 入力欄に以下のホスト名を入力して保存します。現在はより安定している**新バージョン**の入力が推奨されています。
-  
+
     * **新バージョン（推奨）**：`dns.adguard-dns.com`
     * **旧バージョン** ：`dns.adguard.com`
 
@@ -1261,7 +1261,7 @@ Modアプリ検知の強化によりログインが困難になっています�
 
 **参考サイト**
 * [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/)
-* [5ch Android Twitterクライアント](https://ff5ch.syoboi.jp/?q=Android+Twitter%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88) / [5ch 神アプリスレ](https://ff5ch.syoboi.jp/?q=Android%E3%81%AE%E7%A5%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E6%8C%99%E3%81%92%E3%82%8B%E3%82%B9%E3%83%AC) / [5ch Androidアプリ 質問スレ](https://ff5ch.syoboi.jp/?q=Android%E3%82%A2%E3%83%97%E3%83%AA%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC)
+* [5ch Android Twitterクライアント](https://ff5ch.syoboi.jp/?q=Android+Twitter%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88) / [5ch 神アプリスレ](https://ff5ch.syoboi.jp/?q=Android%E3%81%AE%E7%A5%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E6%8C%99%E3%81%92%E3%82%8B%E3%82%B9%E3%83%AC) / [5ch Androidアプリ 質問スレ](https://ff5ch.syoboi.jp/?q=Android%E3%81%AE%E7%A5%9E%E3%82%A2%E3%83%97%E3%83%AA%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC)
 * [Kami-Android-app｜Kdroidwin](https://github.com/Kdroidwin/Kami-Android-app)
 
 ---
@@ -1284,7 +1284,7 @@ Modアプリ検知の強化によりログインが困難になっています�
 **IOMate**
 * [IOMate](https://github.com/kitadai31/IOMate)
   * 5ch.io対応前の古いChMateで5ch.ioに読み書きするためのローカルプロキシアプリです。
- 
+
 **Haiagaru Morphe patch for ChMate 0.8.10.241-243**
 * [Haiagaru Morphe patch for ChMate 0.8.10.241-243](https://github.com/areteruhiro/Haiagaru-Morphe)
   * ChMate 0.8.10.241 / 0.8.10.242 dev / 0.8.10.243 dev 対応のMorpheパッチです。
@@ -1316,7 +1316,7 @@ ChromeOS上での完全な動作保証はありません。（[動作環境](htt
 **Linux 関連**
 * [ChromebookにLinuxをクリーンインストールする方法](https://zenn.dev/roistaff/articles/30ce3883b3b9d9)
 * [Linux Mint 22をパソコンにインストールする方法](https://tanoike.com/install-linux-mint-on-pc)
-* [Timeshift（バックアップツール）](https://github.com/linuxmint/timeshift) / [使い方](https://sub-log.jp/2022/12/14/linux-mint-%E3%81%A7-timeshift-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B/)
+* [Timeshift（バックアップツール）](https://github.com/linuxmint/timeshift) / [使い方](https://sub-log.jp/2022/12/14/linux-mint-%E3%81%A7-timeshift%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B/)
 * [Linux Mint搭載 既製品ノートPC](https://raylink-inc.com/product/rl-bnc00010/)
 * [AdGuard for Linux](https://adguard.com/kb/ja/adguard-for-linux/)
 
