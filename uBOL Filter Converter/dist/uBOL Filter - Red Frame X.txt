@@ -55,6 +55,14 @@ google.com##div[role="listitem"]:has(a:has-text(ショート動画))
 ! jetstream.blog
 ! 画面下部に表示されるPWAアプリのインストール案内バナーを非表示
 jetstream.blog###pwa-install-banner
+! おすすめの情報源を案内するバナーを非表示
+jetstream.blog##.preferred-sources-banner-wrapper
+! Googleニュースでサイトをフォローする案内リンクを非表示
+jetstream.blog##a[href="https://jetstream.blog/google-news-follow"]
+! Google検索で優先する情報源への設定案内リンクを非表示
+jetstream.blog##a[href="https://jetstream.blog/google-preferences-source/"]
+! 遅延読み込み広告用のプレースホルダーを非表示
+jetstream.blog##.jetstream-ad-lazy-placeholder
 
 ! klz9.com
 ! キラキラアイコンと点滅表示を含むVIP訴求ボタンを非表示
