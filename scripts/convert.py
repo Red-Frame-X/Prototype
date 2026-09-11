@@ -283,7 +283,7 @@ class AdGuardOptimizer:
                     return f"! [Unsupported Extended CSS] {original_line}"
 
                 if any(ext in selector_part for ext in self.adg_supported_ext_css):
-                    new_separator = '#?#' if separator == '##' else '#?@#'
+                    new_separator = '#?#' if separator == '##' else '#@?#'
                     return f"{rule_scope}{new_separator}{selector_part}"
                 return f"{rule_scope}{separator}{selector_part}"
             return line
