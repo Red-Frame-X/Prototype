@@ -284,7 +284,7 @@ class ModifierConversionTests(unittest.TestCase):
         rule = "example.com#@#div:contains(sponsored)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "example.com#?@#div:contains(sponsored)",
+            "example.com#@?#div:contains(sponsored)",
         )
 
     def test_mixed_cosmetic_url_scope_is_commented_out(self):
