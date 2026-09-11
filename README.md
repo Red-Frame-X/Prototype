@@ -28,6 +28,7 @@ Chrome・ChromeOS・Android環境で試した設定、コンテンツブロッ�
 | scripts / tests | フィルタ変換・更新処理、整合性検査、回帰テスト | [scripts](./scripts/) / [tests](./tests/) / [uBOL tests](./uBOL%20Filter%20Converter/tests/) |
 | config / upstream | 変換能力の定義、上流情報の追跡・ミラー | [config](./config/) / [upstream](./upstream/) |
 | GitHub Actions | 品質確認、同期、変換、CHANGELOG追跡などのWorkflow | [Actions](../../actions) |
+| License | リポジトリ全体のライセンス情報 | [LICENSE](./LICENSE) / [LICENSES.md](./LICENSES.md) |
 
 > [!NOTE]
 > `uBOL Filter Converter/dist/`およびルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換スクリプトを修正して再生成します。
