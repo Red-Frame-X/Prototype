@@ -1239,11 +1239,12 @@ Premium加入者は「動画ストリームを偽装（Spoof video streams）」
 
 Modアプリ検知の強化によりログインが困難になっています。（[Issues #714](https://github.com/crimera/piko/issues/714)）
 * [導入方法解説](https://pfbcoconut.com/2024/04/21/twitter-x-revanced/) / [ログイン方法更新](https://kdroidwin.hatenablog.com/entry/2025/11/04/210359)
-* パッチ・ビルド済みapk：[crimera (Piko)](https://github.com/crimera/piko) / [monsivamon](https://github.com/monsivamon/twitter-apk) / [lluni](https://github.com/lluni/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
+* パッチ・ビルド済みapk：[crimera (Piko)](https://github.com/crimera/piko) / [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
 
 **併用すると便利かもしれないAndroidアプリ**
 * **[File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager)**
 * **[Obtainium](https://github.com/ImranR98/Obtainium)**
+* **[ObtainX](https://github.com/bikram-agarwal/ObtainX)**
 * **[YTDLnis](https://github.com/deniscerri/ytdlnis)**
 * **[Seal Plus](https://github.com/MaheshTechnicals/Sealplus)**
 * **[Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)**
@@ -1273,7 +1274,7 @@ Modアプリ検知の強化によりログインが困難になっています�
 * ChMate側の広告と5ch側の広告（レクタングル広告）があり、後者の完全除去にはUPLIFTの購入が必要です（[仕様変更のお知らせ](https://www.airfront.co.jp/pr20250116.html)）。
 
 **代替ブラウザ**
-* [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler)
+* [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid]([CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid))
 
 **ChMateに関連するローカルプロキシアプリ・Morphe patch**
 * [IOMate](https://github.com/kitadai31/IOMate)
