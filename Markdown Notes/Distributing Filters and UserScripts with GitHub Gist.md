@@ -6,7 +6,7 @@ GitHub Gistを利用して、コンテンツブロックフィルタやUserScrip
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260825 |
+| **Version** | 20260904 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
