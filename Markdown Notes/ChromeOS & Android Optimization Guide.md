@@ -1274,7 +1274,7 @@ Modアプリ検知の強化によりログインが困難になっています�
 * ChMate側の広告と5ch側の広告（レクタングル広告）があり、後者の完全除去にはUPLIFTの購入が必要です（[仕様変更のお知らせ](https://www.airfront.co.jp/pr20250116.html)）。
 
 **代替ブラウザ**
-* [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid]([CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid))
+* [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid)
 
 **ChMateに関連するローカルプロキシアプリ・Morphe patch**
 * [IOMate](https://github.com/kitadai31/IOMate)
