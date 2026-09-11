@@ -618,7 +618,7 @@ AdGuardルールで実現できない処理だけをUserScriptで補います。
 
 ## 主要な生成AI
 * **[ChatGPT](https://chat.openai.com/)**：汎用性が高い + 多様なモード。
-* **[Gemini](https://gemini.google.com/)**：汎用性 + マルチモーダル + 膨大な情報を高速で読み込み回答を出力（Gemini Pro）。
+* **[Gemini](https://gemini.google.com/)**：Googleサービス間の連携。
 * **[GitHub Copilot](https://github.com/features/copilot)**：コーディング用。
 * **[Grok](https://grok.com/)**：汎用性 + 制限が緩い - 𝕏の投稿の信憑性をチェックするのに使えそう？
   * xAI Support Teamへの問い合わせ先 `support@x.ai` / [Contact: Get in Touch with xAI](https://x.ai/contact)
