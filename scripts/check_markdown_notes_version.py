@@ -11,7 +11,10 @@ from pathlib import Path
 
 VERSION_RE = re.compile(r"^\| \*\*Version\*\* \| (\d{8}) \|$", re.MULTILINE)
 NOTES_DIR = Path("Markdown Notes")
-EXCLUDED = {NOTES_DIR / "README.md", NOTES_DIR / "Header Template.md"}
+INDEX_FILE = NOTES_DIR / "README.md"
+HEADER_TEMPLATE = NOTES_DIR / "Header Template.md"
+EXCLUDED = {INDEX_FILE, HEADER_TEMPLATE}
+HEADER_TEMPLATE_VERSION = "| **Version** | yyyymmdd |"
 
 
 def run_git(*args: str) -> str:
@@ -28,6 +31,16 @@ def commit_date_yyyymmdd() -> str:
     return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(timezone.utc).strftime("%Y%m%d")
 
 
+def validate_header_template() -> str | None:
+    """Keep the reusable Header Template placeholder literal and unchanged."""
+    if not HEADER_TEMPLATE.exists():
+        return f"{HEADER_TEMPLATE}: template file is missing."
+    text = HEADER_TEMPLATE.read_text(encoding="utf-8")
+    if HEADER_TEMPLATE_VERSION not in text:
+        return f"{HEADER_TEMPLATE}: Version must remain the literal placeholder 'yyyymmdd'."
+    return None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-ref", required=True)
@@ -35,6 +48,10 @@ def main() -> int:
 
     expected = commit_date_yyyymmdd()
     failures: list[str] = []
+
+    template_failure = validate_header_template()
+    if template_failure:
+        failures.append(template_failure)
 
     for path in changed_markdown_files(args.base_ref):
         if path in EXCLUDED or not path.exists():
