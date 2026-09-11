@@ -1,6 +1,6 @@
 ! Title: uBOL フィルター - Red Frame X
 ! Description: 個人用のuBOLカスタムフィルター。
-! Version: 202609091454
+! Version: 202609120205
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
