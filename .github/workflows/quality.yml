@@ -66,6 +66,17 @@ jobs:
             echo 'No parent commit available; skipping large-content-loss comparison.'
           fi
 
+      - name: Validate Markdown Notes Version dates
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+            python scripts/check_markdown_notes_version.py --base-ref "origin/${{ github.base_ref }}"
+          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+            python scripts/check_markdown_notes_version.py --base-ref HEAD^
+          else
+            echo 'No parent commit available; skipping Markdown Notes Version comparison.'
+          fi
+
       - name: Preflight AdGuard user-rule edits
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
