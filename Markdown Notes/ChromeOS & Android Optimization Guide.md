@@ -618,6 +618,7 @@ AdGuardルールで実現できない処理だけをUserScriptで補います。
 
 ## 主要な生成AI
 * **[ChatGPT](https://chat.openai.com/)**：汎用性が高い + 多様なモード。
+* **[Claude](https://claude.ai/login)**：コーディング用 + 日本語能力に優れる。
 * **[Gemini](https://gemini.google.com/)**：Googleサービス間の連携。
 * **[GitHub Copilot](https://github.com/features/copilot)**：コーディング用。
 * **[Grok](https://grok.com/)**：汎用性 + 制限が緩い - 𝕏の投稿の信憑性をチェックするのに使えそう？
