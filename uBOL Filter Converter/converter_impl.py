@@ -132,7 +132,7 @@ def convert_line(raw_line: str) -> Result:
     if "#%#" in line or "#@%#" in line or "##+js(" in line or "#@#+js(" in line:
         return Result(None, "excluded", "scriptlet")
 
-    cosmetic_match = re.match(r"^(.*?)(#\?#|#\?@#|##|#@#)(.*)$", line)
+    cosmetic_match = re.match(r"^(.*?)(#@\?#|#\?#|##|#@#)(.*)$", line)
     if cosmetic_match:
         domains, separator, selector = cosmetic_match.groups()
         # uBO/uBOL構文で意味が直接対応する疑似クラスだけを置換する。
@@ -142,7 +142,7 @@ def convert_line(raw_line: str) -> Result:
         # :remove()はuBO/uBOLでもアクション演算子として利用できるため保持する。
         if separator == "#?#":
             separator = "##"
-        elif separator == "#?@#":
+        elif separator == "#@?#":
             separator = "#@#"
         output = f"{domains}{separator}{selector}"
         return Result(output, "converted" if output != line else "preserved")
