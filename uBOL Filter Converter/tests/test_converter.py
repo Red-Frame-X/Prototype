@@ -39,6 +39,11 @@ class LineConversionTests(unittest.TestCase):
         self.assertEqual(result.output, "example.com##div:has(.promo)")
         self.assertEqual(result.status, "converted")
 
+    def test_adguard_extended_exception_becomes_ubo_exception(self):
+        result = converter.convert_line("example.com#@?#div:has-text(Promo)")
+        self.assertEqual(result.output, "example.com#@#div:has-text(Promo)")
+        self.assertEqual(result.status, "converted")
+
     def test_contains_rule_is_converted_to_has_text(self):
         result = converter.convert_line("example.com#?#div:contains(Promo)")
         self.assertEqual(result.output, "example.com##div:has-text(Promo)")
