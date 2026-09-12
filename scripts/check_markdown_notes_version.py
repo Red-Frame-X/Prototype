@@ -6,8 +6,9 @@ import argparse
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 VERSION_RE = re.compile(r"^\| \*\*Version\*\* \| (\d{8}) \|$", re.MULTILINE)
 NOTES_DIR = Path("Markdown Notes")
@@ -15,6 +16,7 @@ INDEX_FILE = NOTES_DIR / "README.md"
 HEADER_TEMPLATE = NOTES_DIR / "Header Template.md"
 EXCLUDED = {INDEX_FILE, HEADER_TEMPLATE}
 HEADER_TEMPLATE_VERSION = "| **Version** | yyyymmdd |"
+EDIT_TIMEZONE = ZoneInfo("Asia/Tokyo")
 
 
 def run_git(*args: str) -> str:
@@ -27,8 +29,9 @@ def changed_markdown_files(base_ref: str) -> list[Path]:
 
 
 def commit_date_yyyymmdd() -> str:
+    """Return the HEAD commit date in the repository's edit timezone (JST)."""
     raw = run_git("show", "-s", "--format=%cI", "HEAD").strip()
-    return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(timezone.utc).strftime("%Y%m%d")
+    return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(EDIT_TIMEZONE).strftime("%Y%m%d")
 
 
 def validate_header_template() -> str | None:
@@ -63,7 +66,10 @@ def main() -> int:
             continue
         actual = match.group(1)
         if actual != expected:
-            failures.append(f"{path}: Version is {actual}; expected {expected} for this edit.")
+            failures.append(
+                f"{path}: Version is {actual}; expected {expected} for this edit "
+                f"({EDIT_TIMEZONE.key})."
+            )
 
     if failures:
         print("Markdown Notes Version check failed:", file=sys.stderr)
@@ -71,7 +77,10 @@ def main() -> int:
             print(f"- {failure}", file=sys.stderr)
         return 1
 
-    print(f"Markdown Notes Version check passed for edit date {expected}.")
+    print(
+        f"Markdown Notes Version check passed for edit date {expected} "
+        f"({EDIT_TIMEZONE.key})."
+    )
     return 0
 
 
