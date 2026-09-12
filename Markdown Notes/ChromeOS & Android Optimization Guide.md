@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260911 |
+| **Version** | 20260912 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -1205,7 +1205,7 @@ Android 17では、**設設定 > セキュリティとプライバシー > そ�
 
 **使い方・質問用テンプレ**
 
-* [Morphe インストール方法（Kdroidwinの日記）](https://kdroidwin.hatenablog.com/entry/2026/02/27/213227)
+* [YouTube Morphe　YouTubeの 非公式アプリ インストール 方法（Kdroidwin Blog）](https://kdroidwin.hatenablog.com/entry/2026/02/27/213227)
 * [5ch Revanced総合スレ](https://ff5ch.syoboi.jp/?q=Revanced%E7%B7%8F%E5%90%88)
 
   ```text
@@ -1235,10 +1235,10 @@ Android 17では、**設設定 > セキュリティとプライバシー > そ�
 Premium加入者は「動画ストリームを偽装（Spoof video streams）」をOFFにすることが推奨されます。
 * [YouTube 利用規約](https://www.youtube.com/t/terms) / [ヘルプページ](https://support.google.com/youtube/answer/14129599?hl=ja&ref_topic=15848873&sjid=5246634321435162902-NC) / [GIGAZINE記事](https://gigazine.net/news/20240416-youtube-ad-blocker-crackdown-third-party-apps/)
 
-**𝕏/Twitter ReVancedの使い方**
+**𝕏/Twitter Morphe Piko**
 
-Modアプリ検知の強化によりログインが困難になっています。（[Issues #714](https://github.com/crimera/piko/issues/714)）
-* [導入方法解説](https://pfbcoconut.com/2024/04/21/twitter-x-revanced/) / [ログイン方法更新](https://kdroidwin.hatenablog.com/entry/2025/11/04/210359)
+* ~Modアプリ検知の強化によりログインが困難になっています。~（[Issues #714](https://github.com/crimera/piko/issues/714)）
+  * 現在のMorphe Pikoでは別の仕組みに移行した結果、現在対応している𝕏ではログインできるようになりました。  
 * パッチ・ビルド済みapk：[crimera (Piko)](https://github.com/crimera/piko) / [crimera (Piko New 𝕏)](https://github.com/crimera/piko-newx) / [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
 
 **併用すると便利かもしれないAndroidアプリ**
@@ -1343,7 +1343,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 * [Android Police](https://www.androidpolice.com/)
 * [Android Authority](https://www.androidauthority.com/)
 * [TestingCatalog | AI News & Rumours](https://www.testingcatalog.com/)
-* [Kdroidwinの日記](https://kdroidwin.hatenablog.com/archive)
+* [Kdroidwin Blog](https://kdroidwin.codeberg.page/archive/)
 * [HelenTech](https://helentech.jp/) / [🌴 officeの杜 🥥](https://officeforest.org/wp/)
 * [Chromium派生ブラウザ総合 まとめWiki](https://w.atwiki.jp/chromiumbased/pages/1.html)
 * [スマホブラウザ@ウィキ](https://w.atwiki.jp/sumaho_browser/pages/1.html)
