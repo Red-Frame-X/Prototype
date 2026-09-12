@@ -1242,16 +1242,18 @@ Premium加入者は「動画ストリームを偽装（Spoof video streams）」
 * パッチ・ビルド済みapk：[crimera (Piko)](https://github.com/crimera/piko) / [crimera (Piko New 𝕏)](https://github.com/crimera/piko-newx) / [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
 
 **併用すると便利かもしれないAndroidアプリ**
-* **[File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager)**
-* **[Obtainium](https://github.com/ImranR98/Obtainium)**
-* **[ObtainX](https://github.com/bikram-agarwal/ObtainX)**
-* **[YTDLnis](https://github.com/deniscerri/ytdlnis)**
-* **[Seal Plus](https://github.com/MaheshTechnicals/Sealplus)**
-* **[Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)**
-* **[GitHub](https://play.google.com/store/apps/details?id=com.github.android)**
+
 * **[Aurora Store](https://auroraoss.com/aurora-store)**
 * **[F-Droid](https://f-droid.org/ja/)**
 * **[Accrescent](https://accrescent.app/)**
+* **[Obtainium](https://github.com/ImranR98/Obtainium)**
+* **[ObtainX](https://github.com/bikram-agarwal/ObtainX)**
+* **[File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager)**
+* **[GitHub](https://play.google.com/store/apps/details?id=com.github.android)**
+* **[floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1)**
+* **[Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)**
+* **[YTDLnis](https://github.com/deniscerri/ytdlnis)**
+* **[Seal Plus](https://github.com/MaheshTechnicals/Sealplus)**
 * **[Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)**
 
 **参考サイト**
