@@ -28,9 +28,18 @@ def changed_markdown_files(base_ref: str) -> list[Path]:
     return [Path(line) for line in output.splitlines() if line]
 
 
-def commit_date_yyyymmdd() -> str:
-    """Return the HEAD commit date in the repository's edit timezone (JST)."""
-    raw = run_git("show", "-s", "--format=%cI", "HEAD").strip()
+def file_edit_date_yyyymmdd(base_ref: str, path: Path) -> str:
+    """Return the last commit date for ``path`` in the reviewed change range."""
+    raw = run_git(
+        "log",
+        "-1",
+        "--format=%cI",
+        f"{base_ref}..HEAD",
+        "--",
+        str(path),
+    ).strip()
+    if not raw:
+        raise ValueError(f"No editing commit found for {path} in {base_ref}..HEAD.")
     return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(EDIT_TIMEZONE).strftime("%Y%m%d")
 
 
@@ -49,7 +58,6 @@ def main() -> int:
     parser.add_argument("--base-ref", required=True)
     args = parser.parse_args()
 
-    expected = commit_date_yyyymmdd()
     failures: list[str] = []
 
     template_failure = validate_header_template()
@@ -64,6 +72,11 @@ def main() -> int:
         if not match:
             failures.append(f"{path}: Version metadata is missing or malformed.")
             continue
+        try:
+            expected = file_edit_date_yyyymmdd(args.base_ref, path)
+        except ValueError as error:
+            failures.append(str(error))
+            continue
         actual = match.group(1)
         if actual != expected:
             failures.append(
@@ -77,10 +90,7 @@ def main() -> int:
             print(f"- {failure}", file=sys.stderr)
         return 1
 
-    print(
-        f"Markdown Notes Version check passed for edit date {expected} "
-        f"({EDIT_TIMEZONE.key})."
-    )
+    print(f"Markdown Notes Version check passed ({EDIT_TIMEZONE.key}).")
     return 0
 
 
