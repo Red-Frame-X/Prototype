@@ -1077,7 +1077,7 @@ Android版Chromeなどで高精度なブロックを行うには必須です。�
 AdGuard内でDNSを設定します（Google Public DNS推奨）。
 ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネームサーバー > [Google ネームサーバー](https://developers.google.com/speed/public-dns/docs/using?hl=ja#chromeos) に変更。
 
-### AdGuard for Android「最新のアクティビティ」推奨設定
+### AdGuard for Android「最新のアクティビティ」設定例
 
 フィルタによる誤ブロックの発見・原因切り分けを優先した設定です。
 
