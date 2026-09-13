@@ -207,7 +207,7 @@ news.web.nhk$$div[id="under-header-element"]
 ! HTMLフィルタリング非対応製品向け：バナー外枠を初期CSSで非表示
 news.web.nhk###under-header-element
 ! モバイルアプリのインストールを促すバナーを初期表示前に除去
-! HTMLフィルタリング対応製品向け：固定案内を含む案内領域をレスポンスから除去
+! HTMLフィルタリング対応製品向け：固有文言を含む案内領域をレスポンスから除去
 news.web.nhk$$div[role="region"]:contains(NHKの公式アプリ)
 ! HTMLフィルタリング非対応製品向け：公式アプリアイコンを含む案内領域を初期CSSで非表示
 news.web.nhk##div[role="region"]:has(img[src*="/appbanner/artworkImages/news_app_icon.png"])
@@ -293,9 +293,9 @@ x.com##div[data-testid="verified_profile_visitor_upsell"]
 x.com##div:has(> a[href="/i/premium_sign_up"])
 x.com##div:has(> div > img[src*="premium-badge-card"])
 x.com##div:has(a[href$="/verified-profile-visits"])
-! Grokのアクション・プロフィール概要・外部Grok案内・画像生成・ドロワー・インライン入力欄を非表示
+! Grokのアクション・プロフィール要約・外部Grok案内・画像生成・ドロワー・インライン入力欄を非表示
 x.com##[aria-label="Grokのアクション"]
-x.com##[aria-label="プロフィールの概要"]
+x.com##[aria-label="プロフィールの要約"]
 x.com#?#button:contains(grok.comにアクセスするとさらに多くの機能が利用できます):has(svg)
 x.com##button[data-testid="grokImgGen"]
 x.com##div[data-testid="GrokDrawer"]
@@ -306,7 +306,7 @@ x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
 x.com#?#[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
 x.com##[data-testid="cellInnerDiv"]:has(div[data-testid="eventHero"])
 x.com#?#[data-testid="cellInnerDiv"]:has(h2:contains(おすすめ投稿))
-x.com#?#[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:contains(ユーザー))
+x.com#?#[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:contains(おすすめユーザー))
 x.com##[data-testid="cellInnerDiv"]:has(img[src*="global_trending_card_newest.png"])
 x.com#?#[data-testid="cellInnerDiv"]:has(span:contains(によるプロモーション))
 x.com##a[href^="https://ads.x.com"]
@@ -326,9 +326,10 @@ x.com##[data-testid="cellInnerDiv"]:has([data-testid="UserCell"] [data-testid$="
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty)
+! 「もっと見つける」見出しと、それ以降に挿入される会話ツリーと無関係なおすすめポストを非表示
 x.com#?#div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:contains(もっと見つける))
 x.com#?#div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:contains(もっと見つける)) ~ div
-x.com#?#[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:contains(ユーザー))
+x.com#?#div[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:contains(ユーザー))
 ! コミュニティ検索・一覧に挿入されるおすすめコミュニティ、探索導線、記事を含まないコミュニティカードを非表示
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(+ div > div > div > a[href^="/i/communities/"])
 x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(> div > div > a[href^="/i/communities/"])
