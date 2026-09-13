@@ -1,10 +1,10 @@
 {
   "source": "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt",
-  "input_lines": 223,
-  "output_lines_excluding_generated_header": 169,
-  "excluded_count": 13,
+  "input_lines": 339,
+  "output_lines_excluding_generated_header": 282,
+  "excluded_count": 14,
   "excluded_by_reason": {
-    "html-filtering": 2,
+    "html-filtering": 3,
     "modifier:app": 9,
     "scriptlet": 2
   },
@@ -73,6 +73,11 @@
       "line": 206,
       "reason": "html-filtering",
       "rule": "news.web.nhk$$div[id=\"under-header-element\"]"
+    },
+    {
+      "line": 211,
+      "reason": "html-filtering",
+      "rule": "news.web.nhk$$div[role=\"region\"]:contains(NHKの公式アプリ)"
     }
   ]
 }
