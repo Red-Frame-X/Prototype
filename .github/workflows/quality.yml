@@ -60,7 +60,10 @@ jobs:
       - name: Guard against large content loss
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+            # fetch-depth: 0 already provides the complete graph. Re-fetching the
+            # base with --depth=1 can replace origin/<base> with a shallow ref and
+            # break the merge-base needed by three-dot diffs.
+            git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
             python scripts/check_large_content_loss.py --base-ref "origin/${{ github.base_ref }}"
           elif git rev-parse HEAD^ >/dev/null 2>&1; then
             python scripts/check_large_content_loss.py --base-ref HEAD^
@@ -71,7 +74,7 @@ jobs:
       - name: Validate Markdown Notes Version dates
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+            git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
             python scripts/check_markdown_notes_version.py --base-ref "origin/${{ github.base_ref }}"
           elif git rev-parse HEAD^ >/dev/null 2>&1; then
             python scripts/check_markdown_notes_version.py --base-ref HEAD^
@@ -82,7 +85,7 @@ jobs:
       - name: Preflight AdGuard user-rule edits
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+            git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
             python scripts/check_adguard_user_rule_edit.py --base-ref "origin/${{ github.base_ref }}"
           else
             python scripts/check_adguard_user_rule_edit.py
