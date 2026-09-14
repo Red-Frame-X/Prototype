@@ -1319,7 +1319,7 @@ Premium加入者は「動画ストリームを偽装（Spoof video streams）」
 * [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid)
 
 **ChMateに関連するローカルプロキシアプリ・Morphe patch**
-* [IOMate](https://github.com/kitadai31/IOMate)
+* [IOMate](https://github.com/kitadai31/IOMate) / [ChMateのおすすめバージョンランキング](https://github.com/kitadai31/IOMate#chmate%E3%81%AE%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0)
   * 5ch.io対応前の古いChMateで5ch.ioに読み書きするためのローカルプロキシアプリです。
 * [Haiagaru Morphe patch for ChMate 0.8.10.241-243](https://github.com/areteruhiro/Haiagaru-Morphe)
   * ChMate 0.8.10.191 dev / 0.8.10.241 / 0.8.10.242 dev / 0.8.10.243 dev 対応のMorpheパッチです。
