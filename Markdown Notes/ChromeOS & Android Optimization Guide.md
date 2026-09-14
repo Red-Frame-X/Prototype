@@ -26,7 +26,7 @@ Googleの多くのサービスでは、年額サブスクリプションを「�
 * Amazon Prime（年額）
 * ChMate スタンダードプラン（月額）
 * ChatGPT Plus（月額）
-* Google AI Plus 400 GB（年額）
+* Google Standard 200 GB（年額）
 * [mond｜Kdroidwinさんのメンバーシップ](https://mond.how/ja/kdroidwin)（Premium / 月額）
 * 𝕏プレミアム ベーシック（年額）
 * YouTube Premium（年額）
