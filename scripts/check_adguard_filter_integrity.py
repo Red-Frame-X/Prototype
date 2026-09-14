@@ -15,7 +15,9 @@ FILTER_PATH = (
 
 # 表示名は運用上変更される可能性があるため固定値にはしない。
 # 一方、Title自体の欠落・空値は購読時の識別性を損なうため検出する。
-TITLE_RE = re.compile(r"^! Title:\s*\S.*$", re.MULTILINE)
+# ``\s`` includes newlines, so using ``\s*`` here could treat the following
+# metadata line as the title value. Limit optional spacing to the current line.
+TITLE_RE = re.compile(r"^! Title:[ \t]*\S[^\r\n]*$", re.MULTILINE)
 REQUIRED_METADATA = {
     "Syntax": "AdGuard",
 }
