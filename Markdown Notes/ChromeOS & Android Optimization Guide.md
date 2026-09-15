@@ -1209,7 +1209,7 @@ Android 17では、**設設定 > セキュリティとプライバシー > そ�
 
 **参考サイト**
 
-・[5ch MacroDroidスレ](https://ff5ch.syoboi.jp/?q=MacroDroid)
+* [5ch MacroDroidスレ](https://ff5ch.syoboi.jp/?q=MacroDroid)
 
 ---
 
