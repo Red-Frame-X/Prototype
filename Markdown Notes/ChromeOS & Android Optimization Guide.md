@@ -1207,6 +1207,10 @@ Android 17では、**設設定 > セキュリティとプライバシー > そ�
 
 * WebViewの影響は v4.10 以降で修正されました。OSによるタスクキル問題は常時接続VPNの有効化やMacroDroidの導入で対処します。（[タスクキル対策ガイド](https://adguard.com/kb/ja/adguard-for-android/solving-problems/background-work/)）
 
+**参考サイト**
+
+[5ch MacroDroidスレ](https://ff5ch.syoboi.jp/?q=MacroDroid)
+
 ---
 
 ## AndroidのプライベートDNSを利用したDNSブロック
