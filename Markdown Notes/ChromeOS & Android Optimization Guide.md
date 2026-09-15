@@ -1332,7 +1332,10 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 * [Android アプリ ChMate 不具合修正済みメモ](https://writening.net/page?DW58re)
 
 **参考サイト**
-* [5chブラウザ「ChMate」質問スレ](https://ff5ch.syoboi.jp/?q=5ch%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%80%8CChMate%E3%80%8D%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC) / [5chどんぐり非公式まとめwiki](https://donguri.wikiru.jp/)
+* [5chブラウザ「ChMate」質問スレ](https://ff5ch.syoboi.jp/?q=5ch%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%80%8CChMate%E3%80%8D%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC)
+* [5ch ChMate用ローカルプロキシ「IOMate」スレ](https://ff5ch.syoboi.jp/?q=5ch%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%80%8CChMate%E3%80%8D%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC) 
+* [5ch ChMateモジュールスレ](https://ff5ch.syoboi.jp/?q=ChMate%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%AC)
+* [5chどんぐり非公式まとめwiki](https://donguri.wikiru.jp/)
 
 ---
 
