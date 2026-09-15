@@ -1250,7 +1250,7 @@ Android 17では、**設設定 > セキュリティとプライバシー > そ�
 **使い方・質問用テンプレ**
 
 * [YouTube Morphe　YouTubeの 非公式アプリ インストール 方法（Kdroidwin Blog）](https://kdroidwin.hatenablog.com/entry/2026/02/27/213227)
-* [5ch Revanced総合スレ](https://ff5ch.syoboi.jp/?q=Revanced%E7%B7%8F%E5%90%88)
+* [5ch Revanced総合スレ](https://ff5ch.syoboi.jp/?q=Revanced%E7%B7%8F%E5%90%88) / [5ch Revanced/Morphe総合スレ](https://ff5ch.syoboi.jp/?q=Revanced%2FMorphe%E7%B7%8F%E5%90%88)
 
   ```text
    【質問テンプレ】
