@@ -20,7 +20,7 @@ Chrome・ChromeOS・Android環境で試した設定、コンテンツブロッ�
 | 項目 | 主な内容 | 参照先 |
 | --- | --- | --- |
 | AdGuard Custom Rules | AdGuard向けの個人用コンテンツブロックルール、DNSルール、関連CHANGELOG | [README](./AdGuard%20Custom%20Rules/README.md) / [コンテンツブロックフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [DNSフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [ChangeLog](./AdGuard%20Custom%20Rules/ChangeLog/) |
-| uBOL Filter Converter | AdGuard用ルールをuBlock Origin Lite向けに変換する処理、テスト、自動生成物、変換レポート | [README](./uBOL%20Filter%20Converter/README.md) / [ディレクトリ](./uBOL%20Filter%20Converter/) / [生成フィルタ](./uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt) |
+| uBOL Filter Converter | AdGuard用ルールをuBlock Origin Lite向けに変換する処理、テスト、自動生成物、変換レポート | [README](./uBOL%20Filter%20Converter/README.md) / [ディレクトリ](./uBOL%20Filter%20Converter/) / [生成フィルタ](./uBOL%20Filter%20Converter/dist/uBOL%20Filter%20-%20Red%20Frame%20X.txt) / [ChangeLog](./uBOL%20Filter%20Converter/upstream/ubol-CHANGELOG.source.md) |
 | uB-filter-by-kdroidwin (AdGuard Optimized) | 上流フィルタをAdGuard向けに変換した自動生成物 | [README](./dist/README.md) / [生成フィルタ](./dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
 | UserScript | 𝕏・YouTubeなどの表示や挙動を調整する個人用UserScript | [README](./UserScript/README.md) / [ディレクトリ](./UserScript/) |
 | NG Word Regex for ChMate | ChMateで使用するJava正規表現 | [README](./NG%20Word%20Regex%20for%20ChMate/README.md) / [正規表現](./NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
