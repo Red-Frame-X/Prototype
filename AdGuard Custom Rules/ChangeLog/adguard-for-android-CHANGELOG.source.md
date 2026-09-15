@@ -3,6 +3,24 @@
 > Source: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > Generated from official GitHub Releases; newest release first.
 
+## 4.14.1
+
+- Published: 2026-09-15T11:09:14Z
+- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14.1
+
+We’ve improved DNS reliability when using Automatic proxy or Manual proxy together with the “Use system:// for Automatic DNS” option, ensuring domain names resolve correctly in these configurations. We’ve also fixed issues with DNS64 support, improving connectivity in IPv6-only networks that rely on DNS64/NAT64 translation.
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.14
 
 - Published: 2026-09-09T18:24:42Z
@@ -4767,17 +4785,4 @@ The previous hotfix dealt with some urgent bugs, so we had to act fast and could
 * [Fixed] AdGuard fails to start protection after an update #3024
 * [Fixed] Facebook lite cannot detect that IPv6 is unreachable #3031
 * [Fixed] Blocked app notification works incorrectly #3032 
-* [Improved] dnsproxy library has been updated #3016
-
-## 3.2.140 Hotfix
-
-- Published: 2019-08-24T10:43:56Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.2.140
-
->Disclaimer: AdGuard for Android is not an open source project. We use Github as an open bug tracker for users to see what developers are working on.
-
-This is a small hotfix for the recent AdGuard for Android release. Mostly squashing bugs related to the new features introduced in v3.2.
-
-* [Fixed] DNS filtering breaks regular filtering on HTC devices #3014 
-* [Fixed] AdGuard doesn't completely remove extensions #3015 
 * [Improved] dnsproxy library has been updated #3016
