@@ -140,7 +140,8 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 * **[5CH STYLE FORMAT](https://chromewebstore.google.com/detail/5ch-style-format/aidnencnedgaflbgacmcbcokcpancdac?hl=ja)**：5chのスレッド記事の整形、URL直リンク化、画像・レスのPOP表示など。
 * **[Twitterᴾˡᵘˢ](https://greasyfork.org/ja/scripts/387969-twitter%E1%B4%BE%CB%A1%E1%B5%98%CB%A2)**：オリジナル品質の画像を表示し、スパムツイートの削除機能をカスタマイズする。
 * **[𝕏 Spam Highlighter](https://github.com/shapoco/x-spam-highlighter)**：PC向けWeb版𝕏のフォロワー一覧画面で、スパム疑いのアカウントを赤くハイライト表示する。
-* **[Shadowban Scanner for Twitter / X](https://chromewebstore.google.com/detail/shadowban-scanner-for-twi/enlganfikppbjhabhkkilafmkhifadjd)**：𝕏のアカウントやツイートのシャドウバン、センシティブ判定を検出する。（[ろぼいんブログ](https://roboin.io/)）
+* **[Shadowban Scanner for Twitter / X](https://chromewebstore.google.com/detail/shadowban-scanner-for-twi/enlganfikppbjhabhkkilafmkhifadjd)**：𝕏のアカウントやツイートのシャドウバン、センシティブ判定を検出する。
+  *  [ろぼいんブログ](https://roboin.io/)：X・SNSを中心に、Webサービスやアプリのニュース・使い方・不具合の対処法をわかりやすく解説
 
 ### 業務効率化
 * **[Advanced Font Settings](https://chromewebstore.google.com/detail/advanced-font-settings/caclkomlalccbpcdllchkeecicepbmbm?hl=ja)**：Webサイトのフォント設定を変更する
