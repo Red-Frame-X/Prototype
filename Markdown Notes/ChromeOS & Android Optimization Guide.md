@@ -994,6 +994,7 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
   * [gitlab.com/hagezi/mirror](https://gitlab.com/hagezi/mirror)：1日1回、GitHubと同期して更新。
   * [codeberg.org/hagezi/mirror2](https://codeberg.org/hagezi/mirror2)：1日1回、GitHubと同期して更新。
   * [hagezi-mirror.dnsbunker.org](https://hagezi-mirror.dnsbunker.org)：4〜8時間ごとに更新。
+* [5ch personalDNSfilterスレ](https://ff5ch.syoboi.jp/?q=%E3%80%90%E5%BA%83%E5%91%8A%E9%99%A4%E5%8E%BB%E3%80%91personalDNSfilter)
 
 ---
 
@@ -1368,7 +1369,6 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 ---
 
 ## Credits
-* [5ch【広告除去】personalDNSfilter](https://ff5ch.syoboi.jp/?q=%E3%80%90%E5%BA%83%E5%91%8A%E9%99%A4%E5%8E%BB%E3%80%91personalDNSfilter)
 * [r/Adguard](https://www.reddit.com/r/Adguard/) / [r/uBlockOrigin](https://www.reddit.com/r/uBlockOrigin/)
 * [AdGuard ナレッジベース](https://adguard.com/kb/ja/) / [AdGuard（𝕏）](https://x.com/AdGuard) / [AdGuardJP（𝕏）](https://x.com/AdGuardJP) / [AdGuard ブログ](https://adguard-com.translate.goog/en/blog/index.html?_x_tr_sl=auto&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
 
