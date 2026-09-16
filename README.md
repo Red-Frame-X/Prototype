@@ -35,11 +35,11 @@ Chrome・ChromeOS・Android環境で試した設定、コンテンツブロッ�
 
 ## 編集・更新の原則
 
-- `AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt`はuBOL変換の原本でもあるため、ルール追加・削除時は`! Version:`も更新し、品質チェックを通してから反映します。
-- `uBOL Filter Converter/dist/`とルートの`dist/`はGitHub Actionsによる生成物のため、原則として直接編集しません。
-- `AdGuard Custom Rules/ChangeLog/`と`upstream/`には上流プロジェクトの追跡・ミラー情報が含まれるため、取得スクリプトまたは追跡設定を修正します。
-- `Markdown Notes/`は学習・調査時点の記録を含みます。更新時には、可能な限り公式資料、公開ソース、対象バージョンを再確認します。
-- ChatGPTによる推敲後の文章も、そのまま正しいとはみなさず、重要な技術情報は一次情報と実環境で再確認します。
+- `AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt`はuBOL変換の原本です。ルール変更時は`! Version:`を更新し、品質チェック後に反映します。
+- `uBOL Filter Converter/dist/`とルートの`dist/`は自動生成物のため、原則として直接編集しません。
+- `AdGuard Custom Rules/ChangeLog/`と`upstream/`は上流情報の追跡・ミラー用です。更新は取得スクリプトや追跡設定から行います。
+- `Markdown Notes/`の更新時は、可能な限り公式資料・公開ソース・対象バージョンを再確認します。
+- ChatGPTで推敲した内容も、重要な技術情報は一次情報と実環境で再確認します。
 
 ## 自動更新と品質確認
 
