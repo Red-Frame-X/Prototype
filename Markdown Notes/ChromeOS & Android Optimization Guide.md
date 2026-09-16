@@ -28,6 +28,7 @@ Googleの多くのサービスでは、年額サブスクリプションを「�
 * ChatGPT Plus（月額）
 * Google Standard 200 GB（年額）
 * [mond｜Kdroidwinさんのメンバーシップ](https://mond.how/ja/kdroidwin)（Premium / 月額）
+* Sponsor areteruhiro（月額）
 * 𝕏プレミアム ベーシック（年額）
 * YouTube Premium（年額）
 
