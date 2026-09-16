@@ -55,6 +55,15 @@ def main() -> int:
     failures: list[str] = []
     for added, deleted, path in parse_numstat(diff):
         net_loss = deleted - added
+        # A substantial net loss requires review even when a large document
+        # still retains more than the minimum fraction of its original lines.
+        if net_loss >= args.max_net_loss:
+            failures.append(
+                f"{path}: +{added}/-{deleted} (net loss {net_loss}); "
+                f"net loss reaches the review threshold {args.max_net_loss}. "
+                "Large content removal requires explicit review instead of automatic merging."
+            )
+            continue
         if deleted < args.max_deletions and net_loss < args.max_net_loss:
             continue
 
