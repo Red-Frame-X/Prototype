@@ -46,6 +46,7 @@ Chrome・ChromeOS・Android環境で試した設定、コンテンツブロッ�
 GitHub Actionsで、個人用フィルタや変換処理の更新・整合性確認を自動化しています。
 
 - AdGuard原本フィルタのメタデータ・行数・ルール数などの整合性検査
+- コードやフィルタのメタデータに含まれる`! Version:`を、対象ファイルの更新時に日付・現在時刻へ自動更新
 - AdGuardルール編集時の重複、改行、空白、大量削除などの事前検査
 - Pythonの回帰テスト、UserScript構文検査、Markdownlint、AGLint
 - `uB-filter-by-kdroidwin (AdGuard Optimized)`の定期同期と変換
