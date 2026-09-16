@@ -6,12 +6,12 @@
 
 [![Build uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml)
 
-Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、更新・変換ツール、技術メモを保存する個人用リポジトリです。学習・検証の記録と、設定・スクリプト類のバックアップを目的としています。
+Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、更新・変換ツール、技術メモをまとめた個人用リポジトリです。
 
 > [!IMPORTANT]
-> このリポジトリは個人用の記録・バックアップです。ChatGPTで推敲・整理した内容を含むため、正確性・完全性は保証できず、古い情報や環境依存の内容が含まれる場合があります。
+> 学習・検証結果の記録とバックアップを目的としています。ChatGPTで推敲・整理した内容や環境依存の情報を含むため、正確性・完全性は保証しません。
 >
-> フィルタ、スクリプト、設定、技術メモは自分の環境での確認結果であり、一般向けの手順書や配布物を想定していません。
+> フィルタ、スクリプト、設定、技術メモは自分の環境で確認したもので、一般向けの手順書・配布物を想定していません。
 
 ## リポジトリ案内
 
