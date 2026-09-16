@@ -1,7 +1,7 @@
 {
   "source": "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt",
-  "input_lines": 220,
-  "output_lines_excluding_generated_header": 163,
+  "input_lines": 336,
+  "output_lines_excluding_generated_header": 279,
   "excluded_count": 14,
   "excluded_by_reason": {
     "html-filtering": 3,
