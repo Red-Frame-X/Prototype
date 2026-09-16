@@ -1,6 +1,6 @@
 ! Title: NG Word Regex for ChMate
 ! Description: ChMateのNGワード用正規表現。正規表現と非表示を有効にして登録。
-! Version: 202609170710
+! Version: 202609170711
 ! Syntax: Java Regex (ChMate NG)
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
