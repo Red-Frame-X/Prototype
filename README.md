@@ -45,13 +45,12 @@ Chrome・ChromeOS・Android環境で試した設定、コンテンツブロッ�
 
 GitHub Actionsで、個人用フィルタや変換処理の更新・整合性確認を自動化しています。
 
-- AdGuard原本フィルタのメタデータ・行数・ルール数などの整合性検査、重複・改行・空白・大量削除などの事前検査
-- コードやフィルタのメタデータに含まれる`! Version:`を、対象ファイルの更新時に日付・現在時刻へ自動更新
-- Pythonの回帰テスト、UserScript構文検査、Markdownlint、AGLintによるリポジトリ品質検査
-- GitHub Actionsの失敗を検出した場合の原因確認・修正と、同種エラーの再発を防ぐための検査・Workflow改善
-- `uB-filter-by-kdroidwin (AdGuard Optimized)`の定期同期と変換
-- `uBOL Filter - Red Frame X`の再生成と変換レポートの更新
-- AdGuardおよびuBO Liteの公式CHANGELOGの定期確認
+- フィルタ・コードの整合性、回帰テスト、構文・Lintを自動検査
+- 対象ファイル更新時に`! Version:`を日付・現在時刻へ自動更新
+- GitHub Actions失敗時の原因確認・修正と再発防止
+- `uB-filter-by-kdroidwin (AdGuard Optimized)`を定期同期・変換
+- `uBOL Filter - Red Frame X`を再生成し、変換レポートを更新
+- AdGuard・uBO Lite公式CHANGELOGを定期確認
 
 ローカルで主要な検査を実行する場合：
 
