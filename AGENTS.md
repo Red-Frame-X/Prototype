@@ -1,5 +1,8 @@
 # Repository editing safeguards
 
+- Correct inaccurate descriptions to verified, accurate content rather than
+  deleting them. Preserve their context and useful information. If a correction
+  cannot be verified, report the uncertainty instead of removing the passage.
 - Preserve all content outside the user's requested scope. Never substantially
   delete, shorten, consolidate, or replace Markdown or custom filters without
   explicit user authorization for that removal.
