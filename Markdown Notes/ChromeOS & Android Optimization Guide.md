@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260915 |
+| **Version** | 20260916 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -796,8 +796,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 
 **カスタムフィルタ・ユーザールール**
 * **カスタムフィルタ**
-  * **[AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)**：Yuki2718氏自身がフィルタの監修をしています。
-  * **[AdGuard module - not for independent use](https://github.com/Yuki2718/adblock2)**：上記フィルタのmodule。
+  * **[AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)**：Yuki2718氏自身がフィルタの監修をしています。AdGuard用moduleはサブリストとして自動的にincludeされるため、別途登録する必要はありません。
   * **[自作のカスタムフィルタ](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex)**：各フィルタ作者様のルールを参考にしたり、自作のルールと組み合わせたりして作成しています。
 
 **参考サイト**
@@ -865,7 +864,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **カスタムフィルタで購読する場合**
 
-`AdGuard module - not for independent use` は、`AdGuard Japanese filter Plus` のサブリストとして自動的にincludeされます。
+`AdGuard Japanese filter Plus` だけを登録します。`AdGuard module - not for independent use` はサブリストとして自動的にincludeされるため、カスタムフィルタ一覧へ別途登録する必要はありません。
 
 **ユーザールールにルールを全コピー & 全ペーストする場合**
 
@@ -876,14 +875,10 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
   ```
   https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt
   ```
-* AdGuard module - not for independent use
-  ```
-  https://yuki2718.github.io/adblock2/japanese/jpfp-ag.txt
-  ```
 
 **❗️留意点**
 
- [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記2種以外は追加しないほうが良いです。
+ [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。
 
 **Filter Issues**
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
@@ -1048,17 +1043,16 @@ Android版Chromeなどで高精度なブロックを行うには必須です。�
 * 参考：[HTTPSフィルタリングについて（Wiki）](https://wikiwiki.jp/nanj-adguard/HTTPS%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6) / [中間者攻撃とは](https://www.nri-secure.co.jp/glossary/mtm-attack)
 
 **! カスタムフィルタ・ユーザールール**
+
+`AdGuard Japanese filter Plus` だけを登録します。`AdGuard module - not for independent use` はサブリストとして自動的にincludeされるため、カスタムフィルタ一覧へ別途登録する必要はありません。
+
 * AdGuard Japanese filter Plus
   ```
   https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt
   ```
-* AdGuard module - not for independent use
-  ```
-  https://yuki2718.github.io/adblock2/japanese/jpfp-ag.txt
-  ```
 **❗️留意点**
 
- [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記2種以外は追加しないほうが良いです。
+ [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。
 
 **Filter Issues**
 * [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
