@@ -6,7 +6,7 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260908 |
+| **Version** | 20260917 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -18,6 +18,16 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 Googlebookは、Googleが2026年5月12日に正式発表した新しいノートPCカテゴリです。GoogleはGemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視した製品として紹介しています。2026年秋の投入予定で、Googleはハードウェアパートナーとして **Acer、ASUS、Dell、HP、Lenovo** を公表しています。一方、2026年9月8日時点でも、個別モデルの価格、全対応地域、CPU、最低RAM、Linux実行方式、既存Chromebookの移行対象など、未発表の仕様があります。
 
 「Aluminium」は求人情報などを根拠に報道されたAndroidベースPCプロジェクトのコードネームです。Googleの正式な製品発表では「Googlebook」を使用しており、「Aluminium OS」または「ALOS」を正式な製品名としていません。したがって、バックアップ目的でAluminiumに関する過去の報道・予測を残す場合も、Google公式の確定情報とは区別します。
+
+## Kdroidwin氏による査読
+
+2026年6月2日、Kdroidwin氏から旧「Aluminium OS（ALOS）調査レポート」に対する査読を受けました。査読では、大枠として「AndroidベースのPC向け新OS」という方向性は公開情報と整合する一方、**事実・リーク・予測が混在している**点が主な問題として指摘されています。
+
+特に、旧レポートで断定していた「Android 17ベース」「NPUによるローカルAI処理」「大容量RAM必須化」は、査読時に確認された公式公開情報では確定事項ではないため、確定情報として扱わないことが推奨されました。また、AdGuardのフィルタ記法については、scriptlet・CSS・拡張CSSの区別を明確にし、`:has()`を一律に「重いから避ける」とする説明は最新の実装を踏まえて見直すべきとの指摘がありました。
+
+本改訂版では、この査読結果を踏まえ、Google公式発表で確認できる内容と、報道・未確認事項を分離しています。Aluminiumに関する過去の予測はGooglebookの確定仕様とはみなさず、背景資料として扱います。
+
+- [Kdroidwin氏による査読｜Aluminium OS（ALOS）調査レポート](https://gist.github.com/Red-Frame-X/bdb94de10653edf1d11bd341d2eb2118)
 
 ## 確認できる情報
 
