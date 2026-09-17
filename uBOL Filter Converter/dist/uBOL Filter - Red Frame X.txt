@@ -1,4 +1,4 @@
-! Title: uBOL フィルター - Red Frame X
+! Title: uBOL Filter - Red Frame X
 ! Description: 個人用のuBOLカスタムフィルター。
 ! Version: 202609172312
 ! Syntax: uBOL
