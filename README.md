@@ -35,7 +35,7 @@ Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィ�
 
 ## 編集・更新の原則
 
-- AdGuard原本2ファイルのルール変更時は、変更したファイルの`! Version:`をJSTの現在時刻（`YYYYMMDDHHMM`）へ同じコミット内で更新します。
+- [`AdGuard Custom Rules`](https://github.com/Red-Frame-X/Prototype/blob/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [`AdGuard DNS Custom Rules`](https://github.com/Red-Frame-X/Prototype/blob/main/AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)の変更時は、変更したファイルの`! Version:`をJSTの現在時刻（`YYYYMMDDHHMM`）へ同じコミット内で更新します。
 - `uBOL Filter Converter/dist/`とルートの`dist/`は自動生成物のため、直接編集せず、原本または変換処理を修正して再生成します。
 - `AdGuard Custom Rules/ChangeLog/`と`upstream/`は上流情報の追跡・ミラー用で、取得スクリプトや追跡設定から更新します。
 - `Markdown Notes/`やChatGPTで推敲した内容は、重要な技術情報を可能な限り一次情報・公開ソース・対象バージョン・実環境で再確認します。
