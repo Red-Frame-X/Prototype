@@ -35,7 +35,7 @@ Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィ�
 
 ## 編集・更新の原則
 
-- `AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt`はuBOL変換の原本です。ルール変更時は`! Version:`を更新し、品質チェック後に反映します。
+- `AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt`はuBOL変換の原本です。これ、または`AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt`のルール変更時は、変更したファイルの`! Version:`をJSTの現在時刻（`YYYYMMDDHHMM`）へ同じコミット内で更新し、品質チェック後に反映します。
 - `uBOL Filter Converter/dist/`とルートの`dist/`は自動生成物のため、原則として直接編集しません。
 - `AdGuard Custom Rules/ChangeLog/`と`upstream/`は上流情報の追跡・ミラー用です。更新は取得スクリプトや追跡設定から行います。
 - `Markdown Notes/`の更新時は、可能な限り公式資料・公開ソース・対象バージョンを再確認します。
@@ -46,7 +46,7 @@ Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィ�
 GitHub Actionsで、個人用フィルタや変換処理の更新・整合性確認を自動化しています。
 
 - フィルタ・コードの整合性、回帰テスト、構文・Lintを自動検査
-- 対象ファイル更新時に`! Version:`を日付・現在時刻へ自動更新
+- 対象ファイル更新時に`! Version:`を日付・現在時刻へ自動更新し、AdGuard原本2ファイルではルール変更とVersion更新が同じコミットに含まれることもCIで検証
 - GitHub Actions失敗時の原因確認・修正と再発防止
 - `uB-filter-by-kdroidwin (AdGuard Optimized)`を定期同期・変換
 - `uBOL Filter - Red Frame X`を再生成し、変換レポートを更新
