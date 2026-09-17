@@ -27,11 +27,11 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 
 ### コンテンツブロック資料の使い分け
 
-- **製品選択・MV3・フィルタ併用の考え方を確認する**：[`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)
-- **AdGuardユーザールールの設計方法を学ぶ**：[`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md)
-- **個別のAdGuard構文を確認する**：[`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)
-- **DNSレイヤーのブロックリストとブラウザブロッカーの違いを確認する**：[`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md)
-- **Strict blockingと例外ルールの実機挙動を確認する**：[`Strict Blocking Exceptions Test.md`](Strict%20Blocking%20Exceptions%20Test.md)
+- [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)：**製品選択・MV3・フィルタ併用の考え方を確認する**
+- [`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md)：**AdGuardユーザールールの設計方法を学ぶ**
+- [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)：**個別のAdGuard構文を確認する**
+- [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md)：**DNSレイヤーのブロックリストとブラウザブロッカーの違いを確認する**
+- [`Strict Blocking Exceptions Test.md`](Strict%20Blocking%20Exceptions%20Test.md)：**Strict blockingと例外ルールの実機挙動を確認する**
 
 ブラウザ用コンテンツブロッカーを複数重ねることと、ブラウザブロッカーにDNSブロックを組み合わせることは区別します。uBlock Origin公式は他のブラウザ用コンテンツブロッカーとの併用を非推奨としていますが、DNSブロックは別レイヤーです。DNS併用時は、誤ブロック発生時に各レイヤーを切り離して検証できる構成にします。
 
