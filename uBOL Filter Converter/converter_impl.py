@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -264,6 +265,12 @@ def extract_source_version(source_text: str) -> str:
 
 def generated_version() -> str:
     """Return the uBOL generation timestamp in JST as YYYYMMDDHHMM."""
+    fixed = os.environ.get("UBOL_VERSION_JST")
+    if fixed is not None:
+        if not re.fullmatch(r"\d{12}", fixed):
+            raise ValueError("UBOL_VERSION_JST must use YYYYMMDDHHMM format")
+        datetime.strptime(fixed, "%Y%m%d%H%M")
+        return fixed
     return datetime.now(JST).strftime("%Y%m%d%H%M")
 
 
@@ -279,11 +286,11 @@ def main(argv: list[str] | None = None) -> int:
         source_text = read_source(args.input)
         extract_source_version(source_text)
         rules, excluded = convert(source_text.splitlines())
+        version = generated_version()
     except (OSError, UnicodeError, ValueError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
 
-    version = generated_version()
     header = [
         f"! Title: {FILTER_TITLE}",
         "! Description: 個人用のuBOLカスタムフィルター。",
