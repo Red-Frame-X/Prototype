@@ -26,7 +26,7 @@ class MarkdownNotesVersionTests(unittest.TestCase):
             encoding="utf-8",
         )
         (notes / "Guide.md").write_text(
-            "| **Version** | 20260911 |\n\nInitial\n",
+            "| **Version** | 202609111200 |\n\nInitial\n",
             encoding="utf-8",
         )
         self.commit("base", "2026-09-11T12:00:00+09:00")
@@ -62,8 +62,8 @@ class MarkdownNotesVersionTests(unittest.TestCase):
             check=False,
         )
 
-    def test_uses_document_edit_date_not_later_unrelated_commit_date(self) -> None:
-        self.write_guide("20260912", "Edited")
+    def test_uses_document_edit_time_not_later_unrelated_commit_time(self) -> None:
+        self.write_guide("202609122350", "Edited")
         self.commit("edit guide", "2026-09-12T23:50:00+09:00")
         (self.repo / "unrelated.txt").write_text("later\n", encoding="utf-8")
         self.commit("unrelated next day", "2026-09-13T00:10:00+09:00")
@@ -73,23 +73,23 @@ class MarkdownNotesVersionTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_uses_latest_commit_when_document_is_edited_again(self) -> None:
-        self.write_guide("20260912", "First edit")
+        self.write_guide("202609122350", "First edit")
         self.commit("first guide edit", "2026-09-12T23:50:00+09:00")
-        self.write_guide("20260913", "Second edit")
+        self.write_guide("202609130010", "Second edit")
         self.commit("second guide edit", "2026-09-13T00:10:00+09:00")
 
         result = self.run_check()
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
-    def test_rejects_version_that_differs_from_document_edit_date(self) -> None:
-        self.write_guide("20260913", "Edited on previous day")
+    def test_rejects_version_that_differs_from_document_edit_time(self) -> None:
+        self.write_guide("202609130010", "Edited earlier")
         self.commit("edit guide", "2026-09-12T23:50:00+09:00")
 
         result = self.run_check()
 
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("expected 20260912", result.stderr)
+        self.assertIn("expected 202609122350", result.stderr)
 
 
 if __name__ == "__main__":
