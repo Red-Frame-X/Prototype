@@ -1,9 +1,13 @@
 import importlib.util
 import json
+import re
 import sys
 import tempfile
 import unittest
+from datetime import datetime
 from pathlib import Path
+from unittest import mock
+from zoneinfo import ZoneInfo
 
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "converter_impl.py"
@@ -187,7 +191,14 @@ class MainOutputTests(unittest.TestCase):
         self.assertEqual(converter.FILTER_TITLE, "uBOL フィルター - Red Frame X")
         self.assertEqual(converter.FILTER_BASENAME, "uBOL Filter - Red Frame X")
 
-    def test_report_is_deterministic_and_contains_no_runtime_timestamp(self):
+    def test_generated_version_uses_current_jst_timestamp(self):
+        fixed = datetime(2026, 9, 18, 1, 27, tzinfo=ZoneInfo("Asia/Tokyo"))
+        with mock.patch.object(converter, "datetime") as mocked_datetime:
+            mocked_datetime.now.return_value = fixed
+            self.assertEqual(converter.generated_version(), "202609180127")
+            mocked_datetime.now.assert_called_once_with(converter.JST)
+
+    def test_report_is_deterministic_and_version_is_generation_timestamp(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "source.txt"
@@ -204,10 +215,11 @@ class MainOutputTests(unittest.TestCase):
                 "--report", str(report),
             ]
 
-            self.assertEqual(converter.main(args), 0)
-            first_output = output.read_bytes()
-            first_report = report.read_bytes()
-            self.assertEqual(converter.main(args), 0)
+            with mock.patch.object(converter, "generated_version", return_value="202609180127"):
+                self.assertEqual(converter.main(args), 0)
+                first_output = output.read_bytes()
+                first_report = report.read_bytes()
+                self.assertEqual(converter.main(args), 0)
 
             self.assertEqual(output.read_bytes(), first_output)
             self.assertEqual(report.read_bytes(), first_report)
@@ -215,7 +227,7 @@ class MainOutputTests(unittest.TestCase):
             expected_header = (
                 "! Title: uBOL フィルター - Red Frame X\n"
                 "! Description: 個人用のuBOLカスタムフィルター。\n"
-                "! Version: 202608221705\n"
+                "! Version: 202609180127\n"
                 "! Syntax: uBOL\n"
                 "! Expires: 1 day\n"
                 "! Homepage: https://github.com/Red-Frame-X/Prototype\n"
@@ -223,6 +235,8 @@ class MainOutputTests(unittest.TestCase):
                 "! Note: 日本のコミュニティ主導ルールと自作ルールを組み合わせたものです。\n"
             ).encode()
             self.assertTrue(first_output.startswith(expected_header))
+            version_match = re.search(rb"^! Version: (\d{12})$", first_output, flags=re.MULTILINE)
+            self.assertIsNotNone(version_match)
 
     def test_missing_source_version_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
