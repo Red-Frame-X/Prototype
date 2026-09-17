@@ -1,11 +1,9 @@
 name: Update ChMate NG Version
 
+# ChMate専用の旧ワークフローは手動実行用として保持します。
+# mainへのpush時の自動更新は update-version-timestamps.yml に統合し、
+# 同一ファイルへの並行push競合を防止します。
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'NG Word Regex for ChMate/NG Word Regex for ChMate.txt'
   workflow_dispatch:
 
 permissions:
@@ -17,7 +15,6 @@ concurrency:
 
 jobs:
   update-version:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
