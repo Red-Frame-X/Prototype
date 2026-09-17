@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -83,8 +84,23 @@ def main() -> int:
                 fail("edit removed the canonical filter's final newline")
 
             before = active_rules(base)
+            before_counts = Counter(before)
+            after_counts = Counter(rules)
+            removed_rules = sorted((before_counts - after_counts).elements())
+
+            # ルール削除は明示的な許可なしでは1件でも拒否する。
+            # ローカルで明示的な削除を検証する場合のみ環境変数で解除できる。
+            allow_removals = os.environ.get("ALLOW_ADGUARD_RULE_REMOVAL") == "1"
+            if removed_rules and not allow_removals:
+                sample = "\n".join(f"  {rule}" for rule in removed_rules[:10])
+                fail(
+                    "active AdGuard rule deletion detected without explicit opt-in "
+                    f"({len(removed_rules)} rule(s)); possible unintended content loss:\n{sample}\n"
+                    "Set ALLOW_ADGUARD_RULE_REMOVAL=1 only when the deletion was explicitly requested."
+                )
+
             removed = len(before) - len(rules)
-            # 大量削除は全置換や切り詰め事故の可能性があるため拒否する。
+            # 許可済みの削除でも大規模な減少は別途検知し、全置換事故を防ぐ。
             if removed > max(10, len(before) // 4):
                 fail(
                     "suspiciously large active-rule reduction detected "
