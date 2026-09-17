@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ensure edited Markdown Notes use the edit date in their Version metadata."""
+"""Ensure edited Markdown Notes use the edit timestamp in their Version metadata."""
 from __future__ import annotations
 
 import argparse
@@ -10,11 +10,11 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-VERSION_RE = re.compile(r"^\| \*\*Version\*\* \| (\d{8}) \|$", re.MULTILINE)
+VERSION_RE = re.compile(r"^\| \*\*Version\*\* \| (\d{12}) \|$", re.MULTILINE)
 NOTES_DIR = Path("Markdown Notes")
 INDEX_FILE = NOTES_DIR / "README.md"
 HEADER_TEMPLATE = NOTES_DIR / "Header Template.md"
-EXCLUDED = {INDEX_FILE, HEADER_TEMPLATE}
+EXCLUDED = {HEADER_TEMPLATE}
 HEADER_TEMPLATE_VERSION = "| **Version** | yyyymmdd |"
 EDIT_TIMEZONE = ZoneInfo("Asia/Tokyo")
 
@@ -28,8 +28,8 @@ def changed_markdown_files(base_ref: str) -> list[Path]:
     return [Path(line) for line in output.splitlines() if line]
 
 
-def file_edit_date_yyyymmdd(base_ref: str, path: Path) -> str:
-    """Return the last commit date for ``path`` in the reviewed change range."""
+def file_edit_timestamp_yyyymmddhhmm(base_ref: str, path: Path) -> str:
+    """Return the last commit timestamp for ``path`` in the reviewed change range."""
     raw = run_git(
         "log",
         "-1",
@@ -40,7 +40,7 @@ def file_edit_date_yyyymmdd(base_ref: str, path: Path) -> str:
     ).strip()
     if not raw:
         raise ValueError(f"No editing commit found for {path} in {base_ref}..HEAD.")
-    return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(EDIT_TIMEZONE).strftime("%Y%m%d")
+    return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(EDIT_TIMEZONE).strftime("%Y%m%d%H%M")
 
 
 def validate_header_template() -> str | None:
@@ -70,10 +70,10 @@ def main() -> int:
         text = path.read_text(encoding="utf-8")
         match = VERSION_RE.search(text)
         if not match:
-            failures.append(f"{path}: Version metadata is missing or malformed.")
+            failures.append(f"{path}: Version metadata is missing or malformed (expected YYYYMMDDHHMM).")
             continue
         try:
-            expected = file_edit_date_yyyymmdd(args.base_ref, path)
+            expected = file_edit_timestamp_yyyymmddhhmm(args.base_ref, path)
         except ValueError as error:
             failures.append(str(error))
             continue
@@ -90,7 +90,7 @@ def main() -> int:
             print(f"- {failure}", file=sys.stderr)
         return 1
 
-    print(f"Markdown Notes Version check passed ({EDIT_TIMEZONE.key}).")
+    print(f"Markdown Notes Version check passed ({EDIT_TIMEZONE.key}, YYYYMMDDHHMM).")
     return 0
 
 
