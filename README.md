@@ -9,9 +9,9 @@ Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィ�
 >
 > フィルタ、スクリプト、設定、技術メモは自分の環境で確認したもので、一般向けの手順書・配布物を想定していません。
 
-## Workflow Status
+## Workflow
 
-| Category | Workflow Status | Status |
+| Category | Workflow | Status |
 | --- | --- | --- |
 | Quality | [Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![STATUS PASSING](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/quality.yml?style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
 | Build / Sync | [Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![STATUS PASSING](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/sync.yml?style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
