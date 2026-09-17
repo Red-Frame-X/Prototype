@@ -11,7 +11,7 @@ Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィ�
 
 ## Workflow Status
 
-| Category | Workflow Status | Badge |
+| Category | Workflow Status | Status |
 | --- | --- | :---: |
 | Quality | [Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml/badge.svg) |
 | Build / Sync | [Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![Sync AdGuard filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml/badge.svg) |
