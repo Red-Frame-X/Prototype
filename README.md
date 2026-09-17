@@ -2,16 +2,16 @@
 
 ## Workflow Status
 
-| Category | Workflow Status |
-| --- | :---: |
-| Quality | [![Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) |
-| Build / Sync | [![Sync AdGuard filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) |
-| Build / Sync | [![Build uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml) |
-| Version | [![Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) |
-| Version | [![Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) |
-| Maintenance | [![Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) |
-| Maintenance | [![Update uBO Lite Changelog](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml) |
-| Maintenance | [![Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) |
+| Category | Workflow Status | Badge |
+| --- | --- | :---: |
+| Quality | [Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml/badge.svg) |
+| Build / Sync | [Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![Sync AdGuard filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml/badge.svg) |
+| Build / Sync | [Build uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml) | ![Build uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg) |
+| Version | [Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) | ![Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml/badge.svg) |
+| Version | [Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml/badge.svg) |
+| Maintenance | [Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml/badge.svg) |
+| Maintenance | [Update uBO Lite Changelog](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml) | ![Update uBO Lite Changelog](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml/badge.svg) |
+| Maintenance | [Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml/badge.svg) |
 
 Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、更新・変換ツール、技術メモをまとめた個人用リポジトリです。
 
