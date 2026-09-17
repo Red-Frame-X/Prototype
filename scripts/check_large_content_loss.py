@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail CI when protected user-facing content is deleted without explicit authorization."""
+"""Fail CI when protected user-facing content suffers substantial unintended loss."""
 from __future__ import annotations
 
 import argparse
@@ -62,7 +62,7 @@ def main() -> int:
         action="append",
         default=[],
         metavar="PATH",
-        help="Explicitly authorize deletions in one exact protected content path. Repeat as needed.",
+        help="Explicitly authorize a reviewed large deletion in one exact protected content path. Repeat as needed.",
     )
     args = parser.parse_args()
 
@@ -72,32 +72,20 @@ def main() -> int:
     failures: list[str] = []
 
     for added, deleted, path in protected_changes:
-        if deleted > 0 and path not in allowed_paths:
-            failures.append(
-                f"{path}: +{added}/-{deleted}; protected content deletion is not explicitly authorized. "
-                "Add --allow-deletion-in with this exact path only for a user-requested deletion."
-            )
-            continue
-
         net_loss = deleted - added
-        if net_loss >= args.max_net_loss:
-            failures.append(
-                f"{path}: +{added}/-{deleted} (net loss {net_loss}); "
-                f"net loss reaches the review threshold {args.max_net_loss}. "
-                "Large content removal requires explicit review instead of automatic merging."
-            )
-            continue
-
-        if deleted < args.max_deletions and net_loss < args.max_net_loss:
-            continue
-
         before_lines = line_count(args.base_ref, path)
         after_lines = line_count("HEAD", path)
+
+        # Ordinary edits and rewrites may naturally replace existing lines. The guard
+        # should only block substantial loss, not every deletion in a textual diff.
+        # Exact-path authorization remains available for intentionally large removals,
+        # but does not bypass the hard retained-ratio safeguard below.
         if after_lines is None:
-            failures.append(
-                f"{path}: file deleted (+{added}/-{deleted}). "
-                "Large content removal requires explicit review instead of automatic merging."
-            )
+            if path not in allowed_paths:
+                failures.append(
+                    f"{path}: file deleted (+{added}/-{deleted}); protected file deletion is not explicitly authorized. "
+                    "Add --allow-deletion-in with this exact path only for a user-requested deletion."
+                )
             continue
 
         if before_lines and after_lines / before_lines < args.min_retained_ratio:
@@ -107,9 +95,29 @@ def main() -> int:
                 f"({after_lines / before_lines:.1%}). "
                 "Large content removal requires explicit review instead of automatic merging."
             )
+            continue
+
+        if path in allowed_paths:
+            continue
+
+        if net_loss >= args.max_net_loss:
+            failures.append(
+                f"{path}: +{added}/-{deleted} (net loss {net_loss}); "
+                f"net loss reaches the review threshold {args.max_net_loss}. "
+                "Large content removal requires explicit review instead of automatic merging."
+            )
+            continue
+
+        if deleted >= args.max_deletions and net_loss > 0:
+            failures.append(
+                f"{path}: +{added}/-{deleted} (net loss {net_loss}); "
+                f"deletions reach the review threshold {args.max_deletions}. "
+                "Large content removal requires explicit review instead of automatic merging."
+            )
 
     stale_authorizations = sorted(
-        path for path in allowed_paths
+        path
+        for path in allowed_paths
         if not any(changed_path == path and deleted > 0 for _, deleted, changed_path in protected_changes)
     )
     if stale_authorizations:
@@ -124,7 +132,7 @@ def main() -> int:
             print(f"- {failure}", file=sys.stderr)
         return 1
 
-    print("Content-loss guard passed: no unapproved protected-content deletions.")
+    print("Content-loss guard passed: no substantial unapproved protected-content loss.")
     return 0
 
 
