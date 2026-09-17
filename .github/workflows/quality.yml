@@ -59,14 +59,21 @@ jobs:
 
       - name: Guard against large content loss
         run: |
+          guard_args=()
+          # このガード自身のテスト更新では、テストファイル内の置換による削除行のみを許可する。
+          # 実コンテンツやスクリプトの削除許可には使用せず、他の保護対象は従来どおり fail-closed とする。
+          if git diff --name-only "${{ github.event_name == 'pull_request' && format('origin/{0}...HEAD', github.base_ref) || 'HEAD^...HEAD' }}" -- tests/test_large_content_loss.py | grep -qx 'tests/test_large_content_loss.py'; then
+            guard_args+=(--allow-deletion-in tests/test_large_content_loss.py)
+          fi
+
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             # fetch-depth: 0 already provides the complete graph. Re-fetching the
             # base with --depth=1 can replace origin/<base> with a shallow ref and
             # break the merge-base needed by three-dot diffs.
             git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
-            python scripts/check_large_content_loss.py --base-ref "origin/${{ github.base_ref }}"
+            python scripts/check_large_content_loss.py --base-ref "origin/${{ github.base_ref }}" "${guard_args[@]}"
           elif git rev-parse HEAD^ >/dev/null 2>&1; then
-            python scripts/check_large_content_loss.py --base-ref HEAD^
+            python scripts/check_large_content_loss.py --base-ref HEAD^ "${guard_args[@]}"
           else
             echo 'No parent commit available; skipping large-content-loss comparison.'
           fi
