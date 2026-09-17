@@ -71,7 +71,11 @@ jobs:
             echo 'No parent commit available; skipping large-content-loss comparison.'
           fi
 
+      # mainへのpushではUpdate Version Timestamps (JST)が同じpushを受けて
+      # Versionを同期するため、同期前のコミットを並列に検査して誤検知しない。
+      # PRと手動実行では従来どおりVersion metadataを厳格に検証する。
       - name: Validate Markdown Notes Version dates
+        if: github.event_name != 'push'
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
