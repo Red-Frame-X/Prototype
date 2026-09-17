@@ -51,6 +51,8 @@ uBlock Origin Lite向けには、互換性のないルールを保守的に除�
 
 `AdGuard Custom Rules - Red Frame X.txt`はuBOL生成フィルタの変換元でもあります。`AdGuard Custom Rules - Red Frame X.txt`または`AdGuard DNS Custom Rules - Red Frame X.txt`のルールを追加・削除・変更する場合は、変更した各ファイルと同じコミット内で、そのヘッダーの`! Version:`を日本標準時（JST）の現在時刻に合わせ、`YYYYMMDDHHMM`形式で必ず更新します。
 
+この要件は[`check_adguard_version_timestamp.py`](../scripts/check_adguard_version_timestamp.py)とGitHub Actionsの[`Check AdGuard Version Timestamp`](../.github/workflows/check-adguard-version.yml)で検証します。対象フィルタの内容が変更されたにもかかわらず`! Version:`が同じ場合、またはVersionヘッダーが`YYYYMMDDHHMM`形式の有効な日時でない場合はCIを失敗させ、更新漏れを検出します。
+
 リポジトリの品質チェックでは、原本フィルタの破損防止に加えて、重複した有効ルール、末尾空白、改行形式、意図しない大量削除などを検査します。ローカルで確認する場合は次を実行します。
 
 ```bash
