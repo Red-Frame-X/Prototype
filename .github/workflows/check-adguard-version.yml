@@ -1,0 +1,59 @@
+name: Check AdGuard Version Timestamp
+
+on:
+  pull_request:
+    paths:
+      - 'AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt'
+      - 'AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt'
+      - 'scripts/check_adguard_version_timestamp.py'
+      - '.github/workflows/check-adguard-version.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt'
+      - 'AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt'
+      - 'scripts/check_adguard_version_timestamp.py'
+      - '.github/workflows/check-adguard-version.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-adguard-version:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Determine comparison base
+        id: base
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_BEFORE: ${{ github.event.before }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            base="$PR_BASE_SHA"
+          elif [[ "$EVENT_NAME" == "push" && -n "$EVENT_BEFORE" && "$EVENT_BEFORE" != "0000000000000000000000000000000000000000" ]]; then
+            base="$EVENT_BEFORE"
+          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+            base="$(git rev-parse HEAD^)"
+          else
+            echo 'No comparison base is available; nothing to validate.'
+            exit 0
+          fi
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+
+      - name: Validate same-commit Version update
+        if: steps.base.outputs.base != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/check_adguard_version_timestamp.py --base '${{ steps.base.outputs.base }}' --head HEAD
