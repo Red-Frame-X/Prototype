@@ -77,4 +77,19 @@ jobs:
             exit 0
           fi
           git commit -m 'chore: sync Version timestamps (JST)'
-          git push
+
+          # Other workflows can push to main while this job is running.
+          # Rebase onto the latest main and retry the push to avoid
+          # non-fast-forward failures without overwriting concurrent changes.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo 'Failed to push Version timestamp update after 3 attempts.' >&2
+              exit 1
+            fi
+            sleep $((attempt * 2))
+          done
