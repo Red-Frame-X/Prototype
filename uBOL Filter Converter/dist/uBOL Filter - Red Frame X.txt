@@ -1,6 +1,6 @@
 ! Title: uBOL フィルター - Red Frame X
 ! Description: 個人用のuBOLカスタムフィルター。
-! Version: 202609140019
+! Version: 202609171809
 ! Syntax: uBOL
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -34,6 +34,10 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 chatgpt.com##aside:has(button[data-testid="close-button"])
 ! 入力欄上部の案内バナー領域を初期CSSで直接非表示し、描画後判定によるチラつきを回避
 chatgpt.com##[data-prompt-textarea-header]
+
+! deepl.com
+! ナビゲーション直下に表示される製品告知バナーを非表示
+deepl.com##[data-testid="below-navigation-banner"]
 
 ! downdetector.jp
 ! 以下は無効：サービス一覧に挿入される広告カードをdata-service-list-ad属性で非表示
@@ -165,120 +169,96 @@ www.minnanosyougai.com##aside.c-bnr-register
 ! 動画カードのメタデータ文字を1.2rem・行高1.8remへ拡大（Enhancer for YouTube™併用時の表示調整）
 www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !important; line-height: 1.8rem !important;)
 ! ホーム等の動画タイトルを1.4rem・行高2remへ拡大
-www.youtube.com###video-title.ytd-rich-grid-media, #video-title.ytd-rich-grid-slim-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)
-! チャンネル検索結果カードを非表示
-www.youtube.com##ytd-channel-renderer
-! チャンネル一覧ページに挿入されるShorts棚を非表示
-www.youtube.com##[page-subtype="channels"] ytd-item-section-renderer:not([use-height-hack]):has(ytd-reel-shelf-renderer)
-! ホームでタイトルにShorts用ハッシュタグを含む動画カードを非表示
-www.youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(#video-title-link[title*="#short" i])
-! 登録チャンネルでShortsオーバーレイを持つ動画カードを非表示
-www.youtube.com##[page-subtype="subscriptions"] ytd-rich-item-renderer:has([overlay-style="SHORTS"])
-! ページ全体の横スクロールを無効化
-www.youtube.com##body, ytd-app[scrolling]:style(overflow-x: hidden !important;)
-! ホームに挿入される特集型リッチセクションを非表示
-www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer
-! 登録チャンネルに挿入される特集型リッチセクションを非表示
-www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-rich-section-renderer
-! ガイド内のShorts項目を非表示
-www.youtube.com##ytd-guide-entry-renderer:has(a[title="ショート"])
-! ガイド内の「YouTube の他のサービス」セクションを非表示
-www.youtube.com##ytd-guide-section-renderer:has(#guide-section-title:has-text(YouTube の他のサービス))
-! ミニガイド内のShorts項目を非表示
-www.youtube.com##ytd-mini-guide-entry-renderer:has(a[href="/shorts/"])
-! Shorts棚を非表示
-www.youtube.com##ytd-reel-shelf-renderer
-! 検索結果から動画・チャンネル・再生リスト・ラジオ以外の項目を非表示
-www.youtube.com##ytd-search ytd-item-section-renderer > #contents > :not(ytd-video-renderer, ytd-channel-renderer, ytd-playlist-renderer, ytd-radio-renderer)
-! 検索結果の右側に表示される補助検索欄を非表示
-www.youtube.com##ytd-search ytd-secondary-search-container-renderer
-! 動画情報欄のティーザーカルーセルを非表示
-www.youtube.com##ytd-watch-metadata #teaser-carousel
-! 関連動画欄のShortsカードを非表示
-www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-renderer:has(a[href^="/shorts/"])
+www.youtube.com###video-title.ytd-rich-grid-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)
+! チャンネルページ上部の横長バナー画像を非表示
+www.youtube.com###page-header-banner
+! 右サイドバーのライブチャット／チャットリプレイを非表示
+www.youtube.com###chat-container
+! 関連動画欄に挿入されるShorts棚を非表示
+www.youtube.com###related ytd-reel-shelf-renderer
+! 「More Videos」「他の動画」などの見出しを持つ続き動画グリッドを非表示
+www.youtube.com###secondary ytd-rich-grid-renderer:has-text(/^(More Videos|他の動画)$/)
+! 動画ページのコメント欄を非表示
+www.youtube.com###comments
+! メンバーシップ案内などを表示するエンゲージメントパネルを非表示
+www.youtube.com###panels
+! ミニプレーヤー内の終了画面オーバーレイを非表示
+www.youtube.com###player div[class*="ytp-ce-element"]
+! 動画上のカード・終了画面を非表示
+www.youtube.com###player div.ytp-ce-element
+! 動画上のカード関連要素を非表示
+www.youtube.com###player div.ytp-cards-teaser
+! 動画上のカード情報パネルを非表示
+www.youtube.com###player div.ytp-cards-button-icon
+! 動画上のカード情報パネルを非表示
+www.youtube.com###player div.ytp-cards-button
+! 動画上の透かし・チャンネル登録ボタンを非表示
+www.youtube.com###player div.ytp-watermark
+! プレイヤー内のチャンネルウォーターマークを非表示
+www.youtube.com###player ytd-channel-watermark-renderer
+! 動画ページのShorts棚を非表示
+www.youtube.com###reel-shelf
+! 検索結果などに出るShortsグリッド棚を非表示
+www.youtube.com###shorts-container
+! サイドバー内の「Shorts」ナビゲーション項目を非表示
+www.youtube.com###items ytd-guide-entry-renderer:has(a[href^="/shorts"])
+! 「Explore」セクションを丸ごと非表示
+www.youtube.com###sections ytd-guide-section-renderer:has(#guide-section-title:has-text(Explore))
+! サイドバーの「もっと見る」展開ボタンを非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has-text(もっと見る)
+! サイドバーの「ホーム」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/"])
+! サイドバーの「ショート」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="/shorts"])
+! サイドバーの「ポッドキャスト」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="/podcasts"])
+! サイドバーの「ライブ」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="/channel/UC4R8DWoMoI7CAwX8_LjQHig"])
+! サイドバーの「急上昇」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/feed/trending"])
+! サイドバーの「音楽」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/channel/UC-9-kyTW8ZkZNDHQJ6Fgpw"])
+! サイドバーの「ゲーム」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/gaming"])
+! サイドバーの「スポーツ」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/channel/UCEgdi0XIXXZ-qJOFPf4JSKw"])
+! サイドバーの「YouTube Premium」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="/premium"])
+! サイドバーの「YouTube Studio」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="https://studio.youtube.com"])
+! サイドバーの「YouTube Music」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="https://music.youtube.com"])
+! サイドバーの「YouTube Kids」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="https://www.youtubekids.com"])
+! サイドバーの「設定」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/account"])
+! サイドバーの「報告」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/reporthistory"])
+! サイドバーの「ヘルプ」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="https://support.google.com/youtube"])
+! サイドバーの「フィードバックを送信」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has-text(フィードバックを送信)
+! 左サイドバー下部のガイドリンク群を非表示
+www.youtube.com###guide-links-primary
+! 左サイドバー下部の追加ガイドリンク群を非表示
+www.youtube.com###guide-links-secondary
+! 左サイドバー下部の著作権・フッター表示を非表示
+www.youtube.com###footer
+! ホーム画面の動画グリッドからライブ配信を非表示
+www.youtube.com##ytd-rich-item-renderer:has(.badge-style-type-live-now-alternate)
+! 検索結果・関連動画からライブ配信を非表示
+www.youtube.com##ytd-video-renderer:has(.badge-style-type-live-now-alternate)
 
 ! x.com
-! ホーム上部の「おすすめ」タブを非表示
-x.com##div[role="presentation"]:has(> div[role="tab"] span:has-text(/^おすすめ$/))
-! x.comから開かれるtwitter.undefinedドメインのポップアップをブロック
-||twitter.undefined^$popup,domain=x.com
-! x.com上で.phpを含むURLのポップアップをブロック
-||x.com/*.php*$popup,domain=x.com
-! 左サイドバーからDM・Chat・Grok・Creator Studio・収益化・Premium・スペース作成・認証済み組織の各導線を非表示
-x.com##a[data-testid="AppTabBar_DirectMessage_Link"]
-x.com##a[href="/i/chat"][role="link"]
-x.com##a[href="/i/grok"][role="link"]
-x.com##a[href^="/i/jf/creators/studio"]
-x.com##a[href="/i/monetization"][role="link"]
-x.com##a[href="/i/premium"][role="link"]
-x.com##a[href="/i/spaces/start"][role="link"]
-x.com##a[href^="/i/verified-orgs-signup"]
-! x.com##a[href="/i/history"][role="link"]
-! x.com##a[href="/explore"][role="link"]
-! x.com##a[href$="/lists"][role="link"]
-! x.com##a[href$="/communities"][role="link"]
-! プロフィール等の「記事」「ハイライト」とExploreのエンタメ・スポーツ・おすすめ各タブを非表示
-x.com##div[role="presentation"]:has(> a[href$="/articles"])
-x.com##div[role="presentation"]:has(> a[href$="/highlights"])
-x.com##div[role="presentation"]:has(> a[href="/explore/tabs/entertainment"])
-x.com##div[role="presentation"]:has(> a[href="/explore/tabs/sports"])
-x.com##div[role="presentation"]:has(> a[href="/explore/tabs/for-you"])
-! 右カラムの関連アカウント・おすすめユーザー・ニュース・速報タイムラインを非表示
-x.com##aside[aria-label="関連性の高いアカウント"]
-x.com##div:has(> aside[aria-label="おすすめユーザー"])
-x.com##div:has(> div[data-testid="news_sidebar"])
-x.com##div:has(> section > div[aria-label="タイムライン: 速報"])
-! Premium加入導線、認証バッジ訴求、DM/Chatドロワー、分析プレビュー、プロフィール訪問者訴求を非表示
-x.com##a[href*="/i/premium_tier_switch"]
-x.com##div[aria-label*="認証済みバッジを獲得する"]
-x.com##div[data-testid="DMDrawer"]
-x.com##div[data-testid="analytics-preview"]
-x.com##div[data-testid="chat-drawer-root"]
-x.com##div[data-testid="verified_profile_visitor_upsell"]
-x.com##div:has(> a[href="/i/premium_sign_up"])
-x.com##div:has(> div > img[src*="premium-badge-card"])
-x.com##div:has(a[href$="/verified-profile-visits"])
-! Grokのアクション・プロフィール要約・外部Grok案内・画像生成・ドロワー・インライン入力欄を非表示
-x.com##[aria-label="Grokのアクション"]
-x.com##[aria-label="プロフィールの要約"]
-x.com##button:has-text(grok.comにアクセスするとさらに多くの機能が利用できます):has(svg)
-x.com##button[data-testid="grokImgGen"]
-x.com##div[data-testid="GrokDrawer"]
-x.com##div[data-testid="inlinePrompt"]
-! タイムライン内のおすすめユーザー、トピック、イベント、広告、トレンド、関連ユーザー各カードを非表示
-x.com##[aria-label="おすすめユーザー"] button[data-testid="UserCell"]
-x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
-x.com##[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:has-text(フォローしています))
-x.com##[data-testid="cellInnerDiv"]:has(div[data-testid="eventHero"])
-x.com##[data-testid="cellInnerDiv"]:has(h2:has-text(おすすめ投稿))
-x.com##[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:has-text(おすすめユーザー))
-x.com##[data-testid="cellInnerDiv"]:has(img[src*="global_trending_card_newest.png"])
-x.com##[data-testid="cellInnerDiv"]:has(span:has-text(によるプロモーション))
-x.com##a[href^="https://ads.x.com"]
-x.com##div:has(> a[href^="/i/jf/"][href$="/home"])
-x.com##div[aria-label="タイムライン: Relevant people"]
-x.com##div[aria-label="タイムライン: 関連性の高いユーザー"]
-x.com##[data-testid="cellInnerDiv"]:has(span:has-text(関連性の高いユーザー))
-x.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"] > div:has([data-testid$="-impression-pixel"])
-! ホームとExploreで挿入される認証済みおすすめユーザー、フォロー候補、ユーザー推薦カードと付随する空要素を非表示
-x.com##[aria-label="タイムライン: 話題を検索"] div[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"] svg[data-testid="icon-verified"])
-x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
-x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
-x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty):not([aria-label="タイムライン: フォロー中"] *)
-x.com##div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
-x.com##[data-testid="cellInnerDiv"]:has([data-testid="UserCell"] [data-testid$="-follow"])
-! 個別ポスト・会話・検索結果に挿入されるフォロー候補、「もっと見つける」、ユーザー見出しを非表示
-x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
-x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
-x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty)
-! 「もっと見つける」見出しと、それ以降に挿入される会話ツリーと無関係なおすすめポストを非表示
-x.com##div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:has-text(もっと見つける))
-x.com##div[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:has-text(もっと見つける)) ~ div
-x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"] > div span:has-text(ユーザー))
-! コミュニティ検索・一覧に挿入されるおすすめコミュニティ、探索導線、記事を含まないコミュニティカードを非表示
-x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(+ div > div > div > a[href^="/i/communities/"])
-x.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(> div > div > a[href^="/i/communities/"])
+! 左サイドバーのGrokリンクを非表示
+x.com##a[href="/i/grok"]
+! 左サイドバーの「コミュニティ」リンクを非表示
+x.com##a[href^="/i/communities"]
+! コミュニティ画面のおすすめコミュニティ枠を非表示
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(a[href="/i/communities/suggested"])
+! 「新しいコミュニティを見つける」案内を非表示
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(span:has-text(新しいコミュニティを見つける))
+! コミュニティ画面内の非投稿型コミュニティ導線を非表示
 x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:not(:has(article)):has(a[href^="/i/communities/"])
+! 「コミュニティを探す」見出しを含む案内セルを非表示
 x.com##div[data-testid="cellInnerDiv"]:has(h2[role="heading"]:has-text(コミュニティを探す))
