@@ -41,7 +41,8 @@ jobs:
           set -euo pipefail
           output='uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt'
           report='uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json'
-          export UBOL_VERSION_JST="$(date '+%Y%m%d%H%M')"
+          UBOL_VERSION_JST="$(date '+%Y%m%d%H%M')"
+          export UBOL_VERSION_JST
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
