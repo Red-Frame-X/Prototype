@@ -1,5 +1,14 @@
 # Prototype
 
+## 概要
+
+Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、更新・変換ツール、技術メモをまとめた個人用リポジトリです。
+
+> [!IMPORTANT]
+> 学習・検証結果の記録とバックアップを目的としています。ChatGPTで推敲・整理した内容や環境依存の情報を含むため、正確性・完全性は保証しません。
+>
+> フィルタ、スクリプト、設定、技術メモは自分の環境で確認したもので、一般向けの手順書・配布物を想定していません。
+
 ## Workflow Status
 
 | Category | Workflow Status | Badge |
@@ -12,13 +21,6 @@
 | Maintenance | [Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml/badge.svg) |
 | Maintenance | [Update uBO Lite Changelog](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml) | ![Update uBO Lite Changelog](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml/badge.svg) |
 | Maintenance | [Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml/badge.svg) |
-
-Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、更新・変換ツール、技術メモをまとめた個人用リポジトリです。
-
-> [!IMPORTANT]
-> 学習・検証結果の記録とバックアップを目的としています。ChatGPTで推敲・整理した内容や環境依存の情報を含むため、正確性・完全性は保証しません。
->
-> フィルタ、スクリプト、設定、技術メモは自分の環境で確認したもので、一般向けの手順書・配布物を想定していません。
 
 ## リポジトリ案内
 
