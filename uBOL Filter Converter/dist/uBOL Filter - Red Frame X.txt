@@ -36,8 +36,10 @@ chatgpt.com##aside:has(button[data-testid="close-button"])
 chatgpt.com##[data-prompt-textarea-header]
 
 ! deepl.com
-! ナビゲーション直下に表示される製品告知バナーを非表示
-deepl.com##[data-testid="below-navigation-banner"]
+! DeepLホーム画面のナビゲーション直下に表示される製品告知バナーの外枠を非表示
+deepl.com##.below-navigation-banner-wrapper
+! DeepLホーム画面の案内・プロモーション領域を非表示
+deepl.com##div[class^="homeExperience-module"]
 
 ! downdetector.jp
 ! 以下は無効：サービス一覧に挿入される広告カードをdata-service-list-ad属性で非表示
