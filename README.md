@@ -1,20 +1,8 @@
 # Prototype
 
-[![Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml)
+## Workflow Status
 
-[![Sync AdGuard filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml)
-
-[![Build uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml)
-
-[![Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml)
-
-[![Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml)
-
-[![Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml)
-
-[![Update uBO Lite Changelog](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml)
-
-[![Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml)
+[![Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) [![Sync AdGuard filter](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) [![Build uBOL Filter - Red Frame X](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/build-ubol.yml) [![Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) [![Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) [![Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) [![Update uBO Lite Changelog](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-ubol-changelog.yml) [![Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml/badge.svg)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml)
 
 Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、更新・変換ツール、技術メモをまとめた個人用リポジトリです。
 
