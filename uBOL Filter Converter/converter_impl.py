@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Iterable
 from zoneinfo import ZoneInfo
 
-FILTER_TITLE = "uBOL フィルター - Red Frame X"
+FILTER_TITLE = "uBOL Filter - Red Frame X"
 FILTER_BASENAME = "uBOL Filter - Red Frame X"
 JST = ZoneInfo("Asia/Tokyo")
 
