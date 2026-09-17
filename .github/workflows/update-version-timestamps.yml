@@ -1,0 +1,80 @@
+name: Update Version Timestamps (JST)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'AdGuard Custom Rules/**'
+      - 'Markdown Notes/**'
+      - 'NG Word Regex for ChMate/**'
+      - 'UserScript/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-version-timestamps-main
+  cancel-in-progress: false
+
+jobs:
+  update-version-timestamps:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2
+
+      - name: Update changed Version metadata with current JST
+        shell: bash
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          base="$BEFORE_SHA"
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" || -z "$base" || "$base" == "0000000000000000000000000000000000000000" ]]; then
+            if git rev-parse HEAD^ >/dev/null 2>&1; then
+              base="$(git rev-parse HEAD^)"
+            else
+              echo 'No parent commit available; nothing to synchronize.'
+              exit 0
+            fi
+          fi
+          python scripts/update_version_timestamps.py --base "$base" --head HEAD
+
+      - name: Validate changed files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          for file in UserScript/*.js; do
+            [[ -e "$file" ]] || continue
+            node --check "$file"
+          done
+
+      - name: Commit synchronized timestamps when needed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo 'Version timestamps are already synchronized.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            'AdGuard Custom Rules' \
+            'Markdown Notes' \
+            'NG Word Regex for ChMate' \
+            'UserScript'
+          if git diff --cached --quiet; then
+            echo 'No supported Version metadata changes to commit.'
+            exit 0
+          fi
+          git commit -m 'chore: sync Version timestamps (JST)'
+          git push
