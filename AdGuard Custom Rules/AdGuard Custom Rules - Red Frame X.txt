@@ -10,6 +10,7 @@
 ! Global
 ! reCAPTCHA v3が全サイトの画面右下に表示するプライバシー・利用規約バッジを非表示
 ##.grecaptcha-badge
+
 ! ads-twitter.com
 ! かっぱ寿司アプリの起動・通信エラー回避
 @@||static.ads-twitter.com^$app=jp.kappasushi.app
