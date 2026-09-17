@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
-import os
 from pathlib import Path
 import subprocess
 import sys
@@ -34,8 +33,6 @@ def read(path: Path) -> str:
     except OSError as exc:
         fail(f"cannot read {path}: {exc}")
 
-    # Pythonの改行正規化より前に生バイトを確認し、CRLF/CRがLFへ変換されて
-    # 元の改行形式が隠れないようにする。
     if b"\r" in raw:
         fail("CR characters detected; canonical filter must use LF line endings")
 
@@ -60,13 +57,18 @@ def git_show(ref: str, path: Path) -> str | None:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-ref", default=None)
+    parser.add_argument(
+        "--allow-rule-removal",
+        action="append",
+        default=[],
+        metavar="RULE",
+        help="Explicitly authorize deletion of one exact active rule. Repeat for multiple rules.",
+    )
     args = parser.parse_args()
 
     text = read(FILTER)
-
-    # 既存ファイルが末尾改行なしでも、それだけでは失敗させない。
-    # PR比較時は、ベースにあった末尾改行を編集で削除した場合だけ拒否する。
     lines = text.splitlines()
+
     trailing = [i for i, line in enumerate(lines, 1) if line.rstrip() != line]
     if trailing:
         fail(f"trailing whitespace found on line(s): {', '.join(map(str, trailing[:10]))}")
@@ -86,22 +88,31 @@ def main() -> int:
             before = active_rules(base)
             before_counts = Counter(before)
             after_counts = Counter(rules)
-            removed_rules = sorted((before_counts - after_counts).elements())
+            removed_counts = before_counts - after_counts
+            removed_rules = sorted(removed_counts.elements())
 
-            # ルール削除は明示的な許可なしでは1件でも拒否する。
-            # ローカルで明示的な削除を検証する場合のみ環境変数で解除できる。
-            allow_removals = os.environ.get("ALLOW_ADGUARD_RULE_REMOVAL") == "1"
-            if removed_rules and not allow_removals:
-                sample = "\n".join(f"  {rule}" for rule in removed_rules[:10])
+            allowed_counts = Counter(args.allow_rule_removal)
+            unauthorized = sorted((removed_counts - allowed_counts).elements())
+            overauthorized = sorted((allowed_counts - removed_counts).elements())
+
+            if unauthorized:
+                sample = "\n".join(f"  {rule}" for rule in unauthorized[:10])
                 fail(
-                    "active AdGuard rule deletion detected without explicit opt-in "
-                    f"({len(removed_rules)} rule(s)); possible unintended content loss:\n{sample}\n"
-                    "Set ALLOW_ADGUARD_RULE_REMOVAL=1 only when the deletion was explicitly requested."
+                    "active AdGuard rule deletion detected without exact explicit authorization "
+                    f"({len(unauthorized)} rule(s)); possible unintended content loss:\n{sample}\n"
+                    "Authorize only the exact requested deletion with repeated "
+                    "--allow-rule-removal RULE arguments."
                 )
 
-            removed = len(before) - len(rules)
-            # 許可済みの削除でも大規模な減少は別途検知し、全置換事故を防ぐ。
-            if removed > max(10, len(before) // 4):
+            if overauthorized:
+                sample = "\n".join(f"  {rule}" for rule in overauthorized[:10])
+                fail(
+                    "rule-removal authorization does not match the actual diff:\n"
+                    f"{sample}\n"
+                    "Refusing a broad or stale deletion authorization."
+                )
+
+            if removed_rules and len(removed_rules) > max(10, len(before) // 4):
                 fail(
                     "suspiciously large active-rule reduction detected "
                     f"({len(before)} -> {len(rules)}); possible whole-file replacement"
@@ -109,7 +120,6 @@ def main() -> int:
 
             header_before = base.splitlines()[:9]
             header_after = lines[:9]
-            # Version以外の主要メタデータは意図しない変更から保護する。
             stable_prefixes = (
                 "! Title:",
                 "! Description:",
