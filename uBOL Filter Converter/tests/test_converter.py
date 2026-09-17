@@ -188,7 +188,7 @@ class LineConversionTests(unittest.TestCase):
 
 class MainOutputTests(unittest.TestCase):
     def test_filter_name_and_output_basename_are_canonical(self):
-        self.assertEqual(converter.FILTER_TITLE, "uBOL フィルター - Red Frame X")
+        self.assertEqual(converter.FILTER_TITLE, "uBOL Filter - Red Frame X")
         self.assertEqual(converter.FILTER_BASENAME, "uBOL Filter - Red Frame X")
 
     def test_generated_version_uses_current_jst_timestamp(self):
@@ -228,7 +228,7 @@ class MainOutputTests(unittest.TestCase):
             self.assertEqual(report.read_bytes(), first_report)
             self.assertNotIn("generated", json.loads(first_report))
             expected_header = (
-                "! Title: uBOL フィルター - Red Frame X\n"
+                "! Title: uBOL Filter - Red Frame X\n"
                 "! Description: 個人用のuBOLカスタムフィルター。\n"
                 "! Version: 202609180127\n"
                 "! Syntax: uBOL\n"
