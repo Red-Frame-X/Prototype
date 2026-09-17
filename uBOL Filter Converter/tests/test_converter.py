@@ -193,10 +193,13 @@ class MainOutputTests(unittest.TestCase):
 
     def test_generated_version_uses_current_jst_timestamp(self):
         fixed = datetime(2026, 9, 18, 1, 27, tzinfo=ZoneInfo("Asia/Tokyo"))
-        with mock.patch.object(converter, "datetime") as mocked_datetime:
-            mocked_datetime.now.return_value = fixed
-            self.assertEqual(converter.generated_version(), "202609180127")
-            mocked_datetime.now.assert_called_once_with(converter.JST)
+        with mock.patch.dict("os.environ", {}, clear=False):
+            import os
+            os.environ.pop("UBOL_VERSION_JST", None)
+            with mock.patch.object(converter, "datetime") as mocked_datetime:
+                mocked_datetime.now.return_value = fixed
+                self.assertEqual(converter.generated_version(), "202609180127")
+                mocked_datetime.now.assert_called_once_with(converter.JST)
 
     def test_report_is_deterministic_and_version_is_generation_timestamp(self):
         with tempfile.TemporaryDirectory() as directory:
