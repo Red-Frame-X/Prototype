@@ -44,7 +44,7 @@ class LargeContentLossGuardTests(unittest.TestCase):
     def test_rejects_unapproved_small_edit(self):
         result = self.run_guard(100, 95)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("tracked text deletion is not explicitly authorized", result.stderr)
+        self.assertIn("protected content deletion is not explicitly authorized", result.stderr)
 
     def test_allows_authorized_small_edit(self):
         result = self.run_guard(100, 95, allow_deletion=True)
