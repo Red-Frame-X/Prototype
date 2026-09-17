@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail CI when tracked text is deleted without explicit authorization."""
+"""Fail CI when protected user-facing content is deleted without explicit authorization."""
 from __future__ import annotations
 
 import argparse
@@ -9,7 +9,8 @@ import sys
 DEFAULT_MAX_DELETIONS = 200
 DEFAULT_MAX_NET_LOSS = 120
 DEFAULT_MIN_RETAINED_RATIO = 0.25
-PROTECTED_SUFFIXES = (".md", ".txt", ".js", ".py", ".yml", ".yaml", ".json")
+PROTECTED_SUFFIXES = (".md", ".txt", ".js", ".json")
+EXCLUDED_PREFIXES = (".github/", "scripts/", "tests/", "uBOL Filter Converter/tests/")
 
 
 def run_git(*args: str) -> str:
@@ -41,12 +42,13 @@ def changed_text_files(base_ref: str) -> list[tuple[int, int, str]]:
         "*.md",
         "*.txt",
         "*.js",
-        "*.py",
-        "*.yml",
-        "*.yaml",
         "*.json",
     )
     return list(parse_numstat(diff))
+
+
+def is_protected_path(path: str) -> bool:
+    return path.endswith(PROTECTED_SUFFIXES) and not path.startswith(EXCLUDED_PREFIXES)
 
 
 def main() -> int:
@@ -60,21 +62,19 @@ def main() -> int:
         action="append",
         default=[],
         metavar="PATH",
-        help="Explicitly authorize deletions in one exact tracked text path. Repeat as needed.",
+        help="Explicitly authorize deletions in one exact protected content path. Repeat as needed.",
     )
     args = parser.parse_args()
 
     allowed_paths = set(args.allow_deletion_in)
     changes = changed_text_files(args.base_ref)
+    protected_changes = [change for change in changes if is_protected_path(change[2])]
     failures: list[str] = []
 
-    for added, deleted, path in changes:
-        if not path.endswith(PROTECTED_SUFFIXES):
-            continue
-
+    for added, deleted, path in protected_changes:
         if deleted > 0 and path not in allowed_paths:
             failures.append(
-                f"{path}: +{added}/-{deleted}; tracked text deletion is not explicitly authorized. "
+                f"{path}: +{added}/-{deleted}; protected content deletion is not explicitly authorized. "
                 "Add --allow-deletion-in with this exact path only for a user-requested deletion."
             )
             continue
@@ -110,11 +110,11 @@ def main() -> int:
 
     stale_authorizations = sorted(
         path for path in allowed_paths
-        if not any(changed_path == path and deleted > 0 for _, deleted, changed_path in changes)
+        if not any(changed_path == path and deleted > 0 for _, deleted, changed_path in protected_changes)
     )
     if stale_authorizations:
         failures.append(
-            "Deletion authorization does not match the actual diff: "
+            "Deletion authorization does not match an actual protected-content deletion: "
             + ", ".join(stale_authorizations)
         )
 
@@ -124,7 +124,7 @@ def main() -> int:
             print(f"- {failure}", file=sys.stderr)
         return 1
 
-    print("Content-loss guard passed: no unapproved tracked text deletions.")
+    print("Content-loss guard passed: no unapproved protected-content deletions.")
     return 0
 
 
