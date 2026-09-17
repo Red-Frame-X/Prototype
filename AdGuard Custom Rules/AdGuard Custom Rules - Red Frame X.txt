@@ -218,9 +218,89 @@ www.minnanosyougai.com##aside.c-bnr-register
 www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !important; line-height: 1.8rem !important;)
 ! ホーム等の動画タイトルを1.4rem・行高2remへ拡大
 www.youtube.com###video-title.ytd-rich-grid-media:style(font-size: 1.4rem !important; line-height: 2rem !important;)
-! 「最新の投稿」セクションを非表示
-www.youtube.com##ytd-rich-section-renderer:has(#title-text:has-text(最新の投稿))
-! トップページのShorts棚を非表示
-www.youtube.com##ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])
-! 動画ページ右側の関連Shorts棚を非表示
-www.youtube.com##ytd-reel-shelf-renderer
+! チャンネルページ上部の横長バナー画像を非表示
+www.youtube.com###page-header-banner
+! 右サイドバーのライブチャット／チャットリプレイを非表示
+www.youtube.com###chat-container
+! 関連動画欄に挿入されるShorts棚を非表示
+www.youtube.com###related ytd-reel-shelf-renderer
+! 「More Videos」「他の動画」などの見出しを持つ続き動画グリッドを非表示
+www.youtube.com###secondary ytd-rich-grid-renderer:has-text(/^(More Videos|他の動画)$/)
+! 動画ページのコメント欄を非表示
+www.youtube.com###comments
+! メンバーシップ案内などを表示するエンゲージメントパネルを非表示
+www.youtube.com###panels
+! ミニプレーヤー内の終了画面オーバーレイを非表示
+www.youtube.com###player div[class*="ytp-ce-element"]
+! 動画上のカード・終了画面を非表示
+www.youtube.com###player div.ytp-ce-element
+! 動画上のカード関連要素を非表示
+www.youtube.com###player div.ytp-cards-teaser
+! 動画上のカード情報パネルを非表示
+www.youtube.com###player div.ytp-cards-button-icon
+! 動画上のカード情報パネルを非表示
+www.youtube.com###player div.ytp-cards-button
+! 動画上の透かし・チャンネル登録ボタンを非表示
+www.youtube.com###player div.ytp-watermark
+! プレイヤー内のチャンネルウォーターマークを非表示
+www.youtube.com###player ytd-channel-watermark-renderer
+! 動画ページのShorts棚を非表示
+www.youtube.com###reel-shelf
+! 検索結果などに出るShortsグリッド棚を非表示
+www.youtube.com###shorts-container
+! サイドバー内の「Shorts」ナビゲーション項目を非表示
+www.youtube.com###items ytd-guide-entry-renderer:has(a[href^="/shorts"])
+! 「Explore」セクションを丸ごと非表示
+www.youtube.com###sections ytd-guide-section-renderer:has(#guide-section-title:has-text(Explore))
+! サイドバーの「もっと見る」展開ボタンを非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has-text(もっと見る)
+! サイドバーの「ホーム」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/"])
+! サイドバーの「ショート」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="/shorts"])
+! サイドバーの「ポッドキャスト」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="/podcasts"])
+! サイドバーの「ライブ」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="/channel/UC4R8DWoMoI7CAwX8_LjQHig"])
+! サイドバーの「急上昇」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/feed/trending"])
+! サイドバーの「音楽」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/channel/UC-9-kyTW8ZkZNDHQJ6Fgpw"])
+! サイドバーの「ゲーム」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/gaming"])
+! サイドバーの「スポーツ」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/channel/UCEgdi0XIXXZ-qJOFPf4JSKw"])
+! サイドバーの「YouTube Premium」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="/premium"])
+! サイドバーの「YouTube Studio」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="https://studio.youtube.com"])
+! サイドバーの「YouTube Music」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="https://music.youtube.com"])
+! サイドバーの「YouTube Kids」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="https://www.youtubekids.com"])
+! サイドバーの「設定」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/account"])
+! サイドバーの「報告」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href="/reporthistory"])
+! サイドバーの「ヘルプ」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has(a[href^="https://support.google.com/youtube"])
+! サイドバーの「フィードバックを送信」項目を非表示
+www.youtube.com###sections ytd-guide-entry-renderer:has-text(フィードバックを送信)
+! 左サイドバー下部のガイドリンク群を非表示
+www.youtube.com###guide-links-primary
+! 左サイドバー下部の追加ガイドリンク群を非表示
+www.youtube.com###guide-links-secondary
+! 左サイドバー下部の著作権・フッター表示を非表示
+www.youtube.com###footer
+! ホーム画面の動画グリッドからライブ配信を非表示
+www.youtube.com##ytd-rich-item-renderer:has(.badge-style-type-live-now-alternate)
+! 検索結果・関連動画からライブ配信を非表示
+www.youtube.com##ytd-video-renderer:has(.badge-style-type-live-now-alternate)
+
+! x.com
+! 左サイドバーのGrokリンクを非表示
+x.com##a[href="/i/grok"]
+! 左サイドバーの「コミュニティ」リンクを非表示
+x.com##a[href^="/i/communities"]
+! コミュニティ画面のおすすめコミュニティ枠を非表示
+x.com##div[aria-label="タイムライン: コミュニティ"] div[data-testid="cellInnerDiv"]:has(a[href="/i/communities/suggested"])
