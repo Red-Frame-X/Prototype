@@ -77,9 +77,9 @@ def main() -> int:
         after_lines = line_count("HEAD", path)
 
         # Ordinary edits and rewrites may naturally replace existing lines. The guard
-        # should only block substantial loss, not every deletion in a textual diff.
-        # Exact-path authorization remains available for intentionally large removals,
-        # but does not bypass the hard retained-ratio safeguard below.
+        # should block substantial net loss, not every large rewrite where most lines
+        # are replaced one-for-one. Exact-path authorization remains available for
+        # intentionally large removals, but never bypasses the retained-ratio safeguard.
         if after_lines is None:
             if path not in allowed_paths:
                 failures.append(
@@ -104,14 +104,6 @@ def main() -> int:
             failures.append(
                 f"{path}: +{added}/-{deleted} (net loss {net_loss}); "
                 f"net loss reaches the review threshold {args.max_net_loss}. "
-                "Large content removal requires explicit review instead of automatic merging."
-            )
-            continue
-
-        if deleted >= args.max_deletions and net_loss > 0:
-            failures.append(
-                f"{path}: +{added}/-{deleted} (net loss {net_loss}); "
-                f"deletions reach the review threshold {args.max_deletions}. "
                 "Large content removal requires explicit review instead of automatic merging."
             )
 
