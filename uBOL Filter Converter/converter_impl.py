@@ -14,11 +14,14 @@ import sys
 import urllib.request
 from collections import Counter
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Iterable
+from zoneinfo import ZoneInfo
 
 FILTER_TITLE = "uBOL フィルター - Red Frame X"
 FILTER_BASENAME = "uBOL Filter - Red Frame X"
+JST = ZoneInfo("Asia/Tokyo")
 
 CANONICAL_SOURCE = (
     "https://raw.githubusercontent.com/Red-Frame-X/Prototype/refs/heads/main/"
@@ -259,6 +262,11 @@ def extract_source_version(source_text: str) -> str:
     return match.group(1).strip()
 
 
+def generated_version() -> str:
+    """Return the uBOL generation timestamp in JST as YYYYMMDDHHMM."""
+    return datetime.now(JST).strftime("%Y%m%d%H%M")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     default_dist = Path(__file__).resolve().parent / "dist"
@@ -269,16 +277,17 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         source_text = read_source(args.input)
-        source_version = extract_source_version(source_text)
+        extract_source_version(source_text)
         rules, excluded = convert(source_text.splitlines())
     except (OSError, UnicodeError, ValueError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
 
+    version = generated_version()
     header = [
         f"! Title: {FILTER_TITLE}",
         "! Description: 個人用のuBOLカスタムフィルター。",
-        f"! Version: {source_version}",
+        f"! Version: {version}",
         "! Syntax: uBOL",
         "! Expires: 1 day",
         "! Homepage: https://github.com/Red-Frame-X/Prototype",
@@ -314,6 +323,7 @@ def main(argv: list[str] | None = None) -> int:
     }
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"wrote {output_path} ({len(rules)} lines); excluded {len(excluded)} rules")
+    print(f"uBOL Version: {version} JST")
     print(f"wrote {report_path}")
     return 0
 
