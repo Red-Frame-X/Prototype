@@ -35,15 +35,21 @@ jobs:
           python-version: '3.12'
 
       - name: Build, validate, and publish
+        env:
+          TZ: Asia/Tokyo
         run: |
           set -euo pipefail
           output='uBOL Filter Converter/dist/uBOL Filter - Red Frame X.txt'
           report='uBOL Filter Converter/dist/uBOL Filter - Red Frame X.report.json'
+          export UBOL_VERSION_JST="$(date '+%Y%m%d%H%M')"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
+          echo "Using fixed uBOL Version for this run: ${UBOL_VERSION_JST} JST"
+
           for attempt in 1 2 3 4 5; do
             # push競合が起きた場合は完成済みコミットをrebaseせず、最新mainから再生成する。
+            # 同一run内ではUBOL_VERSION_JSTを固定し、再試行ごとにVersionだけが変わることを防ぐ。
             git fetch --no-tags origin main
             git reset --hard origin/main
 
