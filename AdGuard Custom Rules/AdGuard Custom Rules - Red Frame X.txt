@@ -206,10 +206,6 @@ news.web.nhk$$div[role="region"]:contains(NHKの公式アプリ)
 ! HTMLフィルタリング非対応製品向け：公式アプリアイコンを含む案内領域を初期CSSで非表示
 news.web.nhk##div[role="region"]:has(img[src*="/appbanner/artworkImages/news_app_icon.png"])
 
-! www.minnanosyougai.com
-! サイドバーの会員登録バナー（c-bnr-register）を非表示
-www.minnanosyougai.com##aside.c-bnr-register
-
 ! www.youtube.com
 ! 動画カードのメタデータ文字を1.2rem・行高1.8remへ拡大（Enhancer for YouTube™併用時の表示調整）
 www.youtube.com###metadata-line.ytd-video-meta-block:style(font-size: 1.2rem !important; line-height: 1.8rem !important;)
