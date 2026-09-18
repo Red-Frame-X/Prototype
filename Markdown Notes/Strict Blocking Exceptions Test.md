@@ -6,7 +6,7 @@ AdGuard製品で `||mydocomo.docomo.ne.jp^$document` を適用した際の実機
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260911 |
+| **Version** | 202609181833 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -25,7 +25,7 @@ AdGuardの `$document` は、ブラウザタブに読み込まれるメインフ
 
 ## 実機で確認した挙動
 
-以下は上記環境での観測結果であり、AdGuard全製品・全バージョンに一般化するものではありません。
+以下は上記環境での観測結果であり、AdGuard全製品・全バージョンに一般化するものではありません。なお、現行のAdGuard公式構文では `$all` は `@@` を付けた例外ルールには使用できないため、`@@||mydocomo.docomo.ne.jp^$all` は現行仕様上の有効な例外構文として扱いません。過去の実機観測記録として結果だけを残します。
 
 - `||mydocomo.docomo.ne.jp^$document`：AdGuardのブロッキングページが表示され、メインドキュメントが遮断される。
 - `@@||mydocomo.docomo.ne.jp^$all`：検証環境ではブロッキングページを回避できなかった。
