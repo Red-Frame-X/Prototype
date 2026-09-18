@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609180044 |
+| **Version** | 202609181833 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -992,7 +992,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **Web版YouTubeについての留意点**
 
-YouTube Anti-Adblock回避ルールは、uBlock Origin開発チームの解析を参考にAdGuardが開発・調整しています。YouTube Premium未加入者がカスタムフィルタや拡張機能を使いすぎると、検知されやすくなります。無料利用する際は、公式ルールのみの使用が推奨されます。要件を満たさない報告はuBlock Origin開発チーム・AdGuard開発チームの負担となります。Yuki2718氏はuBlock Origin開発チームに所属しながらWeb版YouTubの解析を行っています（[Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415)。 / [Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
+uBlock Origin / uBlock Origin LiteのYouTube不具合報告では、まず既定設定に戻し、カスタムフィルタや手動追加リストを外し、他の拡張機能やブラウザ内蔵ブロッカーを無効化した状態でも問題が再現するか確認するよう案内されています。これは原因切り分けのための手順であり、「拡張機能やカスタムフィルタが多いほどYouTubeに検知されやすい」と一般化できる根拠ではありません。また、参照したIssue本文だけからは、Yuki2718氏をuBlock Originの「開発チーム所属」と断定できないため、そのようには扱いません（[uBO: Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415) / [uBO Lite: Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
 
 **𝕏/Twitter ルール作り資料｜uBlock Origin**
 
@@ -1101,7 +1101,7 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
 
 **HTTPSフィルタリング**
 
-Android版Chromeなどで高精度なブロックを行うには必須です。暗号化通信を一時解析し、要素をブロックします。Personal CA証明書のインストールが必要です。
+AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更するにはHTTPSフィルタリングが必要です。HTTPSフィルタリングでは、AdGuardが端末上で暗号化通信を復号・検査するため、ユーザーCA証明書のインストールが必要になります。ただし、CSSによる要素非表示など、すべてのコスメティックフィルタリングにHTTPS復号が必須という意味ではありません。また、アプリやブラウザの証明書処理・証明書ピンニング等により、HTTPSフィルタリングできない通信があります。
 
 **CoreLibs**
 
@@ -1234,7 +1234,7 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
 
 **Android 17の「デバイスの管理」を有効化（Pixel 10aで確認）**
 
-Android 17では、**設設定 > セキュリティとプライバシー > その他のセキュリティとプライバシー > デバイス管理 > アドガード** を開き、AdGuardのトグルをONにします。これにより、システムの最適化によってAdGuardがバックグラウンドで停止されにくくなり、アプリを閉じている間も保護を維持しやすくなります。
+手元のPixel 10a / Android 17では、**設定 > セキュリティとプライバシー > その他のセキュリティとプライバシー > デバイス管理 > アドガード** という項目を確認しています。ただし、この経路やトグルがAdGuardのバックグラウンド停止を抑制する一般的な公式対策であることは、確認したAndroid / AdGuard公式資料では裏付けられていません。端末固有の観測として扱い、常駐対策はAdGuard公式のメーカー別バックグラウンド動作ガイド、バッテリー設定、常時接続VPNを優先して確認します。
 
 * この項目が表示される端末・OSビルドでのみ設定できます。メーカーやAndroidのバージョンによって、項目名や経路が異なる場合があります。
 * バックグラウンド停止を完全に防ぐ保証はありません。Android 17では端末のRAM容量に応じたアプリのメモリ上限も導入されており、上限を超えたプロセスは終了される場合があります（[Android Developers](https://developer.android.com/about/versions/17/behavior-changes-all#app-memory-limits)）。
