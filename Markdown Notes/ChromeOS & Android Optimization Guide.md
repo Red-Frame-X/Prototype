@@ -1358,6 +1358,38 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
 利用規約違反によるアカウント凍結リスクは常に伴います。（[Reddit体験談1](https://www.reddit.com/r/revancedapp/comments/132ojbg/my_account_has_been_suspended_today_and_i_am_no/), [Reddit体験談2](https://www.reddit.com/r/revancedapp/comments/17a6iqj/can_google_suspend_my_account_if_i_use_revanced/)）
 
 Premium加入者は「動画ストリームを偽装（Spoof video streams）」をOFFにすることが推奨されます。
+
+
+**YouTube Morphe：動画ストリーム偽装とPoToken**
+
+Morpheの再生対策には、主に「Spoof video streams」と「PoToken provider」の2系統があります。必要性はYouTube側の仕様変更、アカウントやログイン状態、利用する偽装クライアントなどで変わるため、Premium加入の有無だけで一律にON/OFFを決めるものではありません。現在問題なく再生できている場合は、設定変更が必須とは限りません。
+
+* **Spoof video streams**：端末やGoogleアカウントそのものを偽装する機能ではなく、動画ストリーム取得時のYouTube内部クライアント情報を変更し、別クライアントとして`player`等へ問い合わせて取得したストリーム情報を利用する再生互換機能です。現行Morphe Patchesにも実装されています（[Morphe Patches](https://github.com/MorpheApp/morphe-patches) / [StreamingDataRequest.java](https://github.com/MorpheApp/morphe-patches/blob/main/extensions/shared-youtube/library/src/main/java/app/morphe/extension/shared/spoof/requests/StreamingDataRequest.java)）。
+* **PoToken（Proof-of-Origin Token）**：YouTubeが一部の再生リクエストで利用する証明情報で、Googleアカウントのログイントークンとは別物です。Morpheでは、Spoof video streams内部で必要なクライアント向けにPoTokenを生成する経路と、外部PoToken minterアプリを利用する`PoToken provider`があります（[PoTokenManager.java](https://github.com/MorpheApp/morphe-patches/blob/main/extensions/shared-youtube/library/src/main/java/app/morphe/extension/shared/spoof/potoken/PoTokenManager.java)）。
+* **External PoToken provider**：外部PoToken minterを利用して通常のYouTube側の再生経路へPoTokenを供給する方式です。現行実装では混乱を避けるため、`Spoof video streams`をOFFにした場合のみ利用する設計です（[PoTokenProviderPatch.java](https://github.com/MorpheApp/morphe-patches/blob/main/extensions/shared-youtube/library/src/main/java/app/morphe/extension/shared/patches/PoTokenProviderPatch.java)）。
+* **PotHelper**：Morphe公式の外部PoToken minterです。PoTokenやVisitor Dataをユーザーが手入力する方式ではありません。公式READMEではオフライン動作し、インターネットアクセス権限を要求しないと説明されています（[MorpheApp/PotHelper](https://github.com/MorpheApp/PotHelper)）。
+
+**設定の確認場所**
+
+`YouTube > 設定 > Morphe > Miscellaneous` から、`Spoof video streams` と `PoToken provider` を確認します。
+
+| 再生方式 | Spoof video streams | External PoToken provider | 補足 |
+| :--- | :---: | :---: | :--- |
+| 通常のYouTube再生経路 | OFF | OFF | 環境によっては両方OFFでも正常再生できます。 |
+| Morpheのストリーム偽装 | ON | OFF | TV / Android VR / visionOS等の別クライアントとしてストリームを取得します。必要なクライアントではSpoof内部でPoTokenも生成されます。 |
+| PotHelper方式 | OFF | ON | PotHelperを利用してPoTokenを供給します。YouTubeの再起動後に再生を確認します。 |
+| 両方ON | ON | ON | 現行MorpheではExternal PoToken provider側が利用できない設計です。 |
+
+**Spoof video streamsの主なクライアント**
+
+現行Morpheの設定には、`Android Studio`、`Android VR`、`Android VR Downgraded`、`TV`、`TV Simply`、`visionOS`があります。古いReVanced / RVXの情報にある単純な`Android`や`iOS`を、現在のMorpheの選択肢として扱わないよう注意します（[arrays.xml](https://github.com/MorpheApp/morphe-patches/blob/main/patches/src/main/resources/addresources/values/youtube/arrays.xml)）。
+
+**再生トラブル時の確認**
+
+動画が約1分で停止する、無限バッファリング、画質を選べない等の症状はSpoof / PoTokenと関係する場合がありますが、必ずそれらが原因とは限りません。まずMorphe Patchesを更新し、通常動画・Shorts・ライブ配信・シーク・必要な画質を個別に確認します。Morphe公式Issueでも、最新パッチへの更新、Spoofクライアントの変更、必要に応じたPoToken providerの利用が案内されています（[Issue #327](https://github.com/MorpheApp/morphe-patches/issues/327)）。
+
+> **注意**：YouTube側のPoTokenや再生制限は短期間で変更される可能性があります。古いReVanced / RVXの回避策をそのまま適用せず、Morpheの最新Release・Issue・ソースコードを確認してください。Android VRのVisitor Dataに起因する過去の再生問題（[Issue #2283](https://github.com/MorpheApp/morphe-patches/issues/2283)）はClosedで、現在の実装にはVisitor ID更新処理が含まれています。
+
 * [YouTube 利用規約](https://www.youtube.com/t/terms) / [ヘルプページ](https://support.google.com/youtube/answer/14129599?hl=ja&ref_topic=15848873&sjid=5246634321435162902-NC) / [GIGAZINE記事](https://gigazine.net/news/20240416-youtube-ad-blocker-crackdown-third-party-apps/)
 
 **𝕏/Twitter Morphe Piko**
