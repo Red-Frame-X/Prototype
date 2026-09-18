@@ -1398,20 +1398,16 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
   * 現在のMorphe Pikoでは別の仕組みに移行した結果、現在対応している𝕏ではログインできるようになりました。  
 * パッチ・ビルド済みapk：[crimera (Piko)](https://github.com/crimera/piko) / [crimera (Piko New 𝕏)](https://github.com/crimera/piko-newx) / [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
 
-**併用すると便利かもしれないAndroidアプリ**
+### Morpheと併用すると便利なAndroidアプリ
 
-* **[Aurora Store](https://auroraoss.com/aurora-store)**
-* **[F-Droid](https://f-droid.org/ja/)**
-* **[Accrescent](https://accrescent.app/)**
-* **[Obtainium](https://github.com/ImranR98/Obtainium)**
-* **[ObtainX](https://github.com/bikram-agarwal/ObtainX)**
-* **[File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager)**
-* **[GitHub](https://play.google.com/store/apps/details?id=com.github.android)**
-* **[floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1)**
-* **[Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)**
-* **[YTDLnis](https://github.com/deniscerri/ytdlnis)**
-* **[Seal Plus](https://github.com/MaheshTechnicals/Sealplus)**
-* **[Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)**
+Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助に利用できるアプリです。すべてがMorpheの必須アプリという意味ではなく、用途に応じて必要なものだけを併用します。
+
+* **APK・アプリ入手**：[Aurora Store](https://auroraoss.com/aurora-store) / [F-Droid](https://f-droid.org/ja/) / [Accrescent](https://accrescent.app/)
+* **アプリ更新管理**：[Obtainium](https://github.com/ImranR98/Obtainium) / [ObtainX](https://github.com/bikram-agarwal/ObtainX)
+* **ファイル・GitHub管理**：[File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager) / [GitHub](https://play.google.com/store/apps/details?id=com.github.android)
+* **動画関連ツール**：[YTDLnis](https://github.com/deniscerri/ytdlnis) / [Seal Plus](https://github.com/MaheshTechnicals/Sealplus)
+* **端末情報の確認**：[Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)
+* **その他の補助アプリ**：[floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1) / [Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)
 
 **参考サイト**
 * [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/)
