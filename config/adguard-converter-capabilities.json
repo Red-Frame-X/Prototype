@@ -47,10 +47,6 @@
       "converter": "scripts/convert.py",
       "compatibility": "best-effort",
       "note": "CoreLibs-specific behavior must be verified independently of MV3."
-    },
-    "ublock-origin-lite": {
-      "converter": "uBOL Filter Converter/converter_impl.py",
-      "source": "uBO Lite changelog metadata"
     }
   }
 }
