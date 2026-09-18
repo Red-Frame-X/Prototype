@@ -249,7 +249,7 @@ uBlock Origin、uBlock Origin Lite、AdGuard、主要フィルタリストなど
 
 * 誤ブロック・副作用
 * Webサイトやアプリとの互換性
-* ブラウザやManifest V2 / Manifest V3などの実装差
+* ブラウザやManifest V2 / MV3などの実装差
 * 性能・リソース消費
 * 保守性・将来の仕様変更への耐性
 * プライバシー・セキュリティ
