@@ -7,14 +7,6 @@ on:
       - 'AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt'
       - 'scripts/check_adguard_version_timestamp.py'
       - '.github/workflows/check-adguard-version.yml'
-  push:
-    branches:
-      - main
-    paths:
-      - 'AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt'
-      - 'AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt'
-      - 'scripts/check_adguard_version_timestamp.py'
-      - '.github/workflows/check-adguard-version.yml'
   workflow_dispatch:
 
 permissions:
