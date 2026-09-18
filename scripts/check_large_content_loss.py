@@ -10,7 +10,7 @@ DEFAULT_MAX_DELETIONS = 200
 DEFAULT_MAX_NET_LOSS = 120
 DEFAULT_MIN_RETAINED_RATIO = 0.25
 PROTECTED_SUFFIXES = (".md", ".txt", ".js", ".json")
-EXCLUDED_PREFIXES = (".github/", "scripts/", "tests/", "uBOL Filter Converter/tests/")
+EXCLUDED_PREFIXES = (".github/", "scripts/", "tests/")
 
 
 def run_git(*args: str) -> str:

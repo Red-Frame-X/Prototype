@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TEST_DIRS = (ROOT / "tests", ROOT / "uBOL Filter Converter" / "tests")
+TEST_DIRS = (ROOT / "tests",)
 
 
 class UnittestCollectionContractTests(unittest.TestCase):

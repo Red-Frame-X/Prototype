@@ -10,7 +10,6 @@
     "**/*.md",
     "!node_modules/**",
     "!upstream/adguard/**",
-    "!AdGuard Custom Rules/ChangeLog/**",
-    "!uBOL Filter Converter/upstream/**"
+    "!AdGuard Custom Rules/ChangeLog/**"
   ]
 }

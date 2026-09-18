@@ -45,11 +45,10 @@ AdGuard for Androidでの登録先：
 
 `$app`のようなアプリ固有ルール、高度な整形ルール、scriptlet、許可ルールなどは、製品・プラットフォーム・フィルタリングエンジンによって対応状況や副作用が異なります。変更時は自分の環境で誤ブロック、表示崩れ、機能不全がないかを確認します。
 
-uBlock Origin Lite向けには、互換性のないルールを保守的に除外・変換した生成版[`uBOL Filter - Red Frame X`](../uBOL%20Filter%20Converter/)を別途生成しています。元のAdGuardフィルタをそのままuBO Liteへ読み込む構成にはしていません。
 
 ## 編集時の品質確認
 
-`AdGuard Custom Rules - Red Frame X.txt`はuBOL生成フィルタの変換元でもあります。`AdGuard Custom Rules - Red Frame X.txt`または`AdGuard DNS Custom Rules - Red Frame X.txt`のルールを追加・削除・変更する場合は、変更した各ファイルと同じコミット内で、そのヘッダーの`! Version:`を日本標準時（JST）の現在時刻に合わせ、`YYYYMMDDHHMM`形式で必ず更新します。
+`AdGuard Custom Rules - Red Frame X.txt`または`AdGuard DNS Custom Rules - Red Frame X.txt`のルールを追加・削除・変更する場合は、変更した各ファイルと同じコミット内で、そのヘッダーの`! Version:`を日本標準時（JST）の現在時刻に合わせ、`YYYYMMDDHHMM`形式で必ず更新します。
 
 この要件は[`check_adguard_version_timestamp.py`](../scripts/check_adguard_version_timestamp.py)とGitHub Actionsの[`Check AdGuard Version Timestamp`](../.github/workflows/check-adguard-version.yml)で検証します。対象フィルタの内容が変更されたにもかかわらず`! Version:`が同じ場合、またはVersionヘッダーが`YYYYMMDDHHMM`形式の有効な日時でない場合はCIを失敗させ、更新漏れを検出します。
 
@@ -62,10 +61,8 @@ python scripts/check_adguard_filter_integrity.py
 python scripts/check_adguard_user_rule_edit.py
 npm run lint:adguard
 python -m unittest discover -s tests -v
-python -m unittest discover -s "uBOL Filter Converter/tests" -v
 ```
 
-uBOL向け生成物はGitHub Actionsで同期するため、通常は`uBOL Filter Converter/dist/`を直接編集しません。変換結果に問題がある場合は、原本ルール、コンバータ、能力定義またはテストを修正します。
 
 ## CHANGELOG追跡とコンバータ更新
 

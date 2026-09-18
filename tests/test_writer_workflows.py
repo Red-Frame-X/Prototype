@@ -7,10 +7,8 @@ import yaml
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW_DIR = REPOSITORY_ROOT / ".github" / "workflows"
 WRITER_WORKFLOWS = {
-    "build-ubol.yml": 'python "uBOL Filter Converter/converter.py"',
     "sync.yml": "python scripts/convert.py",
     "update-adguard-changelogs.yml": "python scripts/update_adguard_changelogs.py",
-    "update-ubol-changelog.yml": 'python "uBOL Filter Converter/update_ubol_metadata.py"',
 }
 EXPECTED_GROUP = "${{ github.workflow }}-${{ github.ref }}"
 
