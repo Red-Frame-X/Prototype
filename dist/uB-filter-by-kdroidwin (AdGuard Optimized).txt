@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202609181643
+! Version: 202609181716
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -2011,6 +2011,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ccsggw.cn^$document
 ||cdn-ak.f.st-hatena.com/images/fotolife/s/sorasanai58/20260712/20260712160638.png$image
 ||cdn.99kia.com^$document
+||cdnvideyco.*.com^
+||cdnvideyco.ho-zuki.com^$document
 ||ceagmq.jp^$document
 ||ceapronutrdcongo.org^$document
 ||cebidm8t.tambuntuition.com^$document
@@ -3523,6 +3525,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||fanmake-blog.com^$document
 ||fanshub.jp^$document
 ||fantaslipp.com^$document
+||fantia-momo.jp^$document
 ||fanza-com.mystrikingly.com^$document
 ||fanza-douga.net^$document
 ||fanza-news.com^$document
@@ -6905,6 +6908,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mimosa-313.com^$document
 ||mimublog.com^$document
 ||min-ero.jp^$document
+||min-ori.jp^$document
 ||mina-trend.com^$document
 ||minabl.com^$document
 ||minacle.tokyo^$document
@@ -6924,6 +6928,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||miniminimiutat.com^$document
 ||minkusu.me^$document
 ||minnano-idol.com^$document
+||minnano-toreca.com^$document
 ||minnanogakureki.com^$document
 ||minnanoseikaku.com^$document
 ||minnsuki.com^$document
@@ -9712,6 +9717,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||rumah-pulsa.shop^$document
 ||rumbiz.ru^$document
 ||ruminousplus.net^$document
+||runablog-fantube.short.gy^$document
 ||runachi2021.com^$document
 ||runaruna-blog.com^$document
 ||runebook.dev^$document
@@ -10091,6 +10097,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||shinya-channel.com^$document
 ||shinya-no-ippon.com^$document
 ||shinyu-clinic.com^$document
+||shiofuki-blog.com^$document
 ||shirabemushi.com^$document
 ||shiraberukininaru.com^$document
 ||shirashiratama-blog.com^$document
