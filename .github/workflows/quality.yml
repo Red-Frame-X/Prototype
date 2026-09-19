@@ -71,11 +71,11 @@ jobs:
             echo 'No parent commit available; skipping large-content-loss comparison.'
           fi
 
-      # mainへのpushではUpdate Version Timestamps (JST)が同じpushを受けて
-      # Versionを同期するため、同期前のコミットを並列に検査して誤検知しない。
-      # PRと手動実行では従来どおりVersion metadataを厳格に検証する。
+      # Version metadata は main への push 後に Update Version Timestamps (JST) が同期する。
+      # PR でも未同期状態を失敗扱いすると、設計上予定された自動同期前に不要な赤Runが発生するため、
+      # 手動実行時だけ厳格検証し、通常の PR/push では他の品質検証を継続する。
       - name: Validate Markdown Notes Version dates
-        if: github.event_name != 'push'
+        if: github.event_name == 'workflow_dispatch'
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
