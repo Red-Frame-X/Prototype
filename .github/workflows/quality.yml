@@ -1,4 +1,5 @@
 name: Repository Quality Checks
+# Integration test comment: validates workflow-file change handling without changing behavior.
 
 on:
   push:
