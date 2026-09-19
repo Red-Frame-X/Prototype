@@ -7,8 +7,11 @@ AdGuard向けに自分の環境で使用・検証している個人用フィル�
 
 ## ファイル
 
-- [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：広告・不要要素の非表示、ネットワーク通信制御、互換性のための例外などを含む個人用AdGuardフィルタ
-- [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)：DNSレベルのブロックに使用している個人用AdGuard DNSフィルタ
+| 項目 | 主な内容 | 参照先 |
+| --- | --- | --- |
+| AdGuard Custom Rules | 広告・不要要素の非表示、ネットワーク通信制御、互換性のための例外などを含む個人用AdGuardフィルタ | [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
+| AdGuard DNS Custom Rules | DNSレベルのブロックに使用している個人用AdGuard DNSフィルタ | [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
+| ChangeLog | AdGuard Browser Extension / AdGuard for Androidの公式更新情報を追跡するミラー | [`ChangeLog/README.md`](ChangeLog/README.md) / [`ChangeLog/`](ChangeLog/) |
 
 ## 自分の環境での登録先メモ
 
@@ -45,7 +48,6 @@ AdGuard for Androidでの登録先：
 
 `$app`のようなアプリ固有ルール、高度な整形ルール、scriptlet、許可ルールなどは、製品・プラットフォーム・フィルタリングエンジンによって対応状況や副作用が異なります。変更時は自分の環境で誤ブロック、表示崩れ、機能不全がないかを確認します。
 
-
 ## 編集時の品質確認
 
 `AdGuard Custom Rules - Red Frame X.txt`または`AdGuard DNS Custom Rules - Red Frame X.txt`のルールを追加・削除・変更する場合は、変更した各ファイルと同じコミット内で、そのヘッダーの`! Version:`を日本標準時（JST）の現在時刻に合わせ、`YYYYMMDDHHMM`形式で必ず更新します。
@@ -63,7 +65,6 @@ npm run lint:adguard
 python -m unittest discover -s tests -v
 ```
 
-
 ## CHANGELOG追跡とコンバータ更新
 
 [`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式CHANGELOGとAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ英語原文のミラーを生成します。メタデータと互換性レビュー候補は`upstream/adguard/`へ生成します。
@@ -71,6 +72,11 @@ python -m unittest discover -s tests -v
 取得処理では、`GITHUB_TOKEN`が設定されている場合も、認証情報を付与するのは`https://api.github.com`への直接のリクエストだけです。Raw URLや外部サイトには付与せず、同一ホストを含むリダイレクト先にも転送しません。認証が必要な取得先を指定する場合は、リダイレクトを経由しないGitHub API URLを使用します。
 
 CHANGELOGは人向けの変更履歴であり、フィルタ構文の実行可能な仕様そのものではありません。このため、CHANGELOGの文章だけからコンバータコードを自己変更する処理は行いません。新しい構文や挙動は、AdGuard公式のフィルタリングルール仕様、公開ソース、上流Issuesなどで確認し、回帰テストを追加してから[`adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json)を更新します。
+
+## 関連情報
+
+- [リポジトリのルートREADME](../README.md)
+- [AdGuard ChangeLog](ChangeLog/README.md)
 
 ## 公式資料
 
