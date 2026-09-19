@@ -7,11 +7,13 @@
 
 ## スクリプト一覧
 
-- [`x-auto-select-community-latest-sort.user.js`](x-auto-select-community-latest-sort.user.js)：𝕏コミュニティの投稿一覧で新しい投稿を優先する並べ替えを自動選択
-- [`x-auto-select-following-latest-sort.user.js`](x-auto-select-following-latest-sort.user.js)：𝕏の対象タイムラインで新しい投稿を優先する並べ替えを自動選択
-- [`x-spaces-and-live-broadcast-blocker.user.js`](x-spaces-and-live-broadcast-blocker.user.js)：𝕏のスペース／ライブ放送関連UIを非表示
-- [`youtube-description-auto-expander.user.js`](youtube-description-auto-expander.user.js)：YouTubeの動画概要欄を自動展開
-- [`youtube-shelf-force-expand.user.js`](youtube-shelf-force-expand.user.js)：YouTubeの対象シェルフを展開し、「もっと見る」操作を省略
+| スクリプト | 対象 | 主な内容 |
+| --- | --- | --- |
+| [`x-auto-select-community-latest-sort.user.js`](x-auto-select-community-latest-sort.user.js) | 𝕏 | コミュニティの投稿一覧で新しい投稿を優先する並べ替えを自動選択 |
+| [`x-auto-select-following-latest-sort.user.js`](x-auto-select-following-latest-sort.user.js) | 𝕏 | 対象タイムラインで新しい投稿を優先する並べ替えを自動選択 |
+| [`x-spaces-and-live-broadcast-blocker.user.js`](x-spaces-and-live-broadcast-blocker.user.js) | 𝕏 | スペース／ライブ放送関連UIを非表示 |
+| [`youtube-description-auto-expander.user.js`](youtube-description-auto-expander.user.js) | YouTube | 動画概要欄を自動展開 |
+| [`youtube-shelf-force-expand.user.js`](youtube-shelf-force-expand.user.js) | YouTube | 対象シェルフを展開し、「もっと見る」操作を省略 |
 
 ## 自分の環境での利用メモ
 
@@ -24,6 +26,11 @@ UserScriptは対象ページ上でJavaScriptを実行するため、保存した
 𝕏やYouTubeのDOM、属性、表示文言は予告なく変更されることがあり、サイト側の変更によってスクリプトが動作しなくなる可能性があります。問題が発生した場合は該当スクリプトを一時停止し、他のUserScriptや拡張機能との競合も含めて切り分けます。
 
 `@updateURL`や`@downloadURL`を持つスクリプトの更新確認・更新方法は、使用するUserScriptマネージャーの実装と設定に従います。メタデータに更新先が指定されていること自体は、すべてのマネージャーで同じ周期・同じ方法で自動更新されることを意味しません。
+
+## 関連情報
+
+- [リポジトリのルートREADME](../README.md)
+- [UserScriptディレクトリ](./)
 
 ## 参考資料
 

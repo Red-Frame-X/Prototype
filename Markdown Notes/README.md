@@ -10,20 +10,26 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
-## 端末・OS
+## ドキュメント案内
 
-- [`ChromeOS & Android Optimization Guide.md`](ChromeOS%20%26%20Android%20Optimization%20Guide.md)：ChromeOS・Androidの設定、アプリ、拡張機能、プライバシー対策、実機トラブル対応をまとめた総合ガイド兼設定バックアップ
-- [`Android Advanced Flow Guide.md`](Android%20Advanced%20Flow%20Guide.md)：未確認デベロッパー製AndroidアプリをインストールするAdvanced Flowの概要、公式要件、手順、注意点の確認記録
-- [`Googlebook & Aluminium Survey Report - Revised Edition.md`](Googlebook%20%26%20Aluminium%20Survey%20Report%20-%20Revised%20Edition.md)：Googlebookの公式発表と、開発コードネームAluminiumに関する報道・未確認事項・査読結果を区別して整理した調査レポート
-- [`ChromeOS Manual Update and Troubleshooting.md`](ChromeOS%20Manual%20Update%20and%20Troubleshooting.md)：ChromeOSの手動更新手順と、更新失敗時の原因切り分け・再試行・復旧方法の記録
+### 端末・OS
 
-## コンテンツブロック
+| ドキュメント | 主な内容 |
+| --- | --- |
+| [`ChromeOS & Android Optimization Guide.md`](ChromeOS%20%26%20Android%20Optimization%20Guide.md) | ChromeOS・Androidの設定、アプリ、拡張機能、プライバシー対策、実機トラブル対応をまとめた総合ガイド兼設定バックアップ |
+| [`Android Advanced Flow Guide.md`](Android%20Advanced%20Flow%20Guide.md) | 未確認デベロッパー製AndroidアプリをインストールするAdvanced Flowの概要、公式要件、手順、注意点の確認記録 |
+| [`Googlebook & Aluminium Survey Report - Revised Edition.md`](Googlebook%20%26%20Aluminium%20Survey%20Report%20-%20Revised%20Edition.md) | Googlebookの公式発表と、開発コードネームAluminiumに関する報道・未確認事項・査読結果を区別して整理した調査レポート |
+| [`ChromeOS Manual Update and Troubleshooting.md`](ChromeOS%20Manual%20Update%20and%20Troubleshooting.md) | ChromeOSの手動更新手順と、更新失敗時の原因切り分け・再試行・復旧方法の記録 |
 
-- [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)：uBlock Origin、uBlock Origin Lite、AdGuard MV3、Brave、Vivaldi、DNS併用、フィルタ設計を一次情報中心に整理したFAQ
-- [`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md)：AdGuard ブラウザ拡張機能 MV3対応版とAdGuard for Androidでカスタムルールを設計・検証するための指針と学習メモ
-- [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)：AdGuardの主要フィルタ構文、MV3/DNRとCoreLibsの差異、用途・注意点を確認する補助リファレンス
-- [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md)：DNSブロックリストの主要形式、選び方、ブラウザ用コンテンツブロッカーとの役割分担・切り分けを整理したガイド
-- [`Strict Blocking Exceptions Test.md`](Strict%20Blocking%20Exceptions%20Test.md)：My docomoを対象に、AdGuardのStrict blockingと`$document`例外ルールの挙動を実機検証した記録
+### コンテンツブロック
+
+| ドキュメント | 主な内容 |
+| --- | --- |
+| [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md) | uBlock Origin、uBlock Origin Lite、AdGuard MV3、Brave、Vivaldi、DNS併用、フィルタ設計を一次情報中心に整理したFAQ |
+| [`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md) | AdGuard ブラウザ拡張機能 MV3対応版とAdGuard for Androidでカスタムルールを設計・検証するための指針と学習メモ |
+| [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md) | AdGuardの主要フィルタ構文、MV3/DNRとCoreLibsの差異、用途・注意点を確認する補助リファレンス |
+| [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md) | DNSブロックリストの主要形式、選び方、ブラウザ用コンテンツブロッカーとの役割分担・切り分けを整理したガイド |
+| [`Strict Blocking Exceptions Test.md`](Strict%20Blocking%20Exceptions%20Test.md) | My docomoを対象に、AdGuardのStrict blockingと`$document`例外ルールの挙動を実機検証した記録 |
 
 ### コンテンツブロック資料の使い分け
 
@@ -37,12 +43,14 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 
 Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin、uBlock Origin Lite、AdGuard Browser Extension MV3を同じ機能の製品として扱わず、DNRへの変換可否、サイト権限、フィルタリングモード、更新方式の差を確認します。
 
-## GitHub・テンプレート
+### GitHub・テンプレート
 
-- [`Distributing Filters and UserScripts with GitHub Gist.md`](Distributing%20Filters%20and%20UserScripts%20with%20GitHub%20Gist.md)：GitHub Gistを使ったコンテンツブロックフィルタ／UserScriptの配布・更新方法とメタデータテンプレート
-- [`Handling and Reporting GitHub CI Failures (✕).md`](Handling%20and%20Reporting%20GitHub%20CI%20Failures%20%28%E2%9C%95%29.md)：GitHub Actions / CI失敗時の確認、原因切り分け、ログ確認、報告手順
-- [`Header Template.md`](Header%20Template.md)：Markdown Notesで共通利用するメタデータ、ライセンス案内、Version表記のヘッダーテンプレート
-- [`Collapse Comments on GitHub Issues and Pull Requests.md`](Collapse%20Comments%20on%20GitHub%20Issues%20and%20Pull%20Requests.md)：GitHub Issues / Pull Requestで長文や補足情報を`<details>`で折りたたむためのスニペット
+| ドキュメント | 主な内容 |
+| --- | --- |
+| [`Distributing Filters and UserScripts with GitHub Gist.md`](Distributing%20Filters%20and%20UserScripts%20with%20GitHub%20Gist.md) | GitHub Gistを使ったコンテンツブロックフィルタ／UserScriptの配布・更新方法とメタデータテンプレート |
+| [`Handling and Reporting GitHub CI Failures (✕).md`](Handling%20and%20Reporting%20GitHub%20CI%20Failures%20%28%E2%9C%95%29.md) | GitHub Actions / CI失敗時の確認、原因切り分け、ログ確認、報告手順 |
+| [`Header Template.md`](Header%20Template.md) | Markdown Notesで共通利用するメタデータ、ライセンス案内、Version表記のヘッダーテンプレート |
+| [`Collapse Comments on GitHub Issues and Pull Requests.md`](Collapse%20Comments%20on%20GitHub%20Issues%20and%20Pull%20Requests.md) | GitHub Issues / Pull Requestで長文や補足情報を`<details>`で折りたたむためのスニペット |
 
 ## 情報の扱い
 
@@ -57,3 +65,8 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 コマンド、設定変更、フィルタルールなどを実行する場合は、対象バージョンと適用範囲を確認し、可能な場合は元に戻せる状態で少数ずつ検証します。
 
 文書のライセンス、第三者コンテンツの扱いおよび無保証については、共通の[`LICENSES.md`](../LICENSES.md)を参照します。
+
+## 関連情報
+
+- [リポジトリのルートREADME](../README.md)
+- [Markdown Notesディレクトリ](./)

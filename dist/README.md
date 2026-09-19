@@ -7,6 +7,14 @@
 >
 > この生成物は上流プロジェクトおよびAdGuardの公式配布物ではありません。上流版とブロック結果が完全に一致することは保証されず、誤ブロックやサイトの表示・動作不良が起きる可能性があります。
 
+## ファイル
+
+| 項目 | 主な内容 | 参照先 |
+| --- | --- | --- |
+| 生成フィルタ | 上流フィルタをAdGuard向けに変換した自動生成物 | [`uB-filter-by-kdroidwin (AdGuard Optimized).txt`](./uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
+| 変換スクリプト | 上流ルールを解析・変換して生成物を作成する処理 | [`scripts/convert.py`](../scripts/convert.py) |
+| 変換能力定義 | 変換処理で扱う機能・互換性情報 | [`config/adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json) |
+
 ## 自分の環境での登録先メモ
 
 自分の検証環境では、必要な場合にAdGuardのカスタムフィルタとして次のRaw URLを登録しています。
@@ -47,6 +55,12 @@ AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィル
 - 誤ブロックを疑う場合は、この生成フィルタを一時的に無効化して自分の環境で原因を切り分けます。
 - 正規表現の構文検査対策として`$document`を自動追加しません。AGLint 3.0.2が正規表現内の終端アンカーを修飾子と誤認する場合だけ、該当行の`invalid-modifiers`診断をコメントで抑制します。その他の検査は維持します。
 - 変換処理の詳細は[`scripts/convert.py`](../scripts/convert.py)に残しています。
+
+## 関連情報
+
+- [リポジトリのルートREADME](../README.md)
+- [変換スクリプト](../scripts/convert.py)
+- [変換能力定義](../config/adguard-converter-capabilities.json)
 
 ## 参照している公式資料
 
