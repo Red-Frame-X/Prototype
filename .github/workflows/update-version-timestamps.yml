@@ -28,7 +28,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 2
+          # A multi-commit push can place github.event.before beyond HEAD's parent.
+          fetch-depth: 0
 
       - name: Update changed Version metadata with current JST
         shell: bash
