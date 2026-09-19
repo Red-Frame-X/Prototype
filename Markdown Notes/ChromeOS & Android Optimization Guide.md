@@ -1450,34 +1450,6 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 ---
 
-## Aluminium OS / Googlebook / Linux
-2026年5月のGoogleによる公式発表（The Android Showなど）やリーク情報により、ChromeOSの今後のロードマップが明確になりました。Linux®ディストリビューションの移行についても少し触れておきます。
-
-* Aluminium OS（通称：ALOS）: Androidのカーネルやフレームワークをベースに、デスクトップ環境（ChromeOSのUI/UX）と高度なAI（Gemini）をネイティブ統合した新世代OS。
-
-* Googlebook: Aluminium OSを搭載し、2026年秋以降の展開が予定されている新しいプレミアムデバイス。
-
-既存のChromeOSは2034年頃まで段階的にサポート（セキュリティ保守等）が継続される見込みですが、Androidアプリのネイティブ動作やシステムレベルのAI統合においては、Aluminium OSへの移行が今後のメインストリームとなります。
-
-**ChromeOSの今後の動向**
-* [Googlebook 正式発表後もChromebookは継続。Googleが改めて明言した10年サポートと移行方針](https://helentech.jp/news-chromebook-continues-after-googlebook-86132/)
-* [Aluminium OSの完全リリースは2028年以降の可能性](https://helentech.jp/news-81647/)
-* [ChromeOSは2034年に段階的廃止へ](https://internet.watch.impress.co.jp/docs/yajiuma/2083598.html)
-* [Aluminium OSの展開。2026年後半リリース予定](https://helentech.jp/news-chromebook-82961/)
-* [AluminiumOS - Android For PC](https://aluminium--os-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
-
-**Linux 関連**
-* [ChromebookにLinuxをクリーンインストールする方法](https://zenn.dev/roistaff/articles/30ce3883b3b9d9)
-* [Linux Mint 22をパソコンにインストールする方法](https://tanoike.com/install-linux-mint-on-pc)
-* [Timeshift（バックアップツール）](https://github.com/linuxmint/timeshift) / [使い方](https://sub-log.jp/2022/12/14/linux-mint-%E3%81%A7-timeshift%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B/)
-* [Linux Mint搭載 既製品ノートPC](https://raylink-inc.com/product/rl-bnc00010/)
-* [AdGuard for Linux](https://adguard.com/kb/ja/adguard-for-linux/)
-
-**ECサイト購入優先順位**
-* Amazon.co.jp（セール時） > メーカー直売サイト > 楽天市場 = ヨドバシ.com
-
----
-
 ## Credits
 * [r/Adguard](https://www.reddit.com/r/Adguard/) / [r/uBlockOrigin](https://www.reddit.com/r/uBlockOrigin/)
 * [AdGuard ナレッジベース](https://adguard.com/kb/ja/) / [AdGuard（𝕏）](https://x.com/AdGuard) / [AdGuardJP（𝕏）](https://x.com/AdGuardJP) / [AdGuard ブログ](https://adguard-com.translate.goog/en/blog/index.html?_x_tr_sl=auto&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
