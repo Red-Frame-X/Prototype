@@ -6,7 +6,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 20260917 |
+| **Version** | 202609200632 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -51,6 +51,8 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 実機検証やユーザー報告は、それ自体を一般仕様として扱いません。根拠を確認できない原因推測や将来予測は断定せず、仕様変更によって古くなった記述は参照元を再確認したうえで更新または削除します。
 
 日付付きの「2026年○月○日時点」という表現は、更新履歴として必要な場合を除き固定せず、本文のメタデータ `Version` と参照先の一次情報を優先します。将来の査読時に、本文だけが古い基準日のまま残ることを避けます。
+
+<!-- Integration test comment: Markdown Notes workflow validation only. -->
 
 文章の下書きや整理にChatGPTを利用することがありますが、生成・推敲された文章をそのまま正しいとはみなさず、重要な技術情報は一次情報や実環境で再確認します。
 
