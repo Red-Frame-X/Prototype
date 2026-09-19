@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuardカスタムルール。
-! Version: 202609181804
+! Version: 202609200631
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -8,6 +8,7 @@
 ! Note: 日本のコミュニティ主導ルールと自作ルールを組み合わせたものです。
 
 ! Global
+! Integration test comment: no active rule change; validates AdGuard PR checks.
 ! reCAPTCHA v3が全サイトの画面右下に表示するプライバシー・利用規約バッジを非表示
 ##.grecaptcha-badge
 
