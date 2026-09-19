@@ -13,7 +13,7 @@
 
 次の生成物は、GPL-3.0で公開されている第三者フィルタを基にしています。原作品の著作権表示とライセンス条件を維持し、GNU General Public License v3.0に従います。
 
-- [`AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)
+- [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)
 - [`dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt`](dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)
 - [`scripts/convert.py`](scripts/convert.py)
 - [`Markdown Notes/Content Blocking FAQ 2026.md`](Markdown%20Notes/Content%20Blocking%20FAQ%202026.md)
