@@ -1,2 +1,0 @@
-GitHub Actions integration sentinel.
-This file is temporary test data and does not affect runtime behavior.
