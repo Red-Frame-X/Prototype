@@ -32,6 +32,13 @@ ChangeLogは [`scripts/update_adguard_changelogs.py`](../../scripts/update_adgua
 > [!NOTE]
 > ChangeLogは人向けの変更履歴です。フィルタ構文や機能対応を保証する実行可能な仕様そのものではありません。新しい構文や挙動を判断する場合は、AdGuard公式ドキュメント、公開ソースコード、関連Issueなども確認してください。
 
+## 関連情報
+
+- [AdGuard Custom Rules README](../README.md)
+- [リポジトリのルートREADME](../../README.md)
+- [更新スクリプト](../../scripts/update_adguard_changelogs.py)
+- [Update AdGuard Changelogs Workflow](../../.github/workflows/update-adguard-changelogs.yml)
+
 ## 公式情報
 
 - [AdGuard Browser Extension CHANGELOG](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/CHANGELOG.md)
