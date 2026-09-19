@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609200010 |
+| **Version** | 202609200444 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -996,7 +996,9 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **Web版YouTubeについての留意点**
 
-uBlock Origin / uBlock Origin LiteのYouTube不具合報告では、まず既定設定に戻し、カスタムフィルタや手動追加リストを外し、他の拡張機能やブラウザ内蔵ブロッカーを無効化した状態でも問題が再現するか確認するよう案内されています。これは原因切り分けのための手順であり、「拡張機能やカスタムフィルタが多いほどYouTubeに検知されやすい」と一般化できる根拠ではありません。また、参照したIssue本文だけからは、Yuki2718氏をuBlock Originの「開発チーム所属」と断定できないため、そのようには扱いません（[uBO: Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415) / [uBO Lite: Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
+Yuki2718氏の公開説明によると、YouTubeでは使用する広告ブロッカー以外の拡張機能やカスタムフィルタが多いほど、競合やフィルタ構成の差によってAnti-Adblock Scriptに検知される確率が上がります。このため、YouTubeで広告ブロック検知や再生不具合が発生した場合は、まず使用する広告ブロッカーを1つに限定し、既定設定・標準フィルタだけの状態で確認します。
+
+Yuki2718氏は、uBlock Origin開発チームのうち**フィルターチームのメンバー**です。本人のプロフィールでは2020年11月から所属していることを明記しており、YouTube対策については、本人が**YouTube用フィルタを開発した2人のうちの1人**であると公開しています。uBlock Originの公式フィルタリポジトリ `uAssets` でも、YouTube問題の専用Issueを作成・管理し、対策フィルタの開発と修正対応を行っています（[Yuki2718氏の𝕏アカウント](https://x.com/Yuki27183) / [uBO: Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415) / [uBO Lite: Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
 
 **𝕏/Twitter ルール作り資料｜uBlock Origin**
 
