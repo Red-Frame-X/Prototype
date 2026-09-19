@@ -50,6 +50,18 @@ class WriterWorkflowTests(unittest.TestCase):
                 self.assertNotIn("git pull --rebase origin main", text)
                 self.assertNotIn("repository-writer-${{ github.ref }}", text)
 
+    def test_chmate_manual_writer_retries_push_conflicts(self):
+        _, text = self._load("update-chmate-ng-version.yml")
+        commit_index = text.index("git commit -m 'chore: update ChMate NG Version'")
+        loop_index = text.index("for attempt in 1 2 3; do", commit_index)
+        fetch_index = text.index("git fetch origin main", loop_index)
+        rebase_index = text.index("git rebase origin/main", fetch_index)
+        push_index = text.index("git push origin HEAD:main", rebase_index)
+        self.assertLess(commit_index, loop_index)
+        self.assertLess(loop_index, fetch_index)
+        self.assertLess(fetch_index, rebase_index)
+        self.assertLess(rebase_index, push_index)
+
 
 if __name__ == "__main__":
     unittest.main()
