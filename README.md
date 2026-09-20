@@ -51,7 +51,9 @@ Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィ�
 GitHub Actionsで、更新処理・変換・品質確認を自動化しています。
 
 - フィルタ・コードの整合性、回帰テスト、構文・Lintを自動検査
-- 対象ディレクトリの変更をmainへpushした後、対応するVersionメタデータをGitHub ActionsでJSTの現在時刻へ同期します。`AdGuard Custom Rules` / `AdGuard DNS Custom Rules`では、Pull Request時にルール変更と`! Version:`更新が同じコミットに含まれることもCIで検証します
+- 対象ディレクトリの変更を`main`へpushします。
+- push後、対応する`Version`メタデータをGitHub ActionsでJSTの現在時刻へ同期します。
+- `AdGuard Custom Rules` / `AdGuard DNS Custom Rules`では、Pull Request時にルール変更と`! Version:`の更新が同じコミットに含まれていることをCIで検証します。
 - Workflow失敗時は原因を確認して修正し、必要に応じて再発防止策を反映
 - `uB-filter-by-kdroidwin (AdGuard Optimized)`の定期同期・変換
 - AdGuard公式CHANGELOGを定期確認
