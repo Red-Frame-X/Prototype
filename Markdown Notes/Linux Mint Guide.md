@@ -8,7 +8,7 @@ Linux Mintに関する導入、設定、運用、バックアップ、トラブ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609201558 |
+| **Version** | 202609201600 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
