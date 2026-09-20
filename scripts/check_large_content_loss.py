@@ -18,11 +18,20 @@ def run_git(*args: str) -> str:
 
 
 def parse_numstat(text: str):
-    for line in text.splitlines():
-        added, deleted, path = line.split("\t", 2)
+    records = iter(text.split("\0"))
+    for record in records:
+        if not record:
+            continue
+        added, deleted, path = record.split("\t", 2)
+        before_path = path
+        # Renames/copies use an empty path followed by two NUL-delimited paths.
+        # Consume both even for binary entries so the next record stays aligned.
+        if not path:
+            before_path = next(records)
+            path = next(records)
         if added == "-" or deleted == "-":
             continue
-        yield int(added), int(deleted), path
+        yield int(added), int(deleted), path, before_path
 
 
 def line_count(ref: str, path: str) -> int | None:
@@ -33,10 +42,11 @@ def line_count(ref: str, path: str) -> int | None:
     return len(content.splitlines())
 
 
-def changed_text_files(base_ref: str) -> list[tuple[int, int, str]]:
+def changed_text_files(base_ref: str) -> list[tuple[int, int, str, str]]:
     diff = run_git(
         "diff",
         "--numstat",
+        "-z",
         f"{base_ref}...HEAD",
         "--",
         "*.md",
@@ -68,12 +78,15 @@ def main() -> int:
 
     allowed_paths = set(args.allow_deletion_in)
     changes = changed_text_files(args.base_ref)
-    protected_changes = [change for change in changes if is_protected_path(change[2])]
+    protected_changes = [
+        change for change in changes
+        if is_protected_path(change[2]) or is_protected_path(change[3])
+    ]
     failures: list[str] = []
 
-    for added, deleted, path in protected_changes:
+    for added, deleted, path, before_path in protected_changes:
         net_loss = deleted - added
-        before_lines = line_count(args.base_ref, path)
+        before_lines = line_count(args.base_ref, before_path)
         after_lines = line_count("HEAD", path)
 
         # Ordinary edits and rewrites may naturally replace existing lines. The guard
@@ -110,7 +123,7 @@ def main() -> int:
     stale_authorizations = sorted(
         path
         for path in allowed_paths
-        if not any(changed_path == path and deleted > 0 for _, deleted, changed_path in protected_changes)
+        if not any(changed_path == path and deleted > 0 for _, deleted, changed_path, _ in protected_changes)
     )
     if stale_authorizations:
         failures.append(
