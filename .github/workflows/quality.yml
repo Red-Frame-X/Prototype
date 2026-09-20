@@ -87,10 +87,9 @@ jobs:
       - name: Validate Markdown Notes Version dates
         if: github.event_name == 'workflow_dispatch'
         run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
-            python scripts/check_markdown_notes_version.py --base-ref "origin/${{ github.base_ref }}"
-          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+          # This step only runs for workflow_dispatch, so pull_request-only
+          # context such as github.base_ref is intentionally not referenced here.
+          if git rev-parse HEAD^ >/dev/null 2>&1; then
             python scripts/check_markdown_notes_version.py --base-ref HEAD^
           else
             echo 'No parent commit available; skipping Markdown Notes Version comparison.'
