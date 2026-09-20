@@ -24,8 +24,8 @@ def run_git(*args: str) -> str:
 
 
 def changed_markdown_files(base_ref: str) -> list[Path]:
-    output = run_git("diff", "--name-only", f"{base_ref}...HEAD", "--", "Markdown Notes/*.md")
-    return [Path(line) for line in output.splitlines() if line]
+    output = run_git("diff", "--name-only", "-z", f"{base_ref}...HEAD", "--", "Markdown Notes/*.md")
+    return [Path(line) for line in output.split("\0") if line]
 
 
 def file_edit_timestamp_yyyymmddhhmm(base_ref: str, path: Path) -> str:

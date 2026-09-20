@@ -30,8 +30,8 @@ def git(*args: str) -> str:
 
 
 def changed_files(base: str, head: str) -> list[Path]:
-    output = git("diff", "--name-only", base, head)
-    return [Path(line) for line in output.splitlines() if line]
+    output = git("diff", "--name-only", "-z", base, head)
+    return [Path(line) for line in output.split("\0") if line]
 
 
 def is_target(path: Path) -> bool:
