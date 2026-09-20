@@ -10,7 +10,7 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609181837 |
+| **Version** | 202609201631 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -19,6 +19,16 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 ## 1. ネットワークルール［通信ブロック］
 
 通信そのものを根元から遮断します。DNR上限を圧迫しないよう、正規表現の乱用を避け、可能な限りプレーンなホスト名指定を行うのが基本です。ルールの末尾に `$` を付け、カンマ `,` 区切りで修飾子（Modifiers：フィルタが適用される条件や通信の制御方法を指定するためのパラメータ記法）を指定します。
+
+### 1.0 URLパターンの基本記号
+
+* `*`：0文字以上の任意の文字列に一致するワイルドカードです。
+* `||`：指定したドメインとそのサブドメインに一致します。例：`||example.com^`
+* `^`：英数字および `_`、`-`、`.`、`%` 以外の区切り文字、またはURL末尾に一致します。`||example.com^` が `example.com.evil.test` を巻き込むことを防ぎます。
+* `|`：パターンの先頭ではURL先頭、末尾ではURL末尾を固定します。例：`|https://example.com/|`
+* `@@`：一致するブロックルールを解除する例外マーカーです。例外の範囲は修飾子で必要最小限に絞ります。
+
+`|`、`||`、`^` はURLパターンを持つネットワークルール用の記号です。コスメティックルールのドメイン指定には使用しません。正規表現ルールは柔軟ですが、通常のURLパターンより評価コストと保守負担が大きいため、単純なパターンで表現できない場合に限定します。
 
 ### 1.1 基本的な適用と除外
 ### `$document` ［ページドキュメント全体の適用・除外］
@@ -188,6 +198,11 @@ AdGuard for Androidでも軽く動作させるため、可能な限りシンプ�
 * **概要**： ブラウザネイティブのレンダリングエンジンで直接処理される基本的な非表示記法です。
 * **解説**： DOM操作の中で最も処理遅延とバッテリー消費が少ないため、モバイル環境において最優先で利用すべき記法ですが、クラス名やIDがランダム生成されるモダンな難読化広告要素の特定には無力です。
 
+### `#@#` / `#@$#` / `#@?#` / `#@$?#` ［コスメティックルールの例外］
+* **構文例**： `example.com#@#.banner` / `example.com#@?#div:has-text(広告)`
+* **概要**：それぞれ通常の要素非表示、CSS注入、ExtendedCss要素非表示、ExtendedCssによるCSS注入の対応するルールを解除します。
+* **解説**：購読フィルタによって正規コンテンツが消えるFalse Positiveを局所的に復旧するときに使います。例外側は、解除したい元ルールと構文・対象を正確に対応させ、サイト全体のコスメティックフィルタを一括解除する広い例外は避けます。
+
 ### `~` ［特定のドメインや要素の適用除外］
 * **構文例**： `example.com,~shop.example.com##.ad-banner`
 * **概要**： 非表示ルールの適用対象から特定のサブドメインやクラスを除外します。
@@ -310,7 +325,129 @@ AdGuard for Androidでも軽く動作させるため、可能な限りシンプ�
 
 ---
 
-## 4. 参考・引用元ソース［最新動向とリポジトリ］
+## 4. AdGuard Filter Issuesで必要となる実践知識
+
+ここではフィルタ作者向けの全手順ではなく、問題を再現し、原因を切り分け、保守担当者が検証可能な報告を作るための要点を扱います。公式Issueテンプレートは、直接GitHubへ投稿するより先に[AdGuard Web Reporting Tool](https://adguard.com/kb/guides/report-website/)を使うことを推奨しています。
+
+### 4.1 問題の分類
+
+| 分類 | 意味 | 代表例 |
+| :--- | :--- | :--- |
+| **False Positive** | 正常なコンテンツや機能をフィルタが誤って阻害する問題 | ログイン不能、ボタン・動画・コメント欄が動かない、正規画像が消える、無限ロード |
+| **Missed Ad / Ad Leftover** | 広告が残る、または広告本体の遮断後に枠・余白が残る問題 | バナー、動画広告、空の広告枠 |
+| **Annoyance** | 広告以外の閲覧妨害要素 | Cookie通知、ニュースレター、アプリ・SNS誘導、ポップアップ、固定バナー |
+| **Anti-Adblock** | コンテンツブロッカーの利用を検出して閲覧を妨げる仕組み | 警告、オーバーレイ、コンテンツ非表示、動画停止 |
+| **Missed Tracker** | 分析・追跡通信が遮断されずに残る問題 | ビーコン、分析API、追跡パラメータ |
+
+分類は提案するルールの収録先にも関係します。例えば、広告ではないCookie通知を「広告」として報告せず、Annoyanceとして区別すると確認が進みやすくなります。
+
+### 4.2 報告前の切り分け
+
+1. AdGuard、ブラウザ、フィルタを最新版へ更新し、ページを再読み込みして再現を確認します。
+2. サイトやアプリが壊れる場合は、AdGuardの保護を一時停止したときに問題が解消するか確認します。解消しなければ、AdGuardフィルタ以外が原因の可能性があります。
+3. 問題が起きる最小限の手順とURLを記録します。ログインなど特別な条件があれば明記します。
+4. フィルタリングログで問題発生時刻付近のBlocked、Allowed、Modified、Redirected、Whitelisted等の処理結果と、一致したルールを確認します。
+5. 原因候補のルールまたはフィルタだけを一時的に無効化し、再現結果が変わるか確認します。恒久的に無効化する前に元の状態を記録します。
+6. 他の広告ブロッカー、DNSフィルタ、Private DNS、VPN、hosts、Pi-hole、NextDNS、personalDNSfilter等を併用している場合は、可能な範囲で一時的に切り分けます。
+7. 必要に応じてプライベートブラウジング、新しいプロファイル、キャッシュを無視した再読み込みで確認します。ただし、Cookie削除はログアウト等を招くため、必要性を確認してから行います。
+8. 結果を「AdGuard有効時」「無効時」「原因候補だけ無効時」に分けて報告します。
+
+切り分け中にセッションCookie、認証URL、個人名、メールアドレス等を取得した場合は、スクリーンショットやログを公開する前に必ず伏せます。
+
+### 4.3 Filtering Logの読み方
+
+フィルタリングログでは、リクエストURL、発信元、リソースタイプ、処理結果、および一致したルールを組み合わせて確認します。表示名は製品・バージョンで異なる場合がありますが、概ね次の意味です。
+
+| 結果 | 読み方 |
+| :--- | :--- |
+| **Blocked** | ネットワークルールによって通信が遮断された |
+| **Allowed** | ブロック対象ではなく許可された |
+| **Modified** | ヘッダー、Cookie、URL、応答等にルールによる変更が加わった |
+| **Redirected** | `$redirect`等によって別のローカルリソース等へ置換された |
+| **Whitelisted** | 例外ルールによって許可された |
+
+False Positiveでは「壊れた機能が要求したURL」と「そのURLに一致したルール」を対で記録します。単に大量のログを貼るより、例えば「`https://example.com/api/comments` が `||example.com/api^$xmlhttprequest` によりBlockedとなり、当該ルールを無効化するとコメントが表示される」と示す方が再現性の高い報告になります。コスメティックルールやスクリプトレットによる問題はネットワーク通信として現れないことがあるため、ログにBlockedがないことだけでAdGuardが無関係とは断定できません。
+
+### 4.4 Browser ExtensionでのDevTools確認
+
+* **Elements**：残っている広告や消えた正規要素のHTML、class、id、属性、親子関係を確認します。動的に変化する文字列や、別用途でも使われる汎用classだけを根拠にしません。
+* **Network**：広告・追跡・API通信のURL、リソースタイプ、発信元、ステータス、再現時刻を確認します。認証情報を含むRequest HeadersやPayloadを公開しないでください。
+* **Console**：操作不能や無限ロードに関連するJavaScriptエラーを確認します。ページ側に元から存在する無関係なエラーもあるため、AdGuardの有効・無効で差を比較します。
+
+DevToolsはフィルタリングログを置き換えるものではありません。両方の情報が一致するかを確認します。
+
+### 4.5 Element Picker / Assistantの扱い
+
+要素選択機能が生成したルールは出発点として有用ですが、そのまま報告・採用する前にセレクタを確認します。ランダムなclass、頻繁に変わる数値、過度に長いDOM階層、汎用的すぎる属性を含むルールは壊れやすい傾向があります。
+
+```adblock
+example.com##.ad-banner
+```
+
+このように対象ドメインを限定し、意味が安定しているclassや属性を使う単純な標準CSSセレクタを優先します。標準CSSで解決できない場合に限ってExtendedCssを検討します。
+
+### 4.6 False Positiveを抑えるルール設計
+
+* グローバルな `##.ad` より `example.com##.ad` のように、必要なサイトへ適用範囲を絞ります。
+* ネットワークルールは可能なら `$script`、`$image`、`$xmlhttprequest` 等でリソースタイプを限定します。
+* 正規表現、`:xpath()`、`:matches-css()`、Scriptlet、HTMLフィルタリングは、より単純なルールで解決できない場合に使います。
+* 動的classや現在のDOM階層数だけに依存するセレクタを避けます。
+* `$document` の例外やフィルタリング全体を解除する回避策は影響が大きいため、より狭い通信・コスメティック・Scriptlet例外を先に検討します。
+* 提案ルールは広告を消すことだけでなく、ログイン、動画、コメント、決済、スクロール、戻る操作等の正規機能も確認します。
+
+### 4.7 公式Issueテンプレートに沿った報告項目
+
+[AdguardFiltersのBug reportテンプレート](https://github.com/AdguardTeam/AdguardFilters/blob/master/.github/ISSUE_TEMPLATE/bug_report.yml)で必須または選択を求められる主な項目は次のとおりです。
+
+* AdGuard、ブラウザ、フィルタを更新済みであること
+* サイト・アプリ破損では、AdGuardを無効化すると解消すること
+* 使用製品とAdGuardのバージョン
+* 問題の分類、ブラウザ、Desktop / Mobile
+* 問題のURLまたは影響を受けるアプリへのリンク
+* 有効なAd Blockingフィルタ、および該当するPrivacy、Annoyances、Language-specific、DNS等のフィルタ
+* 有効なTracking protection（旧Stealth Mode）設定
+* 問題の説明とスクリーンショット
+* 報告に個人情報が含まれていないことの確認
+
+公式フォームに加えて、再現手順、実際の結果、期待する結果、User rules・カスタムフィルタ、他のブロッカー・DNS・VPNの併用状況、原因候補のルール、関係するログを添えると調査に役立ちます。パスワード、Cookie、トークン、決済情報等は添付しません。
+
+### 4.8 MV3とAdGuard for Androidの主な違い
+
+AdGuard公式構文リファレンスの互換性表に基づく代表例です。バージョン更新で対応状況が変わるため、最終判断は各修飾子の公式表を確認してください。
+
+| 構文・機能 | Browser Extension MV3 | AdGuard for Android（CoreLibs） | 主な用途・注意 |
+| :--- | :---: | :---: | :--- |
+| `$app` | 非対応 | 対応 | Androidではパッケージ名でアプリを限定 |
+| `$domain` / `$denyallow` / `$to` | 対応（構文ごとの制限を確認） | 対応 | 発信元・除外・送信先を限定 |
+| `$method` / `$header` | 対応（制限付きの場合あり） | 対応 | HTTPメソッド・レスポンスヘッダー条件 |
+| `$strict-first-party` / `$strict-third-party` | 非対応 | 対応 | ホスト名一致を厳格に判定 |
+| `$cookie` | 制限付き対応 | 対応 | MV3ではCookieを削除できない場合がある |
+| `$removeheader` | 制限付き対応 | 対応 | MV3では否定・例外ルール等に制限がある |
+| `$replace` | 非対応 | 対応（trustedのみ） | Chromium拡張はネットワーク応答本文を書き換えられない |
+| `$redirect` | 例外等に制限あり | 対応 | 無害なローカルリソースへ置換 |
+| `$redirect-rule` | 非対応 | 対応 | MV3ではDNRルールへ変換されない |
+| `$removeparam` | 制限付き対応 | 対応 | MV3では正規表現・否定・例外ルール等が非対応 |
+| `$urltransform` | v5.5以降で制限付き対応 | 対応（trustedのみ） | MV3では正規表現や置換等にDNR由来の制限がある |
+| HTMLフィルタリング `$$` | 非対応 | 対応 | DOM構築前の応答本文から要素を除去 |
+| コスメティックルール / Scriptlet | 対応するが実行方式・対応構文に製品差 | 対応 | ネットワークDNRとは別経路で実行される機能を含む |
+
+MV3はネットワークルールをDNRへ変換して適用するため、CoreLibsと同じAdGuard構文が記載されていても、同一の挙動・制限とは限りません。一方、コスメティックフィルタやScriptletまで一律に「MV3では使えない」とみなすのも不正確です。製品、バージョン、構文ごとに確認します。
+
+### 4.9 AdGuard構文とuBO互換構文
+
+AdGuardは一部のuBO・ABP互換構文を解釈できますが、構文を受理することと、スクリプトレット名・引数・権限・実行タイミングまで完全互換であることは同義ではありません。
+
+| 目的 | AdGuardで意図が明確な記法 | 見かける互換記法 | 注意 |
+| :--- | :--- | :--- | :--- |
+| Scriptlet | `example.com#%#//scriptlet('name', 'arg')` | `example.com##+js(name, arg)` | 対応する名前・別名・引数をAdGuard Scriptletsで確認 |
+| ExtendedCssの文字列条件 | `example.com#?#div:contains(広告)` | `example.com##div:has-text(広告)` | 製品・版による互換性を確認し、AdGuard向けでは公式記法を優先 |
+| Scriptlet例外 | `example.com#@%#//scriptlet(...)` | 対応するuBO例外構文 | 元の注入ルールと正確に対応させる |
+
+trusted Scriptletなど信頼済みフィルタ限定の機能があります。AdGuardでは公式フィルタ、trustedとして追加したカスタムフィルタ、User rulesが信頼済みとして扱われますが、公開フィルタへの提案では権限要件と安全性を別途確認します。
+
+---
+
+## 5. 参考・引用元ソース［最新動向とリポジトリ］
 
 * **[独自の広告フィルタを作成する方法 | AdGuard Knowledge Base](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)**
 
@@ -319,6 +456,14 @@ AdGuard for Androidでも軽く動作させるため、可能な限りシンプ�
 * **[AdguardTeam/AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**
 
   AdGuard公式の最新ルールリポジトリであり、モバイルアプリ向けの指定 `$app` や独自スクリプトレットなど、AdGuard環境に特化した実践的なルールの記述法を直接参照できる最大の強みがあります。ただし、ルール群は用途別（Base, Mobile, Annoyances等）にモジュール構造（Module Structure：大規模なフィルタ群やプログラムを、単一の巨大なファイルとして管理するのではなく、用途、プラットフォーム、機能ごとに独立した複数のファイルやディレクトリに分割・整理する設計手法）として細かくディレクトリ分割されているため、目的の記述を探し出すにはリポジトリの設計方針に対する深い理解が求められます。
+
+* **[AdGuard Filters Issue Template](https://github.com/AdguardTeam/AdguardFilters/blob/master/.github/ISSUE_TEMPLATE/bug_report.yml)**
+
+  問題報告前の更新確認、製品・バージョン・問題分類・ブラウザ・端末種別・URL・有効なフィルタ・Tracking protection設定・説明・スクリーンショット・プライバシー確認など、報告時に必要な項目を定義する公式テンプレートです。
+
+* **[AdguardTeam/Scriptlets](https://github.com/AdguardTeam/Scriptlets)** / **[AdguardTeam/ExtendedCss](https://github.com/AdguardTeam/ExtendedCss)** / **[AdguardTeam/CoreLibs](https://github.com/AdguardTeam/CoreLibs)**
+
+  Scriptletの正式名称・別名・引数、非標準セレクタの実装、Android等で使われるフィルタリングエンジンの更新内容を確認するための公式ソースです。
 
 * **[AdGuard Blog](https://adguard.com/en/blog/index.html)**
 
