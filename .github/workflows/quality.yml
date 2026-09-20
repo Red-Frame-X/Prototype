@@ -63,13 +63,23 @@ jobs:
             # fetch-depth: 0 already provides the complete graph. Re-fetching the
             # base with --depth=1 can replace origin/<base> with a shallow ref and
             # break the merge-base needed by three-dot diffs.
-            git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
-            python scripts/check_large_content_loss.py --base-ref "origin/${{ github.base_ref }}"
+            base_ref="origin/${{ github.base_ref }}"
+            git merge-base "$base_ref" HEAD >/dev/null
           elif git rev-parse HEAD^ >/dev/null 2>&1; then
-            python scripts/check_large_content_loss.py --base-ref HEAD^
+            base_ref="HEAD^"
           else
             echo 'No parent commit available; skipping large-content-loss comparison.'
+            exit 0
           fi
+
+          guard_args=(--base-ref "$base_ref")
+          merged_guide='Markdown Notes/Designing AdGuard Custom Rules.md'
+          if git cat-file -e "$base_ref:$merged_guide" 2>/dev/null && [[ ! -e "$merged_guide" ]]; then
+            # This exact file deletion was explicitly requested after its content
+            # was merged into AdGuard Custom Rules Reference.md.
+            guard_args+=(--allow-deletion-in "$merged_guide")
+          fi
+          python scripts/check_large_content_loss.py "${guard_args[@]}"
 
       # Version metadata は main への push 後に Update Version Timestamps (JST) が同期する。
       # PR でも未同期状態を失敗扱いすると、設計上予定された自動同期前に不要な赤Runが発生するため、

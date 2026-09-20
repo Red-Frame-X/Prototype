@@ -6,7 +6,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609201601 |
+| **Version** | 20260920 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -27,16 +27,14 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | ドキュメント | 主な内容 |
 | --- | --- |
 | [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md) | uBlock Origin、uBlock Origin Lite、AdGuard MV3、Brave、Vivaldi、DNS併用、フィルタ設計を一次情報中心に整理したFAQ |
-| [`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md) | AdGuard ブラウザ拡張機能 MV3対応版とAdGuard for Androidでカスタムルールを設計・検証するための指針と学習メモ |
-| [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md) | AdGuardの主要フィルタ構文、MV3/DNRとCoreLibsの差異、用途・注意点を確認する補助リファレンス |
+| [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md) | AdGuardカスタムルールの基礎、設計、主要構文、MV3/DNRとCoreLibsの差異、検証、デバッグ、誤ブロック対応、保守をまとめた実用リファレンス |
 | [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md) | DNSブロックリストの主要形式、選び方、ブラウザ用コンテンツブロッカーとの役割分担・切り分けを整理したガイド |
 | [`Strict Blocking Exceptions Test.md`](Strict%20Blocking%20Exceptions%20Test.md) | My docomoを対象に、AdGuardのStrict blockingと`$document`例外ルールの挙動を実機検証した記録 |
 
 ### コンテンツブロック資料の使い分け
 
 - [`Content Blocking FAQ 2026.md`](Content%20Blocking%20FAQ%202026.md)：**製品選択・MV3・フィルタ併用の考え方を確認する**
-- [`Designing AdGuard Custom Rules.md`](Designing%20AdGuard%20Custom%20Rules.md)：**AdGuardユーザールールの設計方法を学ぶ**
-- [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)：**個別のAdGuard構文を確認する**
+- [`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)：**AdGuardユーザールールの設計方法を学び、構文・検証・デバッグ方法を確認する**
 - [`DNS Blocklist Guide.md`](DNS%20Blocklist%20Guide.md)：**DNSレイヤーのブロックリストとブラウザブロッカーの違いを確認する**
 - [`Strict Blocking Exceptions Test.md`](Strict%20Blocking%20Exceptions%20Test.md)：**Strict blockingと例外ルールの実機挙動を確認する**
 
