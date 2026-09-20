@@ -6,7 +6,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609200658 |
+| **Version** | 202609201558 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -17,6 +17,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | ドキュメント | 主な内容 |
 | --- | --- |
 | [`ChromeOS & Android Optimization Guide.md`](ChromeOS%20%26%20Android%20Optimization%20Guide.md) | ChromeOS・Androidの設定、アプリ、拡張機能、プライバシー対策、実機トラブル対応をまとめた総合ガイド兼設定バックアップ |
+| [`Linux Mint Guide.md`](Linux%20Mint%20Guide.md) | Linux Mintの導入、設定、ソフトウェア管理、バックアップ、復旧、Kernel Panic、AdGuard for Linux、セキュリティなどをまとめたガイド |
 | [`Android Advanced Flow Guide.md`](Android%20Advanced%20Flow%20Guide.md) | 未確認デベロッパー製AndroidアプリをインストールするAdvanced Flowの概要、公式要件、手順、注意点の確認記録 |
 | [`Googlebook & Aluminium Survey Report - Revised Edition.md`](Googlebook%20%26%20Aluminium%20Survey%20Report%20-%20Revised%20Edition.md) | Googlebookの公式発表と、開発コードネームAluminiumに関する報道・未確認事項・査読結果を区別して整理した調査レポート |
 | [`ChromeOS Manual Update and Troubleshooting.md`](ChromeOS%20Manual%20Update%20and%20Troubleshooting.md) | ChromeOSの手動更新手順と、更新失敗時の原因切り分け・再試行・復旧方法の記録 |
