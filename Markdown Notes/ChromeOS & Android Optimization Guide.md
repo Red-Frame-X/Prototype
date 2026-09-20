@@ -326,7 +326,11 @@ ChatGPTアプリで接続エラー、ログイン失敗、回答の停止など�
 
 **プロンプト作成から実作業へ進む基本手順**
 
-複雑な調査・査読・修正などでは、まず現在のChatで目的・対象・制約・確認手順を整理したプロンプトを作成し、完成したプロンプトをコピーして**新規Chatで実作業を開始する**方法を基本とします。プロンプト作成までの会話履歴と実作業の文脈を分けることで、作業開始時の指示や対象範囲を明確にしやすくなります。
+複雑な調査・査読・修正では、最初に目的、対象、制約、参照資料、確認手順、期待する出力を明確にします。OpenAIは、明確で具体的な指示と十分な文脈を与え、必要に応じてプロンプトを反復的に改善することを推奨しています（[OpenAI公式：Prompt engineering best practices for ChatGPT](https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt)）。
+
+実作業は、必ず新規Chatへ分ける必要はありません。同じChatを続ければ、それまでの会話で共有した条件や判断を文脈として利用できます。一方、過去の文脈が現在の作業と競合したり、回答が以前の前提に引きずられて混乱している場合は、新規Chatで開始して文脈を整理する方法が有効です（[OpenAI公式：How to Ask ChatGPT About Its Features](https://help.openai.com/en/articles/12548278-how-to-ask-chatgpt-about-its-features)）。
+
+長期的・反復的な作業では、関連するチャット、ファイル、指示をまとめて同じ文脈を再利用できる**Projects**の利用も選択肢です（[OpenAI公式：ChatGPT のプロジェクト](https://help.openai.com/ja-jp/articles/10169521-projects-in-chatgpt)）。
 
 **プロンプトによる役割・目的の設定**
 
