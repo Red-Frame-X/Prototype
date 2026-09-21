@@ -1,4 +1,4 @@
-# Googlebook & Aluminium Research Report
+# Googlebook Research Report
 
 Googleが2026年5月に発表した「Googlebook」と、発表前に報道された開発コードネーム「Aluminium」を整理します。将来の端末選定や仕様比較で再確認できるよう、公式発表・報道・未確認事項を分けて残している調査記録です。
 
