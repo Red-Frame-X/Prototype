@@ -6,7 +6,7 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609220759 |
+| **Version** | 202609220800 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -14,6 +14,25 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 > 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。一方、日本発売、APKサイドロード、Play Integrity、Linux環境の詳細構成など未確認事項も残っています。公式発表、報道、推測を引き続き区別してください。
 
 ## 要約
+
+### ひと目で分かる現状
+
+| 項目 | 現時点の整理 |
+| :--- | :--- |
+| **製品** | Googleが正式発表した新しいノートPCカテゴリ「Googlebook」 |
+| **OS基盤** | Android technology stackを基盤に、ChromeOSのdesktop foundationsを組み合わせる |
+| **Chrome** | desktop-class Chrome browser with extensions |
+| **Androidアプリ** | Google PlayおよびAndroidアプリ・ゲームに対応 |
+| **Linux** | pKVMで隔離されたフルLinuxターミナル環境を搭載 |
+| **AI** | Gemini Intelligenceを中核に、Magic Pointer、Rambler、Create My Widgetなどを提供 |
+| **初期メーカー** | Acer / ASUS / Dell / HP / Lenovo |
+| **初期仕様** | Intel Core Ultra Series 3またはSnapdragon X Elite、16GB以上RAM、45 TOPS超NPU |
+| **価格** | 899米ドルから |
+| **発売** | 米国：2026年10月4日、6か国：10月5日 |
+| **日本発売** | 2026年9月22日時点で未発表 |
+| **旧コードネーム** | 「Aluminium」は報道上の開発コードネーム。正式製品名ではない |
+
+### 要点
 
 Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定です。価格は899米ドルからです。一方、日本発売、APKサイドロード、Play Integrity、Linux環境の詳細構成、既存Chromebookの移行対象などは未確認です。
 
@@ -31,29 +50,24 @@ Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日�
 
 ## 確認できる情報
 
-Google公式発表で確認できる主な内容は次のとおりです。
+Google公式発表で確認できる主な内容を、分野ごとに整理します。
 
-- Googlebookは、Gemini Intelligence向けに設計された新しいノートPCカテゴリ。
-- Googlebook OSは **Android technology stack** を基盤とし、**ChromeOSのdesktop foundations** を組み合わせる。
-- Chromeは **desktop-class Chrome browser with extensions** として提供される。
-- Google Playに対応し、Androidアプリやゲームを利用できる。
-- QualcommはSnapdragon X Elite搭載Googlebookについて、**native Android applications and games** への対応を明記している。
-- 開発者向けにフルLinuxターミナル環境を搭載し、Claude CodeやAntigravity CLIなどを実行できる。
-- Linux環境は **Level 5 security-certified pKVM hypervisor** でOS本体から隔離される。
-- セキュリティはChromeOSと同じセキュリティアーキテクチャを基礎とし、Google Titan hardware root of trust、Defense in Depth、オンデバイスマルウェア検出を採用する。
-- Googlebook OSは定期的なFeature Dropと最大10年間のアップデートに対応する。
-- Geminiの文脈提案をカーソルから呼び出す「Magic Pointer」。
-- 音声入力を整理する「Rambler」。
-- 自然言語からウィジェットを作成する「Create My Widget」。
-- Gemini Live、Proactive Suggestions、Gemini Spark、Task Automationなどを利用できる。
-- Androidスマートフォン連携として **Continue On、Cast My Apps、Quick Access** を提供する。
-- Googlebook公式サイトでは、これらの連携機能について **Android 17以上の対応端末** を要件として示している。
-- Acer、ASUS、Dell、HP、Lenovoの5社から初期モデルを展開する。
-- 初期モデルはIntel Core Ultra Series 3またはSnapdragon X Eliteを採用し、45 TOPS超のNPU、16GB以上のRAMを搭載する。
-- 価格は899米ドルから。米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定。
-- すべてのGooglebookに12か月分のGoogle AI Proと5TBクラウドストレージが付属する。
+| 分野 | 確認済みの内容 |
+| :--- | :--- |
+| **製品・OS** | GooglebookはGemini Intelligence向けに設計された新しいノートPCカテゴリ。Googlebook OSは **Android technology stack** を基盤とし、**ChromeOSのdesktop foundations** を組み合わせる。 |
+| **Chrome** | **desktop-class Chrome browser with extensions** を提供。 |
+| **Androidアプリ** | Google Playに対応し、Androidアプリやゲームを利用できる。QualcommはSnapdragon X Elite搭載Googlebookについて、**native Android applications and games** への対応を明記。 |
+| **Linux** | フルLinuxターミナル環境を搭載し、Claude CodeやAntigravity CLIなどを実行可能。Linux環境は **Level 5 security-certified pKVM hypervisor** でOS本体から隔離される。 |
+| **セキュリティ** | ChromeOSと同じセキュリティアーキテクチャを基礎とし、Google Titan hardware root of trust、Defense in Depth、オンデバイスマルウェア検出を採用。 |
+| **更新** | 定期的なFeature Dropと最大10年間のアップデートに対応。 |
+| **AI機能** | Magic Pointer、Rambler、Create My Widget、Gemini Live、Proactive Suggestions、Gemini Spark、Task Automationなど。 |
+| **スマートフォン連携** | Continue On、Cast My Apps、Quick Accessを提供。公式サイトではこれらの連携機能について **Android 17以上** の対応端末を要件として示す。 |
+| **ハードウェア** | Acer、ASUS、Dell、HP、Lenovoの5社から初期モデルを展開。Intel Core Ultra Series 3またはSnapdragon X Elite、45 TOPS超NPU、16GB以上RAMを搭載。 |
+| **価格・発売** | 899米ドルから。米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定。 |
+| **特典** | すべてのGooglebookに12か月分のGoogle AI Proと5TBクラウドストレージが付属。 |
 
-GoogleのAndroid関連発表では、GooglebookをAndroidエコシステムの新しいノートPCカテゴリとして扱っています。一方、GoogleはOS内部の全レイヤー構成や、Android Framework・ChromeOS由来コンポーネントの境界を完全公開していません。公式発表の範囲を超えて「Aluminium OS搭載」や特定のAndroidバージョン、未公開の内部構造を確定事項として扱わないようにします。
+> [!NOTE]
+> GoogleはOS内部の全レイヤー構成や、Android Framework・ChromeOS由来コンポーネントの境界を完全公開していません。公式発表の範囲を超えて「Aluminium OS搭載」や特定のAndroidバージョン、未公開の内部構造を確定事項として扱わないようにします。
 
 ### ChromeOSとの関係
 
@@ -74,29 +88,35 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 
 現時点で未確認の事項：
 
-- APKサイドロードの正式手順。
-- Developer Modeの要否。
-- ADBの標準利用方法。
-- Play IntegrityのGooglebook上での挙動。
-- すべてのAndroidアプリとの完全互換性。
+| 項目 | 状態 |
+| :--- | :--- |
+| APKサイドロードの正式手順 | 未確認 |
+| Developer Modeの要否 | 未確認 |
+| ADBの標準利用方法 | 未確認 |
+| Play IntegrityのGooglebook上での挙動 | 未確認 |
+| すべてのAndroidアプリとの完全互換性 | 未確認 |
 
 ### Linux環境
 
 2026年9月21日の正式発表で、Linux環境の存在と仮想化方式の主要部分が確認されました。
 
-- フルLinuxターミナル環境を搭載。
-- Claude Code、Antigravity CLI、Git、一般的なLinux開発ツールを利用可能。
-- Linux環境は **pKVM** によりGooglebook OS本体から隔離される。
-- GoogleはこのpKVMを **Level 5 security-certified pKVM hypervisor** と説明している。
+| 項目 | 確認済みの内容 |
+| :--- | :--- |
+| ターミナル | フルLinuxターミナル環境を搭載 |
+| 開発ツール | Claude Code、Antigravity CLI、Git、一般的なLinux開発ツールを利用可能 |
+| 隔離方式 | **pKVM** によりGooglebook OS本体から隔離 |
+| pKVMの説明 | Googleは **Level 5 security-certified pKVM hypervisor** と説明 |
 
 一方、次の詳細は未確認です。
 
-- Debianなど具体的なディストリビューション。
-- `apt` の正式サポート範囲。
-- USB passthrough。
-- Linux GUIアプリの完全な対応範囲。
-- GPUアクセラレーション方式。
-- VirtIO、Waylandなどの詳細構成。
+| 未確認項目 | 状態 |
+| :--- | :--- |
+| Debianなど具体的なディストリビューション | 未確認 |
+| `apt` の正式サポート範囲 | 未確認 |
+| USB passthrough | 未確認 |
+| Linux GUIアプリの完全な対応範囲 | 未確認 |
+| GPUアクセラレーション方式 | 未確認 |
+| VirtIO、Waylandなどの詳細構成 | 未確認 |
 
 従来のChromeOS Crostiniはcrosvm、Termina VM、LXCコンテナなどを利用しますが、Googlebookは公開情報上pKVMを中心とする隔離Linux環境です。したがって、少なくとも仮想化基盤は従来Crostiniと同一とは扱いません。
 
@@ -104,18 +124,15 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 
 GoogleはGooglebookのChromeを **desktop-class Chrome browser with extensions** と明記しています。このため、Androidスマートフォン版Chromeと同じ構成ではありません。
 
-確認済み：
-
-- デスクトップクラスのChrome。
-- Chrome拡張機能対応。
-
-未確認：
-
-- Chrome Web Store上の全拡張機能との完全互換性。
-- Manifest V3 / Declarative Net RequestのGooglebook固有制約。
-- Native Messagingの対応範囲。
-- Enterprise Policyの全対応範囲。
-- Lacrosとの関係。
+| 区分 | 項目 | 状態 |
+| :--- | :--- | :--- |
+| 確認済み | デスクトップクラスのChrome | 確認済み |
+| 確認済み | Chrome拡張機能対応 | 確認済み |
+| 未確認 | Chrome Web Store上の全拡張機能との完全互換性 | 未確認 |
+| 未確認 | Manifest V3 / Declarative Net RequestのGooglebook固有制約 | 未確認 |
+| 未確認 | Native Messagingの対応範囲 | 未確認 |
+| 未確認 | Enterprise Policyの全対応範囲 | 未確認 |
+| 未確認 | Lacrosとの関係 | 未確認 |
 
 ### Androidスマートフォン連携
 
@@ -174,19 +191,15 @@ Google Japanは2026年5月にGooglebookを日本語で紹介していますが�
 
 2026年9月21日の正式発表により、Linux環境、pKVM、CPU、最低RAM、価格、発売地域など従来未確認だった複数項目は確認済みとなりました。現在も未確認・未発表の主な事項は次のとおりです。
 
-- Googlebook OSが使用するAndroidの具体的なバージョン番号。
-- Androidアプリ実行層の詳細な内部構造。
-- APKサイドロードの正式手順とDeveloper Modeの要否。
-- Play IntegrityのGooglebook上での挙動。
-- Linux環境のディストリビューション、`apt`、USB passthrough、GPUアクセラレーションなどの詳細。
-- Chrome Web Store上の全拡張機能との互換性。
-- Manifest V3 / Declarative Net RequestのGooglebook固有仕様。
-- Lacrosとの関係。
-- Enterprise Policyの完全な対応範囲。
-- 既存Chromebookへの移行またはバックポートの対象。
-- ChromeOS製品全体の終了時期。
-- Gemini機能ごとの端末内処理、クラウド処理、データ保持条件。
-- 日本発売日、日本価格、日本語キーボード、日本向け型番、技適取得モデル。
+| 分野 | 未確認・未発表の内容 |
+| :--- | :--- |
+| **OS基盤** | Googlebook OSが使用するAndroidの具体的なバージョン番号、Androidアプリ実行層の詳細な内部構造 |
+| **Androidアプリ** | APKサイドロードの正式手順、Developer Modeの要否、Play IntegrityのGooglebook上での挙動 |
+| **Linux** | ディストリビューション、`apt`、USB passthrough、GPUアクセラレーションなどの詳細 |
+| **Chrome** | Chrome Web Store上の全拡張機能との互換性、Manifest V3 / Declarative Net RequestのGooglebook固有仕様、Lacrosとの関係、Enterprise Policyの完全な対応範囲 |
+| **移行** | 既存Chromebookへの移行またはバックポートの対象、ChromeOS製品全体の終了時期 |
+| **Gemini** | 機能ごとの端末内処理、クラウド処理、データ保持条件 |
+| **日本市場** | 日本発売日、日本価格、日本語キーボード、日本向け型番、技適取得モデル |
 
 ## 期待できる点とリスク
 
