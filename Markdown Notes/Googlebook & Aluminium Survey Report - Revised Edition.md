@@ -6,16 +6,16 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609220752 |
+| **Version** | 202609220753 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
 > [!IMPORTANT]
-> Googlebookは発売前です。公式発表、報道、推測を区別し、仕様を確定情報として先取りしないでください。
+> 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。一方、日本発売、APKサイドロード、Play Integrity、Linux環境の詳細構成など未確認事項も残っています。公式発表、報道、推測を引き続き区別してください。
 
 ## 要約
 
-Googlebookは、Googleが2026年5月12日に正式発表した新しいノートPCカテゴリです。GoogleはGemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視した製品として紹介しています。2026年秋の投入予定で、Googleはハードウェアパートナーとして **Acer、ASUS、Dell、HP、Lenovo** を公表しています。一方、2026年9月8日時点でも、個別モデルの価格、全対応地域、CPU、最低RAM、Linux実行方式、既存Chromebookの移行対象など、未発表の仕様があります。
+Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定です。価格は899米ドルからです。一方、日本発売、APKサイドロード、Play Integrity、Linux環境の詳細構成、既存Chromebookの移行対象などは未確認です。
 
 「Aluminium」は求人情報などを根拠に報道されたAndroidベースPCプロジェクトのコードネームです。Googleの正式な製品発表では「Googlebook」を使用しており、「Aluminium OS」または「ALOS」を正式な製品名としていません。したがって、バックアップ目的でAluminiumに関する過去の報道・予測を残す場合も、Google公式の確定情報とは区別します。
 
@@ -34,32 +34,170 @@ Googlebookは、Googleが2026年5月12日に正式発表した新しいノート
 Google公式発表で確認できる主な内容は次のとおりです。
 
 - Googlebookは、Gemini Intelligence向けに設計された新しいノートPCカテゴリ。
+- Googlebook OSは **Android technology stack** を基盤とし、**ChromeOSのdesktop foundations** を組み合わせる。
+- Chromeは **desktop-class Chrome browser with extensions** として提供される。
+- Google Playに対応し、Androidアプリやゲームを利用できる。
+- QualcommはSnapdragon X Elite搭載Googlebookについて、**native Android applications and games** への対応を明記している。
+- 開発者向けにフルLinuxターミナル環境を搭載し、Claude CodeやAntigravity CLIなどを実行できる。
+- Linux環境は **Level 5 security-certified pKVM hypervisor** でOS本体から隔離される。
+- セキュリティはChromeOSと同じセキュリティアーキテクチャを基礎とし、Google Titan hardware root of trust、Defense in Depth、オンデバイスマルウェア検出を採用する。
+- Googlebook OSは定期的なFeature Dropと最大10年間のアップデートに対応する。
 - Geminiの文脈提案をカーソルから呼び出す「Magic Pointer」。
-- 指示からダッシュボードを作る「Create your Widget」。
-- Androidスマートフォン上のアプリやファイルとの連携。
-- Acer、ASUS、Dell、HP、Lenovoなどのハードウェアパートナー。
-- 2026年秋の投入予定。
+- 音声入力を整理する「Rambler」。
+- 自然言語からウィジェットを作成する「Create My Widget」。
+- Gemini Live、Proactive Suggestions、Gemini Spark、Task Automationなどを利用できる。
+- Androidスマートフォン連携として **Continue On、Cast My Apps、Quick Access** を提供する。
+- Googlebook公式サイトでは、これらの連携機能について **Android 17以上の対応端末** を要件として示している。
+- Acer、ASUS、Dell、HP、Lenovoの5社から初期モデルを展開する。
+- 初期モデルはIntel Core Ultra Series 3またはSnapdragon X Eliteを採用し、45 TOPS超のNPU、16GB以上のRAMを搭載する。
+- 価格は899米ドルから。米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定。
+- すべてのGooglebookに12か月分のGoogle AI Proと5TBクラウドストレージが付属する。
 
-GoogleのAndroid関連発表では、GooglebookをAndroidエコシステムの新しいノートPCカテゴリとして扱っています。公式発表の範囲を超えて「Aluminium OS搭載」や特定のAndroidバージョン、仮想化方式を確定事項として扱わないようにします。
+GoogleのAndroid関連発表では、GooglebookをAndroidエコシステムの新しいノートPCカテゴリとして扱っています。一方、GoogleはOS内部の全レイヤー構成や、Android Framework・ChromeOS由来コンポーネントの境界を完全公開していません。公式発表の範囲を超えて「Aluminium OS搭載」や特定のAndroidバージョン、未公開の内部構造を確定事項として扱わないようにします。
+
+### ChromeOSとの関係
+
+GoogleはGooglebook OSを「ChromeOSそのもの」とは説明していません。2026年9月21日の公式発表では、Android technology stackを基盤にしながらChromeOSのdesktop foundationsを組み合わせるとしています。
+
+そのため、現時点では次のように整理します。
+
+- **Googlebook OS**：Android技術スタックを主要基盤とし、ChromeOS由来のデスクトップ基盤を組み合わせる新しいPC向けプラットフォーム。
+- **ChromeOS**：引き続きChromebookで提供される別のOS。Googlebook発表時点でChromeOS終了の公式発表は確認されていない。
+
+「Googlebook OSがChromeOSを即時置換する」「すべてのChromebookがGooglebookへ移行する」といった説明は、公式確認がないため行いません。
+
+### Androidアプリ
+
+Google Play対応とAndroidアプリ利用は公式確認済みです。Android Developersは、既存のAndroidアプリがGooglebookで動作すると案内しています。QualcommもSnapdragon X Elite搭載Googlebookについてnative Android applications and gamesへの対応を明記しています。
+
+ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基盤にしています。ただし、GoogleはAndroidアプリ実行層の内部構造を完全公開していないため、「すべてのAndroidアプリが仮想化なしで直接実行される」といった実装レベルの断定は避けます。
+
+現時点で未確認の事項：
+
+- APKサイドロードの正式手順。
+- Developer Modeの要否。
+- ADBの標準利用方法。
+- Play IntegrityのGooglebook上での挙動。
+- すべてのAndroidアプリとの完全互換性。
+
+### Linux環境
+
+2026年9月21日の正式発表で、Linux環境の存在と仮想化方式の主要部分が確認されました。
+
+- フルLinuxターミナル環境を搭載。
+- Claude Code、Antigravity CLI、Git、一般的なLinux開発ツールを利用可能。
+- Linux環境は **pKVM** によりGooglebook OS本体から隔離される。
+- GoogleはこのpKVMを **Level 5 security-certified pKVM hypervisor** と説明している。
+
+一方、次の詳細は未確認です。
+
+- Debianなど具体的なディストリビューション。
+- `apt` の正式サポート範囲。
+- USB passthrough。
+- Linux GUIアプリの完全な対応範囲。
+- GPUアクセラレーション方式。
+- VirtIO、Waylandなどの詳細構成。
+
+従来のChromeOS Crostiniはcrosvm、Termina VM、LXCコンテナなどを利用しますが、Googlebookは公開情報上pKVMを中心とする隔離Linux環境です。したがって、少なくとも仮想化基盤は従来Crostiniと同一とは扱いません。
+
+### Chrome・Web・拡張機能
+
+GoogleはGooglebookのChromeを **desktop-class Chrome browser with extensions** と明記しています。このため、Androidスマートフォン版Chromeと同じ構成ではありません。
+
+確認済み：
+
+- デスクトップクラスのChrome。
+- Chrome拡張機能対応。
+
+未確認：
+
+- Chrome Web Store上の全拡張機能との完全互換性。
+- Manifest V3 / Declarative Net RequestのGooglebook固有制約。
+- Native Messagingの対応範囲。
+- Enterprise Policyの全対応範囲。
+- Lacrosとの関係。
+
+### Androidスマートフォン連携
+
+Googlebookでは従来ChromebookのPhone Hubとは別に、Android端末とのより深い連携機能が用意されています。
+
+- **Continue On**：スマートフォンで開始した作業をGooglebookへ引き継ぐ。
+- **Cast My Apps**：スマートフォン側のアプリをGooglebook上から利用する。Googlebookへそのアプリをインストールする仕組みとは区別する。
+- **Quick Access**：スマートフォン内のファイルや写真へGooglebookからアクセスする。
+- **Fast Pair等の周辺機器連携**：Googlebookの製品ページで案内されている。
+
+Googlebook公式サイトでは対応端末についてAndroid 17以上を要件として示しています。Pixel限定とはされていませんが、端末ごとの互換性一覧は今後の確認が必要です。
+
+### Gemini Intelligence
+
+2026年9月21日時点でGoogleが案内している主なAI機能は次のとおりです。
+
+| 機能 | 概要 | 処理場所・要件 |
+| :--- | :--- | :--- |
+| Magic Pointer | 画面上のテキスト・画像・文脈を理解してGemini操作を呼び出す | オンデバイスとクラウドの具体的分担は未公開 |
+| Rambler | 自由な音声入力を整理し、文章・箇条書き等へ整形する | 詳細未公開 |
+| Create My Widget | 自然言語からカスタムウィジェットを作成する | Gemini利用。詳細な処理分担は未公開 |
+| Proactive Suggestions | 画面内容をもとに次の操作候補を提示する | 詳細未公開 |
+| Gemini Live | 対話型Gemini機能 | Geminiサービスを利用 |
+| Gemini Spark | 複雑な依頼をバックグラウンド処理する | 端末を閉じた状態でも処理できるため、少なくとも端末NPUのみで完結する機能ではない |
+| Antigravity | AIエージェントを利用した開発環境 | Googlebookに搭載 |
+| Task Automation | Geminiによるタスク自動化 | 詳細は機能ごとに確認が必要 |
+
+初期GooglebookはIntel Core Ultra Series 3またはSnapdragon X Eliteと45 TOPS超のNPUを搭載し、GoogleはオンデバイスAI処理能力を強調しています。ただし、各Gemini機能がNPU・CPU・クラウドのどこでどの処理を行うかは完全公開されていません。
+
+### セキュリティ
+
+確認済みの主要項目：
+
+- ChromeOSと同じセキュリティアーキテクチャを基礎とする。
+- Google Titan hardware root of trust。
+- Defense in Depth。
+- オンデバイスマルウェア検出。
+- Androidアプリのサンドボックス。
+- pKVMによるLinux環境の隔離。
+- 最大10年間のOS・セキュリティ更新。
+
+Verified Bootについては安全な起動とハードウェアルートオブトラストの採用は確認できますが、ChromeOSのVerified Bootと内部実装まで完全同一であることを示すGooglebook向け技術資料は未確認です。
+
+### 発売地域・日本
+
+2026年9月21日に発表された初期発売地域は次のとおりです。
+
+- 米国：2026年10月4日。
+- カナダ、英国、アイルランド、フランス、ドイツ、オーストラリア：2026年10月5日。
+
+**日本は初期発売地域に含まれていません。**
+
+Google Japanは2026年5月にGooglebookを日本語で紹介していますが、2026年9月22日時点で日本発売日、日本価格、日本語キーボード仕様、日本向け型番、技適取得モデルは正式発表されていません。海外仕様をそのまま日本仕様として扱わないようにします。
 
 ## 未確認・未発表の事項
 
-- ベースとなるAndroidのバージョン番号。
-- Androidアプリの実行方式と互換性の範囲。
-- Linux環境の有無、AVFや仮想化方式。
-- 最低RAM、ストレージ、CPUなどの要件。
+2026年9月21日の正式発表により、Linux環境、pKVM、CPU、最低RAM、価格、発売地域など従来未確認だった複数項目は確認済みとなりました。現在も未確認・未発表の主な事項は次のとおりです。
+
+- Googlebook OSが使用するAndroidの具体的なバージョン番号。
+- Androidアプリ実行層の詳細な内部構造。
+- APKサイドロードの正式手順とDeveloper Modeの要否。
+- Play IntegrityのGooglebook上での挙動。
+- Linux環境のディストリビューション、`apt`、USB passthrough、GPUアクセラレーションなどの詳細。
+- Chrome Web Store上の全拡張機能との互換性。
+- Manifest V3 / Declarative Net RequestのGooglebook固有仕様。
+- Lacrosとの関係。
+- Enterprise Policyの完全な対応範囲。
 - 既存Chromebookへの移行またはバックポートの対象。
 - ChromeOS製品全体の終了時期。
 - Gemini機能ごとの端末内処理、クラウド処理、データ保持条件。
+- 日本発売日、日本価格、日本語キーボード、日本向け型番、技適取得モデル。
 
 ## 期待できる点とリスク
 
 | 観点 | 期待できる点 | リスク・未解決点 |
 | :--- | :--- | :--- |
-| アプリ | Android / Google Playのアプリ資産との連携が期待できる | 大画面、キーボード、マウスへの最適化や具体的な互換性はアプリ・実装ごとに確認が必要 |
-| AI | OS全体で文脈に応じた支援を利用できる | 処理場所、送信データ、保持期間を機能ごとに確認する必要がある |
-| 端末連携 | スマートフォンのアプリやファイルへアクセスできる | 対応端末、権限、企業管理の要件は未発表部分がある |
-| 移行 | AndroidとChromeOSで培われた技術や利用体験が活用される可能性 | 既存端末・周辺機器・業務フローの互換性や移行対象は未確認 |
+| アプリ | Google PlayとネイティブAndroidアプリ対応が公式確認された | 大画面、キーボード、マウスへの最適化や個別アプリの互換性は確認が必要 |
+| Chrome | desktop-class Chromeと拡張機能対応が公式確認された | Manifest V3/DNR、Native Messaging、Enterprise PolicyなどのGooglebook固有差異は未確認 |
+| Linux | pKVMで隔離されたフルLinuxターミナル環境が公式確認された | ディストリビューション、apt、USB、GPU、GUIアプリの詳細は未確認 |
+| AI | OS全体で文脈に応じた支援を利用でき、45 TOPS超NPU搭載モデルが用意される | 処理場所、送信データ、保持期間を機能ごとに確認する必要がある |
+| 端末連携 | Continue On、Cast My Apps、Quick Accessが公式確認された | 対応端末、権限、企業管理の詳細は未発表部分がある |
+| 移行 | AndroidとChromeOSで培われた技術を組み合わせた構成が公式確認された | 既存Chromebook・周辺機器・業務フローの移行対象は未確認 |
 
 ## 広告ブロックとプライバシー
 
@@ -74,19 +212,31 @@ AdGuardのフィルタ構文については、製品予測から切り離し、[
 
 ## 今後確認する項目
 
-- Googleおよび各メーカーの仕様ページ、発売地域、価格。
-- 自動更新期限と企業・教育機関向け管理。
-- Androidアプリ、Linuxツール、周辺機器の互換性。
+- 日本発売日、日本価格、日本語キーボード、日本向け型番、技適。
+- APKサイドロード、ADB、Developer Mode、Play Integrity。
+- Linux環境のディストリビューション、apt、USB、GPU、GUIアプリ。
+- Chrome Web Store、Manifest V3、DNR、Native Messaging、Enterprise Policy、Lacros。
+- Androidアプリ、Linuxツール、周辺機器の個別互換性。
 - VPN、DNS、証明書、拡張機能に関する制約。
-- Geminiのプライバシー説明と管理者向け設定。
+- Gemini機能ごとのオンデバイス処理、クラウド処理、プライバシー説明、管理者向け設定。
+- ChromeOS / ChromiumOSの今後の開発方針と既存Chromebookへの影響。
 
 ## 情報源
 
 ### 公式
 
+- [Googlebook: The laptop your Android phone has been waiting for](https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/)
+- [Googlebook is raising the bar for premium laptops](https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/)
+- [Googlebook’s built-in intelligence reinvents the way you use your laptop](https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/)
+- [Googlebook公式サイト](https://googlebook.google/)
+- [Googlebook FAQ](https://googlebook.google/frequently-asked-questions/)
+- [Android Developers: Googlebook](https://developer.android.com/googlebook)
 - [Introducing Googlebook, designed for Gemini Intelligence](https://blog.google/products-and-platforms/platforms/android/meet-googlebook/)
 - [The Android Show: I/O Edition 2026（Google Japan）](https://blog.google/intl/ja-jp/products/android-chrome-play/android-show-io-edition-2026/)
 - [Google AI announcements from May 2026](https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/)
+- [Qualcomm: Snapdragon X Series Powers Googlebook](https://www.qualcomm.com/news/releases/2026/09/snapdragon-x-series-powers-googlebook--the-first-laptops-designe)
+- [Chromium: Add Googlebook to English dictionaries](https://chromium.googlesource.com/chromium/deps/hunspell_dictionaries/+/refs/heads/main)
+- [Chromium: Googlebook dictionary update roll](https://chromium.googlesource.com/chromium/src/+/3260aa4a5a9886e6a18ffd0b061665b9a4f155b6)
 - [Chromebookの自動更新ポリシー](https://support.google.com/chrome/a/answer/6220366?hl=ja)
 
 ### 報道・背景資料
