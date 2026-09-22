@@ -23,14 +23,23 @@ Googleの多くのサービスでは、年額サブスクリプションを「�
 
 サブスクリプションの購読基準は、「ITインフラになり得ているか」と「保守の負担比率が、対処 > 利用になった」という点に尽きます。
 
+## ショッピング・エンターテインメント
+
 * Amazon Prime（年額）
-* ChMate スタンダードプラン（月額）
-* ChatGPT Plus（月額）
-* Google Standard 200 GB（年額）
-* [mond｜Kdroidwinさんのメンバーシップ](https://mond.how/kdroidwin)（月額）
-* [GitHub｜Sponsors areteruhiro氏](https://github.com/areteruhiro)（2026年10月11日まで）
-* 𝕏プレミアム ベーシック（年額）
 * YouTube Premium（年額）
+* 𝕏プレミアム ベーシック（年額）
+
+## クラウド・AI・アプリ
+
+* Google Standard 200 GB（年額）
+* ChatGPT Plus（月額）
+* ChMate スタンダードプラン（月額）
+
+## メンバーシップ・開発者支援
+
+* [mond｜Kdroidwinさんのメンバーシップ](https://mond.how/kdroidwin)（月額）
+* [GitHub｜Sponsors areteruhiro氏](https://github.com/areteruhiro)（月額）
+* [GitHub｜Sponsors crimera氏](https://github.com/crimera)（月額）
 
 トラブルを完全に避けるのであれば、サブスクリプションを一切契約しないのが最も安全です。
 必要があって契約する場合は、トラブルの原因となりやすい携帯キャリア提供の月額オプションは避け、公式サイトが直接提供するプランを必要最小限選ぶのが無難です。
