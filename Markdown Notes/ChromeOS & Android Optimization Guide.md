@@ -31,7 +31,7 @@ Googleの多くのサービスでは、年額サブスクリプションを「�
 
 ## クラウド・AI・アプリ
 
-* Google Standard 200 GB（年額）
+* Google Basic 100 GB（年額）
 * ChatGPT Plus（月額）
 * ChMate スタンダードプラン（月額）
 
