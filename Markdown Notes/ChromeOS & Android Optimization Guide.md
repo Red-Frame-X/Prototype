@@ -1433,6 +1433,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 **レクタングル広告について**
 * ChMate側の広告と5ch側の広告（レクタングル広告）があり、後者の完全除去にはUPLIFTの購入が必要です（[仕様変更のお知らせ](https://www.airfront.co.jp/pr20250116.html)）。
+  * 後述する「Haiagaru Morphe patch for ChMate 0.8.10.241-243」のパッチを当てることにより、レクタングル広告を除去することが可能になりました。
 
 **代替ブラウザ**
 * [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid)
