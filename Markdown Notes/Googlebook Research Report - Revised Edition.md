@@ -6,12 +6,12 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609220801 |
+| **Version** | 202609231431 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
 > [!IMPORTANT]
-> 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。一方、日本発売、APKサイドロード、Play Integrity、Linux環境の詳細構成など未確認事項も残っています。公式発表、報道、推測を引き続き区別してください。
+> 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成など未確認事項も残っています。公式発表、報道、推測を引き続き区別してください。
 
 ## 要約
 
@@ -34,7 +34,7 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 
 ### 要点
 
-Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定です。価格は899米ドルからです。一方、日本発売、APKサイドロード、Play Integrity、Linux環境の詳細構成、既存Chromebookの移行対象などは未確認です。
+Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定です。価格は899米ドルからです。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成、既存Chromebookの移行対象などは未確認です。
 
 「Aluminium」は求人情報などを根拠に報道されたAndroidベースPCプロジェクトのコードネームです。Googleの正式な製品発表では「Googlebook」を使用しており、「Aluminium OS」または「ALOS」を正式な製品名としていません。したがって、バックアップ目的でAluminiumに関する過去の報道・予測を残す場合も、Google公式の確定情報とは区別します。
 
@@ -90,11 +90,44 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 
 | 項目 | 状態 |
 | :--- | :--- |
-| APKサイドロードの正式手順 | 未確認 |
-| Developer Modeの要否 | 未確認 |
-| ADBの標準利用方法 | 未確認 |
+| Googlebook上のAPKサイドロードの具体的な操作手順 | 未確認 |
+| GooglebookでAndroidの「Allow apps from unverified developers」Advanced flowを利用できるか | 未確認 |
+| Developer options / Developer ModeのGooglebook固有UI・要否 | 未確認 |
+| ADBのGooglebook上での標準利用方法 | 未確認 |
 | Play IntegrityのGooglebook上での挙動 | 未確認 |
 | すべてのAndroidアプリとの完全互換性 | 未確認 |
+
+#### APKサイドロードとAndroid developer verification
+
+2026年9月23日時点で、**GooglebookでもAPKサイドロードが可能になる可能性は高まっていますが、Googlebook実機での正式な手順までは確認できていません。** ここではGoogle公式のAndroid developer verification資料と、GoogleがArs Technicaへ説明したGooglebook固有情報を分けて整理します。
+
+| 区分 | 確認できた内容 |
+| :--- | :--- |
+| **Googlebook固有情報（報道）** | Ars TechnicaはGoogleへの確認として、GooglebookでもAndroidスマートフォンと同様のdeveloper verification要件を適用し、ダウンロードしたAPKについて開発者の本人確認・アプリ登録を求める仕組みになると報じている。 |
+| **Android公式仕様** | Googleは、verified developerが登録したアプリについて、Google Play外からの直接配布・サイドロードを引き続き認めると明記している。 |
+| **未認証アプリ** | certified Android deviceでは、未認証開発者のアプリも、ユーザーがDeveloper optionsから一度限りのAdvanced flowを完了すればインストール可能。Google公式Android Helpでは24時間のsecurity delay後、7日間または無期限で許可できるとしている。 |
+| **ADB** | Android Developer Console Helpは、開発者・power userがADBを使ってmodified / unverified appsを自分の端末へインストールできると明記している。 |
+| **適用範囲** | developer verificationはcertified Android devices向け。2026年9月30日にブラジル、インドネシア、シンガポール、タイの対象ストアから段階導入し、2027年に全世界・全インストール元へ拡大予定。 |
+
+このため、**「開発者認証要件を満たしたAPKならGooglebookでもサイドロードできる」という見方には強い根拠があります。** Ars Technicaの記事は、Googlebookで「ダウンロードしたAPK」をインストールする場合にdeveloper verificationが適用されるとGoogleが確認した、と報じています。またGoogle公式Android資料では、developer verificationはサイドロード自体を廃止する制度ではなく、verified developerが登録したAPKはGoogle Play外でも配布・インストール可能とされています。
+
+ただし、次の点は分けて考える必要があります。
+
+- **確認済み**：Androidのdeveloper verification制度は、認証済み開発者が登録したアプリのサイドロードを許容する。
+- **Googlebookについて報道で確認**：GoogleはArs Technicaに、Googlebookでも同様のdeveloper verification要件を適用すると説明した。
+- **合理的な推測**：GooglebookがこのAndroid標準制度をそのまま採用するなら、認証・登録済みAPKは通常のサイドロード対象になり、未認証APKもAdvanced flowまたはADB経由で導入できる可能性がある。
+- **未確認**：Googlebookの設定画面にAndroidスマートフォンと同じ「Allow apps from unverified developers」が存在するか、24時間待機を含むAdvanced flowがそのまま提供されるか、APKをファイルマネージャーから直接開けるか、ADBをどの経路で有効化するか、Googlebook独自の追加制限があるか。
+
+したがって現段階では、**「Googlebookはサイドロード不可」と断定する根拠は弱く、むしろ認証済みAPKのサイドロードを前提とした設計である可能性が高い**と整理できます。ただし、Androidスマートフォン向けAdvanced flowの手順をGooglebookの確定手順として流用してはいけません。発売後にGooglebook公式ヘルプ、Android DevelopersのGooglebook向け資料、実機のDeveloper options / ADB挙動で再確認する必要があります。
+
+参考：
+
+- [Android Developers Blog: Android developer verification: Building a safer ecosystem together](https://android-developers.googleblog.com/2026/06/android-developer-verification.html)
+- [Android Help: Learn about Android developer verification](https://support.google.com/android/answer/17065026?hl=en)
+- [Android Help: Allow app installs from unverified developers](https://support.google.com/android/answer/17588095?hl=en-GB)
+- [Android Developer Console Help: Understanding Android developer verification](https://support.google.com/android-developer-console/answer/16561738?hl=en)
+- [Android Developers: Register on Android Developer Console](https://developer.android.com/developer-verification/guides/android-developer-console)
+- [Ars Technica: Googlebooks launch October 4 starting at $899—here are the five models you can preorder today](https://arstechnica.com/gadgets/2026/09/googlebook-laptops-launch-october-4-starting-at-899-preorders-for-five-models-live-today/)
 
 ### Linux環境
 
@@ -194,7 +227,7 @@ Google Japanは2026年5月にGooglebookを日本語で紹介していますが�
 | 分野 | 未確認・未発表の内容 |
 | :--- | :--- |
 | **OS基盤** | Googlebook OSが使用するAndroidの具体的なバージョン番号、Androidアプリ実行層の詳細な内部構造 |
-| **Androidアプリ** | APKサイドロードの正式手順、Developer Modeの要否、Play IntegrityのGooglebook上での挙動 |
+| **Androidアプリ** | developer verificationを満たしたAPKのサイドロードは有力。Googlebook固有の具体的手順、Advanced flow / ADBの提供方法、Developer options / Developer Modeの扱い、Play Integrityの挙動は未確認 |
 | **Linux** | ディストリビューション、`apt`、USB passthrough、GPUアクセラレーションなどの詳細 |
 | **Chrome** | Chrome Web Store上の全拡張機能との互換性、Manifest V3 / Declarative Net RequestのGooglebook固有仕様、Lacrosとの関係、Enterprise Policyの完全な対応範囲 |
 | **移行** | 既存Chromebookへの移行またはバックポートの対象、ChromeOS製品全体の終了時期 |
@@ -226,7 +259,7 @@ AdGuardのフィルタ構文については、製品予測から切り離し、[
 ## 今後確認する項目
 
 - 日本発売日、日本価格、日本語キーボード、日本向け型番、技適。
-- APKサイドロード、ADB、Developer Mode、Play Integrity。
+- APKサイドロードのGooglebook固有手順、Advanced flow、ADB、Developer options / Developer Mode、Play Integrity。
 - Linux環境のディストリビューション、apt、USB、GPU、GUIアプリ。
 - Chrome Web Store、Manifest V3、DNR、Native Messaging、Enterprise Policy、Lacros。
 - Androidアプリ、Linuxツール、周辺機器の個別互換性。
