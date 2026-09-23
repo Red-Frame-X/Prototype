@@ -129,6 +129,43 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 - [Android Developers: Register on Android Developer Console](https://developer.android.com/developer-verification/guides/android-developer-console)
 - [Ars Technica: Googlebooks launch October 4 starting at $899—here are the five models you can preorder today](https://arstechnica.com/gadgets/2026/09/googlebook-laptops-launch-october-4-starting-at-899-preorders-for-five-models-live-today/)
 
+### APKサイドロードとAndroid developer verification
+
+2026年9月23日時点では、**GooglebookがAndroid developer verificationの対象として実装される場合、認証済み開発者が登録したAPKをGoogle Play外からサイドロードできる可能性は高い**と考えられます。ただし、Googlebook実機での具体的な操作手順はまだ公式確認できていません。
+
+GoogleのAndroid公式資料では、developer verificationはサイドロード自体を廃止する制度ではありません。Googleは、認証済み開発者が登録したアプリについて、Google Play外からの直接配布・サイドロードを引き続き認めると明記しています。また、未認証開発者のアプリについても、ユーザーがDeveloper optionsから一度限りのAdvanced flowを完了すればインストールできる仕組みを案内しています。Android Developer Console Helpでは、開発者・power userがADBを使ってmodified / unverified appsを自分の端末へインストールできることも明記されています。
+
+| 区分 | 現時点で確認できる内容 |
+| :--- | :--- |
+| **Android公式仕様** | 認証済み開発者が登録したアプリは、Google Play外でも直接配布・サイドロード可能。 |
+| **未認証アプリ** | certified Android deviceでは、ユーザーがDeveloper optionsからAdvanced flowを完了することで、未認証開発者のアプリをインストール可能。 |
+| **Advanced flow** | Android Helpでは、24時間のsecurity delay後に「Allow apps from unverified developers」を7日間または無期限で有効化できると案内。 |
+| **ADB** | Android Developer Console Helpは、開発者・power userがADB経由でmodified / unverified appsを自分の端末へインストールできると明記。 |
+| **Googlebook固有手順** | 未確認。設定画面、Developer options、APKファイルの開き方、ADB有効化経路、Googlebook独自制限の有無は発売後の確認が必要。 |
+
+このため、**「Googlebookが開発者認証要件を通過したAPKのサイドロードを許可する可能性」は十分にあります。** Googlebook OSがAndroid technology stackを基盤としており、GooglebookにもAndroid developer verificationを適用するとの報道が事実であれば、認証・登録済みAPKを通常のサイドロード対象とする構成はAndroid公式方針と整合します。
+
+一方で、現段階では次の点を確定事項として扱うことはできません。
+
+- Googlebookの設定画面にAndroidスマートフォンと同じ「Allow apps from unverified developers」が存在するか。
+- 24時間待機を含むAdvanced flowがそのままGooglebookにも提供されるか。
+- APKをファイルマネージャーから直接開いてインストールできるか。
+- ADBをどの経路で有効化するか、Developer Modeが必要か。
+- Googlebook独自の追加制限や管理ポリシーがあるか。
+- Play IntegrityがGooglebook上でどのように判定されるか。
+
+なお、Ars Technicaの2026年9月23日付Googlebook記事は、この回答時点では本文を直接取得できず内容を独立検証できていません。そのため、同記事にあるGooglebook固有のdeveloper verification説明は**未確認の二次情報**として扱い、公式Android資料で確認できる一般仕様とは区別します。
+
+参考：
+
+- [Android developer verification](https://developer.android.com/developer-verification)
+- [Register on Android Developer Console](https://developer.android.com/developer-verification/guides/android-developer-console)
+- [Understanding Android developer verification](https://support.google.com/android-developer-console/answer/16561738?hl=en)
+- [Learn about Android developer verification](https://support.google.com/android/answer/17065026?hl=en)
+- [Allow app installs from unverified developers](https://support.google.com/android/answer/17588095?hl=en-GB)
+- [Ars Technica: Googlebooks launch October 4 starting at $899—here are the five models you can preorder today](https://arstechnica.com/gadgets/2026/09/googlebook-laptops-launch-october-4-starting-at-899-preorders-for-five-models-live-today/)
+
+
 ### Linux環境
 
 2026年9月21日の正式発表で、Linux環境の存在と仮想化方式の主要部分が確認されました。
