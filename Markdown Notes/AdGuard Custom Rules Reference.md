@@ -519,7 +519,7 @@ AdGuard公式Knowledge Baseは、ローレベル設定の変更によってAdGua
 
 ---
 
-## 8. AdGuard Filter Issuesで必要となる実践知識
+## 8. AdGuard Filters issuesで必要となる実践知識
 
 ここではフィルタ作者向けの全手順ではなく、問題を再現し、原因を切り分け、保守担当者が検証可能な報告を作るための要点を扱います。公式Issueテンプレートは、直接GitHubへ投稿するより先に[AdGuard Web Reporting Tool](https://adguard.com/kb/guides/report-website/)を使うことを推奨しています。
 
