@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202609231736
+! Version: 202609232314
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -14,7 +14,6 @@
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
-||www.jcom.co.jp/sim_contact/entry_request.php?form_type$doc
 .buzz/*/?*=*&*=*&*=*&*=*&*=$doc
 .life/*/?*=*&*=*&*=*&*=*&*=$doc
 .live/*/?*=*&*=*&*=*&*=*&*=$doc
@@ -2403,6 +2402,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||copress.shop^$document
 ||copyeg.ru^$document
 ||copyprogramming.com^$document
+||coreda.jp^$document
 ||coremaji-media.com^$document
 ||corleonis8.com^$document
 ||corndollythatching.com^$document
@@ -13073,6 +13073,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.jb51.net^$document
 ||www.jbc-ltd.com^$document
 ||www.jchi.jp^$document
+||www.jcom.co.jp/sim_contact/entry_request.php?form_type$doc
 ||www.jeansroy.com^$document
 ||www.jechavarria.com^$document
 ||www.jeha-maroc.com^$document
