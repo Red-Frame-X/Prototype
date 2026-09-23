@@ -6,7 +6,7 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609231438 |
+| **Version** | 202609231450 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -29,7 +29,7 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | **初期仕様** | Intel Core Ultra Series 3またはSnapdragon X Elite、16GB以上RAM、45 TOPS超NPU |
 | **価格** | 899米ドルから |
 | **発売** | 米国：2026年10月4日、6か国：10月5日 |
-| **日本発売** | 2026年9月22日時点で未発表 |
+| **日本発売** | 2026年9月23日時点で未発表 |
 | **旧コードネーム** | 「Aluminium」は報道上の開発コードネーム。正式製品名ではない |
 
 ### 要点
@@ -103,7 +103,7 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 
 | 区分 | 確認できた内容 |
 | :--- | :--- |
-| **Googlebook固有情報（報道）** | Ars TechnicaはGoogleへの確認として、GooglebookでもAndroidスマートフォンと同様のdeveloper verification要件を適用し、ダウンロードしたAPKについて開発者の本人確認・アプリ登録を求める仕組みになると報じている。 |
+| **Googlebook固有情報（二次情報）** | Ars Technicaは、Googleへの確認に基づく説明として、GooglebookでもAndroidスマートフォンと同様のdeveloper verification要件を適用し、ダウンロードしたAPKについて開発者の本人確認・アプリ登録を求める仕組みになると報じている。Googlebook固有の実装については、Google公式資料または実機で確認できるまで二次情報として扱う。 |
 | **Android公式仕様** | Googleは、verified developerが登録したアプリについて、Google Play外からの直接配布・サイドロードを引き続き認めると明記している。 |
 | **未認証アプリ** | certified Android deviceでは、未認証開発者のアプリも、ユーザーがDeveloper optionsから一度限りのAdvanced flowを完了すればインストール可能。Google公式Android Helpでは24時間のsecurity delay後、7日間または無期限で許可できるとしている。 |
 | **ADB** | Android Developer Console Helpは、開発者・power userがADBを使ってmodified / unverified appsを自分の端末へインストールできると明記している。 |
@@ -114,7 +114,7 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 ただし、次の点は分けて考える必要があります。
 
 - **確認済み**：Androidのdeveloper verification制度は、認証済み開発者が登録したアプリのサイドロードを許容する。
-- **Googlebookについて報道で確認**：GoogleはArs Technicaに、Googlebookでも同様のdeveloper verification要件を適用すると説明した。
+- **Googlebookについて二次情報で確認**：Ars Technicaは、Googleへの確認に基づく説明として、Googlebookでも同様のdeveloper verification要件を適用すると報じている。Google公式資料または実機で確認できるまでは、Googlebook固有の実装を確定事項として扱わない。
 - **合理的な推測**：GooglebookがこのAndroid標準制度をそのまま採用するなら、認証・登録済みAPKは通常のサイドロード対象になり、未認証APKもAdvanced flowまたはADB経由で導入できる可能性がある。
 - **未確認**：Googlebookの設定画面にAndroidスマートフォンと同じ「Allow apps from unverified developers」が存在するか、24時間待機を含むAdvanced flowがそのまま提供されるか、APKをファイルマネージャーから直接開けるか、ADBをどの経路で有効化するか、Googlebook独自の追加制限があるか。
 
@@ -221,7 +221,7 @@ Verified Bootについては安全な起動とハードウェアルートオブ�
 
 **日本は初期発売地域に含まれていません。**
 
-Google Japanは2026年5月にGooglebookを日本語で紹介していますが、2026年9月22日時点で日本発売日、日本価格、日本語キーボード仕様、日本向け型番、技適取得モデルは正式発表されていません。海外仕様をそのまま日本仕様として扱わないようにします。
+Google Japanは2026年5月にGooglebookを日本語で紹介していますが、2026年9月23日時点で日本発売日、日本価格、日本語キーボード仕様、日本向け型番、技適取得モデルは正式発表されていません。海外仕様をそのまま日本仕様として扱わないようにします。
 
 ## 未確認・未発表の事項
 
