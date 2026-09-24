@@ -33,7 +33,7 @@ Chrome・ChromeOS・Android向けの設定、コンテンツブロックフィ�
 | Markdown Notes | ChromeOS、Android、GitHub、コンテンツブロックなどの学習・調査メモ | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) |
 | config / upstream | 変換能力の定義、上流情報の追跡・ミラー | [config](./config/) / [upstream](./upstream/) |
 | scripts / tests | フィルタ変換・更新処理、整合性検査、回帰テスト | [scripts](./scripts/) / [tests](./tests/) |
-| GitHub Actions | 品質確認、同期、変換、CHANGELOG追跡などのWorkflow | [Actions](../../actions) |
+| GitHub Actions | 品質確認、同期、変換、CHANGELOG追跡などのWorkflow | [Actions](./actions) |
 | License | リポジトリ全体のライセンス情報 | [LICENSE](./LICENSE) / [LICENSES.md](./LICENSES.md) |
 
 > [!NOTE]
