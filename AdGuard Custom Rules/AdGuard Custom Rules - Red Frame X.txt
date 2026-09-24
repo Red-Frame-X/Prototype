@@ -107,6 +107,10 @@ m.youtube.com##ytm-rich-section-renderer
 ! 単独で大きく表示されるShortsカードを非表示
 m.youtube.com##ytm-video-with-context-renderer:has(.big-shorts-singleton)
 
+! mangakoma01.net
+! ジャンル一覧を非表示
+mangakoma01.net##ul.genresList
+
 ! news.google.com
 ! 上部カテゴリタブの「エンタメ」を非表示
 news.google.com##[role="tablist"] [role="tab"][aria-label="エンタメ"]
@@ -146,6 +150,10 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 ! paypal.com
 ! PayPalのログイン・決済不具合を修正
 @@||data.service.paypal.com^
+
+! raw1001.net
+! ジャンル一覧を非表示
+raw1001.net##ul.genresList
 
 ! rawkuma.net
 ! rawkuma.net上でcbox.wsの外部チャット通信をブロック
