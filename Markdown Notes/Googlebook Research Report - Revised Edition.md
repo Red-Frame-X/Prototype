@@ -118,7 +118,7 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 - **合理的な推測**：GooglebookがこのAndroid標準制度をそのまま採用するなら、認証・登録済みAPKは通常のサイドロード対象になり、未認証APKもAdvanced flowまたはADB経由で導入できる可能性がある。
 - **未確認**：Googlebookの設定画面にAndroidスマートフォンと同じ「Allow apps from unverified developers」が存在するか、24時間待機を含むAdvanced flowがそのまま提供されるか、APKをファイルマネージャーから直接開けるか、ADBをどの経路で有効化するか、Googlebook独自の追加制限があるか。
 
-したがって現段階では、**「Googlebookはサイドロード不可」と断定する根拠は確認できません。一方で、認証済みAPKのサイドロード可否もGooglebook向けの一次情報だけでは確定できないため、可能性として扱います。**ただし、Androidスマートフォン向けAdvanced flowの手順をGooglebookの確定手順として流用してはいけません。発売後にGooglebook公式ヘルプ、Android DevelopersのGooglebook向け資料、実機のDeveloper options / ADB挙動で再確認する必要があります。
+したがって現段階では、**「Googlebookはサイドロード不可」と断定する根拠は確認できません。一方で、認証済みAPKのサイドロード可否もGooglebook向けの一次情報だけでは確定できないため、可能性として扱います。** ただし、Androidスマートフォン向けAdvanced flowの手順をGooglebookの確定手順として流用してはいけません。発売後にGooglebook公式ヘルプ、Android DevelopersのGooglebook向け資料、実機のDeveloper options / ADB挙動で再確認する必要があります。
 
 > [!NOTE]
 > Ars TechnicaのGooglebook固有のdeveloper verification説明は二次情報です。Google公式Android資料で確認できる一般仕様とは区別し、Googlebookでの具体的な実装・操作手順は公式資料または実機で確認できるまで未確認として扱います。
