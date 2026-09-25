@@ -26,6 +26,9 @@ FILTER_TITLE: str = FILTER_NAME
 OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", f"{FILTER_NAME}.txt")
 CAPABILITY_FILE: str = os.path.join(BASE_DIR, "config", "adguard-converter-capabilities.json")
 CAPABILITY_TARGET: str = "adguard-browser-extension-mv3"
+# Match the repository's conservative substantial-loss review threshold.
+# Intentional larger reductions require review, not an automatic override.
+MAX_RULE_NET_LOSS: int = 120
 
 CANDIDATE_URLS: List[str] = [
     "https://raw.githubusercontent.com/Kdroidwin/uB-filter-by-kdroidwin/refs/heads/main/uBlockorigin.txt",
@@ -114,9 +117,14 @@ class AdGuardOptimizer:
             try:
                 req = urllib.request.Request(url, headers=req_headers)
                 with urllib.request.urlopen(req, timeout=15) as res:
-                    return res.read().decode('utf-8').splitlines()
+                    lines = res.read().decode('utf-8-sig').splitlines()
+                    if not self.get_rule_signature(lines):
+                        raise ValueError("Source contains no active rules")
+                    return lines
             except (HTTPError, URLError, TimeoutError, UnicodeDecodeError) as e:
                 print(f"  -> Failed: {e}")
+            except ValueError as e:
+                print(f"  -> Invalid source: {e}")
 
         print("Error: 元データの取得に失敗しました。")
         sys.exit(1)
@@ -340,7 +348,12 @@ class AdGuardOptimizer:
         return line
 
     def get_rule_signature(self, lines: List[str]) -> List[str]:
-        return [l.strip() for l in lines if l.strip() and not l.strip().startswith('!')]
+        # A list format header is not an active rule; retain non-basic [$...] rules.
+        return [
+            l.strip() for l in lines
+            if l.strip() and not l.strip().startswith('!')
+            and not re.fullmatch(r'\[Adblock(?: Plus)?(?: \d+(?:\.\d+)*)?\]', l.strip())
+        ]
 
     def run(self) -> None:
         lines = self.fetch_source()
@@ -369,6 +382,8 @@ class AdGuardOptimizer:
 
         # [Step D] スマート差分検知。ルール本体だけでなく、固定メタデータの変更も反映する。
         new_signature = self.get_rule_signature(optimized_lines)
+        if not new_signature:
+            raise ValueError("Refusing to write a generated filter with no active rules")
         expected_metadata = [
             f"! Title: {FILTER_TITLE}",
             "! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。",
@@ -384,6 +399,15 @@ class AdGuardOptimizer:
         if os.path.exists(OUTPUT_FILE):
             with open(OUTPUT_FILE, 'r', encoding='utf-8') as f:
                 existing_lines = f.read().splitlines()
+
+            existing_signature = self.get_rule_signature(existing_lines)
+            net_loss = len(existing_signature) - len(new_signature)
+            if net_loss >= MAX_RULE_NET_LOSS:
+                raise ValueError(
+                    f"Refusing substantial active-rule loss: {len(existing_signature)} -> "
+                    f"{len(new_signature)} (net loss {net_loss}, threshold {MAX_RULE_NET_LOSS}). "
+                    "Existing output was preserved; review the upstream change before publishing."
+                )
 
             metadata_matches = all(line in existing_lines[:12] for line in expected_metadata)
             if new_signature == self.get_rule_signature(existing_lines) and metadata_matches:
