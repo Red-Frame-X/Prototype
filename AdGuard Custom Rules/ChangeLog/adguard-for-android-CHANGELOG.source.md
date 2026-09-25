@@ -3,6 +3,24 @@
 > Source: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > Generated from official GitHub Releases; newest release first.
 
+## 4.14.2
+
+- Published: 2026-09-25T11:51:52Z
+- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14.2
+
+Here’s an additional technical update following the previous one. In it, we’ve fixed bugs and kept working on the app stability.
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.14.1
 
 - Published: 2026-09-15T11:09:14Z
@@ -4768,21 +4786,3 @@ As you can see, there are now two options: enter a license key directly, or log 
 - [Fixed] Max imported settings file size increased to 10 Mb #3203
 - [Improved] Target SDK level has been changed to 29 #3053
 - [Improved] CoreLibs has been updated to v1.5.74 #3105
-
-## 3.2.150
-
-- Published: 2019-08-29T14:36:38Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.2.150
-
->Disclaimer: AdGuard for Android is not an open source project. We use Github as an open bug tracker for users to see what developers are working on.
-
-The previous hotfix dealt with some urgent bugs, so we had to act fast and couldn't fix the rest of the less important issues. After today's update all of them should go away.
-
-* [Fixed] DNS filtering breaks regular filtering on HTC devices #3014
-* [Fixed] AdGuard doesn't completely remove extensions #3015
-* [Fixed] Disabling network access globally blocks DNS requests #3025
-* [Fixed] Bypassing DNS requests breaks DNS filtering #3026
-* [Fixed] AdGuard fails to start protection after an update #3024
-* [Fixed] Facebook lite cannot detect that IPv6 is unreachable #3031
-* [Fixed] Blocked app notification works incorrectly #3032 
-* [Improved] dnsproxy library has been updated #3016
