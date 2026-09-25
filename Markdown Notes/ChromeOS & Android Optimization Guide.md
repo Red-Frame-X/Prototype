@@ -1330,6 +1330,54 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
   * **ブラウザ**（ChromeでのWebブラウジングなど）
   * **各種アプリ**（アプリ内のバナー広告など）
 
+
+### おすすめ DNS リゾルバー
+
+Android の「プライベート DNS」でプロバイダのホスト名を指定する方式は DNS-over-TLS（DoT / RFC 7858）を使用します。DoH の URL をそのまま入力する方式ではありません。（[Android Developers](https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setGlobalPrivateDnsModeSpecifiedHost(android.content.ComponentName,%20java.lang.String))）
+
+「おすすめ」は順位ではなく、用途別の選択肢として整理します。サービスごとにフィルタ方針、ログ方針、カスタマイズ性が異なるため、用途に合うものを選択します。
+
+| 用途 | DNSリゾルバー | 主な特徴 | カスタマイズ | Android Private DNS | 注意点 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| プライバシー重視 + 広告・トラッカー・脅威ブロック | [DNSBunker](https://dnsbunker.org/) | 広告・トラッカー・脅威をDNSレベルでブロック。アカウント不要で、公式にはDNSクエリを永続保存しないと説明されています。 | 低い | `dnsbunker.org` | 公開リゾルバーのため、利用者ごとのフィルタ設定を行う用途には向きません。 |
+| プライバシー重視 + 広告・トラッカー・マルウェアブロック | [dnsforge](https://dnsforge.de/) | Normal / Clean / Hard / Blank を選択可能。Normalは広告・トラッカー・マルウェアをブロックし、公式にはクエリログを保存しないと説明されています。DNSSEC検証にも対応します。 | 低い | `dnsforge.de`（Normal） | Hardは厳格なブロックリストを使用し、サイト機能に影響する可能性があります。 |
+| プライバシー・セキュリティ重視 | [Quad9](https://quad9.net/) | malware、phishing、exploit kitなどの悪性ドメインをブロック。DNSSEC、DoT、DoH、DNSCryptに対応し、エンドユーザーのIPアドレスを保存しない方針です。 | 低い | `dns.quad9.net` | 一般的な広告・トラッカーブロック用のコンテンツフィルターではありません。 |
+| 広告・トラッカー対策 + カスタマイズ重視 | [NextDNS](https://nextdns.io/) | ブロックリスト、Allowlist / Denylist、セキュリティ・プライバシー設定、ログ保持期間や保存地域などを設定できます。 | 高い | `<設定ID>.dns.nextdns.io` | 無料利用には月間クエリ数の上限があり、上限後はフィルタリング等が停止します。DoTホスト名は各設定ごとに異なります。 |
+| 広告・トラッカー対策 + カスタマイズ重視 | [Control D](https://controld.com/) | フィルター、サービス単位の制御、Custom Rules、端末ごとのポリシーなどを設定できます。DNSログのAnalyticsは任意で有効化します。 | 高い | Control D Dashboardに表示される端末固有のDoTホスト名 | Android 9以降では公式手順で端末固有のDNS-over-TLSホスト名をPrivate DNSに設定します。 |
+| 広告・トラッカー対策 + カスタマイズ重視 | [Private AdGuard DNS](https://adguard-dns.io/) | ブロックリスト、カスタムブロックリスト、User rules、セキュリティ設定、Query log等を利用できます。 | 高い | `{Your_Device_ID}.d.adguard-dns.com` | プランごとにクエリ数やフィルタルール数などの制限があります。Query logは無効化できます。 |
+| 広告・トラッカーブロック / シンプル | [Public AdGuard DNS](https://adguard-dns.io/en/public-dns.html) | 無料の公開DNS。Defaultサーバーは広告・トラッカーをブロックします。 | 低い | `dns.adguard-dns.com` | 個別のブロックリストやUser rulesなどを設定する場合はPrivate AdGuard DNSを使用します。 |
+| 多数のブロックリストから選択したい | [RethinkDNS](https://rethinkdns.com/) | 190以上のブロックリストを選択でき、広告、トラッカー、マルウェア等のDNSレベルブロックに対応します。無料利用ではDNSログを保存しないと説明されています。 | 高い | **公式DoTホスト名を一次情報で確認できず** | 公式ドキュメントで確認できるクラウドDNS設定は主にDoH URLです。Android標準のPrivate DNS候補としてはDoTホスト名を確認できるまで保留します。 |
+
+**補足**
+
+* NextDNS、Control D、Private AdGuard DNSのPrivate DNSホスト名は、ユーザーまたは端末ごとに生成されます。公開用の固定ホスト名と混同しないでください。
+* dnsforgeには `clean.dnsforge.de`、`hard.dnsforge.de`、`blank.dnsforge.de` もあります。通常の広告・トラッカー対策では `dnsforge.de` が標準構成です。
+* DNSBunkerはDoT / DoH / DoQ、dnsforgeはDoT / DoH / DoQ、Quad9はDoT / DoH / DNSCrypt、NextDNSはDoT / DoHなど、Private DNS以外の暗号化DNSにも対応しています。Android標準の「プライベート DNS」へ入力する場合はDoTホスト名を使用します。
+* DNSサービスのログ方針はサービスごとに異なります。NextDNS、Control D、Private AdGuard DNSのように分析機能を備えるサービスでは、ログ設定を有効にした場合にDNSクエリ等が保存されます。利用前に各サービスの最新Privacy Policyとログ設定を確認してください。
+
+### DNSレベルブロックの制約
+
+DNSブロックは、DNS問い合わせに対してドメイン名単位で応答を制御する仕組みです。そのため、ブラウザ拡張型のコンテンツブロッカーとは役割が異なります。
+
+* 同一ドメインから通常コンテンツと広告・トラッカーの両方が配信される場合、DNSだけで広告部分を選択してブロックすることは困難です。
+* DNSはWebページのDOM要素やCSSを操作しないため、ブロック後に残る空白や広告枠を非表示にはできません。
+* URLのパスやページ内要素を条件とする細かなフィルタリングは、AdGuard ブラウザ拡張機能などのネットワークフィルタリングやCosmetic Filteringが担当します。
+* アプリやブラウザが独自のDNSリゾルバー、VPN、Secure DNSなどを使用する場合、OS側のPrivate DNS設定を経由しないことがあります。
+
+このため、DNSブロックは端末全体のドメイン単位ブロックに向き、Webページ上の広告枠や細かな要素非表示が必要な場合はブラウザ側のコンテンツブロッカーと役割を分けて併用します。
+
+**公式・一次情報**
+
+* [Android Developers｜DevicePolicyManager - Private DNS](https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setGlobalPrivateDnsModeSpecifiedHost(android.content.ComponentName,%20java.lang.String))
+* [DNSBunker](https://dnsbunker.org/) / [Privacy Policy](https://dnsbunker.org/privacy.html)
+* [dnsforge.de](https://dnsforge.de/)
+* [Quad9 Documentation](https://docs.quad9.net/) / [FAQ](https://quad9.net/support/faq/)
+* [NextDNS](https://nextdns.io/) / [Privacy Policy](https://nextdns.io/privacy)
+* [Control D Android Setup](https://docs.controld.com/docs/android-platform) / [Privacy Policy](https://controld.com/privacy)
+* [Private AdGuard DNS Android Setup](https://adguard-dns.io/kb/private-dns/connect-devices/mobile-and-desktop/android/) / [Filtering](https://adguard-dns.io/kb/private-dns/setting-up-filtering/)
+* [Public AdGuard DNS](https://adguard-dns.io/en/public-dns.html)
+* [RethinkDNS](https://rethinkdns.com/) / [DNS Documentation](https://docs.rethinkdns.com/dns/) / [Privacy Policy](https://rethinkdns.com/privacy)
+
 ---
 
 ## Android アプリ ReVanced・Morphe・URV（Android）
