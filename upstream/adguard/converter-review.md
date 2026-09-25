@@ -10,7 +10,7 @@ This file is generated. Latest stable release-note matches are review candidates
 - ### How to install MV3 beta:
 - * [Chrome](https://chromewebstore.google.com/detail/adguard-adblocker-mv3-bet/apjcbfpjihpedihablmalmbbhjpklbdf)
 
-## AdGuard for Android 4.14.1
+## AdGuard for Android 4.14.2
 
 - No converter-relevant keywords detected in the latest stable release notes.
 
