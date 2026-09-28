@@ -27,6 +27,7 @@
 ! Amazon商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
 
+! Amazonトップページの広告表示コンテナを非表示（現在は無効）
 ! amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-ref_$="_displayAds"])
 
 ! blog.hatena.ne.jp
