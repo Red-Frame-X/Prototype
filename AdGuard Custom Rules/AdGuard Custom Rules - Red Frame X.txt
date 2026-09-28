@@ -44,6 +44,8 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 ! chatgpt.com
 ! 閉じるボタンを持つaside型の案内バナー（プラグイン案内・ChatGPT Work案内等）を初期CSSで非表示
 chatgpt.com##aside:has(button[data-testid="close-button"])
+! 「Thinking でより詳しい回答を得る」ビーコンバナーを閉じるボタンの固有aria-labelで識別して非表示
+chatgpt.com##aside:has(button[aria-label="ChatGPT ビーコンバナーを閉じる"])
 ! 入力欄上部の案内バナー領域を初期CSSで直接非表示し、描画後判定によるチラつきを回避
 chatgpt.com##[data-prompt-textarea-header]
 
