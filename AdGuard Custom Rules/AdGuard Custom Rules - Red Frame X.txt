@@ -27,8 +27,8 @@
 ! Amazon商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
 
-! Amazonトップページの広告表示コンテナを非表示（現在は無効）
-! amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-ref_$="_displayAds"])
+! Amazonトップページで、広告表示を示すdata-ref_属性（_displayAds）を持つ直下要素を含む広告コンテナのみ非表示
+amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-ref_$="_displayAds"])
 
 ! blog.hatena.ne.jp
 ! 購読管理画面の購読案内見出しを非表示
