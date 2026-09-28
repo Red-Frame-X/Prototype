@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609271801 |
+| **Version** | 202609281941 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -117,6 +117,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 ▶ 断定はできませんが、[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod) が原因だった可能性が高く、同様のブラウザ拡張機能でも同じ不具合が起きるかもしれません。
 
 ### コンテンツブロック・プライバシー関連
+* **[Auto History Wipe](https://chromewebstore.google.com/detail/auto-history-wipe/hnijmpliikobphakkmejgdoffgicmcbc)**：Chromeの閲覧履歴などを自動的に削除するための拡張機能。
 * **[AdGuard Extra](https://github.com/AdguardTeam/AdGuardExtra)**：Anti-Adblocker対策用UserScript ‐ 対象サイトはFacebook、Twitchなど。
 * **[AdGuard ブラウザ拡張機能 MV3対応版](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ja)**：Chrome 拡張機能。（詳細後述）
 * **[tinyShield](https://github.com/List-KR/tinyShield/blob/main/README.ja.md)**：Ad-Shield対策用のUserScript ‐ Tampermonkeyで購読して、Manifest V3のフィルタ更新制限を回避する。
