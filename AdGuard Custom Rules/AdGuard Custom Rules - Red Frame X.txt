@@ -10,6 +10,8 @@
 ! Global
 ! reCAPTCHA v3が全サイトの画面右下に表示するプライバシー・利用規約バッジを非表示
 ##.grecaptcha-badge
+! clickfuse.comへのリンクを汎用的に非表示解除
+#@#a[href^="https://srv.clickfuse.com/"]
 
 ! ads-twitter.com
 ! かっぱ寿司アプリの起動・通信エラー回避
