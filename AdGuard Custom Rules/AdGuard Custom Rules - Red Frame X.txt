@@ -1,5 +1,5 @@
 ! Title: AdGuard Custom Rules - Red Frame X
-! Description: 個人用のAdGuardカスタムルール。
+! Description: 個人用のAdGuard Custom Rules
 ! Version: 202609291718
 ! Syntax: AdGuard
 ! Expires: 1 day
