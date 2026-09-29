@@ -102,7 +102,7 @@ AdGuard公式のDNS filtering syntaxでは、Adblock-style、`/etc/hosts`、doma
 ### 複数リストを併用するときの注意
 複数リストの併用にはカバー範囲を補完できる利点がありますが、重複ドメインが増え、読み込み時間・メモリ使用量・更新負荷・誤ブロック原因の特定難易度が上がる可能性があります。特に、複数ソースを統合・最適化したリスト同士をさらに重ねても、増える保護範囲が小さい一方で切り分けが難しくなる場合があります。
 
-HaGeZiの主要なMultiリストは Light / Normal / Pro / Pro++ / Ultimate が段階的に積み上がる構成で、作者は最初の5種類について「いずれか1つを選ぶ」前提を明記しています。サイズ最適化版も通常版へ重ねるのではなく代替として扱います。
+HaGeZiの主要なMultiリストは Multi LIGHT / Multi NORMAL / Multi PRO / Multi PRO++ / Multi ULTIMATE が段階的に積み上がる構成で、作者は最初の5種類について「いずれか1つを選ぶ」前提を明記しています。サイズ最適化版も通常版へ重ねるのではなく代替として扱います。
 
 ---
 
@@ -118,28 +118,28 @@ AdGuard公式がメンテナンスする、DNSブロッキング特化のリス�
 * **メリット**：AdGuard DNSフィルタリング向けに保守され、ブロックと例外をAdGuardのDNSフィルタ構文で配布しています。AdGuard製品との構文互換性を確認しやすい候補です。
 * **デメリット**：personalDNSfilterなど、AdGuardのAdblock-style DNS構文をそのまま解釈する設計ではない他社製アプリへ投入すると、意図した例外・修飾子が反映されない可能性があります。利用先が受理する形式へ合わせる必要があります。
 
-### HaGeZi's Normal DNS Blocklist（personalDNSfilter向け）
-HaGeZiのMultiリストは、調査時点で Light / Normal / Pro / Pro++ / Ultimate の5段階が提供されています。公式READMEではおおむね、Lightは最小限、Normalは緩やか〜バランス、Proはバランス、Pro++はバランス〜攻撃的、Ultimateは攻撃的という位置付けで、強度が上がるほど機能破損のリスクも高くなると説明されています。作者のCheat Sheetでは「Pro + TIF」が強いバランス型の推奨例として示されていますが、Normalはより保守的に始めたいユーザー向けの開始候補として位置付けられます。
-複数ソースを統合し、用途別の強度と複数の配布形式を提供するコミュニティ管理リストです。Normalは作者が「balanced protection」と位置付ける中間的な選択肢です。
+### HaGeZi's Multi NORMAL（personalDNSfilter向け）
+HaGeZiのMultiリストは、調査時点で Multi LIGHT / Multi NORMAL / Multi PRO / Multi PRO++ / Multi ULTIMATE の5段階が提供されています。公式READMEではおおむね、Lightは最小限、Multi NORMALは緩やか〜バランス、Proはバランス、Pro++はバランス〜攻撃的、Ultimateは攻撃的という位置付けで、強度が上がるほど機能破損のリスクも高くなると説明されています。作者のCheat Sheetでは「Pro + TIF」が強いバランス型の推奨例として示されていますが、Multi NORMALはより保守的に始めたいユーザー向けの開始候補として位置付けられます。
+複数ソースを統合し、用途別の強度と複数の配布形式を提供するコミュニティ管理リストです。Multi NORMALは作者が「balanced protection」と位置付ける中間的な選択肢です。
 
-* **購読用URL**：[HaGeZi's Normal DNS Blocklist（Domains only）](https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt)
+* **購読用URL**：[HaGeZi's Multi NORMAL（Domains only）](https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt)
 
 * **メリット**：許可リストと偽陽性対応の仕組みが公開され、domains-onlyを含む複数形式からクライアントに合うものを選べます。
-* **デメリット**：Ultimateなどの最も強力なバージョンを使用すると、スマートフォンのバックグラウンド通信やアプリの正常な挙動を阻害する「過剰ブロック」の可能性が高まります。そのため、ブロック率と安定性のバランスが取れた「Normal」バージョンから開始し、必要に応じて調整するのが安全です。
+* **デメリット**：Multi ULTIMATEなどの最も強力なバージョンを使用すると、スマートフォンのバックグラウンド通信やアプリの正常な挙動を阻害する「過剰ブロック」の可能性が高まります。そのため、ブロック率と安定性のバランスが取れた「Multi NORMAL」から開始し、必要に応じて調整するのが安全です。
 
 ---
 
 ## 3. アプリ別の構成例
 
 ### AdGuard for Androidの場合
-まずは **「AdGuard DNS filter」** 単体から開始するか、より広いカバー範囲を求める場合は **「HaGeZi's Normal DNS Blocklist」** を選択肢にします。HaGeZi公式はAdblock形式をAdGuard対応として案内しており、Normalを「Relaxed/Balanced」、機能破損リスクを「Low」と位置付けています。両方を同時に追加すると対象ドメインが重複する可能性があるため、まずはいずれか1つから開始し、Recent activityで誤ブロックを確認しながら運用する構成が切り分けやすくなります。
+まずは **「AdGuard DNS filter」** 単体から開始するか、より広いカバー範囲を求める場合は **「HaGeZi's Multi NORMAL」** を選択肢にします。HaGeZi公式はAdblock形式をAdGuard対応として案内しており、Multi NORMALを「Relaxed/Balanced」、機能破損リスクを「Low」と位置付けています。両方を同時に追加すると対象ドメインが重複する可能性があるため、まずはいずれか1つから開始し、Recent activityで誤ブロックを確認しながら運用する構成が切り分けやすくなります。
 * **AdGuard DNS filter のメリット**：アプリとフィルタの保守元が同じで、構文差による問題を切り分けやすくなります。
 * **AdGuard DNS filter のデメリット**：AdGuard向けの例外や構文を含むため、将来別のDNSクライアントへ移行する場合は、移行先が対応する形式を確認する必要があります。
-* **HaGeZi's Normal DNS Blocklist のメリット**：広告・トラッカー・テレメトリ・フィッシング・マルウェア等を対象とするMultiリストで、AdGuardで利用できるAdblock形式が公式に提供されています。
-* **HaGeZi's Normal DNS Blocklist のデメリット**：AdGuard DNS filterと併用するとカバー範囲の重複が生じる可能性があり、誤ブロック発生時の原因特定も複雑になります。
+* **HaGeZi's Multi NORMAL のメリット**：広告・トラッカー・テレメトリ・フィッシング・マルウェア等を対象とするMultiリストで、AdGuardで利用できるAdblock形式が公式に提供されています。
+* **HaGeZi's Multi NORMAL のデメリット**：AdGuard DNS filterと併用するとカバー範囲の重複が生じる可能性があり、誤ブロック発生時の原因特定も複雑になります。
 
 ### personalDNSfilterの場合
-複雑なAdblock-style構文の互換性問題を避けるため、シンプルで互換性の高いドメイン形式で配布されている **「HaGeZi's Normal DNS Blocklist」** を単体で指定します。これは「最強」構成ではなく、誤ブロックを抑えながら運用を始めやすくするための保守的な開始例です。
+複雑なAdblock-style構文の互換性問題を避けるため、シンプルで互換性の高いドメイン形式で配布されている **「HaGeZi's Multi NORMAL」** を単体で指定します。これは「最強」構成ではなく、誤ブロックを抑えながら運用を始めやすくするための保守的な開始例です。
 * **メリット**：単純な入力形式で、AdGuard/ABP固有構文の互換性を考慮する必要がありません。
 * **デメリット**：ダウンロードするリスト自体には例外ルールを含められないため、例外が必要な場合はpersonalDNSfilterの `additionalHosts.txt` 側で個別に管理します。公式の `additionalHosts.txt` 例では、`!` によるホワイトリスト、`*` ワイルドカード、`>` によるカスタムIPマッピングがサポートされています。これはAdblock Plusの `@@||example.com^` 等とは別のpersonalDNSfilter独自構文です。
 * **競合時の優先順位**：公式サンプルでは、カスタムIPマッピング → ワイルドカードなしの明示的なblacklist / whitelist → ワイルドカードblacklist / whitelist → ダウンロード済みblocklist の順で優先されます。
