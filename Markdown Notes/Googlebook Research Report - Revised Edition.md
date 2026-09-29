@@ -6,12 +6,12 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609241918 |
+| **Version** | 202609300530 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
 > [!IMPORTANT]
-> 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成など未確認事項も残っています。公式発表、報道、推測を引き続き区別してください。
+> 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。さらに9月23日、Chrome Enterprise and Education Helpで既存ChromebookのGooglebook OS移行方針を公開しました。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成、Chromebookの具体的な移行対象モデルなど未確認事項も残っています。公式発表、報道、推測を引き続き区別してください。
 
 ## 要約
 
@@ -29,12 +29,13 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | **初期仕様** | Intel Core Ultra Series 3またはSnapdragon X Elite、16GB以上RAM、45 TOPS超NPU |
 | **価格** | 899米ドルから |
 | **発売** | 米国：2026年10月4日、6か国：10月5日 |
-| **日本発売** | 2026年9月24日時点で未発表 |
+| **日本発売** | 2026年9月30日時点で未発表 |
+| **既存Chromebook** | ChromeOSの自動更新期限まではサポート継続。2034年を超えて10年サポートが続く対象機種はGooglebook OSへの移行支援対象となり、多くの新しい商用Chromebookに直接移行パスを用意する方針。具体的な対象モデル・移行方法は未発表 |
 | **旧コードネーム** | 「Aluminium」は報道上の開発コードネーム。正式製品名ではない |
 
 ### 要点
 
-Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定です。価格は899米ドルからです。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成、既存Chromebookの移行対象などは未確認です。
+Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定です。価格は899米ドルからです。Googleは2026年9月23日、現行Chromebookを各機種の自動更新期限までサポートし、現在購入される対象機種のうち10年のサポート期間が2034年を超えるものについてGooglebook OSへの移行を支援すると説明しました。また、多くの新しい商用ChromebookがGooglebook OSへアップグレード可能になるとしています。ただし、具体的な対象モデルと移行方法は未発表です。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成なども未確認です。
 
 「Aluminium」は求人情報などを根拠に報道されたAndroidベースPCプロジェクトのコードネームです。Googleの正式な製品発表では「Googlebook」を使用しており、「Aluminium OS」または「ALOS」を正式な製品名としていません。したがって、バックアップ目的でAluminiumに関する過去の報道・予測を残す場合も、Google公式の確定情報とは区別します。
 
@@ -79,6 +80,23 @@ GoogleはGooglebook OSを「ChromeOSそのもの」とは説明していませ�
 - **ChromeOS**：引き続きChromebookで提供される別のOS。Googlebook発表時点でChromeOS終了の公式発表は確認されていない。
 
 「Googlebook OSがChromeOSを即時置換する」「すべてのChromebookがGooglebookへ移行する」といった説明は、公式確認がないため行いません。
+
+#### 既存ChromebookからGooglebook OSへの移行
+
+Googleは2026年9月23日、Chrome Enterprise and Education Helpで既存Chromebookの移行方針を明確化しました。
+
+| 項目 | Google公式の説明 |
+| :--- | :--- |
+| **現行Chromebookのサポート** | 各機種は自動更新ポリシーに定められたサポート期間中、ChromeOSの更新を継続して受ける。ChromeOSデバイスには2034年半ばまで定期アップデートとセキュリティパッチを提供する。 |
+| **2034年を超える対象機種** | 現在購入される対象機種のうち、10年のサポート期間が2034年を超えるものについて、GoogleはGooglebook OSへの移行を支援すると説明。多くの機種に直接移行パスを用意する方針。 |
+| **商用Chromebook** | 多くの新しい商用ChromebookモデルがGooglebook OSへアップグレード可能になる予定。 |
+| **対象モデル一覧** | 未発表。Googleは対象機種と移行パスの詳細を後日公開するとしている。 |
+| **既存の管理ライセンス** | ChromeOS Enterprise Upgrade / ChromeOS Education Upgradeは、既存Chromebookのライフサイクル中は引き続き有効。Googlebook OSへ移行した対象Chromebookは新しいライセンス体系で管理される。 |
+| **Googlebookの組織管理** | 2026年発売モデルは個人向けで、ドメイン登録・集中管理には未対応。包括的な管理機能は2027年後半から段階的に提供予定。 |
+
+ここでいう「2034年を超える」は、**自動更新期限が2034年より後なら無条件に移行対象になる、という確定したモデル一覧ではありません。** Googleの表現は「qualifying devices（対象となるデバイス）」であり、個別の移行可否は今後公開される対象機種情報で確認する必要があります。自動更新ポリシーには2035年・2036年まで更新対象となるChromebookがすでに掲載されていますが、AUEだけを根拠に個別モデルをGooglebook OS移行対応と断定しません。
+
+また、GoogleはChromeOSの自動更新ポリシー自体を廃止しておらず、現在所有しているChromebookはプラットフォームがどちらで動作するかにかかわらず、各機種の10年間の自動更新コミットメントに基づくサポートを維持するとGooglebook FAQでも説明しています。
 
 ### Androidアプリ
 
@@ -233,7 +251,7 @@ Google Japanは2026年5月にGooglebookを日本語で紹介していますが�
 | **Androidアプリ** | developer verificationを満たしたAPKのサイドロード可否は未確認。Googlebook固有の具体的手順、Advanced flow / ADBの提供方法、Developer options / Developer Modeの扱い、Play Integrityの挙動は未確認 |
 | **Linux** | ディストリビューション、`apt`、USB passthrough、GPUアクセラレーションなどの詳細 |
 | **Chrome** | Chrome Web Store上の全拡張機能との互換性、Manifest V3 / Declarative Net RequestのGooglebook固有仕様、Lacrosとの関係、Enterprise Policyの完全な対応範囲 |
-| **移行** | 既存Chromebookへの移行またはバックポートの対象、ChromeOS製品全体の終了時期 |
+| **移行** | Googlebook OSへ移行できる具体的なChromebookモデル一覧、移行手順・時期、移行後の新ライセンス体系の詳細、ChromeOS製品全体の終了時期 |
 | **Gemini** | 機能ごとの端末内処理、クラウド処理、データ保持条件 |
 | **日本市場** | 日本発売日、日本価格、日本語キーボード、日本向け型番、技適取得モデル |
 
@@ -246,7 +264,7 @@ Google Japanは2026年5月にGooglebookを日本語で紹介していますが�
 | Linux | pKVMで隔離されたフルLinuxターミナル環境が公式確認された | ディストリビューション、apt、USB、GPU、GUIアプリの詳細は未確認 |
 | AI | OS全体で文脈に応じた支援を利用でき、45 TOPS超NPU搭載モデルが用意される | 処理場所、送信データ、保持期間を機能ごとに確認する必要がある |
 | 端末連携 | Continue On、Cast My Apps、Quick Accessが公式確認された | 対応端末、権限、企業管理の詳細は未発表部分がある |
-| 移行 | AndroidとChromeOSで培われた技術を組み合わせた構成が公式確認された | 既存Chromebook・周辺機器・業務フローの移行対象は未確認 |
+| 移行 | 2034年を超えて10年サポートが続く対象機種への移行支援と、多くの新しい商用Chromebookのアップグレード方針が公式確認された | 個別の対象モデル、移行手順・時期、移行後ライセンスの詳細は未発表 |
 
 ## 広告ブロックとプライバシー
 
@@ -268,6 +286,7 @@ AdGuardのフィルタ構文については、製品予測から切り離し、[
 - Androidアプリ、Linuxツール、周辺機器の個別互換性。
 - VPN、DNS、証明書、拡張機能に関する制約。
 - Gemini機能ごとのオンデバイス処理、クラウド処理、プライバシー説明、管理者向け設定。
+- Googlebook OSへ移行できるChromebookの具体的な対象モデル、移行手順・時期、移行後のライセンス体系。
 - ChromeOS / ChromiumOSの今後の開発方針と既存Chromebookへの影響。
 
 ## 情報源
@@ -286,6 +305,7 @@ AdGuardのフィルタ構文については、製品予測から切り離し、[
 - [Qualcomm: Snapdragon X Series Powers Googlebook](https://www.qualcomm.com/news/releases/2026/09/snapdragon-x-series-powers-googlebook--the-first-laptops-designe)
 - [Chromium: Add Googlebook to English dictionaries](https://chromium.googlesource.com/chromium/deps/hunspell_dictionaries/+/refs/heads/main)
 - [Chromium: Googlebook dictionary update roll](https://chromium.googlesource.com/chromium/src/+/3260aa4a5a9886e6a18ffd0b061665b9a4f155b6)
+- [What the Googlebook announcement means for your ChromeOS devices](https://support.google.com/chrome/a/answer/16634428)
 - [Chromebookの自動更新ポリシー](https://support.google.com/chrome/a/answer/6220366?hl=ja)
 
 ### 報道・背景資料
