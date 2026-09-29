@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202609291743 |
+| **Version** | 202609300719 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -1305,9 +1305,9 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
 
   AdGuard公式の自動化インターフェースでは、`update` は「利用可能なフィルタとアプリの更新を確認する」アクションとして定義されています。追加データは不要ですが、各Intentには `password`、パッケージ名、クラス名が必要で、`quiet: true` を付けるとトーストを抑制できます。したがって、③の `start` を `update` に差し替える構成は公式仕様に沿っています。ただし、`update` はフィルタだけでなくAdGuardアプリ本体の更新確認も含む点に注意してください。（[AdGuard公式：Android版の自動化](https://adguard.com/kb/adguard-for-android/solving-problems/tasker/)）
 
-  ③と④を同じ「VPN状態の変化時 > 無効」トリガーにすると、AdGuardのVPN接続が無効になった際に、③の `start` でAdGuardの保護を再開し、その後④の `update` で利用可能なフィルタとAdGuardアプリ本体の更新を確認できます。AdGuard公式ドキュメントでは、`start` は「保護を開始する」、`update` は「利用可能なフィルタとアプリの更新を確認する」アクションとしてそれぞれ定義されています。（[AdGuard公式：Android版の自動化](https://adguard.com/kb/adguard-for-android/solving-problems/tasker/)）
+  現在の③と④は役割とトリガーを分離しています。③は「VPN状態の変化時 > 無効」をトリガーに `start` を送信してAdGuardの保護を再開し、④は「一定間隔 > 間隔: 06:00:00」をトリガーに `update` を送信して、利用可能なフィルタとAdGuardアプリ本体の更新を定期確認します。AdGuard公式ドキュメントでは、`start` は「保護を開始する」、`update` は「利用可能なフィルタとアプリの更新を確認する」アクションとしてそれぞれ定義されています。（[AdGuard公式：Android版の自動化](https://adguard.com/kb/adguard-for-android/solving-problems/tasker/)）
 
-  この構成の目的は、VPNが無効になったときに「保護の再起動」と「更新確認」を続けて実行し、AdGuardを通常の保護状態へ戻しやすくすることです。ただし、公式ドキュメントには `update` が保護を再起動するとは記載されていないため、④を「2回目の再起動」とみなすことはできません。確実に2回の再起動を行いたい場合は、④の `update` の後に別途 `start` を実行するアクションを追加する必要があります。端末やAndroidの電源管理によって復帰挙動は異なるため、必要に応じて各アクションの間に短い待機時間を入れて動作確認してください。
+  したがって、④はVPN無効時の「2回目の再起動」ではなく、6時間ごとの更新確認用タスクです。公式ドキュメントには `update` が保護を再起動するとは記載されていません。VPN無効時に確実に複数回の再起動を行う必要がある場合は、③とは別に `start` を送信するアクションを追加して構成し、端末やAndroidの電源管理による挙動差を実機で確認してください。
 
 **Issuesの時系列**
 * [Issues #5598](https://github.com/AdguardTeam/AdguardForAndroid/issues/5598)（Base filterの不正確な説明）
