@@ -132,9 +132,11 @@ HaGeZiのMultiリストは、調査時点で Light / Normal / Pro / Pro++ / Ulti
 ## 3. アプリ別の構成例
 
 ### AdGuard for Androidの場合
-まずは **「AdGuard DNS filter」** 単体から開始します。これは唯一の正解ではなく、AdGuard製品との構文互換性と、誤ブロック時に原因を切り分けやすいことを重視した開始構成です。
-* **メリット**：アプリとフィルタの保守元が同じで、構文差による問題を切り分けやすくなります。
-* **デメリット**：AdGuard向けの例外や構文を含むため、将来別のDNSクライアントへ移行する場合は、移行先が対応する形式を確認する必要があります。
+まずは **「AdGuard DNS filter」** 単体から開始するか、より広いカバー範囲を求める場合は **「HaGeZi's Normal DNS Blocklist」** を選択肢にします。HaGeZi公式はAdblock形式をAdGuard対応として案内しており、Normalを「Relaxed/Balanced」、機能破損リスクを「Low」と位置付けています。両方を同時に追加すると対象ドメインが重複する可能性があるため、まずはいずれか1つから開始し、Recent activityで誤ブロックを確認しながら運用する構成が切り分けやすくなります。
+* **AdGuard DNS filter のメリット**：アプリとフィルタの保守元が同じで、構文差による問題を切り分けやすくなります。
+* **AdGuard DNS filter のデメリット**：AdGuard向けの例外や構文を含むため、将来別のDNSクライアントへ移行する場合は、移行先が対応する形式を確認する必要があります。
+* **HaGeZi's Normal DNS Blocklist のメリット**：広告・トラッカー・テレメトリ・フィッシング・マルウェア等を対象とするMultiリストで、AdGuardで利用できるAdblock形式が公式に提供されています。
+* **HaGeZi's Normal DNS Blocklist のデメリット**：AdGuard DNS filterと併用するとカバー範囲の重複が生じる可能性があり、誤ブロック発生時の原因特定も複雑になります。
 
 ### personalDNSfilterの場合
 複雑なAdblock-style構文の互換性問題を避けるため、シンプルで互換性の高いドメイン形式で配布されている **「HaGeZi's Normal DNS Blocklist」** を単体で指定します。これは「最強」構成ではなく、誤ブロックを抑えながら運用を始めやすくするための保守的な開始例です。
