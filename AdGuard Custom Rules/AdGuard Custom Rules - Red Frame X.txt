@@ -28,7 +28,6 @@
 ! amazon.co.jp
 ! amazon.co.jpの商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
-
 ! Amazonトップページで、広告表示を示すdata-ref_属性（末尾が_displayAds）の直下要素を含む広告コンテナのみ非表示
 amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-ref_$="_displayAds"])
 
