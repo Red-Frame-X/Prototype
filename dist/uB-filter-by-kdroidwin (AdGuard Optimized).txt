@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202609291002
+! Version: 202609301844
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -47,6 +47,7 @@
 ! [Unsupported MV3 Regex] /^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|jp\.|cdn\.|static\.|forum\.|community\.|mail2\.|secure\.|support\.|manga\.|ww3\.|lp\.|video\.|sp\.|m\.|discovery\.|sea\.|lp\.|app\.|book\.|info\.|help\.|docs\.|about\.|news\.)[^\/]+\.[^\/]+\.surf(\/|$)/$document
 ! [Unsupported MV3 Regex] /^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|anime\.|lp\.|manga\.|video\.|sp\.|online\.|discovery\.|m\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]+\.fany\.lol|[^\/]+\.techaro\.lol)[^\/]+\.[^\/]+\.lol(\/|$)/$document
 ! [Unsupported MV3 Regex] /^https?:\/\/(?!www\.|ww2\.|api\.|mail\.|shop\.|store\.|ftp\.|webmail\.|admin\.|blog\.|dev\.|staging\.|test\.|cdn\.|static\.|forum\.|community\.|jp\.|secure\.|support\.|manga\.|video\.|sp\.|online\.|discovery\.|park\.|m\.|lp\.|book\.|info\.|help\.|docs\.|about\.|news\.|[^\/]+\.littlehappy\.baby)[^\/]+\.[^\/]+\.baby(\/|$)/$document
+/^https?:\/\/(?:www\.)?eromanga-muryou-hitomi-\d{2}\.net(?:[\/?#]|$)/$document
 /^https?:\/\/([^\/]+\.)?(ur|url)\d+\.jp\//
 /^https?:\/\/([^\/]+\.)?qc-\d+\.cc\//
 /^https?:\/\/([^\/]+\.)?qc\d{2}\.jp\//
