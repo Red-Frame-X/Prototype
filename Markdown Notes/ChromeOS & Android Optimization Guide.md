@@ -1180,7 +1180,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 
 ② **[AdGuard_DNS_Filter_for_myself](https://github.com/monsivamon/AdGuard_DNS_Filter_for_myself)**
 
-③ **[HaGeZi's Multi NORMAL - all-round protection](https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt)**
+③ **[HaGeZi's Multi NORMAL - all-round protection](https://github.com/hagezi/dns-blocklists#blue_book-multi-normal-all-round-protection-)**
 
 ④ **DNSユーザーフィルタ** で自作例外ルール（`@@`）を作成。
 
