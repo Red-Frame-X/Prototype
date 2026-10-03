@@ -1152,6 +1152,8 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 * [Brave](https://play.google.com/store/apps/details?id=com.brave.browser) ▶ [AdGuard Mobile Ads filter](https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt) を追加
 * [Cromite](https://github.com/uazo/cromite)
 * [Elixir Browser](https://github.com/SF-FLAM/ElixirBrowser)
+* [Titanium](https://github.com/jqssun/android-titanium-browser)：Chrome拡張機能に対応。広告除去にはuBlock Originなどの拡張機能を併用。
+* [Aerium](https://github.com/aerium-browser/aerium-browser-android)：uBlock Originをプリインストールし、Chrome拡張機能にも対応。
 * [Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox)：広告除去にはuBlock Originなどの拡張機能を併用（[uBO公式](https://github.com/gorhill/uBlock)）。
 
 * 参考：[HTTPSフィルタリングについて（Wiki）](https://wikiwiki.jp/nanj-adguard/HTTPS%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6) / [中間者攻撃とは](https://www.nri-secure.co.jp/glossary/mtm-attack)
