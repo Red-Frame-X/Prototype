@@ -1165,7 +1165,6 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 **ローカルVPNを使わず、ブラウザ内の機能・拡張機能でコンテンツブロックをする選択肢**
 * [Brave](https://play.google.com/store/apps/details?id=com.brave.browser)：広告・トラッカーを遮断するBrave Shieldsを内蔵したChromiumベースのブラウザ。▶ [AdGuard Mobile Ads filter](https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt) を追加
 * [Cromite](https://github.com/uazo/cromite)：広告ブロック機能を内蔵したChromiumベースのブラウザ。プライバシー保護を重視した機能も備える。
-* [Elixir Browser](https://github.com/SF-FLAM/ElixirBrowser)：AndroidでChrome拡張機能に対応したChromiumベースのブラウザ。広告除去にはuBlock Originなどの拡張機能を併用。
 * [Titanium](https://github.com/jqssun/android-titanium-browser)：Chrome拡張機能に対応。広告除去にはuBlock Originなどの拡張機能を併用。
 * [Aerium](https://github.com/aerium-browser/aerium-browser-android)：uBlock Originをプリインストールし、Chrome拡張機能にも対応。
 * [Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox)：広告除去にはuBlock Originなどの拡張機能を併用（[uBO公式](https://github.com/gorhill/uBlock)）。
