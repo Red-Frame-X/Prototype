@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610041457
+! Version: 202610050339
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -391,6 +391,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||2ch.0726.biz^$document
 ||2chcopipe.com^$document
 ||2chmate.en.aptoide.com^$document
+||2d-adb.com^$document
 ||2d-ecstasy.com^$document
 ||2ddvkfb.zbgraf16.pl^$document
 ||2e5fg.com^$document
@@ -426,6 +427,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||38k0sw2c.r.ap-northeast-1.awstrack.me^$document
 ||39jy3gbg.r.us-west-2.awstrack.me^$document
 ||3bt5l7v.cn^$document
+||3deroge.com^$document
 ||3kidsmama-diary.com^$document
 ||3ndrop.main.jp^$document
 ||3nolife.net^$document
@@ -1052,6 +1054,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||animity.jp^$document
 ||animonogatari.com^$document
 ||anincline.com^$document
+||aniru.org^$document
 ||anism.net^$document
 ||anista-maga.com^$document
 ||anitage.jp^$document
@@ -2584,6 +2587,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||damablog.com^$document
 ||damako42.com^$document
 ||damigoe.com^$document
+||dan-scripts.com^$document
 ||danaracakeryandevents.com^$document
 ||dancevocal.fun^$document
 ||dandansk.com^$document
@@ -2728,6 +2732,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||digtopi.com^$document
 ||dijkveer.nl^$document
 ||dikegllelove.com^$document
+||dimosky.net^$document
 ||diomandeshoes.com^$document
 ||direct-app.onelink.me^$document
 ||dis-1983.jp^$document
@@ -2763,6 +2768,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dldshare.net^$document
 ||dllink.manyaan.net^$document
 ||dlmarket.jp^$document
+||dlold.net^$document
 ||dlounge.net^$document
 ||dlsite-pro.adult-h.com^$document
 ||dlsite.estudiopepa.jp^$document
@@ -2771,6 +2777,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dlsiteboy.com^$document
 ||dlvywoutlet.com^$document
 ||dlzipan.blog.jp^$document
+||dmagazine.org^$document
 ||dmm-fanza-fan.com^$document
 ||dmm-fanza.biz^$document
 ||dmm-fanza.jp^$document
@@ -3089,6 +3096,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ec-plus.panasonic.jp/store/page/pc/sp/organic/202108^$document
 ||ecdeaf.com^$document
 ||eches8x4.bizandleisure.com^$document
+||echichimato.com^$document
 ||echicomi.blog.jp^$document
 ||echicosplay.com^$document
 ||echiechibuzz.com^$document
@@ -5118,6 +5126,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ikemenjiten.com^$document
 ||ikesou.jp^$document
 ||ikesuto.com^$document
+||iketeru.net^$document
 ||ikigome.com^$document
 ||ikkitousen.jp^$document
 ||ikkyusan.jp^$document
@@ -6018,6 +6027,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||konoikeshindenkaisho.jp^$document
 ||konsort.social^$document
 ||konstantacoffee.ru^$document
+||konyaanto.net^$document
 ||kooky-movie.com^$document
 ||korakuen-lc.jp^$document
 ||koramall.jp^$document
@@ -7621,6 +7631,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||netsurfnews.com^$document
 ||netuai.net^$document
 ||neuron-x.co.jp^$document
+||new-akiba.com^$document
 ||new-challenge123.com^$document
 ||new-hibianime.com^$document
 ||new-tanwa.com^$document
@@ -7717,6 +7728,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||niconicojikkyou.com^$document
 ||nicoriblog.com^$document
 ||nierreincarnation.jp^$document
+||night-picks.net^$document
 ||night-selection.com^$document
 ||nightmuselab.jp^$document
 ||nightreview.net^$document
@@ -7727,6 +7739,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||niji-doujin.jp^$document
 ||niji-gazo.com/source/009^$document
 ||niji.e-r-o-anime.xyz^$document
+||nijiero-view.com^$document
 ||nijifan.net/manga^$document
 ||nijigen.joshiana-room.com^$document
 ||nijigenbomber.net^$document
@@ -8567,6 +8580,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||nozomimiyazaki.main.jp^$document
 ||nozonuki.com^$document
 ||np027-subsc-bm.xyz^$document
+||npbewd.com^$document
 ||npbsukisuki.com^$document
 ||npewurime.shop^$document
 ||npm-news-piece-mana.blog.jp^$document
@@ -8719,6 +8733,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||okannoyomeiri-stage.jp^$document
 ||okaponseo.me^$document
 ||okayama-eat.com^$document
+||okazu-finder.com^$document
 ||okazu-navi.net^$document
 ||okboook.com^$document
 ||okdebrid.com^$document
@@ -8880,6 +8895,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||oshicircle.com^$document
 ||oshikatsulife.blog.jp^$document
 ||oshikeiblog.com^$document
+||oshinagaki.org^$document
 ||oshinisasageru.com^$document
 ||osijyo.com^$document
 ||osolelighting.com^$document
@@ -8900,6 +8916,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||otailande.com^$document
 ||otakamu.com^$document
 ||otakudoujinshack.com^$document
+||otakult.jp^$document
 ||otakumania.jp^$document
 ||otakumix.doorblog.jp^$document
 ||otakuraw.com^$document
@@ -9640,6 +9657,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||relianceautoservices.com^$document
 ||relishtime.net^$document
 ||relived-men-es.com^$document
+||remelaboratory.com^$document
 ||remi.work^$document
 ||removemalware-jp.com^$document
 ||remspin.com^$document
@@ -11293,6 +11311,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tiktakmodapk.com^$document
 ||tiktikpremium.com^$document
 ||tiktikpremiumapk.com^$document
+||tiktok-sns.com^$document
 ||tiktok.com/ug/incentive/share/$all
 ||tiktok.com/ug^$document
 ||tiktokliveapk.com^$document
@@ -14630,6 +14649,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||yorozu-cl.com^$document
 ||yorozu-do.com^$document
 ||yoruochi.com^$document
+||yorushiko.com^$document
 ||yosemi-7.com^$document
 ||yoshiblonet.com^$document
 ||yoshiemon-docodemopocket.com^$document
