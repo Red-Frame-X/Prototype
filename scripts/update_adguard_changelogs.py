@@ -17,8 +17,9 @@ from pathlib import Path
 from typing import Any
 
 BROWSER_CHANGELOG_URL = "https://raw.githubusercontent.com/AdguardTeam/AdguardBrowserExtension/refs/heads/master/CHANGELOG.md"
-BROWSER_RELEASES_URL = "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases?per_page=100"
+BROWSER_RELEASES_URL = "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases/latest"
 ANDROID_RELEASES_URL = "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100"
+ANDROID_LATEST_RELEASE_URL = "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases/latest"
 VERSION_RE = re.compile(
     r"(?im)^#{2,4}\s+(?:AdGuard(?: for Android)?\s+)?\[?v?"
     r"(\d+(?:\.\d+)+)\]?(?=\s|$)"
@@ -61,21 +62,20 @@ def parse_releases(payload: bytes, product: str) -> list[dict[str, Any]]:
 
 
 def latest_stable_release(payload: bytes, product: str) -> dict[str, Any]:
-    for release in parse_releases(payload, product):
-        if release.get("draft") or release.get("prerelease"):
-            continue
-        label = str(release.get("tag_name") or release.get("name") or "")
-        match = TAG_VERSION_RE.search(label)
-        if not match:
-            continue
-        return {
-            "version": match.group(1),
-            "published_at": release.get("published_at"),
-            "release_url": release.get("html_url"),
-            "tag_name": release.get("tag_name"),
-            "body": str(release.get("body") or ""),
-        }
-    raise ValueError(f"No stable {product} GitHub Release found")
+    """Parse GitHub's latest-release object; list ordering is not authoritative."""
+    release = json.loads(payload.decode("utf-8"))
+    if not isinstance(release, dict) or release.get("draft") is not False or release.get("prerelease") is not False:
+        raise ValueError(f"Invalid stable {product} GitHub Release")
+    match = TAG_VERSION_RE.fullmatch(str(release.get("tag_name") or ""))
+    if not match:
+        raise ValueError(f"Invalid stable {product} release tag")
+    return {
+        "version": match.group(1),
+        "published_at": release.get("published_at"),
+        "release_url": release.get("html_url"),
+        "tag_name": release.get("tag_name"),
+        "body": str(release.get("body") or ""),
+    }
 
 
 def android_releases_to_markdown(payload: bytes) -> bytes:
@@ -163,13 +163,15 @@ def update(
     now: datetime | None = None,
     changelog_dir: Path | None = None,
     browser_releases_source: str = BROWSER_RELEASES_URL,
+    android_latest_source: str = ANDROID_LATEST_RELEASE_URL,
 ) -> bool:
     changelog_dir = changelog_dir or output_dir
     browser = fetch(browser_source)
     browser_releases = fetch(browser_releases_source)
     browser_release = latest_stable_release(browser_releases, "Browser Extension")
     android_payload = fetch(android_source)
-    android_release = latest_stable_release(android_payload, "Android")
+    android_latest_payload = fetch(android_latest_source)
+    android_release = latest_stable_release(android_latest_payload, "Android")
     android = android_releases_to_markdown(android_payload)
     checked_at = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
     products = [
@@ -185,11 +187,12 @@ def update(
         ),
         metadata(
             "AdGuard for Android",
-            android_source,
+            android_latest_source,
             android,
             checked_at,
             version=android_release["version"],
             release=android_release,
+            digest_extra=android_latest_payload,
             relevant_text=android_release["body"],
         ),
     ]
@@ -218,6 +221,7 @@ def main() -> int:
     parser.add_argument("--browser-source", default=BROWSER_CHANGELOG_URL)
     parser.add_argument("--browser-releases-source", default=BROWSER_RELEASES_URL)
     parser.add_argument("--android-source", default=ANDROID_RELEASES_URL)
+    parser.add_argument("--android-latest-source", default=ANDROID_LATEST_RELEASE_URL)
     parser.add_argument("--output-dir", type=Path, default=Path("upstream/adguard"))
     parser.add_argument("--changelog-dir", type=Path, default=Path("AdGuard Custom Rules/ChangeLog"))
     args = parser.parse_args()
@@ -228,6 +232,7 @@ def main() -> int:
             args.android_source,
             changelog_dir=args.changelog_dir,
             browser_releases_source=args.browser_releases_source,
+            android_latest_source=args.android_latest_source,
         )
     except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
         parser.error(str(error))
