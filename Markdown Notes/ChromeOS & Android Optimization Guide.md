@@ -1164,9 +1164,9 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 **ローカルVPNを使わず、ブラウザ内の機能・拡張機能でコンテンツブロックをする選択肢**
 * [Brave](https://play.google.com/store/apps/details?id=com.brave.browser)：広告・トラッカーを遮断するBrave Shieldsを内蔵したChromiumベースのブラウザ。▶ [AdGuard Mobile Ads filter](https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt) を追加
 * [Cromite](https://github.com/uazo/cromite)：広告ブロック機能を内蔵したChromiumベースのブラウザ。プライバシー保護を重視した機能も備える。
-* [Titanium](https://github.com/jqssun/android-titanium-browser)：Chrome拡張機能に対応。広告除去にはuBlock Originなどの拡張機能を併用。
-* [Aerium](https://github.com/aerium-browser/aerium-browser-android)：uBlock Originをプリインストールし、Chrome拡張機能にも対応。
-* [Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox)：広告除去にはuBlock Originなどの拡張機能を併用（[uBO公式](https://github.com/gorhill/uBlock)）。
+* [Titanium](https://github.com/jqssun/android-titanium-browser)：GrapheneOSのVanadiumをベースにした、オープンソースのChromium系Androidブラウザ。Chrome Web Storeからの拡張機能導入に対応し、uBlock Originなどのコンテンツブロッカーを利用できます。WebRTCのIP保護設定なども備えますが、開発元はVanadiumと同等のOSレベルのセキュリティ強化を提供するものではないと明記しています。
+* [Aerium](https://github.com/aerium-browser/aerium-browser-android)：VanadiumをベースにTitaniumの拡張機能対応を取り入れた、オープンソースのChromium系Androidブラウザ。uBlock Originをプリインストールし、Chrome Web Store・Opera Add-ons・Microsoft Edge Add-onsの拡張機能に対応します。HTTPS優先、クロスオリジンReferer制御、サイト単位のJavaScript JIT設定など、プライバシー・セキュリティ関連の機能も備えます。
+* [Firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox)：Mozillaが提供するAndroid向けブラウザ。Android版でも公式のアドオン機能を利用でき、addons.mozilla.orgやブラウザ内の拡張機能マネージャーから対応拡張機能を導入できます。広告・トラッカー対策にはuBlock Originなどの拡張機能を利用できます。ただし、すべてのデスクトップ向けFirefox拡張機能がAndroid版に対応するわけではありません（[Mozilla公式](https://support.mozilla.org/ja/kb/find-and-install-add-ons-firefox-android)）。
 
 **参考サイト**
 
