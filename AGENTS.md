@@ -22,3 +22,4 @@
 - Line-count checks cannot establish factual accuracy or detect every harmful
   rewrite. Review replacements for meaning as well as net line loss. A passing
   check does not authorize deletions or unsupported factual changes.
+- When writing or revising Japanese documentation, prioritize clear, natural Japanese used in ordinary human communication. Avoid unnecessarily stiff, mechanical, or formulaic wording while preserving technical accuracy and the original meaning.
