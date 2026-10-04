@@ -1041,6 +1041,22 @@ Yuki2718氏は、uBlock Origin開発チームのうち**フィルターチーム
 
 uBlacklistは、Googleなどの検索結果から指定したWebサイトを非表示にする拡張機能です。正規表現ルール、クラウド同期、公開ブラックリストの購読などが可能です。
 
+**モバイルブラウザでの利用と詐欺対策（2026年10月4日確認）**
+
+uBlacklistに対応するモバイルブラウザでも、詐欺サイトなどを対象とするルールを登録・購読すれば、条件に一致するサイトを検索結果から非表示にできます。この仕組みは、検索経由で詐欺サイトに誘導される機会を減らす補助的な対策として利用できます。ただし、サイトへのアクセス自体の遮断や、未知の詐欺サイトの自動判定を行うものではなく、電話・SMSなども含む特殊詐欺全般を防ぐ機能ではありません（[公式機能説明](https://ublacklist.github.io/docs/introduction)、[公式操作ガイド](https://ublacklist.github.io/docs/getting-started)）。
+
+| Androidブラウザ | 一次情報で確認できる対応状況 |
+| --- | --- |
+| Firefox | [uBlacklistの公式配布ページ](https://addons.mozilla.org/en-US/firefox/addon/ublacklist/)にFirefox for Android対応の記載あり。Firefox用のuBlacklistを導入します。 |
+| Elixir Browser | [公式README](https://github.com/SF-FLAM/ElixirBrowser)にAndroidでの拡張機能対応の記載あり。uBlacklist個別の動作は未検証です。 |
+| Titanium | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions)にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
+| Aerium | [公式README](https://github.com/aerium-browser/aerium-browser-android#extensions-finally)にChrome Web Storeからの拡張機能導入とuBlock Originのプリインストールの記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
+| Cromite | [公式FAQ](https://github.com/uazo/cromite/blob/master/docs/FAQ.md#does-cromite-support-extensions-in-android)ではAndroid版の拡張機能は非対応。内蔵広告ブロック機能があっても、uBlacklistを導入できるブラウザには含めません。 |
+
+拡張機能への対応だけで、すべての拡張機能や同期機能の動作が保証されるわけではありません。[uBlacklistのサポート方針](https://github.com/iorate/ublacklist#browser-support-policy)でも、明記されたブラウザ以外の対応はコミュニティの貢献に依存します。導入後は、利用する検索エンジンで非表示と再表示が動作するか確認してください。
+
+購読リストの対象範囲・更新状況によって効果は異なり、正常なサイトが非表示になる場合は、下記の例外ルールで調整できます。Google以外の対応検索エンジンではオプションでの有効化が必要です。購読には配布元へのアクセス権限が必要で、Firefox for AndroidではuBlacklistの「ブラウザ同期」方式は利用できません（[公式詳細ガイド](https://ublacklist.github.io/docs/advanced-features)）。
+
 **! ブラックリストを追加する**
 * uBlacklist-filter-by-kdroidwin 1
   ```
