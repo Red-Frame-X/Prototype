@@ -1080,7 +1080,7 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
 Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設定メモです。ChromeOS上のAndroid環境では、設定項目の有無やDNSが処理される範囲を実機で確認します。
 
 * **常駐対策**：personalDNSfilterをバッテリー最適化の対象から除外し、バックグラウンド動作を許可します。ローカルVPNモードでは、AndroidのVPN設定で「常時接続VPN」を有効にします。設定名・導線はOSや端末によって異なり、停止を完全に防ぐ保証はありません。
-* **「VPNなしの接続をブロック」は無効のままにします**。personalDNSfilterはDNS問い合わせだけを処理するため、この設定を有効にすると通常のインターネット通信が遮断されると公式FAQに明記されています。
+* **「VPNなしの接続をブロック」は無効**：personalDNSfilterはDNS問い合わせだけを処理するため、この設定を有効にすると通常のインターネット通信が遮断されると公式FAQに明記されています。
 * **DNSフィルタリングの迂回対策**：Androidの「プライベートDNS」と、Android版Chromeの「セキュアDNSを使用」を無効にします。これはDNS問い合わせをpersonalDNSfilterに処理させるための設定であり、VPNの停止を防ぐ設定ではありません。
 * **DNS通信の暗号化**：OS・ブラウザ側の暗号化DNSを無効にする場合は、personalDNSfilter側でDoHまたはDoTの上流DNSを設定します。[公式製品説明](https://www.zenz-solutions.de/personaldnsfilter-wp/)に両方式の対応が記載されています。
 * **ChromeOS側の設定**：「サイトのルックアップに安全な接続を使用する」の無効化は、上記のAndroid向けFAQからChromeOS全体へ一律に適用しません。ChromeOS側のDNSもpersonalDNSfilterで処理する構成では、設定変更前後の問い合わせがアプリのログに記録されるか確認します。Android環境内で動作しているだけでは、ChromeOS全体への適用を確認したことにはなりません。
