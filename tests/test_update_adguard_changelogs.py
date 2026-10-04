@@ -87,6 +87,13 @@ ANDROID_RELEASES_WITH_HISTORY = json.dumps([
 ]).encode()
 
 
+# Latest endpoints return objects; history endpoints continue to return lists.
+BROWSER_RELEASES_JSON = json.dumps(json.loads(BROWSER_RELEASES_JSON)[0]).encode()
+BROWSER_RELEASES_NO_RELEVANT = json.dumps(json.loads(BROWSER_RELEASES_NO_RELEVANT)[0]).encode()
+ANDROID_LATEST = json.dumps(json.loads(ANDROID_JSON)[0]).encode()
+ANDROID_HISTORY_LATEST = json.dumps(json.loads(ANDROID_RELEASES_WITH_HISTORY)[1]).encode()
+
+
 class ChangelogUpdaterTests(unittest.TestCase):
     def test_fetch_retries_transient_network_failure(self):
         response = MagicMock()
@@ -135,9 +142,11 @@ class ChangelogUpdaterTests(unittest.TestCase):
             BROWSER,
             BROWSER_RELEASES_JSON,
             ANDROID_JSON,
+            ANDROID_LATEST,
             BROWSER,
             BROWSER_RELEASES_JSON,
             ANDROID_JSON,
+            ANDROID_LATEST,
         ]
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
@@ -150,7 +159,7 @@ class ChangelogUpdaterTests(unittest.TestCase):
 
     @patch.object(module, "fetch")
     def test_update_uses_release_version_when_changelog_is_still_unreleased(self, mocked_fetch):
-        mocked_fetch.side_effect = [BROWSER_UNRELEASED, BROWSER_RELEASES_JSON, ANDROID_JSON]
+        mocked_fetch.side_effect = [BROWSER_UNRELEASED, BROWSER_RELEASES_JSON, ANDROID_JSON, ANDROID_LATEST]
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
             module.update(output, "browser", "android", browser_releases_source="browser-releases")
@@ -168,6 +177,7 @@ class ChangelogUpdaterTests(unittest.TestCase):
             BROWSER,
             BROWSER_RELEASES_NO_RELEVANT,
             ANDROID_RELEASES_WITH_HISTORY,
+            ANDROID_HISTORY_LATEST,
         ]
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
@@ -192,7 +202,7 @@ class ChangelogUpdaterTests(unittest.TestCase):
 
     @patch.object(module, "fetch")
     def test_update_separates_changelogs_from_review_metadata(self, mocked_fetch):
-        mocked_fetch.side_effect = [BROWSER, BROWSER_RELEASES_JSON, ANDROID_JSON]
+        mocked_fetch.side_effect = [BROWSER, BROWSER_RELEASES_JSON, ANDROID_JSON, ANDROID_LATEST]
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             review_dir = root / "upstream"
@@ -209,6 +219,40 @@ class ChangelogUpdaterTests(unittest.TestCase):
             self.assertTrue((review_dir / "metadata.json").exists())
             self.assertTrue((review_dir / "converter-review.md").exists())
             self.assertFalse((review_dir / "adguard-browser-extension-CHANGELOG.source.md").exists())
+
+    @patch.object(module, "fetch")
+    def test_latest_endpoint_wins_over_old_first_history(self, mocked_fetch):
+        browser_latest = json.loads(BROWSER_RELEASES_JSON)
+        browser_latest.update(tag_name="v5.5.3.3", body="New DNR behavior.")
+        android_latest = json.loads(ANDROID_HISTORY_LATEST)
+        history = list(reversed(json.loads(ANDROID_RELEASES_WITH_HISTORY)))
+        responses = {
+            "browser": BROWSER,
+            module.BROWSER_RELEASES_URL: json.dumps(browser_latest).encode(),
+            "android": json.dumps(history).encode(),
+            module.ANDROID_LATEST_RELEASE_URL: json.dumps(android_latest).encode(),
+        }
+        mocked_fetch.side_effect = responses.__getitem__
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory)
+            module.update(output, "browser", "android")
+            data = json.loads((output / "metadata.json").read_text())
+            self.assertEqual(data["products"][0]["latest_version"], "5.5.3.3")
+            self.assertEqual(data["products"][1]["latest_version"], "4.13.2")
+            self.assertIn("New DNR behavior.", (output / "converter-review.md").read_text())
+            mirror = (output / "adguard-for-android-CHANGELOG.source.md").read_text()
+            for release in history:
+                self.assertIn(release["body"], mirror)
+        self.assertTrue(module.BROWSER_RELEASES_URL.endswith("/releases/latest"))
+        self.assertTrue(module.ANDROID_LATEST_RELEASE_URL.endswith("/releases/latest"))
+
+    def test_latest_endpoint_rejects_nonstable_or_malformed_objects(self):
+        good = json.loads(BROWSER_RELEASES_JSON)
+        for invalid in ({}, [], {**good, "draft": True},
+                        {**good, "prerelease": True},
+                        {**good, "tag_name": "v5.6.0-beta.1"}):
+            with self.subTest(payload=invalid), self.assertRaises(ValueError):
+                module.latest_stable_release(json.dumps(invalid).encode(), "Browser")
 
     def test_invalid_release_payload_is_rejected(self):
         with self.assertRaises(ValueError):
