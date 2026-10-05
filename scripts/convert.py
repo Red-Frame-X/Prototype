@@ -48,6 +48,7 @@ class AdGuardOptimizer:
 
         # uBO構文からAdGuardへ意味を安全に維持できると確認できていないスクリプトレット。
         # AdGuard MV3自体のscriptlet対応可否とは分離し、推測変換による挙動変更を防ぐ。
+        self.compatible_scriptlets: List[str] = settings["compatible_scriptlets"]
         self.incompatible_scriptlets: List[str] = settings["incompatible_scriptlets"]
 
         # uBO独自修飾子のAdGuard互換置換マップ
@@ -63,6 +64,10 @@ class AdGuardOptimizer:
         scriptlets_escaped = [re.escape(s) for s in self.incompatible_scriptlets]
         self.re_incompatible_js: Pattern = re.compile(
             rf'\+js\(\s*(?:{"|".join(scriptlets_escaped)})(?=\s*(?:,|\)))'
+        )
+        compatible_scriptlets_escaped = [re.escape(s) for s in self.compatible_scriptlets]
+        self.re_compatible_js: Pattern = re.compile(
+            rf'\+js\(\s*(?:{"|".join(compatible_scriptlets_escaped)})(?=\s*(?:,|\)))'
         )
 
     @staticmethod
@@ -87,6 +92,7 @@ class AdGuardOptimizer:
         list_keys = (
             "adguard_extended_css",
             "unsupported_ubo_extended_css",
+            "compatible_scriptlets",
             "incompatible_scriptlets",
         )
         for key in list_keys:
@@ -107,6 +113,7 @@ class AdGuardOptimizer:
         return {
             "adguard_extended_css": list(settings["adguard_extended_css"]),
             "unsupported_ubo_extended_css": list(settings["unsupported_ubo_extended_css"]),
+            "compatible_scriptlets": list(settings["compatible_scriptlets"]),
             "incompatible_scriptlets": list(settings["incompatible_scriptlets"]),
             "modifier_replacements": dict(replacements),
         }
@@ -238,6 +245,8 @@ class AdGuardOptimizer:
         if '##+js(' in line or '#@#+js(' in line:
             if self.re_incompatible_js.search(line):
                 return f"! [Incompatible Scriptlet] {original_line}"
+            if not self.re_compatible_js.search(line):
+                return f"! [Unverified Scriptlet] {original_line}"
             return line
 
         # [Step A-2] Chrome MV3 (RE2) との互換性を優先した正規表現検証

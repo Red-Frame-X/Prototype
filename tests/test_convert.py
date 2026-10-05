@@ -37,6 +37,10 @@ class CapabilityProfileTests(unittest.TestCase):
             settings["unsupported_ubo_extended_css"],
         )
         self.assertEqual(
+            optimizer.compatible_scriptlets,
+            settings["compatible_scriptlets"],
+        )
+        self.assertEqual(
             optimizer.incompatible_scriptlets,
             settings["incompatible_scriptlets"],
         )
@@ -82,6 +86,8 @@ class CapabilityProfileTests(unittest.TestCase):
                     "converter_settings": {
                         "adguard_extended_css": [":custom-ext("],
                         "unsupported_ubo_extended_css": [":unsupported-ext("],
+                        "compatible_scriptlets": ["compatible-scriptlet"],
+                        "compatible_scriptlets": ["compatible-scriptlet"],
                         "incompatible_scriptlets": ["custom-scriptlet"],
                         "modifier_replacements": {"custommod": "translatedmod"},
                     }
@@ -224,9 +230,12 @@ class ModifierConversionTests(unittest.TestCase):
             with self.subTest(rule=rule):
                 self.assertEqual(self.optimizer.optimize_line(rule), rule)
 
-    def test_scriptlet_with_longer_name_is_not_a_prefix_match(self):
+    def test_unverified_scriptlet_is_commented_out(self):
         rule = "example.com##+js(json-prune-fetch-response)"
-        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Unverified Scriptlet] " + rule,
+        )
 
     def test_unescaped_slash_in_regex_character_class_is_escaped(self):
         rule = r"/^https?:\/\/[^/]*pay(?:[/?#]|$)/"
