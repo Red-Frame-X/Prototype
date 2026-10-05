@@ -1047,8 +1047,8 @@ uBlacklistに対応するモバイルブラウザでも、詐欺サイトなど�
 
 | Androidブラウザ | 一次情報で確認できる対応状況 |
 | --- | --- |
-| Titanium | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions)にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
-| Aerium | [公式README](https://github.com/aerium-browser/aerium-browser-android#extensions-finally)にChrome Web Storeからの拡張機能導入とuBlock Originのプリインストールの記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
+| [Titanium](https://github.com/jqssun/android-titanium-browser) | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions)にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
+| [Aerium](https://github.com/aerium-browser/aerium-browser-android) | [公式README](https://github.com/aerium-browser/aerium-browser-android#extensions-finally)にChrome Web Storeからの拡張機能導入とuBlock Originのプリインストールの記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
 
 拡張機能への対応だけで、すべての拡張機能や同期機能の動作が保証されるわけではありません。[uBlacklistのサポート方針](https://github.com/iorate/ublacklist#browser-support-policy)でも、明記されたブラウザ以外の対応はコミュニティの貢献に依存します。導入後は、利用する検索エンジンで非表示と再表示が動作するか確認してください。
 
