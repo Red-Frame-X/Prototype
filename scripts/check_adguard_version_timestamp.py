@@ -87,6 +87,30 @@ def main() -> int:
             else:
                 print(f"OK: {path}: only Version metadata changed")
 
+    # 各コミット検査に加え、範囲全体の最終状態も比較する。
+    # 途中で Version を更新した後、後続コミットで Version だけ古い値へ戻すケースを見逃さない。
+    for path in TARGETS:
+        before = show(args.base, path)
+        after = show(args.head, path)
+        if before is None or after is None or before == after:
+            continue
+
+        try:
+            old_version = version(before, path)
+            new_version = version(after, path)
+        except ValueError as exc:
+            print(f"error: {exc}")
+            failed = True
+            continue
+
+        rules_changed = rules_without_version(before) != rules_without_version(after)
+        if rules_changed and old_version == new_version:
+            print(
+                f"error: {path}: rules differ between {args.base} and {args.head} but "
+                f"! Version: is unchanged ({old_version})"
+            )
+            failed = True
+
     return 1 if failed else 0
 
 
