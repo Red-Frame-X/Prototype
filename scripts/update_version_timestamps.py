@@ -19,9 +19,9 @@ TARGET_PREFIXES = (
 )
 
 PATTERNS = (
-    (re.compile(r"(?m)^! Version:\s*\d{8,14}$"), lambda stamp: f"! Version: {stamp}"),
+    (re.compile(r"(?m)^! Version:[ \t]*\d{8,14}$"), lambda stamp: f"! Version: {stamp}"),
     (re.compile(r"(?m)^\| \*\*Version\*\* \| \d{8,14} \|$"), lambda stamp: f"| **Version** | {stamp} |"),
-    (re.compile(r"(?m)^(//\s*@version\s+)\S+\s*$"), lambda stamp: rf"\g<1>{stamp}"),
+    (re.compile(r"(?m)^(//[ \t]*@version[ \t]+)\S+[ \t]*$"), lambda stamp: rf"\g<1>{stamp}"),
 )
 
 
@@ -49,11 +49,35 @@ def update_file(path: Path, stamp: str) -> bool:
     except UnicodeDecodeError:
         return False
 
-    updated = text
-    matches = 0
-    for pattern, replacement in PATTERNS:
-        updated, count = pattern.subn(replacement(stamp), updated, count=1)
-        matches += count
+    # ファイル種別に対応する先頭メタデータだけを更新し、本文のコード例を保持する。
+    lines = text.splitlines(keepends=True)
+    if path.suffix == ".md":
+        pattern, replacement = PATTERNS[1]
+        header_end = 0
+        for line in lines:
+            if line.lstrip().startswith(("```", "~~~")):
+                break
+            header_end += len(line)
+            if pattern.search(line.rstrip("\n")):
+                break
+    elif path.suffix == ".txt":
+        pattern, replacement = PATTERNS[0]
+        header_end = 0
+        for line in lines:
+            if line.strip() and not line.startswith("!"):
+                break
+            header_end += len(line)
+    elif path.name.endswith(".user.js") and text.startswith("// ==UserScript==\n"):
+        pattern, replacement = PATTERNS[2]
+        marker = "// ==/UserScript=="
+        header_end = text.find(marker)
+        if header_end < 0:
+            return False
+    else:
+        return False
+
+    header, matches = pattern.subn(replacement(stamp), text[:header_end], count=1)
+    updated = header + text[header_end:]
 
     if matches == 0 or updated == text:
         return False

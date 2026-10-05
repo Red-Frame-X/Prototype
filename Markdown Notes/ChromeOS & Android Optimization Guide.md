@@ -8,7 +8,7 @@ ChromeOS & Android 最適化ガイド
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202610050918 |
+| **Version** | 202610050948 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -66,7 +66,7 @@ Googleの多くのサービスでは、年額サブスクリプションを「�
 不具合の内容をコピー＆ペーストできるようメモにまとめ、お問い合わせ方法からチャットを選択します。
 * **[Google One ヘルプ > お問い合わせ](https://support.google.com/googleone/gethelp)**
 
-なお、ahamo回線契約者は基本的にdocomoのサポートを受けることができません。
+なお、ahamoは専用チャットを中心に問い合わせを受け付けています。ドコモショップなどで受けられる支援は、手続きやサービスによって異なります（[ahamo公式：問い合わせ・相談窓口](https://faq.ahamo.com/faq/show/42?category_id=16&site_domain=default)）。ここで記録したGoogle Oneの不具合が各窓口の対応範囲に含まれるかは、個別に確認する必要があります。
 * **[docomo｜ご意見・ご要望](https://www.docomo.ne.jp/support/inquiry/feedback/?hl=ja-JP)** > 「ご意見・ご要望はこちら 開く+」をクリックする。
 
 過去に同様の不具合がなかったかRedditで検索したところ、既存の有料プランにGoogle Pixelの購入特典を重複適用した結果、Google One メンバーシップに問題が発生したという報告も見つかりました。
