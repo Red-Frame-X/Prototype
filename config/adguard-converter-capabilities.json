@@ -28,6 +28,12 @@
           ":matches-media(",
           ":others()"
         ],
+        "compatible_scriptlets": [
+          "acis",
+          "spoof-css",
+          "m3u-prune",
+          "json-prune"
+        ],
         "incompatible_scriptlets": [
           "trusted-replace-argument",
           "trusted-set-cookie",
