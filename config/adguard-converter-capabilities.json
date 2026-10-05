@@ -5,7 +5,10 @@
     "adguard-browser-extension-mv3": {
       "converter": "scripts/convert.py",
       "regex_engine": "RE2",
-      "unsupported_rule_families": ["html-filtering", "redirect-rule"],
+      "unsupported_rule_families": [
+        "html-filtering",
+        "redirect-rule"
+      ],
       "converter_settings": {
         "adguard_extended_css": [
           ":has(",
@@ -41,6 +44,12 @@
           "3p": "third-party",
           "1p": "~third-party"
         }
+      },
+      "scriptlet_policy": {
+        "source_syntax": "uBlock Origin",
+        "target_syntax": "AdGuard",
+        "rule": "Preserve only scriptlets whose cross-blocker name and argument semantics have been reviewed as compatible; comment out reviewed incompatible or unverified cases instead of guessing.",
+        "trusted_scriptlets": "AdGuard trusted scriptlets are not assumed compatible with uBlock Origin trusted scriptlets solely because a same or related name exists."
       }
     },
     "adguard-for-android": {
