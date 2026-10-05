@@ -56,32 +56,36 @@ def main() -> int:
     parser.add_argument("--head", default="HEAD")
     args = parser.parse_args()
 
+    # 範囲の最終差分だけでなく、各コミットと第一親を比較する。
+    # パスによる履歴簡略化を避け、途中の違反が後続コミットで隠れないようにする。
+    commits = git("rev-list", "--reverse", f"{args.base}..{args.head}").splitlines()
     failed = False
-    for path in TARGETS:
-        before = show(args.base, path)
-        after = show(args.head, path)
-        if before is None or after is None or before == after:
-            continue
+    for commit in commits:
+        for path in TARGETS:
+            before = show(f"{commit}^", path)
+            after = show(commit, path)
+            if before is None or after is None or before == after:
+                continue
 
-        try:
-            old_version = version(before, path)
-            new_version = version(after, path)
-        except ValueError as exc:
-            print(f"error: {exc}")
-            failed = True
-            continue
+            try:
+                old_version = version(before, path)
+                new_version = version(after, path)
+            except ValueError as exc:
+                print(f"error: {exc}")
+                failed = True
+                continue
 
-        rules_changed = rules_without_version(before) != rules_without_version(after)
-        if rules_changed and old_version == new_version:
-            print(
-                f"error: {path}: rules changed but ! Version: was not updated "
-                f"in the same commit ({old_version})"
-            )
-            failed = True
-        elif rules_changed:
-            print(f"OK: {path}: rules and Version changed together ({old_version} -> {new_version})")
-        else:
-            print(f"OK: {path}: only Version metadata changed")
+            rules_changed = rules_without_version(before) != rules_without_version(after)
+            if rules_changed and old_version == new_version:
+                print(
+                    f"error: {commit[:12]}: {path}: rules changed but ! Version: was not updated "
+                    f"in the same commit ({old_version})"
+                )
+                failed = True
+            elif rules_changed:
+                print(f"OK: {path}: rules and Version changed together ({old_version} -> {new_version})")
+            else:
+                print(f"OK: {path}: only Version metadata changed")
 
     return 1 if failed else 0
 
