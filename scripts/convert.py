@@ -65,6 +65,10 @@ class AdGuardOptimizer:
         self.re_incompatible_js: Pattern = re.compile(
             rf'\+js\(\s*(?:{"|".join(scriptlets_escaped)})(?=\s*(?:,|\)))'
         )
+        compatible_scriptlets_escaped = [re.escape(s) for s in self.compatible_scriptlets]
+        self.re_compatible_js: Pattern = re.compile(
+            rf'\+js\(\s*(?:{"|".join(compatible_scriptlets_escaped)})(?=\s*(?:,|\)))'
+        )
 
     @staticmethod
     def _load_converter_settings(capability_file: str) -> Dict[str, object]:
