@@ -56,6 +56,25 @@ class CapabilityProfileTests(unittest.TestCase):
             with self.subTest(scriptlet=scriptlet):
                 self.assertNotIn(scriptlet, incompatible)
 
+    def test_trusted_scriptlets_are_not_assumed_cross_blocker_compatible(self):
+        with open(CAPABILITY_FILE, "r", encoding="utf-8") as f:
+            profile = json.load(f)
+
+        target = profile["targets"][CAPABILITY_TARGET]
+        policy = target["scriptlet_policy"]
+        incompatible = target["converter_settings"]["incompatible_scriptlets"]
+
+        self.assertEqual(policy["source_syntax"], "uBlock Origin")
+        self.assertEqual(policy["target_syntax"], "AdGuard")
+        self.assertIn("not assumed compatible", policy["trusted_scriptlets"])
+        for scriptlet in (
+            "trusted-replace-argument",
+            "trusted-set-cookie",
+            "trusted-click-element",
+        ):
+            with self.subTest(scriptlet=scriptlet):
+                self.assertIn(scriptlet, incompatible)
+
     def test_custom_capability_profile_changes_converter_behavior(self):
         profile = {
             "targets": {
