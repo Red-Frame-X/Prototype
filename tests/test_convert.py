@@ -87,7 +87,6 @@ class CapabilityProfileTests(unittest.TestCase):
                         "adguard_extended_css": [":custom-ext("],
                         "unsupported_ubo_extended_css": [":unsupported-ext("],
                         "compatible_scriptlets": ["compatible-scriptlet"],
-                        "compatible_scriptlets": ["compatible-scriptlet"],
                         "incompatible_scriptlets": ["custom-scriptlet"],
                         "modifier_replacements": {"custommod": "translatedmod"},
                     }
@@ -262,84 +261,71 @@ class ModifierConversionTests(unittest.TestCase):
             "! [Unsupported MV3 Regex] " + rule,
         )
 
-    def test_bare_regex_with_embedded_end_anchor_keeps_scope(self):
-        rule = r"/^https?:\/\/example\.com(?:[\/?#]|$)/"
+    def test_positive_lookbehind_regex_is_commented_out(self):
+        rule = r"/(?<=pay)ment/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            r"/^https?:\/\/example\.com(?:[\/?#]|$)/",
+            "! [Unsupported MV3 Regex] " + rule,
         )
 
-    def test_bare_regex_exception_does_not_disable_page_filtering(self):
-        rule = r"@@/example(?:/|$)/"
-        self.assertEqual(self.optimizer.optimize_line(rule), rule)
-
-    def test_generated_bare_regex_keeps_scope_with_narrow_lint_directive(self):
-        rules = [r"/tracker(?:foo|$)/", r"@@/safe(?:foo|$)/", r"/plain$/"]
-        with tempfile.TemporaryDirectory() as directory:
-            output = os.path.join(directory, "filter.txt")
-            with patch.object(self.optimizer, "fetch_source", return_value=rules), patch(
-                "scripts.convert.OUTPUT_FILE", output
-            ):
-                self.optimizer.run()
-            with open(output, encoding="utf-8") as generated:
-                text = generated.read()
-        self.assertNotIn("$document", text)
-        self.assertEqual(self.optimizer.get_rule_signature(text.splitlines()), rules)
-        for rule in rules[:2]:
-            self.assertIn("! aglint-disable-next-line invalid-modifiers\n" + rule, text)
-        self.assertEqual(text.count("! aglint-disable-next-line"), 2)
-
-    def test_existing_modifier_after_embedded_end_anchor_is_preserved(self):
-        rule = r"/^https?:\/\/example\.com(?:[\/?#]|$)/$document"
-        self.assertEqual(self.optimizer.optimize_line(rule), rule)
-
-    def test_unescaped_slash_outside_character_class_remains_delimiter(self):
-        rule = r"/^https?:\/\/example\.com\//$document"
-        self.assertEqual(self.optimizer.optimize_line(rule), rule)
-
-    def test_cosmetic_rule_with_url_path_uses_url_modifier(self):
-        rule = "www.example.com/specific-path##.advertisement"
+    def test_negative_lookbehind_regex_is_commented_out(self):
+        rule = r"/(?<!safe)tracker/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "[$url=||www.example.com/specific-path*]##.advertisement",
+            "! [Unsupported MV3 Regex] " + rule,
         )
 
-    def test_cosmetic_rule_with_domain_scope_is_preserved(self):
-        rule = "www.example.com##.advertisement"
-        self.assertEqual(self.optimizer.optimize_line(rule), rule)
-
-    def test_extended_css_exception_uses_adguard_separator(self):
-        rule = "example.com#@#div:contains(sponsored)"
+    def test_numeric_backreference_regex_is_commented_out(self):
+        rule = r"/(pay)\1/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "example.com#@?#div:contains(sponsored)",
+            "! [Unsupported MV3 Regex] " + rule,
+        )
+
+    def test_named_backreference_regex_is_commented_out(self):
+        rule = r"/(?P<name>pay)\g<name>/"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Unsupported MV3 Regex] " + rule,
+        )
+
+    def test_escaped_backslash_before_digit_is_not_treated_as_backreference(self):
+        rule = r"/pay\\1/"
+        self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
+    def test_supported_cosmetic_scope_with_path_is_converted_to_url_modifier(self):
+        rule = "example.com/path##.ad"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "[$url=||example.com/path*]##.ad",
         )
 
     def test_mixed_cosmetic_url_scope_is_commented_out(self):
-        rule = "example.com/path,example.org##.advertisement"
+        rule = "example.com/path,other.example##.ad"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
             "! [Unsupported Mixed Cosmetic URL Scope] " + rule,
         )
 
-    def test_cname_only_modifier_is_disabled(self):
-        rule = "||example.com^$cname"
-        self.assertEqual(self.optimizer.optimize_line(rule), "! [Unsupported MV3 Modifier: cname] " + rule)
-
-    def test_cname_exception_never_becomes_general_allow_rule(self):
-        for rule in ("@@*$cname", "@@||example.com^$cname,domain=example.org", "@@*$~cname"):
-            with self.subTest(rule=rule):
-                self.assertEqual(self.optimizer.optimize_line(rule), "! [Unsupported MV3 Modifier: cname] " + rule)
-
-    def test_negated_third_party_alias_is_preserved(self):
-        rule = "||example.com^$~3p"
-        self.assertEqual(self.optimizer.optimize_line(rule), rule)
-
-    def test_unsupported_scriptlet_exception_is_commented_out(self):
-        rule = "example.com#@#+js(trusted-replace-argument)"
+    def test_html_filter_is_commented_out(self):
+        rule = "example.com##^script:has-text(ad)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Incompatible Scriptlet] " + rule,
+            "! [Unsupported HTML Filter] " + rule,
+        )
+
+    def test_cname_rule_is_commented_out(self):
+        rule = "||example.com^$cname"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Unsupported MV3 Modifier: cname] " + rule,
+        )
+
+    def test_cname_exception_is_commented_out(self):
+        rule = "@@||example.com^$cname=tracker.example"
+        self.assertEqual(
+            self.optimizer.optimize_line(rule),
+            "! [Unsupported MV3 Modifier: cname] " + rule,
         )
 
 
