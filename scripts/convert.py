@@ -46,7 +46,8 @@ class AdGuardOptimizer:
         # AdGuard未対応・挙動不一致のuBO独自演算子
         self.ubo_unsupported_ext_css: List[str] = settings["unsupported_ubo_extended_css"]
 
-        # Chrome MV3向け出力で未対応・エラーリスクとなるスクリプトレット
+        # uBO構文からAdGuardへ意味を安全に維持できると確認できていないスクリプトレット。
+        # AdGuard MV3自体のscriptlet対応可否とは分離し、推測変換による挙動変更を防ぐ。
         self.incompatible_scriptlets: List[str] = settings["incompatible_scriptlets"]
 
         # uBO独自修飾子のAdGuard互換置換マップ
