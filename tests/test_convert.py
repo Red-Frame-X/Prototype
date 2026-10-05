@@ -87,7 +87,6 @@ class CapabilityProfileTests(unittest.TestCase):
                         "adguard_extended_css": [":custom-ext("],
                         "unsupported_ubo_extended_css": [":unsupported-ext("],
                         "compatible_scriptlets": ["compatible-scriptlet"],
-                        "compatible_scriptlets": ["compatible-scriptlet"],
                         "incompatible_scriptlets": ["custom-scriptlet"],
                         "modifier_replacements": {"custommod": "translatedmod"},
                     }
