@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610051812
+! Version: 202610061921
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -1926,6 +1926,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||btc-savior.co.jp^$document
 ||btj-trend-lab.com^$document
 ||btmoneycoach.xsrv.jp^$document
+||bto-comp.com^$document
 ||btslove7.com^$document
 ||bucky-blog.com^$document
 ||buddy-training.com^$document
@@ -4307,6 +4308,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gocheck*.pages.dev^$document
 ||gocmod.com^$document
 ||gofile-pass.mystrikingly.com^$document
+||gofile-sns.com^$document
 ||gofile.my.canva.site^$document
 ||gogomama.net^$document
 ||gogozoromi.com^$document
@@ -10511,6 +10513,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||snow-onyx.com^$document
 ||snowjourney.net^$document
 ||snowpeak.me^$document
+||sns-card.com^$document
 ||sns-career-uni.jp^$document
 ||snsclub.snscool-22.com^$document
 ||snsdays.com^$document
@@ -14560,6 +14563,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||yaguchi39.com^$document
 ||yahahai.sakura.ne.jp^$document
 ||yaho.jpgoodbuy.com^$document
+||yahoo-sns.com^$document
 ||yahooco.jp^$document
 ||yaimamalife.com^$document
 ||yajiblog12150619.com^$document
