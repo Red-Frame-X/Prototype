@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610061921
+! Version: 202610071918
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -2756,6 +2756,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||djewelonline.com^$document
 ||djn18.jp^$document
 ||djnavi.app^$document
+||djndam.wew.jp^$document
 ||djsouljah.com^$document
 ||djziy.com^$document
 ||dk.mos.ru^$document
@@ -3334,6 +3335,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ero-manga.fanzafanza.com^$document
 ||ero-manga.the-universe-lab.com^$document
 ||ero-manga.tokyo^$document
+||ero-manga0906l.site^$document
 ||ero-manzoku.com^$document
 ||ero-momonga.com^$document
 ||ero-ny.cfbx.jp^$document
@@ -4642,7 +4644,11 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||haruo-lop.info^$document
 ||harurino.com^$document
 ||harusan8.com^$document
+||haruto-satou.com^$document
 ||harutone.com^$document
+||harutonote.com^$document
+||harutosahouweb.com^$document
+||harutosatou.com^$document
 ||haryu-korea.net^$document
 ||hasegen.com^$document
 ||hasihirocap.com^$document
@@ -7461,6 +7467,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||naito-bc.com^$document
 ||naju555.com^$document
 ||naka-yan.com^$document
+||nakadashi-select.com^$document
 ||nakadori.yokohama^$document
 ||nakamo.top^$document
 ||nakanoman.net^$document
@@ -8946,6 +8953,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||otomeexpert.com^$document
 ||otona-comic.com^$document
 ||otona-freecomic.jp^$document
+||otona-night.com^$document
 ||otona-radar.jp^$document
 ||otona-review-navi.com^$document
 ||otona-search.com^$document
@@ -9131,6 +9139,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||phoenixglass.co.th^$document
 ||phortaub.com^$document
 ||photo-app.online^$document
+||photographernavi.com^$document
 ||phototree.jp^$document
 ||php.rinet.ru^$document
 ||phpa.me^$document
@@ -9776,6 +9785,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||revengers115.com^$document
 ||review-we126.com^$document
 ||reviewed.app^$document
+||reviewharuto.com^$document
 ||reviews-convenient.net^$document
 ||reviews.co.jp^$document
 ||revistasaga.org^$document
@@ -10101,6 +10111,9 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||satoritalk.jp^$document
 ||satoru-try.com^$document
 ||satorugames55.com^$document
+||satou-haruto.com^$document
+||satoubooks.com^$document
+||satouharutoblog.com^$document
 ||satoyurulife.xyz^$document
 ||satsuma-imo-blog.net^$document
 ||satsutabato-onsen.com^$document
@@ -10633,8 +10646,10 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||sports-brothers.com^$document
 ||sports-gate.blog.ss-blog.jp^$document
 ||sports-inf.com^$document
+||sports-kutikomi.com^$document
 ||sports-otaku.com^$document
 ||sports-suki.com^$document
+||sports-wife.com^$document
 ||sports.yoshilover.com^$document
 ||sportsnews.jp^$document
 ||spotfyapks.com^$document
