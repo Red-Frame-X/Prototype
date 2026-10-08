@@ -29,13 +29,13 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | **初期仕様** | Intel Core Ultra Series 3またはSnapdragon X Elite、16GB以上RAM、45 TOPS超NPU |
 | **価格** | 899米ドルから |
 | **発売** | 米国：2026年10月4日、6か国：10月5日 |
-| **日本発売** | 2026年9月30日時点で未発表 |
+| **日本発売** | 2026年10月8日の調査でも日本発売・日本価格・日本向けSKUを確認できず |
 | **既存Chromebook** | ChromeOSの自動更新期限まではサポート継続。2034年を超えて10年サポートが続く対象機種はGooglebook OSへの移行支援対象となり、多くの新しい商用Chromebookに直接移行パスを用意する方針。具体的な対象モデル・移行方法は未発表 |
 | **旧コードネーム** | 「Aluminium」は報道上の開発コードネーム。正式製品名ではない |
 
 ### 要点
 
-Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定です。価格は899米ドルからです。Googleは2026年9月23日、現行Chromebookを各機種の自動更新期限までサポートし、現在購入される対象機種のうち10年のサポート期間が2034年を超えるものについてGooglebook OSへの移行を支援すると説明しました。また、多くの新しい商用ChromebookがGooglebook OSへアップグレード可能になるとしています。ただし、具体的な対象モデルと移行方法は未発表です。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成なども未確認です。
+Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日を初期発売日として発表しました。2026年10月8日時点でGoogle公式ショップに購入案内が掲載されていますが、個別モデル・地域の在庫と出荷状況はメーカー販売ページで確認する必要があります。[Google公式ショップ](https://googlebook.google/shop/) 価格は899米ドルからです。Googleは2026年9月23日、現行Chromebookを各機種の自動更新期限までサポートし、現在購入される対象機種のうち10年のサポート期間が2034年を超えるものについてGooglebook OSへの移行を支援すると説明しました。また、多くの新しい商用ChromebookがGooglebook OSへアップグレード可能になるとしています。ただし、具体的な対象モデルと移行方法は未発表です。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成なども未確認です。
 
 「Aluminium」は求人情報などを根拠に報道されたAndroidベースPCプロジェクトのコードネームです。Googleの正式な製品発表では「Googlebook」を使用しており、「Aluminium OS」または「ALOS」を正式な製品名としていません。したがって、バックアップ目的でAluminiumに関する過去の報道・予測を残す場合も、Google公式の確定情報とは区別します。
 
@@ -64,7 +64,7 @@ Google公式発表で確認できる主な内容を、分野ごとに整理し�
 | **AI機能** | Magic Pointer、Rambler、Create My Widget、Gemini Live、Proactive Suggestions、Gemini Spark、Task Automationなど。 |
 | **スマートフォン連携** | Continue On、Cast My Apps、Quick Accessを提供。公式サイトではこれらの連携機能について **Android 17以上** の対応端末を要件として示す。 |
 | **ハードウェア** | Acer、ASUS、Dell、HP、Lenovoの5社から初期モデルを展開。Intel Core Ultra Series 3またはSnapdragon X Elite、45 TOPS超NPU、16GB以上RAMを搭載。 |
-| **価格・発売** | 899米ドルから。米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日に発売予定。 |
+| **価格・発売** | 899米ドルから。米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日を初期発売日として発表。2026年10月8日時点で公式ショップに購入案内を掲載。個別モデル・地域の在庫・出荷状況は別途確認。 |
 | **特典** | すべてのGooglebookに12か月分のGoogle AI Proと5TBクラウドストレージが付属。 |
 
 > [!NOTE]
@@ -104,16 +104,55 @@ Google Play対応とAndroidアプリ利用は公式確認済みです。Android 
 
 ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基盤にしています。ただし、GoogleはAndroidアプリ実行層の内部構造を完全公開していないため、「すべてのAndroidアプリが仮想化なしで直接実行される」といった実装レベルの断定は避けます。
 
-現時点で未確認の事項：
+2026年10月8日時点の確認状況：
 
 | 項目 | 状態 |
 | :--- | :--- |
-| Googlebook上のAPKサイドロードの具体的な操作手順 | 未確認 |
+| Googlebook上のAPKサイドロードの具体的な操作手順 | ADBによるインストール・実行・デバッグは公式確認済み。ファイルマネージャーからの導入など一般利用者向け手順は未確認 |
 | GooglebookでAndroidの「Allow apps from unverified developers」Advanced flowを利用できるか | 未確認 |
-| Developer options / Developer ModeのGooglebook固有UI・要否 | 未確認 |
-| ADBのGooglebook上での標準利用方法 | 未確認 |
+| Developer options / Developer ModeのGooglebook固有UI・要否 | ADBではDeveloper optionsを使用することが公式確認済み。設定画面全体とChromeOSのDeveloper Modeに相当する機能は未確認 |
+| ADBのGooglebook上での標準利用方法 | Wi-Fiは全モデル対応。USBはHP・XPSの左端子で対応、他3モデルは公式資料上coming soon |
 | Play IntegrityのGooglebook上での挙動 | 未確認 |
 | すべてのAndroidアプリとの完全互換性 | 未確認 |
+
+#### CPUアーキテクチャとAndroidアプリのABI
+
+2026年10月8日の調査では、Android一般の仕様、Googlebook固有の公式資料、Googleへの取材に基づく報道を分けて評価します。GooglebookはAndroid技術スタックを基盤とし、AndroidアプリがデスクトップクラスのChromeと並んで動作する環境ですが、内部の全レイヤー構成や特定のAndroidバージョンは未公開です。[Android Developers: Googlebook向け開発](https://developer.android.com/develop/adaptive-apps/guides/googlebook/overview)
+
+Snapdragon X EliteはArm64系、Intel Core UltraはIntel 64 / x86-64系です。AndroidのネイティブABIである`arm64-v8a`と`x86_64`は別のABIであり、ARM64コードをIntel CPUがそのまま同じ命令として実行できるわけではありません。[Qualcomm公式Arm64開発資料](https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/Snapdragon-Dev-Kit-for-Windows-Product-Brief.pdf)、[Intel Core Ultra 5 325公式仕様](https://www.intel.com/content/www/us/en/products/sku/245720/intel-core-ultra-5-processor-325-12m-cache-up-to-4-50-ghz/specifications.html)、[Android NDK: ABI](https://developer.android.com/ndk/guides/abis)
+
+| アプリの構成 | 互換性の確認ポイント |
+| :--- | :--- |
+| ライブラリ・SDKを含めJava/Kotlinのみ | ARM専用ネイティブライブラリへの依存はない。ただしAPI、画面、入力、配信条件は別途確認する |
+| `arm64-v8a`と`x86_64`の両方を含む | 各CPUに合ったネイティブコードを利用できる構成。全機能の動作保証とは別 |
+| `arm64-v8a`のみを含む | Intel側ではARM64変換対応が重要。Snapdragon側でもOS・API・配信条件等の確認が必要 |
+| ARM32のみを含む | ARM64対応とは別問題。Snapdragon搭載だけを理由に動作すると判断しない |
+| 本体はJava/KotlinだがSDKがネイティブコードを含む | ネイティブコードを含むアプリとして調査する |
+
+Android DevelopersのJava/Kotlinのみという条件には、すべての依存ライブラリ・SDKも含まれます。Google Playの64ビット要件はすべての64ビットABIの搭載義務ではないため、ARM64対応アプリがx86-64版も含むとは限りません。[Android Developers: 64ビット対応](https://developer.android.com/google/play/requirements/64-bit)
+
+**Android一般の一次情報**として、AOSPは異なるISA / ABIのネイティブコンポーネントを対応する変換実装で実行するNative Bridgeを説明しています。ただし、このインターフェースの存在だけではGooglebookが採用する変換実装を特定できません。[AOSP: Native Bridge](https://android.googlesource.com/platform/art/+/main/libnativebridge/README.md)
+
+**Googlebook固有の二次情報**として、Android Authorityは2026年10月7日、Googleからの回答に基づき、Intel Googlebookが`arm64-v8a`を`x86_64`命令へ動的変換する64ビットのバイナリ変換レイヤーを利用すると報じています。Google公式サイトの技術文書とは区別し、Houdini、Berberis、Intel Bridge等との関係、実装名、対応命令、JIT等の制限は未確認とします。[Android Authority: Googleの追加説明](https://www.androidauthority.com/googlebooks-top-android-apps-intel-3719888/)
+
+同記事はGoogleの説明として、利用頻度上位10,000以上のアプリの96.6%がIntel機で利用可能・正常動作すると伝えています。対象一覧・試験条件・版が公開されていないため、全Playアプリの対応率、残り3.4%のIntel固有非互換、Snapdragonの100%対応を示す数値とは扱いません。Googleの回答は残る配信除外の主因を大画面非対応やジャイロスコープ要求等としており、CPU以外の条件も含みます。
+
+ChromeOS向けのAndroid Developers資料は、x86 ChromebookのARMコード変換による性能低下と電池消費増加を説明しています。これはGooglebookの新しい変換実装を測定した結果ではなく、Googlebookの低下率・安定性へ直接流用しません。[Android Developers: ChromeOS端末のアプリ対応](https://developer.android.com/develop/devices/chromeos/learn/device-support)
+
+Google PlayはABIに加え、必要なハードウェア機能、API、画面条件、国・地域、開発者の配信設定等でフィルタリングします。Intel機で表示されない理由を直ちにARM依存と判断せず、インストール可能であることを全機能の保証ともみなしません。[Google Playのフィルター](https://developer.android.com/google/play/filters)
+
+DRM・動画では認証と画質、ゲームではGPU・入力・センサー・アンチチート、エミュレータではJITとABI、VPN・セキュリティアプリでは権限・常時稼働・証明書・ネイティブSDKを個別に確認します。これらは確認項目であり、カテゴリ全体にIntel固有の不具合が確認されたという意味ではありません。カスタム入力方式とランチャーはGooglebookで非対応と公式説明されており、CPU選択では解消しないOS側の制約です。[入力方式・ランチャー互換性](https://developer.android.com/develop/adaptive-apps/guides/googlebook/keyboard-apps-and-launcher-compatibility)
+
+#### ADBとDeveloper optionsの確認済み手順
+
+Android Developersの2026年10月3日更新資料は、GooglebookへのADB接続とアプリのインストール・実行・デバッグを案内しています。全モデルでDeveloper optionsとWireless debuggingを有効化し、Wi-Fi経由で接続できます。外部ワークステーションだけでなく、Googlebook内のLinuxターミナルからのペアリングも案内されています。[ADB debugging on Googlebook](https://developer.android.com/develop/adaptive-apps/guides/googlebook/adb-debugging)
+
+| モデル | 公式に案内されているADB接続 |
+| :--- | :--- |
+| HP Googlebook 14 / XPS Googlebook | Wi-Fi、USB（左端子のみ） |
+| Acer Googlebook 14 / ASUS Googlebook 14 / Lenovo Googlebook 15 | Wi-Fi。USBは同資料上coming soon |
+
+USB対応モデルではDeveloper optionsのUSB debuggingを有効化して対応端子へ接続します。これは開発用ADBの確認済み手順であり、一般利用者向けAPK導入、Advanced flow、developer verificationとの関係まで確定するものではありません。
 
 #### APKサイドロードとAndroid developer verification
 
@@ -134,9 +173,9 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 - **確認済み**：Androidのdeveloper verification制度は、認証済み開発者が登録したアプリのサイドロードを許容する。
 - **Googlebookについて二次情報で確認**：Ars Technicaは、Googleへの確認に基づく説明として、Googlebookでも同様のdeveloper verification要件を適用すると報じている。Google公式資料または実機で確認できるまでは、Googlebook固有の実装を確定事項として扱わない。
 - **合理的な推測**：GooglebookがこのAndroid標準制度をそのまま採用するなら、認証・登録済みAPKは通常のサイドロード対象になり、未認証APKもAdvanced flowまたはADB経由で導入できる可能性がある。
-- **未確認**：Googlebookの設定画面にAndroidスマートフォンと同じ「Allow apps from unverified developers」が存在するか、24時間待機を含むAdvanced flowがそのまま提供されるか、APKをファイルマネージャーから直接開けるか、ADBをどの経路で有効化するか、Googlebook独自の追加制限があるか。
+- **未確認**：Googlebookの設定画面にAndroidスマートフォンと同じ「Allow apps from unverified developers」が存在するか、24時間待機を含むAdvanced flowがそのまま提供されるか、APKをファイルマネージャーから直接開けるか、ADBによる導入にdeveloper verificationの例外・制限がどのように適用されるか、Googlebook独自の追加制限があるか。ADBの有効化・接続方法自体は上記のADB公式資料で確認済み。
 
-したがって現段階では、**「Googlebookはサイドロード不可」と断定する根拠は確認できません。一方で、認証済みAPKのサイドロード可否もGooglebook向けの一次情報だけでは確定できないため、可能性として扱います。** ただし、Androidスマートフォン向けAdvanced flowの手順をGooglebookの確定手順として流用してはいけません。発売後にGooglebook公式ヘルプ、Android DevelopersのGooglebook向け資料、実機のDeveloper options / ADB挙動で再確認する必要があります。
+したがって現段階では、**「Googlebookはサイドロード不可」と断定する根拠は確認できません。一方で、ADBによる開発用インストールは上記のGooglebook向けADB資料で確認できるものの、認証済みAPKを一般利用者がファイルマネージャー等から導入する具体的手順は未確認です。** ただし、Androidスマートフォン向けAdvanced flowの手順をGooglebookの確定手順として流用してはいけません。Googlebook公式ヘルプと実機で、Advanced flowや一般利用者向けAPK導入、ADBとdeveloper verificationの関係を引き続き確認する必要があります。
 
 > [!NOTE]
 > Ars TechnicaのGooglebook固有のdeveloper verification説明は二次情報です。Google公式Android資料で確認できる一般仕様とは区別し、Googlebookでの具体的な実装・操作手順は公式資料または実機で確認できるまで未確認として扱います。
@@ -176,7 +215,7 @@ ChromebookのARCVMと異なり、GooglebookはAndroid technology stackをOS基�
 
 ### Chrome・Web・拡張機能
 
-GoogleはGooglebookのChromeを **desktop-class Chrome browser with extensions** と明記しています。このため、Androidスマートフォン版Chromeと同じ構成ではありません。
+GoogleはGooglebookのChromeを **desktop-class Chrome browser with extensions** と明記しています。通常のAndroidスマートフォン版Chromeとは提供機能に違いがありますが、実装基盤やWindows/macOS/Linux版との全機能の一致まで示すものではありません。
 
 | 区分 | 項目 | 状態 |
 | :--- | :--- | :--- |
@@ -187,6 +226,26 @@ GoogleはGooglebookのChromeを **desktop-class Chrome browser with extensions**
 | 未確認 | Native Messagingの対応範囲 | 未確認 |
 | 未確認 | Enterprise Policyの全対応範囲 | 未確認 |
 | 未確認 | Lacrosとの関係 | 未確認 |
+
+#### Chromeプロファイル・Googleアカウント・OSユーザー
+
+| 概念 | 意味・確認状況 |
+| :--- | :--- |
+| Chromeプロファイル | ブラウザ情報を分ける単位。現状複数非対応というGoogle担当者の公開回答がある |
+| Googleアカウント | アプリ・Webサービスへの認証情報。一つのOSユーザー内で複数利用できる |
+| GooglebookのOSユーザー | 設定・ファイル等の利用空間。ログイン画面から切り替える複数ユーザー機能は公式確認済み |
+
+Google公式ヘルプはユーザーとアカウントを区別し、同じユーザーで複数アカウントを利用できると説明しています。**複数アカウントへのログインは、Chromeの複数プロファイル対応を意味しません。** [ユーザーとアカウントの公式説明](https://support.google.com/chrome/answer/18206266?hl=en)
+
+GoogleのAndroidコミュニティマネージャーを名乗るMishaal Rahman氏は、Googlebook OSのChromeが現状複数プロファイルに対応しないと公開回答しています。これは社員の公開回答という一次的証言で、正式な製品仕様書・ヘルプ記事とは区別します。Android AuthorityもASUS機でプロファイル切り替えがないことを確認しています。[担当者の公開回答](https://www.reddit.com/r/Googlebook/comments/1wxjzba/comment/pdug1vo/)、[実機確認の報道](https://www.androidauthority.com/googlebooks-chrome-multiple-profiles-3719566/)
+
+Android版Chrome一般のヘルプには一つのプロファイルのみという説明がありますが、これだけでGooglebook固有仕様や内部実装を断定しません。デスクトップクラスのChrome・拡張機能対応も、Windows/macOS/Linux版との全機能一致を保証しません。[Chromeプロファイルの公式ヘルプ](https://support.google.com/chrome/answer/2364824?co=GENIE.Platform%3DAndroid&hl=en)
+
+個人・仕事の分離についてGoogleは、別々のOSユーザーを作る方法と、同じユーザーに別アカウントを追加する方法を案内しています。バッジ付き仕事アプリを含むAndroidの独立した仕事用プロファイルは現状非対応です。[仕事・学校アカウントの公式案内](https://support.google.com/chrome/answer/18178630?hl=en)
+
+ブラウザ情報を分離したい場合は、別々のOSユーザーと同期アカウントの利用を優先します。同一ユーザーへのアカウント追加だけを、ブックマーク・履歴・Cookie・パスワード・拡張機能・同期設定の分離とみなさないでください。同じ同期アカウントを使うと同期対象データが再び共有される点も考慮します。全項目の分離保証を列挙したGooglebook公式資料は未確認です。Beta / Canary併用の回避策は報道にありますが、公式の標準的な分離方法としては扱いません。
+
+Chromebookも公式ヘルプでは端末ユーザーの追加・切り替えを案内しています。ChromeOSのOSユーザー切り替えを、Windows等の同一OSユーザー内のChromeプロファイル切り替えと同一視しないようにします。[Chromeの複数プロファイルとChromebookの案内](https://support.google.com/chrome/answer/2364824?hl=en)
 
 ### Androidスマートフォン連携
 
@@ -241,6 +300,62 @@ Verified Bootについては安全な起動とハードウェアルートオブ�
 
 Google Japanは2026年5月にGooglebookを日本語で紹介していますが、2026年9月23日時点で日本発売日、日本価格、日本語キーボード仕様、日本向け型番、技適取得モデルは正式発表されていません。海外仕様をそのまま日本仕様として扱わないようにします。
 
+## 初期モデル・I/O・購入判断（2026年10月8日調査）
+
+### 製品シリーズと構成
+
+Google公式ショップ・比較表に掲載されているのは以下の5シリーズです。**Snapdragon X Elite搭載はXPS GooglebookとHP Googlebook 14の2シリーズ**で、今回追加のシリーズは確認できませんでした。「2機種」は製品シリーズ単位の数で、RAM・SSD・地域別のSKUが2つだけという意味ではありません。[Google公式比較表](https://googlebook.google/shop/compare/)
+
+| メーカー・製品名 / 系列 | CPU・区分 | RAM / SSD | ディスプレイ | 電池・公称時間 | 重量 | 米国開始価格 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Acer Googlebook 14 / GP714-91N | Ultra 5 325 / Ultra 7 355・Intel | 基本16GB / 512GB、最大32GB / 512GB | 14型2880×1800 OLEDタッチ | 71Wh、Web最大16時間 / 動画14時間 | 1.14kg | $899 |
+| ASUS Googlebook 14 / CX9406CAA | Ultra 5 325 / Ultra 7 355・Intel | 16 / 32GB、256 / 512GB等を仕様掲載 | 14型2880×1800 OLEDタッチ | 70Wh、Google比較表は最大16時間 | 約0.99kgから | $1,299 |
+| Dell XPS Googlebook / DX13267 | X Elite X1E-80-100・Snapdragon | 米国掲載16GB / 512GB、32GB / 512GB、32GB / 1TB | 13.4型2560×1600 LCDタッチ、最大120Hz | 52Wh、Google比較表は最大18時間 | 約1.0kg | $999.99（Dell） |
+| HP Googlebook 14 / 14c-cf系列 | X Elite X1E-80-100・Snapdragon | 個別本文で16GB / 512GB、16GB / 1TBを確認 | 14型2880×1800 OLEDタッチ、最大120Hz | 70Wh、Google比較表は最大19時間 | 約1.24kg | $1,299（Google掲載） |
+| Lenovo Googlebook 15 | Ultra 5 325・Intel | 16 / 32GB、256 / 512GB | 15.3型2880×1800 OLEDタッチ、最大120Hz | 70Wh、メーカー12.5時間 / Google比較表13時間 | 1.29kgから | $1,099.99（メーカー） |
+
+メーカー本文：[Acer公式仕様](https://news.acer.com/acer-debuts-first-googlebook-the-embodiment-of-premium-intelligence-powered-hardware)、[ASUS公式仕様](https://www.asus.com/laptops/for-home/googlebook/asus-googlebook-14/techspec/)、[Dell米国構成一覧](https://www.dell.com/en-us/shop/laptop-computers/spd/xps13dx13267)、[HP 512GBモデル](https://www.hp.com/us-en/shop/pdp/hp-googlebook-14c-cf0815nr)、[HP 1TBモデル](https://www.hp.com/us-en/shop/pdp/hp-googlebook-14c-cf0910nr)、[Lenovo公式仕様](https://news.lenovo.com/pressroom/press-releases/first-googlebook-premium-ai-experiences-sleek-lightweight-design/)
+
+グローバル仕様の全構成が米国で選択可能とは限りません。ASUSの最大64GBという記載も実売SKUの確認とは分けます。HPの32GB構成は公式検索情報に存在しますが、個別本文で確認した構成と区別して再確認します。HPページ取得本文の価格には$0.00等の不整合があり、実売価格として採用していません。Googleの開始価格とメーカー販売価格は区別します。公称電池時間は試験条件付きで、実使用の順位付けには使いません。
+
+日本発売・日本円公式価格・日本向けSKUは、5シリーズとも今回確認できませんでした。これは未発売を証明するものではありません。海外価格の円換算を日本公式価格として扱わず、地域別の販売・在庫・出荷情報を確認します。
+
+### 内蔵端子とSnapdragonモデルの制約
+
+以下はメーカーの端子一覧に基づきます。「記載なし」は、明示的な非搭載説明と区別します。
+
+| モデル | USB-C | USB-A | Thunderbolt / USB4 | HDMI | 3.5mm音声 | SD / microSD | RJ45有線LAN |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Acer | 3基 | 記載なし | TB4×1、他2基はUSB 3.2 Gen 2 | 記載なし | あり | 記載なし | 記載なし |
+| ASUS | 2基 | 2基（USB 3.2 Gen 2） | TB4×2、USB4準拠 | 2.1 TMDS×1 | あり | 記載なし | 記載なし |
+| XPS | 2基 | 記載なし | USB 3.2 Gen 2 / 10Gbps、TB・USB4対応の記載なし | 記載なし | 記載なし | カードリーダーなしと明記 | 記載なし |
+| HP | 2基 | 記載なし | USB 10Gbps、TB・USB4対応の記載なし | 記載なし | ヘッドホン / マイクコンボあり | 記載なし | 記載なし |
+| Lenovo | 2基 | 1基（USB 10Gbps） | TB4×2 | 2.0×1 | あり | 記載なし | 記載なし |
+
+上記メーカー仕様に加え、[LenovoのPorts & Slots](https://www.lenovo.com/us/en/p/laptops/googlebook/googlebook-series/lenovo-googlebook-15/83w60009us)も確認しました。主要無線接続はWi-Fi 7、BluetoothはAcer・ASUS・Lenovoが6.0、Dell・HPが5.4と掲載されています。OS上の全機能対応とは区別します。
+
+初期Snapdragon機はUSB-A・HDMIを搭載端子として掲載せず、USB-C中心です。ただし、**HPには音声端子があるため、両モデルを一括して「USB Type-Cのみ」と表現しません。** XPSはDisplayPort Alt ModeとPower Delivery、HPはDisplayPort 1.4とUSB PD 3.0を掲載しています。DellブログはXPSのDisplayPort 1.4を説明しています。[Dell公式I/O解説](https://www.dell.com/en-us/blog/everything-you-need-to-know-about-dell-s-xps-googlebook)
+
+USB-Cという形状やSnapdragon X EliteというSoC名だけでUSB4 / Thunderbolt対応と判断しません。外部画面の最大台数・解像度、ドックの全機能対応は未確認です。USB-CハブでUSB-A・HDMI・カードリーダー・有線LANを追加できる構成はありますが、内蔵端子とは別で、OSのドライバー、USBモード、映像方式、給電の確認が必要です。
+
+### Intelモデルを購入候補から除外すべきか
+
+| 根拠の強さ | 評価 |
+| :--- | :--- |
+| 一次情報から明確に確認できる | ARM64とx86-64のABIは別。ネイティブライブラリと配信条件の確認が必要。ASUS・LenovoにはUSB-A・HDMI・TB4がある |
+| 合理的に推測できるが断定できない | ARM64専用ネイティブコードへの依存が強い用途では、命令セット変換を避けられるSnapdragonを優先する合理性がある |
+| 根拠不足で判断できない | Intel全機を除外すべき、Snapdragonは全アプリ対応、Intelは常に低速・不安定、特定アプリカテゴリ全体がIntel非対応という判断 |
+
+**Androidアプリ互換性だけを理由にIntel搭載Googlebookを一律に除外することは推奨しません。** 必須アプリのABI・配信・主要機能を確認して選択します。ARM64専用コードへの依存が強く変換実行の不確実性を減らしたい場合はSnapdragonを優先できますが、全互換性は保証されません。USB-A・HDMIの直接接続とTB4を重視する場合はASUS・Lenovo等のIntel機に利点があります。AcerもIntel機ですがUSB-A・HDMIを掲載しておらず、I/OはCPUで一括評価しません。
+
+Webアプリ中心ならAndroid ABIだけでIntelを除外する理由は乏しく、Chrome拡張機能もCPU名だけで優劣を断定できません。Native Messaging等は個別確認が必要です。Linux開発では使用するバイナリ・SDKのアーキテクチャが重要ですが、ゲストの構成・変換対応は未確認です。CPU / GPU性能はコア数・クロック・NPU TOPSだけで順位付けせず、同じOS・アプリ・条件での測定を待ちます。公称値ではSnapdragon機の電池時間が長いものの、実使用の優劣は未確認です。
+
+| 購入前に確認する対象 | 主な確認項目 | Snapdragon / Intelの確認結果 |
+| :--- | :--- | :--- |
+| 必須Androidアプリ | Play配信、ABI、ログイン、主要機能、DRM等 | 個別に未確認。開発元の対応資料と実機で確認 |
+| Linuxツール | arm64 / x86_64バイナリ、SDK、GPU・USB等 | 個別に未確認。配布元資料と実機で確認 |
+| USB-Cドック・周辺機器 | 映像、給電、USB、LAN、Thunderbolt依存等 | 個別に未確認。メーカー対応表と実機で確認 |
+
 ## 未確認・未発表の事項
 
 2026年9月21日の正式発表により、Linux環境、pKVM、CPU、最低RAM、価格、発売地域など従来未確認だった複数項目は確認済みとなりました。現在も未確認・未発表の主な事項は次のとおりです。
@@ -248,7 +363,7 @@ Google Japanは2026年5月にGooglebookを日本語で紹介していますが�
 | 分野 | 未確認・未発表の内容 |
 | :--- | :--- |
 | **OS基盤** | Googlebook OSが使用するAndroidの具体的なバージョン番号、Androidアプリ実行層の詳細な内部構造 |
-| **Androidアプリ** | developer verificationを満たしたAPKのサイドロード可否は未確認。Googlebook固有の具体的手順、Advanced flow / ADBの提供方法、Developer options / Developer Modeの扱い、Play Integrityの挙動は未確認 |
+| **Androidアプリ** | ADBによる導入・接続方法とDeveloper optionsの使用は確認済み。一般利用者向けAPK導入、Advanced flow、developer verificationとADBの関係、Developer Mode、Play Integrity、Intelの変換実装名・制限・性能測定、CPU別の個別互換性は未確認 |
 | **Linux** | ディストリビューション、`apt`、USB passthrough、GPUアクセラレーションなどの詳細 |
 | **Chrome** | Chrome Web Store上の全拡張機能との互換性、Manifest V3 / Declarative Net RequestのGooglebook固有仕様、Lacrosとの関係、Enterprise Policyの完全な対応範囲 |
 | **移行** | Googlebook OSへ移行できる具体的なChromebookモデル一覧、移行手順・時期、移行後の新ライセンス体系の詳細、ChromeOS製品全体の終了時期 |
@@ -268,7 +383,7 @@ Google Japanは2026年5月にGooglebookを日本語で紹介していますが�
 
 ## 広告ブロックとプライバシー
 
-発売前の段階で特定アプリの組み合わせを「最適構成」と断定することはできません。次の順序で判断します。
+発売後もGooglebook固有の対応範囲と実機確認が揃うまでは、特定アプリの組み合わせを「最適構成」と断定することはできません。次の順序で判断します。
 
 1. ブラウザがChrome拡張機能をどの範囲でサポートするか確認する。
 2. AndroidのVPN API、プライベートDNS、HTTPS証明書、アプリ単位VPNの実装を確認する。
@@ -280,10 +395,10 @@ AdGuardのフィルタ構文については、製品予測から切り離し、[
 ## 今後確認する項目
 
 - 日本発売日、日本価格、日本語キーボード、日本向け型番、技適。
-- APKサイドロードのGooglebook固有手順、Advanced flow、ADB、Developer options / Developer Mode、Play Integrity。
+- 一般利用者向けAPK導入、Advanced flow、developer verificationとADBの関係、Developer Mode、Play Integrity。ADB接続方法とDeveloper optionsの使用は確認済み。
 - Linux環境のディストリビューション、apt、USB、GPU、GUIアプリ。
-- Chrome Web Store、Manifest V3、DNR、Native Messaging、Enterprise Policy、Lacros。
-- Androidアプリ、Linuxツール、周辺機器の個別互換性。
+- Chrome Web Store、Manifest V3、DNR、Native Messaging、Enterprise Policy、Lacros。Chrome複数プロファイルの正式ヘルプ・将来対応とOSユーザー間のデータ分離仕様。
+- AndroidアプリのCPU別配信・主要機能、Intelの変換実装と性能、Linuxツールのアーキテクチャ、周辺機器・ドック・外部画面の個別互換性。
 - VPN、DNS、証明書、拡張機能に関する制約。
 - Gemini機能ごとのオンデバイス処理、クラウド処理、プライバシー説明、管理者向け設定。
 - Googlebook OSへ移行できるChromebookの具体的な対象モデル、移行手順・時期、移行後のライセンス体系。
@@ -308,9 +423,16 @@ AdGuardのフィルタ構文については、製品予測から切り離し、[
 - [What the Googlebook announcement means for your ChromeOS devices](https://support.google.com/chrome/a/answer/16634428)
 - [Chromebookの自動更新ポリシー](https://support.google.com/chrome/a/answer/6220366?hl=ja)
 
+### 担当者の公開回答
+
+- [Mishaal Rahman氏のGooglebook Chromeプロファイルに関する回答](https://www.reddit.com/r/Googlebook/comments/1wxjzba/comment/pdug1vo/) — 社員の公開回答という一次的証言。正式な仕様書・ヘルプとは区別。
+
 ### 報道・背景資料
 
-以下は公式製品仕様ではなく、発表前後のコードネームや移行予測を追うための背景資料として保存します。
+以下は公式製品仕様ではなく、発表前後のコードネームや移行予測を追うための背景資料として保存します。発売後の取材記事は上記各節で二次情報と明記し、公式仕様と区別しています。
 
 - [Google listing says Android PC OS, ‘Aluminium,’ will have ‘AI at the core’](https://9to5google.com/2025/11/24/google-android-pc-aluminium-os/)
 - [For Aluminium OS to succeed, Google needs to avoid Android's earliest mistakes](https://www.androidauthority.com/google-aluminium-os-avoid-android-early-mistakes-3663293/)
+
+- [Android Authority: Intel Googlebookの変換・アプリ対応に関するGoogle回答](https://www.androidauthority.com/googlebooks-top-android-apps-intel-3719888/)
+- [Android Authority: Googlebook Chromeの複数プロファイル実機確認](https://www.androidauthority.com/googlebooks-chrome-multiple-profiles-3719566/)
