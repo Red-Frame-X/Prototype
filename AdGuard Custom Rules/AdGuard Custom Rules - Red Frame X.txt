@@ -256,6 +256,8 @@ www.youtube.com##ytd-watch-metadata #teaser-carousel
 www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-renderer:has(a[href^="/shorts/"])
 
 ! x.com
+! 検索欄・Premium案内・ニュース・トレンド・おすすめユーザー・フッターを含む右側領域を、最外枠ごと非表示にして余白も除去
+x.com##div:has(> div > div > div[aria-label="トレンド"])
 ! ホーム上部の「おすすめ」タブを非表示
 x.com#?#div[role="presentation"]:has(> div[role="tab"] span:contains(/^おすすめ$/))
 ! x.comから開かれるtwitter.undefinedドメインへのポップアップをブロック
