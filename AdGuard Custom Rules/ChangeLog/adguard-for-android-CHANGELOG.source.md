@@ -760,6 +760,54 @@ In this beta version, we are continuing our quest on making the app better while
 - [Release channel](https://agrd.io/tvapk)
 - [Beta channel ](https://agrd.io/ag_android_tv_beta)
 
+## 4.15 Beta 1
+
+- Published: 2026-10-09T19:09:04Z
+- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15-beta-1
+
+AdGuard for Android v4.15 beta is a small update focused on usability improvements and bug fixes. While this release doesn’t introduce major new functionality, it brings a few long-requested enhancements designed to make everyday use of AdGuard more convenient.
+
+## Temporary protection pauses
+
+One of these improvements is the new option to temporarily pause protection. When disabling protection, you can now choose to have it automatically turn back on after 30 seconds, 2 minutes, or 5 minutes.
+
+This feature is particularly useful when you need to check whether a website, app, or network issue is related to filtering. Instead of disabling protection and having to remember to turn it back on later, you can set a timer and allow AdGuard restore protection automatically. It’s a small quality-of-life improvement, but one that can save time and help ensure you don’t accidentally leave your device unprotected after a quick test or troubleshooting session.
+
+## Changelog
+
+### Improvements
+* Added pause protection for Android
+* Added faster navigation in Recent activity
+* Improved the update checker to ensure it also detects newer versions of the AdGuard app [#6168](https://github.com/AdguardTeam/AdguardForAndroid/issues/6180)
+* Added HTTPS filtering support for Titanium Browser [#6172](https://github.com/AdguardTeam/AdguardForAndroid/issues/6172)
+* Optimized Samsung Pay service detection to prevent unnecessary background activity on devices where Samsung Pay is not installed [#6206](https://github.com/AdguardTeam/AdguardForAndroid/issues/6206)
+
+### Fixes
+* Huawei TileService is not recreated after changing the app's status
+* A grey line is visible when playing a video in fullscreen mode in Private browser
+* The proxy enable/disable button notification doesn't disappear after enabling Integration mode
+* The video doesn’t pause when switching from AdGuard player to YouTube
+* DNS protection on Android TV could unexpectedly turn itself off after updating to v4.13 [#6149](https://github.com/AdguardTeam/AdguardForAndroid/issues/6149)
+* Custom filters and Custom DNS filters appear as updated during every update check [#6153](https://github.com/AdguardTeam/AdguardForAndroid/issues/6153)
+* AdGuard intermittently stops blocking domains included in DNS filters [#6164](https://github.com/AdguardTeam/AdguardForAndroid/issues/6164)
+* A duplicate `lastpass.com` entry in the default HTTPS allowlist [#6189](https://github.com/AdguardTeam/AdguardForAndroid/issues/6189)
+* Excessive memory usage in certain scenarios [#6002](https://github.com/AdguardTeam/AdguardForAndroid/issues/6002)
+* Changes to `plus_cached_state` could trigger unnecessary protection or VPN restarts [#6186](https://github.com/AdguardTeam/AdguardForAndroid/issues/6186)
+
+## Corelibs (Filtering engine)
+* CoreLibs updated to v1.23.0 [#6212](https://github.com/AdguardTeam/AdguardForAndroid/issues/6212)
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.14 Beta 1
 
 - Published: 2026-09-03T14:29:09Z
@@ -4652,137 +4700,3 @@ Recently we claimed to make the last release of the year, and it kinda was that.
 
 - [Fixed] The protection doesn't start autimatically if you restart the phone right after checking for filter updates #3286
 - [Fixed] Stealth Mode configuration isn't saved after app update #3287
-
-## 3.3 Release
-
-- Published: 2019-12-26T13:21:38Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.228
-
-The last AdGuard for Android release of the decade! This sounds solid. Anyway, it’s more of a coincidence than anything else that such a massive update falls right on Christmas. And don’t get us wrong: it is massive. Multiple major features and over 50 lesser ones — all in all it combines to make a nice Christmas gift for y’all!
-
-**[Improved] Filtering engine**
-
-Version 3.3 brings scriptlets and `$redirect` modifiers support. Scriptlets is a powerful ad-blocking tool that helps to block ads on websites that use different circumvention techniques. `$redirect` modifier is another tool that allows substituting an ad with special ‘resources’ instead of blocking it. For instance, it can replace a banner with a transparent 1x1 image.
-
-**[Changed] The onboarding process #2895**
-
-We sure love us some redesign! This time, we revamped the onboarding sequence (basically, what you see when you launch the app for the first time). Key changes:
-
-- An option to choose a ‘quick’ or a ‘long’ configuration: you’ll be asked to either make only key decisions or set most of the settings manually
-- New option to allow sending some technical and interaction information that will help us further improve AdGuard
-- Better graphics!
-
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/welcome.png" width="300"> <img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.3/create_vpn.png" width="300">
-
-**[Added] New activation flow #2901**
-
-Not a lot of Android users had a chance to see our AdGuard for iOS app, so they likely don’t know about the system that’s being used there for Premium features activation. But it recommended itself as one that’s convenient for users, so we adopted it for AdGuard for Android too.
-
-<img src="https://cdn.adguard.com/public/Adguard/screenshots/android/activation_En_account.png?123" width="300"> <img src="https://cdn.adguard.com/public/Adguard/screenshots/android/activation_en_license.png" width="300">
-
-As you can see, there are now two options: enter a license key directly, or log into AdGuard personal account. If your account has a license key that can be used to activate Premium, it will get picked up automatically after you enter credentials.
-
-### Ad blocking
-
-- [Added] Preset Stealth Mode settings configurations #2625
-- [Added] abp:subscribe and adguard:subscribe links interception #2918
-- [Added] subscribe.adblockplus.org links interception #2930
-- [Changed] Internet connection availability checking method #3095
-- [Changed] Whale browser has been added to the known browsers list #3175
-- [Fixed] DNS User filter import bug #2972
-- [Fixed] Some legit hosts lists are not recognized as valid #2982
-- [Fixed] Error while checking updates of resources added from the local storage #2997
-- [Fixed] Quick Settings does not allow to choose a different Privacy protection Level #2768
-- [Fixed] “Exclude from filtering” button behavior #3052
-- [Fixed] Google Now can’t be updated with “Always-on-VPN” enabled #3039
-- [Fixed] AdGuard Extra enables automatically when there’s an available update #3216
-- [Fixed] The application causes a crash if custom filters were enabled #3258
-- [Fixed] AdGuard breaks some UDP connections on Samsung S10 devices with Android 10 #3259
-- [Improved] AdGuard now uses on-the-fly methods of applying settings changes without restarting the protection when possible #2881
-- [Improved] DNS filtering to block cloaked trackers #3228
-- [Improved] “Block phishing and malware” option now is enabled automatically when Premium gets activated #3249
-- [Improved] Now AdGuard can block AAAA requests in networks without IPv6 interface #3197
-
-### UI
-
-- [Added] An option to purchase a new license via the app #2897
-- [Added] Trial period and license activation via OAuth #3081, #3244
-- [Added] Whitelisting apps option to the Assistant dialog #2853
-- [Added] “On/Off” switch on some screens #2877
-- [Added] Notifications about certificate errors #2722
-- [Added] Ability to copy the current version number by tapping on it #2773
-- [Added] Link to Version history in the About tab #2774
-- [Added] System default theme option #2174
-- [Added] Silent update action as a long-tap on the update button #2890
-- [Added] “Failed to move the certificate” notification for rooted devices with Magisk firmware #2941
-- [Added] Empty field validation when adding a new extension #2983
-- [Added] “Refresh license status” button #2988
-- [Added] Restore purchases button: a notification if there’s nothing to restore #2990
-- [Changed] The imported filter list’s URL now won’t be stored if a content: link was used #2813
-- [Changed] Chrome custom tabs now open in the same window #3019
-- [Changed] Premium screens now can be viewed without Premium #2843
-- [Changed] Update notifications behavior #2922
-- [Changed] DNS request type is now displayed in the Filtering log even when there's no answer #2961
-- [Changed] Tap on filter category titles in search will bring you to the respective category’s screen #3035
-- [Changed] Toast notifications parameters #3087
-- [Changed] Proxy screen UI #3092
-- [Changed] AdGuard now remembers the selected type of data to display in Apps Management #3140
-- [Changed] Phrasing on activation screens #3141
-- [Changed] “Clear DNS statistics” warning description #3194
-- [Changed] Improve the in-app purchase design #3252
-- [Fixed] Minor UI issues #2879
-- [Fixed] Issue with distribution graphs on the main screen #2935
-- [Fixed] Search on Apps Managements screen is working slow #2951
-- [Fixed] Unexpected connections resets #2980
-- [Fixed] Incorrect filter locale is displayed after language change #2971
-- [Fixed] Scrolling issue in the Filtering log #2974
-- [Fixed] Wrong filters status is shown #2987
-- [Fixed] Incorrect updates status when the network is not available #3020
-- [Fixed] “Preparing to start protection” notification #3034
-- [Fixed] “Edit Filter” overlay bug #3045
-- [Fixed] Divider stripe is still shown when there are no updates available #3047
-- [Fixed] Cloudflare DNS description #3062
-- [Fixed] Wrong Chinese date format #3068
-- [Fixed] Application updates icon #3098
-- [Fixed] Missing button shadow #3109
-- [Fixed] Some buttons in the first start dialog boxes can’t be seen on certain device models #3114
-- [Fixed] The switch for Custom filters incorrectly represents the state of the filter group #3119
-- [Fixed] Pressing the “Buy one more license” button closes the current screen #3136
-- [Fixed] Certificate installation dialog is missing #3176
-- [Fixed] Wrong toast notification is displayed when the license expires #3183
-- [Fixed] “Missed ad” option in the Feedback section leads to an error if DuckDuckGo is selected as the default browser #3128
-- [Improved] HTTPS filtering-related UI changes #2896
-- [Improved] UI elements are now focusable on Android TV #2818
-- [Improved] Rich formatting added to some modules’ descriptions #2878
-- [Improved] Phrasing on onboarding screens #3248
-- [Improved] Phrasing in the Apps Management details activity #3250
-- [Improved] Localizations have been updated: #3271, #3188, #3161
-
-### Networking
-
-- [Added] A prevention system for connections overflow #2989
-- [Added] TLS v1.3 support for custom DNS servers #3132
-- [Changed] DNS-over-HTTPS connections number limit has been abolished #3224
-- [Fixed] Some apps don't see available WiFi networks when AdGuard local VPN is up #2836
-- [Improved] Interaction between AdGuard DNS settings and Private DNS #2797
-- [Improved] AdGuard’s network safety and stability #2995
-- [Improved] Connection error processing #3195
-
-### Other
-
-- [Added] Whitelist export feature #3069
-- [Fixed] Update window appears after a short inactivity period #3055
-- [Fixed] Userscripts updates are not tracked by the battery service #3073
-- [Fixed] AdGuard 3.2 does not launch #3076
-- [Fixed] “Include license data” option works incorrectly when you try to export settings #3067
-- [Fixed] Crash when the app runs scheduled tasks #3164
-- [Fixed] Crash in the Updates activity #3165
-- [Fixed] Crash when Android OS tries to load the icon #3166
-- [Fixed] Crash on some Android builds #3167
-- [Fixed] Crash in the main activity #3168
-- [Fixed] Crash when user communicates with the extensions activity #3171
-- [Fixed] Crash when the log is being collected #3212
-- [Fixed] Crash on MIUI phones with Ultra battery saver #3210
-- [Fixed] Max imported settings file size increased to 10 Mb #3203
-- [Improved] Target SDK level has been changed to 29 #3053
-- [Improved] CoreLibs has been updated to v1.5.74 #3105
