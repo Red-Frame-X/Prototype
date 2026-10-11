@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610111902
+! Version: 202610120434
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -2578,6 +2578,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||daily-necessities.net^$document
 ||daily-tips-library.com^$document
 ||daily-trendy.com^$document
+||dailycue.site^$document
 ||dailynews24.jp^$document
 ||dailytopic.jp^$document
 ||daimarubb.com^$document
@@ -4661,6 +4662,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||haskey.xyz^$document
 ||hatibunme.com^$document
 ||hatima.doorblog.jp^$document
+||haveibeenpawned.com^$document
+||haveibeenpned.com^$document
 ||havespi.jp^$document
 ||hawkssoul.com^$document
 ||haxnode.net^$document
@@ -5267,6 +5270,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||internetexpo.net^$document
 ||inthadoor.com^$document
 ||intilabs.com^$document
+||intivesearch.com^$document
 ||intuit.me^$document
 ||inuneko-media.com^$document
 ||inutomo11.com^$document
@@ -11852,6 +11856,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||usdeptreasury-gov.netlify.app^$document
 ||usern.me^$document
 ||usersuper.ru^$document
+||useusd.com^$document
 ||usimmigration-assistance.com^$document
 ||usj-joho.blog.ss-blog.jp^$document
 ||uslifeblog.com^$document
@@ -12353,6 +12358,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ww38.vanced.app^$document
 ||ww4.fmovies.co^$document
 ||ww547.expo2025-personalagent.com^$document
+||ww547.haveibeenpawned.com^$document
 ||ww9.fitgirl-repacks.xyz^$document
 ||wwrbbuk.bar^$document
 ||wwv-fmovies.com^$document
@@ -13148,6 +13154,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.haruyukiworld.com^$document
 ||www.hashi-okiraku.top^$document
 ||www.haute-c.jp^$document
+||www.haveibeenpwnned.com^$document
 ||www.haydarpasamun.org^$document
 ||www.hb-consulting.jp^$document
 ||www.hdojinkan.com^$document
