@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610120434
+! Version: 202610120934
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -4875,6 +4875,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hitomi-rawhentai.com^$document
 ||hitomi-rawhentai06.com^$document
 ||hitomi-vg.com^$document
+||hitomi.cloudfree.jp^$document
 ||hitomi.median-net.jp^$document
 ||hitomi.momonga-raw.com^$document
 ||hitomi.raw.cfbx.jp^$document
