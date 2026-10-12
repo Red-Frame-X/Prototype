@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610120934
+! Version: 202610121953
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -6293,7 +6293,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||lemon-humming.com^$document
 ||lemonso-da.hatenablog.com^$document
 ||lenclosduruisseau.re^$document
-||les-koko.com^$document
 ||les.wpx.jp^$document
 ||lesac.ru^$document
 ||lestermods.com^$document
@@ -9148,6 +9147,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||petitmana.jp^$document
 ||petitwings.com^$document
 ||pewtalk.nl^$document
+||pfcj.site^$document
 ||pgpm.jp^$document
 ||phas.today^$document
 ||philadelphiaple.amebaownd.com^$document
@@ -9382,7 +9382,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||private-note.jp^$document
 ||privatevpn.com^$document
 ||pro-woodfactory.com^$document
-||pro^$document,to=~site.pro|~sitechecker.pro|~polylang.pro|~salebot.pro|~keenetic.pro|~webd.pro|~online.pro|~opus.pro|~awan.pro|~landbot.pro|~quiknode.pro|~hashvault.pro|~divisare.pro|~ansur.pro
+||pro^$document,to=~site.pro|~sitechecker.pro|~polylang.pro|~salebot.pro|~keenetic.pro|~webd.pro|~online.pro|~opus.pro|~awan.pro|~landbot.pro|~quiknode.pro|~hashvault.pro|~divisare.pro|~ansur.pro|~tb.pro
 ||product.info^$document
 ||product.torex.com.cn^$document
 ||production-cdn.site^$document
