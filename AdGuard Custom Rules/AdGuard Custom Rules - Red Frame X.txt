@@ -62,7 +62,7 @@ chatgpt.com##[data-prompt-textarea-header]
 ! PC向けのインストリーム動画広告枠を非表示
 ! daily-gadget.net##.JP_DGG_pc_video_instream_cls
 ! 上記のルール群を1行で記述する場合
-daily-gadget.net##div[class^="JP_DGG_"][class$="_cls"]
+! daily-gadget.net##div[class^="JP_DGG_"][class$="_cls"]
 
 ! doubleclick.net
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避
