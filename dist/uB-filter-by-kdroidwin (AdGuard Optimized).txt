@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610160841
+! Version: 202610170837
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -2649,6 +2649,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||deepaksawant.org^$document
 ||deepcoder.online^$document
 ||deeps.me^$document
+||deepseek.net^$document
+||deepseeks.org^$document
 ||deerspa.com/products^$document
 ||deets.feedreader.com^$document
 ||deeya.sn^$document
@@ -7798,6 +7800,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||nikonikostudio.jp^$document
 ||nilebasin.org^$document
 ||nina.webapp.pink^$document
+||ninja-weekly-public.soloninjakun.workers.dev^$document
 ||ninnintrends.com^$document
 ||ninnkidoujinnavnyki.com^$document
 ||ninohe-shakyo.jp^$document
