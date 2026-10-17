@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610180251
+! Version: 202610180808
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -12,7 +12,6 @@
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
-www.google.*#?##main div > div[data-hveid]:not([class]) div[class] > div[class]:has-text(HOT ! )
 .buzz/*/?*=*&*=*&*=*&*=*&*=$doc
 .life/*/?*=*&*=*&*=*&*=*&*=$doc
 .live/*/?*=*&*=*&*=*&*=*&*=$doc
@@ -225,6 +224,7 @@ thepiratebay.org#?#li#st.list-entry:-abp-has(> .item-type:-abp-contains(/Applica
 thepiratebay.org#?#li#st.list-entry:-abp-has(> .item-type:-abp-contains(/Games/))
 uptodown.com##.active.xapk.download.button
 uptodown.com##.instructions-list
+www.google.*#?##main div > div[data-hveid]:not([class]) div[class] > div[class]:has-text(HOT ! )
 www.missav-j.com###player-download-btn
 www.nijioma.blog##.eye-catch-wrap
 [$url=||www.privacytools.io/encrypted-cloud-storage*]##div.container:nth-of-type(3)
@@ -6333,6 +6333,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||lifetopiccom.com^$document
 ||lifunas.com^$document
 ||lightofhopealliance.org^$document
+||liginc.co.jp^$document
 ||ligshtshot.site^$document
 ||liguelabatt.com^$document
 ||lih.co.jp^$document
@@ -14542,6 +14543,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||xn--qckd9k4cxb.jp^$document
 ||xn--raw-o73b7joe.jp^$document
 ||xn--t8j4aa4n0jya5ppmn86v8fgvn6h1n6c.com^$document
+||xn--t8j4aa4nyhsgsjubwec3286neitd.com^$document
 ||xn--t8jwa5c5a4ox83wkr7axhya.com^$document
 ||xn--u8jvc1drbz972aywbk0by95ffo1aqm1c.com^$document
 ||xn--u9j432gnvi3ia422j.com^$document
