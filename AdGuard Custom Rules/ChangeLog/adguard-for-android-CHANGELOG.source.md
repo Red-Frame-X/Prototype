@@ -3,6 +3,59 @@
 > Source: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > Generated from official GitHub Releases; newest release first.
 
+## 4.15
+
+- Published: 2026-10-19T15:46:27Z
+- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15
+
+AdGuard for Android v4.15 is a small update focused on usability improvements and bug fixes. While this release doesn’t introduce major new functionality, it brings a few long-requested enhancements designed to make everyday use of AdGuard more convenient.
+
+## Temporary protection pauses
+
+One of these improvements is the new option to temporarily pause protection. When disabling protection, you can now choose to have it automatically turn back on after 30 seconds, 2 minutes, or 5 minutes.
+
+![Pause protection *mobile](https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.15/pause-protection-en.png)
+
+This feature is particularly useful when you need to check whether a website, app, or network issue is related to filtering. Instead of disabling protection and having to remember to turn it back on later, you can set a timer and allow AdGuard to restore protection automatically. It’s a small quality-of-life improvement, but one that can save time and help ensure you don’t accidentally leave your device unprotected after a quick test or troubleshooting session.
+
+## Changelog
+
+### Improvements
+* Added pause protection for Android
+* Added faster navigation in Recent activity
+* Improved the update checker to ensure it also detects newer versions of the AdGuard app [#6180](https://github.com/AdguardTeam/AdguardForAndroid/issues/6180)
+* Added HTTPS filtering support for Titanium Browser [#6172](https://github.com/AdguardTeam/AdguardForAndroid/issues/6172)
+* Optimized Samsung Pay service detection to prevent unnecessary background activity on devices where Samsung Pay is not installed [#6206](https://github.com/AdguardTeam/AdguardForAndroid/issues/6206)
+
+### Fixes
+* Huawei TileService is not recreated after changing the app’s status
+* A grey line is visible when playing a video in fullscreen mode in Private browser
+* The proxy enable/disable button notification doesn’t disappear after enabling Integration mode
+* The video doesn’t pause when switching from AdGuard player to YouTube
+* DNS protection on Android TV could unexpectedly turn itself off after updating to v4.13 [#6149](https://github.com/AdguardTeam/AdguardForAndroid/issues/6149)
+* Custom filters and Custom DNS filters appear as updated during every update check [#6153](https://github.com/AdguardTeam/AdguardForAndroid/issues/6153)
+* AdGuard intermittently stops blocking domains included in DNS filters [#6164](https://github.com/AdguardTeam/AdguardForAndroid/issues/6164)
+* A duplicate `lastpass.com` entry in the default HTTPS allowlist [#6189](https://github.com/AdguardTeam/AdguardForAndroid/issues/6189)
+* Excessive memory usage in certain scenarios [#6002](https://github.com/AdguardTeam/AdguardForAndroid/issues/6002)
+* Changes to `plus_cached_state` could trigger unnecessary protection or VPN restarts [#6186](https://github.com/AdguardTeam/AdguardForAndroid/issues/6186)
+
+## Corelibs (Filtering engine)
+* CoreLibs updated to v1.23.0 [#6212](https://github.com/AdguardTeam/AdguardForAndroid/issues/6212)
+
+## DnsLibs (DNS filtering engine)
+* DnsLibs updated to v2.10.2 [#6221](https://github.com/AdguardTeam/AdguardForAndroid/issues/6221)
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.14.2
 
 - Published: 2026-09-25T11:51:52Z
@@ -4690,13 +4743,3 @@ In this small update, there’s only one but important fix and a few additions t
 
 * [Fixed] Protection doesn’t restart when an excluded app is installed #3340
 * [Changed] The list of HTTPS exclusions has been updated
-
-## 3.3.1 Release
-
-- Published: 2019-12-30T11:11:34Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.229
-
-Recently we claimed to make the last release of the year, and it kinda was that. Ignore that this update is called a 'release', it's more of a 'hotfix'. Because you wouldn't call this tiny hotfix a release, right? Just a couple of bugsfixes, that's all.
-
-- [Fixed] The protection doesn't start autimatically if you restart the phone right after checking for filter updates #3286
-- [Fixed] Stealth Mode configuration isn't saved after app update #3287
