@@ -4,8 +4,8 @@
       "product": "AdGuard Browser Extension",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases/latest",
       "latest_version": "5.5.3.3",
-      "sha256": "32ba667161a6113533bb348570c33bd1705ef053adfc513c94ef46db7d60a52d",
-      "checked_at": "2026-10-18T21:26:26+00:00",
+      "sha256": "8414d20a99d01bd5bd0217601dd0e4f25a1952ed0795e208e23a1c0885d349b0",
+      "checked_at": "2026-10-19T22:52:53+00:00",
       "converter_relevant_entries": [
         "In this release we’ve added AdGuard’s Manifest V3 (MV3) Browser Extension to Microsoft Edge.",
         "But this doesn’t mean AdGuard is leaving the store. This is where our MV3 version comes in.",
@@ -28,14 +28,18 @@
     {
       "product": "AdGuard for Android",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases/latest",
-      "latest_version": "4.14.2",
-      "sha256": "892ee4b9da78a7726e9a2531bc6c8182074258b0d2d9351c4d7af6cbb7c7a39e",
-      "checked_at": "2026-10-18T21:26:26+00:00",
-      "converter_relevant_entries": [],
+      "latest_version": "4.15",
+      "sha256": "8cb6c355b1451d2cf9a3bbeb76d4b8e5ecd24de8fdf2a5f1730ef4ad65d2720b",
+      "checked_at": "2026-10-19T22:52:53+00:00",
+      "converter_relevant_entries": [
+        "## Corelibs (Filtering engine)",
+        "* CoreLibs updated to v1.23.0 [#6212](https://github.com/AdguardTeam/AdguardForAndroid/issues/6212)",
+        "## DnsLibs (DNS filtering engine)"
+      ],
       "automatic_code_changes": false,
       "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests.",
-      "release_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14.2",
-      "published_at": "2026-09-25T11:51:52Z"
+      "release_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15",
+      "published_at": "2026-10-19T15:46:27Z"
     }
   ]
 }
