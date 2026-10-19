@@ -8,7 +8,7 @@ Linux Mintに関する導入、設定、運用、バックアップ、トラブ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202610191903 |
+| **Version** | 202610191905 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -92,7 +92,7 @@ NVIDIA GPUを使う場合は、導入後に **Driver Manager** で利用可能�
 
 入口はLenovo公式の[個人向けシステム用Linux](https://lenovo.com/linux)です。この入口は[公式サポートの同資料（PD031426）](https://support.lenovo.com/us/en/solutions/pd031426)へ転送されます。[日本語版の同資料（PD031426）](https://support.lenovo.com/jp/ja/solutions/pd031426)も参照できます。
 
-> **確認上の制約**：今回、公式ページの転送先と日本語版URLを確認しましたが、取得できたページ本文には対応一覧が表示されず、ブラウザでは双方とも403（アクセス拒否）になりました。検索結果にはThinkPad、ThinkStation、その他のノートPC、Ubuntu、Fedora、Red Hat、SUSE等の記載が表示されましたが、一覧本文を確認できていません。個別機種・OSバージョン・掲載範囲は未確認であり、検索結果だけで対応機種を確定していません。
+> **確認上の制約**：今回、公式ページの転送先と日本語版URLを確認しましたが、取得できたページ本文には対応一覧が表示されず、ブラウザでは双方とも403（アクセス拒否）になりました。検索結果にはThinkPad、ThinkStation、その他のノートPC、Ubuntu、Fedora、Red Hat、SUSE等の記載が表示されましたが、一覧本文を確認できていません。個別機種・OSバージョン・掲載範囲は未確認であり、検索結果だけで対応機種を確定していません。提供された日本語ページの保存ソースも確認しましたが、本文データは空で、別のJavaScriptから読み込む構成でした。その公式ファイルもアクセス拒否となったため、保存ソースからも一覧を確認できていません。
 
 一覧を開ける環境では、ThinkPad、ThinkStation、その他Lenovo製PCをそれぞれ探し、Ubuntu、Fedora、Red Hat Enterprise Linux（RHEL）、その他のLinuxの**どの版・構成が対象か**を読みます。ブランド全体や、他のLinuxの掲載をUbuntu対応へ読み替えないでください。空欄・未掲載だけを根拠に「動かない」と断定することもできません。
 
