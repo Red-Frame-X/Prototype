@@ -173,6 +173,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 
 ### 特殊用途
 * **[Chromebook リカバリ ユーティリティ](https://chromewebstore.google.com/detail/chromebook-%E3%83%AA%E3%82%AB%E3%83%90%E3%83%AA-%E3%83%A6%E3%83%BC%E3%83%86%E3%82%A3%E3%83%AA%E3%83%86%E3%82%A3/pocpnlppkickgojjlmhdmidojbmbodfm?hl=ja)**：リカバリメディアを作成するGoogle公式ツール。
+  * **[ChromeOS Flex インストール ガイド](https://support.google.com/chromeosflex/answer/11552529?hl=ja)**（Google公式）
 
 **参考サイト**
 * [Kami-Browser-Add-on｜Kdroidwin](https://github.com/Kdroidwin/Kami-Browser-Add-on)
