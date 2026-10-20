@@ -1332,7 +1332,7 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
 ※ 実態はDNSブロッカーのため、ABP形式の構文（`||example.com^`）には対応していません。
 
 **! 購読済みのDNSブロックリスト・hostsファイル**
-* HaGeZi's Multi NORMAL
+* HaGeZi's Multi NORMAL - all-round protection
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
