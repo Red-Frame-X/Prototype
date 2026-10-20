@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# 作業ツリーの未ステージ修正で、コミット対象の不備が隠れないようにする。
+repo_root="$(git rev-parse --show-toplevel)"
+tmp_dir="$(mktemp -d)"
+trap 'rm -rf "$tmp_dir"' EXIT
+git checkout-index --all --prefix="$tmp_dir/"
+if [[ ! -d "$repo_root/node_modules" ]]; then
+  echo 'Markdown検査には npm ci が必要です。' >&2
+  exit 1
+fi
+ln -s "$repo_root/node_modules" "$tmp_dir/node_modules"
+cd "$tmp_dir"
+npm run lint:markdown
