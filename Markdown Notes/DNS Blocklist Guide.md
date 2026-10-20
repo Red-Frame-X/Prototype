@@ -108,7 +108,7 @@ HaGeZiの主要なMultiリストは Multi LIGHT / Multi NORMAL / Multi PRO / Mul
 
 ## 2. AdGuard for Android / personalDNSfilter 向け厳選リスト
 
-ここでは保守元、形式、利用環境との互換性が明確な候補を1つずつ示します。「最適」は端末性能、必要なサービス、誤ブロックの許容度で変わるため、ログを確認しながら選択してください。
+ここでは保守元、形式、利用環境との互換性が明確な基本候補と、脅威対策を補う追加候補を示します。「最適」は端末性能、必要なサービス、誤ブロックの許容度で変わるため、ログを確認しながら選択してください。
 
 ### AdGuard DNS filter（AdGuard for Android向け）
 AdGuard公式がメンテナンスする、DNSブロッキング特化のリストです（SDNSFilter）。
@@ -127,6 +127,21 @@ HaGeZiのMultiリストは、調査時点で Multi LIGHT / Multi NORMAL / Multi 
 * **メリット**：許可リストと偽陽性対応の仕組みが公開され、domains-onlyを含む複数形式からクライアントに合うものを選べます。
 * **デメリット**：Multi ULTIMATEなどの最も強力なバージョンを使用すると、スマートフォンのバックグラウンド通信やアプリの正常な挙動を阻害する「過剰ブロック」の可能性が高まります。そのため、ブロック率と安定性のバランスが取れた「Multi NORMAL」から開始し、必要に応じて調整するのが安全です。
 
+### HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)
+
+脅威対策を補うTIFのmedium版です。[HaGeZi公式README](https://github.com/hagezi/dns-blocklists#tifmedium)では、フル版を扱いにくいブラウザ・モバイル向けブロッカー用に、主要なフィードへ絞った版として案内されています。
+
+* **AdGuard for Android用（Adblock形式）**：
+  ```
+  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.medium.txt
+  ```
+* **personalDNSfilter用（Domains only形式）**：
+  ```
+  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif.medium-onlydomains.txt
+  ```
+
+同じmedium版の配布形式が異なるため、使用するアプリに合うURLを選びます。
+
 ---
 
 ## 3. アプリ別の構成例
@@ -143,6 +158,15 @@ HaGeZiのMultiリストは、調査時点で Multi LIGHT / Multi NORMAL / Multi 
 * **メリット**：単純な入力形式で、AdGuard/ABP固有構文の互換性を考慮する必要がありません。
 * **デメリット**：ダウンロードするリスト自体には例外ルールを含められないため、例外が必要な場合はpersonalDNSfilterの `additionalHosts.txt` 側で個別に管理します。公式の `additionalHosts.txt` 例では、`!` によるホワイトリスト、`*` ワイルドカード、`>` によるカスタムIPマッピングがサポートされています。これはAdblock Plusの `@@||example.com^` 等とは別のpersonalDNSfilter独自構文です。
 * **競合時の優先順位**：公式サンプルでは、カスタムIPマッピング → ワイルドカードなしの明示的なblacklist / whitelist → ワイルドカードblacklist / whitelist → ダウンロード済みblocklist の順で優先されます。
+
+### TIF mediumで脅威対策を補う場合
+
+上記の基本構成に脅威対策を追加する場合は、セクション2の **「HaGeZi's Threat Intelligence Feeds - medium version」** を追加候補にします。
+
+* **AdGuard for Android**：「DNS通信を保護 > DNSフィルタ」にAdblock形式の `adblock/tif.medium.txt` を追加します。
+* **personalDNSfilter**：購読するDNSブロックリストにDomains only形式の `wildcard/tif.medium-onlydomains.txt` を追加します。
+
+追加後はログと普段使うアプリの動作を確認し、問題があればTIF mediumを一時的に無効にして原因を切り分けます。
 
 ---
 
