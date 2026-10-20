@@ -2,6 +2,8 @@
   "name": "prototype-filter-tooling",
   "private": true,
   "scripts": {
+    "hooks:install": "git config --local core.hooksPath .githooks",
+    "lint:markdown:fix": "markdownlint-cli2 --fix",
     "lint:adguard": "aglint \"dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt\" \"AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt\" \"AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt\"",
     "lint:markdown": "markdownlint-cli2"
   },
