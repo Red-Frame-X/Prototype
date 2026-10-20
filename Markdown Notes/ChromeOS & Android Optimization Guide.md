@@ -1017,6 +1017,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 * [サイトはダウンしている？](https://www.websiteplanet.com/ja/webtools/down-or-not/)
 * [Yahoo!リアルタイム検索](https://search.yahoo.co.jp/realtime/)
 * [GitHub Status](https://www.githubstatus.com/)
+* [JP Incident Monitor｜日本のサイバーインシデント](https://elkentaro.github.io/jp_incidents/)：日本の組織に関する公表済みのサイバーインシデント情報を集約。
 * [5chサーバ稼働状況](https://www.kyodemo.net/sdemo/k/5_?hs=1)
 * [偽 SPARROW AIM-7P Ver.1.00](https://5ch.ape.jp/SPARROW/)
 
