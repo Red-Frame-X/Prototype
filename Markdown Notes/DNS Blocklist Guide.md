@@ -10,7 +10,7 @@ DNSブロックリストのガイド
 | **License** | CC0-1.0 |
 | **Version** | 202610210009 |
 
-ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
+ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
 ---
 
@@ -19,7 +19,7 @@ DNSブロックリストのガイド
 
 ### はじめに：DNSとブロックリストを知る
 
-**DNS（Domain Name System）** は、インターネット上の名前を調べる仕組みです。たとえば **ドメイン** は `example.com` のような名前で、接続先の名前（ホスト名）として使われます。アプリが接続するときは、通常、この名前から **IPアドレス（通信先を示す数値の住所）** を調べます。この処理を **名前解決** と呼び、問い合わせを受けて調べるDNSサーバーを **DNSリゾルバ** と呼びます。[DNSの基本仕様](https://www.rfc-editor.org/rfc/rfc1034.html)
+**DNS（Domain Name System）** は、インターネット上の名前を調べる仕組みです。たとえば **ドメイン** は `example.com` のような名前で、接続先の名前（ホスト名）として使われます。アプリが接続するときは、通常、この名前から **IPアドレス（通信先を示す数値の住所）** を調べます。この処理を **名前解決** と呼び、問い合わせを受けて調べるDNSサーバーを **DNSリゾルバ** と呼びます。 [DNSの基本仕様](https://www.rfc-editor.org/rfc/rfc1034.html) 
 
 **DNSブロック** は、この名前解決の段階で、接続させたくない名前への応答を制御する方法です。**DNSブロックリスト（blocklist／遮断リスト）** は、その判定に使うドメインやルールの一覧です。**フィルタ** は、通信を許可・遮断するためのルール、またはルール集を指します。**allowlist（許可リスト）** は、遮断対象から外すための例外です。例外の優先順位は製品と構文に従います。
 
@@ -75,7 +75,7 @@ DNSフィルタがブロックリスト・例外と照合
   └─ 対象である → 遮断用の応答など → 接続を防ぐ
 ```
 
-これは代表的な流れを示す図です。端末内で判定するか、DNSサーバー側で判定するか、問い合わせと応答のどちらを調べるかは実装で異なります。キャッシュ（以前の回答の一時保存）や既存の接続があると、操作のたびに新しいDNS問い合わせが発生するとは限りません。NXDOMAINは「名前が存在しない」、REFUSEDは「問い合わせを拒否」というDNS応答コードです。[AdGuardの構文と応答制御](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
+これは代表的な流れを示す図です。端末内で判定するか、DNSサーバー側で判定するか、問い合わせと応答のどちらを調べるかは実装で異なります。キャッシュ（以前の回答の一時保存）や既存の接続があると、操作のたびに新しいDNS問い合わせが発生するとは限りません。NXDOMAINは「名前が存在しない」、REFUSEDは「問い合わせを拒否」というDNS応答コードです。 [AdGuardの構文と応答制御](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md) 
 
 ### DNSブロックでできること / できないこと
 
@@ -126,7 +126,7 @@ AdGuard公式のDNS filtering syntaxでは、Adblock-style、`/etc/hosts`、doma
 
 ### 3形式の早見表
 
-以下は[AdGuard公式構文](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)と[personalDNSfilterの判定処理](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/BlockedHosts.java)に基づく比較です。ABPはAdblock Plus由来の構文を指し、DNS製品がブラウザ向け機能すべてに対応するという意味ではありません。
+以下は [AdGuard公式構文](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md) と [personalDNSfilterの判定処理](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/BlockedHosts.java) に基づく比較です。ABPはAdblock Plus由来の構文を指し、DNS製品がブラウザ向け機能すべてに対応するという意味ではありません。
 
 | 観点 | Hosts形式 | Domains only | Adblock-style / ABP系DNS構文 |
 | :--- | :--- | :--- | :--- |
@@ -173,7 +173,7 @@ personalDNSfilterでは、購読リストにも親ドメイン照合が適用さ
 | アプリ互換性 | 普段のログイン、通知、決済などが動くか。利用者の環境でも結果が変わる |
 | 端末負荷・クライアントの処理能力 | 更新・索引作成・検索の実装、メモリ、ストレージによって扱える規模が異なる |
 
-「最大」「Ultimate」は、すべての環境で快適になるという保証ではありません。広告と正常な機能が通信先を共有していると、ログイン、プッシュ通知、決済、CDN（画像や動画などを各地のサーバーから配信する仕組み）、アプリ内コンテンツ、API（アプリとサービスがデータをやり取りする窓口）まで止まる場合があります。[HaGeZiの強度・機能破損リスク](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#cheat_multi)
+「最大」「Ultimate」は、すべての環境で快適になるという保証ではありません。広告と正常な機能が通信先を共有していると、ログイン、プッシュ通知、決済、CDN（画像や動画などを各地のサーバーから配信する仕組み）、アプリ内コンテンツ、API（アプリとサービスがデータをやり取りする窓口）まで止まる場合があります。 [HaGeZiの強度・機能破損リスク](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#cheat_multi) 
 
 最初は控えめな構成で、普段使う機能が動くか確認します。強度を上げる場合も1つずつ変更し、変更前後のログと使い勝手を比較してください。
 
@@ -192,7 +192,7 @@ HaGeZiの主要なMultiリストは Multi LIGHT / Multi NORMAL / Multi PRO / Mul
 4. 不具合時は直前の追加を一時的に戻し、どのリストで何が遮断されたか調べる。
 5. 例外が他のリストにも効くか確認する。ルール優先順位により、許可を追加するだけで復旧するとは限らない。
 
-重複除去の有無やメモリへの影響はクライアント次第です。統合後に重複が消えても、ダウンロード・更新時の処理が不要になるわけではありません。[HaGeZiの併用方針](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#quickguide)
+重複除去の有無やメモリへの影響はクライアント次第です。統合後に重複が消えても、ダウンロード・更新時の処理が不要になるわけではありません。 [HaGeZiの併用方針](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#quickguide) 
 
 
 ---
@@ -204,16 +204,19 @@ HaGeZiの主要なMultiリストは Multi LIGHT / Multi NORMAL / Multi PRO / Mul
 ### AdGuard DNS filter（AdGuard for Android向け）
 AdGuard公式がメンテナンスする、DNSブロッキング特化のリストです（SDNSFilter）。
 
-* **購読用URL**：[AdGuard DNS filter（Optimized）](https://filters.adtidy.org/android/filters/15_optimized.txt)
+* **購読用URL**：AdGuard DNS filter（Optimized）
+  ```
+  https://filters.adtidy.org/android/filters/15_optimized.txt
+  ```
 
 * **メリット**：AdGuard DNSフィルタリング向けに保守され、ブロックと例外をAdGuardのDNSフィルタ構文で配布しています。AdGuard製品との構文互換性を確認しやすい候補です。
 * **デメリット**：personalDNSfilterなど、AdGuardのAdblock-style DNS構文をそのまま解釈する設計ではない他社製アプリへ投入すると、意図した例外・修飾子が反映されない可能性があります。利用先が受理する形式へ合わせる必要があります。
 
 #### AdGuardアプリ・DNSサービス・ブラウザ用フィルタの関係
 
-AdGuard for Androidはフィルタを読み込んで処理するアプリ、AdGuard DNS filterはそのDNS保護で利用できるルール集、AdGuard DNSはDNSサービスです。3つは別のものです。[公式DNS保護説明](https://github.com/AdguardTeam/KnowledgeBase/blob/master/docs/adguard-for-android/features/protection/dns-protection.md)
+AdGuard for Androidはフィルタを読み込んで処理するアプリ、AdGuard DNS filterはそのDNS保護で利用できるルール集、AdGuard DNSはDNSサービスです。3つは別のものです。 [公式DNS保護説明](https://github.com/AdguardTeam/KnowledgeBase/blob/master/docs/adguard-for-android/features/protection/dns-protection.md) 
 
-SDNSFilterの[公式README](https://github.com/AdguardTeam/AdGuardSDNSFilter)は、Base / Tracking Protection / Mobile Ads / EasyList / EasyPrivacyなどをDNS向けに簡略化したフィルタと説明しています。ブラウザ用フィルタ全体をそのままDNSで使う構成ではありません。基本の広告ブロック構文への対応が必要で、ドメインだけ抽出すると例外などの意味を失う可能性があります。
+SDNSFilterの [公式README](https://github.com/AdguardTeam/AdGuardSDNSFilter) は、Base / Tracking Protection / Mobile Ads / EasyList / EasyPrivacyなどをDNS向けに簡略化したフィルタと説明しています。ブラウザ用フィルタ全体をそのままDNSで使う構成ではありません。基本の広告ブロック構文への対応が必要で、ドメインだけ抽出すると例外などの意味を失う可能性があります。
 
 AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別します。AndroidでもDNS用の入力欄で使います。ただし、共通文書に載る `$client` などの一部修飾子はHome / DNS専用です。ブラウザ用の要素非表示ルールはDNS欄へ追加しません。
 
@@ -221,7 +224,10 @@ AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別し�
 HaGeZiのMultiリストは、調査時点で Multi LIGHT / Multi NORMAL / Multi PRO / Multi PRO++ / Multi ULTIMATE の5段階が提供されています。公式READMEではおおむね、Lightは最小限、Multi NORMALは緩やか〜バランス、Proはバランス、Pro++はバランス〜攻撃的、Ultimateは攻撃的という位置付けで、強度が上がるほど機能破損のリスクも高くなると説明されています。作者のCheat Sheetでは「Pro + TIF」が強いバランス型の推奨例として示されていますが、Multi NORMALはより保守的に始めたいユーザー向けの開始候補として位置付けられます。
 複数ソースを統合し、用途別の強度と複数の配布形式を提供するコミュニティ管理リストです。Multi NORMALは作者のCheat Sheetで「Relaxed to Balanced / Low」と位置付けられる、控えめ〜バランス型の選択肢です。
 
-* **購読用URL**：[HaGeZi's Multi NORMAL（Domains only）](https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt)
+* **購読用URL**：HaGeZi's Multi NORMAL（Domains only）
+  ```
+  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
+  ```
 
 * **メリット**：許可リストと偽陽性対応の仕組みが公開され、domains-onlyを含む複数形式からクライアントに合うものを選べます。
 * **デメリット**：Multi ULTIMATEなどの最も強力なバージョンを使用すると、スマートフォンのバックグラウンド通信やアプリの正常な挙動を阻害する「過剰ブロック」の可能性が高まります。そのため、ブロック率と安定性のバランスが取れた「Multi NORMAL」から開始し、必要に応じて調整するのが安全です。
@@ -236,11 +242,11 @@ HaGeZiのMultiリストは、調査時点で Multi LIGHT / Multi NORMAL / Multi 
 | Pro++ | Balanced to Aggressive / Moderate | 強力。問題発生時に調整できる経験者向け |
 | Ultimate | Aggressive / High | 非常に強力。正常機能への影響も許容して調整する熟練者向け |
 
-これは作者の[Cheat Sheet](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#cheat_multi)の分類であり、第三者による精度ランキングではありません。本ガイドではNormalの開始例を維持します。作者がPro + TIFを推奨していることと、初心者がNormalから段階的に導入することは、目的が異なります。Light以外のMini版は各強度のサイズ最適化版で、通常版との併用は不要です。
+これは作者の [Cheat Sheet](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#cheat_multi) の分類であり、第三者による精度ランキングではありません。本ガイドではNormalの開始例を維持します。作者がPro + TIFを推奨していることと、初心者がNormalから段階的に導入することは、目的が異なります。Light以外のMini版は各強度のサイズ最適化版で、通常版との併用は不要です。
 
 ### HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)
 
-脅威対策を補うTIFのmedium版です。[HaGeZi公式README](https://github.com/hagezi/dns-blocklists#tifmedium)では、フル版を扱いにくいブラウザ・モバイル向けブロッカー用に、主要なフィードへ絞った版として案内されています。
+脅威対策を補うTIFのmedium版です。 [HaGeZi公式README](https://github.com/hagezi/dns-blocklists#tifmedium) では、フル版を扱いにくいブラウザ・モバイル向けブロッカー用に、主要なフィードへ絞った版として案内されています。
 
 * **AdGuard for Android用（Adblock形式）**：
   ```
@@ -275,7 +281,7 @@ HaGeZiのMultiリストは、調査時点で Multi LIGHT / Multi NORMAL / Multi 
 
 #### personalDNSfilterの例外を小さく作る
 
-`additionalHosts.txt` は、購読リストを上書きするための少量の自分用設定です。公式サンプルは **巨大なリストをここへ追加しないこと** を明記しています。大量のドメインは購読URLとして設定します。[公式サンプル](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/assets/additionalHosts.txt)
+`additionalHosts.txt` は、購読リストを上書きするための少量の自分用設定です。公式サンプルは **巨大なリストをここへ追加しないこと** を明記しています。大量のドメインは購読URLとして設定します。 [公式サンプル](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/assets/additionalHosts.txt) 
 
 ```text
 # 以下は説明用。必要な行だけを自分の環境に合わせて使う
@@ -294,11 +300,11 @@ ads.example.com
 
 **AdGuardでは行頭 `!` はコメントです。personalDNSfilterでは許可です。** `@@||example.com^` をpersonalDNSfilterへ貼り付けたり、`!example.com` をAdGuardの許可ルールとして使ったりしないでください。
 
-前述の優先順位は公式サンプルの説明です。さらに[ソースの `contains()`](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/BlockedHosts.java)では、問い合わせ名から親へ進み、各名前で明示ルール → ワイルドカード → 購読リストを順に調べ、判定が見つかると返します。そのため「親への許可が、購読リスト中のより具体的な子ドメインを必ず許可する」とは限りません。ログで止まった正確な名前を特定し、まずその名前で例外を試してください。
+前述の優先順位は公式サンプルの説明です。さらに [ソースの `contains()`](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/BlockedHosts.java) では、問い合わせ名から親へ進み、各名前で明示ルール → ワイルドカード → 購読リストを順に調べ、判定が見つかると返します。そのため「親への許可が、購読リスト中のより具体的な子ドメインを必ず許可する」とは限りません。ログで止まった正確な名前を特定し、まずその名前で例外を試してください。
 
 #### 大きなリストを読み込むとき
 
-[DNSFilterManager.java](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/DNSFilterManager.java)では、購読データから索引を作成して重複を除き、永続化後は全構造をメモリへ載せない形で読み直します。照合結果のキャッシュもあります。これは大規模リストへの工夫であり、端末負荷がなくなる保証ではありません。初回・更新時のダウンロード、索引作成、ストレージ、メモリの負荷は残ります。端末ごとの上限件数・処理時間は一次情報では一律に確認できません。
+ [DNSFilterManager.java](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/DNSFilterManager.java) では、購読データから索引を作成して重複を除き、永続化後は全構造をメモリへ載せない形で読み直します。照合結果のキャッシュもあります。これは大規模リストへの工夫であり、端末負荷がなくなる保証ではありません。初回・更新時のダウンロード、索引作成、ストレージ、メモリの負荷は残ります。端末ごとの上限件数・処理時間は一次情報では一律に確認できません。
 
 購読リストの取り込みと `additionalHosts.txt` のワイルドカード機能も同一ではありません。確認した取り込み処理では先頭の `*.` は親ドメインへ変換しますが、その他のワイルドカード行はスキップします。任意のABPルールを変換できるという意味ではありません。
 
@@ -337,7 +343,7 @@ AdGuard DNSユーザールールの説明用例：
 @@||login.example.com^
 ```
 
-上は `ads.example.com` と配下の遮断、下は `login.example.com` と配下の例外です。ホスト名1つだけの許可を表現するなら `@@|login.example.com|` のように両端を固定できます。まずログからルールを作り、適用範囲を確認してください。通常の例外より `$important` 付きの遮断が優先されるなど、例外が効かないケースもあります。[公式構文](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
+上は `ads.example.com` と配下の遮断、下は `login.example.com` と配下の例外です。ホスト名1つだけの許可を表現するなら `@@|login.example.com|` のように両端を固定できます。まずログからルールを作り、適用範囲を確認してください。通常の例外より `$important` 付きの遮断が優先されるなど、例外が効かないケースもあります。 [公式構文](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md) 
 
 #### personalDNSfilterへの導入
 
@@ -392,7 +398,7 @@ AdGuard for Androidでは、Recent activity（旧Filtering log）から処理し
 | uBlock Origin Lite（uBOL） | MV3の宣言的APIでブラウザがルールを処理。CSS / JSによる処理もあるが、権限・動作モードや機能はuBOと同一ではない |
 | AdGuard Browser Extension | URLリクエスト制御、要素非表示、スクリプトレットなど。ブラウザやMV2 / MV3で使える機能と制限が異なる |
 
-根拠：[uBO README](https://github.com/gorhill/uBlock/blob/master/README.md)、[uBOL README](https://github.com/uBlockOrigin/uBOL-home/blob/main/README.md)、[AdGuard拡張README](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/README.md)。uBOLを含め、すべての製品で同じカスタムルール・Logger・DOM操作が使えると考えないでください。
+根拠： [uBO README](https://github.com/gorhill/uBlock/blob/master/README.md) 、 [uBOL README](https://github.com/uBlockOrigin/uBOL-home/blob/main/README.md) 、 [AdGuard拡張README](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/README.md) 。uBOLを含め、すべての製品で同じカスタムルール・Logger・DOM操作が使えると考えないでください。
 
 例として、DNSで `ads.example.com` を止めてもページに空の広告枠が残る場合があります。ブラウザ側では、その枠を要素非表示で隠せます。また `example.com/ads/` だけを対象にするURLルールも、対応するブラウザ用ブロッカーの役割です。
 
@@ -473,7 +479,7 @@ DNS blocklistでトラッキングドメインへの接続自体を防ぐこと�
 
 また、malware / phishingドメインを含むリストは接続前の防御層として役立ちますが、DNS blocklistだけでマルウェア対策が完結するわけではありません。リストに未収載の新規ドメイン、同一ドメイン上の悪性パス、侵害済み正規サイト等には限界があります。
 
-**DNSブロックはアンチウイルスの代替ではありません。** すべてのマルウェアやトラッキングを防げず、同じドメインで配信される広告・追跡と正常なコンテンツを安全に分離できない場合があります。IPアドレスへ直接接続する通信や、別のDNS経路を使うアプリにも、想定どおり適用できるとは限りません。OS・アプリの更新や端末の保護と組み合わせて使ってください。[HaGeZi公式の限界・無保証の説明](https://github.com/hagezi/dns-blocklists#disclaimer)
+**DNSブロックはアンチウイルスの代替ではありません。** すべてのマルウェアやトラッキングを防げず、同じドメインで配信される広告・追跡と正常なコンテンツを安全に分離できない場合があります。IPアドレスへ直接接続する通信や、別のDNS経路を使うアプリにも、想定どおり適用できるとは限りません。OS・アプリの更新や端末の保護と組み合わせて使ってください。 [HaGeZi公式の限界・無保証の説明](https://github.com/hagezi/dns-blocklists#disclaimer) 
 
 ### CNAME等の特殊ケース
 CNAMEは別名から実体ホストへ名前解決する仕組みです。CNAMEを利用してfirst-party風に見せるトラッキングも存在しますが、CNAME応答をどこまで追跡・再評価するかはDNSクライアントやフィルタリング製品の実装によって異なります。したがって、「DNSブロッカーならすべてCNAME-based trackingを同じ方法で遮断できる」とは考えないでください。
@@ -485,33 +491,33 @@ CNAMEは別名から実体ホストへ名前解決する仕組みです。CNAME�
 仕様の確認には、各プロジェクトの公開資料を優先します。
 
 **DNSBL / DNS / 暗号化DNS**
-* [RFC 5782 — DNS Blacklists and Whitelists](https://www.rfc-editor.org/rfc/rfc5782.html)
-* [RFC 6471 — Overview of Best Email DNS-Based List Operational Practices](https://www.rfc-editor.org/rfc/rfc6471.html)
-* [RFC 8484 — DNS Queries over HTTPS (DoH)](https://www.rfc-editor.org/rfc/rfc8484.html)
-* [RFC 7858 — DNS over TLS (DoT)](https://www.rfc-editor.org/rfc/rfc7858.html)
-* [RFC 9250 — DNS over Dedicated QUIC Connections (DoQ)](https://www.rfc-editor.org/rfc/rfc9250.html)
+* [RFC 5782 — DNS Blacklists and Whitelists](https://www.rfc-editor.org/rfc/rfc5782.html) 
+* [RFC 6471 — Overview of Best Email DNS-Based List Operational Practices](https://www.rfc-editor.org/rfc/rfc6471.html) 
+* [RFC 8484 — DNS Queries over HTTPS (DoH)](https://www.rfc-editor.org/rfc/rfc8484.html) 
+* [RFC 7858 — DNS over TLS (DoT)](https://www.rfc-editor.org/rfc/rfc7858.html) 
+* [RFC 9250 — DNS over Dedicated QUIC Connections (DoQ)](https://www.rfc-editor.org/rfc/rfc9250.html) 
 
 **形式と構文**
-* [AdGuard DNS filtering rules syntax](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
-* [AdGuard for Android: DNS protection](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
-* [AdGuard for Android: Statistics / Recent activity](https://adguard.com/kb/adguard-for-android/features/statistics/)
-* [personalDNSfilter additionalHosts.txt](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/assets/additionalHosts.txt)
-* [personalDNSfilter DNSFilterManager.java](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/DNSFilterManager.java)
-* [uBlock Origin README — 他のコンテンツブロッカーとの併用について](https://github.com/gorhill/uBlock/blob/master/README.md)
+* [AdGuard DNS filtering rules syntax](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md) 
+* [AdGuard for Android: DNS protection](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/) 
+* [AdGuard for Android: Statistics / Recent activity](https://adguard.com/kb/adguard-for-android/features/statistics/) 
+* [personalDNSfilter additionalHosts.txt](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/assets/additionalHosts.txt) 
+* [personalDNSfilter DNSFilterManager.java](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/DNSFilterManager.java) 
+* [uBlock Origin README — 他のコンテンツブロッカーとの併用について](https://github.com/gorhill/uBlock/blob/master/README.md) 
 
 **フィルタの公式リポジトリ**
-* [AdGuard SDNSFilter (AdGuard DNS filter)](https://github.com/AdguardTeam/AdGuardSDNSFilter)
-* [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists)
-* [HaGeZi Blocklists Cheat Sheet](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md)
+* [AdGuard SDNSFilter (AdGuard DNS filter)](https://github.com/AdguardTeam/AdGuardSDNSFilter) 
+* [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) 
+* [HaGeZi Blocklists Cheat Sheet](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md) 
 
 
 **今回の補足説明に対応する一次情報**
-* [RFC 1034 — Domain Names: Concepts and Facilities](https://www.rfc-editor.org/rfc/rfc1034.html)：0章のDNS・名前解決・キャッシュの基本。
-* [AdGuard for Android DNS protectionの公式原稿](https://github.com/AdguardTeam/KnowledgeBase/blob/master/docs/adguard-for-android/features/protection/dns-protection.md)：2〜4章のDNS server / filters / user rules、設定への入口。
-* [AdGuard for Android Statisticsの公式原稿](https://github.com/AdguardTeam/KnowledgeBase/blob/master/docs/adguard-for-android/features/statistics.md)：Recent activityでの状態確認とルール作成。
-* [personalDNSfilter BlockedHosts.java](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/BlockedHosts.java)：1・3章の親ドメイン照合、具体的な名前からの判定順序。索引作成・重複除去は既掲のDNSFilterManager.javaも参照。
-* [HaGeZi FAQ](https://github.com/hagezi/dns-blocklists/blob/main/FAQ.md)：形式、リスト併用、選択方針の詳細。強度表は既掲のCheat Sheetに対応。
-* [uBlock Origin Lite README](https://github.com/uBlockOrigin/uBOL-home/blob/main/README.md)：5章の宣言的処理・CSS / JSによるフィルタリング。
-* [AdGuard Browser Extension README](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/README.md)：5章のリクエスト制御・要素非表示・スクリプトレットとブラウザ別の制限。
+* [RFC 1034 — Domain Names: Concepts and Facilities](https://www.rfc-editor.org/rfc/rfc1034.html) ：0章のDNS・名前解決・キャッシュの基本。
+* [AdGuard for Android DNS protectionの公式原稿](https://github.com/AdguardTeam/KnowledgeBase/blob/master/docs/adguard-for-android/features/protection/dns-protection.md) ：2〜4章のDNS server / filters / user rules、設定への入口。
+* [AdGuard for Android Statisticsの公式原稿](https://github.com/AdguardTeam/KnowledgeBase/blob/master/docs/adguard-for-android/features/statistics.md) ：Recent activityでの状態確認とルール作成。
+* [personalDNSfilter BlockedHosts.java](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/BlockedHosts.java) ：1・3章の親ドメイン照合、具体的な名前からの判定順序。索引作成・重複除去は既掲のDNSFilterManager.javaも参照。
+* [HaGeZi FAQ](https://github.com/hagezi/dns-blocklists/blob/main/FAQ.md) ：形式、リスト併用、選択方針の詳細。強度表は既掲のCheat Sheetに対応。
+* [uBlock Origin Lite README](https://github.com/uBlockOrigin/uBOL-home/blob/main/README.md) ：5章の宣言的処理・CSS / JSによるフィルタリング。
+* [AdGuard Browser Extension README](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/README.md) ：5章のリクエスト制御・要素非表示・スクリプトレットとブラウザ別の制限。
 
 確認日：2026年10月20日。公開ドキュメントと取得時点の公式ソースに基づきます。個別端末の性能・画面操作・各サイトでの結果は保証しません。Issueの一般ユーザー投稿を公式仕様の根拠には使用していません。
