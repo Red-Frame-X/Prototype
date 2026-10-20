@@ -1336,6 +1336,11 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
+* HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)
+  ```
+  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif.medium-onlydomains.txt
+  ```
+  * 脅威対策を補うTIFのmedium版です。personalDNSfilterではDomains only形式を使用します。
 
 **参考サイト**
 * [HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists)：複数の強度・配布形式を提供する有志による統合型DNSブロックリスト。
@@ -1424,6 +1429,14 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 ③ **[HaGeZi's Multi NORMAL - all-round protection](https://github.com/hagezi/dns-blocklists#blue_book-multi-normal-all-round-protection-)**
 
 ④ **DNSユーザーフィルタ** で自作例外ルール（`@@`）を作成。
+
+**脅威対策の追加候補（DNSフィルタ）**
+
+* [HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)](https://github.com/hagezi/dns-blocklists#tifmedium)
+  ```
+  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.medium.txt
+  ```
+  * TIFのmedium版です。AdGuard for AndroidではAdblock形式を使用し、「DNS通信を保護 > DNSフィルタ」から追加します。
 
 **DNSサーバー & ChromeOS追加設定**
 
