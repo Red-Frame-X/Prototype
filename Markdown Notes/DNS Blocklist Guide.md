@@ -224,7 +224,7 @@ AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別し�
 HaGeZiのMultiリストは、調査時点で Multi LIGHT / Multi NORMAL / Multi PRO / Multi PRO++ / Multi ULTIMATE の5段階が提供されています。公式READMEではおおむね、Lightは最小限、Multi NORMALは緩やか〜バランス、Proはバランス、Pro++はバランス〜攻撃的、Ultimateは攻撃的という位置付けで、強度が上がるほど機能破損のリスクも高くなると説明されています。作者のCheat Sheetでは「Pro + TIF」が強いバランス型の推奨例として示されていますが、Multi NORMALはより保守的に始めたいユーザー向けの開始候補として位置付けられます。
 複数ソースを統合し、用途別の強度と複数の配布形式を提供するコミュニティ管理リストです。Multi NORMALは作者のCheat Sheetで「Relaxed to Balanced / Low」と位置付けられる、控えめ〜バランス型の選択肢です。
 
-* **購読用URL**：HaGeZi's Multi NORMAL（Domains only）
+* **購読用URL**：HaGeZi's Multi NORMAL - all-round protection
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
