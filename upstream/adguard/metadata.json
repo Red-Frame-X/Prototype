@@ -4,8 +4,8 @@
       "product": "AdGuard Browser Extension",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases/latest",
       "latest_version": "5.5.3.3",
-      "sha256": "8414d20a99d01bd5bd0217601dd0e4f25a1952ed0795e208e23a1c0885d349b0",
-      "checked_at": "2026-10-19T22:52:53+00:00",
+      "sha256": "586fccc6cafd728b7026958e706d04e8a6518e2c68d112f60a74fc1203f362dd",
+      "checked_at": "2026-10-20T22:14:33+00:00",
       "converter_relevant_entries": [
         "In this release we’ve added AdGuard’s Manifest V3 (MV3) Browser Extension to Microsoft Edge.",
         "But this doesn’t mean AdGuard is leaving the store. This is where our MV3 version comes in.",
@@ -29,8 +29,8 @@
       "product": "AdGuard for Android",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases/latest",
       "latest_version": "4.15",
-      "sha256": "8cb6c355b1451d2cf9a3bbeb76d4b8e5ecd24de8fdf2a5f1730ef4ad65d2720b",
-      "checked_at": "2026-10-19T22:52:53+00:00",
+      "sha256": "520236b44870bf3182c2e20b43bb48a62a009d272d29c4f023e05bda95091bf9",
+      "checked_at": "2026-10-20T22:14:33+00:00",
       "converter_relevant_entries": [
         "## Corelibs (Filtering engine)",
         "* CoreLibs updated to v1.23.0 [#6212](https://github.com/AdguardTeam/AdguardForAndroid/issues/6212)",
