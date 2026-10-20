@@ -114,7 +114,7 @@ Linux Mint公式は、ハードウェア関連のパートナーとして **Fram
 * [Linux Mint Partners](https://linuxmint.com/partners.php)
 * [Linux Mint Blog: Monthly News – May 2025](https://blog.linuxmint.com/?p=4850)
 * **[Star Labs](https://jp.starlabs.systems/)** ：Linux向けに設計されたノートPCやMini PCを販売するメーカー。Linux Mintを含む複数のLinuxディストリビューションを、対応カーネル上で標準ISOから導入できる。
-* **[RayLink Inc（レイリンク株式会社）](https://raylink-inc.com/)** ：Ubuntu搭載の新品・再生PCやLinux関連機器を販売する国内事業者。Linux OSのインストール代行も提供し、[取扱ディストリビューション](https://raylink-inc.com/distribution/)にはLinux Mintも掲載している。Linux Mint搭載を希望する場合は、対象機種・導入可能な版・費用を購入前に相談する。
+* **[RayLink Inc（レイリンク株式会社）](https://raylink-inc.com/)** ：Ubuntu搭載の新品・再生PCやLinux関連機器を販売する国内事業者。Linux OSのインストール代行も提供し、[取扱ディストリビューション](https://raylink-inc.com/distribution/) にはLinux Mintも掲載している。Linux Mint搭載を希望する場合は、対象機種・導入可能な版・費用を購入前に相談する。
 
 ただし、Linux Mintが「公式認定した完成品PC一覧」を常時提供しているわけではありません。日本から海外メーカー製PCを購入する場合は、Linux Mintプリインストールの有無だけでなく、送料、関税、保証対応、修理時の発送先、ACアダプター、キーボード配列、無線チップなども確認してください。販売状況は変化するため、購入時点でメーカー公式ページを確認します。
 
