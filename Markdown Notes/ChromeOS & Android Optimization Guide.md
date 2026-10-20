@@ -1501,7 +1501,7 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
 
 ---
 
-## 【解決済み】Android System WebView 問題
+## 【解決済み？】Android System WebView 問題
 **概要**
 
 * AdGuard for Android v4.7.1以上のプライベートブラウザが原因で、WebViewの更新後に自動再起動に失敗する現象がありました。
