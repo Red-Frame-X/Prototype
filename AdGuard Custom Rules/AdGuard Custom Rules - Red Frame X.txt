@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202610162130
+! Version: 202610212032
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -187,6 +187,10 @@ rawkuma.net##iframe[src*="cbox.ws"]
 ! tiktok.com
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避
 @@||analytics.tiktok.com^$app=jp.kappasushi.app
+
+! togetter.com
+! 臨時Fix：AdGuard Filtersリポジトリで修正されるまで、以下のtrusted-click-elementルールを無効化
+togetter.com#@%#//scriptlet('trusted-click-element', '.more_tweet_box > button', '', '1000')
 
 ! topics.smt.docomo.ne.jp
 ! dメニューニュースでalxc.addlv.smt.docomo.ne.jpから読み込まれる広告スクリプトをブロック
