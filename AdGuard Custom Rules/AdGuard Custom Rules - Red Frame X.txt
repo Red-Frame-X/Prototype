@@ -190,8 +190,7 @@ rawkuma.net##iframe[src*="cbox.ws"]
 
 ! togetter.com
 ! 臨時Fix：AdGuard Filtersリポジトリで修正されるまで、以下のtrusted-click-elementルールを例外化
-! AdGuard Filtersで対処済みのため無効化。元の説明とルールは学習用に保存
-! https://github.com/AdguardTeam/AdguardFilters/commit/34bc57e4b041ff611bae86ff6a9b4f856eed329c
+! AdGuard Filtersで対処済みのため無効化
 ! togetter.com#@%#//scriptlet('trusted-click-element', '.more_tweet_box > button', '', '1000')
 
 ! topics.smt.docomo.ne.jp
