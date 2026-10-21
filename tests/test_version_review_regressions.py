@@ -97,9 +97,15 @@ class PerCommitVersionTests(unittest.TestCase):
 
 class TimestampPublicationTests(unittest.TestCase):
     def test_actual_workflow_retries_push_and_keeps_concurrent_edit(self):
+        self.check_publication("push")
+
+    def test_scheduled_recovery_retries_and_keeps_concurrent_edit(self):
+        self.check_publication("schedule")
+
+    def check_publication(self, event):
         workflow = yaml.load((ROOT / '.github/workflows/update-version-timestamps.yml').read_text(), Loader=yaml.BaseLoader)
         command = next(s['run'] for s in workflow['jobs']['update-version-timestamps']['steps'] if 'run' in s)
-        command = command.replace('${{ github.event_name }}', 'push')
+        command = command.replace('${{ github.event_name }}', event)
         real_git = shutil.which('git')
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
