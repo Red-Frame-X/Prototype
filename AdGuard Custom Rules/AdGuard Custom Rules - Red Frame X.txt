@@ -189,7 +189,7 @@ rawkuma.net##iframe[src*="cbox.ws"]
 @@||analytics.tiktok.com^$app=jp.kappasushi.app
 
 ! togetter.com
-! 臨時Fix：AdGuard Filtersリポジトリで修正されるまで、以下のtrusted-click-elementルールを無効化
+! 臨時Fix：AdGuard Filtersリポジトリで修正されるまで、以下のtrusted-click-elementルールを例外化
 togetter.com#@%#//scriptlet('trusted-click-element', '.more_tweet_box > button', '', '1000')
 
 ! topics.smt.docomo.ne.jp
