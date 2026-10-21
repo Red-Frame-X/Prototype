@@ -1,0 +1,23 @@
+{
+  "AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt": "12a6de535cde170e53571057e887c26cd5c417dad3e80697906e829d40b21863",
+  "AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt": "5dd99ec65a72983a3ff4ba966519fc9b9547193553a6786f35274420d477ee95",
+  "Markdown Notes/AdGuard Custom Rules Reference.md": "9210a464db25f2a1d82c0d7ae6b2e4f6bd43b6329632d85d45a1b56a181c6450",
+  "Markdown Notes/Android Advanced Flow Guide.md": "83499f88a816b20cbeb03799440caa2b4f97ae0e65a82f17f9c845a130a20c60",
+  "Markdown Notes/ChromeOS & Android Optimization Guide.md": "d473160346203d3ec1fa05383e3fbaa8e1b385a1ad840b4d6a59bd077fc6377d",
+  "Markdown Notes/ChromeOS Manual Update and Troubleshooting.md": "196003232ad8e30a70e09f4997fb9f9edf7f677e8b513e4e139a4bdfafbfb210",
+  "Markdown Notes/Collapse Comments on GitHub Issues and Pull Requests.md": "d56e6f9c5d1c3ef4a4c12d508bf7f7ded38cf5913b90022606f321d2a166fd1e",
+  "Markdown Notes/Content Blocking FAQ 2026.md": "ff547aca11ab22f33daa3e81f148f5859343a9a2fbaca11af0a325ff5dbdfa69",
+  "Markdown Notes/DNS Blocklist Guide.md": "0ed4d0731e7b1812f28137d858566b84a94bb5e17eabbbe6e15dc036cd74b15c",
+  "Markdown Notes/Distributing Filters and UserScripts with GitHub Gist.md": "c3807380c6283f2b5343ccb470617e62be9ffbb0d1d79452a13249e55acdcd70",
+  "Markdown Notes/Googlebook Research Report - Revised Edition.md": "dbcf379c46c858600b252543a3d976415f101438e22e731aa0a2b05378462469",
+  "Markdown Notes/Handling and Reporting GitHub CI Failures (✕).md": "4d59877844eadea83bcf034ecbc35b45ff477fde7b15c828fb2e827fcfcffc65",
+  "Markdown Notes/Linux Mint Guide.md": "d9459dab7b025716502d5fffe4ef993d40b62b1b4d0108394f2e4ee4d65dbd7d",
+  "Markdown Notes/README.md": "49d75a3183c1ea7330b858d08806d7c287edfda68ce3596b2f4c8e9475ec54ee",
+  "Markdown Notes/Strict Blocking Exceptions Test.md": "e55fa5c91a7711c71e3b094d2ddcd38c41512d0958d204b8faab569d0dae491b",
+  "NG Word Regex for ChMate/NG Word Regex for ChMate.txt": "76de8d11861a7723326c67d46f693015e7958eacf44112140bbca3b378abd2ca",
+  "UserScript/x-auto-select-community-latest-sort.user.js": "781cdaad18d94e53de103fdf5765bb803da3a5a7b9fbba5744609477b187b10e",
+  "UserScript/x-auto-select-following-latest-sort.user.js": "c0fabeca9696ea1cd302a0b08c89a22817c3de9f16d9ebb5a6a23b87fa8e0909",
+  "UserScript/x-spaces-and-live-broadcast-blocker.user.js": "e79aff741491eddc211b516fa46d2ed414e7783c3eaa65e90366c58e10b4b467",
+  "UserScript/youtube-description-auto-expander.user.js": "2e46b804d2b69bccb350c8ec71ed61d89fc89bbb6f57fd0fe3ff6ddc1d2cfb99",
+  "UserScript/youtube-shelf-force-expand.user.js": "1bd45bf1ba46218dc0a6a24b31acf84eceb0d868178f3080824715afd03803df"
+}
