@@ -2,7 +2,7 @@
 // @name         X Auto Select Community Latest Sort
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      202610212324
+// @version      202610220025
 // @description  Xのタイムラインで「並べ替え」メニューが開かれるたびに、未選択であれば自動的に「直近」を選択し直し、その後は手動での変更も可能にします。
 // @author       Red-Frame-X
 // @match        https://x.com/*
