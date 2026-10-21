@@ -55,6 +55,8 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             python scripts/update_version_timestamps.py --pending
+            # Publish the content checkpoint atomically, including same-minute edits.
+            git add -- .github/version-timestamps-state.json
 
             # Validate changed files before every publication attempt.
             git diff --check
@@ -62,7 +64,7 @@ jobs:
               [[ -e "$file" ]] || continue
               node --check "$file"
             done
-            if git diff --quiet; then
+            if git diff --quiet && git diff --cached --quiet; then
               echo 'Version timestamps are already synchronized.'
               exit 0
             fi
