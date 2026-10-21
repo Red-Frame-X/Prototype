@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -57,6 +58,8 @@ class PendingVersionTests(unittest.TestCase):
                                else r"(?m)^(! Version: )\d+" if path.suffix == ".txt"
                                else r"(?m)^(\| \*\*Version\*\* \| )\d+")
                     self.assertEqual(actual, re.sub(pattern, r"\g<1>209901010001", before[path], count=1))
+                subprocess.run([sys.executable, str(ROOT / 'scripts/update_version_timestamps.py'), '--pending'], check=True, capture_output=True)
+                git('add', '.')
                 git('commit', '-qam', 'chore: sync Version timestamps (JST)')
                 self.assertEqual(pending_files(), [])
                 # A new comment after synchronization must be picked up again.
