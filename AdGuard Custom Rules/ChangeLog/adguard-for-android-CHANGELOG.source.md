@@ -3,6 +3,28 @@
 > Source: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > Generated from official GitHub Releases; newest release first.
 
+## 4.15.1
+
+- Published: 2026-10-21T17:54:11Z
+- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15.1
+
+In response to the eMudhra certificate authority incident, we’ve blacklisted the compromised certificates. HTTPS filtering will not work on domains using these certificates — such connections will be validated by the browser itself. 
+
+Safe choices include:
+  - Chrome, Edge, Opera, Brave, Vivaldi (revoked via Google CRLSet)
+  - Firefox (revoked via Mozilla OneCRL)
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.15
 
 - Published: 2026-10-19T15:46:27Z
@@ -4733,13 +4755,3 @@ And another unpleasant bug that deserves a special mention. In v3.3, if you had 
 * [Bug] Rules selection algorithm works not as intended when HTTPS filtering is disabled [#1291](https://github.com/AdguardTeam/CoreLibs/issues/1291)
 * [Bug] Rules with restricted domains do not match requests without referer [#1286](https://github.com/AdguardTeam/CoreLibs/issues/1286)   
 * [Bug] "Failed to initialize protocol filters" error [#1282](https://github.com/AdguardTeam/CoreLibs/issues/1282)
-
-## 3.3.2 Release
-
-- Published: 2020-02-13T16:26:35Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.230
-
-In this small update, there’s only one but important fix and a few additions to the exclusions list.
-
-* [Fixed] Protection doesn’t restart when an excluded app is installed #3340
-* [Changed] The list of HTTPS exclusions has been updated
