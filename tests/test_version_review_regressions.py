@@ -102,7 +102,10 @@ class TimestampPublicationTests(unittest.TestCase):
     def test_scheduled_recovery_retries_and_keeps_concurrent_edit(self):
         self.check_publication("schedule")
 
-    def check_publication(self, event):
+    def test_push_recovers_file_edited_after_event_checkout(self):
+        self.check_publication("push", late=True)
+
+    def check_publication(self, event, late=False):
         workflow = yaml.load((ROOT / '.github/workflows/update-version-timestamps.yml').read_text(), Loader=yaml.BaseLoader)
         command = next(s['run'] for s in workflow['jobs']['update-version-timestamps']['steps'] if 'run' in s)
         command = command.replace('${{ github.event_name }}', event)
@@ -132,6 +135,12 @@ class TimestampPublicationTests(unittest.TestCase):
             git(root, 'clone', str(remote), str(competitor))
             git(competitor, 'config', 'user.name', 'Test')
             git(competitor, 'config', 'user.email', 'test@example.invalid')
+            if late:
+                later = competitor / 'Markdown Notes/later.md'
+                later.write_text('| **Version** | 200001010000 |\nLater comment edit.\n')
+                git(competitor, 'add', '.')
+                git(competitor, 'commit', '-qm', 'edit after event checkout')
+                git(competitor, 'push', 'origin', 'HEAD:main')
             wrapper_dir = root / 'bin'
             wrapper_dir.mkdir()
             marker = root / 'injected'
@@ -160,6 +169,14 @@ os.execv(real, [real, *sys.argv[1:]])
             self.assertRegex(published, r'^\| \*\*Version\*\* \| \d{12} \|')
             self.assertIn('Original body.\nEvent edit.\nConcurrent body edit.', published)
             self.assertNotIn('200001010001', published)
+            if late:
+                published_later = git(root, '--git-dir', str(remote), 'show', 'main:Markdown Notes/later.md')
+                self.assertNotIn('200001010000', published_later)
+                self.assertIn('Later comment edit.', published_later)
+            first_head = git(checkout, 'rev-parse', 'HEAD')
+            repeated = subprocess.run(['bash', '-c', command], cwd=checkout, env=env, text=True, capture_output=True)
+            self.assertEqual(repeated.returncode, 0, repeated.stdout + repeated.stderr)
+            self.assertEqual(git(checkout, 'rev-parse', 'HEAD'), first_head)
             self.assertEqual(git(checkout, 'status', '--porcelain'), '')
 
 

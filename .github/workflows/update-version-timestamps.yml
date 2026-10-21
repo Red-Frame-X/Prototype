@@ -5,6 +5,10 @@ on:
     branches:
       - main
   workflow_dispatch:
+  workflow_run:
+    workflows: [Repository Quality Checks]
+    types: [completed]
+    branches: [main]
   schedule:
     # Recover edits when a push event did not start this workflow.
     - cron: '7,22,37,52 * * * *'
@@ -18,7 +22,12 @@ concurrency:
 
 jobs:
   update-version-timestamps:
-    if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
+    # Only main push checks may trigger the privileged fallback; never PR checks.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -28,26 +37,14 @@ jobs:
         with:
           # A multi-commit push can place github.event.before beyond HEAD's parent.
           fetch-depth: 0
+          ref: main
 
       - name: Update, validate, and publish Version metadata with current JST
         shell: bash
-        env:
-          BEFORE_SHA: ${{ github.event.before }}
         run: |
           set -euo pipefail
-          selection=(--since "2 days ago")
-          base="$BEFORE_SHA"
-          if [[ "${{ github.event_name }}" == "push" && -n "$base" && "$base" != "0000000000000000000000000000000000000000" ]]; then
-            selection=(--base "$base" --head "$(git rev-parse HEAD)")
-          elif [[ "${{ github.event_name }}" == "push" ]]; then
-            if git rev-parse HEAD^ >/dev/null 2>&1; then
-              selection=(--base "$(git rev-parse HEAD^)" --head "$(git rev-parse HEAD)")
-            else
-              echo 'No parent commit available; nothing to synchronize.'
-              exit 0
-            fi
-          fi
-          # 更新対象は元のイベントの差分に固定し、書き込む内容は最新mainから再生成する。
+          # Scan latest main on every attempt: event diffs miss later edits and
+          # cancelled pending runs. Version-only commits are ignored by the script.
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
@@ -57,7 +54,7 @@ jobs:
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
-            python scripts/update_version_timestamps.py "${selection[@]}"
+            python scripts/update_version_timestamps.py --pending
 
             # Validate changed files before every publication attempt.
             git diff --check

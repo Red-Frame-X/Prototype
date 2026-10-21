@@ -48,8 +48,8 @@ class PendingVersionTests(unittest.TestCase):
             old = Path.cwd()
             os.chdir(root)
             try:
-                self.assertEqual(set(pending_files('2 days ago')), set(expected))
-                for path in pending_files('2 days ago'):
+                self.assertEqual(set(pending_files()), set(expected))
+                for path in pending_files():
                     self.assertTrue(update_file(path, '209901010001'), str(path))
                     actual = path.read_text()
                     self.assertIn('Manual comment edit.', actual)
@@ -58,12 +58,12 @@ class PendingVersionTests(unittest.TestCase):
                                else r"(?m)^(\| \*\*Version\*\* \| )\d+")
                     self.assertEqual(actual, re.sub(pattern, r"\g<1>209901010001", before[path], count=1))
                 git('commit', '-qam', 'chore: sync Version timestamps (JST)')
-                self.assertEqual(pending_files('2 days ago'), [])
+                self.assertEqual(pending_files(), [])
                 # A new comment after synchronization must be picked up again.
                 path = expected[0]
                 path.write_text(path.read_text() + '! Another comment.\n')
                 git('commit', '-qam', 'another manual comment')
-                self.assertEqual(pending_files('2 days ago'), [path])
+                self.assertEqual(pending_files(), [path])
             finally:
                 os.chdir(old)
 
@@ -76,4 +76,7 @@ class WebEditWorkflowTests(unittest.TestCase):
         self.assertIn('schedule', workflow['on'])
         self.assertIn('workflow_dispatch', workflow['on'])
         condition = workflow['jobs']['update-version-timestamps']['if']
-        self.assertEqual(condition, "github.event_name != 'push' || github.actor != 'github-actions[bot]'")
+        self.assertNotIn("github.actor", condition)
+        self.assertIn("github.event.workflow_run.event == 'push'", condition)
+        self.assertIn("github.event.workflow_run.head_repository.full_name == github.repository", condition)
+        self.assertIn("workflow_run", workflow["on"])
