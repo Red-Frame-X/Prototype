@@ -2,7 +2,7 @@
 // @name         YouTube Description Auto Expander
 // @namespace    http://tampermonkey.net/
 // @license      CC0-1.0
-// @version      202610220025
+// @version      202610220026
 // @description  YouTubeの動画概要欄を自動で展開します（MutationObserver対応版）
 // @author       Red Frame X
 // @match        https://www.youtube.com/*
