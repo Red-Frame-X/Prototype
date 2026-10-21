@@ -34,18 +34,18 @@ def changed_files(base: str, head: str) -> list[Path]:
     return [Path(line) for line in output.split("\0") if line]
 
 
-def pending_files(since: str) -> list[Path]:
-    """Recover edits whose push did not start a workflow, without timestamp loops."""
-    candidates: set[Path] = set()
-    for commit in git("rev-list", "--since=" + since, "HEAD").splitlines():
-        names = git("diff-tree", "--root", "--no-commit-id", "--name-only", "--first-parent", "-m", "-r", "-z", commit)
-        candidates.update(Path(name) for name in names.split("\0") if name)
+def pending_files(since: str | None = None) -> list[Path]:
+    """Find unsynchronized content edits on the current branch, regardless of actor."""
+    candidates = [Path(name) for name in git("ls-files", "-z").split("\0") if name]
     pending = []
     for path in sorted(candidates):
         if not is_target(path) or not path.is_file():
             continue
         name = path.as_posix()
-        commit = git("log", "-1", "--format=%H", "--", name).strip()
+        date_filter = ["--since=" + since] if since else []
+        commit = git("log", "-1", "--format=%H", *date_filter, "--", name).strip()
+        if not commit:
+            continue
         current = git("show", f"{commit}:{name}")
         parents = git("rev-list", "--parents", "-n", "1", commit).split()[1:]
         if not parents or subprocess.run(
@@ -121,12 +121,13 @@ def main() -> int:
     selection = parser.add_mutually_exclusive_group(required=True)
     selection.add_argument("--base", help="Base commit SHA")
     selection.add_argument("--since", help="Recover pending edits since this git date")
+    selection.add_argument("--pending", action="store_true", help="Recover all pending edits on current branch")
     parser.add_argument("--head", default="HEAD", help="Head commit/ref")
     args = parser.parse_args()
 
     stamp = datetime.now(JST).strftime("%Y%m%d%H%M")
     updated: list[str] = []
-    paths = pending_files(args.since) if args.since else changed_files(args.base, args.head)
+    paths = pending_files(args.since) if args.pending or args.since else changed_files(args.base, args.head)
     for path in paths:
         if is_target(path) and update_file(path, stamp):
             updated.append(path.as_posix())
