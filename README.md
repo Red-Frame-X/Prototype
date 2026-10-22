@@ -13,12 +13,12 @@ ChromeOS・Android向けの設定、コンテンツブロックフィルタ、Us
 
 | Category | Workflow | Status |
 | --- | --- | --- |
-| Quality | [Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![STATUS PASSING](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/quality.yml?style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Build / Sync | [Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![STATUS PASSING](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/sync.yml?style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Version | [Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) | ![STATUS PASSING](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/check-adguard-version.yml?style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Version | [Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![STATUS PASSING](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-version-timestamps.yml?style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Maintenance | [Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![STATUS PASSING](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-adguard-changelogs.yml?style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Maintenance | [Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![STATUS PASSING](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-chmate-ng-version.yml?style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
+| Quality | [Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![Workflow status](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml/badge.svg?branch=main&event=push) |
+| Build / Sync | [Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![Workflow status](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml/badge.svg?branch=main) |
+| Version | [Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) | ![Workflow status](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml/badge.svg?branch=main) |
+| Version | [Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![Workflow status](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml/badge.svg?branch=main&event=schedule) |
+| Maintenance | [Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![Workflow status](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml/badge.svg?branch=main&event=schedule) |
+| Maintenance | [Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![Workflow status](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml/badge.svg?branch=main) |
 
 ## リポジトリ案内
 
