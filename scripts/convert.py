@@ -402,7 +402,7 @@ class AdGuardOptimizer:
             "! Homepage: https://github.com/Red-Frame-X/Prototype",
             "! License: GPL-3.0",
             "! Original Source: https://github.com/Kdroidwin/uB-filter-by-kdroidwin",
-            "! Disclaimer: AdGuard for Chrome MV3向けに最適化した非公式フォーク。",
+            "! Note: このフィルタは、AdGuard Browser Extension MV3 向けに最適化した非公式フォークです。",
             "! Compatibility: AdGuard for Androidはベストエフォート対応。CoreLibs固有機能は省略される場合があります。",
         ]
 
