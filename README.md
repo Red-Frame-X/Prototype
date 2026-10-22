@@ -13,7 +13,7 @@ ChromeOS・Android向けの設定、コンテンツブロックフィルタ、Us
 
 | Category | Workflow | Status |
 | --- | --- | --- |
-| Quality | [Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | <img src="https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml/badge.svg?branch=main&amp;event=push" alt="Repository Quality Checks status" width="155" height="28"> |
+| Quality | [Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/quality.yml?branch=main&event=push&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
 | Build / Sync | [Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/sync.yml?branch=main&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
 | Version | [Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/check-adguard-version.yml?branch=main&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
 | Version | [Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-version-timestamps.yml?branch=main&event=schedule&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
