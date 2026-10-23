@@ -6,7 +6,7 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | :--- | :--- |
 | **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202610220026 |
+| **Version** | 202610231807 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -143,6 +143,28 @@ Google PlayはABIに加え、必要なハードウェア機能、API、画面条
 
 DRM・動画では認証と画質、ゲームではGPU・入力・センサー・アンチチート、エミュレータではJITとABI、VPN・セキュリティアプリでは権限・常時稼働・証明書・ネイティブSDKを個別に確認します。これらは確認項目であり、カテゴリ全体にIntel固有の不具合が確認されたという意味ではありません。カスタム入力方式とランチャーはGooglebookで非対応と公式説明されており、CPU選択では解消しないOS側の制約です。[入力方式・ランチャー互換性](https://developer.android.com/develop/adaptive-apps/guides/googlebook/keyboard-apps-and-launcher-compatibility)
 
+#### 追加検証：Intel・SnapdragonとAndroidアプリ互換性（2026年10月23日）
+
+**懸念点と結論：** CPUによって必要なネイティブコードが異なるため、同じAndroidアプリでも配信可否や動作に差が出る可能性があります。ただし、今回確認した一次情報では、GooglebookのIntel・Snapdragon両モデルを同条件で比較したアプリ別の動作一覧、互換率、変換性能は確認できませんでした。Intelだから非対応、Snapdragonだから完全対応とは判断しません。
+
+**一次情報で確認できた事実と適用範囲：**
+
+| 論点 | 確認結果 |
+| :--- | :--- |
+| x86-64とARM64 | Android NDKでは`x86_64`と`arm64-v8a`は別ABI。CPU命令・呼び出し規約等が異なる。ARM64専用ライブラリをx86-64側で使うには、そのABIを扱える変換実装等が必要。[ABI仕様](https://developer.android.com/ndk/guides/abis) |
+| ARM64専用アプリ | Playの64ビット対応要件は、すべての64ビットABIを含める義務ではない。ARM64対応だけではx86-64版の存在を意味しない。外部SDKのネイティブコードも確認対象。[64ビット要件](https://developer.android.com/google/play/requirements/64-bit) |
+| Intel Googlebookの変換層 | AOSPのNative Bridgeは異なるISA/ABIを扱う仕組みを説明するが、AOSPが実際の変換実装まで提供するわけではない。この資料だけではGooglebookでの採用・実装名・対応範囲を確認できない。[AOSP README](https://android.googlesource.com/platform/art/+/main/libnativebridge/README.md) |
+| 配信と動作 | Google PlayはABI、必要機能、ライブラリ、開発者の配信設定等で絞り込む。配信対象であることと、ログイン・描画・決済等を含む実動作の検証は区別する。[Playのフィルター](https://developer.android.com/google/play/filters) |
+| Googlebook共通の制約 | カスタムIME・ランチャーはGoogle Playで発見・インストールできず、システム標準のみをサポートする。CPUの選択だけでは解消しない制約の例。[Googlebook固有の公式説明](https://developer.android.com/develop/adaptive-apps/guides/googlebook/keyboard-apps-and-launcher-compatibility) |
+
+既存節の「Googleへの取材に基づく変換層・96.6%の報道」は、その出典区分のまま保持します。今回確認したGoogle公式技術資料から同じ数値や変換実装を独立に裏付けられたわけではありません。Googleによる全Androidアプリ・全機能の互換性保証も、今回確認した資料では見つかりませんでした。
+
+**実用上の影響とモデル比較：** ARM64専用ライブラリへの依存が強いアプリでは、Intel側の変換対応を確認する必要があります。Snapdragon側はARM64という命令体系上の条件が合っても、API、GPU、画面、入力、センサー、配信設定などを別途確認する必要があり、32ビット専用アプリの対応も保証しません。インストール成功だけで判断せず、普段使う機能まで確認します。これは検証方針であり、特定アプリに不具合が確認されたという意味ではありません。
+
+**Chromebook Plusとの比較：** ChromeOS向け公式資料は、x86 ChromebookのARM変換と性能・電池消費への影響、機種によるARM64変換対応差を説明しています。ただし、これはGooglebookの実測結果でも、すべてのChromebook Plusの対応表でもありません。現在のChromebook Plusでの動作実績を、そのままGooglebookへ移せるとは判断しません。[ChromeOS端末のアプリ対応](https://developer.android.com/develop/devices/chromeos/learn/device-support)
+
+**未確認事項・今後の確認：** Intel側の変換実装名・対応命令・制限・性能、両CPUでの具体的な動作差、アプリごとの公式対応表が残ります。比較時は機種、CPU、OSビルド、アプリ版、配信地域、APKのABIを記録し、Play表示、インストール、起動、認証、主要操作、描画、必要なら決済・DRMを同条件で確認します。実機を利用できていないため、今回これらの動作試験は未実施です。
+
 #### ADBとDeveloper optionsの確認済み手順
 
 Android Developersの2026年10月3日更新資料は、GooglebookへのADB接続とアプリのインストール・実行・デバッグを案内しています。全モデルでDeveloper optionsとWireless debuggingを有効化し、Wi-Fi経由で接続できます。外部ワークステーションだけでなく、Googlebook内のLinuxターミナルからのペアリングも案内されています。[ADB debugging on Googlebook](https://developer.android.com/develop/adaptive-apps/guides/googlebook/adb-debugging)
@@ -227,6 +249,33 @@ GoogleはGooglebookのChromeを **desktop-class Chrome browser with extensions**
 | 未確認 | Enterprise Policyの全対応範囲 | 未確認 |
 | 未確認 | Lacrosとの関係 | 未確認 |
 
+#### 追加検証：Chrome DevToolsと要素非表示ルール作成（2026年10月23日）
+
+**懸念点と結論：** Googlebook単体で要素を検証し、広告ブロック用のCSSセレクターを作成・検証できるかが重要です。Google公式発表は拡張機能付きのデスクトップクラスChromeを明記していますが、今回確認した製品資料にはDevToolsの対応表がなく、Elements・Console・Network・Sources・Applicationの全機能がPC版と同等に使えるかは未確認です。「使えない」とも断定しません。[Google公式発表](https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/)
+
+**一次情報で確認できた事実：** Chromiumにはdesktop Android向けDevToolsの実装履歴があります。2025年3月26日のコミット`925db0cd6998fa029e5b92c03205ef01e9373457`は、DevToolsウィンドウ表示処理、`devtools://`、UI・リソースの組み込みを追加しています。2026年4月30日の`bdf8b9b6d67b77a6b6e1dc98550cf2e417c14ec2`は、Android desktopのDevToolsポリシー処理とテストを補っています。したがって「Android系の実装だからローカルDevToolsは存在しない」という推論は成立しません。ただし、これらのコミットと市販GooglebookのChromeビルド・有効化状態との対応は未確認です。
+
+- [2025年3月の実装差分（固定コミット）](https://chromium.googlesource.com/chromium/src/+/925db0cd6998fa029e5b92c03205ef01e9373457%5E%21/)
+- [2026年4月のポリシー処理修正（固定コミット）](https://chromium.googlesource.com/chromium/src/+/bdf8b9b6d67b77a6b6e1dc98550cf2e417c14ec2)
+
+**他のChromeとの比較：** 以下の一般資料をGooglebook固有の対応保証へ読み替えないようにします。
+
+| 環境・機能 | 公式資料で確認した範囲とGooglebookでの確認状況 |
+| :--- | :--- |
+| Linux版・ChromeOS版Chrome | DevTools公式資料は両OSのElements・Consoleの起動ショートカットを案内。Chromebook PlusでもChromeOS版の比較材料となるが、管理設定等による利用制限は別途確認する |
+| Android版Chrome | 公式手順はWindows・Mac・Linuxの外部PCから実機のWebコンテンツをリモート検証する方法を案内。これをGooglebookのローカルUIの有無の根拠にはしない |
+| Elements | 一般のDevToolsはDOM・CSSを表示・変更できる。Googlebookでの要素選択、セレクター取得、CSS試験は未確認 |
+| Console / Sources | 一般のDevToolsはJavaScript実行・デバッグに対応。Googlebookでの実行、ブレークポイント、ファイル連携の対応範囲は未確認 |
+| Network / Application | 一般のDevToolsは通信、Cookie・ストレージ等を調査できる。Googlebookでの各パネルの有無・操作範囲は未確認 |
+
+根拠：[Chrome DevTools公式概要・各パネル](https://developer.chrome.com/docs/devtools/overview)、[Android実機のリモートデバッグ](https://developer.chrome.com/docs/devtools/remote-debugging)。
+
+**実装基盤の判断：** GooglebookのOS基盤、Chromeの提供機能、Chromiumのdesktop Android開発系統は別々の情報です。desktop Androidの実装履歴は参考になりますが、出荷版のソース対応が未確認のため、通常のAndroidスマートフォン版・Linux版・ChromeOS版のいずれかと内部実装や全機能が同一とは結論づけません。
+
+**外部PCによる代替：** GooglebookへのADB接続は公式対応で、全モデルのWi-Fiと一部モデルのUSB接続が案内されています。しかし、Androidアプリ用ADBの対応だけでは、GooglebookのChromeタブが外部PCの`chrome://inspect/#devices`で検出・操作できることまで証明できません。リモートDevToolsでの代替は候補とし、Googlebook固有の接続試験が必要です。外部PCを使う場合は「Googlebook単体で完結」とは区別します。[GooglebookのADB公式手順](https://developer.android.com/develop/adaptive-apps/guides/googlebook/adb-debugging)
+
+**実用上の影響・未確認事項・今後の確認：** 単体でのHTML・CSS・JavaScript・通信調査と要素非表示ルール作成は、現状では購入判断の未確認条件として残します。実機ではChrome版・OSビルドを記録し、右クリックの検証メニュー、起動キー、各パネル、ドッキング、動的DOM・iframeの検証を確認します。要素選択からセレクターの対象確認、CSS試験、利用する広告ブロック拡張機能へのルール登録、再読み込み後の広告非表示と本文・操作への副作用まで試験します。DevTools内のCSS試験だけで拡張機能のルール構文・適用条件も検証済みとはみなしません。Intel・Snapdragon間のDevTools機能差を示す公式資料は今回確認できず、実機試験も未実施です。
+
 #### Chromeプロファイル・Googleアカウント・OSユーザー
 
 | 概念 | 意味・確認状況 |
@@ -246,6 +295,23 @@ Android版Chrome一般のヘルプには一つのプロファイルのみとい�
 ブラウザ情報を分離したい場合は、別々のOSユーザーと同期アカウントの利用を優先します。同一ユーザーへのアカウント追加だけを、ブックマーク・履歴・Cookie・パスワード・拡張機能・同期設定の分離とみなさないでください。同じ同期アカウントを使うと同期対象データが再び共有される点も考慮します。全項目の分離保証を列挙したGooglebook公式資料は未確認です。Beta / Canary併用の回避策は報道にありますが、公式の標準的な分離方法としては扱いません。
 
 Chromebookも公式ヘルプでは端末ユーザーの追加・切り替えを案内しています。ChromeOSのOSユーザー切り替えを、Windows等の同一OSユーザー内のChromeプロファイル切り替えと同一視しないようにします。[Chromeの複数プロファイルとChromebookの案内](https://support.google.com/chrome/answer/2364824?hl=en)
+
+#### 追加検証：独立Chromeプロファイルの対応と代替手段（2026年10月23日）
+
+**懸念点と結論：** 同一OSユーザー内で独立したChromeプロファイルを複数作れるかは、複数Googleアカウントへのログインとは別問題です。既存節の担当者回答・実機報道は保持しますが、今回確認したGooglebook公式ヘルプから、複数の独立Chromeプロファイルの作成・切り替え手順や、将来の提供日を確認することはできませんでした。公式仕様として「恒久的に非対応」「実装予定あり」とは断定しません。
+
+**一次情報で確認できた事実：** Googlebook公式ヘルプは、OSユーザーごとの設定・ファイルと、その中で使うアカウントを区別しています。仕事・個人用途には別OSユーザーを作る方法と同一ユーザーにアカウントを追加する方法を案内し、独立した仕事用プロファイル（バッジ付き仕事アプリ）は現在非対応と説明しています。この仕事用プロファイルはChromeのブラウザプロファイルとは別の機能です。
+
+- [Googlebookのユーザーとアカウント](https://support.google.com/chrome/answer/18206266?hl=en)
+- [仕事・学校アカウントの利用方法](https://support.google.com/chrome/answer/18178630?hl=en)
+
+Googlebook向け企業管理ヘルプにはChromeへのサインインとmanaged profile reportingが記載されています。ただし、組織内の管理対象プロファイルのレポート機能は、一台・同一OSユーザー内で複数プロファイルを追加できるという説明ではありません。Profileアイコンの存在だけでも対応を判断しません。[GooglebookのChrome管理](https://support.google.com/chrome/a/answer/18359708?hl=en)
+
+**実用上の影響と分離範囲：** 一般のPC版Chromeのヘルプは、プロファイルによるブックマーク・履歴・パスワード・設定の分離を案内しています。一方、Googlebookの同一ユーザー内の複数アカウントだけで、ブックマーク、履歴、Cookie、拡張機能、設定を各アカウント専用に分けられるという公式説明は今回確認できませんでした。仕事・個人のデータ分離や、異なる拡張機能・フィルタ設定の並行利用を前提に購入する場合は、別途確認が必要です。[一般のChromeプロファイル](https://support.google.com/chrome/answer/2364824?hl=en)
+
+**Chromebook Plusとの比較・代替手段：** 同じ公式ヘルプはChromebook向けには端末ユーザーの追加・複数アカウントの利用を案内します。Googlebookにも別OSユーザーという選択肢はありますが、ブラウザだけを切り替える機能と同じ操作性・同時利用条件とは限りません。OSユーザーの分離を利用する案は公式案内に沿いますが、Cookie、拡張機能、同期設定等の全項目についてGooglebook固有の分離保証を確認できたわけではないため、完全な代替とは結論づけません。
+
+**未確認事項・今後の確認：** Chrome版・OSビルドごとの追加UI、同時に開ける独立プロファイル数、各データの分離、OSユーザー切り替え時のセッション維持、将来対応の正式発表を確認します。Intel・Snapdragon間でこの機能が異なるという公式資料は今回確認できませんでした。実機での分離試験は未実施です。なお、既存節が参照するAndroid版Chromeのプロファイルヘルプは今回取得制限で本文を再確認できなかったため、新たな結論の根拠には使用していません。
 
 ### Androidスマートフォン連携
 
