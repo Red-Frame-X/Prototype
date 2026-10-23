@@ -23,3 +23,9 @@
   rewrite. Review replacements for meaning as well as net line loss. A passing
   check does not authorize deletions or unsupported factual changes.
 - When writing or revising Japanese documentation, prioritize clear, natural Japanese used in ordinary human communication. Avoid unnecessarily stiff, mechanical, or formulaic wording while preserving technical accuracy and the original meaning.
+
+## Codex code review language
+
+- Write all GitHub Codex code review findings, summaries, explanations, severity assessments, and recommended fixes in natural Japanese.
+- Preserve code identifiers, file paths, commands, logs, and quoted error messages in their original form when accuracy requires it.
+- Apply this language preference to automatic pull request reviews and reviews requested with `@codex review`.
