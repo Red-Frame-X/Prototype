@@ -1,24 +1,24 @@
-# Repository編集時の保護方針
+# リポジトリ編集時の保護方針
 
 - 不正確な説明は削除せず、検証できた正確な内容に修正する。
   文脈と有用な情報を保持する。修正内容を検証できない場合は、
   その箇所を削除せず、不確かな点を報告する。
 - ユーザーが依頼した範囲外の内容をすべて保持する。
-  削除について明示的な承認がない限り、MarkdownやCustom Filterを
+  削除について明示的な承認がない限り、Markdownやカスタムフィルターを
   大幅に削除・短縮・統合・置換しない。
 - 範囲を限定した削除依頼では、現在のファイル全文を基に作業し、
-  指定された行やBlockだけを削除して、書き込む前に変更前後を比較する。
-  無関係な削除や変更がdiffに含まれる場合は、編集を中止する。
+  指定された行やブロックだけを削除して、書き込む前に変更前後を比較する。
+  無関係な削除や変更が差分に含まれる場合は、編集を中止する。
 - 途中で切れた取得結果をファイルの置換内容として使用しない。
   ファイル全文を取得できない場合は、ファイル全体を置換しない。
 - 現在のファイルに対して必要な箇所だけを修正する。既存の文書を
-  記憶・要約・途中で切れたTool出力から再構成しない。
+  記憶・要約・途中で切れたツール出力から再構成しない。
 - 事実・出典・設定・検証結果を捏造しない。技術的な記述は
   信頼できる一次情報と照合する。ユーザーが確認を依頼していない
   未検証の記述は変更せず、不確かな点を明示する。
-- Commit・Merge前に削除行を含むdiff全体を確認し、
+- コミット・マージ前に削除行を含む差分全体を確認し、
   無関係な内容が失われたり変更されたりしていないことを検証する。
-  関連Testと内容消失防止検査を実行し、CIを通すためだけに保護を弱めない。
+  関連テストと内容消失防止検査を実行し、CIを通すためだけに保護を弱めない。
 - 行数の検査だけでは事実の正確さを証明できず、有害な書き換えもすべては検出できない。
   行数の純減だけでなく、置換内容の意味も確認する。検査に合格しても、
   削除や根拠のない事実変更が許可されたことにはならない。
@@ -27,25 +27,25 @@
 ## Codex Code Reviewの言語
 
 - GitHub上のCodex Code Reviewの指摘・要約・説明・重大度の評価・修正案は、自然な日本語で記述する。
-- 正確さのために必要なコード識別子・File Path・Command・Log・引用したError messageは原表記を保持する。
+- 正確さのために必要なコード識別子・ファイルパス・コマンド・ログ・引用したエラーメッセージは原表記を保持する。
 - この言語方針を、自動Pull Request Reviewと`@codex review`で依頼されたReviewの両方に適用する。
 
 ## Commit titleの表記
 
-- Commit messageの本文は自然な日本語で記述してよいが、IT・Software開発・GitHubで英語表記が一般的な用語と正式名称は英語を優先する。
+- Commit messageの説明は自然な日本語で記述してよいが、IT・ソフトウェア開発・GitHubで英語表記が一般的な用語と正式名称は英語を優先する。
 - `AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は固定の正式表記として維持し、日本語訳へ置換しない。
 - `GitHub Actions`、`Workflow`、`Commit`、`Pull Request`、`PR`、`Issue`、`Branch`、`Repository`、`README`、`CI`、`Lint`、`Test`、`Script`、`Version`など、英語表記が一般的な技術用語は文脈上不自然でない限り英語を優先する。
 - Commit titleは日本語と英語の正式名称を組み合わせても、英語のみでもよい。例：`Markdown Notes のVersion自動更新処理を修正`、`Update Markdown Notes Version`。
-- 自動生成するCommit、Merge Commit、Revert Commit、PR title、Merge時に作成するCommitにも同じ表記方針を適用する。
+- 自動生成するCommit、Merge Commit、Revert Commit、Pull Request title、Merge時に作成するCommitにも同じ表記方針を適用する。
 - `npm run hooks:install` でCommit Hookを有効にする。CIでも新しいCommit titleが固定名称の表記方針に反していないことを検査する。
 
 ## Repository内の表記
 
 - 本文の説明は読みやすさを優先して原則として日本語で記述する。
-- IT・Software開発・GitHub・Content Blocking等で英語表記が一般的な用語、製品名、機能名、Project名、Directory名、File名、コード識別子は、無理に日本語化せず英語表記を優先する。
+- IT・ソフトウェア開発・GitHub・コンテンツブロック等で英語表記が一般的な用語、製品名、機能名、プロジェクト名、ディレクトリ名、ファイル名、コード識別子は、無理に日本語化せず英語表記を優先する。
 - 特に`AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は正式な英語表記を維持する。
-- 製品名・コード識別子・Command・設定Key・Metadata key・URL・File名・Directory名・購読先Pathは、仕様と互換性を保つため原表記を維持する。公式文書・公式UI・Upstreamに正式表記がある場合は、その表記を優先する。
+- 製品名・コード識別子・コマンド・設定キー・Metadata key・URL・ファイル名・ディレクトリ名・購読先Pathは、仕様と互換性を保つため原表記を維持する。公式文書・公式UI・Upstreamに正式表記がある場合は、その表記を優先する。
 - `品質検査`、`自動更新`、`変更履歴`、`生成処理`、`構文検査`、`回帰テスト`、`設定`、`説明`、`注意事項`など、自然な日本語として読みやすい一般説明まで機械的に英語化しない。
 - UserScriptの日本語表示名には`@name:ja`を使い、更新時の識別に使われる既存の`@name`と`@namespace`は維持する。
-- License原文、公式Changelogの原文Mirror、検証用の原文引用は保持する。
-- 自動生成する表示・Commit message等は、生成済みFileだけでなく生成元も同じ表記方針へ修正し、次回のUpdateでも表記を維持する。
+- ライセンス原文、公式Changelogの原文ミラー、検証用の原文引用は保持する。
+- 自動生成する表示・Commit message等は、生成済みファイルだけでなく生成元も同じ表記方針へ修正し、次回のUpdateでも表記を維持する。
