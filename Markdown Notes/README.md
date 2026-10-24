@@ -1,11 +1,11 @@
-# Markdown形式の技術メモ
+# Markdown Notes
 
 ChromeOS、Android、コンテンツブロック、GitHub運用に関する調査メモと手順書です。個人の学習記録・検証ログ・設定バックアップとして後から再利用できるよう、一般的な解説、手順、比較情報もできるだけ削らずに残しています。仕様やUIが変わりやすい分野を含むため、各文書の更新日と参照先の公式情報を併せて確認します。
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **ライセンス** | CC0-1.0 |
+| **License** | CC0-1.0 |
 | **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
