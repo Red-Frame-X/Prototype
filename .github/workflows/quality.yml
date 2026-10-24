@@ -60,6 +60,9 @@ jobs:
       - name: 大量の内容消失の防止検査
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            # fetch-depth: 0で履歴全体を取得済み。ベースを--depth=1で再取得すると、
+            # origin/<base>が浅い参照に置き換わり、3点差分に必要な
+            # Merge baseを取得できなくなる場合がある。
             base_ref="origin/${{ github.base_ref }}"
             git merge-base "$base_ref" HEAD >/dev/null
           elif git rev-parse HEAD^ >/dev/null 2>&1; then
@@ -72,13 +75,20 @@ jobs:
           guard_args=(--base-ref "$base_ref")
           merged_guide='Markdown Notes/Designing AdGuard Custom Rules.md'
           if git cat-file -e "$base_ref:$merged_guide" 2>/dev/null && [[ ! -e "$merged_guide" ]]; then
+            # このファイルの内容をAdGuard Custom Rules Reference.mdに統合した後、
+            # このファイル自体の削除が明示的に依頼された。
             guard_args+=(--allow-deletion-in "$merged_guide")
           fi
           python scripts/check_large_content_loss.py "${guard_args[@]}"
 
+      # Version Metadataはmainへのpush後にVersion日時の更新（日本標準時）が同期する。
+      # PRでも未同期状態を失敗扱いすると、設計上予定された自動同期前に不要な赤Runが発生するため、
+      # 手動実行時だけ厳格検証し、通常のPR/pushでは他の品質検証を継続する。
       - name: Markdown NotesのVersion日時検査
         if: github.event_name == 'workflow_dispatch'
         run: |
+          # このStepはworkflow_dispatchでのみ実行するため、
+          # github.base_refなどpull_request専用の情報は意図的に参照しない。
           if git rev-parse HEAD^ >/dev/null 2>&1; then
             python scripts/check_markdown_notes_version.py --base-ref HEAD^
           else
@@ -101,6 +111,8 @@ jobs:
           BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
           HEAD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
+          # GitHubの検証用Mergeではなく、PRの実際のCommitを検査する。
+          # この検査だけは結果を保持して後続検査を実行し、最後に失敗を再反映する。
           if [[ -n "$BASE_REF" ]]; then
             python scripts/check_commit_titles.py --base-ref "$BASE_REF" --head-ref "$HEAD_REF"
           else
