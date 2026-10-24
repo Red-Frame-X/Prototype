@@ -87,7 +87,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
         self.assertIn("Merge ", result.stdout)
 
-    def test_independent_checks_continue_after_title_failure(self):
+    def test_only_title_failure_is_deferred_until_final_step(self):
         steps = self.workflow()["jobs"]["quality"]["steps"]
         title_step = next(s for s in steps if s.get("id") == "commit-title-check")
         self.assertTrue(title_step.get("continue-on-error"))
@@ -99,7 +99,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
             "AGLintの実行",
         ):
             step = next(s for s in steps if s.get("name") == name)
-            self.assertEqual(step.get("if"), "always()")
+            self.assertNotIn("if", step)
 
         final_step = next(
             s for s in steps if s.get("name") == "コミットタイトル検査の最終判定"
