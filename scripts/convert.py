@@ -42,9 +42,7 @@ class AdGuardOptimizer:
 
         # AdGuard拡張CSSでJS解析が必須な疑似クラス (:is, :not, :where は標準CSSで処理可能なため除外)
         self.adg_supported_ext_css: List[str] = settings["adguard_extended_css"]
-
-        # uBO独自演算子のAdGuard互換置換マップ
-        self.modifier_replacements: Dict[str, str] = settings["modifier_replacements"]
+        self.ubo_unsupported_ext_css: List[str] = settings["unsupported_ubo_extended_css"]
 
         # uBO構文からAdGuardへ意味を安全に維持できると確認できていないスクリプトレット。
         # AdGuard MV3自体のscriptlet対応可否とは分離し、推測変換による挙動変更を防ぐ。
@@ -289,7 +287,7 @@ class AdGuardOptimizer:
                 # ドメインだけに丸めると適用範囲が広がるため、必ず元のパスを維持する。
                 if '/' in domain_part:
                     if ',' in domain_part:
-                        return f"! [未対応のURLスコープ] {original_line}"
+                        return f"! [未対応の混在する要素非表示URL範囲] {original_line}"
                     rule_scope = f"*$url={domain_part}"
 
                 if any(p in selector_part for p in self.ubo_unsupported_ext_css):
@@ -306,6 +304,8 @@ class AdGuardOptimizer:
             if regex_data:
                 prefix, regex_part, modifiers_str = regex_data
                 rule = f"{prefix}{regex_part}"
+                if modifiers_str.startswith('$'):
+                    modifiers_str = modifiers_str[1:]
             else:
                 if line.endswith('$'):
                     if '$' not in line[:-1]:
