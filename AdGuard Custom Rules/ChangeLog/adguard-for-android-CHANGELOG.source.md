@@ -1,12 +1,12 @@
-# AdGuard for Android changelog mirror
+# AdGuard for Androidの変更履歴ミラー
 
-> Source: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
-> Generated from official GitHub Releases; newest release first.
+> 取得元: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
+> 公式GitHub Releasesから生成しています。新しいリリースから順に掲載します。
 
 ## 4.15.1
 
-- Published: 2026-10-21T17:54:11Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15.1
+- 公開日時: 2026-10-21T17:54:11Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15.1
 
 In response to the eMudhra certificate authority incident, we’ve blacklisted the compromised certificates. HTTPS filtering will not work on domains using these certificates — such connections will be validated by the browser itself. 
 
@@ -27,8 +27,8 @@ Safe choices include:
 
 ## 4.15
 
-- Published: 2026-10-19T15:46:27Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15
+- 公開日時: 2026-10-19T15:46:27Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15
 
 AdGuard for Android v4.15 is a small update focused on usability improvements and bug fixes. While this release doesn’t introduce major new functionality, it brings a few long-requested enhancements designed to make everyday use of AdGuard more convenient.
 
@@ -80,8 +80,8 @@ This feature is particularly useful when you need to check whether a website, ap
 
 ## 4.14.2
 
-- Published: 2026-09-25T11:51:52Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14.2
+- 公開日時: 2026-09-25T11:51:52Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14.2
 
 Here’s an additional technical update following the previous one. In it, we’ve fixed bugs and kept working on the app stability.
 
@@ -98,8 +98,8 @@ Here’s an additional technical update following the previous one. In it, we’
 
 ## 4.14.1
 
-- Published: 2026-09-15T11:09:14Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14.1
+- 公開日時: 2026-09-15T11:09:14Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14.1
 
 We’ve improved DNS reliability when using Automatic proxy or Manual proxy together with the “Use system:// for Automatic DNS” option, ensuring domain names resolve correctly in these configurations. We’ve also fixed issues with DNS64 support, improving connectivity in IPv6-only networks that rely on DNS64/NAT64 translation.
 
@@ -116,8 +116,8 @@ We’ve improved DNS reliability when using Automatic proxy or Manual proxy toge
 
 ## 4.14
 
-- Published: 2026-09-09T18:24:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14
+- 公開日時: 2026-09-09T18:24:42Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14
 
 AdGuard for Android v4.14 is focused on improving compatibility and making ad blocking work seamlessly with the privacy tools you rely on every day.
 
@@ -172,8 +172,8 @@ Filtering for browser proxy and VPN extensions has also been significantly impro
 
 ## 4.13.2
 
-- Published: 2026-08-26T12:41:15Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.2
+- 公開日時: 2026-08-26T12:41:15Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.2
 
 Here’s an additional technical update following the previous one. In it, we’ve fixed bugs and kept working on the app stability.
 
@@ -190,8 +190,8 @@ Here’s an additional technical update following the previous one. In it, we’
 
 ## 4.13.1
 
-- Published: 2026-08-03T16:50:17Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.1
+- 公開日時: 2026-08-03T16:50:17Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13.1
 
 We recently released AdGuard for Android v4.13, and now we’re following up with a quick hotfix to address a couple of bugs.
 
@@ -210,8 +210,8 @@ Please note that for Integration mode to work properly, you need to update both 
 
 ## 4.13
 
-- Published: 2026-07-28T14:04:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13
+- 公開日時: 2026-07-28T14:04:20Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13
 
 Please welcome the much anticipated AdGuard for Android v4.13! We set ambitious goals for this release, and did our best to deliver: a lot of work was done both in terms of big features as well as the usual behind the scenes routine of fixing bugs and oiling gears for a better performance. Let’s see the details below.
 
@@ -368,8 +368,8 @@ You can consult the changelog below to see all the fixes and improvements.
 
 ## 4.12.3
 
-- Published: 2026-02-20T18:11:04Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.3
+- 公開日時: 2026-02-20T18:11:04Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.3
 
 This is a technical update aimed to increase the app stability and fix minor bugs.
 
@@ -403,8 +403,8 @@ This is a technical update aimed to increase the app stability and fix minor bug
 
 ## 4.12.2
 
-- Published: 2025-12-12T17:57:02Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.2
+- 公開日時: 2025-12-12T17:57:02Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.2
 
 This is a technical update aimed to increase the app stability and fix minor bugs.
 
@@ -421,8 +421,8 @@ This is a technical update aimed to increase the app stability and fix minor bug
 
 ## 4.12.1
 
-- Published: 2025-10-14T09:37:46Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.1
+- 公開日時: 2025-10-14T09:37:46Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12.1
 
 We found two bugs after the latest update of AdGuard for Android: the app didn’t launch automatically and filters stopped auto-updating for some users. We are now rolling out a quick fix to address these issues and get your ad-blocking back to normal.
 
@@ -447,8 +447,8 @@ We found two bugs after the latest update of AdGuard for Android: the app didn�
 
 ## 4.12
 
-- Published: 2025-10-01T18:40:48Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12
+- 公開日時: 2025-10-01T18:40:48Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12
 
 With this release, using AdGuard for Android on tablets has become more convenient — thanks to everyone who voted for the landscape mode. We’ve also added the new *Share settings* feature and made improvements to CoreLibs. Read more about the new features below and don’t forget to update to version 4.12!
 ## Landscape mode
@@ -534,8 +534,8 @@ The new CoreLibs release includes bug fixes and various improvements. For exampl
 
 ## 4.11
 
-- Published: 2025-08-26T15:38:16Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.11
+- 公開日時: 2025-08-26T15:38:16Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.11
 
 This release includes some under-the-hood improvements, a substantial number of bug fixes, and a CoreLibs update. As a result, overall app stability has been significantly improved.
 
@@ -618,8 +618,8 @@ This release includes some under-the-hood improvements, a substantial number of 
 
 ## 4.10
 
-- Published: 2025-06-25T17:22:52Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.10
+- 公開日時: 2025-06-25T17:22:52Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.10
 
 AdGuard for Android v4.10 introduces important improvements to the HTTPS certificate installation process, making it more intuitive and accessible for users. 
 
@@ -676,8 +676,8 @@ To address these issues, we’ve added in-app guides for the most common devices
 
 ## 4.9
 
-- Published: 2025-04-03T18:22:43Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9
+- 公開日時: 2025-04-03T18:22:43Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9
 
 We’ve added a major feature in AdGuard v4.9 for Android: native support for userstyles. This feature has been available in AdGuard for Windows and AdGuard for Mac for a while, and now we are bringing it to AdGuard for Android!
 
@@ -738,8 +738,8 @@ Aside from this serious issue, we have also worked on fixing smaller bugs. As al
 
 ## 4.7.2
 
-- Published: 2025-06-26T16:42:05Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7.2
+- 公開日時: 2025-06-26T16:42:05Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7.2
 
 In this update, we’ve fully fixed a problem that slipped through in the previous release: AdGuard protection would shut off whenever WebView was stopped or updated. With this version, Android 7 and 8 users can finally enjoy uninterrupted protection as well.
 
@@ -750,8 +750,8 @@ In this update, we’ve fully fixed a problem that slipped through in the previo
 
 ## 4.9 RC 1
 
-- Published: 2025-03-27T17:01:06Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9-rc-1
+- 公開日時: 2025-03-27T17:01:06Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9-rc-1
 
 We’ve added a major feature in this RC: please welcome native support for userstyles. This feature has been available in AdGuard for Windows and AdGuard for Mac for a while, and now we are bringing it to AdGuard for Android!
 
@@ -784,8 +784,8 @@ We are continuing to make the app better while fixing bugs on the way and updati
 
 ## 4.9 Beta 1
 
-- Published: 2025-03-20T17:35:30Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9-beta-1
+- 公開日時: 2025-03-20T17:35:30Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.9-beta-1
 
 In this beta version, we are continuing our quest on making the app better while fixing bugs and glitches in the UI, and bringing timely updates to our CoreLibs and Scriptlets modules. You will find full details in the сhangelog below.
 
@@ -837,8 +837,8 @@ In this beta version, we are continuing our quest on making the app better while
 
 ## 4.15 Beta 1
 
-- Published: 2026-10-09T19:09:04Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15-beta-1
+- 公開日時: 2026-10-09T19:09:04Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15-beta-1
 
 AdGuard for Android v4.15 beta is a small update focused on usability improvements and bug fixes. While this release doesn’t introduce major new functionality, it brings a few long-requested enhancements designed to make everyday use of AdGuard more convenient.
 
@@ -885,8 +885,8 @@ This feature is particularly useful when you need to check whether a website, ap
 
 ## 4.14 Beta 1
 
-- Published: 2026-09-03T14:29:09Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14-beta-1
+- 公開日時: 2026-09-03T14:29:09Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.14-beta-1
 
 AdGuard for Android v4.14 beta 1 is focused on improving compatibility and making ad blocking work seamlessly with the privacy tools you rely on every day.
 
@@ -942,8 +942,8 @@ Filtering for browser proxy and VPN extensions has also been significantly impro
 
 ## 4.13 Beta 1
 
-- Published: 2026-07-17T11:41:50Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13-beta-1
+- 公開日時: 2026-07-17T11:41:50Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.13-beta-1
 
 If this beta of AdGuard for Android v4.13 is rolling out after a bit of radio silence, it means that sometimes the goals we set are even bigger in reality than they were in our plans. A lot of work was done across the board to get ready for the next step: the release version.
 
@@ -1098,8 +1098,8 @@ You can consult the extensive changelog below to see all the fixes and improveme
 
 ## 4.12 RC 1
 
-- Published: 2025-09-30T22:36:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12-rc-1
+- 公開日時: 2025-09-30T22:36:19Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12-rc-1
 
 A release candidate for the upcoming AdGuard for Android v4.12 is now available. For us, launching an RC version is a great way to test new features before their official release. For users, it’s an opportunity to be among the first to try them out. We hope you enjoy it!
 
@@ -1166,8 +1166,8 @@ A release candidate for the upcoming AdGuard for Android v4.12 is now available.
 
 ## 4.12 Beta 1
 
-- Published: 2025-09-29T21:42:10Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12-beta-1
+- 公開日時: 2025-09-29T21:42:10Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.12-beta-1
 
 As we always say, your feedback is really important to us, and this time we’ve added one of the most requested features — landscape mode. Using AdGuard on a tablet is now even more convenient.
 
@@ -1243,8 +1243,8 @@ We’ve also introduced settings import via link. This feature saves you time: n
 
 ## 4.11 Beta 1
 
-- Published: 2025-08-14T15:04:09Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.11-beta-1
+- 公開日時: 2025-08-14T15:04:09Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.11-beta-1
 
 This beta includes some under-the-hood improvements, a substantial number of bug fixes, and a CoreLibs update. As a result, overall app stability has been significantly improved.
 
@@ -1284,8 +1284,8 @@ This beta includes some under-the-hood improvements, a substantial number of bug
 
 ## 4.10 Beta 1
 
-- Published: 2025-06-17T11:54:02Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.10-beta-1
+- 公開日時: 2025-06-17T11:54:02Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.10-beta-1
 
 This beta introduces important improvements to the HTTPS certificate installation process, making it more intuitive and accessible for users. 
 
@@ -1342,8 +1342,8 @@ To address these issues, we’ve added in-app video guides for the most common d
 
 ## 4.8
 
-- Published: 2025-02-17T17:20:34Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8
+- 公開日時: 2025-02-17T17:20:34Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8
 
 We continue to unify the code base of our products, and AdGuard for Android is no exception. Updates will now be more stable and new features will be added faster. Also, in the new version we have accelerated the loading of large amounts of data in Statistics, as well as updated CoreLibs and DnsLibs.
 
@@ -1398,8 +1398,8 @@ We continue to unify the code base of our products, and AdGuard for Android is n
 
 ## 4.8 RC 2
 
-- Published: 2025-02-15T11:47:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-rc-2
+- 公開日時: 2025-02-15T11:47:20Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-rc-2
 
 Ad blocking was compromised, but not for long: we fixed [an annoying bug reported by users](https://github.com/AdguardTeam/AdguardForAndroid/issues/5604) and updated our libraries while we were at it.
 
@@ -1416,8 +1416,8 @@ Ad blocking was compromised, but not for long: we fixed [an annoying bug reporte
 
 ## 4.8 RC 1
 
-- Published: 2025-02-11T17:31:57Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-rc-1
+- 公開日時: 2025-02-11T17:31:57Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-rc-1
 
 We continue to unify the code base of our products, and AdGuard for Android is no exception. Updates will now be more stable and new features will be added faster. Also, in the new version we have accelerated the loading of large amounts of data in Statistics, as well as updated CoreLibs and DnsLibs.
 
@@ -1455,8 +1455,8 @@ We continue to unify the code base of our products, and AdGuard for Android is n
 
 ## 4.8 Beta 1
 
-- Published: 2025-02-07T17:27:43Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-beta-1
+- 公開日時: 2025-02-07T17:27:43Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.8-beta-1
 
 We continue to unify the code base of our products, and AdGuard for Android is no exception. Updates will now be more stable and new features will be added faster. Also in the new version we have accelerated the loading of large amounts of data in Statistics and updated CoreLibs. 
 
@@ -1483,8 +1483,8 @@ We continue to unify the code base of our products, and AdGuard for Android is n
 
 ## 4.7.1
 
-- Published: 2024-12-11T16:59:44Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7.1
+- 公開日時: 2024-12-11T16:59:44Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7.1
 
 In this update we've improved the stability of the app and fixed some minor bugs.
 
@@ -1501,8 +1501,8 @@ In this update we've improved the stability of the app and fixed some minor bugs
 
 ## 4.7
 
-- Published: 2024-12-03T15:41:02Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7
+- 公開日時: 2024-12-03T15:41:02Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7
 
 Today’s version is exactly what we love: it introduces a fresh feature we couldn’t wait to see on the app. And it’s no small release – we’re introducing an in-app privacy browser to the app! Let’s take a closer look at what’s new.
 
@@ -1564,8 +1564,8 @@ Just a heads-up: our private browser is still in the early stages of development
 
 ## 4.6.5
 
-- Published: 2024-11-12T17:10:23Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.5
+- 公開日時: 2024-11-12T17:10:23Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.5
 
 Minor improvements to the statistics module.
 
@@ -1582,8 +1582,8 @@ Minor improvements to the statistics module.
 
 ## 4.7 RC 2
 
-- Published: 2024-11-30T08:51:08Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-rc-2
+- 公開日時: 2024-11-30T08:51:08Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-rc-2
 
 One more RC, one step closer to the final release. This time, we focused on improving our private browser by fixing the stats counting and implementing filtering rules. We also worked on a solid boost for the overall app performance. Almost there!
 
@@ -1621,8 +1621,8 @@ One more RC, one step closer to the final release. This time, we focused on impr
 
 ## 4.7 RC 1
 
-- Published: 2024-11-21T17:36:35Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-rc-1
+- 公開日時: 2024-11-21T17:36:35Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-rc-1
 
 We’re so close to the release, we can practically hear the champagne cork popping... No new features have been added since the last beta, but we promise we weren’t slacking, just getting all the awesome stuff ready for the final version.
 
@@ -1663,8 +1663,8 @@ We’re so close to the release, we can practically hear the champagne cork popp
 
 ## 4.7 Beta 1
 
-- Published: 2024-11-15T15:23:10Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-beta-1
+- 公開日時: 2024-11-15T15:23:10Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.7-beta-1
 
 Today's beta version is exactly what we love: it introduces a fresh feature we can’t wait to see live in the main release. And it’s no small beta either: we’re introducing a privacy browser to the app! Let’s take a closer look at each of these.
 
@@ -1729,15 +1729,15 @@ Just a heads-up: our private browser is still in the early stages of development
 
 ## 4.6.4 Hotfix 
 
-- Published: 2024-11-05T11:13:36Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4-hotfix
+- 公開日時: 2024-11-05T11:13:36Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4-hotfix
 
 This hotfix update resolves the battery drain issue caused by usage of java.util.Calendar in specific time zones.
 
 ## 4.6.4
 
-- Published: 2024-10-31T15:57:15Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4
+- 公開日時: 2024-10-31T15:57:15Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4
 
 If this release were a UFC fighter, it would go by the name “The Bugfixer” because it is all about squashing bugs. Let’s break down what we’ve accomplished here.
 
@@ -1816,8 +1816,8 @@ A number of bug fixes and improvements come with the latest version of the CoreL
 
 ## 4.6.4 Beta 1
 
-- Published: 2024-10-04T08:08:05Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4-beta-1
+- 公開日時: 2024-10-04T08:08:05Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.4-beta-1
 
 This release is all about good vibes and improved filtering quality — the new version of the CoreLibs does just that. We’ve also optimized the way we handle statistics, so they load faster and use less RAM while the app is running. A few minor bugs were fixed as well.
 
@@ -1834,8 +1834,8 @@ This release is all about good vibes and improved filtering quality — the new 
 
 ## 4.6.3
 
-- Published: 2024-09-09T16:58:37Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.3
+- 公開日時: 2024-09-09T16:58:37Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.3
 
 Here’s an additional technical update following the previous one. In it, we’ve fixed bugs and kept working on the app stability.
 
@@ -1853,8 +1853,8 @@ Here’s an additional technical update following the previous one. In it, we’
 
 ## 4.6.2
 
-- Published: 2024-08-21T15:01:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.2
+- 公開日時: 2024-08-21T15:01:20Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.2
 
 Have you ever noticed how the app crashes even when you have a freshly updated version? Well, notice no more! This hotfix solves that problem. From now on, just pure ad blocking all the way.
 
@@ -1872,8 +1872,8 @@ Have you ever noticed how the app crashes even when you have a freshly updated v
 
 ## 4.6.1 
 
-- Published: 2024-07-26T10:36:02Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.1
+- 公開日時: 2024-07-26T10:36:02Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6.1
 
 Filtering engines have been hit by [enemy bugs](https://github.com/AdguardTeam/AdguardForAndroid/issues/5405), but AdGuard is stronger than that. With this hotfix, updated libraries bring you a cleaner and safer web.
 
@@ -1891,8 +1891,8 @@ Filtering engines have been hit by [enemy bugs](https://github.com/AdguardTeam/A
 
 ## 4.6
 
-- Published: 2024-07-24T16:16:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6
+- 公開日時: 2024-07-24T16:16:20Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6
 
 As Vince Lombardi says, “Perfection is not attainable, but if we chase perfection we can catch excellence.” We do as he says, and try our best to make every update better. Today we are happy to release the new version of AdGuard for Android. Faster, stronger, and more efficient. Let’s take a look at the major changes.
 
@@ -1963,8 +1963,8 @@ Our developers didn’t rest on their laurels, so they also updated DnsLibs andU
 
 ## 4.6 RC 1
 
-- Published: 2024-07-19T13:03:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6-rc-1
+- 公開日時: 2024-07-19T13:03:42Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.6-rc-1
 
 Just one final tweak before the release. In this version we’ve successfully fixed one major issue. Some users were experiencing a problem when switching between mobile and Wi-Fi connections. The AdGuard protection would stop, so you’d have to start it again manually. We’ve also fixed some other bugs to make the application even more stable. Keep an eye out for more updates — the official release is just around the corner!
 
@@ -1987,8 +1987,8 @@ Just one final tweak before the release. In this version we’ve successfully fi
 
 ## 4.6 Beta 1
 
-- Published: 2024-07-11T14:44:07Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/4.6-beta-1
+- 公開日時: 2024-07-11T14:44:07Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/4.6-beta-1
 
 As Vince Lombardi says, “Perfection is not attainable, but if we chase perfection we can catch excellence.” We do as he says, and try our best to make every update better. Today we are happy to release the new beta version of AdGuard for Android. Faster, stronger, and more efficient. Let’s take a look at the major changes.
 
@@ -2050,8 +2050,8 @@ Our developers didn't rest on their laurels, so they also updated DnsLibs, Users
 
 ## 4.5
 
-- Published: 2024-06-11T12:09:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.5
+- 公開日時: 2024-06-11T12:09:19Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.5
 
 This update brings our YouTube player’s usability to a whole new level: we added background playback, recommended videos, quality settings, and much more. Not so unskippable now, are you, ads? On top of that, this version includes some nice fixes for overall app performance, including the Android TV version.
 
@@ -2105,8 +2105,8 @@ width="300" height="600">
 
 ## 4.4.1
 
-- Published: 2024-05-23T14:08:43Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4.1
+- 公開日時: 2024-05-23T14:08:43Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4.1
 
 This is a technical update aimed to increase the app stability and fix minor bugs.
 
@@ -2124,8 +2124,8 @@ This is a technical update aimed to increase the app stability and fix minor bug
 
 ## 4.4
 
-- Published: 2024-05-20T12:58:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4
+- 公開日時: 2024-05-20T12:58:19Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4
 
 Improved Firewall functionality and on-the-fly DoH filtering are the highlights of AdGuard v4.4 for Android. After extensive testing, we are ready to introduce the new version to you.
 
@@ -2287,8 +2287,8 @@ We also fixed some minor bugs and updated UserscriptsWrapper and DnsLibs.
 
 ## 4.5 Beta 1
 
-- Published: 2024-05-30T15:22:00Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.5-beta-1
+- 公開日時: 2024-05-30T15:22:00Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.5-beta-1
 
 This update brings our YouTube player’s usability to a whole new level. This update brings our YouTube player’s usability to a whole new level: we added background playback, recommended videos, quality settings, and much more. Not so unskippable now, are you, ads? On top of that, this version includes some nice fixes for overall app performance, including the Android TV version.
 
@@ -2329,8 +2329,8 @@ Double-tap the right or left side of the screen to skip 10 seconds forward or ba
 
 ## 4.4 Beta 1
 
-- Published: 2024-04-27T16:57:29Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4-beta-1
+- 公開日時: 2024-04-27T16:57:29Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.4-beta-1
 
 Improved Firewall functionality is the highlight of AdGuard v4.4 for Android beta. We have been testing it for a long time and now we are ready to introduce it to you.
 
@@ -2472,8 +2472,8 @@ We also fixed some minor bugs and updated UserscriptsWrapper, CoreLibs, and DNsL
 
 ## 4.3.1
 
-- Published: 2023-12-27T16:46:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3.1
+- 公開日時: 2023-12-27T16:46:42Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3.1
 
 Sometimes a release is so significant and exciting that it’s easy for a bug to slip through. The only thing left to do is to release a new version as quickly as possible. In this hotfix, we’ve fixed a major issue: the app would crash when HTTPS proxy is enabled in a browser. We also made sure that the `$all` modifier now works correctly, updated the CoreLibs and DnsLibs — our beloved filtering engines — and added a few improvements along the way. What else is there to say? Update and see for yourself!
 
@@ -2504,8 +2504,8 @@ Sometimes a release is so significant and exciting that it’s easy for a bug to
 
 ## 4.3.1 Beta 1
 
-- Published: 2023-12-26T14:10:44Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3.1-beta-1
+- 公開日時: 2023-12-26T14:10:44Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3.1-beta-1
 
 Sometimes a release is so significant and exciting that it’s easy for a bug to slip through. The only thing left to do is to release a new version as quickly as possible. In this beta, we’ve fixed a major issue: the app would crash when HTTPS proxy is enabled in a browser. We also made sure that the `$all` modifier now works correctly, updated the CoreLibs and DnsLibs — our beloved filtering engines — and added a few improvements along the way. What else is there to say? Update and see for yourself!
 
@@ -2534,8 +2534,8 @@ Sometimes a release is so significant and exciting that it’s easy for a bug to
 
 ## 4.3
 
-- Published: 2023-12-22T12:54:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3
+- 公開日時: 2023-12-22T12:54:19Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3
 
 AdGuard v4.3 for Android brings you something not only special, but unprecedented. It’s the same AdGuard you know and love, but now with a TV-sized twist – and we mean that quite literally: we’re glad to introduce the support for Android TV! Important updates and a new Developer tools section are also here to enhance your user experience with our app.
 
@@ -2680,8 +2680,8 @@ This feature stems from a major concern with HTTPS filtering. AdGuard validates 
 
 ## 4.3 Beta 1
 
-- Published: 2023-12-15T19:07:07Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3-beta-1
+- 公開日時: 2023-12-15T19:07:07Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.3-beta-1
 
 AdGuard v4.3 for Android beta brings you something not only special, but unprecedented. It’s the same AdGuard you know and love, but now with a TV-sized twist – and we mean that quite literally: we’re glad to introduce the support for Android TV! Important updates and a new Developer tools section are also here to enhance your user experience with our app
 
@@ -2797,8 +2797,8 @@ The recent CoreLibs v1.13 update boosts your browsing experience with improved H
 
 ## 4.2
 
-- Published: 2023-10-23T12:02:32Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2
+- 公開日時: 2023-10-23T12:02:32Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2
 
 ## AdGuard Dynamics
 
@@ -2916,8 +2916,8 @@ Our filters have become even more powerful and we have also fixed a bunch of bug
 
 ## 4.2 Beta 2
 
-- Published: 2023-10-13T13:10:35Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2-beta-2
+- 公開日時: 2023-10-13T13:10:35Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2-beta-2
 
 Now our app not only has dynamic icons, it also has a dynamic theme. If you enable this option in the settings, the AdGuard app interface will match the color of your smartphone interface. Aside from external changes, we have fixed several bugs for a smoother user experience.
 
@@ -2952,8 +2952,8 @@ Now our app not only has dynamic icons, it also has a dynamic theme. If you enab
 
 ## 4.2 Beta 1
 
-- Published: 2023-09-29T16:16:13Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2-beta-1
+- 公開日時: 2023-09-29T16:16:13Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.2-beta-1
 
 ## Dynamic icon [#4317](https://github.com/AdguardTeam/AdguardForAndroid/issues/4317)
 
@@ -3049,8 +3049,8 @@ width="300" height="600">
 
 ## 4.1
 
-- Published: 2023-07-26T17:14:51Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.1
+- 公開日時: 2023-07-26T17:14:51Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.1
 
 With this release, we have made a number of improvements to the UI and internal workings of our app. For example, we've reworked the YouTube player to support all video formats, including Live Streams and Shorts. Actually, it's based on the internal web browser that opens YouTube and has ad-blocking functionality built in. Take a look at the Protection section for a detailed description of this feature. We also made it easier for you to access *App management*. It's now just one tap away via the button we've added to the tab bar menu at the bottom.
 
@@ -3107,8 +3107,8 @@ With this release, we have made a number of improvements to the UI and internal 
 
 ## 4.1 Beta 1
 
-- Published: 2023-07-21T18:37:51Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.1-beta-1
+- 公開日時: 2023-07-21T18:37:51Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.1-beta-1
 
 With this release, we have made a number of improvements to the UI and internal workings of our app. For example, we've redesigned the YouTube player to support all video formats, including live streams, regular videos and shorts. Have a look at the Protection section for a detailed description of this feature. We also made it easier for you to access Apps Management. It's now just one click away via the button we've added to the tab bar menu at the bottom.
 
@@ -3167,8 +3167,8 @@ With this release, we have made a number of improvements to the UI and internal 
 
 ## 4.0
 
-- Published: 2023-06-13T18:10:45Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0
+- 公開日時: 2023-06-13T18:10:45Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0
 
 ## Remarkable сhanges in AdGuard v4.0 for Android
 
@@ -3273,8 +3273,8 @@ As for the settings themselves, we've added new ones, retired old ones, and have
 
 ## 4.0 RC 1
 
-- Published: 2023-06-01T16:30:03Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-rc-1
+- 公開日時: 2023-06-01T16:30:03Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-rc-1
 
 We are excited to present the first release candidate of AdGuard v4.0 for Android! In this update, we have addressed several issues to improve the overall performance and user experience.
 
@@ -3306,8 +3306,8 @@ We are excited to present the first release candidate of AdGuard v4.0 for Androi
 
 ## 4.0 beta 2
 
-- Published: 2023-05-25T14:23:44Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-beta-2
+- 公開日時: 2023-05-25T14:23:44Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-beta-2
 
 We’re now in the cleanup phase, so the changelog for the second beta of AdGuard v4.0 for Android is almost entirely bug fixes. This is where we need your help: if you find any problems with this version, please report a bug in the [Android repo](https://github.com/AdguardTeam/AdGuardforAndroid/issues) or vote for an existing bugfix.
 
@@ -3380,8 +3380,8 @@ Not forgetting the improvements: we updated CoreLibs and DnsLibs, added a couple
 
 ## 4.0 beta 1
 
-- Published: 2023-04-24T15:04:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-beta-1
+- 公開日時: 2023-04-24T15:04:42Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-beta-1
 
 Remember when we talked about [the first Nightly of AdGuard v4.0 for Android](https://adguard.com/blog/adguard-v4-0-for-android-nightly.html)? It was the first version after a long break — with reworked design and texts, rewritten code, and new features.
 
@@ -3465,8 +3465,8 @@ We're one step closer to the release we hope you'll enjoy. We would like to than
 
 ## 4.0 Nightly 39
 
-- Published: 2023-01-30T16:59:40Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-nightly-39
+- 公開日時: 2023-01-30T16:59:40Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.0-nightly-39
 
 We haven't talked about AdGuard's mobile apps for a long time, but now we're ready to let you in on what we've been up to.
 
@@ -3539,8 +3539,8 @@ With your help, the help of the community, we will be able to track down every s
 
 ## 3.6.11
 
-- Published: 2023-01-23T13:18:23Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11
+- 公開日時: 2023-01-23T13:18:23Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11
 
 >Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3608,8 +3608,8 @@ AdGuard for Android direct download links:
 
 ## 3.6.11 beta 2
 
-- Published: 2023-01-18T16:58:16Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11-beta-2
+- 公開日時: 2023-01-18T16:58:16Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11-beta-2
 
 >Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3629,8 +3629,8 @@ They say that two betas before a release is a good sign. Today we are releasing 
 
 ## 3.6.11 beta 1
 
-- Published: 2023-01-13T17:12:36Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11-beta-1
+- 公開日時: 2023-01-13T17:12:36Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.11-beta-1
 
 >Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3698,8 +3698,8 @@ The following new features are important to filter maintainers and provide advan
 
 ## 3.6.10
 
-- Published: 2022-08-26T16:36:40Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10
+- 公開日時: 2022-08-26T16:36:40Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10
 
 >Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3713,8 +3713,8 @@ AdGuard for Android direct download links:
 
 ## 3.6.10 Beta 2
 
-- Published: 2022-08-25T18:14:18Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10-beta-2
+- 公開日時: 2022-08-25T18:14:18Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10-beta-2
 
 >Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3728,8 +3728,8 @@ This is a technical beta update aimed to fix minor bugs.
 
 ## 3.6.10 Beta 1
 
-- Published: 2022-08-23T14:23:22Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10-beta-1
+- 公開日時: 2022-08-23T14:23:22Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.10-beta-1
 
 >Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3743,8 +3743,8 @@ In AdGuard v3.6.10 for Android we’ve improved connectivity check — now the a
 
 ## 3.6.9
 
-- Published: 2022-08-02T21:14:15Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.9
+- 公開日時: 2022-08-02T21:14:15Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.9
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3758,8 +3758,8 @@ This is a technical update aimed to increase the app stability and fix minor bug
 
 ## 3.6.9 Beta 1
 
-- Published: 2022-08-01T20:11:15Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.9-beta-1
+- 公開日時: 2022-08-01T20:11:15Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.9-beta-1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3773,8 +3773,8 @@ This is a technical update aimed to increase the app stability and fix minor bug
 
 ## 3.6.8
 
-- Published: 2022-04-28T15:55:31Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.8
+- 公開日時: 2022-04-28T15:55:31Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.8
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3800,8 +3800,8 @@ Besides, we've fixed extensions settings and enabled HTTPS filtering by default 
 
 ## 3.6.8 beta 1
 
-- Published: 2022-04-25T15:42:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.8-beta-1
+- 公開日時: 2022-04-25T15:42:19Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.8-beta-1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3822,8 +3822,8 @@ Besides, we've fixed extensions settings and enabled HTTPS filtering by default 
 
 ## 3.6.7
 
-- Published: 2022-02-02T13:37:47Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.7
+- 公開日時: 2022-02-02T13:37:47Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.7
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3844,8 +3844,8 @@ Having dealt with all the issues, we’re ready to present a new version. Please
 
 ## 3.6.7 beta 1
 
-- Published: 2022-01-25T12:13:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.7-beta-1
+- 公開日時: 2022-01-25T12:13:20Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.7-beta-1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3866,8 +3866,8 @@ Having dealt with all the issues, we’re ready to present a new version. Please
 
 ## 3.6.6
 
-- Published: 2021-12-30T10:55:42Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.6
+- 公開日時: 2021-12-30T10:55:42Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.6
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3886,8 +3886,8 @@ After the last update of AdGuard for Android, some users may have encountered th
 
 ## 3.6.5
 
-- Published: 2021-12-17T11:39:26Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.5
+- 公開日時: 2021-12-17T11:39:26Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.5
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3914,8 +3914,8 @@ With the implementation of new Safe Browsing API v2, Browsing Security module re
 
 ## 3.6.5 beta
 
-- Published: 2021-12-02T12:51:50Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.5-beta
+- 公開日時: 2021-12-02T12:51:50Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.5-beta
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3940,8 +3940,8 @@ Safebrowsing, which is responsible for blocking requests to malicious and phishi
 
 ## 3.6.4
 
-- Published: 2021-09-17T13:02:29Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.4
+- 公開日時: 2021-09-17T13:02:29Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.4
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -3955,8 +3955,8 @@ This quick update fixes a bug that could have happened to our long-term users. I
 
 ## 3.6.3
 
-- Published: 2021-09-08T14:53:39Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.3
+- 公開日時: 2021-09-08T14:53:39Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.3
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4011,8 +4011,8 @@ We know you are waiting for v4.0, so are we. Trust us, it’s worth it.
 
 ## 3.6.3 beta
 
-- Published: 2021-08-31T15:11:34Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.3-beta-1
+- 公開日時: 2021-08-31T15:11:34Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.3-beta-1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4055,8 +4055,8 @@ Do you remember the day when we solemnly announced that AdGuard v4.0 for Android
 
 ## 3.6.2
 
-- Published: 2021-05-13T14:29:46Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2
+- 公開日時: 2021-05-13T14:29:46Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4098,8 +4098,8 @@ P.S. v4.0 is coming. Hopefully, v3.6.2 will be the last way station before the n
 
 ## 3.6.2 RC 2
 
-- Published: 2021-05-11T11:31:40Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-rc-2
+- 公開日時: 2021-05-11T11:31:40Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-rc-2
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4116,8 +4116,8 @@ Here comes the second release candidate for AdGuard v3.6.2 for Android. We've ma
 
 ## 3.6.2 RC 1
 
-- Published: 2021-04-30T13:35:19Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-rc-1
+- 公開日時: 2021-04-30T13:35:19Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-rc-1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4134,8 +4134,8 @@ Meet the release candidate for AdGuard v3.6.2 for Android. Only two tasks separa
 
 ## 3.6.2 beta 1
 
-- Published: 2021-04-27T19:02:59Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-beta-1
+- 公開日時: 2021-04-27T19:02:59Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.2-beta-1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4170,8 +4170,8 @@ Meet AdGuard v3.6.2 for Android beta! In this version we’ve updated CoreLibs a
 
 ## 3.6.1
 
-- Published: 2021-02-19T11:49:04Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.1
+- 公開日時: 2021-02-19T11:49:04Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4196,8 +4196,8 @@ Another round of software release life cycle complete! This version of AdGuard f
 
 ## 3.6.1 beta 1
 
-- Published: 2021-02-15T16:15:08Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.1-beta-1
+- 公開日時: 2021-02-15T16:15:08Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6.1-beta-1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4220,8 +4220,8 @@ This is the first beta on the way towards AdGuard v4.0. We fixed a couple of bug
 
 ## 3.6
 
-- Published: 2020-12-15T10:43:20Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6
+- 公開日時: 2020-12-15T10:43:20Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4266,8 +4266,8 @@ The feature is still experimental — AdGuard for Android is one of the first op
 
 ## 3.5.2
 
-- Published: 2020-11-20T14:16:26Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.2
+- 公開日時: 2020-11-20T14:16:26Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.2
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4299,8 +4299,8 @@ This week Chrome 87 was released, which has a compatibility problem with AdGuard
 
 ## 3.5.1
 
-- Published: 2020-10-02T11:20:59Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.1
+- 公開日時: 2020-10-02T11:20:59Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.1
 
 > Disclaimer AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4348,8 +4348,8 @@ Meet the release version 3.5.1 of AdGuard for Android. We’ve been working on i
 
 ## 3.5.1 beta 1
 
-- Published: 2020-09-28T16:25:59Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.1-beta-1
+- 公開日時: 2020-09-28T16:25:59Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5.1-beta-1
 
 This is an unscheduled update of AdGuard v3.5.1 for Android. Who would have thought that we’d do so, but double-checking doesn’t hurt, right? In this beta we fixed a few nasty bugs, updated CoreLibs and Dnslibs. Now it’s almost ready to be released.
 
@@ -4383,8 +4383,8 @@ This is an unscheduled update of AdGuard v3.5.1 for Android. Who would have thou
 
 ## 3.5 
 
-- Published: 2020-09-08T13:12:00Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5
+- 公開日時: 2020-09-08T13:12:00Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5
 
 It's time to release AdGuard v3.5 for Android. We took our time with this one: tested two betas and expanded the changelog. What's in there? Introduced compatibility mode with AdGuard VPN for Android, updated CoreLibs and a load-truck of fixed bugs.
 
@@ -4449,8 +4449,8 @@ If you'd like to disable Compatibility Mode for any reason, it's very simple to 
 
 ## 3.3.3 Release
 
-- Published: 2020-04-03T10:45:22Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.231
+- 公開日時: 2020-04-03T10:45:22Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.3.231
 
 Yet another and hopefully the last fix before the fresh beta rolls out. Several domains have been added to SSL exceptions to fix compatibility issues with certain mobile carriers.
 
@@ -4458,8 +4458,8 @@ Yet another and hopefully the last fix before the fresh beta rolls out. Several 
 
 ## 3.4 Release
 
-- Published: 2020-05-21T11:21:25Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-release
+- 公開日時: 2020-05-21T11:21:25Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-release
 
 Meet AdGuard v3.4 for Android, it’s time for it to see the world! Having tested two betas, we feel confident to present this version to a wider audience. Spring is a time for renewal, and software is not an exception. We've fixed some old bugs, updated CoreLibs and made the app more compatible with Android TV.
 
@@ -4536,8 +4536,8 @@ Now AdGuard for Android will be much easier in use if you decide to install it o
 
 ## 3.6 beta 1
 
-- Published: 2020-11-20T18:04:23Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6-beta-1
+- 公開日時: 2020-11-20T18:04:23Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.6-beta-1
 
 > **Disclaimer** AdGuard for Android is not an open-source project. We use Github as an open bug tracker for users to see what developers are working on.
 
@@ -4565,8 +4565,8 @@ This week Chrome 87 was released, which has a compatibility problem with AdGuard
 
 ## 3.5 RC 1 
 
-- Published: 2020-08-26T14:28:28Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-rc-1
+- 公開日時: 2020-08-26T14:28:28Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-rc-1
 
 A release candidate for the upcoming AdGuard v3.5 for Android is now available. We believe that exposing an RC version to trusted users is a great way to test new features before the release.
 
@@ -4587,8 +4587,8 @@ This update includes a couple of small fixes and a CoreLibs upgrade – we are e
 
 ## 3.5 beta 2
 
-- Published: 2020-08-21T10:56:44Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-2
+- 公開日時: 2020-08-21T10:56:44Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-2
 
 In this update, we added a few finishing touches, updated CoreLibs filtering engine and fixed a couple of bugs. Almost there.
 
@@ -4608,8 +4608,8 @@ In this update, we added a few finishing touches, updated CoreLibs filtering eng
 
 ## 3.5 beta 1
 
-- Published: 2020-08-14T17:11:03Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-1
+- 公開日時: 2020-08-14T17:11:03Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-1
 
 Today we release the first beta version of AdGuard v3.5 for Android. It features a long list of various impovements in its changelog, but the main focus is, without a doubt, on the freshly introduced compatibility mode with AdGuard VPN for Android.
 
@@ -4666,8 +4666,8 @@ If you'd like to disable Compatibility Mode for any reason, it's very simple to 
 
 ## 3.4 beta 2
 
-- Published: 2020-05-14T13:18:29Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-2
+- 公開日時: 2020-05-14T13:18:29Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-2
 
 In this run-of-the-mill beta we fix few bugs and update CoreLibs. It will transform into the next release version if all goes well.
 
@@ -4692,8 +4692,8 @@ In this run-of-the-mill beta we fix few bugs and update CoreLibs. It will transf
 
 ## 3.4 beta 1
 
-- Published: 2020-04-27T11:49:40Z
-- Release: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-1
+- 公開日時: 2020-04-27T11:49:40Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-1
 
 Please welcome the first beta version of AdGuard v3.4 for Android! To start things off, we've enhanced the app in a few directions, including fixing some of the oldest known bugs and improving Android TV compatibility. 
 

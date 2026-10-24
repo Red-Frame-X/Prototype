@@ -15,8 +15,8 @@ FILTER_PATH = (
 
 # 表示名は運用上変更される可能性があるため固定値にはしない。
 # 一方、Title自体の欠落・空値は購読時の識別性を損なうため検出する。
-# ``\s`` includes newlines, so using ``\s*`` here could treat the following
-# metadata line as the title value. Limit optional spacing to the current line.
+# ``\s``は改行も含むため、``\s*``を使うと次のメタデータ行を
+# タイトル値として扱う恐れがある。任意の空白は現在行の範囲に限定する。
 TITLE_RE = re.compile(r"^! Title:[ \t]*\S[^\r\n]*$", re.MULTILINE)
 REQUIRED_METADATA = {
     "Syntax": "AdGuard",
@@ -28,7 +28,7 @@ VERSION_RE = re.compile(r"^! Version:\s*\d{12}$", re.MULTILINE)
 
 
 def fail(message: str) -> int:
-    print(f"error: {message}", file=sys.stderr)
+    print(f"エラー: {message}", file=sys.stderr)
     return 1
 
 
@@ -36,26 +36,26 @@ def main() -> int:
     try:
         text = FILTER_PATH.read_text(encoding="utf-8-sig")
     except OSError as error:
-        return fail(f"cannot read {FILTER_PATH}: {error}")
+        return fail(f"読み取れません: {FILTER_PATH}: {error}")
 
     lines = text.splitlines()
     if len(lines) < 50:
         return fail(
-            f"canonical filter is unexpectedly short ({len(lines)} lines); "
-            "possible truncation or whole-file replacement"
+            f"標準フィルターが想定より短くなっています（{len(lines)}行）。"
+            "途中切れ、またはファイル全体の置換の可能性があります"
         )
 
     header = "\n".join(lines[:20])
     if not TITLE_RE.search(header):
-        return fail("missing or empty ! Title metadata")
+        return fail("! Titleメタデータがないか、値が空です")
 
     for key, expected in REQUIRED_METADATA.items():
         marker = f"! {key}: {expected}"
         if marker not in lines[:20]:
-            return fail(f"missing or invalid required metadata: {marker}")
+            return fail(f"必須メタデータがないか、値が不正です: {marker}")
 
     if not VERSION_RE.search(header):
-        return fail("missing or invalid ! Version metadata (expected YYYYMMDDHHMM)")
+        return fail("! Versionメタデータがないか、形式が不正です（YYYYMMDDHHMMが必要）")
 
     rules = [
         line.strip()
@@ -65,13 +65,13 @@ def main() -> int:
     ]
     if len(rules) < MIN_NONCOMMENT_RULES:
         return fail(
-            f"canonical filter contains only {len(rules)} active rules; "
-            f"expected at least {MIN_NONCOMMENT_RULES}"
+            f"標準フィルターの有効ルール数は{len(rules)}件のみです。"
+            f"必要な最小件数: {MIN_NONCOMMENT_RULES}"
         )
 
     print(
-        f"AdGuard filter integrity OK: {len(lines)} lines, "
-        f"{len(rules)} active rules"
+        f"AdGuardフィルターの整合性検査に合格: {len(lines)}行、"
+        f"{len(rules)}件の有効ルール"
     )
     return 0
 

@@ -62,7 +62,7 @@ class PendingVersionTests(unittest.TestCase):
                 git('add', '.')
                 git('commit', '-qam', 'chore: sync Version timestamps (JST)')
                 self.assertEqual(pending_files(), [])
-                # A new comment after synchronization must be picked up again.
+                # 同期後に追加されたコメントも、再び未同期の変更として検出する。
                 path = expected[0]
                 path.write_text(path.read_text() + '! Another comment.\n')
                 git('commit', '-qam', 'another manual comment')

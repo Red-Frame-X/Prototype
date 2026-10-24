@@ -1,4 +1,4 @@
-"""Invalid upstream content must never replace a usable generated filter."""
+"""無効な上流コンテンツで使用可能な生成フィルターを置換しないことを検証する。"""
 import tempfile
 import unittest
 from pathlib import Path
@@ -47,7 +47,7 @@ class ConverterSourceSafetyTests(unittest.TestCase):
     def test_empty_converted_output_is_rejected_before_writing(self):
         for lines in ([], ["! comment"], ["[Adblock Plus 2.0]"], ["example.com##^script"]):
             with self.subTest(lines=lines), patch.object(self.optimizer, "fetch_source", return_value=lines):
-                with self.assertRaisesRegex(ValueError, "no active rules"):
+                with self.assertRaisesRegex(ValueError, "有効ルールがない"):
                     self.optimizer.run()
                 self.assertEqual(self.output.read_bytes(), self.original)
 
@@ -55,7 +55,7 @@ class ConverterSourceSafetyTests(unittest.TestCase):
         for loss in (MAX_RULE_NET_LOSS, MAX_RULE_NET_LOSS + 1, 199):
             lines = [f"||host{i}.example^" for i in range(200 - loss)]
             with self.subTest(loss=loss), patch.object(self.optimizer, "fetch_source", return_value=lines):
-                with self.assertRaisesRegex(ValueError, "substantial active-rule loss"):
+                with self.assertRaisesRegex(ValueError, "有効ルールの大幅な減少"):
                     self.optimizer.run()
                 self.assertEqual(self.output.read_bytes(), self.original)
 

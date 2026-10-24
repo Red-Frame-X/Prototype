@@ -1,4 +1,4 @@
-name: Check AdGuard Version Timestamp
+name: AdGuardのVersion日時検査
 
 on:
   pull_request:
@@ -17,12 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout Repository
+      - name: リポジトリの取得
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
-      - name: Determine comparison base
+      - name: 比較元の決定
         id: base
         shell: bash
         env:
@@ -38,12 +38,12 @@ jobs:
           elif git rev-parse HEAD^ >/dev/null 2>&1; then
             base="$(git rev-parse HEAD^)"
           else
-            echo 'No comparison base is available; nothing to validate.'
+            echo '比較元がないため、検証する内容はありません。'
             exit 0
           fi
           echo "base=$base" >> "$GITHUB_OUTPUT"
 
-      - name: Validate same-commit Version update
+      - name: 同じコミット内のVersion更新を検査
         if: steps.base.outputs.base != ''
         shell: bash
         run: |

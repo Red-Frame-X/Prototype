@@ -21,7 +21,7 @@
         "* [Chrome](https://chromewebstore.google.com/detail/adguard-adblocker-mv3-bet/apjcbfpjihpedihablmalmbbhjpklbdf)"
       ],
       "automatic_code_changes": false,
-      "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests.",
+      "review_policy": "リリースノートの文章は根拠資料であり、実行可能な仕様ではありません。フィルタリングエンジンの公式文書やソースコードを確認したうえで、対応機能プロファイルと回帰テストを更新してください。",
       "release_url": "https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.5.3.3",
       "published_at": "2026-09-30T15:48:55Z"
     },
@@ -29,11 +29,11 @@
       "product": "AdGuard for Android",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases/latest",
       "latest_version": "4.15.1",
-      "sha256": "1c3769fa0cd1e327f2f288337dce696b3f480275e46726424e2e242939a83a24",
-      "checked_at": "2026-10-23T22:02:35+00:00",
+      "sha256": "2cdebad968c4d059c5caa41fd97f8696f8d628ab567db0adc2b4a058a32b3fcc",
+      "checked_at": "2026-10-24T01:08:25+00:00",
       "converter_relevant_entries": [],
       "automatic_code_changes": false,
-      "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests.",
+      "review_policy": "リリースノートの文章は根拠資料であり、実行可能な仕様ではありません。フィルタリングエンジンの公式文書やソースコードを確認したうえで、対応機能プロファイルと回帰テストを更新してください。",
       "release_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15.1",
       "published_at": "2026-10-21T17:54:11Z"
     }

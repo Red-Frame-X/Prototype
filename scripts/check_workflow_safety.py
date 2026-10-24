@@ -17,9 +17,9 @@ def _parse_workflow(text: str) -> dict[str, Any]:
     try:
         data = yaml.load(text, Loader=yaml.BaseLoader)
     except yaml.YAMLError as error:
-        raise ValueError(f"invalid workflow YAML: {error}") from error
+        raise ValueError(f"ワークフローのYAMLが不正です: {error}") from error
     if not isinstance(data, dict):
-        raise ValueError("workflow YAML must contain a top-level mapping")
+        raise ValueError("ワークフローYAMLの最上位はマッピングである必要があります")
     return data
 
 
@@ -89,24 +89,24 @@ def main() -> int:
     try:
         unsafe = find_unsafe_workflows()
     except ValueError as error:
-        print(f"Workflow safety check failed: {error}", file=sys.stderr)
+        print(f"ワークフローの安全性検査に失敗しました: {error}", file=sys.stderr)
         return 1
 
     if unsafe:
         print(
-            "Unsafe pull-request workflow(s) detected: pull_request workflows "
-            "must remain read-only and pull_request_target is not permitted.",
+            "安全でないPRワークフローを検出しました。pull_requestワークフローは"
+            "読み取り専用とし、pull_request_targetは使用しないでください。",
             file=sys.stderr,
         )
         for path in unsafe:
             print(f" - {path}", file=sys.stderr)
         print(
-            "Move repository-writing automation to push/schedule/workflow_dispatch "
-            "and keep pull-request validation explicitly read-only.",
+            "リポジトリへの書き込み処理はpush/schedule/workflow_dispatchに移し、"
+            "PR検証を明示的に読み取り専用にしてください。",
             file=sys.stderr,
         )
         return 1
-    print("Workflow safety check passed.")
+    print("ワークフローの安全性検査に合格しました。")
     return 0
 
 

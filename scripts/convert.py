@@ -22,12 +22,12 @@ from urllib.error import HTTPError, URLError
 # スクリプト自身の場所を基準にプロジェクトルートと出力先パスを確定
 BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FILTER_NAME: str = "uB-filter-by-kdroidwin (AdGuard Optimized)"
-FILTER_TITLE: str = FILTER_NAME
+FILTER_TITLE: str = "uB-filter-by-kdroidwin（AdGuard最適化版）"
 OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", f"{FILTER_NAME}.txt")
 CAPABILITY_FILE: str = os.path.join(BASE_DIR, "config", "adguard-converter-capabilities.json")
 CAPABILITY_TARGET: str = "adguard-browser-extension-mv3"
-# Match the repository's conservative substantial-loss review threshold.
-# Intentional larger reductions require review, not an automatic override.
+# リポジトリの慎重な運用方針に合わせ、大幅な減少の確認基準を設定する。
+# 意図した大幅な削減でも、自動的に許可せずレビューを必要とする。
 MAX_RULE_NET_LOSS: int = 120
 
 CANDIDATE_URLS: List[str] = [
@@ -86,7 +86,7 @@ class AdGuardOptimizer:
             settings = target["converter_settings"]
         except (KeyError, TypeError) as e:
             raise ValueError(
-                f"Invalid capability profile: missing {CAPABILITY_TARGET} converter settings"
+                f"対応機能プロファイルが不正です: {CAPABILITY_TARGET}の変換設定がありません"
             ) from e
 
         list_keys = (
@@ -98,7 +98,7 @@ class AdGuardOptimizer:
         for key in list_keys:
             value = settings.get(key)
             if not isinstance(value, list) or not value or not all(isinstance(item, str) for item in value):
-                raise ValueError(f"Invalid capability profile: {key} must be a non-empty string list")
+                raise ValueError(f"対応機能プロファイルが不正です: {key}には空でない文字列リストが必要です")
 
         replacements = settings.get("modifier_replacements")
         if (
@@ -107,7 +107,7 @@ class AdGuardOptimizer:
             or not all(isinstance(k, str) and isinstance(v, str) for k, v in replacements.items())
         ):
             raise ValueError(
-                "Invalid capability profile: modifier_replacements must be a non-empty string map"
+                "対応機能プロファイルが不正です: modifier_replacementsには空でない文字列マッピングが必要です"
             )
 
         return {
@@ -121,20 +121,20 @@ class AdGuardOptimizer:
     def fetch_source(self) -> List[str]:
         req_headers = {'User-Agent': 'Mozilla/5.0 AdGuard-Optimizer/3.0'}
         for url in CANDIDATE_URLS:
-            print(f"Fetch: {url}")
+            print(f"取得先: {url}")
             try:
                 req = urllib.request.Request(url, headers=req_headers)
                 with urllib.request.urlopen(req, timeout=15) as res:
                     lines = res.read().decode('utf-8-sig').splitlines()
                     if not self.get_rule_signature(lines):
-                        raise ValueError("Source contains no active rules")
+                        raise ValueError("変換元に有効ルールがありません")
                     return lines
             except (HTTPError, URLError, TimeoutError, UnicodeDecodeError) as e:
-                print(f"  -> Failed: {e}")
+                print(f"  -> 失敗: {e}")
             except ValueError as e:
-                print(f"  -> Invalid source: {e}")
+                print(f"  -> 変換元が不正です: {e}")
 
-        print("Error: 元データの取得に失敗しました。")
+        print("エラー: 元データの取得に失敗しました。")
         sys.exit(1)
 
     def _count_consecutive_backslashes(self, text: str, end_idx: int) -> int:
@@ -239,14 +239,14 @@ class AdGuardOptimizer:
 
         # [Step A-1] 非互換なHTMLフィルタのパージ
         if '##^' in line or '#@#^' in line:
-            return f"! [Unsupported HTML Filter] {original_line}"
+            return f"! [未対応のHTMLフィルター] {original_line}"
 
         # スクリプトレットの互換性チェック
         if '##+js(' in line or '#@#+js(' in line:
             if self.re_incompatible_js.search(line):
-                return f"! [Incompatible Scriptlet] {original_line}"
+                return f"! [互換性のないスクリプトレット] {original_line}"
             if not self.re_compatible_js.search(line):
-                return f"! [Unverified Scriptlet] {original_line}"
+                return f"! [未検証のスクリプトレット] {original_line}"
             return line
 
         # [Step A-2] Chrome MV3 (RE2) との互換性を優先した正規表現検証
@@ -269,11 +269,11 @@ class AdGuardOptimizer:
                 or '(?<!' in pattern_str
                 or self._contains_unsupported_backreference(pattern_str)
             ):
-                return f"! [Unsupported MV3 Regex] {original_line}"
+                return f"! [MV3未対応の正規表現] {original_line}"
 
             # ReDoS対策 (過剰なバックトラックのパージ)
             if self.re_redos_check.search(pattern_str):
-                return f"! [High-Load Regex] {original_line}"
+                return f"! [高負荷の正規表現] {original_line}"
 
             line = f"{prefix}{regex_part}{modifier_part}"
 
@@ -289,16 +289,16 @@ class AdGuardOptimizer:
                 # ドメインだけに丸めると適用範囲が広がるため、必ず元のパスを維持する。
                 if '/' in domain_part:
                     if ',' in domain_part:
-                        return f"! [Unsupported Mixed Cosmetic URL Scope] {original_line}"
+                        return f"! [未対応の混在する要素非表示URL範囲] {original_line}"
 
                     domain, path = domain_part.split('/', 1)
                     if not domain or not path:
-                        return f"! [Invalid Cosmetic URL Scope] {original_line}"
+                        return f"! [要素非表示URL範囲が不正] {original_line}"
 
                     rule_scope = f"[$url=||{domain}/{path}*]"
 
                 if any(unsupported in selector_part for unsupported in self.ubo_unsupported_ext_css):
-                    return f"! [Unsupported Extended CSS] {original_line}"
+                    return f"! [未対応の拡張CSS] {original_line}"
 
                 if any(ext in selector_part for ext in self.adg_supported_ext_css):
                     new_separator = '#?#' if separator == '##' else '#@?#'
@@ -332,13 +332,13 @@ class AdGuardOptimizer:
             # Chrome MV3で未対応だからといって redirect へ変換すると適用範囲が広がるため、
             # 意味を安全に維持できないルールは無効化する。
             if re.search(r'(?:^|,)~?redirect-rule(?:=|,|$)', modifiers_str):
-                return f"! [Unsupported MV3 Modifier: redirect-rule] {original_line}"
+                return f"! [MV3未対応の修飾子: redirect-rule] {original_line}"
 
             # cnameを削除するとCNAME限定の例外が通常の許可ルールへ広がるため、
             # 元ルールを無効化した診断コメントとして保持する。
             # https://github.com/gorhill/uBlock/wiki/Static-filter-syntax#cname
             if re.search(r'(?:^|,)~?cname(?:=|,|$)', modifiers_str):
-                return f"! [Unsupported MV3 Modifier: cname] {original_line}"
+                return f"! [MV3未対応の修飾子: cname] {original_line}"
             modifiers_str = modifiers_str.strip(',')
             modifiers_str = self.re_multi_commas.sub(',', modifiers_str)
 
@@ -358,7 +358,7 @@ class AdGuardOptimizer:
         return line
 
     def get_rule_signature(self, lines: List[str]) -> List[str]:
-        # A list format header is not an active rule; retain non-basic [$...] rules.
+        # リスト形式のヘッダーは有効ルールではない。基本形式以外の[$...]ルールは保持する。
         return [
             l.strip() for l in lines
             if l.strip() and not l.strip().startswith('!')
@@ -393,7 +393,7 @@ class AdGuardOptimizer:
         # [Step D] スマート差分検知。ルール本体だけでなく、固定メタデータの変更も反映する。
         new_signature = self.get_rule_signature(optimized_lines)
         if not new_signature:
-            raise ValueError("Refusing to write a generated filter with no active rules")
+            raise ValueError("有効ルールがない生成フィルターは書き込みません")
         expected_metadata = [
             f"! Title: {FILTER_TITLE}",
             "! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。",
@@ -414,9 +414,9 @@ class AdGuardOptimizer:
             net_loss = len(existing_signature) - len(new_signature)
             if net_loss >= MAX_RULE_NET_LOSS:
                 raise ValueError(
-                    f"Refusing substantial active-rule loss: {len(existing_signature)} -> "
-                    f"{len(new_signature)} (net loss {net_loss}, threshold {MAX_RULE_NET_LOSS}). "
-                    "Existing output was preserved; review the upstream change before publishing."
+                    f"有効ルールの大幅な減少を拒否しました: {len(existing_signature)} -> "
+                    f"{len(new_signature)}（純減 {net_loss}、基準 {MAX_RULE_NET_LOSS}）。"
+                    "既存の出力を保持しました。公開する前に上流の変更を確認してください。"
                 )
 
             metadata_matches = all(line in existing_lines[:12] for line in expected_metadata)

@@ -1,4 +1,4 @@
-"""Credential boundaries for the AdGuard changelog downloader."""
+"""AdGuard変更履歴取得処理の認証情報の使用範囲を検証する。"""
 import unittest
 from unittest.mock import MagicMock, patch
 from urllib.request import HTTPRedirectHandler

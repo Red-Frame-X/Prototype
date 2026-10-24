@@ -1,4 +1,4 @@
-"""Exercise quoted-path regressions against actual Git output and script CLIs."""
+"""実際のGit出力とスクリプトのCLIを使い、引用符付きパスの回帰を検証する。"""
 import importlib.util
 import os
 import subprocess
@@ -72,7 +72,7 @@ class GitPathHandlingTests(unittest.TestCase):
         result = self.guard()
         self.assertEqual(result.returncode, 1, result.stderr)
         for path in self.paths:
-            self.assertIn(f"{path}: +0/-850 (net loss 850)", result.stderr)
+            self.assertIn(f"{path}: +0/-850（純減 850）", result.stderr)
 
     def test_file_deletion_is_rejected_for_each_unusual_path(self):
         for path in self.paths:
@@ -81,7 +81,7 @@ class GitPathHandlingTests(unittest.TestCase):
         result = self.guard()
         self.assertEqual(result.returncode, 1, result.stderr)
         for path in self.paths:
-            self.assertIn(f"{path}: file deleted", result.stderr)
+            self.assertIn(f"{path}: ファイルが削除されました", result.stderr)
 
     def test_normal_edits_pass(self):
         for path in self.paths:
@@ -106,7 +106,7 @@ class GitPathHandlingTests(unittest.TestCase):
         self.assertIn("R", self.git("diff", "--name-status", self.base, "HEAD"))
         result = self.guard("--min-retained-ratio", "0.75", "--max-net-loss", "9999")
         self.assertEqual(result.returncode, 1, result.stderr)
-        self.assertIn("retained 800/1200 lines", result.stderr)
+        self.assertIn("保持行数 800/1200行", result.stderr)
 
     def test_pure_rename_passes(self):
         (self.repo / self.paths[0]).rename(self.repo / "Markdown Notes/改名 ✕.md")
@@ -121,7 +121,7 @@ class GitPathHandlingTests(unittest.TestCase):
         result = self.run_script("check_markdown_notes_version.py", "--base-ref", self.base)
         self.assertEqual(result.returncode, 1, result.stderr)
         for path in self.paths:
-            self.assertIn(f"{path}: Version is 200001010000; expected 202609201234", result.stderr)
+            self.assertIn(f"{path}: Versionは200001010000ですが、この編集の正しい日時は202609201234です", result.stderr)
 
     def test_correct_versions_pass_for_each_unusual_path(self):
         for path in self.paths:
@@ -132,7 +132,7 @@ class GitPathHandlingTests(unittest.TestCase):
 
     def test_updater_changes_only_metadata_and_preserves_template(self):
         expected = {path: self.write(path, 1201) for path in self.paths}
-        # Include the template in the diff to verify its explicit exclusion.
+        # テンプレートも差分に含め、明示的に検査対象外になることを確認する。
         template = self.template.read_text(encoding="utf-8") + "Template note.\n"
         self.template.write_text(template, encoding="utf-8")
         self.commit("edit documents and template")

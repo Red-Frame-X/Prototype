@@ -1,12 +1,12 @@
-# Distributing Filters and UserScripts with GitHub Gist
+# GitHub GistでフィルターとUserScriptを配布する方法
 
 GitHub Gistを利用して、コンテンツブロックフィルタやUserScriptを配布・更新する際の手順と、推奨メタデータをまとめたメモです。
 
 | メタデータ | 情報 |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | CC0-1.0 |
-| **Version** | 202610220026 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | CC0-1.0 |
+| **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -65,11 +65,11 @@ AdGuardの公開フィルタとFilters Registryでは、フィルタ名、説明
 
 第三者フィルタとの互換性も考える場合は、独自メタデータを増やしすぎず、名称、説明、配布元、ライセンス、版、更新間隔などの基本情報に絞る方が扱いやすくなります。
 
-## UserScriptで利用する場合
+## ユーザースクリプトで利用する場合
 
 TampermonkeyなどのUserScriptマネージャーでGistを利用する場合、インストール・自動更新の条件は各マネージャーの仕様に従います。`@version`、`@updateURL`、`@downloadURL`などの扱いも、利用するマネージャーの公式ドキュメントを確認してください。
 
-### UserScript用メタデータのテンプレート
+### ユーザースクリプト用メタデータのテンプレート
 
 TampermonkeyとViolentmonkeyはいずれも、UserScriptの先頭に `// ==UserScript==` から `// ==/UserScript==` までのメタデータブロックを置く形式を採用しています。
 
@@ -118,10 +118,10 @@ Gistなどから自動更新させる場合は、必要に応じて次の項目�
 
 ## 参照
 
-- [GitHub Docs — Creating gists](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists)
-- [GitHub Docs — Forking and cloning gists](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/forking-and-cloning-gists)
-- [AdGuard Browser Extension — Filters](https://adguard.com/kb/adguard-browser-extension/features/filters/)
-- [AdGuard — How to create your own ad filters](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
-- [AdGuard Filters Registry](https://github.com/AdguardTeam/FiltersRegistry)
-- [Tampermonkey Documentation — Userscript Header](https://www.tampermonkey.net/documentation.php)
-- [Violentmonkey — Metadata Block](https://violentmonkey.github.io/api/metadata-block/)
+- [GitHub Docs — Gistの作成](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists)
+- [GitHub Docs — Gistのフォークとクローン](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/forking-and-cloning-gists)
+- [AdGuardブラウザー拡張機能 — フィルター](https://adguard.com/kb/adguard-browser-extension/features/filters/)
+- [AdGuard — 独自の広告フィルターの作成方法](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+- [AdGuardフィルターレジストリ](https://github.com/AdguardTeam/FiltersRegistry)
+- [Tampermonkeyのドキュメント — UserScriptヘッダー](https://www.tampermonkey.net/documentation.php)
+- [Violentmonkey — メタデータブロック](https://violentmonkey.github.io/api/metadata-block/)

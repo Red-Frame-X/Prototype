@@ -1,4 +1,4 @@
-# Content Blocking FAQ 2026
+# コンテンツブロックのよくある質問（2026年版）
 
 コンテンツブロックFAQ（2026年版）
 
@@ -10,9 +10,9 @@
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | GPL-3.0 |
-| **Version** | 202610220026 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | GPL-3.0 |
+| **Version** | 202610241010 |
 
 第三者コンテンツの扱いおよび無保証については [LICENSES.md](../LICENSES.md) を参照してください。
 
@@ -29,7 +29,7 @@
 **参照**
 
 - [gorhill/uBlock](https://github.com/gorhill/uBlock)
-- [uBlock Origin works best on Firefox](https://github.com/gorhill/uBlock/wiki/uBlock-Origin-works-best-on-Firefox)
+- [uBlock OriginがFirefoxで最もよく動作する理由](https://github.com/gorhill/uBlock/wiki/uBlock-Origin-works-best-on-Firefox)
 
 ### Chromium / Chrome / ChromeOS
 
@@ -43,7 +43,7 @@ Chromium系では **uBlock Origin Lite（uBOL）** や **AdGuard Browser Extensi
 
 - [gorhill/uBlock README](https://github.com/gorhill/uBlock/blob/master/README.md)
 - [uBlockOrigin/uBOL-home](https://github.com/uBlockOrigin/uBOL-home)
-- [uBO Lite Troubleshooting](https://github.com/uBlockOrigin/uBOL-home/wiki/Troubleshooting)
+- [uBO Liteの問題解決](https://github.com/uBlockOrigin/uBOL-home/wiki/Troubleshooting)
 
 ### Brave / Vivaldi
 
@@ -54,8 +54,8 @@ Brave ShieldsやVivaldiのTracker and Ad Blockerはブラウザ内蔵機能で�
 **参照**
 
 - [Brave Shields](https://brave.com/shields/)
-- [Vivaldi: Manifest V3 update](https://vivaldi.com/blog/manifest-v3-update-vivaldi-is-future-proofed-with-its-built-in-functionality/)
-- [Vivaldi Desktop Releases](https://vivaldi.com/blog/desktop/releases/)
+- [Vivaldi：Manifest V3への対応状況](https://vivaldi.com/blog/manifest-v3-update-vivaldi-is-future-proofed-with-its-built-in-functionality/)
+- [Vivaldiデスクトップ版のリリース](https://vivaldi.com/blog/desktop/releases/)
 
 ---
 
@@ -74,7 +74,7 @@ uBOLでは、サイト権限とフィルタリングモードを確認して使�
 **参照**
 
 - [uBlockOrigin/uBOL-home](https://github.com/uBlockOrigin/uBOL-home)
-- [uBO Lite Filtering modes](https://github.com/uBlockOrigin/uBOL-home/wiki/Filtering-mode)
+- [uBO Liteのフィルタリングモード](https://github.com/uBlockOrigin/uBOL-home/wiki/Filtering-mode)
 
 ---
 
@@ -108,11 +108,11 @@ URLで管理している自作・第三者フィルタは、拡張機能本体�
 
 **参照**
 
-- [AdGuard Browser Extension: Filters](https://adguard.com/kb/adguard-browser-extension/features/filters/)
-- [AdGuard Browser Extension: Main menu](https://adguard.com/kb/adguard-browser-extension/features/main-menu/)
-- [AdGuard Browser Extension Releases](https://github.com/AdguardTeam/AdguardBrowserExtension/releases)
+- [AdGuardブラウザー拡張機能：フィルター](https://adguard.com/kb/adguard-browser-extension/features/filters/)
+- [AdGuardブラウザー拡張機能：メインメニュー](https://adguard.com/kb/adguard-browser-extension/features/main-menu/)
+- [AdGuardブラウザー拡張機能のリリース](https://github.com/AdguardTeam/AdguardBrowserExtension/releases)
 - [AdguardTeam/AdguardBrowserExtension](https://github.com/AdguardTeam/AdguardBrowserExtension)
-- [AdGuard filtering rules syntax](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+- [AdGuardのフィルタリングルール構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
 
 ---
 
@@ -149,8 +149,8 @@ DNSブロックは名前解決レイヤーでドメイン単位の遮断を行�
 
 **参照**
 
-- [AdGuard for Android: DNS protection](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
-- [AdGuard DNS filtering rules syntax](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
+- [AdGuard for Android：DNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
+- [AdGuardのDNSフィルタリングルール構文](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
 
 ---
 
@@ -176,9 +176,9 @@ uBOでは重複フィルタが除去され、純粋なホスト名フィルタ�
 
 **参照**
 
-- [uBO Filter Performance](https://github.com/gorhill/uBlock/wiki/Filter-Performance)
-- [uBO Dashboard: Filter lists](https://github.com/gorhill/uBlock/wiki/Dashboard%3A-Filter-lists)
-- [uBO Procedural cosmetic filters](https://github.com/gorhill/uBlock/wiki/Procedural-cosmetic-filters)
+- [uBOフィルターの性能](https://github.com/gorhill/uBlock/wiki/Filter-Performance)
+- [uBOダッシュボード：フィルターリスト](https://github.com/gorhill/uBlock/wiki/Dashboard%3A-Filter-lists)
+- [uBOの手続き型要素非表示フィルター](https://github.com/gorhill/uBlock/wiki/Procedural-cosmetic-filters)
 
 ### Q. ホスト名だけのルールは非効率ですか
 
@@ -201,11 +201,11 @@ uBOとAdGuardはいずれもABP/EasyList系構文との共通部分を持ちま�
 特に次の機能はエンジン差を確認します。
 
 - scriptlet名・引数
-- redirect resource
-- HTML filtering
-- procedural cosmetic filtering
-- action operator
-- network modifier
+- リダイレクト用リソース
+- HTMLフィルタリング
+- 手続き型の要素非表示フィルタリング
+- アクション演算子
+- ネットワーク修飾子
 - 例外ルールの適用範囲
 - MV3/DNRへの変換可否
 
@@ -213,8 +213,8 @@ uBOとAdGuardはいずれもABP/EasyList系構文との共通部分を持ちま�
 
 **参照**
 
-- [uBO Static filter syntax](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax)
-- [AdGuard filtering rules syntax](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+- [uBOの静的フィルター構文](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax)
+- [AdGuardのフィルタリングルール構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
 
 ---
 
@@ -232,9 +232,9 @@ uBOのCNAME uncloakingは、DNS APIを利用できるFirefoxで提供されて�
 
 **参照**
 
-- [uBlock Origin works best on Firefox](https://github.com/gorhill/uBlock/wiki/uBlock-Origin-works-best-on-Firefox)
-- [AdGuard for Android: DNS protection](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
-- [AdGuard for Android: Settings](https://adguard.com/kb/adguard-for-android/features/settings/)
+- [uBlock OriginがFirefoxで最もよく動作する理由](https://github.com/gorhill/uBlock/wiki/uBlock-Origin-works-best-on-Firefox)
+- [AdGuard for Android：DNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
+- [AdGuard for Android：設定](https://adguard.com/kb/adguard-for-android/features/settings/)
 
 ---
 
@@ -285,15 +285,15 @@ uBOのCNAME uncloakingは、DNS APIを利用できるFirefoxで提供されて�
 
 - [gorhill/uBlock](https://github.com/gorhill/uBlock)
 - [uBlockOrigin/uBOL-home](https://github.com/uBlockOrigin/uBOL-home)
-- [uBO Static filter syntax](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax)
-- [uBO Filter Performance](https://github.com/gorhill/uBlock/wiki/Filter-Performance)
-- [uBO Dashboard: Filter lists](https://github.com/gorhill/uBlock/wiki/Dashboard%3A-Filter-lists)
-- [AdGuard filtering rules syntax](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
-- [AdGuard Browser Extension: Filters](https://adguard.com/kb/adguard-browser-extension/features/filters/)
-- [AdGuard Browser Extension: Main menu](https://adguard.com/kb/adguard-browser-extension/features/main-menu/)
-- [AdGuard Browser Extension Releases](https://github.com/AdguardTeam/AdguardBrowserExtension/releases)
+- [uBOの静的フィルター構文](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax)
+- [uBOフィルターの性能](https://github.com/gorhill/uBlock/wiki/Filter-Performance)
+- [uBOダッシュボード：フィルターリスト](https://github.com/gorhill/uBlock/wiki/Dashboard%3A-Filter-lists)
+- [AdGuardのフィルタリングルール構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+- [AdGuardブラウザー拡張機能：フィルター](https://adguard.com/kb/adguard-browser-extension/features/filters/)
+- [AdGuardブラウザー拡張機能：メインメニュー](https://adguard.com/kb/adguard-browser-extension/features/main-menu/)
+- [AdGuardブラウザー拡張機能のリリース](https://github.com/AdguardTeam/AdguardBrowserExtension/releases)
 - [AdguardTeam/AdguardBrowserExtension](https://github.com/AdguardTeam/AdguardBrowserExtension)
-- [AdGuard for Android DNS protection](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
-- [AdGuard DNS filtering rules syntax](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
+- [AdGuard for AndroidのDNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
+- [AdGuardのDNSフィルタリングルール構文](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
 - [Brave Shields](https://brave.com/shields/)
-- [Vivaldi Manifest V3 update](https://vivaldi.com/blog/manifest-v3-update-vivaldi-is-future-proofed-with-its-built-in-functionality/)
+- [VivaldiのManifest V3への対応状況](https://vivaldi.com/blog/manifest-v3-update-vivaldi-is-future-proofed-with-its-built-in-functionality/)

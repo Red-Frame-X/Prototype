@@ -1,4 +1,4 @@
-# AdGuard Custom Rules
+# AdGuardカスタムルール
 
 AdGuard向けに自分の環境で使用・検証している個人用フィルタと、その保守メモです。通常のコンテンツブロック用フィルタとDNSフィルタは処理する層・構文・適用場所が異なるため、このREADMEでは自分の設定を再現するときに混同しないための記録として整理しています。
 
@@ -9,9 +9,9 @@ AdGuard向けに自分の環境で使用・検証している個人用フィル�
 
 | 項目 | 主な内容 | 参照先 |
 | --- | --- | --- |
-| AdGuard Custom Rules | 広告・不要要素の非表示、ネットワーク通信制御、互換性のための例外などを含む個人用AdGuardフィルタ | [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
-| AdGuard DNS Custom Rules | DNSレベルのブロックに使用している個人用AdGuard DNSフィルタ | [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
-| ChangeLog | AdGuard Browser Extension / AdGuard for Androidの公式更新情報を追跡するミラー | [`ChangeLog/README.md`](ChangeLog/README.md) / [`ChangeLog/`](ChangeLog/) |
+| AdGuardカスタムルール | 広告・不要要素の非表示、ネットワーク通信制御、互換性のための例外などを含む個人用AdGuardフィルタ | [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
+| AdGuard DNSカスタムルール | DNSレベルのブロックに使用している個人用AdGuard DNSフィルタ | [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
+| 変更履歴 | AdGuard Browser Extension / AdGuard for Androidの公式更新情報を追跡するミラー | [`ChangeLog/README.md`](ChangeLog/README.md) / [`ChangeLog/`](ChangeLog/) |
 
 ## 自分の環境での登録先メモ
 
@@ -52,7 +52,7 @@ AdGuard for Androidでの登録先：
 
 `AdGuard Custom Rules - Red Frame X.txt`または`AdGuard DNS Custom Rules - Red Frame X.txt`のルールを追加・削除・変更する場合は、変更した各ファイルと同じコミット内で、そのヘッダーの`! Version:`を日本標準時（JST）の現在時刻に合わせ、`YYYYMMDDHHMM`形式で必ず更新します。
 
-この要件は[`check_adguard_version_timestamp.py`](../scripts/check_adguard_version_timestamp.py)とGitHub Actionsの[`Check AdGuard Version Timestamp`](../.github/workflows/check-adguard-version.yml)で検証します。対象フィルタの内容が変更されたにもかかわらず`! Version:`が同じ場合、またはVersionヘッダーが`YYYYMMDDHHMM`形式の有効な日時でない場合はCIを失敗させ、更新漏れを検出します。
+この要件は[`check_adguard_version_timestamp.py`](../scripts/check_adguard_version_timestamp.py)とGitHub Actionsの[`AdGuardのVersion日時検査`](../.github/workflows/check-adguard-version.yml)で検証します。対象フィルタの内容が変更されたにもかかわらず`! Version:`が同じ場合、またはVersionヘッダーが`YYYYMMDDHHMM`形式の有効な日時でない場合はCIを失敗させ、更新漏れを検出します。
 
 リポジトリの品質チェックでは、原本フィルタの破損防止に加えて、重複した有効ルール、末尾空白、改行形式、意図しない大量削除などを検査します。ローカルで確認する場合は次を実行します。
 
@@ -65,18 +65,18 @@ npm run lint:adguard
 python -m unittest discover -s tests -v
 ```
 
-## CHANGELOG追跡とコンバータ更新
+## 変更履歴追跡とコンバータ更新
 
-[`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式CHANGELOGとAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ英語原文のミラーを生成します。メタデータと互換性レビュー候補は`upstream/adguard/`へ生成します。
+[`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式変更履歴とAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ英語原文のミラーを生成します。メタデータと互換性レビュー候補は`upstream/adguard/`へ生成します。
 
 取得処理では、`GITHUB_TOKEN`が設定されている場合も、認証情報を付与するのは`https://api.github.com`への直接のリクエストだけです。Raw URLや外部サイトには付与せず、同一ホストを含むリダイレクト先にも転送しません。認証が必要な取得先を指定する場合は、リダイレクトを経由しないGitHub API URLを使用します。
 
-CHANGELOGは人向けの変更履歴であり、フィルタ構文の実行可能な仕様そのものではありません。このため、CHANGELOGの文章だけからコンバータコードを自己変更する処理は行いません。新しい構文や挙動は、AdGuard公式のフィルタリングルール仕様、公開ソース、上流Issuesなどで確認し、回帰テストを追加してから[`adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json)を更新します。
+変更履歴は人が更新内容を確認するための資料であり、フィルタ構文の実行可能な仕様そのものではありません。このため、変更履歴の文章だけからコンバータコードを自己変更する処理は行いません。新しい構文や挙動は、AdGuard公式のフィルタリングルール仕様、公開ソース、上流Issuesなどで確認し、回帰テストを追加してから[`adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json)を更新します。
 
 ## 関連情報
 
 - [リポジトリのルートREADME](../README.md)
-- [AdGuard ChangeLog](ChangeLog/README.md)
+- [AdGuardの変更履歴](ChangeLog/README.md)
 
 ## 公式資料
 
@@ -85,6 +85,6 @@ CHANGELOGは人向けの変更履歴であり、フィルタ構文の実行可�
 - [AdGuard for Android：DNS通信を保護](https://adguard.com/kb/ja/adguard-for-android/features/protection/dns-protection/)
 - [AdGuard ブラウザ拡張機能](https://adguard.com/kb/ja/adguard-browser-extension/)
 - [AdGuard ブラウザ拡張機能 MV3対応版](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
-- [AdGuard ブラウザ拡張機能 Release](https://adguard.com/ja/versions/browser-extension/release.html)
-- [AdGuard Browser Extension CHANGELOG](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/CHANGELOG.md)
-- [AdGuard for Android Releases](https://github.com/AdguardTeam/AdguardForAndroid/releases)
+- [AdGuard ブラウザ拡張機能のリリース](https://adguard.com/ja/versions/browser-extension/release.html)
+- [AdGuardブラウザー拡張機能の変更履歴](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/CHANGELOG.md)
+- [AdGuard for Androidのリリース](https://github.com/AdguardTeam/AdguardForAndroid/releases)

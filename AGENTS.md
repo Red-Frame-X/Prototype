@@ -1,34 +1,34 @@
-# Repository editing safeguards
+# リポジトリ編集時の保護方針
 
-- Correct inaccurate descriptions to verified, accurate content rather than
-  deleting them. Preserve their context and useful information. If a correction
-  cannot be verified, report the uncertainty instead of removing the passage.
-- Preserve all content outside the user's requested scope. Never substantially
-  delete, shorten, consolidate, or replace Markdown or custom filters without
-  explicit user authorization for that removal.
-- For narrowly scoped deletion requests, start from the complete current file,
-  remove only the exact requested lines or block, and compare before/after before
-  writing. Abort the edit if the diff contains any unrelated deletion or change.
-- Never use truncated fetch output as replacement file content. If the complete
-  file cannot be obtained, do not perform a whole-file replacement.
-- Make focused patches against the current file. Do not reconstruct existing
-  documents from memory, summaries, or truncated tool output.
-- Do not invent facts, citations, settings, or verification results. Check
-  technical claims against authoritative sources; leave unverified claims
-  unchanged unless the user asks for their review, and disclose uncertainty.
-- Before committing and merging, inspect the complete diff, including deleted
-  lines, and verify that no unrelated content was lost or changed. Run the
-  relevant tests and content-loss guard. Do not weaken a guard merely to pass CI.
-- Line-count checks cannot establish factual accuracy or detect every harmful
-  rewrite. Review replacements for meaning as well as net line loss. A passing
-  check does not authorize deletions or unsupported factual changes.
-- When writing or revising Japanese documentation, prioritize clear, natural Japanese used in ordinary human communication. Avoid unnecessarily stiff, mechanical, or formulaic wording while preserving technical accuracy and the original meaning.
+- 不正確な説明は削除せず、検証できた正確な内容に修正する。
+  文脈と有用な情報を保持する。修正内容を検証できない場合は、
+  その箇所を削除せず、不確かな点を報告する。
+- ユーザーが依頼した範囲外の内容をすべて保持する。
+  削除について明示的な承認がない限り、Markdownやカスタムフィルターを
+  大幅に削除・短縮・統合・置換しない。
+- 範囲を限定した削除依頼では、現在のファイル全文を基に作業し、
+  指定された行やブロックだけを削除して、書き込む前に変更前後を比較する。
+  無関係な削除や変更が差分に含まれる場合は、編集を中止する。
+- 途中で切れた取得結果をファイルの置換内容として使用しない。
+  ファイル全文を取得できない場合は、ファイル全体を置換しない。
+- 現在のファイルに対して必要な箇所だけを修正する。既存の文書を
+  記憶・要約・途中で切れたツール出力から再構成しない。
+- 事実・出典・設定・検証結果を捏造しない。技術的な記述は
+  信頼できる一次情報と照合する。ユーザーが確認を依頼していない
+  未検証の記述は変更せず、不確かな点を明示する。
+- コミット・マージ前に削除行を含む差分全体を確認し、
+  無関係な内容が失われたり変更されたりしていないことを検証する。
+  関連テストと内容消失防止検査を実行し、CIを通すためだけに保護を弱めない。
+- 行数の検査だけでは事実の正確さを証明できず、有害な書き換えもすべては検出できない。
+  行数の純減だけでなく、置換内容の意味も確認する。検査に合格しても、
+  削除や根拠のない事実変更が許可されたことにはならない。
+- 日本語の文書を作成・修正する際は、日常の意思疎通で使う明確で自然な日本語を優先する。技術的な正確さと元の意味を保ち、不必要に硬い表現や機械的・定型的な言い回しを避ける。
 
-## Codex code review language
+## Codexコードレビューの言語
 
-- Write all GitHub Codex code review findings, summaries, explanations, severity assessments, and recommended fixes in natural Japanese.
-- Preserve code identifiers, file paths, commands, logs, and quoted error messages in their original form when accuracy requires it.
-- Apply this language preference to automatic pull request reviews and reviews requested with `@codex review`.
+- GitHub上のCodexコードレビューの指摘・要約・説明・重大度の評価・修正案は、自然な日本語で記述する。
+- 正確さのために必要なコード識別子・ファイルパス・コマンド・ログ・引用したエラーメッセージは原表記を保持する。
+- この言語方針を、自動プルリクエストレビューと`@codex review`で依頼されたレビューの両方に適用する。
 
 ## コミットタイトルの言語
 
@@ -37,3 +37,11 @@
 - 自動生成するコミット、マージコミット、取り消しコミットにも日本語のタイトルを使う。
 - PRのタイトルも日本語で書き、マージ時に作成するコミットのタイトルを日本語にする。
 - `npm run hooks:install` でコミットフックを有効にする。CIでも新しいコミットのタイトルを検査する。
+
+## リポジトリ内の表記
+
+- 文書の説明・見出し・リンクの表示名、コメント、ヘルプ、ログ、エラーメッセージ、ワークフローの表示名は自然な日本語で記述する。
+- 製品名・コード識別子・コマンド・設定キー・メタデータキー・URL・購読先のパスは、仕様と互換性を保つため必要な原表記を維持する。
+- UserScriptの表示名は`@name:ja`で日本語化し、更新時の識別に使われる既存の`@name`と`@namespace`は維持する。
+- ライセンス原文、公式変更履歴の原文ミラー、検証用の原文引用は保持し、その周囲の説明を日本語にする。
+- 自動生成する説明文は、生成済みファイルだけでなく生成元も日本語化し、次回の更新でも表記を維持する。

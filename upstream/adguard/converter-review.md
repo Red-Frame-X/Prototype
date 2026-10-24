@@ -1,6 +1,6 @@
-# AdGuard converter compatibility review
+# AdGuard変換処理の互換性確認
 
-This file is generated. Latest stable release-note matches are review candidates, not proof that a rule syntax is supported.
+このファイルは自動生成されます。以下は最新安定版のリリースノートから抽出した確認候補の原文であり、ルール構文の対応を証明するものではありません。
 
 ## AdGuard Browser Extension 5.5.3.3
 
@@ -19,11 +19,11 @@ This file is generated. Latest stable release-note matches are review candidates
 
 ## AdGuard for Android 4.15.1
 
-- No converter-relevant keywords detected in the latest stable release notes.
+- 最新安定版のリリースノートに、変換処理に関係するキーワードはありませんでした。
 
-## Required verification before converter changes
+## 変換処理を変更する前に必要な確認
 
-1. Confirm behavior in official AdGuard filtering documentation, CoreLibs/Scriptlets source, or a linked upstream issue.
-2. Add positive, negative, and false-positive regression tests.
-3. Update `config/adguard-converter-capabilities.json` in a reviewed pull request.
-4. Rebuild generated filters and run AGLint plus unit tests.
+1. AdGuardフィルタリングの公式文書、CoreLibs・Scriptletsのソース、または関連する上流の課題で動作を確認します。
+2. 正常系・異常系・誤検出の回帰テストを追加します。
+3. レビュー済みのプルリクエストで`config/adguard-converter-capabilities.json`を更新します。
+4. 生成フィルターを再ビルドし、AGLintと単体テストを実行します。

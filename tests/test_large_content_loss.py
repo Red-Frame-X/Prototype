@@ -52,7 +52,7 @@ class LargeContentLossGuardTests(unittest.TestCase):
     def test_rejects_large_loss_even_when_more_than_quarter_remains(self):
         result = self.run_guard(1200, 350)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("net loss 850", result.stderr)
+        self.assertIn("純減 850", result.stderr)
 
     def test_allows_reviewed_large_loss_when_retained_ratio_is_safe(self):
         result = self.run_guard(1200, 350, allow_deletion=True)
@@ -69,12 +69,12 @@ class LargeContentLossGuardTests(unittest.TestCase):
     def test_rejects_loss_at_threshold(self):
         result = self.run_guard(1200, 1080)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("net loss 120", result.stderr)
+        self.assertIn("純減 120", result.stderr)
 
     def test_rejects_unapproved_file_deletion(self):
         result = self.run_guard(1200, None)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("protected file deletion is not explicitly authorized", result.stderr)
+        self.assertIn("保護対象ファイルの削除は明示的に承認されていません", result.stderr)
 
     def test_allows_explicitly_authorized_file_deletion(self):
         result = self.run_guard(1200, None, allow_deletion=True)
@@ -83,8 +83,8 @@ class LargeContentLossGuardTests(unittest.TestCase):
     def test_rejects_extreme_content_loss_even_when_authorized(self):
         result = self.run_guard(1200, 100, allow_deletion=True)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("Potential unintended content loss detected", result.stderr)
-        self.assertIn("retained 100/1200 lines", result.stderr)
+        self.assertIn("意図しない内容消失の可能性を検出しました", result.stderr)
+        self.assertIn("保持行数 100/1200行", result.stderr)
 
 
 if __name__ == "__main__":

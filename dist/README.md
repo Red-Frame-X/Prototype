@@ -1,4 +1,4 @@
-# uB-filter-by-kdroidwin (AdGuard Optimized)
+# uB-filter-by-kdroidwin（AdGuard最適化版）
 
 [uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)を、自分のAdGuard環境で検証するために自動変換・最適化している非公式生成フィルタです。上流フィルタの目的をできるだけ維持しつつ、uBlock OriginとAdGuardの構文・機能差を考慮して変換しています。
 
@@ -67,7 +67,7 @@ AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィル
 - [AdGuard ブラウザ拡張機能](https://adguard.com/kb/ja/adguard-browser-extension/)
 - [AdGuard ブラウザ拡張機能 MV3対応版](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
 - [AdGuardフィルタリングルール構文](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)
-- [AdGuard Browser Extension Releases](https://github.com/AdguardTeam/AdguardBrowserExtension/releases)
+- [AdGuardブラウザー拡張機能のリリース](https://github.com/AdguardTeam/AdguardBrowserExtension/releases)
 
 ## 原典・ライセンス
 

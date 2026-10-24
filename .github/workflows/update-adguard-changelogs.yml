@@ -1,4 +1,4 @@
-name: Update AdGuard Changelogs
+name: AdGuard変更履歴の更新
 
 on:
   push:
@@ -25,15 +25,15 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout Repository
+      - name: リポジトリの取得
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Python
+      - name: Pythonの準備
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
 
-      - name: Fetch, validate, and publish changelogs
+      - name: 変更履歴の取得・検証・反映
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
@@ -57,13 +57,13 @@ jobs:
             python -m unittest discover -s tests -v
 
             if [[ -z "$(git status --porcelain -- "${paths[@]}")" ]]; then
-              echo 'No upstream AdGuard changelog changes detected.'
+              echo '上流のAdGuard変更履歴に変更はありませんでした。'
               exit 0
             fi
 
             git add -- "${paths[@]}"
             if git diff --cached --quiet -- "${paths[@]}"; then
-              echo 'No content changes remain after Git normalization.'
+              echo 'Gitによる正規化後の内容に差分はありません。'
               exit 0
             fi
 
@@ -73,9 +73,9 @@ jobs:
             fi
 
             if [[ "$attempt" -eq 5 ]]; then
-              echo 'Failed to publish after 5 regenerate-and-push attempts.' >&2
+              echo '再生成とpushを5回試しましたが、反映できませんでした。' >&2
               exit 1
             fi
-            echo "main advanced during publication; regenerating from latest main ($attempt/5)."
+            echo "反映中にmainが更新されたため、最新mainから再生成します ($attempt/5)."
             sleep $((attempt * 2))
           done

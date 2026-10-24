@@ -11,7 +11,7 @@ TEST_DIRS = (ROOT / "tests",)
 
 class UnittestCollectionContractTests(unittest.TestCase):
     def test_no_pytest_style_top_level_test_functions(self) -> None:
-        """Keep every test discoverable by the repository's unittest command."""
+        """リポジトリのunittestコマンドですべてのテストを検出可能に保つ。"""
         undiscoverable: list[str] = []
         for test_dir in TEST_DIRS:
             for path in sorted(test_dir.glob("test_*.py")):

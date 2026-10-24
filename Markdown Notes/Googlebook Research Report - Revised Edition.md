@@ -1,12 +1,12 @@
-# Googlebook Research Report - Revised Edition
+# Googlebook調査レポート（改訂版）
 
 Googleが2026年5月に発表した「Googlebook」と、発表前に報道された開発コードネーム「Aluminium」を整理します。将来の端末選定や仕様比較で再確認できるよう、公式発表・報道・未確認事項を分けて残している調査記録です。
 
 | メタデータ | 情報 |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | CC0-1.0 |
-| **Version** | 202610231807 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | CC0-1.0 |
+| **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -21,7 +21,7 @@ Googleが2026年5月に発表した「Googlebook」と、発表前に報道さ�
 | :--- | :--- |
 | **製品** | Googleが正式発表した新しいノートPCカテゴリ「Googlebook」 |
 | **OS基盤** | Android technology stackを基盤に、ChromeOSのdesktop foundationsを組み合わせる |
-| **Chrome** | desktop-class Chrome browser with extensions |
+| **Chrome** | 拡張機能に対応したデスクトップ相当のChromeブラウザー |
 | **Androidアプリ** | Google PlayおよびAndroidアプリ・ゲームに対応 |
 | **Linux** | pKVMで隔離されたフルLinuxターミナル環境を搭載 |
 | **AI** | Gemini Intelligenceを中核に、Magic Pointer、Rambler、Create My Widgetなどを提供 |
@@ -56,7 +56,7 @@ Google公式発表で確認できる主な内容を、分野ごとに整理し�
 | 分野 | 確認済みの内容 |
 | :--- | :--- |
 | **製品・OS** | GooglebookはGemini Intelligence向けに設計された新しいノートPCカテゴリ。Googlebook OSは **Android technology stack** を基盤とし、**ChromeOSのdesktop foundations** を組み合わせる。 |
-| **Chrome** | **desktop-class Chrome browser with extensions** を提供。 |
+| **Chrome** | **拡張機能に対応したデスクトップ相当のChromeブラウザー** を提供。 |
 | **Androidアプリ** | Google Playに対応し、Androidアプリやゲームを利用できる。QualcommはSnapdragon X Elite搭載Googlebookについて、**native Android applications and games** への対応を明記。 |
 | **Linux** | フルLinuxターミナル環境を搭載し、Claude CodeやAntigravity CLIなどを実行可能。Linux環境は **Level 5 security-certified pKVM hypervisor** でOS本体から隔離される。 |
 | **セキュリティ** | ChromeOSと同じセキュリティアーキテクチャを基礎とし、Google Titan hardware root of trust、Defense in Depth、オンデバイスマルウェア検出を採用。 |
@@ -204,12 +204,12 @@ USB対応モデルではDeveloper optionsのUSB debuggingを有効化して対�
 
 参考：
 
-- [Android Developers Blog: Android developer verification: Building a safer ecosystem together](https://android-developers.googleblog.com/2026/06/android-developer-verification.html)
-- [Android Help: Learn about Android developer verification](https://support.google.com/android/answer/17065026?hl=en)
-- [Android Help: Allow app installs from unverified developers](https://support.google.com/android/answer/17588095?hl=en-GB)
-- [Android Developer Console Help: Understanding Android developer verification](https://support.google.com/android-developer-console/answer/16561738?hl=en)
-- [Android Developers: Register on Android Developer Console](https://developer.android.com/developer-verification/guides/android-developer-console)
-- [Ars Technica: Googlebooks launch October 4 starting at $899—here are the five models you can preorder today](https://arstechnica.com/gadgets/2026/09/googlebook-laptops-launch-october-4-starting-at-899-preorders-for-five-models-live-today/)
+- [Android Developersブログ：開発者確認でより安全な環境を共に構築する](https://android-developers.googleblog.com/2026/06/android-developer-verification.html)
+- [Androidヘルプ：開発者確認について](https://support.google.com/android/answer/17065026?hl=en)
+- [Androidヘルプ：未確認の開発者のアプリのインストールを許可](https://support.google.com/android/answer/17588095?hl=en-GB)
+- [Android Developer Consoleヘルプ：開発者確認を理解する](https://support.google.com/android-developer-console/answer/16561738?hl=en)
+- [Android Developers：Android Developer Consoleへの登録](https://developer.android.com/developer-verification/guides/android-developer-console)
+- [Ars Technica：Googlebookは10月4日発売、899ドルから。予約可能な5モデルを紹介](https://arstechnica.com/gadgets/2026/09/googlebook-laptops-launch-october-4-starting-at-899-preorders-for-five-models-live-today/)
 
 ### Linux環境
 
@@ -237,7 +237,7 @@ USB対応モデルではDeveloper optionsのUSB debuggingを有効化して対�
 
 ### Chrome・Web・拡張機能
 
-GoogleはGooglebookのChromeを **desktop-class Chrome browser with extensions** と明記しています。通常のAndroidスマートフォン版Chromeとは提供機能に違いがありますが、実装基盤やWindows/macOS/Linux版との全機能の一致まで示すものではありません。
+GoogleはGooglebookのChromeを **拡張機能に対応したデスクトップ相当のChromeブラウザー** と明記しています。通常のAndroidスマートフォン版Chromeとは提供機能に違いがありますが、実装基盤やWindows/macOS/Linux版との全機能の一致まで示すものではありません。
 
 | 区分 | 項目 | 状態 |
 | :--- | :--- | :--- |
@@ -346,8 +346,8 @@ Googlebook公式サイトでは対応端末についてAndroid 17以上を要件
 確認済みの主要項目：
 
 - ChromeOSと同じセキュリティアーキテクチャを基礎とする。
-- Google Titan hardware root of trust。
-- Defense in Depth。
+- Google Titanによるハードウェアの信頼の基点。
+- 多層防御。
 - オンデバイスマルウェア検出。
 - Androidアプリのサンドボックス。
 - pKVMによるLinux環境の隔離。
@@ -456,7 +456,7 @@ Webアプリ中心ならAndroid ABIだけでIntelを除外する理由は乏し�
 3. AdGuard for Android、personalDNSfilterなどがGooglebookを正式対応環境に含めるか確認する。
 4. ブラウザ内フィルタとDNS・VPNフィルタを重ねる場合は、誤ブロック、二重処理、電池消費、ログの分散を実機で比較する。
 
-AdGuardのフィルタ構文については、製品予測から切り離し、[`AdGuard Custom Rules Reference.md`](AdGuard%20Custom%20Rules%20Reference.md)を参照してください。
+AdGuardのフィルタ構文については、製品予測から切り離し、[AdGuardカスタムルールの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md)を参照してください。
 
 ## 今後確認する項目
 
@@ -474,19 +474,19 @@ AdGuardのフィルタ構文については、製品予測から切り離し、[
 
 ### 公式
 
-- [Googlebook: The laptop your Android phone has been waiting for](https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/)
-- [Googlebook is raising the bar for premium laptops](https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/)
-- [Googlebook’s built-in intelligence reinvents the way you use your laptop](https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/)
+- [Googlebook：Androidスマートフォンが待ち望んでいたノートPC](https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/)
+- [GooglebookがプレミアムノートPCの水準を引き上げる](https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/)
+- [Googlebookの内蔵AIがノートPCの使い方を変える](https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/)
 - [Googlebook公式サイト](https://googlebook.google/)
-- [Googlebook FAQ](https://googlebook.google/frequently-asked-questions/)
+- [Googlebookのよくある質問](https://googlebook.google/frequently-asked-questions/)
 - [Android Developers: Googlebook](https://developer.android.com/googlebook)
-- [Introducing Googlebook, designed for Gemini Intelligence](https://blog.google/products-and-platforms/platforms/android/meet-googlebook/)
+- [Gemini Intelligence向けに設計されたGooglebookの紹介](https://blog.google/products-and-platforms/platforms/android/meet-googlebook/)
 - [The Android Show: I/O Edition 2026（Google Japan）](https://blog.google/intl/ja-jp/products/android-chrome-play/android-show-io-edition-2026/)
-- [Google AI announcements from May 2026](https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/)
-- [Qualcomm: Snapdragon X Series Powers Googlebook](https://www.qualcomm.com/news/releases/2026/09/snapdragon-x-series-powers-googlebook--the-first-laptops-designe)
-- [Chromium: Add Googlebook to English dictionaries](https://chromium.googlesource.com/chromium/deps/hunspell_dictionaries/+/refs/heads/main)
-- [Chromium: Googlebook dictionary update roll](https://chromium.googlesource.com/chromium/src/+/3260aa4a5a9886e6a18ffd0b061665b9a4f155b6)
-- [What the Googlebook announcement means for your ChromeOS devices](https://support.google.com/chrome/a/answer/16634428)
+- [2026年5月のGoogle AIの発表](https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/)
+- [Qualcomm：Snapdragon XシリーズがGooglebookを支える](https://www.qualcomm.com/news/releases/2026/09/snapdragon-x-series-powers-googlebook--the-first-laptops-designe)
+- [Chromium：英語辞書にGooglebookを追加](https://chromium.googlesource.com/chromium/deps/hunspell_dictionaries/+/refs/heads/main)
+- [Chromium：Googlebookの辞書更新を反映](https://chromium.googlesource.com/chromium/src/+/3260aa4a5a9886e6a18ffd0b061665b9a4f155b6)
+- [Googlebookの発表がChromeOS端末にもたらす影響](https://support.google.com/chrome/a/answer/16634428)
 - [Chromebookの自動更新ポリシー](https://support.google.com/chrome/a/answer/6220366?hl=ja)
 
 ### 担当者の公開回答
@@ -497,8 +497,8 @@ AdGuardのフィルタ構文については、製品予測から切り離し、[
 
 以下は公式製品仕様ではなく、発表前後のコードネームや移行予測を追うための背景資料として保存します。発売後の取材記事は上記各節で二次情報と明記し、公式仕様と区別しています。
 
-- [Google listing says Android PC OS, ‘Aluminium,’ will have ‘AI at the core’](https://9to5google.com/2025/11/24/google-android-pc-aluminium-os/)
-- [For Aluminium OS to succeed, Google needs to avoid Android's earliest mistakes](https://www.androidauthority.com/google-aluminium-os-avoid-android-early-mistakes-3663293/)
+- [Googleの求人情報でAndroid PC OS「Aluminium」はAIを中核に据えると説明](https://9to5google.com/2025/11/24/google-android-pc-aluminium-os/)
+- [Aluminium OSの成功にはAndroid初期の失敗を避ける必要がある](https://www.androidauthority.com/google-aluminium-os-avoid-android-early-mistakes-3663293/)
 
 - [Android Authority: Intel Googlebookの変換・アプリ対応に関するGoogle回答](https://www.androidauthority.com/googlebooks-top-android-apps-intel-3719888/)
 - [Android Authority: Googlebook Chromeの複数プロファイル実機確認](https://www.androidauthority.com/googlebooks-chrome-multiple-profiles-3719566/)

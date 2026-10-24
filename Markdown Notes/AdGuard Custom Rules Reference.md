@@ -1,4 +1,4 @@
-# AdGuard Custom Rules Reference
+# AdGuardカスタムルールの構文リファレンス
 
 AdGuardカスタムルール リファレンス
 
@@ -8,9 +8,9 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | CC0-1.0 |
-| **Version** | 202610220026 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | CC0-1.0 |
+| **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -728,11 +728,11 @@ trusted Scriptletなど信頼済みフィルタ限定の機能があります。
   
   （※特定の記事ページではなく、「検索エンジンの検索結果ページ・コミュニティ一覧のトップページ」です）Android端末での省電力タスクキル問題、ウォッチドッグ機能、ローレベル設定調整に関する開発チームおよび実ユーザーの技術議論アーカイブ。
 
-* [**EasyList Official Repository**](https://github.com/easylist/easylist) / [**Site**](https://easylist.to/)
+* [**EasyList公式リポジトリ**](https://github.com/easylist/easylist) / [**公式サイト**](https://easylist.to/)
 
   世界中の広告ブロックルールの原点・基準となる汎用リファレンス。
 
-* [**uBlock Origin Wiki：Static filter syntax**](https://github.com/gorhill/ublock/wiki/static-filter-syntax)
+* [**uBlock Origin Wiki：静的フィルターの構文**](https://github.com/gorhill/ublock/wiki/static-filter-syntax)
 
   Raymond Hill 氏が管理する静的フィルタ構文の公式解説書。特異度リセット（`:where()`）やCSSセレクタのDOM評価コスト、DNR適合を理解するための必読バイブル。
 

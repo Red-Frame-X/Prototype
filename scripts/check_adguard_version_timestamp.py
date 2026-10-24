@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate AdGuard filter Version metadata for rule-changing commits."""
+"""ルール変更コミットのAdGuardフィルターのVersionメタデータを検証する。"""
 from __future__ import annotations
 
 import argparse
@@ -37,12 +37,12 @@ def show(ref: str, path: Path) -> str | None:
 def version(text: str, path: Path) -> str:
     matches = VERSION_RE.findall(text)
     if len(matches) != 1:
-        raise ValueError(f"{path}: expected exactly one ! Version: YYYYMMDDHHMM header")
+        raise ValueError(f"{path}: ! Version: YYYYMMDDHHMMヘッダーが正確に1つ必要です")
     stamp = matches[0]
     try:
         datetime.strptime(stamp, "%Y%m%d%H%M").replace(tzinfo=JST)
     except ValueError as exc:
-        raise ValueError(f"{path}: invalid JST Version timestamp {stamp}") from exc
+        raise ValueError(f"{path}: 日本標準時のVersion日時が不正です: {stamp}") from exc
     return stamp
 
 
@@ -51,7 +51,7 @@ def rules_without_version(text: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True)
     parser.add_argument("--head", default="HEAD")
     args = parser.parse_args()
@@ -71,21 +71,21 @@ def main() -> int:
                 old_version = version(before, path)
                 new_version = version(after, path)
             except ValueError as exc:
-                print(f"error: {exc}")
+                print(f"エラー: {exc}")
                 failed = True
                 continue
 
             rules_changed = rules_without_version(before) != rules_without_version(after)
             if rules_changed and old_version == new_version:
                 print(
-                    f"error: {commit[:12]}: {path}: rules changed but ! Version: was not updated "
-                    f"in the same commit ({old_version})"
+                    f"エラー: {commit[:12]}: {path}: ルールが変更されていますが、! Version:が更新されていません "
+                    f"（同じコミット内での更新が必要: {old_version})"
                 )
                 failed = True
             elif rules_changed:
-                print(f"OK: {path}: rules and Version changed together ({old_version} -> {new_version})")
+                print(f"正常: {path}: ルールとVersionが同時に変更されています（{old_version} -> {new_version})")
             else:
-                print(f"OK: {path}: only Version metadata changed")
+                print(f"正常: {path}: Versionメタデータだけが変更されています")
 
     # 各コミット検査に加え、範囲全体の最終状態も比較する。
     # 途中で Version を更新した後、後続コミットで Version だけ古い値へ戻すケースを見逃さない。
@@ -99,15 +99,15 @@ def main() -> int:
             old_version = version(before, path)
             new_version = version(after, path)
         except ValueError as exc:
-            print(f"error: {exc}")
+            print(f"エラー: {exc}")
             failed = True
             continue
 
         rules_changed = rules_without_version(before) != rules_without_version(after)
         if rules_changed and old_version == new_version:
             print(
-                f"error: {path}: rules differ between {args.base} and {args.head} but "
-                f"! Version: is unchanged ({old_version})"
+                f"エラー: {path}: 次の範囲でルールが異なります: {args.base}と{args.head}。"
+                f"! Version:が変更されていません（{old_version})"
             )
             failed = True
 

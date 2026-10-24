@@ -22,14 +22,14 @@ class MV3RegexRewriteTests(unittest.TestCase):
         rule = r"/pay(?=ment)/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported MV3 Regex] " + rule,
+            "! [MV3未対応の正規表現] " + rule,
         )
 
     def test_negative_lookahead_remains_unsupported(self):
         rule = r"/^https?:\/\/(?!www\.)[^\/]+\.example(?:\/|$)/$document"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported MV3 Regex] " + rule,
+            "! [MV3未対応の正規表現] " + rule,
         )
 
 

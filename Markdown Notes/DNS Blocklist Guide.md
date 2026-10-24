@@ -1,4 +1,4 @@
-# DNS Blocklist Guide
+# DNSブロックリストのガイド
 
 DNSブロックリストのガイド
 
@@ -6,9 +6,9 @@ DNSブロックリストのガイド
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | CC0-1.0 |
-| **Version** | 202610220026 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | CC0-1.0 |
+| **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -175,11 +175,11 @@ SDNSFilterの [公式README](https://github.com/AdguardTeam/AdGuardSDNSFilter) �
 
 AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別します。AndroidでもDNS用の入力欄で使います。ただし、共通文書に載る `$client` などの一部修飾子はHome / DNS専用です。ブラウザ用の要素非表示ルールはDNS欄へ追加しません。
 
-### HaGeZi's Multi NORMAL - all-round protection（personalDNSfilter向け）
+### HaGeZi Multi NORMAL（総合保護）（personalDNSfilter向け）
 
 複数ソースを統合したコミュニティ管理リストです。作者の分類では「Relaxed to Balanced / Low」で、控えめ〜バランス型の開始候補です。personalDNSfilterには下記のDomains only形式を使用します。
 
-* **購読用URL**：HaGeZi's Multi NORMAL - all-round protection
+* **購読用URL**：HaGeZi Multi NORMAL（総合保護）
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
@@ -196,7 +196,7 @@ AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別し�
 
 作者の [Cheat Sheet](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#cheat_multi) に基づく分類です。作者の推奨デフォルトはProですが、本ガイドでは控えめなNormalから開始します。Mini版はサイズ最適化版で、通常版への追加は不要です。
 
-### HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)
+### HaGeZi Threat Intelligence Feedsのmedium版（ブラウザー・モバイル用広告ブロッカー向け）
 
 脅威対策を補うTIFのmedium版です。 [HaGeZi公式README](https://github.com/hagezi/dns-blocklists#tifmedium) では、フル版を扱いにくいブラウザ・モバイル向けブロッカー用に、主要なフィードへ絞った版として案内されています。
 
@@ -219,11 +219,11 @@ AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別し�
 
 ### AdGuard for Androidの場合
 
-**AdGuard DNS filter** または **HaGeZi's Multi NORMAL - all-round protection** のAdblock形式を1つ選びます。導入手順とURLは本章の「初めて導入するときの手順」を参照してください。
+**AdGuard DNS filter** または **HaGeZi Multi NORMAL（総合保護）** のAdblock形式を1つ選びます。導入手順とURLは本章の「初めて導入するときの手順」を参照してください。
 
 ### personalDNSfilterの場合
 
-2章の **HaGeZi's Multi NORMAL - all-round protection** をDomains only形式で購読します。例外は `additionalHosts.txt` で管理します。これはAdGuardのAdblock-style構文とは異なる独自構文です。
+2章の **HaGeZi Multi NORMAL（総合保護）** をDomains only形式で購読します。例外は `additionalHosts.txt` で管理します。これはAdGuardのAdblock-style構文とは異なる独自構文です。
 
 #### personalDNSfilterの例外を小さく作る
 
@@ -272,7 +272,7 @@ ads.example.com
 1. 現在のDNSサーバー、DNSフィルタ、ユーザールールを記録し、変更前に普段使うサイトやアプリが動くことを確認する。
 2. 「保護（Protection）→ DNS保護（DNS protection）」を開き、有効にする。DNSサーバーとDNSフィルタは別項目として確認する。
 3. DNSフィルタでAdGuard DNS filterが既に有効なら、同じURLを重複追加しない。なければ2章の購読URLをDNSフィルタとして追加する。
-4. HaGeZi's Multi NORMAL - all-round protectionを代わりに使う場合はAdGuard向けAdblock形式を選ぶ。下記URLは既存のDomains only版とは別形式である。
+4. HaGeZi Multi NORMAL（総合保護）を代わりに使う場合はAdGuard向けAdblock形式を選ぶ。下記URLは既存のDomains only版とは別形式である。
 
    ```text
    https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt
@@ -294,7 +294,7 @@ AdGuard DNSユーザールールの説明用例：
 #### personalDNSfilterへの導入
 
 1. 現在の購読URL、DNS設定、`additionalHosts.txt` の内容を保存する。
-2. 購読フィルタの設定欄へ、2章のHaGeZi's Multi NORMAL - all-round protection（Domains only）のURLを指定する。初回の動作確認では、他の購読リストを一時的に外すか無効にして構成を把握する。
+2. 購読フィルタの設定欄へ、2章のHaGeZi Multi NORMAL（総合保護）（Domains only）のURLを指定する。初回の動作確認では、他の購読リストを一時的に外すか無効にして構成を把握する。
 3. リストを更新し、ダウンロードと索引作成が完了するまで確認する。巨大なリストを `additionalHosts.txt` へ貼り付けない。
 4. 保護を有効にし、問い合わせのログと普段使うアプリの動作を確認する。リストを取得できただけでは、そのアプリのDNS通信が保護を経由している確認にはならない。
 5. 不具合が出たら5章で切り分け、必要な名前だけを `!login.example.com` のように追加する。保存後はアプリの再読み込み・再起動の案内に従い、例外が反映されたかログで確認する。
@@ -411,24 +411,24 @@ CNAMEは別名から実体ホストへ名前解決する仕組みです。CNAME�
 仕様の確認には、各プロジェクトの公開資料を優先します。
 
 **DNSBL / DNS / 暗号化DNS**
-* [RFC 5782 — DNS Blacklists and Whitelists](https://www.rfc-editor.org/rfc/rfc5782.html)
-* [RFC 6471 — Overview of Best Email DNS-Based List Operational Practices](https://www.rfc-editor.org/rfc/rfc6471.html)
-* [RFC 8484 — DNS Queries over HTTPS (DoH)](https://www.rfc-editor.org/rfc/rfc8484.html)
-* [RFC 7858 — DNS over TLS (DoT)](https://www.rfc-editor.org/rfc/rfc7858.html)
-* [RFC 9250 — DNS over Dedicated QUIC Connections (DoQ)](https://www.rfc-editor.org/rfc/rfc9250.html)
+* [RFC 5782 — DNSのブロックリストと許可リスト](https://www.rfc-editor.org/rfc/rfc5782.html)
+* [RFC 6471 — メール向けDNSベースリストの運用上の推奨事項](https://www.rfc-editor.org/rfc/rfc6471.html)
+* [RFC 8484 — HTTPS経由のDNS問い合わせ（DoH）](https://www.rfc-editor.org/rfc/rfc8484.html)
+* [RFC 7858 — TLS経由のDNS（DoT）](https://www.rfc-editor.org/rfc/rfc7858.html)
+* [RFC 9250 — 専用QUIC接続によるDNS（DoQ）](https://www.rfc-editor.org/rfc/rfc9250.html)
 
 **形式と構文**
-* [AdGuard DNS filtering rules syntax](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
-* [AdGuard for Android: DNS protection](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
-* [AdGuard for Android: Statistics / Recent activity](https://adguard.com/kb/adguard-for-android/features/statistics/)
+* [AdGuardのDNSフィルタリングルール構文](https://github.com/AdguardTeam/KnowledgeBaseDNS/blob/master/docs/general/dns-filtering-syntax.md)
+* [AdGuard for Android：DNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)
+* [AdGuard for Android：統計・最近のアクティビティ](https://adguard.com/kb/adguard-for-android/features/statistics/)
 * [personalDNSfilter additionalHosts.txt](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/assets/additionalHosts.txt)
 * [personalDNSfilter DNSFilterManager.java](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/DNSFilterManager.java)
 * [uBlock Origin README — 他のコンテンツブロッカーとの併用について](https://github.com/gorhill/uBlock/blob/master/README.md)
 
 **フィルタの公式リポジトリ**
 * [AdGuard SDNSFilter (AdGuard DNS filter)](https://github.com/AdguardTeam/AdGuardSDNSFilter)
-* [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists)
-* [HaGeZi Blocklists Cheat Sheet](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md)
+* [HaGeZiのDNSブロックリスト](https://github.com/hagezi/dns-blocklists)
+* [HaGeZiブロックリストの早見表](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md)
 
 **詳細仕様の一次情報**
 * [RFC 1034 — Domain Names: Concepts and Facilities](https://www.rfc-editor.org/rfc/rfc1034.html) ：0章のDNS・名前解決・キャッシュの基本。
