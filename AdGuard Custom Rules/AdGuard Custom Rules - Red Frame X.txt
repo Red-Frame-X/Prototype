@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202610241609
+! Version: 202610241617
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -167,6 +167,10 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 ! pex.kantangame.com
 ! ゲーム開始画面の広告ブロッカー無効化を求める案内文を非表示
 pex.kantangame.com##.c-n-game-start__info
+
+! printeezondemand.com
+! プライバシー設定の案内バナーを非表示（同意・拒否の設定は変更しない）
+printeezondemand.com##.printeez-consent__panel--banner
 
 ! raw1001.net,mangakoma01.net
 ! ジャンル一覧の高さを画面内に収め、縦スクロールを有効化
