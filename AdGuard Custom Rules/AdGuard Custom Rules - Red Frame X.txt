@@ -184,6 +184,10 @@ rawkuma.net##iframe[src*="cbox.ws"]
 ! 無効化中：sankei.comでPianoのダミーofferId付き購入テンプレート通信を許可し、有料プランの申込・ログイン導線を復元
 ! @@||buy-ap.piano.io/checkout/template/cacheableShow.html?*&offerId=fakeOfferId$domain=sankei.com
 
+! sellmylaptops.com
+! 画面下部に固定されたPrivacy Policyリンク付きCookieバナーを非表示
+sellmylaptops.com##div[style*="position:"][style*="fixed"][style*="bottom:"]:has(> p > a[href$="/privacy"])
+
 ! tiktok.com
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避
 @@||analytics.tiktok.com^$app=jp.kappasushi.app
