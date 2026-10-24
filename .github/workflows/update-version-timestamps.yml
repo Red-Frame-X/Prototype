@@ -77,7 +77,7 @@ jobs:
               echo 'No supported Version metadata changes to commit.'
               exit 0
             fi
-            git commit -m 'chore: sync Version timestamps (JST)'
+            git commit -m 'chore: Versionの日時を日本標準時で同期'
             if git push origin HEAD:main; then
               exit 0
             fi
