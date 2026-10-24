@@ -6,7 +6,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202610241400 |
+| **Version** | 202610241926 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -69,3 +69,9 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 
 - [RepositoryのルートREADME](../README.md)
 - [Markdown Notesディレクトリ](./)
+
+### Ubuntu
+
+- [Ubuntu](https://x.com/ubuntu)
+- [Ubuntu Japanese Team](https://www.ubuntulinux.jp/)
+- [Ubuntu Laptop](https://raylink-inc.com/product-category/new-laptop/)
