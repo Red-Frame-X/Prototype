@@ -1,4 +1,4 @@
-# uB-filter-by-kdroidwin（AdGuard Optimized）
+# uB-filter-by-kdroidwin (AdGuard Optimized)
 
 [uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)を、自分のAdGuard環境で検証するために自動変換・最適化している非公式生成フィルタです。上流フィルタの目的をできるだけ維持しつつ、uBlock OriginとAdGuardの構文・機能差を考慮して変換しています。
 
@@ -43,7 +43,7 @@ Android側で試す場合は、次の順序で上記URLを登録します。
 
 ## 更新記録
 
-GitHub Actionsで上流フィルタを定期的に確認し、変換結果に変更がある場合だけ生成物を更新します。生成物のメタデータでは更新間隔を12時間としています。
+GitHub Actionsで上流フィルタを定期的に確認し、変換結果に変更がある場合だけ生成物を更新します。生成物のMetadataでは更新間隔を12時間としています。
 
 AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィルタを拡張機能本体とは独立して更新する機能が追加されています。実際の取得時刻は通信状況、配布元の応答、AdGuard側の更新処理などにより前後するため、保存している説明だけで更新状態を判断しません。
 
@@ -58,7 +58,7 @@ AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィル
 
 ## 関連情報
 
-- [リポジトリのルートREADME](../README.md)
+- [RepositoryのルートREADME](../README.md)
 - [変換スクリプト](../scripts/convert.py)
 - [変換能力定義](../config/adguard-converter-capabilities.json)
 
@@ -75,4 +75,4 @@ AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィル
 - 変換版：[uB-filter-by-kdroidwin (AdGuard Optimized).txt](./uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)
 - ライセンス：[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
 
-第三者由来ファイルのライセンスと、このリポジトリ内の独自部分の扱いは[`LICENSES.md`](../LICENSES.md)に記録しています。
+第三者由来ファイルのライセンスと、このRepository内の独自部分の扱いは[`LICENSES.md`](../LICENSES.md)に記録しています。

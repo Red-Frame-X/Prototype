@@ -4,7 +4,7 @@ DNSブロックリストのガイド
 
 ---
 
-| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
@@ -425,7 +425,7 @@ CNAMEは別名から実体ホストへ名前解決する仕組みです。CNAME�
 * [personalDNSfilter DNSFilterManager.java](https://github.com/IngoZenz/personaldnsfilter/blob/master/app/src/main/java/dnsfilter/DNSFilterManager.java)
 * [uBlock Origin README — 他のコンテンツブロッカーとの併用について](https://github.com/gorhill/uBlock/blob/master/README.md)
 
-**フィルタの公式リポジトリ**
+**フィルタの公式Repository**
 * [AdGuard SDNSFilter (AdGuard DNS filter)](https://github.com/AdguardTeam/AdGuardSDNSFilter)
 * [HaGeZiのDNSブロックリスト](https://github.com/hagezi/dns-blocklists)
 * [HaGeZiブロックリストの早見表](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md)

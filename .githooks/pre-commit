@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# 作業ツリーの未ステージ修正で、コミット対象の不備が隠れないようにする。
+# 作業ツリーの未ステージ修正で、Commit対象の不備が隠れないようにする。
 repo_root="$(git rev-parse --show-toplevel)"
 tmp_dir="$(mktemp -d)"
 trap 'rm -rf "$tmp_dir"' EXIT

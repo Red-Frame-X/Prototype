@@ -32,30 +32,30 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: リポジトリの取得
+      - name: Repositoryの取得
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # 複数コミットのpushではgithub.event.beforeがHEADの親より前になることがある。
+          # 複数Commitのpushではgithub.event.beforeがHEADの親より前になることがある。
           fetch-depth: 0
           ref: main
 
-      - name: 現在の日本標準時でVersionメタデータを更新・検証・反映
+      - name: 現在の日本標準時でVersion Metadataを更新・検証・反映
         shell: bash
         run: |
           set -euo pipefail
           # 毎回最新mainを走査する。イベント差分だけでは後続の編集や
-          # 中止された保留実行を見落とす。Versionのみのコミットはスクリプトが無視する。
+          # 中止された保留実行を見落とす。VersionのみのCommitはスクリプトが無視する。
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          # このジョブの実行中にも他のワークフローがmainへpushする場合がある。
-          # 毎回最新mainから再生成する。完成済みの日時更新コミットをrebaseすると、
+          # このJobの実行中にも他のWorkflowがmainへpushする場合がある。
+          # 毎回最新mainから再生成する。完成済みの日時更新Commitをrebaseすると、
           # 同じVersion行で競合し、再試行が止まる場合がある。
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             python scripts/update_version_timestamps.py --pending
-            # 同じ分内の編集も含め、内容チェックポイントを同一コミットで反映する。
+            # 同じ分内の編集も含め、内容チェックポイントを同一Commitで反映する。
             git add -- .github/version-timestamps-state.json
 
             # 反映を試みるたびに変更ファイルを検証する。
@@ -74,7 +74,7 @@ jobs:
               'NG Word Regex for ChMate' \
               'UserScript'
             if git diff --cached --quiet; then
-              echo 'コミットが必要な対応Versionメタデータの変更はありません。'
+              echo 'Commitが必要な対応Version Metadataの変更はありません。'
               exit 0
             fi
             git commit -m 'chore: Versionの日時を日本標準時で同期'

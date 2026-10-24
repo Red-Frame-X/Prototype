@@ -26,7 +26,7 @@ FILTER_TITLE: str = FILTER_NAME
 OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", f"{FILTER_NAME}.txt")
 CAPABILITY_FILE: str = os.path.join(BASE_DIR, "config", "adguard-converter-capabilities.json")
 CAPABILITY_TARGET: str = "adguard-browser-extension-mv3"
-# リポジトリの慎重な運用方針に合わせ、大幅な減少の確認基準を設定する。
+# Repositoryの慎重な運用方針に合わせ、大幅な減少の確認基準を設定する。
 # 意図した大幅な削減でも、自動的に許可せずレビューを必要とする。
 MAX_RULE_NET_LOSS: int = 120
 
@@ -400,7 +400,7 @@ class AdGuardOptimizer:
 
             metadata_matches = all(line in existing_lines[:12] for line in expected_metadata)
             if new_signature == self.get_rule_signature(existing_lines) and metadata_matches:
-                print("変更なし: ルール本体と固定メタデータに差分がないため、ファイルの更新をスキップしました。")
+                print("変更なし: ルール本体と固定Metadataに差分がないため、ファイルの更新をスキップしました。")
                 return
 
         jst = timezone(timedelta(hours=+9), 'JST')

@@ -1,6 +1,6 @@
 name: NG Word Regex for ChMate のVersion更新
 
-# ChMate専用の旧ワークフローは手動実行用として保持します。
+# ChMate専用の旧Workflowは手動実行用として保持します。
 # mainへのpush時の自動更新は update-version-timestamps.yml に統合し、
 # 同一ファイルへの並行push競合を防止します。
 on:
@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: リポジトリの取得
+      - name: Repositoryの取得
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0

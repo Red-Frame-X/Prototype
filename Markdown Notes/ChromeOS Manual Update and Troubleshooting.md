@@ -2,7 +2,7 @@
 
 ChromeOSは、インターネットに接続していると、OSアップデートを自動的に確認してダウンロードします。手動で更新を確認する場合も、Googleが案内しているChromeOSの設定画面から実行します。この文書では、自分の環境で更新やトラブル対応を行う際に再確認できるよう、公式手順と影響範囲をまとめて残しています。
 
-| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |

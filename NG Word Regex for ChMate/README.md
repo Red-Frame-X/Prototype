@@ -23,5 +23,5 @@ NG対象を増やす場合は、式を単純に広げるより、実際の投稿
 
 ## 関連情報
 
-- [リポジトリのルートREADME](../README.md)
+- [RepositoryのルートREADME](../README.md)
 - [NG Word Regex for ChMateディレクトリ](./)

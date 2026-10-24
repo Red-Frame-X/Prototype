@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # 同一ワークフローの重複実行だけを直列化する。異なる書き込みワークフローを
+  # 同一Workflowの重複実行だけを直列化する。異なる書き込みWorkflowを
   # 同じgroupにすると、GitHub Actionsが古いpending runをキャンセルするため共有しない。
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
@@ -25,7 +25,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: リポジトリの取得
+      - name: Repositoryの取得
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Pythonの準備
