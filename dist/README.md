@@ -1,4 +1,4 @@
-# uB-filter-by-kdroidwin（AdGuard最適化版）
+# uB-filter-by-kdroidwin（AdGuard Optimized）
 
 [uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)を、自分のAdGuard環境で検証するために自動変換・最適化している非公式生成フィルタです。上流フィルタの目的をできるだけ維持しつつ、uBlock OriginとAdGuardの構文・機能差を考慮して変換しています。
 
