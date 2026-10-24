@@ -6,7 +6,7 @@ Googlebookの仕様、対応アプリ、ハードウェア、Chrome、Linux、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610241201 |
+| **Version** | 202610241400 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 

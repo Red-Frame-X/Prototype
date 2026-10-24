@@ -6,7 +6,7 @@
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610241010 |
+| **Version** | 202610241400 |
 
 ```
 <details>
