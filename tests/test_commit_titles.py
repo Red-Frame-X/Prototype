@@ -9,24 +9,38 @@ SCRIPT = Path(__file__).resolve().parents[1] / "scripts/check_commit_titles.py"
 
 
 class CommitTitleTests(unittest.TestCase):
-    def test_japanese_description_with_identifiers(self):
-        self.assertTrue(valid_title("fix: AdGuardのVersion更新を修正 (#123)"))
-        self.assertTrue(valid_title("プルリクエスト #123 をマージ"))
+    def test_japanese_description_with_canonical_identifiers(self):
+        self.assertTrue(valid_title("fix: AdGuard Custom Rules のVersion更新を修正 (#123)"))
+        self.assertTrue(valid_title("Pull Request #123 をマージ"))
+        self.assertTrue(valid_title("Markdown Notes のVersion自動更新処理を修正"))
 
-    def test_english_and_empty_titles_are_rejected(self):
-        for title in ("", "fix: update Version", "Merge pull request #123"):
+    def test_english_titles_are_allowed(self):
+        self.assertTrue(valid_title("fix: update Version"))
+        self.assertTrue(valid_title("Merge pull request #123"))
+        self.assertTrue(valid_title("Update uB-filter-by-kdroidwin (AdGuard Optimized)"))
+
+    def test_empty_and_noncanonical_titles_are_rejected(self):
+        for title in (
+            "",
+            "AdGuardカスタムルールを更新",
+            "AdGuard向け最適化フィルタを更新",
+            "ユーザースクリプトを更新",
+            "ChMate用NGワード正規表現を更新",
+            "Markdownメモを更新",
+        ):
             with self.subTest(title=title):
                 self.assertFalse(valid_title(title))
 
-    def test_japanese_body_does_not_make_english_title_valid(self):
+    def test_body_does_not_fix_noncanonical_title(self):
         with tempfile.TemporaryDirectory() as directory:
             message = Path(directory) / "COMMIT_EDITMSG"
-            message.write_text("fix: update Version\n\n日本語の本文\n", encoding="utf-8")
+            message.write_text("Markdownメモを更新\n\nMarkdown Notes の説明\n", encoding="utf-8")
             result = subprocess.run(
                 ["python3", str(SCRIPT), "--message-file", str(message)],
                 capture_output=True, text=True,
             )
             self.assertEqual(result.returncode, 1)
+            self.assertIn("Markdown Notes", result.stdout)
 
     def test_range_checks_each_commit(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -35,16 +49,16 @@ class CommitTitleTests(unittest.TestCase):
             git("init", "-q")
             git("config", "user.name", "Test")
             git("config", "user.email", "test@example.com")
-            git("commit", "--allow-empty", "-qm", "初回コミット")
+            git("commit", "--allow-empty", "-qm", "Initial commit")
             base = git("rev-parse", "HEAD")
-            git("commit", "--allow-empty", "-qm", "English title")
-            git("commit", "--allow-empty", "-qm", "日本語のコミット")
+            git("commit", "--allow-empty", "-qm", "Markdownメモを更新")
+            git("commit", "--allow-empty", "-qm", "Update Markdown Notes")
             result = subprocess.run(
                 ["python3", str(SCRIPT), "--base-ref", base], cwd=directory,
                 capture_output=True, text=True,
             )
             self.assertEqual(result.returncode, 1)
-            self.assertIn("English title", result.stdout)
+            self.assertIn("Markdownメモ", result.stdout)
 
 
 if __name__ == "__main__":

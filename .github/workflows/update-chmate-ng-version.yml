@@ -1,4 +1,4 @@
-name: ChMate NGのVersion更新
+name: NG Word Regex for ChMate のVersion更新
 
 # ChMate専用の旧ワークフローは手動実行用として保持します。
 # mainへのpush時の自動更新は update-version-timestamps.yml に統合し、
@@ -49,19 +49,19 @@ jobs:
           path.write_text(updated, encoding='utf-8')
           PY
 
-      - name: 必要に応じてVersion更新をコミット
+      - name: 必要に応じてVersion更新をCommit
         shell: bash
         run: |
           set -euo pipefail
           file='NG Word Regex for ChMate/NG Word Regex for ChMate.txt'
           if git diff --quiet -- "$file"; then
-            echo 'Versionはすでに最新のため、コミットは不要です。'
+            echo 'Versionはすでに最新のため、Commitは不要です。'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- "$file"
-          git commit -m 'chore: ChMate NGのVersionを更新'
+          git commit -m 'Update NG Word Regex for ChMate Version'
 
           for attempt in 1 2 3; do
             git fetch origin main
@@ -70,7 +70,7 @@ jobs:
               exit 0
             fi
             if [[ "$attempt" -eq 3 ]]; then
-              echo 'ChMateのVersion更新を3回試しましたが、pushできませんでした。' >&2
+              echo 'NG Word Regex for ChMate のVersion更新を3回試しましたが、pushできませんでした。' >&2
               exit 1
             fi
             sleep $((attempt * 2))

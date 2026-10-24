@@ -1,4 +1,4 @@
-"""検証用マージをチェックアウトした状態で、CIのタイトル検査を再現する。"""
+"""検証用MergeをCheckoutした状態で、CIのCommit title検査を再現する。"""
 import os
 from pathlib import Path
 import subprocess
@@ -20,7 +20,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         self.git("init", "-q", "-b", "main")
         self.git("config", "user.name", "Test")
         self.git("config", "user.email", "test@example.com")
-        self.git("commit", "--allow-empty", "-qm", "初回コミット")
+        self.git("commit", "--allow-empty", "-qm", "Initial commit")
         self.git("checkout", "-qb", "topic")
 
     def git(self, *args):
@@ -32,7 +32,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         self.git("commit", "--allow-empty", "-qm", title)
         head = self.git("rev-parse", "HEAD")
         self.git("checkout", "-q", "main")
-        self.git("commit", "--allow-empty", "-qm", "基準ブランチの更新")
+        self.git("commit", "--allow-empty", "-qm", "Update base Branch")
         base = self.git("rev-parse", "HEAD")
         self.git("merge", "--no-ff", "topic", "-qm", f"Merge {head} into {base}")
         return base, head
@@ -51,7 +51,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         )
         self.assertIn("github.event_name == 'pull_request'", step["env"]["BASE_REF"])
         self.assertIn("github.base_ref", step["env"]["BASE_REF"])
-        # CIのシェル処理をそのまま実行し、スクリプトの場所だけ絶対パスにする。
+        # CIのShell処理をそのまま実行し、Scriptの場所だけ絶対Pathにする。
         command = step["run"].replace(
             "python scripts/check_commit_titles.py", f'"{sys.executable}" "{SCRIPT}"'
         )
@@ -61,31 +61,23 @@ class CommitTitleWorkflowTests(unittest.TestCase):
             capture_output=True, text=True,
         )
 
-    def test_pr_japanese_title_passes_with_real_synthetic_merge(self):
-        base, head = self.prepare_merge("日本語の変更")
-        # 原因となった旧動作が実際に失敗することも確認する。
-        old = subprocess.run(
-            [sys.executable, str(SCRIPT), "--base-ref", base],
-            cwd=self.repo, capture_output=True, text=True,
-        )
-        self.assertEqual(old.returncode, 1)
-        self.assertIn("Merge ", old.stdout)
+    def test_pr_canonical_title_passes_with_real_synthetic_merge(self):
+        base, head = self.prepare_merge("Update Markdown Notes")
         result = self.run_workflow(base, head)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
-    def test_pr_earlier_english_title_is_still_rejected(self):
-        self.git("commit", "--allow-empty", "-qm", "English change")
-        base, head = self.prepare_merge("後続の日本語の変更")
+    def test_pr_earlier_noncanonical_title_is_rejected(self):
+        self.git("commit", "--allow-empty", "-qm", "Markdownメモを更新")
+        base, head = self.prepare_merge("Update Markdown Notes")
         result = self.run_workflow(base, head)
         self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
-        self.assertIn("English change", result.stdout)
+        self.assertIn("Markdownメモ", result.stdout)
         self.assertNotIn("Merge ", result.stdout)
 
-    def test_push_english_merge_title_is_still_rejected(self):
-        self.prepare_merge("日本語の変更")
+    def test_push_english_merge_title_is_allowed(self):
+        self.prepare_merge("Update Markdown Notes")
         result = self.run_workflow("", self.git("rev-parse", "HEAD"))
-        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
-        self.assertIn("Merge ", result.stdout)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_only_title_failure_is_deferred_until_final_step(self):
         steps = self.workflow()["jobs"]["quality"]["steps"]

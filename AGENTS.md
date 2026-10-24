@@ -24,24 +24,28 @@
   削除や根拠のない事実変更が許可されたことにはならない。
 - 日本語の文書を作成・修正する際は、日常の意思疎通で使う明確で自然な日本語を優先する。技術的な正確さと元の意味を保ち、不必要に硬い表現や機械的・定型的な言い回しを避ける。
 
-## Codexコードレビューの言語
+## Codex Code Reviewの言語
 
-- GitHub上のCodexコードレビューの指摘・要約・説明・重大度の評価・修正案は、自然な日本語で記述する。
+- GitHub上のCodex Code Reviewの指摘・要約・説明・重大度の評価・修正案は、自然な日本語で記述する。
 - 正確さのために必要なコード識別子・ファイルパス・コマンド・ログ・引用したエラーメッセージは原表記を保持する。
-- この言語方針を、自動プルリクエストレビューと`@codex review`で依頼されたレビューの両方に適用する。
+- この言語方針を、自動Pull Request Reviewと`@codex review`で依頼されたReviewの両方に適用する。
 
-## コミットタイトルの言語
+## Commit titleの表記
 
-- コミットメッセージのタイトル（1行目）は、変更内容が伝わる自然な日本語で書く。
-- `docs:`、`fix:` などの種別、コード識別子、ファイル名、製品名、PR番号は必要に応じて原表記を保持する。
-- 自動生成するコミット、マージコミット、取り消しコミットにも日本語のタイトルを使う。
-- PRのタイトルも日本語で書き、マージ時に作成するコミットのタイトルを日本語にする。
-- `npm run hooks:install` でコミットフックを有効にする。CIでも新しいコミットのタイトルを検査する。
+- Commit messageの説明は自然な日本語で記述してよいが、IT・ソフトウェア開発・GitHubで英語表記が一般的な用語と正式名称は英語を優先する。
+- `AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は固定の正式表記として維持し、日本語訳へ置換しない。
+- `GitHub Actions`、`Workflow`、`Commit`、`Pull Request`、`PR`、`Issue`、`Branch`、`Repository`、`README`、`CI`、`Lint`、`Test`、`Script`、`Version`など、英語表記が一般的な技術用語は文脈上不自然でない限り英語を優先する。
+- Commit titleは日本語と英語の正式名称を組み合わせても、英語のみでもよい。例：`Markdown Notes のVersion自動更新処理を修正`、`Update Markdown Notes Version`。
+- 自動生成するCommit、Merge Commit、Revert Commit、Pull Request title、Merge時に作成するCommitにも同じ表記方針を適用する。
+- `npm run hooks:install` でCommit Hookを有効にする。CIでも新しいCommit titleが固定名称の表記方針に反していないことを検査する。
 
-## リポジトリ内の表記
+## Repository内の表記
 
-- 文書の説明・見出し・リンクの表示名、コメント、ヘルプ、ログ、エラーメッセージ、ワークフローの表示名は自然な日本語で記述する。
-- 製品名・コード識別子・コマンド・設定キー・メタデータキー・URL・購読先のパスは、仕様と互換性を保つため必要な原表記を維持する。
-- UserScriptの表示名は`@name:ja`で日本語化し、更新時の識別に使われる既存の`@name`と`@namespace`は維持する。
-- ライセンス原文、公式変更履歴の原文ミラー、検証用の原文引用は保持し、その周囲の説明を日本語にする。
-- 自動生成する説明文は、生成済みファイルだけでなく生成元も日本語化し、次回の更新でも表記を維持する。
+- 本文の説明は読みやすさを優先して原則として日本語で記述する。
+- IT・ソフトウェア開発・GitHub・コンテンツブロック等で英語表記が一般的な用語、製品名、機能名、プロジェクト名、ディレクトリ名、ファイル名、コード識別子は、無理に日本語化せず英語表記を優先する。
+- 特に`AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は正式な英語表記を維持する。
+- 製品名・コード識別子・コマンド・設定キー・Metadata key・URL・ファイル名・ディレクトリ名・購読先Pathは、仕様と互換性を保つため原表記を維持する。公式文書・公式UI・Upstreamに正式表記がある場合は、その表記を優先する。
+- `品質検査`、`自動更新`、`変更履歴`、`生成処理`、`構文検査`、`回帰テスト`、`設定`、`説明`、`注意事項`など、自然な日本語として読みやすい一般説明まで機械的に英語化しない。
+- UserScriptの日本語表示名には`@name:ja`を使い、更新時の識別に使われる既存の`@name`と`@namespace`は維持する。
+- ライセンス原文、公式Changelogの原文ミラー、検証用の原文引用は保持する。
+- 自動生成する表示・Commit message等は、生成済みファイルだけでなく生成元も同じ表記方針へ修正し、次回のUpdateでも表記を維持する。

@@ -27,7 +27,7 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 | 項目 | 主な内容 | 参照先 |
 | --- | --- | --- |
 | AdGuard Custom Rules | AdGuard向けの個人用コンテンツブロックルール、DNSルール、関連する変更履歴 | [README](./AdGuard%20Custom%20Rules/README.md) / [コンテンツブロックフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [DNSフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [変更履歴](./AdGuard%20Custom%20Rules/ChangeLog/) |
-| uB-filter-by-kdroidwin（AdGuard Optimized） | 上流フィルタをAdGuard向けに変換した自動生成物 | [README](./dist/README.md) / [生成フィルタ](./dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
+| uB-filter-by-kdroidwin (AdGuard Optimized) | 上流フィルタをAdGuard向けに変換した自動生成物 | [README](./dist/README.md) / [生成フィルタ](./dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
 | UserScript | 𝕏・YouTubeなどの表示や挙動を調整する個人用UserScript | [README](./UserScript/README.md) / [ディレクトリ](./UserScript/) |
 | NG Word Regex for ChMate | ChMateで使用するJava正規表現 | [README](./NG%20Word%20Regex%20for%20ChMate/README.md) / [正規表現](./NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
 | Markdown Notes | ChromeOS、Android、Linux / Linux Mint、Googlebook、GitHub、コンテンツブロック、DNSなどの学習・調査メモ | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) |
@@ -87,8 +87,42 @@ Markdownの行末にスペース1つが残ると、CIのMD009検査が失敗し�
 - 自動生成物は原則として直接編集せず、原本または変換処理を修正して再生成します。
 - 製品のUI名や機能名を記載する場合は、可能な限り対象バージョンの公式表記に合わせます。
 
-## 日本語表記の方針
+## 表記の方針
 
-説明、見出し、リンクの表示名、コメント、ヘルプ、ログ、エラーメッセージ、ワークフローの表示名は日本語に揃えます。コミットとプルリクエストのタイトルも日本語にします。
+本文の説明は、読みやすさを優先して原則として日本語で記述します。
 
-製品名・コード識別子・コマンド・設定キー・メタデータキー・URL・既存のファイル名と購読先パスは、仕様や参照の互換性を保つために原表記を維持します。ライセンス原文、公式変更履歴の原文ミラー、検証用の原文引用も保持します。UserScriptの日本語表示名には`@name:ja`を使い、更新時の識別に必要な既存の`@name`と`@namespace`は維持します。
+一方、IT・ソフトウェア開発・GitHub・コンテンツブロック等の分野で英語表記が一般的な用語、製品名、機能名、プロジェクト名、ディレクトリ名、ファイル名、コード識別子については、無理に日本語化せず原則として英語表記を優先します。
+
+特に以下の名称は正式な英語表記を維持します。
+
+- AdGuard Custom Rules
+- uB-filter-by-kdroidwin (AdGuard Optimized)
+- UserScript
+- NG Word Regex for ChMate
+- Markdown Notes
+- GitHub Actions
+- Workflow
+- Commit
+- Pull Request
+- Issue
+- Branch
+- CI
+- Lint
+- Script
+- Test
+
+Commit messageおよびPull Requestでは、日本語の説明文と英語の正式名称を組み合わせる形式を基本とします。英語のみのCommit titleも、正式名称と意味が明確であれば使用できます。
+
+例：
+
+`Markdown Notes のVersion自動更新処理を修正`
+
+`AdGuard Custom Rules の生成処理を修正`
+
+`Update Markdown Notes Version`
+
+製品名、コード識別子、コマンド、設定キー、Metadata key、URL、ファイル名、ディレクトリ名、購読先Pathなどは、互換性と参照の一貫性を保つため原表記を維持します。
+
+公式文書・公式UI・Upstreamで正式な表記が存在する場合は、その表記を優先します。`品質検査`、`自動更新`、`変更履歴`、`生成処理`、`構文検査`、`回帰テスト`、`設定`、`説明`、`注意事項`など、自然な日本語として読みやすい一般説明まで機械的に英語化しません。
+
+ライセンス原文、公式変更履歴の原文ミラー、検証用の原文引用も保持します。UserScriptの日本語表示名には`@name:ja`を使い、更新時の識別に必要な既存の`@name`と`@namespace`は維持します。
