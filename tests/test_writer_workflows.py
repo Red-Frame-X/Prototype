@@ -52,7 +52,7 @@ class WriterWorkflowTests(unittest.TestCase):
 
     def test_chmate_manual_writer_retries_push_conflicts(self):
         _, text = self._load("update-chmate-ng-version.yml")
-        commit_index = text.index("git commit -m 'chore: ChMate NGのVersionを更新'")
+        commit_index = text.index("git commit -m 'Update NG Word Regex for ChMate Version'")
         loop_index = text.index("for attempt in 1 2 3; do", commit_index)
         fetch_index = text.index("git fetch origin main", loop_index)
         rebase_index = text.index("git rebase origin/main", fetch_index)
