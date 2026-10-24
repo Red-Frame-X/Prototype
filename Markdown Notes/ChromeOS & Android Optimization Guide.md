@@ -1,6 +1,6 @@
 # ChromeOS・Androidの最適化ガイド
 
-ChromeOS & Android 最適化ガイド
+ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、プライバシー、セキュリティなどの設定・運用方法を整理した最適化ガイドです。
 
 ---
 
