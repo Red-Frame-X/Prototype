@@ -12,7 +12,7 @@
 | 項目 | 主な内容 | 参照先 |
 | --- | --- | --- |
 | 生成フィルタ | 上流フィルタをAdGuard向けに変換した自動生成物 | [`uB-filter-by-kdroidwin (AdGuard Optimized).txt`](./uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
-| 変換スクリプト | 上流ルールを解析・変換して生成物を作成する処理 | [`scripts/convert.py`](../scripts/convert.py) |
+| 変換Script | 上流ルールを解析・変換して生成物を作成する処理 | [`scripts/convert.py`](../scripts/convert.py) |
 | 変換能力定義 | 変換処理で扱う機能・互換性情報 | [`config/adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json) |
 
 ## 自分の環境での登録先メモ
@@ -59,7 +59,7 @@ AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィル
 ## 関連情報
 
 - [RepositoryのルートREADME](../README.md)
-- [変換スクリプト](../scripts/convert.py)
+- [変換Script](../scripts/convert.py)
 - [変換能力定義](../config/adguard-converter-capabilities.json)
 
 ## 参照している公式資料

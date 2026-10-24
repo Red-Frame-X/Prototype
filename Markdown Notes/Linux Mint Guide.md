@@ -8,7 +8,7 @@ Linux Mintの導入から初期設定、日常利用、ソフトウェア管理�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610241930 |
+| **Version** | 202610242210 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -360,7 +360,7 @@ Linux Mintを安定して使うには、特別な「最適化」よりも、更�
 * Driver Managerを利用し、必要なプロプライエタリドライバーを公式手順で導入する。
 * ソフトウェアはSoftware Manager、公式Repository、公式配布元を優先する。
 * `sudo` は管理者権限を与えるため、コマンド内容を確認してから実行する。
-* Web上の不明なスクリプトやコマンドを、そのままコピー＆ペーストして実行しない。
+* Web上の不明なScriptやコマンドを、そのままコピー＆ペーストして実行しない。
 * Timeshiftでシステム復元ポイントを用意する。
 * Timeshiftとは別に個人ファイルをバックアップする。
 * Secure Boot、ディスク暗号化、ファイアウォールはPCの用途と脅威モデルに応じて設定する。
@@ -507,7 +507,7 @@ AdGuard Browser Extensionがブラウザ内の通信や要素非表示を中心�
 * [設定と保護機能の管理](https://adguard.com/kb/ja/adguard-for-linux/settings/)
 * [アプリ除外とカスタムフィルタ](https://adguard.com/kb/adguard-for-linux/cli-exclusions-and-filters/)
 
-> **セキュリティ上の注意**：公式インストール例は `curl ... | sh` 形式です。実行前にURLがAdGuard公式Repositoryのものであることを確認し、不明なサイトのスクリプトを同様の方法で実行しないでください。
+> **セキュリティ上の注意**：公式インストール例は `curl ... | sh` 形式です。実行前にURLがAdGuard公式Repositoryのものであることを確認し、不明なサイトのScriptを同様の方法で実行しないでください。
 
 ## 情報の確認範囲と参考資料
 

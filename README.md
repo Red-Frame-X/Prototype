@@ -7,7 +7,7 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 > [!IMPORTANT]
 > 学習・検証結果の記録とバックアップを目的としています。ChatGPTで推敲・整理した内容や環境依存の情報を含むため、正確性・完全性は保証しません。
 >
-> フィルタ、スクリプト、設定、技術メモは自分の環境で確認したもので、一般向けの手順書・配布物を想定していません。
+> フィルタ、Script、設定、技術メモは自分の環境で確認したもので、一般向けの手順書・配布物を想定していません。
 
 ## Workflow
 
@@ -37,13 +37,13 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 | License | Repository全体のライセンス情報 | [LICENSE](./LICENSE) / [LICENSES.md](./LICENSES.md) |
 
 > [!NOTE]
-> ルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換スクリプトを修正して再生成します。
+> ルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換Scriptを修正して再生成します。
 
 ## 編集・更新の原則
 
 - `AdGuard Custom Rules` / `AdGuard DNS Custom Rules`の変更時は、変更したファイルの`! Version:`をJSTの現在時刻（`YYYYMMDDHHMM`）へ同じCommit内で更新します。
 - ルートの`dist/`は自動生成物のため、直接編集せず、原本または変換処理を修正して再生成します。
-- `AdGuard Custom Rules/ChangeLog/`と`upstream/`は上流情報の追跡・ミラー用で、取得スクリプトや追跡設定から更新します。
+- `AdGuard Custom Rules/ChangeLog/`と`upstream/`は上流情報の追跡・ミラー用で、取得Scriptや追跡設定から更新します。
 - `Markdown Notes/`やChatGPTで推敲した内容は、重要な技術情報を可能な限り一次情報・公開ソース・対象バージョン・実環境で再確認します。
 
 ## 自動更新と品質確認

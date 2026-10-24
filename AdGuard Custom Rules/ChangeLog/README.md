@@ -18,7 +18,7 @@
 現在のWorkflowでは、主に次のタイミングで更新処理が実行されます。
 
 - 毎日 04:07 JST（GitHub Actionsのcronでは `7 19 * * *`）
-- 関連する更新スクリプト、テスト、依存関係、Workflow自体が `main` にpushされた場合
+- 関連する更新Script、テスト、依存関係、Workflow自体が `main` にpushされた場合
 - GitHub Actionsから手動実行した場合
 
 更新処理では、公式情報を取得したあとにテストを実行し、対象ファイルに実際の変更がある場合だけCommit・pushします。
@@ -36,7 +36,7 @@
 
 - [AdGuard Custom Rulesの案内](../README.md)
 - [RepositoryのルートREADME](../../README.md)
-- [更新スクリプト](../../scripts/update_adguard_changelogs.py)
+- [更新Script](../../scripts/update_adguard_changelogs.py)
 - [AdGuard変更履歴の更新Workflow](../../.github/workflows/update-adguard-changelogs.yml)
 
 ## 公式情報

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""uB-filter-by-kdroidwin (AdGuard Optimized) の生成・Lintスクリプト。
+"""uB-filter-by-kdroidwin (AdGuard Optimized) の生成・Lintを行うScript。
 
 uBlock Origin用フィルタをAdGuard for Chrome MV3向けに、安全性と互換性を優先して
-変換・静的解析(Lint)するスクリプト。生成物はAdGuard for Androidでも読み込めますが、
+変換・静的解析(Lint)するScript。生成物はAdGuard for Androidでも読み込めますが、
 CoreLibs固有機能の保持やAndroid向けの完全な最適化は保証しません。
 
 License: GPL-3.0
@@ -19,7 +19,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Pattern, Tuple
 from urllib.error import HTTPError, URLError
 
-# スクリプト自身の場所を基準にプロジェクトルートと出力先パスを確定
+# Script自身の場所を基準にプロジェクトルートと出力先パスを確定
 BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FILTER_NAME: str = "uB-filter-by-kdroidwin (AdGuard Optimized)"
 FILTER_TITLE: str = FILTER_NAME

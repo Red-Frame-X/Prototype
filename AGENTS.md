@@ -41,6 +41,8 @@
 
 ## Repository内の表記
 
+- 以下の表記方針をRepository全体の本文・見出し・コメント・表示文言・生成元・生成物に適用する。公式原文・公式UI名・検証用の原文引用・互換性に関わる識別子は保持する。
+
 - 本文の説明は読みやすさを優先して原則として日本語で記述する。
 - IT・ソフトウェア開発・GitHub・コンテンツブロック等で英語表記が一般的な用語、製品名、機能名、プロジェクト名、ディレクトリ名、ファイル名、コード識別子は、無理に日本語化せず英語表記を優先する。
 - 特に`AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は正式な英語表記を維持する。

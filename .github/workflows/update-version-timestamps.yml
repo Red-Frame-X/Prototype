@@ -44,7 +44,7 @@ jobs:
         run: |
           set -euo pipefail
           # 毎回最新mainを走査する。イベント差分だけでは後続の編集や
-          # 中止された保留実行を見落とす。VersionのみのCommitはスクリプトが無視する。
+          # 中止された保留実行を見落とす。VersionのみのCommitはScriptが無視する。
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 

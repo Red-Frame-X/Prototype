@@ -6,7 +6,7 @@ GitHub Gistを利用して、コンテンツブロックフィルタやUserScrip
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610241400 |
+| **Version** | 202610242210 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -100,17 +100,17 @@ Gistなどから自動更新させる場合は、必要に応じて次の項目�
 
 | 項目 | 位置付け | 用途 |
 | :--- | :--- | :--- |
-| `@name` | 必須相当 | スクリプト名。各UserScriptマネージャーで識別・表示に使われる |
-| `@namespace` | 強く推奨 | `@name` と組み合わせてスクリプトを識別する。Violentmonkeyはこの組み合わせを一意識別子として説明している |
+| `@name` | 必須相当 | UserScript名。各UserScriptマネージャーで識別・表示に使われる |
+| `@namespace` | 強く推奨 | `@name` と組み合わせてUserScriptを識別する。Violentmonkeyはこの組み合わせを一意識別子として説明している |
 | `@version` | 自動更新する場合は必須 | 更新版の比較に使われる。更新のたびに増加させる |
-| `@description` | 推奨 | スクリプトの目的を説明する |
+| `@description` | 推奨 | UserScriptの目的を説明する |
 | `@author` | 任意 | 作者を示す |
 | `@homepageURL` | 推奨 | Repositoryや説明ページを示す |
 | `@supportURL` | 任意 | GitHub Issuesなど問い合わせ先を示す |
 | `@match` | 強く推奨 | 実行対象URLを必要な範囲に限定する |
 | `@grant` | 明示推奨 | 使用するGM APIなどの権限を列挙する。不要なら `none` を明示する |
 | `@updateURL` | 任意 | 更新確認に使うURLを指定する |
-| `@downloadURL` | 任意 | 更新版スクリプトの取得URLを指定する |
+| `@downloadURL` | 任意 | 更新版UserScriptの取得URLを指定する |
 
 実行範囲は必要以上に広げず、`@match https://*/*` や全サイト相当の指定は、その必要性が明確な場合だけ使用します。また、GM APIを使う場合は必要な権限だけを `@grant` に列挙します。
 
