@@ -105,11 +105,14 @@ jobs:
           fi
 
       - name: コミットタイトルの日本語検査
+        id: commit-title-check
+        continue-on-error: true
         env:
           BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
           HEAD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           # GitHubの検証用マージではなく、PRの実際のコミットを検査する。
+          # この検査に失敗しても、独立した後続の品質検査は最後まで実行する。
           if [[ -n "$BASE_REF" ]]; then
             python scripts/check_commit_titles.py --base-ref "$BASE_REF" --head-ref "$HEAD_REF"
           else
@@ -117,13 +120,16 @@ jobs:
           fi
 
       - name: Pythonテストの実行
+        if: always()
         run: |
           python -m unittest discover -s tests -v
 
       - name: Markdownlintの実行
+        if: always()
         run: npm run lint:markdown
 
       - name: UserScriptの構文検査
+        if: always()
         run: |
           shopt -s nullglob
           files=(UserScript/*.js)
@@ -136,4 +142,11 @@ jobs:
           done
 
       - name: AGLintの実行
+        if: always()
         run: npm run lint:adguard
+
+      - name: コミットタイトル検査の最終判定
+        if: always() && steps.commit-title-check.outcome == 'failure'
+        run: |
+          echo 'コミットタイトルの日本語検査が失敗しました。後続の品質検査結果も上記で確認してください。' >&2
+          exit 1
