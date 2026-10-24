@@ -20,6 +20,16 @@ def run_check() -> subprocess.CompletedProcess[str]:
     )
 
 
+def replace_title_line(text: str, replacement: str) -> str:
+    lines = text.splitlines(keepends=True)
+    for index, line in enumerate(lines):
+        if line.startswith("! Title:"):
+            newline = "\n" if line.endswith("\n") else ""
+            lines[index] = f"{replacement}{newline}"
+            return "".join(lines)
+    raise AssertionError("! Titleメタデータが見つかりません")
+
+
 class AdGuardFilterIntegrityTests(unittest.TestCase):
     def test_integrity_check_accepts_current_filter(self) -> None:
         result = run_check()
@@ -28,11 +38,7 @@ class AdGuardFilterIntegrityTests(unittest.TestCase):
     def test_integrity_check_is_not_coupled_to_exact_title(self) -> None:
         original = FILTER.read_text(encoding="utf-8-sig")
         try:
-            updated = original.replace(
-                "! Title: AdGuardカスタムルール - Red Frame X",
-                "! Title: 一時的な表示名",
-                1,
-            )
+            updated = replace_title_line(original, "! Title: 一時的な表示名")
             FILTER.write_text(updated, encoding="utf-8")
             result = run_check()
             self.assertEqual(result.returncode, 0, result.stderr)
@@ -42,11 +48,7 @@ class AdGuardFilterIntegrityTests(unittest.TestCase):
     def test_integrity_check_rejects_empty_title(self) -> None:
         original = FILTER.read_text(encoding="utf-8-sig")
         try:
-            updated = original.replace(
-                "! Title: AdGuardカスタムルール - Red Frame X",
-                "! Title:   ",
-                1,
-            )
+            updated = replace_title_line(original, "! Title:   ")
             FILTER.write_text(updated, encoding="utf-8")
             result = run_check()
             self.assertNotEqual(result.returncode, 0)
