@@ -29,3 +29,11 @@
 - Write all GitHub Codex code review findings, summaries, explanations, severity assessments, and recommended fixes in natural Japanese.
 - Preserve code identifiers, file paths, commands, logs, and quoted error messages in their original form when accuracy requires it.
 - Apply this language preference to automatic pull request reviews and reviews requested with `@codex review`.
+
+## コミットタイトルの言語
+
+- コミットメッセージのタイトル（1行目）は、変更内容が伝わる自然な日本語で書く。
+- `docs:`、`fix:` などの種別、コード識別子、ファイル名、製品名、PR番号は必要に応じて原表記を保持する。
+- 自動生成するコミット、マージコミット、取り消しコミットにも日本語のタイトルを使う。
+- PRのタイトルも日本語で書き、マージ時に作成するコミットのタイトルを日本語にする。
+- `npm run hooks:install` でコミットフックを有効にする。CIでも新しいコミットのタイトルを検査する。

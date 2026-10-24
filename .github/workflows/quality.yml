@@ -104,6 +104,16 @@ jobs:
             python scripts/check_adguard_user_rule_edit.py
           fi
 
+      - name: Validate Japanese commit titles
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [[ -n "$BASE_REF" ]]; then
+            python scripts/check_commit_titles.py --base-ref "$BASE_REF"
+          else
+            python scripts/check_commit_titles.py
+          fi
+
       - name: Run Python tests
         run: |
           python -m unittest discover -s tests -v
