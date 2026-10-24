@@ -1,4 +1,4 @@
-name: リポジトリの品質検査
+name: Repositoryの品質検査
 
 on:
   push:
@@ -22,11 +22,11 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: リポジトリの取得
+      - name: Repositoryの取得
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # Markdown NotesのVersionを、PR内で各ファイルを最後に編集した
-          # コミットの日付と照合するため、変更履歴全体を取得する。
+          # Commitの日付と照合するため、変更履歴全体を取得する。
           fetch-depth: 0
 
       - name: Pythonの準備
@@ -49,50 +49,40 @@ jobs:
       - name: 標準AdGuardフィルターの整合性検査
         run: python scripts/check_adguard_filter_integrity.py
 
-      - name: ワークフローの安全性検査
+      - name: Workflowの安全性検査
         run: python scripts/check_workflow_safety.py
 
-      # ワークフロー構文が壊れていると、ジョブ開始前に「No jobs were run」とだけ表示されることがある。
-      # 通常CIで全ワークフローを検証し、YAML・式・イベント・埋め込みShellの問題を明示的に検出する。
-      - name: GitHub Actionsワークフローの構文検査
+      # Workflow構文が壊れていると、Job開始前に「No jobs were run」とだけ表示されることがある。
+      # 通常CIで全Workflowを検証し、YAML・式・イベント・埋め込みShellの問題を明示的に検出する。
+      - name: GitHub Actions Workflowの構文検査
         run: bash scripts/check_workflow_syntax.sh
 
       - name: 大量の内容消失の防止検査
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            # fetch-depth: 0で履歴全体を取得済み。ベースを--depth=1で再取得すると、
-            # origin/<base>が浅い参照に置き換わり、3点差分に必要な
-            # マージベースを取得できなくなる場合がある。
             base_ref="origin/${{ github.base_ref }}"
             git merge-base "$base_ref" HEAD >/dev/null
           elif git rev-parse HEAD^ >/dev/null 2>&1; then
             base_ref="HEAD^"
           else
-            echo '親コミットがないため、大量の内容消失の比較を省略します。'
+            echo '親Commitがないため、大量の内容消失の比較を省略します。'
             exit 0
           fi
 
           guard_args=(--base-ref "$base_ref")
           merged_guide='Markdown Notes/Designing AdGuard Custom Rules.md'
           if git cat-file -e "$base_ref:$merged_guide" 2>/dev/null && [[ ! -e "$merged_guide" ]]; then
-            # このファイルの内容をAdGuard Custom Rules Reference.mdに統合した後、
-            # このファイル自体の削除が明示的に依頼された。
             guard_args+=(--allow-deletion-in "$merged_guide")
           fi
           python scripts/check_large_content_loss.py "${guard_args[@]}"
 
-      # Version metadata は main への push 後に Version日時の更新（日本標準時） が同期する。
-      # PR でも未同期状態を失敗扱いすると、設計上予定された自動同期前に不要な赤Runが発生するため、
-      # 手動実行時だけ厳格検証し、通常の PR/push では他の品質検証を継続する。
       - name: Markdown NotesのVersion日時検査
         if: github.event_name == 'workflow_dispatch'
         run: |
-          # このステップはworkflow_dispatchでのみ実行するため、
-          # github.base_refなどpull_request専用の情報は意図的に参照しない。
           if git rev-parse HEAD^ >/dev/null 2>&1; then
             python scripts/check_markdown_notes_version.py --base-ref HEAD^
           else
-            echo '親コミットがないため、Markdown NotesのVersion比較を省略します。'
+            echo '親Commitがないため、Markdown NotesのVersion比較を省略します。'
           fi
 
       - name: AdGuardユーザールールの編集前検査
@@ -104,22 +94,20 @@ jobs:
             python scripts/check_adguard_user_rule_edit.py
           fi
 
-      - name: コミットタイトルの日本語検査
+      - name: Commit titleの表記検査
         id: commit-title-check
         continue-on-error: true
         env:
           BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
           HEAD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
-          # GitHubの検証用マージではなく、PRの実際のコミットを検査する。
-          # この検査だけは結果を保持して後続検査を実行し、最後に失敗を再反映する。
           if [[ -n "$BASE_REF" ]]; then
             python scripts/check_commit_titles.py --base-ref "$BASE_REF" --head-ref "$HEAD_REF"
           else
             python scripts/check_commit_titles.py --head-ref "$HEAD_REF"
           fi
 
-      - name: Pythonテストの実行
+      - name: Python Testの実行
         run: |
           python -m unittest discover -s tests -v
 
@@ -141,8 +129,8 @@ jobs:
       - name: AGLintの実行
         run: npm run lint:adguard
 
-      - name: コミットタイトル検査の最終判定
+      - name: Commit title検査の最終判定
         if: always() && steps.commit-title-check.outcome == 'failure'
         run: |
-          echo 'コミットタイトルの日本語検査が失敗しました。後続の品質検査結果も上記で確認してください。' >&2
+          echo 'Commit titleの表記検査が失敗しました。後続の品質検査結果も上記で確認してください。' >&2
           exit 1
