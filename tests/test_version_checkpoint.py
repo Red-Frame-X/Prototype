@@ -140,3 +140,17 @@ class VersionCheckpointTests(unittest.TestCase):
             self.assertEqual(pending_files(), [])
             main()
             self.assertEqual(self.git('status', '--porcelain'), '')
+
+    def test_jst_date_boundary_is_used_instead_of_utc(self):
+        fixed = datetime(2026, 10, 25, 0, 30, tzinfo=JST)
+        path = Path('AdGuard Custom Rules/filter.txt')
+        path.write_text(path.read_text() + 'JST boundary edit.\n')
+        self.commit('edit across UTC date boundary')
+        with patch('scripts.update_version_timestamps.datetime') as clock, patch.object(sys, 'argv', ['update', '--pending']):
+            clock.now.return_value = fixed
+            main()
+        self.assertIn('! Version: 202610250030', path.read_text())
+
+
+if __name__ == '__main__':
+    unittest.main()
