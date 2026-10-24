@@ -6,7 +6,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
-| **Version** | 202610241028 |
+| **Version** | 202610241343 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
