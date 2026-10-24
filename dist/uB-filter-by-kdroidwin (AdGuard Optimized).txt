@@ -1,6 +1,6 @@
-! Title: uB-filter-by-kdroidwin（AdGuard最適化版）
+! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610241007
+! Version: 202610241112
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -18,8 +18,8 @@
 .xyz/*/?*=*&*=*&*=*&*=*&*=$doc
 /%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9D%F0%9D%90%9E%F0%9D%90%B1\.%F0%9D%90%A1%F0%9D%90%AD%F0%9D%90%A6%F0%9D%90%A5/$document
 /^(https?:\/\/)?([^\/]+\.)?hitomi-missav\d+\.com(?:\/|$)/$document
-/^.*(qr-paydaygo).*\.com(/[a-z0-9_-]?.*)?$/$doc
-/^.*(qr-topayday).*\.com(/[a-z0-9_-]?.*)?$/$doc
+/^.*(qr-paydaygo).*\.com(/$[a-z0-9_-]?.*)?$/$doc
+/^.*(qr-topayday).*\.com(/$[a-z0-9_-]?.*)?$/$doc
 /^https:\/\/(?:jp\.)?[a-z-]{5,14}\.co.uk\/.*\?_g=\d+$/$document
 /^https:\/\/(?:jp\.)?[a-z-]{5,14}\.com.br\/.*\?_g=\d+$/$document
 /^https:\/\/(?:jp\.)?[a-z-]{5,14}\.com\/.*\?_g=\d+$/$document
@@ -70,17 +70,17 @@
 /^https?:\/\/videotwimgcom\.[^.]+\.net\//
 /https?:\/\/[^\/]*.app\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.cfbx.jp\/d_[0-9]{6}(?:\/|$)/$document
-/https?:\/\/[^\/]*.com/manga\/d_[0-9]{6}(?:\/|$)/$document
-/https?:\/\/[^\/]*.com/work\/d_[0-9]{6}(?:\/|$)/$document
+/https?:\/\/[^\/]*.com/$manga\/d_[0-9]{6}(?:\/|$)/$document
+/https?:\/\/[^\/]*.com/$work\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.com\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.email\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.info\/d_[0-9]{6}(?:\/|$)/$document
-/https?:\/\/[^\/]*.jp/manga\/d_[0-9]{6}(?:\/|$)/$document
-/https?:\/\/[^\/]*.jp/work\/d_[0-9]{6}(?:\/|$)/$document
+/https?:\/\/[^\/]*.jp/$manga\/d_[0-9]{6}(?:\/|$)/$document
+/https?:\/\/[^\/]*.jp/$work\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.jp\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.life\/d_[0-9]{6}(?:\/|$)/$document
-/https?:\/\/[^\/]*.net/manga\/d_[0-9]{6}(?:\/|$)/$document
-/https?:\/\/[^\/]*.net/work\/d_[0-9]{6}(?:\/|$)/$document
+/https?:\/\/[^\/]*.net/$manga\/d_[0-9]{6}(?:\/|$)/$document
+/https?:\/\/[^\/]*.net/$work\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.net\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.tokyo\/d_[0-9]{6}(?:\/|$)/$document
 /https?:\/\/[^\/]*.tv\/d_[0-9]{6}(?:\/|$)/$document
