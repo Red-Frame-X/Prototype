@@ -37,11 +37,13 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         self.git("merge", "--no-ff", "topic", "-qm", f"Merge {head} into {base}")
         return base, head
 
-    def run_workflow(self, base, head):
-        workflow = yaml.safe_load(
+    def workflow(self):
+        return yaml.safe_load(
             (ROOT / ".github/workflows/quality.yml").read_text(encoding="utf-8")
         )
-        steps = workflow["jobs"]["quality"]["steps"]
+
+    def run_workflow(self, base, head):
+        steps = self.workflow()["jobs"]["quality"]["steps"]
         step = next(s for s in steps if "check_commit_titles.py" in s.get("run", ""))
         self.assertEqual(
             step["env"]["HEAD_REF"],
@@ -84,6 +86,29 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         result = self.run_workflow("", self.git("rev-parse", "HEAD"))
         self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
         self.assertIn("Merge ", result.stdout)
+
+    def test_independent_checks_continue_after_title_failure(self):
+        steps = self.workflow()["jobs"]["quality"]["steps"]
+        title_step = next(s for s in steps if s.get("id") == "commit-title-check")
+        self.assertTrue(title_step.get("continue-on-error"))
+
+        for name in (
+            "Pythonテストの実行",
+            "Markdownlintの実行",
+            "UserScriptの構文検査",
+            "AGLintの実行",
+        ):
+            step = next(s for s in steps if s.get("name") == name)
+            self.assertEqual(step.get("if"), "always()")
+
+        final_step = next(
+            s for s in steps if s.get("name") == "コミットタイトル検査の最終判定"
+        )
+        self.assertEqual(
+            final_step.get("if"),
+            "always() && steps.commit-title-check.outcome == 'failure'",
+        )
+        self.assertIn("exit 1", final_step.get("run", ""))
 
 
 if __name__ == "__main__":
