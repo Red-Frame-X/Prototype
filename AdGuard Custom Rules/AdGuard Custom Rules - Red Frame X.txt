@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202610241617
+! Version: 202610250243
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -73,6 +73,12 @@ chatgpt.com##[data-prompt-textarea-header]
 ! AdGuard SiteReportへの投稿時は、属性セレクタ内の特殊文字が自動的にエスケープされる点に注意
 ! downdetector.jp##[data-service-list-ad="true"]
 ! downdetector.jp##div[data-service-list-ad]
+
+! gigazine.net
+! 「広告」カテゴリへのリンクを非表示
+gigazine.net##a[href="https://gigazine.net/news/C21/"]
+! 「有料メンバー」カテゴリへのリンクを非表示
+gigazine.net##a[href="https://gigazine.net/news/C36/"]
 
 ! google-analytics.com
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避（他のアプリ・Webサイトには適用しない）
