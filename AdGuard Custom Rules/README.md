@@ -1,4 +1,4 @@
-# AdGuardカスタムルール
+# AdGuard Custom Rules
 
 AdGuard向けに自分の環境で使用・検証している個人用フィルタと、その保守メモです。通常のコンテンツブロック用フィルタとDNSフィルタは処理する層・構文・適用場所が異なるため、このREADMEでは自分の設定を再現するときに混同しないための記録として整理しています。
 
@@ -9,8 +9,8 @@ AdGuard向けに自分の環境で使用・検証している個人用フィル�
 
 | 項目 | 主な内容 | 参照先 |
 | --- | --- | --- |
-| AdGuardカスタムルール | 広告・不要要素の非表示、ネットワーク通信制御、互換性のための例外などを含む個人用AdGuardフィルタ | [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
-| AdGuard DNSカスタムルール | DNSレベルのブロックに使用している個人用AdGuard DNSフィルタ | [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
+| AdGuard Custom Rules | 広告・不要要素の非表示、ネットワーク通信制御、互換性のための例外などを含む個人用AdGuardフィルタ | [`AdGuard Custom Rules - Red Frame X.txt`](AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
+| AdGuard DNS Custom Rules | DNSレベルのブロックに使用している個人用AdGuard DNSフィルタ | [`AdGuard DNS Custom Rules - Red Frame X.txt`](AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
 | 変更履歴 | AdGuard Browser Extension / AdGuard for Androidの公式更新情報を追跡するミラー | [`ChangeLog/README.md`](ChangeLog/README.md) / [`ChangeLog/`](ChangeLog/) |
 
 ## 自分の環境での登録先メモ
