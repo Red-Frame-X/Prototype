@@ -27,14 +27,14 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | ドキュメント | 主な内容 |
 | --- | --- |
 | [コンテンツブロックのよくある質問（2026年版）](Content%20Blocking%20FAQ%202026.md) | uBlock Origin、uBlock Origin Lite、AdGuard MV3、Brave、Vivaldi、DNS併用、フィルタ設計を一次情報中心に整理したFAQ |
-| [AdGuardカスタムルールの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) | AdGuardカスタムルールの基礎、設計、主要構文、MV3/DNRとCoreLibsの差異、検証、デバッグ、誤ブロック対応、保守をまとめた実用リファレンス |
+| [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) | AdGuard Custom Rulesの基礎、設計、主要構文、MV3/DNRとCoreLibsの差異、検証、デバッグ、誤ブロック対応、保守をまとめた実用リファレンス |
 | [DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md) | DNSブロックリストの主要形式、選び方、ブラウザ用コンテンツブロッカーとの役割分担・切り分けを整理したガイド |
 | [厳格ブロックの例外テスト](Strict%20Blocking%20Exceptions%20Test.md) | My docomoを対象に、AdGuardのStrict blockingと`$document`例外ルールの挙動を実機検証した記録 |
 
 ### コンテンツブロック資料の使い分け
 
 - [コンテンツブロックのよくある質問（2026年版）](Content%20Blocking%20FAQ%202026.md)：**製品選択・MV3・フィルタ併用の考え方を確認する**
-- [AdGuardカスタムルールの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md)：**AdGuardユーザールールの設計方法を学び、構文・検証・デバッグ方法を確認する**
+- [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md)：**AdGuard User Ruleの設計方法を学び、構文・検証・デバッグ方法を確認する**
 - [DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md)：**DNSレイヤーのブロックリストとブラウザブロッカーの違いを確認する**
 - [厳格ブロックの例外テスト](Strict%20Blocking%20Exceptions%20Test.md)：**Strict blockingと例外ルールの実機挙動を確認する**
 
@@ -49,11 +49,11 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 | [GitHub GistでフィルターとUserScriptを配布する方法](Distributing%20Filters%20and%20UserScripts%20with%20GitHub%20Gist.md) | GitHub Gistを使ったコンテンツブロックフィルタ／UserScriptの配布・更新方法とメタデータテンプレート |
 | [GitHubのCI失敗（✕）への対応と報告](Handling%20and%20Reporting%20GitHub%20CI%20Failures%20%28%E2%9C%95%29.md) | GitHub Actions / CI失敗時の確認、原因切り分け、ログ確認、報告手順 |
 | [文書ヘッダーのテンプレート](Header%20Template.md) | Markdown Notesで共通利用するメタデータ、ライセンス案内、Version表記のヘッダーテンプレート |
-| [GitHubの課題・プルリクエストのコメントを折りたたむ方法](Collapse%20Comments%20on%20GitHub%20Issues%20and%20Pull%20Requests.md) | GitHub Issues / Pull Requestで長文や補足情報を`<details>`で折りたたむためのスニペット |
+| [GitHubのIssue・Pull Requestコメントを折りたたむ方法](Collapse%20Comments%20on%20GitHub%20Issues%20and%20Pull%20Requests.md) | GitHub Issues / Pull Requestで長文や補足情報を`<details>`で折りたたむためのスニペット |
 
 ## 情報の扱い
 
-各文書では、対象製品・プロジェクトの公式ドキュメント、公式リポジトリ、公開ソースコード、変更履歴、Issuesなどの一次情報を優先します。公式資料だけで確認できない事項は、信頼できる複数の情報源や実機検証を補助的に用い、事実・観測結果・推測を区別します。
+各文書では、対象製品・プロジェクトの公式ドキュメント、公式Repository、公開ソースコード、Changelog、Issuesなどの一次情報を優先します。公式資料だけで確認できない事項は、信頼できる複数の情報源や実機検証を補助的に用い、事実・観測結果・推測を区別します。
 
 実機検証やユーザー報告は、それ自体を一般仕様として扱いません。根拠を確認できない原因推測や将来予測は断定せず、仕様変更によって古くなった記述は参照元を再確認し、既存内容をできるだけ残したまま正しい内容へ修正します。削除が必要と判断した場合は、対象箇所と理由、影響範囲を示し、事前に明示的な許可を得てから削除します。
 
@@ -61,11 +61,11 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 
 文章の下書きや整理にChatGPTを利用することがありますが、生成・推敲された文章をそのまま正しいとはみなさず、重要な技術情報は一次情報や実環境で再確認します。
 
-コマンド、設定変更、フィルタルールなどを実行する場合は、対象バージョンと適用範囲を確認し、可能な場合は元に戻せる状態で少数ずつ検証します。
+コマンド、設定変更、フィルタルールなどを実行する場合は、対象Versionと適用範囲を確認し、可能な場合は元に戻せる状態で少数ずつ検証します。
 
 文書のライセンス、第三者コンテンツの扱いおよび無保証については、共通の[`LICENSES.md`](../LICENSES.md)を参照します。
 
 ## 関連情報
 
-- [リポジトリのルートREADME](../README.md)
+- [RepositoryのルートREADME](../README.md)
 - [Markdown Notesディレクトリ](./)
