@@ -107,11 +107,13 @@ jobs:
       - name: コミットタイトルの日本語検査
         env:
           BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+          HEAD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
+          # GitHubの検証用マージではなく、PRの実際のコミットを検査する。
           if [[ -n "$BASE_REF" ]]; then
-            python scripts/check_commit_titles.py --base-ref "$BASE_REF"
+            python scripts/check_commit_titles.py --base-ref "$BASE_REF" --head-ref "$HEAD_REF"
           else
-            python scripts/check_commit_titles.py
+            python scripts/check_commit_titles.py --head-ref "$HEAD_REF"
           fi
 
       - name: Pythonテストの実行
