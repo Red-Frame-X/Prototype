@@ -2,7 +2,7 @@
 
 ## 概要
 
-ChromeOS・Android向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、更新・変換ツール、技術メモをまとめた個人用の試作リポジトリです。
+ChromeOS・Android・Linux向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、GitHub運用、更新・変換ツール、技術メモをまとめた個人用の試作リポジトリです。
 
 > [!IMPORTANT]
 > 学習・検証結果の記録とバックアップを目的としています。ChatGPTで推敲・整理した内容や環境依存の情報を含むため、正確性・完全性は保証しません。
@@ -30,7 +30,7 @@ ChromeOS・Android向けの設定、コンテンツブロックフィルタ、Us
 | uB-filter-by-kdroidwin（AdGuard Optimized） | 上流フィルタをAdGuard向けに変換した自動生成物 | [README](./dist/README.md) / [生成フィルタ](./dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
 | UserScript | 𝕏・YouTubeなどの表示や挙動を調整する個人用UserScript | [README](./UserScript/README.md) / [ディレクトリ](./UserScript/) |
 | NG Word Regex for ChMate | ChMateで使用するJava正規表現 | [README](./NG%20Word%20Regex%20for%20ChMate/README.md) / [正規表現](./NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
-| Markdown Notes | ChromeOS、Android、Linux、GitHub、コンテンツブロックなどの学習・調査メモ | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) |
+| Markdown Notes | ChromeOS、Android、Linux / Linux Mint、Googlebook、GitHub、コンテンツブロック、DNSなどの学習・調査メモ | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) |
 | config / upstream | 変換能力の定義、上流情報の追跡・ミラー | [config](./config/) / [upstream](./upstream/) |
 | scripts / tests | フィルタ変換・更新処理、整合性検査、回帰テスト | [scripts](./scripts/) / [tests](./tests/) |
 | GitHub Actions | 品質確認、同期、変換、変更履歴の追跡などのワークフロー | [Actions](https://github.com/Red-Frame-X/Prototype/actions) |
@@ -51,8 +51,9 @@ ChromeOS・Android向けの設定、コンテンツブロックフィルタ、Us
 GitHub Actionsで、更新処理・変換・品質確認を自動化しています。
 
 - フィルタ・コードの整合性、回帰テスト、構文・Lintを自動検査します。
+- GitHub Actionsワークフローの安全性・構文、UserScriptのJavaScript構文、大量の内容消失も品質検査で確認します。
 - 対象ディレクトリの変更をmainへpushします。
-- push後、コメントだけの編集も含め、対応するVersionメタデータをGitHub ActionsでJSTの現在時刻へ同期します。
+- push後、コメントだけの編集も含め、`AdGuard Custom Rules`、`Markdown Notes`、`NG Word Regex for ChMate`、`UserScript`の対応するVersionメタデータをGitHub ActionsでJSTの現在時刻へ同期します。
 - push時に同期が起動しなかった場合に備え、品質チェック完了後の実行、15分おきの定期実行、手動実行でも最新mainの未同期の変更を確認します。Versionだけを更新済みのファイルは再更新しません。
 - AdGuard Custom Rules / AdGuard DNS Custom Rulesでは、Pull Request内の各コミットを検査し、ルール変更と! Version:の更新が同じコミットに含まれていることをCIで検証します。
 - ワークフロー失敗時は原因を確認して修正し、必要に応じて再発防止策を反映します。
@@ -65,6 +66,8 @@ GitHub Actionsで、更新処理・変換・品質確認を自動化していま
 npm ci
 python -m pip install -r requirements-ci.txt
 python scripts/check_adguard_filter_integrity.py
+python scripts/check_workflow_safety.py
+bash scripts/check_workflow_syntax.sh
 python scripts/check_adguard_user_rule_edit.py
 python -m unittest discover -s tests -v
 npm run lint:markdown
