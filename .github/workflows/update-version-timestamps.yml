@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   workflow_run:
-    workflows: [リポジトリの品質検査]
+    workflows: [Repositoryの品質検査]
     types: [completed]
     branches: [main]
   schedule:
