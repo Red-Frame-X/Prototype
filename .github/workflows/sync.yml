@@ -72,7 +72,7 @@ jobs:
               exit 0
             fi
 
-            git commit -m "uB-filter-by-kdroidwin（AdGuard最適化版）を自動更新"
+            git commit -m "uB-filter-by-kdroidwin (AdGuard Optimized) を自動更新"
             if git push origin HEAD:main; then
               echo '変更をコミットし、pushしました。'
               exit 0
