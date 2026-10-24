@@ -22,7 +22,7 @@ from urllib.error import HTTPError, URLError
 # スクリプト自身の場所を基準にプロジェクトルートと出力先パスを確定
 BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FILTER_NAME: str = "uB-filter-by-kdroidwin (AdGuard Optimized)"
-FILTER_TITLE: str = "uB-filter-by-kdroidwin（AdGuard最適化版）"
+FILTER_TITLE: str = FILTER_NAME
 OUTPUT_FILE: str = os.path.join(BASE_DIR, "dist", f"{FILTER_NAME}.txt")
 CAPABILITY_FILE: str = os.path.join(BASE_DIR, "config", "adguard-converter-capabilities.json")
 CAPABILITY_TARGET: str = "adguard-browser-extension-mv3"
@@ -43,15 +43,15 @@ class AdGuardOptimizer:
         # AdGuard拡張CSSでJS解析が必須な疑似クラス (:is, :not, :where は標準CSSで処理可能なため除外)
         self.adg_supported_ext_css: List[str] = settings["adguard_extended_css"]
 
-        # AdGuard未対応・挙動不一致のuBO独自演算子
-        self.ubo_unsupported_ext_css: List[str] = settings["unsupported_ubo_extended_css"]
+        # uBO独自演算子のAdGuard互換置換マップ
+        self.modifier_replacements: Dict[str, str] = settings["modifier_replacements"]
 
         # uBO構文からAdGuardへ意味を安全に維持できると確認できていないスクリプトレット。
         # AdGuard MV3自体のscriptlet対応可否とは分離し、推測変換による挙動変更を防ぐ。
         self.compatible_scriptlets: List[str] = settings["compatible_scriptlets"]
         self.incompatible_scriptlets: List[str] = settings["incompatible_scriptlets"]
 
-        # uBO独自修飾子のAdGuard互換置換マップ
+        # uBO独自演算子のAdGuard互換置換マップ
         self.modifier_replacements: Dict[str, str] = settings["modifier_replacements"]
 
         # 事前コンパイル済み正規表現 (処理速度向上・CPU負荷軽減)
@@ -289,32 +289,23 @@ class AdGuardOptimizer:
                 # ドメインだけに丸めると適用範囲が広がるため、必ず元のパスを維持する。
                 if '/' in domain_part:
                     if ',' in domain_part:
-                        return f"! [未対応の混在する要素非表示URL範囲] {original_line}"
+                        return f"! [未対応のURLスコープ] {original_line}"
+                    rule_scope = f"*$url={domain_part}"
 
-                    domain, path = domain_part.split('/', 1)
-                    if not domain or not path:
-                        return f"! [要素非表示URL範囲が不正] {original_line}"
-
-                    rule_scope = f"[$url=||{domain}/{path}*]"
-
-                if any(unsupported in selector_part for unsupported in self.ubo_unsupported_ext_css):
+                if any(p in selector_part for p in self.ubo_unsupported_ext_css):
                     return f"! [未対応の拡張CSS] {original_line}"
 
-                if any(ext in selector_part for ext in self.adg_supported_ext_css):
-                    new_separator = '#?#' if separator == '##' else '#@?#'
-                    return f"{rule_scope}{new_separator}{selector_part}"
-                return f"{rule_scope}{separator}{selector_part}"
-            return line
+                if any(p in selector_part for p in self.adg_supported_ext_css):
+                    separator = '#?#' if separator == '##' else '#@?#'
 
-        # [Step C] ネットワークルールの修飾子最適化
+                line = f"{rule_scope}{separator}{selector_part}"
+
+        # [Step C] 修飾子の互換変換
         if '$' in line:
             regex_data = self._parse_regex_rule(line)
             if regex_data:
-                prefix, regex_part, modifier_part = regex_data
-                if not modifier_part.startswith('$'):
-                    return line
+                prefix, regex_part, modifiers_str = regex_data
                 rule = f"{prefix}{regex_part}"
-                modifiers_str = modifier_part[1:]
             else:
                 if line.endswith('$'):
                     if '$' not in line[:-1]:
