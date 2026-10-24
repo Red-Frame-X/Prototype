@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""標準AdGuardフィルタの構造破損を早期検出する。"""
+"""AdGuardフィルタの構造破損と固定メタデータの変更を早期検出する。"""
 
 from __future__ import annotations
 
@@ -7,22 +7,20 @@ from pathlib import Path
 import re
 import sys
 
-FILTER_PATH = (
-    Path(__file__).resolve().parents[1]
-    / "AdGuard Custom Rules"
-    / "AdGuard Custom Rules - Red Frame X.txt"
-)
-
-# 表示名は運用上変更される可能性があるため固定値にはしない。
-# 一方、Title自体の欠落・空値は購読時の識別性を損なうため検出する。
-# ``\s``は改行も含むため、``\s*``を使うと次のメタデータ行を
-# タイトル値として扱う恐れがある。任意の空白は現在行の範囲に限定する。
-TITLE_RE = re.compile(r"^! Title:[ \t]*\S[^\r\n]*$", re.MULTILINE)
-REQUIRED_METADATA = {
-    "Syntax": "AdGuard",
+ROOT = Path(__file__).resolve().parents[1]
+FILTERS = {
+    ROOT / "AdGuard Custom Rules" / "AdGuard Custom Rules - Red Frame X.txt": {
+        "Title": "AdGuard Custom Rules - Red Frame X",
+        "Syntax": "AdGuard",
+        "min_rules": 25,
+    },
+    ROOT / "AdGuard Custom Rules" / "AdGuard DNS Custom Rules - Red Frame X.txt": {
+        "Title": "AdGuard DNS Custom Rules - Red Frame X",
+        "Syntax": "AdGuard DNS",
+        "min_rules": 1,
+    },
 }
-# 全置換や切り詰め事故を検出するため、最低限の有効ルール数を要求する。
-MIN_NONCOMMENT_RULES = 25
+
 # VersionはYYYYMMDDHHMM形式に固定する。
 VERSION_RE = re.compile(r"^! Version:\s*\d{12}$", re.MULTILINE)
 
@@ -32,30 +30,27 @@ def fail(message: str) -> int:
     return 1
 
 
-def main() -> int:
+def check_filter(path: Path, expected: dict[str, object]) -> tuple[int, int] | int:
     try:
-        text = FILTER_PATH.read_text(encoding="utf-8-sig")
+        text = path.read_text(encoding="utf-8-sig")
     except OSError as error:
-        return fail(f"読み取れません: {FILTER_PATH}: {error}")
+        return fail(f"読み取れません: {path}: {error}")
 
     lines = text.splitlines()
-    if len(lines) < 50:
+    if len(lines) < 10:
         return fail(
-            f"標準フィルターが想定より短くなっています（{len(lines)}行）。"
+            f"フィルターが想定より短くなっています（{path}: {len(lines)}行）。"
             "途中切れ、またはファイル全体の置換の可能性があります"
         )
 
     header = "\n".join(lines[:20])
-    if not TITLE_RE.search(header):
-        return fail("! Titleメタデータがないか、値が空です")
-
-    for key, expected in REQUIRED_METADATA.items():
-        marker = f"! {key}: {expected}"
+    for key in ("Title", "Syntax"):
+        marker = f"! {key}: {expected[key]}"
         if marker not in lines[:20]:
-            return fail(f"必須メタデータがないか、値が不正です: {marker}")
+            return fail(f"必須メタデータがないか、値が不正です: {path}: {marker}")
 
     if not VERSION_RE.search(header):
-        return fail("! Versionメタデータがないか、形式が不正です（YYYYMMDDHHMMが必要）")
+        return fail(f"! Versionメタデータがないか、形式が不正です（YYYYMMDDHHMMが必要）: {path}")
 
     rules = [
         line.strip()
@@ -63,16 +58,28 @@ def main() -> int:
         if line.strip() and not line.lstrip().startswith("!")
         and (not line.lstrip().startswith("[") or line.lstrip().startswith("[$"))
     ]
-    if len(rules) < MIN_NONCOMMENT_RULES:
+    min_rules = int(expected["min_rules"])
+    if len(rules) < min_rules:
         return fail(
-            f"標準フィルターの有効ルール数は{len(rules)}件のみです。"
-            f"必要な最小件数: {MIN_NONCOMMENT_RULES}"
+            f"フィルターの有効ルール数は{len(rules)}件のみです: {path}。"
+            f"必要な最小件数: {min_rules}"
         )
 
-    print(
-        f"AdGuardフィルターの整合性検査に合格: {len(lines)}行、"
-        f"{len(rules)}件の有効ルール"
-    )
+    return len(lines), len(rules)
+
+
+def main() -> int:
+    summaries: list[str] = []
+    for path, expected in FILTERS.items():
+        result = check_filter(path, expected)
+        if isinstance(result, int):
+            return result
+        line_count, rule_count = result
+        summaries.append(f"{path.name}: {line_count}行、{rule_count}件の有効ルール")
+
+    print("AdGuardフィルターの整合性検査に合格:")
+    for summary in summaries:
+        print(f"- {summary}")
     return 0
 
 
