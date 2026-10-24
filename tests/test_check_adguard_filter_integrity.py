@@ -36,7 +36,7 @@ def replace_title_line(text: str, replacement: str) -> str:
             newline = "\n" if line.endswith("\n") else ""
             lines[index] = f"{replacement}{newline}"
             return "".join(lines)
-    raise AssertionError("! Titleメタデータが見つかりません")
+    raise AssertionError("! Title Metadataが見つかりません")
 
 
 class AdGuardFilterIntegrityTests(unittest.TestCase):

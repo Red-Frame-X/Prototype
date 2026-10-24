@@ -23,7 +23,7 @@
 
 ## 変換処理を変更する前に必要な確認
 
-1. AdGuardフィルタリングの公式文書、CoreLibs・Scriptletsのソース、または関連する上流の課題で動作を確認します。
+1. AdGuardフィルタリングの公式文書、CoreLibs・Scriptletsのソース、または関連するUpstreamのIssueで動作を確認します。
 2. 正常系・異常系・誤検出の回帰テストを追加します。
-3. レビュー済みのプルリクエストで`config/adguard-converter-capabilities.json`を更新します。
-4. 生成フィルターを再ビルドし、AGLintと単体テストを実行します。
+3. Review済みのPull Requestで`config/adguard-converter-capabilities.json`を更新します。
+4. 生成Filterを再Buildし、AGLintと単体テストを実行します。

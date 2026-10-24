@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""編集したMarkdown NotesのVersionメタデータが編集日時と一致することを確認する。"""
+"""編集したMarkdown NotesのVersion Metadataが編集日時と一致することを確認する。"""
 from __future__ import annotations
 
 import argparse
@@ -29,7 +29,7 @@ def changed_markdown_files(base_ref: str) -> list[Path]:
 
 
 def file_edit_timestamp_yyyymmddhhmm(base_ref: str, path: Path) -> str:
-    """確認対象の変更範囲で``path``を最後に編集したコミットの日時を返す。"""
+    """確認対象の変更範囲で``path``を最後に編集したCommitの日時を返す。"""
     raw = run_git(
         "log",
         "-1",
@@ -39,7 +39,7 @@ def file_edit_timestamp_yyyymmddhhmm(base_ref: str, path: Path) -> str:
         str(path),
     ).strip()
     if not raw:
-        raise ValueError(f"{base_ref}..HEADに{path}の編集コミットがありません。")
+        raise ValueError(f"{base_ref}..HEADに{path}の編集Commitがありません。")
     return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(EDIT_TIMEZONE).strftime("%Y%m%d%H%M")
 
 
@@ -70,7 +70,7 @@ def main() -> int:
         text = path.read_text(encoding="utf-8")
         match = VERSION_RE.search(text)
         if not match:
-            failures.append(f"{path}: Versionメタデータがないか、形式が不正です（YYYYMMDDHHMMが必要）。")
+            failures.append(f"{path}: Version Metadataがないか、形式が不正です（YYYYMMDDHHMMが必要）。")
             continue
         try:
             expected = file_edit_timestamp_yyyymmddhhmm(args.base_ref, path)

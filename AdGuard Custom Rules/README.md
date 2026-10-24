@@ -50,11 +50,11 @@ AdGuard for Androidでの登録先：
 
 ## 編集時の品質確認
 
-`AdGuard Custom Rules - Red Frame X.txt`または`AdGuard DNS Custom Rules - Red Frame X.txt`のルールを追加・削除・変更する場合は、変更した各ファイルと同じコミット内で、そのヘッダーの`! Version:`を日本標準時（JST）の現在時刻に合わせ、`YYYYMMDDHHMM`形式で必ず更新します。
+`AdGuard Custom Rules - Red Frame X.txt`または`AdGuard DNS Custom Rules - Red Frame X.txt`のルールを追加・削除・変更する場合は、変更した各ファイルと同じCommit内で、そのヘッダーの`! Version:`を日本標準時（JST）の現在時刻に合わせ、`YYYYMMDDHHMM`形式で必ず更新します。
 
 この要件は[`check_adguard_version_timestamp.py`](../scripts/check_adguard_version_timestamp.py)とGitHub Actionsの[`AdGuardのVersion日時検査`](../.github/workflows/check-adguard-version.yml)で検証します。対象フィルタの内容が変更されたにもかかわらず`! Version:`が同じ場合、またはVersionヘッダーが`YYYYMMDDHHMM`形式の有効な日時でない場合はCIを失敗させ、更新漏れを検出します。
 
-リポジトリの品質チェックでは、原本フィルタの破損防止に加えて、重複した有効ルール、末尾空白、改行形式、意図しない大量削除などを検査します。ローカルで確認する場合は次を実行します。
+Repositoryの品質チェックでは、原本フィルタの破損防止に加えて、重複した有効ルール、末尾空白、改行形式、意図しない大量削除などを検査します。ローカルで確認する場合は次を実行します。
 
 ```bash
 npm ci
@@ -67,7 +67,7 @@ python -m unittest discover -s tests -v
 
 ## 変更履歴追跡とコンバータ更新
 
-[`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式変更履歴とAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ英語原文のミラーを生成します。メタデータと互換性レビュー候補は`upstream/adguard/`へ生成します。
+[`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py)は、AdGuard Browser Extensionの公式変更履歴とAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/)へ英語原文のミラーを生成します。Metadataと互換性レビュー候補は`upstream/adguard/`へ生成します。
 
 取得処理では、`GITHUB_TOKEN`が設定されている場合も、認証情報を付与するのは`https://api.github.com`への直接のリクエストだけです。Raw URLや外部サイトには付与せず、同一ホストを含むリダイレクト先にも転送しません。認証が必要な取得先を指定する場合は、リダイレクトを経由しないGitHub API URLを使用します。
 
@@ -75,7 +75,7 @@ python -m unittest discover -s tests -v
 
 ## 関連情報
 
-- [リポジトリのルートREADME](../README.md)
+- [RepositoryのルートREADME](../README.md)
 - [AdGuardの変更履歴](ChangeLog/README.md)
 
 ## 公式資料

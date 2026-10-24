@@ -4,7 +4,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 
 ---
 
-| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
@@ -236,7 +236,7 @@ ChatGPTに検証を依頼するときは、非公開の内部思考過程をそ�
 
 * 回答の冒頭に結論または要点を簡潔に提示してください。
 * 正確性を最優先し、最新性が重要な情報は必要に応じてウェブ検索してください。
-* 可能な限り、公式ドキュメント、仕様書、公的機関、公式リポジトリ・ソースコード、公式発表、原著論文などの一次情報を実際に確認してください。
+* 可能な限り、公式ドキュメント、仕様書、公的機関、公式Repository・ソースコード、公式発表、原著論文などの一次情報を実際に確認してください。
 * 特に仕様、機能、挙動、対応状況、変更履歴、セキュリティ、プライバシー、互換性については、記憶や一般論だけで断定せず、一次情報を確認してください。
 * 公式の一次情報が存在する場合、二次情報だけを根拠に結論を出さないでください。情報が矛盾する場合は、対象バージョン・公開日時・適用範囲などを確認してください。
 * 重要な事実・判断には、その内容を直接裏付ける実在する情報源へのクリック可能なリンクを付けてください。
@@ -252,14 +252,14 @@ IT、セキュリティ、プライバシー、広告ブロックでは、原則
 
 1. 公式ドキュメント・仕様書
 2. 公式または開発元のソースコード
-3. 公式リポジトリのIssue・Pull Request・Discussion
-4. CHANGELOG・Release Notes・コミット履歴
+3. 公式RepositoryのIssue・Pull Request・Discussion
+4. CHANGELOG・Release Notes・Commit履歴
 5. 開発者・メンテナー本人の公開資料
 6. 信頼性の高い技術資料
 7. その他の二次情報
 
 * GitHubのIssue等は、開発者・メンテナーの回答と一般ユーザーの投稿を区別してください。
-* ソースコードや変更履歴を調査する場合は、可能な限り対象バージョン・ブランチ・コミットとの対応を確認してください。
+* ソースコードや変更履歴を調査する場合は、可能な限り対象バージョン・Branch・Commitとの対応を確認してください。
 * uBlock Origin、uBlock Origin Lite、AdGuard、主要フィルタリストは、公式仕様、ソースコード、メンテナーの公開情報を優先してください。
 * 異なる製品間（例：uBOとAdGuard）や、Manifest V2 / V3、Chromium / Firefox、デスクトップ / Androidなどで仕様・挙動が同一とは仮定しないでください。
 
@@ -346,7 +346,7 @@ IT、セキュリティ、プライバシー、広告ブロックでは、原則
 
 ## Codex用のカスタム指示
 
-以下は、リポジトリでの調査・コードレビュー・編集・テスト・GitHub作業に使うカスタム指示です。Chat / Work用とは分けて使用します。
+以下は、Repositoryでの調査・コードレビュー・編集・テスト・GitHub作業に使うカスタム指示です。Chat / Work用とは分けて使用します。
 
 ```markdown
 以下の方針を最優先で遵守して、調査・コードレビュー・編集・テスト・GitHub作業を行ってください。
@@ -366,8 +366,8 @@ IT、セキュリティ、プライバシー、広告ブロックでは、原則
 
 1. 公式ドキュメント・仕様書
 2. 開発元の公式ソースコード
-3. 公式GitHubリポジトリのIssue / Pull Request / Discussion
-4. CHANGELOG / Release Notes / コミット履歴
+3. 公式GitHub RepositoryのIssue / Pull Request / Discussion
+4. CHANGELOG / Release Notes / Commit履歴
 5. 開発者・メンテナー本人の公開資料
 6. 信頼性の高い技術資料
 7. その他の二次情報
@@ -482,7 +482,7 @@ CIを緑にすることではなく、問題そのものを解決することを
 3. 指定箇所以外が変更されていないことの確認
 4. 既存内容が意図せず削除されていないことの確認
 5. 構文確認
-6. リポジトリに既存のLintがあれば実行
+6. Repositoryに既存のLintがあれば実行
 7. 関連する既存テストがあれば実行
 8. AdGuardフィルタならAGLint等の既存検証を実行
 9. JavaScript / UserScriptなら構文・関連テストを確認
@@ -496,7 +496,7 @@ CIを緑にすることではなく、問題そのものを解決することを
 
 【GitHubへの反映】
 
-コミット・PR・マージまで依頼されている場合は、検証が完了してから進めてください。
+Commit・PR・マージまで依頼されている場合は、検証が完了してから進めてください。
 
 * 意図したファイルだけが変更されていることを確認
 * diffを確認
@@ -504,17 +504,17 @@ CIを緑にすることではなく、問題そのものを解決することを
 * 必要なGitHub Actionsを確認
 * 今回の変更が原因の問題がある場合は原因を修正
 * 検証を無効化して通過させない
-* 今回の変更が原因の問題を解消してからコミット・PR・マージする
+* 今回の変更が原因の問題を解消してからCommit・PR・マージする
 
-PR作成後にCIが失敗した場合は、失敗ログを確認し、今回の変更が原因なら修正して再検証してください。変更と無関係な既存の失敗や環境要因は、根拠と影響を報告し、無断で修正範囲を広げないでください。無関係な失敗だけを理由にコミットやPR作成を保留する必要はありませんが、必須チェックやブランチ保護を回避してマージしないでください。
+PR作成後にCIが失敗した場合は、失敗ログを確認し、今回の変更が原因なら修正して再検証してください。変更と無関係な既存の失敗や環境要因は、根拠と影響を報告し、無断で修正範囲を広げないでください。無関係な失敗だけを理由にCommitやPR作成を保留する必要はありませんが、必須チェックやBranch保護を回避してマージしないでください。
 
 【Red-Frame-X/Prototype】
 
 Red-Frame-X/Prototypeを扱う場合は、特に既存ファイルと既存運用を尊重してください。
 
-このリポジトリにはAdGuard Custom Rules、AdGuard DNS Custom Rules、UserScript、ChMate NG Word Regex、Markdown Notes、dist、GitHub Actions等が含まれるため、対象ごとの仕様を混同しないでください。
+このRepositoryにはAdGuard Custom Rules、AdGuard DNS Custom Rules、UserScript、NG Word Regex for ChMate、Markdown Notes、dist、GitHub Actions等が含まれるため、対象ごとの仕様を混同しないでください。
 
-リポジトリ全体を把握する必要があるタスクでは関連ファイルを横断的に確認してください。ただし、調査範囲が広いことを理由に変更範囲まで広げないでください。
+Repository全体を把握する必要があるタスクでは関連ファイルを横断的に確認してください。ただし、調査範囲が広いことを理由に変更範囲まで広げないでください。
 
 調査は広く、変更は狭くしてください。
 
@@ -547,7 +547,7 @@ Red-Frame-X/Prototypeを扱う場合は、特に既存ファイルと既存運�
 * 未確認・未実施事項
 * 削除候補（許可がないため変更していないもの）
 
-存在しないテスト結果、URL、Issue、PR、コミット、仕様、実行結果を生成しないでください。
+存在しないテスト結果、URL、Issue、PR、Commit、仕様、実行結果を生成しないでください。
 
 最優先順位は、
 「正確性」→「既存内容の保全」→「最小変更」→「実検証」→「改善」
@@ -596,46 +596,46 @@ ChatGPTアプリで接続エラー、ログイン失敗、回答の停止など�
 
 | 画面 | 適した用途 | 主な制約 |
 | :--- | :--- | :--- |
-| **Chat** | リポジトリやファイルの検索・説明、Issues・Pull Request・CIの確認、Issues整理、コメント、ラベル、レビュー、許可されたファイル更新など | GitHubプラグインが提供する操作と権限の範囲内。リポジトリ全体をローカル作業環境として実行・検証する用途には向かない |
+| **Chat** | Repositoryやファイルの検索・説明、Issues・Pull Request・CIの確認、Issues整理、コメント、ラベル、レビュー、許可されたファイル更新など | GitHubプラグインが提供する操作と権限の範囲内。Repository全体をローカル作業環境として実行・検証する用途には向かない |
 | **Work** | Chatで可能なGitHub操作に加え、複数の情報源やツールをまたぐ調査、長い査読、作業報告などの多段階タスク | 作業量に応じて時間・クレジットを多く使う場合がある（[OpenAI公式：ChatGPT Work](https://learn.chatgpt.com/docs/get-started-with-work)） |
-| **Codex** | リポジトリを作業環境で読み、複数ファイルを編集し、テスト・lint・生成処理を実行して、commit・push・Pull Request作成まで進める | 実行環境、sandbox、ネットワーク、GitHub権限、承認設定の制約を受ける |
+| **Codex** | Repositoryを作業環境で読み、複数ファイルを編集し、テスト・lint・生成処理を実行して、commit・push・Pull Request作成まで進める | 実行環境、sandbox、ネットワーク、GitHub権限、承認設定の制約を受ける |
 
-したがって、**ChatGPT ChatでもGitHubリポジトリの管理・運用はある程度可能**です。従来の「ChatGPTのGitHub接続は読み取り専用、書き込みはすべてCodex」という説明は、現在のGitHubプラグイン全体には当てはまりません。ただし、ChatからのAPI操作でファイルを更新できることと、checkoutしたリポジトリでテストまで行えることは別です。コード変更の再現性と検証が重要な作業ではCodexを使います。
+したがって、**ChatGPT ChatでもGitHub Repositoryの管理・運用はある程度可能**です。従来の「ChatGPTのGitHub接続は読み取り専用、書き込みはすべてCodex」という説明は、現在のGitHubプラグイン全体には当てはまりません。ただし、ChatからのAPI操作でファイルを更新できることと、checkoutしたRepositoryでテストまで行えることは別です。コード変更の再現性と検証が重要な作業ではCodexを使います。
 
 **追加・接続手順**
 
 1. ChatGPTの「Plugins」からGitHubプラグインを追加します。プラグインは対応するChat・Work・Codexで利用できます（[OpenAI公式：Plugins](https://learn.chatgpt.com/docs/plugins)）。
-2. GitHubで認証し、可能なら「All repositories」ではなく「Only select repositories」を選び、必要なリポジトリだけを許可します（[GitHub公式：GitHub Appのインストール](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party)）。
-3. 新しい会話で `@GitHub` を指定し、リポジトリ、Issues、Pull RequestのURLと、調査・変更範囲、完了条件を伝えます。インストール後のプラグインは新しいChatまたはWorkで使用するのが確実です。
-4. リポジトリが表示されない場合は、GitHubのInstalled GitHub Appsで対象リポジトリと権限を確認し、Organization所有の場合は管理者によるインストール・承認も確認します（[GitHub公式：インストール済みAppの確認・変更](https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps)）。
+2. GitHubで認証し、可能なら「All repositories」ではなく「Only select repositories」を選び、必要なRepositoryだけを許可します（[GitHub公式：GitHub Appのインストール](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party)）。
+3. 新しい会話で `@GitHub` を指定し、Repository、Issues、Pull RequestのURLと、調査・変更範囲、完了条件を伝えます。インストール後のプラグインは新しいChatまたはWorkで使用するのが確実です。
+4. Repositoryが表示されない場合は、GitHubのInstalled GitHub Appsで対象Repositoryと権限を確認し、Organization所有の場合は管理者によるインストール・承認も確認します（[GitHub公式：インストール済みAppの確認・変更](https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps)）。
 5. 書き込み操作が使えない場合は、GitHub Appの権限、ChatGPTワークスペースのAction controls、操作時の承認、使用中の画面でそのツールが提供されているかを確認します。具体的な反映時間は公式資料で一律に保証されていないため、「接続後5分」などの固定値は目安として断定しません。
 
-**リポジトリ管理に適した作業例**
+**Repository管理に適した作業例**
 
-* リポジトリ全体を査読し、重要度、根拠、修正案、影響範囲を整理する。
+* Repository全体を査読し、重要度、根拠、修正案、影響範囲を整理する。
 * IssuesとPull Requestを確認し、重複、再現手順不足、未解決レビュー、CI失敗を分類する。
 * ChatからIssuesの作成・更新、コメント、ラベル、担当者、Pull Requestレビューなど、許可された管理操作を行う。
 * 小規模なMarkdownや設定ファイルを更新する。テストが必要なコード変更はCodexへ回す。
 * 最近のcommit、マージ済みPull Request、workflow結果から更新履歴や作業報告を作成する。
 * CodexでAdGuardフィルタ、UserScript、正規表現、Markdownを修正し、関連するlint・テスト・生成処理を実行する。
 
-**推奨ワークフロー**
+**推奨Workflow**
 
 1. `README.md`、`AGENTS.md`、対象Issues、関連ファイルを読み、作業範囲と完了条件を固定します。
 2. ChatまたはWorkで現状調査、Issues整理、変更計画、リスク評価を行います。
-3. コード実行を伴わない軽微な管理・文書更新はGitHubプラグインで行い、複数ファイルの実装や検証はCodexで専用ブランチに行います。
+3. コード実行を伴わない軽微な管理・文書更新はGitHubプラグインで行い、複数ファイルの実装や検証はCodexで専用Branchに行います。
 4. 自動テスト、lint、生成処理を実行し、生成物を含む差分を確認します。
 5. Pull Requestに要約、理由、影響、テスト結果、未検証事項、残るリスクを記載します。
 6. 人間が差分とCI結果を確認してからマージします。CodexのReviewは有用な追加チェックですが、テスト、branch protection、必須レビューの代替ではありません（[OpenAI公式：CodexによるGitHub Pull Requestレビュー](https://learn.chatgpt.com/docs/third-party/github)）。
 
-CodexのPull Requestレビューは、コメントで `@codex review` と依頼でき、リポジトリ固有の確認事項は変更対象に最も近い `AGENTS.md` の `## Code Review Rules` に記載できます。機械的に判定できるformat・lintはCIへ残し、`AGENTS.md`には互換性、データ境界、副作用などリポジトリ固有の判断基準を簡潔に記載します（[OpenAI公式：AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)）。
+CodexのPull Requestレビューは、コメントで `@codex review` と依頼でき、Repository固有の確認事項は変更対象に最も近い `AGENTS.md` の `## Code Review Rules` に記載できます。機械的に判定できるformat・lintはCIへ残し、`AGENTS.md`には互換性、データ境界、副作用などRepository固有の判断基準を簡潔に記載します（[OpenAI公式：AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)）。
 
-Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`AGENTS.md`やチケット文書で作業範囲を固定する運用例があります（[Reddit：ChatGPTとCodexの併用](https://www.reddit.com/r/codex/comments/1vtmmjt/is_there_a_better_way_to_use_chatgpt_codex/)、[Reddit：AGENTS.mdを使った運用例](https://www.reddit.com/r/codex/comments/1tf4s07/my_best_workflow_so_far_for_building_projects/)）。一方、特定のChat画面やモデルではプライベートリポジトリの取得が安定しないという報告もあります（[Reddit：GitHub connectorの利用画面に関する報告](https://www.reddit.com/r/ChatGPTPro/comments/1ozf2jm/github_connector_only_works_in_deep_research/)）。これらは利用者個別の体験談であり、一般仕様や現在の障害を示す公式情報ではありません。
+Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`AGENTS.md`やチケット文書で作業範囲を固定する運用例があります（[Reddit：ChatGPTとCodexの併用](https://www.reddit.com/r/codex/comments/1vtmmjt/is_there_a_better_way_to_use_chatgpt_codex/)、[Reddit：AGENTS.mdを使った運用例](https://www.reddit.com/r/codex/comments/1tf4s07/my_best_workflow_so_far_for_building_projects/)）。一方、特定のChat画面やモデルではプライベートRepositoryの取得が安定しないという報告もあります（[Reddit：GitHub connectorの利用画面に関する報告](https://www.reddit.com/r/ChatGPTPro/comments/1ozf2jm/github_connector_only_works_in_deep_research/)）。これらは利用者個別の体験談であり、一般仕様や現在の障害を示す公式情報ではありません。
 
 **❗️セキュリティ・運用上の注意**
 
-* GitHub Appには必要最小限のリポジトリと権限だけを付与します。GitHub Appの権限は、APIで実行できる操作を決定します（[GitHub公式：GitHub Appの権限](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app)）。
-* APIキー、アクセストークン、Cookie、個人情報をリポジトリ、Issues、Pull Request、プロンプト、ログへ含めません。誤ってcommitした秘密情報は、削除commitだけでなく認証情報の失効・再発行も行います。
+* GitHub Appには必要最小限のRepositoryと権限だけを付与します。GitHub Appの権限は、APIで実行できる操作を決定します（[GitHub公式：GitHub Appの権限](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app)）。
+* APIキー、アクセストークン、Cookie、個人情報をRepository、Issues、Pull Request、プロンプト、ログへ含めません。誤ってcommitした秘密情報は、削除commitだけでなく認証情報の失効・再発行も行います。
 * AIが作成した変更には、誤修正、過剰変更、依存関係や生成物の見落としがあり得ます。削除、公開、merge、release、workflowの再実行など影響の大きい操作は、対象・差分・権限を確認してから実行します。
 * Chatから書き込めても、テストを実行していなければ動作確認済みとは扱いません。実行した検証と未検証事項を分けて記録します。
 * プラグインの機能、対応画面、権限は更新される可能性があります。導入時は [OpenAI公式：Plugins](https://learn.chatgpt.com/docs/plugins) とGitHubのInstalled GitHub Apps画面を再確認します。
@@ -672,7 +672,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 * **【正規表現の作成・除外・最適化】**：「〇〇」にマッチし、「✕✕」にはマッチしない正規表現を作成してください。対象エンジンを確認し、テストケースを正常系・除外系・境界値に分けて提示してください。以下の既存表現はマッチ条件を変えず、ChMateのNG Word機能で動作し、ReDoSにつながる過度なバックトラッキングを避けるよう最適化してください。最後にtypoと重複を確認してください。：[改行]〜
 * **【問題解決・エラー解消】**：（エラー全文と発生条件を記載）原因候補を確度と根拠付きで整理し、データ消失や設定変更の影響が小さい順にトラブルシューティング手順を提示してください。各手順には期待される結果と、結果ごとの次の分岐を記載してください。
 * **【代替案・ワークアラウンドの提示】**：「〜」を実現する別の手段を複数提案してください。公式機能、OSS、設計変更、一時的な回避策を区別し、利点、欠点、プライバシー、保守性、費用、元に戻せるかを比較してください。
-* **【コード変更と検証】**：（リポジトリまたは対象ファイルを指定）関連コードと既存の変更を確認し、要求された範囲だけを修正してください。変更前後の差分、実行したテスト、未検証事項を示してください。明示的な許可がない限り、外部公開、送信、削除、デプロイは行わないでください。
+* **【コード変更と検証】**：（Repositoryまたは対象ファイルを指定）関連コードと既存の変更を確認し、要求された範囲だけを修正してください。変更前後の差分、実行したテスト、未検証事項を示してください。明示的な許可がない限り、外部公開、送信、削除、デプロイは行わないでください。
 
 ### 計算・ユーティリティ（Calculation & Utilities）
 
@@ -714,7 +714,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 * **[Virtual Git extension pack](https://marketplace.visualstudio.com/items?itemName=CarloCardella.vscode-virtualgit)** / **[GitHub](https://github.com/carlocardella/vscode-VirtualGit)**
   * 説明：端末にGit環境を構築しなくても、ブラウザから直接GitHubやGistのファイルを編集・保存できるようになる便利なパックです。
 * **[Virtual Repositories for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=CarloCardella.vscode-virtualrepos)** / **[GitHub](https://github.com/carlocardella/vscode-VirtualRepos)**
-  * 説明：リモートリポジトリをクローン、コミット、プッシュすることなく開いて編集できる拡張機能です。
+  * 説明：リモートRepositoryをクローン、Commit、プッシュすることなく開いて編集できる拡張機能です。
 
 **Android アプリ**
 * **[QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)** / **[ヘルプセンター](https://rhmsoft.com/qedit/help.html)**
@@ -778,7 +778,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 
 # 出力形式
 * 冒頭に推奨ルールを1つの `adblock` コードブロックで提示してください。
-* 個人用ユーザールールでは、購読フィルタ用メタデータを必要がない限り付けないでください。
+* 個人用ユーザールールでは、購読フィルタ用Metadataを必要がない限り付けないでください。
 * 続けて「選定理由」「互換性」「誤ブロックの可能性」「確認手順」「必要なら代替案」を簡潔に説明してください。
 * 候補が複数ある場合は、推奨順とトレードオフを示してください。
 * 十分な情報がなければ無理にルールを生成せず、追加で必要なHTML、Network情報、再現手順を具体的に質問してください。
@@ -788,7 +788,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 5. 出力されたルールをユーザールールへ登録し、ページを再読み込みして確認します。対象が消えるだけでなく、ログイン、検索、再生、スクロール、リンク操作などが壊れていないかも確認します。
 6. 意図どおりでない場合は、実際の結果、コンソールエラー、追加のHTML、Network情報を同じチャットへ渡して修正を依頼します。ルールを一つずつ有効化・無効化すると原因を切り分けやすくなります。
 
-▶ 生成AIの出力は検証が必要です。一般の利用者にも影響する広告・トラッカー・迷惑要素は、再現手順とスクリーンショットを添えて [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) または [AdGuard reporting tool](https://reports.adguard.com/) へ報告する方法が適しています。報告前にリポジトリのIssuesテンプレートとポリシーを確認してください。
+▶ 生成AIの出力は検証が必要です。一般の利用者にも影響する広告・トラッカー・迷惑要素は、再現手順とスクリーンショットを添えて [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) または [AdGuard reporting tool](https://reports.adguard.com/) へ報告する方法が適しています。報告前にRepositoryのIssuesテンプレートとポリシーを確認してください。
 
 ### 作成したAdGuardユーザールールの整理
 
@@ -890,7 +890,7 @@ uBlock OriginとAdGuardでは、同名に見えるScriptletでも引数、動作
 
 ---
 
-## ユーザースクリプトの作成（個人用途）
+## UserScriptの作成（個人用途）
 
 AdGuardルールで実現できない処理だけをUserScriptで補います。UserScriptはページ上でJavaScriptを実行するため、単純な要素非表示にはAdGuardルールを優先したほうが、権限、保守、性能、セキュリティの面で扱いやすくなります。
 
@@ -1064,7 +1064,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 
 * **匿名性（行動と身元の切り離し・特定の不可能性）**
 
-    手紙の中身は公開されているが、差出人も宛先も白紙である状態。情報自体を隠すのではなく「誰の行動か」を隠すが、筆跡や消印（IPアドレスやメタデータ）から身元が推測されるリスクは常に伴う。
+    手紙の中身は公開されているが、差出人も宛先も白紙である状態。情報自体を隠すのではなく「誰の行動か」を隠すが、筆跡や消印（IPアドレスやMetadata）から身元が推測されるリスクは常に伴う。
 
 * **【結論】セキュリティとプライバシーは相互依存する別物である**
 
@@ -1250,7 +1250,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 Yuki2718氏の公開説明によると、YouTubeでは使用する広告ブロッカー以外の拡張機能やカスタムフィルタが多いほど、競合やフィルタ構成の差によってAnti-Adblock Scriptに検知される確率が上がります。このため、YouTubeで広告ブロック検知や再生不具合が発生した場合は、まず使用する広告ブロッカーを1つに限定し、既定設定・標準フィルタだけの状態で確認します。
 
-Yuki2718氏は、uBlock Origin開発チームのうち**フィルターチームのメンバー**です。本人のプロフィールでは2020年11月から所属していることを明記しており、YouTube対策については、本人が**YouTube用フィルタを開発した2人のうちの1人**であると公開しています。uBlock Originの公式フィルタリポジトリ `uAssets` でも、YouTube問題の専用Issueを作成・管理し、対策フィルタの開発と修正対応を行っています（[Yuki2718氏の𝕏アカウント](https://x.com/Yuki27183) / [uBO: Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415) / [uBO Lite: Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
+Yuki2718氏は、uBlock Origin開発チームのうち**フィルターチームのメンバー**です。本人のプロフィールでは2020年11月から所属していることを明記しており、YouTube対策については、本人が**YouTube用フィルタを開発した2人のうちの1人**であると公開しています。uBlock Originの公式フィルタRepository `uAssets` でも、YouTube問題の専用Issueを作成・管理し、対策フィルタの開発と修正対応を行っています（[Yuki2718氏の𝕏アカウント](https://x.com/Yuki27183) / [uBO: Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415) / [uBO Lite: Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
 
 **𝕏/Twitter ルール作り資料｜uBlock Origin**
 

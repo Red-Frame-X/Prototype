@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ルール変更コミットのAdGuardフィルターのVersionメタデータを検証する。"""
+"""ルール変更CommitのAdGuardフィルターのVersion Metadataを検証する。"""
 from __future__ import annotations
 
 import argparse
@@ -56,8 +56,8 @@ def main() -> int:
     parser.add_argument("--head", default="HEAD")
     args = parser.parse_args()
 
-    # 範囲の最終差分だけでなく、各コミットと第一親を比較する。
-    # パスによる履歴簡略化を避け、途中の違反が後続コミットで隠れないようにする。
+    # 範囲の最終差分だけでなく、各Commitと第一親を比較する。
+    # パスによる履歴簡略化を避け、途中の違反が後続Commitで隠れないようにする。
     commits = git("rev-list", "--reverse", f"{args.base}..{args.head}").splitlines()
     failed = False
     for commit in commits:
@@ -79,16 +79,16 @@ def main() -> int:
             if rules_changed and old_version == new_version:
                 print(
                     f"エラー: {commit[:12]}: {path}: ルールが変更されていますが、! Version:が更新されていません "
-                    f"（同じコミット内での更新が必要: {old_version})"
+                    f"（同じCommit内での更新が必要: {old_version})"
                 )
                 failed = True
             elif rules_changed:
                 print(f"正常: {path}: ルールとVersionが同時に変更されています（{old_version} -> {new_version})")
             else:
-                print(f"正常: {path}: Versionメタデータだけが変更されています")
+                print(f"正常: {path}: Version Metadataだけが変更されています")
 
-    # 各コミット検査に加え、範囲全体の最終状態も比較する。
-    # 途中で Version を更新した後、後続コミットで Version だけ古い値へ戻すケースを見逃さない。
+    # 各Commit検査に加え、範囲全体の最終状態も比較する。
+    # 途中で Version を更新した後、後続Commitで Version だけ古い値へ戻すケースを見逃さない。
     for path in TARGETS:
         before = show(args.base, path)
         after = show(args.head, path)
