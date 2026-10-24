@@ -19,12 +19,13 @@ def main() -> int:
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--message-file", type=Path)
     group.add_argument("--base-ref")
+    parser.add_argument("--head-ref", default="HEAD", help="検査範囲の終点となるコミット・参照")
     args = parser.parse_args()
     if args.message_file:
         lines = args.message_file.read_text(encoding="utf-8-sig").splitlines()
         entries = [("commit-msg", lines[0] if lines else "")]
     else:
-        revision = f"{args.base_ref}..HEAD" if args.base_ref else "HEAD"
+        revision = f"{args.base_ref}..{args.head_ref}" if args.base_ref else args.head_ref
         command = ["git", "log", "--format=%H%x00%s", revision]
         if not args.base_ref:
             command.append("-1")
