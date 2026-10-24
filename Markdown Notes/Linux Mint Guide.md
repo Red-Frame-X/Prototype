@@ -8,7 +8,7 @@ Linux Mintの導入から初期設定、日常利用、ソフトウェア管理�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610241400 |
+| **Version** | 202610241929 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -114,6 +114,7 @@ Linux Mint公式は、ハードウェア関連のパートナーとして **Fram
 * [Linux Mintのパートナー](https://linuxmint.com/partners.php)
 * [Linux Mintブログ：2025年5月の月例ニュース](https://blog.linuxmint.com/?p=4850)
 * **[RayLink Inc（レイリンク株式会社）](https://raylink-inc.com/)** ：Ubuntu搭載の新品・再生PCやLinux関連機器を販売する国内事業者。Linux OSのインストール代行も提供し、[取扱ディストリビューション](https://raylink-inc.com/distribution/) にはLinux Mintも掲載している。Linux Mint搭載を希望する場合は、対象機種・導入可能な版・費用を購入前に相談する。
+* [Ubuntu Laptop](https://raylink-inc.com/product-category/new-laptop/)
 * **[Star Labs](https://jp.starlabs.systems/)** ：Linux向けに設計されたノートPCやMini PCを販売するメーカー。Linux Mintを含む複数のLinuxディストリビューションを、対応カーネル上で標準ISOから導入できる。
 
 ただし、Linux Mintが「公式認定した完成品PC一覧」を常時提供しているわけではありません。日本から海外メーカー製PCを購入する場合は、Linux Mintプリインストールの有無だけでなく、送料、関税、保証対応、修理時の発送先、ACアダプター、キーボード配列、無線チップなども確認してください。販売状況は変化するため、購入時点でメーカー公式ページを確認します。
@@ -516,6 +517,8 @@ AdGuard Browser Extensionがブラウザ内の通信や要素非表示を中心�
 
 追加の一次情報：
 
+* [Ubuntu](https://x.com/ubuntu)
+* [Ubuntu Japanese Team](https://www.ubuntulinux.jp/)
 * [Linux Mint 22.3公式リリース発表・システム要件](https://blog.linuxmint.com/?p=4981)
 * [Linux Mint公式User Guide](https://linuxmint-user-guide.readthedocs.io/en/latest/)
 * [Linux Mint公式Troubleshooting Guide](https://linuxmint-troubleshooting-guide.readthedocs.io/en/latest/)
