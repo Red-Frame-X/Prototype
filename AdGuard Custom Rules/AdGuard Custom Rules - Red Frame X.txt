@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202610241030
+! Version: 202610241533
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -269,6 +269,10 @@ www.youtube.com##ytd-search ytd-secondary-search-container-renderer
 www.youtube.com##ytd-watch-metadata #teaser-carousel
 ! 関連動画欄のShortsカードを非表示
 www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-renderer:has(a[href^="/shorts/"])
+
+! www2.adramas.site
+! AsianTVのお知らせモーダルと暗い背景をまとめて非表示
+www2.adramas.site###announcement-modal-backdrop
 
 ! x.com
 ! ホーム上部の「おすすめ」タブを非表示
