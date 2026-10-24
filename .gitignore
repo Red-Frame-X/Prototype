@@ -1,5 +1,5 @@
 # =========================
-# 1. High-Volume Directories (パフォーマンス最適化)
+# 1. ファイル数の多いディレクトリ (パフォーマンス最適化)
 # =========================
 # Gitが早期に走査を打ち切れるよう、内部ファイルが膨大なディレクトリを最上部に配置
 node_modules/
@@ -10,7 +10,7 @@ __pycache__/
 $RECYCLE.BIN/
 
 # =========================
-# 2. Operating System Files
+# 2. OSが作成するファイル
 # =========================
 # macOS
 .DS_Store
@@ -30,7 +30,7 @@ Desktop.ini
 .Trash-*
 
 # =========================
-# 3. Editor & IDE Files
+# 3. エディター・IDEのファイル
 # =========================
 # VSCodium / VSCode
 .vscode/*
@@ -42,7 +42,7 @@ Desktop.ini
 *.iml
 
 # =========================
-# 4. Logs (Node.js & aglint)
+# 4. ログ（Node.js・aglint）
 # =========================
 npm-debug.log
 yarn-error.log

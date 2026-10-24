@@ -1,4 +1,4 @@
-# ChromeOS & Android Optimization Guide
+# ChromeOS・Androidの最適化ガイド
 
 ChromeOS & Android 最適化ガイド
 
@@ -6,13 +6,13 @@ ChromeOS & Android 最適化ガイド
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | CC0-1.0 |
-| **Version** | 202610220026 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | CC0-1.0 |
+| **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
-## Subscription
+## 購読・支援
 
 この項目は、自身が実際に利用していたサブスクリプションで発生した不具合と、その際に行った対処の記録を中心にまとめています。
 
@@ -71,7 +71,7 @@ Googleの多くのサービスでは、年額サブスクリプションを「�
 
 過去に同様の不具合がなかったかRedditで検索したところ、既存の有料プランにGoogle Pixelの購入特典を重複適用した結果、Google One メンバーシップに問題が発生したという報告も見つかりました。
 
-* **[Google free trial Premium AI Scam](https://www.reddit.com/r/GoogleOne/comments/1dqzsrv/google_free_trial_premium_ai_scam/)**
+* **[GoogleのPremium AI無料体験に関する詐欺の指摘](https://www.reddit.com/r/GoogleOne/comments/1dqzsrv/google_free_trial_premium_ai_scam/)**
   * 2TBの年額プランを契約中のユーザーが、Pixel 8 Pro購入特典の4ヶ月無料トライアルを有効化した事例です。
   * 元のプランが上位プランに強制変換された結果、支払い済みの契約期間が大幅短縮され、元のプランの権利が失われたと報告されています。
 
@@ -703,9 +703,9 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 
 ---
 
-## Code Editor
+## コードエディター
 **Visual Studio Code**
-* **[Visual Studio Code: Workspace](https://vscode.dev/?vscode-lang=ja-jp)** / **[GitHub](https://github.com/microsoft/vscode)**
+* **[Visual Studio Codeのワークスペース](https://vscode.dev/?vscode-lang=ja-jp)** / **[GitHub](https://github.com/microsoft/vscode)**
   * 説明：インストール不要でブラウザから直接利用できる軽量かつ高機能なコードエディタです。
 
 **Visual Studio Code 拡張機能**
@@ -717,7 +717,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
   * 説明：リモートリポジトリをクローン、コミット、プッシュすることなく開いて編集できる拡張機能です。
 
 **Android アプリ**
-* **[QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)** / **[Help Center](https://rhmsoft.com/qedit/help.html)**
+* **[QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)** / **[ヘルプセンター](https://rhmsoft.com/qedit/help.html)**
 
 **QuickEdit Proの安全な推奨トークン権限（スコープ）の構成｜GitHub**
 
@@ -726,10 +726,10 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 * 「repo」「gist」にのみチェックを入れる。
 
 **Issues報告**
-* [Visual Studio Code Issues](https://github.com/microsoft/vscode/issues)
-* [Virtual Gists Issues](https://github.com/carlocardella/vscode-VirtualGists/issues)
-* [Virtual Git Issues](https://github.com/carlocardella/vscode-VirtualGit/issues)
-* [Virtual Repositories Issues](https://github.com/carlocardella/vscode-VirtualRepos/issues)
+* [Visual Studio Codeの課題・不具合報告](https://github.com/microsoft/vscode/issues)
+* [Virtual Gistsの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualGists/issues)
+* [Virtual Gitの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualGit/issues)
+* [Virtual Repositoriesの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualRepos/issues)
 * [Japanese IME failure on VS Code 1.107.1 (Crostini) #285154](https://github.com/microsoft/vscode/issues/285154) （計画されていないため閉鎖）
 
 ※ 現在はCrostini（Linux 開発環境）およびVSCodiumをデバイスから削除し、ブラウザとAndroidアプリベースの環境へ完全移行済みです。
@@ -890,7 +890,7 @@ uBlock OriginとAdGuardでは、同名に見えるScriptletでも引数、動作
 
 ---
 
-## UserScriptの作成（個人用途）
+## ユーザースクリプトの作成（個人用途）
 
 AdGuardルールで実現できない処理だけをUserScriptで補います。UserScriptはページ上でJavaScriptを実行するため、単純な要素非表示にはAdGuardルールを優先したほうが、権限、保守、性能、セキュリティの面で扱いやすくなります。
 
@@ -979,7 +979,7 @@ AdGuardルールで実現できない処理だけをUserScriptで補います。
 AdGuardドメイン（adguard.com系）で提供されている監査・ステータス・公式サポートを統合しています。
 * [AdGuard 診断ページ](https://adguard.com/ja/test.html)
 * [Webサイトをチェック (AdGuard)](https://reports.adguard.com/ja/welcome.html)
-* [AdGuard Status](https://status.adguard.com/)
+* [AdGuardの稼働状況](https://status.adguard.com/)
 * [AdGuard > サポートセンター](https://adguard.com/ja/support.html)
 
 ### Google 関連サービス・管理群
@@ -987,7 +987,7 @@ Googleドメイン（google.com系）の検索・プライバシー管理、ス�
 * [Google あなたに関する検索結果](https://myactivity.google.com/results-about-you)
 * [Google ニュース提供元の優先度](https://www.google.com/preferences/source?hl=ja)
 * [Google Workspace ステータス ダッシュボード](https://www.google.com/appsstatus/dashboard/#hl=ja&v=status)
-* [Google Issue Tracker](https://issuetracker.google.com/home)
+* [Googleの課題追跡システム](https://issuetracker.google.com/home)
 * [Google ヘルプ](https://support.google.com/?hl=ja)
 * [Google Pixel ヘルプ](https://support.google.com/pixelphone/?hl=ja#topic=)
 * [Chromebook ヘルプ](https://support.google.com/chromebook/?hl=ja#topic=)
@@ -999,8 +999,8 @@ Googleドメイン（google.com系）の検索・プライバシー管理、ス�
 
 ### 画像共有・データ削除管理
 Imgur（imgur.com）のアップロード・削除申請、およびオンラインデータの削除リクエストツールです。
-* [imgur Upload](https://imgur.com/upload)
-* [Imgur Removal Request](https://imgur.com/removalrequest)
+* [imgurへのアップロード](https://imgur.com/upload)
+* [Imgurの削除依頼](https://imgur.com/removalrequest)
 * [Redact](https://redact.dev/)
 
 ### ネットワーク環境・コンテンツブロック検証
@@ -1017,7 +1017,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 * [Downdetector](https://downdetector.jp/)
 * [サイトはダウンしている？](https://www.websiteplanet.com/ja/webtools/down-or-not/)
 * [Yahoo!リアルタイム検索](https://search.yahoo.co.jp/realtime/)
-* [GitHub Status](https://www.githubstatus.com/)
+* [GitHubの稼働状況](https://www.githubstatus.com/)
 * [JP Incident Monitor｜日本のサイバーインシデント](https://elkentaro.github.io/jp_incidents/)
 * [5chサーバ稼働状況](https://www.kyodemo.net/sdemo/k/5_?hs=1)
 * [偽 SPARROW AIM-7P Ver.1.00](https://5ch.ape.jp/SPARROW/)
@@ -1116,7 +1116,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 
 ## AdGuard 公式フィルタ
 
-**AdGuard filters**
+**AdGuardフィルター**
 * [組み込みフィルタリスト・標準フィルタリスト](https://adguard.com/kb/ja/general/ad-filtering/adguard-filters/) と呼ばれることが多いです。
 
 [Yuki2718氏のよくある質問](https://github.com/Yuki2718/adblock2/wiki/よくある質問) より引用
@@ -1150,7 +1150,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 **AdGuardユーザールール作成ガイド**
 * [なんJ AdGuard部 Wiki* > フィルタ構文](https://wikiwiki.jp/nanj-adguard/%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E6%A7%8B%E6%96%87)
 * [AdGuard-自分の広告フィルタを作成する方法](https://adguard-com.translate.goog/kb/ja/general/ad-filtering/create-own-filters/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
-* [AdGuard - DNS filtering rules syntax](https://adguard--dns-io.translate.goog/kb/ja/general/dns-filtering-syntax/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
+* [AdGuardのDNSフィルタリングルール構文](https://adguard--dns-io.translate.goog/kb/ja/general/dns-filtering-syntax/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
 
 **Issues報告**
 
@@ -1164,7 +1164,7 @@ AdGuardでの広告ブロック漏れ、Anti-Adblock Scriptによるコンテン
 * [ウェブ開発の学習 | MDN](https://developer.mozilla.org/ja/docs/Learn_web_development)
 
 **報告用Webサイト**
-* [AdGuard Filters Issues reporting tool](https://reports.adguard.com/ja/new_issue.html)
+* [AdGuardフィルターの不具合報告ツール](https://reports.adguard.com/ja/new_issue.html)
 またはAdGuard製品に搭載されている報告ツールを使います（[報告方法ガイド](https://adguard.com/kb/ja/guides/report-website/)）。
 
 報告されたIssuesは [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) に反映されます。
@@ -1177,13 +1177,13 @@ Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への
 
 **Issues報告・補足**
 * [AdGuardフィルタポリシー](https://adguard.com/kb/ja/general/ad-filtering/filter-policy/) に従って処理されます。
-* [AdGuard Sitereport website](https://github.com/AdguardTeam/ReportsWebApp)
+* [AdGuardのサイト報告用Webアプリ](https://github.com/AdguardTeam/ReportsWebApp)
 
 ---
 
 ## AdGuard ブラウザ拡張機能 MV3対応版
 * **[Chrome Web Store](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg)**
-* **[HP](https://adguard.com/ja/adguard-browser-extension/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardBrowserExtension)**
+* **[公式サイト](https://adguard.com/ja/adguard-browser-extension/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardBrowserExtension)**
 
 AdGuard ブラウザ拡張機能 MV3対応版でスクリプトレットを含む高度なルールを使用する場合は、拡張機能の内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。組み込み・カスタムフィルタは、拡張機能本体の更新に加え、対応バージョンではポップアップまたはフィルタ画面から手動更新を確認できます。
 
@@ -1217,8 +1217,8 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
  [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。
 
-**Filter Issues**
-* [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
+**フィルターの課題・不具合報告**
+* [AdGuard日本語フィルターPlusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
 
 **開発者ツールと連動した手動ブロック機能**
 
@@ -1235,10 +1235,10 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 * [はちまブログ > uBlock Origin](https://hachima25.hatenablog.com/archive/category/uBlock%20Origin)
   
   マイフィルタが分かりやすく紹介されています。
-* [r/uBlockOrigin > solutions > youtube](https://www.reddit.com/r/uBlockOrigin/wiki/solutions/youtube/)
-* [r/uBlockOrigin > solutions > twitter](https://www.reddit.com/r/uBlockOrigin/wiki/solutions/twitter/)
-* [YouTube Fix & Customizations（Reddit）](https://www.reddit.com/r/youtube/comments/1b40hra/youtube_fix_customizations_4_videos_per_row/)
-* [White area on Youtube（Reddit）](https://www.reddit.com/r/uBlockOrigin/comments/1l4r84i/white_area_on_youtube/)
+* [r/uBlockOriginのYouTube向け対処法](https://www.reddit.com/r/uBlockOrigin/wiki/solutions/youtube/)
+* [r/uBlockOriginのTwitter向け対処法](https://www.reddit.com/r/uBlockOrigin/wiki/solutions/twitter/)
+* [YouTubeの修正とカスタマイズ（Reddit）](https://www.reddit.com/r/youtube/comments/1b40hra/youtube_fix_customizations_4_videos_per_row/)
+* [YouTubeの白い領域について（Reddit）](https://www.reddit.com/r/uBlockOrigin/comments/1l4r84i/white_area_on_youtube/)
   
   YouTubeのホーム画面から、Shortsやおすすめなどの特別セクションを単なる非表示ではなくDOMから完全に削除（:remove()）するuBlock Origin用のフィルタです。動画サムネイル整列時の不自然な空白を防ぐ目的で使用されます。
     ```
@@ -1262,7 +1262,7 @@ Yuki2718氏は、uBlock Origin開発チームのうち**フィルターチーム
 
 ## Chrome 拡張機能 uBlacklist
 * **[Chrome Web Store](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**
-* **[HP](https://iorate.github.io/ublacklist/ja/docs)** / **[GitHub](https://github.com/iorate/ublacklist)**
+* **[公式サイト](https://iorate.github.io/ublacklist/ja/docs)** / **[GitHub](https://github.com/iorate/ublacklist)**
 
 uBlacklistは、Googleなどの検索結果から指定したWebサイトを非表示にする拡張機能です。正規表現ルール、クラウド同期、公開ブラックリストの購読などが可能です。
 
@@ -1300,8 +1300,8 @@ uBlacklistに対応するモバイルブラウザでも、詐欺サイトなど�
   @*://*.example.com/*
   ```
 
-**Filter Issues**
-* [uB-filter-by-kdroidwin Issues](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues)
+**フィルターの課題・不具合報告**
+* [uB-filter-by-kdroidwinの課題・不具合報告](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues)
 
 **参考サイト**
 * [Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
@@ -1311,7 +1311,7 @@ uBlacklistに対応するモバイルブラウザでも、詐欺サイトなど�
 
 ## Android アプリ personalDNSfilter（ChromeOS）
 * **[Google Play](https://play.google.com/store/apps/details?id=dnsfilter.android)**
-* **[HP](https://www.zenz-solutions.de/personaldnsfilter-wp/)** / **[GitHub](https://github.com/IngoZenz/personaldnsfilter)** / **[FAQ](https://www.zenz-solutions.de/faq/)**
+* **[公式サイト](https://www.zenz-solutions.de/personaldnsfilter-wp/)** / **[GitHub](https://github.com/IngoZenz/personaldnsfilter)** / **[よくある質問](https://www.zenz-solutions.de/faq/)**
 
 **personalDNSfilter（ローカルVPNモード）の常駐・DNS設定**
 
@@ -1332,11 +1332,11 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
 ※ 実態はDNSブロッカーのため、ABP形式の構文（`||example.com^`）には対応していません。
 
 **! 購読済みのDNSブロックリスト・hostsファイル**
-* HaGeZi's Multi NORMAL - all-round protection
+* HaGeZi Multi NORMAL（総合保護）
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
-* HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)
+* HaGeZi Threat Intelligence Feedsのmedium版（ブラウザー・モバイル用広告ブロッカー向け）
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif.medium-onlydomains.txt
   ```
@@ -1352,7 +1352,7 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
 ---
 
 ## Android アプリ 有償版 AdGuard for Android（Android）
-* **[HP](https://adguard.com/ja/adguard-android/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardForAndroid)**
+* **[公式サイト](https://adguard.com/ja/adguard-android/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardForAndroid)**
 
 **AdGuard for Android（ローカルVPNモード）の常駐・DNS設定**
 
@@ -1414,25 +1414,25 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 
  [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。
 
-**Filter Issues**
-* [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
+**フィルターの課題・不具合報告**
+* [AdGuard日本語フィルターPlusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
 
 **DNS通信を保護 > DNSフィルタ**
 
 [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) によるブロックはシステム全体に及びます（[DNS書き換えの基本](https://writening.net/page?keELEF)）。
 プライバシー関連のルールによる不具合（[Issues #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896), [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178)）を緩和する方法。
 
-① **[AdGuard DNS filter without privacy filters (Ads only)](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
+① **[プライバシーフィルターを除いたAdGuard DNSフィルター（広告のみ）](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
 
 ② **[AdGuard_DNS_Filter_for_myself](https://github.com/monsivamon/AdGuard_DNS_Filter_for_myself)**
 
-③ **[HaGeZi's Multi NORMAL - all-round protection](https://github.com/hagezi/dns-blocklists#blue_book-multi-normal-all-round-protection-)**
+③ **[HaGeZi Multi NORMAL（総合保護）](https://github.com/hagezi/dns-blocklists#blue_book-multi-normal-all-round-protection-)**
 
 ④ **DNSユーザーフィルタ** で自作例外ルール（`@@`）を作成。
 
 **脅威対策の追加候補（DNSフィルタ）**
 
-* [HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)](https://github.com/hagezi/dns-blocklists#tifmedium)
+* [HaGeZi Threat Intelligence Feedsのmedium版（ブラウザー・モバイル用広告ブロッカー向け）](https://github.com/hagezi/dns-blocklists#tifmedium)
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.medium.txt
   ```
@@ -1490,8 +1490,8 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
 * [tinyShield](https://github.com/FilteringDev/tinyShield/blob/main/README.ja.md)（Ad-Shield対策、原則不要）
 * [最上部/最下部 移動ボタン追加](https://github.com/PermanentWave/SetTopAndBottomButtons)
 
-**Product Issues**
-* [AdGuard for Android Issues](https://github.com/AdguardTeam/AdguardForAndroid/issues)
+**製品の課題・不具合報告**
+* [AdGuard for Androidの課題・不具合報告](https://github.com/AdguardTeam/AdguardForAndroid/issues)
 
 **参考サイト / 質問テンプレ**
 * [なんJ AdGuard部 Wiki*](https://wikiwiki.jp/nanj-adguard/) / [5ch【広告除去】AdGuard](https://ff5ch.syoboi.jp/?q=%E3%80%90%E5%BA%83%E5%91%8A%E9%99%A4%E5%8E%BB%E3%80%91AdGuard)
@@ -1611,7 +1611,7 @@ Android の「プライベート DNS」でプロバイダのホスト名を指�
 
 | 用途 | 候補 | 向いている人 |
 | :--- | :--- | :--- |
-| シンプルに広告・トラッカーをブロックしたい | [DNSBunker](https://dnsbunker.org/) / [dnsforge](https://dnsforge.de/) / [Public AdGuard DNS](https://adguard-dns.io/en/public-dns.html) | アカウント作成や細かな設定をせず、Private DNSへホスト名を入れて使いたい |
+| シンプルに広告・トラッカーをブロックしたい | [DNSBunker](https://dnsbunker.org/) / [dnsforge](https://dnsforge.de/) / [パブリックAdGuard DNS](https://adguard-dns.io/en/public-dns.html) | アカウント作成や細かな設定をせず、Private DNSへホスト名を入れて使いたい |
 | マルウェア・フィッシング対策を重視したい | [Quad9](https://quad9.net/) | 広告ブロックよりも悪性ドメイン対策を優先したい |
 | ブロックリストやAllowlist / Denylistを細かく調整したい | [NextDNS](https://nextdns.io/) / [Control D](https://controld.com/) / [Private AdGuard DNS](https://adguard-dns.io/) | 端末ごとの設定、ログ、カスタムルールなどを管理したい |
 | 多数のブロックリストから選びたい | [RethinkDNS](https://rethinkdns.com/) | 多数のリストを組み合わせたい。※Android標準Private DNS用DoTホスト名は一次情報で未確認 |
@@ -1622,56 +1622,56 @@ Android の「プライベート DNS」でプロバイダのホスト名を指�
 * **用途**：プライバシー重視 + 広告・トラッカー・脅威ブロック
 * **特徴**：広告・トラッカー・脅威をDNSレベルでブロック。アカウント不要で、公式にはDNSクエリを永続保存しないと説明されています。
 * **カスタマイズ性**：低い
-* **Android Private DNS**：`dnsbunker.org`
+* **AndroidのプライベートDNS**：`dnsbunker.org`
 * **注意点**：公開リゾルバーのため、利用者ごとのフィルタ設定を行う用途には向きません。
 
 **dnsforge**
 * **用途**：プライバシー重視 + 広告・トラッカー・マルウェアブロック
 * **特徴**：Normal / Clean / Hard / Blank を選択可能。Normalは広告・トラッカー・マルウェアをブロックし、公式にはクエリログを保存しないと説明されています。DNSSEC検証にも対応します。
 * **カスタマイズ性**：低い
-* **Android Private DNS**：`dnsforge.de`（Normal）
+* **AndroidのプライベートDNS**：`dnsforge.de`（Normal）
 * **注意点**：Hardは厳格なブロックリストを使用し、サイト機能に影響する可能性があります。
 
 **Quad9**
 * **用途**：プライバシー・セキュリティ重視
 * **特徴**：malware、phishing、exploit kitなどの悪性ドメインをブロック。DNSSEC、DoT、DoH、DNSCryptに対応し、エンドユーザーのIPアドレスを保存しない方針です。
 * **カスタマイズ性**：低い
-* **Android Private DNS**：`dns.quad9.net`
+* **AndroidのプライベートDNS**：`dns.quad9.net`
 * **注意点**：一般的な広告・トラッカーブロック用のコンテンツフィルターではありません。
 
 **NextDNS**
 * **用途**：広告・トラッカー対策 + カスタマイズ重視
 * **特徴**：ブロックリスト、Allowlist / Denylist、セキュリティ・プライバシー設定、ログ保持期間や保存地域などを設定できます。
 * **カスタマイズ性**：高い
-* **Android Private DNS**：`<設定ID>.dns.nextdns.io`
+* **AndroidのプライベートDNS**：`<設定ID>.dns.nextdns.io`
 * **注意点**：無料利用には月間クエリ数の上限があり、上限後はフィルタリング等が停止します。DoTホスト名は各設定ごとに異なります。
 
 **Control D**
 * **用途**：広告・トラッカー対策 + カスタマイズ重視
 * **特徴**：フィルター、サービス単位の制御、Custom Rules、端末ごとのポリシーなどを設定できます。DNSログのAnalyticsは任意で有効化します。
 * **カスタマイズ性**：高い
-* **Android Private DNS**：Control D Dashboardに表示される端末固有のDoTホスト名
+* **AndroidのプライベートDNS**：Control D Dashboardに表示される端末固有のDoTホスト名
 * **注意点**：Android 9以降では公式手順で端末固有のDNS-over-TLSホスト名をPrivate DNSに設定します。
 
-**Private AdGuard DNS**
+**プライベートAdGuard DNS**
 * **用途**：広告・トラッカー対策 + カスタマイズ重視
 * **特徴**：ブロックリスト、カスタムブロックリスト、User rules、セキュリティ設定、Query log等を利用できます。
 * **カスタマイズ性**：高い
-* **Android Private DNS**：`{Your_Device_ID}.d.adguard-dns.com`
+* **AndroidのプライベートDNS**：`{Your_Device_ID}.d.adguard-dns.com`
 * **注意点**：プランごとにクエリ数やフィルタルール数などの制限があります。Query logは無効化できます。
 
-**Public AdGuard DNS**
+**パブリックAdGuard DNS**
 * **用途**：広告・トラッカーブロック / シンプル
 * **特徴**：無料の公開DNS。Defaultサーバーは広告・トラッカーをブロックします。
 * **カスタマイズ性**：低い
-* **Android Private DNS**：`dns.adguard-dns.com`
+* **AndroidのプライベートDNS**：`dns.adguard-dns.com`
 * **注意点**：個別のブロックリストやUser rulesなどを設定する場合はPrivate AdGuard DNSを使用します。
 
 **RethinkDNS**
 * **用途**：多数のブロックリストから選択したい
 * **特徴**：190以上のブロックリストを選択でき、広告、トラッカー、マルウェア等のDNSレベルブロックに対応します。無料利用ではDNSログを保存しないと説明されています。
 * **カスタマイズ性**：高い
-* **Android Private DNS**：**公式DoTホスト名を一次情報で確認できず**
+* **AndroidのプライベートDNS**：**公式DoTホスト名を一次情報で確認できず**
 * **注意点**：公式ドキュメントで確認できるクラウドDNS設定は主にDoH URLです。Android標準のPrivate DNS候補としてはDoTホスト名を確認できるまで保留します。
 
 #### 補足
@@ -1694,15 +1694,15 @@ DNSブロックは、DNS問い合わせに対してドメイン名単位で応�
 
 **公式・一次情報**
 
-* [Android Developers｜DevicePolicyManager - Private DNS](https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setGlobalPrivateDnsModeSpecifiedHost(android.content.ComponentName,%20java.lang.String))
-* [DNSBunker](https://dnsbunker.org/) / [Privacy Policy](https://dnsbunker.org/privacy.html)
+* [Android Developers｜DevicePolicyManagerのプライベートDNS設定](https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setGlobalPrivateDnsModeSpecifiedHost(android.content.ComponentName,%20java.lang.String))
+* [DNSBunker](https://dnsbunker.org/) / [プライバシーポリシー](https://dnsbunker.org/privacy.html)
 * [dnsforge.de](https://dnsforge.de/)
-* [Quad9 Documentation](https://docs.quad9.net/) / [FAQ](https://quad9.net/support/faq/)
-* [NextDNS](https://nextdns.io/) / [Privacy Policy](https://nextdns.io/privacy)
-* [Control D Android Setup](https://docs.controld.com/docs/android-platform) / [Privacy Policy](https://controld.com/privacy)
-* [Private AdGuard DNS Android Setup](https://adguard-dns.io/kb/private-dns/connect-devices/mobile-and-desktop/android/) / [Filtering](https://adguard-dns.io/kb/private-dns/setting-up-filtering/)
-* [Public AdGuard DNS](https://adguard-dns.io/en/public-dns.html)
-* [RethinkDNS](https://rethinkdns.com/) / [DNS Documentation](https://docs.rethinkdns.com/dns/) / [Privacy Policy](https://rethinkdns.com/privacy)
+* [Quad9のドキュメント](https://docs.quad9.net/) / [よくある質問](https://quad9.net/support/faq/)
+* [NextDNS](https://nextdns.io/) / [プライバシーポリシー](https://nextdns.io/privacy)
+* [Control DのAndroid設定](https://docs.controld.com/docs/android-platform) / [プライバシーポリシー](https://controld.com/privacy)
+* [プライベートAdGuard DNSのAndroid設定](https://adguard-dns.io/kb/private-dns/connect-devices/mobile-and-desktop/android/) / [フィルタリング](https://adguard-dns.io/kb/private-dns/setting-up-filtering/)
+* [パブリックAdGuard DNS](https://adguard-dns.io/en/public-dns.html)
+* [RethinkDNS](https://rethinkdns.com/) / [DNSのドキュメント](https://docs.rethinkdns.com/dns/) / [プライバシーポリシー](https://rethinkdns.com/privacy)
 
 ---
 
@@ -1738,7 +1738,7 @@ DNSブロックは、DNS問い合わせに対してドメイン名単位で応�
 
 **補足・Auto Builder**
 * [anddea Patch（RVXフォーク）](https://github.com/anddea/revanced-patches/releases)
-* [Bundle Search](https://revanced-external-bundles.brosssh.com/)
+* [バンドル検索](https://revanced-external-bundles.brosssh.com/)
 * [Morphe Patches Auto Builder](https://github.com/monsivamon/morpheapp-apk)
 * [RVX（anddea版）Auto Builder](https://github.com/monsivamon/revanced_extended_anddea-apk)
 
@@ -1806,7 +1806,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 ---
 
 ## Android アプリ ChMate（ChromeOS・Android）
-* **[Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate)** / **[HP](https://chmate.airfront.co.jp/)**
+* **[Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate)** / **[公式サイト](https://chmate.airfront.co.jp/)**
 
 **ChMate テーマ変更**
 * [2chMateのテーマ専用アップローダー](https://ux.getuploader.com/2chmate_theme/)
@@ -1824,7 +1824,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 **ChMateに関連するローカルプロキシアプリ・Morphe patch**
 * [IOMate](https://github.com/kitadai31/IOMate) / [ChMateのおすすめバージョンランキング](https://github.com/kitadai31/IOMate#chmate%E3%81%AE%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0)
   * 5ch.io対応前の古いChMateで5ch.ioに読み書きするためのローカルプロキシアプリです。
-* [Haiagaru Morphe patch for ChMate 0.8.10.191-242](https://github.com/areteruhiro/Haiagaru-Morphe)
+* [ChMate 0.8.10.191-242用のHaiagaru Morpheパッチ](https://github.com/areteruhiro/Haiagaru-Morphe)
   * ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.242 dev 対応のMorpheパッチです。
 
 ChromeOS上でのChMateの完全な動作は保証されていません。（[動作環境](https://chmate.airfront.co.jp/docs/supported-os/#%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6)）
@@ -1842,11 +1842,11 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 Linux Mintの導入、設定、ソフトウェア管理、Timeshift、Kernel Panicを含むトラブルシューティング、AdGuard for Linux、セキュリティなどについては、独立したガイドへ分離しました。
 
-- [Linux Mint Guide](Linux%20Mint%20Guide.md)
+- [Linux Mintガイド](Linux%20Mint%20Guide.md)
 
 ---
 
-## Credits
+## 謝辞・参考情報
 * [r/Adguard](https://www.reddit.com/r/Adguard/) / [r/uBlockOrigin](https://www.reddit.com/r/uBlockOrigin/)
 * [AdGuard ナレッジベース](https://adguard.com/kb/ja/) / [AdGuard（𝕏）](https://x.com/AdGuard) / [AdGuardJP（𝕏）](https://x.com/AdGuardJP) / [AdGuard ブログ](https://adguard-com.translate.goog/en/blog/index.html?_x_tr_sl=auto&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp)
 
@@ -1870,7 +1870,7 @@ Linux Mintの導入、設定、ソフトウェア管理、Timeshift、Kernel Pan
 * [Android Police](https://www.androidpolice.com/)
 * [Android Authority](https://www.androidauthority.com/)
 * [TestingCatalog | AI News & Rumours](https://www.testingcatalog.com/)
-* [Kdroidwin Blog](https://kdroidwin.codeberg.page/archive/)
+* [Kdroidwinのブログ](https://kdroidwin.codeberg.page/archive/)
 * [HelenTech](https://helentech.jp/) / [🌴 officeの杜 🥥](https://officeforest.org/wp/)
 * [Chromium派生ブラウザ総合 まとめWiki](https://w.atwiki.jp/chromiumbased/pages/1.html)
 * [スマホブラウザ@ウィキ](https://w.atwiki.jp/sumaho_browser/pages/1.html)

@@ -70,7 +70,7 @@ class CapabilityProfileTests(unittest.TestCase):
 
         self.assertEqual(policy["source_syntax"], "uBlock Origin")
         self.assertEqual(policy["target_syntax"], "AdGuard")
-        self.assertIn("not assumed compatible", policy["trusted_scriptlets"])
+        self.assertIn("互換であるとは見なしません", policy["trusted_scriptlets"])
         for scriptlet in (
             "trusted-replace-argument",
             "trusted-set-cookie",
@@ -107,11 +107,11 @@ class CapabilityProfileTests(unittest.TestCase):
         )
         self.assertEqual(
             optimizer.optimize_line("example.com##div:unsupported-ext(value)"),
-            "! [Unsupported Extended CSS] example.com##div:unsupported-ext(value)",
+            "! [未対応の拡張CSS] example.com##div:unsupported-ext(value)",
         )
         self.assertEqual(
             optimizer.optimize_line("example.com##+js(custom-scriptlet)"),
-            "! [Incompatible Scriptlet] example.com##+js(custom-scriptlet)",
+            "! [互換性のないスクリプトレット] example.com##+js(custom-scriptlet)",
         )
         self.assertEqual(
             optimizer.optimize_line("||example.com^$custommod"),
@@ -172,21 +172,21 @@ class ModifierConversionTests(unittest.TestCase):
         rule = "||example.com/ad.js$script,redirect-rule=noopjs"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported MV3 Modifier: redirect-rule] " + rule,
+            "! [MV3未対応の修飾子: redirect-rule] " + rule,
         )
 
     def test_redirect_rule_exception_is_commented_out(self):
         rule = "@@||example.com/ad.js$redirect-rule=noopjs"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported MV3 Modifier: redirect-rule] " + rule,
+            "! [MV3未対応の修飾子: redirect-rule] " + rule,
         )
 
     def test_bare_redirect_rule_is_commented_out(self):
         rule = "||example.com/ad.js$script,redirect-rule"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported MV3 Modifier: redirect-rule] " + rule,
+            "! [MV3未対応の修飾子: redirect-rule] " + rule,
         )
 
     def test_other_modifier_replacements_still_work(self):
@@ -208,14 +208,14 @@ class ModifierConversionTests(unittest.TestCase):
         rule = "example.com##+js(trusted-replace-argument)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Incompatible Scriptlet] " + rule,
+            "! [互換性のないスクリプトレット] " + rule,
         )
 
     def test_incompatible_scriptlet_with_arguments_matches_exactly(self):
         rule = "example.com##+js(trusted-set-cookie, consent, true)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Incompatible Scriptlet] " + rule,
+            "! [互換性のないスクリプトレット] " + rule,
         )
 
     def test_adguard_compatible_scriptlets_are_preserved(self):
@@ -233,7 +233,7 @@ class ModifierConversionTests(unittest.TestCase):
         rule = "example.com##+js(json-prune-fetch-response)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unverified Scriptlet] " + rule,
+            "! [未検証のスクリプトレット] " + rule,
         )
 
     def test_unescaped_slash_in_regex_character_class_is_escaped(self):
@@ -251,14 +251,14 @@ class ModifierConversionTests(unittest.TestCase):
         rule = r"/pay(?=ment)/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported MV3 Regex] " + rule,
+            "! [MV3未対応の正規表現] " + rule,
         )
 
     def test_negative_lookahead_regex_is_commented_out(self):
         rule = r"/tracker(?!safe)/"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported MV3 Regex] " + rule,
+            "! [MV3未対応の正規表現] " + rule,
         )
 
     def test_bare_regex_with_embedded_end_anchor_keeps_scope(self):
@@ -318,17 +318,17 @@ class ModifierConversionTests(unittest.TestCase):
         rule = "example.com/path,example.org##.advertisement"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported Mixed Cosmetic URL Scope] " + rule,
+            "! [未対応の混在する要素非表示URL範囲] " + rule,
         )
 
     def test_cname_only_modifier_is_disabled(self):
         rule = "||example.com^$cname"
-        self.assertEqual(self.optimizer.optimize_line(rule), "! [Unsupported MV3 Modifier: cname] " + rule)
+        self.assertEqual(self.optimizer.optimize_line(rule), "! [MV3未対応の修飾子: cname] " + rule)
 
     def test_cname_exception_never_becomes_general_allow_rule(self):
         for rule in ("@@*$cname", "@@||example.com^$cname,domain=example.org", "@@*$~cname"):
             with self.subTest(rule=rule):
-                self.assertEqual(self.optimizer.optimize_line(rule), "! [Unsupported MV3 Modifier: cname] " + rule)
+                self.assertEqual(self.optimizer.optimize_line(rule), "! [MV3未対応の修飾子: cname] " + rule)
 
     def test_negated_third_party_alias_is_preserved(self):
         rule = "||example.com^$~3p"
@@ -338,7 +338,7 @@ class ModifierConversionTests(unittest.TestCase):
         rule = "example.com#@#+js(trusted-replace-argument)"
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Incompatible Scriptlet] " + rule,
+            "! [互換性のないスクリプトレット] " + rule,
         )
 
 

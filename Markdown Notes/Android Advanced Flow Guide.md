@@ -1,12 +1,12 @@
-# Android Advanced Flow Guide
+# Androidの高度な確認フローのガイド
 
 Androidの未確認デベロッパー製アプリをインストールする「Advanced Flow」の概要です。制度変更を追跡するための学習・検証記録として、公式情報、手順、注意点を後から比較できる形で残しています。
 
 | メタデータ | 情報 |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | CC0-1.0 |
-| **Version** | 202610220026 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | CC0-1.0 |
+| **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
@@ -65,7 +65,7 @@ ADBによる開発・テスト用途のワークフローは従来どおり維�
 
 ## 公式情報
 
-- [Android developer verification](https://developer.android.com/developer-verification)
-- [Frequently asked questions](https://developer.android.com/developer-verification/guides/faq)
-- [Learn about Android developer verification](https://support.google.com/android/answer/17065026)
-- [Allow app installs from unverified developers](https://support.google.com/android/answer/17588095)
+- [Androidの開発者確認](https://developer.android.com/developer-verification)
+- [よくある質問](https://developer.android.com/developer-verification/guides/faq)
+- [Androidの開発者確認について](https://support.google.com/android/answer/17065026)
+- [未確認の開発者のアプリのインストールを許可](https://support.google.com/android/answer/17588095)

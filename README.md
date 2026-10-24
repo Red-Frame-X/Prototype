@@ -9,16 +9,16 @@ ChromeOS・Android向けの設定、コンテンツブロックフィルタ、Us
 >
 > フィルタ、スクリプト、設定、技術メモは自分の環境で確認したもので、一般向けの手順書・配布物を想定していません。
 
-## Workflow
+## ワークフロー
 
-| Category | Workflow | Status |
+| 分類 | ワークフロー | 状態 |
 | --- | --- | --- |
-| Quality | [Repository Quality Checks](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/quality.yml?branch=main&event=push&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Build / Sync | [Sync and Convert uB-filter-by-kdroidwin (AdGuard Optimized)](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/sync.yml?branch=main&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Version | [Check AdGuard Version Timestamp](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/check-adguard-version.yml?branch=main&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Version | [Update Version Timestamps (JST)](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-version-timestamps.yml?branch=main&event=schedule&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Maintenance | [Update AdGuard Changelogs](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-adguard-changelogs.yml?branch=main&event=schedule&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
-| Maintenance | [Update ChMate NG Version](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![Workflow status](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-chmate-ng-version.yml?branch=main&style=for-the-badge&label=STATUS&labelColor=555&color=brightgreen) |
+| 品質検査 | [リポジトリの品質検査](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/quality.yml?branch=main&event=push&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 生成・同期 | [uB-filter-by-kdroidwinの同期・AdGuard向け変換](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/sync.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| バージョン | [AdGuardのVersion日時検査](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/check-adguard-version.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| バージョン | [Version日時の更新（日本標準時）](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-version-timestamps.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 保守 | [AdGuard変更履歴の更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-adguard-changelogs.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 保守 | [ChMate NGのVersion更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-chmate-ng-version.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
 
 ## リポジトリ案内
 
@@ -26,15 +26,15 @@ ChromeOS・Android向けの設定、コンテンツブロックフィルタ、Us
 
 | 項目 | 主な内容 | 参照先 |
 | --- | --- | --- |
-| AdGuard Custom Rules | AdGuard向けの個人用コンテンツブロックルール、DNSルール、関連CHANGELOG | [README](./AdGuard%20Custom%20Rules/README.md) / [コンテンツブロックフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [DNSフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [ChangeLog](./AdGuard%20Custom%20Rules/ChangeLog/) |
-| uB-filter-by-kdroidwin (AdGuard Optimized) | 上流フィルタをAdGuard向けに変換した自動生成物 | [README](./dist/README.md) / [生成フィルタ](./dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
+| AdGuardカスタムルール | AdGuard向けの個人用コンテンツブロックルール、DNSルール、関連する変更履歴 | [README](./AdGuard%20Custom%20Rules/README.md) / [コンテンツブロックフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [DNSフィルタ](./AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [変更履歴](./AdGuard%20Custom%20Rules/ChangeLog/) |
+| uB-filter-by-kdroidwin（AdGuard最適化版） | 上流フィルタをAdGuard向けに変換した自動生成物 | [README](./dist/README.md) / [生成フィルタ](./dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
 | UserScript | 𝕏・YouTubeなどの表示や挙動を調整する個人用UserScript | [README](./UserScript/README.md) / [ディレクトリ](./UserScript/) |
-| NG Word Regex for ChMate | ChMateで使用するJava正規表現 | [README](./NG%20Word%20Regex%20for%20ChMate/README.md) / [正規表現](./NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
-| Markdown Notes | ChromeOS、Android、Linux、GitHub、コンテンツブロックなどの学習・調査メモ | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) |
+| ChMate用NGワード正規表現 | ChMateで使用するJava正規表現 | [README](./NG%20Word%20Regex%20for%20ChMate/README.md) / [正規表現](./NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
+| Markdown形式の技術メモ | ChromeOS、Android、Linux、GitHub、コンテンツブロックなどの学習・調査メモ | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) |
 | config / upstream | 変換能力の定義、上流情報の追跡・ミラー | [config](./config/) / [upstream](./upstream/) |
 | scripts / tests | フィルタ変換・更新処理、整合性検査、回帰テスト | [scripts](./scripts/) / [tests](./tests/) |
-| GitHub Actions | 品質確認、同期、変換、CHANGELOG追跡などのWorkflow | [Actions](https://github.com/Red-Frame-X/Prototype/actions) |
-| License | リポジトリ全体のライセンス情報 | [LICENSE](./LICENSE) / [LICENSES.md](./LICENSES.md) |
+| GitHub Actions | 品質確認、同期、変換、変更履歴の追跡などのワークフロー | [Actions](https://github.com/Red-Frame-X/Prototype/actions) |
+| ライセンス | リポジトリ全体のライセンス情報 | [LICENSE](./LICENSE) / [LICENSES.md](./LICENSES.md) |
 
 > [!NOTE]
 > ルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換スクリプトを修正して再生成します。
@@ -55,9 +55,9 @@ GitHub Actionsで、更新処理・変換・品質確認を自動化していま
 - push後、コメントだけの編集も含め、対応するVersionメタデータをGitHub ActionsでJSTの現在時刻へ同期します。
 - push時に同期が起動しなかった場合に備え、品質チェック完了後の実行、15分おきの定期実行、手動実行でも最新mainの未同期の変更を確認します。Versionだけを更新済みのファイルは再更新しません。
 - AdGuard Custom Rules / AdGuard DNS Custom Rulesでは、Pull Request内の各コミットを検査し、ルール変更と! Version:の更新が同じコミットに含まれていることをCIで検証します。
-- Workflow失敗時は原因を確認して修正し、必要に応じて再発防止策を反映します。
+- ワークフロー失敗時は原因を確認して修正し、必要に応じて再発防止策を反映します。
 - uB-filter-by-kdroidwin (AdGuard Optimized)の定期同期・変換を行います。
-- AdGuard公式CHANGELOGを定期確認します。
+- AdGuard公式の変更履歴を定期確認します。
 
 ローカルで主要な検査を実行する場合：
 
@@ -78,8 +78,14 @@ Markdownの行末にスペース1つが残ると、CIのMD009検査が失敗し�
 ## 方針
 
 - このリポジトリは、個人の学習記録、検証ログ、設定バックアップとして維持します。
-- 技術情報を確認する際は、対象プロジェクトの公式ドキュメント、公式リポジトリ、公開ソース、CHANGELOG、Issuesなどの一次情報を優先します。
+- 技術情報を確認する際は、対象プロジェクトの公式ドキュメント、公式リポジトリ、公開ソース、変更履歴、Issuesなどの一次情報を優先します。
 - 互換性を推測だけで拡張せず、必要な検証や回帰テストを行ってから変換処理・設定を変更します。
 - 誤ブロック、互換性、視認性、性能、保守性、プライバシーなどのトレードオフを考慮します。
 - 自動生成物は原則として直接編集せず、原本または変換処理を修正して再生成します。
 - 製品のUI名や機能名を記載する場合は、可能な限り対象バージョンの公式表記に合わせます。
+
+## 日本語表記の方針
+
+説明、見出し、リンクの表示名、コメント、ヘルプ、ログ、エラーメッセージ、ワークフローの表示名は日本語に揃えます。コミットとプルリクエストのタイトルも日本語にします。
+
+製品名・コード識別子・コマンド・設定キー・メタデータキー・URL・既存のファイル名と購読先パスは、仕様や参照の互換性を保つために原表記を維持します。ライセンス原文、公式変更履歴の原文ミラー、検証用の原文引用も保持します。UserScriptの日本語表示名には`@name:ja`を使い、更新時の識別に必要な既存の`@name`と`@namespace`は維持します。

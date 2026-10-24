@@ -4,16 +4,16 @@ AdGuard製品で `||mydocomo.docomo.ne.jp^$document` を適用した際の実機
 
 | メタデータ | 情報 |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | CC0-1.0 |
-| **Version** | 202610220026 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | CC0-1.0 |
+| **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
 ## 動作環境
 
 - **Desktop**：ChromeOS / Chrome / AdGuard ブラウザ拡張機能 MV3対応版
-- **Mobile**：Android / Chrome / AdGuard for Android
+- **モバイル**：Android / Chrome / AdGuard for Android
 
 ## 公式仕様
 
@@ -40,6 +40,6 @@ AdGuardとuBlock Originは似たフィルタ構文を持ちますが、同じ修
 ## 参照
 
 - [Fix: mydocomo.docomo.ne.jp の誤判定？#11](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues/11)
-- [AdGuard — How to create your own ad filters](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
-- [uBlock Origin Wiki — Static filter syntax](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax)
-- [uBlock Origin Wiki — Strict blocking](https://github.com/gorhill/uBlock/wiki/Strict-blocking)
+- [AdGuard — 独自の広告フィルターの作成方法](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+- [uBlock Origin Wiki — 静的フィルター構文](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax)
+- [uBlock Origin Wiki — 厳格ブロック](https://github.com/gorhill/uBlock/wiki/Strict-blocking)

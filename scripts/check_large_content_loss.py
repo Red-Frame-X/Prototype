@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail CI when protected user-facing content suffers substantial unintended loss."""
+"""保護対象の利用者向けコンテンツが意図せず大幅に減少した場合にCIを失敗させる。"""
 from __future__ import annotations
 
 import argparse
@@ -24,8 +24,8 @@ def parse_numstat(text: str):
             continue
         added, deleted, path = record.split("\t", 2)
         before_path = path
-        # Renames/copies use an empty path followed by two NUL-delimited paths.
-        # Consume both even for binary entries so the next record stays aligned.
+        # 改名・コピーでは空のパスに続き、NUL区切りのパスが2つ現れる。
+        # バイナリー項目でも両方を読み取り、次のレコードとの対応を保つ。
         if not path:
             before_path = next(records)
             path = next(records)
@@ -62,7 +62,7 @@ def is_protected_path(path: str) -> bool:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-ref", required=True)
     parser.add_argument("--max-deletions", type=int, default=DEFAULT_MAX_DELETIONS)
     parser.add_argument("--max-net-loss", type=int, default=DEFAULT_MAX_NET_LOSS)
@@ -72,7 +72,7 @@ def main() -> int:
         action="append",
         default=[],
         metavar="PATH",
-        help="Explicitly authorize a reviewed large deletion in one exact protected content path. Repeat as needed.",
+        help="レビュー済みの大量削除を、保護対象の正確なパスを指定して明示的に許可します。必要に応じて繰り返し指定します。",
     )
     args = parser.parse_args()
 
@@ -89,24 +89,24 @@ def main() -> int:
         before_lines = line_count(args.base_ref, before_path)
         after_lines = line_count("HEAD", path)
 
-        # Ordinary edits and rewrites may naturally replace existing lines. The guard
-        # should block substantial net loss, not every large rewrite where most lines
-        # are replaced one-for-one. Exact-path authorization remains available for
-        # intentionally large removals, but never bypasses the retained-ratio safeguard.
+        # 通常の編集や書き換えでも既存行は置き換わる。この検査では、
+        # 大規模な置換そのものではなく、内容の大幅な純減を防止する。
+        # 意図した大量削除には厳密なパス指定による承認を使えるが、
+        # その場合も内容の保持率に関する保護は省略しない。
         if after_lines is None:
             if path not in allowed_paths:
                 failures.append(
-                    f"{path}: file deleted (+{added}/-{deleted}); protected file deletion is not explicitly authorized. "
-                    "Add --allow-deletion-in with this exact path only for a user-requested deletion."
+                    f"{path}: ファイルが削除されました（+{added}/-{deleted}）。保護対象ファイルの削除は明示的に承認されていません。"
+                    "ユーザーが依頼した削除に限り、--allow-deletion-inにこの正確なパスを指定してください。"
                 )
             continue
 
         if before_lines and after_lines / before_lines < args.min_retained_ratio:
             failures.append(
-                f"{path}: +{added}/-{deleted} (net loss {net_loss}); "
-                f"retained {after_lines}/{before_lines} lines "
-                f"({after_lines / before_lines:.1%}). "
-                "Large content removal requires explicit review instead of automatic merging."
+                f"{path}: +{added}/-{deleted}（純減 {net_loss}）、"
+                f"保持行数 {after_lines}/{before_lines}行 "
+                f"（{after_lines / before_lines:.1%}）。"
+                "大量の内容削除には、自動マージの前に明示的なレビューが必要です。"
             )
             continue
 
@@ -115,9 +115,9 @@ def main() -> int:
 
         if net_loss >= args.max_net_loss:
             failures.append(
-                f"{path}: +{added}/-{deleted} (net loss {net_loss}); "
-                f"net loss reaches the review threshold {args.max_net_loss}. "
-                "Large content removal requires explicit review instead of automatic merging."
+                f"{path}: +{added}/-{deleted}（純減 {net_loss}）、"
+                f"純減がレビュー基準に達しています: {args.max_net_loss}。"
+                "大量の内容削除には、自動マージの前に明示的なレビューが必要です。"
             )
 
     stale_authorizations = sorted(
@@ -127,17 +127,17 @@ def main() -> int:
     )
     if stale_authorizations:
         failures.append(
-            "Deletion authorization does not match an actual protected-content deletion: "
+            "削除承認が実際の保護対象コンテンツの削除と一致しません: "
             + ", ".join(stale_authorizations)
         )
 
     if failures:
-        print("Potential unintended content loss detected:", file=sys.stderr)
+        print("意図しない内容消失の可能性を検出しました:", file=sys.stderr)
         for failure in failures:
             print(f"- {failure}", file=sys.stderr)
         return 1
 
-    print("Content-loss guard passed: no substantial unapproved protected-content loss.")
+    print("内容消失防止検査に合格: 保護対象に未承認の大幅な内容減少はありません。")
     return 0
 
 

@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         X Auto Select Following Latest Sort
+// @name:ja      Xのフォロー中・最新順を自動選択
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      202610220026
+// @version      202610241010
 // @description  Xのホームで「フォロー中」を既定選択し、並べ替えメニューでは自動的に「最新」を選択します。
 // @author       Red-Frame-X
 // @match        https://x.com/*

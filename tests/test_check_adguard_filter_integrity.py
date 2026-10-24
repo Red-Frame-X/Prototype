@@ -29,7 +29,7 @@ class AdGuardFilterIntegrityTests(unittest.TestCase):
         original = FILTER.read_text(encoding="utf-8-sig")
         try:
             updated = original.replace(
-                "! Title: AdGuard Custom Rules - Red Frame X",
+                "! Title: AdGuardカスタムルール - Red Frame X",
                 "! Title: 一時的な表示名",
                 1,
             )
@@ -43,14 +43,14 @@ class AdGuardFilterIntegrityTests(unittest.TestCase):
         original = FILTER.read_text(encoding="utf-8-sig")
         try:
             updated = original.replace(
-                "! Title: AdGuard Custom Rules - Red Frame X",
+                "! Title: AdGuardカスタムルール - Red Frame X",
                 "! Title:   ",
                 1,
             )
             FILTER.write_text(updated, encoding="utf-8")
             result = run_check()
             self.assertNotEqual(result.returncode, 0)
-            self.assertIn("missing or empty ! Title metadata", result.stderr)
+            self.assertIn("! Titleメタデータがないか、値が空です", result.stderr)
         finally:
             FILTER.write_text(original, encoding="utf-8")
 

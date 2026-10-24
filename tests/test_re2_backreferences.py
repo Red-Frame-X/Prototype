@@ -10,7 +10,7 @@ class Re2BackreferenceTests(unittest.TestCase):
     def assert_unsupported(self, rule: str) -> None:
         self.assertEqual(
             self.optimizer.optimize_line(rule),
-            "! [Unsupported MV3 Regex] " + rule,
+            "! [MV3未対応の正規表現] " + rule,
         )
 
     def test_numeric_backreference_is_rejected(self):

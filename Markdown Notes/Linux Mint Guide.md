@@ -1,4 +1,4 @@
-# Linux Mint Guide
+# Linux Mintガイド
 
 Linux Mintに関する導入、設定、運用、バックアップ、トラブルシューティングなどをまとめたガイドです。
 
@@ -6,9 +6,9 @@ Linux Mintに関する導入、設定、運用、バックアップ、トラブ�
 
 | <div align="center">メタデータ</div> | <div align="center">情報</div> |
 | :--- | :--- |
-| **Homepage** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
-| **License** | CC0-1.0 |
-| **Version** | 202610220026 |
+| **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
+| **ライセンス** | CC0-1.0 |
+| **Version** | 202610241010 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -59,8 +59,8 @@ Linux Mint 22.3の公式要件は、**2 GB RAM（快適利用には4 GB推奨）
 
 NVIDIA GPUを使う場合は、導入後に **Driver Manager** で利用可能なドライバーを確認します。Linux Mint 22.2 / 22.3は新しいハードウェア向けにHWEカーネルを採用していますが、Linux Mint 22.3の公式リリースノートでは、古いNVIDIA 470ドライバーなど一部環境との互換性問題が案内されています。該当する場合は、LTSカーネルを採用するLinux Mint 22.1から導入する回避策が示されています。
 
-* [Linux Mint 22.3 Release Notes](https://linuxmint.com/rel_zena.php)
-* [Hardware drivers](https://linuxmint-installation-guide.readthedocs.io/en/latest/drivers.html)
+* [Linux Mint 22.3のリリースノート](https://linuxmint.com/rel_zena.php)
+* [ハードウェアドライバー](https://linuxmint-installation-guide.readthedocs.io/en/latest/drivers.html)
 
 ## Linux Mintを導入するPCの選び方
 
@@ -111,8 +111,8 @@ Lenovoには [Secured-core PCでLinux用のSecure Bootを有効にする公式�
 
 Linux Mint公式は、ハードウェア関連のパートナーとして **Framework** と **ThinkPenguin** を掲載しています。FrameworkについてはLinux Mint開発チームが実機テストを行い、互換性改善にもつながっていることが公式ブログで説明されています。
 
-* [Linux Mint Partners](https://linuxmint.com/partners.php)
-* [Linux Mint Blog: Monthly News – May 2025](https://blog.linuxmint.com/?p=4850)
+* [Linux Mintのパートナー](https://linuxmint.com/partners.php)
+* [Linux Mintブログ：2025年5月の月例ニュース](https://blog.linuxmint.com/?p=4850)
 * **[RayLink Inc（レイリンク株式会社）](https://raylink-inc.com/)** ：Ubuntu搭載の新品・再生PCやLinux関連機器を販売する国内事業者。Linux OSのインストール代行も提供し、[取扱ディストリビューション](https://raylink-inc.com/distribution/) にはLinux Mintも掲載している。Linux Mint搭載を希望する場合は、対象機種・導入可能な版・費用を購入前に相談する。
 * **[Star Labs](https://jp.starlabs.systems/)** ：Linux向けに設計されたノートPCやMini PCを販売するメーカー。Linux Mintを含む複数のLinuxディストリビューションを、対応カーネル上で標準ISOから導入できる。
 
@@ -198,17 +198,17 @@ Linux Mint公式のInstallation Guideでは、ISOの入手、真正性・整合�
 9. 再起動後にUpdate ManagerとDriver Managerを確認する。
 10. Timeshiftを設定して復旧用スナップショットを作成する。
 
-* [Linux Mint Installation Guide](https://linuxmint-installation-guide.readthedocs.io/en/latest/)
-* [Verify your ISO image](https://linuxmint-installation-guide.readthedocs.io/en/latest/verify.html)
-* [Create the bootable media](https://linuxmint-installation-guide.readthedocs.io/en/latest/burn.html)
-* [Boot Linux Mint](https://linuxmint-installation-guide.readthedocs.io/en/latest/boot.html)
-* [Install Linux Mint](https://linuxmint-installation-guide.readthedocs.io/en/latest/install.html)
+* [Linux Mintのインストールガイド](https://linuxmint-installation-guide.readthedocs.io/en/latest/)
+* [ISOイメージの検証](https://linuxmint-installation-guide.readthedocs.io/en/latest/verify.html)
+* [起動メディアの作成](https://linuxmint-installation-guide.readthedocs.io/en/latest/burn.html)
+* [Linux Mintの起動](https://linuxmint-installation-guide.readthedocs.io/en/latest/boot.html)
+* [Linux Mintのインストール](https://linuxmint-installation-guide.readthedocs.io/en/latest/install.html)
 
 > **❗️注意**：`Erase disk and install Linux Mint` は対象ディスク上の既存データを消去します。パーティション変更、既存OSとのデュアルブート、暗号化設定を行う場合は、先に重要ファイルを別媒体へバックアップしてください。Windowsと併用する場合は、BitLockerやWindows側の高速スタートアップ、EFI / Secure Bootの設定も事前に確認します。
 
 Secure Bootで起動できない場合について、Linux Mint公式ガイドはインストール条件の見直しやBIOS/UEFI側でSecure Bootを無効化する方法を案内しています。安易に設定を変更せず、機種の公式手順を確認してください。
 
-* [EFI / SecureBoot](https://linuxmint-installation-guide.readthedocs.io/en/latest/efi.html)
+* [EFI・セキュアブート](https://linuxmint-installation-guide.readthedocs.io/en/latest/efi.html)
 
 ### インストーラーで迷いやすい操作
 
@@ -246,8 +246,8 @@ Secure Bootで起動できない場合について、Linux Mint公式ガイド�
 
 Linux Mintは更新時の不具合から戻せるよう、TimeshiftによるシステムスナップショットをUpdate Managerと組み合わせて利用することを推奨しています。
 
-* [Update Manager](https://linuxmint-user-guide.readthedocs.io/en/latest/mintupdate.html)
-* [Multimedia codecs](https://linuxmint-installation-guide.readthedocs.io/en/latest/codecs.html)
+* [アップデートマネージャー](https://linuxmint-user-guide.readthedocs.io/en/latest/mintupdate.html)
+* [マルチメディアコーデック](https://linuxmint-installation-guide.readthedocs.io/en/latest/codecs.html)
 
 ### 最初に行う作業の順番
 
@@ -367,7 +367,7 @@ Linux Mintを安定して使うには、特別な「最適化」よりも、更�
 
 Linux Mintの公式ドキュメントは、Installation Guide、User Guide、Troubleshooting Guideに分かれています。トラブル時は検索結果だけで判断せず、まず公式ドキュメントと公式リリースノートを確認してください。
 
-* [Linux Mint Documentation](https://linuxmint.com/documentation.php)
+* [Linux Mintのドキュメント](https://linuxmint.com/documentation.php)
 
 ## トラブルシューティングと復旧
 
@@ -455,7 +455,7 @@ Web検索や生成AIの回答が、そのPC・OSの版・ディスク構成に�
 
 以下のKernel PanicとAdGuardの項目は、必要な場合だけ読む発展的な内容です。基本導入の必須作業ではありません。
 
-## Kernel Panic
+## カーネルパニック
 
 Kernel Panicは、Linuxカーネルが安全に処理を継続できない重大な状態を検出したときに停止する仕組みです。WindowsのBSODと大まかには同じ「OSの中核で重大な問題が発生した状態」と理解できますが、原因や復旧手順は異なります。
 

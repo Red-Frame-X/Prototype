@@ -1,4 +1,4 @@
-"""Check the percent-encoded local links in the Markdown Notes index."""
+"""Markdown Notes目次内のパーセントエンコードされたローカルリンクを検査する。"""
 import re
 import unittest
 from pathlib import Path

@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         X Spaces & Live Broadcast Blocker
+// @name:ja      Xのスペース・ライブ放送を非表示
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      202610220026
+// @version      202610241010
 // @description  「𝕏でライブ放送する」「スペース」バーを強制的に排除します（低負荷・CSS注入＆高堅牢性対応版）
 // @author       Red Frame X
 // @match        https://x.com/*

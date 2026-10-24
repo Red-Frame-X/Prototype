@@ -51,24 +51,24 @@ def fetch(url: str, attempts: int = 4) -> bytes:
             if attempt == attempts:
                 raise
         time.sleep(min(2 ** (attempt - 1), 8))
-    raise RuntimeError("unreachable")
+    raise RuntimeError("到達しない処理に入りました")
 
 
 def parse_releases(payload: bytes, product: str) -> list[dict[str, Any]]:
     releases = json.loads(payload.decode("utf-8"))
     if not isinstance(releases, list) or not releases:
-        raise ValueError(f"{product} releases response is empty or invalid")
+        raise ValueError(f"{product}のリリース応答が空、または不正です")
     return releases
 
 
 def latest_stable_release(payload: bytes, product: str) -> dict[str, Any]:
-    """Parse GitHub's latest-release object; list ordering is not authoritative."""
+    """GitHubの最新リリースオブジェクトを解析する。一覧の並び順を基準にしない。"""
     release = json.loads(payload.decode("utf-8"))
     if not isinstance(release, dict) or release.get("draft") is not False or release.get("prerelease") is not False:
-        raise ValueError(f"Invalid stable {product} GitHub Release")
+        raise ValueError(f"{product}のGitHub安定版リリースが不正です")
     match = TAG_VERSION_RE.fullmatch(str(release.get("tag_name") or ""))
     if not match:
-        raise ValueError(f"Invalid stable {product} release tag")
+        raise ValueError(f"{product}の安定版リリースタグが不正です")
     return {
         "version": match.group(1),
         "published_at": release.get("published_at"),
@@ -80,12 +80,12 @@ def latest_stable_release(payload: bytes, product: str) -> dict[str, Any]:
 
 def android_releases_to_markdown(payload: bytes) -> bytes:
     releases = parse_releases(payload, "Android")
-    lines = ["# AdGuard for Android changelog mirror", "", f"> Source: {ANDROID_RELEASES_URL}", "> Generated from official GitHub Releases; newest release first.", ""]
+    lines = ["# AdGuard for Androidの変更履歴ミラー", "", f"> 取得元: {ANDROID_RELEASES_URL}", "> 公式GitHub Releasesから生成しています。新しいリリースから順に掲載します。", ""]
     for release in releases:
         name = release.get("name") or release.get("tag_name")
         if not name:
             continue
-        lines.extend([f"## {name}", "", f"- Published: {release.get('published_at') or 'unknown'}", f"- Release: {release.get('html_url') or ''}", "", (release.get("body") or "_No release notes provided._").strip(), ""])
+        lines.extend([f"## {name}", "", f"- 公開日時: {release.get('published_at') or '不明'}", f"- リリース: {release.get('html_url') or ''}", "", (release.get("body") or "_リリースノートはありません。_").strip(), ""])
     return ("\n".join(lines).rstrip() + "\n").encode("utf-8")
 
 
@@ -101,7 +101,7 @@ def relevant_lines(text: str) -> list[str]:
 def latest_version(text: str) -> str:
     match = VERSION_RE.search(text)
     if not match:
-        raise ValueError("No version heading found")
+        raise ValueError("バージョン見出しがありません")
     return match.group(1)
 
 
@@ -127,7 +127,7 @@ def metadata(
         "checked_at": checked_at,
         "converter_relevant_entries": relevant_lines(review_text),
         "automatic_code_changes": False,
-        "review_policy": "Release-note prose is evidence, not an executable specification. Verify official filtering-engine documentation or source code, then update capability profiles and regression tests.",
+        "review_policy": "リリースノートの文章は根拠資料であり、実行可能な仕様ではありません。フィルタリングエンジンの公式文書やソースコードを確認したうえで、対応機能プロファイルと回帰テストを更新してください。",
     }
     if release:
         result.update({
@@ -146,13 +146,13 @@ def write_if_changed(path: Path, content: bytes) -> bool:
 
 
 def build_review(items: list[dict[str, Any]]) -> bytes:
-    lines = ["# AdGuard converter compatibility review", "", "This file is generated. Latest stable release-note matches are review candidates, not proof that a rule syntax is supported.", ""]
+    lines = ["# AdGuard変換処理の互換性確認", "", "このファイルは自動生成されます。以下は最新安定版のリリースノートから抽出した確認候補の原文であり、ルール構文の対応を証明するものではありません。", ""]
     for item in items:
         lines.extend([f"## {item['product']} {item['latest_version']}", ""])
         entries = item["converter_relevant_entries"]
-        lines.extend((f"- {entry}" for entry in entries) if entries else ["- No converter-relevant keywords detected in the latest stable release notes."])
+        lines.extend((f"- {entry}" for entry in entries) if entries else ["- 最新安定版のリリースノートに、変換処理に関係するキーワードはありませんでした。"])
         lines.append("")
-    lines.extend(["## Required verification before converter changes", "", "1. Confirm behavior in official AdGuard filtering documentation, CoreLibs/Scriptlets source, or a linked upstream issue.", "2. Add positive, negative, and false-positive regression tests.", "3. Update `config/adguard-converter-capabilities.json` in a reviewed pull request.", "4. Rebuild generated filters and run AGLint plus unit tests.", ""])
+    lines.extend(["## 変換処理を変更する前に必要な確認", "", "1. AdGuardフィルタリングの公式文書、CoreLibs・Scriptletsのソース、または関連する上流の課題で動作を確認します。", "2. 正常系・異常系・誤検出の回帰テストを追加します。", "3. レビュー済みのプルリクエストで`config/adguard-converter-capabilities.json`を更新します。", "4. 生成フィルターを再ビルドし、AGLintと単体テストを実行します。", ""])
     return "\n".join(lines).encode("utf-8")
 
 
@@ -236,7 +236,7 @@ def main() -> int:
         )
     except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
         parser.error(str(error))
-    print("AdGuard changelog mirror updated." if changed else "No upstream changes detected.")
+    print("AdGuardの変更履歴ミラーを更新しました。" if changed else "上流の変更はありませんでした。")
     return 0
 
 

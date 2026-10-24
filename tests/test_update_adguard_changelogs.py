@@ -87,7 +87,7 @@ ANDROID_RELEASES_WITH_HISTORY = json.dumps([
 ]).encode()
 
 
-# Latest endpoints return objects; history endpoints continue to return lists.
+# 最新リリースの取得先はオブジェクトを返し、履歴の取得先は一覧を返す。
 BROWSER_RELEASES_JSON = json.dumps(json.loads(BROWSER_RELEASES_JSON)[0]).encode()
 BROWSER_RELEASES_NO_RELEVANT = json.dumps(json.loads(BROWSER_RELEASES_NO_RELEVANT)[0]).encode()
 ANDROID_LATEST = json.dumps(json.loads(ANDROID_JSON)[0]).encode()
@@ -185,14 +185,14 @@ class ChangelogUpdaterTests(unittest.TestCase):
             data = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
             browser, android = data["products"]
 
-            # The Browser changelog contains MV3/filtering keywords, but the
-            # latest stable release body does not, so historical entries must
-            # not be attributed to v5.5.2.3.
+            # ブラウザー版の変更履歴にはMV3・フィルタリングの用語があるが、
+            # 最新安定版のリリース本文にはない。そのため過去の記載を
+            # v5.5.2.3の変更内容として扱ってはならない。
             self.assertEqual(browser["latest_version"], "5.5.2.3")
             self.assertEqual(browser["converter_relevant_entries"], [])
 
-            # A newer beta and an older stable contain Scriptlets/CoreLibs, but
-            # the latest stable v4.13.2 does not. Neither may leak into 4.13.2.
+            # より新しいベータ版と古い安定版にはScriptlets・CoreLibsの記載があるが、
+            # 最新安定版v4.13.2にはない。どちらの記載も4.13.2へ混入させない。
             self.assertEqual(android["latest_version"], "4.13.2")
             self.assertEqual(android["converter_relevant_entries"], [])
             self.assertEqual(

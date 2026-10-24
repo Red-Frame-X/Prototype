@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         X Auto Select Community Latest Sort
+// @name:ja      Xのコミュニティを直近順に自動選択
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      202610220026
+// @version      202610241010
 // @description  Xのタイムラインで「並べ替え」メニューが開かれるたびに、未選択であれば自動的に「直近」を選択し直し、その後は手動での変更も可能にします。
 // @author       Red-Frame-X
 // @match        https://x.com/*

@@ -54,7 +54,7 @@ example.org##.promo
         ).encode("utf-8")
         result = self.run_script(content)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("CR characters detected", result.stderr)
+        self.assertIn("CR文字を検出しました", result.stderr)
 
     def test_rejects_cr_line_endings(self):
         content = (
@@ -64,7 +64,7 @@ example.org##.promo
         ).encode("utf-8")
         result = self.run_script(content)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("CR characters detected", result.stderr)
+        self.assertIn("CR文字を検出しました", result.stderr)
 
     def test_rejects_duplicate_active_rule(self):
         text = """! Title: AdGuard Custom Rules - Red Frame X
@@ -81,12 +81,12 @@ example.com##.ad
 """
         result = self.run_script(text)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("duplicate active rule", result.stderr)
+        self.assertIn("有効ルールの重複", result.stderr)
 
     def test_rejects_duplicate_non_basic_modifier_rule(self):
         result = self.run_script("[$app=com.example.app]##.ad\n" * 2)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("duplicate active rule", result.stderr)
+        self.assertIn("有効ルールの重複", result.stderr)
 
     def test_rejects_trailing_whitespace(self):
         text = """! Title: AdGuard Custom Rules - Red Frame X
@@ -102,7 +102,7 @@ example.com##.ad
 """
         result = self.run_script(text)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("trailing whitespace", result.stderr)
+        self.assertIn("末尾に空白", result.stderr)
 
 
 if __name__ == "__main__":

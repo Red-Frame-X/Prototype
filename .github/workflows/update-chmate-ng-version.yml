@@ -1,4 +1,4 @@
-name: Update ChMate NG Version
+name: ChMate NGのVersion更新
 
 # ChMate専用の旧ワークフローは手動実行用として保持します。
 # mainへのpush時の自動更新は update-version-timestamps.yml に統合し、
@@ -19,12 +19,12 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: Checkout Repository
+      - name: リポジトリの取得
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
-      - name: Update Version timestamp
+      - name: Version日時の更新
         shell: bash
         run: |
           set -euo pipefail
@@ -49,13 +49,13 @@ jobs:
           path.write_text(updated, encoding='utf-8')
           PY
 
-      - name: Commit Version update when needed
+      - name: 必要に応じてVersion更新をコミット
         shell: bash
         run: |
           set -euo pipefail
           file='NG Word Regex for ChMate/NG Word Regex for ChMate.txt'
           if git diff --quiet -- "$file"; then
-            echo 'Version is already current; no commit needed.'
+            echo 'Versionはすでに最新のため、コミットは不要です。'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
@@ -70,7 +70,7 @@ jobs:
               exit 0
             fi
             if [[ "$attempt" -eq 3 ]]; then
-              echo 'Failed to push ChMate Version update after 3 attempts.' >&2
+              echo 'ChMateのVersion更新を3回試しましたが、pushできませんでした。' >&2
               exit 1
             fi
             sleep $((attempt * 2))

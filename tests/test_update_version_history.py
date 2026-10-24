@@ -44,7 +44,7 @@ class VersionHistoryTests(unittest.TestCase):
             git(source, "add", ".")
             git(source, "commit", "-m", "unrelated change")
 
-            # Use the workflow's actual depth; restoring depth=2 must fail here.
+            # 実際のワークフローと同じ深さを使い、depth=2に戻すと失敗することを確認する。
             clone = Path(tmp) / "checkout"
             options = [f"--depth={depth}"] if depth else []
             git(Path(tmp), "clone", *options, source.as_uri(), str(clone))

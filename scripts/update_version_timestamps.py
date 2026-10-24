@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update Version metadata in changed repository content using current JST time."""
+"""変更されたリポジトリ内コンテンツのVersionメタデータを現在の日本標準時に更新する。"""
 from __future__ import annotations
 
 import argparse
@@ -38,7 +38,7 @@ def changed_files(base: str, head: str) -> list[Path]:
 
 
 def pending_files(since: str | None = None) -> list[Path]:
-    """Find unsynchronized content edits on the current branch, regardless of actor."""
+    """実行者によらず、現在のブランチにある未同期の内容変更を探す。"""
     synchronized = read_state()
     current = content_fingerprints()
     paths = [Path(name) for name, digest in current.items() if synchronized.get(name) != digest]
@@ -49,8 +49,8 @@ def pending_files(since: str | None = None) -> list[Path]:
 
 
 def read_state() -> dict[str, str]:
-    # Keep the checkpoint in the same commit as the metadata. Missing state is
-    # recovered conservatively by synchronizing every supported file once.
+    # チェックポイントをメタデータと同じコミットに含める。状態がない場合は、
+    # 対応する全ファイルを一度同期して慎重に復旧する。
     if not STATE_FILE.exists():
         return {}
     state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
@@ -59,7 +59,7 @@ def read_state() -> dict[str, str]:
         or not re.fullmatch(r"[0-9a-f]{64}", digest)
         for name, digest in state.items()
     ):
-        raise ValueError("Invalid Version synchronization checkpoint")
+        raise ValueError("Version同期用のチェックポイントが不正です")
     return state
 
 
@@ -73,8 +73,8 @@ def content_fingerprints() -> dict[str, str]:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
-        # A Version-only publication is already synchronized. Comments remain
-        # part of the comparison, so a comment-only manual edit is recovered.
+        # Versionのみの反映は同期済みとして扱う。コメントは比較対象に残すため、
+        # 手動でコメントだけを編集した場合も同期対象として検出できる。
         normalized = version_text(path, text, "<VERSION>")
         if normalized is not None:
             fingerprints[path.as_posix()] = hashlib.sha256(normalized.encode("utf-8")).hexdigest()
@@ -138,12 +138,12 @@ def version_text(path: Path, text: str, stamp: str) -> str | None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     selection = parser.add_mutually_exclusive_group(required=True)
-    selection.add_argument("--base", help="Base commit SHA")
-    selection.add_argument("--since", help="Recover pending edits since this git date")
-    selection.add_argument("--pending", action="store_true", help="Recover all pending edits on current branch")
-    parser.add_argument("--head", default="HEAD", help="Head commit/ref")
+    selection.add_argument("--base", help="比較元コミットのSHA")
+    selection.add_argument("--since", help="指定したGit日付以降の未同期の編集を同期します")
+    selection.add_argument("--pending", action="store_true", help="現在のブランチの未同期の編集をすべて同期します")
+    parser.add_argument("--head", default="HEAD", help="比較先のコミットまたは参照")
     args = parser.parse_args()
 
     stamp = datetime.now(JST).strftime("%Y%m%d%H%M")
@@ -164,11 +164,11 @@ def main() -> int:
         STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     if updated:
-        print(f"Updated Version metadata to {stamp} JST:")
+        print(f"Versionメタデータを日本標準時の{stamp}に更新しました:")
         for path in updated:
             print(f"- {path}")
     else:
-        print("No changed files with supported Version metadata required an update.")
+        print("対応するVersionメタデータの更新が必要な変更ファイルはありませんでした。")
     return 0
 
 

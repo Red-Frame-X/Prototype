@@ -89,7 +89,7 @@ class MarkdownNotesVersionTests(unittest.TestCase):
         result = self.run_check()
 
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("expected 202609122350", result.stderr)
+        self.assertIn("正しい日時は202609122350", result.stderr)
 
 
 if __name__ == "__main__":
