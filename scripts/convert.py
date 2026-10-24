@@ -42,9 +42,7 @@ class AdGuardOptimizer:
 
         # AdGuard拡張CSSでJS解析が必須な疑似クラス (:is, :not, :where は標準CSSで処理可能なため除外)
         self.adg_supported_ext_css: List[str] = settings["adguard_extended_css"]
-
-        # uBO独自演算子のAdGuard互換置換マップ
-        self.modifier_replacements: Dict[str, str] = settings["modifier_replacements"]
+        self.ubo_unsupported_ext_css: List[str] = settings["unsupported_ubo_extended_css"]
 
         # uBO構文からAdGuardへ意味を安全に維持できると確認できていないスクリプトレット。
         # AdGuard MV3自体のscriptlet対応可否とは分離し、推測変換による挙動変更を防ぐ。
@@ -167,13 +165,20 @@ class AdGuardOptimizer:
                 in_character_class = False
             elif char == '/' and not is_escaped:
                 if in_character_class:
-                    # AdGuardの /.../ 区切りで文字クラス内の / が終端と誤認されないよう正規化
                     normalized_pattern.append(r'\/')
                     idx += 1
                     continue
 
+                # 正規表現中の候補となる `/` の直後が modifier 開始、行末、
+                # または正規表現として自然な終端である場合だけ区切りとみなす。
+                rest = check_line[idx + 1:]
+                if rest and not rest.startswith('$') and re.match(r'[|)$?*+\]}]', rest[0]):
+                    normalized_pattern.append('/')
+                    idx += 1
+                    continue
+
                 normalized_pattern.append('/')
-                return prefix, ''.join(normalized_pattern), check_line[idx + 1:]
+                return prefix, ''.join(normalized_pattern), rest
             normalized_pattern.append(char)
             idx += 1
 
@@ -237,11 +242,9 @@ class AdGuardOptimizer:
         if not line or line.startswith('!'):
             return None
 
-        # [Step A-1] 非互換なHTMLフィルタのパージ
         if '##^' in line or '#@#^' in line:
             return f"! [未対応のHTMLフィルター] {original_line}"
 
-        # スクリプトレットの互換性チェック
         if '##+js(' in line or '#@#+js(' in line:
             if self.re_incompatible_js.search(line):
                 return f"! [互換性のないスクリプトレット] {original_line}"
@@ -249,19 +252,16 @@ class AdGuardOptimizer:
                 return f"! [未検証のスクリプトレット] {original_line}"
             return line
 
-        # [Step A-2] Chrome MV3 (RE2) との互換性を優先した正規表現検証
         regex_data = self._parse_regex_rule(line)
         if regex_data:
             prefix, regex_part, modifier_part = regex_data
             pattern_str = regex_part[1:-1]
 
-            # 一般のlookaroundを拒否する前に、意味を厳密に維持できる既知形だけ展開する。
             rewritten_pattern = self._rewrite_re2_safe_lookahead(pattern_str)
             if rewritten_pattern != pattern_str:
                 pattern_str = rewritten_pattern
                 regex_part = f"/{pattern_str}/"
 
-            # RE2未サポート構文 (先読み・後読み・後方参照) のパージ
             if (
                 '(?=' in pattern_str
                 or '(?!' in pattern_str
@@ -271,13 +271,11 @@ class AdGuardOptimizer:
             ):
                 return f"! [MV3未対応の正規表現] {original_line}"
 
-            # ReDoS対策 (過剰なバックトラックのパージ)
             if self.re_redos_check.search(pattern_str):
                 return f"! [高負荷の正規表現] {original_line}"
 
             line = f"{prefix}{regex_part}{modifier_part}"
 
-        # [Step B] コスメティックフィルタの拡張CSS (#?#) 変換
         if '##' in line or '#@#' in line:
             separator = '##' if '##' in line else '#@#'
             parts = line.split(separator, 1)
@@ -285,12 +283,10 @@ class AdGuardOptimizer:
                 domain_part, selector_part = parts
                 rule_scope = domain_part
 
-                # パス付きドメイン指定を、Chrome MV3対応の非基本 $url 修飾子へ変換する。
-                # ドメインだけに丸めると適用範囲が広がるため、必ず元のパスを維持する。
                 if '/' in domain_part:
                     if ',' in domain_part:
-                        return f"! [未対応のURLスコープ] {original_line}"
-                    rule_scope = f"*$url={domain_part}"
+                        return f"! [未対応の混在する要素非表示URL範囲] {original_line}"
+                    rule_scope = f"[$url=||{domain_part}*]"
 
                 if any(p in selector_part for p in self.ubo_unsupported_ext_css):
                     return f"! [未対応の拡張CSS] {original_line}"
@@ -300,12 +296,15 @@ class AdGuardOptimizer:
 
                 line = f"{rule_scope}{separator}{selector_part}"
 
-        # [Step C] 修飾子の互換変換
         if '$' in line:
             regex_data = self._parse_regex_rule(line)
             if regex_data:
                 prefix, regex_part, modifiers_str = regex_data
                 rule = f"{prefix}{regex_part}"
+                if modifiers_str.startswith('$'):
+                    modifiers_str = modifiers_str[1:]
+                elif not modifiers_str:
+                    return line
             else:
                 if line.endswith('$'):
                     if '$' not in line[:-1]:
@@ -319,15 +318,9 @@ class AdGuardOptimizer:
                 if not modifiers_str:
                     return f"{rule}$"
 
-            # redirect-rule は別の基本ルールでブロックされた場合だけリダイレクトする。
-            # Chrome MV3で未対応だからといって redirect へ変換すると適用範囲が広がるため、
-            # 意味を安全に維持できないルールは無効化する。
             if re.search(r'(?:^|,)~?redirect-rule(?:=|,|$)', modifiers_str):
                 return f"! [MV3未対応の修飾子: redirect-rule] {original_line}"
 
-            # cnameを削除するとCNAME限定の例外が通常の許可ルールへ広がるため、
-            # 元ルールを無効化した診断コメントとして保持する。
-            # https://github.com/gorhill/uBlock/wiki/Static-filter-syntax#cname
             if re.search(r'(?:^|,)~?cname(?:=|,|$)', modifiers_str):
                 return f"! [MV3未対応の修飾子: cname] {original_line}"
             modifiers_str = modifiers_str.strip(',')
@@ -336,7 +329,6 @@ class AdGuardOptimizer:
             if not modifiers_str:
                 return rule
 
-            # 修飾子の置換 (境界条件の適用)
             for ubo_mod, adg_mod in self.modifier_replacements.items():
                 modifiers_str = re.sub(
                     rf'(?:^|,){re.escape(ubo_mod)}(?=,|=|$)',
@@ -349,7 +341,6 @@ class AdGuardOptimizer:
         return line
 
     def get_rule_signature(self, lines: List[str]) -> List[str]:
-        # リスト形式のヘッダーは有効ルールではない。基本形式以外の[$...]ルールは保持する。
         return [
             l.strip() for l in lines
             if l.strip() and not l.strip().startswith('!')
@@ -369,8 +360,6 @@ class AdGuardOptimizer:
             regex_data = self._parse_regex_rule(optimized)
             if (regex_data and not regex_data[2]
                     and self._contains_embedded_end_anchor(regex_data[1][1:-1])):
-                # AGLint 3.0.2が埋め込みアンカーを修飾子と誤認する場合だけ、
-                # 該当診断を抑制し、実際のルール本体は変更しない。
                 optimized_lines.append('! aglint-disable-next-line invalid-modifiers')
             optimized_lines.append(optimized)
 
@@ -381,7 +370,6 @@ class AdGuardOptimizer:
             else:
                 stats["bypassed"] += 1
 
-        # [Step D] スマート差分検知。ルール本体だけでなく、固定メタデータの変更も反映する。
         new_signature = self.get_rule_signature(optimized_lines)
         if not new_signature:
             raise ValueError("有効ルールがない生成フィルターは書き込みません")

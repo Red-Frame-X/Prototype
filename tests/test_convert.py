@@ -11,6 +11,7 @@ from scripts.convert import (
     CAPABILITY_FILE,
     CAPABILITY_TARGET,
     FILTER_NAME,
+    FILTER_TITLE,
     OUTPUT_FILE,
 )
 
@@ -18,9 +19,22 @@ from scripts.convert import (
 class GeneratedFilterNamingTests(unittest.TestCase):
     def test_filter_name_is_canonical(self):
         self.assertEqual(FILTER_NAME, "uB-filter-by-kdroidwin (AdGuard Optimized)")
+        self.assertEqual(FILTER_TITLE, "uB-filter-by-kdroidwin (AdGuard Optimized)")
 
     def test_output_filename_matches_filter_name(self):
         self.assertTrue(OUTPUT_FILE.endswith(f"dist/{FILTER_NAME}.txt"))
+
+    def test_generated_header_uses_canonical_title(self):
+        optimizer = AdGuardOptimizer()
+        with tempfile.TemporaryDirectory() as directory:
+            output = os.path.join(directory, f"{FILTER_NAME}.txt")
+            with patch.object(optimizer, "fetch_source", return_value=["||example.com^"]), patch(
+                "scripts.convert.OUTPUT_FILE", output
+            ):
+                optimizer.run()
+            with open(output, encoding="utf-8") as generated:
+                first_line = generated.readline().rstrip("\n")
+        self.assertEqual(first_line, "! Title: uB-filter-by-kdroidwin (AdGuard Optimized)")
 
 
 class CapabilityProfileTests(unittest.TestCase):
