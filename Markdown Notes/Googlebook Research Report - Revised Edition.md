@@ -2,7 +2,7 @@
 
 Googlebookの仕様、対応アプリ、ハードウェア、Chrome、Linux、既存のChromeOSとの違いなどを、公開情報に基づいて調査・検証した研究レポートです。
 
-| メタデータ | 情報 |
+| Metadata | 情報 |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
@@ -253,10 +253,10 @@ GoogleはGooglebookのChromeを **拡張機能に対応したデスクトップ�
 
 **懸念点と結論：** Googlebook単体で要素を検証し、広告ブロック用のCSSセレクターを作成・検証できるかが重要です。Google公式発表は拡張機能付きのデスクトップクラスChromeを明記していますが、今回確認した製品資料にはDevToolsの対応表がなく、Elements・Console・Network・Sources・Applicationの全機能がPC版と同等に使えるかは未確認です。「使えない」とも断定しません。[Google公式発表](https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/)
 
-**一次情報で確認できた事実：** Chromiumにはdesktop Android向けDevToolsの実装履歴があります。2025年3月26日のコミット`925db0cd6998fa029e5b92c03205ef01e9373457`は、DevToolsウィンドウ表示処理、`devtools://`、UI・リソースの組み込みを追加しています。2026年4月30日の`bdf8b9b6d67b77a6b6e1dc98550cf2e417c14ec2`は、Android desktopのDevToolsポリシー処理とテストを補っています。したがって「Android系の実装だからローカルDevToolsは存在しない」という推論は成立しません。ただし、これらのコミットと市販GooglebookのChromeビルド・有効化状態との対応は未確認です。
+**一次情報で確認できた事実：** Chromiumにはdesktop Android向けDevToolsの実装履歴があります。2025年3月26日のCommit`925db0cd6998fa029e5b92c03205ef01e9373457`は、DevToolsウィンドウ表示処理、`devtools://`、UI・リソースの組み込みを追加しています。2026年4月30日の`bdf8b9b6d67b77a6b6e1dc98550cf2e417c14ec2`は、Android desktopのDevToolsポリシー処理とテストを補っています。したがって「Android系の実装だからローカルDevToolsは存在しない」という推論は成立しません。ただし、これらのCommitと市販GooglebookのChromeビルド・有効化状態との対応は未確認です。
 
-- [2025年3月の実装差分（固定コミット）](https://chromium.googlesource.com/chromium/src/+/925db0cd6998fa029e5b92c03205ef01e9373457%5E%21/)
-- [2026年4月のポリシー処理修正（固定コミット）](https://chromium.googlesource.com/chromium/src/+/bdf8b9b6d67b77a6b6e1dc98550cf2e417c14ec2)
+- [2025年3月の実装差分（固定Commit）](https://chromium.googlesource.com/chromium/src/+/925db0cd6998fa029e5b92c03205ef01e9373457%5E%21/)
+- [2026年4月のポリシー処理修正（固定Commit）](https://chromium.googlesource.com/chromium/src/+/bdf8b9b6d67b77a6b6e1dc98550cf2e417c14ec2)
 
 **他のChromeとの比較：** 以下の一般資料をGooglebook固有の対応保証へ読み替えないようにします。
 
@@ -456,7 +456,7 @@ Webアプリ中心ならAndroid ABIだけでIntelを除外する理由は乏し�
 3. AdGuard for Android、personalDNSfilterなどがGooglebookを正式対応環境に含めるか確認する。
 4. ブラウザ内フィルタとDNS・VPNフィルタを重ねる場合は、誤ブロック、二重処理、電池消費、ログの分散を実機で比較する。
 
-AdGuardのフィルタ構文については、製品予測から切り離し、[AdGuardカスタムルールの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md)を参照してください。
+AdGuardのフィルタ構文については、製品予測から切り離し、[AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md)を参照してください。
 
 ## 今後確認する項目
 

@@ -2,7 +2,7 @@
 
 （あなたの書いた導入文など）
 
-| メタデータ | 情報 |
+| Metadata | 情報 |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |

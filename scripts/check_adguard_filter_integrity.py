@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AdGuardフィルタの構造破損と固定メタデータの変更を早期検出する。"""
+"""AdGuardフィルタの構造破損と固定Metadataの変更を早期検出する。"""
 
 from __future__ import annotations
 
@@ -47,10 +47,10 @@ def check_filter(path: Path, expected: dict[str, object]) -> tuple[int, int] | i
     for key in ("Title", "Syntax"):
         marker = f"! {key}: {expected[key]}"
         if marker not in lines[:20]:
-            return fail(f"必須メタデータがないか、値が不正です: {path}: {marker}")
+            return fail(f"必須Metadataがないか、値が不正です: {path}: {marker}")
 
     if not VERSION_RE.search(header):
-        return fail(f"! Versionメタデータがないか、形式が不正です（YYYYMMDDHHMMが必要）: {path}")
+        return fail(f"! Version Metadataがないか、形式が不正です（YYYYMMDDHHMMが必要）: {path}")
 
     rules = [
         line.strip()

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""変更されたリポジトリ内コンテンツのVersionメタデータを現在の日本標準時に更新する。"""
+"""変更されたRepository内コンテンツのVersion Metadataを現在の日本標準時に更新する。"""
 from __future__ import annotations
 
 import argparse
@@ -38,7 +38,7 @@ def changed_files(base: str, head: str) -> list[Path]:
 
 
 def pending_files(since: str | None = None) -> list[Path]:
-    """実行者によらず、現在のブランチにある未同期の内容変更を探す。"""
+    """実行者によらず、現在のBranchにある未同期の内容変更を探す。"""
     synchronized = read_state()
     current = content_fingerprints()
     paths = [Path(name) for name, digest in current.items() if synchronized.get(name) != digest]
@@ -49,7 +49,7 @@ def pending_files(since: str | None = None) -> list[Path]:
 
 
 def read_state() -> dict[str, str]:
-    # チェックポイントをメタデータと同じコミットに含める。状態がない場合は、
+    # チェックポイントをMetadataと同じCommitに含める。状態がない場合は、
     # 対応する全ファイルを一度同期して慎重に復旧する。
     if not STATE_FILE.exists():
         return {}
@@ -104,7 +104,7 @@ def update_file(path: Path, stamp: str) -> bool:
 
 
 def version_text(path: Path, text: str, stamp: str) -> str | None:
-    # ファイル種別に対応する先頭メタデータだけを更新し、本文のコード例を保持する。
+    # ファイル種別に対応する先頭Metadataだけを更新し、本文のコード例を保持する。
     lines = text.splitlines(keepends=True)
     if path.suffix == ".md":
         pattern, replacement = PATTERNS[1]
@@ -140,10 +140,10 @@ def version_text(path: Path, text: str, stamp: str) -> str | None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     selection = parser.add_mutually_exclusive_group(required=True)
-    selection.add_argument("--base", help="比較元コミットのSHA")
+    selection.add_argument("--base", help="比較元CommitのSHA")
     selection.add_argument("--since", help="指定したGit日付以降の未同期の編集を同期します")
-    selection.add_argument("--pending", action="store_true", help="現在のブランチの未同期の編集をすべて同期します")
-    parser.add_argument("--head", default="HEAD", help="比較先のコミットまたは参照")
+    selection.add_argument("--pending", action="store_true", help="現在のBranchの未同期の編集をすべて同期します")
+    parser.add_argument("--head", default="HEAD", help="比較先のCommitまたは参照")
     args = parser.parse_args()
 
     stamp = datetime.now(JST).strftime("%Y%m%d%H%M")
@@ -164,11 +164,11 @@ def main() -> int:
         STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     if updated:
-        print(f"Versionメタデータを日本標準時の{stamp}に更新しました:")
+        print(f"Version Metadataを日本標準時の{stamp}に更新しました:")
         for path in updated:
             print(f"- {path}")
     else:
-        print("対応するVersionメタデータの更新が必要な変更ファイルはありませんでした。")
+        print("対応するVersion Metadataの更新が必要な変更ファイルはありませんでした。")
     return 0
 
 

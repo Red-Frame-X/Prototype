@@ -22,6 +22,8 @@ class CommitTitleTests(unittest.TestCase):
     def test_empty_and_noncanonical_titles_are_rejected(self):
         for title in (
             "",
+            "   ",
+            "Update uB-filter-by-kdroidwin（AdGuard Optimized）",
             "AdGuardカスタムルールを更新",
             "AdGuard向け最適化フィルタを更新",
             "ユーザースクリプトを更新",
@@ -30,6 +32,13 @@ class CommitTitleTests(unittest.TestCase):
         ):
             with self.subTest(title=title):
                 self.assertFalse(valid_title(title))
+
+    def test_each_canonical_name_is_allowed_in_japanese_and_english_titles(self):
+        from scripts.check_commit_titles import NON_CANONICAL_NAMES
+        for name in set(NON_CANONICAL_NAMES.values()):
+            with self.subTest(name=name):
+                self.assertTrue(valid_title(f"{name} を自動更新"))
+                self.assertTrue(valid_title(f"Update {name}"))
 
     def test_body_does_not_fix_noncanonical_title(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -2,7 +2,7 @@
 
 ChromeOS、Android、コンテンツブロック、GitHub運用に関する調査メモと手順書です。個人の学習記録・検証ログ・設定バックアップとして後から再利用できるよう、一般的な解説、手順、比較情報もできるだけ削らずに残しています。仕様やUIが変わりやすい分野を含むため、各文書の更新日と参照先の公式情報を併せて確認します。
 
-| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **License** | CC0-1.0 |
@@ -46,9 +46,9 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 
 | ドキュメント | 主な内容 |
 | --- | --- |
-| [GitHub GistでフィルターとUserScriptを配布する方法](Distributing%20Filters%20and%20UserScripts%20with%20GitHub%20Gist.md) | GitHub Gistを使ったコンテンツブロックフィルタ／UserScriptの配布・更新方法とメタデータテンプレート |
+| [GitHub GistでフィルターとUserScriptを配布する方法](Distributing%20Filters%20and%20UserScripts%20with%20GitHub%20Gist.md) | GitHub Gistを使ったコンテンツブロックフィルタ／UserScriptの配布・更新方法とMetadataテンプレート |
 | [GitHubのCI失敗（✕）への対応と報告](Handling%20and%20Reporting%20GitHub%20CI%20Failures%20%28%E2%9C%95%29.md) | GitHub Actions / CI失敗時の確認、原因切り分け、ログ確認、報告手順 |
-| [文書ヘッダーのテンプレート](Header%20Template.md) | Markdown Notesで共通利用するメタデータ、ライセンス案内、Version表記のヘッダーテンプレート |
+| [文書ヘッダーのテンプレート](Header%20Template.md) | Markdown Notesで共通利用するMetadata、ライセンス案内、Version表記のヘッダーテンプレート |
 | [GitHubのIssue・Pull Requestコメントを折りたたむ方法](Collapse%20Comments%20on%20GitHub%20Issues%20and%20Pull%20Requests.md) | GitHub Issues / Pull Requestで長文や補足情報を`<details>`で折りたたむためのスニペット |
 
 ## 情報の扱い
@@ -57,7 +57,7 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 
 実機検証やユーザー報告は、それ自体を一般仕様として扱いません。根拠を確認できない原因推測や将来予測は断定せず、仕様変更によって古くなった記述は参照元を再確認し、既存内容をできるだけ残したまま正しい内容へ修正します。削除が必要と判断した場合は、対象箇所と理由、影響範囲を示し、事前に明示的な許可を得てから削除します。
 
-日付付きの「2026年○月○日時点」という表現は、更新履歴として必要な場合を除き固定せず、本文のメタデータ `Version` と参照先の一次情報を優先します。将来の査読時に、本文だけが古い基準日のまま残ることを避けます。
+日付付きの「2026年○月○日時点」という表現は、更新履歴として必要な場合を除き固定せず、本文のMetadata `Version` と参照先の一次情報を優先します。将来の査読時に、本文だけが古い基準日のまま残ることを避けます。
 
 文章の下書きや整理にChatGPTを利用することがありますが、生成・推敲された文章をそのまま正しいとはみなさず、重要な技術情報は一次情報や実環境で再確認します。
 

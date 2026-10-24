@@ -2,25 +2,25 @@
 
 ## 概要
 
-ChromeOS・Android・Linux向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、GitHub運用、更新・変換ツール、技術メモをまとめた個人用の試作リポジトリです。
+ChromeOS・Android・Linux向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、GitHub運用、更新・変換ツール、技術メモをまとめた個人用の試作Repositoryです。
 
 > [!IMPORTANT]
 > 学習・検証結果の記録とバックアップを目的としています。ChatGPTで推敲・整理した内容や環境依存の情報を含むため、正確性・完全性は保証しません。
 >
 > フィルタ、スクリプト、設定、技術メモは自分の環境で確認したもので、一般向けの手順書・配布物を想定していません。
 
-## ワークフロー
+## Workflow
 
-| 分類 | ワークフロー | 状態 |
+| 分類 | Workflow | 状態 |
 | --- | --- | --- |
-| 品質検査 | [リポジトリの品質検査](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/quality.yml?branch=main&event=push&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
-| 生成・同期 | [uB-filter-by-kdroidwinの同期・AdGuard向け変換](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/sync.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
-| バージョン | [AdGuardのVersion日時検査](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/check-adguard-version.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
-| バージョン | [Version日時の更新（日本標準時）](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-version-timestamps.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
-| 保守 | [AdGuard変更履歴の更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-adguard-changelogs.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
-| 保守 | [ChMate NGのVersion更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![ワークフローの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-chmate-ng-version.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 品質検査 | [Repositoryの品質検査](https://github.com/Red-Frame-X/Prototype/actions/workflows/quality.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/quality.yml?branch=main&event=push&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 生成・同期 | [uB-filter-by-kdroidwinの同期・AdGuard向け変換](https://github.com/Red-Frame-X/Prototype/actions/workflows/sync.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/sync.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| バージョン | [AdGuardのVersion日時検査](https://github.com/Red-Frame-X/Prototype/actions/workflows/check-adguard-version.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/check-adguard-version.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| バージョン | [Version日時の更新（日本標準時）](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-version-timestamps.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 保守 | [AdGuard変更履歴の更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-adguard-changelogs.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 保守 | [NG Word Regex for ChMate のVersion更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-chmate-ng-version.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
 
-## リポジトリ案内
+## Repository案内
 
 主要なディレクトリ、原本、生成物、関連資料への導線をまとめています。
 
@@ -33,15 +33,15 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 | Markdown Notes | ChromeOS、Android、Linux / Linux Mint、Googlebook、GitHub、コンテンツブロック、DNSなどの学習・調査メモ | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) |
 | config / upstream | 変換能力の定義、上流情報の追跡・ミラー | [config](./config/) / [upstream](./upstream/) |
 | scripts / tests | フィルタ変換・更新処理、整合性検査、回帰テスト | [scripts](./scripts/) / [tests](./tests/) |
-| GitHub Actions | 品質確認、同期、変換、変更履歴の追跡などのワークフロー | [Actions](https://github.com/Red-Frame-X/Prototype/actions) |
-| License | リポジトリ全体のライセンス情報 | [LICENSE](./LICENSE) / [LICENSES.md](./LICENSES.md) |
+| GitHub Actions | 品質確認、同期、変換、変更履歴の追跡などのWorkflow | [Actions](https://github.com/Red-Frame-X/Prototype/actions) |
+| License | Repository全体のライセンス情報 | [LICENSE](./LICENSE) / [LICENSES.md](./LICENSES.md) |
 
 > [!NOTE]
 > ルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換スクリプトを修正して再生成します。
 
 ## 編集・更新の原則
 
-- `AdGuard Custom Rules` / `AdGuard DNS Custom Rules`の変更時は、変更したファイルの`! Version:`をJSTの現在時刻（`YYYYMMDDHHMM`）へ同じコミット内で更新します。
+- `AdGuard Custom Rules` / `AdGuard DNS Custom Rules`の変更時は、変更したファイルの`! Version:`をJSTの現在時刻（`YYYYMMDDHHMM`）へ同じCommit内で更新します。
 - ルートの`dist/`は自動生成物のため、直接編集せず、原本または変換処理を修正して再生成します。
 - `AdGuard Custom Rules/ChangeLog/`と`upstream/`は上流情報の追跡・ミラー用で、取得スクリプトや追跡設定から更新します。
 - `Markdown Notes/`やChatGPTで推敲した内容は、重要な技術情報を可能な限り一次情報・公開ソース・対象バージョン・実環境で再確認します。
@@ -51,12 +51,12 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 GitHub Actionsで、更新処理・変換・品質確認を自動化しています。
 
 - フィルタ・コードの整合性、回帰テスト、構文・Lintを自動検査します。
-- GitHub Actionsワークフローの安全性・構文、UserScriptのJavaScript構文、大量の内容消失も品質検査で確認します。
+- GitHub Actions Workflowの安全性・構文、UserScriptのJavaScript構文、大量の内容消失も品質検査で確認します。
 - 対象ディレクトリの変更をmainへpushします。
-- push後、コメントだけの編集も含め、`AdGuard Custom Rules`、`Markdown Notes`、`NG Word Regex for ChMate`、`UserScript`の対応するVersionメタデータをGitHub ActionsでJSTの現在時刻へ同期します。
+- push後、コメントだけの編集も含め、`AdGuard Custom Rules`、`Markdown Notes`、`NG Word Regex for ChMate`、`UserScript`の対応するVersion MetadataをGitHub ActionsでJSTの現在時刻へ同期します。
 - push時に同期が起動しなかった場合に備え、品質チェック完了後の実行、15分おきの定期実行、手動実行でも最新mainの未同期の変更を確認します。Versionだけを更新済みのファイルは再更新しません。
-- AdGuard Custom Rules / AdGuard DNS Custom Rulesでは、Pull Request内の各コミットを検査し、ルール変更と! Version:の更新が同じコミットに含まれていることをCIで検証します。
-- ワークフロー失敗時は原因を確認して修正し、必要に応じて再発防止策を反映します。
+- AdGuard Custom Rules / AdGuard DNS Custom Rulesでは、Pull Request内の各Commitを検査し、ルール変更と! Version:の更新が同じCommitに含まれていることをCIで検証します。
+- Workflow失敗時は原因を確認して修正し、必要に応じて再発防止策を反映します。
 - uB-filter-by-kdroidwin (AdGuard Optimized)の定期同期・変換を行います。
 - AdGuard公式の変更履歴を定期確認します。
 
@@ -67,6 +67,7 @@ npm ci
 python -m pip install -r requirements-ci.txt
 python scripts/check_adguard_filter_integrity.py
 python scripts/check_workflow_safety.py
+python scripts/check_repository_terminology.py
 bash scripts/check_workflow_syntax.sh
 python scripts/check_adguard_user_rule_edit.py
 python -m unittest discover -s tests -v
@@ -76,12 +77,12 @@ npm run lint:adguard
 
 Markdownの行末にスペース1つが残ると、CIのMD009検査が失敗します。改行を表すスペース2つは保持してください。`npm run lint:markdown:fix` で自動修正し、差分を確認してからステージします。
 
-コミット前にも同じ検査を行う場合は、`npm ci` の後に `npm run hooks:install` を実行します。この設定は、このクローンの `core.hooksPath` を `.githooks` に変更するため、独自のフックがある場合は先に統合してください。フックはステージ済みの内容を一時ディレクトリへ取り出して検査し、未ステージの修正で問題が隠れることを防ぎます。GitHubのWeb編集などローカルフックを通らない変更も、既存のCIで検査します。
+Commit前にも同じ検査を行う場合は、`npm ci` の後に `npm run hooks:install` を実行します。この設定は、このクローンの `core.hooksPath` を `.githooks` に変更するため、独自のフックがある場合は先に統合してください。フックはステージ済みの内容を一時ディレクトリへ取り出して検査し、未ステージの修正で問題が隠れることを防ぎます。GitHubのWeb編集などローカルフックを通らない変更も、既存のCIで検査します。
 
 ## 方針
 
-- このリポジトリは、個人の学習記録、検証ログ、設定バックアップとして維持します。
-- 技術情報を確認する際は、対象プロジェクトの公式ドキュメント、公式リポジトリ、公開ソース、変更履歴、Issuesなどの一次情報を優先します。
+- このRepositoryは、個人の学習記録、検証ログ、設定バックアップとして維持します。
+- 技術情報を確認する際は、対象プロジェクトの公式ドキュメント、公式Repository、公開ソース、変更履歴、Issuesなどの一次情報を優先します。
 - 互換性を推測だけで拡張せず、必要な検証や回帰テストを行ってから変換処理・設定を変更します。
 - 誤ブロック、互換性、視認性、性能、保守性、プライバシーなどのトレードオフを考慮します。
 - 自動生成物は原則として直接編集せず、原本または変換処理を修正して再生成します。

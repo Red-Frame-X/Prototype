@@ -1,8 +1,8 @@
 # GitHub GistでフィルターとUserScriptを配布する方法
 
-GitHub Gistを利用して、コンテンツブロックフィルタやUserScriptを配布・更新する際の手順と、推奨メタデータをまとめたメモです。
+GitHub Gistを利用して、コンテンツブロックフィルタやUserScriptを配布・更新する際の手順と、推奨Metadataをまとめたメモです。
 
-| メタデータ | 情報 |
+| Metadata | 情報 |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
@@ -10,11 +10,11 @@ GitHub Gistを利用して、コンテンツブロックフィルタやUserScrip
 
 ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
 
-## Gistとリポジトリの使い分け
+## GistとRepositoryの使い分け
 
-Gistは少数のコード・テキストファイルを公開・共有する用途に向いており、各Gist自体がGitリポジトリとして履歴を持ちます。一方、通常のGitHubリポジトリはIssues、Pull Requests、GitHub Actionsなどを組み合わせた継続的な開発・保守に向いています。
+Gistは少数のコード・テキストファイルを公開・共有する用途に向いており、各Gist自体がGit Repositoryとして履歴を持ちます。一方、通常のGitHub RepositoryはIssues、Pull Requests、GitHub Actionsなどを組み合わせた継続的な開発・保守に向いています。
 
-フィルタやUserScriptを長期運用し、lint・テスト・Issues管理まで行う場合は通常のリポジトリの方が管理機能を利用しやすくなります。
+フィルタやUserScriptを長期運用し、lint・テスト・Issues管理まで行う場合は通常のRepositoryの方が管理機能を利用しやすくなります。
 
 ## Raw URLを使う
 
@@ -23,17 +23,17 @@ Gistは少数のコード・テキストファイルを公開・共有する用�
 3. 特定のrevisionを固定したい場合は、そのrevisionを指すURLを使用します。
 4. 最新版を追従させる用途では、実際に利用するURLが更新後の内容を返すことを確認します。
 
-以前の版では「URLからコミットハッシュを削除すれば常にHEADを参照する」「Raw URLは数分間キャッシュされる」と具体的に断定していました。GitHub公式ドキュメントでこれらの配信挙動を安定した契約仕様として確認できなかったため、その断定は削除しました。
+以前の版では「URLからCommitハッシュを削除すれば常にHEADを参照する」「Raw URLは数分間キャッシュされる」と具体的に断定していました。GitHub公式ドキュメントでこれらの配信挙動を安定した契約仕様として確認できなかったため、その断定は削除しました。
 
 ## AdGuardで利用する場合
 
 AdGuard Browser Extensionは、URLまたはローカルファイルからカスタムフィルタを追加できます。Gistを配布元にする場合も、最終的にはAdGuardが取得できるRaw URLを指定します。
 
-フィルタの更新間隔やメタデータの解釈はGitHub GistではなくAdGuard側の仕様です。`! Version:` だけを更新検知の仕組みとみなさず、利用するAdGuard製品の公式仕様を確認してください。
+フィルタの更新間隔やMetadataの解釈はGitHub GistではなくAdGuard側の仕様です。`! Version:` だけを更新検知の仕組みとみなさず、利用するAdGuard製品の公式仕様を確認してください。
 
-### コンテンツブロックフィルタ用メタデータのテンプレート
+### コンテンツブロックフィルタ用Metadataのテンプレート
 
-AdGuardの公開フィルタとFilters Registryでは、フィルタ名、説明、ホームページ、更新間隔、バージョンなどのメタデータが管理されています。自作フィルタをURL配布する場合も、利用者が内容・配布元・更新頻度を判断できるよう、先頭にメタデータをまとめておくと管理しやすくなります。
+AdGuardの公開フィルタとFilters Registryでは、フィルタ名、説明、ホームページ、更新間隔、バージョンなどのMetadataが管理されています。自作フィルタをURL配布する場合も、利用者が内容・配布元・更新頻度を判断できるよう、先頭にMetadataをまとめておくと管理しやすくなります。
 
 以下は、AdGuard系フィルタで一般的に使いやすいテンプレートです。
 
@@ -61,17 +61,17 @@ AdGuardの公開フィルタとFilters Registryでは、フィルタ名、説明
 | `! TimeUpdated:` | 任意 | 最終更新日時を明示する |
 | `! Expires:` | 推奨 | フィルタ側が希望する更新間隔を示す |
 
-`! Expires:` は更新間隔のメタデータとしてAdGuardのフィルタ基盤でも使用されていますが、実際の再取得タイミングは利用するAdGuard製品や設定にも依存します。`! Version:` や `! TimeUpdated:` も、単独で「この値を変えれば必ず更新される」という意味ではありません。
+`! Expires:` は更新間隔のMetadataとしてAdGuardのフィルタ基盤でも使用されていますが、実際の再取得タイミングは利用するAdGuard製品や設定にも依存します。`! Version:` や `! TimeUpdated:` も、単独で「この値を変えれば必ず更新される」という意味ではありません。
 
-第三者フィルタとの互換性も考える場合は、独自メタデータを増やしすぎず、名称、説明、配布元、ライセンス、版、更新間隔などの基本情報に絞る方が扱いやすくなります。
+第三者フィルタとの互換性も考える場合は、独自Metadataを増やしすぎず、名称、説明、配布元、ライセンス、版、更新間隔などの基本情報に絞る方が扱いやすくなります。
 
-## ユーザースクリプトで利用する場合
+## UserScriptで利用する場合
 
 TampermonkeyなどのUserScriptマネージャーでGistを利用する場合、インストール・自動更新の条件は各マネージャーの仕様に従います。`@version`、`@updateURL`、`@downloadURL`などの扱いも、利用するマネージャーの公式ドキュメントを確認してください。
 
-### ユーザースクリプト用メタデータのテンプレート
+### UserScript用Metadataのテンプレート
 
-TampermonkeyとViolentmonkeyはいずれも、UserScriptの先頭に `// ==UserScript==` から `// ==/UserScript==` までのメタデータブロックを置く形式を採用しています。
+TampermonkeyとViolentmonkeyはいずれも、UserScriptの先頭に `// ==UserScript==` から `// ==/UserScript==` までのMetadataブロックを置く形式を採用しています。
 
 汎用的な最小テンプレートは次のとおりです。
 
@@ -105,7 +105,7 @@ Gistなどから自動更新させる場合は、必要に応じて次の項目�
 | `@version` | 自動更新する場合は必須 | 更新版の比較に使われる。更新のたびに増加させる |
 | `@description` | 推奨 | スクリプトの目的を説明する |
 | `@author` | 任意 | 作者を示す |
-| `@homepageURL` | 推奨 | リポジトリや説明ページを示す |
+| `@homepageURL` | 推奨 | Repositoryや説明ページを示す |
 | `@supportURL` | 任意 | GitHub Issuesなど問い合わせ先を示す |
 | `@match` | 強く推奨 | 実行対象URLを必要な範囲に限定する |
 | `@grant` | 明示推奨 | 使用するGM APIなどの権限を列挙する。不要なら `none` を明示する |
@@ -124,4 +124,4 @@ Gistなどから自動更新させる場合は、必要に応じて次の項目�
 - [AdGuard — 独自の広告フィルターの作成方法](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
 - [AdGuardフィルターレジストリ](https://github.com/AdguardTeam/FiltersRegistry)
 - [Tampermonkeyのドキュメント — UserScriptヘッダー](https://www.tampermonkey.net/documentation.php)
-- [Violentmonkey — メタデータブロック](https://violentmonkey.github.io/api/metadata-block/)
+- [Violentmonkey — Metadataブロック](https://violentmonkey.github.io/api/metadata-block/)

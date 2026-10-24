@@ -13,7 +13,9 @@ NON_CANONICAL_NAMES = {
     "AdGuard向け最適化フィルタ": "uB-filter-by-kdroidwin (AdGuard Optimized)",
     "ユーザースクリプト": "UserScript",
     "ChMate用NGワード正規表現": "NG Word Regex for ChMate",
+    "ChMate NG Word Regex": "NG Word Regex for ChMate",
     "Markdownメモ": "Markdown Notes",
+    "uB-filter-by-kdroidwin（AdGuard Optimized）": "uB-filter-by-kdroidwin (AdGuard Optimized)",
 }
 
 

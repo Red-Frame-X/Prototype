@@ -4,11 +4,11 @@
 
 ---
 
-本書は、2026年9月1日時点で確認できるコンテンツブロックの仕様・運用上の注意点を、公式ドキュメント、公開ソースコード、公式リポジトリを優先して整理したFAQです。
+本書は、2026年9月1日時点で確認できるコンテンツブロックの仕様・運用上の注意点を、公式ドキュメント、公開ソースコード、公式Repositoryを優先して整理したFAQです。
 
 [Yuki2718/adblock2 Wiki「よくある質問」](https://github.com/Yuki2718/adblock2/wiki/%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F)で扱われている主要論点を参考にしていますが、古い製品状況や過去仕様は残さず、現在確認できる情報だけで再構成しています。
 
-| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | GPL-3.0 |
@@ -97,7 +97,7 @@ uBOLでは、サイト権限とフィルタリングモードを確認して使�
 
 URLで管理している自作・第三者フィルタは、拡張機能本体のリリースを待たずに更新されます。なお、旧MV3解説ページには「自動および手動のフィルタ更新なし」という説明も残っており、これは組み込みフィルタ中心の旧仕様説明と現行Custom filters仕様が併存している状態です。運用上は、Custom filtersと組み込みフィルタを分けて扱ってください。
 
-一方、**AdGuardが組み込みで提供するフィルタは、URL購読のCustom filtersとは更新経路が異なります。** 現行の公式GitHubリポジトリでは、MV3向け組み込みフィルタについて最新の `@adguard/dnr-rulesets` を定期的に取り込み、更新済みrulesetを含む拡張機能ビルドを自動公開する更新サイクルが説明されています。Chrome Web Storeのskip reviewを利用できる更新は迅速に公開できますが、filtering script rulesの変更を含む場合にはskip reviewを利用できないという制約があります。
+一方、**AdGuardが組み込みで提供するフィルタは、URL購読のCustom filtersとは更新経路が異なります。** 現行の公式GitHub Repositoryでは、MV3向け組み込みフィルタについて最新の `@adguard/dnr-rulesets` を定期的に取り込み、更新済みrulesetを含む拡張機能ビルドを自動公開する更新サイクルが説明されています。Chrome Web Storeのskip reviewを利用できる更新は迅速に公開できますが、filtering script rulesの変更を含む場合にはskip reviewを利用できないという制約があります。
 
 したがって、現時点で確証を持って区別できる更新方式は次のとおりです。
 

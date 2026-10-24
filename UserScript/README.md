@@ -17,7 +17,7 @@
 
 ## 自分の環境での利用メモ
 
-ViolentmonkeyやTampermonkeyなど、UserScriptメタデータを扱えるスクリプトマネージャーで使用しています。再設定時は`.user.js`の`@match`／`@include`、要求権限、`@updateURL`、`@downloadURL`などを確認してから有効化します。
+ViolentmonkeyやTampermonkeyなど、UserScript Metadataを扱えるスクリプトマネージャーで使用しています。再設定時は`.user.js`の`@match`／`@include`、要求権限、`@updateURL`、`@downloadURL`などを確認してから有効化します。
 
 UserScriptは対象ページ上でJavaScriptを実行するため、保存したスクリプトであっても内容と権限を確認し、必要なものだけを有効にします。
 
@@ -27,11 +27,11 @@ UserScriptは対象ページ上でJavaScriptを実行するため、保存した
 
 𝕏やYouTubeのDOM、属性、表示文言は予告なく変更されることがあり、サイト側の変更によってスクリプトが動作しなくなる可能性があります。問題が発生した場合は該当スクリプトを一時停止し、他のUserScriptや拡張機能との競合も含めて切り分けます。
 
-`@updateURL`や`@downloadURL`を持つスクリプトの更新確認・更新方法は、使用するUserScriptマネージャーの実装と設定に従います。メタデータに更新先が指定されていること自体は、すべてのマネージャーで同じ周期・同じ方法で自動更新されることを意味しません。
+`@updateURL`や`@downloadURL`を持つスクリプトの更新確認・更新方法は、使用するUserScriptマネージャーの実装と設定に従います。Metadataに更新先が指定されていること自体は、すべてのマネージャーで同じ周期・同じ方法で自動更新されることを意味しません。
 
 ## 関連情報
 
-- [リポジトリのルートREADME](../README.md)
+- [RepositoryのルートREADME](../README.md)
 - [UserScriptディレクトリ](./)
 
 ## 参考資料

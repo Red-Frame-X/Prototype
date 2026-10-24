@@ -2,7 +2,7 @@
 
 AdGuard製品で `||mydocomo.docomo.ne.jp^$document` を適用した際の実機検証メモです。
 
-| メタデータ | 情報 |
+| Metadata | 情報 |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |

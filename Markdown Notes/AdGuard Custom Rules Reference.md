@@ -1,4 +1,4 @@
-# AdGuardカスタムルールの構文リファレンス
+# AdGuard Custom Rulesの構文リファレンス
 
 AdGuardのカスタムルールについて、主要な構文、対応環境、設計・検証方法、誤ブロックへの対処などを体系的にまとめた実用リファレンスです。
 
@@ -6,7 +6,7 @@ AdGuardのカスタムルールについて、主要な構文、対応環境、�
 
 MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能のルールと、CoreLibsを使うAdGuard for Androidのルールには、対応機能や制約の違いがあります。本書は、主要構文の用途と注意点に加え、ルール設計、学習手順、実例、検証、デバッグ、誤ブロックへの対処、保守まで一貫して確認できる実用リファレンスです。AdGuard ブラウザ拡張機能 MV3対応版とAdGuard for Androidでの設計・検証を扱います。対応状況は変わるため、最終的な構文の可否は[AdGuard公式構文リファレンス](https://adguard.com/kb/general/ad-filtering/create-own-filters/)と実際のフィルタリングログで確認してください。
 
-| <div align="center">メタデータ</div> | <div align="center">情報</div> |
+| <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
@@ -367,9 +367,9 @@ EasyListやAdGuard Base Filter等の購読フィルタと同じルールを、�
 
 ### 【応用編：IT中級者向け】
 
-### Step 4：公式・コミュニティリポジトリの査読とAdGuard構文への翻訳
+### Step 4：公式・コミュニティRepositoryの査読とAdGuard構文への翻訳
 
-世界中のメンテナーが改善を重ねるリポジトリ（AdGuardFilters, EasyList, uAssets等）のソースコードやIssueを読み解きます。
+世界中のメンテナーが改善を重ねるRepository（AdGuardFilters, EasyList, uAssets等）のソースコードやIssueを読み解きます。
 
 特にuBlock Origin公式（uAssets）で使われているアンチアドブロック突破の知見を参考にしつつ、そのままコピペするのではなく、AdGuardエンジンに適合した**スクリプトレット（`#%#//scriptlet`）構文**に正しく翻訳して適用するスキルを磨きます [^7]。
 
@@ -720,7 +720,7 @@ trusted Scriptletなど信頼済みフィルタ限定の機能があります。
 
   各種公式フィルタの役割と、フィルタリングエンジニアに対して誤爆や広告のすり抜けを報告・提案する際の実践的な解説マニュアル。
 
-* [**AdGuard Content Blocking Filters（GitHub リポジトリ）**](https://github.com/AdguardTeam/AdguardFilters)
+* [**AdGuard Content Blocking Filters（GitHub Repository）**](https://github.com/AdguardTeam/AdguardFilters)
 
   AdGuard公式チームおよび Alex-302 氏らによって統括・運用されている公式フィルタリスト集。Androidアプリ向けの `$app=` 指定やモジュール化されたルール構造の最高峰教材。
 
@@ -728,7 +728,7 @@ trusted Scriptletなど信頼済みフィルタ限定の機能があります。
   
   （※特定の記事ページではなく、「検索エンジンの検索結果ページ・コミュニティ一覧のトップページ」です）Android端末での省電力タスクキル問題、ウォッチドッグ機能、ローレベル設定調整に関する開発チームおよび実ユーザーの技術議論アーカイブ。
 
-* [**EasyList公式リポジトリ**](https://github.com/easylist/easylist) / [**公式サイト**](https://easylist.to/)
+* [**EasyList公式Repository**](https://github.com/easylist/easylist) / [**公式サイト**](https://easylist.to/)
 
   世界中の広告ブロックルールの原点・基準となる汎用リファレンス。
 
@@ -736,7 +736,7 @@ trusted Scriptletなど信頼済みフィルタ限定の機能があります。
 
   Raymond Hill 氏が管理する静的フィルタ構文の公式解説書。特異度リセット（`:where()`）やCSSセレクタのDOM評価コスト、DNR適合を理解するための必読バイブル。
 
-### 10.2 構文・開発リポジトリ
+### 10.2 構文・開発Repository
 
 * **[独自の広告フィルタを作成する方法 | AdGuard Knowledge Base](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)**
 
@@ -744,7 +744,7 @@ trusted Scriptletなど信頼済みフィルタ限定の機能があります。
 
 * **[AdguardTeam/AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)**
 
-  AdGuard公式の最新ルールリポジトリであり、モバイルアプリ向けの指定 `$app` や独自スクリプトレットなど、AdGuard環境に特化した実践的なルールの記述法を直接参照できる最大の強みがあります。ただし、ルール群は用途別（Base, Mobile, Annoyances等）にモジュール構造（Module Structure：大規模なフィルタ群やプログラムを、単一の巨大なファイルとして管理するのではなく、用途、プラットフォーム、機能ごとに独立した複数のファイルやディレクトリに分割・整理する設計手法）として細かくディレクトリ分割されているため、目的の記述を探し出すにはリポジトリの設計方針に対する深い理解が求められます。
+  AdGuard公式の最新ルールRepositoryであり、モバイルアプリ向けの指定 `$app` や独自スクリプトレットなど、AdGuard環境に特化した実践的なルールの記述法を直接参照できる最大の強みがあります。ただし、ルール群は用途別（Base, Mobile, Annoyances等）にモジュール構造（Module Structure：大規模なフィルタ群やプログラムを、単一の巨大なファイルとして管理するのではなく、用途、プラットフォーム、機能ごとに独立した複数のファイルやディレクトリに分割・整理する設計手法）として細かくディレクトリ分割されているため、目的の記述を探し出すにはRepositoryの設計方針に対する深い理解が求められます。
 
 * **[AdGuard Filters Issue Template](https://github.com/AdguardTeam/AdguardFilters/blob/master/.github/ISSUE_TEMPLATE/bug_report.yml)**
 
@@ -760,7 +760,7 @@ trusted Scriptletなど信頼済みフィルタ限定の機能があります。
 
 * **[easylist / easylist](https://github.com/easylist/easylist)**
 
-  すべての原点である汎用ネットワークルールの集積であり、長年のコミュニティの運用によって高度に洗練された、最も堅牢で安定したルールの記述法を学べるリポジトリです。MV3環境や最新の難読化広告にはこれ単体では対応しきれない側面もあります。また、独自の検証環境でテストしたルール群やスクリプトをコミュニティ内で迅速に共有する際には、GitHub Gist（Gist：GitHubが提供する、単一または複数のコードスニペットや設定ファイル、カスタムルールリストなどを簡単に公開・管理・共有できる簡易リポジトリサービス）が活用されることも多くあります。
+  すべての原点である汎用ネットワークルールの集積であり、長年のコミュニティの運用によって高度に洗練された、最も堅牢で安定したルールの記述法を学べるRepositoryです。MV3環境や最新の難読化広告にはこれ単体では対応しきれない側面もあります。また、独自の検証環境でテストしたルール群やスクリプトをコミュニティ内で迅速に共有する際には、GitHub Gist（Gist：GitHubが提供する、単一または複数のコードスニペットや設定ファイル、カスタムルールリストなどを簡単に公開・管理・共有できる簡易Repositoryサービス）が活用されることも多くあります。
 
 * **[uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets)**
 

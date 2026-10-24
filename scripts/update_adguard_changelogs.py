@@ -152,7 +152,7 @@ def build_review(items: list[dict[str, Any]]) -> bytes:
         entries = item["converter_relevant_entries"]
         lines.extend((f"- {entry}" for entry in entries) if entries else ["- 最新安定版のリリースノートに、変換処理に関係するキーワードはありませんでした。"])
         lines.append("")
-    lines.extend(["## 変換処理を変更する前に必要な確認", "", "1. AdGuardフィルタリングの公式文書、CoreLibs・Scriptletsのソース、または関連する上流の課題で動作を確認します。", "2. 正常系・異常系・誤検出の回帰テストを追加します。", "3. レビュー済みのプルリクエストで`config/adguard-converter-capabilities.json`を更新します。", "4. 生成フィルターを再ビルドし、AGLintと単体テストを実行します。", ""])
+    lines.extend(["## 変換処理を変更する前に必要な確認", "", "1. AdGuardフィルタリングの公式文書、CoreLibs・Scriptletsのソース、または関連するUpstreamのIssueで動作を確認します。", "2. 正常系・異常系・誤検出の回帰テストを追加します。", "3. Review済みのPull Requestで`config/adguard-converter-capabilities.json`を更新します。", "4. 生成Filterを再Buildし、AGLintと単体テストを実行します。", ""])
     return "\n".join(lines).encode("utf-8")
 
 
