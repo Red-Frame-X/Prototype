@@ -51,7 +51,6 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         )
         self.assertIn("github.event_name == 'pull_request'", step["env"]["BASE_REF"])
         self.assertIn("github.base_ref", step["env"]["BASE_REF"])
-        # CIのShell処理をそのまま実行し、Scriptの場所だけ絶対Pathにする。
         command = step["run"].replace(
             "python scripts/check_commit_titles.py", f'"{sys.executable}" "{SCRIPT}"'
         )
@@ -85,7 +84,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         self.assertTrue(title_step.get("continue-on-error"))
 
         for name in (
-            "Pythonテストの実行",
+            "Python Testの実行",
             "Markdownlintの実行",
             "UserScriptの構文検査",
             "AGLintの実行",
@@ -94,7 +93,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
             self.assertNotIn("if", step)
 
         final_step = next(
-            s for s in steps if s.get("name") == "コミットタイトル検査の最終判定"
+            s for s in steps if s.get("name") == "Commit title検査の最終判定"
         )
         self.assertEqual(
             final_step.get("if"),

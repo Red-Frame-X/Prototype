@@ -62,6 +62,12 @@ class WriterWorkflowTests(unittest.TestCase):
         self.assertLess(fetch_index, rebase_index)
         self.assertLess(rebase_index, push_index)
 
+    def test_version_workflow_run_reference_matches_quality_workflow_name(self):
+        quality, _ = self._load("quality.yml")
+        version_workflow, _ = self._load("update-version-timestamps.yml")
+        workflow_run = version_workflow.get("on", {}).get("workflow_run", {})
+        self.assertEqual(workflow_run.get("workflows"), [quality.get("name")])
+
 
 if __name__ == "__main__":
     unittest.main()
