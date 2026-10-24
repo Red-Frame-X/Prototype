@@ -164,6 +164,10 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 ! PayPalのdata.service.paypal.comへの通信を許可し、ログイン・決済の不具合を回避
 @@||data.service.paypal.com^
 
+! pex.kantangame.com
+! ゲーム開始画面の広告ブロッカー無効化を求める案内文を非表示
+pex.kantangame.com##.c-n-game-start__info
+
 ! raw1001.net,mangakoma01.net
 ! ジャンル一覧の高さを画面内に収め、縦スクロールを有効化
 raw1001.net,mangakoma01.net#$#.dropMenu ~ ul.genresList { max-height: calc(100vh - 80px) !important; overflow-y: auto !important; scrollbar-width: thin !important; }
