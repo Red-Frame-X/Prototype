@@ -8,7 +8,7 @@ GitHub Gistを利用して、コンテンツブロックフィルタやUserScrip
 | **ライセンス** | CC0-1.0 |
 | **Version** | 202610242210 |
 
-ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
+ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
 ## GistとRepositoryの使い分け
 

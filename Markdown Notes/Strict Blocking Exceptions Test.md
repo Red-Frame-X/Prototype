@@ -8,7 +8,7 @@ AdGuard製品で `||mydocomo.docomo.ne.jp^$document` を適用した際の実機
 | **ライセンス** | CC0-1.0 |
 | **Version** | 202610241400 |
 
-ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
+ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
 ## 動作環境
 
