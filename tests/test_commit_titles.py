@@ -40,6 +40,15 @@ class CommitTitleTests(unittest.TestCase):
                 self.assertTrue(valid_title(f"{name} を自動更新"))
                 self.assertTrue(valid_title(f"Update {name}"))
 
+    def test_vague_titles_in_either_language_are_rejected(self):
+        for title in ("update", "fix", "WIP", "更新", "修正", "fix: update"):
+            with self.subTest(title=title):
+                self.assertFalse(valid_title(title))
+        for title in ("Update Markdown Notes Version", "Merge pull request #123 from a/b",
+                      'Revert "Update README.md"', "GitHub Actions のWorkflowを修正"):
+            with self.subTest(title=title):
+                self.assertTrue(valid_title(title))
+
     def test_body_does_not_fix_noncanonical_title(self):
         with tempfile.TemporaryDirectory() as directory:
             message = Path(directory) / "COMMIT_EDITMSG"
