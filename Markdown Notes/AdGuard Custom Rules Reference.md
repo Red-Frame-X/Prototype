@@ -4,7 +4,7 @@ AdGuardのカスタムルールについて、主要な構文、対応環境、�
 
 ---
 
-MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能のルールと、CoreLibsを使うAdGuard for Androidのルールには、対応機能や制約の違いがあります。本書は、主要構文の用途と注意点に加え、ルール設計、学習手順、実例、検証、デバッグ、誤ブロックへの対処、保守まで一貫して確認できる実用リファレンスです。AdGuard ブラウザ拡張機能 MV3対応版とAdGuard for Androidでの設計・検証を扱います。対応状況は変わるため、最終的な構文の可否は[AdGuard公式構文リファレンス](https://adguard.com/kb/general/ad-filtering/create-own-filters/)と実際のフィルタリングログで確認してください。
+MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能のルールと、CoreLibsを使うAdGuard for Androidのルールには、対応機能や制約の違いがあります。本書は、主要構文の用途と注意点に加え、ルール設計、学習手順、実例、検証、デバッグ、誤ブロックへの対処、保守まで一貫して確認できる実用リファレンスです。AdGuard ブラウザ拡張機能 MV3対応版とAdGuard for Androidでの設計・検証を扱います。対応状況は変わるため、最終的な構文の可否は [AdGuard公式構文リファレンス](https://adguard.com/kb/general/ad-filtering/create-own-filters/) と実際のフィルタリングログで確認してください。
 
 | <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
@@ -12,7 +12,7 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 | **ライセンス** | CC0-1.0 |
 | **Version** | 202610242210 |
 
-ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
+ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
 ---
 
@@ -279,7 +279,7 @@ AdGuard for Androidでも軽く動作させるため、可能な限りシンプ�
 
 ### `#%#//scriptlet('json-prune', ...)` / `json-prune` ［JSONデータの動的クレンジング］
 * **構文例**： `example.com#%#//scriptlet('json-prune', 'ad_tags *.sponsor', 'ads_enabled')`
-* **概要**： `JSON.parse()` と `Response.prototype.json()` の戻り値から、条件に合うプロパティを削除します。すべてのXHRレスポンスを直接処理する機能ではありません。対象APIは[公式ソース](https://github.com/AdguardTeam/Scriptlets/blob/master/src/scriptlets/json-prune.js)で確認できます。
+* **概要**： `JSON.parse()` と `Response.prototype.json()` の戻り値から、条件に合うプロパティを削除します。すべてのXHRレスポンスを直接処理する機能ではありません。対象APIは [公式ソース](https://github.com/AdguardTeam/Scriptlets/blob/master/src/scriptlets/json-prune.js) で確認できます。
 * **解説**： 動画プラットフォームやモダンなSPA、アプリ内通信において、データ構造の中に組み込まれた広告情報だけを外科手術のように正確に除去できます。ただし、対象となるJSONスキーマ（JSON Schema：JSONフォーマットのデータ構造において、キーの名前、データの型、階層構造などの必須構文ルールや構造定義を記述した仕様書）が変わると機能しなくなるため、サイト側の更新頻度が高い場合は定期的なメンテナンスが必要です。
 
 ### `#%#//scriptlet('prevent-fetch', ...)` / `#%#//scriptlet('prevent-xhr', ...)` ［非同期通信のJSレイヤー遮断］
@@ -521,7 +521,7 @@ AdGuard公式Knowledge Baseは、ローレベル設定の変更によってAdGua
 
 ## 8. AdGuard Filters issuesで必要となる実践知識
 
-ここではフィルタ作者向けの全手順ではなく、問題を再現し、原因を切り分け、保守担当者が検証可能な報告を作るための要点を扱います。公式Issueテンプレートは、直接GitHubへ投稿するより先に[AdGuard Web Reporting Tool](https://adguard.com/kb/guides/report-website/)を使うことを推奨しています。
+ここではフィルタ作者向けの全手順ではなく、問題を再現し、原因を切り分け、保守担当者が検証可能な報告を作るための要点を扱います。公式Issueテンプレートは、直接GitHubへ投稿するより先に [AdGuard Web Reporting Tool](https://adguard.com/kb/guides/report-website/) を使うことを推奨しています。
 
 ### 8.1 問題の分類
 
@@ -591,7 +591,7 @@ example.com##.ad-banner
 
 ### 8.7 公式Issueテンプレートに沿った報告項目
 
-[AdguardFiltersのBug reportテンプレート](https://github.com/AdguardTeam/AdguardFilters/blob/master/.github/ISSUE_TEMPLATE/bug_report.yml)で必須または選択を求められる主な項目は次のとおりです。
+[AdguardFiltersのBug reportテンプレート](https://github.com/AdguardTeam/AdguardFilters/blob/master/.github/ISSUE_TEMPLATE/bug_report.yml) で必須または選択を求められる主な項目は次のとおりです。
 
 * AdGuard、ブラウザ、フィルタを更新済みであること
 * サイト・アプリ破損では、AdGuardを無効化すると解消すること
