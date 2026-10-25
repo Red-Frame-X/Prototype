@@ -141,10 +141,6 @@ news.google.com##[role="tablist"] [role="tab"][aria-label="ビジネス"]
 news.google.com##[role="tablist"] [role="tab"][aria-label="科学＆テクノロジー"]
 ! 上部カテゴリタブの「ショーケース」を非表示
 news.google.com##[role="tablist"] [role="tab"][aria-label="ショーケース"]
-! ニュース提供元の候補を表示するボタンを非表示
-news.google.com##button[aria-label="候補 - ニュース提供元"]
-! ニュース提供元のフォローボタンを含む見出しまたはカード全体を非表示
-news.google.com#?#h3:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュース提供元をフォロー"])), div[role="article"]:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュース提供元をフォロー"]))
 
 ! news.mynavi.jp
 ! 以下は無効：registration_guide_modal用DOMContentLoadedリスナーの登録を阻止し、会員登録モーダルによるスクロール固定を回避
