@@ -30,15 +30,48 @@
 - 正確さのために必要なコード識別子・ファイルパス・コマンド・ログ・引用したエラーメッセージは原表記を保持する。
 - この言語方針を、自動Pull Request Reviewと`@codex review`で依頼されたReviewの両方に適用する。
 
-## Commit titleの表記
+## Commit・Pull Requestの言語と確認
 
-- Commit titleは変更内容を正確かつ簡潔に表す自然な日本語を原則とする。GitHub Web UI、Git CLI、Gitクライアント、API、AI、PRのMergeを含むすべての編集経路に適用する。既存履歴は変更しない。運用と制約は[CONTRIBUTING.md](CONTRIBUTING.md)を参照する。
-- Commit messageの説明は自然な日本語で記述してよいが、IT・ソフトウェア開発・GitHubで英語表記が一般的な用語と正式名称は英語を優先する。
-- `AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は固定の正式表記として維持し、日本語訳へ置換しない。
-- `GitHub Actions`、`Workflow`、`Commit`、`Pull Request`、`PR`、`Issue`、`Branch`、`Repository`、`README`、`CI`、`Lint`、`Test`、`Script`、`Version`など、英語表記が一般的な技術用語は文脈上不自然でない限り英語を優先する。
-- Commit titleは日本語と英語の正式名称を組み合わせても、英語のみでもよい。例：`Markdown Notes のVersion自動更新処理を修正`、`Update Markdown Notes Version`。
-- 自動生成するCommit、Merge Commit、Revert Commit、Pull Request title、Merge時に作成するCommitにも同じ表記方針を適用する。
-- `npm run hooks:install` でCommit Hookを有効にする。CIでも新しいCommit titleが固定名称の表記方針に反していないことを検査する。
+この方針は、このRepositoryでChatGPT Chat / Work / Codexを通じて作業する場合の共通の必須方針とする。運用とツールの制約は[CONTRIBUTING.md](CONTRIBUTING.md)も参照する。
+
+### titleとbodyの表記
+
+- 新しく作成するCommit messageとPull Requestのtitleおよびbodyは、原則として日本語で記述する。変更内容・目的・理由などの一般説明は、自然で簡潔な日本語にする。英語のみの定型メッセージをそのまま採用しない。
+- 作業環境、使用ツール、通常のCommit、追加修正、競合解消、Revertなどの違いを理由に、この方針を省略しない。文章やコードの提案だけの場合も、提示するCommit message案に適用する。
+- IT業界で英語が一般的な技術用語・製品名・機能名・プロジェクト名・コード識別子は、正式または一般的な英語表記を優先する。
+- `AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は固定の正式表記として維持する。`GitHub Actions`、`Workflow`、`Commit`、`Pull Request`、`PR`、`Issue`、`Branch`、`Repository`、`README`、`CI`、`Lint`、`Test`、`Script`、`API`、`Version`なども英語表記を優先する。
+- ファイル名、ディレクトリ名、コマンド、設定キー、Metadata key、URL、Branch名、Commit hashなどは原表記を維持する。
+- 「修正」「追加」「更新」「自動更新」「変更履歴」「生成処理」「構文検査」「回帰テスト」「設定」「説明」など、自然な日本語で表せる一般説明は日本語にする。技術用語が英語であることを、説明全体を英語で書く理由にしない。正式名称や識別子だけで構成され、日本語化する一般説明がない場合を除き、日本語で変更内容を説明する。
+- 表現を整えるために、変更内容や確認していない理由を作り足さない。
+
+適切な例：
+
+- `Markdown Notes のVersion自動更新処理を修正`
+- `AdGuard Custom Rules にGoogleニュースの非表示ルールを追加`
+- `GitHub Actions のWorkflowで発生するエラーを修正`
+- `UserScript の設定画面を更新`
+- `mainとの競合を解消`
+- `誤ブロックを引き起こした変更をRevert`
+
+避ける例：`Update README.md`、`Fix workflow`、`Add filters`、`Update Markdown Notes Version`。
+
+### 作成・マージ前後の確認
+
+- Commitを作成する前に、実際に使用するtitleとbodyがこの方針に従っているか確認する。ツールが英語の文面を提案・自動生成した場合も、採用前に確認し、編集可能な一般説明を日本語にする。
+- Pull Requestのtitleとbodyも同様に確認する。
+- マージする場合は、選択したマージ方式で最終的に残るCommit messageを確認し、編集可能なtitleとbodyを日本語にする。Squash mergeでは、Pull Requestのtitleだけでなく、最終的なCommit messageのbodyも確認する。
+- 自分が作成したBranch内のCommitがmainに残る方式では、それらのCommit messageも確認する。ただし、既存履歴の書き換えに関する制限は守る。
+- mainへの反映まで依頼された場合は、反映後に取得できる実際のCommit messageを確認する。画面上の説明や作業報告が日本語であるだけで、Commit履歴も日本語になったと判断しない。
+
+### 既存履歴・自動生成処理・報告
+
+- この方針だけを根拠に、既存Commitの履歴書き換え、amend、rebase、force pushを行わない。既存履歴の日本語化は、別途明示的に許可された範囲で行う。
+- 既存のコード、設定、Workflow、コメント、参考リンクなどを無断で削除しない。
+- GitHub ActionsやBotなどの自動Commitも修正対象として依頼された場合は、生成元を確認し、技術用語や識別子を保持して、日本語のCommit messageを生成するよう最小限修正する。
+- この指示が適用されない手動操作や外部ツールの出力まで、自動的に日本語へ統一できるとは説明しない。
+- ツールの制約などでCommit messageを指定・確認できない場合は、その制約と未確認の範囲を明記する。実行していないCommit、push、マージを完了済みとして報告しない。
+- 最終報告は日本語とし、作成したCommitのhashとtitle、mainへの反映状況、実際のCommit messageの確認結果を簡潔に示す。Commitを作成していない場合は、その旨を示す。
+- `npm run hooks:install`でCommit Hookを有効にできる。既存のHookとCIによるCommit title検査だけでは、この方針全体への準拠を保証できないため、titleとbodyの内容も確認する。
 
 ## Repository内の表記
 

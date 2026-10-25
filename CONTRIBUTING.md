@@ -1,8 +1,10 @@
 # Commit messageの運用
 
-Commit titleは、変更対象と内容が分かる簡潔で自然な日本語を原則とします。
+Commit messageとPull Requestのtitleおよびbodyは、変更対象と内容が分かる簡潔で自然な日本語を原則とします。
+ChatGPT Chat / Work / Codexでの必須方針と確認手順は[AGENTS.md](AGENTS.md)に従ってください。
 英語の技術用語・製品名・ファイル名・コード識別子は維持します。
-正式名称と変更内容が明確なら、`Update Markdown Notes Version`のような英語のみのtitleも許容します。
+正式名称や識別子だけで構成され、日本語化する一般説明がない場合を除き、変更内容は日本語で説明します。
+`Update Markdown Notes Version`のような英語のみの定型メッセージは採用しません。
 既存履歴を書き換えたり、Force Pushしたりして日本語化しません。
 
 例：
@@ -12,7 +14,7 @@ Commit titleは、変更対象と内容が分かる簡潔で自然な日本語�
 - `GitHub Actions のWorkflowを修正`
 - `Linux Mint Guide の参考リンクを更新`
 - `UserScript のVersion自動更新処理を修正`
-- `Update Markdown Notes Version`
+- `Markdown Notes のVersionを更新`
 
 ## 編集経路ごとの入力方法
 
@@ -26,8 +28,11 @@ Commit titleは、変更対象と内容が分かる簡潔で自然な日本語�
 | PRのMerge | PR titleと、Merge確定画面のCommit titleを確認・編集する | Squashは最終titleを確認する。Rebaseは元のCommit titleを引き継ぐ |
 
 通常のMergeでGitHubが生成する`Merge pull request ...`やRevertのtitleは、
-日本語がないという理由で拒否しません。編集できる場合は日本語の説明を優先します。
-PR titleだけではMerge時の最終messageは保証されないため、確定前にも確認します。
+既存の自動検査では日本語がないという理由だけで拒否しません。
+これは英語の一般説明をそのまま採用してよいという意味ではなく、編集可能なtitleとbodyは日本語にします。
+PR titleだけではMerge時の最終messageは保証されないため、確定前にtitleとbodyを確認します。
+Squashでは最終bodyも、自分のBranchのCommitが残る方式では各Commit messageも確認します。
+mainへの反映まで依頼された場合は、反映後の実際のCommit messageを取得して確認します。
 
 ## 検証と修正
 
@@ -42,7 +47,8 @@ python scripts/check_commit_titles.py --base-ref origin/main --head-ref HEAD
 ```
 
 検査は空title、固定名称の誤表記、`update`・`fix`・`修正`など対象のない定型titleを失敗にします。
-日本語の有無だけでは判定せず、明確な英語titleを許容します。
+既存の検査は日本語の有無だけでは判定せず、明確な英語titleも通過します。
+bodyやPull Requestの文面はこの検査の対象外であり、検査成功だけでは言語方針への準拠を保証しません。
 日本語が含まれていても適切とは限らず、意味の正確さと日本語の優先は人が確認します。
 定型語以外の曖昧なtitleや不適切な英語をすべて自動検出する仕組みではありません。
 
