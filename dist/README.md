@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-k
 
 登録後は、必要な権限やUser Scripts APIの状態を、使用中バージョンのUIと公式資料で確認します。
 
-AdGuard ブラウザ拡張機能 v5.2以降では、MV3でカスタムフィルタを扱うためにUser Scripts APIが使用されています。仕様確認用としてAdGuard公式の[User Scripts API](https://adguard.com/kb/ja/adguard-browser-extension/user-scripts-api/)を参照します。
+AdGuard ブラウザ拡張機能 v5.2以降では、MV3でカスタムフィルタを扱うためにUser Scripts APIが使用されています。仕様確認用としてAdGuard公式の [User Scripts API](https://adguard.com/kb/ja/adguard-browser-extension/user-scripts-api/) を参照します。
 
 ### AdGuard for Android
 
