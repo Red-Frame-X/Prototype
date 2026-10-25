@@ -155,6 +155,10 @@ news.google.com##h3:has(> c-wiz:not(:has(c-wiz)):has([aria-label^="このニュ�
 news.yahoo.co.jp##div:has(> a[href^="/articles/"][href$="/comments"])
 ! 記事ページのコメントセクション全体を非表示
 news.yahoo.co.jp##aside:has(#CommentShortCheckboxHide)
+! 「みんなのスレッド」セクションを非表示
+news.yahoo.co.jp##section[aria-label="みんなのスレッド"]
+! uf_modモジュールのフォロータブへのリンクを非表示
+news.yahoo.co.jp##a[data-cl-params*="_cl_vmodule:uf_mod;"][data-cl-params*="_cl_link:flw_tab"]
 
 ! officeforest.org
 ! IDがoffic-で始まる独自広告・案内コンテナを非表示
