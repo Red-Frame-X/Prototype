@@ -8,7 +8,7 @@ Googlebookの仕様、対応アプリ、ハードウェア、Chrome、Linux、�
 | **ライセンス** | CC0-1.0 |
 | **Version** | 202610241400 |
 
-ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
+ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
 > [!IMPORTANT]
 > 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。さらに9月23日、Chrome Enterprise and Education Helpで既存ChromebookのGooglebook OS移行方針を公開しました。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成、Chromebookの具体的な移行対象モデルなど未確認事項も残っています。公式発表、報道、推測を引き続き区別してください。
@@ -35,7 +35,7 @@ Googlebookの仕様、対応アプリ、ハードウェア、Chrome、Linux、�
 
 ### 要点
 
-Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日を初期発売日として発表しました。2026年10月8日時点でGoogle公式ショップに購入案内が掲載されていますが、個別モデル・地域の在庫と出荷状況はメーカー販売ページで確認する必要があります。[Google公式ショップ](https://googlebook.google/shop/) 価格は899米ドルからです。Googleは2026年9月23日、現行Chromebookを各機種の自動更新期限までサポートし、現在購入される対象機種のうち10年のサポート期間が2034年を超えるものについてGooglebook OSへの移行を支援すると説明しました。また、多くの新しい商用ChromebookがGooglebook OSへアップグレード可能になるとしています。ただし、具体的な対象モデルと移行方法は未発表です。一方、日本発売、ファイルマネージャーからのAPK導入など一般利用者向けのサイドロード手順、Play Integrity、Linux環境の詳細構成などは未確認です。ADBによるアプリのインストール・実行・デバッグは[Google公式資料](https://developer.android.com/develop/adaptive-apps/guides/googlebook/adb-debugging)で確認済みです。
+Googlebookは、Googleが2026年5月12日に正式発表し、2026年9月21日に予約開始と主要仕様を公開した新しいノートPCカテゴリです。GoogleはGooglebook OSについて、**Android technology stackを基盤とし、ChromeOSのdesktop foundationsを組み合わせた構成**と説明しています。Gemini Intelligenceを中核に据え、Androidスマートフォンとの連携を重視しています。初期ハードウェアパートナーは **Acer、ASUS、Dell、HP、Lenovo** で、米国では2026年10月4日、カナダ・英国・アイルランド・フランス・ドイツ・オーストラリアでは10月5日を初期発売日として発表しました。2026年10月8日時点でGoogle公式ショップに購入案内が掲載されていますが、個別モデル・地域の在庫と出荷状況はメーカー販売ページで確認する必要があります。[Google公式ショップ](https://googlebook.google/shop/) 価格は899米ドルからです。Googleは2026年9月23日、現行Chromebookを各機種の自動更新期限までサポートし、現在購入される対象機種のうち10年のサポート期間が2034年を超えるものについてGooglebook OSへの移行を支援すると説明しました。また、多くの新しい商用ChromebookがGooglebook OSへアップグレード可能になるとしています。ただし、具体的な対象モデルと移行方法は未発表です。一方、日本発売、ファイルマネージャーからのAPK導入など一般利用者向けのサイドロード手順、Play Integrity、Linux環境の詳細構成などは未確認です。ADBによるアプリのインストール・実行・デバッグは [Google公式資料](https://developer.android.com/develop/adaptive-apps/guides/googlebook/adb-debugging) で確認済みです。
 
 「Aluminium」は求人情報などを根拠に報道されたAndroidベースPCプロジェクトのコードネームです。Googleの正式な製品発表では「Googlebook」を使用しており、「Aluminium OS」または「ALOS」を正式な製品名としていません。したがって、バックアップ目的でAluminiumに関する過去の報道・予測を残す場合も、Google公式の確定情報とは区別します。
 
@@ -398,7 +398,7 @@ Google公式ショップ・比較表に掲載されているのは以下の5シ�
 | HP | 2基 | 記載なし | USB 10Gbps、TB・USB4対応の記載なし | 記載なし | ヘッドホン / マイクコンボあり | 記載なし | 記載なし |
 | Lenovo | 2基 | 1基（USB 10Gbps） | TB4×2 | 2.0×1 | あり | 記載なし | 記載なし |
 
-上記メーカー仕様に加え、[LenovoのPorts & Slots](https://www.lenovo.com/us/en/p/laptops/googlebook/googlebook-series/lenovo-googlebook-15/83w60009us)も確認しました。主要無線接続はWi-Fi 7、BluetoothはAcer・ASUS・Lenovoが6.0、Dell・HPが5.4と掲載されています。OS上の全機能対応とは区別します。
+上記メーカー仕様に加え、[LenovoのPorts & Slots](https://www.lenovo.com/us/en/p/laptops/googlebook/googlebook-series/lenovo-googlebook-15/83w60009us) も確認しました。主要無線接続はWi-Fi 7、BluetoothはAcer・ASUS・Lenovoが6.0、Dell・HPが5.4と掲載されています。OS上の全機能対応とは区別します。
 
 初期Snapdragon機はUSB-A・HDMIを搭載端子として掲載せず、USB-C中心です。ただし、**HPには音声端子があるため、両モデルを一括して「USB Type-Cのみ」と表現しません。** XPSはDisplayPort Alt ModeとPower Delivery、HPはDisplayPort 1.4とUSB PD 3.0を掲載しています。DellブログはXPSのDisplayPort 1.4を説明しています。[Dell公式I/O解説](https://www.dell.com/en-us/blog/everything-you-need-to-know-about-dell-s-xps-googlebook)
 
@@ -456,7 +456,7 @@ Webアプリ中心ならAndroid ABIだけでIntelを除外する理由は乏し�
 3. AdGuard for Android、personalDNSfilterなどがGooglebookを正式対応環境に含めるか確認する。
 4. ブラウザ内フィルタとDNS・VPNフィルタを重ねる場合は、誤ブロック、二重処理、電池消費、ログの分散を実機で比較する。
 
-AdGuardのフィルタ構文については、製品予測から切り離し、[AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md)を参照してください。
+AdGuardのフィルタ構文については、製品予測から切り離し、[AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) を参照してください。
 
 ## 今後確認する項目
 

@@ -13,7 +13,7 @@ Android用5ちゃんねるブラウザChMateのNG設定で自分が使用・検�
 
 ## 自分の環境での設定メモ
 
-[`NG Word Regex for ChMate.txt`](NG%20Word%20Regex%20for%20ChMate.txt)に保存している正規表現を、必要なものだけChMateのNG設定へ登録し、正規表現として使用しています。変更時は一度に大量追加せず、意図した投稿だけが対象になることを確認してから常用します。
+[`NG Word Regex for ChMate.txt`](NG%20Word%20Regex%20for%20ChMate.txt) に保存している正規表現を、必要なものだけChMateのNG設定へ登録し、正規表現として使用しています。変更時は一度に大量追加せず、意図した投稿だけが対象になることを確認してから常用します。
 
 ## 検証時の注意
 
