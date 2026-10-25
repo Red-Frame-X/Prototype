@@ -10,7 +10,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | **ライセンス** | CC0-1.0 |
 | **Version** | 202610250112 |
 
-ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
+ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
 ## 購読・支援
 
@@ -1522,10 +1522,10 @@ uBlacklistに対応するモバイルブラウザでも、詐欺サイトなど�
 
 | Androidブラウザ | 一次情報で確認できる対応状況 |
 | --- | --- |
-| [Titanium](https://github.com/jqssun/android-titanium-browser) | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions)にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
-| [Aerium](https://github.com/aerium-browser/aerium-browser-android) | [公式README](https://github.com/aerium-browser/aerium-browser-android#extensions-finally)にChrome Web Storeからの拡張機能導入とuBlock Originのプリインストールの記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
+| [Titanium](https://github.com/jqssun/android-titanium-browser) | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions) にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
+| [Aerium](https://github.com/aerium-browser/aerium-browser-android) | [公式README](https://github.com/aerium-browser/aerium-browser-android#extensions-finally) にChrome Web Storeからの拡張機能導入とuBlock Originのプリインストールの記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
 
-拡張機能への対応だけで、すべての拡張機能や同期機能の動作が保証されるわけではありません。[uBlacklistのサポート方針](https://github.com/iorate/ublacklist#browser-support-policy)でも、明記されたブラウザ以外の対応はコミュニティの貢献に依存します。導入後は、利用する検索エンジンで非表示と再表示が動作するか確認してください。
+拡張機能への対応だけで、すべての拡張機能や同期機能の動作が保証されるわけではありません。[uBlacklistのサポート方針](https://github.com/iorate/ublacklist#browser-support-policy) でも、明記されたブラウザ以外の対応はコミュニティの貢献に依存します。導入後は、利用する検索エンジンで非表示と再表示が動作するか確認してください。
 
 購読リストの対象範囲・更新状況によって効果は異なり、正常なサイトが非表示になる場合は、下記の例外ルールで調整できます。Google以外の対応検索エンジンではオプションでの有効化が必要です。購読には配布元へのアクセス権限が必要で、Firefox for AndroidではuBlacklistの「ブラウザ同期」方式は利用できません（[公式詳細ガイド](https://ublacklist.github.io/docs/advanced-features)）。
 
@@ -1565,12 +1565,12 @@ uBlacklistに対応するモバイルブラウザでも、詐欺サイトなど�
 
 **personalDNSfilter（ローカルVPNモード）の常駐・DNS設定**
 
-Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設定メモです。ChromeOS上のAndroid環境では、設定項目の有無やDNSが処理される範囲を実機で確認します。
+Android向けの [公式FAQ](https://www.zenz-solutions.de/faq/) に沿った設定メモです。ChromeOS上のAndroid環境では、設定項目の有無やDNSが処理される範囲を実機で確認します。
 
 * **常駐対策**：personalDNSfilterをバッテリー最適化の対象から除外し、バックグラウンド動作を許可します。ローカルVPNモードでは、AndroidのVPN設定で「常時接続VPN」を有効にします。設定名・導線はOSや端末によって異なり、停止を完全に防ぐ保証はありません。
 * **「VPNなしの接続をブロック」は無効**：personalDNSfilterはDNS問い合わせだけを処理するため、この設定を有効にすると通常のインターネット通信が遮断されると公式FAQに明記されています。
 * **DNSフィルタリングの迂回対策**：Androidの「プライベートDNS」と、Android版Chromeの「セキュアDNSを使用」を無効にします。これはDNS問い合わせをpersonalDNSfilterに処理させるための設定であり、VPNの停止を防ぐ設定ではありません。
-* **DNS通信の暗号化**：OS・ブラウザ側の暗号化DNSを無効にする場合は、personalDNSfilter側でDoHまたはDoTの上流DNSを設定します。[公式製品説明](https://www.zenz-solutions.de/personaldnsfilter-wp/)に両方式の対応が記載されています。
+* **DNS通信の暗号化**：OS・ブラウザ側の暗号化DNSを無効にする場合は、personalDNSfilter側でDoHまたはDoTの上流DNSを設定します。[公式製品説明](https://www.zenz-solutions.de/personaldnsfilter-wp/) に両方式の対応が記載されています。
 * **ChromeOS側の設定**：「サイトのルックアップに安全な接続を使用する」の無効化は、上記のAndroid向けFAQからChromeOS全体へ一律に適用しません。ChromeOS側のDNSもpersonalDNSfilterで処理する構成では、設定変更前後の問い合わせがアプリのログに記録されるか確認します。Android環境内で動作しているだけでは、ChromeOS全体への適用を確認したことにはなりません。
 
 通知のサイレント化は、通知音などを抑えるための任意設定です。VPNの安定化対策には含めません（[Android公式：通知の管理](https://support.google.com/android/answer/9079661?hl=ja)）。VPNプロファイルの削除・再設定も、公式FAQで一般的な安定化対策として確認できないため、常用手順には含めません。
@@ -1608,7 +1608,7 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
 
 **常駐・再起動対策**
 * AdGuardのバックグラウンド動作を許可し、バッテリー最適化の対象から除外します。Pixelでの設定例：設定 > アプリ > AdGuard > アプリのバッテリー使用量 > バックグラウンドでの使用を許可 > 制限なし。設定名・導線はAndroidのバージョンや端末によって異なります。
-* バックグラウンドで停止する場合は、AndroidのVPN設定でAdGuardの「常時接続VPN」を有効にします。[AdGuard公式のメーカー別対処手順](https://adguard.com/kb/adguard-for-android/solving-problems/background-work/)でもPixelなどに案内されています。有効化後も、端末再起動後にアプリの保護状態を確認します。
+* バックグラウンドで停止する場合は、AndroidのVPN設定でAdGuardの「常時接続VPN」を有効にします。[AdGuard公式のメーカー別対処手順](https://adguard.com/kb/adguard-for-android/solving-problems/background-work/) でもPixelなどに案内されています。有効化後も、端末再起動後にアプリの保護状態を確認します。
 * **「VPNなしの接続をブロック」は別機能です**。有効にするとVPNから除外したアプリも通信できなくなるため、安定化目的では有効にしません（[Android公式：VPN](https://developer.android.com/develop/connectivity/vpn#blocked-connections)）。
 
 **AdGuardのDNS保護を利用する場合**
@@ -1621,7 +1621,7 @@ Android向けの[公式FAQ](https://www.zenz-solutions.de/faq/)に沿った設�
 
 補足：端末やOSの表示によっては、「サイレント」に相当する選択肢や通知一覧の見出しが「マナー」と表示される場合があります。手元のPixel 10aでは、AdGuardの通知設定に「マナー（着信音もバイブレーションもOFFになります）」と表示されることを確認しています。ここでの「マナー」は個別通知の音・振動を抑える設定であり、この表示だけで端末全体がマナーモードになったことを意味しません。
 * 「接続の自動調整」は一律に無効化しません。Googleは省電力のための有効化を案内しています。接続切り替え時に不具合がある場合だけ、該当項目を一つずつ変更して再現性を比較し、改善しなければ元に戻します。これは切り分け案であり、AdGuard公式の必須設定ではありません（[Google公式：ネットワーク設定](https://support.google.com/pixelphone/answer/2819583?hl=ja)）。
-* VPNプロファイルの削除・再設定は、一般的な安定化対策として公式の裏付けを確認できないため、常用手順には含めません。停止が続く場合は、メーカー別の常駐設定を確認し、発生時刻と[デバッグログ](https://adguard.com/kb/adguard-for-android/solving-problems/log/)を記録して原因を調べます。
+* VPNプロファイルの削除・再設定は、一般的な安定化対策として公式の裏付けを確認できないため、常用手順には含めません。停止が続く場合は、メーカー別の常駐設定を確認し、発生時刻と [デバッグログ](https://adguard.com/kb/adguard-for-android/solving-problems/log/) を記録して原因を調べます。
 
 ⚙ > 一般設定 > 詳細設定 > ローレベル設定 > その他の設定 - 「メイン画面にデベロッパーツールを表示する」をONにすると、ホーム画面右上にレンチアイコンが表示され設定アクセスが容易になります（[画像](https://imgur.com/UKGTVnZ)）。
 
