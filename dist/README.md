@@ -54,7 +54,7 @@ AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィル
 - 変換できることと、元ルールの意味を完全に維持できることは同義ではありません。意味を安全に維持できない場合は保守的に除外します。
 - 誤ブロックを疑う場合は、この生成フィルタを一時的に無効化して自分の環境で原因を切り分けます。
 - 正規表現の構文検査対策として`$document`を自動追加しません。AGLint 3.0.2が正規表現内の終端アンカーを修飾子と誤認する場合だけ、該当行の`invalid-modifiers`診断をコメントで抑制します。その他の検査は維持します。
-- 変換処理の詳細は[`scripts/convert.py`](../scripts/convert.py)に残しています。
+- 変換処理の詳細は [`scripts/convert.py`](../scripts/convert.py) に残しています。
 
 ## 関連情報
 
@@ -75,4 +75,4 @@ AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィル
 - 変換版：[uB-filter-by-kdroidwin (AdGuard Optimized).txt](./uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)
 - ライセンス：[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
 
-第三者由来ファイルのライセンスと、このRepository内の独自部分の扱いは[`LICENSES.md`](../LICENSES.md)に記録しています。
+第三者由来ファイルのライセンスと、このRepository内の独自部分の扱いは [`LICENSES.md`](../LICENSES.md) に記録しています。

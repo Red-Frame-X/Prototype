@@ -6,7 +6,7 @@
 
 本書は、2026年9月1日時点で確認できるコンテンツブロックの仕様・運用上の注意点を、公式ドキュメント、公開ソースコード、公式Repositoryを優先して整理したFAQです。
 
-[Yuki2718/adblock2 Wiki「よくある質問」](https://github.com/Yuki2718/adblock2/wiki/%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F)で扱われている主要論点を参考にしていますが、古い製品状況や過去仕様は残さず、現在確認できる情報だけで再構成しています。
+[Yuki2718/adblock2 Wiki「よくある質問」](https://github.com/Yuki2718/adblock2/wiki/%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F) で扱われている主要論点を参考にしていますが、古い製品状況や過去仕様は残さず、現在確認できる情報だけで再構成しています。
 
 | <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
