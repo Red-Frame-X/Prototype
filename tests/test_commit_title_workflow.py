@@ -78,10 +78,10 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         result = self.run_workflow("", self.git("rev-parse", "HEAD"))
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
-    def test_only_title_failure_is_deferred_until_final_step(self):
+    def test_title_failure_is_not_hidden_and_other_checks_run(self):
         steps = self.workflow()["jobs"]["quality"]["steps"]
         title_step = next(s for s in steps if s.get("id") == "commit-title-check")
-        self.assertTrue(title_step.get("continue-on-error"))
+        self.assertNotIn("continue-on-error", title_step)
 
         for name in (
             "Python Testの実行",
@@ -90,7 +90,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
             "AGLintの実行",
         ):
             step = next(s for s in steps if s.get("name") == name)
-            self.assertNotIn("if", step)
+            self.assertEqual(step.get("if"), "${{ !cancelled() }}")
 
         final_step = next(
             s for s in steps if s.get("name") == "Commit title検査の最終判定"
