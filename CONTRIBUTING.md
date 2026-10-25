@@ -1,7 +1,7 @@
 # Commit messageの運用
 
 Commit messageとPull Requestのtitleおよびbodyは、変更対象と内容が分かる簡潔で自然な日本語を原則とします。
-ChatGPT Chat / Work / Codexでの必須方針と確認手順は[AGENTS.md](AGENTS.md)に従ってください。
+ChatGPT Chat / Work / Codexでの必須方針と確認手順は [AGENTS.md](AGENTS.md) に従ってください。
 英語の技術用語・製品名・ファイル名・コード識別子は維持します。
 正式名称や識別子だけで構成され、日本語化する一般説明がない場合を除き、変更内容は日本語で説明します。
 `Update Markdown Notes Version`のような英語のみの定型メッセージは採用しません。
@@ -24,7 +24,7 @@ ChatGPT Chat / Work / Codexでの必須方針と確認手順は[AGENTS.md](AGENT
 | Git CLI | `git commit -m 'Markdown Notes のリンク表記を修正'`などで指定する | Hookはクローンごとの導入が必要で、回避も可能 |
 | GitHub Desktop等 | CommitのSummary欄へ入力する | Hookの対応とPython実行環境はクライアントごとに確認する |
 | GitHub API | 呼出側の`message`へ日本語titleを指定する | Repository側からAPI利用者の入力は変更できない |
-| ChatGPT・Codex等 | AGENTS.mdを読み、変更内容に合う日本語titleを指定する | すべてのAIや編集ツールが指示ファイルを読む保証はない |
+| ChatGPT・Codex等 | AGENTS.md を読み、変更内容に合う日本語titleを指定する | すべてのAIや編集ツールが指示ファイルを読む保証はない |
 | PRのMerge | PR titleと、Merge確定画面のCommit titleを確認・編集する | Squashは最終titleを確認する。Rebaseは元のCommit titleを引き継ぐ |
 
 通常のMergeでGitHubが生成する`Merge pull request ...`やRevertのtitleは、
