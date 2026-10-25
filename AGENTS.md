@@ -32,6 +32,7 @@
 
 ## Commit titleの表記
 
+- Commit titleは変更内容を正確かつ簡潔に表す自然な日本語を原則とする。GitHub Web UI、Git CLI、Gitクライアント、API、AI、PRのMergeを含むすべての編集経路に適用する。既存履歴は変更しない。運用と制約は[CONTRIBUTING.md](CONTRIBUTING.md)を参照する。
 - Commit messageの説明は自然な日本語で記述してよいが、IT・ソフトウェア開発・GitHubで英語表記が一般的な用語と正式名称は英語を優先する。
 - `AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は固定の正式表記として維持し、日本語訳へ置換しない。
 - `GitHub Actions`、`Workflow`、`Commit`、`Pull Request`、`PR`、`Issue`、`Branch`、`Repository`、`README`、`CI`、`Lint`、`Test`、`Script`、`Version`など、英語表記が一般的な技術用語は文脈上不自然でない限り英語を優先する。

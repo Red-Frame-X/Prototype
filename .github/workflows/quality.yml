@@ -106,27 +106,29 @@ jobs:
 
       - name: Commit titleの表記検査
         id: commit-title-check
-        continue-on-error: true
         env:
-          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || '' }}
           HEAD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           # GitHubの検証用Mergeではなく、PRの実際のCommitを検査する。
-          # この検査だけは結果を保持して後続検査を実行し、最後に失敗を再反映する。
-          if [[ -n "$BASE_REF" ]]; then
+          # Pushはbefore以降を全件検査する。新規Branch等のゼロSHAは除く。
+          if [[ -n "$BASE_REF" && ! "$BASE_REF" =~ ^0+$ ]]; then
             python scripts/check_commit_titles.py --base-ref "$BASE_REF" --head-ref "$HEAD_REF"
           else
             python scripts/check_commit_titles.py --head-ref "$HEAD_REF"
           fi
 
       - name: Python Testの実行
+        if: ${{ !cancelled() }}
         run: |
           python -m unittest discover -s tests -v
 
       - name: Markdownlintの実行
+        if: ${{ !cancelled() }}
         run: npm run lint:markdown
 
       - name: UserScriptの構文検査
+        if: ${{ !cancelled() }}
         run: |
           shopt -s nullglob
           files=(UserScript/*.js)
@@ -139,6 +141,7 @@ jobs:
           done
 
       - name: AGLintの実行
+        if: ${{ !cancelled() }}
         run: npm run lint:adguard
 
       - name: Commit title検査の最終判定
