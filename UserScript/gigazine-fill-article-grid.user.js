@@ -3,7 +3,7 @@
 // @name:ja      GIGAZINE 記事の空き枠補充
 // @namespace    local.gigazine
 // @license      CC0-1.0
-// @version      1.0.0
+// @version      202610261800
 // @description  試食・広告・有料メンバーを除外し、次ページの記事で最後の行を埋めます。
 // @author       Red Frame X
 // @match        https://gigazine.net/*
