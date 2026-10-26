@@ -525,6 +525,7 @@ AdGuard Browser Extensionがブラウザ内の通信や要素非表示を中心�
 
 ### コミュニティ・掲示板
 
+* [Linux Mintスレ](https://ff5ch.syoboi.jp/?q=Linux+Mint)
 * [Ubuntu Linuxスレ](https://ff5ch.syoboi.jp/?q=Ubuntu+Linux)
 
 本ガイドのコマンド例は実機でのインストール・復旧試験済みという意味ではありません。特に復元や暗号化、追加ドライバーは、利用するバージョンと機種の一次情報を確認してください。
