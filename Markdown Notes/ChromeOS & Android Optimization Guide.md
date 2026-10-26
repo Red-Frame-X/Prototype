@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610262353 |
+| **Version** | 202610270212 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -1694,6 +1694,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   * **確認済みのデメリット（自身の利用環境で確認）**
     * パスキーが使えない。
     * Web版Amazonにログインできない。
+  * **Issue #92の対応状況（Amazon.co.jpへのログイン失敗）**： [公式Issue #92](https://github.com/aerium-browser/aerium-browser-core/issues/92) では、Pixel 10a / Android 17 / Aerium 155.0.8059.39で、正しいメールアドレスとパスワードを入力してもログインに失敗すると報告されています。2026年10月27日（日本時間）の確認時点ではOpenで、`bug`ラベルが付いています。 [開発者の回答](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6420872216) は「早急に調査する」という内容で、修正完了や解決時期は示されていません。
   * **パスキー利用時の注意**：Aeriumでは環境やCredential Providerによって、Webサイトへのログイン時にパスキー（Passkey / WebAuthn）を利用できない場合があります。 [公式Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50) には、Android 16でGoogle Password Managerによる認証に失敗し、KeePassDXでは動作したというユーザー報告があります。 [開発者の回答](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) ではBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧にAeriumが未登録であることが説明されています（ [Android公式：ブラウザ等に必要な承認](https://developer.android.com/identity/sign-in/privileged-apps) ）。
   * **Issue #50の対応状況**：確認時点ではOpenで、`bug`ラベルが付いています。 [開発者（COLLABORATOR）の回答](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) では、Google Playでの公開後にGoogleへAeriumを申請する予定とされています。これは対応予定の説明であり、申請完了やGoogle Password Managerでの動作改善が確認されたという意味ではありません。また、このIssueではWeb版Amazonへのログイン失敗との関連は確認できません。
   * パスキー全般が未実装という意味ではなく、 [現在の開発ソースにはAndroid Credential Manager対応パッチ](https://github.com/aerium-browser/aerium-browser-core/blob/f44f81b97cb57e9829d0e7f68f06d1e4777ba357/patches/0006-Use-Android-Credential-Manager-for-passkeys.patch) があります。ただし、上記報告のVersionは「Latest」のみで、最新公開版での再現、パスキーの作成、1Passwordなど他のProviderでの動作は未確認です。パスキーが必須のサービスでは、Chrome等の対応ブラウザを併用してください。
