@@ -21,6 +21,10 @@ class VersionCheckpointTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.addCleanup(os.chdir, self.previous)
         self.git('init', '-q')
+        # Git 2.55では少量のobjectでも自動保守が起動する。一時Repositoryの
+        # 削除後まで書き込みが続かないよう、このfixture内だけ自動起動を止める。
+        # https://github.com/git/git/blob/v2.55.0/Documentation/config/maintenance.adoc
+        self.git('config', '--local', 'maintenance.auto', 'false')
         self.git('config', 'user.name', 'Test')
         self.git('config', 'user.email', 'test@example.invalid')
         self.files = {
@@ -45,6 +49,33 @@ class VersionCheckpointTests(unittest.TestCase):
 
     def sync(self, mode='--pending'):
         subprocess.run([sys.executable, str(SCRIPT), mode], check=True, capture_output=True, text=True)
+
+    def test_commits_and_sync_do_not_start_automatic_maintenance(self):
+        # 古いGitでも確実に保守対象になるよう、loose objectの閾値を下げる。
+        self.git('config', 'maintenance.loose-objects.enabled', 'true')
+        self.git('config', 'maintenance.loose-objects.auto', '1')
+        self.git('config', 'maintenance.gc.enabled', 'false')
+        path = next(iter(self.files))
+        path.write_text(path.read_text() + 'Maintenance regression.\n')
+        trace = Path('.git/maintenance-trace.json').resolve()
+        with patch.dict(os.environ, GIT_TRACE2_EVENT=str(trace)):
+            self.commit('edit before maintenance check')
+            self.sync()
+            self.commit('synchronize before maintenance check')
+        events = [json.loads(line) for line in trace.read_text().splitlines()]
+        self.assertFalse(any(event.get('event') == 'child_start'
+                             and 'maintenance' in event.get('argv', []) for event in events))
+        self.assertEqual(pending_files(), [])
+        self.assertIn('Maintenance regression.', path.read_text())
+        packs = Path('.git/objects/pack')
+        self.assertEqual(list(packs.glob('*.pack')), [])
+
+        # 同じRepositoryで自動起動を有効にすると実際にpackが作られることも確認。
+        # 正の対照では同期実行し、Test自身がバックグラウンド処理を残さない。
+        self.git('-c', 'maintenance.auto=true', '-c', 'maintenance.autoDetach=false',
+                 'commit', '--allow-empty', '-qm', 'maintenance positive control')
+        self.assertTrue(list(packs.glob('*.pack')))
+        self.git('fsck', '--no-dangling')
 
     def test_web_and_api_edits_multiple_files_and_bot_body_are_recovered(self):
         for actor in ('GitHub', 'ChatGPT API', 'github-actions[bot]'):
