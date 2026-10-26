@@ -311,8 +311,9 @@ x.com#?#div[role="presentation"]:has(> div[role="tab"] span:contains(/^おすす
 ||twitter.undefined^$popup,domain=x.com
 ! x.com上でURLに.phpを含むポップアップをブロック
 ||x.com/*.php*$popup,domain=x.com
-! 左サイドバーからDM・通話・Grok・Creator Studio・収益化・Premium・スペース作成・認証済み組織の各導線を非表示
-x.com##a[data-testid="AppTabBar_DirectMessage_Link"]
+! 左サイドバーから通話・Grok・Creator Studio・収益化・Premium・スペース作成・認証済み組織の各導線を非表示
+! 無効化中：左サイドバーのDMへのリンクを非表示
+! x.com##a[data-testid="AppTabBar_DirectMessage_Link"]
 ! 無効化中：左サイドバーのChatへのリンクを非表示
 ! x.com##a[href="/i/chat"][role="link"]
 x.com##a[data-testid="AppTabBar_Calls_Link"]
