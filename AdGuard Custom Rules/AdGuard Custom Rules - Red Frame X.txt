@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202610252214
+! Version: 202610261736
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -75,6 +75,8 @@ chatgpt.com##[data-prompt-textarea-header]
 ! downdetector.jp##div[data-service-list-ad]
 
 ! gigazine.net
+! 「試食」カテゴリへのリンクを非表示
+gigazine.net##a[href="https://gigazine.net/news/C13/"]
 ! 「広告」カテゴリへのリンクを非表示
 gigazine.net##a[href="https://gigazine.net/news/C21/"]
 ! 「有料メンバー」カテゴリへのリンクを非表示
