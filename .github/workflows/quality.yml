@@ -113,6 +113,16 @@ jobs:
           # GitHubの検証用Mergeではなく、PRの実際のCommitを検査する。
           # Pushはbefore以降を全件検査する。新規Branch等のゼロSHAは除く。
           if [[ -n "$BASE_REF" && ! "$BASE_REF" =~ ^0+$ ]]; then
+            # Force Push前のCommitは、fetch-depth: 0でも取得されない場合がある。
+            # 比較範囲を縮めず、イベントが指定した旧Commitを追加取得する。
+            if ! git rev-parse --verify "$BASE_REF^{commit}" >/dev/null 2>&1; then
+              if [[ ! "$BASE_REF" =~ ^[0-9a-f]{40}$ ]]; then
+                echo 'Commit title検査の比較元を解決できません。' >&2
+                exit 1
+              fi
+              git fetch --no-tags origin "$BASE_REF"
+              git cat-file -e "$BASE_REF^{commit}"
+            fi
             python scripts/check_commit_titles.py --base-ref "$BASE_REF" --head-ref "$HEAD_REF"
           else
             python scripts/check_commit_titles.py --head-ref "$HEAD_REF"

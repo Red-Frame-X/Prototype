@@ -1,5 +1,6 @@
 """検証用MergeをCheckoutした状態で、CIのCommit title検査を再現する。"""
 import os
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -77,6 +78,46 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         self.prepare_merge("Update Markdown Notes")
         result = self.run_workflow("", self.git("rev-parse", "HEAD"))
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def prepare_force_push(self, earlier_title):
+        # 旧mainを保持するRemoteから、新mainの履歴だけをCheckoutする。
+        self.git("commit", "--allow-empty", "-qm", "旧mainの変更")
+        before = self.git("rev-parse", "HEAD")
+        self.git("checkout", "-q", "main")
+        self.git("commit", "--allow-empty", "-qm", earlier_title)
+        self.git("commit", "--allow-empty", "-qm", "READMEの説明を更新")
+        head = self.git("rev-parse", "HEAD")
+        remote = self.repo.parent / (self.repo.name + "-remote.git")
+        checkout = self.repo.parent / (self.repo.name + "-checkout")
+        self.addCleanup(shutil.rmtree, remote, True)
+        self.addCleanup(shutil.rmtree, checkout, True)
+        self.git("clone", "--bare", str(self.repo), str(remote))
+        self.git("clone", "--no-local", "--single-branch", "--branch", "main",
+                 str(remote), str(checkout))
+        self.git("--git-dir", str(remote), "update-ref", "-d", "refs/heads/topic")
+        self.repo = checkout
+        missing = subprocess.run(
+            ["git", "cat-file", "-e", before], cwd=self.repo,
+            capture_output=True,
+        )
+        self.assertNotEqual(missing.returncode, 0)
+        return before, head
+
+    def test_force_push_fetches_missing_before_commit(self):
+        before, head = self.prepare_force_push("Markdown Notes のリンクを更新")
+        result = self.run_workflow(before, head)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.git("cat-file", "-e", before)
+
+    def test_force_push_checks_earlier_titles_not_only_head(self):
+        before, head = self.prepare_force_push("Markdownメモを更新")
+        result = self.run_workflow(before, head)
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("Markdownメモ", result.stdout)
+
+    def test_missing_before_fetch_failure_does_not_pass(self):
+        result = self.run_workflow("f" * 40, self.git("rev-parse", "HEAD"))
+        self.assertNotEqual(result.returncode, 0)
 
     def test_title_failure_is_not_hidden_and_other_checks_run(self):
         steps = self.workflow()["jobs"]["quality"]["steps"]
