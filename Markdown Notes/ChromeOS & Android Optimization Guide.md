@@ -2395,7 +2395,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 本手順では、ChMate・端末・Androidを次の環境に固定し、Haiagaru-Morpheの動作を確認します。以下は検証手順であり、この環境での実機確認済み・動作保証を意味しません。
 
 ```text
-2chMate 0.8.10.226 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
+2chMate 0.8.10.242 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
 ```
 
 `x.xx.x`は適用したHaiagaruの実際のVersionへ置き換えます。上記は環境の記録用で、User-Agentを書き換える指示ではありません。端末・OS・ChMateが異なる結果は、固定環境の結果と分けて記録してください。
