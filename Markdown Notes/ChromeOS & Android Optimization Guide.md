@@ -2008,9 +2008,11 @@ DNSブロックは、DNS問い合わせに対してドメイン名単位で応�
 
 ---
 
-## Android アプリ ReVanced・Morphe・URV（Android）
-公式Androidアプリに改良パッチを適用し、UXを向上させるオープンソースプロジェクトです。
-※ビルドツール（Manager）の利用は**自己責任**です（[VirusTotal](https://www.virustotal.com/gui/home/upload) でのスキャン推奨）。APKファイルは [APKMirror](https://www.apkmirror.com/) から調達できます。Reseam ManagerのAPK取得機能については後述します。
+<a id="android-アプリ-revancedmorpheurvandroid"></a>
+
+## Android アプリ ReVanced・Morphe・URV・Reseam（Android）
+AndroidアプリにPatchを適用して機能や表示を調整するプロジェクトとManagerをまとめます。ReVanced・Morphe・ReseamはそれぞれのPatch系統を持ち、URVは複数の系統を扱うManagerです。
+※ビルドツール（Manager）の利用は**自己責任**です（[VirusTotal](https://www.virustotal.com/gui/home/upload) でのスキャン推奨）。元APKは各Managerの案内や [APKMirror](https://www.apkmirror.com/) などから、選んだPatchに対応するVersion・形式を確認して用意します。スキャン結果だけで安全性は保証できません。
 
 **略称・ツール**
 * **[ReVanced 公式](https://revanced.app/)** / [GitHub](https://github.com/revanced)
@@ -2018,9 +2020,132 @@ DNSブロックは、DNS問い合わせに対してドメイン名単位で応�
 * **[Morphe 公式](https://morphe.software/)** / [GitHub](https://github.com/MorpheApp)（RVX開発陣も合流した新プロジェクト）
   * [Morphe Community Patches](https://morphe-patches.software/)（コミュニティが作成したパッチバンドル）
 * **[Reseam 公式](https://reseam.app/)** / [GitHub mirror](https://github.com/Reseam) / [開発元（Forgejo）](https://git.reseam.app/reseam)（元ReVanced開発者による独立プロジェクト）
-* **[URV 公式](https://jmancentral.com/)** / [GitHub](https://github.com/Jman-Github)（使いやすい上位互換Manager）
+* **[URV 公式](https://jmancentral.com/)** / [GitHub](https://github.com/Jman-Github)（ReVanced・MorpheのBundleを扱うManager）
 
-**Reseam：特徴・導入・互換性（2026年10月27日確認）**
+### ReVanced：公式PatchとManager
+
+**公式サイト・開発元**：[revanced.app](https://revanced.app/) / [GitHub Organization](https://github.com/ReVanced) / [ReVanced Manager](https://github.com/ReVanced/revanced-manager) / [Release](https://github.com/ReVanced/revanced-manager/releases/latest)
+
+ReVancedはAndroidアプリにPatchを適用するプロジェクトです。Managerは操作画面、Patcherは改変処理、Patchは変更内容を担当します。ManagerをインストールしただけでYouTubeなどが改変されるわけではありません。公式サイトはVancedの終了を出発点としていますが、対象はYouTubeだけに限定されません（[公式説明](https://revanced.app/) / [Manager README](https://github.com/ReVanced/revanced-manager/blob/main/README.md)）。
+
+**機能・対応の確認**
+
+* Managerでは対象アプリの選択、Downloaderによる元APKの取得、Patchの適用、生成APKのインストール / 保存を行えます。
+* 公式Patchには広告除去、Layout / Themeの変更、機能追加のほか、Package name変更や画面キャプチャ制限の解除などの汎用Patchがあります。利用できる機能は対象アプリとPatchごとに異なります（[公式Patch README](https://gitlab.com/ReVanced/revanced-patches/-/blob/main/README.md)）。
+* Patch sourceはReVanced API形式のJSONとして追加します。任意のRepository URLや別形式のBundleを、そのまま読み込めるとは限りません（[Patch管理](https://github.com/ReVanced/revanced-manager/blob/main/docs/2_3_managing_patches.md)）。
+* 公式Managerの要件はAndroid 8.0以上です。これはManager自体の要件で、改変対象アプリの対応AndroidやCPU要件とは別です（[Prerequisites](https://github.com/ReVanced/revanced-manager/blob/main/docs/0_prerequisites.md)）。
+
+**導入の流れ**
+
+1. [公式Download](https://revanced.app/download)または公式ReleaseからManagerを入手します。
+2. `Apps`から対象を選び、表示される対応Versionと元APKの取得方法を確認します。手元のAPKを使う場合も、改変済みAPKを元にしないでください。
+3. 初回は既定のPatch選択を使い、`Patch`で処理してから`Install`または保存を選びます。手動選択など一部の操作はSafeguardで保護されています（[公式手順](https://github.com/ReVanced/revanced-manager/blob/main/docs/2_1_patching.md)）。
+4. YouTubeなどでGmsCoreを要求された場合は、適用したPatchに合う配布元と設定を確認します。[ReVanced GmsCore](https://github.com/ReVanced/GmsCore)はManagerとは別のアプリです。
+
+**更新・バックアップ**
+
+Managerは`Settings > Updates`で更新を確認できます。Managerの更新と、対象アプリへの新しいPatchの反映は別作業です。再Patch前にPatch選択・Option・署名鍵を`Import & export`から保存します（[更新](https://github.com/ReVanced/revanced-manager/blob/main/docs/2_5_updating.md) / [設定](https://github.com/ReVanced/revanced-manager/blob/main/docs/2_6_settings.md)）。
+
+**不具合・Redditの参照方法**
+
+Patch失敗や起動不能では、Managerの更新、SafeguardとOptionの既定値、元APKの形式、空き容量・メモリを確認します。公式のTroubleshootingは完全なAPKの利用を案内しています。Morphe / URVのSplit APK対応をそのまま公式ReVanced Managerに当てはめないでください（[Troubleshooting](https://github.com/ReVanced/revanced-manager/blob/main/docs/3_troubleshooting.md)）。
+
+[r/revancedapp](https://www.reddit.com/r/revancedapp/)にはガイドと質問があります。[導入ガイドの紹介投稿](https://www.reddit.com/r/revancedapp/comments/1nnqci9/youtube_revanced_guide_for_dummies_always_updated/)も確認しましたが、利用者による資料であり、古い画面名・APK Versionは現行の公式手順と照合します。コミュニティの受付状況や固定投稿も確認してから報告先を選びます。
+
+**Engine・追加source・配布先**
+
+[ReVanced Patcher](https://github.com/ReVanced/revanced-patcher)はDalvik bytecode・APK resource・APK内ファイルを変更するLibraryで、Managerのほか[ReVanced CLI](https://github.com/ReVanced/revanced-cli)からも利用します。CLIはBundle内のPatch・対象Package・対応Versionの一覧確認やADBを使う導入にも対応します。CLIがあることと、ManagerがWindowsアプリとして動くことは別です。
+
+公式PatchのGitHub Repositoryは今回の取得でHTTP 451となり、[開発元の移転案内](https://github.com/ReVanced/where-is-revanced-patches)は[GitLab mirror](https://gitlab.com/ReVanced/revanced-patches)を案内しています。GitHubが閲覧できないことだけで開発終了と判断せず、公式サイト・移転案内から現在の配布先をたどります。移転案内にある復旧見込みを、復旧済みの証拠にはしません。
+
+Manager・Patcher・CLIのREADMEはGPLv3を掲げています。追加sourceや生成APKまで一つのLicenseと考えず、それぞれのLicenseを確認します。追加sourceを登録すると、その作者のコードが改変処理や生成APKに関わるため、Catalog掲載だけで公式監査済みとは扱いません。
+
+**移行・速度の注意**
+
+別Managerへ移る前に、元APKのVersion、Patch sourceとVersion、Option、Package name、署名鍵を記録します。設定のインポート対応と、生成APKを上書き更新できることは別です。ReVanced / RVXの設定がMorphe / Reseamへ自動移行されるとは扱いません。処理時間についても共通条件の実測は行っておらず、端末・APK・選択Patchの違う報告を順位付けには使いません。
+
+### Morphe：Simple / Expert modeと追加Patch source
+
+**公式サイト・開発元**：[morphe.software](https://morphe.software/) / [GitHub Organization](https://github.com/MorpheApp) / [Morphe Manager](https://github.com/MorpheApp/morphe-manager) / [Release](https://github.com/MorpheApp/morphe-manager/releases/latest)
+
+MorpheはReVancedとは独立したプロジェクトです。公式FAQは元ReVanced開発者・貢献者による設立を説明し、Manager READMEはReVanced ManagerとURVを基盤とすることを明記しています。標準の対象はYouTube・YouTube Music・Redditで、追加sourceの対応アプリとは区別します（[FAQ](https://morphe.software/faq) / [README](https://github.com/MorpheApp/morphe-manager/blob/main/README.md)）。
+
+**機能・対応の確認**
+
+* YouTubeでは広告除去、SponsorBlock、低評価表示、Shortsなどの表示調整、再生速度・画質・スワイプ操作などを提供します。YouTube MusicやRedditにも、それぞれのPatchがあります（[公式機能紹介](https://morphe.software/)）。
+* `Simple mode`は既定の構成で進める方式、`Expert mode`は個別Patch・Option・実験的なVersionなどを選ぶ方式です。
+* Split APK、追加Patch source、sourceごとのPre-release設定、Batch patching、署名鍵のインポート / エクスポートに対応します。Installerには標準Android、Shizuku、Root mountなどがあります（[Manager README](https://github.com/MorpheApp/morphe-manager/blob/main/README.md)）。
+
+**導入の流れ**
+
+1. 公式サイトからManagerを入手し、初回はSimple modeで標準の対象アプリを選びます。
+2. 案内に従って対応する元APKを用意し、Patchを適用して生成APKをインストールします。処理は端末内で行われます。
+3. 個別設定や追加sourceが必要ならExpert modeを使い、Bundleの配布元と対応Versionを確認します（[公式ガイド一覧](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md)）。
+4. GmsCoreが必要な構成では、改変後のアプリから案内される公式Downloadを確認します。すべての対象アプリにGmsCoreが必要なわけではありません（[FAQ](https://morphe.software/faq)）。
+
+**更新・バックアップ**
+
+Manager・Patch source・改変後のアプリを分けて更新します。sourceの更新通知を確認し、元APKから再Patchします。Manager設定・Patch選択・署名鍵と、YouTube内の`Morphe > Miscellaneous > Import / Export`による設定保存は別です（[更新ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/updating-patched-apps.md) / [バックアップ](https://github.com/MorpheApp/morphe-manager/blob/main/docs/backup-and-keystore.md)）。
+
+**不具合・Redditの参照方法**
+
+公式FAQは、推奨Versionより新しいAPKでの実験と、推奨Versionを使う通常運用を区別しています。再生停止などは後述のSpoof / PoToken解説も参照し、同じ症状だけで原因を決めつけないでください。ManagerでのPatch失敗と、改変後アプリの不具合では採取するログが異なります（[FAQ・ログ手順](https://morphe.software/faq)）。
+
+[r/MorpheAppの追加sourceガイド](https://www.reddit.com/r/MorpheApp/comments/1ta0bek/how_to_patch_more_apps_with_morphe/)はExpert modeとsource追加手順を案内しています。[Manager更新告知](https://www.reddit.com/r/MorpheApp/comments/1s0fw2j/meet_the_latest_manager_update/)にはPatcher APIの変更に伴う互換性の注意もあります。掲載時点の情報なので、現在のReleaseとsource側の案内も確認します。
+
+**Engine・追加source・配布先**
+
+[Morphe Patcher](https://github.com/MorpheApp/morphe-patcher)はReVanced Patcherを基盤とし、Managerと[Morphe Desktop](https://github.com/MorpheApp/morphe-desktop)から利用されます。Reseamと同じEngineではありません。Manager / PatcherはGPLv3とSection 7の追加条件を掲げているため、再配布・派生版では個別のLICENSE・NOTICEを確認します。
+
+追加sourceは`Sources > +`からGitHub / GitLab Repository、BundleのJSON metadata、またはローカルの`.mpp`を登録します。Remote sourceの自動更新と違い、Local sourceは新しいファイルを手動指定して更新します。Community patchesはMorphe側で審査・検証済みという意味ではありません。同じアプリに複数sourceのPatchを混ぜると競合し得るため、最初は一つに絞ります（[source管理](https://github.com/MorpheApp/morphe-manager/blob/main/docs/patch-sources.md)）。
+
+**移行・署名鍵の注意**
+
+`Settings > Signing key`から鍵を保存し、`Morphe settings`からManager設定を別に保存します。設定JSONにはKeystoreが含まれません。Managerのアンインストールやデータ消去で鍵を失うと、以前の鍵で署名したアプリをそのまま更新できなくなります。機種変更では先に鍵をインポートし、必要なsourceとPatch選択を復元します（[バックアップ手順](https://github.com/MorpheApp/morphe-manager/blob/main/docs/backup-and-keystore.md)）。処理速度の優劣や他Managerとの設定互換性は、これらの機能だけからは判断できません。
+
+### URV：複数のPatch系統を扱うManager
+
+**開発者サイト・Repository**：[Jman Central](https://jmancentral.com/) / [Universal ReVanced Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager) / [Release](https://github.com/Jman-Github/Universal-ReVanced-Manager/releases)
+
+URVはUniversal ReVanced Managerの略称です。ReVanced Managerを基盤に、ReVancedとMorpheのPatchを一つのアプリで管理します。個別の機能は選んだBundleが提供するため、Managerを変えるだけですべてのアプリやPatchが動くわけではありません（[公式README](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md)）。
+
+**機能・対応の確認**
+
+* ReVancedの`.rvp`とMorpheの`.mpp`に対応し、ローカルファイル、対応URL、Repository / Release、アプリ内CatalogからBundleを追加できます。
+* 複数Runtime、Patch Profile、Batch処理、自動再Patch、元APKの保存、Downloader Plugin / Helper appに対応します。
+* Split APKの結合・インストール、APK署名、Keystore作成・変換、診断ログやリソース表示などの補助機能もあります。
+* Installerは標準Android、Shizuku / Sui、Root mountなどから選びます。Rootの有無で利用できる方式が変わります。各機能の根拠は[READMEの機能一覧](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md)を参照してください。
+
+**導入の流れ**
+
+1. 開発元のGitHub ReleaseからManagerを入手します。開発者サイトは確認時に本文を取得できなかったため、具体的な操作・対応形式はRepositoryの説明を根拠にします。
+2. 使用するBundleを追加し、系統・対応Runtime・対象アプリ・対応Versionを確認します。公式READMEはDiscovery / Catalogで`API v4`または`Morphe`の項目を使うよう案内し、`API v3`のDiscovery項目は非対応としています。
+3. 未改変の元APKまたは対応するSplit archiveを選び、Patch・OptionとInstallerを確認して処理します。元APKや選択内容をProfileに保存すると再利用できます。
+4. 生成APKをインストールし、起動と必要な機能を確認します。最初から複数アプリの自動処理を有効にせず、個別に結果を確認します。
+
+**更新・バックアップ**
+
+ManagerとBundleの更新は別に確認します。自動再Patchは対象アプリの選択、実行間隔、充電条件、通知、インストール方法を設定する機能であり、すべての更新を無条件に反映するものではありません。設定・Profile・元APKの保管に加え、対応Keystoreも別途エクスポートします（[公式README](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md)）。
+
+**不具合・Redditの参照方法**
+
+Bundleが読み込めない場合は、拡張子だけでなくAPI / Runtimeの組み合わせとManagerのVersionを確認します。改変後アプリの症状ならBundleの開発元へ、読み込み・署名・インストール処理の問題なら[URV Issues](https://github.com/Jman-Github/Universal-ReVanced-Manager/issues)の既存報告を調べます。
+
+Redditでは[r/MorpheAppの互換性に関する議論](https://www.reddit.com/r/MorpheApp/comments/1qb9boe/can_i_use_revanced_patches_within_morphe_manager/)と[Manager更新告知のコメント](https://www.reddit.com/r/MorpheApp/comments/1s0fw2j/meet_the_latest_manager_update/)を確認しました。前者にはURVの対応がまだ予定だった時点の説明があるため、現在の対応判断は公式READMEを優先します。URV READMEのコミュニティ導線はTelegram / Discordで、専用の公式Subredditは今回確認できていません。
+
+**Runtime・追加source・配布先**
+
+URVは独自のPatch集合をすべてのアプリに提供するのではなく、取り込んだBundleと対応Runtimeで処理します。READMEには内蔵のReVanced / Morphe Runtimeと、対応するReVanced v21 Runtime Pluginの追加が記載されています。Runtime PluginやDownloaderも追加コードなので、入手元・署名者の信頼・更新Channelを確認します。古いAPI向けBundleが同じ拡張子だから使えるとは限りません（[公式README](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md)）。
+
+開発元の[Bundle Catalog](https://github.com/Jman-Github/ReVanced-Patch-Bundles)は追加先を探す資料です。Catalogからの追加と、そのPatchがReVanced / Morpheの公式開発陣により保守されることは区別します。対応アプリ・Option・不具合の受付先はBundleごとに確認してください。URV本体のREADMEはGPLv3を掲げており、追加BundleやPluginのLicenseまで一括で決めるものではありません。
+
+**移行・自動化の注意**
+
+別Managerから移る場合は、対応Keystoreを読み込めるか、Package nameと署名が以前の生成APKと一致するかを確認します。設定バックアップ・元APK・署名鍵は別々に保管し、Signature metadataの複製機能を、元アプリの秘密鍵や正規署名を取得できる機能と誤解しないでください。Google Playをインストール元として記録する設定も、正規配布元の署名を復元する機能ではありません。
+
+自動再Patch用に保存した元APKも、PatchがそのVersionをサポートしなくなれば見直しが必要です。失敗時はRuntime、Bundle、元APK、選択Patch、Installerが分かるログを保存します。処理時間はAPK・Split構成・端末・Runtimeで変わり、Reseamを含めた共通条件の比較測定は本ガイドでは行っていません。
+
+### Reseam：特徴・導入・互換性（2026年10月27日確認）
 
 Reseamは、コミュニティが作成したパッチを端末上でAndroidアプリに適用するプロジェクトです。公式サイトは元ReVanced開発者によるものと説明し、開発者はRedditのAMAでReVancedのForkではなく新規に構築したと説明しています。AMAでは関係者のGitHubとしてAunali321、Ushie、alexandreteles（afterSt0rm）、madkarmaaが紹介されています。これは参加者全員の名簿や、他プロジェクトの現行体制を示すものではありません（[公式サイト](https://reseam.app/) / [開発チームのAMA](https://www.reddit.com/r/Piracy/comments/1xb5ys8/reseam_a_new_android_app_patcher_from_most_of_the/)）。
 
@@ -2038,6 +2163,14 @@ Reseamは、コミュニティが作成したパッチを端末上でAndroidア�
 3. 更新ではPackage nameと署名鍵の継続性を確認します。Manager・ブラウザ版は最初に生成した署名鍵を再利用する設計です。鍵を失うと同じアプリへの上書き更新ができなくなるため、署名競合だけを理由に先にアンインストールせず、必要なデータをバックアップしてから判断します（[署名の説明](https://reseam.app/docs/authoring/how_patching_works/)）。
 
 Managerの現行ソースでは共通UIの文字列は既定の`values/strings.xml`にあり、日本語用リソースは今回の確認では見つかりませんでした。パッチ適用後の各アプリの翻訳状況とは区別します（[Managerの文字列リソース](https://github.com/Reseam/manager/tree/main/composeApp/src/commonMain/composeResources)）。Android x86_64版にはChromebook向けの配布案内もありますが、本ガイドではAndroid実機・ChromeOSでの導入や各機能の動作Testは行っていません（[公式Download](https://reseam.app/download/)）。
+
+**更新情報・Redditの補足**
+
+Manager / Engine / Patchの変更は[公式Updates](https://reseam.app/updates/)で分けて確認できます。ManagerとBrowser patcherは初回に生成した鍵を使い続けるため、別の利用経路へ移っても同じ署名鍵になるとは扱いません。Engineは同じMajor系統、Majorが0の間は同じMinor系統のBundleを読み込む設計です（[Version互換性](https://reseam.app/docs/authoring/how_patching_works/)）。
+
+開発チームのAMAには[r/reseamapp](https://www.reddit.com/r/reseamapp/)とDiscordへの案内もあります。利用者の成功例・不具合報告は、一般的な動作保証や公式仕様とは区別します。最新の連絡先は公式サイトと開発元の案内を確認してください。
+
+### 共通の導入資料・補助ツール
 
 **使い方・質問用テンプレ**
 
@@ -2068,7 +2201,7 @@ Managerの現行ソースでは共通UIの文字列は既定の`values/strings.x
 
 利用規約違反によるアカウント凍結リスクは常に伴います。（[Reddit体験談1](https://www.reddit.com/r/revancedapp/comments/132ojbg/my_account_has_been_suspended_today_and_i_am_no/), [Reddit体験談2](https://www.reddit.com/r/revancedapp/comments/17a6iqj/can_google_suspend_my_account_if_i_use_revanced/)）
 
-Premium加入者は「動画ストリームを偽装（Spoof video streams）」をOFFにすることが推奨されます。
+Premium加入の有無だけで「動画ストリームを偽装（Spoof video streams）」のON/OFFを一律に決めず、利用するPatchと再生状況に合わせて確認します。Morpheの設定と根拠は次の解説を参照してください。
 
 
 **YouTube Morphe：動画ストリーム偽装とPoToken**
