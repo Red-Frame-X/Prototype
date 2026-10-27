@@ -10,7 +10,7 @@ Linux Mintの導入から初期設定、日常利用、ソフトウェア管理�
 | **ライセンス** | CC0-1.0 |
 | **Version** | 202610271402 |
 
-ライセンス、第三者コンテンツの扱いおよび無保証については[`LICENSES.md`](../LICENSES.md)を参照してください。
+ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
 ## Linux Mintを使い始めるまでの全体の流れ
 
@@ -53,7 +53,7 @@ Linux初心者が一般的な現行PCへ導入する場合は、特別な事情�
 
 ### ブラウザでLinuxを試す（DistroSea）
 
-[DistroSea](https://distrosea.com/)は、Linux Mintを含むさまざまなLinuxディストリビューションを、ブラウザ上で実際に起動して操作できるサービスです。PCへインストールせずに、デスクトップの見た目や基本操作を比較できます。手元のPCとの互換性や実機での動作は確認できないため、導入前にはLive USBでも確認してください。
+[DistroSea](https://distrosea.com/) は、Linux Mintを含むさまざまなLinuxディストリビューションを、ブラウザ上で実際に起動して操作できるサービスです。PCへインストールせずに、デスクトップの見た目や基本操作を比較できます。手元のPCとの互換性や実機での動作は確認できないため、導入前にはLive USBでも確認してください。
 
 ## ハードウェア要件と実用上の目安
 
@@ -90,11 +90,11 @@ NVIDIA GPUを使う場合は、導入後に **Driver Manager** で利用可能�
 | Secure Boot | 起動時の署名を検証する機能。機種のLinux向け手順・証明書設定 | まず現在の設定でUSB起動。必要性を確認せず無効化しない |
 | UEFI | PCの起動方法を管理する仕組み。メーカーの起動メニュー手順と現在の起動モード | USBの起動項目を確認。Legacy / CSMへ一律変更しない |
 
-候補の正確な構成はメーカー仕様表やサポートへ確認し、Linux Mintの[リリースノート](https://linuxmint.com/rel_zena.php)とメーカーの機種別資料を照合します。Ubuntuの認証を調べる場合も、[Ubuntu Certified hardware](https://ubuntu.com/certified)の対象構成とUbuntuの版を確認してください。これは互換性を絞り込むための判断手順であり、本ガイドによる個別機種の動作保証ではありません。
+候補の正確な構成はメーカー仕様表やサポートへ確認し、Linux Mintの [リリースノート](https://linuxmint.com/rel_zena.php) とメーカーの機種別資料を照合します。Ubuntuの認証を調べる場合も、 [Ubuntu Certified hardware](https://ubuntu.com/certified) の対象構成とUbuntuの版を確認してください。これは互換性を絞り込むための判断手順であり、本ガイドによる個別機種の動作保証ではありません。
 
 ### Lenovo製PCの確認手順
 
-入口はLenovo公式の[個人向けシステム用Linux](https://lenovo.com/linux)です。この入口は[公式サポートの同資料（PD031426）](https://support.lenovo.com/us/en/solutions/pd031426)へ転送されます。[日本語版の同資料（PD031426）](https://support.lenovo.com/jp/ja/solutions/pd031426)も参照できます。
+入口はLenovo公式の [個人向けシステム用Linux](https://lenovo.com/linux) です。この入口は [公式サポートの同資料（PD031426）](https://support.lenovo.com/us/en/solutions/pd031426) へ転送されます。 [日本語版の同資料（PD031426）](https://support.lenovo.com/jp/ja/solutions/pd031426) も参照できます。
 
 > **確認上の制約**：今回、公式ページの転送先と日本語版URLを確認しましたが、取得できたページ本文には対応一覧が表示されず、ブラウザでは双方とも403（アクセス拒否）になりました。検索結果にはThinkPad、ThinkStation、その他のノートPC、Ubuntu、Fedora、Red Hat、SUSE等の記載が表示されましたが、一覧本文を確認できていません。個別機種・OSバージョン・掲載範囲は未確認であり、検索結果だけで対応機種を確定していません。提供された日本語ページの保存ソースも確認しましたが、本文データは空で、別のJavaScriptから読み込む構成でした。その公式ファイルもアクセス拒否となったため、保存ソースからも一覧を確認できていません。
 
@@ -109,7 +109,7 @@ NVIDIA GPUを使う場合は、導入後に **Driver Manager** で利用可能�
 
 **Lenovo公式ページでUbuntu対応を確認できたThinkPadは、Linux Mint導入候補を絞る有力な材料になります。** これはUbuntuとの共通基盤からの合理的な判断であり、LenovoによるLinux Mintの認証・サポートや、全機能の動作確認を示すものではありません。ThinkStationや他シリーズにも同じ区別が必要です。
 
-Lenovoには[Secured-core PCでLinux用のSecure Bootを有効にする公式資料](https://download.lenovo.com/pccbbs/mobiles_pdf/Enable_Secure_Boot_for_Linux_Secured-core_PCs.pdf)もあります。該当機種では第三者UEFI CAの許可設定が関係する場合がありますが、全機種への一括設定手順ではありません。購入機種の最新マニュアルと適用条件を確認してください。
+Lenovoには [Secured-core PCでLinux用のSecure Bootを有効にする公式資料](https://download.lenovo.com/pccbbs/mobiles_pdf/Enable_Secure_Boot_for_Linux_Secured-core_PCs.pdf) もあります。該当機種では第三者UEFI CAの許可設定が関係する場合がありますが、全機種への一括設定手順ではありません。購入機種の最新マニュアルと適用条件を確認してください。
 
 ## Linux Mint搭載済みPC
 
@@ -117,15 +117,15 @@ Linux Mint公式は、ハードウェア関連のパートナーとして **Fram
 
 * [Linux Mintのパートナー](https://linuxmint.com/partners.php)
 * [Linux Mintブログ：2025年5月の月例ニュース](https://blog.linuxmint.com/?p=4850)
-* **[RayLink Inc（レイリンク株式会社）](https://raylink-inc.com/)**：Ubuntu搭載の新品・再生PCやLinux関連機器を販売する国内事業者。Linux OSのインストール代行も提供し、[取扱ディストリビューション](https://raylink-inc.com/distribution/)にはLinux Mintも掲載している。Linux Mint搭載を希望する場合は、対象機種・導入可能な版・費用を購入前に相談する。
+* **[RayLink Inc（レイリンク株式会社）](https://raylink-inc.com/)** ：Ubuntu搭載の新品・再生PCやLinux関連機器を販売する国内事業者。Linux OSのインストール代行も提供し、 [取扱ディストリビューション](https://raylink-inc.com/distribution/) にはLinux Mintも掲載している。Linux Mint搭載を希望する場合は、対象機種・導入可能な版・費用を購入前に相談する。
 * [Ubuntu Laptop](https://raylink-inc.com/product-category/new-laptop/)
-* **[Star Labs](https://jp.starlabs.systems/)**：Linux向けに設計されたノートPCやMini PCを販売するメーカー。Linux Mintを含む複数のLinuxディストリビューションを、対応カーネル上で標準ISOから導入できる。
+* **[Star Labs](https://jp.starlabs.systems/)** ：Linux向けに設計されたノートPCやMini PCを販売するメーカー。Linux Mintを含む複数のLinuxディストリビューションを、対応カーネル上で標準ISOから導入できる。
 
 ただし、Linux Mintが「公式認定した完成品PC一覧」を常時提供しているわけではありません。日本から海外メーカー製PCを購入する場合は、Linux Mintプリインストールの有無だけでなく、送料、関税、保証対応、修理時の発送先、ACアダプター、キーボード配列、無線チップなども確認してください。販売状況は変化するため、購入時点でメーカー公式ページを確認します。
 
 ### Ubuntu Laptopを調達してLinux Mintへ換装する場合
 
-[ChatGPT](https://chatgpt.com/ja-JP/)に手順を聞きながら、[RayLinkのUbuntu Laptop](https://raylink-inc.com/product-category/new-laptop/)を調達し、[Linux Mint](https://linuxmint.com)へ換装する進め方もあります。
+[ChatGPT](https://chatgpt.com/ja-JP/) に手順を聞きながら、 [RayLinkのUbuntu Laptop](https://raylink-inc.com/product-category/new-laptop/) を調達し、 [Linux Mint](https://linuxmint.com) へ換装する進め方もあります。
 
 1. **ChatGPTで手順を確認する**：購入前は用途と候補機種、購入後は正確な機種名・部品構成・Ubuntuのバージョンを伝え、準備から導入までの手順を一段階ずつ確認します。回答はLinux Mint公式のInstallation Guideやメーカーの機種別資料と照合します。
 2. **Ubuntu Laptopを調達する**：上記のRayLinkの商品一覧を入口に、仕様、Ubuntuの搭載状況、OS換装後の保証・サポート条件を販売店へ確認します。Ubuntu搭載でもLinux Mintの全機能が動くとは限らないため、本ガイドの「Linux Mintを導入するPCの選び方」も確認してください。
@@ -142,14 +142,14 @@ Ubuntuを置き換える場合、ディスクの消去によって既存のUbunt
 * 文書、写真、デスクトップ、ダウンロード等を外付けストレージなど別の媒体へコピーし、数個のファイルを開いて確認します。クラウド上だけにあるファイルと、PC内だけにあるファイルを区別してください。
 * ブラウザのブックマーク、必要なアプリのデータ、アカウントの回復方法も確認します。パスワードや回復コードは公開ログや生成AIへ貼り付けません。
 * Windowsへ戻す可能性があれば、動いているうちに回復ドライブやメーカーの回復メディアを準備します。Windowsの再インストールと個人ファイルの復元は別です。アプリや設定まで元どおりに戻るとは限りません。
-* Microsoftの[Windowsの回復オプション](https://support.microsoft.com/ja-jp/windows/experience/backup-recovery/recovery-options-in-windows)から回復ドライブ / 再インストール手順を確認します。メーカーの回復イメージには独自ドライバー等が含まれる場合があるため、機種別の回復手順も保管します。
+* Microsoftの [Windowsの回復オプション](https://support.microsoft.com/ja-jp/windows/experience/backup-recovery/recovery-options-in-windows) から回復ドライブ / 再インストール手順を確認します。メーカーの回復イメージには独自ドライバー等が含まれる場合があるため、機種別の回復手順も保管します。
 * 回復用USBとLinux Mint用USBは分け、内容を書いたラベルを付けます。回復メディアの起動確認では、再インストールや消去を開始しないでください。
 
 ### BitLockerとWindows高速スタートアップ
 
-BitLocker / デバイスの暗号化はWindowsのデータを暗号化する機能です。Windowsの設定で状態を確認し、**設定変更より先に回復キーをPC外へ保存し、別端末から参照できることを確かめます。** Microsoftは失われた回復キーを再作成できないと説明しています。[BitLocker回復キーの公式案内](https://support.microsoft.com/ja-jp/windows/security/encryption/find-your-bitlocker-recovery-key)を参照してください。
+BitLocker / デバイスの暗号化はWindowsのデータを暗号化する機能です。Windowsの設定で状態を確認し、**設定変更より先に回復キーをPC外へ保存し、別端末から参照できることを確かめます。** Microsoftは失われた回復キーを再作成できないと説明しています。 [BitLocker回復キーの公式案内](https://support.microsoft.com/ja-jp/windows/security/encryption/find-your-bitlocker-recovery-key) を参照してください。
 
-回復キーの保存、「保護の一時停止」、暗号化の解除は別の操作です。Windowsとの併用や既存領域の変更を予定していて、インストーラーが暗号化を警告した場合は先へ進まず、その表示を確認します。Ubuntuにも[BitLocker併用時の注意](https://ubuntu.com/desktop/docs/en/latest/reference/bitlocker-during-ubuntu-installation/)がありますが、Ubuntuの画面や手順をLinux Mintと同一とは扱いません。Windowsを全消去する場合でも、必要なファイルを退避する前に消去してはいけません。
+回復キーの保存、「保護の一時停止」、暗号化の解除は別の操作です。Windowsとの併用や既存領域の変更を予定していて、インストーラーが暗号化を警告した場合は先へ進まず、その表示を確認します。Ubuntuにも [BitLocker併用時の注意](https://ubuntu.com/desktop/docs/en/latest/reference/bitlocker-during-ubuntu-installation/) がありますが、Ubuntuの画面や手順をLinux Mintと同一とは扱いません。Windowsを全消去する場合でも、必要なファイルを退避する前に消去してはいけません。
 
 高速スタートアップは、Windowsの終了時に一部の状態を保存して次回起動を速める仕組みです。通常の完全終了とは異なります（[Microsoftの電源状態の説明](https://learn.microsoft.com/en-us/windows/win32/power/system-power-states)）。Windowsを残して領域を共用する場合は、設定を確認し、高速スタートアップを無効にして終了する運用を検討します。休止中のWindows領域へLinuxから書き込む運用は避けてください。設定項目は一般にコントロールパネルの「電源オプション」→「電源ボタンの動作を選択する」にあります。表示はWindowsの版やPCによって異なります。
 
@@ -166,9 +166,9 @@ USB起動のためだけに、Legacy / CSMへの切替、ストレージのRAID 
 ISOはインストール用のディスク内容をまとめたファイルです。**整合性**はダウンロード破損がないこと、**真正性**はLinux Mintが署名した配布物であることを確認します。ハッシュ値の一致だけで、真正性まで確認したことにはなりません。
 
 1. 公式ダウンロードページからCinnamonのISOと、同じ配布物の `sha256sum.txt`、`sha256sum.txt.gpg` を取得します。
-2. [公式の検証手順](https://linuxmint-installation-guide.readthedocs.io/en/latest/verify.html)に従い、署名鍵のフィンガープリント、チェックサム一覧の署名、ISOのSHA256の一致を確認します。Linux Mint上ではISOの右クリックから「Verify」を使えます。Windowsでの検証は同ページから案内されるWindows用手順を使い、OSの違うコマンドをそのまま貼り付けないでください。
+2. [公式の検証手順](https://linuxmint-installation-guide.readthedocs.io/en/latest/verify.html) に従い、署名鍵のフィンガープリント、チェックサム一覧の署名、ISOのSHA256の一致を確認します。Linux Mint上ではISOの右クリックから「Verify」を使えます。Windowsでの検証は同ページから案内されるWindows用手順を使い、OSの違うコマンドをそのまま貼り付けないでください。
 3. 一致しない・署名を確認できない場合はインストールへ進まず、取得元とファイルを確認します。
-4. [公式USB作成手順](https://linuxmint-installation-guide.readthedocs.io/en/latest/burn.html)に従います。Windows等では公式ガイドが案内するEtcher、Linux MintではUSB Image Writerを利用できます。
+4. [公式USB作成手順](https://linuxmint-installation-guide.readthedocs.io/en/latest/burn.html) に従います。Windows等では公式ガイドが案内するEtcher、Linux MintではUSB Image Writerを利用できます。
 
 > **USB作成時も消去に注意**：ISOをUSBへ単にコピーする操作とは異なり、選択したUSBの内容を書き換えます。不要な外付けドライブは外し、容量・機器名で対象を確認してください。バックアップ用ディスクやWindows回復用USBを選ばないようにします。
 
@@ -176,7 +176,7 @@ ChromeOSだけで準備する場合、上記のWindows向け手順をそのま�
 
 ## Live USBでインストール前に試す
 
-Live USBは、内蔵ディスクへLinux Mintをインストールする前に、USBから起動して操作できる試用環境です。[公式の起動手順](https://linuxmint-installation-guide.readthedocs.io/en/latest/boot.html)に沿ってUSBを挿し、再起動時の起動メニューから選択します。最初は **Install Linux Mintを起動せず**、次の表を確認してください。
+Live USBは、内蔵ディスクへLinux Mintをインストールする前に、USBから起動して操作できる試用環境です。 [公式の起動手順](https://linuxmint-installation-guide.readthedocs.io/en/latest/boot.html) に沿ってUSBを挿し、再起動時の起動メニューから選択します。最初は **Install Linux Mintを起動せず**、次の表を確認してください。
 
 | 確認 | 試すこと | 結果の記録 |
 | :--- | :--- | :--- |
@@ -202,7 +202,7 @@ Live環境でも内蔵ディスクを開いたり、ディスク管理ツール�
 
 Linux Mint公式のInstallation Guideでは、ISOの入手、真正性・整合性確認、USBメディア作成、Live起動、インストール、ドライバー確認、Timeshift設定まで一連の手順が案内されています。
 
-1. [Linux Mint公式サイト](https://linuxmint.com/download.php)から使用するエディションのISOを入手する。
+1. [Linux Mint公式サイト](https://linuxmint.com/download.php) から使用するエディションのISOを入手する。
 2. `sha256sum.txt` と署名を利用し、ISOの整合性と真正性を確認する。
 3. USBメモリへISOを書き込み、起動可能なインストールメディアを作成する。
 4. USBからLinux MintをLive起動し、画面、Wi-Fi、音声、Bluetooth、USB機器などを確認する。
@@ -327,11 +327,11 @@ Software Managerは配布形式そのものではなく、アプリを探して�
 
 カーネルはUpdate Managerの「View → Linux Kernels」で確認できます。通常の更新と、別のカーネル系列へ切り替える操作は区別してください。新しければ必ず互換性が高いとは限りません。旧カーネルで戻れることを確認する前に、正常に動いていたものを手動削除しないでください。
 
-メジャーバージョンの更新は日常の更新と別に、対象版の公式アップグレード手順を確認して行います。[公式User Guideの更新案内](https://linuxmint-user-guide.readthedocs.io/en/latest/upgrade.html)から該当する経路を探します。
+メジャーバージョンの更新は日常の更新と別に、対象版の公式アップグレード手順を確認して行います。 [公式User Guideの更新案内](https://linuxmint-user-guide.readthedocs.io/en/latest/upgrade.html) から該当する経路を探します。
 
 ## Timeshiftとバックアップ
 
-[Timeshift](https://github.com/linuxmint/timeshift)は、Windowsの「システムの復元」に近い目的を持つシステムスナップショットツールです。RSYNCモードではrsyncとハードリンク、BTRFSモードではBTRFSのスナップショット機能を利用します。
+[Timeshift](https://github.com/linuxmint/timeshift) は、Windowsの「システムの復元」に近い目的を持つシステムスナップショットツールです。RSYNCモードではrsyncとハードリンク、BTRFSモードではBTRFSのスナップショット機能を利用します。
 
 Linux Mintは、Timeshiftで**日次スナップショットと起動時スナップショットを自動化することを推奨**しています。
 
@@ -394,7 +394,7 @@ Linux Mintで問題が発生した場合は、最初から再インストール�
 2. エラー文、発生日時、再現操作、直前の変更を記録します。再起動する前に、表示を写真等に残してください。
 3. GUIだけで原因が分からず、調査に必要な場合に限って、以下の情報表示コマンドを使います。エラーが出たからといって、直ちに管理者権限を追加したり設定変更したりしません。
 
-[Linux Mint公式Troubleshooting Guide](https://linuxmint-troubleshooting-guide.readthedocs.io/en/latest/)も、観察、再現性、環境、変更内容を確認するための資料です。
+[Linux Mint公式Troubleshooting Guide](https://linuxmint-troubleshooting-guide.readthedocs.io/en/latest/) も、観察、再現性、環境、変更内容を確認するための資料です。
 
 | コマンド | 主な用途 |
 | :--- | :--- |
@@ -451,7 +451,7 @@ GRUBは、OSやカーネルを選んで起動するメニューです。以下�
 
 **Timeshiftの復元はシステムを書き換える操作**です。重要ファイルの退避を先に済ませ、Live環境のファイルマネージャーやTimeshiftに表示される容量・領域名を確認します。初回設定ウィザードが出ても、正常な既存スナップショットを探しているのか、新規作成しようとしているのかを区別してください。ディスクを初期化して見つけ直そうとしてはいけません。
 
-TimeshiftをLive環境から使う場合の条件は[開発元の復元説明](https://github.com/linuxmint/timeshift)を確認します。公式ガイドもLive環境では一部アプリの挙動が通常環境と異なると説明しています。暗号化や特殊なパーティション構成は、本ガイドの一般手順だけで復元できるとは保証しません。
+TimeshiftをLive環境から使う場合の条件は [開発元の復元説明](https://github.com/linuxmint/timeshift) を確認します。公式ガイドもLive環境では一部アプリの挙動が通常環境と異なると説明しています。暗号化や特殊なパーティション構成は、本ガイドの一般手順だけで復元できるとは保証しません。
 
 スナップショットがなくても、個人データを退避できる場合があります。再インストールやWindows回復メディアによる消去は、退避と回復方法を確認してから最後に検討してください。
 
@@ -494,7 +494,7 @@ Kernel Panicが発生しても、直ちにOS再インストールが必要とは
 
 この項目は、基本のネット接続・更新・バックアップを確認した後に利用を検討してください。以下のコマンド一覧は一括実行用ではありません。`status` は保護状態の表示、`check-update` は更新確認に加えて公式資料上はフィルター等の更新も扱います。`configure` は設定、`start` / `stop` / `restart` は保護動作の変更、`update` は更新です。適用前に公式資料とインストール済みの版のヘルプを確認します。
 
-[AdGuard for Linux](https://adguard.com/kb/ja/adguard-for-linux/)（AdGuard CLI）は、Linux / macOS向けのコマンドライン広告ブロッカーです。AdGuard公式はDebian stable 10以降、Ubuntu LTS 22.04 / 24.04以降、RHEL 8以降、Fedora 35以降を対応対象として記載しています。Linux MintはUbuntu系ですが、公式対応一覧にLinux Mint名が個別掲載されているわけではないため、利用時はUbuntu互換環境として動作を確認します。
+[AdGuard for Linux](https://adguard.com/kb/ja/adguard-for-linux/) （AdGuard CLI）は、Linux / macOS向けのコマンドライン広告ブロッカーです。AdGuard公式はDebian stable 10以降、Ubuntu LTS 22.04 / 24.04以降、RHEL 8以降、Fedora 35以降を対応対象として記載しています。Linux MintはUbuntu系ですが、公式対応一覧にLinux Mint名が個別掲載されているわけではないため、利用時はUbuntu互換環境として動作を確認します。
 
 **基本操作**
 
