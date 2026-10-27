@@ -8,7 +8,7 @@ Linux Mintの導入から初期設定、日常利用、ソフトウェア管理�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610271402 |
+| **Version** | 202610271405 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
