@@ -2010,14 +2010,34 @@ DNSブロックは、DNS問い合わせに対してドメイン名単位で応�
 
 ## Android アプリ ReVanced・Morphe・URV（Android）
 公式Androidアプリに改良パッチを適用し、UXを向上させるオープンソースプロジェクトです。
-※ビルドツール（Manager）の利用は**自己責任**です（[VirusTotal](https://www.virustotal.com/gui/home/upload) でのスキャン推奨）。APKファイルは [APKMirror](https://www.apkmirror.com/) から調達します。
+※ビルドツール（Manager）の利用は**自己責任**です（[VirusTotal](https://www.virustotal.com/gui/home/upload) でのスキャン推奨）。APKファイルは [APKMirror](https://www.apkmirror.com/) から調達できます。Reseam ManagerのAPK取得機能については後述します。
 
 **略称・ツール**
 * **[ReVanced 公式](https://revanced.app/)** / [GitHub](https://github.com/revanced)
 * **RVX**: inotia00氏版（[※開発終了 Issues #3334](https://github.com/inotia00/ReVanced_Extended/issues/3334)）
 * **[Morphe 公式](https://morphe.software/)** / [GitHub](https://github.com/MorpheApp)（RVX開発陣も合流した新プロジェクト）
   * [Morphe Community Patches](https://morphe-patches.software/)（コミュニティが作成したパッチバンドル）
+* **[Reseam 公式](https://reseam.app/)** / [GitHub mirror](https://github.com/Reseam) / [開発元（Forgejo）](https://git.reseam.app/reseam)（元ReVanced開発者による独立プロジェクト）
 * **[URV 公式](https://jmancentral.com/)** / [GitHub](https://github.com/Jman-Github)（使いやすい上位互換Manager）
+
+**Reseam：特徴・導入・互換性（2026年10月27日確認）**
+
+Reseamは、コミュニティが作成したパッチを端末上でAndroidアプリに適用するプロジェクトです。公式サイトは元ReVanced開発者によるものと説明し、開発者はRedditのAMAでReVancedのForkではなく新規に構築したと説明しています。AMAでは関係者のGitHubとしてAunali321、Ushie、alexandreteles（afterSt0rm）、madkarmaaが紹介されています。これは参加者全員の名簿や、他プロジェクトの現行体制を示すものではありません（[公式サイト](https://reseam.app/) / [開発チームのAMA](https://www.reddit.com/r/Piracy/comments/1xb5ys8/reseam_a_new_android_app_patcher_from_most_of_the/)）。
+
+* **Rust製エンジン**：APK解析・DEX編集・署名処理をRustで実装し、パッチ自体はKotlinで記述します。同じエンジンをManager・CLI・ブラウザ版で利用します。「全体がRust製」「既存のReVancedパッチがそのまま動く」という意味ではありません（[エンジンREADME](https://github.com/Reseam/reseam/blob/main/README.md)）。
+* **処理速度**：公式は端末上で数秒のビルドを案内し、AMAでは開発者から約1秒という端末報告もあります。ただし共通条件の比較測定ではなく、元APK・選択パッチ・端末・Versionによって変わります。「Pixel 3でYouTubeが8秒」は今回確認した一次情報では測定条件・根拠を確認できず、保証値として扱いません。本ガイドでも実測していません（[公式サイト](https://reseam.app/) / [AMA](https://www.reddit.com/r/Piracy/comments/1xb5ys8/reseam_a_new_android_app_patcher_from_most_of_the/)）。
+* **公式パッチ**：YouTube、YouTube Music、TikTok、Instagram、Reddit、X、Telegram、Discordと、アプリ共通の任意パッチを掲載しています。YouTubeには広告非表示、Shorts関連の表示変更、GmsCore対応などがあります。アプリ名だけで最新版への対応を判断せず、各パッチの対応Version・オプションを確認します。Morpheから切り替える場合は、利用中の機能・対応APK・設定項目を個別に比較してください（[公式パッチ一覧](https://reseam.app/patches/)）。
+* **ManagerとAPK取得**：Android・Windows・Linux版があります。Managerは、多くのパッチが対応するVersionのAPKダウンロードを既定にしており、インストール済みの改変APKを再利用する前提ではありません。エンジンはAPKM・XAPK・split APKにも対応します。デスクトップ版は生成ファイルを保存してAndroid端末へ移し、Android版はインストールまで行えます。ブラウザ版もありますが、公式はManagerより遅いと案内しています（[Manager README](https://github.com/Reseam/manager/blob/main/README.md) / [処理の説明](https://reseam.app/docs/authoring/how_patching_works/) / [ブラウザ版](https://reseam.app/patch)）。
+* **サードパーティパッチ**：公式バンドルは既定で含まれます。追加ソースは`Patch sources`の`Add patch source`から作者が公開したリンク、または`.reseam`ファイルで取り込みます。未知の署名者は利用者の承認が必要です。署名は配布元と改変の検査に使うもので、安全性を保証するものではありません。ReVanced / Morphe用バンドルの直接互換性は前提にせず、Reseam向けに公開されたものを選びます。エンジンとバンドルの対応Versionにも制約があります（[公式バンドルREADME](https://github.com/Reseam/patches/blob/main/README.md) / [追加画面の実装](https://github.com/Reseam/manager/blob/main/composeApp/src/jvmCommonMain/kotlin/app/reseam/manager/ui/settings/AddSourceSheet.kt) / [署名・Version互換性](https://reseam.app/docs/authoring/how_patching_works/)）。
+* **開発・配布先**：GitHubのOrganization配下は読み取り専用ミラーで、開発元はForgejoです。最新のRelease・Issue・配布案内は公式サイトから確認してください。Organizationの紹介文に古いLicense表記が残る場合もあるため、個別RepositoryのLICENSE・NOTICEを優先します。エンジン・ManagerはAGPL-3.0-or-laterと追加条項を掲げ、公式パッチ内のReVanced由来コードなどには別のLicenseが適用されます（[GitHubの案内](https://github.com/Reseam) / [エンジンREADME](https://github.com/Reseam/reseam/blob/main/README.md) / [公式パッチREADME](https://github.com/Reseam/patches/blob/main/README.md)）。
+
+**Reseamの導入・更新時の確認**
+
+1. [公式Download](https://reseam.app/download/)から端末のABIに合うManagerを取得します。Googleアカウントでログインする対象アプリには、同ページで案内されるGmsCoreも確認します。YouTubeの`GmsCore support`では既定のvendor group IDが`app.reseam`なので、別系統のGmsCoreを使う場合は設定との一致を確認します（[パッチ一覧](https://reseam.app/patches/)）。
+2. Managerで対象アプリ・対応する元APK・必要なパッチとオプションを選び、適用後に生成されたアプリをインストールします。公式は元アプリとの共存を案内していますが、個別パッチのPackage name設定も確認してください。元アプリの設定・データが自動移行されるとは扱いません（[公式の概要](https://github.com/Reseam) / [Manager README](https://github.com/Reseam/manager/blob/main/README.md)）。
+3. 更新ではPackage nameと署名鍵の継続性を確認します。Manager・ブラウザ版は最初に生成した署名鍵を再利用する設計です。鍵を失うと同じアプリへの上書き更新ができなくなるため、署名競合だけを理由に先にアンインストールせず、必要なデータをバックアップしてから判断します（[署名の説明](https://reseam.app/docs/authoring/how_patching_works/)）。
+
+Managerの現行ソースでは共通UIの文字列は既定の`values/strings.xml`にあり、日本語用リソースは今回の確認では見つかりませんでした。パッチ適用後の各アプリの翻訳状況とは区別します（[Managerの文字列リソース](https://github.com/Reseam/manager/tree/main/composeApp/src/commonMain/composeResources)）。Android x86_64版にはChromebook向けの配布案内もありますが、本ガイドではAndroid実機・ChromeOSでの導入や各機能の動作Testは行っていません（[公式Download](https://reseam.app/download/)）。
 
 **使い方・質問用テンプレ**
 
@@ -2101,7 +2121,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **その他の補助アプリ**：[floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1) / [Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)
 
 **参考サイト**
-* [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/)
+* [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/) / [r/reseamapp](https://www.reddit.com/r/reseamapp/)
 * [5ch Android Twitterクライアント](https://ff5ch.syoboi.jp/?q=Android+Twitter%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88) / [5ch 神アプリスレ](https://ff5ch.syoboi.jp/?q=Android%E3%81%AE%E7%A5%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E6%8C%99%E3%81%92%E3%82%8B%E3%82%B9%E3%83%AC) / [5ch Androidアプリ 質問スレ](https://ff5ch.syoboi.jp/?q=Android%E3%81%AE%E7%A5%9E%E3%82%A2%E3%83%97%E3%83%AA%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC)
 * [Kami-Android-app｜Kdroidwin](https://github.com/Kdroidwin/Kami-Android-app)
 
