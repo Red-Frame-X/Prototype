@@ -22,6 +22,8 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | [Googlebook調査レポート（改訂版）](Googlebook%20Research%20Report%20-%20Revised%20Edition.md) | Googlebookの公式発表と、開発コードネームAluminiumに関する報道・未確認事項・査読結果を区別して整理した調査レポート |
 | [ChromeOSの手動更新と問題解決](ChromeOS%20Manual%20Update%20and%20Troubleshooting.md) | ChromeOSの手動更新手順と、更新失敗時の原因切り分け・再試行・復旧方法の記録 |
 
+[Android アプリ ReVanced・Morphe・URV・Reseam（Android）](ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-revancedmorpheurvreseamandroid)：各プロジェクトの公式情報、機能、導入・更新・バックアップ、互換性、Redditの参照方法をまとめています。
+
 ### コンテンツブロック
 
 | ドキュメント | 主な内容 |
