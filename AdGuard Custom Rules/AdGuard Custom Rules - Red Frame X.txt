@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202610270302
+! Version: 202610270511
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -85,6 +85,8 @@ gigazine.net##a[href="https://gigazine.net/news/C36/"]
 gigazine.net##a[href="https://gigazine.net/news/C15/"]
 ! 「コラム」カテゴリへのリンクを非表示
 gigazine.net##a[href="https://gigazine.net/news/C16/"]
+! 「ヘッドライン」カテゴリへのリンクを非表示
+gigazine.net##a[href="https://gigazine.net/news/C19/"]
 ! 「試食」カテゴリーの記事を非表示
 gigazine.net#?#section:has(> .card .catab:contains(/^試食$/))
 ! 「広告」カテゴリーの記事を非表示
@@ -95,6 +97,8 @@ gigazine.net#?#section:has(> .card .catab:contains(/^有料メンバー$/))
 gigazine.net#?#section:has(> .card .catab:contains(/^食$/))
 ! 「コラム」カテゴリーの記事を非表示
 gigazine.net#?#section:has(> .card .catab:contains(/^コラム$/))
+! 「ヘッドライン」カテゴリーの記事を非表示
+gigazine.net#?#section:has(> .card .catab:contains(/^ヘッドライン$/))
 
 ! google-analytics.com
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避（他のアプリ・Webサイトには適用しない）
