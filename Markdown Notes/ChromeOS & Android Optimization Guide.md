@@ -2336,20 +2336,15 @@ Haiagaru-Morpheは更新が速いため、本ガイドには「現在のVersion�
 * **ChMateとの互換性**：利用するMPPのRelease tagに固定した `HaiagaruPatch.kt` の `chMateCompatibility` を確認し、Releaseの説明と照合します。READMEや個別文書のVersion表記・対応一覧は更新が遅れる場合があるため、それだけで最新配布版や互換性を判断しないでください。通常版以外の任意Patchは、各Patchの互換対象も確認します。
 * **配布の生成**：Release WorkflowとSemantic Releaseによって配布物が生成されます。生成手順と配布系統は、対象tagのWorkflow・Semantic Release設定を参照してください（[確認に用いたRelease Workflow](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/.github/workflows/release.yml)）。
 
-以下の対応表と機能説明は、[1.12.2の実装](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt) / [1.12.3-dev.2の実装](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.3-dev.2/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt) を照合した記録です。これらを最新配布版として案内するものではありません。別の版を利用する場合は、そのtagで確認し直してください。
-
 **対応するChMate Version**
 
-| ChMate Version | 確認対象：1.12.2 / 1.12.3-dev.2 | 元APKのminSdk・補足 |
-| --- | --- | --- |
-| 0.8.10.191 dev | 両方の対応一覧に含まれる | 21（Android 5.0以降）、versionCode 459。 |
-| 0.8.10.226 dev | 両方の対応一覧に含まれる | 23（Android 6.0以降）、versionCode 494。 |
-| 0.8.10.241 | 確認対象の両版では非対応 | 過去版では対応していたが、1.8.8で対応一覧から除外。 |
-| 0.8.10.242 dev | 両方の対応一覧に含まれる | 23（Android 6.0以降）、versionCode 512。1.2.2-r8で対象外となり、1.6.0で再対応。 |
-| 0.8.10.243 dev | 確認対象の両版では非対応 | 過去版では対応していたが、1.8.8で対応一覧から除外。 |
-| 上記以外・243 devより後 | 確認対象の両版では対応を確認できない | 新しいChMateが公開されても、自動的に適用対象にはならない。 |
+Haiagaru-MorpheのPatch適用対象は、次の3つのChMate dev版です。「191-242」は連続したVersion範囲を意味しません。
 
-過去の対応変更は [CHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/CHANGELOG.md) を参照してください。241 / 243向けの分岐がソースに残っていても、確認対象の両版の互換対象に含まれることを意味しません。上記のminSdkは元APK・Patchの対応宣言であり、すべてのAndroid端末での動作保証ではありません。
+* **0.8.10.191 dev**：元APKのminSdkは21（Android 5.0以降）、versionCodeは459。
+* **0.8.10.226 dev**：元APKのminSdkは23（Android 6.0以降）、versionCodeは494。
+* **0.8.10.242 dev**：元APKのminSdkは23（Android 6.0以降）、versionCodeは512。
+
+0.8.10.241 / 0.8.10.243 devは対象外です。それ以外のVersionも、新しく公開されたという理由だけで適用対象にはなりません。使用するPatchの対応一覧を確認してください。過去の対応変更は [CHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/CHANGELOG.md) を参照してください。上記のminSdkは元APK・Patchの対応宣言であり、すべてのAndroid端末での動作保証ではありません。
 
 **主な機能とVersionによる違い**
 
