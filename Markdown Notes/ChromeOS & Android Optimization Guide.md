@@ -2013,7 +2013,7 @@ DNSブロックは、DNS問い合わせに対してドメイン名単位で応�
 
 ## Android アプリ ReVanced・Morphe・URV・Reseam（Android）
 AndroidアプリにPatchを適用して機能や表示を調整するプロジェクトとManagerをまとめます。ReVanced・Morphe・ReseamはそれぞれのPatch系統を持ち、URVは複数の系統を扱うManagerです。
-※ビルドツール（Manager）の利用は**自己責任**です（[VirusTotal](https://www.virustotal.com/gui/home/upload)でのスキャン推奨）。元APKは各Managerの案内や [APKMirror](https://www.apkmirror.com/) などから、選んだPatchに対応するVersion・形式を確認して用意します。スキャン結果だけで安全性は保証できません。
+※ビルドツール（Manager）の利用は**自己責任**です（[VirusTotal](https://www.virustotal.com/gui/home/upload) でのスキャン推奨）。元APKは各Managerの案内や [APKMirror](https://www.apkmirror.com/) などから、選んだPatchに対応するVersion・形式を確認して用意します。スキャン結果だけで安全性は保証できません。
 
 **略称・ツール**
 * **[ReVanced 公式](https://revanced.app/)** / [GitHub](https://github.com/revanced)
