@@ -2145,7 +2145,7 @@ URVは独自のPatch集合をすべてのアプリに提供するのではなく
 
 自動再Patch用に保存した元APKも、PatchがそのVersionをサポートしなくなれば見直しが必要です。失敗時はRuntime、Bundle、元APK、選択Patch、Installerが分かるログを保存します。処理時間はAPK・Split構成・端末・Runtimeで変わり、Reseamを含めた共通条件の比較測定は本ガイドでは行っていません。
 
-### Reseam：特徴・導入・互換性（2026年10月27日確認）
+### Reseam：Rust製エンジンとAndroid・Windows・Linux対応
 
 Reseamは、コミュニティが作成したパッチを端末上でAndroidアプリに適用するプロジェクトです。公式サイトは元ReVanced開発者によるものと説明し、開発者はRedditのAMAでReVancedのForkではなく新規に構築したと説明しています。AMAでは関係者のGitHubとしてAunali321、Ushie、alexandreteles（afterSt0rm）、madkarmaaが紹介されています。これは参加者全員の名簿や、他プロジェクトの現行体制を示すものではありません（[公式サイト](https://reseam.app/) / [開発チームのAMA](https://www.reddit.com/r/Piracy/comments/1xb5ys8/reseam_a_new_android_app_patcher_from_most_of_the/)）。
 
