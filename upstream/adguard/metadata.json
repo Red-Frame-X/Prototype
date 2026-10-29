@@ -4,8 +4,8 @@
       "product": "AdGuard Browser Extension",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases/latest",
       "latest_version": "5.5.3.3",
-      "sha256": "9fe3af0aa5d3b8edc316c751f80ffc26fd1154fdba2db96a8f677e771a6e0a04",
-      "checked_at": "2026-10-29T23:13:52+00:00",
+      "sha256": "63301dc8f1f92791a3e449dd330affe0c3191fc101cf302840892541b846b448",
+      "checked_at": "2026-10-29T23:28:41+00:00",
       "converter_relevant_entries": [
         "In this release we’ve added AdGuard’s Manifest V3 (MV3) Browser Extension to Microsoft Edge.",
         "But this doesn’t mean AdGuard is leaving the store. This is where our MV3 version comes in.",
