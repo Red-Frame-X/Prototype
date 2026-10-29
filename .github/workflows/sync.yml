@@ -72,6 +72,8 @@ jobs:
               exit 0
             fi
 
+            # 作成前に表記を検査する。日本語優先と英語例外の妥当性はAGENTS.mdに従う。
+            python scripts/check_commit_titles.py --message-file <(printf '%s\n' "uB-filter-by-kdroidwin (AdGuard Optimized) を自動更新")
             git commit -m "uB-filter-by-kdroidwin (AdGuard Optimized) を自動更新"
             if git push origin HEAD:main; then
               echo '変更をCommitし、pushしました。'

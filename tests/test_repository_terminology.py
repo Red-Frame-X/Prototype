@@ -36,7 +36,7 @@ class RepositoryTerminologyTests(unittest.TestCase):
         expected = {
             "sync.yml": ["uB-filter-by-kdroidwin (AdGuard Optimized) を自動更新"],
             "update-adguard-changelogs.yml": ["AdGuardの変更履歴を自動更新"],
-            "update-chmate-ng-version.yml": ["Update NG Word Regex for ChMate Version"],
+            "update-chmate-ng-version.yml": ["NG Word Regex for ChMate のVersionを更新"],
             "update-version-timestamps.yml": ["chore: Versionの日時を日本標準時で同期"],
         }
         actual = {}

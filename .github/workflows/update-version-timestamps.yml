@@ -77,6 +77,8 @@ jobs:
               echo 'Commitが必要な対応Version Metadataの変更はありません。'
               exit 0
             fi
+            # 作成前に表記を検査する。日本語優先と英語例外の妥当性はAGENTS.mdに従う。
+            python scripts/check_commit_titles.py --message-file <(printf '%s\n' 'chore: Versionの日時を日本標準時で同期')
             git commit -m 'chore: Versionの日時を日本標準時で同期'
             if git push origin HEAD:main; then
               exit 0
