@@ -52,7 +52,7 @@ class WriterWorkflowTests(unittest.TestCase):
 
     def test_chmate_manual_writer_retries_push_conflicts(self):
         _, text = self._load("update-chmate-ng-version.yml")
-        commit_index = text.index("git commit -m 'Update NG Word Regex for ChMate Version'")
+        commit_index = text.index("git commit -m 'NG Word Regex for ChMate のVersionを更新'")
         loop_index = text.index("for attempt in 1 2 3; do", commit_index)
         fetch_index = text.index("git fetch origin main", loop_index)
         rebase_index = text.index("git rebase origin/main", fetch_index)
@@ -61,6 +61,25 @@ class WriterWorkflowTests(unittest.TestCase):
         self.assertLess(loop_index, fetch_index)
         self.assertLess(fetch_index, rebase_index)
         self.assertLess(rebase_index, push_index)
+
+    def test_all_automatic_commits_validate_the_same_title_before_creation(self):
+        import re
+        import subprocess
+
+        for name in (*WRITER_WORKFLOWS, "update-chmate-ng-version.yml", "update-version-timestamps.yml"):
+            with self.subTest(workflow=name):
+                _, text = self._load(name)
+                message = re.search(r"^\s*git commit -m (.+)$", text, re.MULTILINE).group(1)
+                check = "python scripts/check_commit_titles.py --message-file <(printf '%s\\n' " + message + ")"
+                self.assertIn(check, text)
+                self.assertLess(text.index(check), text.index("git commit -m "))
+                for title, expected in ((message, 0), ("'Fix'", 1)):
+                    command = check.replace(message, title)
+                    result = subprocess.run(
+                        ["bash", "-e", "-c", command], cwd=REPOSITORY_ROOT,
+                        capture_output=True, text=True,
+                    )
+                    self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
 
     def test_version_workflow_run_reference_matches_quality_workflow_name(self):
         quality, _ = self._load("quality.yml")

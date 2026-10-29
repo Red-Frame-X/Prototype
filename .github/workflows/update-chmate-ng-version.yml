@@ -61,7 +61,9 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- "$file"
-          git commit -m 'Update NG Word Regex for ChMate Version'
+          # 作成前に表記を検査する。日本語優先と英語例外の妥当性はAGENTS.mdに従う。
+          python scripts/check_commit_titles.py --message-file <(printf '%s\n' 'NG Word Regex for ChMate のVersionを更新')
+          git commit -m 'NG Word Regex for ChMate のVersionを更新'
 
           for attempt in 1 2 3; do
             git fetch origin main

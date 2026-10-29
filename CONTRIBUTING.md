@@ -3,8 +3,9 @@
 Commit messageとPull Requestのtitleおよびbodyは、変更対象と内容が分かる簡潔で自然な日本語を原則とします。
 ChatGPT Chat / Work / Codexでの必須方針と確認手順は [AGENTS.md](AGENTS.md) に従ってください。
 英語の技術用語・製品名・ファイル名・コード識別子は維持します。
-正式名称や識別子だけで構成され、日本語化する一般説明がない場合を除き、変更内容は日本語で説明します。
-`Update Markdown Notes Version`のような英語のみの定型メッセージは採用しません。
+変更内容は原則として日本語で説明します。ただし、正式名称や変更内容の性質から英語のみのほうが明確かつ自然な場合は英語のCommit titleも許可します。
+例：`Update Markdown Notes Version`、`Update uB-filter-by-kdroidwin (AdGuard Optimized)`、`Fix AGLint configuration`。
+ツールが英語を生成しやすいことだけを理由に、英語の定型メッセージを採用しません。
 既存履歴を書き換えたり、Force Pushしたりして日本語化しません。
 
 例：
