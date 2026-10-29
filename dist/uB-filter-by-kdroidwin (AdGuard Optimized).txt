@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610290959
+! Version: 202610291900
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,9 +9,6 @@
 ! Note: このフィルタは、AdGuard Browser Extension MV3 向けに最適化した非公式フォークです。
 ! Compatibility: AdGuard for Androidはベストエフォート対応。CoreLibs固有機能は省略される場合があります。
 
-||edepart.sogo-seibu.jp/category/cs060000?brand=001893$document
-||dfashion.docomo.ne.jp/brand/refa$document
-||hands.net/search/?q=refa&category=101001007$document
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -2061,6 +2058,8 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ccsggw.cn^$document
 ||cdn-ak.f.st-hatena.com/images/fotolife/s/sorasanai58/20260712/20260712160638.png$image
 ||cdn.99kia.com^$document
+||cdnvidey.$document
+||cdnvidey.xxxxxxxx.jp^$document
 ||cdnvideyco.*.com^
 ||cdnvideyco.ho-zuki.com^$document
 ||ceagmq.jp^$document
@@ -2694,6 +2693,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dev.bimm.com^$document
 ||devoted.base.shop^$document
 ||deyar-sa.com^$document
+||dfashion.docomo.ne.jp/brand/refa$document
 ||dfashion.docomo.ne.jp/brand/refa^$document
 ||dftvtrb.bar^$document
 ||dfzmnriie.heidekevin.de^$document
@@ -3133,6 +3133,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ecsuchi.cn^$document
 ||eded-magazin.com^$document
 ||eden-emulator.com^$document
+||edepart.sogo-seibu.jp/category/cs060000?brand=001893$document
 ||ediflights.co.uk^$document
 ||edisontae.com^$document
 ||edobryggan.se^$document
@@ -4552,6 +4553,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||handigvlog1997.com^$document
 ||handjp.poxnel.com^$document
 ||handmade-park.com/blogs/find-garden/202406080955?srsltid=AfmBOopmgyzsJuZo3EsEctlhjCHQWgkyynwrp08oTVmP4UDqgFf54yAS^$document
+||hands.net/search/?q=refa&category=101001007$document
 ||handstampart.com^$document
 ||handymikan.com^$document
 ||hanesokunews.net^$document
@@ -10657,7 +10659,11 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||soriolv.com^$document
 ||sorteplus.net^$document
 ||sota-001.com^$document
+||sotsual-anshin.com^$document
+||sotual.com^$document
+||sotubook.com^$document
 ||sotuen.net^$document
+||sotukai.net^$document
 ||soulflowertrain.com^$document
 ||souljazzfunk.com^$document
 ||soulkitchen758.jp^$document
@@ -11143,6 +11149,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||taksiduraklari.xyz^$document
 ||taku218.com^$document
 ||takuanpiri.com^$document
+||takublo.net^$document
 ||takudeli.com^$document
 ||takulog2020.com^$document
 ||takumiworld.xyz^$document
@@ -11591,6 +11598,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||tousu.in^$document
 ||towakon.com^$document
 ||townlife-aff.com^$document
+||townwifi.jp^$document
 ||toy-box777.com^$document
 ||toyama-asbb.com^$document
 ||toyobaru.jp^$document
@@ -14678,6 +14686,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||xxx.konan-connect.jp^$document
 ||xxx.oz-bread.com^$document
 ||xxx.report^$document
+||xxxxxxxx.jp^$document
 ||xxxyuxxxka.com^$document
 ||xyunyong257.workers.dev^$document
 ||xyz-jp.org^$document
