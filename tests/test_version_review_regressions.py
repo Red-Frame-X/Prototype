@@ -119,6 +119,7 @@ class TimestampPublicationTests(unittest.TestCase):
                 (source / name).mkdir()
                 (source / name / 'README.md').write_text('Fixture\n')
             shutil.copy(ROOT / 'scripts/update_version_timestamps.py', source / 'scripts')
+            shutil.copy(ROOT / 'scripts/check_commit_titles.py', source / 'scripts')
             rel = 'Markdown Notes/note.md'
             path = source / rel
             path.write_text('| **Version** | 200001010000 |\nOriginal body.\n')
