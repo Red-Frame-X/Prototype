@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202610281842
+! Version: 202610290959
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,6 +9,9 @@
 ! Note: このフィルタは、AdGuard Browser Extension MV3 向けに最適化した非公式フォークです。
 ! Compatibility: AdGuard for Androidはベストエフォート対応。CoreLibs固有機能は省略される場合があります。
 
+||edepart.sogo-seibu.jp/category/cs060000?brand=001893$document
+||dfashion.docomo.ne.jp/brand/refa$document
+||hands.net/search/?q=refa&category=101001007$document
 *click.php?key*type*age*$document
 *gad_source=*&gad_campaignid$document
 .*.cdn.digitaloceanspaces.com$document
@@ -2691,6 +2694,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||dev.bimm.com^$document
 ||devoted.base.shop^$document
 ||deyar-sa.com^$document
+||dfashion.docomo.ne.jp/brand/refa^$document
 ||dftvtrb.bar^$document
 ||dfzmnriie.heidekevin.de^$document
 ||dg.dojin.com^$document
@@ -4209,6 +4213,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gingin.biz^$document
 ||ginsalo.com^$document
 ||gintachan.com^$document
+||ginza.refa.net^$document
 ||giorgiotruffleshop.com^$document
 ||giphootchebs.net^$document
 ||girl-boy-friends.com^$document
@@ -12550,6 +12555,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.amazon.co.jp/dp/4344042050^$document
 ||www.amazon.co.jp/PC%E3%82%BD%E3%83%95%E3%83%88-iObit^$document
 ||www.amazon.co.jp/shop/influencer-2b79c26a$document
+||www.amazon.co.jp/stores/ReFa^$document
 ||www.amazon.co.jp/stores/YA-MAN%E3%83%A4%E3%83%BC%E3%83%9E%E3%83%B3^$document
 ||www.amazon.com/stores/KINUJO^$document
 ||www.amigolibreria.com^$document
@@ -13676,6 +13682,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.mqfdgqc.cn^$document
 ||www.mskanak.com^$document
 ||www.msweeneynantucket.com^$document
+||www.mtg.gr.jp^$document
 ||www.mtgec.jp^$document
 ||www.mtn-world.com^$document
 ||www.murakami-keisuke.com^$document
