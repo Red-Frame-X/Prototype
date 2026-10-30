@@ -1705,25 +1705,22 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 * **[Aerium](https://github.com/aerium-browser/aerium-browser-android)**
   * **ブロック方法**：uBlock Originをプリインストール。Chrome Web Store・Opera Add-ons・Microsoft Edge Add-onsの拡張機能に対応します。
   * **特徴**：VanadiumをベースにTitaniumの拡張機能対応を採用。HTTPS優先、クロスオリジンReferer制御、サイト単位のJavaScript JIT設定を備えます。
-  * **ログイン関連の注意点**：Amazon・パスキーの不具合報告と対応状況は下記を参照してください。
+  * **ログイン関連の注意点**：パスキーの不具合報告と対応状況は下記を参照してください。
 * **[Firefox](https://github.com/mozilla-firefox/firefox)**
   * **ブロック方法**：Android版の公式アドオン機能からuBlock Originなどを導入できます。
   * **注意点**：デスクトップ向け拡張機能のすべてがAndroid版に対応するわけではありません（[Mozilla公式](https://support.mozilla.org/ja/kb/find-and-install-add-ons-firefox-android)）。
 
 **Bare・Titanium・Aeriumのログイン問題と回避策**
 
-* **自身の環境で確認した問題**：3ブラウザとも、Webサイトでパスキーを使えず、Web版Amazonにもログインできませんでした。
-* **回避策**：パスキーが必要なサービスはChromeを、AmazonはChromeまたはAmazon公式アプリを利用してください。
+* **自身の環境で確認した問題**：3ブラウザとも、Webサイトでパスキーを使えませんでした。
+* **回避策**：パスキーが必要なサービスはChromeを利用してください。
 * **確認範囲**：端末・Android・ブラウザのVersion・Credential Providerによって結果は異なります。全環境での発生や、3ブラウザで共通の原因があることを確認したものではありません。
 
 **Aeriumの不具合報告・対応状況（2026年10月30日・日本時間の確認）**
 
-* **Amazonログイン失敗：[Issue #92](https://github.com/aerium-browser/aerium-browser-core/issues/92)（Open・bug）**
-  * Pixel 10a / Android 17 / Aerium 155.0.8059.39での報告です。[開発者が案内した `remove-client-hints` の無効化・再起動](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6439746791) では改善せず、[報告者はTitaniumでも失敗](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6441875807) しています。
-  * [開発者はChromiumを直接ベースにした実験版v156で成功し、同じ週の公開を予定](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6442862100) しています。公開版での修正完了や、自身の環境での解消は未確認です。
 * **パスキー認証失敗：[Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50)（Open・bug）**
   * Android 16でGoogle Password Managerは失敗し、KeePassDXは動作したとの報告があります。[開発者はBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧への未登録を説明](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) しています（[Android公式：必要な承認](https://developer.android.com/identity/sign-in/privileged-apps)）。
-  * Google Playでの公開後にGoogleへ申請する予定ですが、申請完了・改善は未確認です。Amazonログイン失敗との関連も確認されていません。
+  * Google Playでの公開後にGoogleへ申請する予定ですが、申請完了・改善は未確認です。
   * [開発ソースにはAndroid Credential Manager対応パッチ](https://github.com/aerium-browser/aerium-browser-core/blob/f44f81b97cb57e9829d0e7f68f06d1e4777ba357/patches/0006-Use-Android-Credential-Manager-for-passkeys.patch) があり、パスキー全般が未実装という意味ではありません。報告Versionは「Latest」のみで、最新公開版での再現・パスキー作成・1Passwordなど他のProviderの動作は未確認です。
 
 **参考サイト**
