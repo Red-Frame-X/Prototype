@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610291808 |
+| **Version** | 202610301247 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -2011,8 +2011,10 @@ DNSブロックは、DNS問い合わせに対してドメイン名単位で応�
 
 <a id="android-アプリ-revancedmorpheurvandroid"></a>
 
-## Android アプリ ReVanced・Morphe・URV・Reseam（Android）
-AndroidアプリにPatchを適用して機能や表示を調整するプロジェクトとManagerをまとめます。ReVanced・Morphe・ReseamはそれぞれのPatch系統を持ち、URVは複数の系統を扱うManagerです。
+<a id="android-アプリ-revancedmorpheurvreseamandroid"></a>
+
+## Android アプリ ReVanced・Morphe・UPM・Reseam（Android）
+AndroidアプリにPatchを適用して機能や表示を調整するプロジェクトとManagerをまとめます。ReVanced・Morphe・ReseamはそれぞれのPatch系統を持ち、Universal Patch Manager（UPM、旧Universal ReVanced Manager / URV）は複数の系統を扱うManagerです。
 ※ビルドツール（Manager）の利用は**自己責任**です（[VirusTotal](https://www.virustotal.com/gui/home/upload) でのスキャン推奨）。元APKは各Managerの案内や [APKMirror](https://www.apkmirror.com/) などから、選んだPatchに対応するVersion・形式を確認して用意します。スキャン結果だけで安全性は保証できません。
 
 **略称・ツール**
@@ -2021,7 +2023,7 @@ AndroidアプリにPatchを適用して機能や表示を調整するプロジ�
 * **[Morphe 公式](https://morphe.software/)** / [GitHub](https://github.com/MorpheApp) （RVX開発陣も合流した新プロジェクト）
   * [Morphe Community Patches](https://morphe-patches.software/) （コミュニティが作成したパッチバンドル）
 * **[Reseam 公式](https://reseam.app/)** / [GitHub mirror](https://github.com/Reseam) / [開発元（Forgejo）](https://git.reseam.app/reseam) （元ReVanced開発者による独立プロジェクト）
-* **[URV 公式](https://jmancentral.com/)** / [GitHub](https://github.com/Jman-Github) （ReVanced・MorpheのBundleを扱うManager）
+* **[UPM 公式](https://jmancentral.com/)** / [Repository](https://github.com/Jman-Github/Universal-Patch-Manager) / [開発者GitHub](https://github.com/Jman-Github) （旧URV。ReVanced・Morphe・ReseamのBundleを扱うManager）
 
 ### ReVanced：公式PatchとManager
 
@@ -2049,7 +2051,7 @@ Managerは`Settings > Updates`で更新を確認できます。Managerの更新�
 
 **不具合・Redditの参照方法**
 
-Patch失敗や起動不能では、Managerの更新、SafeguardとOptionの既定値、元APKの形式、空き容量・メモリを確認します。公式のTroubleshootingは完全なAPKの利用を案内しています。Morphe / URVのSplit APK対応をそのまま公式ReVanced Managerに当てはめないでください（[Troubleshooting](https://github.com/ReVanced/revanced-manager/blob/main/docs/3_troubleshooting.md)）。
+Patch失敗や起動不能では、Managerの更新、SafeguardとOptionの既定値、元APKの形式、空き容量・メモリを確認します。公式のTroubleshootingは完全なAPKの利用を案内しています。Morphe / UPM（旧URV）のSplit APK対応をそのまま公式ReVanced Managerに当てはめないでください（[Troubleshooting](https://github.com/ReVanced/revanced-manager/blob/main/docs/3_troubleshooting.md)）。
 
 [r/revancedapp](https://www.reddit.com/r/revancedapp/) にはガイドと質問があります。 [導入ガイドの紹介投稿](https://www.reddit.com/r/revancedapp/comments/1nnqci9/youtube_revanced_guide_for_dummies_always_updated/) も確認しましたが、利用者による資料であり、古い画面名・APK Versionは現行の公式手順と照合します。コミュニティの受付状況や固定投稿も確認してから報告先を選びます。
 
@@ -2104,43 +2106,56 @@ Manager・Patch source・改変後のアプリを分けて更新します。sour
 
 `Settings > Signing key`から鍵を保存し、`Morphe settings`からManager設定を別に保存します。設定JSONにはKeystoreが含まれません。Managerのアンインストールやデータ消去で鍵を失うと、以前の鍵で署名したアプリをそのまま更新できなくなります。機種変更では先に鍵をインポートし、必要なsourceとPatch選択を復元します（[バックアップ手順](https://github.com/MorpheApp/morphe-manager/blob/main/docs/backup-and-keystore.md)）。処理速度の優劣や他Managerとの設定互換性は、これらの機能だけからは判断できません。
 
-### URV：複数のPatch系統を扱うManager
+<a id="urv複数のpatch系統を扱うmanager"></a>
 
-**開発者サイト・Repository**： [Jman Central](https://jmancentral.com/) / [Universal ReVanced Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager) / [Release](https://github.com/Jman-Github/Universal-ReVanced-Manager/releases)
+### UPM：複数のPatch系統を扱うManager（旧URV）
 
-URVはUniversal ReVanced Managerの略称です。ReVanced Managerを基盤に、ReVancedとMorpheのPatchを一つのアプリで管理します。個別の機能は選んだBundleが提供するため、Managerを変えるだけですべてのアプリやPatchが動くわけではありません（[公式README](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md)）。
+**開発者サイト・Repository**： [Jman Central](https://jmancentral.com/) / [Universal Patch Manager](https://github.com/Jman-Github/Universal-Patch-Manager) / [Release](https://github.com/Jman-Github/Universal-Patch-Manager/releases) / [Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)
+
+旧配布先の記録： [Universal ReVanced Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager) / [Release](https://github.com/Jman-Github/Universal-ReVanced-Manager/releases)。旧Repository URLは現行Repositoryへ転送され、URVのRelease履歴も引き継がれています。旧版を調べる場合は [URV v1.10.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v1.10.0) のようにtagを固定します。
+
+URVはUniversal ReVanced Managerの略称です。2026年10月29日の [UPM v2.0.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v2.0.0) でUniversal Patch Manager（UPM、アプリ表示名はUP Manager）へ改称されました。別作者のForkではなく、同じRepositoryの履歴を引き継ぐ改称です（[改称Commit](https://github.com/Jman-Github/Universal-Patch-Manager/commit/995ae1c9f85c45dcf479c049381085e95e9b652f)）。ReVanced Managerを基盤に、ReVanced・Morphe・ReseamのPatchを一つのアプリで管理します。個別の機能は選んだBundleが提供するため、Managerを変えるだけですべてのアプリやPatchが動くわけではありません（[公式README](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v2.0.0/README.md)）。
 
 **機能・対応の確認**
 
-* ReVancedの`.rvp`とMorpheの`.mpp`に対応し、ローカルファイル、対応URL、Repository / Release、アプリ内CatalogからBundleを追加できます。
+* ReVancedの`.rvp`、Morpheの`.mpp`、Reseamの`.reseam`に対応し、ローカルファイル、対応URL、Repository / Release、アプリ内CatalogからBundleを追加できます。
 * 複数Runtime、Patch Profile、Batch処理、自動再Patch、元APKの保存、Downloader Plugin / Helper appに対応します。
 * Split APKの結合・インストール、APK署名、Keystore作成・変換、診断ログやリソース表示などの補助機能もあります。
-* Installerは標準Android、Shizuku / Sui、Root mountなどから選びます。Rootの有無で利用できる方式が変わります。各機能の根拠は [READMEの機能一覧](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md) を参照してください。
+* Installerは標準Android、Shizuku / Shevery / Sui、Root mountなどから選びます。Rootの有無で利用できる方式が変わります。各機能の根拠は [READMEの機能一覧](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v2.0.0/README.md) を参照してください。
 
 **導入の流れ**
 
 1. 開発元のGitHub ReleaseからManagerを入手します。開発者サイトは確認時に本文を取得できなかったため、具体的な操作・対応形式はRepositoryの説明を根拠にします。
-2. 使用するBundleを追加し、系統・対応Runtime・対象アプリ・対応Versionを確認します。公式READMEはDiscovery / Catalogで`API v4`または`Morphe`の項目を使うよう案内し、`API v3`のDiscovery項目は非対応としています。
+2. UPM 2.0.0の新規導入ではBundleは未登録です。Discovery / Importから使用するBundleを追加し、系統・対応Runtime・対象アプリ・対応Versionを確認します。ReVanced v21 / v22はそれぞれ対応するUPM用Runtime Pluginも追加します。旧URVのREADMEではDiscovery / Catalogで`API v4`または`Morphe`の項目を使い、`API v3`のDiscovery項目は非対応と案内していました。これは旧UI・当時の対応案内であり、現行UPMの3系統の対応を制限する説明ではありません（[旧README URL](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md) は現行へ転送されるため、旧説明は [URV v1.9.0 README](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v1.9.0/README.md) と区別します）。
 3. 未改変の元APKまたは対応するSplit archiveを選び、Patch・OptionとInstallerを確認して処理します。元APKや選択内容をProfileに保存すると再利用できます。
 4. 生成APKをインストールし、起動と必要な機能を確認します。最初から複数アプリの自動処理を有効にせず、個別に結果を確認します。
 
 **更新・バックアップ**
 
-ManagerとBundleの更新は別に確認します。自動再Patchは対象アプリの選択、実行間隔、充電条件、通知、インストール方法を設定する機能であり、すべての更新を無条件に反映するものではありません。設定・Profile・元APKの保管に加え、対応Keystoreも別途エクスポートします（[公式README](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md)）。
+ManagerとBundleの更新は別に確認します。自動再Patchは対象アプリの選択、実行間隔、充電条件、通知、インストール方法を設定する機能であり、すべての更新を無条件に反映するものではありません。設定・Profile・元APKの保管に加え、対応Keystoreも別途エクスポートします（[公式README](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v2.0.0/README.md)）。
 
 **不具合・Redditの参照方法**
 
-Bundleが読み込めない場合は、拡張子だけでなくAPI / Runtimeの組み合わせとManagerのVersionを確認します。改変後アプリの症状ならBundleの開発元へ、読み込み・署名・インストール処理の問題なら [URV Issues](https://github.com/Jman-Github/Universal-ReVanced-Manager/issues) の既存報告を調べます。
+Bundleが読み込めない場合は、拡張子だけでなくAPI / Runtimeの組み合わせとManagerのVersionを確認します。改変後アプリの症状ならBundleの開発元へ、読み込み・署名・インストール処理の問題なら [UPM Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)（[旧URV Issues URL](https://github.com/Jman-Github/Universal-ReVanced-Manager/issues) も現行へ転送） の既存報告を調べます。
 
-Redditでは [r/MorpheAppの互換性に関する議論](https://www.reddit.com/r/MorpheApp/comments/1qb9boe/can_i_use_revanced_patches_within_morphe_manager/) と [Manager更新告知のコメント](https://www.reddit.com/r/MorpheApp/comments/1s0fw2j/meet_the_latest_manager_update/) を確認しました。前者にはURVの対応がまだ予定だった時点の説明があるため、現在の対応判断は公式READMEを優先します。URV READMEのコミュニティ導線はTelegram / Discordで、専用の公式Subredditは今回確認できていません。
+Redditでは [r/MorpheAppの互換性に関する議論](https://www.reddit.com/r/MorpheApp/comments/1qb9boe/can_i_use_revanced_patches_within_morphe_manager/) と [Manager更新告知のコメント](https://www.reddit.com/r/MorpheApp/comments/1s0fw2j/meet_the_latest_manager_update/) を確認しました。前者にはURVの対応がまだ予定だった時点の説明があるため、現在の対応判断は公式READMEを優先します。旧URVと現行UPMのREADMEのコミュニティ導線はTelegram / Discordで、専用の公式Subredditは今回確認できていません。
 
 **Runtime・追加source・配布先**
 
-URVは独自のPatch集合をすべてのアプリに提供するのではなく、取り込んだBundleと対応Runtimeで処理します。READMEには内蔵のReVanced / Morphe Runtimeと、対応するReVanced v21 Runtime Pluginの追加が記載されています。Runtime PluginやDownloaderも追加コードなので、入手元・署名者の信頼・更新Channelを確認します。古いAPI向けBundleが同じ拡張子だから使えるとは限りません（[公式README](https://github.com/Jman-Github/Universal-ReVanced-Manager/blob/main/README.md)）。
+UPMは独自のPatch集合をすべてのアプリに提供するのではなく、取り込んだBundleと対応Runtimeで処理します。旧URVのREADMEには内蔵のReVanced / Morphe Runtimeと、対応するReVanced v21 Runtime Pluginの追加が記載されていました。現行UPM 2.0.0はMorphe / Reseam Runtimeを同梱し、ReVanced v21 / v22は別のRuntime Pluginが必要です。公式v21 Pluginは1.8.1（version code 8）への更新が必要です（[2.0.0変更履歴](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v2.0.0/CHANGELOG.md)）。MorpheはJVM / ART、ReseamはAndroidのART Runtimeで実行します。Runtime PluginやDownloaderも追加コードなので、入手元・署名者の信頼・更新Channelを確認します。古いAPI向けBundleが同じ拡張子だから使えるとは限りません（[公式README](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v2.0.0/README.md)）。
 
-開発元の [Bundle Catalog](https://github.com/Jman-Github/ReVanced-Patch-Bundles) は追加先を探す資料です。Catalogからの追加と、そのPatchがReVanced / Morpheの公式開発陣により保守されることは区別します。対応アプリ・Option・不具合の受付先はBundleごとに確認してください。URV本体のREADMEはGPLv3を掲げており、追加BundleやPluginのLicenseまで一括で決めるものではありません。
+開発元の [Patch Bundle Registry](https://github.com/Jman-Github/Patch-Bundle-Registry) と [検索サイト](https://patch-bundles.jmancentral.com/) は追加先を探す資料で、UPM内のDiscoveryにも使われます。旧 [Bundle Catalog](https://github.com/Jman-Github/ReVanced-Patch-Bundles) URLは現行Registryへ転送されます。Catalogからの追加と、そのPatchがReVanced / Morphe / Reseamの公式開発陣により保守されることは区別します。対応アプリ・Option・不具合の受付先はBundleごとに確認してください。UPM本体のREADMEはGPLv3を掲げており、追加BundleやPluginのLicenseまで一括で決めるものではありません。
 
 **移行・自動化の注意**
+
+旧URVのPackage nameは`app.universal.revanced.manager`、UPMは`app.universal.patch.manager`です。UPMは旧URVと別アプリとして共存し、上書き更新にはなりません。以下は [UPM 2.0.0 READMEの移行手順](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v2.0.0/README.md#-download) に基づきます。
+
+1. 旧URVの`Settings > Export & Import > Export everything`で設定・対応データをJSONへ保存します。Manager設定、Bundle、Patch Profile、Patch選択の既存JSONは、ファイル名を変更せずUPMへインポートできます。
+2. 同じ設定ページから署名用Keystoreを別途エクスポートし、UPMへインポートします。**JSONバックアップには秘密鍵の実体が含まれません。** 設定の復元だけで以前の署名鍵が復元されたとは判断しないでください。
+3. UPMの`Import everything`など対応するインポートを使い、設定・Profile・Bundleと署名鍵の復元を確認します。旧Manager API設定とManager配布Pluginのsource URLは移行処理の対象です。利用者が指定した名前・Package name・Option・署名資格情報は保持されます。
+4. URV内部に保存したファイルやAndroidのファイルアクセス権限はJSONでは移りません。必要に応じて背景、Local Bundle、元APK、Option用ファイルを選び直します。**インポートした内容と署名鍵を確認するまで旧URVを削除しないでください。**
+
+Runtime PluginはUPM用を使います。ReVanced v21 / v22のPackage nameは`app.universal.patch.manager.revanced.v21.runtime` / `app.universal.patch.manager.revanced.v22.runtime`です。旧Runtimeの識別情報を設定から認識できることと、旧名前空間向けPluginをそのまま実行できることは別です。外部自動化・連携も旧ManagerのPackage nameや名前空間を使っていないか確認します（[改称Commit](https://github.com/Jman-Github/Universal-Patch-Manager/commit/995ae1c9f85c45dcf479c049381085e95e9b652f)）。
 
 別Managerから移る場合は、対応Keystoreを読み込めるか、Package nameと署名が以前の生成APKと一致するかを確認します。設定バックアップ・元APK・署名鍵は別々に保管し、Signature metadataの複製機能を、元アプリの秘密鍵や正規署名を取得できる機能と誤解しないでください。Google Playをインストール元として記録する設定も、正規配布元の署名を復元する機能ではありません。
 
@@ -2365,7 +2380,7 @@ Haiagaru-MorpheのPatch適用対象は、次の3つのChMate dev版です。「1
 
 1. ChMateの設定・履歴・必要なログを、ChMate本来のバックアップ機能で保存し、復元に必要なファイルを確認します。
 2. Morpheのパッチソースに`https://github.com/areteruhiro/Haiagaru-Morphe/`を登録します。Repository形式ではStableが`master/patches-bundle.json`、Pre-release有効時が`dev/patches-bundle.json`です。直接JSONを指定するManagerでは次のURLを使用します（[公式手順](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/README.md)）。
-3. パッチソース画面を再読み込みし、取得Versionを確認してから、対応する**未改変の元ChMate APK**に`Haiagaru`と必要な任意Patchを適用し、生成APKをインストールします。更新時も元APKから作り直します。Morphe Manager / URV Managerの追加・更新案内はUpstream READMEにありますが、両Managerの全Versionで同じ画面・動作になることは未確認です。Morphe側の [公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) も参照してください。
+3. パッチソース画面を再読み込みし、取得Versionを確認してから、対応する**未改変の元ChMate APK**に`Haiagaru`と必要な任意Patchを適用し、生成APKをインストールします。更新時も元APKから作り直します。Morphe Manager / URV Managerの追加・更新案内はUpstream READMEにありますが、両Managerの全Versionで同じ画面・動作になることは未確認です。UPMは旧URVの後継ですが、Haiagaru-MorpheのUpstream READMEは確認時点でURV Manager表記のため、この案内だけでUPM固有のUIや動作まで確認済みとは扱いません。Morphe側の [公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) も参照してください。
 
 Stable用パッチソース：
 
