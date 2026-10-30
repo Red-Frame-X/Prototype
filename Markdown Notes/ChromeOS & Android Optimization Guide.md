@@ -1710,13 +1710,15 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   * **ブロック方法**：Android版の公式アドオン機能からuBlock Originなどを導入できます。
   * **注意点**：デスクトップ向け拡張機能のすべてがAndroid版に対応するわけではありません（[Mozilla公式](https://support.mozilla.org/ja/kb/find-and-install-add-ons-firefox-android)）。
 
-**Bare・Titanium・Aeriumのログイン問題と回避策**
+**Bare・Titanium・Aeriumのログイン確認状況**
 
-* **自身の環境で確認した問題**：3ブラウザとも、Webサイトでパスキーを使えませんでした。
-* **回避策**：パスキーが必要なサービスはChromeを利用してください。
-* **確認範囲**：端末・Android・ブラウザのVersion・Credential Providerによって結果は異なります。全環境での発生や、3ブラウザで共通の原因があることを確認したものではありません。
+* **過去の問題**：3ブラウザとも、Webサイトでパスキーを使えない問題がありました。
+* **現在の確認結果**：自身の環境では、Web版Amazonでパスキーの入力を求めるオーバーレイは表示されず、パスワード入力後にGoogle認証システムの確認コードを使ってログインできました。
+* **パスキーの問題も修正済み？**：通常のログインはできていますが、今回確認したのはパスワードと確認コードによる認証です。パスキー自体の認証が修正されたかは未確認です。
+* **パスキーが必要な場合**：利用できない場合はChromeで試してください。
+* **確認範囲**：端末・Android・ブラウザのVersion・Credential Providerによって結果は異なります。今回の結果は、3ブラウザすべて・全環境でのパスキー対応を確認したものではありません。
 
-**Aeriumの不具合報告・対応状況（2026年10月30日・日本時間の確認）**
+**Aeriumのパスキーに関する過去の不具合報告・対応状況（2026年10月30日・日本時間の確認）**
 
 * **パスキー認証失敗：[Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50)（Open・bug）**
   * Android 16でGoogle Password Managerは失敗し、KeePassDXは動作したとの報告があります。[開発者はBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧への未登録を説明](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) しています（[Android公式：必要な承認](https://developer.android.com/identity/sign-in/privileged-apps)）。
