@@ -3,6 +3,7 @@
 Commit messageとPull Requestのtitleおよびbodyは、変更対象と内容が分かる簡潔で自然な日本語を原則とします。
 ChatGPT Chat / Work / Codexでの必須方針と確認手順は [AGENTS.md](AGENTS.md) に従ってください。
 英語の技術用語・製品名・ファイル名・コード識別子は維持します。
+MV3対応のAdGuardブラウザ拡張機能は、本文・見出し・リンクの表示名を`AdGuard Browser Extension MV3`に統一します。公式原文の引用、URL、互換性に関わる識別子は保持します。
 変更内容は原則として日本語で説明します。ただし、正式名称や変更内容の性質から英語のみのほうが明確かつ自然な場合は英語のCommit titleも許可します。
 例：`Update Markdown Notes Version`、`Update uB-filter-by-kdroidwin (AdGuard Optimized)`、`Fix AGLint configuration`。
 ツールが英語を生成しやすいことだけを理由に、英語の定型メッセージを採用しません。
