@@ -1692,14 +1692,20 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 * [Bare](https://github.com/BareBrowser/bare-browser)：Googleへのサインイン、ブラウザのテレメトリ、AI機能を取り除いた、オープンソースのChromium系Androidブラウザ。通常版のuBlock Originを標準搭載し、Chrome Web Store・CRXファイル・展開済みフォルダからの拡張機能導入にも対応します。第三者CookieのブロックやWebRTCでのローカルIPアドレスの隠蔽なども設定できます。ただし、対応環境はAndroid 10以降のARM端末で、x86版はありません。また、Safe Browsingが利用できず、フィッシング・マルウェアの警告は表示されません。
 * [Titanium](https://github.com/jqssun/android-titanium-browser)：GrapheneOSのVanadiumをベースにした、オープンソースのChromium系Androidブラウザ。Chrome Web Storeからの拡張機能導入に対応し、uBlock Originなどのコンテンツブロッカーを利用できます。WebRTCのIP保護設定なども備えますが、開発元はVanadiumと同等のOSレベルのセキュリティ強化を提供するものではないと明記しています。
 * [Aerium](https://github.com/aerium-browser/aerium-browser-android) ：VanadiumをベースにTitaniumの拡張機能対応を取り入れた、オープンソースのChromium系Androidブラウザ。uBlock Originをプリインストールし、Chrome Web Store・Opera Add-ons・Microsoft Edge Add-onsの拡張機能に対応します。HTTPS優先、クロスオリジンReferer制御、サイト単位のJavaScript JIT設定など、プライバシー・セキュリティ関連の機能も備えます。
-  * **確認済みのデメリット（自身の利用環境で確認）**
-    * パスキーが使えない。
-    * Web版Amazonにログインできない。
-  * **Issue #92の対応状況（Amazon.co.jpへのログイン失敗）**： [公式Issue #92](https://github.com/aerium-browser/aerium-browser-core/issues/92) では、Pixel 10a / Android 17 / Aerium 155.0.8059.39で、正しいメールアドレスとパスワードを入力してもログインに失敗すると報告されています。2026年10月27日（日本時間）の確認時点ではOpenで、`bug`ラベルが付いています。 [開発者の回答](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6420872216) は「早急に調査する」という内容で、修正完了や解決時期は示されていません。
-  * **パスキー利用時の注意**：Aeriumでは環境やCredential Providerによって、Webサイトへのログイン時にパスキー（Passkey / WebAuthn）を利用できない場合があります。 [公式Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50) には、Android 16でGoogle Password Managerによる認証に失敗し、KeePassDXでは動作したというユーザー報告があります。 [開発者の回答](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) ではBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧にAeriumが未登録であることが説明されています（ [Android公式：ブラウザ等に必要な承認](https://developer.android.com/identity/sign-in/privileged-apps) ）。
+  * **Issue #92の対応状況（Amazon.co.jpへのログイン失敗）**：[公式Issue #92](https://github.com/aerium-browser/aerium-browser-core/issues/92) では、Pixel 10a / Android 17 / Aerium 155.0.8059.39で、正しいメールアドレスとパスワードを入力してもログインに失敗すると報告されています。2026年10月30日（日本時間）の確認時点ではOpenで、`bug`ラベルが付いています。[開発者は `remove-client-hints` の無効化と再起動を案内](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6439746791) しましたが、[報告者は改善せず、Titaniumでもログインできなかったと回答](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6441875807) しています。その後、[開発者はChromiumを直接ベースにした実験版v156でAmazon.co.jpへのログインに成功したと回答](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6442862100) し、同じ週の公開予定を説明しています。開発者による実験版での確認であり、公開版での修正完了や自身の利用環境での解消を確認したという意味ではありません。
+  * **パスキー利用時の注意**：Aeriumでは環境やCredential Providerによって、Webサイトへのログイン時にパスキー（Passkey / WebAuthn）を利用できない場合があります。 [公式Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50) には、Android 16でGoogle Password Managerによる認証に失敗し、KeePassDXでは動作したというユーザー報告があります。 [開発者の回答](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) ではBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧にAeriumが未登録であることが説明されています（[Android公式：ブラウザ等に必要な承認](https://developer.android.com/identity/sign-in/privileged-apps)）。
   * **Issue #50の対応状況**：確認時点ではOpenで、`bug`ラベルが付いています。 [開発者（COLLABORATOR）の回答](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) では、Google Playでの公開後にGoogleへAeriumを申請する予定とされています。これは対応予定の説明であり、申請完了やGoogle Password Managerでの動作改善が確認されたという意味ではありません。また、このIssueではWeb版Amazonへのログイン失敗との関連は確認できません。
   * パスキー全般が未実装という意味ではなく、 [現在の開発ソースにはAndroid Credential Manager対応パッチ](https://github.com/aerium-browser/aerium-browser-core/blob/f44f81b97cb57e9829d0e7f68f06d1e4777ba357/patches/0006-Use-Android-Credential-Manager-for-passkeys.patch) があります。ただし、上記報告のVersionは「Latest」のみで、最新公開版での再現、パスキーの作成、1Passwordなど他のProviderでの動作は未確認です。パスキーが必須のサービスでは、Chrome等の対応ブラウザを併用してください。
 * [Firefox](https://github.com/mozilla-firefox/firefox)：Mozillaが提供するAndroid向けブラウザ。Android版でも公式のアドオン機能を利用でき、addons.mozilla.orgやブラウザ内の拡張機能マネージャーから対応拡張機能を導入できます。広告・トラッカー対策にはuBlock Originなどの拡張機能を利用できます。ただし、すべてのデスクトップ向けFirefox拡張機能がAndroid版に対応するわけではありません（[Mozilla公式](https://support.mozilla.org/ja/kb/find-and-install-add-ons-firefox-android)）。
+
+**Bare・Titanium・Aeriumに共通する問題と回避策（自身の利用環境で確認）**
+
+Bare・Titanium・Aeriumのいずれでも、次の問題を確認しています。端末・Android・ブラウザのVersion・Credential Providerなどによって結果は異なり、すべての環境で発生するとは限りません。
+
+* Webサイトへのログイン時にパスキーを使えない。
+* Web版Amazonにログインできない。
+
+パスキーが必要なサービスではChromeを利用してください。Amazonへのログインには、ChromeでWeb版Amazonを開くか、Amazon公式アプリを利用してください。上記は利用上の回避策であり、3ブラウザで同じ原因が確認されたという意味ではありません。Aeriumのパスキーに関するProviderごとの報告とAmazonログインの対応状況は、上記のIssue #50・#92を参照してください。
 
 **参考サイト**
 
