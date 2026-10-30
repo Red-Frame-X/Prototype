@@ -4,7 +4,7 @@
 // @namespace    local.gigazine
 // @license      CC0-1.0
 // @version      202610261800
-// @description  試食・広告・有料メンバーを除外し、次ページの記事で最後の行を埋めます。
+// @description  AdGuardユーザールールによる記事の非表示を補完し、次ページの記事で記事一覧の最後の行の空き枠を埋めます。
 // @author       Red Frame X
 // @match        https://gigazine.net/*
 // @updateURL    https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/UserScript/gigazine-fill-article-grid.user.js
