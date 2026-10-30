@@ -2349,14 +2349,14 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * [Haiagaru-Morphe：ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.242 dev用Patch](https://github.com/areteruhiro/Haiagaru-Morphe)
   * ChMate APKに広告除去や追加設定を組み込むMorphe Patchです。「191-242」は連続したVersion範囲の意味ではありません。Xposed向けの [Haiagaru](https://github.com/areteruhiro/Haiagaru) とは導入方式が異なります。
 
-**Haiagaru-Morpheの配布状況（2026年10月30日確認）**
+**Haiagaru-Morpheの配布状況**
 
 | 配布系統 | 確認できたVersion・取得先 |
 | --- | --- |
-| Stable | **[1.15.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.15.0)**。日本時間2026年10月27日公開。[`master/patches-bundle.json`](https://github.com/areteruhiro/Haiagaru-Morphe/blob/master/patches-bundle.json)の`version`・MPP取得先も1.15.0を指しています。 |
-| Pre-release | **[1.16.0-dev.4](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0-dev.4)**。日本時間2026年10月30日17:29公開。[`dev/patches-bundle.json`](https://github.com/areteruhiro/Haiagaru-Morphe/blob/dev/patches-bundle.json)の`version`・MPP取得先も同じVersionを指しています。正式版とは区別してください。 |
+| Stable | **[1.15.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.15.0)**。[`master/patches-bundle.json`](https://github.com/areteruhiro/Haiagaru-Morphe/blob/master/patches-bundle.json)の`version`・MPP取得先も1.15.0を指しています。 |
+| Pre-release | **[1.16.0-dev.4](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0-dev.4)**。[`dev/patches-bundle.json`](https://github.com/areteruhiro/Haiagaru-Morphe/blob/dev/patches-bundle.json)の`version`・MPP取得先も同じVersionを指しています。正式版とは区別してください。 |
 
-確認時点のREADME冒頭には「最新正式版1.11.2」「次期プレ版の公開前検証中」という古い案内が残っています。最新配布版はREADME冒頭だけで判断せず、Releaseの公開状況と配布JSONを照合してください。上表は確認時点の記録です。
+README冒頭には「最新正式版1.11.2」「次期プレ版の公開前検証中」という古い案内が残っています。最新配布版はREADME冒頭だけで判断せず、Releaseの公開状況と配布JSONを照合してください。配布Versionは更新されるため、導入時に取得先を確認してください。
 
 **Haiagaru-Morpheの配布元・対応Versionの確認方法**
 
