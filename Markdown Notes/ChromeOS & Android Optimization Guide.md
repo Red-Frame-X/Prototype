@@ -2349,9 +2349,18 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * [Haiagaru-Morphe：ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.242 dev用Patch](https://github.com/areteruhiro/Haiagaru-Morphe)
   * ChMate APKに広告除去や追加設定を組み込むMorphe Patchです。「191-242」は連続したVersion範囲の意味ではありません。Xposed向けの [Haiagaru](https://github.com/areteruhiro/Haiagaru) とは導入方式が異なります。
 
+**Haiagaru-Morpheの配布状況（2026年10月30日確認）**
+
+| 配布系統 | 確認できたVersion・取得先 |
+| --- | --- |
+| Stable | **[1.15.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.15.0)**。日本時間2026年10月27日公開。[`master/patches-bundle.json`](https://github.com/areteruhiro/Haiagaru-Morphe/blob/master/patches-bundle.json)の`version`・MPP取得先も1.15.0を指しています。 |
+| Pre-release | **[1.16.0-dev.4](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0-dev.4)**。日本時間2026年10月30日17:29公開。[`dev/patches-bundle.json`](https://github.com/areteruhiro/Haiagaru-Morphe/blob/dev/patches-bundle.json)の`version`・MPP取得先も同じVersionを指しています。正式版とは区別してください。 |
+
+確認時点のREADME冒頭には「最新正式版1.11.2」「次期プレ版の公開前検証中」という古い案内が残っています。最新配布版はREADME冒頭だけで判断せず、Releaseの公開状況と配布JSONを照合してください。上表は確認時点の記録です。
+
 **Haiagaru-Morpheの配布元・対応Versionの確認方法**
 
-Haiagaru-Morpheは更新が速いため、本ガイドには「現在のVersion」の一覧を掲載しません。導入・更新時に [Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases) と、利用するBranchの配布JSONを確認してください。
+Haiagaru-Morpheは更新が速いため、導入・更新時には [Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases) と、利用するBranchの配布JSONを改めて確認してください。
 
 * **配布系統と取得先**：Stableは `master/patches-bundle.json`、Pre-release用は `dev/patches-bundle.json` を確認します。`patches-bundle-pre.json` も、ファイル名の `-pre` だけではPre-releaseと判断できません。Branch、JSONの `version`・`download_url`、取得先Releaseのtag・Pre-release表示を照合してください。両BranchのJSONが同じ正式版を指す場合もあります。
 * **Version別JSON**：Repository内の `patches-bundle-*.json` は特定版の配布先を指す場合があり、最新配布先とは限りません。配布JSONはMPPの取得先を示すもので、対応するChMate Versionの一覧ではありません。
@@ -2360,7 +2369,7 @@ Haiagaru-Morpheは更新が速いため、本ガイドには「現在のVersion�
 
 **対応するChMate Version**
 
-Haiagaru-MorpheのPatch適用対象は、次の3つのChMate dev版です。「191-242」は連続したVersion範囲を意味しません。
+正式版1.15.0とPre-release 1.16.0-dev.4の[対応宣言（1.15.0）](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.15.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt) / [対応宣言（dev.4）](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.16.0-dev.4/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)で確認できたPatch適用対象は、次の3つのChMate dev版です。「191-242」は連続したVersion範囲を意味しません。
 
 * **0.8.10.191 dev**：元APKのminSdkは21（Android 5.0以降）、versionCodeは459。
 * **0.8.10.226 dev**：元APKのminSdkは23（Android 6.0以降）、versionCodeは494。
@@ -2380,7 +2389,27 @@ Haiagaru-MorpheのPatch適用対象は、次の3つのChMate dev版です。「1
 * **ChMate+互換機能**：191 / 226向けに、単発ID表示の省略・コピペ省略2・荒らし省略を追加します。242へ同じ追加機能を提供するという意味ではありません（[説明と反映条件](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/docs/chmate-plus-compat.md)）。
 * **アプリの識別情報変更・Crash log**：`Change ChMate package name`でPackage name・アプリ名・PNG/WebPアイコン・versionCodeを指定できます。`Save ChMate crash logs`は未処理例外の診断用ログを`Download/Haiagaru/`へ保存する任意Patchです（初期ON）。公式説明では投稿本文・Cookie等は記録しないとされていますが、共有前には実際のログを確認してください（[READMEの導入・ログ説明](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/README.md)）。
 * **1.12.2の追加改善**：検索画面・動画操作・タブ復帰・バックアップ世代管理などを改善しています。191のImage NG修正はVersion限定です。画像取得VPNなどの任意機能は通常版の必須機能ではありません（[Releaseと確認範囲](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.12.2)）。
-* **1.12.3-dev.2との差**：「必死チェッカーDroid＋で開く」をツールバー編集へ追加します。Droid＋のホームを開くもので、投稿者ID・本文を自動送信しません。Release本文には「191対象」と残っていますが、[取り込み済みPull Request #92](https://github.com/areteruhiro/Haiagaru-Morphe/pull/92) と [dev.2の実装](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.3-dev.2/extensions/chmate/src/main/java/app/morphe/extension/chmate/Haiagaru.java) では226 / 242も選択肢の追加対象です。コード上の対応と実機での通し操作確認は区別してください。
+* **Droid＋連携は正式版にも収録**：1.13.0で191 / 226 / 242のツールバーに「必死チェッカーDroid＋で開く」が追加され、1.15.0にも含まれます。従来の1.12.3-dev.2だけの差として扱わないでください。Droid＋のホームを開く機能で、投稿者ID・本文の自動送信ではありません（[1.13.0以降の変更履歴](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.15.0/CHANGELOG.md)）。
+
+**正式版1.15.0までの主な追加・修正**
+
+* **1.13.0：Cookie・認証・メディア操作**：板別Cookieの管理・割り当て・バックアップ / 復元、認証・投稿確認画面、追加画面のタブ操作を改善しました。GIFと動画をそれぞれChMate標準の動作へ戻す設定、読み込み済みスレ全体のメディアへ移動する設定も追加されています。これらのビューア操作の追加機能は「動画専用ビューア」Patchの導入時に利用できます。191の接続を閉じる対策は初期ONですが、巡回停止すべての解消を確認したものではありません。
+* **1.14.0〜1.14.3：検索・ビューア**：HOMEの全板検索へ登録済み外部板・bbspinkを追加する任意設定（初期OFF）、取得済みスレ検索の作成日時順を追加しました。サムネイルから読み込み済みスレ全体の画像・GIF・動画へ移動する処理、件数表示、上下スワイプ、操作ボタンの配置、画像回転を修正しています。「広告だけの超軽量構成」には基本操作のクラッシュ対策も追加されていますが、投稿・画像アップロード・UPLIFTの実送信・ログインまで確認したものではありません。
+* **1.15.0：GIF自動再生**：「X MP4 GIFを自動再生する（開いた後）」は初期ON、「GIFを開かずにスレ内で自動再生する」は初期OFFです。後者はレスごとに最初のGIFが対象で、同時再生数は1〜8件（初期2件）、通常GIFの取得上限は1〜64MiB（初期8MiB）。画面外・別アプリへの移動で停止し、設定OFFで再生処理を解放します。「Haiagaru設定 → 画像・動画 → 画像・GIF・動画ビューアの操作設定」から変更できます。スレ内再生は通信量・電池消費が増えるため、長時間利用や多数同時再生の性能は確認が必要です。
+
+出典：[1.15.0時点のCHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.15.0/CHANGELOG.md) / [1.15.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.15.0)。
+
+**Pre-release 1.16.0-dev.4の追加内容と未確認事項**
+
+* **検索・表示**：dev.3で投稿者ID・ワッチョイ検索の日付範囲指定、KyodemoへのID・期間の引き継ぎ、本文・名前・ID・ワッチョイのスレ内検索と空白区切り・`AND`での絞り込み、242のHOME複数選択ボタンの下部表示（初期OFF）を追加しました。dev.4ではエッヂ過去ログ検索の日付もカレンダーから指定・解除できます。
+* **メディア・191の復元**：dev.3のスレ内GIF表示・Wi-Fi接続時のみの設定に加え、dev.4で動画の5秒送り / 巻き戻しと連続シーク、191の拡大画像の移動、サムネイル取得を改善しました。191の標準バックアップ復元では、正常なjournalの存在だけでDB取り込みを拒否する問題への修正を含みます。
+* **赤いIDの非表示**：そのスレ内だけで赤いIDのレスを自動非表示にする任意機能と除外ID一覧を追加しました。通常のNGID登録は変更しません。
+* **開発中のオンライン共有NG**：初回同意後に既存NGと追加・変更・削除を外部へ送信し、GASで審査された条件を受信します。NG保存後に変更分を送信する方式で、60秒ごとの定期確認は廃止されています。必要報告数・掲示板区分・種類・個別除外を設定できます。ローカルだけのNG機能と異なり外部送信を伴うため、有効化前に送信内容と同意画面を確認してください。
+* **開発中のF9対策**：高度なNGルールのひな形と任意の自動更新を追加しています。手動編集したルールは自動更新で上書きしない設計です。
+
+開発元は動画シーク・NG判定のホスト検証、191の隔離アプリでの標準バックアップ作成・復元とDB照合を報告しています。ただし、そのTest ZIPにはjournalがなく、報告されたZIPそのものの復元は未確認です。端末ごとの動画デコード、実際の拡大画像の移動、共有NGの長期運用も引き続き確認中です。**Morphe内蔵実行環境での191のPatch適用失敗は原因未確定で、修正済みではありません。** dev.3の実サイトでの検索・順位取得、長時間のスレ内再生、実際のWi-Fi切り替えも確認中とされています。
+
+出典：[1.16.0-dev.3 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0-dev.3) / [1.16.0-dev.4 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0-dev.4)。
 
 **導入・更新方法**
 
@@ -2410,7 +2439,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 * Shizukuは通常構成に含まれません。`Migrate ChMate data with Shizuku`を選択したAPKはminSdk 24（Android 7.0以降）になります。Shizukuの起動・権限許可が必要で、実装はShizuku API Version 11以上を要求します。旧ChMateの`/storage/emulated/0/Android/data/jp.co.airfront.android.a2chMate`から共有ストレージ側のデータをコピーする補助であり、アプリ内部の全設定・履歴を完全移行する保証ではありません。開発元もChMate本来のバックアップ / 復元を推奨しています（[移行実装](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/extensions/chmate-shizuku/src/main/java/app/morphe/extension/chmate/PackageDataMigration.java)）。
 * **元ChMateのアンインストールやアプリデータ削除は、バックアップしていない設定・履歴・ログを失う可能性があります。競合エラーだけを理由に先に削除しないでください。** Package name・署名・versionCodeを確認し、バックアップと移行結果を確認してから判断してください。
 * ChMateの更新にはPatch側の追従が必要です。現在の対応一覧以外へ強制適用しても正常動作は確認できません。公式ChMateと同じ安全性・サポート・合法性が保証されるとは扱いません。
-* 本ガイドで実機Testは行っていません。Stable 1.12.2のReleaseにはXIG05・242での一部操作、191 / 226 / 242の軽量構成の適用・起動確認が記載されていますが、広告再表示の報告端末SC-56F / Android 16での再現、全検索先・長時間利用、軽量構成の本文・画像の通し操作などは未確認とされています。Pre-releaseも端末導入からの通し操作が未確認と明記されています。ChromeOSでのHaiagaru-Morpheの動作保証も確認できません。
+* 本ガイドで実機Testは行っていません。1.15.0 Releaseでは通常GIFとXのGIFの再生・非表示時の停止・設定OFF時の解放を確認したとされていますが、長時間・多数同時再生時の性能やスクロール中の表示位置には改善の余地があります。1.12.2当時のXIG05・242での一部操作、191 / 226 / 242の軽量構成の適用・起動確認は、1.15.0やdev.4の全機能を確認した結果ではありません。dev.4の確認範囲・未解決事項は前述の通りです。ChromeOSでのHaiagaru-Morpheの動作保証も確認できません。
 
 **Haiagaru-Morpheの動作検証・不具合報告（固定環境）**
 
