@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610301249 |
+| **Version** | 202610301314 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -2416,18 +2416,20 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 
 `x.xx.x`は適用したHaiagaruの実際のVersionへ置き換えます。上記は環境の記録用で、User-Agentを書き換える指示ではありません。端末・OS・ChMateが異なる結果は、固定環境の結果と分けて記録してください。
 
-1. **検証前の準備**：前述の方法で設定・履歴・必要なログをバックアップします。未改変のChMate `0.8.10.226 dev` APK（versionCode `494`）を用意し、前述の導入手順でPatchを適用します。HaiagaruのVersion・Stable / Pre-release・MPPの配布元、Manager名とVersion、選択したPatch・オプション、Package nameを記録します。通常の`Haiagaru`構成と「広告だけの超軽量構成」は別の検証として扱います。
+1. **検証前の準備**：前述の方法で設定・履歴・必要なログをバックアップします。未改変のChMate `0.8.10.242 dev` APK（versionCode `512`）を用意し、前述の導入手順でPatchを適用します。HaiagaruのVersion・Stable / Pre-release・MPPの配布元、Manager名とVersion、選択したPatch・オプション、Package nameを記録します。通常の`Haiagaru`構成と「広告だけの超軽量構成」は別の検証として扱います。
 2. **条件を固定**：Androidのビルド番号、Haiagaru設定、テーマ、文字サイズ、接続回線、VPN・Private DNS・AdGuardなどの使用状況を記録します。検証中はChMate・OS・PatchのVersionや複数の設定を同時に変更しません。Haiagaruを更新して比較する場合も、同じ元APK・Patch構成・設定から生成し、更新前後のVersionを残します。
 3. **基本操作を確認**：起動、板一覧・スレ一覧の更新、スレ本文の取得・再読み込み、画像表示、リンクのアプリ内 / 外部ブラウザ起動を順に確認します。バックグラウンド移行・復帰、画面消灯・復帰、アプリ再起動後にも同じ操作を試します。広告・広告用余白は、上部バナーとスレ内のレクタングルを分け、初回表示時・再読み込み時・復帰時の状態を記録します。
-4. **使用する追加機能を確認**：Haiagaru設定の変更・保存・再起動後の保持、DAT落ちスレの取得、検索・専用ビューア、動画再生、226向けChMate+互換設定など、実際に使用する機能を個別に確認します。対象URL、設定値、操作順、期待した結果と実際の結果を残し、使わない機能は「未確認」とします。書き込みが必要な検証は、投稿先のルールに従いTest用スレで最小限行い、実際の投稿を伴うことに注意してください。
+4. **使用する追加機能を確認**：Haiagaru設定の変更・保存・再起動後の保持、DAT落ちスレの取得、検索・専用ビューア、動画再生など、実際に使用する機能を個別に確認します。対象URL、設定値、操作順、期待した結果と実際の結果を残し、使わない機能は「未確認」とします。書き込みが必要な検証は、投稿先のルールに従いTest用スレで最小限行い、実際の投稿を伴うことに注意してください。
 5. **不具合を切り分ける**：同じ操作を繰り返して再現回数を数えます。症状に関係する任意設定や通信条件を一つずつ変更し、変更前後の結果を記録してから元へ戻します。比較できる場合は未改変の同じChMate Versionでも確認し、「Patch適用後だけ / 両方 / 比較未実施」を明記します。クラッシュ時は`Save ChMate crash logs`が有効なら`Download/Haiagaru/`を確認し、該当時刻のログとエラー全文を保存します。
 6. **areteruhiro氏へ報告**：[既存のIssues](https://github.com/areteruhiro/Haiagaru-Morphe/issues) と [Haiagaru関連コミュニティの検索結果](https://ff5ch.syoboi.jp/?q=Haiagaru) で同じ症状の報告を確認し、該当Issueへの追記、または新規Issue・関連スレへの報告を行います。コミュニティの検索結果からは、現行スレと報告先の案内を確認してください。作者が各スレを常時確認するとは限りません。両方へ報告した場合は相互リンクを付け、同じ案件であることを明示します。投稿前に、ログ・画像・URLに含まれるCookie、認証情報、個人情報を確認して伏せてください。
+
+**226 devで別途検証する場合の補足**：226向けChMate+互換設定は、ChMate `0.8.10.226 dev`（versionCode `494`）を用いる別環境で確認してください。242 devの固定環境とは結果を分け、報告時には実際に使用したVersionを記録します。対応範囲は [公式README](https://github.com/areteruhiro/Haiagaru-Morphe#対象) と [ChMate+互換機能の説明](https://github.com/areteruhiro/Haiagaru-Morphe/blob/master/docs/chmate-plus-compat.md) を参照してください。
 
 **不具合報告用テンプレート**
 
 ```text
 概要：
-動作環境：2chMate 0.8.10.226 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
+動作環境：2chMate 0.8.10.242 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
 Androidビルド番号：
 Haiagaru配布系統・MPP配布元：
 Manager名・Version：
