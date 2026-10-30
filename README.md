@@ -39,7 +39,7 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 > [!NOTE]
 > ルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換Scriptを修正して再生成します。
 
-[Android アプリ ReVanced・Morphe・URV・Reseam（Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-revancedmorpheurvreseamandroid)：各プロジェクトの公式情報、機能、導入・更新・バックアップ、互換性、Redditの参照方法をまとめています。
+[Android アプリ ReVanced・Morphe・UPM・Reseam（Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-revancedmorpheurvreseamandroid)：各プロジェクトの公式情報、機能、導入・更新・バックアップ、互換性、Redditの参照方法をまとめています。Universal Patch Manager（UPM、旧URV）への移行、設定JSONと署名用Keystoreの個別バックアップ、Runtime Pluginの要件も説明しています。
 
 ## 編集・更新の原則
 
