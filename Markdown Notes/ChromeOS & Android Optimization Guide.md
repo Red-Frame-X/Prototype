@@ -1687,25 +1687,44 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
  HTTPSフィルタリングの有効化は、AdGuard社への根本的な信頼が前提となります（[参考回答](https://mond.how/ja/topics/2e44jvg4wahf54j/oupbjuuxjlg4tjl)）。OFFにするとHTTPSのURLパスや本文を使ったフィルタリングはできませんが、DNSなどによるドメイン単位のブロックは利用できます。平文HTTPまでドメイン単位に限定されるわけではありません（[公式：HTTPSフィルタリング](https://adguard.com/kb/general/https-filtering/what-is-https-filtering/)）。金融・決済系アプリは「アプリの除外設定」「仕事用プロファイル」「プライベートスペース」への隔離運用がおすすめです。
 
 **ローカルVPNを使わず、ブラウザ内の機能・拡張機能でコンテンツブロックをする選択肢**
-* [Brave](https://github.com/brave/brave-browser)：Chromiumベースのオープンソースブラウザ。標準搭載のBrave Shieldsにより、追加の拡張機能なしで広告・トラッカー、クロスサイトCookie、フィンガープリンティングなどを遮断し、HTTPSへのアップグレードやフィッシング・マルウェア対策も行います。フィンガープリンティング対策、バウンストラッキング対策、クエリパラメータのフィルタリングなど、プライバシー保護機能もブラウザ本体に組み込まれています。▶ [AdGuard Mobile Ads filter](https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt) を追加
-* [Cromite](https://github.com/uazo/cromite)：Bromiteを基に開発されている、オープンソースのChromium系ブラウザ。広告ブロック機能を内蔵し、CNAME uncloakingやWorker内でのブロックにも対応します。プライバシー面ではトラッキングに利用され得るChromiumの機能やGoogleとの密接な統合を抑えることを方針とし、セキュリティ面ではJavaScript JITを標準で無効化して攻撃対象領域を縮小しています。ただし、Android版ではChrome拡張機能を利用できず、開発元もアンチフィンガープリンティング対策は包括的ではなく、プロジェクトに不具合が存在し得ることを明記しています。
-* [Bare](https://github.com/BareBrowser/bare-browser)：Googleへのサインイン、ブラウザのテレメトリ、AI機能を取り除いた、オープンソースのChromium系Androidブラウザ。通常版のuBlock Originを標準搭載し、Chrome Web Store・CRXファイル・展開済みフォルダからの拡張機能導入にも対応します。第三者CookieのブロックやWebRTCでのローカルIPアドレスの隠蔽なども設定できます。ただし、対応環境はAndroid 10以降のARM端末で、x86版はありません。また、Safe Browsingが利用できず、フィッシング・マルウェアの警告は表示されません。
-* [Titanium](https://github.com/jqssun/android-titanium-browser)：GrapheneOSのVanadiumをベースにした、オープンソースのChromium系Androidブラウザ。Chrome Web Storeからの拡張機能導入に対応し、uBlock Originなどのコンテンツブロッカーを利用できます。WebRTCのIP保護設定なども備えますが、開発元はVanadiumと同等のOSレベルのセキュリティ強化を提供するものではないと明記しています。
-* [Aerium](https://github.com/aerium-browser/aerium-browser-android) ：VanadiumをベースにTitaniumの拡張機能対応を取り入れた、オープンソースのChromium系Androidブラウザ。uBlock Originをプリインストールし、Chrome Web Store・Opera Add-ons・Microsoft Edge Add-onsの拡張機能に対応します。HTTPS優先、クロスオリジンReferer制御、サイト単位のJavaScript JIT設定など、プライバシー・セキュリティ関連の機能も備えます。
-  * **Issue #92の対応状況（Amazon.co.jpへのログイン失敗）**：[公式Issue #92](https://github.com/aerium-browser/aerium-browser-core/issues/92) では、Pixel 10a / Android 17 / Aerium 155.0.8059.39で、正しいメールアドレスとパスワードを入力してもログインに失敗すると報告されています。2026年10月30日（日本時間）の確認時点ではOpenで、`bug`ラベルが付いています。[開発者は `remove-client-hints` の無効化と再起動を案内](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6439746791) しましたが、[報告者は改善せず、Titaniumでもログインできなかったと回答](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6441875807) しています。その後、[開発者はChromiumを直接ベースにした実験版v156でAmazon.co.jpへのログインに成功したと回答](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6442862100) し、同じ週の公開予定を説明しています。開発者による実験版での確認であり、公開版での修正完了や自身の利用環境での解消を確認したという意味ではありません。
-  * **パスキー利用時の注意**：Aeriumでは環境やCredential Providerによって、Webサイトへのログイン時にパスキー（Passkey / WebAuthn）を利用できない場合があります。 [公式Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50) には、Android 16でGoogle Password Managerによる認証に失敗し、KeePassDXでは動作したというユーザー報告があります。 [開発者の回答](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) ではBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧にAeriumが未登録であることが説明されています（[Android公式：ブラウザ等に必要な承認](https://developer.android.com/identity/sign-in/privileged-apps)）。
-  * **Issue #50の対応状況**：確認時点ではOpenで、`bug`ラベルが付いています。 [開発者（COLLABORATOR）の回答](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) では、Google Playでの公開後にGoogleへAeriumを申請する予定とされています。これは対応予定の説明であり、申請完了やGoogle Password Managerでの動作改善が確認されたという意味ではありません。また、このIssueではWeb版Amazonへのログイン失敗との関連は確認できません。
-  * パスキー全般が未実装という意味ではなく、 [現在の開発ソースにはAndroid Credential Manager対応パッチ](https://github.com/aerium-browser/aerium-browser-core/blob/f44f81b97cb57e9829d0e7f68f06d1e4777ba357/patches/0006-Use-Android-Credential-Manager-for-passkeys.patch) があります。ただし、上記報告のVersionは「Latest」のみで、最新公開版での再現、パスキーの作成、1Passwordなど他のProviderでの動作は未確認です。パスキーが必須のサービスでは、Chrome等の対応ブラウザを併用してください。
-* [Firefox](https://github.com/mozilla-firefox/firefox)：Mozillaが提供するAndroid向けブラウザ。Android版でも公式のアドオン機能を利用でき、addons.mozilla.orgやブラウザ内の拡張機能マネージャーから対応拡張機能を導入できます。広告・トラッカー対策にはuBlock Originなどの拡張機能を利用できます。ただし、すべてのデスクトップ向けFirefox拡張機能がAndroid版に対応するわけではありません（[Mozilla公式](https://support.mozilla.org/ja/kb/find-and-install-add-ons-firefox-android)）。
 
-**Bare・Titanium・Aeriumに共通する問題と回避策（自身の利用環境で確認）**
+* **[Brave](https://github.com/brave/brave-browser)**
+  * **ブロック方法**：標準搭載のBrave Shieldsで広告・トラッカーを遮断。拡張機能の追加は不要です。
+  * **主な機能**：クロスサイトCookie・フィンガープリンティング・バウンストラッキング対策、クエリパラメータのフィルタリング、HTTPSへのアップグレードなど。
+  * **追加フィルタ**：[AdGuard Mobile Ads filter](https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt)。
+* **[Cromite](https://github.com/uazo/cromite)**
+  * **ブロック方法**：広告ブロック機能を内蔵。CNAME uncloakingやWorker内でのブロックにも対応します。
+  * **特徴・注意点**：Bromite由来のChromium系ブラウザ。Googleとの統合を抑え、JavaScript JITは標準で無効です。Android版はChrome拡張機能に非対応で、フィンガープリンティング対策も包括的ではありません。
+* **[Bare](https://github.com/BareBrowser/bare-browser)**
+  * **ブロック方法**：通常版のuBlock Originを標準搭載。Chrome Web Store・CRXファイル・展開済みフォルダからの拡張機能導入にも対応します。
+  * **特徴**：Googleへのサインイン・テレメトリ・AI機能を取り除いたChromium系Androidブラウザ。
+  * **注意点**：Android 10以降のARM端末向けで、x86版はありません。Safe Browsingによるフィッシング・マルウェア警告も利用できません。
+* **[Titanium](https://github.com/jqssun/android-titanium-browser)**
+  * **ブロック方法**：Chrome Web StoreからuBlock Originなどの拡張機能を導入できます。
+  * **特徴・注意点**：Vanadium由来のChromium系Androidブラウザ。WebRTCのIP保護設定などを備えますが、Vanadiumと同等のOSレベルのセキュリティ強化を提供するものではありません。
+* **[Aerium](https://github.com/aerium-browser/aerium-browser-android)**
+  * **ブロック方法**：uBlock Originをプリインストール。Chrome Web Store・Opera Add-ons・Microsoft Edge Add-onsの拡張機能に対応します。
+  * **特徴**：VanadiumをベースにTitaniumの拡張機能対応を採用。HTTPS優先、クロスオリジンReferer制御、サイト単位のJavaScript JIT設定を備えます。
+  * **ログイン関連の注意点**：Amazon・パスキーの不具合報告と対応状況は下記を参照してください。
+* **[Firefox](https://github.com/mozilla-firefox/firefox)**
+  * **ブロック方法**：Android版の公式アドオン機能からuBlock Originなどを導入できます。
+  * **注意点**：デスクトップ向け拡張機能のすべてがAndroid版に対応するわけではありません（[Mozilla公式](https://support.mozilla.org/ja/kb/find-and-install-add-ons-firefox-android)）。
 
-Bare・Titanium・Aeriumのいずれでも、次の問題を確認しています。端末・Android・ブラウザのVersion・Credential Providerなどによって結果は異なり、すべての環境で発生するとは限りません。
+**Bare・Titanium・Aeriumのログイン問題と回避策**
 
-* Webサイトへのログイン時にパスキーを使えない。
-* Web版Amazonにログインできない。
+* **自身の環境で確認した問題**：3ブラウザとも、Webサイトでパスキーを使えず、Web版Amazonにもログインできませんでした。
+* **回避策**：パスキーが必要なサービスはChromeを、AmazonはChromeまたはAmazon公式アプリを利用してください。
+* **確認範囲**：端末・Android・ブラウザのVersion・Credential Providerによって結果は異なります。全環境での発生や、3ブラウザで共通の原因があることを確認したものではありません。
 
-パスキーが必要なサービスではChromeを利用してください。Amazonへのログインには、ChromeでWeb版Amazonを開くか、Amazon公式アプリを利用してください。上記は利用上の回避策であり、3ブラウザで同じ原因が確認されたという意味ではありません。Aeriumのパスキーに関するProviderごとの報告とAmazonログインの対応状況は、上記のIssue #50・#92を参照してください。
+**Aeriumの不具合報告・対応状況（2026年10月30日・日本時間の確認）**
+
+* **Amazonログイン失敗：[Issue #92](https://github.com/aerium-browser/aerium-browser-core/issues/92)（Open・bug）**
+  * Pixel 10a / Android 17 / Aerium 155.0.8059.39での報告です。[開発者が案内した `remove-client-hints` の無効化・再起動](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6439746791) では改善せず、[報告者はTitaniumでも失敗](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6441875807) しています。
+  * [開発者はChromiumを直接ベースにした実験版v156で成功し、同じ週の公開を予定](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6442862100) しています。公開版での修正完了や、自身の環境での解消は未確認です。
+* **パスキー認証失敗：[Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50)（Open・bug）**
+  * Android 16でGoogle Password Managerは失敗し、KeePassDXは動作したとの報告があります。[開発者はBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧への未登録を説明](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) しています（[Android公式：必要な承認](https://developer.android.com/identity/sign-in/privileged-apps)）。
+  * Google Playでの公開後にGoogleへ申請する予定ですが、申請完了・改善は未確認です。Amazonログイン失敗との関連も確認されていません。
+  * [開発ソースにはAndroid Credential Manager対応パッチ](https://github.com/aerium-browser/aerium-browser-core/blob/f44f81b97cb57e9829d0e7f68f06d1e4777ba357/patches/0006-Use-Android-Credential-Manager-for-passkeys.patch) があり、パスキー全般が未実装という意味ではありません。報告Versionは「Latest」のみで、最新公開版での再現・パスキー作成・1Passwordなど他のProviderの動作は未確認です。
 
 **参考サイト**
 
