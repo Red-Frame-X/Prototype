@@ -2432,7 +2432,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 
 **Haiagaru-Morpheの動作検証・不具合報告（固定環境）**
 
-検証は次の**242 devのみ**で行い、226 devでの別途検証は行いません。以下は検証手順であり、実機確認済み・動作保証を意味しません。
+検証は次の**242 dev**で行います。以下は検証手順であり、実機確認済み・動作保証を意味しません。
 
 ```text
 2chMate 0.8.10.242 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
