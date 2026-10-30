@@ -2302,64 +2302,56 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 ---
 
 ## Android アプリ ChMate（ChromeOS・Android）
-* **[Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate)** / **[公式サイト](https://chmate.airfront.co.jp/)**
 
-**公式情報の確認状況（2026年10月26日）**
+* **配布元**：[Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate) / [公式サイト](https://chmate.airfront.co.jp/)。
+* **用途**：掲示板の閲覧・書き込み、NG設定、ログ保存などに対応するAndroidアプリです。
 
-* [対応Android・動作環境](https://chmate.airfront.co.jp/docs/supported-os/) ではAndroid 6.0以上が必要とされ、2026年中にAndroid 6.0のサポートも終了予定と記載されています（公式ページの基準日：2026年1月6日）。終了予定だけを根拠に、既にAndroid 7.0以上が必須になったとは扱いません。
-* Androidスマートフォン・Androidタブレットと異なり、Androidアプリ対応Chromebookは「動作する場合もあるが、動作しない場合もある」という位置付けです。タブレットモードが存在してもChromebookでの動作保証にはなりません。ChromeOS固有の制約一覧やKeyboard / Mouse / Touch操作の保証範囲は、今回確認した公式資料では確認できません。
+**対応環境・配布版（2026年10月26日確認）**
 
-| 配布区分 | 確認できた情報・注意点 |
-| --- | --- |
-| Google Play通常配信（Stable） | [Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate&hl=ja&gl=JP) のページ内の配信情報（埋め込みデータ）は0.8.10.241、最終更新日は2026年3月11日、必要Androidは6.0以上。端末・アカウントごとの配信可否は別途確認が必要。 |
-| Google Play Open testing | [公式説明](https://chmate.airfront.co.jp/docs/dev-version/) ではdev版と同じ頻度で更新される開発版。ただし0.8.10.236にはストアで拒否され未配信との記録があり、常にDeployGateと同一Versionとは限らない。 |
-| DeployGate dev版 | [公式配布先](https://deploygate.com/distributions/b0c1c3eadc5a215c83d98a20f7f4cb16583b5ec5) は2026年3月3日に変更。開発途中で非常に不安定な版が公開される場合がある。配布ページは端末数上限の表示となり、現在配布中のVersion番号は確認できなかった。 |
+* **対応Android**：[公式案内](https://chmate.airfront.co.jp/docs/supported-os/) はAndroid 6.0以上。6.0のサポートは2026年中に終了予定ですが、終了済みとは確認していません。
+* **ChromeOS**：Androidアプリ対応Chromebookでも動作保証はありません。タブレットモードやキーボード・マウス操作も、端末ごとの確認が必要です。
+* **Google Play通常版**：確認できた配信情報は0.8.10.241（更新日：2026年3月11日）。配信可否は端末・アカウントによって異なります。
+* **開発版**：[Open testing・DeployGate](https://chmate.airfront.co.jp/docs/dev-version/) で配布。不安定な場合があり、両経路が常に同じVersionとは限りません。DeployGateの現行配布Versionは未確認です。
+* **変更履歴**：[2026年の最新掲載版](https://chmate.airfront.co.jp/history/2026/) は0.8.10.246(516)（10月19日）。各経路で入手できるVersionとは区別してください。239〜241の日付には年の不整合があります。
 
-[2026年の公式変更履歴](https://chmate.airfront.co.jp/history/2026/) の最新掲載版は**0.8.10.246(516)（2026年10月19日）**です。これはStableの番号や、両テスト経路で現在取得できる番号の確認とは区別します。公式はPlayストアのテスター登録も案内しています。なお同ページの0.8.10.239〜241の日付は「2025年」と記載され、ページの年・Playの更新日と不整合があるため、Release日を推測で補正していません。
+**板の登録・リンク・読み書き**
 
-**BBSMENU・5ch URL・読み書き**
+* **板の登録**：Google Play版のBBSMENUは初期状態で空、dev版は5ch・まちBBSが設定済みです。Open testingの初期値は未確認です。
+* **設定手順**：「設定」>「掲示板」>「BBSMENU」に利用先URLを設定し「板一覧を取得/更新」。個別の板は「URLを指定して開く」でも登録できます（[公式FAQ](https://chmate.airfront.co.jp/docs/faq/)）。
+* **5ch.io対応**：239でドメイン移行、240で外部板の補正、241でURL関連付けを追加。旧5ch.net向けの [bbsmenu.jsonの説明](https://chmate.airfront.co.jp/docs/bbsmenu/) をそのまま現在の設定に流用しないでください。
+* **Android 12以降のリンク設定**：アプリ情報 >「デフォルトで開く」>「対応リンクを開く」>「リンクを追加」。端末に表示される対象を確認し、競合する他アプリの関連付けを解除します。
+* **読み書きできない場合**：掲示板側の規制・認証・障害も確認。書き込みボタンの長押しでブラウザを開けます。更新だけで規制が解除されるとは限りません。
 
-* [Google Play版とdev版の違い](https://chmate.airfront.co.jp/docs/dev-version/) によると、Google Play版のBBSMENUは初期状態で空、dev版は5chとまちBBSが設定済みです。Open testingの初期値を別途明示した説明は確認できません。板がない場合は [公式FAQ](https://chmate.airfront.co.jp/docs/faq/) に従い「設定」→「掲示板」→「BBSMENU」に利用先のURLを設定し「板一覧を取得/更新」、または「URLを指定して開く」で個別登録します。
-* 公式の [bbsmenu.jsonの説明](https://chmate.airfront.co.jp/docs/bbsmenu/) は、0.8.10.115以降で`https://menu.5ch.net/bbsmenu.html`指定時にJSONを使用する旧ドメインの説明です。一方、2026年の変更履歴には239で5ch.net→5ch.io、240で外部板として登録された5ch.io板の補正、241で5ch.ioのURL関連付け追加が記載されています。旧ドメインの説明だけを現在の接続先設定として流用しないでください。
-* Android 12以降のURL関連付けは、アプリ情報の「デフォルトで開く」→「対応リンクを開く」→「リンクを追加」で設定します。FAQの例は`*.5ch.net`です。5ch.ioは241以降の変更履歴も参照し、端末に表示される対象を確認してください。他アプリの関連付けがある場合はそちらの解除も必要です。
-* 読み書き不能には掲示板側の規制・認証・障害も関係します。最新版への更新だけで規制解除を保証するものではありません。公式FAQは書き込みボタン長押しでブラウザを開く方法も案内しています。
+**保存・バックアップ**
 
-**データ保存・バックアップと復元**
+* **ログ保存先**：`/Android/data/jp.co.airfront.android.a2chMate/files/2chMate`。旧`/2chMate`からの移行機能は廃止済みです（[公式説明](https://chmate.airfront.co.jp/docs/storage/)）。
+* **削除・再インストール前**：アプリのバックアップ機能で保存し、復元用ファイルを確認してください。アプリ固有データはアンインストールで消えます。
+* **画像保存先**：ログとは別です。Android 10以降の「新しい画像の保存処理」はMediaStoreを使い、標準画像フォルダ内のChMateへ保存します。実際の保存先は端末・設定で確認してください。
+* **242以降のバックアップ**：認証情報を含めるオプションとOSバックアップに対応。OS側の設定が必要で、Googleアカウントへの保存・再インストール時の復元を伴います。認証情報を含むファイルの保存・共有先に注意してください。
+* **確認範囲**：全データの復元やChromeOSでの同一動作は未実機確認です。
 
-* [公式の保存場所の説明](https://chmate.airfront.co.jp/docs/storage/) では、0.8.10.88で共有ストレージの`/2chMate`から`/Android/data/jp.co.airfront.android.a2chMate/`へ変更されました。FAQではログ等のコピー先を`/Android/data/jp.co.airfront.android.a2chMate/files/2chMate`としています。アプリ固有のデータはアンインストールで消えるため、先にアプリのバックアップ機能で保存し、復元用ファイルを確認してください。旧保存場所からの移行機能は既に廃止されています。
-* 画像保存はログ保存と別です。公式文書はSAFと「新しい画像の保存処理」を区別し、後者のAndroid 10以降はMediaStoreを使い、標準画像フォルダ内のChMateへ保存すると説明しています。旧Android向けの説明も混在しているため、現在の端末・設定での保存先を確認してください。
-* 2025年の変更履歴には220でバックアップ作成失敗の修正、2026年には238で同期先データ破損時のお気に入り消失の修正、242で認証情報をバックアップに残すオプションとOSのバックアップ有効化が記載されています。242以降のOSバックアップは端末側の設定が条件で、Googleアカウントへの保存・再インストール時の復元を伴います。認証情報を含める場合は保存・共有先に注意してください。全データの復元やChromeOSでの同一動作を実機確認したものではありません。
+**NG設定・操作・表示**
 
-**NG Word・NG ID・NG Name・正規表現**
+* **NG機能**：NG Word・NG ID・NG Name・正規表現を利用できます。設定変更時は一致条件・除外条件・適用範囲を確認してください。
+* **遅い正規表現の対策**：先頭の不要な`.*`・`.+`・`[\s\S]*`や不要なキャプチャを避け、必要に応じて`(?:...)`を使います（[公式FAQ](https://chmate.airfront.co.jp/docs/faq/)）。
+* **不具合修正**：NG設定・バックアップ・タブレット操作などの修正履歴は [2025年](https://chmate.airfront.co.jp/history/2025/) / [2026年](https://chmate.airfront.co.jp/history/2026/) を参照。Haiagaru-Morphe独自のNG機能は公式機能とは別です。
+* **Android 16以降の戻る操作**：予測型「戻る」に対応し、3ボタンナビゲーションの戻るボタン長押しによる履歴表示は使えなくなります。
+* **古い操作案内との違い**：実験的設定や書き込み画面の操作には変更・廃止があります。変更履歴と [見つかりにくい機能](https://chmate.airfront.co.jp/docs/triks/) を確認してください。
+* **テーマ変更**：[テーマ専用アップローダー](https://ux.getuploader.com/2chmate_theme/) を参照。244で一部の色指定が変更・廃止され、古いテーマの表示が変わる場合があります。
+* **アニメーション停止**：Homeやスレッドの右下︙ >「表示設定」>「リストをアニメーションする」をOFF。現在の全画面での配置・効果は未実機確認です。
 
-* [2025年の変更履歴](https://chmate.airfront.co.jp/history/2025/) では198でNG Word / NG ID / NG Nameの追加時に「非表示」の初期設定が反映されない問題、203でNG設定による速度低下の緩和、204で「遅い正規表現」の警告追加、206・223で正規表現等のエラーによるNG一覧のクラッシュ、219・220で登録フラグや重複による問題の修正が記録されています。2026年には245でAndroid 7.0のNG追加・変更時のクラッシュを修正しています。
-* [公式FAQの警告説明](https://chmate.airfront.co.jp/docs/faq/) は、先頭の不要な`.*`・`.+`・`[\s\S]*`や不要なキャプチャを避け、グループ化には必要に応じて`(?:...)`を使うよう案内しています。警告はスレを開く処理などが遅くなる可能性を示します。クラッシュ修正は誤った正規表現の有効性や高速動作を保証しません。既存NG設定を変更する場合は、一致条件・除外条件・適用範囲を確認してください。
-* 後述のHaiagaru-Morphe独自のNG機能はThird-partyの実装であり、ChMate公式機能とは区別します。
+**プライバシー・広告**
 
-**Android Version・大画面・操作の変更**
-
-* 2025年の公式変更履歴では196でtargetSdk 35へ変更、208でminSdk 23へ変更しています。targetSdkと必須Androidは別の値です。197でAndroid 15のレイアウト修正、199でAndroid 16以降の予測型「戻る」を有効化し、3ボタンナビゲーションの戻るボタン長押しによる履歴表示が使えなくなると記載されています。その後のtargetSdk変更やAndroid 17以降の個別対応状況は、今回確認した変更履歴では確認できません。
-* タブレットモードは227でタブの読込・メモリ解放方法、244で戻る / 進むジェスチャーや共有NGID有効時の起動位置などを修正。235のDPADスクロール、242のEnter検索・スクロール時のキーボード、246の書き込み画面回転時のクラッシュ修正もあります。これらはChMate全般の変更で、ChromeOS固有の動作保証ではありません。
-* 216で実験的設定の「単一のActivity」「ホーム画面のアイコンに未読数のバッジを表示」「ハードウェアアクセラレーション」を廃止。243では書き込み画面の旧入力・メニュー操作や実験的なBeアイコン設定を変更・廃止しています。古い操作案内と画面が異なる場合は、変更履歴と [見つかりにくい機能](https://chmate.airfront.co.jp/docs/triks/) を併せて確認してください。
-
-**プライバシー・セキュリティ**
-
-* Google Playは広告・アプリ内購入ありと表示し、Data safetyは開発者申告として「第三者との共有なし」「アプリ情報とパフォーマンス / デバイスまたはその他のIDを収集する場合がある」「転送中は暗号化」「データを削除できない」としています。これは端末内ログを削除できないという説明ではなく、Data safetyの表示です。また [開発元のプライバシーポリシー](https://www.airfront.co.jp/products/2chMate/privacy.html) は広告SDKによる情報取得を説明しています。「共有なし」だけから通信・情報取得がないとは判断できません。
-* 2025年の変更履歴には221でエラー情報・統計情報の送信設定追加（初期OFF）、223でDATパーサーのバッファーオーバーフロー修正が記載されています。2026年の242では外部板へのHTTPS優先・非対応時のHTTP使用が記載されており、すべての通信がHTTPSであるという意味ではありません。
-
-**ChMate テーマ変更**
-* [2chMateのテーマ専用アップローダー](https://ux.getuploader.com/2chmate_theme/)
-  * 244ではテーマの色指定の一部を変更・廃止しています。古いテーマは同じ表示になるとは限りません（[2026年の変更履歴](https://chmate.airfront.co.jp/history/2026/)）。
-
-**アニメーション動作の変更**
-* Homeやスレッドの右下︙ > 表示設定 >「リストをアニメーションする」をOFF。
-  * 2025年の公式変更履歴では229でスレの同設定追加を確認できます。Homeを含む全画面での現在の配置・効果は未実機確認です。
-
-**レクタングル広告について**
-* ChMate側の上部バナー広告と掲示板側のレクタングル広告は別です。[仕様変更のお知らせ](https://www.airfront.co.jp/pr20250116.html) では、月額サブスクリプションで本文画面を含む上部バナーを非表示にでき、買い切り型オプションは新規販売終了・既存購入分はHomeとスレ一覧の上部バナーのみ対象と説明されています。掲示板側のレクタングル広告はChMate側で制御できず、掲示板運営者の有料プラン・サポートを確認する案内です。UPLIFT購入で常に完全除去できるという保証までは、この告知から確認できません。
-  * 後述するHaiagaru-Morpheには、対応するChMate APKへPatchを適用してレクタングル広告と広告用余白を除去する実装があります。公式ChMateの機能ではなく、端末や表示条件を問わず完全除去を保証するものではありません。
+* **情報取得**：広告SDKによる情報取得があります（[プライバシーポリシー](https://www.airfront.co.jp/products/2chMate/privacy.html)）。Google Playの「第三者との共有なし」は、情報収集や通信がないという意味ではありません。
+* **Google PlayのData safety**：開発者申告ではアプリ情報・パフォーマンスや端末ID等を収集する場合があり、転送中は暗号化。「データを削除できない」は端末内ログの削除可否を示すものではありません。
+* **エラー・統計情報の送信**：221で設定追加、初期OFFです。
+* **通信**：242で外部板へのHTTPSを優先。非対応時はHTTPを使うため、全通信がHTTPSとは限りません。
+* **上部バナー広告**：月額サブスクリプションで本文画面を含め非表示にできます。買い切り型は新規販売終了で、既存購入分はHome・スレ一覧の上部バナーのみ対象です。
+* **掲示板側のレクタングル広告**：ChMate側では制御できません。掲示板運営者の有料プラン・サポートを確認してください。UPLIFTでの完全除去を保証する案内ではありません（[仕様変更のお知らせ](https://www.airfront.co.jp/pr20250116.html)）。
+* **Haiagaru-Morpheの広告除去**：対応APKへのPatchで広告・余白を除去する第三者実装です。公式機能や全環境での完全除去保証ではありません。
 
 **代替ブラウザ**
+
 * [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid)
 
 **ChMateに関連するローカルプロキシアプリ・Morphe patch**
