@@ -12,7 +12,7 @@
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | GPL-3.0 |
-| **Version** | 202610251310 |
+| **Version** | 202610310618 |
 
 第三者コンテンツの扱いおよび無保証については [LICENSES.md](../LICENSES.md) を参照してください。
 
@@ -269,7 +269,7 @@ uBOのCNAME uncloakingは、DNS APIを利用できるFirefoxで提供されて�
 
 - MV3前提でuBO Lite、AdGuard Browser Extension MV3、ブラウザ内蔵ブロッカー等から選ぶ
 - uBO Liteではフィルタリングモードとサイト権限を確認する
-- AdGuard MV3ではDNR変換可否、ルール上限、組み込みフィルタとCustom filtersの更新経路の違いを確認する
+- AdGuard Browser Extension MV3ではDNR変換可否、ルール上限、組み込みフィルタとCustom filtersの更新経路の違いを確認する
 - URL購読のCustom filtersは組み込みフィルタと更新経路が異なるため、別物として管理する
 - フル版uBOとuBO Liteを同一機能の製品として扱わない
 

@@ -23,7 +23,7 @@
 https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt
 ```
 
-### AdGuard ブラウザ拡張機能 MV3対応版
+### AdGuard Browser Extension MV3
 
 自分の再設定時は、次の順序で上記URLを登録します。
 
@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-k
 
 登録後は、必要な権限やUser Scripts APIの状態を、使用中バージョンのUIと公式資料で確認します。
 
-AdGuard ブラウザ拡張機能 v5.2以降では、MV3でカスタムフィルタを扱うためにUser Scripts APIが使用されています。仕様確認用としてAdGuard公式の [User Scripts API](https://adguard.com/kb/ja/adguard-browser-extension/user-scripts-api/) を参照します。
+AdGuard Browser Extension MV3 v5.2以降では、MV3でカスタムフィルタを扱うためにUser Scripts APIが使用されています。仕様確認用としてAdGuard公式の [User Scripts API](https://adguard.com/kb/ja/adguard-browser-extension/user-scripts-api/) を参照します。
 
 ### AdGuard for Android
 
@@ -39,17 +39,17 @@ Android側で試す場合は、次の順序で上記URLを登録します。
 
 **ボトムバーの ⚙ → フィルタリング → フィルタ → カスタムフィルタ → ＋ カスタムフィルタを追加する**
 
-ただし、この生成物は主にAdGuard ブラウザ拡張機能 MV3対応版との互換性を確認する目的で変換しており、CoreLibs固有機能の保持やAndroid向けの完全な最適化は前提としていません。
+ただし、この生成物は主にAdGuard Browser Extension MV3との互換性を確認する目的で変換しており、CoreLibs固有機能の保持やAndroid向けの完全な最適化は前提としていません。
 
 ## 更新記録
 
 GitHub Actionsで上流フィルタを定期的に確認し、変換結果に変更がある場合だけ生成物を更新します。生成物のMetadataでは更新間隔を12時間としています。
 
-AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィルタを拡張機能本体とは独立して更新する機能が追加されています。実際の取得時刻は通信状況、配布元の応答、AdGuard側の更新処理などにより前後するため、保存している説明だけで更新状態を判断しません。
+AdGuard Browser Extension MV3では、v5.4.1系でMV3のカスタムフィルタを拡張機能本体とは独立して更新する機能が追加されています。実際の取得時刻は通信状況、配布元の応答、AdGuard側の更新処理などにより前後するため、保存している説明だけで更新状態を判断しません。
 
 ## 変換方針と検証メモ
 
-- AdGuard ブラウザ拡張機能 MV3対応版で安全に対応付けられない一部のルールは、変換時に削除またはコメントアウトします。
+- AdGuard Browser Extension MV3で安全に対応付けられない一部のルールは、変換時に削除またはコメントアウトします。
 - uBlock OriginとAdGuardの構文・対応機能は同一ではないため、上流版とブロック結果が完全には一致しません。
 - 変換できることと、元ルールの意味を完全に維持できることは同義ではありません。意味を安全に維持できない場合は保守的に除外します。
 - 誤ブロックを疑う場合は、この生成フィルタを一時的に無効化して自分の環境で原因を切り分けます。
@@ -65,7 +65,7 @@ AdGuard ブラウザ拡張機能では、v5.4.1系でMV3のカスタムフィル
 ## 参照している公式資料
 
 - [AdGuard ブラウザ拡張機能](https://adguard.com/kb/ja/adguard-browser-extension/)
-- [AdGuard ブラウザ拡張機能 MV3対応版](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
+- [AdGuard Browser Extension MV3](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
 - [AdGuardフィルタリングルール構文](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)
 - [AdGuardブラウザー拡張機能のリリース](https://github.com/AdguardTeam/AdguardBrowserExtension/releases)
 

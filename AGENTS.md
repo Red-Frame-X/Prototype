@@ -39,7 +39,7 @@
 - 新しく作成するCommit messageとPull Requestのtitleおよびbodyは、原則として日本語で記述する。変更内容・目的・理由などの一般説明は、自然で簡潔な日本語にする。英語のみの定型メッセージをそのまま採用しない。
 - 作業環境、使用ツール、通常のCommit、追加修正、競合解消、Revertなどの違いを理由に、この方針を省略しない。文章やコードの提案だけの場合も、提示するCommit message案に適用する。
 - IT業界で英語が一般的な技術用語・製品名・機能名・プロジェクト名・コード識別子は、正式または一般的な英語表記を優先する。
-- `AdGuard Custom Rules`、`AdGuard DNS Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は固定の正式表記として維持する。`GitHub Actions`、`Workflow`、`Commit`、`Pull Request`、`PR`、`Issue`、`Branch`、`Repository`、`README`、`CI`、`Lint`、`Test`、`Script`、`API`、`Version`、`AGLint`、`Markdownlint`、`GitHub`、`AdGuard`、`uBlock Origin`なども英語表記を優先する。
+- `AdGuard Browser Extension MV3`、`AdGuard Custom Rules`、`AdGuard DNS Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は固定の正式表記として維持する。`GitHub Actions`、`Workflow`、`Commit`、`Pull Request`、`PR`、`Issue`、`Branch`、`Repository`、`README`、`CI`、`Lint`、`Test`、`Script`、`API`、`Version`、`AGLint`、`Markdownlint`、`GitHub`、`AdGuard`、`uBlock Origin`なども英語表記を優先する。
 - ファイル名、ディレクトリ名、コマンド、設定キー、Metadata key、URL、Branch名、Commit hashなどは原表記を維持する。
 - 「修正」「追加」「更新」「自動更新」「変更履歴」「生成処理」「構文検査」「回帰テスト」「設定」「説明」など、自然な日本語で表せる一般説明は日本語にする。技術用語が英語であることを、説明全体を英語で書く理由にしない。原則は「日本語による変更内容の説明 + 正式な英語の技術用語」とする。ただし、正式名称や変更内容の性質から英語のみのほうが明確かつ自然な場合は英語のCommit titleも許可する。ツールが英語を生成しやすいことだけを例外の理由にしない。
 - 表現を整えるために、変更内容や確認していない理由を作り足さない。
@@ -83,10 +83,11 @@
 - 本文の説明は読みやすさを優先して原則として日本語で記述する。
 - 今後の記述では、区切りのスラッシュに全角の「／」を使わず、半角スラッシュの前後に半角スペースを入れた「 / 」を使う。URL・ファイルパス・コード識別子など、構文や互換性に関わるスラッシュは原表記を維持する。
 - IT・ソフトウェア開発・GitHub・コンテンツブロック等で英語表記が一般的な用語、製品名、機能名、プロジェクト名、ディレクトリ名、ファイル名、コード識別子は、無理に日本語化せず英語表記を優先する。
-- 特に`AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は正式な英語表記を維持する。
+- 特に`AdGuard Browser Extension MV3`、`AdGuard Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は正式な英語表記を維持する。
 - 製品名・コード識別子・コマンド・設定キー・Metadata key・URL・ファイル名・ディレクトリ名・購読先Pathは、仕様と互換性を保つため原表記を維持する。公式文書・公式UI・Upstreamに正式表記がある場合は、その表記を優先する。
 - `品質検査`、`自動更新`、`変更履歴`、`生成処理`、`構文検査`、`回帰テスト`、`設定`、`説明`、`注意事項`など、自然な日本語として読みやすい一般説明まで機械的に英語化しない。
 - UserScriptの日本語表示名には`@name:ja`を使い、更新時の識別に使われる既存の`@name`と`@namespace`は維持する。
 - ライセンス原文、公式Changelogの原文ミラー、検証用の原文引用は保持する。
+- MV3対応のAdGuardブラウザ拡張機能の名称は`AdGuard Browser Extension MV3`に統一する。本文・見出し・リンクの表示名・コメント・生成元にも適用し、公式原文の引用、URL、互換性に関わる識別子は保持する。
 - 固定名称は`python scripts/check_repository_terminology.py`でも検査する。公式UI名と旧表記を拒否するTestの入力値は保持し、一般説明の自然な日本語は一括置換しない。
 - 自動生成する表示・Commit message等は、生成済みファイルだけでなく生成元も同じ表記方針へ修正し、次回のUpdateでも表記を維持する。

@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610302006 |
+| **Version** | 202610310618 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -119,7 +119,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 ### コンテンツブロック・プライバシー関連
 * **[Auto History Wipe](https://chromewebstore.google.com/detail/auto-history-wipe/hnijmpliikobphakkmejgdoffgicmcbc)**：Chromeの閲覧履歴などを自動的に削除するための拡張機能。
 * **[AdGuard Extra](https://github.com/AdguardTeam/AdGuardExtra)**：Anti-Adblocker対策用UserScript ‐ 対象サイトはFacebook、Twitchなど。
-* **[AdGuard ブラウザ拡張機能 MV3対応版](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ja)**：Chrome 拡張機能。（詳細後述）
+* **[AdGuard Browser Extension MV3](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ja)**：Chrome 拡張機能。（詳細後述）
 * **[tinyShield](https://github.com/List-KR/tinyShield/blob/main/README.ja.md)**：Ad-Shield対策用のUserScript ‐ Tampermonkeyで購読して、Manifest V3のフィルタ更新制限を回避する。
 * **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**：検索結果のフィルタリング、指定したサイトの検索結果を非表示にする。（詳細後述）
 
@@ -997,7 +997,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 
 1. 対象ページをデスクトップ版Google Chromeで開き、デベロッパーツール（Ctrl + Shift + I）の要素選択アイコンを有効にします（[Chrome DevTools公式](https://developer.chrome.com/docs/devtools/inspect-mode?hl=ja)）。
 2. 非表示にしたい要素を選択し、DOMツリーで右クリックして「Copy」>「Copy outerHTML」を選びます。必要なら親要素や、同種要素との違いが分かる周辺HTMLも取得します。
-3. ChatGPTに、対象URL、コピーしたHTML、使用製品（AdGuard ブラウザ拡張機能 MV3対応版 / AdGuard for Android）、目的をまとめて入力します。スクリーンショットも補助資料になりますが、ルール作成にはHTMLのほうが適しています。
+3. ChatGPTに、対象URL、コピーしたHTML、使用製品（AdGuard Browser Extension MV3 / AdGuard for Android）、目的をまとめて入力します。スクリーンショットも補助資料になりますが、ルール作成にはHTMLのほうが適しています。
 4. 次のプロンプトを貼り付け、プレースホルダーを置き換えます。
 
 ````text
@@ -1005,7 +1005,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 以下の対象だけを非表示またはブロックする、AdGuard用のユーザールールを提案してください。
 
 # 使用環境
-* 製品: AdGuard ブラウザ拡張機能 MV3対応版 / AdGuard for Android（該当するものを残す）
+* 製品: AdGuard Browser Extension MV3 / AdGuard for Android（該当するものを残す）
 * 対象URL: （URL）
 * 期待する動作: （消したい要素、残すべき要素、発生している問題）
 * 添付HTML（任意）: （SingleFileで保存したファイル名。添付する場合は後述の共通手順に従い、保存時の状態と対象箇所も記載）
@@ -1078,7 +1078,7 @@ uBlock OriginとAdGuardでは、同名に見えるScriptletでも引数、動作
 
 ```text
 # タスク
-以下のuBlock Origin用Scriptletルールを、AdGuard ブラウザ拡張機能 MV3対応版で同じ目的と副作用になるAdGuard Scriptletルールへ変換可能か調査してください。
+以下のuBlock Origin用Scriptletルールを、AdGuard Browser Extension MV3で同じ目的と副作用になるAdGuard Scriptletルールへ変換可能か調査してください。
 
 # 調査対象
 * uBlock Origin Resources Library:
@@ -1476,11 +1476,11 @@ Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への
 
 ---
 
-## AdGuard ブラウザ拡張機能 MV3対応版
+## AdGuard Browser Extension MV3
 * **[Chrome Web Store](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg)**
 * **[公式サイト](https://adguard.com/ja/adguard-browser-extension/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardBrowserExtension)**
 
-AdGuard ブラウザ拡張機能 MV3対応版でスクリプトレットを含む高度なルールを使用する場合は、拡張機能の内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。組み込み・カスタムフィルタは、拡張機能本体の更新に加え、対応バージョンではポップアップまたはフィルタ画面から手動更新を確認できます。
+AdGuard Browser Extension MV3でスクリプトレットを含む高度なルールを使用する場合は、拡張機能の内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。組み込み・カスタムフィルタは、拡張機能本体の更新に加え、対応バージョンではポップアップまたはフィルタ画面から手動更新を確認できます。
 
 v5.2.400以降、拡張機能と組み込み・カスタムフィルタは、「ツールバーのアイコン > 右上ポップアップの↻」または「フィルタ > ↻アップデートを確認する」から最新状態を確認できます。
 
@@ -1488,11 +1488,11 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 （※ Chromeの拡張機能管理画面での「更新ボタン↻」では、カスタムフィルタの再読み込みがトリガーされないケースが報告されています。 [Issues #2944](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2944)  / [Issues #3016](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016)）
 
-[AdGuard ブラウザ拡張機能 MV3対応版 v5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
+[AdGuard Browser Extension MV3 v5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
 
 ポップアップパネルの更新ボタン↻、またはフィルタセクションの更新ボタン↻から、カスタムフィルタを手動で更新できるようになりました。`! Version:` は版の識別と更新状況の確認に有用ですが、URLの再取得そのものを成立させる唯一の条件ではありません。
 
-* **[AdGuard ブラウザ拡張機能 MV3対応版の解説](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)**
+* **[AdGuard Browser Extension MV3の解説](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)**
 
 **カスタムフィルタで購読する場合**
 
