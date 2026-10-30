@@ -9,7 +9,7 @@
 
 | UserScript | 対象 | 主な内容 |
 | --- | --- | --- |
-| [`gigazine-fill-article-grid.user.js`](gigazine-fill-article-grid.user.js) | GIGAZINE | 試食・広告・有料メンバーを除外し、次ページの記事で最後の行を補充 |
+| [`gigazine-fill-article-grid.user.js`](gigazine-fill-article-grid.user.js) | GIGAZINE | AdGuardユーザールールによる記事の非表示を補完し、次ページの記事で記事一覧の最後の行の空き枠を埋める |
 | [`x-auto-select-community-latest-sort.user.js`](x-auto-select-community-latest-sort.user.js) | 𝕏 | コミュニティの投稿一覧で新しい投稿を優先する並べ替えを自動選択 |
 | [`x-auto-select-following-latest-sort.user.js`](x-auto-select-following-latest-sort.user.js) | 𝕏 | 対象タイムラインで新しい投稿を優先する並べ替えを自動選択 |
 | [`x-spaces-and-live-broadcast-blocker.user.js`](x-spaces-and-live-broadcast-blocker.user.js) | 𝕏 | スペース／ライブ放送関連UIを非表示 |
