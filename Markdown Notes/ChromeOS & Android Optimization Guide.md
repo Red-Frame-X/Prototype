@@ -1718,6 +1718,16 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 * **パスキーが必要な場合**：利用できない場合はChromeで試してください。
 * **確認範囲**：端末・Android・ブラウザのVersion・Credential Providerによって結果は異なります。今回の結果は、3ブラウザすべて・全環境でのパスキー対応を確認したものではありません。
 
+**ログインの改善・動作報告（2026年10月30日・日本時間の確認）**
+
+* **Web版Amazon / Aerium**：[開発者が実験版v156でAmazon.co.jpへのログイン成功を報告](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6442862100) しています。Chromiumを直接ベースにした版での確認であり、この報告だけでは公開版やBare・Titaniumでの修正完了は確認できません。
+* **パスキー / Titanium**：[開発者がGoogleのFIDO2許可リストへの登録確認と段階的な反映を案内](https://github.com/jqssun/android-titanium-browser/issues/24#issuecomment-5914038712) しています。最新のGoogle Play開発者サービスで順次利用可能になるとの説明ですが、全端末への反映・動作確認ではありません。
+* **パスキー / TitaniumとBitwarden**：[Bitwardenの許可アプリ一覧に追加した後、x.comへのパスキーログインに成功した利用者の報告](https://github.com/jqssun/android-titanium-browser/issues/48#issuecomment-4637913658) があります。Issueの報告環境はNothing Phone (2) / Android 16 / Helium 149.0.7827.59です。
+* **パスキー / TitaniumとProton Pass**：[対応追加の報告](https://github.com/jqssun/android-titanium-browser/issues/250#issuecomment-6383317260) があり、リンク先の [F-Droid向け許可リスト](https://github.com/protonpass/android-pass/blob/9dfca3a5725741b805b79c8ea0c9a8a898d18dd3/app/src/fdroid/res/raw/passkey_privileged_browsers_allowlist.json#L942) にTitaniumのPackage nameと署名情報が含まれています。これは対応登録の確認であり、配布版すべてでのログイン成功報告ではありません。
+* **パスキー / Bare**：[RC2の公式Release Notes](https://github.com/BareBrowser/bare-browser/releases/tag/v1.0.0-alpha.1-rc2) は、第三者のパスワードマネージャーでBareを信頼済みとして登録した場合のパスキー利用を案内しています。同じ版の [開発者によるReddit投稿](https://www.reddit.com/r/browsers/comments/1vyoyhq/bare_browser_rc2_is_out_thank_you_rbrowsers_for/) にもパスキー / Bitwarden対応の記載があります。ただし、RC2ではGoogle Password Managerのパスキーは利用できないとも説明されています。
+
+これらはブラウザ・認証情報Provider・Versionごとの報告です。パスワードと確認コードでのログイン成功と、パスキー認証自体の成功は区別してください。
+
 **Aeriumのパスキーに関する過去の不具合報告・対応状況（2026年10月30日・日本時間の確認）**
 
 * **パスキー認証失敗：[Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50)（Open・bug）**
