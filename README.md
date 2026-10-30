@@ -39,6 +39,8 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 > [!NOTE]
 > ルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換Scriptを修正して再生成します。
 
+[ChromeOS・Androidの最適化ガイド](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md)：ChromeOS・Androidを中心に、ブラウザ、コンテンツブロック、プライバシー、セキュリティの設定・運用方法をまとめています。
+
 [Android アプリ ReVanced・Morphe・UPM・Reseam（Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-revancedmorpheurvreseamandroid)：各プロジェクトの公式情報、機能、導入・更新・バックアップ、互換性、Redditの参照方法をまとめています。Universal Patch Manager（UPM、旧URV）への移行、設定JSONと署名用Keystoreの個別バックアップ、Runtime Pluginの要件も説明しています。
 
 [Android アプリ ChMate（ChromeOS・Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-chmatechromeosandroid)：公式の配布元・対応環境、板の登録、バックアップ、NG設定、操作・表示、プライバシー・広告についてまとめています。IOMate・Haiagaru-Morpheの用途や導入・更新・データ移行、ChromeOSでの動作保証に関する注意点も説明しています。
