@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """uB-filter-by-kdroidwin (AdGuard Optimized) の生成・Lintを行うScript。
 
-uBlock Origin用フィルタをAdGuard for Chrome MV3向けに、安全性と互換性を優先して
+uBlock Origin用フィルタをAdGuard Browser Extension MV3向けに、安全性と互換性を優先して
 変換・静的解析(Lint)するScript。生成物はAdGuard for Androidでも読み込めますが、
 CoreLibs固有機能の保持やAndroid向けの完全な最適化は保証しません。
 
@@ -45,7 +45,7 @@ class AdGuardOptimizer:
         self.ubo_unsupported_ext_css: List[str] = settings["unsupported_ubo_extended_css"]
 
         # uBO構文からAdGuardへ意味を安全に維持できると確認できていないスクリプトレット。
-        # AdGuard MV3自体のscriptlet対応可否とは分離し、推測変換による挙動変更を防ぐ。
+        # AdGuard Browser Extension MV3自体のscriptlet対応可否とは分離し、推測変換による挙動変更を防ぐ。
         self.compatible_scriptlets: List[str] = settings["compatible_scriptlets"]
         self.incompatible_scriptlets: List[str] = settings["incompatible_scriptlets"]
 

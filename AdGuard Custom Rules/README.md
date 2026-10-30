@@ -84,7 +84,7 @@ python -m unittest discover -s tests -v
 - [AdGuard for Android：設定](https://adguard.com/kb/ja/adguard-for-android/features/settings/)
 - [AdGuard for Android：DNS通信を保護](https://adguard.com/kb/ja/adguard-for-android/features/protection/dns-protection/)
 - [AdGuard ブラウザ拡張機能](https://adguard.com/kb/ja/adguard-browser-extension/)
-- [AdGuard ブラウザ拡張機能 MV3対応版](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
+- [AdGuard Browser Extension MV3](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
 - [AdGuard ブラウザ拡張機能のリリース](https://adguard.com/ja/versions/browser-extension/release.html)
 - [AdGuardブラウザー拡張機能の変更履歴](https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/CHANGELOG.md)
 - [AdGuard for Androidのリリース](https://github.com/AdguardTeam/AdguardForAndroid/releases)

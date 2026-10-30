@@ -10,6 +10,8 @@ import re
 # Repositoryで正式な英語表記を固定する名称。
 # 左辺の日本語訳がCommit titleに含まれていた場合は、右辺の正式表記を案内する。
 NON_CANONICAL_NAMES = {
+    "AdGuard ブラウザ拡張機能 MV3対応版": "AdGuard Browser Extension MV3",
+    "AdGuard for Chrome MV3": "AdGuard Browser Extension MV3",
     "AdGuardカスタムルール": "AdGuard Custom Rules",
     "AdGuard向け最適化フィルタ": "uB-filter-by-kdroidwin (AdGuard Optimized)",
     "ユーザースクリプト": "UserScript",

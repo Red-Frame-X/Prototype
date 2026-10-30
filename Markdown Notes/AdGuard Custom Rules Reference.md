@@ -4,13 +4,13 @@ AdGuardのカスタムルールについて、主要な構文、対応環境、�
 
 ---
 
-MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能のルールと、CoreLibsを使うAdGuard for Androidのルールには、対応機能や制約の違いがあります。本書は、主要構文の用途と注意点に加え、ルール設計、学習手順、実例、検証、デバッグ、誤ブロックへの対処、保守まで一貫して確認できる実用リファレンスです。AdGuard ブラウザ拡張機能 MV3対応版とAdGuard for Androidでの設計・検証を扱います。対応状況は変わるため、最終的な構文の可否は [AdGuard公式構文リファレンス](https://adguard.com/kb/general/ad-filtering/create-own-filters/) と実際のフィルタリングログで確認してください。
+MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能のルールと、CoreLibsを使うAdGuard for Androidのルールには、対応機能や制約の違いがあります。本書は、主要構文の用途と注意点に加え、ルール設計、学習手順、実例、検証、デバッグ、誤ブロックへの対処、保守まで一貫して確認できる実用リファレンスです。AdGuard Browser Extension MV3とAdGuard for Androidでの設計・検証を扱います。対応状況は変わるため、最終的な構文の可否は [AdGuard公式構文リファレンス](https://adguard.com/kb/general/ad-filtering/create-own-filters/) と実際のフィルタリングログで確認してください。
 
 | <div align="center">Metadata</div> | <div align="center">情報</div> |
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610251310 |
+| **Version** | 202610310618 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -77,7 +77,7 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 ### `$all` ［すべてのリソースタイプへの適用］
 * **構文例**： `||malware.example.com^$all`
 * **概要**： ドキュメント、Script、画像、ポップアップなど、通信の種類を問わずすべてのリクエストに対してブロックを強制適用します。
-* **解説**： 修飾子なしのプレーンなルールでは通常対象外となるメインページ自体の読み込み `$document` や別窓展開 `$popup` を含む広い種類のリクエストを対象にします。AdGuard公式では `$all` は全コンテンツタイプ修飾子と `$popup` の組み合わせとして定義され、AdGuard for Chrome MV3では `$popup` の制約によりサポートされません。また、`$all` は `@@` を付けた例外ルールには使用できません。適用範囲が広いため、正規サイトやCDNを巻き込まないよう対象を十分に限定します。
+* **解説**： 修飾子なしのプレーンなルールでは通常対象外となるメインページ自体の読み込み `$document` や別窓展開 `$popup` を含む広い種類のリクエストを対象にします。AdGuard公式では `$all` は全コンテンツタイプ修飾子と `$popup` の組み合わせとして定義され、AdGuard Browser Extension MV3では `$popup` の制約によりサポートされません。また、`$all` は `@@` を付けた例外ルールには使用できません。適用範囲が広いため、正規サイトやCDNを巻き込まないよう対象を十分に限定します。
 
 ### `$script`, `$image`, `$xmlhttprequest` 等 ［リソース指定］
 * **構文例**： `||example.com/api^$xmlhttprequest`
@@ -143,7 +143,7 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 ### `$urltransform` ［リクエストURLの動的書き換え］
 * **構文例**： `||example.org^$urltransform=/(pref\/).*\/(suf)/$1$2/i`
 * **概要**： 正規表現とキャプチャグループを用いて、リクエストURLを送信前に別のURLへ動的に変換・リダイレクトさせます。
-* **解説**： トラッキング用の中継URLや追跡パラメータを改変できますが、正規表現の誤りで無関係なURLを破損させる危険があります。信頼済みフィルタ専用です。CoreLibs系製品に加え、AdGuard Browser ExtensionおよびAdGuard for Chrome MV3でもv5.5以降で対応していますが、MV3ではDNR由来の制限があるため、公式ドキュメントの制約を確認して使用してください。
+* **解説**： トラッキング用の中継URLや追跡パラメータを改変できますが、正規表現の誤りで無関係なURLを破損させる危険があります。信頼済みフィルタ専用です。CoreLibs系製品に加え、AdGuard Browser ExtensionおよびAdGuard Browser Extension MV3でもv5.5以降で対応していますが、MV3ではDNR由来の制限があるため、公式ドキュメントの制約を確認して使用してください。
 
 ### `$removeparam` ［トラッキングパラメータの高度な削除］
 * **構文例**： `||example.com^$removeparam=/^utm_[a-z]+=/`
@@ -153,7 +153,7 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 ### `$replace` ［レスポンスボディの直接書き換え］
 * **構文例**： `||example.com/api/$replace=/ad_enabled":true/ad_enabled":false/`
 * **概要**： 正規表現を用いて、テキストベースのレスポンス中身を通信経路上で動的に置換します。
-* **解説**： DOM操作より前のレスポンス本文を書き換えられる強力な機能です。AdGuard for Windows / Mac / Android等のCoreLibs製品とAdGuard for Firefoxで対応しますが、Chromium系ブラウザ拡張機能（AdGuard for Chrome MV3を含む）ではネットワークレベルでレスポンス本文を変更できないため利用できません。HTTPS通信の本文をCoreLibs製品で変更するには、その通信がHTTPSフィルタリングの対象になっている必要があります。
+* **解説**： DOM操作より前のレスポンス本文を書き換えられる強力な機能です。AdGuard for Windows / Mac / Android等のCoreLibs製品とAdGuard for Firefoxで対応しますが、Chromium系ブラウザ拡張機能（AdGuard Browser Extension MV3を含む）ではネットワークレベルでレスポンス本文を変更できないため利用できません。HTTPS通信の本文をCoreLibs製品で変更するには、その通信がHTTPSフィルタリングの対象になっている必要があります。
 
 ### `$csp` / `$permissions` ［セキュリティポリシーやブラウザ権限の強制制御］
 * **構文例**： `||example.com^$csp=script-src 'self'` / `||example.com^$permissions=gyroscope=()`
@@ -329,7 +329,7 @@ AdGuard for Androidでも軽く動作させるため、可能な限りシンプ�
 
 カスタムルールを作成する前に、実行環境における技術的な制限と強みを正しく理解することが不可欠です。
 
-| 機能・特性 | AdGuard ブラウザ拡張機能 MV3対応版 | AdGuard for Android (CoreLibs) |
+| 機能・特性 | AdGuard Browser Extension MV3 | AdGuard for Android (CoreLibs) |
 | :--- | :--- | :--- |
 | **主な動作レイヤー** | ブラウザ内部（DNR API依存） | OSレベル（通常はローカルVPN。HTTPSフィルタリング時はローカルプロキシで復号・検査） |
 | **通信遮断の仕組み** | 事前宣言されたDNRルールによるブラウザエンジン処理 | ローカルプロキシでのリクエスト解析・遮断 |
@@ -447,7 +447,7 @@ AdGuard公式Knowledge Baseは、ローレベル設定の変更によってAdGua
 
 * **背景・課題**：初心者ほど、広告を完全に消そうとして強制力を持つパラメータを多用しがちです。
 
-* **ベストプラクティス**：ドメインの末尾に `$` を付ける際は、まずはタイプを指定しないシンプルな状態か、`$script`, `$image` 等の特定タイプのみに留めます。`$all` は複数のコンテンツタイプと `$popup` をまとめた修飾子で、AdGuard for Chrome MV3では `$popup` の制約によりサポートされません。CoreLibs等の対応製品で使う場合も、適用範囲が広いため正規通信を巻き込まないか確認します。
+* **ベストプラクティス**：ドメインの末尾に `$` を付ける際は、まずはタイプを指定しないシンプルな状態か、`$script`, `$image` 等の特定タイプのみに留めます。`$all` は複数のコンテンツタイプと `$popup` をまとめた修飾子で、AdGuard Browser Extension MV3では `$popup` の制約によりサポートされません。CoreLibs等の対応製品で使う場合も、適用範囲が広いため正規通信を巻き込まないか確認します。
 
 * **メリット**：強力な修飾子を避けることで、サイトの認証システムやログイン機能を巻き込んでページやアプリを破壊するリスクを大幅に減らせます。
 
@@ -669,7 +669,7 @@ trusted Scriptletなど信頼済みフィルタ限定の機能があります。
 
 [^5]: **フィルタリングログ（Filtering Log）**
 
-  AdGuardのブラウザ拡張機能やAndroidアプリに内蔵されている監視機能。通信の遮断・許可や関連ルールを確認してデバッグできます。ただしAdGuard for Chrome MV3では、DNR APIの制約により実際に適用されたルールを常に取得できるわけではなく、Filtering logに「適用されたと推定されるルール（assumed rule）」が表示される場合があります。
+  AdGuardのブラウザ拡張機能やAndroidアプリに内蔵されている監視機能。通信の遮断・許可や関連ルールを確認してデバッグできます。ただしAdGuard Browser Extension MV3では、DNR APIの制約により実際に適用されたルールを常に取得できるわけではなく、Filtering logに「適用されたと推定されるルール（assumed rule）」が表示される場合があります。
 
   * **参照**：[AdGuard Blog - In-Depth Features Overview: AdGuard for Android](https://adguard.com/en/blog/in-depth-review-adguard-for-android.html)
 
