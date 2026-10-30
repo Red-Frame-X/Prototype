@@ -10,7 +10,7 @@ MV3のDNR（Declarative Net Request）へ変換されるブラウザ拡張機能
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610310618 |
+| **Version** | 202610310621 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
