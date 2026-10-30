@@ -41,6 +41,8 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 
 [Android アプリ ReVanced・Morphe・UPM・Reseam（Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-revancedmorpheurvreseamandroid)：各プロジェクトの公式情報、機能、導入・更新・バックアップ、互換性、Redditの参照方法をまとめています。Universal Patch Manager（UPM、旧URV）への移行、設定JSONと署名用Keystoreの個別バックアップ、Runtime Pluginの要件も説明しています。
 
+[Android アプリ ChMate（ChromeOS・Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-chmatechromeosandroid)：公式の配布元・対応環境、板の登録、バックアップ、NG設定、操作・表示、プライバシー・広告についてまとめています。IOMate・Haiagaru-Morpheの用途や導入・更新・データ移行、ChromeOSでの動作保証に関する注意点も説明しています。
+
 ## 編集・更新の原則
 
 - `AdGuard Custom Rules` / `AdGuard DNS Custom Rules`の変更時は、変更したファイルの`! Version:`をJSTの現在時刻（`YYYYMMDDHHMM`）へ同じCommit内で更新します。
