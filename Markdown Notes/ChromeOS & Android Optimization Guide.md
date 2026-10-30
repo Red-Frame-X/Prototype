@@ -2440,6 +2440,17 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 
 `x.xx.x`は適用したHaiagaruのVersionに置き換えます。環境記録用であり、User-Agentを書き換える指示ではありません。
 
+**端末・Version情報の出力方法（0.8.10.242 dev）**
+
+1. スレッドを開き、書き込み画面を表示します。
+2. 書き込み画面のメニューから「2chMate/…」（Version・端末情報の項目）を選び、本文へ挿入します。本文欄を長押しして同項目を選ぶ方法もあります。長押しで表示されない場合は、書き込み画面のメニューを使用します。
+3. 挿入された文字列をコピーし、動作環境の記録や不具合報告に貼り付けます。情報を取り出すだけなら、掲示板への投稿は不要です。
+
+メーカー・機種名・Android Version・表示設定は、使用中の環境に応じて出力されます。上のPixel 10aの例をそのまま使わず、実際の出力を記録してください。末尾の `/Haiagaru x.xx.x` はPatch側の情報です。出力に含まれない場合は、適用したHaiagaruの実際のVersionを確認して追記します。
+
+出典：[ChMate公式・2021年の変更履歴（0.8.10.109：書き込み画面のメニューに「2chMate/…」を追加）](https://chmate.airfront.co.jp/history/2021/) / [コミュニティFAQ（本文長押しによる環境情報の挿入）](https://w.atwiki.jp/android2chbrowser/pages/46.html) / [Haiagaruコミュニティ（不具合報告時のPatch Version併記）](https://egg.5ch.io/test/read.cgi/android/1793113633/)
+
+
 1. **準備・条件記録**：バックアップ後、未改変の242 dev APK（versionCode 512）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
 2. **基本操作**：起動、板・スレ更新、本文取得、画像表示、リンク起動、広告・余白を確認します。バックグラウンド・画面消灯からの復帰、再起動後も試します。
 3. **追加機能**：設定の保存、DAT取得、検索、ビューア・動画など使用する機能を個別に確認し、未使用は「未確認」とします。投稿を伴う確認は投稿先のルールに従い、Test用スレで最小限行います。
