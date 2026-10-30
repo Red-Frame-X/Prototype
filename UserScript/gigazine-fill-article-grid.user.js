@@ -3,8 +3,8 @@
 // @name:ja      GIGAZINE 記事の空き枠補充
 // @namespace    local.gigazine
 // @license      CC0-1.0
-// @version      202610301232
-// @description  AdGuardユーザールールによる記事の非表示を補完し、次ページの記事で記事一覧の最後の行の空き枠を埋めます。
+// @version      202610310800
+// @description  AdGuardユーザールールによる記事の非表示を補完し、次ページの記事で空き枠を補充し、取得できない場合も最終行を記事で埋めます。
 // @author       Red Frame X
 // @match        https://gigazine.net/*
 // @updateURL    https://github.com/Red-Frame-X/Prototype/raw/refs/heads/main/UserScript/gigazine-fill-article-grid.user.js
@@ -30,6 +30,71 @@
     let busy = false;
     let failed = false;
     let retryMore = false;
+    let queued = false;
+    let columns = 1;
+    let layoutKey = '';
+    const gridValue = list.style.getPropertyValue('grid-template-columns');
+    const gridPriority = list.style.getPropertyPriority('grid-template-columns');
+    const layoutStyle = document.createElement('style');
+    layoutStyle.textContent = `
+        #section .content > section[data-gigazine-empty] { display: none !important; }
+        #section .content > #nextpage { grid-column: 1 / -1 !important; }
+    `;
+    document.head.append(layoutStyle);
+
+    // 最終行を均等に広げるため、通常行と最終行の共通の細かいGridを使う。
+    // 通信の成功を前提にしないため、取得不能・末尾到達時にも空き枠を残さない。
+    function layout() {
+        observer.disconnect();
+        try {
+            if (gridValue) list.style.setProperty('grid-template-columns', gridValue, gridPriority);
+            else list.style.removeProperty('grid-template-columns');
+            // 前回のspanが暗黙の列を作る前に、配置を通常に戻す。
+            const sections = cards();
+            sections.forEach(section => section.style.removeProperty('grid-column'));
+            const tracks = getComputedStyle(list).gridTemplateColumns;
+            columns = Math.max(1, tracks.match(/(?:\([^)]*\)|[^\s])+/g)?.length || 1);
+            const visible = [];
+            for (const section of sections) {
+                section.removeAttribute('data-gigazine-empty');
+                section.style.removeProperty('grid-column');
+                const card = section.querySelector(':scope > .card');
+                const hidden = [section, card].some(el => {
+                    const style = getComputedStyle(el);
+                    return style.display === 'none' || style.visibility === 'hidden' ||
+                        style.visibility === 'collapse' || style.opacity === '0';
+                });
+                if (blocked(section) || hidden || !articleURL(section, location.href)) {
+                    section.setAttribute('data-gigazine-empty', '');
+                } else visible.push(section);
+            }
+            const remainder = visible.length % columns;
+            const unit = remainder || 1;
+            list.style.setProperty('grid-template-columns',
+                `repeat(${columns * unit}, minmax(0, 1fr))`, 'important');
+            visible.forEach((section, index) => {
+                const span = remainder && index >= visible.length - remainder ? columns : unit;
+                section.style.setProperty('grid-column', `span ${span}`, 'important');
+            });
+            layoutKey = `${columns}:${visible.length}`;
+            return visible.length;
+        } finally {
+            observer.observe(list, { childList: true, subtree: true, attributes: true,
+                characterData: true });
+        }
+    }
+
+    function schedule() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+            queued = false;
+            const previous = layoutKey;
+            layout();
+            if (previous !== layoutKey && !busy && !failed) void fill();
+        });
+    }
+    const observer = new MutationObserver(schedule);
 
     const status = document.createElement('div');
     status.style.cssText = 'text-align:center;padding:6px;font-size:14px';
@@ -38,8 +103,11 @@
 
     function sameOrigin(value, base) {
         if (!value) return null;
-        const url = new URL(value, base);
-        return url.origin === location.origin ? url.href : null;
+        try {
+            const url = new URL(value, base);
+            url.hash = '';
+            return url.origin === location.origin ? url.href : null;
+        } catch { return null; }
     }
 
     function cards() {
@@ -59,14 +127,7 @@
     }
 
     function vacancies() {
-        // サイトの等幅Gridの列数を使い、画面幅の変更にも追従する。
-        const columns = Math.max(
-            1, getComputedStyle(list).gridTemplateColumns.trim().split(/\s+/).length
-        );
-        const count = cards().filter(el =>
-            getComputedStyle(el).display !== 'none' &&
-            getComputedStyle(el.querySelector('.card')).display !== 'none'
-        ).length;
+        const count = layout();
         return (columns - count % columns) % columns;
     }
 
@@ -189,6 +250,7 @@
             status.textContent = '取得に失敗しました。ボタンで再試行してください。(' +
                 error.message + ')';
         } finally {
+            layout();
             busy = false;
             button.textContent = failed ? '再試行' : originalLabel;
             button.style.display = next || buffer.length || failed ? '' : 'none';
@@ -209,10 +271,17 @@
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            if (!failed) void fill();
+            schedule();
         }, 300);
     });
 
+    // CSS注入だけで行われる非表示も検出する（DOM変更を伴わない場合がある）。
+    setInterval(() => {
+        if (!document.hidden) schedule();
+    }, 1000);
+    window.addEventListener('online', () => { failed = false; void fill(retryMore); });
+    document.addEventListener('visibilitychange', schedule);
+    layout();
     await fill();
     // AdGuardの非表示処理が遅れて反映された場合にも補充する。
     setTimeout(() => {
