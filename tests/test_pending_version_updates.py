@@ -36,10 +36,14 @@ class PendingVersionTests(unittest.TestCase):
                 path = root / relative
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(source.read_bytes())
-                if source.name != 'Header Template.md':
+                if relative not in (Path('Markdown Notes/Header Template.md'), Path('Markdown Notes/README.md')):
                     expected.append(relative)
             git('add', '.')
             git('commit', '-qm', 'base')
+            # Version表のないREADMEも編集し、自動更新の対象外であることを確認する。
+            readme = root / 'Markdown Notes/README.md'
+            readme.write_text(readme.read_text() + '\n<!-- Manual comment edit. -->\n')
+            readme_before = readme.read_text()
             for relative in expected:
                 path = root / relative
                 suffix = '\n// Manual comment edit.\n' if path.suffix == '.js' else '\n! Manual comment edit.\n' if path.suffix == '.txt' else '\n<!-- Manual comment edit. -->\n'
@@ -62,6 +66,7 @@ class PendingVersionTests(unittest.TestCase):
                 git('add', '.')
                 git('commit', '-qam', 'chore: sync Version timestamps (JST)')
                 self.assertEqual(pending_files(), [])
+                self.assertEqual(readme.read_text(), readme_before)
                 # 同期後に追加されたコメントも、再び未同期の変更として検出する。
                 path = expected[0]
                 path.write_text(path.read_text() + '! Another comment.\n')
