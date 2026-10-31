@@ -2371,7 +2371,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 **Haiagaru-Morpheの配布状況・対応Version**
 
-* **Stable（2026年10月31日確認）**：[1.16.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0)。1.15.0以降の変更をまとめた正式版です。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.16.0.mpp`。
+* **Stable**：[1.16.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0)。1.15.0以降の変更をまとめた正式版です。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.16.0.mpp`。
 * **Pre-release**：通常の導入・更新はStableを中心に確認します。開発版を試す場合のみ `dev/patches-bundle.json` を使用し、その時点のVersion・変更内容を照合してください。
 * **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。連続したVersion範囲ではなく、241 / 243 devなどは対象外です。
 * **導入時の確認**：[Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases)、配布JSONの `version`・`download_url`、対象tagの対応宣言を照合してください。README冒頭やVersion別JSONには古い案内が残る場合があります。任意Patchは個別に対応対象を確認します。
