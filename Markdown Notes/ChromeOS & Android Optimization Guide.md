@@ -2545,7 +2545,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 2. **基本操作**：起動、板・スレ更新、本文取得、画像表示、リンク起動、広告・余白を確認します。バックグラウンド・画面消灯からの復帰、再起動後も試します。
 3. **追加機能**：設定の保存、DAT取得、検索、ビューア・動画など使用する機能を個別に確認し、未使用は「未確認」とします。投稿を伴う確認は投稿先のルールに従い、Test用スレで最小限行います。
 4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変の242 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
-5. **報告**：[既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues) ・ [関連コミュニティ](https://ff5ch.syoboi.jp/?q=Haiagaru) を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
+5. **報告**：[既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues)・[関連コミュニティ](https://ff5ch.syoboi.jp/?q=Haiagaru) を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
 
 #### 不具合報告用テンプレート
 
