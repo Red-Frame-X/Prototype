@@ -64,7 +64,6 @@ AdGuard Browser Extension MV3では、v5.4.1系でMV3のカスタムフィルタ
 
 ## 参照している公式資料
 
-- [AdGuard ブラウザ拡張機能](https://adguard.com/kb/ja/adguard-browser-extension/)
 - [AdGuard Browser Extension MV3](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)
 - [AdGuardフィルタリングルール構文](https://adguard.com/kb/ja/general/ad-filtering/create-own-filters/)
 - [AdGuardブラウザー拡張機能のリリース](https://github.com/AdguardTeam/AdguardBrowserExtension/releases)
