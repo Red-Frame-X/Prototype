@@ -2389,13 +2389,13 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 ### IOMateで利用するChMateのVersion
 
 * **開発者の推奨順位**：公式READMEでは0.8.10.191、0.8.10.192、0.8.10.226の順です。操作・表示の変更に対する開発者の評価であり、ChMate公式の推奨や本ガイドでの動作保証ではありません。
-* **0.8.10.191**：[ChMate公式の変更履歴](https://chmate.airfront.co.jp/history/2024/#0810191459-2024-08-29)では2024年8月29日公開。IOMate開発者が最も推奨する旧版で、5ch.ioが外部板扱いになるため、スレ上部の広告枠が表示されないと説明されています。全画面・全広告の除去を意味しません。
+* **0.8.10.191**：[ChMate公式の変更履歴](https://chmate.airfront.co.jp/history/2024/#0810191459-2024-08-29) では2024年8月29日公開。IOMate開発者が最も推奨する旧版で、5ch.ioが外部板扱いになるため、スレ上部の広告枠が表示されないと説明されています。全画面・全広告の除去を意味しません。
 * **0.8.10.192**：公式履歴ではスレ読み込み時などのクラッシュ修正があります。一方、IOMateのREADMEでは、タブレットモードと広告枠透明化テーマの併用でプロパティ画面も透明になる問題が挙げられています。
 * **0.8.10.226**：IOMate開発者が、227での変更前の候補として挙げているVersionです。191と同じ表示・設定・必要Androidとは限りません。
 
 ### IOMateの導入・旧版への移行
 
-* **配布元**：[IOMate Releases](https://github.com/kitadai31/IOMate/releases)からAPKを取得してインストールします。ChMate旧版のAPKは別途必要です。
+* **配布元**：[IOMate Releases](https://github.com/kitadai31/IOMate/releases) からAPKを取得してインストールします。ChMate旧版のAPKは別途必要です。
 * **プロキシ設定**：IOMateで「プロキシサーバー起動」を押し、ChMateの「設定」>「実験的」>「Proxyを使用する」をONにして、「Proxy」に`localhost:8080`を指定します。IOMate側でポート番号を変更した場合は、ChMate側も同じ番号に合わせます。
 * **書き込み設定**：IOMateの「5chの新しい書き込み仕様に対応させる」は、ChMate 0.8.10.208未満（191 / 192など）ではON、208以上（226など）ではOFFにします。208以上はChMate自体が新仕様に対応しているためです。
 * **現行版から移行する場合**：ChMate標準のバックアップを取り、復元用ZIPをアプリ外に保存・確認してから現行版をアンインストールします。IOMateの「ツール」>「5ch.netのスレを5ch.ioに変換」でZIPを変換し、利用する旧版のChMateをインストールして変換済みZIPを復元後、上記のプロキシ設定を行います。変換前のZIPも保管してください。
@@ -2432,7 +2432,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 * **Stable**：[1.16.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0)。1.15.0以降の変更をまとめた正式版です。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.16.0.mpp`。
 * **Pre-release**：通常の導入・更新はStableを中心に確認します。開発版を試す場合のみ `dev/patches-bundle.json` を使用し、その時点のVersion・変更内容を照合してください。
 * **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。連続したVersion範囲ではなく、241 / 243 devなどは対象外です。
-* **導入時の確認**：[Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases)、配布JSONの `version`・`download_url`、対象tagの対応宣言を照合してください。README冒頭やVersion別JSONには古い案内が残る場合があります。任意Patchは個別に対応対象を確認します。
+* **導入時の確認**：[Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases) 、配布JSONの `version`・`download_url`、対象tagの対応宣言を照合してください。README冒頭やVersion別JSONには古い案内が残る場合があります。任意Patchは個別に対応対象を確認します。
 
 対応宣言：[1.16.0](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.16.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)。対応宣言は端末ごとの動作保証ではありません。
 
@@ -2496,7 +2496,7 @@ Pre-release用（開発版を試す場合のみ）：
 https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle.json
 ```
 
-* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を[1.16.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0)から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
+* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.16.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
 * Managerごとの画面・対応状況は [Upstream README](https://github.com/areteruhiro/Haiagaru-Morphe) と [Morphe公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) を確認してください。URV Managerの案内だけで、後継UPMの動作まで確認済みとは扱いません。
 
 ### インストール・データ移行・互換性の注意
@@ -2533,7 +2533,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 2. **基本操作**：起動、板・スレ更新、本文取得、画像表示、リンク起動、広告・余白を確認します。バックグラウンド・画面消灯からの復帰、再起動後も試します。
 3. **追加機能**：設定の保存、DAT取得、検索、ビューア・動画など使用する機能を個別に確認し、未使用は「未確認」とします。投稿を伴う確認は投稿先のルールに従い、Test用スレで最小限行います。
 4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変の242 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
-5. **報告**：[既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues)・[関連コミュニティ](https://ff5ch.syoboi.jp/?q=Haiagaru)を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
+5. **報告**：[既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues) ・ [関連コミュニティ](https://ff5ch.syoboi.jp/?q=Haiagaru) を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
 
 #### 不具合報告用テンプレート
 
