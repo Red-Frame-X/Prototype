@@ -13,9 +13,14 @@ class HaiagaruFixedEnvironmentTests(unittest.TestCase):
         return match
 
     def assert_consistent(self, text):
-        heading = '**Haiagaru-Morpheの動作検証・不具合報告（固定環境）**'
-        self.assertIn(heading, text, '固定環境の見出しがありません。')
-        section = text.split(heading, 1)[1]
+        # 太字の段落とMarkdown見出しの両方を扱い、本文中の言及は見出しとみなさない。
+        title = 'Haiagaru-Morpheの動作検証・不具合報告（固定環境）'
+        heading = self.required_match(
+            r'^(?:\*\*' + re.escape(title) + r'\*\*|#{1,6}[ \t]+(?:'
+            + re.escape(title) + r'|\*\*' + re.escape(title) + r'\*\*))[ \t]*$',
+            text, '固定環境の見出し',
+        )
+        section = text[heading.end():]
         section = section.split('## Linux Mint', 1)[0]
         # Code spanや太字の有無で、Versionの意味は変わらない。
         section = section.replace('`', '').replace('**', '')
@@ -71,6 +76,23 @@ class HaiagaruFixedEnvironmentTests(unittest.TestCase):
         for compact in (False, True):
             with self.subTest(compact=compact):
                 self.assert_consistent(self.fixture(compact))
+
+    def test_heading_formats_preserve_validation(self):
+        title = 'Haiagaru-Morpheの動作検証・不具合報告（固定環境）'
+        for compact in (False, True):
+            for heading in ('**' + title + '**', '### ' + title, '### **' + title + '**'):
+                text = self.fixture(compact).replace('**' + title + '**', heading)
+                with self.subTest(compact=compact, heading=heading):
+                    self.assert_consistent(text)
+                    # 表示形式を変えても実際のVersion不一致は拒否する。
+                    with self.assertRaisesRegex(AssertionError, 'テンプレートのVersionが異なります'):
+                        self.assert_consistent(text.replace(
+                            '動作環境：2chMate 0.8.10.242', '動作環境：2chMate 0.8.10.226',
+                        ))
+                    with self.assertRaisesRegex(AssertionError, 'versionCodeが異なります'):
+                        self.assert_consistent(text.replace('512', '999', 1))
+                    with self.assertRaisesRegex(AssertionError, '読み取れません'):
+                        self.assert_consistent(text.replace(heading, '本文中の言及：' + title))
 
     def test_inconsistent_versions_and_codes_fail(self):
         for compact in (False, True):
