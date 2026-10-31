@@ -2315,7 +2315,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **配布元**：[Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate) / [公式サイト](https://chmate.airfront.co.jp/)。
 * **用途**：掲示板の閲覧・書き込み、NG設定、ログ保存などに対応するAndroidアプリです。
 
-### 対応環境・配布版（2026年10月26日確認）
+### 対応環境・配布版
 
 * **対応Android**：[公式案内](https://chmate.airfront.co.jp/docs/supported-os/) はAndroid 6.0以上。6.0のサポートは2026年中に終了予定ですが、終了済みとは確認していません。
 * **ChromeOS**：Androidアプリ対応Chromebookでも動作保証はありません。タブレットモードやキーボード・マウス操作も、端末ごとの確認が必要です。
