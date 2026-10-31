@@ -2602,4 +2602,5 @@ Linux Mintの導入、設定、ソフトウェア管理、Timeshift、Kernel Pan
 * [HelenTech](https://helentech.jp/) / [🌴 officeの杜 🥥](https://officeforest.org/wp/)
 * [Chromium派生ブラウザ総合 まとめWiki](https://w.atwiki.jp/chromiumbased/pages/1.html)
 * [スマホブラウザ@ウィキ](https://w.atwiki.jp/sumaho_browser/pages/1.html)
+* [【専ブラ】Android用2chブラウザ@wiki](https://w.atwiki.jp/android2chbrowser/pages/46.html)
 * 5ch 各種スレッド検索結果：[Chromebook](https://ff5ch.syoboi.jp/?q=Chromebook) / [Google Pixel](https://ff5ch.syoboi.jp/?q=Google+Pixel)
