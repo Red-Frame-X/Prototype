@@ -30,6 +30,11 @@
 - 正確さのために必要なコード識別子・ファイルパス・コマンド・ログ・引用したエラーメッセージは原表記を保持する。
 - この言語方針を、自動Pull Request Reviewと`@codex review`で依頼されたReviewの両方に適用する。
 
+## エラー報告の言語
+
+- エラー報告のtitleは、対象と発生した問題が分かる自然な日本語で記述する。
+- 本文の説明も日本語にし、コード識別子・ファイルパス・コマンド・原文のエラーメッセージは保持する。
+
 ## Commit・Pull Requestの言語と確認
 
 この方針は、このRepositoryでChatGPT Chat / Work / Codex / GitHub連携 / その他の自動編集機能を通じて作業する場合の共通の必須方針とする。運用とツールの制約は[CONTRIBUTING.md](CONTRIBUTING.md)も参照する。
