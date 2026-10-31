@@ -2371,12 +2371,12 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 **Haiagaru-Morpheの配布状況・対応Version**
 
-* **Stable**：[1.15.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.15.0)。配布元は `master/patches-bundle.json`。
-* **Pre-release**：[1.16.0-dev.4](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0-dev.4)。配布元は `dev/patches-bundle.json`。
+* **Stable（2026年10月31日確認）**：[1.16.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0)。1.15.0以降の変更をまとめた正式版です。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.16.0.mpp`。
+* **Pre-release**：通常の導入・更新はStableを中心に確認します。開発版を試す場合のみ `dev/patches-bundle.json` を使用し、その時点のVersion・変更内容を照合してください。
 * **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。連続したVersion範囲ではなく、241 / 243 devなどは対象外です。
 * **導入時の確認**：[Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases)、配布JSONの `version`・`download_url`、対象tagの対応宣言を照合してください。README冒頭やVersion別JSONには古い案内が残る場合があります。任意Patchは個別に対応対象を確認します。
 
-対応宣言：[1.15.0](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.15.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt) / [1.16.0-dev.4](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.16.0-dev.4/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)。対応宣言は端末ごとの動作保証ではありません。
+対応宣言：[1.16.0](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.16.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)。対応宣言は端末ごとの動作保証ではありません。
 
 **主な機能とVersionによる違い**
 
@@ -2399,16 +2399,26 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 出典：[1.15.0時点のCHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.15.0/CHANGELOG.md) / [1.15.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.15.0)。
 
-**Pre-release 1.16.0-dev.4の追加内容と未確認事項**
+**正式版1.16.0の主な追加・修正**
 
-* **検索・表示（dev.3以降）**：ID・ワッチョイ検索の日付指定、Kyodemoへの条件引き継ぎ、スレ内検索のAND絞り込み、242のHOME複数選択ボタンの下部表示（初期OFF）を追加。dev.4ではエッヂ過去ログ検索にカレンダー指定を追加。
-* **メディア**：スレ内GIFのWi-Fi限定設定、動画の5秒送り・巻き戻しと連続シークを追加。191の拡大画像移動・サムネイル取得を改善。
-* **NG機能**：スレ内の赤いIDを非表示にする任意機能、除外ID一覧、F9対策ルールと任意の自動更新を追加。手動編集したルールは自動更新で上書きしない設計です。
-* **オンライン共有NG（開発中）**：初回同意後、既存NGと保存時の変更分を外部送信し、GASで審査された条件を受信します。有効化前に送信内容・同意画面を確認してください。
-* **191の復元修正**：正常なjournalだけを理由にDB取り込みを拒否する問題へ対処。ただし報告されたZIPそのものの復元は未確認です。Morphe内蔵実行環境での191のPatch適用失敗も原因未確定です。
-* **未確認事項**：実サイトの検索・順位取得、端末ごとの動画デコード・拡大画像移動、長時間のGIF再生、実際のWi-Fi切り替え、共有NGの長期運用。開発元のホスト検証・隔離アプリ検証と実機確認は区別します。
+* **検索・表示**：ID・ワッチョイ検索の日付指定、Kyodemoへの条件引き継ぎ、スレ内検索のAND絞り込み、242のHOME複数選択ボタンの下部表示（初期OFF）を追加。エッヂ過去ログ検索の開始日・終了日はカレンダーから選択・解除できます。取得済みスレ検索の日時順は「全板混合」と明記され、対象の全板を作成日時でまとめて並べます。
+* **設定画面・X表示**：設定トップを検索欄・設定共有メニュー・カテゴリカードの構成へ変更。X投稿の日時表示を日本時間（JST）へ変更しました。
+* **メディア**：スレ内GIFのWi-Fi限定設定、動画の5秒送り・巻き戻しと連続シークを追加・改善。動画サムネイルの重複取得・失敗後の再試行を改善し、GIF自動取得からBEアイコンを除外しました。
+* **ビューア修正**：242の画像ビューアを上スワイプで閉じる際のクラッシュ、191／242の一部サムネイルからスレ全体のメディアへ移動できない問題を修正。191では自動拡大と手動ズームの誤判定、拡大画像の移動への追加ジェスチャーの割り込み、動画サムネイル設定による動画フィルターの判定漏れにも対処しました。
+* **自動NG**：赤いIDのレスをそのスレ内だけ自動で非表示にする任意機能と除外ID一覧を追加。設定は全スレ共通で有効、投稿数はスレごとに判定します。IDメニューの「自動NGの除外IDに追加」とツールバーの「自動NG除外ID」から除外を管理でき、通常のNGID登録は変更しません。
+* **連鎖あぼーん**：「連鎖あぼーんを常に非表示」を追加（初期OFF）。元のNG対象レスの表示方法・NGルール・DATを変えず、連鎖あぼーんと判定された返信行だけを非表示にします。変更後はスレを開き直してください。標準の「非表示NGを表示」も使用できます。
+* **191の復元修正**：正常なjournalだけを理由にDB取り込みを拒否する問題へ対処。補助ファイルをSQLiteで回復・確定し、元のDBを退避してから切り替えます。ただし報告されたZIPそのものを使った復元は未確認です。
+* **処理の最適化**：NG判定、GIF完成時の再描画、動画サムネイル取得、検索画面の走査、Patch適用時の拡張DEX読込・未読数補正を最適化。開発元のPCでの191同一構成比較では適用時間が約22%短縮しましたが、スマホでの所要時間は環境によって異なります。
 
-出典：[1.16.0-dev.3 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0-dev.3) / [1.16.0-dev.4 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0-dev.4)。
+**正式版1.16.0でも開発中の機能・確認範囲**
+
+* **オンライン共有NG（開発中）**：初回同意後、既存NGと保存時の追加・変更・削除を外部送信し、GASで審査された条件を直接受信します。60秒ごとの定期確認は廃止されました。有効化前に送信内容・同意画面を確認してください。
+* **共有NGの条件**：必要な報告数・掲示板の区分・種類・個別除外を設定できます。「フィルターの強さ」は廃止。NGワードの送信対象は空白を除いて5文字以上で、英字だけの条件は除外します。ローカルNGの登録は制限しません。
+* **F9対策（開発中）**：高度なNGルールのひな形と任意の自動更新を追加。手動編集したルールは自動更新で上書きしません。正式版に収録されていても、開発中の扱いです。
+* **開発元の確認範囲**：191／226／242のエミュレータで起動・本文・画像・追加ツールバーを確認。動画のシーク処理とNG判定はホスト検証、191の標準バックアップは隔離アプリで作成・復元し、DBとZIP内容の一致を確認しています。テストZIPにはjournalが含まれていません。
+* **未確認・未解決事項**：端末ごとの動画デコード差、実際の拡大画像移動、共有NGの長期運用は引き続き確認中です。Morphe内蔵実行環境での191のPatch適用失敗は原因未確定で、修正済みには含まれません。本ガイドでの実機確認とは区別してください。
+
+出典：[1.16.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0) / [1.16.0時点のCHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.16.0/CHANGELOG.md)。
 
 **導入・更新方法**
 
@@ -2416,19 +2426,19 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 2. Morpheのパッチソースに`https://github.com/areteruhiro/Haiagaru-Morphe/`を登録します。直接JSONを指定する場合は次のURLを使用します。
 3. ソースを再読み込みしてVersionを確認し、対応する**未改変の元ChMate APK**へ`Haiagaru`と必要な任意Patchを適用します。更新時も元APKから生成し直します。
 
-Stable用：
+Stable用（通常はこちら）：
 
 ```text
 https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json
 ```
 
-Pre-release用：
+Pre-release用（開発版を試す場合のみ）：
 
 ```text
 https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle.json
 ```
 
-* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を対応Releaseから取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
+* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を[1.16.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0)から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
 * Managerごとの画面・対応状況は [Upstream README](https://github.com/areteruhiro/Haiagaru-Morphe) と [Morphe公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) を確認してください。URV Managerの案内だけで、後継UPMの動作まで確認済みとは扱いません。
 
 **インストール・データ移行・互換性の注意**
