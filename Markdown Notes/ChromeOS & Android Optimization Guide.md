@@ -1938,7 +1938,7 @@ ChromeOS追加設定: 設定 > ネットワーク > Wi-Fi > ルーター > ネ�
   * **各種アプリ**（アプリ内のバナー広告など）
 
 
-### おすすめ DNS リゾルバー
+### おすすめ DNS リゾルバ
 
 Android の「プライベート DNS」でプロバイダのホスト名を指定する方式は DNS-over-TLS（DoT / RFC 7858）を使用します。DoH の URL をそのまま入力する方式ではありません。（[Android Developers](https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setGlobalPrivateDnsModeSpecifiedHost(android.content.ComponentName,%20java.lang.String))）
 
