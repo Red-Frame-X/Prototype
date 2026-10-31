@@ -41,12 +41,12 @@
 
 ### titleとbodyの表記
 
-- 新しく作成するCommit messageとPull Requestのtitleおよびbodyは、原則として日本語で記述する。変更内容・目的・理由などの一般説明は、自然で簡潔な日本語にする。英語のみの定型メッセージをそのまま採用しない。
+- 新しく作成するCommit messageとPull Requestのtitleおよびbodyは、必ず日本語で記述する。変更内容・目的・理由などの一般説明は、自然で簡潔な日本語にする。英語のみの定型メッセージをそのまま採用しない。
 - 作業環境、使用ツール、通常のCommit、追加修正、競合解消、Revertなどの違いを理由に、この方針を省略しない。文章やコードの提案だけの場合も、提示するCommit message案に適用する。
 - IT業界で英語が一般的な技術用語・製品名・機能名・プロジェクト名・コード識別子は、正式または一般的な英語表記を優先する。
 - `AdGuard Browser Extension MV3`、`AdGuard Custom Rules`、`AdGuard DNS Custom Rules`、`uB-filter-by-kdroidwin (AdGuard Optimized)`、`UserScript`、`NG Word Regex for ChMate`、`Markdown Notes`は固定の正式表記として維持する。`GitHub Actions`、`Workflow`、`Commit`、`Pull Request`、`PR`、`Issue`、`Branch`、`Repository`、`README`、`CI`、`Lint`、`Test`、`Script`、`API`、`Version`、`AGLint`、`Markdownlint`、`GitHub`、`AdGuard`、`uBlock Origin`なども英語表記を優先する。
 - ファイル名、ディレクトリ名、コマンド、設定キー、Metadata key、URL、Branch名、Commit hashなどは原表記を維持する。
-- 「修正」「追加」「更新」「自動更新」「変更履歴」「生成処理」「構文検査」「回帰テスト」「設定」「説明」など、自然な日本語で表せる一般説明は日本語にする。技術用語が英語であることを、説明全体を英語で書く理由にしない。原則は「日本語による変更内容の説明 + 正式な英語の技術用語」とする。ただし、正式名称や変更内容の性質から英語のみのほうが明確かつ自然な場合は英語のCommit titleも許可する。ツールが英語を生成しやすいことだけを例外の理由にしない。
+- 「修正」「追加」「更新」「自動更新」「変更履歴」「生成処理」「構文検査」「回帰テスト」「設定」「説明」など、自然な日本語で表せる一般説明は日本語にする。技術用語が英語であることを、説明全体を英語で書く理由にしない。「日本語による変更内容の説明 + 正式な英語の技術用語」を必須とし、英語のみのCommit titleは許可しない。Chat / Work / Codexのいずれを経由した編集でも厳格に適用し、ツールの自動生成文も作成前に日本語へ修正する。
 - 表現を整えるために、変更内容や確認していない理由を作り足さない。
 
 適切な例：
@@ -60,12 +60,12 @@
 
 避ける例：`Update README.md`、`Fix workflow`、`Add filters`のように、変更内容を具体的な日本語で説明できるのに英語の定型文をそのまま使うこと。
 
-英語のほうが明確かつ自然な場合に許可する例：`Update Markdown Notes Version`、`Update uB-filter-by-kdroidwin (AdGuard Optimized)`、`Fix AGLint configuration`。
+技術用語を維持する例：`Markdown Notes のVersionを更新`、`uB-filter-by-kdroidwin (AdGuard Optimized) を更新`、`AGLint の設定を修正`。
 
 ### 作成・マージ前後の確認
 
 - Commitを作成する前に、実際に使用するtitleとbodyがこの方針に従っているか確認する。ツールが英語の文面を提案・自動生成した場合も、採用前に確認し、編集可能な一般説明を日本語にする。
-- Commit直前に、titleが日本語優先であること、技術用語を不自然に翻訳していないこと、正式表記を維持していること、変更内容が具体的かつ簡潔であること、`Fix` / `Update` / `Changes`だけの曖昧なtitleでないことを確認する。不適合なら作成前に修正する。
+- Commit直前に、titleの変更内容の説明が日本語であること、技術用語を不自然に翻訳していないこと、正式表記を維持していること、変更内容が具体的かつ簡潔であること、`Fix` / `Update` / `Changes`だけの曖昧なtitleでないことを確認する。不適合なら作成前に修正する。
 - Pull Requestのtitleとbodyも同様に確認する。
 - マージする場合は、選択したマージ方式で最終的に残るCommit messageを確認し、編集可能なtitleとbodyを日本語にする。Squash mergeでは、Pull Requestのtitleだけでなく、最終的なCommit messageのbodyも確認する。
 - 自分が作成したBranch内のCommitがmainに残る方式では、それらのCommit messageも確認する。ただし、既存履歴の書き換えに関する制限は守る。
