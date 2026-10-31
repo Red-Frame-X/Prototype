@@ -39,11 +39,22 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 > [!NOTE]
 > ルートの`dist/`にあるフィルタは自動生成物です。生成物を直接編集せず、元ルールまたは変換Scriptを修正して再生成します。
 
-[ChromeOS・Androidの最適化ガイド](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md)：ChromeOS・Androidで使うブラウザ拡張機能やアプリの選び方、AdGuard・DNSによるコンテンツブロック、プライバシー・セキュリティの設定をまとめた個人用のガイドです。ChatGPT・Codexの活用方法やプロンプト例、利用中のサービスで起きた不具合と対処の記録も掲載しています。
+### [ChromeOS・Androidの最適化ガイド](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md)
 
-[Android アプリ ReVanced・Morphe・UPM・Reseam（Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-revancedmorpheupmreseamandroid)：AndroidアプリにPatchを適用して機能や表示を調整する各プロジェクトと、適用に使うManagerの違いを説明しています。公式の入手先、対応APK・Patchの確認、導入・更新・バックアップ、不具合の調べ方をまとめています。旧URVからUPMへの移行、設定JSONとは別に保存する署名用Keystore、Runtime Pluginの要件、Morpheの動画再生設定も扱っています。
+- ChromeOS・Androidで使うブラウザ拡張機能やアプリの選び方、AdGuard・DNSによるコンテンツブロック、プライバシー・セキュリティの設定をまとめた個人用のガイドです。
+- ChatGPT・Codexの活用方法やプロンプト例、利用中のサービスで起きた不具合と対処の記録も掲載しています。
 
-[Android アプリ ChMate（ChromeOS・Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-chmatechromeosandroid)：掲示板アプリChMateの公式配布元と対応環境、板の登録、ログの保存・バックアップ、NG設定、操作・表示、プライバシー・広告について説明しています。関連ツールのIOMateとHaiagaru-Morpheは、ChMate本体と区別して用途・対応Version・導入方法を案内し、Haiagaru-Morpheの更新・データ移行・不具合の検証手順もまとめています。ChromeOSでの動作保証がない点も明記しています。
+### [Android アプリ ReVanced・Morphe・UPM・Reseam（Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-revancedmorpheupmreseamandroid)
+
+- AndroidアプリにPatchを適用して機能や表示を調整する各プロジェクトと、適用に使うManagerの違いを説明しています。
+- 公式の入手先、対応APK・Patchの確認、導入・更新・バックアップ、不具合の調べ方をまとめています。
+- 旧URVからUPMへの移行、設定JSONとは別に保存する署名用Keystore、Runtime Pluginの要件、Morpheの動画再生設定も扱っています。
+
+### [Android アプリ ChMate（ChromeOS・Android）](./Markdown%20Notes/ChromeOS%20%26%20Android%20Optimization%20Guide.md#android-アプリ-chmatechromeosandroid)
+
+- 掲示板アプリChMateの公式配布元と対応環境、板の登録、ログの保存・バックアップ、NG設定、操作・表示、プライバシー・広告について説明しています。
+- 関連ツールのIOMateとHaiagaru-Morpheは、ChMate本体と区別して用途・対応Version・導入方法を案内し、Haiagaru-Morpheの更新・データ移行・不具合の検証手順もまとめています。
+- ChromeOSでの動作保証がない点も明記しています。
 
 ## 編集・更新の原則
 
