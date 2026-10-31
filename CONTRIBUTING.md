@@ -1,13 +1,13 @@
 # Commit messageの運用
 
-Commit messageとPull Requestのtitleおよびbodyは、変更対象と内容が分かる簡潔で自然な日本語を原則とします。
+Commit messageとPull Requestのtitleおよびbodyは、変更対象と内容が分かる簡潔で自然な日本語を必須とします。
 ChatGPT Chat / Work / Codexでの必須方針と確認手順は [AGENTS.md](AGENTS.md) に従ってください。
 英語の技術用語・製品名・ファイル名・コード識別子は維持します。
 MV3対応のAdGuardブラウザ拡張機能は、本文・見出し・リンクの表示名を`AdGuard Browser Extension MV3`に統一します。公式原文の引用、URL、互換性に関わる識別子は保持します。
-変更内容は原則として日本語で説明します。ただし、正式名称や変更内容の性質から英語のみのほうが明確かつ自然な場合は英語のCommit titleも許可します。
-例：`Update Markdown Notes Version`、`Update uB-filter-by-kdroidwin (AdGuard Optimized)`、`Fix AGLint configuration`。
+Chat / Work / Codexを経由した編集のCommit titleとbodyは、必ず日本語で変更内容を説明します。英語のみのCommit titleは許可しません。
+例：`Markdown Notes のVersionを更新`、`uB-filter-by-kdroidwin (AdGuard Optimized) を更新`、`AGLint の設定を修正`。
 ツールが英語を生成しやすいことだけを理由に、英語の定型メッセージを採用しません。
-既存履歴を書き換えたり、Force Pushしたりして日本語化しません。
+既存履歴の書き換えやForce Pushによる日本語化は、ユーザーが明示的に許可した範囲に限ります。
 
 例：
 
