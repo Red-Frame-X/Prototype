@@ -2457,7 +2457,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 
 メーカー・機種名・Android Version・表示設定は、使用中の環境に応じて出力されます。上のPixel 10aの例をそのまま使わず、実際の出力を記録してください。末尾の `/Haiagaru x.xx.x` はPatch側の情報です。出力に含まれない場合は、適用したHaiagaruの実際のVersionを確認して追記します。
 
-出典：[ChMate公式・2021年の変更履歴（0.8.10.109：書き込み画面のメニューに「2chMate/…」を追加）](https://chmate.airfront.co.jp/history/2021/) / [コミュニティFAQ（本文長押しによる環境情報の挿入）](https://w.atwiki.jp/android2chbrowser/pages/46.html) / [Haiagaruコミュニティ（不具合報告時のPatch Version併記）](https://egg.5ch.io/test/read.cgi/android/1793113633/)
+出典：[ChMate公式・2021年の変更履歴（0.8.10.109：書き込み画面のメニューに「2chMate/…」を追加）](https://chmate.airfront.co.jp/history/2021/) / [コミュニティFAQ（本文長押しによる環境情報の挿入）](https://w.atwiki.jp/android2chbrowser/pages/46.html) / [Haiagaruコミュニティ（不具合報告時のPatch Version併記）](https://ff5ch.syoboi.jp/?q=Haiagaru)
 
 
 1. **準備・条件記録**：バックアップ後、未改変の242 dev APK（versionCode 512）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
