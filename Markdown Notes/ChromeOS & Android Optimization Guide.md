@@ -2315,7 +2315,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **配布元**：[Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate) / [公式サイト](https://chmate.airfront.co.jp/)。
 * **用途**：掲示板の閲覧・書き込み、NG設定、ログ保存などに対応するAndroidアプリです。
 
-**対応環境・配布版（2026年10月26日確認）**
+### 対応環境・配布版（2026年10月26日確認）
 
 * **対応Android**：[公式案内](https://chmate.airfront.co.jp/docs/supported-os/) はAndroid 6.0以上。6.0のサポートは2026年中に終了予定ですが、終了済みとは確認していません。
 * **ChromeOS**：Androidアプリ対応Chromebookでも動作保証はありません。タブレットモードやキーボード・マウス操作も、端末ごとの確認が必要です。
@@ -2323,7 +2323,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **開発版**：[Open testing・DeployGate](https://chmate.airfront.co.jp/docs/dev-version/) で配布。不安定な場合があり、両経路が常に同じVersionとは限りません。DeployGateの現行配布Versionは未確認です。
 * **変更履歴**：[2026年の最新掲載版](https://chmate.airfront.co.jp/history/2026/) は0.8.10.246(516)（10月19日）。各経路で入手できるVersionとは区別してください。239〜241の日付には年の不整合があります。
 
-**板の登録・リンク・読み書き**
+### 板の登録・リンク・読み書き
 
 * **板の登録**：Google Play版のBBSMENUは初期状態で空、dev版は5ch・まちBBSが設定済みです。Open testingの初期値は未確認です。
 * **設定手順**：「設定」>「掲示板」>「BBSMENU」に利用先URLを設定し「板一覧を取得/更新」。個別の板は「URLを指定して開く」でも登録できます（[公式FAQ](https://chmate.airfront.co.jp/docs/faq/)）。
@@ -2331,7 +2331,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **Android 12以降のリンク設定**：アプリ情報 >「デフォルトで開く」>「対応リンクを開く」>「リンクを追加」。端末に表示される対象を確認し、競合する他アプリの関連付けを解除します。
 * **読み書きできない場合**：掲示板側の規制・認証・障害も確認。書き込みボタンの長押しでブラウザを開けます。更新だけで規制が解除されるとは限りません。
 
-**保存・バックアップ**
+### 保存・バックアップ
 
 * **ログ保存先**：`/Android/data/jp.co.airfront.android.a2chMate/files/2chMate`。旧`/2chMate`からの移行機能は廃止済みです（[公式説明](https://chmate.airfront.co.jp/docs/storage/)）。
 * **削除・再インストール前**：アプリのバックアップ機能で保存し、復元用ファイルを確認してください。アプリ固有データはアンインストールで消えます。
@@ -2339,7 +2339,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **242以降のバックアップ**：認証情報を含めるオプションとOSバックアップに対応。OS側の設定が必要で、Googleアカウントへの保存・再インストール時の復元を伴います。認証情報を含むファイルの保存・共有先に注意してください。
 * **確認範囲**：全データの復元やChromeOSでの同一動作は未実機確認です。
 
-**NG設定・操作・表示**
+### NG設定・操作・表示
 
 * **NG機能**：NG Word・NG ID・NG Name・正規表現を利用できます。設定変更時は一致条件・除外条件・適用範囲を確認してください。
 * **遅い正規表現の対策**：先頭の不要な`.*`・`.+`・`[\s\S]*`や不要なキャプチャを避け、必要に応じて`(?:...)`を使います（[公式FAQ](https://chmate.airfront.co.jp/docs/faq/)）。
@@ -2349,7 +2349,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **テーマ変更**：[テーマ専用アップローダー](https://ux.getuploader.com/2chmate_theme/) を参照。244で一部の色指定が変更・廃止され、古いテーマの表示が変わる場合があります。
 * **アニメーション停止**：Homeやスレッドの右下︙ >「表示設定」>「リストをアニメーションする」をOFF。現在の全画面での配置・効果は未実機確認です。
 
-**プライバシー・広告**
+### プライバシー・広告
 
 * **情報取得**：広告SDKによる情報取得があります（[プライバシーポリシー](https://www.airfront.co.jp/products/2chMate/privacy.html)）。Google Playの「第三者との共有なし」は、情報収集や通信がないという意味ではありません。
 * **Google PlayのData safety**：開発者申告ではアプリ情報・パフォーマンスや端末ID等を収集する場合があり、転送中は暗号化。「データを削除できない」は端末内ログの削除可否を示すものではありません。
@@ -2359,17 +2359,26 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **掲示板側のレクタングル広告**：ChMate側では制御できません。掲示板運営者の有料プラン・サポートを確認してください。UPLIFTでの完全除去を保証する案内ではありません（[仕様変更のお知らせ](https://www.airfront.co.jp/pr20250116.html)）。
 * **Haiagaru-Morpheの広告除去**：対応APKへのPatchで広告・余白を除去する第三者実装です。公式機能や全環境での完全除去保証ではありません。
 
-**代替ブラウザ**
+### 代替ブラウザ
 
 * [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid)
 
-**ChMateに関連するローカルプロキシアプリ・Morphe patch**
+ChromeOS上でのChMateの完全な動作は保証されていません。（[動作環境](https://chmate.airfront.co.jp/docs/supported-os/#%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6)）
+* [Android アプリ ChMate 不具合修正済みメモ](https://writening.net/page?DW58re)
+
+
+### 参考サイト
+* [5chブラウザ「ChMate」質問スレ](https://ff5ch.syoboi.jp/?q=5ch%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%80%8CChMate%E3%80%8D%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC)
+* [5chどんぐり非公式まとめwiki](https://donguri.wikiru.jp/)
+
+---
+
+## IOMate（ChMate用ローカルプロキシ）
+
 * [IOMate](https://github.com/kitadai31/IOMate) / [ChMateのおすすめバージョンランキング](https://github.com/kitadai31/IOMate#chmate%E3%81%AE%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0)
   * 5ch.io対応前の古いChMateで5ch.ioに読み書きするためのローカルプロキシアプリです。
-* [Haiagaru-Morphe：ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.242 dev用Patch](https://github.com/areteruhiro/Haiagaru-Morphe)
-  * ChMate APKに広告除去や追加設定を組み込むMorphe Patchです。「191-242」は連続したVersion範囲の意味ではありません。Xposed向けの [Haiagaru](https://github.com/areteruhiro/Haiagaru) とは導入方式が異なります。
 
-**IOMateの用途・対応環境**
+### IOMateの用途・対応環境
 
 * **用途**：5ch.io対応前のChMate（0.8.10.191 / 0.8.10.226など）で、5ch.ioを閲覧・投稿するための第三者製ローカルプロキシです。旧版の操作・表示を使い続けたい場合の選択肢です。
 * **仕組み**：古いChMateは5ch.ioを外部板としてHTTPで開くため、HTTPSへのリダイレクトに対応できずエラーになります。IOMateが代わりにHTTPSで接続し、必要に応じて新しい書き込み仕様への変換も行います。
@@ -2377,14 +2386,14 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **対応環境**：IOMateはAndroid 5.0以上。組み合わせるChMate側の対応Androidも満たす必要があります。開発者は主にAndroid 15のGoogle Pixel 3で開発しており、古い環境での確認は限定的です。ChromeOSでの動作は本ガイドでは未実機確認です。
 * **追加機能**：`kako.5ch.io`の過去ログのHTML→DAT変換、指定ドメインへのHTTPS接続、エッヂの記者ID付きスレ一覧の取得、バックアップZIPの編集などに対応します。取得可否は掲示板側の状態にも依存します。
 
-**IOMateで利用するChMateのVersion**
+### IOMateで利用するChMateのVersion
 
 * **開発者の推奨順位**：公式READMEでは0.8.10.191、0.8.10.192、0.8.10.226の順です。操作・表示の変更に対する開発者の評価であり、ChMate公式の推奨や本ガイドでの動作保証ではありません。
 * **0.8.10.191**：[ChMate公式の変更履歴](https://chmate.airfront.co.jp/history/2024/#0810191459-2024-08-29)では2024年8月29日公開。IOMate開発者が最も推奨する旧版で、5ch.ioが外部板扱いになるため、スレ上部の広告枠が表示されないと説明されています。全画面・全広告の除去を意味しません。
 * **0.8.10.192**：公式履歴ではスレ読み込み時などのクラッシュ修正があります。一方、IOMateのREADMEでは、タブレットモードと広告枠透明化テーマの併用でプロパティ画面も透明になる問題が挙げられています。
 * **0.8.10.226**：IOMate開発者が、227での変更前の候補として挙げているVersionです。191と同じ表示・設定・必要Androidとは限りません。
 
-**IOMateの導入・旧版への移行**
+### IOMateの導入・旧版への移行
 
 * **配布元**：[IOMate Releases](https://github.com/kitadai31/IOMate/releases)からAPKを取得してインストールします。ChMate旧版のAPKは別途必要です。
 * **プロキシ設定**：IOMateで「プロキシサーバー起動」を押し、ChMateの「設定」>「実験的」>「Proxyを使用する」をONにして、「Proxy」に`localhost:8080`を指定します。IOMate側でポート番号を変更した場合は、ChMate側も同じ番号に合わせます。
@@ -2394,7 +2403,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **すでに旧版を利用中の場合**：引き継ぎたい5ch.netのログがあれば、バックアップ→IOMateで変換→同じChMateへ復元します。この場合はアンインストールやデータ削除は不要です。対象ログがない場合や、過去ログを読み取り専用で残すだけなら変換は不要です。
 * **常駐・自動起動**：利用中はIOMateを起動しておく必要があります。必要に応じて端末起動時の自動実行を設定します。利用をやめる場合はChMate側の「Proxyを使用する」もOFFにします。
 
-**IOMateの制約・不具合の切り分け**
+### IOMateの制約・不具合の切り分け
 
 * **全板スレタイ検索**：古いChMateは検索結果の5ch.ioに対応しておらず、検索通信もプロキシを経由しないため、IOMateでは対処できません。Haiagaru-Morphe側の追加検索機能とは区別してください。
 * **投稿回線の指定**：プロキシ利用中はChMateの「モバイルネットワークを使用」による回線指定が効きません。IOMate側のモバイル回線での書き込み機能はREADMEでは未実装です。通信中の回線での投稿可否や掲示板側の規制は別途確認してください。
@@ -2406,7 +2415,19 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 出典：[IOMate公式README（導入方法・既知の問題・機能・動作の仕組み・推奨Version）](https://github.com/kitadai31/IOMate#readme) / [ChMate公式・2024年の変更履歴](https://chmate.airfront.co.jp/history/2024/)。
 
-**Haiagaru-Morpheの配布状況・対応Version**
+### 参考サイト
+
+* [5ch ChMate用ローカルプロキシ「IOMate」スレ](https://ff5ch.syoboi.jp/?q=IOMate)
+
+---
+
+## Haiagaru-Morphe（ChMate用Morphe Patch）
+
+* [Haiagaru-Morphe：ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.242 dev用Patch](https://github.com/areteruhiro/Haiagaru-Morphe)
+  * ChMate APKに広告除去や追加設定を組み込むMorphe Patchです。「191-242」は連続したVersion範囲の意味ではありません。Xposed向けの [Haiagaru](https://github.com/areteruhiro/Haiagaru) とは導入方式が異なります。
+
+
+### Haiagaru-Morpheの配布状況・対応Version
 
 * **Stable**：[1.16.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0)。1.15.0以降の変更をまとめた正式版です。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.16.0.mpp`。
 * **Pre-release**：通常の導入・更新はStableを中心に確認します。開発版を試す場合のみ `dev/patches-bundle.json` を使用し、その時点のVersion・変更内容を照合してください。
@@ -2415,7 +2436,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 対応宣言：[1.16.0](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.16.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)。対応宣言は端末ごとの動作保証ではありません。
 
-**主な機能とVersionによる違い**
+### 主な機能とVersionによる違い
 
 * **広告除去**：広告と余白を非表示にします。「広告だけの超軽量構成」は通常の`Haiagaru`を外す別構成で、追加検索・設定・動画機能を含みません。通常版の広告用プリセットとも異なります。
 * **取得・検索**：DAT落ちスレの取得経路設定、5ch.io・Talkの互換処理、エッヂの過去ログ検索・専用ビューア・記者ID表示に対応します。取得先のログやサービス側の仕様に依存します。
@@ -2426,7 +2447,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 出典：[README](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/README.md) / [1.12.2 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.12.2) / [ChMate+互換機能](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/docs/chmate-plus-compat.md)。
 
-**正式版1.15.0までの主な追加・修正**
+### 正式版1.15.0までの主な追加・修正
 
 * **1.12.2**：復帰時の広告枠再表示対策、検索・動画操作・タブ復帰・バックアップ世代管理を改善。
 * **1.13.0**：板別Cookie管理、認証・投稿確認、タブ操作を改善。動画専用ビューアに標準動作へ戻す設定とスレ全体のメディア移動を追加。
@@ -2436,7 +2457,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 出典：[1.15.0時点のCHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.15.0/CHANGELOG.md) / [1.15.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.15.0)。
 
-**正式版1.16.0の主な追加・修正**
+### 正式版1.16.0の主な追加・修正
 
 * **検索・表示**：ID・ワッチョイ検索の日付指定、Kyodemoへの条件引き継ぎ、スレ内検索のAND絞り込み、242のHOME複数選択ボタンの下部表示（初期OFF）を追加。エッヂ過去ログ検索の開始日・終了日はカレンダーから選択・解除できます。取得済みスレ検索の日時順は「全板混合」と明記され、対象の全板を作成日時でまとめて並べます。
 * **設定画面・X表示**：設定トップを検索欄・設定共有メニュー・カテゴリカードの構成へ変更。X投稿の日時表示を日本時間（JST）へ変更しました。
@@ -2447,7 +2468,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **191の復元修正**：正常なjournalだけを理由にDB取り込みを拒否する問題へ対処。補助ファイルをSQLiteで回復・確定し、元のDBを退避してから切り替えます。ただし報告されたZIPそのものを使った復元は未確認です。
 * **処理の最適化**：NG判定、GIF完成時の再描画、動画サムネイル取得、検索画面の走査、Patch適用時の拡張DEX読込・未読数補正を最適化。開発元のPCでの191同一構成比較では適用時間が約22%短縮しましたが、スマホでの所要時間は環境によって異なります。
 
-**正式版1.16.0でも開発中の機能・確認範囲**
+### 正式版1.16.0でも開発中の機能・確認範囲
 
 * **オンライン共有NG（開発中）**：初回同意後、既存NGと保存時の追加・変更・削除を外部送信し、GASで審査された条件を直接受信します。60秒ごとの定期確認は廃止されました。有効化前に送信内容・同意画面を確認してください。
 * **共有NGの条件**：必要な報告数・掲示板の区分・種類・個別除外を設定できます。「フィルターの強さ」は廃止。NGワードの送信対象は空白を除いて5文字以上で、英字だけの条件は除外します。ローカルNGの登録は制限しません。
@@ -2457,7 +2478,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 出典：[1.16.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0) / [1.16.0時点のCHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.16.0/CHANGELOG.md)。
 
-**導入・更新方法**
+### 導入・更新方法
 
 1. ChMate標準のバックアップ機能で設定・履歴・必要なログを保存します。
 2. Morpheのパッチソースに`https://github.com/areteruhiro/Haiagaru-Morphe/`を登録します。直接JSONを指定する場合は次のURLを使用します。
@@ -2478,7 +2499,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 * 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を[1.16.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.16.0)から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
 * Managerごとの画面・対応状況は [Upstream README](https://github.com/areteruhiro/Haiagaru-Morphe) と [Morphe公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) を確認してください。URV Managerの案内だけで、後継UPMの動作まで確認済みとは扱いません。
 
-**インストール・データ移行・互換性の注意**
+### インストール・データ移行・互換性の注意
 
 * **署名・共存**：APKは再署名されます。更新でデータを保持するにはPackage nameと署名鍵の継続が必要です。Package name変更は初期ON（`jp.co.airfront.android.a2chMate.haiagaru`・アプリ名`Haiagaru`）で、元ChMateと共存できますが、データは自動共有されません。
 * **versionCode**：初期値は`2100000000`。同じPackage name・署名鍵でも、低いversionCodeへの上書きやVersion間のデータ互換性は保証されません。
@@ -2486,7 +2507,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 * **削除前の確認**：元ChMateのアンインストール・データ削除は、バックアップと移行結果を確認してから行ってください。
 * **対応・確認範囲**：ChMate更新にはPatch側の追従が必要です。本ガイドでは実機Testを行っておらず、ChromeOSでの動作保証も確認できません。
 
-**Haiagaru-Morpheの動作検証・不具合報告（固定環境）**
+### Haiagaru-Morpheの動作検証・不具合報告（固定環境）
 
 検証は次の**242 dev**で行います。以下は検証手順であり、実機確認済み・動作保証を意味しません。
 
@@ -2496,7 +2517,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 
 `x.xx.x`は適用したHaiagaruのVersionに置き換えます。環境記録用であり、User-Agentを書き換える指示ではありません。
 
-**端末・Version情報の出力方法（0.8.10.242 dev）**
+#### 端末・Version情報の出力方法（0.8.10.242 dev）
 
 1. スレッドを開き、書き込み画面を表示します。
 2. 書き込み画面のメニューから「2chMate/…」（Version・端末情報の項目）を選び、本文へ挿入します。本文欄を長押しして同項目を選ぶ方法もあります。長押しで表示されない場合は、書き込み画面のメニューを使用します。
@@ -2506,6 +2527,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 
 出典：[ChMate公式・2021年の変更履歴（0.8.10.109：書き込み画面のメニューに「2chMate/…」を追加）](https://chmate.airfront.co.jp/history/2021/) / [コミュニティFAQ（本文長押しによる環境情報の挿入）](https://w.atwiki.jp/android2chbrowser/pages/46.html) / [Haiagaruコミュニティ（不具合報告時のPatch Version併記）](https://ff5ch.syoboi.jp/?q=Haiagaru)
 
+#### 検証・切り分け・報告の手順
 
 1. **準備・条件記録**：バックアップ後、未改変の242 dev APK（versionCode 512）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
 2. **基本操作**：起動、板・スレ更新、本文取得、画像表示、リンク起動、広告・余白を確認します。バックグラウンド・画面消灯からの復帰、再起動後も試します。
@@ -2513,7 +2535,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変の242 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
 5. **報告**：[既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues)・[関連コミュニティ](https://ff5ch.syoboi.jp/?q=Haiagaru)を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
 
-**不具合報告用テンプレート**
+#### 不具合報告用テンプレート
 
 ```text
 概要：
@@ -2538,14 +2560,9 @@ Patch・オプション・Package name：
 関連Issue・コミュニティ投稿URL：
 ```
 
-ChromeOS上でのChMateの完全な動作は保証されていません。（[動作環境](https://chmate.airfront.co.jp/docs/supported-os/#%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6)）
-* [Android アプリ ChMate 不具合修正済みメモ](https://writening.net/page?DW58re)
+### 参考サイト
 
-**参考サイト**
-* [5chブラウザ「ChMate」質問スレ](https://ff5ch.syoboi.jp/?q=5ch%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%80%8CChMate%E3%80%8D%E8%B3%AA%E5%95%8F%E3%82%B9%E3%83%AC)
-* [5ch ChMate用ローカルプロキシ「IOMate」スレ](https://ff5ch.syoboi.jp/?q=IOMate)
 * [5ch ChMateモジュールスレ](https://ff5ch.syoboi.jp/?q=ChMate%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%AC)
-* [5chどんぐり非公式まとめwiki](https://donguri.wikiru.jp/)
 
 ---
 
