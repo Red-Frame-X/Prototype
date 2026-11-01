@@ -2053,7 +2053,7 @@ AndroidアプリにPatchを適用して機能や表示を調整するプロジ�
 
 **略称・ツール**
 * **[ReVanced 公式](https://revanced.app/)** / [GitHub](https://github.com/revanced)
-* **RVX**: inotia00氏版（[※開発終了 Issues #3334](https://github.com/inotia00/ReVanced_Extended/issues/3334)）
+* **RVX**：inotia00氏版（[※開発終了 Issues #3334](https://github.com/inotia00/ReVanced_Extended/issues/3334)）
 * **[Morphe 公式](https://morphe.software/)** / [GitHub](https://github.com/MorpheApp) （RVX開発陣も合流した新プロジェクト）
   * [Morphe Community Patches](https://morphe-patches.software/) （コミュニティが作成したパッチバンドル）
 * **[Reseam 公式](https://reseam.app/)** / [GitHub mirror](https://github.com/Reseam) / [開発元（Forgejo）](https://git.reseam.app/reseam) （元ReVanced開発者による独立プロジェクト）
