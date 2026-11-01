@@ -2300,7 +2300,7 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 
 * **𝕏 / Twitter**：広告・おすすめ項目の非表示、動画・GIFのDownload、共有リンクの追跡パラメータ除去、Navigation Bar・Side Barの調整、Font・Themeの変更などに対応します。
 * **Instagram**：広告・分析通信の抑制、画像・動画・StoriesのDownload、Navigation Barの調整、外部ブラウザでのリンク表示などに対応します。Reelsなどの利用を一定時間制限するFocus Lockや、受信箱を生体認証・画面ロックで保護するInbox lockもあります。
-* **対応Version**：2026年11月1日の確認時点では、最新の安定版は [v3.10.0](https://github.com/crimera/piko/releases/tag/v3.10.0) です。同版の [Patch一覧](https://github.com/crimera/piko/blob/v3.10.0/README.md#%EF%B8%8F-patch-details) は𝕏 / Twitter `12.19.1-release.0`、Instagram `447.0.0.55.81`を掲載しています。Patchは計137件（Twitter 75件・Instagram 62件）で、機能・対応Versionは更新により変わります。
+* **対応Version**：安定版 [v3.10.0](https://github.com/crimera/piko/releases/tag/v3.10.0) の[Patch一覧](https://github.com/crimera/piko/blob/v3.10.0/README.md#%EF%B8%8F-patch-details)には、𝕏 / Twitter `12.19.1-release.0`、Instagram `447.0.0.55.81` が掲載されています。Patchは計137件（Twitter 75件・Instagram 62件）で、機能・対応Versionは更新により変わります。
 
 **Morphe Managerでの導入**
 
