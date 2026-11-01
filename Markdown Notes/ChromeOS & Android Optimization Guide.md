@@ -2616,7 +2616,7 @@ Patch・オプション・Package name：
 
 ### 参考サイト
 
-* [5ch ChMateモジュールスレ](https://ff5ch.syoboi.jp/?q=ChMate%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%AC)
+* [ChMate用Morpheパッチ「Haiagaru」スレ](https://ff5ch.syoboi.jp/?q=ChMate%E7%94%A8Morphe%E3%83%91%E3%83%83%E3%83%81%E3%80%8CHaiagaru%E3%80%8D)
 
 ---
 
