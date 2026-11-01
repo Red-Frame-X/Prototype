@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611012000 |
+| **Version** | 202611012259 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -2458,12 +2458,12 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 ### Haiagaru-Morpheの配布状況・対応Version
 
-* **Stable**：[1.17.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.17.0)。検索・自動NG設定・IDのURL誤認・投稿時の自動入力を改善した正式版です。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.17.0.mpp`。
+* **Stable（通常の導入・更新はこちら）**：[1.18.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0)。最新安定版です。下部フィルターパネル、191の通信、前スレ取得、検索・ビューア・設定画面を改善しています。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.18.0.mpp`。
 * **Pre-release**：通常の導入・更新はStableを中心に確認します。開発版を試す場合のみ `dev/patches-bundle.json` を使用し、その時点のVersion・変更内容を照合してください。
 * **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。連続したVersion範囲ではなく、241 / 243 devなどは対象外です。
 * **導入時の確認**：[Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases)、配布JSONの `version`・`download_url`、対象tagの対応宣言を照合してください。README冒頭やVersion別JSONには古い案内が残る場合があります。任意Patchは個別に対応対象を確認します。
 
-対応宣言：[1.17.0](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.17.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)。対応宣言は端末ごとの動作保証ではありません。
+対応宣言：[1.18.0](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.18.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)。対応宣言は端末ごとの動作保証ではありません。
 
 ### 主な機能とVersionによる違い
 
@@ -2475,6 +2475,19 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 * **任意Patch**：Package name・アプリ名・アイコン・versionCodeの変更、Crash log保存、動画専用ビューア、画像取得VPNなど。Crash logは`Download/Haiagaru/`に保存されます（初期ON）。
 
 出典：[README](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/README.md) / [1.12.2 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.12.2) / [ChMate+互換機能](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/docs/chmate-plus-compat.md)。
+
+### 最新安定版1.18.0の主な追加・修正
+
+* **下部フィルターパネル**：常時表示・ポップアップのどちらでも、高さ調整つまみを上下にドラッグして高さを変更・保存できます。つまみは設定で非表示にでき、小さくしたパネル内はスクロールできます。
+* **191の通信**：「接続を再利用しない」で板・スレのGETごとに接続プールを分離し、古い接続の再利用を防ぎます。代替IPの試行開始間隔は250msから50msへ短縮。通信全体の上限の初期値は60秒で、保存済みの設定は維持します。191向けの対策であり、実回線での巡回時間は板・回線・DNSなどに依存します。
+* **前スレ・過去ログ取得**：5chの前スレリンクは、作成から90日未満でも自動過去ログ取得の対象になります。古いHTTPリンクのHTTPS化と、アーカイブ取得時の308転送に対応。「DATの自動取得」がOFFの場合は取得しません。サービス側に保存されていない過去ログの取得は保証されません。
+* **スレ内検索**：ID・ワッチョイ・名前は個別にON/OFFを設定でき、**1.18.0では初期OFF**です。1.17.0の初期ONという案内と区別してください。ヘッダーの曜日は検索対象に含めません。
+* **ビューア・画像**：Patch適用時に「必死の専用ビューア」をOFFにすると、IDメニュー・保存タブなどから開く場合もChMate標準ビューアへ戻るよう修正。242では全スレメディア移動と標準画像ビューアの上下「戻る」操作の競合を修正しました。Imgurアルバムのサムネイルは本文のURL順に表示します。
+* **設定・巡回・投稿操作**：設定カテゴリから戻る際のスクロール位置を保持し、設定UIと投稿者の強調色見本を修正。巡回エラーの板URL履歴と「既読スレを上に」の設定入口を191 / 226 / 242へ揃えました。板一覧の失敗応答や、226 / 242のキーボード表示中の投稿メニューも修正しています。
+* **共有NG（開発中）**：正規表現の受信に対応。GAS側は基本ルールで自動承認し、審査済み履歴を種類別シートに保存します。ID・ワッチョイの履歴は期限で削除しません。不正な正規表現は、その条件だけ受信時に適用しません。共有NG / F9対策とエッヂの公開レベルNGは、正式版に収録されていても引き続き開発中です。
+* **開発元の確認範囲**：191 / 226 / 242の検証用エミュレータで起動・スレ本文・画像表示・設定と変更箇所を確認。191の接続再利用対策は古い接続が残るローカルサーバー、前スレ取得はリンクの振り分けとローカル転送で検証しています。Version固有の対策は対象版に限定され、本ガイドでの実機確認とは区別してください。
+
+出典：[1.18.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) / [Stable配布JSON](https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json)。以下のVersion別記録は過去の変更履歴です。現在の導入・更新は1.18.0を基準にしてください。
 
 ### 正式版1.15.0までの主な追加・修正
 
@@ -2510,7 +2523,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 ### 正式版1.17.0の主な追加・修正
 
 * **取得済みスレ・アーカイブ検索**：「全レス混合：レス投稿日時の新しい順／古い順」を追加。板やスレをまたいでレス単位で並べ、スレ名と元レスへのリンクを保持します。従来のスレ作成日時順も選べます。
-* **スレ内検索**：ID・ワッチョイ・名前を検索対象に含めるか、個別に設定できます（初期ON）。本文は常に検索対象で、AND検索にも反映します。
+* **スレ内検索**：ID・ワッチョイ・名前を検索対象に含めるか、個別に設定できます（1.17.0時点では初期ON。1.18.0では初期OFFへ変更）。本文は常に検索対象で、AND検索にも反映します。
 * **自動NGの除外操作**：レスのツールバー設定に「自動NGの除外IDに追加」を追加。ワッチョイ下4桁のNG登録と同様に表示・非表示を設定でき、IDメニューも設定に従います。
 * **IDのURL誤認対策**：`ID:`の後に空白・タブがある表記や全角コロン付き表記を、Webサイトのカード表示対象から除外する処理を強化。通常のURLと省略URLの検出は維持します。
 * **投稿時の自動入力**：レス投稿・スレ立てのメール欄を、メールアドレスの自動入力対象から除外。手入力とsageの操作は維持します。自動入力候補の表示はAndroidの自動入力サービスやキーボードによって異なります。
@@ -2537,7 +2550,7 @@ Pre-release用（開発版を試す場合のみ）：
 https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle.json
 ```
 
-* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.17.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.17.0) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
+* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.18.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
 * Managerごとの画面・対応状況は [Upstream README](https://github.com/areteruhiro/Haiagaru-Morphe) と [Morphe公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) を確認してください。URV Managerの案内だけで、後継UPMの動作まで確認済みとは扱いません。
 
 ### インストール・データ移行・互換性の注意
