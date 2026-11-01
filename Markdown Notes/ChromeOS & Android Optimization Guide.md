@@ -2292,7 +2292,7 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 
 * **開発チーム**：crimera氏を中心に開発されるPikoは、𝕏 / Twitter・Instagram向けのPatchプロジェクトです。Morphe Manager本体とは別に追加するPatch sourceで、v3.0.0以降はMorpheを利用します（[README](https://github.com/crimera/piko/blob/main/README.md)）。
 * **開発者GitHub**：[crimera](https://github.com/crimera)
-* **Repository・更新履歴**： [crimera/piko](https://github.com/crimera/piko) / [Release](https://github.com/crimera/piko/releases) / [Issues](https://github.com/crimera/piko/issues)
+* **Repository・更新履歴**：[crimera/piko](https://github.com/crimera/piko) / [Release](https://github.com/crimera/piko/releases) / [Issues](https://github.com/crimera/piko/issues)
 * **告知・翻訳への参加**：[Telegram](https://t.me/pikopatches) / [Crowdin](https://crowdin.com/project/piko)
 * **License**：GNU GPLv3以降の自由・オープンソースソフトウェアです（[Licenseの説明](https://github.com/crimera/piko#license)）。
 
