@@ -2057,7 +2057,7 @@ AndroidアプリにPatchを適用して機能や表示を調整するプロジ�
 * **[Morphe 公式](https://morphe.software/)** / [GitHub](https://github.com/MorpheApp) （RVX開発陣も合流した新プロジェクト）
   * [Morphe Community Patches](https://morphe-patches.software/) （コミュニティが作成したパッチバンドル）
 * **[Reseam 公式](https://reseam.app/)** / [GitHub mirror](https://github.com/Reseam) / [開発元（Forgejo）](https://git.reseam.app/reseam) （元ReVanced開発者による独立プロジェクト）
-* **[UPM 公式](https://jmancentral.com/)** / [Repository](https://github.com/Jman-Github/Universal-Patch-Manager) / [開発者GitHub](https://github.com/Jman-Github) （旧URV。ReVanced・Morphe・ReseamのBundleを扱うManager）
+* **[UPM 公式](https://jmancentral.com/)** / [開発者GitHub](https://github.com/Jman-Github) / [Repository](https://github.com/Jman-Github/Universal-Patch-Manager) （旧URV。ReVanced・Morphe・ReseamのBundleを扱うManager）
 
 ### ReVanced：公式PatchとManager
 
@@ -2286,11 +2286,40 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 
 * [YouTube 利用規約](https://www.youtube.com/t/terms) / [ヘルプページ](https://support.google.com/youtube/answer/14129599?hl=ja&ref_topic=15848873&sjid=5246634321435162902-NC) / [GIGAZINE記事](https://gigazine.net/news/20240416-youtube-ad-blocker-crackdown-third-party-apps/)
 
-**𝕏/Twitter Morphe Piko**
+### Piko：𝕏 / Twitter・Instagram向けMorphe Patches
 
-* ~Modアプリ検知の強化によりログインが困難になっています。~（[Issues #714](https://github.com/crimera/piko/issues/714)）
-  * 現在のMorphe Pikoでは別の仕組みに移行した結果、現在対応している𝕏ではログインできるようになりました。  
-* パッチ・ビルド済みapk： [crimera (Piko)](https://github.com/crimera/piko) / [crimera (Piko New 𝕏)](https://github.com/crimera/piko-newx) / [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)
+**開発・配布先**
+
+* **開発チーム**：crimera氏を中心に開発されるPikoは、𝕏 / Twitter・Instagram向けのPatchプロジェクトです。Morphe Manager本体とは別に追加するPatch sourceで、v3.0.0以降はMorpheを利用します（[README](https://github.com/crimera/piko/blob/main/README.md)）。
+* **開発者GitHub**： [crimera](https://github.com/crimera)
+* **Repository・更新履歴**： [crimera/piko](https://github.com/crimera/piko) / [Release](https://github.com/crimera/piko/releases) / [Issues](https://github.com/crimera/piko/issues)
+* **告知・翻訳への参加**： [Telegram](https://t.me/pikopatches) / [Crowdin](https://crowdin.com/project/piko)
+* **License**：GNU GPLv3以降の自由・オープンソースソフトウェアです（[Licenseの説明](https://github.com/crimera/piko#license)）。
+
+**対象アプリ・主な機能**
+
+* **𝕏 / Twitter**：広告・おすすめ項目の非表示、動画・GIFのDownload、共有リンクの追跡パラメータ除去、Navigation Bar・Side Barの調整、Font・Themeの変更などに対応します。
+* **Instagram**：広告・分析通信の抑制、画像・動画・StoriesのDownload、Navigation Barの調整、外部ブラウザでのリンク表示などに対応します。Reelsなどの利用を一定時間制限するFocus Lockや、受信箱を生体認証・画面ロックで保護するInbox lockもあります。
+* **対応Version**：2026年11月1日の確認時点では、最新の安定版は [v3.10.0](https://github.com/crimera/piko/releases/tag/v3.10.0) です。同版の [Patch一覧](https://github.com/crimera/piko/blob/v3.10.0/README.md#%EF%B8%8F-patch-details) は𝕏 / Twitter `12.19.1-release.0`、Instagram `447.0.0.55.81`を掲載しています。Patchは計137件（Twitter 75件・Instagram 62件）で、機能・対応Versionは更新により変わります。
+
+**Morphe Managerでの導入**
+
+* [Add Piko to Morphe](https://morphe.software/add-source?github=crimera/piko) からPikoをPatch sourceに追加します。手動で登録する場合は、前述のMorpheのsource管理手順で `crimera/piko` を指定します。
+* Managerで𝕏またはInstagramを選び、対応Versionの未改変APKMをAPKMirrorから用意します。PikoのREADMEは、APKMを事前に結合・改変せず、Morpheで直接Patchするよう案内しています。
+* 必要なPatchを選び、処理の完了後に生成APKをインストールします。利用できる機能やOptionは、選んだPatchと対象アプリのVersionで確認します。
+* 更新時はPikoのReleaseと対応Versionを確認し、対応する元APKMから再Patchします。署名鍵などの保存は、前述のMorpheのバックアップ手順を参照してください。
+
+**ログイン・X-Shimの注意**
+
+* 過去にはModアプリ検知によるログイン問題が報告されていました（[Issue #714](https://github.com/crimera/piko/issues/714)）。現在の対応状況は、当時の報告と分けて確認します。
+* 現行READMEでは、𝕏 `12.5.0-release.0`以降はPikoにX-Shimを併用する必要がなく、𝕏へのログインとXChatが動作すると案内しています（[X-Shimの説明](https://github.com/crimera/piko#x-shim)）。
+* 旧𝕏 `11.88～12.4`向けには、inotia00氏の [X-Shim](https://gitlab.com/inotia00/x-shim) を併用する手順がありました。これは旧Version用の情報で、現在の導入手順にそのまま追加しません。
+* 問題が起きた場合は、Manager・Piko・対象アプリのVersion、選択Patch、ログを確認し、Piko Issuesの既存報告を調べます。
+
+**NewX・関連する配布先**
+
+* **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)**：Pikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開するRepositoryです。通常のPikoとは配布先を分けており、利用するBundle側の説明を確認します（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
+* **関連するビルド済みAPK・プロジェクト**： [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
 
 ### Morpheと併用すると便利なAndroidアプリ
 
