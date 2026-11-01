@@ -2061,7 +2061,7 @@ AndroidアプリにPatchを適用して機能や表示を調整するプロジ�
 
 ### ReVanced：公式PatchとManager
 
-**公式サイト・開発元**： [revanced.app](https://revanced.app/) / [GitHub Organization](https://github.com/ReVanced) / [ReVanced Manager](https://github.com/ReVanced/revanced-manager) / [Release](https://github.com/ReVanced/revanced-manager/releases/latest)
+**公式サイト・開発元**：[revanced.app](https://revanced.app/) / [GitHub Organization](https://github.com/ReVanced) / [ReVanced Manager](https://github.com/ReVanced/revanced-manager) / [Release](https://github.com/ReVanced/revanced-manager/releases/latest)
 
 ReVancedはAndroidアプリにPatchを適用するプロジェクトです。Managerは操作画面、Patcherは改変処理、Patchは変更内容を担当します。ManagerをインストールしただけでYouTubeなどが改変されるわけではありません。公式サイトはVancedの終了を出発点としていますが、対象はYouTubeだけに限定されません（[公式説明](https://revanced.app/) / [Manager README](https://github.com/ReVanced/revanced-manager/blob/main/README.md)）。
 
@@ -2103,7 +2103,7 @@ Manager・Patcher・CLIのREADMEはGPLv3を掲げています。追加sourceや�
 
 ### Morphe：Simple / Expert modeと追加Patch source
 
-**公式サイト・開発元**： [morphe.software](https://morphe.software/) / [GitHub Organization](https://github.com/MorpheApp) / [Morphe Manager](https://github.com/MorpheApp/morphe-manager) / [Release](https://github.com/MorpheApp/morphe-manager/releases/latest)
+**公式サイト・開発元**：[morphe.software](https://morphe.software/) / [GitHub Organization](https://github.com/MorpheApp) / [Morphe Manager](https://github.com/MorpheApp/morphe-manager) / [Release](https://github.com/MorpheApp/morphe-manager/releases/latest)
 
 MorpheはReVancedとは独立したプロジェクトです。公式FAQは元ReVanced開発者・貢献者による設立を説明し、Manager READMEはReVanced ManagerとURVを基盤とすることを明記しています。標準の対象はYouTube・YouTube Music・Redditで、追加sourceの対応アプリとは区別します（[FAQ](https://morphe.software/faq) / [README](https://github.com/MorpheApp/morphe-manager/blob/main/README.md)）。
 
@@ -2144,9 +2144,9 @@ Manager・Patch source・改変後のアプリを分けて更新します。sour
 
 ### UPM：複数のPatch系統を扱うManager（旧URV）
 
-**開発者サイト・Repository**： [Jman Central](https://jmancentral.com/) / [Universal Patch Manager](https://github.com/Jman-Github/Universal-Patch-Manager) / [Release](https://github.com/Jman-Github/Universal-Patch-Manager/releases) / [Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)
+**開発者サイト・Repository**：[Jman Central](https://jmancentral.com/) / [Universal Patch Manager](https://github.com/Jman-Github/Universal-Patch-Manager) / [Release](https://github.com/Jman-Github/Universal-Patch-Manager/releases) / [Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)
 
-旧配布先の記録： [Universal ReVanced Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager) / [Release](https://github.com/Jman-Github/Universal-ReVanced-Manager/releases)。旧Repository URLは現行Repositoryへ転送され、URVのRelease履歴も引き継がれています。旧版を調べる場合は [URV v1.10.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v1.10.0) のようにtagを固定します。
+旧配布先の記録：[Universal ReVanced Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager) / [Release](https://github.com/Jman-Github/Universal-ReVanced-Manager/releases)。旧Repository URLは現行Repositoryへ転送され、URVのRelease履歴も引き継がれています。旧版を調べる場合は [URV v1.10.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v1.10.0) のようにtagを固定します。
 
 URVはUniversal ReVanced Managerの略称です。2026年10月29日の [UPM v2.0.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v2.0.0) でUniversal Patch Manager（UPM、アプリ表示名はUP Manager）へ改称されました。別作者のForkではなく、同じRepositoryの履歴を引き継ぐ改称です（[改称Commit](https://github.com/Jman-Github/Universal-Patch-Manager/commit/995ae1c9f85c45dcf479c049381085e95e9b652f)）。ReVanced Managerを基盤に、ReVanced・Morphe・ReseamのPatchを一つのアプリで管理します。個別の機能は選んだBundleが提供するため、Managerを変えるだけですべてのアプリやPatchが動くわけではありません（[公式README](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v2.0.0/README.md)）。
 
@@ -2319,18 +2319,18 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 **NewX・関連する配布先**
 
 * **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)**：Pikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開するRepositoryです。通常のPikoとは配布先を分けており、利用するBundle側の説明を確認します（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
-* **関連するビルド済みAPK・プロジェクト**： [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
+* **関連するビルド済みAPK・プロジェクト**：[monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
 
 ### Morpheと併用すると便利なAndroidアプリ
 
 Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助に利用できるアプリです。すべてがMorpheの必須アプリという意味ではなく、用途に応じて必要なものだけを併用します。
 
-* **APK・アプリ入手**： [Aurora Store](https://auroraoss.com/aurora-store) / [F-Droid](https://f-droid.org/ja/) / [Accrescent](https://accrescent.app/)
-* **アプリ更新管理**： [Obtainium](https://github.com/ImranR98/Obtainium) / [ObtainX](https://github.com/bikram-agarwal/ObtainX)
-* **ファイル・GitHub管理**： [File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager) / [GitHub](https://play.google.com/store/apps/details?id=com.github.android)
-* **動画関連ツール**： [YTDLnis](https://github.com/deniscerri/ytdlnis) / [Seal Plus](https://github.com/MaheshTechnicals/Sealplus)
-* **端末情報の確認**： [Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)
-* **その他の補助アプリ**： [floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1) / [Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)
+* **APK・アプリ入手**：[Aurora Store](https://auroraoss.com/aurora-store) / [F-Droid](https://f-droid.org/ja/) / [Accrescent](https://accrescent.app/)
+* **アプリ更新管理**：[Obtainium](https://github.com/ImranR98/Obtainium) / [ObtainX](https://github.com/bikram-agarwal/ObtainX)
+* **ファイル・GitHub管理**：[File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager) / [GitHub](https://play.google.com/store/apps/details?id=com.github.android)
+* **動画関連ツール**：[YTDLnis](https://github.com/deniscerri/ytdlnis) / [Seal Plus](https://github.com/MaheshTechnicals/Sealplus)
+* **端末情報の確認**：[Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)
+* **その他の補助アプリ**：[floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1) / [Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)
 
 **参考サイト**
 * [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/) / [r/reseamapp](https://www.reddit.com/r/reseamapp/)
