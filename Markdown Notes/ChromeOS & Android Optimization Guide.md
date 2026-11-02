@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 65306)
+Total output lines: 2669
+
 # ChromeOS・Androidの最適化ガイド
 
 ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、プライバシー、セキュリティなどの設定・運用方法を整理した最適化ガイドです。
@@ -8,7 +11,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611020322 |
+| **Version** | 202611021228 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -1459,214 +1462,7 @@ AdGuardでの広告ブロック漏れ、Anti-Adblock Scriptによるコンテン
 * [ウェブ開発の学習 | MDN](https://developer.mozilla.org/ja/docs/Learn_web_development)
 
 **報告用Webサイト**
-* [AdGuardフィルターの不具合報告ツール](https://reports.adguard.com/ja/new_issue.html)
-またはAdGuard製品に搭載されている報告ツールを使います（[報告方法ガイド](https://adguard.com/kb/ja/guides/report-website/)）。
-
-報告されたIssuesは [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) に反映されます。
-Issues報告はGitHubアカウントがなくても可能ですが、GitHubアカウントがあるとIssuesやコメントの編集ができるようになります。報告の形式には自由記述形式とテンプレート形式があり、いずれも問題の切り分けと再現方法の説明に、ある程度の慣れが必要です。
-
-報告時に重要となるのは「**問題が発生するサイトのURL**」「**問題の再現手順**」「**問題発生時のスクリーンショット**」「**ロガーのスクリーンショット**」です。必要に応じてスクリーンショットにマーキングしたり、ログや設定ファイルを添付します。
-GitHubでのやり取りは基本的に英語ですが、ツールを使い分けるとスムーズです（Google翻訳で全体を把握し、DeepL翻訳を活用するなど）。▶ [Issues例](https://github.com/AdguardTeam/AdguardFilters/issues/217897)
-
-Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への変換を依頼することもできます。▶ [Issues例](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues/11)
-
-**Issues報告・補足**
-* [AdGuardフィルタポリシー](https://adguard.com/kb/ja/general/ad-filtering/filter-policy/) に従って処理されます。
-* [AdGuardのサイト報告用Webアプリ](https://github.com/AdguardTeam/ReportsWebApp)
-
----
-
-## AdGuard Browser Extension MV3
-* **[Chrome Web Store](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg)**
-* **[公式サイト](https://adguard.com/ja/adguard-browser-extension/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardBrowserExtension)**
-
-AdGuard Browser Extension MV3でスクリプトレットを含む高度なルールを使用する場合は、拡張機能の内部設定から**ユーザースクリプトを許可する**トグルを有効にする必要があります。組み込み・カスタムフィルタは、拡張機能本体の更新に加え、対応バージョンではポップアップまたはフィルタ画面から手動更新を確認できます。
-
-v5.2.400以降、拡張機能と組み込み・カスタムフィルタは、「ツールバーのアイコン > 右上ポップアップの↻」または「フィルタ > ↻アップデートを確認する」から最新状態を確認できます。
-
-v5.2.400で強化された機能は、設定画面内でカスタムフィルタを手動で更新できるようにするものです。
-
-（※ Chromeの拡張機能管理画面での「更新ボタン↻」では、カスタムフィルタの再読み込みがトリガーされないケースが報告されています。 [Issues #2944](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/2944)  / [Issues #3016](https://github.com/AdguardTeam/AdguardBrowserExtension/issues/3016)）
-
-[AdGuard Browser Extension MV3 v5.4.1.3](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.4.1.3)
-
-ポップアップパネルの更新ボタン↻、またはフィルタセクションの更新ボタン↻から、カスタムフィルタを手動で更新できるようになりました。`! Version:` は版の識別と更新状況の確認に有用ですが、URLの再取得そのものを成立させる唯一の条件ではありません。
-
-* **[AdGuard Browser Extension MV3の解説](https://adguard.com/kb/ja/adguard-browser-extension/mv3-version/)**
-
-**カスタムフィルタで購読する場合**
-
-`AdGuard Japanese filter Plus` だけを登録します。`AdGuard module - not for independent use` はサブリストとして自動的にincludeされるため、カスタムフィルタ一覧へ別途登録する必要はありません。
-
-**ユーザールールにルールを全コピー & 全ペーストする場合**
-
-両方のフィルタのルールを全コピー & ペーストする必要があります。
-
-**! カスタムフィルタ・ユーザールール**
-* AdGuard Japanese filter Plus
-  ```
-  https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt
-  ```
-
-**❗️留意点**
-
- [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。
-
-**フィルターの課題・不具合報告**
-* [AdGuard日本語フィルターPlusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
-
-**開発者ツールと連動した手動ブロック機能**
-
-開発者ツールと連動した手動ブロック機能が搭載されています（[画像](https://imgur.com/DcEH4K4)）。作成したルールはユーザールールに格納されます。
-
-**Chromeのアドレスバーから新しいタブでユーザールールを開く**
-
-* アドレスバーに以下をコピー & ペーストして移動します。
-  ```
-  chrome-extension://bgnkhhnnamicmpeenaelnjfhikgbkllg/pages/fullscreen-user-rules.html?theme=system
-  ```
-
-**参考サイト**
-* [はちまブログ > uBlock Origin](https://hachima25.hatenablog.com/archive/category/uBlock%20Origin)
-  
-  マイフィルタが分かりやすく紹介されています。
-* [r/uBlockOriginのYouTube向け対処法](https://www.reddit.com/r/uBlockOrigin/wiki/solutions/youtube/)
-* [r/uBlockOriginのTwitter向け対処法](https://www.reddit.com/r/uBlockOrigin/wiki/solutions/twitter/)
-* [YouTubeの修正とカスタマイズ（Reddit）](https://www.reddit.com/r/youtube/comments/1b40hra/youtube_fix_customizations_4_videos_per_row/)
-* [YouTubeの白い領域について（Reddit）](https://www.reddit.com/r/uBlockOrigin/comments/1l4r84i/white_area_on_youtube/)
-  
-  YouTubeのホーム画面から、Shortsやおすすめなどの特別セクションを単なる非表示ではなくDOMから完全に削除（:remove()）するuBlock Origin用のフィルタです。動画サムネイル整列時の不自然な空白を防ぐ目的で使用されます。
-    ```
-    www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer:remove()
-    ```
-  [Enhancer for YouTube™](https://chromewebstore.google.com/detail/enhancer-for-youtube/ponfpcnoihfmfllpaingbgckeeldkhle) を使う場合、いくつかのUI調整ユーザールールは不要になります。
-
-**Web版YouTubeについての留意点**
-
-Yuki2718氏の公開説明によると、YouTubeでは使用する広告ブロッカー以外の拡張機能やカスタムフィルタが多いほど、競合やフィルタ構成の差によってAnti-Adblock Scriptに検知される確率が上がります。このため、YouTubeで広告ブロック検知や再生不具合が発生した場合は、まず使用する広告ブロッカーを1つに限定し、既定設定・標準フィルタだけの状態で確認します。
-
-Yuki2718氏は、uBlock Origin開発チームのうち**フィルターチームのメンバー**です。本人のプロフィールでは2020年11月から所属していることを明記しており、YouTube対策については、本人が**YouTube用フィルタを開発した2人のうちの1人**であると公開しています。uBlock Originの公式フィルタRepository `uAssets` でも、YouTube問題の専用Issueを作成・管理し、対策フィルタの開発と修正対応を行っています（[Yuki2718氏の𝕏アカウント](https://x.com/Yuki27183) / [uBO: Issues #27415](https://github.com/uBlockOrigin/uAssets/issues/27415) / [uBO Lite: Issues #28707](https://github.com/uBlockOrigin/uAssets/issues/28707)）。
-
-**𝕏/Twitter ルール作り資料｜uBlock Origin**
-
-* [uAssets（𝕏投稿）](https://x.com/Red_Frame_X/status/2010925824636252329)
-* [uAssets / filters / filters-2023.txt](https://github.com/uBlockOrigin/uAssets/blob/e4933fdffaaaa318f58fb8a7a34d784220100ff2/filters/filters-2023.txt#L4284-L4288)
-* [json-prune-xhr-response.js](https://github.com/gorhill/uBlock/wiki/Resources-Library#json-prune-xhr-responsejs-)
-
----
-
-## Chrome 拡張機能 uBlacklist
-* **[Chrome Web Store](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**
-* **[公式サイト](https://iorate.github.io/ublacklist/ja/docs)** / **[GitHub](https://github.com/iorate/ublacklist)**
-
-uBlacklistは、Googleなどの検索結果から指定したWebサイトを非表示にする拡張機能です。正規表現ルール、クラウド同期、公開ブラックリストの購読などが可能です。
-
-**モバイルブラウザでの利用と詐欺対策（2026年10月4日確認）**
-
-uBlacklistに対応するモバイルブラウザでも、詐欺サイトなどを対象とするルールを登録・購読すれば、条件に一致するサイトを検索結果から非表示にできます。この仕組みは、検索経由で詐欺サイトに誘導される機会を減らす補助的な対策として利用できます。ただし、サイトへのアクセス自体の遮断や、未知の詐欺サイトの自動判定を行うものではなく、電話・SMSなども含む特殊詐欺全般を防ぐ機能ではありません（[公式機能説明](https://ublacklist.github.io/docs/introduction)、[公式操作ガイド](https://ublacklist.github.io/docs/getting-started)）。
-
-| Androidブラウザ | 一次情報で確認できる対応状況 |
-| --- | --- |
-| [Titanium](https://github.com/jqssun/android-titanium-browser) | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions) にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
-| [Aerium](https://github.com/aerium-browser/aerium-browser-android) | [公式README](https://github.com/aerium-browser/aerium-browser-android#extensions-finally) にChrome Web Storeからの拡張機能導入とuBlock Originのプリインストールの記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
-
-拡張機能への対応だけで、すべての拡張機能や同期機能の動作が保証されるわけではありません。[uBlacklistのサポート方針](https://github.com/iorate/ublacklist#browser-support-policy) でも、明記されたブラウザ以外の対応はコミュニティの貢献に依存します。導入後は、利用する検索エンジンで非表示と再表示が動作するか確認してください。
-
-購読リストの対象範囲・更新状況によって効果は異なり、正常なサイトが非表示になる場合は、下記の例外ルールで調整できます。Google以外の対応検索エンジンではオプションでの有効化が必要です。購読には配布元へのアクセス権限が必要で、Firefox for AndroidではuBlacklistの「ブラウザ同期」方式は利用できません（[公式詳細ガイド](https://ublacklist.github.io/docs/advanced-features)）。
-
-**! ブラックリストを追加する**
-* uBlacklist-filter-by-kdroidwin 1
-  ```
-  https://raw.githubusercontent.com/Kdroidwin/uBlacklist-filter-by-kdroidwin/main/uBlacklist.txt
-  ```
-* uBlacklist exclusionフィルター（除外用）
-  ```
-  https://raw.githubusercontent.com/Kdroidwin/uBlacklist-filter-by-kdroidwin/refs/heads/main/uBlacklist-Exclusion.txt
-  ```
-
-* 検索結果の非表示ルール例
-  ```text
-  *://*.example.com/*
-  /example\.(net|org)/
-  title/Example Domain/
-  ```
-* 例外ルール（再表示ルール）例
-  ```text
-  @*://*.example.com/*
-  ```
-
-**フィルターの課題・不具合報告**
-* [uB-filter-by-kdroidwinの課題・不具合報告](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues)
-
-**参考サイト**
-* [Kdroidwin / uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
-* [コミュニティルールセット｜uBlacklist](https://ublacklist.github.io/ja/rulesets)
-
----
-
-## Android アプリ personalDNSfilter（ChromeOS）
-* **[Google Play](https://play.google.com/store/apps/details?id=dnsfilter.android)**
-* **[公式サイト](https://www.zenz-solutions.de/personaldnsfilter-wp/)** / **[GitHub](https://github.com/IngoZenz/personaldnsfilter)** / **[よくある質問](https://www.zenz-solutions.de/faq/)**
-
-**personalDNSfilter（ローカルVPNモード）の常駐・DNS設定**
-
-Android向けの [公式FAQ](https://www.zenz-solutions.de/faq/) に沿った設定メモです。ChromeOS上のAndroid環境では、設定項目の有無やDNSが処理される範囲を実機で確認します。
-
-* **常駐対策**：personalDNSfilterをバッテリー最適化の対象から除外し、バックグラウンド動作を許可します。ローカルVPNモードでは、AndroidのVPN設定で「常時接続VPN」を有効にします。設定名・導線はOSや端末によって異なり、停止を完全に防ぐ保証はありません。
-* **「VPNなしの接続をブロック」は無効**：personalDNSfilterはDNS問い合わせだけを処理するため、この設定を有効にすると通常のインターネット通信が遮断されると公式FAQに明記されています。
-* **DNSフィルタリングの迂回対策**：Androidの「プライベートDNS」と、Android版Chromeの「セキュアDNSを使用」を無効にします。これはDNS問い合わせをpersonalDNSfilterに処理させるための設定であり、VPNの停止を防ぐ設定ではありません。
-* **DNS通信の暗号化**：OS・ブラウザ側の暗号化DNSを無効にする場合は、personalDNSfilter側でDoHまたはDoTの上流DNSを設定します。[公式製品説明](https://www.zenz-solutions.de/personaldnsfilter-wp/) に両方式の対応が記載されています。
-* **ChromeOS側の設定**：「サイトのルックアップに安全な接続を使用する」の無効化は、上記のAndroid向けFAQからChromeOS全体へ一律に適用しません。ChromeOS側のDNSもpersonalDNSfilterで処理する構成では、設定変更前後の問い合わせがアプリのログに記録されるか確認します。Android環境内で動作しているだけでは、ChromeOS全体への適用を確認したことにはなりません。
-
-通知のサイレント化は、通知音などを抑えるための任意設定です。VPNの安定化対策には含めません（[Android公式：通知の管理](https://support.google.com/android/answer/9079661?hl=ja)）。VPNプロファイルの削除・再設定も、公式FAQで一般的な安定化対策として確認できないため、常用手順には含めません。
-
-補足：端末やOSの表示によっては、「サイレント」に相当する選択肢や通知一覧の見出しが「マナー」と表示される場合があります。手元のPixel 10aでは、AdGuardの通知設定に「マナー（着信音もバイブレーションもOFFになります）」と表示されることを確認しています。ここでの「マナー」は個別通知の音・振動を抑える設定であり、この表示だけで端末全体がマナーモードになったことを意味しません。
-
-ログのドメインを長押しすると、ブラック/ホワイトリストへの登録が可能です。
-
-※ 実態はDNSブロッカーのため、ABP形式の構文（`||example.com^`）には対応していません。
-
-**! 購読済みのDNSブロックリスト・hostsファイル**
-* HaGeZi Multi NORMAL（総合保護）
-  ```
-  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
-  ```
-* HaGeZi Threat Intelligence Feedsのmedium版（ブラウザー・モバイル用広告ブロッカー向け）
-  ```
-  https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif.medium-onlydomains.txt
-  ```
-  * 脅威対策を補うTIFのmedium版です。personalDNSfilterではDomains only形式を使用します。
-
-**参考サイト**
-* [HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists)：複数の強度・配布形式を提供する有志による統合型DNSブロックリスト。
-  * [gitlab.com/hagezi/mirror](https://gitlab.com/hagezi/mirror)：1日1回、GitHubと同期して更新。
-  * [codeberg.org/hagezi/mirror2](https://codeberg.org/hagezi/mirror2)：1日1回、GitHubと同期して更新。
-  * [hagezi-mirror.dnsbunker.org](https://hagezi-mirror.dnsbunker.org)：4〜8時間ごとに更新。
-* [5ch personalDNSfilterスレ](https://ff5ch.syoboi.jp/?q=%E3%80%90%E5%BA%83%E5%91%8A%E9%99%A4%E5%8E%BB%E3%80%91personalDNSfilter)
-
----
-
-## Android アプリ 有償版 AdGuard for Android（Android）
-* **[公式サイト](https://adguard.com/ja/adguard-android/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardForAndroid)**
-
-**AdGuard for Android（ローカルVPNモード）の常駐・DNS設定**
-
-**常駐・再起動対策**
-* AdGuardのバックグラウンド動作を許可し、バッテリー最適化の対象から除外します。Pixelでの設定例：設定 > アプリ > AdGuard > アプリのバッテリー使用量 > バックグラウンドでの使用を許可 > 制限なし。設定名・導線はAndroidのバージョンや端末によって異なります。
-* バックグラウンドで停止する場合は、AndroidのVPN設定でAdGuardの「常時接続VPN」を有効にします。[AdGuard公式のメーカー別対処手順](https://adguard.com/kb/adguard-for-android/solving-problems/background-work/) でもPixelなどに案内されています。有効化後も、端末再起動後にアプリの保護状態を確認します。
-* **「VPNなしの接続をブロック」は別機能です**。有効にするとVPNから除外したアプリも通信できなくなるため、安定化目的では有効にしません（[Android公式：VPN](https://developer.android.com/develop/connectivity/vpn#blocked-connections)）。
-
-**AdGuardのDNS保護を利用する場合**
-* DNS処理をAdGuardに集約する場合は、Androidの「プライベートDNS」を無効にします。AdGuard公式は、Android 10以降のプライベートDNSによるDNS処理の迂回を説明しています。これはDNSフィルタリングの整合性を保つための設定です（[公式互換性情報](https://adguard.com/kb/adguard-for-android/solving-problems/compatibility-issues/#private-dns)）。
-* ブラウザの「セキュアDNSを使用」の無効化は、DNS設定をAdGuardに集約する方法の一つです。ただし必須ではありません。AdGuardのローレベル設定「Filter secure DNS」には、ブラウザ指定のDNSを利用したままDoHを処理する方式と、AdGuardのDNSプロキシへ転送する方式があります。利用するブラウザ・設定でDNS問い合わせが処理されるか確認します（[公式仕様](https://adguard.com/kb/adguard-for-android/features/low-level-settings/#filter-secure-dns)）。
-* OS・ブラウザ側の暗号化DNSを無効にする場合は、AdGuardのDNS保護でDoH・DoTなどの暗号化DNSサーバーを設定します。代替の暗号化を設定せずに無効化すると、DNS問い合わせが暗号化されない可能性があります（[公式：DNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/)）。
-
-**任意設定・不具合時の切り分け**
-* 通知のサイレント化は通知音などを抑えるための任意設定で、VPN維持のための設定ではありません（[Android公式：通知の管理](https://support.google.com/android/answer/9079661?hl=ja)）。
-
-補足：端末やOSの表示によっては、「サイレント」に相当する選択肢や通知一覧の見出しが「マナー」と表示される場合があります。手元のPixel 10aでは、AdGuardの通知設定に「マナー（着信音もバイブレーションもOFFになります）」と表示されることを確認しています。ここでの「マナー」は個別通知の音・振動を抑える設定であり、この表示だけで端末全体がマナーモードになったことを意味しません。
-* 「接続の自動調整」は一律に無効化しません。Googleは省電力のための有効化を案内しています。接続切り替え時に不具合がある場合だけ、該当項目を一つずつ変更して再現性を比較し、改善しなければ元に戻します。これは切り分け案であり、AdGuard公式の必須設定ではありません（[Google公式：ネットワーク設定](https://support.google.com/pixelphone/answer/2819583?hl=ja)）。
-* VPNプロファイルの削除・再設定は、一般的な安定化対策として公式の裏付けを確認できないため、常用手順には含めません。停止が続く場合は、メーカー別の常駐設定を確認し、発生時刻と [デバッグログ](https://adguard.com/kb/adguard-for-android/solving-problems/log/) を記録して原因を調べます。
+* [AdGuardフィルターの不具合報告ツール](https://reports.adguard.co…5306 tokens truncated…般的な安定化対策として公式の裏付けを確認できないため、常用手順には含めません。停止が続く場合は、メーカー別の常駐設定を確認し、発生時刻と [デバッグログ](https://adguard.com/kb/adguard-for-android/solving-problems/log/) を記録して原因を調べます。
 
 ⚙ > 一般設定 > 詳細設定 > ローレベル設定 > その他の設定 - 「メイン画面にデベロッパーツールを表示する」をONにすると、ホーム画面右上にレンチアイコンが表示され設定アクセスが容易になります（[画像](https://imgur.com/UKGTVnZ)）。
 
@@ -2458,7 +2254,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 ### Haiagaru-Morpheの配布状況・対応Version
 
-* **Stable（通常の導入・更新はこちら）**：[1.18.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0)。最新安定版です。下部フィルターパネル、191の通信、前スレ取得、検索・ビューア・設定画面を改善しています。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.18.0.mpp`。
+* **Stable（通常の導入・更新はこちら）**：[1.18.3](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.3)。最新安定版です。下部フィルターパネル、191の通信、前スレ取得、検索・ビューア・設定画面を改善しています。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.18.3.mpp`。
 * **Pre-release**：通常の導入・更新はStableを中心に確認します。開発版を試す場合のみ `dev/patches-bundle.json` を使用し、その時点のVersion・変更内容を照合してください。
 * **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。連続したVersion範囲ではなく、241 / 243 devなどは対象外です。
 * **導入時の確認**：[Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases)、配布JSONの `version`・`download_url`、対象tagの対応宣言を照合してください。README冒頭やVersion別JSONには古い案内が残る場合があります。任意Patchは個別に対応対象を確認します。
@@ -2476,7 +2272,16 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 出典：[README](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/README.md) / [1.12.2 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.12.2) / [ChMate+互換機能](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/docs/chmate-plus-compat.md)。
 
-### 最新安定版1.18.0の主な追加・修正
+### 正式版1.18.2 / 1.18.3のバックアップ修正と更新後の確認
+
+* **1.18.2**：Haiagaru形式のZIPで書き込み履歴を保存する際、スレごとの索引（`.idx`）を含めるよう修正。古いバックアップに索引が含まれていない場合、欠落した書き込みマークは更新だけでは復元できません。
+* **1.18.3**：「最低限構成」「広告だけの設定プリセット」の適用・復元でローカル自動バックアップをOFFにする処理と、実際はOFFでもONに見える表示を修正。既にOFFになった設定は自動でONに戻りません。
+* **更新後の確認**：保存先とアクセス権、自動バックアップの有効状態を確認し、必要なら明示的にONにしてください。既存ZIPを保管したまま、新しいバックアップを作成して内容を確認します。
+* **確認範囲**：開発元は191 / 226 / 242の隔離エミュレータで検証しています。APKの上書きだけで設定が消える現象は未再現で、実機での解消は本ガイドでは未確認です。
+
+出典：[1.18.2 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.2) / [1.18.3 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.3)。
+
+### 正式版1.18.0の主な追加・修正
 
 * **下部フィルターパネル**：常時表示・ポップアップのどちらでも、高さ調整つまみを上下にドラッグして高さを変更・保存できます。つまみは設定で非表示にでき、小さくしたパネル内はスクロールできます。
 * **191の通信**：「接続を再利用しない」で板・スレのGETごとに接続プールを分離し、古い接続の再利用を防ぎます。代替IPの試行開始間隔は250msから50msへ短縮。通信全体の上限の初期値は60秒で、保存済みの設定は維持します。191向けの対策であり、実回線での巡回時間は板・回線・DNSなどに依存します。
@@ -2487,7 +2292,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 * **共有NG（開発中）**：正規表現の受信に対応。GAS側は基本ルールで自動承認し、審査済み履歴を種類別シートに保存します。ID・ワッチョイの履歴は期限で削除しません。不正な正規表現は、その条件だけ受信時に適用しません。共有NG / F9対策とエッヂの公開レベルNGは、正式版に収録されていても引き続き開発中です。
 * **開発元の確認範囲**：191 / 226 / 242の検証用エミュレータで起動・スレ本文・画像表示・設定と変更箇所を確認。191の接続再利用対策は古い接続が残るローカルサーバー、前スレ取得はリンクの振り分けとローカル転送で検証しています。Version固有の対策は対象版に限定され、本ガイドでの実機確認とは区別してください。
 
-出典：[1.18.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) / [Stable配布JSON](https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json)。以下のVersion別記録は過去の変更履歴です。現在の導入・更新は1.18.0を基準にしてください。
+出典：[1.18.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) / [Stable配布JSON](https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json)。以下のVersion別記録は過去の変更履歴です。現在の導入・更新は1.18.3を基準にしてください。
 
 ### 正式版1.15.0までの主な追加・修正
 
@@ -2550,7 +2355,7 @@ Pre-release用（開発版を試す場合のみ）：
 https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle.json
 ```
 
-* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.18.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
+* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.18.3のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.3) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
 * Managerごとの画面・対応状況は [Upstream README](https://github.com/areteruhiro/Haiagaru-Morphe) と [Morphe公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) を確認してください。URV Managerの案内だけで、後継UPMの動作まで確認済みとは扱いません。
 
 ### インストール・データ移行・互換性の注意
