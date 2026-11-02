@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202611011947
+! Version: 202611022012
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -2825,6 +2825,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||docs.usbx.me^$document
 ||doctor-assist.japan-entertainment.mhx.jp^$document
 ||doctor-pie.com^$document
+||dododo-doujin.com^$document
 ||dodongmynghesaigon.com^$document
 ||doga-tanken.com^$document
 ||doga.hikakujoho.com^$document
@@ -2913,6 +2914,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||doujin-erokyonyu.adult-h.com^$document
 ||doujin-eromanga.adult-h.com^$document
 ||doujin-free.avgle.blog^$document
+||doujin-hentaicomic.com^$document
 ||doujin-hiroba.com^$document
 ||doujin-hive.com^$document
 ||doujin-hub.net^$document
@@ -8372,6 +8374,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/nrhdojin^$document
 ||note.com/nukegala83^$document
 ||note.com/nyam_stady^$document
+||note.com/ochyai^$document
 ||note.com/ojirolian^$document
 ||note.com/okinisezu^$document
 ||note.com/omochi0014^$document
@@ -8501,6 +8504,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/side_hustle_40^$document
 ||note.com/sim_mobile^$document
 ||note.com/simsmagadget^$document
+||note.com/sironeko_mind^$document
 ||note.com/skkoto^$document
 ||note.com/sknet_sougou^$document
 ||note.com/skt0302^$document
@@ -12001,6 +12005,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||vanilla-boy.com^$document
 ||variety-fan.com^$document
 ||variety.hatenablog.com^$document
+||varycue.jp^$document
 ||vasenuja.xyz^$document
 ||vashifinancy.ru^$document
 ||vazmedicalsos.com^$document
