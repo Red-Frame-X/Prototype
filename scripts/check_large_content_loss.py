@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 import sys
 
@@ -11,6 +12,20 @@ DEFAULT_MAX_NET_LOSS = 120
 DEFAULT_MIN_RETAINED_RATIO = 0.25
 PROTECTED_SUFFIXES = (".md", ".txt", ".js", ".json")
 EXCLUDED_PREFIXES = (".github/", "scripts/", "tests/")
+OUTPUT_TRUNCATION_RE = re.compile(
+    r"(?:Warning: truncated output.*|(?:…|\.{3})\s*\d+\s+"
+    r"(?:tokens|characters)\s+truncated\s*(?:…|\.{3}))"
+)
+
+
+def added_truncation_markers(base_ref: str, path: str) -> list[str]:
+    """取得結果の省略表示が本文として追加された場合を検出する。"""
+    diff = run_git("diff", "--no-ext-diff", "--unified=0", f"{base_ref}...HEAD", "--", path)
+    return [
+        line[1:] for line in diff.splitlines()
+        if line.startswith("+") and not line.startswith("+++")
+        and OUTPUT_TRUNCATION_RE.fullmatch(line[1:].strip())
+    ]
 
 
 def run_git(*args: str) -> str:
@@ -85,6 +100,10 @@ def main() -> int:
     failures: list[str] = []
 
     for added, deleted, path, before_path in protected_changes:
+        # 行数の閾値未満でも、出力の省略表示は本文の代わりにならない。
+        # 削除承認は省略表示の混入を許可するものではない。
+        for marker in added_truncation_markers(args.base_ref, path):
+            failures.append(f"{path}: 出力の省略表示が混入しています: {marker}")
         net_loss = deleted - added
         before_lines = line_count(args.base_ref, before_path)
         after_lines = line_count("HEAD", path)
