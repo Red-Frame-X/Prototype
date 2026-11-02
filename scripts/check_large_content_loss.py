@@ -10,21 +10,25 @@ import sys
 DEFAULT_MAX_DELETIONS = 200
 DEFAULT_MAX_NET_LOSS = 120
 DEFAULT_MIN_RETAINED_RATIO = 0.25
+DEFAULT_MAX_RELATIVE_LOSS = 0.25
+DEFAULT_MIN_RELATIVE_LOSS_LINES = 20
 PROTECTED_SUFFIXES = (".md", ".txt", ".js", ".json")
 EXCLUDED_PREFIXES = (".github/", "scripts/", "tests/")
 OUTPUT_TRUNCATION_RE = re.compile(
     r"(?:Warning: truncated output.*|(?:…|\.{3})\s*\d+\s+"
     r"(?:tokens|characters)\s+truncated\s*(?:…|\.{3}))"
 )
+INLINE_CODE_RE = re.compile(r"(`+).*?\1")
 
 
 def added_truncation_markers(base_ref: str, path: str) -> list[str]:
     """取得結果の省略表示が本文として追加された場合を検出する。"""
-    diff = run_git("diff", "--no-ext-diff", "--unified=0", f"{base_ref}...HEAD", "--", path)
+    diff = run_git("diff", "--no-ext-diff", "--unified=0", f"{base_ref}..HEAD", "--", path)
     return [
         line[1:] for line in diff.splitlines()
         if line.startswith("+") and not line.startswith("+++")
-        and OUTPUT_TRUNCATION_RE.fullmatch(line[1:].strip())
+        # Code span内の引用例は保持し、文章中・引用行の混入は拒否する。
+        and OUTPUT_TRUNCATION_RE.search(INLINE_CODE_RE.sub("", line[1:]))
     ]
 
 
@@ -62,7 +66,7 @@ def changed_text_files(base_ref: str) -> list[tuple[int, int, str, str]]:
         "diff",
         "--numstat",
         "-z",
-        f"{base_ref}...HEAD",
+        f"{base_ref}..HEAD",
         "--",
         "*.md",
         "*.txt",
@@ -79,9 +83,15 @@ def is_protected_path(path: str) -> bool:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-ref", required=True)
+    parser.add_argument(
+        "--direct-comparison", action="store_true",
+        help="push前後など、共通祖先ではなく指定した比較元そのものと比較します。",
+    )
     parser.add_argument("--max-deletions", type=int, default=DEFAULT_MAX_DELETIONS)
     parser.add_argument("--max-net-loss", type=int, default=DEFAULT_MAX_NET_LOSS)
     parser.add_argument("--min-retained-ratio", type=float, default=DEFAULT_MIN_RETAINED_RATIO)
+    parser.add_argument("--max-relative-loss", type=float, default=DEFAULT_MAX_RELATIVE_LOSS)
+    parser.add_argument("--min-relative-loss-lines", type=int, default=DEFAULT_MIN_RELATIVE_LOSS_LINES)
     parser.add_argument(
         "--allow-deletion-in",
         action="append",
@@ -92,7 +102,10 @@ def main() -> int:
     args = parser.parse_args()
 
     allowed_paths = set(args.allow_deletion_in)
-    changes = changed_text_files(args.base_ref)
+    comparison_ref = args.base_ref if args.direct_comparison else run_git(
+        "merge-base", args.base_ref, "HEAD"
+    ).strip()
+    changes = changed_text_files(comparison_ref)
     protected_changes = [
         change for change in changes
         if is_protected_path(change[2]) or is_protected_path(change[3])
@@ -102,10 +115,10 @@ def main() -> int:
     for added, deleted, path, before_path in protected_changes:
         # 行数の閾値未満でも、出力の省略表示は本文の代わりにならない。
         # 削除承認は省略表示の混入を許可するものではない。
-        for marker in added_truncation_markers(args.base_ref, path):
+        for marker in added_truncation_markers(comparison_ref, path):
             failures.append(f"{path}: 出力の省略表示が混入しています: {marker}")
         net_loss = deleted - added
-        before_lines = line_count(args.base_ref, before_path)
+        before_lines = line_count(comparison_ref, before_path)
         after_lines = line_count("HEAD", path)
 
         # 通常の編集や書き換えでも既存行は置き換わる。この検査では、
@@ -130,6 +143,16 @@ def main() -> int:
             continue
 
         if path in allowed_paths:
+            continue
+
+        if (before_lines and net_loss >= args.min_relative_loss_lines
+                and net_loss / before_lines >= args.max_relative_loss):
+            failures.append(
+                f"{path}: +{added}/-{deleted}（純減 {net_loss}）、"
+                f"元の行数に対する純減率 {net_loss / before_lines:.1%}がレビュー基準"
+                f" {args.max_relative_loss:.1%}に達しています。"
+                "依頼された削除か内容を確認し、承認済みの場合だけ正確なパスを指定してください。"
+            )
             continue
 
         if net_loss >= args.max_net_loss:
