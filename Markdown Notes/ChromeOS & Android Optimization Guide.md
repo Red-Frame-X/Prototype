@@ -1586,7 +1586,7 @@ uBlacklistに対応するモバイルブラウザでも、詐欺サイトなど�
 
 | Androidブラウザ | 一次情報で確認できる対応状況 |
 | --- | --- |
-| [Bare](https://play.google.com/store/apps/details?id=org.barebrowser) | [公式README](https://github.com/BareBrowser/bare-browser#what-you-can-do) にChrome Web Store・CRXファイル・展開済みフォルダからの拡張機能導入とuBlock Originの標準搭載の記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
+| [Bare](https://github.com/BareBrowser/bare-browser) | [公式README](https://github.com/BareBrowser/bare-browser#what-you-can-do) にChrome Web Store・CRXファイル・展開済みフォルダからの拡張機能導入とuBlock Originの標準搭載の記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
 | [Titanium](https://github.com/jqssun/android-titanium-browser) | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions) にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
 | [Aerium](https://github.com/aerium-browser/aerium-browser-android) | [公式README](https://github.com/aerium-browser/aerium-browser-android#extensions-finally) にChrome Web Storeからの拡張機能導入とuBlock Originのプリインストールの記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
 
