@@ -2594,6 +2594,16 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle
 
 出典：[ChMate公式・2021年の変更履歴（0.8.10.109：書き込み画面のメニューに「2chMate/…」を追加）](https://chmate.airfront.co.jp/history/2021/) / [コミュニティFAQ（本文長押しによる環境情報の挿入）](https://w.atwiki.jp/android2chbrowser/pages/46.html) / [Haiagaruコミュニティ（不具合報告時のPatch Version併記）](https://ff5ch.syoboi.jp/?q=Haiagaru)
 
+#### 設定を共有（.haiagaru）
+
+Haiagaruの設定画面から、表示・動作設定を共有できます。検証時の設定を共有する場合は、次の項目を使用します。
+
+* **設定を共有（.haiagaru）**：表示・動作設定を`.haiagaru`形式の設定ファイルとして共有します。
+* **設定ファイルを読み込む**：共有された設定ファイルを読み込みます。
+* **最低限構成を選び直す**：最低限構成を選び直します。
+
+共有するのは表示・動作設定です。認証情報、履歴、NG登録、標準ツールバー設定は含めません。設定の共有は、ChMate標準のバックアップ・復元とは別の機能です。
+
 #### 検証・切り分け・報告の手順
 
 1. **準備・条件記録**：バックアップ後、未改変の242 dev APK（versionCode 512）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
