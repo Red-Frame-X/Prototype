@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611020322 |
+| **Version** | 202611021228 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -2458,7 +2458,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 ### Haiagaru-Morpheの配布状況・対応Version
 
-* **Stable（通常の導入・更新はこちら）**：[1.18.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0)。最新安定版です。下部フィルターパネル、191の通信、前スレ取得、検索・ビューア・設定画面を改善しています。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.18.0.mpp`。
+* **Stable（通常の導入・更新はこちら）**：[1.18.3](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.3)。最新安定版です。下部フィルターパネル、191の通信、前スレ取得、検索・ビューア・設定画面を改善しています。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.18.3.mpp`。
 * **Pre-release**：通常の導入・更新はStableを中心に確認します。開発版を試す場合のみ `dev/patches-bundle.json` を使用し、その時点のVersion・変更内容を照合してください。
 * **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。連続したVersion範囲ではなく、241 / 243 devなどは対象外です。
 * **導入時の確認**：[Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases)、配布JSONの `version`・`download_url`、対象tagの対応宣言を照合してください。README冒頭やVersion別JSONには古い案内が残る場合があります。任意Patchは個別に対応対象を確認します。
@@ -2476,7 +2476,16 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 出典：[README](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/README.md) / [1.12.2 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.12.2) / [ChMate+互換機能](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/docs/chmate-plus-compat.md)。
 
-### 最新安定版1.18.0の主な追加・修正
+### 正式版1.18.2 / 1.18.3のバックアップ修正と更新後の確認
+
+* **1.18.2**：Haiagaru形式のZIPで書き込み履歴を保存する際、スレごとの索引（`.idx`）を含めるよう修正。古いバックアップに索引が含まれていない場合、欠落した書き込みマークは更新だけでは復元できません。
+* **1.18.3**：「最低限構成」「広告だけの設定プリセット」の適用・復元でローカル自動バックアップをOFFにする処理と、実際はOFFでもONに見える表示を修正。既にOFFになった設定は自動でONに戻りません。
+* **更新後の確認**：保存先とアクセス権、自動バックアップの有効状態を確認し、必要なら明示的にONにしてください。既存ZIPを保管したまま、新しいバックアップを作成して内容を確認します。
+* **確認範囲**：開発元は191 / 226 / 242の隔離エミュレータで検証しています。APKの上書きだけで設定が消える現象は未再現で、実機での解消は本ガイドでは未確認です。
+
+出典：[1.18.2 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.2) / [1.18.3 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.3)。
+
+### 正式版1.18.0の主な追加・修正
 
 * **下部フィルターパネル**：常時表示・ポップアップのどちらでも、高さ調整つまみを上下にドラッグして高さを変更・保存できます。つまみは設定で非表示にでき、小さくしたパネル内はスクロールできます。
 * **191の通信**：「接続を再利用しない」で板・スレのGETごとに接続プールを分離し、古い接続の再利用を防ぎます。代替IPの試行開始間隔は250msから50msへ短縮。通信全体の上限の初期値は60秒で、保存済みの設定は維持します。191向けの対策であり、実回線での巡回時間は板・回線・DNSなどに依存します。
@@ -2487,7 +2496,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 * **共有NG（開発中）**：正規表現の受信に対応。GAS側は基本ルールで自動承認し、審査済み履歴を種類別シートに保存します。ID・ワッチョイの履歴は期限で削除しません。不正な正規表現は、その条件だけ受信時に適用しません。共有NG / F9対策とエッヂの公開レベルNGは、正式版に収録されていても引き続き開発中です。
 * **開発元の確認範囲**：191 / 226 / 242の検証用エミュレータで起動・スレ本文・画像表示・設定と変更箇所を確認。191の接続再利用対策は古い接続が残るローカルサーバー、前スレ取得はリンクの振り分けとローカル転送で検証しています。Version固有の対策は対象版に限定され、本ガイドでの実機確認とは区別してください。
 
-出典：[1.18.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) / [Stable配布JSON](https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json)。以下のVersion別記録は過去の変更履歴です。現在の導入・更新は1.18.0を基準にしてください。
+出典：[1.18.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) / [Stable配布JSON](https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json)。以下のVersion別記録は過去の変更履歴です。現在の導入・更新は1.18.3を基準にしてください。
 
 ### 正式版1.15.0までの主な追加・修正
 
@@ -2550,7 +2559,7 @@ Pre-release用（開発版を試す場合のみ）：
 https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle.json
 ```
 
-* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.18.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
+* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.18.3のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.3) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
 * Managerごとの画面・対応状況は [Upstream README](https://github.com/areteruhiro/Haiagaru-Morphe) と [Morphe公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) を確認してください。URV Managerの案内だけで、後継UPMの動作まで確認済みとは扱いません。
 
 ### インストール・データ移行・互換性の注意
