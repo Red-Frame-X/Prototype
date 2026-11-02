@@ -14,6 +14,7 @@ class LargeContentLossGuardTests(unittest.TestCase):
         replacement_lines: int | None,
         *,
         allow_deletion: bool = False,
+        replacement_text: str | None = None,
     ) -> subprocess.CompletedProcess[str]:
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)
@@ -28,7 +29,11 @@ class LargeContentLossGuardTests(unittest.TestCase):
             if replacement_lines is None:
                 path.unlink()
             else:
-                path.write_text("\n".join(f"new {i}" for i in range(replacement_lines)) + "\n", encoding="utf-8")
+                path.write_text(
+                    replacement_text if replacement_text is not None else
+                    "\n".join(f"new {i}" for i in range(replacement_lines)) + "\n",
+                    encoding="utf-8",
+                )
             subprocess.run(["git", "add", "doc.md"], cwd=repo, check=True)
             subprocess.run(["git", "commit", "-m", "change"], cwd=repo, check=True, capture_output=True)
             command = ["python", str(SCRIPT), "--base-ref", base]
@@ -43,6 +48,35 @@ class LargeContentLossGuardTests(unittest.TestCase):
 
     def test_allows_small_rewrite_without_explicit_authorization(self):
         result = self.run_guard(100, 95)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_rejects_output_truncation_below_loss_threshold(self):
+        for marker in (
+            "…5306 tokens truncated…",
+            "...5306 tokens truncated...",
+            "…120 characters truncated…",
+            "Warning: truncated output (original token count: 4992)",
+        ):
+            with self.subTest(marker=marker):
+                result = self.run_guard(10, 10, replacement_text=f"# Guide\n{marker}\n")
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("出力の省略表示が混入", result.stderr)
+
+    def test_deletion_authorization_does_not_allow_output_truncation(self):
+        result = self.run_guard(
+            10, 10, allow_deletion=True,
+            replacement_text="# Guide\n…5306 tokens truncated…\n",
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("出力の省略表示が混入", result.stderr)
+
+    def test_allows_ordinary_ellipsis_and_marker_explanation(self):
+        result = self.run_guard(
+            10, 10, replacement_text=(
+                "# Guide\n例：途中…続き\n"
+                "`…5306 tokens truncated…` は出力の省略表示です。\n"
+            ),
+        )
         self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_allows_authorized_small_edit(self):
