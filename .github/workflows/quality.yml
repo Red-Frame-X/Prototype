@@ -58,13 +58,27 @@ jobs:
         run: bash scripts/check_workflow_syntax.sh
 
       - name: 大量の内容消失の防止検査
+        env:
+          CONTENT_LOSS_BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || '' }}
         run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
             # fetch-depth: 0で履歴全体を取得済み。ベースを--depth=1で再取得すると、
             # origin/<base>が浅い参照に置き換わり、3点差分に必要な
             # Merge baseを取得できなくなる場合がある。
-            base_ref="origin/${{ github.base_ref }}"
+            base_ref="$CONTENT_LOSS_BASE_REF"
             git merge-base "$base_ref" HEAD >/dev/null
+          elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            # 最後のCommitだけでなく、push前からの変更全体を検査する。
+            # 比較元を取得できない場合、HEAD^への縮小で成功にしない。
+            base_ref="$CONTENT_LOSS_BASE_REF"
+            if [[ ! "$base_ref" =~ ^[0-9a-f]{40}$ || "$base_ref" =~ ^0+$ ]]; then
+              echo '内容消失防止検査のpush前のCommitを解決できません。' >&2
+              exit 1
+            fi
+            if ! git cat-file -e "$base_ref^{commit}" 2>/dev/null; then
+              git fetch --no-tags origin "$base_ref"
+              git cat-file -e "$base_ref^{commit}"
+            fi
           elif git rev-parse HEAD^ >/dev/null 2>&1; then
             base_ref="HEAD^"
           else
@@ -73,6 +87,10 @@ jobs:
           fi
 
           guard_args=(--base-ref "$base_ref")
+          if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            # Force Pushでも共通祖先に戻さず、実際のpush前後を比較する。
+            guard_args+=(--direct-comparison)
+          fi
           merged_guide='Markdown Notes/Designing AdGuard Custom Rules.md'
           if git cat-file -e "$base_ref:$merged_guide" 2>/dev/null && [[ ! -e "$merged_guide" ]]; then
             # このファイルの内容をAdGuard Custom Rules Reference.mdに統合した後、
