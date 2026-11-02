@@ -56,16 +56,21 @@ class LargeContentLossGuardTests(unittest.TestCase):
             "...5306 tokens truncated...",
             "…120 characters truncated…",
             "Warning: truncated output (original token count: 4992)",
+            "前の文章 …5306 tokens truncated… 後の文章",
+            "> …5306 tokens truncated…",
+            "* …5306 tokens truncated…",
         ):
             with self.subTest(marker=marker):
-                result = self.run_guard(10, 10, replacement_text=f"# Guide\n{marker}\n")
+                # 行数の保護で失敗しただけでは検出の回帰を保証できない。
+                text = "本文\n" * 9 + marker + "\n"
+                result = self.run_guard(10, 10, replacement_text=text)
                 self.assertNotEqual(result.returncode, 0)
                 self.assertIn("出力の省略表示が混入", result.stderr)
 
     def test_deletion_authorization_does_not_allow_output_truncation(self):
         result = self.run_guard(
             10, 10, allow_deletion=True,
-            replacement_text="# Guide\n…5306 tokens truncated…\n",
+            replacement_text="本文\n" * 9 + "> …5306 tokens truncated…\n",
         )
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("出力の省略表示が混入", result.stderr)
@@ -81,6 +86,21 @@ class LargeContentLossGuardTests(unittest.TestCase):
 
     def test_allows_authorized_small_edit(self):
         result = self.run_guard(100, 95, allow_deletion=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_rejects_half_of_short_document_being_lost(self):
+        result = self.run_guard(200, 100)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("純減率 50.0%", result.stderr)
+
+    def test_relative_loss_boundary(self):
+        for before, after, expected in ((80, 60, 1), (80, 61, 0), (100, 76, 0), (100, 75, 1)):
+            with self.subTest(before=before, after=after):
+                result = self.run_guard(before, after)
+                self.assertEqual(result.returncode, expected, result.stderr)
+
+    def test_allows_reviewed_relative_loss(self):
+        result = self.run_guard(200, 100, allow_deletion=True)
         self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_rejects_large_loss_even_when_more_than_quarter_remains(self):
