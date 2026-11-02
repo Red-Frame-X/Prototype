@@ -1411,7 +1411,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 
 ## AdGuard 公式フィルタ
 
-**AdGuardフィルター**
+**AdGuard Filters**
 * [組み込みフィルタリスト・標準フィルタリスト](https://adguard.com/kb/ja/general/ad-filtering/adguard-filters/) と呼ばれることが多いです。
 
 [Yuki2718氏のよくある質問](https://github.com/Yuki2718/adblock2/wiki/よくある質問) より引用
@@ -1648,6 +1648,10 @@ Android向けの [公式FAQ](https://www.zenz-solutions.de/faq/) に沿った設
 
 ## Android アプリ 有償版 AdGuard for Android（Android）
 * **[公式サイト](https://adguard.com/ja/adguard-android/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardForAndroid)**
+
+**導入方法・検証記事（Android / iOS）**
+
+* **[GIGAZINE：AdGuard 広告ブロッカーのインストールと使い方](https://gigazine.net/news/20261102-adguard-adblocking/#android-install)**：GIGAZINE編集部がまとめた、AdGuard for Android / AdGuard for iOSの導入方法と広告ブロックの検証記事です。AndroidやiPhoneで初めて導入する際の参考になります。
 
 **AdGuard for Android（ローカルVPNモード）の常駐・DNS設定**
 
