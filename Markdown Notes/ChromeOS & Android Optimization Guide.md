@@ -2482,23 +2482,44 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 ### Haiagaru-Morpheの配布状況・対応Version
 
-* **Stable（通常の導入・更新はこちら）**：[1.18.3](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.3)。最新安定版です。下部フィルターパネル、191の通信、前スレ取得、検索・ビューア・設定画面を改善しています。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.18.3.mpp`。
+* **Stable（通常の導入・更新はこちら）**：[1.21.0](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.21.0)。最新安定版です。登録済みNGの管理、通知・バックアップ設定の保存と復元、versionCode最大化を更新しています。配布元は `master/patches-bundle.json`、配布ファイルは `patches-1.21.0.mpp`。
 * **Pre-release**：通常の導入・更新はStableを中心に確認します。開発版を試す場合のみ `dev/patches-bundle.json` を使用し、その時点のVersion・変更内容を照合してください。
 * **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。連続したVersion範囲ではなく、241 / 243 devなどは対象外です。
 * **導入時の確認**：[Releases](https://github.com/areteruhiro/Haiagaru-Morphe/releases)、配布JSONの `version`・`download_url`、対象tagの対応宣言を照合してください。README冒頭やVersion別JSONには古い案内が残る場合があります。任意Patchは個別に対応対象を確認します。
 
-対応宣言：[1.18.0](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.18.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)。対応宣言は端末ごとの動作保証ではありません。
+対応宣言：[1.21.0](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.21.0/patches/src/main/kotlin/app/morphe/patches/chmate/HaiagaruPatch.kt)。対応宣言は端末ごとの動作保証ではありません。
 
 ### 主な機能とVersionによる違い
 
 * **広告除去**：広告と余白を非表示にします。「広告だけの超軽量構成」は通常の`Haiagaru`を外す別構成で、追加検索・設定・動画機能を含みません。通常版の広告用プリセットとも異なります。
 * **取得・検索**：DAT落ちスレの取得経路設定、5ch.io・Talkの互換処理、エッヂの過去ログ検索・専用ビューア・記者ID表示に対応します。取得先のログやサービス側の仕様に依存します。
-* **通信・投稿設定**：HTTP→HTTPS切り替え、MonaKey削除は任意設定（初期OFF）。全通信のHTTPS化や規制解除を保証するものではありません。User-Agent変更機能は1.11.3で廃止されています。
+* **通信・投稿設定**：HTTP→HTTPS切り替え、MonaKey削除は任意設定（初期OFF）。全通信のHTTPS化や規制解除を保証するものではありません。User-Agent変更機能は1.11.3で一度廃止されましたが、1.19.0では固定テンプレート方式・カスタムUAを収録しています。認証済みの閲覧通信ではCookieに対応するブラウザUAを使います。5秒ごとのランダム変更実験は正式版に含みません。
 * **Version限定機能**：ChMate+互換の省略機能は191 / 226向け、Image NG修正は191向けです。242に同じ機能を追加するものではありません。
 * **外部連携**：1.13.0以降はDroid＋のホームを開く機能を正式版にも収録。投稿者ID・本文の自動送信は行いません。
 * **任意Patch**：Package name・アプリ名・アイコン・versionCodeの変更、Crash log保存、動画専用ビューア、画像取得VPNなど。Crash logは`Download/Haiagaru/`に保存されます（初期ON）。
 
-出典：[README](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/README.md) / [1.12.2 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.12.2) / [ChMate+互換機能](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/docs/chmate-plus-compat.md)。
+出典：[README](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/README.md) / [1.12.2 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.12.2) / [ChMate+互換機能](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.12.2/docs/chmate-plus-compat.md) / [1.21.0時点のCHANGELOG（UA設定は1.19.0を参照）](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.21.0/CHANGELOG.md)。
+
+### 最新安定版1.21.0の主な変更・更新後の確認
+
+* **登録済みNGの管理**：ChMate標準のNG登録画面と、Haiagaruのワッチョイ上下4桁の追加画面で、登録済みNGの削除・有効化・無効化・登録画面に戻る操作を選べます。削除は確認後に実行し、有効 / 無効の切り替えでは条件・対象板・連鎖・非表示・登録日時を保持します。
+* **バックアップ対象の拡充**：Haiagaruバックアップの設定保存に、登録スレの新着通知（対象スレ・前回確認したレス数・確認間隔）、ローカル / MEGAのバックアップ選択項目、ローカル自動バックアップのON / OFFと保存先を追加。復元時に通知の確認処理も設定し直します。
+* **復元後の権限確認**：Androidの通知権限と保存先フォルダへのアクセス許可は引き継げません。再インストール後は必要に応じて許可してください。保存先が未許可の場合は設定を保持して「アクセス許可待ち」と表示します。古いバックアップに記録されていないON / OFF・保存先・通知登録は復元できません。
+* **通常復元の修正**：異なるバックアップを続けて通常復元した際、後のバックアップにないHaiagaruの対象画面設定を初期値に戻します。設定が意図せず有効なまま残る問題への対処であり、報告された大きな遅延自体は開発元でも未再現です。
+* **versionCode・追加ZIP**：「Change ChMate package name」のversionCode最大化の初期値・上限を`2147483647`へ変更。明示指定済みの値とChMate本来のVersion名は維持します。画像取得専用VPNの同梱ライブラリからローカルのビルドパス情報を除いているため、使用する場合は1.21.0の追加ZIPを取得してください。
+* **開発元の確認範囲**：191 / 226 / 242の隔離エミュレータでNGの画面操作・ネイティブ保存処理、191 / 242で通知・バックアップ設定のZIP往復と復元を確認。再インストール時の権限待ちは設定のない状態で検証しており、アンインストール・利用者データの消去は行っていません。本文表示・画像 / GIF / 動画の再検証は今回省略されています。本ガイドでの実機確認とは区別してください。
+* **開発中の機能**：共有NG / F9対策とエッヂの公開レベルNGは引き続き開発中です。エッヂ認証日の記録・共有は含みません。
+
+出典：[1.21.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.21.0) / [1.21.0時点のCHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.21.0/CHANGELOG.md) / [Stable配布JSON](https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json)。
+
+### 1.19.0〜1.20.2で追加・修正された現行機能
+
+* **登録スレの新着通知**：スレタイトル長押しの「このスレの新着通知」から登録・解除します。確認間隔は1分〜7日、初期15分。アプリを閉じていても確認しますが、Androidの省電力・通信・バックグラウンド実行回数の制限で遅れる場合があり、正確な毎分通知は保証されません。通知にはスレ名・新着件数と、DATを取得できる場合に新着本文を表示します。1.20.2までにHTMLタグで始まる名前欄や空の名前欄のDAT解析も修正されています。
+* **設定への入口**：ChMate標準の設定一覧にある「セーフモード」の直前の「Haiagaru設定」から開きます。1.20.0での最上部配置を経て現在の位置へ移り、従来の浮動ボタンは廃止されています。
+* **閲覧認証・検索・取得**：エッヂの閲覧認証とCookie・ブラウザUAの引き継ぎを改善。242の絵文字all設定時にスレ内検索のカーソルが先頭へ戻る問題と、未取得の現役5chスレを開く前の余分なDAT取得を修正しています。
+* **242のS2M設定**：有料オプション同期（S2M）設定の初期化中に0除算でクラッシュする問題を修正。開発元は隔離エミュレータで起動・再表示を確認しています。
+
+出典：[1.21.0時点のCHANGELOG（1.19.0〜1.20.2）](https://github.com/areteruhiro/Haiagaru-Morphe/blob/1.21.0/CHANGELOG.md)。以下は過去のVersionごとの変更履歴です。現在の導入・更新は1.21.0を基準にしてください。
 
 ### 正式版1.18.2 / 1.18.3のバックアップ修正と更新後の確認
 
@@ -2520,7 +2541,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 * **共有NG（開発中）**：正規表現の受信に対応。GAS側は基本ルールで自動承認し、審査済み履歴を種類別シートに保存します。ID・ワッチョイの履歴は期限で削除しません。不正な正規表現は、その条件だけ受信時に適用しません。共有NG / F9対策とエッヂの公開レベルNGは、正式版に収録されていても引き続き開発中です。
 * **開発元の確認範囲**：191 / 226 / 242の検証用エミュレータで起動・スレ本文・画像表示・設定と変更箇所を確認。191の接続再利用対策は古い接続が残るローカルサーバー、前スレ取得はリンクの振り分けとローカル転送で検証しています。Version固有の対策は対象版に限定され、本ガイドでの実機確認とは区別してください。
 
-出典：[1.18.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) / [Stable配布JSON](https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json)。以下のVersion別記録は過去の変更履歴です。現在の導入・更新は1.18.3を基準にしてください。
+出典：[1.18.0 Release](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.0) / [Stable配布JSON](https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle.json)。以下のVersion別記録は過去の変更履歴です。現在の導入・更新は1.21.0を基準にしてください。
 
 ### 正式版1.15.0までの主な追加・修正
 
@@ -2583,13 +2604,13 @@ Pre-release用（開発版を試す場合のみ）：
 https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/dev/patches-bundle.json
 ```
 
-* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.18.3のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.18.3) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
+* 191のImage NG修正は`haiagaru-image-ng.zip`、画像取得VPNは`haiagaru-image-vpn-v2.zip`を [1.21.0のAssets](https://github.com/areteruhiro/Haiagaru-Morphe/releases/tag/1.21.0) から取得し、展開せず追加ファイル欄に指定します。未使用の任意Patchには不要です。
 * Managerごとの画面・対応状況は [Upstream README](https://github.com/areteruhiro/Haiagaru-Morphe) と [Morphe公式ガイド](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md) を確認してください。URV Managerの案内だけで、後継UPMの動作まで確認済みとは扱いません。
 
 ### インストール・データ移行・互換性の注意
 
 * **署名・共存**：APKは再署名されます。更新でデータを保持するにはPackage nameと署名鍵の継続が必要です。Package name変更は初期ON（`jp.co.airfront.android.a2chMate.haiagaru`・アプリ名`Haiagaru`）で、元ChMateと共存できますが、データは自動共有されません。
-* **versionCode**：初期値は`2100000000`。同じPackage name・署名鍵でも、低いversionCodeへの上書きやVersion間のデータ互換性は保証されません。
+* **versionCode**：1.21.0の最大化の初期値・上限は`2147483647`（明示指定済みの値は維持）。同じPackage name・署名鍵でも、低いversionCodeへの上書きやVersion間のデータ互換性は保証されません。
 * **Shizuku移行**：任意Patchで、選択時はAndroid 7.0以降とShizukuの起動・権限許可が必要です。共有ストレージ側のデータをコピーする補助機能であり、完全移行を保証しません。ChMate標準のバックアップ・復元を優先してください。
 * **削除前の確認**：元ChMateのアンインストール・データ削除は、バックアップと移行結果を確認してから行ってください。
 * **対応・確認範囲**：ChMate更新にはPatch側の追従が必要です。本ガイドでは実機Testを行っておらず、ChromeOSでの動作保証も確認できません。
