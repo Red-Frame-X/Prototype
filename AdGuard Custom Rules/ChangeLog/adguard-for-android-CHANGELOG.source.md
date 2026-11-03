@@ -3,6 +3,25 @@
 > 取得元: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > 公式GitHub Releasesから生成しています。新しいリリースから順に掲載します。
 
+## 4.15.2
+
+- 公開日時: 2026-11-03T13:27:41Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.15.2
+
+This technical update keeps things running smoothly, like warm butter on sourdough.
+
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.15.1
 
 - 公開日時: 2026-10-21T17:54:11Z
@@ -4689,69 +4708,3 @@ In this run-of-the-mill beta we fix few bugs and update CoreLibs. It will transf
 ### DnsLibs updated to v1.2.26
 
 * [Other] 'Unblock' button is not visible in Filtering Log details #3429
-
-## 3.4 beta 1
-
-- 公開日時: 2020-04-27T11:49:40Z
-- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-1
-
-Please welcome the first beta version of AdGuard v3.4 for Android! To start things off, we've enhanced the app in a few directions, including fixing some of the oldest known bugs and improving Android TV compatibility. 
-
-**[Bug] AdGuard blocks Internet connection [#2842](https://github.com/AdguardTeam/AdguardForAndroid/issues/2842)**
-
-This bug had been puzzling us for a very long time. It appeared on various devices of AdGuard users and was seemingly random. However, the symptoms were the same: the smartphone lost any network completely while AdGuard was turned on. Needless to say, it had been our top priority to fix this issue, and finally, we've managed to beat it. Not going to lie, it's a big relief not only for the affected users but for us too!
-
-**[Enhancement] Integration with DnsLibs [#3229](https://github.com/AdguardTeam/AdguardForAndroid/issues/3229)**
-
-[DnsLibs](https://github.com/AdguardTeam/DnsLibs) is a DNS proxy library that's required to provide DNS filtering. It supports all existing DNS protocols including DNS-over-TLS, DNS-over-HTTPS, and DNSCrypt. We developed it to replace the old DNSproxy, which had one serious flow: it caused high battery resource consumption. DnsLibs is much better optimized and will ensure a longer lifespan for your phone's battery if you're using DNS filtering a lot. 
-
-**[Enhancement] Improved functionality on Android TV [#3238](https://github.com/AdguardTeam/AdguardForAndroid/issues/3238)**
-
-AdGuard for Android is first and foremost an app for mobile phones and tablets, but it can be installed on other Android devices, such as smart TVs. We have made several improvements for this specific case, for example:
-
-- AdGuard now better works with lists
-- Better navigation between AG menus on smart TVs
-- Option to click on snackbars
-- Option to exit the promo screen
-- "Close" option for all dialogues
-
-Now AdGuard for Android will be much easier in use if you decide to install it on your smart TV. If you still encounter any bugs or inconsistent behavior, please report it [here](https://github.com/AdguardTeam/AdguardForAndroid/issues/new/choose).  
-
-**[Bug] Firewall's restriction are ignored when WiFi gets enabled [#3313](https://github.com/AdguardTeam/AdguardForAndroid/issues/3313)**
-
-And another unpleasant bug that deserves a special mention. In v3.3, if you had specifically prohibited some apps from accessing the Internet via mobile data, the restrictions worked right up until you enabled WiFi, which was not the intended behaviour.
-
-## Changelog
-
-* [Bug] Application won’t start after the restart of the device [#3286](https://github.com/AdguardTeam/AdguardForAndroid/issues/3286)
-* [Bug] Stealth mode preset changes after an update [#3287](https://github.com/AdguardTeam/AdguardForAndroid/issues/3287)
-* [Bug] Locale change bug [#3301](https://github.com/AdguardTeam/AdguardForAndroid/issues/3301)
-* [Bug] `com.android.providers.downloads` traffic isn't routed [#3355](https://github.com/AdguardTeam/AdguardForAndroid/issues/3355)
-* [Bug] Filtering doesn’t work with enabled AdGuard on Android 11 [#3377](https://github.com/AdguardTeam/AdguardForAndroid/issues/3377)
-* [Bug] Impossible to enable UDP through SOCKS5 proxy [#3394](https://github.com/AdguardTeam/AdguardForAndroid/issues/3394)
-* [Bug] You can't create a hotspot without disabling DNS filtering [#3187](https://github.com/AdguardTeam/AdguardForAndroid/issues/3187)
-* [Bug] "HTTPS filtering is off" SnackBar covers "Data Saved" stat on the Home screen [#3292](https://github.com/AdguardTeam/AdguardForAndroid/issues/3292)
-* [Enhancement] Custom `adguard:` scheme is now used for adding userscripts [#3000](https://github.com/AdguardTeam/AdguardForAndroid/issues/3000)
-* [Enhancement] "Cancel" button added to the "Add proxy" screen [#3093](https://github.com/AdguardTeam/AdguardForAndroid/issues/3093)
-* [Enhancement] `stealth.enabled=false` is now sent in query string if Stealth Mode is turned off when sending a report [#3169](https://github.com/AdguardTeam/AdguardForAndroid/issues/3169)
-* [Enhancement] `Block ads in all apps` parameter is now sent when sending a report [#3350](https://github.com/AdguardTeam/AdguardForAndroid/issues/3350)
-* [Enhancement] An option to suppress HTTPS filtering error notification [#3225](https://github.com/AdguardTeam/AdguardForAndroid/issues/3225)
-* [Enhancement] HTTPS filtering dialog has been improved [#3284](https://github.com/AdguardTeam/AdguardForAndroid/issues/3284)
-* [Enhancement] Romanian and Thai localizations have been added [#3341](https://github.com/AdguardTeam/AdguardForAndroid/issues/3341)
-* [Other] Firefox Preview Nightly for Developers has been added to the list of supported  browsers [#3333](https://github.com/AdguardTeam/AdguardForAndroid/issues/3333)
-* [Other] Cobra Browser has been added to the list of supported browsers [#3357](https://github.com/AdguardTeam/AdguardForAndroid/issues/3357)
-* [Other] Add Brave Beta has been added to the list of supported browsers [#3401](https://github.com/AdguardTeam/AdguardForAndroid/issues/3401)
-* [Other] Vivaldi Snapshot and Vivaldi Sopranos have been added to the list of supported browsers [#3400](https://github.com/AdguardTeam/AdguardForAndroid/issues/3400)
-* [Other] Certificate installation sequence on Android 11 [#3354](https://github.com/AdguardTeam/AdguardForAndroid/issues/3354)
-* [Other] Acknowledgements page has been updated [#82](https://github.com/AdguardTeam/AdguardForAndroid/issues/82)
-* [Other] AdGuard crashes in local HTTP proxy mode [#3416](https://github.com/AdguardTeam/AdguardForAndroid/issues/3416)
-* [Other] Application crashes on Android 11 upon opening filtering log details [#3366](https://github.com/AdguardTeam/AdguardForAndroid/issues/3366)
-* [Other] The list of HTTPS exclusions has been updated
-* [Other] Translations have been updated
-
-## CoreLibs has been updated to v1.5.249
-
-* [Bug] Cosmetic rules can be used as CSS rules [#1293](https://github.com/AdguardTeam/CoreLibs/issues/1293)
-* [Bug] Rules selection algorithm works not as intended when HTTPS filtering is disabled [#1291](https://github.com/AdguardTeam/CoreLibs/issues/1291)
-* [Bug] Rules with restricted domains do not match requests without referer [#1286](https://github.com/AdguardTeam/CoreLibs/issues/1286)   
-* [Bug] "Failed to initialize protocol filters" error [#1282](https://github.com/AdguardTeam/CoreLibs/issues/1282)
