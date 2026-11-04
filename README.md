@@ -3,7 +3,7 @@
 ## 連絡先
 𝕏：[@Red_Frame_X](https://x.com/Red_Frame_X)
 
-🔗：[@Red_Frame_X](https://mond.how/Red_Frame_X)
+mond：[@Red_Frame_X](https://mond.how/Red_Frame_X)
 
 ## 概要
 
