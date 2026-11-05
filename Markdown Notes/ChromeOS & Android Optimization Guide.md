@@ -1709,11 +1709,11 @@ Android向けの [公式FAQ](https://www.zenz-solutions.de/faq/) に沿った設
 ※ 実態はDNSブロッカーのため、ABP形式の構文（`||example.com^`）には対応していません。
 
 **! 購読済みのDNSブロックリスト・hostsファイル**
-* HaGeZi Multi NORMAL（総合保護）
+* HaGeZi's Multi NORMAL - all-round protection
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
-* HaGeZi Threat Intelligence Feedsのmedium版（ブラウザ・モバイル用広告ブロッカー向け）
+* HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif.medium-onlydomains.txt
   ```
@@ -1847,17 +1847,17 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) は、AdGuardのDNS保護が処理する問い合わせに対し、アプリをまたいでドメイン単位のブロックを行います。VPN対象外アプリ、別プロファイル、独自の暗号化DNSなど、処理経路を外れる通信まで必ず対象になるわけではありません（[公式：DNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/) / [公式：Private DNSとの互換性](https://adguard.com/kb/adguard-for-android/solving-problems/compatibility-issues/#private-dns) / [DNS書き換えの基本](https://writening.net/page?keELEF)）。
 プライバシー関連のルールによる不具合（[Issues #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896), [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178)）を緩和する方法。
 
-① **[AdGuard DNS filter（without privacy filters）](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
+① **[AdGuard DNS filter (without privacy filters)](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
 
 ② **[AdGuard_DNS_Filter_for_myself](https://github.com/monsivamon/AdGuard_DNS_Filter_for_myself)**
 
-③ **[HaGeZi Multi NORMAL（総合保護）](https://github.com/hagezi/dns-blocklists#blue_book-multi-normal-all-round-protection-)**
+③ **[HaGeZi's Multi NORMAL - all-round protection](https://github.com/hagezi/dns-blocklists#blue_book-multi-normal-all-round-protection-)**
 
 ④ **DNSユーザーフィルタ** で自作例外ルール（`@@`）を作成。
 
 **脅威対策の追加候補（DNSフィルタ）**
 
-* [HaGeZi Threat Intelligence Feedsのmedium版（ブラウザ・モバイル用広告ブロッカー向け）](https://github.com/hagezi/dns-blocklists#tifmedium)
+* [HaGeZi's Threat Intelligence Feeds - medium version (best for browser/mobile ad blockers)](https://github.com/hagezi/dns-blocklists#tifmedium)
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.medium.txt
   ```
