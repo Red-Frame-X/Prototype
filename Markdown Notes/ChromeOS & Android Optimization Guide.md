@@ -28,7 +28,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | 契約時の注意・過去の不具合 | [購読・支援](#購読支援) |
 | 関連する資料・サービス | [Webサービス一覧](#web-サービス統合リスト) / [Linux Mint](#linux-mint) / [謝辞・参考情報](#謝辞参考情報) |
 
-詳しい仕様は [コンテンツブロックFAQ](Content%20Blocking%20FAQ%202026.md)、[AdGuard構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md)、[DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md) を参照してください。ChromeOSの更新・復旧は [専用ガイド](ChromeOS%20Manual%20Update%20and%20Troubleshooting.md) で扱います。本文のVersionは文書の更新情報であり、すべての外部サービスや実機の再検証日時を表すものではありません。
+詳しい仕様は [コンテンツブロックFAQ](Content%20Blocking%20FAQ%202026.md) 、 [AdGuard構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) 、 [DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md) を参照してください。ChromeOSの更新・復旧は [専用ガイド](ChromeOS%20Manual%20Update%20and%20Troubleshooting.md) で扱います。本文のVersionは文書の更新情報であり、すべての外部サービスや実機の再検証日時を表すものではありません。
 
 ## 購読・支援
 
@@ -56,9 +56,9 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 
 ### メンバーシップ・開発者支援
 
-* [mond｜Kdroidwinさんのメンバーシップ](https://mond.how/kdroidwin)（月額）
-* [GitHub｜Sponsors areteruhiro氏](https://github.com/areteruhiro)（月額）
-* [GitHub｜Sponsors crimera氏](https://github.com/crimera)（月額）
+* [mond｜Kdroidwinさんのメンバーシップ](https://mond.how/kdroidwin) （月額）
+* [GitHub｜Sponsors areteruhiro氏](https://github.com/areteruhiro) （月額）
+* [GitHub｜Sponsors crimera氏](https://github.com/crimera) （月額）
 
 トラブルを完全に避けるのであれば、サブスクリプションを一切契約しないのが最も安全です。
 必要があって契約する場合は、トラブルの原因となりやすい携帯キャリア提供の月額オプションは避け、公式サイトが直接提供するプランを必要最小限選ぶのが無難です。
@@ -124,10 +124,10 @@ Chrome 139以降ではManifest V2（MV2）拡張機能は動作せず、企業�
 | :--- | :--- |
 | uBlock Origin（uBO） | フル版はMV2です。Firefox向けなどの配布は継続していますが、現行Chrome / ChromeOSのChromeでは利用できません。GitHub配布のChromium用ビルドがあることは、Chromeで動作する根拠にはなりません。 |
 | uBlock Origin Lite（uBOL） | MV3向けの別実装です。サイト権限・フィルタリングモードを確認します。現行FAQには2026年6月からカスタムフィルタ・外部リスト購読に対応した旨の追記があり、古い「追加不可」の説明は流用しません。uBOの全機能を再現する製品ではなく、自動移行もされません。 |
-| AdGuard Browser Extension MV3 | ブラウザ内の通信・ページ表示を処理します。DNRへの変換、フィルタ更新、User Scripts APIの許可に製品固有の条件があります。[後述の設定](#adguard-browser-extension-mv3)を確認します。 |
+| AdGuard Browser Extension MV3 | ブラウザ内の通信・ページ表示を処理します。DNRへの変換、フィルタ更新、User Scripts APIの許可に製品固有の条件があります。 [後述の設定](#adguard-browser-extension-mv3) を確認します。 |
 | AndroidアプリのローカルVPN・DNS | ブラウザ拡張機能とは別方式です。DNSだけではページ内の空白・要素を非表示にできず、Android側の動作だけでChromeOS全体への適用を保証できません。 |
 
-出典：[uBO公式README](https://github.com/gorhill/uBlock#readme) / [uBOL公式FAQ](https://github.com/uBlockOrigin/uBOL-home/wiki/Frequently-asked-questions-(FAQ))。ブラウザ内でuBO / uBOLと他のコンテンツブロッカーを重ねることは、両プロジェクトの公式案内では非推奨です。DNSとの併用は別レイヤーとして切り分けます。
+出典： [uBO公式README](https://github.com/gorhill/uBlock#readme) / [uBOL公式FAQ](https://github.com/uBlockOrigin/uBOL-home/wiki/Frequently-asked-questions-(FAQ)) 。ブラウザ内でuBO / uBOLと他のコンテンツブロッカーを重ねることは、両プロジェクトの公式案内では非推奨です。DNSとの併用は別レイヤーとして切り分けます。
 
 ### 拡張機能・UserScriptの導入
 
@@ -147,70 +147,70 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 
  以下のブラウザ拡張機能やUserScriptは、全てをインストールして使用しているわけではありません。ブラウザ拡張機能やUserScriptを入れすぎると競合を起こしてトラブルの原因になるため、数は少なければ少ないほど良いです。
 
-* ブラウザ拡張機能の競合を疑いながらも問題の切り分けができず、AdGuard Filters issuesで相談した例。：[#228169](https://github.com/AdguardTeam/AdguardFilters/issues/228169)
-* Gmail 「システムで問題が発生しました（#2014）」。：[Reddit報告例](https://www.reddit.com/r/techsupport/comments/1b4rocl/oops_the_system_encountered_a_problem_2014/?tl=ja)
+* ブラウザ拡張機能の競合を疑いながらも問題の切り分けができず、AdGuard Filters issuesで相談した例。： [#228169](https://github.com/AdguardTeam/AdguardFilters/issues/228169)
+* Gmail 「システムで問題が発生しました（#2014）」。： [Reddit報告例](https://www.reddit.com/r/techsupport/comments/1b4rocl/oops_the_system_encountered_a_problem_2014/?tl=ja)
 
-▶ 断定はできませんが、[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod) が原因だった可能性が高く、同様のブラウザ拡張機能でも同じ不具合が起きるかもしれません。
+▶ 断定はできませんが、 [PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod) が原因だった可能性が高く、同様のブラウザ拡張機能でも同じ不具合が起きるかもしれません。
 
 ### コンテンツブロック・プライバシー関連
-* **[Auto History Wipe](https://chromewebstore.google.com/detail/auto-history-wipe/hnijmpliikobphakkmejgdoffgicmcbc)**：Chromeの閲覧履歴などを自動的に削除するための拡張機能。
-* **[AdGuard Extra](https://github.com/AdguardTeam/AdGuardExtra)**：Anti-Adblocker対策用UserScript ‐ 対象サイトはFacebook、Twitchなど。
-* **[AdGuard Browser Extension MV3](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ja)**：Chrome 拡張機能。（詳細後述）
-* **[tinyShield](https://github.com/FilteringDev/tinyShield/blob/main/README.ja.md)**：Ad-Shield対策用のUserScript。公式READMEはAdGuardまたはuBlock Originとの併用、Violentmonkey / Tampermonkeyなどでの導入を案内しています。UserScript独自の更新経路で補助するもので、MV3のDNRルール数・対応構文の制限そのものを解除する機能ではありません。旧参照先：[List-KR/tinyShield](https://github.com/List-KR/tinyShield/blob/main/README.ja.md)（HTTP 404、参照履歴として保持）。
-* **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**：検索結果のフィルタリング、指定したサイトの検索結果を非表示にする。（詳細後述）
+* **[Auto History Wipe](https://chromewebstore.google.com/detail/auto-history-wipe/hnijmpliikobphakkmejgdoffgicmcbc)** ：Chromeの閲覧履歴などを自動的に削除するための拡張機能。
+* **[AdGuard Extra](https://github.com/AdguardTeam/AdGuardExtra)** ：Anti-Adblocker対策用UserScript ‐ 対象サイトはFacebook、Twitchなど。
+* **[AdGuard Browser Extension MV3](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ja)** ：Chrome 拡張機能。（詳細後述）
+* **[tinyShield](https://github.com/FilteringDev/tinyShield/blob/main/README.ja.md)** ：Ad-Shield対策用のUserScript。公式READMEはAdGuardまたはuBlock Originとの併用、Violentmonkey / Tampermonkeyなどでの導入を案内しています。UserScript独自の更新経路で補助するもので、MV3のDNRルール数・対応構文の制限そのものを解除する機能ではありません。旧参照先： [List-KR/tinyShield](https://github.com/List-KR/tinyShield/blob/main/README.ja.md) （HTTP 404、参照履歴として保持）。
+* **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)** ：検索結果のフィルタリング、指定したサイトの検索結果を非表示にする。（詳細後述）
 
 ### YouTube関連
-* **[Enhancer for YouTube™](https://chromewebstore.google.com/detail/enhancer-for-youtube/ponfpcnoihfmfllpaingbgckeeldkhle)**：再生速度や音量のマウス制御、画質固定、テーマ変更、コメント非表示などYouTubeの機能を強化する。
-* **[SponsorBlock for YouTube-動画の広告シーンを自動スキップ](https://chromewebstore.google.com/detail/sponsorblock-for-youtube/mnjggcdmjocbbbhaepdhchncahnbgone)**：YouTube動画内のスポンサーセグメントやイントロなどを、ユーザーの報告に基づき自動でスキップする。
+* **[Enhancer for YouTube™](https://chromewebstore.google.com/detail/enhancer-for-youtube/ponfpcnoihfmfllpaingbgckeeldkhle)** ：再生速度や音量のマウス制御、画質固定、テーマ変更、コメント非表示などYouTubeの機能を強化する。
+* **[SponsorBlock for YouTube-動画の広告シーンを自動スキップ](https://chromewebstore.google.com/detail/sponsorblock-for-youtube/mnjggcdmjocbbbhaepdhchncahnbgone)** ：YouTube動画内のスポンサーセグメントやイントロなどを、ユーザーの報告に基づき自動でスキップする。
 
 ### ショッピング関連
-* **[Amazonレビュー信頼度判定 & 無限スクロール（サクラ識別 / 品質チェック）](https://greasyfork.org/ja/scripts/561755)**：Amazonのレビュアー投稿履歴を分析し、信頼度をS〜Dランクで視覚化。信頼度フィルタリング機能や、レビュー一覧の無限スクロール化も提供。
-* **[Condler](https://chromewebstore.google.com/detail/condler/ejjdbndmmongojeafjlilnchmkppbeap)**：Amazon検索結果の左側サイドバーに、並び替えやAmazon公式出品のみに絞り込むボタンを追加する。
-* **[Keepa - Amazon Price Tracker](https://chromewebstore.google.com/detail/keepa-amazon-price-tracke/neebplgakaahbhdphmkckjjcegoiijjo)**：Amazon商品の価格履歴グラフをページ上に表示し、設定した価格になると通知を受け取れる。
-* **[Knockoff — Amazon Brand Filter](https://chromewebstore.google.com/detail/knockoff-%E2%80%94-amazon-brand-f/pjgickchbiikhdfpmecaabkphmofpdce)**：Amazon検索結果に大量に現れるアルファベット羅列の無名・大量生産ブランドを識別し、ラベル付けや薄く表示、非表示（フィルタリング）にする。
-* **[サクラチェッカーをAmazon内に直接表示 🔍️](https://greasyfork.org/ja/scripts/533121)**：Amazonの商品ページに、サクラチェッカーのスコアと判定結果を高速で自動表示する。
+* **[Amazonレビュー信頼度判定 & 無限スクロール（サクラ識別 / 品質チェック）](https://greasyfork.org/ja/scripts/561755)** ：Amazonのレビュアー投稿履歴を分析し、信頼度をS〜Dランクで視覚化。信頼度フィルタリング機能や、レビュー一覧の無限スクロール化も提供。
+* **[Condler](https://chromewebstore.google.com/detail/condler/ejjdbndmmongojeafjlilnchmkppbeap)** ：Amazon検索結果の左側サイドバーに、並び替えやAmazon公式出品のみに絞り込むボタンを追加する。
+* **[Keepa - Amazon Price Tracker](https://chromewebstore.google.com/detail/keepa-amazon-price-tracke/neebplgakaahbhdphmkckjjcegoiijjo)** ：Amazon商品の価格履歴グラフをページ上に表示し、設定した価格になると通知を受け取れる。
+* **[Knockoff — Amazon Brand Filter](https://chromewebstore.google.com/detail/knockoff-%E2%80%94-amazon-brand-f/pjgickchbiikhdfpmecaabkphmofpdce)** ：Amazon検索結果に大量に現れるアルファベット羅列の無名・大量生産ブランドを識別し、ラベル付けや薄く表示、非表示（フィルタリング）にする。
+* **[サクラチェッカーをAmazon内に直接表示 🔍️](https://greasyfork.org/ja/scripts/533121)** ：Amazonの商品ページに、サクラチェッカーのスコアと判定結果を高速で自動表示する。
 
 ### 検索・ブラウジング補助
-* **[Buster: Captcha Solver for Humans](https://chromewebstore.google.com/detail/buster-captcha-solver-for/mpbjkejclgfgadiemmefgebjfooflfhl)**：音声認証とAIを活用してreCAPTCHAを自動で突破する。
-* **[Cesturefy](https://chromewebstore.google.com/detail/cesturefy-navigate-operat/bifgfhokfobhebifcogneljkpaaloonp)**：マウス、ロッカー、ホイールジェスチャーでブラウザ操作を効率化する拡張機能。
-* **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザのネイティブブックマークを、Google Drive、WebDAV、Nextcloudなどを利用して複数のブラウザや端末間で同期する。
-* **[google-search-title-qualified](https://chromewebstore.google.com/detail/google-search-title-quali/bjcnnhojddnonjmhlpdjcdcfmofliagb)**：Google検索結果にサイト本来のタイトルを表示させる。
-* **[Search Result Previews](https://chromewebstore.google.com/detail/search-result-previews/cedcejfiniojnlhlfhcppenochinijfo)**：検索結果のリンク横にウェブサイトのプレビュー画像（サムネイル）を表示させる。
-* **[SingleFile](https://github.com/gildas-lormeau/SingleFile)**：閲覧中のWebページを画像やスタイルなどとともに1つのHTMLファイルに保存し、オフラインで閲覧できる。
-* **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**：新しいタブを常にフォアグラウンド（最前面）で開く。
-* **[VertiTab - 縦型タブ · AIブラウザエージェント](https://chromewebstore.google.com/detail/vertitab-vertical-tabs/chejfhdknideagdnddjpgamkchefjhoi)**：高度なタブ管理ツール、縦型タブ・ツリー型タブ・クラウド同期などを搭載。
-* **[ブックマークサイドバー](https://chromewebstore.google.com/detail/%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%90%E3%83%BC/jdbnofccmhefkmjbkkdkfiicjkgofkdh)**：ブラウザの端に切り替え可能なブックマークサイドバーを追加する。
+* **[Buster: Captcha Solver for Humans](https://chromewebstore.google.com/detail/buster-captcha-solver-for/mpbjkejclgfgadiemmefgebjfooflfhl)** ：音声認証とAIを活用してreCAPTCHAを自動で突破する。
+* **[Cesturefy](https://chromewebstore.google.com/detail/cesturefy-navigate-operat/bifgfhokfobhebifcogneljkpaaloonp)** ：マウス、ロッカー、ホイールジェスチャーでブラウザ操作を効率化する拡張機能。
+* **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)** ：ブラウザのネイティブブックマークを、Google Drive、WebDAV、Nextcloudなどを利用して複数のブラウザや端末間で同期する。
+* **[google-search-title-qualified](https://chromewebstore.google.com/detail/google-search-title-quali/bjcnnhojddnonjmhlpdjcdcfmofliagb)** ：Google検索結果にサイト本来のタイトルを表示させる。
+* **[Search Result Previews](https://chromewebstore.google.com/detail/search-result-previews/cedcejfiniojnlhlfhcppenochinijfo)** ：検索結果のリンク横にウェブサイトのプレビュー画像（サムネイル）を表示させる。
+* **[SingleFile](https://github.com/gildas-lormeau/SingleFile)** ：閲覧中のWebページを画像やスタイルなどとともに1つのHTMLファイルに保存し、オフラインで閲覧できる。
+* **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)** ：新しいタブを常にフォアグラウンド（最前面）で開く。
+* **[VertiTab - 縦型タブ · AIブラウザエージェント](https://chromewebstore.google.com/detail/vertitab-vertical-tabs/chejfhdknideagdnddjpgamkchefjhoi)** ：高度なタブ管理ツール、縦型タブ・ツリー型タブ・クラウド同期などを搭載。
+* **[ブックマークサイドバー](https://chromewebstore.google.com/detail/%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%90%E3%83%BC/jdbnofccmhefkmjbkkdkfiicjkgofkdh)** ：ブラウザの端に切り替え可能なブックマークサイドバーを追加する。
 
 ### 特定サイト向け拡張
-* **[ChatGPT Ctrl + Enter Sender](https://chromewebstore.google.com/detail/chatgpt-ctrl+enter-sender/gbncgdhklmnckojlibfhdadpfbcdbnch?hl=ja)**：AIチャットにおいて、Enterキーを改行、Ctrl + Enterキーを送信に割り当て、誤送信を防ぐ。
-* **[Google Chatの改行・送信キー設定](https://chromewebstore.google.com/detail/google-chat%E3%81%AE%E6%94%B9%E8%A1%8C%E3%83%BB%E9%80%81%E4%BF%A1%E3%82%AD%E3%83%BC%E8%A8%AD%E5%AE%9A/kabocfciobpmopkcbiphmgdljpdlighk)**：Google Chatのキー設定をカスタマイズする。
-* **[GitHub UI Translator](https://chromewebstore.google.com/detail/github-ui-translator/igdplojdbbpfbedgoaokfcagpkofmngk)**：GitHubのWeb画面上のメニュー、ボタン、説明文などのUIを日本語に翻訳して表示する。
-* **[5CH STYLE FORMAT](https://chromewebstore.google.com/detail/5ch-style-format/aidnencnedgaflbgacmcbcokcpancdac?hl=ja)**：5chのスレッド記事の整形、URL直リンク化、画像・レスのPOP表示など。
-* **[Twitterᴾˡᵘˢ](https://greasyfork.org/ja/scripts/387969-twitter%E1%B4%BE%CB%A1%E1%B5%98%CB%A2)**：オリジナル品質の画像を表示し、スパムツイートの削除機能をカスタマイズする。
-* **[𝕏 Spam Highlighter](https://github.com/shapoco/x-spam-highlighter)**：PC向けWeb版𝕏のフォロワー一覧画面で、スパム疑いのアカウントを赤くハイライト表示する。
-* **[Shadowban Scanner for Twitter / X](https://chromewebstore.google.com/detail/shadowban-scanner-for-twi/enlganfikppbjhabhkkilafmkhifadjd)**：𝕏のアカウントやツイートのシャドウバン、センシティブ判定を検出する。
-  *  [ろぼいんブログ](https://roboin.io/)：X・SNSを中心に、Webサービスやアプリのニュース・使い方・不具合の対処法をわかりやすく解説
+* **[ChatGPT Ctrl + Enter Sender](https://chromewebstore.google.com/detail/chatgpt-ctrl+enter-sender/gbncgdhklmnckojlibfhdadpfbcdbnch?hl=ja)** ：AIチャットにおいて、Enterキーを改行、Ctrl + Enterキーを送信に割り当て、誤送信を防ぐ。
+* **[Google Chatの改行・送信キー設定](https://chromewebstore.google.com/detail/google-chat%E3%81%AE%E6%94%B9%E8%A1%8C%E3%83%BB%E9%80%81%E4%BF%A1%E3%82%AD%E3%83%BC%E8%A8%AD%E5%AE%9A/kabocfciobpmopkcbiphmgdljpdlighk)** ：Google Chatのキー設定をカスタマイズする。
+* **[GitHub UI Translator](https://chromewebstore.google.com/detail/github-ui-translator/igdplojdbbpfbedgoaokfcagpkofmngk)** ：GitHubのWeb画面上のメニュー、ボタン、説明文などのUIを日本語に翻訳して表示する。
+* **[5CH STYLE FORMAT](https://chromewebstore.google.com/detail/5ch-style-format/aidnencnedgaflbgacmcbcokcpancdac?hl=ja)** ：5chのスレッド記事の整形、URL直リンク化、画像・レスのPOP表示など。
+* **[Twitterᴾˡᵘˢ](https://greasyfork.org/ja/scripts/387969-twitter%E1%B4%BE%CB%A1%E1%B5%98%CB%A2)** ：オリジナル品質の画像を表示し、スパムツイートの削除機能をカスタマイズする。
+* **[𝕏 Spam Highlighter](https://github.com/shapoco/x-spam-highlighter)** ：PC向けWeb版𝕏のフォロワー一覧画面で、スパム疑いのアカウントを赤くハイライト表示する。
+* **[Shadowban Scanner for Twitter / X](https://chromewebstore.google.com/detail/shadowban-scanner-for-twi/enlganfikppbjhabhkkilafmkhifadjd)** ：𝕏のアカウントやツイートのシャドウバン、センシティブ判定を検出する。
+  *  [ろぼいんブログ](https://roboin.io/) ：X・SNSを中心に、Webサービスやアプリのニュース・使い方・不具合の対処法をわかりやすく解説
 
 ### 業務効率化
-* **[Advanced Font Settings](https://chromewebstore.google.com/detail/advanced-font-settings/caclkomlalccbpcdllchkeecicepbmbm?hl=ja)**：Webサイトのフォント設定を変更する
-* **[Checker Plus for Gmail™](https://chromewebstore.google.com/detail/checker-plus-for-gmail/oeopbcgkkoapgobdbedcemjljbihmemj?hl=ja)**：Gmailを開かずに新着通知を受け、閲覧・削除・返信を可能にする。
-* **[DeepL翻訳](https://chromewebstore.google.com/detail/deepl%EF%BC%9Aai%E7%BF%BB%E8%A8%B3%E3%81%A8%E6%96%87%E7%AB%A0%E4%BD%9C%E6%88%90%E3%83%84%E3%83%BC%E3%83%AB/cofdbpoegempjloogbagkncekinflcnj?hl=ja)**：高品質なAI翻訳と文章校正を提供する。
-* **[Extensity](https://chromewebstore.google.com/detail/extensity/jjmflmamggggndanpgfnpelongoepncg?hl=ja)**：拡張機能のオン・オフをワンクリックで切り替えられる管理ツール。
-* **[Google Keep Chrome 拡張機能](https://chromewebstore.google.com/detail/google-keep-chrome-%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/lpcaedmchfhocbbapmcbpinfpgnhiddi?hl=ja)**：閲覧中のページやテキスト、画像をKeepに保存する。
-* **[Google オフライン ドキュメント](https://chromewebstore.google.com/detail/google-%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3-%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/ghbmnnjooekpmoecnnnilnnbdlolhkhi)**：ドキュメント類をオフライン編集可能にする。
-* **[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod)**：画像やURLにカーソルを合わせるだけで高画質拡大表示する。
-* **[Sidely - ChatGPT Sidebar](https://chromewebstore.google.com/detail/sidely-chatgpt-sidebar/ibgipmeolfponfpmjhflfgkbcecpmcoo)**：ChatGPTをChromeのサイドパネルに表示し、閲覧中のWebページを開いたままChatGPTを利用できる。
-* **[Shortcuts for Google™](https://chromewebstore.google.com/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd)**：Googleサービスへのショートカットボタンを表示する。
-* **[Similarweb - Website Traffic, AI Traffic & SEO Checker](https://chromewebstore.google.com/detail/similarweb-website-traffi/hoklmmgfnpapgjgcpechhaamimifchmp)**：閲覧中サイトのトラフィック指標、検索キーワード、AI流入などの競合分析データを表示する。
-* **[System Memory Usage](https://chromewebstore.google.com/detail/system-memory-usage/fdefaodljgbdlmdhobjlechpgpblooeh)**：システムのメモリ使用量をツールバーに表示する。
-* **[ドキュメント、スプレッドシート、スライドで Office ファイルを編集](https://chromewebstore.google.com/detail/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%80%81%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%80%81%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E3%81%A7-off/gbkeegbaiigmenfmjfclcdgdpimamgkj)**：Chromeブラウザ上でMicrosoft Officeファイルを直接開いて編集可能にする。
-* **[ドライブ用アプリケーション ランチャー（Google）](https://chromewebstore.google.com/detail/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E7%94%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC%EF%BC%88googl/lmjegmlicamnimmfhcmpkclmigmmcbeh)**：ブラウザから直接、PCにインストールされた対応アプリケーションでGoogle Driveのファイルを開く。
-* **[設定（Settings）](https://chromewebstore.google.com/detail/settings/jkfjnjeniglhpiggnfpiombpaohknkie)**：Google設定、拡張機能、閲覧データの管理を一元化する。
-* **[素晴らしい画面の並べ替えとスクリーンショット（Awesome Screenshot）](https://chromewebstore.google.com/detail/%E7%B4%A0%E6%99%B4%E3%82%89%E3%81%97%E3%81%84%E7%94%BB%E9%9D%A2%E3%81%AE%E4%B8%A6%E3%81%B9%E6%9B%BF%E3%81%88%E3%81%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88/nlipoenfbbikpbjkfpfillcgkoblgpmj)**：画面の録画やスクリーンショットのキャプチャを容易にし、注釈追加も可能にする。
+* **[Advanced Font Settings](https://chromewebstore.google.com/detail/advanced-font-settings/caclkomlalccbpcdllchkeecicepbmbm?hl=ja)** ：Webサイトのフォント設定を変更する
+* **[Checker Plus for Gmail™](https://chromewebstore.google.com/detail/checker-plus-for-gmail/oeopbcgkkoapgobdbedcemjljbihmemj?hl=ja)** ：Gmailを開かずに新着通知を受け、閲覧・削除・返信を可能にする。
+* **[DeepL翻訳](https://chromewebstore.google.com/detail/deepl%EF%BC%9Aai%E7%BF%BB%E8%A8%B3%E3%81%A8%E6%96%87%E7%AB%A0%E4%BD%9C%E6%88%90%E3%83%84%E3%83%BC%E3%83%AB/cofdbpoegempjloogbagkncekinflcnj?hl=ja)** ：高品質なAI翻訳と文章校正を提供する。
+* **[Extensity](https://chromewebstore.google.com/detail/extensity/jjmflmamggggndanpgfnpelongoepncg?hl=ja)** ：拡張機能のオン・オフをワンクリックで切り替えられる管理ツール。
+* **[Google Keep Chrome 拡張機能](https://chromewebstore.google.com/detail/google-keep-chrome-%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/lpcaedmchfhocbbapmcbpinfpgnhiddi?hl=ja)** ：閲覧中のページやテキスト、画像をKeepに保存する。
+* **[Google オフライン ドキュメント](https://chromewebstore.google.com/detail/google-%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3-%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/ghbmnnjooekpmoecnnnilnnbdlolhkhi)** ：ドキュメント類をオフライン編集可能にする。
+* **[PhotoShow](https://chromewebstore.google.com/detail/photoshow/mgpdnhlllbpncjpgokgfogidhoegebod)** ：画像やURLにカーソルを合わせるだけで高画質拡大表示する。
+* **[Sidely - ChatGPT Sidebar](https://chromewebstore.google.com/detail/sidely-chatgpt-sidebar/ibgipmeolfponfpmjhflfgkbcecpmcoo)** ：ChatGPTをChromeのサイドパネルに表示し、閲覧中のWebページを開いたままChatGPTを利用できる。
+* **[Shortcuts for Google™](https://chromewebstore.google.com/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd)** ：Googleサービスへのショートカットボタンを表示する。
+* **[Similarweb - Website Traffic, AI Traffic & SEO Checker](https://chromewebstore.google.com/detail/similarweb-website-traffi/hoklmmgfnpapgjgcpechhaamimifchmp)** ：閲覧中サイトのトラフィック指標、検索キーワード、AI流入などの競合分析データを表示する。
+* **[System Memory Usage](https://chromewebstore.google.com/detail/system-memory-usage/fdefaodljgbdlmdhobjlechpgpblooeh)** ：システムのメモリ使用量をツールバーに表示する。
+* **[ドキュメント、スプレッドシート、スライドで Office ファイルを編集](https://chromewebstore.google.com/detail/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%80%81%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%80%81%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E3%81%A7-off/gbkeegbaiigmenfmjfclcdgdpimamgkj)** ：Chromeブラウザ上でMicrosoft Officeファイルを直接開いて編集可能にする。
+* **[ドライブ用アプリケーション ランチャー（Google）](https://chromewebstore.google.com/detail/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E7%94%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC%EF%BC%88googl/lmjegmlicamnimmfhcmpkclmigmmcbeh)** ：ブラウザから直接、PCにインストールされた対応アプリケーションでGoogle Driveのファイルを開く。
+* **[設定（Settings）](https://chromewebstore.google.com/detail/settings/jkfjnjeniglhpiggnfpiombpaohknkie)** ：Google設定、拡張機能、閲覧データの管理を一元化する。
+* **[素晴らしい画面の並べ替えとスクリーンショット（Awesome Screenshot）](https://chromewebstore.google.com/detail/%E7%B4%A0%E6%99%B4%E3%82%89%E3%81%97%E3%81%84%E7%94%BB%E9%9D%A2%E3%81%AE%E4%B8%A6%E3%81%B9%E6%9B%BF%E3%81%88%E3%81%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88/nlipoenfbbikpbjkfpfillcgkoblgpmj)** ：画面の録画やスクリーンショットのキャプチャを容易にし、注釈追加も可能にする。
 
 ### 特殊用途
-* **[Chromebook リカバリ ユーティリティ](https://chromewebstore.google.com/detail/chromebook-%E3%83%AA%E3%82%AB%E3%83%90%E3%83%AA-%E3%83%A6%E3%83%BC%E3%83%86%E3%82%A3%E3%83%AA%E3%83%86%E3%82%A3/pocpnlppkickgojjlmhdmidojbmbodfm?hl=ja)**：リカバリメディアを作成するGoogle公式ツール。
-  * **[ChromeOS Flex インストール ガイド](https://support.google.com/chromeosflex/answer/11552529?hl=ja)**（Google公式）
+* **[Chromebook リカバリ ユーティリティ](https://chromewebstore.google.com/detail/chromebook-%E3%83%AA%E3%82%AB%E3%83%90%E3%83%AA-%E3%83%A6%E3%83%BC%E3%83%86%E3%82%A3%E3%83%AA%E3%83%86%E3%82%A3/pocpnlppkickgojjlmhdmidojbmbodfm?hl=ja)** ：リカバリメディアを作成するGoogle公式ツール。
+  * **[ChromeOS Flex インストール ガイド](https://support.google.com/chromeosflex/answer/11552529?hl=ja)** （Google公式）
 
 **参考サイト**
 * [Kami-Browser-Add-on｜Kdroidwin](https://github.com/Kdroidwin/Kami-Browser-Add-on)
@@ -219,8 +219,8 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 
 ## ChromeOS Chrome テーマ
 * **[Chrome Web Store テーマ](https://chromewebstore.google.com/category/themes)**
-* **[Dark Horizon](https://chromewebstore.google.com/detail/dark-horizon/ncjjeokpcnllmmbbipeaagmdpdpiadin)**：Chrome標準テーマに近い外観を、より暗い配色にしたシンプルなダークテーマ。
-* **[Royal Desert Sand](https://chromewebstore.google.com/detail/royal-desert-sand/nnieplejkjaodhemceganohmdkfekkem)**：デザートサンド（砂漠の砂）系の落ち着いた暖色とロイヤルブルーを組み合わせた、シンプルで上品なChromeテーマ。
+* **[Dark Horizon](https://chromewebstore.google.com/detail/dark-horizon/ncjjeokpcnllmmbbipeaagmdpdpiadin)** ：Chrome標準テーマに近い外観を、より暗い配色にしたシンプルなダークテーマ。
+* **[Royal Desert Sand](https://chromewebstore.google.com/detail/royal-desert-sand/nnieplejkjaodhemceganohmdkfekkem)** ：デザートサンド（砂漠の砂）系の落ち着いた暖色とロイヤルブルーを組み合わせた、シンプルで上品なChromeテーマ。
 
 ---
 
@@ -229,7 +229,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 Chromeアプリは、Chrome拡張機能やWebアプリとは別です。Googleの現行案内では、ユーザーが導入するChromeアプリをサポートする最後のChromeOSは138、kiosk modeは150（LTSは2027年4月まで）です。管理者導入のuser sessionなどには別の段階があり、最終終了はLTSを含め2028年10月とされています。適用条件を一律に「すべて終了済み」としないでください。公式ページには一部アプリの例外Versionの記載もありますが、個別アプリの永久サポートを保証するものではありません。
 
 
-* **[Text](https://chromewebstore.google.com/detail/text/mmfbcljfglbokpmkimbfghdkjmjhdgbg)**：Chromeアプリとして掲載しているテキストエディタです。既存環境で起動できても、現行ChromeOSでの新規導入・継続サポートは本レビューでは確認できていません。既存データを保存し、利用できない場合は[コードエディター](#コードエディター)などの代替手段を検討します。
+* **[Text](https://chromewebstore.google.com/detail/text/mmfbcljfglbokpmkimbfghdkjmjhdgbg)** ：Chromeアプリとして掲載しているテキストエディタです。既存環境で起動できても、現行ChromeOSでの新規導入・継続サポートは本レビューでは確認できていません。既存データを保存し、利用できない場合は [コードエディター](#コードエディター) などの代替手段を検討します。
 
 ---
 
@@ -238,9 +238,9 @@ Chromeアプリは、Chrome拡張機能やWebアプリとは別です。Google�
 
 Androidアプリを使えるのは対応するChromebookに限られ、組織の管理設定やアプリ側の端末要件でも利用可否が変わります。ChromeOS Flexは通常のChromebookと異なり、Google Playからこの一覧のAndroidアプリを利用する環境ではありません。一部のAndroid VPNアプリの管理者による配布には対応しますが、一般のAndroidアプリ対応とは区別します（[Chromebook公式](https://support.google.com/chromebook/answer/7021273?hl=ja) / [ChromeOS Flexとの違い](https://support.google.com/chromeosflex/answer/11542901?hl=ja)）。
 
-* **[ChMate](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate)** (\*)
+* **[ChMate](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate)** （\*）
   * 説明：5ちゃんねるを高速・快適に閲覧できる多機能なAndroid専用ブラウザアプリ。（※ ChromeOSでの不具合は後述）
-* **[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android)** (\*)
+* **[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android)** （\*）
   * 説明：主にChMateでの広告ブロックに使用している軽量なDNSフィルタリングアプリです。他のAndroidアプリやChromeOS用Chromeブラウザにも効くかは、DNS経路とVPN設定を個別に確認します。ページ内の広告枠を直接非表示にする機能とは異なります。（※ 詳細後述）
 * **[Google Home](https://play.google.com/store/apps/details?id=com.google.android.apps.chromecast.app)**
   * 説明：スマートデバイスを一元管理し、ルーティンによる自動化を実現するハブアプリ。
@@ -1023,7 +1023,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 * [Virtual Gistsの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualGists/issues)
 * [Virtual Gitの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualGit/issues)
 * [Virtual Repositoriesの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualRepos/issues)
-* [Japanese IME failure on VS Code 1.107.1 (Crostini) #285154](https://github.com/microsoft/vscode/issues/285154) （計画されていないため閉鎖）
+* [Japanese IME failure on VS Code 1.107.1 （Crostini） #285154](https://github.com/microsoft/vscode/issues/285154) （計画されていないため閉鎖）
 
 ※ 現在はCrostini（Linux 開発環境）およびVSCodiumをデバイスから削除し、ブラウザとAndroidアプリベースの環境へ完全移行済みです。
 
@@ -1035,7 +1035,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 
 ### AdGuardユーザールール作成手順
 
-対象要素だけを渡す場合は以下のCopy outerHTMLを使います。ページ全体の構造や周辺要素も調べたい場合は、[SingleFileで保存したHTMLをアップロードする手順](#singlefileで保存したhtmlをアップロードする手順adguard--userscript共通)も有効です。
+対象要素だけを渡す場合は以下のCopy outerHTMLを使います。ページ全体の構造や周辺要素も調べたい場合は、 [SingleFileで保存したHTMLをアップロードする手順](#singlefileで保存したhtmlをアップロードする手順adguard--userscript共通) も有効です。
 
 1. 対象ページをデスクトップ版Google Chromeで開き、デベロッパーツール（Ctrl + Shift + I）の要素選択アイコンを有効にします（[Chrome DevTools公式](https://developer.chrome.com/docs/devtools/inspect-mode?hl=ja)）。
 2. 非表示にしたい要素を選択し、DOMツリーで右クリックして「Copy」>「Copy outerHTML」を選びます。必要なら親要素や、同種要素との違いが分かる周辺HTMLも取得します。
@@ -1192,7 +1192,7 @@ uBlock OriginとAdGuardでは、同名に見えるScriptletでも引数、動作
 
 AdGuardルールで実現できない処理だけをUserScriptで補います。UserScriptはページ上でJavaScriptを実行するため、単純な要素非表示にはAdGuardルールを優先したほうが、権限、保守、性能、セキュリティの面で扱いやすくなります。
 
-対象要素と周辺のHTMLを貼り付ける代わりに、SingleFileで保存したHTMLを添付できます。[共通の保存・アップロード手順](#singlefileで保存したhtmlをアップロードする手順adguard--userscript共通)に従い、以下のプロンプトと「添付HTMLの解析条件」を同じチャットへ送ります。
+対象要素と周辺のHTMLを貼り付ける代わりに、SingleFileで保存したHTMLを添付できます。 [共通の保存・アップロード手順](#singlefileで保存したhtmlをアップロードする手順adguard--userscript共通) に従い、以下のプロンプトと「添付HTMLの解析条件」を同じチャットへ送ります。
 
 ````text
 # 目的
@@ -1231,7 +1231,7 @@ AdGuardルールで実現できない処理だけをUserScriptで補います。
 
 ### SingleFileで保存したHTMLをアップロードする手順（AdGuard / UserScript共通）
 
-[SingleFile](https://github.com/gildas-lormeau/SingleFile)は、ページを1つのHTMLファイルとして保存する拡張機能です。保存したHTMLをChatGPTへ添付すると、対象要素だけでなく、親要素や同種要素との違いを調べる資料として使えます。HTMLファイルの添付・解析に対応した環境で利用してください。
+[SingleFile](https://github.com/gildas-lormeau/SingleFile) は、ページを1つのHTMLファイルとして保存する拡張機能です。保存したHTMLをChatGPTへ添付すると、対象要素だけでなく、親要素や同種要素との違いを調べる資料として使えます。HTMLファイルの添付・解析に対応した環境で利用してください。
 
 1. 元のサイトで対象ページを開き、必要なスクロールやメニューの展開などを行って、調べたい要素が表示された状態にします。ログイン状態、操作手順、画面幅、AdGuardやUserScriptの有効・無効も控えます。既存ルールが対象を隠している場合は、その影響を切り分けてから保存します。
 2. SingleFileの拡張機能ボタンでページを保存します（[公式の操作説明](https://github.com/gildas-lormeau/SingleFile/blob/main/README.MD#getting-started)）。保存したHTMLに対象要素が含まれているか確認してください。未読み込みの要素は先に表示させ、必要なら保存し直します。
@@ -1294,18 +1294,18 @@ SingleFileは保存時にHTMLやCSSを加工し、既定ではScriptも除去し
 
 以下の短評は筆者の用途・利用時の評価です。サービス、モデル、料金、利用制限、ローカル実行の可否は別々に確認し、評価を公式の性能比較や提供保証とは扱いません。
 
-* **[ChatGPT](https://chat.openai.com/)**：汎用性が高い + 多様なモード。
-* **[Claude](https://claude.ai/login)**：コーディング用 + 日本語能力に優れる。
-* **[Gemini](https://gemini.google.com/)**：Googleサービス間の連携。
-* **[GitHub Copilot](https://github.com/features/copilot)**：コーディング用。
-* **[Grok](https://grok.com/)**：汎用性 + 制限が緩い - 𝕏の投稿の信憑性をチェックするのに使えそう？
+* **[ChatGPT](https://chat.openai.com/)** ：汎用性が高い + 多様なモード。
+* **[Claude](https://claude.ai/login)** ：コーディング用 + 日本語能力に優れる。
+* **[Gemini](https://gemini.google.com/)** ：Googleサービス間の連携。
+* **[GitHub Copilot](https://github.com/features/copilot)** ：コーディング用。
+* **[Grok](https://grok.com/)** ：汎用性 + 制限が緩い - 𝕏の投稿の信憑性をチェックするのに使えそう？
   * xAI Support Teamへの問い合わせ先 `support@x.ai` / [Contact: Get in Touch with xAI](https://x.ai/contact)
   * [xAIアカウントのMFA（多要素認証）を紛失してログイン不能 → xAIアカウント削除のために問い合わせ](https://docs.x.ai/console/faq/accounts#ive-forgotten-my-multi-factor-authentication-mfa-method-can-you-remove-it) てから5ヶ月後に [返信](https://imgur.com/a/rLKewye) がありました。
   * 問い合わせ用メールは下書きをGemini Proで推敲するも伝わらず、ChatGPT Plusに推敲させたものを再送しました。
-  * **非アクティブアカウントの現行条件**：[利用規約（2026年10月27日更新、SpaceXSI）](https://x.ai/legal/terms-of-service#termination-suspension-discontinuation) は、120日を超える非アクティブ状態を、運営側がアカウントを終了・停止・削除できる条件の1つとしています。旧記述の「有料プラン未加入・1年以上（over a year）」を現行条件として使わず、120日経過後に必ず自動削除されるとも判断しません。MFA紛失時の復旧・削除依頼とは別の条件です。
-  * アカウントや会話の削除を選択した場合、現行[Privacy Policy（2026年10月27日更新）](https://x.ai/legal/privacy-policy)では、法律・コンプライアンス・安全上の保持が必要な場合を除き、30日以内にデータを削除すると説明しています。非アクティブ状態のまま待つことと、削除を依頼することは区別します。
-* **[SDXL](https://stablediffusionweb.com/)**：狙い撃ち・人物や複雑な構図の生成で優秀。
-* **[z.ai GLM-4.5](https://chat.z.ai/)**：無料でそこそこの性能・ローカルで動かせる。
+  * **非アクティブアカウントの現行条件**： [利用規約（2026年10月27日更新、SpaceXSI）](https://x.ai/legal/terms-of-service#termination-suspension-discontinuation) は、120日を超える非アクティブ状態を、運営側がアカウントを終了・停止・削除できる条件の1つとしています。旧記述の「有料プラン未加入・1年以上（over a year）」を現行条件として使わず、120日経過後に必ず自動削除されるとも判断しません。MFA紛失時の復旧・削除依頼とは別の条件です。
+  * アカウントや会話の削除を選択した場合、現行 [Privacy Policy（2026年10月27日更新）](https://x.ai/legal/privacy-policy) では、法律・コンプライアンス・安全上の保持が必要な場合を除き、30日以内にデータを削除すると説明しています。非アクティブ状態のまま待つことと、削除を依頼することは区別します。
+* **[SDXL](https://stablediffusionweb.com/)** ：狙い撃ち・人物や複雑な構図の生成で優秀。
+* **[z.ai GLM-4.5](https://chat.z.ai/)** ：無料でそこそこの性能・ローカルで動かせる。
 
 **資料**
 * [メインで使われている生成AIと統合開発環境（IDE）](https://mond.how/ja/topics/iozm87r4wyxx8ao/amp4bswp4hi8d0m)
@@ -1318,7 +1318,7 @@ SingleFileは保存時にHTMLやCSSを加工し、既定ではScriptも除去し
 ### AdGuard 関連サービス・サポート群
 AdGuardドメイン（adguard.com系）で提供されている監査・ステータス・公式サポートを統合しています。
 * [AdGuard 診断ページ](https://adguard.com/ja/test.html)
-* [Webサイトをチェック (AdGuard)](https://reports.adguard.com/ja/welcome.html)
+* [Webサイトをチェック （AdGuard）](https://reports.adguard.com/ja/welcome.html)
 * [AdGuardの稼働状況](https://status.adguard.com/)
 * [AdGuard > サポートセンター](https://adguard.com/ja/support.html)
 
@@ -1432,7 +1432,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 ---
 
 ## 特殊詐欺対策
-**！[警察庁・SOS47特殊詐欺対策ページ](https://www.npa.go.jp/bureau/safetylife/sos47/)**
+**！ [警察庁・SOS47特殊詐欺対策ページ](https://www.npa.go.jp/bureau/safetylife/sos47/)**
 
 **成りすまし・その他の特殊詐欺**
 
@@ -1442,7 +1442,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 
 SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が多いです。今後、生成AIによる著名人の偽画像・音声・動画を使った投資詐欺やロマンス詐欺が増加すると予想されます。LINEなどへの誘導や不審な勧誘に安易に応じず、情報源を十分に確認するなど、一層の注意が必要です。
 
-**！[日本電話番号検索](https://www.jpnumber.com/)**
+**！ [日本電話番号検索](https://www.jpnumber.com/)**
 
 **注意が必要な特殊な電話番号**
 1. `+`で始まる番号は国番号付きの表記です。`+81`は日本を表すため、すべてを海外の発信元とは判断できません。知らない国際番号への折り返しは高額な通話料につながる場合があります。表示番号の偽装もあるため、番号だけで相手を信用しないでください（[警察庁：国際電話詐欺対策](https://www.npa.go.jp/bureau/safetylife/sos47/)）。
@@ -1484,16 +1484,16 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 > A 4-8：AdGuardでは組込みのフィルタを使っていただくのが無難と思います。AdGuardはuBlock Origin文法の大部分をサポートしていることになっていますが、実際は仕様の違いにより効かなかったり、動作が異なったりすることもあり、そうした細かい仕様は公式ドキュメントに必ずしも載っていません。当然ですが、AdGuardのフィルタはAdGuard上で完璧に動作します4-9。AdGuard日本語フィルタはかつて不評でしたが、今では昔と別物といってよいほど精度が高くなっています。
 
 **コンテンツブロックフィルタ**
-* **[AdGuard 公式フィルタ](https://github.com/AdguardTeam/AdguardFilters)**：AdGuardの接頭語 or `#recommended` のタグが付く各種フィルタ + 日本語フィルタ。
-* **[Online Malicious URL Blocklist](https://gitlab.com/malware-filter/urlhaus-filter)**：uBlock Origin ＆ AdGuardの標準セキュリティフィルタ。
-* **[uBlock Origin – Badware risks](https://github.com/uBlockOrigin/uAssets)**：Yuki2718氏がフィルタの監修に関わっています。
+* **[AdGuard 公式フィルタ](https://github.com/AdguardTeam/AdguardFilters)** ：AdGuardの接頭語 or `#recommended` のタグが付く各種フィルタ + 日本語フィルタ。
+* **[Online Malicious URL Blocklist](https://gitlab.com/malware-filter/urlhaus-filter)** ：uBlock Origin ＆ AdGuardの標準セキュリティフィルタ。
+* **[uBlock Origin – Badware risks](https://github.com/uBlockOrigin/uAssets)** ：Yuki2718氏がフィルタの監修に関わっています。
 
 ※ ChromeのDNR静的ルールは、拡張機能ごとに30,000件以上が保証されます。保証枠を超えて利用できる件数は、他の拡張機能の使用状況などで変動するため、固定の上限として扱わず `getAvailableStaticRuleCount()` で確認する必要があります。
 
 **カスタムフィルタ・ユーザールール**
 * **カスタムフィルタ**
-  * **[AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)**：Yuki2718氏自身がフィルタの監修をしています。AdGuard用moduleはサブリストとして自動的にincludeされるため、別途登録する必要はありません。
-  * **[自作のカスタムフィルタ](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex)**：各フィルタ作者様のルールを参考にしたり、自作のルールと組み合わせたりして作成しています。
+  * **[AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)** ：Yuki2718氏自身がフィルタの監修をしています。AdGuard用moduleはサブリストとして自動的にincludeされるため、別途登録する必要はありません。
+  * **[自作のカスタムフィルタ](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex)** ：各フィルタ作者様のルールを参考にしたり、自作のルールと組み合わせたりして作成しています。
 
 **参考サイト**
 * [Yuki2718/adblock2 > AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)
@@ -1557,7 +1557,7 @@ AdGuard Browser Extension MV3でカスタムフィルタ・ユーザールール
 | ユーザールール | 利用者が編集します。購読元の変更がコピー済みのルールへ自動反映されるわけではありません。 |
 | AdGuard Quick Fixes filter | 組み込みrulesetのリリース間を補う動的ルールです。通常の組み込み静的フィルタと区別します。 |
 
-出典：[AdGuard公式MV3解説](https://adguard.com/kb/adguard-browser-extension/mv3-version/) / [Filters](https://adguard.com/kb/adguard-browser-extension/features/filters/)。通常版のFiltering logは、DNR制限により実際の発火ルールではなく推定ルールを表示する場合があります。表示されたルールだけで原因を断定しないでください。
+出典： [AdGuard公式MV3解説](https://adguard.com/kb/adguard-browser-extension/mv3-version/) / [Filters](https://adguard.com/kb/adguard-browser-extension/features/filters/) 。通常版のFiltering logは、DNR制限により実際の発火ルールではなく推定ルールを表示する場合があります。表示されたルールだけで原因を断定しないでください。
 
 ChromeのDNRには静的・動的・sessionごとの枠があり、Chrome 121以降はsafeな動的ルールに30,000件、unsafeには5,000件の制限があります。正規表現は各ルール種別で1,000件までです。これはブラウザAPIの上限であり、AdGuardが受け付けるルール数や変換できる構文を保証するものではありません（[Chrome公式DNR仕様](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest#rule-limits)）。
 
@@ -1638,7 +1638,7 @@ Yuki2718氏は、uBlock Origin開発チームのうち**フィルターチーム
 
 ## Chrome 拡張機能 uBlacklist
 * **[Chrome Web Store](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**
-* **[公式ドキュメント](https://ublacklist.github.io/ja/docs/introduction)** / **[GitHub](https://github.com/iorate/ublacklist)** / [旧ドキュメントURL](https://iorate.github.io/ublacklist/ja/docs)（今回の取得では到達を確認できず）
+* **[公式ドキュメント](https://ublacklist.github.io/ja/docs/introduction)** / **[GitHub](https://github.com/iorate/ublacklist)** / [旧ドキュメントURL](https://iorate.github.io/ublacklist/ja/docs) （今回の取得では到達を確認できず）
 
 uBlacklistは、Googleなどの検索結果から指定したWebサイトを非表示にする拡張機能です。正規表現ルール、クラウド同期、公開ブラックリストの購読などが可能です。
 
@@ -1652,7 +1652,7 @@ uBlacklistに対応するモバイルブラウザでも、詐欺サイトなど�
 | [Titanium](https://github.com/jqssun/android-titanium-browser) | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions) にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
 | [Aerium](https://github.com/aerium-browser/aerium-browser-android) | [公式README](https://github.com/aerium-browser/aerium-browser-android#extensions-finally) にChrome Web Storeからの拡張機能導入とuBlock Originのプリインストールの記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
 
-拡張機能への対応だけで、すべての拡張機能や同期機能の動作が保証されるわけではありません。[uBlacklistのサポート方針](https://github.com/iorate/ublacklist#browser-support-policy) でも、明記されたブラウザ以外の対応はコミュニティの貢献に依存します。導入後は、利用する検索エンジンで非表示と再表示が動作するか確認してください。
+拡張機能への対応だけで、すべての拡張機能や同期機能の動作が保証されるわけではありません。 [uBlacklistのサポート方針](https://github.com/iorate/ublacklist#browser-support-policy) でも、明記されたブラウザ以外の対応はコミュニティの貢献に依存します。導入後は、利用する検索エンジンで非表示と再表示が動作するか確認してください。
 
 購読リストの対象範囲・更新状況によって効果は異なり、正常なサイトが非表示になる場合は、下記の例外ルールで調整できます。Google以外の対応検索エンジンではオプションでの有効化が必要です。購読には配布元へのアクセス権限が必要で、Firefox for AndroidではuBlacklistの「ブラウザ同期」方式は利用できません（[公式詳細ガイド](https://ublacklist.github.io/docs/advanced-features)）。
 
@@ -1697,7 +1697,7 @@ Android向けの [公式FAQ](https://www.zenz-solutions.de/faq/) に沿った設
 * **常駐対策**：personalDNSfilterをバッテリー最適化の対象から除外し、バックグラウンド動作を許可します。ローカルVPNモードでは、AndroidのVPN設定で「常時接続VPN」を有効にします。設定名・導線はOSや端末によって異なり、停止を完全に防ぐ保証はありません。
 * **「VPNなしの接続をブロック」は無効**：personalDNSfilterはDNS問い合わせだけを処理するため、この設定を有効にすると通常のインターネット通信が遮断されると公式FAQに明記されています。
 * **DNSフィルタリングの迂回対策**：Androidの「プライベートDNS」と、Android版Chromeの「セキュアDNSを使用」を無効にします。これはDNS問い合わせをpersonalDNSfilterに処理させるための設定であり、VPNの停止を防ぐ設定ではありません。
-* **DNS通信の暗号化**：OS・ブラウザ側の暗号化DNSを無効にする場合は、personalDNSfilter側でDoHまたはDoTの上流DNSを設定します。[公式製品説明](https://www.zenz-solutions.de/personaldnsfilter-wp/) に両方式の対応が記載されています。
+* **DNS通信の暗号化**：OS・ブラウザ側の暗号化DNSを無効にする場合は、personalDNSfilter側でDoHまたはDoTの上流DNSを設定します。 [公式製品説明](https://www.zenz-solutions.de/personaldnsfilter-wp/) に両方式の対応が記載されています。
 * **ChromeOS側の設定**：「サイトのルックアップに安全な接続を使用する」の無効化は、上記のAndroid向けFAQからChromeOS全体へ一律に適用しません。ChromeOS側のDNSもpersonalDNSfilterで処理する構成では、設定変更前後の問い合わせがアプリのログに記録されるか確認します。Android環境内で動作しているだけでは、ChromeOS全体への適用を確認したことにはなりません。
 
 通知のサイレント化は、通知音などを抑えるための任意設定です。VPNの安定化対策には含めません（[Android公式：通知の管理](https://support.google.com/android/answer/9079661?hl=ja)）。VPNプロファイルの削除・再設定も、公式FAQで一般的な安定化対策として確認できないため、常用手順には含めません。
@@ -1720,10 +1720,10 @@ Android向けの [公式FAQ](https://www.zenz-solutions.de/faq/) に沿った設
   * 脅威対策を補うTIFのmedium版です。personalDNSfilterではDomains only形式を使用します。
 
 **参考サイト**
-* [HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists)：複数の強度・配布形式を提供する有志による統合型DNSブロックリスト。
-  * [gitlab.com/hagezi/mirror](https://gitlab.com/hagezi/mirror)：1日1回、GitHubと同期して更新。
-  * [codeberg.org/hagezi/mirror2](https://codeberg.org/hagezi/mirror2)：1日1回、GitHubと同期して更新。
-  * [hagezi-mirror.dnsbunker.org](https://hagezi-mirror.dnsbunker.org)：4〜8時間ごとに更新。
+* [HaGeZi's DNS Blocklists](https://github.com/hagezi/dns-blocklists) ：複数の強度・配布形式を提供する有志による統合型DNSブロックリスト。
+  * [gitlab.com/hagezi/mirror](https://gitlab.com/hagezi/mirror) ：1日1回、GitHubと同期して更新。
+  * [codeberg.org/hagezi/mirror2](https://codeberg.org/hagezi/mirror2) ：1日1回、GitHubと同期して更新。
+  * [hagezi-mirror.dnsbunker.org](https://hagezi-mirror.dnsbunker.org) ：4〜8時間ごとに更新。
 * [5ch personalDNSfilterスレ](https://ff5ch.syoboi.jp/?q=%E3%80%90%E5%BA%83%E5%91%8A%E9%99%A4%E5%8E%BB%E3%80%91personalDNSfilter)
 
 ---
@@ -1733,7 +1733,7 @@ Android向けの [公式FAQ](https://www.zenz-solutions.de/faq/) に沿った設
 
 **導入方法・検証記事（Android / iOS）**
 
-* **[GIGAZINE：AdGuard 広告ブロッカーのインストールと使い方](https://gigazine.net/news/20261102-adguard-adblocking/#android-install)**：GIGAZINE編集部がまとめた、AdGuard for Android / AdGuard for iOSの導入方法と広告ブロックの検証記事です。AndroidやiPhoneで初めて導入する際の参考になります。
+* **[GIGAZINE：AdGuard 広告ブロッカーのインストールと使い方](https://gigazine.net/news/20261102-adguard-adblocking/#android-install)** ：GIGAZINE編集部がまとめた、AdGuard for Android / AdGuard for iOSの導入方法と広告ブロックの検証記事です。AndroidやiPhoneで初めて導入する際の参考になります。
 
 ### ローカルVPNの常駐とDNS設定
 
@@ -1741,7 +1741,7 @@ Androidでは同じユーザー / プロファイルで動作できるVPN servic
 
 **常駐・再起動対策**
 * AdGuardのバックグラウンド動作を許可し、バッテリー最適化の対象から除外します。Pixelでの設定例：設定 > アプリ > AdGuard > アプリのバッテリー使用量 > バックグラウンドでの使用を許可 > 制限なし。設定名・導線はAndroidのバージョンや端末によって異なります。
-* バックグラウンドで停止する場合は、AndroidのVPN設定でAdGuardの「常時接続VPN」を有効にします。[AdGuard公式のメーカー別対処手順](https://adguard.com/kb/adguard-for-android/solving-problems/background-work/) でもPixelなどに案内されています。有効化後も、端末再起動後にアプリの保護状態を確認します。
+* バックグラウンドで停止する場合は、AndroidのVPN設定でAdGuardの「常時接続VPN」を有効にします。 [AdGuard公式のメーカー別対処手順](https://adguard.com/kb/adguard-for-android/solving-problems/background-work/) でもPixelなどに案内されています。有効化後も、端末再起動後にアプリの保護状態を確認します。
 * **「VPNなしの接続をブロック」は別機能です**。有効にするとVPNから除外したアプリも通信できなくなるため、安定化目的では有効にしません（[Android公式：VPN](https://developer.android.com/develop/connectivity/vpn#blocked-connections)）。
 
 **AdGuardのDNS保護を利用する場合**
@@ -1779,7 +1779,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 * **[Brave](https://github.com/brave/brave-browser)**
   * **ブロック方法**：標準搭載のBrave Shieldsで広告・トラッカーを遮断。拡張機能の追加は不要です。
   * **主な機能**：クロスサイトCookie・フィンガープリンティング・バウンストラッキング対策、クエリパラメータのフィルタリング、HTTPSへのアップグレードなど。
-  * **追加フィルタ**：[AdGuard Mobile Ads filter](https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt)。
+  * **追加フィルタ**： [AdGuard Mobile Ads filter](https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt) 。
 * **[Cromite](https://github.com/uazo/cromite)**
   * **ブロック方法**：広告ブロック機能を内蔵。CNAME uncloakingやWorker内でのブロックにも対応します。
   * **特徴・注意点**：Bromite由来のChromium系ブラウザ。Googleとの統合を抑え、JavaScript JITは標準で無効です。Android版はChrome拡張機能に非対応で、フィンガープリンティング対策も包括的ではありません。
@@ -1808,18 +1808,18 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 
 **ログインの改善・動作報告（2026年10月30日・日本時間の確認）**
 
-* **Web版Amazon / Aerium**：[開発者が実験版v156でAmazon.co.jpへのログイン成功を報告](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6442862100) しています。Chromiumを直接ベースにした版での確認であり、この報告だけでは公開版やBare・Titaniumでの修正完了は確認できません。
-* **パスキー / Titanium**：[開発者がGoogleのFIDO2許可リストへの登録確認と段階的な反映を案内](https://github.com/jqssun/android-titanium-browser/issues/24#issuecomment-5914038712) しています。最新のGoogle Play開発者サービスで順次利用可能になるとの説明ですが、全端末への反映・動作確認ではありません。
-* **パスキー / TitaniumとBitwarden**：[Bitwardenの許可アプリ一覧に追加した後、x.comへのパスキーログインに成功した利用者の報告](https://github.com/jqssun/android-titanium-browser/issues/48#issuecomment-4637913658) があります。Issueの報告環境はNothing Phone (2) / Android 16 / Helium 149.0.7827.59です。
-* **パスキー / TitaniumとProton Pass**：[対応追加の報告](https://github.com/jqssun/android-titanium-browser/issues/250#issuecomment-6383317260) があり、リンク先の [F-Droid向け許可リスト](https://github.com/protonpass/android-pass/blob/9dfca3a5725741b805b79c8ea0c9a8a898d18dd3/app/src/fdroid/res/raw/passkey_privileged_browsers_allowlist.json#L942) にTitaniumのPackage nameと署名情報が含まれています。これは対応登録の確認であり、配布版すべてでのログイン成功報告ではありません。
-* **パスキー / Bare**：[RC2の公式Release Notes](https://github.com/BareBrowser/bare-browser/releases/tag/v1.0.0-alpha.1-rc2) は、第三者のパスワードマネージャーでBareを信頼済みとして登録した場合のパスキー利用を案内しています。同じ版の [開発者によるReddit投稿](https://www.reddit.com/r/browsers/comments/1vyoyhq/bare_browser_rc2_is_out_thank_you_rbrowsers_for/) にもパスキー / Bitwarden対応の記載があります。ただし、RC2ではGoogle Password Managerのパスキーは利用できないとも説明されています。
+* **Web版Amazon / Aerium**： [開発者が実験版v156でAmazon.co.jpへのログイン成功を報告](https://github.com/aerium-browser/aerium-browser-core/issues/92#issuecomment-6442862100) しています。Chromiumを直接ベースにした版での確認であり、この報告だけでは公開版やBare・Titaniumでの修正完了は確認できません。
+* **パスキー / Titanium**： [開発者がGoogleのFIDO2許可リストへの登録確認と段階的な反映を案内](https://github.com/jqssun/android-titanium-browser/issues/24#issuecomment-5914038712) しています。最新のGoogle Play開発者サービスで順次利用可能になるとの説明ですが、全端末への反映・動作確認ではありません。
+* **パスキー / TitaniumとBitwarden**： [Bitwardenの許可アプリ一覧に追加した後、x.comへのパスキーログインに成功した利用者の報告](https://github.com/jqssun/android-titanium-browser/issues/48#issuecomment-4637913658) があります。Issueの報告環境はNothing Phone (2) / Android 16 / Helium 149.0.7827.59です。
+* **パスキー / TitaniumとProton Pass**： [対応追加の報告](https://github.com/jqssun/android-titanium-browser/issues/250#issuecomment-6383317260) があり、リンク先の [F-Droid向け許可リスト](https://github.com/protonpass/android-pass/blob/9dfca3a5725741b805b79c8ea0c9a8a898d18dd3/app/src/fdroid/res/raw/passkey_privileged_browsers_allowlist.json#L942) にTitaniumのPackage nameと署名情報が含まれています。これは対応登録の確認であり、配布版すべてでのログイン成功報告ではありません。
+* **パスキー / Bare**： [RC2の公式Release Notes](https://github.com/BareBrowser/bare-browser/releases/tag/v1.0.0-alpha.1-rc2) は、第三者のパスワードマネージャーでBareを信頼済みとして登録した場合のパスキー利用を案内しています。同じ版の [開発者によるReddit投稿](https://www.reddit.com/r/browsers/comments/1vyoyhq/bare_browser_rc2_is_out_thank_you_rbrowsers_for/) にもパスキー / Bitwarden対応の記載があります。ただし、RC2ではGoogle Password Managerのパスキーは利用できないとも説明されています。
 
 これらはブラウザ・認証情報Provider・Versionごとの報告です。パスワードと確認コードでのログイン成功と、パスキー認証自体の成功は区別してください。
 
 **Aeriumのパスキーに関する過去の不具合報告・対応状況（2026年10月30日・日本時間の確認）**
 
-* **パスキー認証失敗：[Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50)（Open・bug）**
-  * Android 16でGoogle Password Managerは失敗し、KeePassDXは動作したとの報告があります。[開発者はBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧への未登録を説明](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) しています（[Android公式：必要な承認](https://developer.android.com/identity/sign-in/privileged-apps)）。
+* **パスキー認証失敗： [Issue #50](https://github.com/aerium-browser/aerium-browser-core/issues/50) （Open・bug）**
+  * Android 16でGoogle Password Managerは失敗し、KeePassDXは動作したとの報告があります。 [開発者はBitwardenでの動作と、Google Password Managerの信頼済みブラウザ一覧への未登録を説明](https://github.com/aerium-browser/aerium-browser-core/issues/50#issuecomment-6291327524) しています（[Android公式：必要な承認](https://developer.android.com/identity/sign-in/privileged-apps)）。
   * Google Playでの公開後にGoogleへ申請する予定ですが、申請完了・改善は未確認です。
   * [開発ソースにはAndroid Credential Manager対応パッチ](https://github.com/aerium-browser/aerium-browser-core/blob/f44f81b97cb57e9829d0e7f68f06d1e4777ba357/patches/0006-Use-Android-Credential-Manager-for-passkeys.patch) があり、パスキー全般が未実装という意味ではありません。報告Versionは「Latest」のみで、最新公開版での再現・パスキー作成・1Passwordなど他のProviderの動作は未確認です。
 
@@ -1913,7 +1913,7 @@ ChromeOSでGoogle Public DNSを選ぶ例：設定 > ネットワーク > Wi-Fi >
 * **フィルタ自動更新不可**：ホーム画面の↻を手動タップ。
 
 **拡張機能（有償）**
-* [tinyShield](https://github.com/FilteringDev/tinyShield/blob/main/README.ja.md)（Ad-Shield対策、原則不要）
+* [tinyShield](https://github.com/FilteringDev/tinyShield/blob/main/README.ja.md) （Ad-Shield対策、原則不要）
 * [最上部/最下部 移動ボタン追加](https://github.com/PermanentWave/SetTopAndBottomButtons)
 
 **製品の課題・不具合報告**
@@ -1947,7 +1947,7 @@ ChromeOSでGoogle Public DNSを選ぶ例：設定 > ネットワーク > Wi-Fi >
 
 ### 現行版での確認と過去の回避策
 
-以下にはWebView問題の修正前に使っていた回避策を残しています。現在はまず最新版と[メーカー別の公式常駐対策](https://adguard.com/kb/ja/adguard-for-android/solving-problems/background-work/)を確認します。①のダウングレード、②の旧Version限定機能、③の自動再接続を、全端末に必須の推奨設定とは扱いません。旧版へ戻すと、その後の修正も失われます。
+以下にはWebView問題の修正前に使っていた回避策を残しています。現在はまず最新版と [メーカー別の公式常駐対策](https://adguard.com/kb/ja/adguard-for-android/solving-problems/background-work/) を確認します。①のダウングレード、②の旧Version限定機能、③の自動再接続を、全端末に必須の推奨設定とは扱いません。旧版へ戻すと、その後の修正も失われます。
 
 **Android 17の「デバイスの管理」を有効化（Pixel 10aで確認）**
 
@@ -1992,9 +1992,9 @@ ChromeOSでGoogle Public DNSを選ぶ例：設定 > ネットワーク > Wi-Fi >
   したがって、④はVPN無効時の「2回目の再起動」ではなく、6時間ごとの更新確認用タスクです。公式ドキュメントには `update` が保護を再起動するとは記載されていません。VPN無効時に確実に複数回の再起動を行う必要がある場合は、③とは別に `start` を送信するアクションを追加して構成し、端末やAndroidの電源管理による挙動差を実機で確認してください。
 
 **Issuesの時系列**
-* [Issues #5598](https://github.com/AdguardTeam/AdguardForAndroid/issues/5598)（Base filterの不正確な説明）
-* [Issues #5593](https://github.com/AdguardTeam/AdguardForAndroid/issues/5593)（Android 15によるタスクキル）
-* [Issues #5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537)（WebView更新時の無効化）
+* [Issues #5598](https://github.com/AdguardTeam/AdguardForAndroid/issues/5598) （Base filterの不正確な説明）
+* [Issues #5593](https://github.com/AdguardTeam/AdguardForAndroid/issues/5593) （Android 15によるタスクキル）
+* [Issues #5537](https://github.com/AdguardTeam/AdguardForAndroid/issues/5537) （WebView更新時の無効化）
 ▶ [AdGuard for Android v4.10 Nightly 4で修正](https://adguard.com/ja/versions/android/nightly.html#version-41019) されました。
 
 **結論**
@@ -2009,7 +2009,7 @@ ChromeOSでGoogle Public DNSを選ぶ例：設定 > ネットワーク > Wi-Fi >
 
 ## AndroidのプライベートDNSを利用したDNSブロック
 
-Android 9以降の「プライベートDNS」で、フィルタリング対応プロバイダのホスト名を指定すると、システムのDNS経路を使うアプリ・ブラウザにドメイン単位のブロックを適用できます。すべてのDNSプロバイダが広告をブロックするわけではありません。アプリ独自のDNSやVPNによる迂回は[後述の制約](#dnsレベルブロックの制約)を確認します。
+Android 9以降の「プライベートDNS」で、フィルタリング対応プロバイダのホスト名を指定すると、システムのDNS経路を使うアプリ・ブラウザにドメイン単位のブロックを適用できます。すべてのDNSプロバイダが広告をブロックするわけではありません。アプリ独自のDNSやVPNによる迂回は [後述の制約](#dnsレベルブロックの制約) を確認します。
 
 **設定手順**
 
@@ -2154,7 +2154,7 @@ AndroidアプリにPatchを適用して機能や表示を調整するプロジ�
 
 ### ReVanced：公式PatchとManager
 
-**公式サイト・開発元**：[revanced.app](https://revanced.app/) / [GitHub Organization](https://github.com/ReVanced) / [ReVanced Manager](https://github.com/ReVanced/revanced-manager) / [Release](https://github.com/ReVanced/revanced-manager/releases/latest)
+**公式サイト・開発元**： [revanced.app](https://revanced.app/) / [GitHub Organization](https://github.com/ReVanced) / [ReVanced Manager](https://github.com/ReVanced/revanced-manager) / [Release](https://github.com/ReVanced/revanced-manager/releases/latest)
 
 ReVancedはAndroidアプリにPatchを適用するプロジェクトです。Managerは操作画面、Patcherは改変処理、Patchは変更内容を担当します。ManagerをインストールしただけでYouTubeなどが改変されるわけではありません。公式サイトはVancedの終了を出発点としていますが、対象はYouTubeだけに限定されません（[公式説明](https://revanced.app/) / [Manager README](https://github.com/ReVanced/revanced-manager/blob/main/README.md)）。
 
@@ -2196,7 +2196,7 @@ Manager・Patcher・CLIのREADMEはGPLv3を掲げています。追加sourceや�
 
 ### Morphe：Simple / Expert modeと追加Patch source
 
-**公式サイト・開発元**：[morphe.software](https://morphe.software/) / [GitHub Organization](https://github.com/MorpheApp) / [Morphe Manager](https://github.com/MorpheApp/morphe-manager) / [Release](https://github.com/MorpheApp/morphe-manager/releases/latest)
+**公式サイト・開発元**： [morphe.software](https://morphe.software/) / [GitHub Organization](https://github.com/MorpheApp) / [Morphe Manager](https://github.com/MorpheApp/morphe-manager) / [Release](https://github.com/MorpheApp/morphe-manager/releases/latest)
 
 MorpheはReVancedとは独立したプロジェクトです。公式FAQは元ReVanced開発者・貢献者による設立を説明し、Manager READMEはReVanced ManagerとURVを基盤とすることを明記しています。標準の対象はYouTube・YouTube Music・Redditで、追加sourceの対応アプリとは区別します（[FAQ](https://morphe.software/faq) / [README](https://github.com/MorpheApp/morphe-manager/blob/main/README.md)）。
 
@@ -2237,9 +2237,9 @@ Manager・Patch source・改変後のアプリを分けて更新します。sour
 
 ### UPM：複数のPatch系統を扱うManager（旧URV）
 
-**開発者サイト・Repository**：[Jman Central](https://jmancentral.com/) / [Universal Patch Manager](https://github.com/Jman-Github/Universal-Patch-Manager) / [Release](https://github.com/Jman-Github/Universal-Patch-Manager/releases) / [Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)
+**開発者サイト・Repository**： [Jman Central](https://jmancentral.com/) / [Universal Patch Manager](https://github.com/Jman-Github/Universal-Patch-Manager) / [Release](https://github.com/Jman-Github/Universal-Patch-Manager/releases) / [Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)
 
-旧配布先の記録：[Universal ReVanced Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager) / [Release](https://github.com/Jman-Github/Universal-ReVanced-Manager/releases)。旧Repository URLは現行Repositoryへ転送され、URVのRelease履歴も引き継がれています。旧版を調べる場合は [URV v1.10.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v1.10.0) のようにtagを固定します。
+旧配布先の記録： [Universal ReVanced Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager) / [Release](https://github.com/Jman-Github/Universal-ReVanced-Manager/releases) 。旧Repository URLは現行Repositoryへ転送され、URVのRelease履歴も引き継がれています。旧版を調べる場合は [URV v1.10.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v1.10.0) のようにtagを固定します。
 
 URVはUniversal ReVanced Managerの略称です。2026年10月29日の [UPM v2.0.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v2.0.0) でUniversal Patch Manager（UPM、アプリ表示名はUP Manager）へ改称されました。別作者のForkではなく、同じRepositoryの履歴を引き継ぐ改称です（[改称Commit](https://github.com/Jman-Github/Universal-Patch-Manager/commit/995ae1c9f85c45dcf479c049381085e95e9b652f)）。ReVanced Managerを基盤に、ReVanced・Morphe・ReseamのPatchを一つのアプリで管理します。個別の機能は選んだBundleが提供するため、Managerを変えるだけですべてのアプリやPatchが動くわけではありません（[公式README](https://github.com/Jman-Github/Universal-Patch-Manager/blob/v2.0.0/README.md)）。
 
@@ -2263,7 +2263,7 @@ ManagerとBundleの更新は別に確認します。自動再Patchは対象ア�
 
 **不具合・Redditの参照方法**
 
-Bundleが読み込めない場合は、拡張子だけでなくAPI / Runtimeの組み合わせとManagerのVersionを確認します。改変後アプリの症状ならBundleの開発元へ、読み込み・署名・インストール処理の問題なら [UPM Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)（[旧URV Issues URL](https://github.com/Jman-Github/Universal-ReVanced-Manager/issues) も現行へ転送） の既存報告を調べます。
+Bundleが読み込めない場合は、拡張子だけでなくAPI / Runtimeの組み合わせとManagerのVersionを確認します。改変後アプリの症状ならBundleの開発元へ、読み込み・署名・インストール処理の問題なら [UPM Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues) （[旧URV Issues URL](https://github.com/Jman-Github/Universal-ReVanced-Manager/issues) も現行へ転送） の既存報告を調べます。
 
 Redditでは [r/MorpheAppの互換性に関する議論](https://www.reddit.com/r/MorpheApp/comments/1qb9boe/can_i_use_revanced_patches_within_morphe_manager/) と [Manager更新告知のコメント](https://www.reddit.com/r/MorpheApp/comments/1s0fw2j/meet_the_latest_manager_update/) を確認しました。前者にはURVの対応がまだ予定だった時点の説明があるため、現在の対応判断は公式READMEを優先します。旧URVと現行UPMのREADMEのコミュニティ導線はTelegram / Discordで、専用の公式Subredditは今回確認できていません。
 
@@ -2384,16 +2384,16 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 **開発・配布先**
 
 * **開発チーム**：crimera氏を中心に開発されるPikoは、𝕏 / Twitter・Instagram向けのPatchプロジェクトです。Morphe Manager本体とは別に追加するPatch sourceで、v3.0.0以降はMorpheを利用します（[README](https://github.com/crimera/piko/blob/main/README.md)）。
-* **開発者GitHub**：[crimera](https://github.com/crimera)
-* **Repository・更新履歴**：[crimera/piko](https://github.com/crimera/piko) / [Release](https://github.com/crimera/piko/releases) / [Issues](https://github.com/crimera/piko/issues)
-* **告知・翻訳への参加**：[Telegram](https://t.me/pikopatches) / [Crowdin](https://crowdin.com/project/piko)
+* **開発者GitHub**： [crimera](https://github.com/crimera)
+* **Repository・更新履歴**： [crimera/piko](https://github.com/crimera/piko) / [Release](https://github.com/crimera/piko/releases) / [Issues](https://github.com/crimera/piko/issues)
+* **告知・翻訳への参加**： [Telegram](https://t.me/pikopatches) / [Crowdin](https://crowdin.com/project/piko)
 * **License**：GNU GPLv3以降の自由・オープンソースソフトウェアです（[Licenseの説明](https://github.com/crimera/piko#license)）。
 
 **対象アプリ・主な機能**
 
 * **𝕏 / Twitter**：広告・おすすめ項目の非表示、動画・GIFのDownload、共有リンクの追跡パラメータ除去、Navigation Bar・Side Barの調整、Font・Themeの変更などに対応します。
 * **Instagram**：広告・分析通信の抑制、画像・動画・StoriesのDownload、Navigation Barの調整、外部ブラウザでのリンク表示などに対応します。Reelsなどの利用を一定時間制限するFocus Lockや、受信箱を生体認証・画面ロックで保護するInbox lockもあります。
-* **対応Version**：安定版 [v3.10.0](https://github.com/crimera/piko/releases/tag/v3.10.0) の[Patch一覧](https://github.com/crimera/piko/blob/v3.10.0/README.md#%EF%B8%8F-patch-details)には、𝕏 / Twitter `12.19.1-release.0`、Instagram `447.0.0.55.81` が掲載されています。Patchは計137件（Twitter 75件・Instagram 62件）で、機能・対応Versionは更新により変わります。
+* **対応Version**：安定版 [v3.10.0](https://github.com/crimera/piko/releases/tag/v3.10.0) の [Patch一覧](https://github.com/crimera/piko/blob/v3.10.0/README.md#%EF%B8%8F-patch-details) には、𝕏 / Twitter `12.19.1-release.0`、Instagram `447.0.0.55.81` が掲載されています。Patchは計137件（Twitter 75件・Instagram 62件）で、機能・対応Versionは更新により変わります。
 
 **Morphe Managerでの導入**
 
@@ -2411,19 +2411,19 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 
 **NewX・関連する配布先**
 
-* **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)**：Pikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開するRepositoryです。通常のPikoとは配布先を分けており、利用するBundle側の説明を確認します（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
-* **関連するビルド済みAPK・プロジェクト**：[monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo)。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
+* **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)** ：Pikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開するRepositoryです。通常のPikoとは配布先を分けており、利用するBundle側の説明を確認します（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
+* **関連するビルド済みAPK・プロジェクト**： [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo) 。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
 
 ### Morpheと併用すると便利なAndroidアプリ
 
 Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助に利用できるアプリです。すべてがMorpheの必須アプリという意味ではなく、用途に応じて必要なものだけを併用します。
 
-* **APK・アプリ入手**：[Aurora Store](https://auroraoss.com/aurora-store) / [F-Droid](https://f-droid.org/ja/) / [Accrescent](https://accrescent.app/)
-* **アプリ更新管理**：[Obtainium](https://github.com/ImranR98/Obtainium) / [ObtainX](https://github.com/bikram-agarwal/ObtainX)
-* **ファイル・GitHub管理**：[File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager) / [GitHub](https://play.google.com/store/apps/details?id=com.github.android)
-* **動画関連ツール**：[YTDLnis](https://github.com/deniscerri/ytdlnis) / [Seal Plus](https://github.com/MaheshTechnicals/Sealplus)
-* **端末情報の確認**：[Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)
-* **その他の補助アプリ**：[floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1) / [Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)
+* **APK・アプリ入手**： [Aurora Store](https://auroraoss.com/aurora-store) / [F-Droid](https://f-droid.org/ja/) / [Accrescent](https://accrescent.app/)
+* **アプリ更新管理**： [Obtainium](https://github.com/ImranR98/Obtainium) / [ObtainX](https://github.com/bikram-agarwal/ObtainX)
+* **ファイル・GitHub管理**： [File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager) / [GitHub](https://play.google.com/store/apps/details?id=com.github.android)
+* **動画関連ツール**： [YTDLnis](https://github.com/deniscerri/ytdlnis) / [Seal Plus](https://github.com/MaheshTechnicals/Sealplus)
+* **端末情報の確認**： [Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)
+* **その他の補助アプリ**： [floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1) / [Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)
 
 **参考サイト**
 * [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/) / [r/reseamapp](https://www.reddit.com/r/reseamapp/)
@@ -2434,16 +2434,16 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 ## Android アプリ ChMate（ChromeOS・Android）
 
-* **配布元**：[Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate) / [公式サイト](https://chmate.airfront.co.jp/)。
+* **配布元**： [Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate) / [公式サイト](https://chmate.airfront.co.jp/) 。
 * **用途**：掲示板の閲覧・書き込み、NG設定、ログ保存などに対応するAndroidアプリです。
 
 ### 対応環境・配布版
 
-* **対応Android**：[公式案内](https://chmate.airfront.co.jp/docs/supported-os/) はAndroid 6.0以上。6.0のサポートは2026年中に終了予定ですが、終了済みとは確認していません。
+* **対応Android**： [公式案内](https://chmate.airfront.co.jp/docs/supported-os/) はAndroid 6.0以上。6.0のサポートは2026年中に終了予定ですが、終了済みとは確認していません。
 * **ChromeOS**：Androidアプリ対応Chromebookでも動作保証はありません。タブレットモードやキーボード・マウス操作も、端末ごとの確認が必要です。
 * **Google Play通常版**：確認できた配信情報は0.8.10.241（更新日：2026年3月11日）。配信可否は端末・アカウントによって異なります。
-* **開発版**：[Open testing・DeployGate](https://chmate.airfront.co.jp/docs/dev-version/) で配布。不安定な場合があり、両経路が常に同じVersionとは限りません。DeployGateの現行配布Versionは未確認です。
-* **変更履歴**：[2026年の最新掲載版](https://chmate.airfront.co.jp/history/2026/) は0.8.10.246(516)（10月19日）。各経路で入手できるVersionとは区別してください。239〜241の日付には年の不整合があります。
+* **開発版**： [Open testing・DeployGate](https://chmate.airfront.co.jp/docs/dev-version/) で配布。不安定な場合があり、両経路が常に同じVersionとは限りません。DeployGateの現行配布Versionは未確認です。
+* **変更履歴**： [2026年の最新掲載版](https://chmate.airfront.co.jp/history/2026/) は0.8.10.246（516）（10月19日）。各経路で入手できるVersionとは区別してください。239〜241の日付には年の不整合があります。
 
 ### 板の登録・リンク・読み書き
 
@@ -2468,7 +2468,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **不具合修正**：NG設定・バックアップ・タブレット操作などの修正履歴は [2025年](https://chmate.airfront.co.jp/history/2025/) / [2026年](https://chmate.airfront.co.jp/history/2026/) を参照。Haiagaru-Morphe独自のNG機能は公式機能とは別です。
 * **Android 16以降の戻る操作**：予測型「戻る」に対応し、3ボタンナビゲーションの戻るボタン長押しによる履歴表示は使えなくなります。
 * **古い操作案内との違い**：実験的設定や書き込み画面の操作には変更・廃止があります。変更履歴と [見つかりにくい機能](https://chmate.airfront.co.jp/docs/triks/) を確認してください。
-* **テーマ変更**：[テーマ専用アップローダー](https://ux.getuploader.com/2chmate_theme/) を参照。244で一部の色指定が変更・廃止され、古いテーマの表示が変わる場合があります。
+* **テーマ変更**： [テーマ専用アップローダー](https://ux.getuploader.com/2chmate_theme/) を参照。244で一部の色指定が変更・廃止され、古いテーマの表示が変わる場合があります。
 * **アニメーション停止**：Homeやスレッドの右下︙ >「表示設定」>「リストをアニメーションする」をOFF。現在の全画面での配置・効果は未実機確認です。
 
 ### プライバシー・広告
@@ -2511,13 +2511,13 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 ### IOMateで利用するChMateのVersion
 
 * **開発者の推奨順位**：公式READMEでは0.8.10.191、0.8.10.192、0.8.10.226の順です。操作・表示の変更に対する開発者の評価であり、ChMate公式の推奨や本ガイドでの動作保証ではありません。
-* **0.8.10.191**：[ChMate公式の変更履歴](https://chmate.airfront.co.jp/history/2024/#0810191459-2024-08-29) では2024年8月29日公開。IOMate開発者が最も推奨する旧版で、5ch.ioが外部板扱いになるため、スレ上部の広告枠が表示されないと説明されています。全画面・全広告の除去を意味しません。
+* **0.8.10.191**： [ChMate公式の変更履歴](https://chmate.airfront.co.jp/history/2024/#0810191459-2024-08-29) では2024年8月29日公開。IOMate開発者が最も推奨する旧版で、5ch.ioが外部板扱いになるため、スレ上部の広告枠が表示されないと説明されています。全画面・全広告の除去を意味しません。
 * **0.8.10.192**：公式履歴ではスレ読み込み時などのクラッシュ修正があります。一方、IOMateのREADMEでは、タブレットモードと広告枠透明化テーマの併用でプロパティ画面も透明になる問題が挙げられています。
 * **0.8.10.226**：IOMate開発者が、227での変更前の候補として挙げているVersionです。191と同じ表示・設定・必要Androidとは限りません。
 
 ### IOMateの導入・旧版への移行
 
-* **配布元**：[IOMate Releases](https://github.com/kitadai31/IOMate/releases) からAPKを取得してインストールします。ChMate旧版のAPKは別途必要です。
+* **配布元**： [IOMate Releases](https://github.com/kitadai31/IOMate/releases) からAPKを取得してインストールします。ChMate旧版のAPKは別途必要です。
 * **プロキシ設定**：IOMateで「プロキシサーバー起動」を押し、ChMateの「設定」>「実験的」>「Proxyを使用する」をONにして、「Proxy」に`localhost:8080`を指定します。IOMate側でポート番号を変更した場合は、ChMate側も同じ番号に合わせます。
 * **書き込み設定**：IOMateの「5chの新しい書き込み仕様に対応させる」は、ChMate 0.8.10.208未満（191 / 192など）ではON、208以上（226など）ではOFFにします。208以上はChMate自体が新仕様に対応しているためです。
 * **現行版から移行する場合**：ChMate標準のバックアップを取り、復元用ZIPをアプリ外に保存・確認してから現行版をアンインストールします。IOMateの「ツール」>「5ch.netのスレを5ch.ioに変換」でZIPを変換し、利用する旧版のChMateをインストールして変換済みZIPを復元後、上記のプロキシ設定を行います。変換前のZIPも保管してください。
@@ -2535,7 +2535,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 * **ログの扱い**：デバッグログではリクエスト・レスポンスのヘッダーが記録されます。共有前にCookie・認証情報などを確認して伏せてください。
 * **確認範囲**：上記はIOMateの公式READMEと公開画面に基づく案内です。本ガイドでは実機での読み書き・移行・ChromeOSでの動作を確認していません。旧版ChMateに、その後の不具合修正が追加されるものではありません。
 
-出典：[IOMate公式README（導入方法・既知の問題・機能・動作の仕組み・推奨Version）](https://github.com/kitadai31/IOMate#readme) / [ChMate公式・2024年の変更履歴](https://chmate.airfront.co.jp/history/2024/)。
+出典： [IOMate公式README（導入方法・既知の問題・機能・動作の仕組み・推奨Version）](https://github.com/kitadai31/IOMate#readme) / [ChMate公式・2024年の変更履歴](https://chmate.airfront.co.jp/history/2024/) 。
 
 ### 参考サイト
 
@@ -2545,7 +2545,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 ## Haiagaru-Morphe（ChMate用Morphe Patch）
 
-* **[Haiagaru-Morphe](https://github.com/areteruhiro/Haiagaru-Morphe)**：ChMate APKに広告除去や追加設定を組み込むMorphe Patchです。Xposed向けの [Haiagaru](https://github.com/areteruhiro/Haiagaru) とは導入方式が異なります。
+* **[Haiagaru-Morphe](https://github.com/areteruhiro/Haiagaru-Morphe)** ：ChMate APKに広告除去や追加設定を組み込むMorphe Patchです。Xposed向けの [Haiagaru](https://github.com/areteruhiro/Haiagaru) とは導入方式が異なります。
 * **本ガイドの記載方針**：更新頻度が高いため、主な機能を固定の一覧で紹介します。Versionごとの機能解説は掲載せず、追加・変更・修正は公式のCHANGELOG、各版の注意事項・配布ファイル・確認範囲はリリースノートを確認してください。
 
 ### 主な機能
@@ -2564,9 +2564,9 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 ### 公式情報・更新内容の確認先
 
 * **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。導入時には公式READMEと対象Versionの対応宣言を確認してください。
-* **[公式README](https://github.com/areteruhiro/Haiagaru-Morphe#readme)**：対応する元ChMate APK、導入方法、設定、任意Patch・追加ファイル、既知の制約を確認します。対応Versionは連続した範囲とは限らないため、使用する元APKが対象に含まれるか確認してください。
-* **[CHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/master/CHANGELOG.md)**：機能の追加・変更・修正履歴を確認します。
-* **[リリースノート・Assets](https://github.com/areteruhiro/Haiagaru-Morphe/releases)**：導入する版の注意事項、開発元の確認範囲、配布ファイルを確認します。
+* **[公式README](https://github.com/areteruhiro/Haiagaru-Morphe#readme)** ：対応する元ChMate APK、導入方法、設定、任意Patch・追加ファイル、既知の制約を確認します。対応Versionは連続した範囲とは限らないため、使用する元APKが対象に含まれるか確認してください。
+* **[CHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/master/CHANGELOG.md)** ：機能の追加・変更・修正履歴を確認します。
+* **[リリースノート・Assets](https://github.com/areteruhiro/Haiagaru-Morphe/releases)** ：導入する版の注意事項、開発元の確認範囲、配布ファイルを確認します。
 * **導入・更新前の照合**：リリースノート、配布JSONの`version`・`download_url`、対象Versionの対応宣言を照合します。任意Patchの対応対象も個別に確認してください。今回の照合では正式Release 1.24.0（2026年11月5日公開）と配布JSONの1.24.0・`patches-1.24.0.mpp`が一致しています。機能一覧は上記のまま維持し、個々のVersionの追加内容は公式履歴で確認します。
 
 ### 導入・更新方法
@@ -2610,7 +2610,7 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bun
 
 メーカー・機種名・Android Version・表示設定は、使用中の環境に応じて出力されます。上のPixel 10aの例をそのまま使わず、実際の出力を記録してください。末尾の `/Haiagaru x.xx.x` はPatch側の情報です。出力に含まれない場合は、適用したHaiagaruの実際のVersionを確認して追記します。
 
-出典：[ChMate公式・2021年の変更履歴（0.8.10.109：書き込み画面のメニューに「2chMate/…」を追加）](https://chmate.airfront.co.jp/history/2021/) / [コミュニティFAQ（本文長押しによる環境情報の挿入）](https://w.atwiki.jp/android2chbrowser/pages/46.html) / [Haiagaruコミュニティ（不具合報告時のPatch Version併記）](https://ff5ch.syoboi.jp/?q=Haiagaru)
+出典： [ChMate公式・2021年の変更履歴（0.8.10.109：書き込み画面のメニューに「2chMate/…」を追加）](https://chmate.airfront.co.jp/history/2021/) / [コミュニティFAQ（本文長押しによる環境情報の挿入）](https://w.atwiki.jp/android2chbrowser/pages/46.html) / [Haiagaruコミュニティ（不具合報告時のPatch Version併記）](https://ff5ch.syoboi.jp/?q=Haiagaru)
 
 #### 設定を共有（.haiagaru）
 
@@ -2628,7 +2628,7 @@ Haiagaruの設定画面から、表示・動作設定を共有できます。検
 2. **基本操作**：起動、板・スレ更新、本文取得、画像表示、リンク起動、広告・余白を確認します。バックグラウンド・画面消灯からの復帰、再起動後も試します。
 3. **追加機能**：設定の保存、DAT取得、検索、ビューア・動画など使用する機能を個別に確認し、未使用は「未確認」とします。投稿を伴う確認は投稿先のルールに従い、Test用スレで最小限行います。
 4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変の242 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
-5. **報告**：[既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues)・[関連コミュニティ](https://jbbs.shitaraba.net/bbs/read.cgi/computer/45040/1793701433/) を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
+5. **報告**： [既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues) ・ [関連コミュニティ](https://jbbs.shitaraba.net/bbs/read.cgi/computer/45040/1793701433/) を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
 
 #### Issue作成時の参考例：パッケージ競合と同期設定のクラッシュ
 
@@ -2693,7 +2693,7 @@ Linux Mintの導入、設定、ソフトウェア管理、Timeshift、Kernel Pan
 * [とほほのwww入門](https://www.tohoho-web.com/www.htm)
 * [初めてのWebサイト](https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web)
 * [サルにもわかる正規表現入門](https://userweb.mnet.ne.jp/nakama/)
-* 正規表現：[資料1](https://regex101.com/r/pxx7fR/1) / [資料2](https://uxmilk.jp/50674)
+* 正規表現： [資料1](https://regex101.com/r/pxx7fR/1) / [資料2](https://uxmilk.jp/50674)
 * [uBlock Originでネットを優しい世界に](https://qiita.com/shtainze/items/1136dfc8e245f5c250fe)
 * [:has-text()の使い方に関する相談](https://writening.net/page?VjrZNv)
 * [Markdown記法一覧](https://qiita.com/oreo/items/82183bfbaac69971917f)
@@ -2709,4 +2709,4 @@ Linux Mintの導入、設定、ソフトウェア管理、Timeshift、Kernel Pan
 * [Chromium派生ブラウザ総合 まとめWiki](https://w.atwiki.jp/chromiumbased/pages/1.html)
 * [スマホブラウザ@ウィキ](https://w.atwiki.jp/sumaho_browser/pages/1.html)
 * [【専ブラ】Android用2chブラウザ@wiki](https://w.atwiki.jp/android2chbrowser/pages/46.html)
-* 5ch 各種スレッド検索結果：[Chromebook](https://ff5ch.syoboi.jp/?q=Chromebook) / [Google Pixel](https://ff5ch.syoboi.jp/?q=Google+Pixel)
+* 5ch 各種スレッド検索結果： [Chromebook](https://ff5ch.syoboi.jp/?q=Chromebook) / [Google Pixel](https://ff5ch.syoboi.jp/?q=Google+Pixel)
