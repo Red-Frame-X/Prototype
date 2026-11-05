@@ -16,10 +16,10 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 
 この文書は、一般的な仕様・設定手順と、筆者の設定バックアップ・検証記録を併せて収録しています。個人の成功例や不具合の原因推測は、すべての端末に当てはまる公式仕様ではありません。導入前には、使用する製品・OS・Version・配布元を確認してください。
 
-| 調べたいこと | 読む場所 |
+| <div align="center">調べたいこと</div> | <div align="center">読む場所</div> |
 | :--- | :--- |
 | ChromeOSの拡張機能・テーマ・アプリ | [Chrome拡張機能](#chromeos-chrome-拡張機能) / [テーマ](#chromeos-chrome-テーマ) / [Chromeアプリ](#chromeos-chrome-アプリ) / [Androidアプリ](#chromeos-android-アプリ) |
-| AIでの調査・編集・ルール作成 | [ChatGPT プロンプト](#chatgpt-プロンプト) / [コードエディター](#コードエディター) / [AdGuardユーザールール](#adguardユーザールールの作成個人用途) / [UserScript](#userscriptの作成個人用途) |
+| AIでの調査・編集・ルール作成 | [ChatGPT プロンプト](#chatgpt-プロンプト) / [コードエディタ](#コードエディタ) / [AdGuardユーザールール](#adguardユーザールールの作成個人用途) / [UserScript](#userscriptの作成個人用途) |
 | セキュリティ・プライバシー | [考え方と認証情報](#セキュリティプライバシー匿名性の違い) / [特殊詐欺対策](#特殊詐欺対策) |
 | ブラウザ内のコンテンツブロック | [公式フィルタ](#adguard-公式フィルタ) / [AdGuard Browser Extension MV3](#adguard-browser-extension-mv3) / [uBlacklist](#chrome-拡張機能-ublacklist) |
 | AndroidのDNS・通信保護 | [personalDNSfilter](#android-アプリ-personaldnsfilterchromeos) / [AdGuard for Android](#android-アプリ-有償版-adguard-for-androidandroid) / [WebView問題の履歴](#解決済みandroid-system-webview-問題) / [プライベートDNS](#androidのプライベートdnsを利用したdnsブロック) |
@@ -120,7 +120,7 @@ Chrome 139以降ではManifest V2（MV2）拡張機能は動作せず、企業�
 
 ### Manifest V3とコンテンツブロッカーの選択
 
-| 製品・方式 | 対応と確認する点 |
+| <div align="center">製品・方式</div> | <div align="center">対応と確認する点</div> |
 | :--- | :--- |
 | uBlock Origin（uBO） | フル版はMV2です。Firefox向けなどの配布は継続していますが、現行Chrome / ChromeOSのChromeでは利用できません。GitHub配布のChromium用ビルドがあることは、Chromeで動作する根拠にはなりません。 |
 | uBlock Origin Lite（uBOL） | MV3向けの別実装です。サイト権限・フィルタリングモードを確認します。現行FAQには2026年6月からカスタムフィルタ・外部リスト購読に対応した旨の追記があり、古い「追加不可」の説明は流用しません。uBOの全機能を再現する製品ではなく、自動移行もされません。 |
@@ -229,7 +229,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 Chromeアプリは、Chrome拡張機能やWebアプリとは別です。Googleの現行案内では、ユーザーが導入するChromeアプリをサポートする最後のChromeOSは138、kiosk modeは150（LTSは2027年4月まで）です。管理者導入のuser sessionなどには別の段階があり、最終終了はLTSを含め2028年10月とされています。適用条件を一律に「すべて終了済み」としないでください。公式ページには一部アプリの例外Versionの記載もありますが、個別アプリの永久サポートを保証するものではありません。
 
 
-* **[Text](https://chromewebstore.google.com/detail/text/mmfbcljfglbokpmkimbfghdkjmjhdgbg)** ：Chromeアプリとして掲載しているテキストエディタです。既存環境で起動できても、現行ChromeOSでの新規導入・継続サポートは本レビューでは確認できていません。既存データを保存し、利用できない場合は [コードエディター](#コードエディター) などの代替手段を検討します。
+* **[Text](https://chromewebstore.google.com/detail/text/mmfbcljfglbokpmkimbfghdkjmjhdgbg)** ：Chromeアプリとして掲載しているテキストエディタです。既存環境で起動できても、現行ChromeOSでの新規導入・継続サポートは本レビューでは確認できていません。既存データを保存し、利用できない場合は [コードエディタ](#コードエディタ) などの代替手段を検討します。
 
 ---
 
@@ -886,7 +886,7 @@ ChatGPTアプリで接続エラー、ログイン失敗、回答の停止など�
 
 **Chat・Work・Codexの役割**
 
-| 画面 | 適した用途 | 主な制約 |
+| <div align="center">画面</div> | <div align="center">適した用途</div> | <div align="center">主な制約</div> |
 | :--- | :--- | :--- |
 | **Chat** | Repositoryやファイルの検索・説明、Issues・Pull Request・CIの確認、Issues整理、コメント、ラベル、レビュー、許可されたファイル更新など | GitHubプラグインが提供する操作と権限の範囲内。Repository全体をローカル作業環境として実行・検証する用途には向かない |
 | **Work** | Chatで可能なGitHub操作に加え、複数の情報源やツールをまたぐ調査、長い査読、作業報告などの多段階タスク | 作業量に応じて時間・クレジットを多く使う場合がある（[OpenAI公式：ChatGPT Work](https://learn.chatgpt.com/docs/get-started-with-work)） |
@@ -995,7 +995,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 
 ---
 
-## コードエディター
+## コードエディタ
 **Visual Studio Code**
 * **[Visual Studio Codeのワークスペース](https://vscode.dev/?vscode-lang=ja-jp)** / **[GitHub](https://github.com/microsoft/vscode)**
   * 説明：インストール不要でブラウザから直接利用できる軽量かつ高機能なコードエディタです。
@@ -1550,7 +1550,7 @@ AdGuard Browser Extension MV3でカスタムフィルタ・ユーザールール
 
 ### フィルタの更新経路と制限
 
-| 種類 | 更新方法・注意点 |
+| <div align="center">種類</div> | <div align="center">更新方法・注意点</div> |
 | :--- | :--- |
 | 組み込みフィルタ | 静的DNR rulesetを含む拡張機能本体の更新で配信されます。カスタムフィルタの手動更新と同じ経路ではありません。 |
 | URL購読のカスタムフィルタ | 本体と独立して更新されます。再取得できても、未対応構文やDNR上限により全ルールが有効になるとは限りません。 |
@@ -1594,7 +1594,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
  [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。
 
 **フィルターの課題・不具合報告**
-* [AdGuard日本語フィルターPlusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
+* [AdGuard Japanese filter Plusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
 
 **開発者ツールと連動した手動ブロック機能**
 
@@ -1646,7 +1646,7 @@ uBlacklistは、Googleなどの検索結果から指定したWebサイトを非�
 
 uBlacklistに対応するモバイルブラウザでも、詐欺サイトなどを対象とするルールを登録・購読すれば、条件に一致するサイトを検索結果から非表示にできます。この仕組みは、検索経由で詐欺サイトに誘導される機会を減らす補助的な対策として利用できます。ただし、サイトへのアクセス自体の遮断や、未知の詐欺サイトの自動判定を行うものではなく、電話・SMSなども含む特殊詐欺全般を防ぐ機能ではありません（[公式機能説明](https://ublacklist.github.io/docs/introduction)、[公式操作ガイド](https://ublacklist.github.io/docs/getting-started)）。
 
-| Androidブラウザ | 一次情報で確認できる対応状況 |
+| <div align="center">Androidブラウザ</div> | <div align="center">一次情報で確認できる対応状況</div> |
 | --- | --- |
 | [Bare](https://github.com/BareBrowser/bare-browser) | [公式README](https://github.com/BareBrowser/bare-browser#what-you-can-do) にChrome Web Store・CRXファイル・展開済みフォルダからの拡張機能導入とuBlock Originの標準搭載の記載あり。uBlacklistは別の拡張機能であり、個別の動作は未検証です。 |
 | [Titanium](https://github.com/jqssun/android-titanium-browser) | [公式導入手順](https://github.com/jqssun/android-titanium-browser#installing-extensions) にChrome Web Storeからの拡張機能導入方法の記載あり。uBlacklist個別の動作は未検証です。 |
@@ -1713,7 +1713,7 @@ Android向けの [公式FAQ](https://www.zenz-solutions.de/faq/) に沿った設
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
-* HaGeZi Threat Intelligence Feedsのmedium版（ブラウザー・モバイル用広告ブロッカー向け）
+* HaGeZi Threat Intelligence Feedsのmedium版（ブラウザ・モバイル用広告ブロッカー向け）
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif.medium-onlydomains.txt
   ```
@@ -1840,14 +1840,14 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
  [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。
 
 **フィルターの課題・不具合報告**
-* [AdGuard日本語フィルターPlusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
+* [AdGuard Japanese filter Plusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
 
 **DNS通信を保護 > DNSフィルタ**
 
 [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) は、AdGuardのDNS保護が処理する問い合わせに対し、アプリをまたいでドメイン単位のブロックを行います。VPN対象外アプリ、別プロファイル、独自の暗号化DNSなど、処理経路を外れる通信まで必ず対象になるわけではありません（[公式：DNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/) / [公式：Private DNSとの互換性](https://adguard.com/kb/adguard-for-android/solving-problems/compatibility-issues/#private-dns) / [DNS書き換えの基本](https://writening.net/page?keELEF)）。
 プライバシー関連のルールによる不具合（[Issues #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896), [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178)）を緩和する方法。
 
-① **[プライバシーフィルターを除いたAdGuard DNSフィルター（広告のみ）](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
+① **[AdGuard DNS filter（without privacy filters）](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
 
 ② **[AdGuard_DNS_Filter_for_myself](https://github.com/monsivamon/AdGuard_DNS_Filter_for_myself)**
 
@@ -1857,7 +1857,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 
 **脅威対策の追加候補（DNSフィルタ）**
 
-* [HaGeZi Threat Intelligence Feedsのmedium版（ブラウザー・モバイル用広告ブロッカー向け）](https://github.com/hagezi/dns-blocklists#tifmedium)
+* [HaGeZi Threat Intelligence Feedsのmedium版（ブラウザ・モバイル用広告ブロッカー向け）](https://github.com/hagezi/dns-blocklists#tifmedium)
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.medium.txt
   ```
@@ -1873,7 +1873,7 @@ ChromeOSでGoogle Public DNSを選ぶ例：設定 > ネットワーク > Wi-Fi >
 
 フィルタによる誤ブロックの発見・原因切り分けを優先した設定です。
 
-| 分類 | 項目 | 設定 |
+| <div align="center">分類</div> | <div align="center">項目</div> | <div align="center">設定</div> |
 |---|---|:---:|
 | 対象 | VPN対象外アプリ | 指定なし |
 | 対象 | 企業に関する統計 | 指定なし |
@@ -2039,7 +2039,7 @@ Android の「プライベート DNS」でプロバイダのホスト名を指�
 
 #### まず用途から選ぶ
 
-| 用途 | 候補 | 向いている人 |
+| <div align="center">用途</div> | <div align="center">候補</div> | <div align="center">向いている人</div> |
 | :--- | :--- | :--- |
 | シンプルに広告・トラッカーをブロックしたい | [DNSBunker](https://dnsbunker.org/) / [dnsforge](https://dnsforge.de/) / [パブリックAdGuard DNS](https://adguard-dns.io/en/public-dns.html) | アカウント作成や細かな設定をせず、Private DNSへホスト名を入れて使いたい |
 | マルウェア・フィッシング対策を重視したい | [Quad9](https://quad9.net/) | 広告ブロックよりも悪性ドメイン対策を優先したい |
@@ -2360,7 +2360,7 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 
 `YouTube > 設定 > Morphe > Miscellaneous` から、`Spoof video streams` と `PoToken provider` を確認します。
 
-| 再生方式 | Spoof video streams | External PoToken provider | 補足 |
+| <div align="center">再生方式</div> | <div align="center">Spoof video streams</div> | <div align="center">External PoToken provider</div> | <div align="center">補足</div> |
 | :--- | :---: | :---: | :--- |
 | 通常のYouTube再生経路 | OFF | OFF | 環境によっては両方OFFでも正常再生できます。 |
 | Morpheのストリーム偽装 | ON | OFF | TV / Android VR / visionOS等の別クライアントとしてストリームを取得します。必要なクライアントではSpoof内部でPoTokenも生成されます。 |
