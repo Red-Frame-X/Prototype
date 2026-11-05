@@ -2494,6 +2494,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 ### 公式情報・更新内容の確認先
 
+* **対応ChMate**：0.8.10.191 dev（versionCode 459・Android 5.0以降）、0.8.10.226 dev（494・Android 6.0以降）、0.8.10.242 dev（512・Android 6.0以降）。導入時には公式READMEと対象Versionの対応宣言を確認してください。
 * **[公式README](https://github.com/areteruhiro/Haiagaru-Morphe#readme)**：対応する元ChMate APK、導入方法、設定、任意Patch・追加ファイル、既知の制約を確認します。対応Versionは連続した範囲とは限らないため、使用する元APKが対象に含まれるか確認してください。
 * **[CHANGELOG](https://github.com/areteruhiro/Haiagaru-Morphe/blob/master/CHANGELOG.md)**：機能の追加・変更・修正履歴を確認します。
 * **[リリースノート・Assets](https://github.com/areteruhiro/Haiagaru-Morphe/releases)**：導入する版の注意事項、開発元の確認範囲、配布ファイルを確認します。
