@@ -2,6 +2,7 @@
   "name": "prototype-filter-tooling",
   "private": true,
   "scripts": {
+    "check:haiagaru": "python -m unittest discover -s tests -p test_haiagaru_fixed_environment.py -v",
     "hooks:install": "git config --local core.hooksPath .githooks",
     "lint:markdown:fix": "markdownlint-cli2 --fix",
     "lint:adguard": "aglint \"dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt\" \"AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt\" \"AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt\"",
