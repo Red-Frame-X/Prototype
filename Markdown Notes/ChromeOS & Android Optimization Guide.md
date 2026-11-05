@@ -1432,7 +1432,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 ---
 
 ## 特殊詐欺対策
-**！ [警察庁・SOS47特殊詐欺対策ページ](https://www.npa.go.jp/bureau/safetylife/sos47/) **
+**！ [警察庁・SOS47特殊詐欺対策ページ](https://www.npa.go.jp/bureau/safetylife/sos47/)**
 
 **成りすまし・その他の特殊詐欺**
 
@@ -1442,7 +1442,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 
 SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が多いです。今後、生成AIによる著名人の偽画像・音声・動画を使った投資詐欺やロマンス詐欺が増加すると予想されます。LINEなどへの誘導や不審な勧誘に安易に応じず、情報源を十分に確認するなど、一層の注意が必要です。
 
-**！ [日本電話番号検索](https://www.jpnumber.com/) **
+**！ [日本電話番号検索](https://www.jpnumber.com/)**
 
 **注意が必要な特殊な電話番号**
 1. `+`で始まる番号は国番号付きの表記です。`+81`は日本を表すため、すべてを海外の発信元とは判断できません。知らない国際番号への折り返しは高額な通話料につながる場合があります。表示番号の偽装もあるため、番号だけで相手を信用しないでください（[警察庁：国際電話詐欺対策](https://www.npa.go.jp/bureau/safetylife/sos47/)）。
@@ -2710,4 +2710,3 @@ Linux Mintの導入、設定、ソフトウェア管理、Timeshift、Kernel Pan
 * [スマホブラウザ@ウィキ](https://w.atwiki.jp/sumaho_browser/pages/1.html)
 * [【専ブラ】Android用2chブラウザ@wiki](https://w.atwiki.jp/android2chbrowser/pages/46.html)
 * 5ch 各種スレッド検索結果： [Chromebook](https://ff5ch.syoboi.jp/?q=Chromebook) / [Google Pixel](https://ff5ch.syoboi.jp/?q=Google+Pixel)
-
