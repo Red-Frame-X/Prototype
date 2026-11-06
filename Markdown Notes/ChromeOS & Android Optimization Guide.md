@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611060829 |
+| **Version** | 202611062049 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -1787,6 +1787,12 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   * **ブロック方法**：通常版のuBlock Originを標準搭載。Chrome Web Store・CRXファイル・展開済みフォルダからの拡張機能導入にも対応します。
   * **特徴**：Googleへのサインイン・テレメトリ・AI機能を取り除いたChromium系Androidブラウザ。
   * **注意点**：Android 10以降のARM端末向けで、x86版はありません。Safe Browsingによるフィッシング・マルウェア警告も利用できません。
+  * **使用中のChrome拡張機能（Chrome Web Store）**：提供画像のBareで導入・有効化されている4件です。Versionは撮影時点の表示です。
+    * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**（5.12.0）：ブラウザや端末間でブックマークを同期する。
+    * **[Tab Translate](https://chromewebstore.google.com/detail/khepfpojckhooicloeheemlhcljpjcjg)**（2.0.1）：選択したテキスト、Webページ、PDF・文書の翻訳や読み上げに対応する。
+    * **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**（2.3）：新しく作成したタブを最前面に表示する。
+    * **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**（10.1.2）：指定したサイトをGoogleなどの検索結果から非表示にする。設定・購読リストは「Chrome 拡張機能 uBlacklist」の項目を参照。
+  * **画像での確認範囲**：4件とも有効化されていますが、画像だけでは同期・翻訳・タブ切り替え・検索結果の非表示が実際に動作したかまでは確認できません。
 * **[Titanium](https://github.com/jqssun/android-titanium-browser)**
   * **ブロック方法**：Chrome Web StoreからuBlock Originなどの拡張機能を導入できます。
   * **特徴・注意点**：Vanadium由来のChromium系Androidブラウザ。WebRTCのIP保護設定などを備えますが、Vanadiumと同等のOSレベルのセキュリティ強化を提供するものではありません。
