@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202610271411
+! Version: 202611070812
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -111,6 +111,10 @@ google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 ! googleapis.com
 ! Googleアプリでsearchnotifications-pa.googleapis.comへの通信を許可し、Gemini・Googleアシスタントの通信エラーやタイムアウトを回避
 @@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox
+
+! jbpress.ismedia.jp
+! JBpressのセミナー案内ポップアップを非表示
+jbpress.ismedia.jp##.m-info.js-popup-info
 
 ! klz9.com
 ! klz9.comでキラキラアイコンと点滅表示を含むVIP加入訴求ボタンを非表示
