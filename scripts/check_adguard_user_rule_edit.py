@@ -5,12 +5,52 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import hashlib
+import json
 from pathlib import Path
 import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 FILTER = ROOT / "AdGuard Custom Rules" / "AdGuard Custom Rules - Red Frame X.txt"
+APPROVALS = ROOT / "config" / "adguard-rule-removal-approvals.json"
+
+
+def rules_sha256(text: str) -> str:
+    return hashlib.sha256("\n".join(sorted(active_rules(text))).encode("utf-8")).hexdigest()
+
+
+def parse_approvals(raw: str) -> dict[str, list[str]]:
+    try:
+        data = json.loads(raw)
+        if not isinstance(data, dict) or type(data.get("version")) is not int or data["version"] != 1 or not isinstance(data.get("approvals"), list):
+            raise ValueError("version: 1 と approvals 配列が必要です")
+        entries = {}
+        for entry in data["approvals"]:
+            if not isinstance(entry, dict):
+                raise ValueError("承認はオブジェクトで指定してください")
+            stamp = entry.get("rules_sha256")
+            rules = entry.get("rules")
+            if not isinstance(stamp, str) or len(stamp) != 64 or any(c not in "0123456789abcdef" for c in stamp):
+                raise ValueError("rules_sha256 は64桁の小文字16進数で指定してください")
+            if not isinstance(rules, list) or not rules or any(
+                not isinstance(rule, str) or active_rules(rule) != [rule] for rule in rules
+            ):
+                raise ValueError("rules は削除対象の有効ルールを正確に指定してください")
+            if any(not isinstance(entry.get(key), str) or not entry[key].strip() for key in ("reason", "reference")):
+                raise ValueError("reason と reference が必要です")
+            if stamp in entries:
+                raise ValueError("同じ rules_sha256 に複数の承認があります")
+            entries[stamp] = rules
+        return entries
+    except (ValueError, TypeError) as exc:
+        fail(f"AdGuardルール削除承認が不正です: {exc}")
+
+
+def approved_removals(base_ref: str, base: str) -> list[str]:
+    # PR側のファイルではなく、比較元に収録された承認だけを参照する。
+    raw = git_show(base_ref, APPROVALS)
+    return parse_approvals(raw).get(rules_sha256(base), []) if raw is not None else []
 
 
 def fail(message: str) -> None:
@@ -57,6 +97,7 @@ def git_show(ref: str, path: Path) -> str | None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-ref", default=None)
+    parser.add_argument("--print-rules-sha256", action="store_true", help="有効ルール群の承認用SHA-256を表示します")
     parser.add_argument(
         "--allow-rule-removal",
         action="append",
@@ -67,6 +108,7 @@ def main() -> int:
     args = parser.parse_args()
 
     text = read(FILTER)
+    current_approvals = parse_approvals(read(APPROVALS)) if APPROVALS.exists() else {}
     lines = text.splitlines()
 
     trailing = [i for i, line in enumerate(lines, 1) if line.rstrip() != line]
@@ -79,8 +121,14 @@ def main() -> int:
         sample = "\n".join(f"  {rule}" for rule in duplicates[:10])
         fail(f"有効ルールの重複を検出しました:\n{sample}")
 
+    if args.print_rules_sha256:
+        print(rules_sha256(text))
+        return 0
+
     if args.base_ref:
         base = git_show(args.base_ref, FILTER)
+        if base is None:
+            fail(f"比較元の標準フィルターを取得できません: {args.base_ref}")
         if base is not None:
             if base.endswith("\n") and not text.endswith("\n"):
                 fail("編集により標準フィルターの末尾改行が削除されました")
@@ -91,7 +139,13 @@ def main() -> int:
             removed_counts = before_counts - after_counts
             removed_rules = sorted(removed_counts.elements())
 
+            recorded = approved_removals(args.base_ref, base)
             allowed_counts = Counter(args.allow_rule_removal)
+            if removed_counts:
+                # 承認登録だけのPRは許可し、実際の削除では承認対象の完全一致を要求する。
+                allowed_counts.update(recorded)
+                if recorded and rules_sha256(base) in current_approvals:
+                    fail("使用した削除承認を同じ変更内で削除してください。承認の再利用は許可しません")
             unauthorized = sorted((removed_counts - allowed_counts).elements())
             overauthorized = sorted((allowed_counts - removed_counts).elements())
 
@@ -101,7 +155,9 @@ def main() -> int:
                     "対象を正確に指定した明示的な承認がないAdGuard有効ルールの削除を検出しました "
                     f"({len(unauthorized)}件）。意図しない内容消失の可能性があります:\n{sample}\n"
                     "依頼されたルールの削除だけを許可するには、繰り返し指定する"
-                    "--allow-rule-removal RULE引数で対象を正確に指定してください。"
+                    "--allow-rule-removal RULE引数で対象を正確に指定してください。\n"
+                    "CIでの削除には、比較元のconfig/adguard-rule-removal-approvals.jsonへ"
+                    "先に承認を記録してください。手順はAdGuard Custom Rules/README.mdを参照してください。"
                 )
 
             if overauthorized:

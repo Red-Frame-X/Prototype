@@ -65,6 +65,17 @@ npm run lint:adguard
 python -m unittest discover -s tests -v
 ```
 
+### 承認されたルール削除
+
+有効ルールの削除は、ローカル検査だけでなくPRとmainへのpushでも比較元と照合します。比較元を取得できない場合は失敗します。ルールを削除する前に、次の2段階で承認を記録します。
+
+1. mainの最新状態で `python scripts/check_adguard_user_rule_edit.py --print-rules-sha256` を実行します。`config/adguard-rule-removal-approvals.json` の `approvals` に、表示された値を `rules_sha256`、削除する有効ルールの完全な文字列を `rules` 配列、削除理由を `reason`、依頼・承認の参照先を `reference` とするオブジェクトを追加します。このPRではルールを削除せず、内容をReviewしてからmainへマージします。
+2. 承認が収録されたmainから削除用PRを作成します。指定したルールだけを削除し、使用する承認オブジェクトも削除します。フィルターのVersionも更新し、Codex ReviewとCIが完了してからマージします。
+
+CIが参照するのは比較元に収録された承認です。削除用PRで新しく書いた承認は使えません。承認対象のルール群はMetadataや行順を除いてSHA-256で識別するため、Versionの自動更新では失効しませんが、別の有効ルールが追加・変更された場合は承認を取り直します。削除の不足・追加、承認の再利用、従来の大量削除制限を超える変更は許可しません。
+
+ローカルでの個別確認には既存の `--allow-rule-removal RULE` も使えますが、その指定はCIへの承認登録にはなりません。今回の仕組みは標準のAdGuard Custom Rulesが対象で、DNSフィルターの削除承認には使用しません。
+
 ## 変更履歴追跡とコンバータ更新
 
 [`update_adguard_changelogs.py`](../scripts/update_adguard_changelogs.py) は、AdGuard Browser Extensionの公式変更履歴とAdGuard for Androidの公式GitHub Releasesを毎日取得し、[`ChangeLog/`](ChangeLog/) へ英語原文のミラーを生成します。Metadataと互換性レビュー候補は`upstream/adguard/`へ生成します。
