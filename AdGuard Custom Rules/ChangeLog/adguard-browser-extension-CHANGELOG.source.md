@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.5.4.47-beta] - 2026-11-06
+
+### Fixed
+
+- Removed the core-js `Object.create` IE fallback from all bundles that the
+  Chrome Web Store review flagged as obfuscated code.
+
 ## [5.5.3.41] - 2026-10-30
 
 ## [5.5.3.40-beta] - 2026-10-30
