@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611070402
+! Version: 202611070403
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -47,6 +47,8 @@ blog.hatena.ne.jp##.recommendList-wrapper
 blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! chatgpt.com
+! ChatGPTのtelemetryエンドポイントへの計測通信をブロック
+||chatgpt.com/ces/v1/telemetry/$domain=chatgpt.com
 ! ChatGPTで閉じるボタンを持つaside型の案内バナー（プラグイン・ChatGPT Work案内など）を非表示
 chatgpt.com##aside:has(button[data-testid="close-button"])
 ! ChatGPTの「Thinking でより詳しい回答を得る」案内バナーを、閉じるボタン固有のaria-labelで識別して非表示
@@ -105,6 +107,10 @@ gigazine.net#?#section:has(> .card .catab:contains(/^ヘッドライン$/))
 @@||www.google-analytics.com^$app=jp.kappasushi.app
 
 ! google.com
+! Googleのアクセス計測・リマーケティング用エンドポイントへの通信をGoogle上でブロック
+||google.com/g/collect?$domain=google.com
+||google.com/rmkt/collect/$domain=google.com
+||google.com/ccm/collect?$domain=google.com
 ! Google検索の検索タブに表示される「ショート動画」項目を非表示
 google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 
@@ -163,6 +169,8 @@ news.google.com##[role="tablist"] [role="tab"][aria-label="科学＆テクノロ
 news.google.com##[role="tablist"] [role="tab"][aria-label="ショーケース"]
 
 ! news.mynavi.jp
+! マイナビニュースのAdomik広告分析スクリプトをブロック
+||news.mynavi.jp/assets/adomik-$script,domain=news.mynavi.jp
 ! 以下は無効：registration_guide_modal用DOMContentLoadedリスナーの登録を阻止し、会員登録モーダルによるスクロール固定を回避
 ! news.mynavi.jp#%#//scriptlet('prevent-addEventListener', 'DOMContentLoaded', 'registration_guide_modal')
 
@@ -221,6 +229,8 @@ rawkuma.net##a[href*="ko-fi.com"]:has(img)
 rawkuma.net##iframe[src*="cbox.ws"]
 
 ! s.response.jp
+! レスポンスのcx-fbq計測スクリプトをブロック
+||response.jp/base/scripts/cx-fbq.js$script,domain=s.response.jp
 ! レスポンスの記事ページに表示される広告枠とその余白を非表示
 s.response.jp##.sp-ifad
 ! 画面上部に固定表示される関連記事枠を非表示
@@ -231,6 +241,8 @@ s.response.jp##.aside-box-ad
 ||yads.c.yimg.jp/js/yads.js$script,domain=s.response.jp
 
 ! sankei.com
+! 産経サイト内の広告APIへの通信をブロック
+||sankei.com/module/apis/ad/$domain=sankei.com
 ! 無効化中：sankei.comでPianoのダミーofferId付き購入テンプレート通信を許可し、有料プランの申込・ログイン導線を復元
 ! @@||buy-ap.piano.io/checkout/template/cacheableShow.html?*&offerId=fakeOfferId$domain=sankei.com
 
@@ -325,6 +337,8 @@ www.youtube.com##ytd-watch-metadata #teaser-carousel
 www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-renderer:has(a[href^="/shorts/"])
 
 ! x.com
+! Xのクライアントイベント計測エンドポイントへの通信をブロック
+||x.com/i/api/1.1/jot/client_event.json$domain=x.com
 ! ホーム上部の「おすすめ」タブを非表示
 x.com#?#div[role="presentation"]:has(> div[role="tab"] span:contains(/^おすすめ$/))
 ! x.comから開かれるtwitter.undefinedドメインへのポップアップをブロック
