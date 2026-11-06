@@ -143,7 +143,7 @@ def main() -> int:
             allowed_counts = Counter(args.allow_rule_removal)
             if removed_counts:
                 # 承認登録だけのPRは許可し、実際の削除では承認対象の完全一致を要求する。
-                allowed_counts.update(recorded)
+                allowed_counts |= Counter(recorded)
                 if recorded and rules_sha256(base) in current_approvals:
                     fail("使用した削除承認を同じ変更内で削除してください。承認の再利用は許可しません")
             unauthorized = sorted((removed_counts - allowed_counts).elements())

@@ -126,7 +126,7 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
             }],
         }
 
-    def exercise(self, base_approval=None, head_approval=None, after=None, workflow_event=None, missing_base=False):
+    def exercise(self, base_approval=None, head_approval=None, after=None, workflow_event=None, missing_base=False, cli_approval=None):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             (root / "scripts").mkdir()
@@ -164,7 +164,8 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
                          "ADGUARD_BASE_REF": "origin/main" if workflow_event == "pull_request" else ("0" * 40 if missing_base else base)},
                 )
             return subprocess.run(
-                ["python", str(script), "--base-ref", "missing" if missing_base else base],
+                ["python", str(script), "--base-ref", "missing" if missing_base else base,
+                 *(["--allow-rule-removal", cli_approval] if cli_approval is not None else [])],
                 cwd=root, text=True, capture_output=True,
             )
 
@@ -176,6 +177,15 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
     def test_accepts_exact_approval_from_base(self):
         result = self.exercise(base_approval=self.approval())
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_overlapping_cli_and_recorded_approval_is_not_counted_twice(self):
+        result = self.exercise(base_approval=self.approval(), cli_approval=self.removed)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_overlapping_approval_does_not_hide_extra_cli_approval(self):
+        result = self.exercise(base_approval=self.approval(), cli_approval="example.org##.promo")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("削除の承認が実際の差分と一致しません", result.stderr)
 
     def test_cannot_self_approve_in_removal_pr(self):
         result = self.exercise(head_approval=self.approval())
