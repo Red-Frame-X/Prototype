@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611070812
+! Version: 202611070814
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -198,6 +198,12 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 ! ゲーム開始画面の広告ブロッカー無効化を求める案内文を非表示
 pex.kantangame.com##.c-n-game-start__info
 
+! phileweb.com
+! スマートフォン向け記事ページのヘッダー広告枠を非表示
+phileweb.com###sp_article_header
+! スマートフォン向け記事ページのタイトル下広告枠を余白ごと非表示
+phileweb.com###sp_article_undertitle_wrapper
+
 ! printeezondemand.com
 ! プライバシー設定の案内バナーを非表示（同意・拒否の設定は変更しない）
 printeezondemand.com##.printeez-consent__panel--banner
@@ -217,6 +223,14 @@ rawkuma.net##a[href*="discord.gg"]:has(img)
 rawkuma.net##a[href*="ko-fi.com"]:has(img)
 ! rawkuma.netに埋め込まれたcbox.wsの外部チャットiframeを非表示
 rawkuma.net##iframe[src*="cbox.ws"]
+
+! s.response.jp
+! レスポンスの記事ページに表示される広告枠とその余白を非表示
+s.response.jp##.sp-ifad
+! 画面上部に固定表示される関連記事枠を非表示
+s.response.jp###danglingList
+! サイドバーの広告枠とその余白を非表示
+s.response.jp##.aside-box-ad
 
 ! sankei.com
 ! 無効化中：sankei.comでPianoのダミーofferId付き購入テンプレート通信を許可し、有料プランの申込・ログイン導線を復元

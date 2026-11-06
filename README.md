@@ -1,5 +1,10 @@
 # Prototype
 
+## 連絡先
+𝕏：[@Red_Frame_X](https://x.com/Red_Frame_X)
+
+mond：[@Red_Frame_X](https://mond.how/Red_Frame_X)
+
 ## 概要
 
 ChromeOS・Android・Linux向けの設定、コンテンツブロックフィルタ、UserScript、ChMate用正規表現、GitHub運用、更新・変換ツール、技術メモをまとめた個人用の試作Repository
