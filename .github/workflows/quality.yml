@@ -119,10 +119,22 @@ jobs:
           fi
 
       - name: AdGuardユーザールールの編集前検査
+        env:
+          ADGUARD_BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || '' }}
         run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            git merge-base "origin/${{ github.base_ref }}" HEAD >/dev/null
-            python scripts/check_adguard_user_rule_edit.py --base-ref "origin/${{ github.base_ref }}"
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            git merge-base "$ADGUARD_BASE_REF" HEAD >/dev/null
+            python scripts/check_adguard_user_rule_edit.py --base-ref "$ADGUARD_BASE_REF"
+          elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            if [[ ! "$ADGUARD_BASE_REF" =~ ^[0-9a-f]{40}$ || "$ADGUARD_BASE_REF" =~ ^0+$ ]]; then
+              echo 'AdGuard編集前検査のpush前のCommitを解決できません。' >&2
+              exit 1
+            fi
+            if ! git cat-file -e "$ADGUARD_BASE_REF^{commit}" 2>/dev/null; then
+              git fetch --no-tags origin "$ADGUARD_BASE_REF"
+              git cat-file -e "$ADGUARD_BASE_REF^{commit}"
+            fi
+            python scripts/check_adguard_user_rule_edit.py --base-ref "$ADGUARD_BASE_REF"
           else
             python scripts/check_adguard_user_rule_edit.py
           fi
