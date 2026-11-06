@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611070357
+! Version: 202611070358
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -225,6 +225,10 @@ rawkuma.net##iframe[src*="cbox.ws"]
 s.response.jp##.sp-ifad
 ! 画面上部に固定表示される関連記事枠を非表示
 s.response.jp###danglingList
+! サイドバーの広告枠とその余白を非表示
+s.response.jp##.aside-box-ad
+! 記事ページでYahoo!広告の配信スクリプトの読み込みをブロック
+||yads.c.yimg.jp/js/yads.js$script,domain=s.response.jp
 
 ! sankei.com
 ! 無効化中：sankei.comでPianoのダミーofferId付き購入テンプレート通信を許可し、有料プランの申込・ログイン導線を復元
