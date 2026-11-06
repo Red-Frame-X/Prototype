@@ -1787,7 +1787,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   * **ブロック方法**：通常版のuBlock Originを標準搭載。Chrome Web Store・CRXファイル・展開済みフォルダからの拡張機能導入にも対応します。
   * **特徴**：Googleへのサインイン・テレメトリ・AI機能を取り除いたChromium系Androidブラウザ。
   * **注意点**：Android 10以降のARM端末向けで、x86版はありません。Safe Browsingによるフィッシング・マルウェア警告も利用できません。
-  * **使用中のChrome拡張機能（Chrome Web Store）**：提供画像のBareで導入・有効化されている4件です。
+  * **使用中のChrome拡張機能（Chrome Web Store）**：有効化されている4件です。
     * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを同期する。
     * **[Tab Translate](https://chromewebstore.google.com/detail/khepfpojckhooicloeheemlhcljpjcjg)**：選択したテキスト、Webページ、PDF・文書の翻訳や読み上げに対応する。
     * **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**：新しく作成したタブを最前面に表示する。
