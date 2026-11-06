@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611070340
+! Version: 202611070343
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -197,6 +197,8 @@ pex.kantangame.com##.c-n-game-start__info
 ! phileweb.com
 ! スマートフォン向け記事ページのヘッダー広告枠を非表示
 phileweb.com###sp_article_header
+! スマートフォン向け記事ページのタイトル下広告枠を余白ごと非表示
+phileweb.com###sp_article_undertitle_wrapper
 
 ! printeezondemand.com
 ! プライバシー設定の案内バナーを非表示（同意・拒否の設定は変更しない）
