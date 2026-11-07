@@ -67,6 +67,8 @@ python -m unittest discover -s tests -v
 
 ### 承認されたルール削除
 
+既存ルールを別のセレクターに置き換える場合も、元のルールの削除として検査します。たとえばdiamond.jpの内部枠を隠すルールに親コンテナーを隠すルールを追加する場合、従来のルールを保持すれば削除承認は不要です。従来のルールを取り除く必要がある場合は、置き換えであっても以下の承認手順を先に実施してください。
+
 有効ルールの削除は、ローカル検査だけでなくPRとmainへのpushでも比較元と照合します。比較元を取得できない場合は失敗します。ルールを削除する前に、次の2段階で承認を記録します。
 
 1. mainの最新状態で `python scripts/check_adguard_user_rule_edit.py --print-rules-sha256` を実行します。`config/adguard-rule-removal-approvals.json` の `approvals` に、表示された値を `rules_sha256`、削除する有効ルールの完全な文字列を `rules` 配列、削除理由を `reason`、依頼・承認の参照先を `reference` とするオブジェクトを追加します。このPRではルールを削除せず、内容をReviewしてからmainへマージします。
