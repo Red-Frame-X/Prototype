@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611071314 |
+| **Version** | 202611071545 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -2440,6 +2440,8 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 ## Android アプリ ChMate（ChromeOS・Android）
 
+本ガイドの導入・検証対象は **ChMate Version 0.8.10.191 dev（versionCode 459）** です。他のVersionの配布情報・変更履歴・過去の報告事例は、191 devでの対応・確認結果とは区別してください。
+
 * **配布元**： [Google Play](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate) / [公式サイト](https://chmate.airfront.co.jp/) 。
 * **用途**：掲示板の閲覧・書き込み、NG設定、ログ保存などに対応するAndroidアプリです。
 
@@ -2551,6 +2553,8 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 ## Haiagaru-Morphe（ChMate用Morphe Patch）
 
+本ガイドの導入・検証対象は **ChMate Version 0.8.10.191 dev（versionCode 459）** です。他のVersionの配布情報・変更履歴・過去の報告事例は、191 devでの対応・確認結果とは区別してください。
+
 * **[Haiagaru-Morphe](https://github.com/areteruhiro/Haiagaru-Morphe)** ：ChMate APKに広告除去や追加設定を組み込むMorphe Patchです。Xposed向けの [Haiagaru](https://github.com/areteruhiro/Haiagaru) とは導入方式が異なります。
 * **本ガイドの記載方針**：更新頻度が高いため、主な機能を固定の一覧で紹介します。Versionごとの機能解説は掲載せず、追加・変更・修正は公式のCHANGELOG、各版の注意事項・配布ファイル・確認範囲はリリースノートを確認してください。
 
@@ -2579,7 +2583,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 1. ChMate標準のバックアップ機能で設定・履歴・必要なログを保存します。
 2. Morpheのパッチソースに`https://github.com/areteruhiro/Haiagaru-Morphe/`を登録します。直接JSONを指定する場合は次のURLを使用します。
-3. ソースを再読み込みしてVersionを確認し、対応する**未改変の元ChMate APK**へ`Haiagaru`と必要な任意Patchを適用します。更新時も元APKから生成し直します。
+3. ソースを再読み込みしてVersionを確認し、**未改変のChMate Version 0.8.10.191 dev APK（versionCode 459）**へ`Haiagaru`と必要な任意Patchを適用します。更新時も元APKから生成し直します。
 
 Stable用（通常はこちら）：
 
@@ -2600,15 +2604,15 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bun
 
 ### Haiagaru-Morpheの動作検証・不具合報告（固定環境）
 
-検証は次の**242 dev**で行います。以下は検証手順であり、実機確認済み・動作保証を意味しません。
+検証は次の **ChMate Version 0.8.10.191 dev（versionCode 459）** で行います。以下は検証手順であり、実機確認済み・動作保証を意味しません。
 
 ```text
-2chMate 0.8.10.242 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
+2chMate 0.8.10.191 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
 ```
 
 `x.xx.x`は適用したHaiagaruのVersionに置き換えます。環境記録用であり、User-Agentを書き換える指示ではありません。
 
-#### 端末・Version情報の出力方法（0.8.10.242 dev）
+#### 端末・Version情報の出力方法（0.8.10.191 dev）
 
 1. スレッドを開き、書き込み画面を表示します。
 2. 書き込み画面のメニューから「2chMate/…」（Version・端末情報の項目）を選び、本文へ挿入します。本文欄を長押しして同項目を選ぶ方法もあります。長押しで表示されない場合は、書き込み画面のメニューを使用します。
@@ -2630,10 +2634,10 @@ Haiagaruの設定画面から、表示・動作設定を共有できます。検
 
 #### 検証・切り分け・報告の手順
 
-1. **準備・条件記録**：バックアップ後、未改変の242 dev APK（versionCode 512）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
+1. **準備・条件記録**：バックアップ後、未改変のChMate Version 0.8.10.191 dev APK（versionCode 459）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
 2. **基本操作**：起動、板・スレ更新、本文取得、画像表示、リンク起動、広告・余白を確認します。バックグラウンド・画面消灯からの復帰、再起動後も試します。
 3. **追加機能**：設定の保存、DAT取得、検索、ビューア・動画など使用する機能を個別に確認し、未使用は「未確認」とします。投稿を伴う確認は投稿先のルールに従い、Test用スレで最小限行います。
-4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変の242 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
+4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変のChMate Version 0.8.10.191 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
 5. **報告**： [既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues) ・ [関連コミュニティ](https://jbbs.shitaraba.net/computer/45040/) を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
 
 #### Issue作成時の参考例：パッケージ競合と同期設定のクラッシュ
@@ -2651,7 +2655,7 @@ Haiagaruの設定画面から、表示・動作設定を共有できます。検
 
 ```text
 概要：
-動作環境：2chMate 0.8.10.242 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
+動作環境：2chMate 0.8.10.191 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
 Androidビルド番号：
 Haiagaru配布系統・MPP配布元：
 Manager名・Version：
@@ -2665,7 +2669,7 @@ Patch・オプション・Package name：
 期待した結果：
 実際の結果・エラー全文：
 再現頻度：試行○回中○回
-未改変の242 devでの結果（未実施なら明記）：
+未改変のChMate Version 0.8.10.191 devでの結果（未実施なら明記）：
 設定・通信条件を一つずつ変更した結果：
 直前まで正常だったHaiagaru Version（不明なら明記）：
 ログ・スクリーンショット：
