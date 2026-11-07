@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611071827
+! Version: 202611071831
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -65,6 +65,9 @@ chatgpt.com##[data-prompt-textarea-header]
 ! daily-gadget.net##div[class^="JP_DGG_"][class$="_cls"]
 
 ! diamond.jp
+! おすすめ記事の内部枠も非表示（従来のルールを保持）
+diamond.jp###cx-recommend-member-articles
+diamond.jp###cx-recommend
 ! おすすめの会員限定記事欄を見出し・余白ごと非表示
 diamond.jp###recommend-member-articles
 ! cx-recommendを直下に持つ「あなたにおすすめ」欄を見出し・余白ごと非表示

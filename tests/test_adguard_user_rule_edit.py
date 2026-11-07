@@ -174,6 +174,29 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("明示的な承認がない", result.stderr)
 
+    def test_diamond_container_addition_preserves_existing_rules(self):
+        self.baseline = (
+            "diamond.jp###cx-recommend-member-articles\n"
+            "diamond.jp###cx-recommend\n"
+        )
+        replacements = (
+            "diamond.jp###recommend-member-articles\n"
+            "diamond.jp##.sub-column:has(> #cx-recommend)\n"
+        )
+        for event in ("pull_request", "push"):
+            with self.subTest(event=event, change="replacement"):
+                result = self.exercise(after=replacements, workflow_event=event)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("明示的な承認がない", result.stderr)
+            with self.subTest(event=event, change="addition"):
+                result = self.exercise(after=self.baseline + replacements, workflow_event=event)
+                self.assertEqual(result.returncode, 0, result.stderr)
+
+        # 実際の配布ファイルでも、親コンテナーと内部枠の両方を保持する。
+        target = SCRIPT.parents[1] / "AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt"
+        rules = set(target.read_text(encoding="utf-8").splitlines())
+        self.assertTrue(set((self.baseline + replacements).splitlines()) <= rules)
+
     def test_accepts_exact_approval_from_base(self):
         result = self.exercise(base_approval=self.approval())
         self.assertEqual(result.returncode, 0, result.stderr)

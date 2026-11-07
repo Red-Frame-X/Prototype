@@ -141,6 +141,7 @@ jobs:
 
       - name: Commit titleの表記検査
         id: commit-title-check
+        if: ${{ !cancelled() }}
         env:
           BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || '' }}
           HEAD_REF: ${{ github.event.pull_request.head.sha || github.sha }}

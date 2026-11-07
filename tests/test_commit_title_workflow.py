@@ -123,6 +123,7 @@ class CommitTitleWorkflowTests(unittest.TestCase):
         steps = self.workflow()["jobs"]["quality"]["steps"]
         title_step = next(s for s in steps if s.get("id") == "commit-title-check")
         self.assertNotIn("continue-on-error", title_step)
+        self.assertEqual(title_step.get("if"), "${{ !cancelled() }}")
 
         for name in (
             "Python Testの実行",
