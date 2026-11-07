@@ -116,6 +116,10 @@ google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 ! JBpressのセミナー案内ポップアップを非表示
 jbpress.ismedia.jp##.m-info.js-popup-info
 
+! jp.ign.com
+! 記事84548のscreens-final-fantasy-vi-pcギャラリー枠を非表示にし、空白を除去
+jp.ign.com##body:matches-path(/^\/final-fantasy-vii-remake-part-3\/84548\/ff\/?$/) .gallery_embed:has(> iframe.gallery[albumslug="screens-final-fantasy-vi-pc"])
+
 ! klz9.com
 ! klz9.comでキラキラアイコンと点滅表示を含むVIP加入訴求ボタンを非表示
 klz9.com##button:has(> svg.lucide-sparkles):has(> span.animate-ping)
