@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611071612 |
+| **Version** | 202611071613 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -2583,7 +2583,7 @@ ChromeOS上でのChMateの完全な動作は保証されていません。（[�
 
 1. ChMate標準のバックアップ機能で設定・履歴・必要なログを保存します。
 2. Morpheのパッチソースに`https://github.com/areteruhiro/Haiagaru-Morphe/`を登録します。直接JSONを指定する場合は次のURLを使用します。
-3. ソースを再読み込みしてVersionを確認し、**未改変のChMate Version 0.8.10.191 dev APK（versionCode 459）**へ`Haiagaru`と必要な任意Patchを適用します。更新時も元APKから生成し直します。
+3. ソースを再読み込みしてVersionを確認し、**未改変のChMate 0.8.10.191 dev APK（versionCode 459）**へ`Haiagaru`と必要な任意Patchを適用します。更新時も元APKから生成し直します。
 
 Stable用（通常はこちら）：
 
@@ -2634,7 +2634,7 @@ Haiagaruの設定画面から、表示・動作設定を共有できます。検
 
 #### 検証・切り分け・報告の手順
 
-1. **準備・条件記録**：バックアップ後、未改変のChMate Version 0.8.10.191 dev APK（versionCode 459）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
+1. **準備・条件記録**：バックアップ後、未改変のChMate 0.8.10.191 dev APK（versionCode 459）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
 2. **基本操作**：起動、板・スレ更新、本文取得、画像表示、リンク起動、広告・余白を確認します。バックグラウンド・画面消灯からの復帰、再起動後も試します。
 3. **追加機能**：設定の保存、DAT取得、検索、ビューア・動画など使用する機能を個別に確認し、未使用は「未確認」とします。投稿を伴う確認は投稿先のルールに従い、Test用スレで最小限行います。
 4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変のChMate Version 0.8.10.191 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
