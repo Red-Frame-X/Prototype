@@ -1523,7 +1523,7 @@ AdGuardでの広告ブロック漏れ、Anti-Adblock Scriptによるコンテン
 * [ウェブ開発の学習 | MDN](https://developer.mozilla.org/ja/docs/Learn_web_development)
 
 **報告用Webサイト**
-* [AdGuardフィルターの不具合報告ツール](https://reports.adguard.com/ja/new_issue.html)
+* [AdGuard Filtersの不具合報告ツール](https://reports.adguard.com/ja/new_issue.html)
 またはAdGuard製品に搭載されている報告ツールを使います（[報告方法ガイド](https://adguard.com/kb/ja/guides/report-website/)）。
 
 報告されたIssuesは [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) に反映されます。
