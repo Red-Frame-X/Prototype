@@ -1789,7 +1789,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   * **注意点**：Android 10以降のARM端末向けで、x86版はありません。Safe Browsingによるフィッシング・マルウェア警告も利用できません。
   * **使用中のChrome拡張機能（Chrome Web Store）**：有効化されている4件です。
     * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを同期する。
-    * **[Tab Translate](https://chromewebstore.google.com/detail/khepfpojckhooicloeheemlhcljpjcjg)**：選択したテキスト、Webページ、PDF・文書の翻訳や読み上げに対応する。
+    * **[TWP - Translate Web Pages](https://chromewebstore.google.com/detail/gkkkcomfmldkigajkmljnbpiajbpbgdg)**：GoogleやYandexの翻訳エンジンを利用し、Webページ全体を別タブを開かずに翻訳する。翻訳先言語の変更や自動翻訳にも対応する。
     * **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**：新しく作成したタブを最前面に表示する。
     * **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**：指定したサイトをGoogleなどの検索結果から非表示にする。設定・購読リストは「Chrome 拡張機能 uBlacklist」の項目を参照。
   * **画像での確認範囲**：4件とも有効化されていますが、画像だけでは同期・翻訳・タブ切り替え・検索結果の非表示が実際に動作したかまでは確認できません。
