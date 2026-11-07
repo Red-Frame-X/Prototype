@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202611061955
+! Version: 202611071836
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -225,6 +225,9 @@ thepiratebay.org#?#li#st.list-entry:-abp-has(> .item-type:-abp-contains(/Games/)
 uptodown.com##.active.xapk.download.button
 uptodown.com##.instructions-list
 www.google.*#?##main div > div[data-hveid]:not([class]) div[class] > div[class]:has-text(HOT ! )
+! [未検証のスクリプトレット] www.joysound.com#@#+js(set-constant, document.body.oncontextmenu, null, 3)
+! [未検証のスクリプトレット] www.joysound.com#@#+js(set-constant, document.body.oncopy, null, 3)
+! [未検証のスクリプトレット] www.joysound.com#@#+js(set-constant, document.body.onselectstart, null, 3)
 www.missav-j.com###player-download-btn
 [$url=||www.privacytools.io/encrypted-cloud-storage*]##div.container:nth-of-type(3)
 [$url=||www.privacytools.io/privacy-vpn*]##div.container:nth-of-type(2)
@@ -4340,6 +4343,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gobyou.jp^$document
 ||gocheck*.pages.dev^$document
 ||gocmod.com^$document
+||gofile-ero.com^$document
 ||gofile-pass.mystrikingly.com^$document
 ||gofile-sns.com^$document
 ||gofile.my.canva.site^$document
@@ -14163,7 +14167,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.sora-ten.com^$document
 ||www.soratobuiruka.com^$document
 ||www.sound.xyz^$document
-||www.sourcenext.com/product/security/zero-super-security^$document
 ||www.sousacontabilidade.net^$document
 ||www.spacioclub.ru^$document
 ||www.speedsystem-jp.com^$document
@@ -15178,6 +15181,3 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 @@||esta.cbp.dhs.gov$document
 @@||smbc-card.com^$document
 @@||www.mcafee.com/blogs^$document
-! [未検証のスクリプトレット] www.joysound.com#@#+js(set-constant, document.body.oncopy, null, 3)
-! [未検証のスクリプトレット] www.joysound.com#@#+js(set-constant, document.body.onselectstart, null, 3)
-! [未検証のスクリプトレット] www.joysound.com#@#+js(set-constant, document.body.oncontextmenu, null, 3)
