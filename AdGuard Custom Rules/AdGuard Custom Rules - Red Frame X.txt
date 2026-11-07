@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611071705
+! Version: 202611071824
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -63,6 +63,12 @@ chatgpt.com##[data-prompt-textarea-header]
 ! daily-gadget.net##.JP_DGG_pc_video_instream_cls
 ! 上記のルール群を1行で記述する場合
 ! daily-gadget.net##div[class^="JP_DGG_"][class$="_cls"]
+
+! diamond.jp
+! おすすめの会員限定記事枠を非表示
+diamond.jp###cx-recommend-member-articles
+! おすすめ記事枠を非表示
+diamond.jp###cx-recommend
 
 ! doubleclick.net
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避
