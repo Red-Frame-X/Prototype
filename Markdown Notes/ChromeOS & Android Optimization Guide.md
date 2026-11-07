@@ -2600,15 +2600,15 @@ https://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bun
 
 ### Haiagaru-Morpheの動作検証・不具合報告（固定環境）
 
-検証は次の**242 dev**で行います。以下は検証手順であり、実機確認済み・動作保証を意味しません。
+検証は次の**191 dev**で行います。以下は検証手順であり、実機確認済み・動作保証を意味しません。
 
 ```text
-2chMate 0.8.10.242 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
+2chMate 0.8.10.191 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
 ```
 
 `x.xx.x`は適用したHaiagaruのVersionに置き換えます。環境記録用であり、User-Agentを書き換える指示ではありません。
 
-#### 端末・Version情報の出力方法（0.8.10.242 dev）
+#### 端末・Version情報の出力方法（0.8.10.191 dev）
 
 1. スレッドを開き、書き込み画面を表示します。
 2. 書き込み画面のメニューから「2chMate/…」（Version・端末情報の項目）を選び、本文へ挿入します。本文欄を長押しして同項目を選ぶ方法もあります。長押しで表示されない場合は、書き込み画面のメニューを使用します。
@@ -2630,10 +2630,10 @@ Haiagaruの設定画面から、表示・動作設定を共有できます。検
 
 #### 検証・切り分け・報告の手順
 
-1. **準備・条件記録**：バックアップ後、未改変の242 dev APK（versionCode 512）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
+1. **準備・条件記録**：バックアップ後、未改変の191 dev APK（versionCode 459）へPatchを適用します。Androidビルド、Haiagaru・ManagerのVersion、配布系統・MPP配布元、Patch・設定、Package name、通信条件を記録します。通常構成と超軽量構成は分けて確認します。
 2. **基本操作**：起動、板・スレ更新、本文取得、画像表示、リンク起動、広告・余白を確認します。バックグラウンド・画面消灯からの復帰、再起動後も試します。
 3. **追加機能**：設定の保存、DAT取得、検索、ビューア・動画など使用する機能を個別に確認し、未使用は「未確認」とします。投稿を伴う確認は投稿先のルールに従い、Test用スレで最小限行います。
-4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変の242 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
+4. **切り分け**：再現回数を数え、関連設定・通信条件を一つずつ変更します。比較可能なら未改変の191 devでも確認し、更新比較も同じ元APK・構成で行います。クラッシュ時は`Download/Haiagaru/`の該当ログを保存します。
 5. **報告**： [既存Issues](https://github.com/areteruhiro/Haiagaru-Morphe/issues) ・ [関連コミュニティ](https://jbbs.shitaraba.net/computer/45040/) を確認し、再現手順と結果を報告します。両方へ報告する場合は相互リンクを付け、ログ・画像のCookieや認証情報・個人情報を伏せます。
 
 #### Issue作成時の参考例：パッケージ競合と同期設定のクラッシュ
@@ -2651,7 +2651,7 @@ Haiagaruの設定画面から、表示・動作設定を共有できます。検
 
 ```text
 概要：
-動作環境：2chMate 0.8.10.242 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
+動作環境：2chMate 0.8.10.191 dev/Google/Pixel 10a/17/DT/Haiagaru x.xx.x
 Androidビルド番号：
 Haiagaru配布系統・MPP配布元：
 Manager名・Version：
@@ -2665,7 +2665,7 @@ Patch・オプション・Package name：
 期待した結果：
 実際の結果・エラー全文：
 再現頻度：試行○回中○回
-未改変の242 devでの結果（未実施なら明記）：
+未改変の191 devでの結果（未実施なら明記）：
 設定・通信条件を一つずつ変更した結果：
 直前まで正常だったHaiagaru Version（不明なら明記）：
 ログ・スクリーンショット：
