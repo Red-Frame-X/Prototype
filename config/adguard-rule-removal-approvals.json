@@ -1,14 +1,4 @@
 {
   "version": 1,
-  "approvals": [
-    {
-      "rules_sha256": "ffbcc0b572e2e0905e34db8b206393a7e784bcedf275e54652af5a4ba7ee827e",
-      "rules": [
-        "x.com#?#[data-testid=\"cellInnerDiv\"]:has(button[data-testid=\"UserCell\"]:contains(フォローしています))",
-        "x.com##[data-testid=\"cellInnerDiv\"]:has([data-testid=\"UserCell\"] [data-testid$=\"-follow\"])"
-      ],
-      "reason": "フォロワー一覧の誤非表示を修正するため、対象2ルールをタイムラインの種類で限定したルールへ置き換える。",
-      "reference": "ユーザーの修正・マージ依頼（2026-11-08 JST、このチャット）"
-    }
-  ]
+  "approvals": []
 }

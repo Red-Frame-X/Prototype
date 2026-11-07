@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611071836
+! Version: 202611080607
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -393,7 +393,7 @@ x.com##div[data-testid="inlinePrompt"]
 ! タイムライン内のおすすめユーザー、トピック、イベント、広告、トレンド、関連ユーザー各カードを非表示
 x.com##[aria-label="おすすめユーザー"] button[data-testid="UserCell"]
 x.com##[data-testid="cellInnerDiv"]:has(a[href^="/i/topics/"])
-x.com#?#[data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
+x.com#?#:is([aria-label^="タイムライン: ホーム"], [aria-label="タイムライン: 話題を検索"], [aria-label="タイムライン: 会話"], [aria-label$="さんのポスト"]) [data-testid="cellInnerDiv"]:has(button[data-testid="UserCell"]:contains(フォローしています))
 x.com##[data-testid="cellInnerDiv"]:has(div[data-testid="eventHero"])
 x.com#?#[data-testid="cellInnerDiv"]:has(h2:contains(おすすめ投稿))
 x.com#?#[data-testid="cellInnerDiv"]:has(h2[role="heading"] span:contains(おすすめユーザー))
@@ -411,7 +411,7 @@ x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerD
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]):not([aria-label="タイムライン: フォロー中"] *)
 x.com##[aria-label^="タイムライン: ホーム"] div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) + div:has(> div > div:empty):not([aria-label="タイムライン: フォロー中"] *)
 x.com##div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"])
-x.com##[data-testid="cellInnerDiv"]:has([data-testid="UserCell"] [data-testid$="-follow"])
+x.com##:is([aria-label^="タイムライン: ホーム"], [aria-label="タイムライン: 話題を検索"], [aria-label="タイムライン: 会話"], [aria-label$="さんのポスト"]) [data-testid="cellInnerDiv"]:has([data-testid="UserCell"] [data-testid$="-follow"])
 ! 個別ポスト・会話・検索結果に挿入されるフォロー候補、「もっと見つける」、ユーザー見出しを非表示
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has(+ div [data-testid="UserCell"])
 x.com##[aria-label$="さんのポスト"] div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"])
