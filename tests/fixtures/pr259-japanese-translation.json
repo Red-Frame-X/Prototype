@@ -1,0 +1,30 @@
+{
+  "title": "NG Word Regex for ChMate のJST Version同期と更新漏れ検査を整備",
+  "body": "ChMate専用の手動Workflowが内容変更なしでもVersionだけを更新する問題を修正し、既存の共通Scriptと内容チェックポイントを再利用します。共通Workflowと同じconcurrency groupで直列化し、push競合時は最新mainから再生成します。対象TXTはVersionを含め変更していません。\n\n既存の品質検査とCommit Hookで、Version更新漏れ・重複・形式不正・不要な単独更新を検出し、各Commitの日時をJSTへ変換した値と照合します。同じ分の編集は同値を許容し、処理からCommitまで5分未満を許容します。正常なMetadataへ修復するCommitも検査できます。自動同期の例外にはBotのCommitter情報、未同期ハッシュ、同じCommit内の同期後チェックポイントが必要で、titleだけでは許可しません。\n\nSquash mergeは時間差にかかわらず、GitHub APIのマージ済みPR・Merge SHA・反映後のTXTの完全一致・共通祖先とマージ直前のTXTの一致を確認してから、元PRの全Commitを再検査します。API・履歴取得失敗、内容不一致、元PRの更新漏れは失敗にします。この照合のため、品質検査にpull-requests: readを追加します。外部PRのコードを権限付きで実行するWorkflowは追加しません。\n\nChat / Work / Codexの同時更新指示と経路ごとの制約をAGENTS.md・CONTRIBUTING.mdへ記載しました。mainの補完は別Commitとなり、Actions停止・権限不足・保護設定・定期実行の遅延時は即時反映を保証できません。数値だけの日時からタイムゾーンや実際の処理時刻を証明することもできません。\n\nローカル検証: Python Test 312件成功、Markdownlint・AGLint・Workflow安全性・固定名称・AdGuard整合性・内容消失防止を確認。actionlint成功。一時Repositoryのダミー変更で、JST日付境界、更新漏れ、不正形式・重複、同じ分の編集、再実行時の無変更、遅延Squash、元PRの更新漏れ、API失敗、内容不一致、Metadata修復を確認しました。ChMate手動Workflowの実際のShellも一時remoteで実行し、本文保持と不要なCommitがないことを確認しました。\n\n最新SHAのGitHub CIはすべて成功し、Codex Reviewは指摘なしで完了しました。修正済みのReviewスレッドを解決し、Squash merge済みです。マージ後のmainの品質検査、ChMate手動Workflow、共通Version更新、AdGuard向け変換も成功しました。対象TXTはマージ前後で完全一致し、Version更新Workflowは不要なCommitを作成せず終了しています。",
+  "commits": [
+    {
+      "sha": "5d77d6d185f8e7d405b09059c7eafa323b451565",
+      "message": "NG Word Regex for ChMate のJST Version同期と更新漏れ検査を整備\n\n共通のVersion更新処理を再利用し、内容変更がない手動実行の不要な更新と並行push競合を防ぎます。\nPRとCommit HookにVersionの形式・重複・JST日時・同時更新の検査を追加し、編集経路ごとの制約を明記します。\n対象TXTの本文・Metadataは変更していません。"
+    },
+    {
+      "sha": "172c50636f137e96a5a64f82467368990c13b53f",
+      "message": "ChMate Version検査で自動起動したPRの全Commitを対象にする"
+    },
+    {
+      "sha": "e8710cedfee3ac5c6750dbaeda33d9cc02b5ceff",
+      "message": "ChMateのVersion単独更新を同期Commitだけに制限する"
+    },
+    {
+      "sha": "5ebd55a50f48f6a96e1784b647e64d8de409dfa2",
+      "message": "ChMate Version単独更新の回帰Testを追加する"
+    },
+    {
+      "sha": "6728fb5b8f4badc378f7f5be3d0e1d36a636ad05",
+      "message": "ChMateのSquash merge時のVersion検証と修復経路を整備\n\nGitHubのマージ済みPRと変更前後の内容を照合し、元PRの全CommitをJSTで再検証します。\nBot同期はCommitter情報と同時更新したチェックポイントも確認し、不正なVersionの修復を許可します。\n遅延Squash、更新漏れ、API失敗、不要な単独更新、Metadata修復の回帰Testを追加します。"
+    },
+    {
+      "sha": "61f28d37c0289755afdf5557916976d7edbcd475",
+      "message": "ChMateのSquash元履歴を時間差にかかわらず検査\n\n5分以内のSquashでも元PRの更新漏れを検出し、mainの変更を取り込んだPRは実際の共通祖先と照合します。\n短時間のSquashとmain更新後の統合を回帰Testへ追加し、API応答のfixtureを呼び出しごとに生成します。"
+    }
+  ]
+}

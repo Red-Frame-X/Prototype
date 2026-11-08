@@ -14,6 +14,64 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_squash_merge_command_keeps_merge_as_english_prose(self):
+        from automate_japanese_commits import validate_translation
+        source = 'Squash merge main'
+        engine = Mock(side_effect=lambda value: value.replace(' merge ', 'で統合 '))
+        target = argos.translate_text(source, engine)
+        self.assertEqual(target, 'Squashで統合 main')
+        self.assertIn(' merge ', engine.call_args[0][0])
+        validate_translation({'title': source, 'body': '', 'commits': []},
+                             {'title': target, 'body': '', 'commits': []})
+
+    def test_term_suffix_does_not_mask_ordinary_english_word(self):
+        engine = Mock(return_value='字幕の描画を更新')
+        self.assertEqual(argos.translate_text('Update subtitle rendering', engine), '字幕の描画を更新')
+        engine.assert_called_once_with('Update subtitle rendering')
+
+    def test_japanese_commit_message_term_is_preserved(self):
+        source = '日本語の本文と全Commit messageを原文のまま扱います。'
+        engine = Mock()
+        self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+
+    def test_english_merge_and_push_commands_are_translated(self):
+        from automate_japanese_commits import validate_translation
+        for verb in ('Merge', 'merge', 'push'):
+            with self.subTest(verb=verb):
+                source = verb + ' main'
+                engine = Mock(side_effect=lambda value: value.replace(verb + ' ', '') + 'へ統合')
+                target = argos.translate_text(source, engine)
+                self.assertEqual(target, 'mainへ統合')
+                engine.assert_called_once()
+                original = {'title': source, 'body': '', 'commits': []}
+                validate_translation(original, {'title': target, 'body': '', 'commits': []})
+
+    def test_merge_sha_command_keeps_verb_translatable(self):
+        from automate_japanese_commits import validate_translation
+        for source in ('Merge SHA', 'Merge SHA abcdef1'):
+            engine = Mock(side_effect=lambda value: value.replace('Merge ', 'マージ '))
+            target = argos.translate_text(source, engine)
+            self.assertEqual(target, source.replace('Merge ', 'マージ '))
+            self.assertTrue(engine.call_args[0][0].startswith('Merge '))
+            validate_translation({'title': source, 'body': '', 'commits': []},
+                                 {'title': target, 'body': '', 'commits': []})
+
+    def test_pr259_payload_is_unchanged_without_calling_translation_engine(self):
+        from automate_japanese_commits import validate_translation
+        original = json.loads((Path(__file__).parent / 'fixtures/pr259-japanese-translation.json').read_text())
+        engine = Mock(side_effect=AssertionError('日本語本文の技術表記を翻訳器へ渡しています。'))
+        translated = argos.translate_payload(original, engine)
+        self.assertEqual(translated, original)
+        validate_translation(original, translated)
+        engine.assert_not_called()
+
+    def test_english_prose_around_workflow_terms_still_requires_translation(self):
+        source = 'Fix concurrency group configuration'
+        engine = Mock(side_effect=lambda text: text.replace('Fix ', '').replace(' configuration', 'の設定を修正'))
+        self.assertEqual(argos.translate_text(source, engine), 'concurrency groupの設定を修正')
+        engine.assert_called_once()
+
     def test_pr251_payload_is_unchanged_without_calling_translation_engine(self):
         from automate_japanese_commits import validate_translation
         original = json.loads((Path(__file__).parent / 'fixtures/pr251-japanese-translation.json').read_text())
