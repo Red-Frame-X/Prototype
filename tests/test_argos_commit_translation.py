@@ -46,6 +46,17 @@ class ArgosTranslationTests(unittest.TestCase):
                 self.assertEqual(argos.translate_text(text, engine), text)
                 engine.assert_not_called()
 
+    def test_indented_list_fences_and_code_lines_never_reach_engine(self):
+        for text in ('- 検証例\n\n    ~~~sh\n    echo hello\n    ~~~\n',
+                     '- 検証例\n\n    ```sh\n    echo hello\n    ```\n',
+                     '        ~~~sh\n        echo hello\n        ~~~\n',
+                     '\t~~~sh\n\techo hello\n\t~~~\n',
+                     '    echo hello\n    echo world\n'):
+            engine = Mock()
+            with self.subTest(text=text):
+                self.assertEqual(argos.translate_text(text, engine), text)
+                engine.assert_not_called()
+
     def test_english_is_translated(self):
         engine = Mock(return_value='説明を更新')
         self.assertEqual(argos.translate_text('Update description\n', engine), '説明を更新\n')

@@ -139,21 +139,29 @@ TOKENS = re.compile(PROTECTED.pattern + r'|[ぁ-んァ-ヶ一-龠々ー][ぁ-ん
 
 def markdown_segments(text):
     """実際の行頭フェンスとCode spanを解析し、コードの中を再解釈しない。"""
-    opening_pattern = re.compile(r' {0,3}(`{3,}|~{3,})([^\r\n]*)(?:\r?\n|$)')
+    opening_pattern = re.compile(r'([ \t]*)(`{3,}|~{3,})([^\r\n]*)(?:\r?\n|$)')
+    indented_code = re.compile(r'(?: {4}|[ \t]*\t)[^\r\n]*')
     backticks = re.compile(r'`+')
     position = plain_start = 0
     while position < len(text):
         end = None
         if position == 0 or text[position - 1] == '\n':
             opening = opening_pattern.match(text, position)
-            if opening and not (opening[1][0] == '`' and '`' in opening[2]):
-                fence = opening[1]
-                closing = re.compile(r'^ {0,3}' + re.escape(fence[0])
+            if opening and not (opening[2][0] == '`' and '`' in opening[3]):
+                fence = opening[2]
+                # リストのコンテナ分の字下げを含めて閉じフェンスを探す。
+                indentation = len(opening[1].expandtabs(4))
+                closing = re.compile(r'^([ \t]*)' + re.escape(fence[0])
                                      + r'{' + str(len(fence)) + r',}[ \t]*(?=\r?$)', re.MULTILINE)
-                match = closing.search(text, opening.end())
+                match = next((candidate for candidate in closing.finditer(text, opening.end())
+                              if len(candidate[1].expandtabs(4)) <= indentation + 3), None)
                 if match is None:
                     raise TranslationError('コードブロックが完結していません。')
                 end = match.end()
+            if end is None:
+                code_line = indented_code.match(text, position)
+                if code_line:
+                    end = code_line.end()
         if end is None and text[position] == '`':
             delimiter = backticks.match(text, position)[0]
             closing = re.compile(r'(?<!`)' + re.escape(delimiter) + r'(?!`)')

@@ -25,6 +25,7 @@ def main():
         'feat(core): READMEの説明を更新',
         'Code fence example: `~~~`',
         '```python\nvalue = "~~~"\n```',
+        '- 検証例\n\n    ~~~sh\n    echo hello\n    ~~~\n',
     ]
     for source in samples:
         # モデル導入後はネットワークを禁止して実翻訳する。
@@ -47,7 +48,7 @@ def main():
         for term in ('README.md', 'https://example.com/a', '#12', '`my_func`', 'v1.2.3', 'GitHub Actions', 'c77ede4b', 'a1' * 20, '`~~~`'):
             if term in source:
                 assert term in target, term
-        if source in ('fix: 説明を修正', 'feat(core): READMEの説明を更新') or source.startswith('```'):
+        if source in ('fix: 説明を修正', 'feat(core): READMEの説明を更新') or source.startswith(('```', '- 検証例')):
             assert target == source
         if source.startswith('既存の日本語文章'):
             assert target == source
