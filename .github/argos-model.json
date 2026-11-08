@@ -5,7 +5,9 @@
   "argos_version": "1.1",
   "url": "https://argos-net.com/v1/translate-en_ja-1_1.argosmodel",
   "index": "https://github.com/argosopentech/argospm-index/blob/ff90de60728f7c1338ff6b75974e4c89b2442d22/index.json",
-  "sha256": null,
-  "license_verified": false,
-  "license_source": "https://github.com/argosopentech/argos-translate/issues/76"
+  "sha256": "16300cc4eaa85320520cabcf433b63d01be40ef6966251de72043a083408f716",
+  "license_verified": true,
+  "license_source": "https://github.com/argosopentech/argos-translate/issues/76",
+  "license": "MIT OR CC0-1.0 (Argos project work; upstream bundled components retain their own terms)",
+  "verification_run": "https://github.com/Red-Frame-X/Prototype/actions/runs/42447418170"
 }

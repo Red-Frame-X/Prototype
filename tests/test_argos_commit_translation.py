@@ -53,7 +53,8 @@ class ArgosTranslationTests(unittest.TestCase):
             argos.translate_text('Update description', Mock(side_effect=RuntimeError()))
 
     def test_unverified_model_never_downloads(self):
-        with patch.object(argos.urllib.request, 'urlopen') as download:
+        with patch.object(argos.urllib.request, 'urlopen') as download, \
+                patch.object(Path, 'read_text', return_value=json.dumps({'sha256': None})):
             with self.assertRaises(argos.TranslationError):
                 argos.load_engine()
             download.assert_not_called()

@@ -49,7 +49,9 @@ def load_engine():
             archive = Path(directory) / 'model.argosmodel'
             # 認証情報も翻訳対象本文も送信しない。配布先は固定する。
             with urllib.request.urlopen(
-                    'https://argos-net.com/v1/translate-en_ja-1_1.argosmodel', timeout=90) as response:
+                    urllib.request.Request(
+                        'https://argos-net.com/v1/translate-en_ja-1_1.argosmodel',
+                        headers={'User-Agent': 'ArgosTranslate/1.11.0'}), timeout=90) as response:
                 with archive.open('wb') as output:
                     total = 0
                     while chunk := response.read(1024 * 1024):
