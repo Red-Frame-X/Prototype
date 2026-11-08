@@ -9,11 +9,13 @@ Android用5ちゃんねるブラウザChMateのNG設定で自分が使用・検�
 
 | 項目 | 主な内容 | 参照先 |
 | --- | --- | --- |
-| NG Word Regex for ChMate | ChMateのNG設定で使用・検証しているJava正規表現集 | [`NG Word Regex for ChMate.txt`](NG%20Word%20Regex%20for%20ChMate.txt) |
+| NG Word Regex for ChMate | ChMateのNG設定で使用・検証しているJava正規表現集 | [`NG Word Regex for ChMate.txt`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
+
+TXTファイルのリンクは、色分けのないRaw表示を開きます。
 
 ## 自分の環境での設定メモ
 
-[`NG Word Regex for ChMate.txt`](NG%20Word%20Regex%20for%20ChMate.txt) に保存している正規表現を、必要なものだけChMateのNG設定へ登録し、正規表現として使用しています。変更時は一度に大量追加せず、意図した投稿だけが対象になることを確認してから常用します。
+[`NG Word Regex for ChMate.txt`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) に保存している正規表現を、必要なものだけChMateのNG設定へ登録し、正規表現として使用しています。変更時は一度に大量追加せず、意図した投稿だけが対象になることを確認してから常用します。
 
 ## 検証時の注意
 
