@@ -173,6 +173,12 @@ jobs:
             python scripts/check_adguard_user_rule_edit.py
           fi
 
+      # GITHUB_TOKENで書き換えたSHAでは、別のpull_request Workflowも自動起動しない。
+      # 自動マージ経路でも既存のAdGuard Version検査を省略しない。
+      - name: 自動起動したPRのAdGuard Version更新を検査
+        if: github.event_name == 'workflow_dispatch' && inputs.automation_pr != ''
+        run: python scripts/check_adguard_version_timestamp.py --base origin/main --head HEAD
+
       - name: Commit titleの表記検査
         id: commit-title-check
         if: ${{ !cancelled() }}
