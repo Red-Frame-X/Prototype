@@ -68,8 +68,8 @@ for verb in ('Update Fix Add Remove Delete Rename Refactor Improve Correct Creat
 verb_forms.update(('Kept', 'Keeping', 'Built', 'Building', 'Pinned', 'Pinning',
                    'Did', 'Done', 'Doing', 'Saw', 'Seen', 'Seeing'))
 PROSE_WORDS = '|'.join(sorted(verb_forms, key=lambda word: (-len(word), word)))
-PROTECTED = re.compile(PROTECTED.pattern + r'|\b(?!(?:' + PROSE_WORDS
-                       + r')\b)[A-Z][a-z]+\b')
+PROTECTED = re.compile(PROTECTED.pattern + r'|(?<![A-Za-z0-9_])(?!(?:' + PROSE_WORDS
+                       + r')(?![A-Za-z0-9_]))[A-Z][a-z]+(?![A-Za-z0-9_])')
 
 # Unicodeの\bや\wは隣接する日本語も単語に含めるため、README.md等の
 # PathはASCIIの境界・文字集合で先に照合し、拡張子だけが翻訳器へ漏れるのを防ぐ。

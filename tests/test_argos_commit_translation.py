@@ -38,7 +38,8 @@ class ArgosTranslationTests(unittest.TestCase):
         engine.assert_not_called()
 
     def test_filename_next_to_japanese_is_protected_as_a_whole(self):
-        for source in ('編集対象はREADME.mdのみです。', '設定はconfig.jsonを使用します。'):
+        for source in ('編集対象はREADME.mdのみです。', '設定はconfig.jsonを使用します。',
+                       'Argosへ渡した結果を確認します。元Runには記録がありません。'):
             with self.subTest(source=source):
                 engine = Mock()
                 self.assertEqual(argos.translate_text(source, engine), source)
