@@ -134,17 +134,29 @@ class TranslationTests(unittest.TestCase):
         with self.assertRaises(automation.AutomationError):
             automation.validate_translation(self.original, self.translated)
 
-    def test_truncated_api_output_is_rejected(self):
-        response = {'choices': [{'finish_reason': 'length', 'message': {'content': '{}'}}]}
-        with patch.object(automation, 'request_json', return_value=response):
-            with self.assertRaises(automation.AutomationError):
-                automation.translate(self.original, 'fake-key', 'model')
+    def test_changed_naked_commit_hash_is_rejected(self):
+        for sha in ('c77ede4b', 'a1' * 20):
+            original = copy.deepcopy(self.original)
+            translated = copy.deepcopy(self.translated)
+            original['body'] += ' ' + sha
+            translated['body'] += ' ' + sha
+            automation.validate_translation(original, translated)
+            translated['body'] = translated['body'].replace(sha, 'b2' * 20)
+            with self.subTest(sha=sha), self.assertRaises(automation.AutomationError):
+                automation.validate_translation(original, translated)
 
-    def test_missing_key_never_calls_api(self):
-        with patch.object(automation, 'request_json') as api:
+    def test_truncated_argos_output_is_rejected(self):
+        with patch('argos_commit_translation.load_engine', return_value=lambda text: ''):
             with self.assertRaises(automation.AutomationError):
-                automation.translate(self.original, '', 'model')
-            api.assert_not_called()
+                automation.translate(self.original)
+
+    def test_model_failure_never_calls_paid_api(self):
+        from argos_commit_translation import TranslationError
+        with patch('argos_commit_translation.load_engine', side_effect=TranslationError('取得失敗')):
+            with patch.object(automation, 'request_json') as api:
+                with self.assertRaises(automation.AutomationError):
+                    automation.translate(self.original)
+                api.assert_not_called()
 
 
 class QualityRunTests(unittest.TestCase):
@@ -265,7 +277,8 @@ class LifecycleTests(unittest.TestCase):
         self.state = {'fingerprint': automation.fingerprint(SHA, self.pr['title'], self.pr['body']),
                       'managed': True, 'sha': SHA, 'review_requested': True}
         body = '<!-- ' + automation.STATE_MARKER + ' ' + json.dumps(self.state) + ' -->'
-        self.comments = [comment(automation.BOT_LOGIN, body), codex_comment()]
+        self.comments = [comment('owner', '/approve-commit-translation ' + self.state['fingerprint'], 'User'),
+                         comment(automation.BOT_LOGIN, body), codex_comment()]
         self.gh.pages.side_effect = lambda path: self.comments if 'comments' in path else []
         self.merged = False
         self.changes = []
@@ -298,7 +311,38 @@ class LifecycleTests(unittest.TestCase):
                                       / '.github/workflows/quality.yml').read_bytes()
 
     def run_pr(self):
-        automation.process_pr(self.gh, 1, 'main', 'fake-key', 'model')
+        automation.process_pr(self.gh, 1, 'main')
+
+    def test_unconfirmed_meaning_never_merges(self):
+        self.comments.pop(0)
+        self.run_pr()
+        self.assertFalse(self.merged)
+        self.assertEqual(self.changes, [])
+
+    def test_stale_or_bot_approval_never_merges(self):
+        for approval in [comment('owner', '/approve-commit-translation ' + BASE, 'User'),
+                         comment(automation.BOT_LOGIN, '/approve-commit-translation '
+                                 + self.state['fingerprint'])]:
+            self.comments[0] = approval
+            self.run_pr()
+            self.assertFalse(self.merged)
+
+    def test_dry_run_never_mutates_or_merges(self):
+        original = {'title': self.pr['title'], 'body': self.pr['body'],
+                    'commits': [{'sha': SHA, 'message': '既存Commitの説明'}]}
+        def objects(*args, **kwargs):
+            if args[0] == 'rev-list':
+                return (SHA + '\n').encode()
+            return 'tree dummy\n\n既存Commitの説明'.encode()
+        previous_api = self.gh.api.side_effect
+        self.gh.api.side_effect = lambda path, *args: (
+            {'object': {'sha': BASE}} if path.startswith('/git/ref/') else previous_api(path, *args))
+        with patch.object(automation, 'git', side_effect=objects), \
+                patch.object(automation, 'translate', return_value=original):
+            automation.process_pr(self.gh, 1, 'main', dry_run=True)
+        self.assertFalse(self.merged)
+        self.assertEqual(self.changes, [])
+        self.gh.comment.assert_not_called()
 
     def test_clean_latest_review_and_ci_merge_with_sha_and_japanese_message(self):
         self.run_pr()

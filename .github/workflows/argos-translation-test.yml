@@ -1,0 +1,43 @@
+name: Argos英日モデルの実物検証
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/argos-translation-test.yml'
+      - '.github/argos-model.json'
+      - 'scripts/*argos*'
+      - 'scripts/automate_japanese_commits.py'
+      - 'tests/*commit*'
+      - 'requirements-translation.txt'
+
+permissions:
+  contents: read
+
+jobs:
+  argos-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Repositoryの取得
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Pythonの準備
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      # PR・Commitの更新やマージを行わず、公式配布物だけを検証する。
+      - name: 公式英日モデルのSHA256・Metadata・READMEを確認
+        run: python scripts/inspect_argos_model.py
+
+      - name: CPU版の翻訳依存パッケージを導入
+        run: |
+          python -m pip install --disable-pip-version-check 'torch==2.9.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --disable-pip-version-check -r requirements-translation.txt
+      - name: 固定モデルで実翻訳と表記保護を検証
+        env:
+          ARGOS_MODEL_PROVIDER: OPENNMT
+          ARGOS_CHUNK_TYPE: STANZA
+          ARGOS_DEVICE_TYPE: cpu
+          ARGOS_PACKAGES_DIR: ${{ runner.temp }}/commit-ja-argos-packages
+        run: python scripts/test_argos_model.py

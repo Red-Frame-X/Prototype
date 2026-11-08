@@ -1,1 +1,4 @@
 PyYAML==6.0.2
+
+# Markdownのコード範囲をCommonMarkに従って判定する。
+markdown-it-py==4.2.0
