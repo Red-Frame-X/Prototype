@@ -35,6 +35,13 @@ PROTECTED = re.compile(
     + r'|\b(?:[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+|v?\d+(?:\.\d+)+(?:[-+][\w.-]+)?|[A-Z][A-Z0-9_]+|'
       r'\w*[a-z][A-Z]\w*|\w+_\w+|[\w.-]+(?:/|\.)[\w./-]+)\b'
 )
+# 日本語に隣接した略語もASCIIの境界で判定する。Unicodeの\bではJST等を見落とす。
+# mainはdomain等の一般語の一部に一致させず、Branch名として独立した表記だけを保持する。
+PROTECTED = re.compile(
+    PROTECTED.pattern
+    + r'|(?<![A-Za-z0-9_./-])(?:main|pre-commit)(?![A-Za-z0-9_./-])'
+    + r'|(?<![A-Za-z0-9_])[A-Z][A-Z0-9_]+(?![A-Za-z0-9_])'
+)
 # 未登録の固有名詞も保守的に保持する。一般説明の先頭に多い語は翻訳する。
 PROSE_WORDS = (
     'Update|Fix|Add|Remove|Delete|Rename|Refactor|Improve|Correct|Create|Change|'

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """固定モデルの実翻訳をRunner上で確認する。GitHubの更新APIは使わない。"""
 import json
+from pathlib import Path
 from unittest.mock import patch
 from argos_commit_translation import load_engine, translate_text, translate_payload
 from automate_japanese_commits import validate_translation
@@ -59,6 +60,17 @@ def main():
             assert target == source
         if source.startswith('既存の説明\n'):
             assert target.startswith('既存の説明\n')
+
+    # 実際に停止した日本語PRのスナップショット。本文はGitHubへ送信・更新しない。
+    snapshot = Path(__file__).resolve().parents[1] / 'tests/fixtures/pr248-japanese-translation.json'
+    original_japanese = json.loads(snapshot.read_text())
+    with patch('socket.socket.connect', side_effect=AssertionError('翻訳中の外部通信')):
+        def forbidden_translation(source):
+            raise AssertionError('日本語化済みの本文を翻訳器へ渡しています。')
+        unchanged = translate_payload(original_japanese, forbidden_translation)
+    assert unchanged == original_japanese
+    validate_translation(original_japanese, unchanged)
+    print('PR #248: title・body・Commit messageを翻訳器の呼出しなしで原文のまま保持しました。')
 
     original = {'title': 'Update README.md',
                 'body': '既存の説明\nSee https://example.com/a #12 `my_func` v1.2.3',
