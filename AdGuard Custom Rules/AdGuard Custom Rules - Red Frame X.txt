@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611081443
+! Version: 202611081453
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -190,10 +190,6 @@ news.yahoo.co.jp##body:matches-path(/^\/expert(?:\/|\?|$)/) li:has(> div[id^="ad
 news.yahoo.co.jp##li:has(> a:is([href="/categories/entertainment"], [href="https://news.yahoo.co.jp/categories/entertainment"])[data-cl-params*="_cl_vmodule:snavi;"])
 ! カテゴリーナビの「スポーツ」を、リンク先とsnavi属性で識別して項目ごと非表示
 news.yahoo.co.jp##li:has(> a:is([href="/categories/sports"], [href="https://news.yahoo.co.jp/categories/sports"])[data-cl-params*="_cl_vmodule:snavi;"])
-! 「あなたにおすすめ」を、見出しとnewsFeed_listを直下に持つnewsFeedに限定して非表示
-news.yahoo.co.jp#?#div#newsFeed:has(> h2:contains(/^あなたにおすすめ$/)):has(> ul.newsFeed_list)
-! 「あなたにおすすめ」を表示するため、上記の非表示指定を例外ルールで解除
-news.yahoo.co.jp#@?#div#newsFeed:has(> h2:contains(/^あなたにおすすめ$/)):has(> ul.newsFeed_list)
 ! 記事ページの「あわせて読みたい記事」と同種の推薦記事フィードを見出し・余白ごと非表示
 news.yahoo.co.jp##aside.articleNewsFeed
 ! エキスパート記事などの「あわせて読みたい記事」を、uamods-recommendを直下に持つsectionごと非表示
