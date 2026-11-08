@@ -13,6 +13,7 @@ from zoneinfo import ZoneInfo
 
 JST = ZoneInfo("Asia/Tokyo")
 HEADER_TEMPLATE = Path("Markdown Notes/Header Template.md")
+CHMATE_FILE = Path("NG Word Regex for ChMate/NG Word Regex for ChMate.txt")
 STATE_FILE = Path(".github/version-timestamps-state.json")
 TARGET_PREFIXES = (
     "AdGuard Custom Rules/",
@@ -26,6 +27,15 @@ PATTERNS = (
     (re.compile(r"(?m)^\| \*\*Version\*\* \| \d{8,14} \|$"), lambda stamp: f"| **Version** | {stamp} |"),
     (re.compile(r"(?m)^(//[ \t]*@version[ \t]+)\S+[ \t]*$"), lambda stamp: rf"\g<1>{stamp}"),
 )
+
+
+def chmate_version(text: str) -> str:
+    lines = [line for line in text.splitlines() if line.lstrip().startswith("! Version")]
+    if len(lines) != 1 or not re.fullmatch(r"! Version: [0-9]{12}", lines[0]):
+        raise ValueError(f"{CHMATE_FILE}: ! Version: YYYYMMDDHHMM が正確に1行必要です")
+    stamp = lines[0].removeprefix("! Version: ")
+    datetime.strptime(stamp, "%Y%m%d%H%M")
+    return stamp
 
 
 def git(*args: str) -> str:
@@ -105,6 +115,9 @@ def update_file(path: Path, stamp: str) -> bool:
 
 def version_text(path: Path, text: str, stamp: str) -> str | None:
     # ファイル種別に対応する先頭Metadataだけを更新し、本文のコード例を保持する。
+    if path == CHMATE_FILE:
+        chmate_version(text)
+        return re.sub(r"(?m)^! Version: [0-9]{12}$", f"! Version: {stamp}", text, count=1)
     lines = text.splitlines(keepends=True)
     if path.suffix == ".md":
         pattern, replacement = PATTERNS[1]
@@ -143,13 +156,23 @@ def main() -> int:
     selection.add_argument("--base", help="比較元CommitのSHA")
     selection.add_argument("--since", help="指定したGit日付以降の未同期の編集を同期します")
     selection.add_argument("--pending", action="store_true", help="現在のBranchの未同期の編集をすべて同期します")
+    parser.add_argument("--path", type=Path, help="同期対象を指定した1ファイルに限定")
     parser.add_argument("--head", default="HEAD", help="比較先のCommitまたは参照")
     args = parser.parse_args()
 
     stamp = datetime.now(JST).strftime("%Y%m%d%H%M")
     updated: list[str] = []
     paths = pending_files(args.since) if args.pending or args.since else changed_files(args.base, args.head)
+    if args.path:
+        paths = [path for path in paths if path == args.path]
     for path in paths:
+        if args.base and path == CHMATE_FILE and path.is_file():
+            previous = subprocess.run(["git", "show", f"{args.base}:{path.as_posix()}"],
+                                      capture_output=True, text=True, encoding="utf-8")
+            if previous.returncode == 0 and version_text(path, previous.stdout, "<VERSION>") == version_text(
+                path, path.read_text(encoding="utf-8"), "<VERSION>"
+            ):
+                continue
         if is_target(path) and update_file(path, stamp):
             updated.append(path.as_posix())
 

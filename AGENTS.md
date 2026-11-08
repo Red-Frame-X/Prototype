@@ -44,6 +44,13 @@
 - GitHub APIなどHookが動かない編集では、最新Branchのファイル全文を取得し、ルールとVersionを同じ書き込みに含める。PR作成前にCommitの差分で両方の変更を確認する。
 - PR作成後は `AdGuardのVersion日時検査` の成功を確認する。後続CommitでVersionだけ更新しても、先行Commitの更新漏れは解消しない。検査を無効化して通さない。
 
+## NG Word Regex for ChMateのVersion更新
+
+- ChatGPT Chat / Work / Codexを含むすべての編集で、対象TXTの正規表現やコメントを変更するときは、同じCommitに現在のJST（Asia/Tokyo）の `! Version: YYYYMMDDHHMM` を含める。既存の1行だけを更新し、本文の順序・条件・Metadata・リンクは維持する。
+- 内容変更がなければVersionだけを更新しない。同じ分の編集では同じVersion値を許容する。
+- Git CLIでは `git add` 後に `python scripts/check_chmate_version.py --staged` を実行する。API / Web UIではHookが動かないため、内容とVersionを同じ書き込みに含める。PRの品質検査の成功を確認する。
+- 詳しい同期方法と保証範囲は [CONTRIBUTING.md](CONTRIBUTING.md) のChMateの説明に従う。
+
 ## Branch保護の確認
 
 - 現在の連携では、Branch protection詳細APIの403解消を通常作業の完了条件にしない。
