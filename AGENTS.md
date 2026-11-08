@@ -115,6 +115,12 @@
 - 最終報告は日本語とし、作成したCommitのhashとtitle、mainへの反映状況、実際のCommit messageの確認結果を簡潔に示す。Commitを作成していない場合は、その旨を示す。
 - `npm run hooks:install`でCommit Hookを有効にできる。既存のHookとCIによるCommit title検査だけでは、この方針全体への準拠を保証できないため、titleとbodyの内容も確認する。
 
+## ソフトウェアで使用するファイルへのリンク
+
+- フィルタ、UserScript、NG Word Regex for ChMateなど、ソフトウェアへの購読・登録・コピーに使うファイルへのリンクはRaw URLに統一する。GitHubのファイル表示画面へのリンクを購読・登録用に案内しない。
+- 本Repositoryの配布ファイルには、原則として `https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/` 配下のURLを使う。既存のRaw形式の更新URLは、参照先と互換性を確認せずに変更しない。
+- README、手順書、ディレクトリ、原典のソースコードや行番号を参照するリンクは、用途に適した通常の表示URLを維持する。
+
 ## Repository内の表記
 
 - 以下の表記方針をRepository全体の本文・見出し・コメント・表示文言・生成元・生成物に適用する。公式原文・公式UI名・検証用の原文引用・互換性に関わる識別子は保持する。

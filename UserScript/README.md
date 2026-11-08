@@ -9,12 +9,14 @@
 
 | UserScript | 対象 | 主な内容 |
 | --- | --- | --- |
-| [`gigazine-fill-article-grid.user.js`](gigazine-fill-article-grid.user.js) | GIGAZINE | AdGuardユーザールールによる記事の非表示を補完し、次ページの記事で記事一覧の最後の行の空き枠を埋める |
-| [`x-auto-select-community-latest-sort.user.js`](x-auto-select-community-latest-sort.user.js) | 𝕏 | コミュニティの投稿一覧で新しい投稿を優先する並べ替えを自動選択 |
-| [`x-auto-select-following-latest-sort.user.js`](x-auto-select-following-latest-sort.user.js) | 𝕏 | 対象タイムラインで新しい投稿を優先する並べ替えを自動選択 |
-| [`x-spaces-and-live-broadcast-blocker.user.js`](x-spaces-and-live-broadcast-blocker.user.js) | 𝕏 | スペース／ライブ放送関連UIを非表示 |
-| [`youtube-description-auto-expander.user.js`](youtube-description-auto-expander.user.js) | YouTube | 動画概要欄を自動展開 |
-| [`youtube-shelf-force-expand.user.js`](youtube-shelf-force-expand.user.js) | YouTube | 対象シェルフを展開し、「もっと見る」操作を省略 |
+| [`gigazine-fill-article-grid.user.js`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/UserScript/gigazine-fill-article-grid.user.js) | GIGAZINE | AdGuardユーザールールによる記事の非表示を補完し、次ページの記事で記事一覧の最後の行の空き枠を埋める |
+| [`x-auto-select-community-latest-sort.user.js`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/UserScript/x-auto-select-community-latest-sort.user.js) | 𝕏 | コミュニティの投稿一覧で新しい投稿を優先する並べ替えを自動選択 |
+| [`x-auto-select-following-latest-sort.user.js`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/UserScript/x-auto-select-following-latest-sort.user.js) | 𝕏 | 対象タイムラインで新しい投稿を優先する並べ替えを自動選択 |
+| [`x-spaces-and-live-broadcast-blocker.user.js`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/UserScript/x-spaces-and-live-broadcast-blocker.user.js) | 𝕏 | スペース／ライブ放送関連UIを非表示 |
+| [`youtube-description-auto-expander.user.js`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/UserScript/youtube-description-auto-expander.user.js) | YouTube | 動画概要欄を自動展開 |
+| [`youtube-shelf-force-expand.user.js`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/UserScript/youtube-shelf-force-expand.user.js) | YouTube | 対象シェルフを展開し、「もっと見る」操作を省略 |
+
+一覧のリンクは、UserScriptファイル本体を取得するRaw URLです。
 
 ## 自分の環境での利用メモ
 

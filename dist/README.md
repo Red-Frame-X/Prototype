@@ -11,7 +11,7 @@
 
 | 項目 | 主な内容 | 参照先 |
 | --- | --- | --- |
-| 生成フィルタ | 上流フィルタをAdGuard向けに変換した自動生成物 | [`uB-filter-by-kdroidwin (AdGuard Optimized).txt`](./uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
+| 生成フィルタ | 上流フィルタをAdGuard向けに変換した自動生成物 | [`uB-filter-by-kdroidwin (AdGuard Optimized).txt`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
 | 変換Script | 上流ルールを解析・変換して生成物を作成する処理 | [`scripts/convert.py`](../scripts/convert.py) |
 | 変換能力定義 | 変換処理で扱う機能・互換性情報 | [`config/adguard-converter-capabilities.json`](../config/adguard-converter-capabilities.json) |
 
@@ -71,7 +71,7 @@ AdGuard Browser Extension MV3では、v5.4.1系でMV3のカスタムフィルタ
 ## 原典・ライセンス
 
 - 原典：[Kdroidwin/uB-filter-by-kdroidwin](https://github.com/Kdroidwin/uB-filter-by-kdroidwin)
-- 変換版：[uB-filter-by-kdroidwin (AdGuard Optimized).txt](./uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)
+- 変換版：[uB-filter-by-kdroidwin (AdGuard Optimized).txt](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)
 - ライセンス：[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
 
 第三者由来ファイルのライセンスと、このRepository内の独自部分の扱いは [`LICENSES.md`](../LICENSES.md) に記録しています。
