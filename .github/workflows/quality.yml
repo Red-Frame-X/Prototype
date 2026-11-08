@@ -1,4 +1,6 @@
 name: Repositoryの品質検査
+run-name: >-
+  ${{ inputs.automation_pr != '' && format('PR #{0} 日本語化検証 {1}', inputs.automation_pr, github.sha) || 'Repositoryの品質検査' }}
 
 on:
   push:
@@ -6,6 +8,17 @@ on:
       - main
   pull_request:
   workflow_dispatch:
+    inputs:
+      automation_pr:
+        description: '日本語化Workflowが検証するPR番号（通常の手動実行では空欄）'
+        type: string
+        required: false
+        default: ''
+      automation_main_before:
+        description: '自動マージ直前のmain SHA（通常の手動実行では空欄）'
+        type: string
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -20,6 +33,9 @@ jobs:
   quality:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      AUTOMATION_PR: ${{ inputs.automation_pr }}
+      AUTOMATION_MAIN_BEFORE: ${{ inputs.automation_main_before }}
 
     steps:
       - name: Repositoryの取得
@@ -33,6 +49,42 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
+
+      - name: 自動起動したPR検証の対象SHAを確認
+        if: github.event_name == 'workflow_dispatch' && inputs.automation_pr != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import re
+          import urllib.request
+          number = os.environ['AUTOMATION_PR']
+          if not re.fullmatch(r'[1-9][0-9]*', number):
+              raise SystemExit('PR番号が不正です。')
+          repository = os.environ['GITHUB_REPOSITORY']
+          request = urllib.request.Request(
+              f'https://api.github.com/repos/{repository}/pulls/{number}',
+              headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN']},
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              pr = json.load(response)
+          if (pr['state'] != 'open' or pr['head']['sha'] != os.environ['GITHUB_SHA']
+                  or pr['head']['repo']['full_name'] != repository
+                  or pr['base']['ref'] != 'main'):
+              raise SystemExit('現在のPRと検証対象SHAが一致しません。')
+          PY
+
+      - name: 自動マージ後の比較元を確認
+        if: github.event_name == 'workflow_dispatch' && inputs.automation_main_before != ''
+        run: |
+          if [[ -n "$AUTOMATION_PR" || "$GITHUB_REF" != 'refs/heads/main' || ! "$AUTOMATION_MAIN_BEFORE" =~ ^[0-9a-f]{40}$ ]]; then
+            echo '自動マージ後の検証入力が不正です。' >&2
+            exit 1
+          fi
+          git cat-file -e "$AUTOMATION_MAIN_BEFORE^{commit}"
+          git merge-base --is-ancestor "$AUTOMATION_MAIN_BEFORE" HEAD
 
       # ガイドの整理で対応APK一覧が欠落した場合、依存導入前に原因を明示する。
       # Python標準ライブラリだけで動くため、追加パッケージは不要。
@@ -64,15 +116,15 @@ jobs:
 
       - name: 大量の内容消失の防止検査
         env:
-          CONTENT_LOSS_BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || '' }}
+          CONTENT_LOSS_BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || inputs.automation_pr != '' && 'origin/main' || inputs.automation_main_before || github.event.before || '' }}
         run: |
-          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" || -n "${AUTOMATION_PR:-}" ]]; then
             # fetch-depth: 0で履歴全体を取得済み。ベースを--depth=1で再取得すると、
             # origin/<base>が浅い参照に置き換わり、3点差分に必要な
             # Merge baseを取得できなくなる場合がある。
             base_ref="$CONTENT_LOSS_BASE_REF"
             git merge-base "$base_ref" HEAD >/dev/null
-          elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+          elif [[ "$GITHUB_EVENT_NAME" == "push" || -n "${AUTOMATION_MAIN_BEFORE:-}" ]]; then
             # 最後のCommitだけでなく、push前からの変更全体を検査する。
             # 比較元を取得できない場合、HEAD^への縮小で成功にしない。
             base_ref="$CONTENT_LOSS_BASE_REF"
@@ -92,7 +144,7 @@ jobs:
           fi
 
           guard_args=(--base-ref "$base_ref")
-          if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "push" || -n "${AUTOMATION_MAIN_BEFORE:-}" ]]; then
             # Force Pushでも共通祖先に戻さず、実際のpush前後を比較する。
             guard_args+=(--direct-comparison)
           fi
@@ -108,7 +160,7 @@ jobs:
       # PRでも未同期状態を失敗扱いすると、設計上予定された自動同期前に不要な赤Runが発生するため、
       # 手動実行時だけ厳格検証し、通常のPR/pushでは他の品質検証を継続する。
       - name: Markdown NotesのVersion日時検査
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' && inputs.automation_pr == '' && inputs.automation_main_before == ''
         run: |
           # このStepはworkflow_dispatchでのみ実行するため、
           # github.base_refなどpull_request専用の情報は意図的に参照しない。
@@ -120,12 +172,12 @@ jobs:
 
       - name: AdGuardユーザールールの編集前検査
         env:
-          ADGUARD_BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || '' }}
+          ADGUARD_BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || inputs.automation_pr != '' && 'origin/main' || inputs.automation_main_before || github.event.before || '' }}
         run: |
-          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" || -n "${AUTOMATION_PR:-}" ]]; then
             git merge-base "$ADGUARD_BASE_REF" HEAD >/dev/null
             python scripts/check_adguard_user_rule_edit.py --base-ref "$ADGUARD_BASE_REF"
-          elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+          elif [[ "$GITHUB_EVENT_NAME" == "push" || -n "${AUTOMATION_MAIN_BEFORE:-}" ]]; then
             if [[ ! "$ADGUARD_BASE_REF" =~ ^[0-9a-f]{40}$ || "$ADGUARD_BASE_REF" =~ ^0+$ ]]; then
               echo 'AdGuard編集前検査のpush前のCommitを解決できません。' >&2
               exit 1
@@ -139,11 +191,17 @@ jobs:
             python scripts/check_adguard_user_rule_edit.py
           fi
 
+      # GITHUB_TOKENで書き換えたSHAでは、別のpull_request Workflowも自動起動しない。
+      # 自動マージ経路でも既存のAdGuard Version検査を省略しない。
+      - name: 自動起動したPRのAdGuard Version更新を検査
+        if: github.event_name == 'workflow_dispatch' && inputs.automation_pr != ''
+        run: python scripts/check_adguard_version_timestamp.py --base origin/main --head HEAD
+
       - name: Commit titleの表記検査
         id: commit-title-check
         if: ${{ !cancelled() }}
         env:
-          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || '' }}
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || inputs.automation_pr != '' && 'origin/main' || inputs.automation_main_before || github.event.before || '' }}
           HEAD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           # GitHubの検証用Mergeではなく、PRの実際のCommitを検査する。
