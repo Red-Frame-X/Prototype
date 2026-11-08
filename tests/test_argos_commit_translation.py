@@ -26,18 +26,30 @@ class ArgosTranslationTests(unittest.TestCase):
         engine.assert_not_called()
 
     def test_mixed_preserves_japanese_and_protected_terms(self):
-        engine = Mock(return_value='説明を更新')
+        engine = Mock(side_effect=lambda value: value.replace('Update ', '').replace('See ', '') + 'を更新')
         text = '既存の説明\nUpdate README.md https://example.com/a #12 `my_func` v1.2.3\n'
         result = argos.translate_text(text, engine)
-        self.assertTrue(result.startswith('既存の説明\n説明を更新'))
+        self.assertTrue(result.startswith('既存の説明\nREADME.md'))
         for value in ('README.md', 'https://example.com/a', '#12', '`my_func`', 'v1.2.3'):
             self.assertIn(value, result)
 
-    def test_unseparated_mixed_prose_stops_without_changing_japanese(self):
-        engine = Mock()
+    def test_mixed_prose_keeps_japanese_with_sentence_context(self):
+        engine = Mock(side_effect=lambda value: value.replace('and update details', 'と詳細を更新'))
+        source = '既存の説明 and update details'
+        self.assertEqual(argos.translate_text(source, engine), '既存の説明 と詳細を更新')
+        self.assertIn('and update details', engine.call_args[0][0])
+        self.assertNotIn('既存の説明', engine.call_args[0][0])
+
+    def test_lost_duplicate_or_corrupt_placeholder_stops(self):
+        for target in ('説明を更新', 'ZXQ0000QXZ ZXQ0000QXZの更新', 'ZXQ9999QXZの更新'):
+            with self.subTest(target=target), self.assertRaises(argos.TranslationError):
+                argos.translate_text('Update README.md', lambda value: target)
+
+    def test_fix_action_is_japanese_and_general_english_cannot_remain(self):
+        self.assertEqual(argos.translate_text('Fix README.md', lambda value: 'Fix ZXQ0000QXZの説明'),
+                         'README.mdの説明を修正')
         with self.assertRaises(argos.TranslationError):
-            argos.translate_text('既存の説明 and update details', engine)
-        engine.assert_not_called()
+            argos.translate_text('Update README.md', lambda value: 'Update ZXQ0000QXZを更新')
 
     def test_names_code_and_identifiers_never_reach_engine(self):
         text = 'AdGuard Custom Rules GitHub Actions myFunction my_func CONFIG_KEY\n```python\nx = 1\n```'

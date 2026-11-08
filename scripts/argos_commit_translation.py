@@ -86,37 +86,53 @@ def load_engine():
         raise TranslationError('Argosモデルの取得・検証・初期化に失敗しました。') from error
 
 
+# 翻訳器に本文の文脈を渡し、保護表記は衝突しない識別子で置き換える。
+MARKER = re.compile(r'ZXQ[0-9]+QXZ')
+TOKENS = re.compile(PROTECTED.pattern + r'|[ぁ-んァ-ヶ一-龠々ー][ぁ-んァ-ヶ一-龠々ー。、！？「」『』…]*')
+
+
 def translate_text(text, engine):
-    if '\x00' in text:
-        raise TranslationError('入力にNULがあります。')
+    if '\x00' in text or MARKER.search(text):
+        raise TranslationError('入力にNULまたは予約した保護識別子があります。')
+    if text.count('```') % 2 or text.count('~~~') % 2:
+        raise TranslationError('コードブロックが完結していません。')
+    tokens = {}
+    def protect(match):
+        marker = f'ZXQ{len(tokens):04d}QXZ'
+        tokens[marker] = match[0]
+        return marker
+    masked = TOKENS.sub(protect, text)
     result = []
-    position = 0
-    # 行と保護表記を境界にする。日本語を含む区間はそのまま残し、
-    # 未翻訳の英語が混在する場合は停止する。
-    def prose(part):
-        pieces = re.split(r'(\r?\n)', part)
-        for piece in pieces:
-            if JAPANESE.search(piece) and re.search(r'[A-Za-z]', piece):
-                raise TranslationError('同一区間の日英混在を安全に分離できません。手動で日本語化してください。')
-            if not re.search(r'[A-Za-z]', piece):
-                result.append(piece)
-                continue
-            match = re.fullmatch(r'(\s*)(.*?)(\s*)', piece)
-            leading, source, trailing = match.groups()
-            try:
-                target = engine(source)
-            except Exception as error:
-                raise TranslationError('Argosによる翻訳に失敗しました。') from error
-            if (not isinstance(target, str) or not target.strip() or '\x00' in target
-                    or '\n' in target or not JAPANESE.search(target)):
-                raise TranslationError('翻訳結果が空・不正・未翻訳のため停止しました。')
-            result.append(leading + target + trailing)
-    for match in PROTECTED.finditer(text):
-        prose(text[position:match.start()])
-        result.append(match[0])
-        position = match.end()
-    prose(text[position:])
-    return ''.join(result)
+    for line in masked.splitlines(keepends=True):
+        if not re.search(r'[A-Za-z]', MARKER.sub('', line)):
+            result.append(line)
+            continue
+        # Markdownの行構造と公式原文の引用はそのまま残す。
+        match = re.fullmatch(r'(\s*(?:(?:#{1,6}|[-*+]|[0-9]+[.)]|>) +)?)(.*?)(\s*)', line)
+        if match is None:
+            raise TranslationError('本文の行構造を解釈できません。')
+        leading, source, trailing = match.groups()
+        if leading.lstrip().startswith('>'):
+            result.append(line)
+            continue
+        try:
+            target = engine(source)
+        except Exception as error:
+            raise TranslationError('Argosによる翻訳に失敗しました。') from error
+        if (not isinstance(target, str) or not target.strip() or '\x00' in target
+                or '\n' in target or not JAPANESE.search(target)):
+            raise TranslationError('翻訳結果が空・不正・未翻訳のため停止しました。')
+        if sorted(MARKER.findall(source)) != sorted(MARKER.findall(target)):
+            raise TranslationError('翻訳結果で保護表記が欠落・重複・変更されました。')
+        # 英日モデルがCommitの命令形Fixだけを英語で残す場合の固定表現。
+        # 残りの句の訳と保護識別子は保持し、動作を日本語で明示する。
+        if source.startswith('Fix ') and target.startswith('Fix '):
+            target = target[4:].rstrip('。') + 'を修正'
+        if re.search(r'[A-Za-z]', MARKER.sub('', target)):
+            raise TranslationError('一般説明に未翻訳の英語が残っています。')
+        result.append(leading + target + trailing)
+    translated = ''.join(result)
+    return MARKER.sub(lambda match: tokens[match[0]], translated)
 
 
 def translate_payload(original, engine):
