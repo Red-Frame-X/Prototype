@@ -14,6 +14,21 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_pr259_payload_is_unchanged_without_calling_translation_engine(self):
+        from automate_japanese_commits import validate_translation
+        original = json.loads((Path(__file__).parent / 'fixtures/pr259-japanese-translation.json').read_text())
+        engine = Mock(side_effect=AssertionError('日本語本文の技術表記を翻訳器へ渡しています。'))
+        translated = argos.translate_payload(original, engine)
+        self.assertEqual(translated, original)
+        validate_translation(original, translated)
+        engine.assert_not_called()
+
+    def test_english_prose_around_workflow_terms_still_requires_translation(self):
+        source = 'Fix concurrency group configuration'
+        engine = Mock(side_effect=lambda text: text.replace('Fix ', '').replace(' configuration', 'の設定を修正'))
+        self.assertEqual(argos.translate_text(source, engine), 'concurrency groupの設定を修正')
+        engine.assert_called_once()
+
     def test_pr251_payload_is_unchanged_without_calling_translation_engine(self):
         from automate_japanese_commits import validate_translation
         original = json.loads((Path(__file__).parent / 'fixtures/pr251-japanese-translation.json').read_text())

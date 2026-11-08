@@ -27,6 +27,10 @@ TERMS = (
     'Prototype', 'Red-Frame-X', 'Python', 'JavaScript', 'TypeScript', 'Node.js',
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
     'Yahoo!', 'ExtendedCss',
+    'concurrency group', 'Commit Hook', 'Metadata', 'Committer', 'Bot',
+    'Squash merge', 'Squash', 'Merge SHA', 'Merge', 'push', 'pull-requests: read',
+    'AGENTS.md', 'CONTRIBUTING.md', 'Actions', 'actionlint', 'Review', 'fixture',
+    'Hook', 'title', 'merge',
 )
 HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
