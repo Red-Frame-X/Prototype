@@ -47,6 +47,16 @@ class ArgosTranslationTests(unittest.TestCase):
                 original = {'title': source, 'body': '', 'commits': []}
                 validate_translation(original, {'title': target, 'body': '', 'commits': []})
 
+    def test_merge_sha_command_keeps_verb_translatable(self):
+        from automate_japanese_commits import validate_translation
+        for source in ('Merge SHA', 'Merge SHA abcdef1'):
+            engine = Mock(side_effect=lambda value: value.replace('Merge ', 'マージ '))
+            target = argos.translate_text(source, engine)
+            self.assertEqual(target, source.replace('Merge ', 'マージ '))
+            self.assertTrue(engine.call_args[0][0].startswith('Merge '))
+            validate_translation({'title': source, 'body': '', 'commits': []},
+                                 {'title': target, 'body': '', 'commits': []})
+
     def test_pr259_payload_is_unchanged_without_calling_translation_engine(self):
         from automate_japanese_commits import validate_translation
         original = json.loads((Path(__file__).parent / 'fixtures/pr259-japanese-translation.json').read_text())

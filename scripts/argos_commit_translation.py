@@ -28,7 +28,7 @@ TERMS = (
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
     'Yahoo!', 'ExtendedCss',
     'concurrency group', 'Commit Hook', 'Metadata', 'Committer', 'Bot',
-    'Merge SHA', 'pull-requests: read',
+    'pull-requests: read',
     'AGENTS.md', 'CONTRIBUTING.md', 'Actions', 'actionlint', 'Review', 'fixture',
     'Hook', 'title', 'message',
 )

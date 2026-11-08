@@ -13,6 +13,7 @@ def main():
         'Update documentation',
         'Fix a bug',
         'Merge main',
+        'Merge SHA abcdef1',
         'Squash merge main',
         'Update subtitle rendering',
         'Do not remove existing tests.',
