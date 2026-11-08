@@ -51,7 +51,11 @@ class ArgosTranslationTests(unittest.TestCase):
                      '- 検証例\n\n    ```sh\n    echo hello\n    ```\n',
                      '        ~~~sh\n        echo hello\n        ~~~\n',
                      '\t~~~sh\n\techo hello\n\t~~~\n',
-                     '    echo hello\n    echo world\n'):
+                     '    echo hello\n    echo world\n',
+                     '- ~~~sh\n  echo hello\n  ~~~\n',
+                     '1. ~~~sh\n   echo hello\n   ~~~\n',
+                     '> ~~~sh\n> echo hello\n> ~~~\n',
+                     '> - ~~~sh\n>   echo hello\n>   ~~~\n'):
             engine = Mock()
             with self.subTest(text=text):
                 self.assertEqual(argos.translate_text(text, engine), text)
