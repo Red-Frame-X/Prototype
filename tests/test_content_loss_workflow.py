@@ -33,7 +33,7 @@ class ContentLossWorkflowTests(unittest.TestCase):
     def write_lines(self, count):
         self.document.write_text("".join(f"line {i}\n" for i in range(count)), encoding="utf-8")
 
-    def run_step(self, event, base):
+    def run_step(self, event, base, automation_pr=''):
         workflow = yaml.load(
             (ROOT / ".github/workflows/quality.yml").read_text(encoding="utf-8"),
             Loader=yaml.BaseLoader,
@@ -48,7 +48,8 @@ class ContentLossWorkflowTests(unittest.TestCase):
         )
         return subprocess.run(
             ["bash", "-e", "-c", command], cwd=self.repo,
-            env={**os.environ, "GITHUB_EVENT_NAME": event, "CONTENT_LOSS_BASE_REF": base},
+            env={**os.environ, "GITHUB_EVENT_NAME": event, "CONTENT_LOSS_BASE_REF": base,
+                 "AUTOMATION_PR": automation_pr},
             text=True, capture_output=True,
         )
 
@@ -88,6 +89,24 @@ class ContentLossWorkflowTests(unittest.TestCase):
         self.write_lines(395)
         self.git("commit", "-qam", "topic small edit")
         result = self.run_step("pull_request", "target")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_dispatched_pr_checks_earlier_loss_in_entire_pr(self):
+        self.write_lines(200)
+        self.git('commit', '-qam', 'earlier loss')
+        self.git('commit', '--allow-empty', '-qm', 'last commit')
+        result = self.run_step('workflow_dispatch', self.base, automation_pr='1')
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn('純減 200', result.stderr)
+
+    def test_dispatched_pr_uses_merge_base_when_main_advances(self):
+        self.git('checkout', '-qb', 'target')
+        self.write_lines(800)
+        self.git('commit', '-qam', 'target expanded')
+        self.git('checkout', '-qb', 'topic', self.base)
+        self.write_lines(395)
+        self.git('commit', '-qam', 'topic small edit')
+        result = self.run_step('workflow_dispatch', 'target', automation_pr='1')
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_missing_push_base_cannot_fall_back_to_last_commit(self):
