@@ -12,7 +12,10 @@ tmp_dir="$(mktemp -d)"
 trap 'rm -rf "$tmp_dir"' EXIT
 
 # ダウンロード後にハッシュを検証してから展開・実行する。
-curl --fail --silent --show-error --location "$URL" --output "$tmp_dir/$ARCHIVE"
+# HTTP 504等の一時障害だけを上限付きで再試行する。取得失敗・hash不一致は失敗のまま扱う。
+curl --fail --silent --show-error --location \
+  --retry 3 --retry-delay 2 --connect-timeout 10 --max-time 60 \
+  "$URL" --output "$tmp_dir/$ARCHIVE"
 printf '%s  %s\n' "$ACTIONLINT_SHA256" "$tmp_dir/$ARCHIVE" | sha256sum --check --status
 tar --no-same-owner -xzf "$tmp_dir/$ARCHIVE" -C "$tmp_dir" actionlint
 
