@@ -53,7 +53,9 @@ class ChmateVersionTests(unittest.TestCase):
         after = BEFORE.replace('202611080030', '202611080031')
         with self.assertRaises(ValueError):
             checker.check(BEFORE, after, NOW, checkpoint)
-        checker.check(BEFORE, after, NOW, '{}')
+        with self.assertRaises(ValueError):
+            checker.check(BEFORE, after, NOW, '{}')
+        checker.check(BEFORE, after, NOW, '{}', automated_sync=True)
         checker.check(BEFORE, BEFORE, NOW, checkpoint)
 
     def test_real_file_bytes_are_preserved_except_version(self):
