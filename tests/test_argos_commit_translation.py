@@ -14,6 +14,45 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_diagnostic_identifies_field_without_disclosing_input(self):
+        for location in ('title', 'body', 'commits[0].message'):
+            original = {'title': '説明を更新', 'body': '',
+                        'commits': [{'sha': 'a' * 40, 'message': '説明を更新'}]}
+            if location.startswith('commits'):
+                original['commits'][0]['message'] = 'Update private description'
+            else:
+                original[location] = 'Update private description'
+            with self.subTest(location=location), self.assertRaises(argos.TranslationError) as caught:
+                argos.translate_payload(original, lambda text: '')
+            self.assertIn(location + ':', str(caught.exception))
+            self.assertNotIn('private', str(caught.exception))
+            self.assertNotIn('a' * 40, str(caught.exception))
+
+    def test_pr261_payload_is_unchanged_without_calling_translation_engine(self):
+        from automate_japanese_commits import validate_translation
+        original = json.loads((Path(__file__).parent / 'fixtures/pr261-japanese-translation.json').read_text())
+        engine = Mock(side_effect=AssertionError('日本語本文の技術表記を翻訳器へ渡しています。'))
+        translated = argos.translate_payload(original, engine)
+        self.assertEqual(translated, original)
+        validate_translation(original, translated)
+        engine.assert_not_called()
+
+    def test_filename_next_to_japanese_is_protected_as_a_whole(self):
+        for source in ('編集対象はREADME.mdのみです。', '設定はconfig.jsonを使用します。'):
+            with self.subTest(source=source):
+                engine = Mock()
+                self.assertEqual(argos.translate_text(source, engine), source)
+                engine.assert_not_called()
+
+    def test_english_prose_around_pr261_terms_still_requires_translation(self):
+        source = 'Update body and Runner cache with npm ci'
+        engine = Mock(side_effect=lambda value: value.replace('Update ', '').replace(' and ', 'と')
+                      .replace(' with ', 'を使って') + 'を更新')
+        self.assertEqual(argos.translate_text(source, engine), 'bodyとRunner cacheを使ってnpm ciを更新')
+        self.assertIn('Update ', engine.call_args[0][0])
+        with self.assertRaises(argos.TranslationError):
+            argos.translate_text('既存の説明: Update body', lambda value: value + '更新')
+
     def test_squash_merge_command_keeps_merge_as_english_prose(self):
         from automate_japanese_commits import validate_translation
         source = 'Squash merge main'

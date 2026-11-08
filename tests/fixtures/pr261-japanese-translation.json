@@ -1,0 +1,10 @@
+{
+  "title": "READMEにArgos Translateの用途と検証・マージ条件を追記",
+  "body": "Argos Translateへの移行後もルートREADMEに翻訳関連の案内がなかったため、既存の全行を保持したまま11行を追記します。編集対象はREADME.mdのみです。\n\n- Workflow表にCommit日本語化・自動マージと実モデル検証への導線を追加します。\n- 自動更新と品質確認に、Runner内の固定英日モデル、対象PR・起動条件、検証失敗時の停止、翻訳承認・Codex Review・CIを経たSquash mergeの条件を追記します。\n- 依存関係・モデル設定と詳細手順への参照を追加します。\n\nPR #249とその後の修正履歴、現在のWorkflow・Script・Test・設定を照合しました。この翻訳処理はOpenAI APIを使用せず、失敗時のAPI切替もありません。Secretの登録状態は変更していません。\n\n検証: npm ci（作業用cache指定）、npm run lint:markdown（24ファイル・問題なし）、git diff --check、内容消失防止・固定名称・AdGuard編集前検査に成功しました。既存の全行・見出しを保持し、削除・置換がないことも確認しました。翻訳コードは変更しておらず、実モデル検証の新規実行は行っていません。",
+  "commits": [
+    {
+      "sha": "00125f61565015838965942097fda4db8d8b6856",
+      "message": "READMEにArgos Translateの用途と検証・マージ条件を追記\n\n既存の記述を保持し、翻訳関連Workflowへの導線とRunner内の英日翻訳、失敗時の停止条件を追加します。\n"
+    }
+  ]
+}

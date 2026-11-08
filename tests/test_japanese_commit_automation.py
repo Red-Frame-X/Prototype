@@ -313,6 +313,42 @@ class LifecycleTests(unittest.TestCase):
     def run_pr(self):
         automation.process_pr(self.gh, 1, 'main')
 
+    def test_closed_or_merged_pr_is_not_processed_even_on_repeated_runs(self):
+        for merged in (False, True):
+            with self.subTest(merged=merged):
+                self.pr['state'] = 'closed'
+                self.pr['merged'] = merged
+                self.run_pr()
+                self.run_pr()
+                self.assertFalse(self.merged)
+                self.assertEqual(self.changes, [])
+                self.gh.comment.assert_not_called()
+                self.stack[0].assert_not_called()
+
+    def test_pr_closed_during_review_never_merges(self):
+        before = copy.deepcopy(self.pr)
+        after = {**before, 'state': 'closed', 'merged': True}
+        previous_api = self.gh.api.side_effect
+        responses = iter((before, after))
+        self.gh.api.side_effect = lambda path, *args: (
+            next(responses) if path == '/pulls/1' else previous_api(path, *args))
+        self.run_pr()
+        self.assertFalse(self.merged)
+        self.assertEqual(self.changes, [])
+
+    def test_repeated_unmanaged_pr_skips_translation_review_and_merge(self):
+        self.state['managed'] = False
+        self.comments = [comment(automation.BOT_LOGIN, '<!-- ' + automation.STATE_MARKER
+                                 + ' ' + json.dumps(self.state) + ' -->')]
+        with patch.object(automation, 'translate') as translate:
+            self.run_pr()
+            self.run_pr()
+            translate.assert_not_called()
+        self.assertFalse(self.merged)
+        self.assertEqual(self.changes, [])
+        self.gh.comment.assert_not_called()
+        self.stack[0].assert_not_called()
+
     def test_japanese_pr248_never_updates_branch_pr_or_merges(self):
         original = json.loads((Path(__file__).parent / 'fixtures/pr248-japanese-translation.json').read_text())
         self.pr['title'], self.pr['body'] = original['title'], original['body']

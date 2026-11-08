@@ -31,6 +31,8 @@ TERMS = (
     'pull-requests: read',
     'AGENTS.md', 'CONTRIBUTING.md', 'Actions', 'actionlint', 'Review', 'fixture',
     'Hook', 'title', 'message',
+    'body', 'Runner', 'Secret', 'cache',
+    'npm ci', 'npm run lint:markdown', 'git diff --check',
 )
 HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
@@ -68,6 +70,12 @@ verb_forms.update(('Kept', 'Keeping', 'Built', 'Building', 'Pinned', 'Pinning',
 PROSE_WORDS = '|'.join(sorted(verb_forms, key=lambda word: (-len(word), word)))
 PROTECTED = re.compile(PROTECTED.pattern + r'|\b(?!(?:' + PROSE_WORDS
                        + r')\b)[A-Z][a-z]+\b')
+
+# Unicodeの\bや\wは隣接する日本語も単語に含めるため、README.md等の
+# PathはASCIIの境界・文字集合で先に照合し、拡張子だけが翻訳器へ漏れるのを防ぐ。
+PROTECTED = re.compile(
+    r'(?<![A-Za-z0-9_./-])[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+'
+    r'(?![A-Za-z0-9_./-])|' + PROTECTED.pattern)
 
 
 def load_engine():
@@ -252,7 +260,13 @@ def translate_text(text, engine):
 
 
 def translate_payload(original, engine):
-    return {'title': translate_text(original['title'], engine),
-            'body': translate_text(original['body'], engine),
-            'commits': [{'sha': item['sha'], 'message': translate_text(item['message'], engine)}
-                        for item in original['commits']]}
+    def field(value, location):
+        try:
+            return translate_text(value, engine)
+        except TranslationError as error:
+            # 本文・訳文・SHAを出さず、失敗した入力項目だけを診断する。
+            raise TranslationError(f'{location}: {error}') from None
+    return {'title': field(original['title'], 'title'),
+            'body': field(original['body'], 'body'),
+            'commits': [{'sha': item['sha'], 'message': field(item['message'], f'commits[{index}].message')}
+                        for index, item in enumerate(original['commits'])]}
