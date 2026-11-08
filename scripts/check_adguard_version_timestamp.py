@@ -50,11 +50,39 @@ def rules_without_version(text: str) -> str:
     return VERSION_RE.sub("! Version: <VERSION>", text, count=1)
 
 
+def check_staged() -> int:
+    """作業ファイルではなく、次のCommitに入るindexとHEADを比較する。"""
+    failed = False
+    for path in TARGETS:
+        after = show("", path)
+        before = show("HEAD", path)
+        if after is None or before == after:
+            continue
+        try:
+            new_version = version(after, path)
+            if before is not None:
+                old_version = version(before, path)
+                if rules_without_version(before) != rules_without_version(after) and old_version == new_version:
+                    print(
+                        f"エラー: {path}: ステージ済みのルール変更にVersion更新がありません。"
+                        "日本標準時の ! Version: YYYYMMDDHHMM を同じCommitに含めてgit addしてください。"
+                    )
+                    failed = True
+        except ValueError as exc:
+            print(f"エラー: {exc}")
+            failed = True
+    return 1 if failed else 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--base", required=True)
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--base")
+    mode.add_argument("--staged", action="store_true", help="次のCommitのステージ済み内容を検査")
     parser.add_argument("--head", default="HEAD")
     args = parser.parse_args()
+    if args.staged:
+        return check_staged()
 
     # 範囲の最終差分だけでなく、各Commitと第一親を比較する。
     # パスによる履歴簡略化を避け、途中の違反が後続Commitで隠れないようにする。

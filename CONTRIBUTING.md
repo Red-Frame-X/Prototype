@@ -134,3 +134,14 @@ mainを対象に、Web直接編集、各Merge方式、許容する英語を検�
 - [Rulesetsについて](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets)
 - [Rulesetsで利用できるルール](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets)
 - [Workflowからのイベント発火](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow)
+
+## AdGuardのVersion更新漏れの防止
+
+ルール変更時は、日本標準時の `! Version: YYYYMMDDHHMM` を同じCommitで更新します。
+`npm run hooks:install` で有効になる `pre-commit` Hookが、HEADとステージ済み内容を比較します。
+作業ファイルだけVersionを更新しても、`git add` していなければCommitを拒否します。
+手動実行は `python scripts/check_adguard_version_timestamp.py --staged` です。
+
+GitHub Web UIやGitHub APIではHookが動きません。ルールとVersionを同じ書き込みに含め、
+PR作成前にCommitの差分を確認してください。PRの `AdGuardのVersion日時検査` は引き続き必須の確認です。
+後続CommitによるVersion更新では、先行Commitの更新漏れは解消しません。

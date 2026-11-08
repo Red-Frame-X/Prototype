@@ -24,6 +24,13 @@
   削除や根拠のない事実変更が許可されたことにはならない。
 - 日本語の文書を作成・修正する際は、日常の意思疎通で使う明確で自然な日本語を優先する。技術的な正確さと元の意味を保ち、不必要に硬い表現や機械的・定型的な言い回しを避ける。
 
+## AdGuardルール編集時のVersion更新
+
+- `AdGuard Custom Rules` と `AdGuard DNS Custom Rules` の内容を変更する場合は、同じCommitに `! Version: YYYYMMDDHHMM` の更新を含める。日時は日本標準時を使う。
+- Git CLIでは `git add` 後、Commit前に `python scripts/check_adguard_version_timestamp.py --staged` を実行する。Hookは `npm run hooks:install` で有効にする。
+- GitHub APIなどHookが動かない編集では、最新Branchのファイル全文を取得し、ルールとVersionを同じ書き込みに含める。PR作成前にCommitの差分で両方の変更を確認する。
+- PR作成後は `AdGuardのVersion日時検査` の成功を確認する。後続CommitでVersionだけ更新しても、先行Commitの更新漏れは解消しない。検査を無効化して通さない。
+
 ## Codex Code Reviewの言語
 
 - GitHub上のCodex Code Reviewの指摘・要約・説明・重大度の評価・修正案は、自然な日本語で記述する。
