@@ -5,6 +5,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
+import re
+import urllib.request
 import subprocess
 import sys
 from datetime import datetime
@@ -33,9 +36,16 @@ def check(before: str | None, after: str | None, reference: datetime,
     stamp = chmate_version(after)
     actual = datetime.strptime(stamp, '%Y%m%d%H%M').replace(tzinfo=JST)
     normalized = version_text(CHMATE_FILE, after, '<VERSION>')
-    body_changed = before is None or normalized != version_text(CHMATE_FILE, before, '<VERSION>')
+    old_stamp = None
+    if before is not None:
+        try:
+            old_stamp = chmate_version(before)
+        except ValueError:
+            # mainに入った不正なMetadataを、正常な現在の日時へ修復できるようにする。
+            pass
+    body_changed = old_stamp is None or normalized != version_text(CHMATE_FILE, before, '<VERSION>')
     if before is not None and body_changed:
-        if chmate_version(before) == stamp and stamp != reference.astimezone(JST).strftime('%Y%m%d%H%M'):
+        if old_stamp == stamp and stamp != reference.astimezone(JST).strftime('%Y%m%d%H%M'):
             raise ValueError('内容が変更されていますがVersionが更新されていません')
     if before is not None and not body_changed:
         # チェックポイントの古さだけではVersion単独更新を正当化できない。
@@ -50,38 +60,94 @@ def check(before: str | None, after: str | None, reference: datetime,
                          f'（基準 {reference.astimezone(JST).isoformat()}、許容5分未満）')
 
 
+def synchronized_commit(commit: str) -> bool:
+    """Botの同期Commitは、更新後の内容チェックポイントも同時に必要。"""
+    if git('show', '-s', '--format=%cn <%ce>', commit).strip() != (
+        'github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>'
+    ):
+        return False
+    after = show(commit)
+    state = show(commit, STATE_FILE)
+    if after is None or state is None:
+        return False
+    digest = hashlib.sha256(version_text(CHMATE_FILE, after, '<VERSION>').encode()).hexdigest()
+    return json.loads(state).get(CHMATE_FILE.as_posix()) == digest
+
+
+def merged_pr_source(commit: str) -> tuple[str, str] | None:
+    """GitHubが記録したMerge SHAと、元PRのTXTが一致する場合だけ元履歴を返す。"""
+    repository = os.environ.get('GITHUB_REPOSITORY', '')
+    if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository):
+        raise ValueError('Squash元を確認するGITHUB_REPOSITORYが不正です')
+    request = urllib.request.Request(
+        f'https://api.github.com/repos/{repository}/commits/{commit}/pulls?per_page=100',
+        headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                 'Accept': 'application/vnd.github+json'},
+    )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        prs = json.load(response)
+    for pr in prs:
+        if (not pr.get('merged_at') or pr.get('merge_commit_sha') != commit
+                or pr['base']['repo']['full_name'] != repository):
+            continue
+        base, head = pr['base']['sha'], pr['head']['sha']
+        if not all(re.fullmatch(r'[0-9a-f]{40}', sha) for sha in (base, head)):
+            raise ValueError('Squash元PRのSHAが不正です')
+        for sha in (base, head):
+            git('fetch', '--no-tags', 'origin', sha)
+        if show(head) != show(commit):
+            raise ValueError('Squash後のTXTが元PRと一致しません')
+        if show(base) != show(commit + '^'):
+            raise ValueError('Squash前のTXTが元PRの比較元と一致しません')
+        if head == commit:
+            raise ValueError('Squash元と反映後のSHAが同じです')
+        return base, head
+    return None
+
+
+def check_history(base: str, head: str, *, github_provenance: bool = False) -> bool:
+    failed = False
+    for commit in git('rev-list', '--reverse', f'{base}..{head}').splitlines():
+        parents = git('show', '-s', '--format=%P', commit).split()
+        if len(parents) > 1 and any(show(commit) == show(parent) for parent in parents):
+            continue
+        reference = datetime.fromisoformat(git('show', '-s', '--format=%cI', commit).strip())
+        try:
+            check(show(commit + '^'), show(commit), reference, show(commit + '^', STATE_FILE),
+                  automated_sync=synchronized_commit(commit))
+        except (ValueError, TypeError) as error:
+            if github_provenance and show(commit + '^') != show(commit):
+                try:
+                    source = merged_pr_source(commit)
+                    if source and not check_history(*source):
+                        print(f'正常: {commit[:12]}: Squash元PRの内容・全CommitのJST日時を確認しました')
+                        continue
+                except (ValueError, KeyError, OSError, subprocess.CalledProcessError) as provenance_error:
+                    print(f'エラー: Squash元の照合に失敗しました: {provenance_error}', file=sys.stderr)
+            print(f'エラー: {commit[:12]}: {CHMATE_FILE}: {error}。'
+                  '内容変更と同じCommitに現在のJSTの ! Version: YYYYMMDDHHMM を含めてください。', file=sys.stderr)
+            failed = True
+    return failed
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument('--base')
     mode.add_argument('--staged', action='store_true')
     parser.add_argument('--head', default='HEAD')
+    parser.add_argument('--github-provenance', action='store_true',
+                        help='日時が異なるSquash CommitをGitHubのマージ済みPRと照合')
     args = parser.parse_args()
-    failed = False
-    if args.staged:
-        comparisons = [('index', 'HEAD', '', datetime.now(JST))]
-    else:
-        comparisons = []
-        for commit in git('rev-list', '--reverse', f'{args.base}..{args.head}').splitlines():
-            parents = git('show', '-s', '--format=%P', commit).split()
-            if len(parents) > 1 and any(show(commit) == show(parent) for parent in parents):
-                continue
-            reference = datetime.fromisoformat(git('show', '-s', '--format=%cI', commit).strip())
-            comparisons.append((commit[:12], f'{commit}^', commit, reference))
-    for label, base, head, reference in comparisons:
-        try:
-            message = git('show', '-s', '--format=%s', head).strip() if head else ''
-            automated_sync = message in {
-                'chore: Versionの日時を日本標準時で同期',
-                'NG Word Regex for ChMate のVersionを更新',
-            }
-            check(show(base), show(head), reference, show(base, STATE_FILE),
-                  automated_sync=automated_sync)
-        except (ValueError, TypeError) as error:
-            print(f'エラー: {label}: {CHMATE_FILE}: {error}。'
-                  '内容変更と同じCommitに現在のJSTの ! Version: YYYYMMDDHHMM を含めてください。', file=sys.stderr)
-            failed = True
-    return int(failed)
+    if not args.staged:
+        return int(check_history(args.base, args.head, github_provenance=args.github_provenance))
+    try:
+        check(show('HEAD'), show(''), datetime.now(JST), show('HEAD', STATE_FILE))
+    except (ValueError, TypeError) as error:
+        print(f'エラー: index: {CHMATE_FILE}: {error}。'
+              '現在のJSTのVersionを内容変更と同じCommitに含めてください。', file=sys.stderr)
+        return 1
+    return 0
 
 
 if __name__ == '__main__':
