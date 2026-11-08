@@ -91,6 +91,14 @@ def main():
     validate_translation(original259, unchanged259)
     print('PR #259: Workflowの技術表記を含む日本語本文を翻訳器の呼出しなしで保持しました。')
 
+    original261 = json.loads(snapshot.with_name('pr261-japanese-translation.json').read_text())
+    with patch('socket.socket.connect', side_effect=AssertionError('翻訳中の外部通信')):
+        unchanged261 = translate_payload(original261, forbidden_translation)
+        assert translate_payload(original261, engine) == original261
+    assert unchanged261 == original261
+    validate_translation(original261, unchanged261)
+    print('PR #261: 日本語に隣接するファイル名・技術表記・コマンドを原文のまま保持しました。')
+
     original = {'title': 'Update README.md',
                 'body': '既存の説明\nSee https://example.com/a #12 `my_func` v1.2.3',
                 'commits': [{'sha': 'a' * 40, 'message': 'Fix GitHub Actions configuration'}]}

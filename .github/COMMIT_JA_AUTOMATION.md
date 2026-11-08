@@ -65,6 +65,25 @@ Botが`@codex review`を投稿しても、最新SHAのReviewが開始されず�
 - 品質検査Workflow自体を変更するPRは、自動マージしません。通常のレビューとマージで確認します。このWorkflowの導入前から開いていたPRも、最新mainの品質検査Workflowを取り込む必要があります。
 - 初回設定後の実際のArgos翻訳・Codex Review・CI・マージが完了するまでは、全自動経路の稼働確認は完了していません。Secretの登録や外部サービスの有効化を、Workflowを追加しただけで完了したと判断しないでください。
 
+## PR #261の翻訳誤停止と回帰検証
+
+Run [42530138140](https://github.com/Red-Frame-X/Prototype/actions/runs/42530138140)は、
+PR #261が開いていた時点で既定Branchの`ddd87c10`を取得し、翻訳直後の検証で停止しました。
+PRのtitle・body・Commit messageは日本語でしたが、日本語に隣接する`README.md`を
+Unicodeの単語境界では完全に保護できず、拡張子`.md`がArgosへ渡っていました。
+固定英日モデルによる再現では日本語を含まない結果が返り、空・不正・未翻訳の検証条件に該当しました。
+元Runには入力・訳文の記録がないため、当時の訳文そのものを確認できたという意味ではありません。
+
+PathをASCIIの境界・文字集合で先に保護し、未登録の固有名詞の境界もASCIIで判定します。
+本文中のRunner・Secret・cache・bodyと
+検証用コマンドの表記も保護対象へ追加しました。日本語が含まれるという理由だけで行全体を
+翻訳対象外にはせず、残った英語の一般説明は従来どおり翻訳・検証します。
+失敗時は本文や訳文を出さず、title・body・Commit messageのどの項目で停止したかを記録します。
+
+実入力は`tests/fixtures/pr261-japanese-translation.json`で保持し、Unit Testと
+固定実モデルの検証で原文の完全保持を確認します。英語説明、部分翻訳、参照破損、
+モデル失敗の既存Testを維持し、終了済みPR・処理中の終了・重複実行のTestも追加しています。
+
 ## 一次資料
 
 - [Argos Translateの導入とPython API](https://github.com/argosopentech/argos-translate)
