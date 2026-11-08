@@ -14,6 +14,32 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_pr248_payload_is_unchanged_without_calling_translation_engine(self):
+        from automate_japanese_commits import validate_translation
+        original = json.loads((Path(__file__).parent / 'fixtures/pr248-japanese-translation.json').read_text())
+        engine = Mock(side_effect=AssertionError('日本語化済みの本文を翻訳器へ渡しています。'))
+        translated = argos.translate_payload(original, engine)
+        self.assertEqual(translated, original)
+        self.assertEqual(validate_translation(original, translated)['messages'][original['commits'][0]['sha']],
+                         original['commits'][0]['message'])
+        engine.assert_not_called()
+
+    def test_japanese_prose_with_branch_hook_and_acronyms_needs_no_translation(self):
+        for source in ('mainには既に回帰Testがあります。',
+                       'pre-commit検査で拒否します。',
+                       'VersionをJSTで更新します。',
+                       '既存のHTTP設定とUTF8の表記を保持します。'):
+            engine = Mock()
+            with self.subTest(source=source):
+                self.assertEqual(argos.translate_text(source, engine), source)
+                engine.assert_not_called()
+
+    def test_main_substring_does_not_hide_ordinary_english(self):
+        for source in ('Update domain description', 'Fix mainly failing tests'):
+            engine = Mock(return_value='一般説明を更新')
+            self.assertEqual(argos.translate_text(source, engine), '一般説明を更新')
+            engine.assert_called_once_with(source)
+
     def test_naked_short_and_full_commit_hashes_are_protected(self):
         hashes = ('c77ede4b', '1a2b3c4', 'a1' * 20)
         source = 'Update ' + ' and '.join(hashes)

@@ -313,6 +313,33 @@ class LifecycleTests(unittest.TestCase):
     def run_pr(self):
         automation.process_pr(self.gh, 1, 'main')
 
+    def test_japanese_pr248_never_updates_branch_pr_or_merges(self):
+        original = json.loads((Path(__file__).parent / 'fixtures/pr248-japanese-translation.json').read_text())
+        self.pr['title'], self.pr['body'] = original['title'], original['body']
+        self.comments = []
+        before = copy.deepcopy(self.pr)
+        previous_api = self.gh.api.side_effect
+        self.gh.api.side_effect = lambda path, *args: (
+            {'object': {'sha': BASE}} if path.startswith('/git/ref/') else previous_api(path, *args))
+        def objects(*args, **kwargs):
+            if args[0] == 'rev-list':
+                return (SHA + '\n').encode()
+            if args[:2] == ('cat-file', 'commit'):
+                return b'tree dummy\n\n' + original['commits'][0]['message'].encode()
+            if args[0] in {'fetch', 'cat-file'}:
+                return b''
+            raise AssertionError('翻訳不要のPRでGitを更新しています: ' + str(args))
+        engine = Mock(side_effect=AssertionError('翻訳不要のPRで翻訳器を呼び出しています。'))
+        with patch.object(automation, 'git', side_effect=objects), \
+                patch('argos_commit_translation.load_engine', return_value=engine):
+            self.run_pr()
+        self.assertEqual(self.pr, before)
+        self.assertEqual(self.changes, [])
+        self.assertFalse(self.merged)
+        self.gh.comment.assert_called_once()
+        state = automation.read_state([comment(automation.BOT_LOGIN, self.gh.comment.call_args[0][1])])
+        self.assertIs(state['managed'], False)
+
     def test_unconfirmed_meaning_never_merges(self):
         self.comments.pop(0)
         self.run_pr()

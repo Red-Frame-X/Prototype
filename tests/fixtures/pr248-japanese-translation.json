@@ -1,0 +1,10 @@
+{
+  "title": "Yahoo!ニュースの未承認削除ルールを復元",
+  "body": "## 概要\n\n`Repositoryの品質検査` Run #1200 で検出された、Yahoo!ニュースの「あなたにおすすめ」関連2ルールの未承認削除を修復します。\n\n## 変更\n\n- 削除前と同一の2ルールと対応コメントを元の位置へ復元\n- `AdGuard Custom Rules - Red Frame X.txt` の `! Version:` をJSTで更新\n- 大量削除防止・AdGuardユーザールール削除保護の判定は変更しない\n\n## 再発防止\n\nmainには既に `test_staged_rejects_unapproved_yahoo_pair_removal` があり、この2ルールの未承認削除をpre-commit検査で拒否します。今回その保護を緩和せず、PRのGitHub Actionsで既存の回帰Testと品質検査を再検証します。\n\n既存内容の削除・大規模整理・無関係な変更はありません。",
+  "commits": [
+    {
+      "sha": "1824daeacbb681b9b33af1ec0c1a0465e058d95e",
+      "message": "Yahoo!ニュースの未承認削除ルールを復元\n"
+    }
+  ]
+}
