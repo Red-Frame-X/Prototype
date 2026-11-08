@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611081008
+! Version: 202611081016
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -186,6 +186,10 @@ news.google.com##[role="tablist"] [role="tab"][aria-label="ショーケース"]
 ! news.yahoo.co.jp
 ! 記事ページの「あわせて読みたい記事」と同種の推薦記事フィードを見出し・余白ごと非表示
 news.yahoo.co.jp##aside.articleNewsFeed
+! 記事ページの「こんな記事も読まれています」をモジュール固有のIDで識別して非表示
+news.yahoo.co.jp##section#uamods-also_read
+! 「こんな記事もリアクションされています」をlk_recを直下に持つsectionごと非表示
+news.yahoo.co.jp##section:has(> div#lk_rec)
 ! 「みんなの意見」の投票欄を、viewable_pollsと後続sectionを直下に持つ外枠ごと非表示
 news.yahoo.co.jp##div:has(> div#viewable_polls + section)
 ! 記事ページのコメント概要・フローティング表示を非表示
