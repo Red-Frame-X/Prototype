@@ -24,6 +24,8 @@ TERMS = (
     'Argos Translate', 'Codex Review', 'UserScript', 'Workflow', 'Commit', 'Branch',
     'Repository', 'README', 'GitHub', 'AdGuard', 'Version', 'AGLint', 'Markdownlint',
     'CI', 'Lint', 'Test', 'Script', 'API', 'PR', 'Issue',
+    'Prototype', 'Red-Frame-X', 'Python', 'JavaScript', 'TypeScript', 'Node.js',
+    'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
 )
 PROTECTED = re.compile(
     r'```[\s\S]*?```|~~~[\s\S]*?~~~|`[^`\n]+`|https?://[^\s<>]+|'
@@ -32,6 +34,16 @@ PROTECTED = re.compile(
     + r'|\b(?:[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+|v?\d+(?:\.\d+)+(?:[-+][\w.-]+)?|[A-Z][A-Z0-9_]+|'
       r'\w*[a-z][A-Z]\w*|\w+_\w+|[\w.-]+(?:/|\.)[\w./-]+)\b'
 )
+# 未登録の固有名詞も保守的に保持する。一般説明の先頭に多い語は翻訳する。
+PROSE_WORDS = (
+    'Update|Fix|Add|Remove|Delete|Rename|Refactor|Improve|Correct|Create|Change|'
+    'Ensure|Preserve|Keep|Prevent|Allow|Use|Support|Handle|Check|Validate|Document|'
+    'Configure|Enable|Disable|Bump|Pin|Migrate|Replace|Restore|Revert|Merge|Build|'
+    'Sync|See|Do|This|The|A|An|In|For|To|With|Without|When|If|It|Please|Note'
+)
+PROTECTED = re.compile(PROTECTED.pattern + r'|\b(?!(?:' + PROSE_WORDS
+                       + r')\b)[A-Z][a-z]+\b')
+
 
 
 def load_engine():
@@ -87,24 +99,26 @@ def load_engine():
         raise TranslationError('Argosモデルの取得・検証・初期化に失敗しました。') from error
 
 
+class RuleSentencizer:
+    """学習済みモデルや外部通信を使わない英語の文分割。"""
+    def __init__(self):
+        import spacy
+        self.nlp = spacy.blank('en')
+        self.nlp.add_pipe('sentencizer')
+
+    def split_sentences(self, text):
+        return [sentence.text for sentence in self.nlp(text).sents]
+
+
 def configure_offline_engine(engine, installed):
-    """ハッシュで検証した配布物内のStanzaだけを使い、追加取得を禁止する。"""
-    import stanza
-    from argostranslate.sbd import StanzaSentencizer
-    sentencizer = engine.underlying.sentencizer
-    if not isinstance(sentencizer, StanzaSentencizer):
-        raise TranslationError('固定モデルの文分割方式が変わったため停止しました。')
-    # Version 1.1のresources.jsonはpackages key導入前の形式。
-    # Runner内の展開先に空の一覧だけを補い、学習済みデータは変更しない。
-    resources_path = installed.package_path / 'stanza/resources.json'
-    resources = json.loads(resources_path.read_text())
-    resources['en'].setdefault('packages', {})
-    resources_path.write_text(json.dumps(resources))
-    sentencizer.stanza_pipeline = stanza.Pipeline(
-        lang='en', dir=str(installed.package_path / 'stanza'),
-        processors={'tokenize': 'ewt'}, package=None,
-        download_method=None, use_gpu=False, logging_level='WARNING',
-    )
+    """旧Stanzaモデルの代わりにspaCyのルールだけで文を区切る。"""
+    from argostranslate.translate import PackageTranslation
+    backend = engine.underlying
+    if not isinstance(backend, PackageTranslation) or backend.pkg.package_path != installed.package_path:
+        raise TranslationError('固定モデルの翻訳経路が変わったため停止しました。')
+    # Argos 1.11.0のISentenceBoundaryDetectionModelに合わせる。
+    # 古いStanzaの重みの書き換えや、別モデルの暗黙の取得を行わない。
+    backend.sentencizer = RuleSentencizer()
 
 
 # 翻訳器に本文の文脈を渡し、保護表記は衝突しない識別子で置き換える。
@@ -129,7 +143,7 @@ def translate_text(text, engine):
             result.append(line)
             continue
         # Markdownの行構造と公式原文の引用はそのまま残す。
-        match = re.fullmatch(r'(\s*(?:(?:#{1,6}|[-*+]|[0-9]+[.)]|>) +)?)(.*?)(\s*)', line)
+        match = re.fullmatch(r'(\s*(?:(?:[a-z]+(?:\([^()\n]+\))?!?:[ \t]*)|(?:#{1,6}|[-*+]|[0-9]+[.)]|>) +)?)(.*?)(\s*)', line)
         if match is None:
             raise TranslationError('本文の行構造を解釈できません。')
         leading, source, trailing = match.groups()

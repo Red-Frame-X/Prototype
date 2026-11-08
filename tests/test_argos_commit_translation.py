@@ -52,13 +52,13 @@ class ArgosTranslationTests(unittest.TestCase):
             argos.translate_text('Update README.md', lambda value: 'Update ZXQ0000QXZを更新')
 
     def test_names_code_and_identifiers_never_reach_engine(self):
-        text = 'AdGuard Custom Rules GitHub Actions myFunction my_func CONFIG_KEY\n```python\nx = 1\n```'
+        text = 'AdGuard Custom Rules GitHub Actions Prototype Python Acme myFunction my_func CONFIG_KEY\n```python\nx = 1\n```'
         engine = Mock()
         self.assertEqual(argos.translate_text(text, engine), text)
         engine.assert_not_called()
 
     def test_empty_english_truncated_and_failed_translation_stop(self):
-        for value in ('', 'unchanged English', '日本語\n欠落', None):
+        for value in ('', 'unchanged English', '日本語\n欠落', '日本語\r', None):
             with self.subTest(value=value), self.assertRaises(argos.TranslationError):
                 argos.translate_text('Update description', lambda text: value)
         with self.assertRaises(argos.TranslationError):
@@ -70,6 +70,28 @@ class ArgosTranslationTests(unittest.TestCase):
             with self.assertRaises(argos.TranslationError):
                 argos.load_engine()
             download.assert_not_called()
+
+    def test_conventional_prefix_and_markdown_structure_are_preserved(self):
+        engine = lambda value: value.replace('Update ', '') + 'の更新'
+        self.assertEqual(argos.translate_text('feat(core): Update README.md\n', engine),
+                         'feat(core): README.mdの更新\n')
+        self.assertEqual(argos.translate_text('- Update README.md\n', engine),
+                         '- README.mdの更新\n')
+        self.assertEqual(argos.translate_text('> Official English quotation\n', Mock()),
+                         '> Official English quotation\n')
+
+    def test_unverified_license_never_downloads(self):
+        with patch.object(argos.urllib.request, 'urlopen') as download, \
+                patch.object(Path, 'read_text', return_value=json.dumps({
+                    'sha256': 'a' * 64, 'license_verified': False})):
+            with self.assertRaisesRegex(argos.TranslationError, 'ライセンス'):
+                argos.load_engine()
+            download.assert_not_called()
+
+    def test_unterminated_code_or_reserved_marker_stops(self):
+        for text in ('```python\nx = 1', '~~~code', 'Update ZXQ0000QXZ'):
+            with self.subTest(text=text), self.assertRaises(argos.TranslationError):
+                argos.translate_text(text, Mock())
 
     def model_fixture(self, metadata=None):
         data = io.BytesIO()
