@@ -1,14 +1,4 @@
 {
   "version": 1,
-  "approvals": [
-    {
-      "rules_sha256": "be5ccdc01aded38529736306a511d07f93e4e503b1f4659b3eaaf09e8b07d5b8",
-      "rules": [
-        "news.yahoo.co.jp#?#div#newsFeed:has(> h2:contains(/^あなたにおすすめ$/)):has(> ul.newsFeed_list)",
-        "news.yahoo.co.jp#@?#div#newsFeed:has(> h2:contains(/^あなたにおすすめ$/)):has(> ul.newsFeed_list)"
-      ],
-      "reason": "同一ドメイン・同一セレクタのExtendedCss非表示ルールと例外ルールが打ち消し合い、本カスタムフィルタでは非表示効果を持たないため。対象2ルールの削除はユーザーが明示許可。",
-      "reference": "https://github.com/Red-Frame-X/Prototype/pull/248#issuecomment-6717908671"
-    }
-  ]
+  "approvals": []
 }
