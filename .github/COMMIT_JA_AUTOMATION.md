@@ -21,8 +21,8 @@ mainに記録済みのCommitは書き換えません。PR作成後からマー�
 4. 翻訳対象のSHAと件数、titleの表記、URL・Issue参照・Code spanを照合します。Git objectだけを処理し、PR側のコード・Hook・Artifactを特権Jobで実行しません。
 5. 全Commitのtree・著者・日時・親の順序を保持してBranchを更新します。`--force-with-lease`で同時更新を保護します。書き換えたCommitとその後続CommitのSHAは変わり、既存の署名は取り除かれます。翻訳前後とSHA対応はPRのBot Commentへ記録します。
 6. 次の実行で最新SHAへの`@codex review`を依頼し、品質検査Workflowを`workflow_dispatch`で起動します。`GITHUB_TOKEN`によるBranch更新でも再検証を省略しません。通常のPR検証と同じ比較範囲で検査します。
-7. 最新SHAのCodexの機械可読状態が完了・指摘なしであり、品質検査が成功し、他のCheck・Statusが成功していることを確認します。未解決のReview thread、変更要求、競合、Draftへの変更、SHAやPR説明の変更がある場合はマージしません。
-8. 日本語のPR title/bodyを最終Commit messageに指定してSquash mergeします。マージ後の実際のCommit messageを照合し、mainの品質検査を明示的に起動します。
+7. 最新SHAのCodexの機械可読状態が完了・指摘なしであり、対象PR番号とSHAをrun-nameに含む専用の品質検査が成功し、他のCheck・Statusが成功していることを確認します。同じSHAでも通常の手動実行や別PRの検証結果では代用しません。未解決のReview thread、変更要求、競合、Draftへの変更、SHAやPR説明の変更がある場合はマージしません。
+8. 日本語のPR title/bodyを最終Commit messageに指定してSquash mergeします。マージ後の実際のCommit messageを照合し、Version自動同期とmainの品質検査を明示的に起動します。mainの検証にはマージ直前のSHAを渡し、通常のpushと同じ比較範囲とVersion検証条件を適用します。
 
 日本語化が不要なPRを新たに自動マージの対象には加えません。日本語化済みのPRに追加Commitが入った場合は、最新状態から翻訳と検証をやり直します。
 

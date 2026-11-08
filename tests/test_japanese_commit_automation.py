@@ -147,6 +147,24 @@ class TranslationTests(unittest.TestCase):
             api.assert_not_called()
 
 
+class QualityRunTests(unittest.TestCase):
+    def test_normal_manual_run_cannot_replace_failed_pr_validation(self):
+        gh = Mock()
+        normal = {'id': 30, 'head_sha': SHA, 'head_branch': 'topic',
+                  'display_title': 'Repositoryの品質検査', 'conclusion': 'success'}
+        other_pr = {**normal, 'id': 20, 'display_title': f'PR #2 日本語化検証 {SHA}'}
+        actual = {**normal, 'id': 10, 'display_title': f'PR #1 日本語化検証 {SHA}',
+                  'conclusion': 'failure'}
+        gh.api.return_value = {'workflow_runs': [normal, other_pr, actual]}
+        self.assertEqual(automation.quality_run(gh, SHA, 'topic', 1), actual)
+
+    def test_only_normal_manual_run_requires_new_pr_validation(self):
+        gh = Mock()
+        gh.api.return_value = {'workflow_runs': [
+            {'head_sha': SHA, 'head_branch': 'topic', 'display_title': 'Repositoryの品質検査'}]}
+        self.assertIsNone(automation.quality_run(gh, SHA, 'topic', 1))
+
+
 class GitRewriteTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -262,7 +280,8 @@ class LifecycleTests(unittest.TestCase):
                 self.merged = True
                 return {'merged': True, 'sha': 'c' * 40}
             if path.startswith('/git/commits/'):
-                return {'message': self.pr['title'] + ' (#1)\n\n' + self.pr['body']}
+                return {'message': self.pr['title'] + ' (#1)\n\n' + self.pr['body'],
+                        'parents': [{'sha': BASE}]}
             if path.endswith('/dispatches'):
                 return None
             raise AssertionError((path, method, data))
@@ -288,7 +307,10 @@ class LifecycleTests(unittest.TestCase):
         self.assertEqual(merge, {'sha': SHA, 'merge_method': 'squash',
                                 'commit_title': self.pr['title'] + ' (#1)',
                                 'commit_message': self.pr['body']})
-        self.assertIn(('/actions/workflows/quality.yml/dispatches', 'POST', {'ref': 'main'}), self.changes)
+        self.assertIn(('/actions/workflows/quality.yml/dispatches', 'POST',
+                       {'ref': 'main', 'inputs': {'automation_main_before': BASE}}), self.changes)
+        self.assertIn(('/actions/workflows/update-version-timestamps.yml/dispatches', 'POST',
+                       {'ref': 'main'}), self.changes)
 
     def test_failed_ci_stale_review_or_conflict_never_merge(self):
         for condition in ('ci', 'review', 'conflict', 'checks', 'threads', 'draft'):

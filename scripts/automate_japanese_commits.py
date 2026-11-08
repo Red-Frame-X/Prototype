@@ -289,11 +289,15 @@ def threads_clear(gh: GitHub, number: int) -> bool:
         cursor = threads['pageInfo']['endCursor']
 
 
-def quality_run(gh: GitHub, sha: str, branch: str):
+def quality_run(gh: GitHub, sha: str, branch: str, number: int):
     query = urllib.parse.urlencode({'head_sha': sha, 'branch': branch,
                                     'event': 'workflow_dispatch', 'per_page': 100})
     runs = gh.api('/actions/workflows/quality.yml/runs?' + query)['workflow_runs']
-    return next((run for run in runs if run['head_sha'] == sha and run['head_branch'] == branch), None)
+    # run-nameは信頼するquality.ymlがautomation_pr入力から生成する。
+    # 同じSHAの通常の手動実行は、PR全体の検証を含まないため採用しない。
+    expected_title = f'PR #{number} 日本語化検証 {sha}'
+    return next((run for run in runs if run['head_sha'] == sha and run['head_branch'] == branch
+                 and run['display_title'] == expected_title), None)
 
 
 def all_checks_passed(gh: GitHub, sha: str) -> bool:
@@ -399,7 +403,7 @@ def process_pr(gh: GitHub, number: int, default_branch: str, key: str, model: st
                        '説明と指摘は日本語で記述してください。')
         state['review_requested'] = True
         save_state(gh, number, state, '最新CommitへのCodex Reviewを確認・依頼しました。')
-    run = quality_run(gh, head, pr['head']['ref'])
+    run = quality_run(gh, head, pr['head']['ref'], number)
     if run is None:
         gh.api('/actions/workflows/quality.yml/dispatches', 'POST', {
             'ref': pr['head']['ref'], 'inputs': {'automation_pr': str(number)},
@@ -435,8 +439,12 @@ def process_pr(gh: GitHub, number: int, default_branch: str, key: str, model: st
         '\n\n' + fresh['body'] if fresh['body'] else '')
     if merged['message'].rstrip('\n') != expected_message.rstrip('\n'):
         raise AutomationError('マージ後のCommit messageが指定した内容と一致しません。')
-    # GITHUB_TOKENのmergeでもpush Workflowが抑止されるため、mainの品質検査も明示起動する。
-    gh.api('/actions/workflows/quality.yml/dispatches', 'POST', {'ref': default_branch})
+    # GITHUB_TOKENのmergeではpush Workflowが抑止されるため、同期と品質検査を明示起動する。
+    # 通常pushと同じく、厳格なVersion日時照合は同期処理へ任せる。
+    gh.api('/actions/workflows/update-version-timestamps.yml/dispatches', 'POST', {'ref': default_branch})
+    gh.api('/actions/workflows/quality.yml/dispatches', 'POST', {
+        'ref': default_branch, 'inputs': {'automation_main_before': merged['parents'][0]['sha']},
+    })
     print(f"PR #{number}: 日本語のCommit messageでマージ済みです。SHA: {result['sha']}")
 
 
