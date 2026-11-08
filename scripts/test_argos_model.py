@@ -72,6 +72,14 @@ def main():
     validate_translation(original_japanese, unchanged)
     print('PR #248: title・body・Commit messageを翻訳器の呼出しなしで原文のまま保持しました。')
 
+    snapshot251 = snapshot.with_name('pr251-japanese-translation.json')
+    original251 = json.loads(snapshot251.read_text())
+    with patch('socket.socket.connect', side_effect=AssertionError('翻訳中の外部通信')):
+        unchanged251 = translate_payload(original251, forbidden_translation)
+    assert unchanged251 == original251
+    validate_translation(original251, unchanged251)
+    print('PR #251: title・body・Commit messageの技術表記とIssue参照を原文のまま保持しました。')
+
     original = {'title': 'Update README.md',
                 'body': '既存の説明\nSee https://example.com/a #12 `my_func` v1.2.3',
                 'commits': [{'sha': 'a' * 40, 'message': 'Fix GitHub Actions configuration'}]}
