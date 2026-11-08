@@ -26,11 +26,12 @@ TERMS = (
     'CI', 'Lint', 'Test', 'Script', 'API', 'PR', 'Issue',
     'Prototype', 'Red-Frame-X', 'Python', 'JavaScript', 'TypeScript', 'Node.js',
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
+    'Yahoo!', 'ExtendedCss',
 )
 HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
     HASH_REFERENCE.pattern + r'|https?://[^\s<>]+|'
-    r'(?<!\w)(?:[\w.-]+/[\w.-]+)?#\d+\b|'
+    r'(?<![A-Za-z0-9_])(?:[\w.-]+/[\w.-]+)?#\d+(?![A-Za-z0-9_])|'
     + '|'.join(re.escape(term) + r'(?![A-Za-z0-9_./-])' for term in TERMS)
     + r'|\b(?:[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+|v?\d+(?:\.\d+)+(?:[-+][\w.-]+)?|[A-Z][A-Z0-9_]+|'
       r'\w*[a-z][A-Z]\w*|\w+_\w+|[\w.-]+(?:/|\.)[\w./-]+)\b'

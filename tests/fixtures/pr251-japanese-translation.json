@@ -1,0 +1,10 @@
+{
+  "title": "AdGuard Custom Rulesの相殺ルール削除を事前承認",
+  "body": "## 目的\n\nPR #248で復元したYahoo!ニュース「あなたにおすすめ」のExtendedCss非表示と同一セレクタの例外ルールについて、ユーザーの明示的な削除許可を受け、Repositoryの削除保護手順に従い事前承認のみを登録します。\n\n## 変更範囲\n\n- `config/adguard-rule-removal-approvals.json` に、現在の有効ルール集合のSHA-256と**対象2ルールのみ**を登録\n- `AdGuard Custom Rules - Red Frame X.txt` のルール・コメントはこのPRでは変更しない\n- 回帰Testや削除防止機構は無変更\n\n## 注意点\n\n同一カスタムフィルタ内では例外が非表示指定を打ち消します。ただし他の併用購読フィルタとの相互作用までは同等と断言しません。\n\nこの承認がmainに取り込まれた後、別PRで対象2ルール・対応コメント計4行を削除し、使用済み承認を消費します。Codex Review、CI、Lintを確認し、安全にマージします。\n\n- ユーザーの削除許可の記録： https://github.com/Red-Frame-X/Prototype/pull/248#issuecomment-6717908671\n- AdGuard公式仕様：https://adguard.com/kb/general/ad-filtering/create-own-filters/",
+  "commits": [
+    {
+      "sha": "8dc54b1d67239bfc6fb58144e9d4d34b632ed19d",
+      "message": "AdGuard Custom Rules の相殺ルール2件の削除承認を登録"
+    }
+  ]
+}
