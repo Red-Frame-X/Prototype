@@ -9,7 +9,7 @@ Chat / Work / Codexを経由した編集のCommit titleとbodyは、必ず日本
 ツールが英語を生成しやすいことだけを理由に、英語の定型メッセージを採用しません。
 既存履歴の書き換えやForce Pushによる日本語化は、ユーザーが明示的に許可した範囲に限ります。
 
-英語のCommit messageを含むPRについては、[PRのCommit日本語化と自動マージ](.github/COMMIT_JA_AUTOMATION.md)で、PR内の日本語化・Codex Review・品質検査・Squash mergeを自動化できます。この自動化によるPR内のCommit書き換えは承認済みの対象範囲です。mainに記録済みの履歴は書き換えません。初回はActions Secret `OPENAI_API_KEY`とCodexのGitHub連携を設定してください。
+英語のCommit messageを含むPRについては、[PRのCommit日本語化と自動マージ](.github/COMMIT_JA_AUTOMATION.md)で、PR内の日本語化・Codex Review・品質検査・Squash mergeを自動化できます。この自動化によるPR内のCommit書き換えは承認済みの対象範囲です。mainに記録済みの履歴は書き換えません。Argosモデルの取得・整合性・ライセンスの確認とCodexのGitHub連携が必要です。移行中の未確認事項と翻訳承認・テストモードはリンク先を参照してください。既存の`OPENAI_API_KEY`は削除しません。
 
 例：
 
