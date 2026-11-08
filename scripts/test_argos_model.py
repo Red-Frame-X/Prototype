@@ -15,6 +15,13 @@ def main():
         '既存の説明\nUpdate README.md',
         'Fix GitHub Actions configuration',
     ]
+    for source in [
+        'Update README.md', 'Fix GitHub Actions configuration',
+        'See https://example.com/a #12 `my_func` v1.2.3',
+        'Update ZXQ0QXZ', 'Fix ZXQ0QXZ configuration',
+        '既存の説明: Update README.md',
+    ]:
+        print(json.dumps({'raw_source': source, 'raw_target': engine(source)}, ensure_ascii=False))
     for source in samples:
         target = translate_text(source, engine)
         print(json.dumps({'source': source, 'target': target}, ensure_ascii=False))
