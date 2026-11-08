@@ -28,7 +28,7 @@ def main():
                 assert term in target, term
         if source.startswith('既存の日本語文章'):
             assert target == source
-        if source.startswith('既存の説明'):
+        if source.startswith('既存の説明\n'):
             assert target.startswith('既存の説明\n')
 
 

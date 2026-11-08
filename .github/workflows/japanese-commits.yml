@@ -61,6 +61,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           COMMIT_JA_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          ARGOS_MODEL_PROVIDER: OPENNMT
+          ARGOS_CHUNK_TYPE: STANZA
+          ARGOS_DEVICE_TYPE: cpu
           ARGOS_PACKAGES_DIR: ${{ runner.temp }}/commit-ja-argos-packages
           COMMIT_JA_AUTOMATION_ENABLED: ${{ vars.COMMIT_JA_AUTOMATION_ENABLED }}
           TARGET_PR: ${{ inputs.pr_number }}

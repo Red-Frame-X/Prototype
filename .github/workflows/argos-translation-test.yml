@@ -36,5 +36,8 @@ jobs:
           python -m pip install --disable-pip-version-check -r requirements-translation.txt
       - name: 固定モデルで実翻訳と表記保護を検証
         env:
+          ARGOS_MODEL_PROVIDER: OPENNMT
+          ARGOS_CHUNK_TYPE: STANZA
+          ARGOS_DEVICE_TYPE: cpu
           ARGOS_PACKAGES_DIR: ${{ runner.temp }}/commit-ja-argos-packages
         run: python scripts/test_argos_model.py

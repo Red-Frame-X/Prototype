@@ -94,6 +94,12 @@ def configure_offline_engine(engine, installed):
     sentencizer = engine.underlying.sentencizer
     if not isinstance(sentencizer, StanzaSentencizer):
         raise TranslationError('固定モデルの文分割方式が変わったため停止しました。')
+    # Version 1.1のresources.jsonはpackages key導入前の形式。
+    # Runner内の展開先に空の一覧だけを補い、学習済みデータは変更しない。
+    resources_path = installed.package_path / 'stanza/resources.json'
+    resources = json.loads(resources_path.read_text())
+    resources['en'].setdefault('packages', {})
+    resources_path.write_text(json.dumps(resources))
     sentencizer.stanza_pipeline = stanza.Pipeline(
         lang='en', dir=str(installed.package_path / 'stanza'),
         processors={'tokenize': 'ewt'}, package=None,
