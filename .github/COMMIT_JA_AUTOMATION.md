@@ -32,7 +32,7 @@ Version 1.1に同梱されたStanzaの重みは、現在のStanzaとの互換性
 1. 5分ごとの定期実行、品質検査完了、または手動実行で開いているPRを確認します。定期実行の開始時刻はGitHubの混雑で遅れることがあります。
 2. 同じRepository内にあり、作成者が書き込み権限を持ち、mainを対象とする通常のPRを選びます。Fork、Draft、Bot作成のPR、main自体は対象外です。
 3. PRの全Commit messageとPR title/bodyの英語の一般説明をRunner内のArgos Translateで日本語へ翻訳します。日本語、登録済みの正式な製品名・技術用語、固有名詞とみられる表記、識別子、Version、URL、Issue参照、コードを一時識別子に置き換え、文全体の文脈を保ったまま翻訳してから原表記を復元します。識別子の欠落・重複・変更、未翻訳の一般説明、未完結のコードブロックは停止条件です。Markdownの行構造・引用とConventional Commitsのprefixも保持します。未知の名前の判別や全文章の意味の正確性を機械検査だけでは保証できないため、適用後の翻訳前後の記録を確認します。判別しづらい製品名・識別子はCode spanにしてください。本文・差分・Secretを外部の翻訳APIへ送りません。
-4. 翻訳対象のSHAと件数、titleの表記、URL・Issue参照・Code spanを照合します。Git objectだけを処理し、PR側のコード・Hook・Artifactを特権Jobで実行しません。
+4. Markdownのコード範囲はVersionを固定した`markdown-it-py`のCommonMarkパーサーで判定します。リスト内のフェンスと、リスト外の字下げ付きコードを区別し、Task listの`[x]` / `[X]` / `[ ]`も原表記のまま保持します。翻訳対象のSHAと件数、titleの表記、URL・Issue参照・Code spanを照合します。Git objectだけを処理し、PR側のコード・Hook・Artifactを特権Jobで実行しません。
 5. 全Commitのtree・著者・日時・親の順序を保持してBranchを更新します。`--force-with-lease`で同時更新を保護します。書き換えたCommitとその後続CommitのSHAは変わり、既存の署名は取り除かれます。翻訳前後とSHA対応はPRのBot Commentへ記録します。
 6. 次の実行で最新SHAへの`@codex review`を依頼し、品質検査Workflowを`workflow_dispatch`で起動します。`GITHUB_TOKEN`によるBranch更新でも再検証を省略しません。通常のPR検証と同じ比較範囲で検査します。
 7. 最新SHAのCodexの機械可読状態が完了・指摘なしであり、対象PR番号とSHAをrun-nameに含む専用の品質検査が成功し、他のCheck・Statusが成功していることを確認します。同じSHAでも通常の手動実行や別PRの検証結果では代用しません。未解決のReview thread、変更要求、競合、Draftへの変更、SHAやPR説明の変更がある場合はマージしません。

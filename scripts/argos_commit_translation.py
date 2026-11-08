@@ -138,49 +138,58 @@ TOKENS = re.compile(PROTECTED.pattern + r'|[ぁ-んァ-ヶ一-龠々ー][ぁ-ん
 
 
 def markdown_segments(text):
-    """実際の行頭フェンスとCode spanを解析し、コードの中を再解釈しない。"""
-    opening_pattern = re.compile(
-        r'((?:[ \t]*>[ \t]?)*[ \t]*(?:(?:[-+*]|[0-9]+[.)])[ \t]+)*)'
-        r'(`{3,}|~{3,})([^\r\n]*)(?:\r?\n|$)')
-    indented_code = re.compile(r'(?: {4}|[ \t]*\t)[^\r\n]*')
-    backticks = re.compile(r'`+')
-    position = plain_start = 0
-    while position < len(text):
-        end = None
-        if position == 0 or text[position - 1] == '\n':
-            opening = opening_pattern.match(text, position)
-            if opening and not (opening[2][0] == '`' and '`' in opening[3]):
-                fence = opening[2]
-                # リストのコンテナ分の字下げを含めて閉じフェンスを探す。
-                indentation = len(opening[1].expandtabs(4))
-                closing = re.compile(r'^((?:[ \t]*>[ \t]?)*[ \t]*)' + re.escape(fence[0])
-                                     + r'{' + str(len(fence)) + r',}[ \t]*(?=\r?$)', re.MULTILINE)
-                match = next((candidate for candidate in closing.finditer(text, opening.end())
-                              if candidate[1].count('>') == opening[1].count('>')
-                              and len(candidate[1].expandtabs(4)) <= indentation + 3), None)
-                if match is None:
-                    raise TranslationError('コードブロックが完結していません。')
-                end = match.end()
-            if end is None:
-                code_line = indented_code.match(text, position)
-                if code_line:
-                    end = code_line.end()
-        if end is None and text[position] == '`':
-            delimiter = backticks.match(text, position)[0]
+    """CommonMarkが判定したコードブロックとCode spanを原文で保持する。"""
+    from markdown_it import MarkdownIt
+    lines = re.findall(r'[^\r\n]*(?:\r\n|\r|\n|$)', text)
+    if lines and not lines[-1]:
+        lines.pop()
+    offsets = [0]
+    for line in lines:
+        offsets.append(offsets[-1] + len(line))
+    ranges = []
+    for token in MarkdownIt('commonmark').parse(text):
+        if token.type not in {'fence', 'code_block'}:
+            continue
+        start, end = token.map
+        if token.type == 'fence':
+            # CommonMarkは未完結フェンスをEOFで閉じるが、自動翻訳では停止する。
+            closing = r'^[ \t>]*' + re.escape(token.markup[0]) + r'{' + str(len(token.markup)) + r',}[ \t]*(?:\r?\n|\r)?$'
+            if end - start < 2 or not re.fullmatch(closing, lines[end - 1]):
+                raise TranslationError('コードブロックが完結していません。')
+        ranges.append((offsets[start], offsets[end]))
+
+    def inline_segments(value):
+        position = plain_start = 0
+        backticks = re.compile(r'`+')
+        while position < len(value):
+            if value[position] != '`':
+                position += 1
+                continue
+            delimiter = backticks.match(value, position)[0]
             closing = re.compile(r'(?<!`)' + re.escape(delimiter) + r'(?!`)')
-            match = closing.search(text, position + len(delimiter))
+            match = closing.search(value, position + len(delimiter))
             if match is None:
                 raise TranslationError('Code spanが完結していません。')
-            end = match.end()
-        if end is None:
-            position += 1
-            continue
-        if plain_start < position:
-            yield False, text[plain_start:position]
-        yield True, text[position:end]
-        position = plain_start = end
-    if plain_start < len(text):
-        yield False, text[plain_start:]
+            if plain_start < position:
+                yield False, value[plain_start:position]
+            yield True, value[position:match.end()]
+            position = plain_start = match.end()
+        if plain_start < len(value):
+            yield False, value[plain_start:]
+
+    position = 0
+    for start, end in sorted(ranges):
+        yield from inline_segments(text[position:start])
+        # 改行は保護識別子の外へ残し、後続の本文と同じ行にしない。
+        raw = text[start:end]
+        suffix = re.search(r'(\r\n|\r|\n)$', raw)
+        if suffix:
+            yield True, raw[:suffix.start()]
+            yield False, suffix[0]
+        else:
+            yield True, raw
+        position = end
+    yield from inline_segments(text[position:])
 
 
 def translate_text(text, engine):
@@ -196,7 +205,7 @@ def translate_text(text, engine):
     result = []
     for line in masked.splitlines(keepends=True):
         # Markdownの行構造と公式原文の引用はそのまま残す。
-        match = re.fullmatch(r'(\s*(?:(?:[a-z]+(?:\([^()\n]+\))?!?:[ \t]*)|(?:#{1,6}|[-*+]|[0-9]+[.)]|>) +)?)(.*?)(\s*)', line)
+        match = re.fullmatch(r'(\s*(?:(?:[a-z]+(?:\([^()\n]+\))?!?:[ \t]*)|(?:#{1,6}|[-*+]|[0-9]+[.)]|>) +(?:\[[ xX]\][ \t]+)?)?)(.*?)(\s*)', line)
         if match is None:
             raise TranslationError('本文の行構造を解釈できません。')
         leading, source, trailing = match.groups()

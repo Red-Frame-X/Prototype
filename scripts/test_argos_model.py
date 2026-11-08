@@ -26,6 +26,9 @@ def main():
         'Code fence example: `~~~`',
         '```python\nvalue = "~~~"\n```',
         '- 検証例\n\n    ~~~sh\n    echo hello\n    ~~~\n',
+        '    ~~~sh\n    echo hello\n',
+        '- [x] Update README.md',
+        '- [x] 説明を更新',
     ]
     for source in samples:
         # モデル導入後はネットワークを禁止して実翻訳する。
@@ -41,6 +44,8 @@ def main():
         }
         for word in expected.get(source, ()):
             assert word in target, (source, target, word)
+        if source.startswith('- [x]'):
+            assert target.startswith('- [x] ')
         if 'Update README.md' in source:
             assert '更新' in target
             assert 'ニュース' not in target
@@ -48,7 +53,7 @@ def main():
         for term in ('README.md', 'https://example.com/a', '#12', '`my_func`', 'v1.2.3', 'GitHub Actions', 'c77ede4b', 'a1' * 20, '`~~~`'):
             if term in source:
                 assert term in target, term
-        if source in ('fix: 説明を修正', 'feat(core): READMEの説明を更新') or source.startswith(('```', '- 検証例')):
+        if source in ('fix: 説明を修正', 'feat(core): READMEの説明を更新') or source.startswith(('```', '- 検証例', '    ~~~', '- [x] 説明')):
             assert target == source
         if source.startswith('既存の日本語文章'):
             assert target == source

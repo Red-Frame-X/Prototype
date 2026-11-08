@@ -61,6 +61,24 @@ class ArgosTranslationTests(unittest.TestCase):
                 self.assertEqual(argos.translate_text(text, engine), text)
                 engine.assert_not_called()
 
+    def test_literal_fence_in_indented_code_does_not_need_closing_fence(self):
+        text = '    ~~~sh\n    echo hello\n'
+        engine = Mock()
+        self.assertEqual(argos.translate_text(text, engine), text)
+        engine.assert_not_called()
+
+    def test_task_list_markers_are_not_translated(self):
+        for box in ('[x]', '[X]', '[ ]'):
+            for prefix in ('- ', '1. '):
+                text = prefix + box + ' 説明を更新'
+                engine = Mock()
+                with self.subTest(text=text):
+                    self.assertEqual(argos.translate_text(text, engine), text)
+                    engine.assert_not_called()
+                engine = lambda value: value.replace('Update ', '') + 'を更新'
+                self.assertEqual(argos.translate_text(prefix + box + ' Update README.md', engine),
+                                 prefix + box + ' README.mdを更新')
+
     def test_english_is_translated(self):
         engine = Mock(return_value='説明を更新')
         self.assertEqual(argos.translate_text('Update description\n', engine), '説明を更新\n')

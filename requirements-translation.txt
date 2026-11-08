@@ -4,3 +4,6 @@ argostranslate==1.11.0
 ctranslate2==4.8.5
 sentencepiece==0.2.3
 spacy==3.8.18
+
+# Markdownのコード範囲をCommonMarkに従って判定する。
+markdown-it-py==4.2.0
