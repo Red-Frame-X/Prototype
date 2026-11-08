@@ -224,12 +224,18 @@ jobs:
 
       - name: ChMateのVersion日時検査
         env:
-          BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before || '' }}
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || inputs.automation_pr != '' && 'origin/main' || inputs.automation_main_before || github.event.before || '' }}
           HEAD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
           if [[ -z "$BASE_REF" || "$BASE_REF" =~ ^0+$ ]]; then
             BASE_REF="$(git rev-parse "$HEAD_REF^")"
+          elif ! git cat-file -e "$BASE_REF^{commit}" 2>/dev/null; then
+            if [[ ! "$BASE_REF" =~ ^[0-9a-f]{40}$ ]]; then
+              echo 'ChMateの比較元Commitを解決できません。' >&2
+              exit 1
+            fi
+            git fetch --no-tags origin "$BASE_REF"
           fi
           git cat-file -e "$BASE_REF^{commit}"
           python scripts/check_chmate_version.py --base "$BASE_REF" --head "$HEAD_REF"
