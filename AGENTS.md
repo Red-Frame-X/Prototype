@@ -44,6 +44,13 @@
 - GitHub APIなどHookが動かない編集では、最新Branchのファイル全文を取得し、ルールとVersionを同じ書き込みに含める。PR作成前にCommitの差分で両方の変更を確認する。
 - PR作成後は `AdGuardのVersion日時検査` の成功を確認する。後続CommitでVersionだけ更新しても、先行Commitの更新漏れは解消しない。検査を無効化して通さない。
 
+## Branch保護の確認
+
+- 現在の連携では、Branch protection詳細APIの403解消を通常作業の完了条件にしない。
+  `CONTRIBUTING.md` の「現在の連携で行うマージ前の確認」に従い、通常のBranch APIとPRの検査結果を確認する。
+- 保護の有無を取得できない場合や、保護ありで必要な条件が不明な場合はマージを保留する。
+  既存のCI・Review・承認を省略せず、管理者による回避・強制マージや保護設定の緩和は行わない。
+
 ## Codex Code Reviewの言語
 
 - GitHub上のCodex Code Reviewの指摘・要約・説明・重大度の評価・修正案は、自然な日本語で記述する。

@@ -87,6 +87,34 @@ CIでも依存パッケージ導入前に同じ整合性検査を実行します
 
 ## Rulesetsと保護設定
 
+### 現在の連携で行うマージ前の確認
+
+現在のGitHub連携は管理権限を取得しないため、Branch protection詳細API
+`GET /repos/{owner}/{repo}/branches/{branch}/protection` の取得を通常運用の必須項目から外します。
+この403を解消するための追加権限やPATの導入は、通常のWorkflow検証・マージの完了条件にしません。
+以下の手順は日常のマージ判断を代替するもので、保護設定の詳細取得や変更と同等の機能ではありません。
+
+1. 通常のBranch API `GET /repos/{owner}/{repo}/branches/{branch}` で対象Branchの
+   `protected` を確認します。取得失敗・項目欠落・判定不能を `false` とみなさず、判定できるまでマージを保留します。
+   Rulesets一覧を取得できた場合も併せて確認しますが、一覧が空という理由だけで保護なしと判断しません。
+2. `protected=true` で必要な条件を確認できない場合は、GitHubのSettingsやPR画面で確認します。
+   確認できるまではマージを保留します。保護設定を変える作業は、権限と設定内容を別途確認します。
+3. 保護の有無にかかわらず、最新のPR先端SHAに対するCI・Lint・Test、Codex Review、未解決の指摘、
+   必要な承認、Draft状態、競合、変更差分を確認します。既存の自動マージで必要な翻訳の承認も維持します。
+   `mergeable=true` や `mergeable_state=clean` だけでは、すべての条件を満たしたと判断しません。
+4. 確認した先端SHAを指定して通常のMerge APIを使用します。管理者による回避・強制マージは行いません。
+   SHAの変更、保護条件による拒否、権限不足等で受け付けられない場合は停止し、保護設定を弱めて再試行しません。
+5. マージ後のCommit、差分、mainのCIと関連Workflowを確認します。
+
+2026年11月8日の確認では、通常のBranch APIは `main.protected=false`、Rulesets一覧は0件でした。
+これは確認時点の状態であり、将来も保護なしであることを保証しません。既存の自動マージScriptは
+Branch protection詳細APIに依存していないため、検査や停止条件を削除する実装修正は不要です。
+ここでのBranch情報とSettingsの確認は作業者が行う運用手順であり、Scriptに新しい自動検査を追加したものではありません。
+下記の過去の403・保護設定に関する記録は履歴として保持します。
+
+公式仕様：[Branch情報の取得](https://docs.github.com/en/rest/branches/branches#get-a-branch)、
+[Pull Requestのマージ](https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request)。
+
 ### 内容消失の再発防止と必須チェック
 
 2026年11月2日の再確認では、Rulesets一覧は0件、Branch protectionの読取は
