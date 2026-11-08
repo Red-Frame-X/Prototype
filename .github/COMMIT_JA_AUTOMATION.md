@@ -13,15 +13,25 @@ mainに記録済みのCommitは書き換えません。PR作成後からマー�
 
 翻訳ライブラリは`argostranslate==1.11.0`、モデルは公式Indexの英語（`en`）→日本語（`ja`）Version `1.1`です。モデルの要求Argos Versionは`1.1`です。`COMMIT_TRANSLATION_MODEL`は使用しません。公式配布URLから取得し、固定SHA256と言語・Versionを照合してからインストールします。中間言語への自動切替は行いません。
 
-**移行の未確認事項：現在は有効化できません。** モデル配布先への通信が作業環境で拒否されたため、実物・SHA256・実翻訳の動作は未確認です。`.github/argos-model.json`の`sha256`は`null`、`license_verified`は`false`とし、取得前に安全停止します。これらを推測で埋めないでください。GitHub-hosted runnerと同じPython 3.12環境で、モデル取得・実翻訳・保存表記を確認する必要があります。
+公式配布URLの取得にはUser-Agentを明示します。GitHub-hosted runner上で配布物のMetadata・README・SHA256を確認し、`.github/argos-model.json`に固定しました。SHA256は`16300cc4eaa85320520cabcf433b63d01be40ef6966251de72043a083408f716`です。取得失敗や不一致を別モデルへの切替やOpenAI APIで補わず、停止します。
 
-ライブラリとIndexの公式説明はMIT / CC0です。モデルについては開発者が同じライセンスと説明した[公式Issue #76](https://github.com/argosopentech/argos-translate/issues/76)がある一方、英日モデル個別のライセンス表記不足は[未解決Issue #507](https://github.com/argosopentech/argos-translate/issues/507)に掲載されています。ライブラリのライセンスだけでモデル個別の確認が済んだとは扱いません。実物のREADME・学習データの出典と公式回答の適用範囲を確認してから、根拠とSHA256を固定してください。
+ライセンスは、Argosの開発者による[公式Issue #76の回答](https://github.com/argosopentech/argos-translate/issues/76)に基づき、Argosプロジェクトのモデル学習成果についてMIT / CC0として確認しました。配布物のREADMEにはOPUS、Wiktionary / Wiktextract、Stanzaと学習データの出典が記載されています。英日モデル個別のライセンス表記不足を扱う[未解決Issue #507](https://github.com/argosopentech/argos-translate/issues/507)は残っており、READMEにライセンスが明記されたとは説明しません。学習データや同梱物の権利まで一律にMIT / CC0とする判断ではありません。配布物の再配布は行わず、Runnerが公式配布先から取得します。
+
+Version 1.1に同梱されたStanzaの重みは、現在のStanzaとの互換性に問題があります。重みを書き換えたり、最新版の別モデルを暗黙に取得したりせず、文分割にはspaCyの`blank('en')`とルールによる`sentencizer`を使います。翻訳の学習済みモデルは固定したArgosの英日モデルだけです。翻訳開始後に外部通信を行わないことを専用CIでも検査します。推論・文分割に使うCTranslate2、SentencePiece、spaCyのVersionも`requirements-translation.txt`で固定しています。
+
+モデル実物の確認記録は[公式配布物の検証Run](https://github.com/Red-Frame-X/Prototype/actions/runs/42447418170)、文脈・表記保護・通信禁止・PR title/bodyとCommitの実翻訳確認は[実モデル検証Run](https://github.com/Red-Frame-X/Prototype/actions/runs/42448065454)で参照できます。`Update README.md`→`README.mdの更新`、`Fix GitHub Actions configuration`→`GitHub Actionsの設定を修正`、`Do not remove existing tests.`→`既存のテストを削除しないでください。`を確認しました。これらの代表例の成功で、任意の文章の意味の正確性まで証明されたとは扱いません。マージ前の翻訳内容の確認は引き続き必須です。
+
+## マージを行わない実モデル検証
+
+`Argos英日モデルの実物検証`は、翻訳関連ファイルを変更したPRでGitHub-hosted runner / Python 3.12上に起動します。権限は`contents: read`だけで、checkoutの認証情報も保持しません。公式モデルの取得・SHA256・Metadata・README、実翻訳の代表例、表記保護、既存日本語、日英混在、PR title/bodyとCommitの翻訳結果の検査を行います。PR・Commitの更新、Review依頼、マージは行いません。
+
+ローカルで同じ検証を行う場合は、CPU版torchと`requirements-translation.txt`を導入し、空の専用ディレクトリを`ARGOS_PACKAGES_DIR`へ設定して`python scripts/test_argos_model.py`を実行します。公式配布先へのHTTPS通信が必要です。`ARGOS_MODEL_PROVIDER=OPENNMT`、`ARGOS_CHUNK_TYPE=STANZA`、`ARGOS_DEVICE_TYPE=cpu`はWorkflowと同じ値を使います。`STANZA`はArgosの初期化経路を固定する指定で、実際の文分割は上記のルールへ置き換えます。
 
 ## 処理の流れ
 
 1. 5分ごとの定期実行、品質検査完了、または手動実行で開いているPRを確認します。定期実行の開始時刻はGitHubの混雑で遅れることがあります。
 2. 同じRepository内にあり、作成者が書き込み権限を持ち、mainを対象とする通常のPRを選びます。Fork、Draft、Bot作成のPR、main自体は対象外です。
-3. PRの全Commit messageとPR title/bodyの英語の一般説明をRunner内のArgos Translateで日本語へ翻訳します。日本語・登録済みの正式な製品名・技術用語・識別子・Version・URL・Issue参照・コードは翻訳器に渡さず保持します。同一区間の日英混在を安全に分離できない場合は停止し、手動での日本語化が必要です。任意の未知の製品名の識別や意味の正確性は保証できないため、適用後の翻訳前後の記録を必ず確認します。本文・差分・Secretを外部の翻訳APIへ送りません。
+3. PRの全Commit messageとPR title/bodyの英語の一般説明をRunner内のArgos Translateで日本語へ翻訳します。日本語、登録済みの正式な製品名・技術用語、固有名詞とみられる表記、識別子、Version、URL、Issue参照、コードを一時識別子に置き換え、文全体の文脈を保ったまま翻訳してから原表記を復元します。識別子の欠落・重複・変更、未翻訳の一般説明、未完結のコードブロックは停止条件です。Markdownの行構造・引用とConventional Commitsのprefixも保持します。未知の名前の判別や全文章の意味の正確性を機械検査だけでは保証できないため、適用後の翻訳前後の記録を確認します。判別しづらい製品名・識別子はCode spanにしてください。本文・差分・Secretを外部の翻訳APIへ送りません。
 4. 翻訳対象のSHAと件数、titleの表記、URL・Issue参照・Code spanを照合します。Git objectだけを処理し、PR側のコード・Hook・Artifactを特権Jobで実行しません。
 5. 全Commitのtree・著者・日時・親の順序を保持してBranchを更新します。`--force-with-lease`で同時更新を保護します。書き換えたCommitとその後続CommitのSHAは変わり、既存の署名は取り除かれます。翻訳前後とSHA対応はPRのBot Commentへ記録します。
 6. 次の実行で最新SHAへの`@codex review`を依頼し、品質検査Workflowを`workflow_dispatch`で起動します。`GITHUB_TOKEN`によるBranch更新でも再検証を省略しません。通常のPR検証と同じ比較範囲で検査します。
@@ -35,7 +45,7 @@ mainに記録済みのCommitは書き換えません。PR作成後からマー�
 
 Repository Variable `COMMIT_JA_AUTOMATION_ENABLED`を`false`にすると、翻訳・レビュー依頼・マージを停止します。再開するには`false`以外に変更します。
 
-特定のPRだけを確認する場合は、Actionsの「PRのCommit日本語化とレビュー後の自動マージ」を手動実行し、`pr_number`にPR番号を指定します。空欄なら開いているPRを確認します。`dry_run`は手動実行では既定で`true`です。このモードでは翻訳前後をJSONでログに表示し、push・PR更新・Comment投稿・Review依頼・CI起動・マージを行いません。モデル未確認時はテストモードも失敗します。定期実行にはこの入力は適用されず、既存の実行経路を維持します。
+特定のPRだけを確認する場合は、Actionsの「PRのCommit日本語化とレビュー後の自動マージ」を手動実行し、`pr_number`にPR番号を指定します。空欄なら開いているPRを確認します。`dry_run`は手動実行では既定で`true`です。このモードでは翻訳前後をJSONでログに表示し、push・PR更新・Comment投稿・Review依頼・CI起動・マージを行いません。取得・整合性・翻訳検査が失敗した場合はテストモードも停止します。定期実行にはこの入力は適用されず、既存の実行経路を維持します。
 
 ## 待機・失敗時の扱い
 
@@ -51,6 +61,7 @@ Repository Variable `COMMIT_JA_AUTOMATION_ENABLED`を`false`にすると、翻�
 
 - [Argos Translateの導入とPython API](https://github.com/argosopentech/argos-translate)
 - [公式Indexの固定Revision](https://github.com/argosopentech/argospm-index/blob/ff90de60728f7c1338ff6b75974e4c89b2442d22/index.json)
+- [spaCyのルールによる文分割](https://spacy.io/api/sentencizer)
 - [Argos Translate 1.11.0](https://pypi.org/project/argostranslate/1.11.0/)
 - [Codex Code Review](https://developers.openai.com/codex/cloud/code-review)
 - [GitHub Actionsによるイベント起動の制限](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)

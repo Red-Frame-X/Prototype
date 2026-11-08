@@ -89,7 +89,7 @@ class ArgosTranslationTests(unittest.TestCase):
             download.assert_not_called()
 
     def test_unterminated_code_or_reserved_marker_stops(self):
-        for text in ('```python\nx = 1', '~~~code', 'Update ZXQ0000QXZ'):
+        for text in ('```python\nx = 1', '~~~code', 'Update `identifier', 'Update ZXQ0000QXZ'):
             with self.subTest(text=text), self.assertRaises(argos.TranslationError):
                 argos.translate_text(text, Mock())
 

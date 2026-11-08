@@ -1,2 +1,6 @@
 # 翻訳専用。品質検査の依存関係には追加しない。
 argostranslate==1.11.0
+# 実モデルCIで確認した推論・文分割ライブラリのVersionも固定する。
+ctranslate2==4.8.5
+sentencepiece==0.2.3
+spacy==3.8.18

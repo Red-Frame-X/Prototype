@@ -45,7 +45,6 @@ PROTECTED = re.compile(PROTECTED.pattern + r'|\b(?!(?:' + PROSE_WORDS
                        + r')\b)[A-Z][a-z]+\b')
 
 
-
 def load_engine():
     """既定Branchの固定情報だけから取得し、hashとMetadataを確認する。"""
     manifest = json.loads((ROOT / '.github/argos-model.json').read_text())
@@ -137,6 +136,8 @@ def translate_text(text, engine):
         tokens[marker] = match[0]
         return marker
     masked = TOKENS.sub(protect, text)
+    if '`' in masked:
+        raise TranslationError('Code spanが完結していません。')
     result = []
     for line in masked.splitlines(keepends=True):
         if not re.search(r'[A-Za-z]', MARKER.sub('', line)):
