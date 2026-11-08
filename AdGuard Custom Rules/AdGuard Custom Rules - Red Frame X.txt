@@ -186,6 +186,10 @@ news.google.com##[role="tablist"] [role="tab"][aria-label="ショーケース"]
 ! news.yahoo.co.jp
 ! 記事ページのコメント概要・フローティング表示を非表示
 news.yahoo.co.jp##div:has(> a[href^="/articles/"][href$="/comments"])
+! 記事ページのコメント件数・プロフィール画像ボタンを含むコンテナを非表示
+news.yahoo.co.jp##div:has(> button[data-cl-params*="_cl_vmodule:cmtmod;"])
+! 記事リアクション（学びがある・わかりやすい・新しい視点）の件数を含むリスト全体を非表示
+news.yahoo.co.jp##ul:has(> li > button[id^="articleReactionButton"])
 ! 投票ページのコメント概要・フローティング表示を枠ごと非表示
 news.yahoo.co.jp##div:has(> a[href^="/polls/"][href$="/comments"][data-cl-params*="_cl_vmodule:cmtfloat;"])
 ! 記事ページのコメントセクション全体を非表示
