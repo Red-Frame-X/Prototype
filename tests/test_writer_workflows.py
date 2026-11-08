@@ -62,6 +62,26 @@ class WriterWorkflowTests(unittest.TestCase):
         self.assertLess(fetch_index, rebase_index)
         self.assertLess(rebase_index, push_index)
 
+    def test_chmate_workflow_change_dispatches_once_without_recursion(self):
+        workflow, _ = self._load("update-chmate-ng-version.yml")
+        self.assertIn("workflow_dispatch", workflow["on"])
+        self.assertEqual(workflow["on"]["push"], {
+            "branches": ["main"],
+            "paths": [".github/workflows/update-chmate-ng-version.yml"],
+        })
+        dispatcher = workflow["jobs"]["dispatch-manual-test"]
+        writer = workflow["jobs"]["update-version"]
+        self.assertEqual(dispatcher["if"], "github.event_name == 'push'")
+        self.assertEqual(writer["if"], "github.event_name == 'workflow_dispatch'")
+        self.assertEqual(dispatcher["permissions"], {"contents": "read", "actions": "write"})
+        self.assertEqual(dispatcher["steps"][0]["run"],
+                         'gh workflow run update-chmate-ng-version.yml --repo "$GITHUB_REPOSITORY" --ref main')
+
+    def test_chmate_manual_writer_never_checks_out_a_feature_branch(self):
+        workflow, _ = self._load("update-chmate-ng-version.yml")
+        checkout = workflow["jobs"]["update-version"]["steps"][0]
+        self.assertEqual(checkout["with"]["ref"], "main")
+
     def test_all_automatic_commits_validate_the_same_title_before_creation(self):
         import re
         import subprocess

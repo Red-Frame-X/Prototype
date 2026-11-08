@@ -5,6 +5,10 @@ name: NG Word Regex for ChMate のVersion更新
 # 同一ファイルへの並行push競合を防止します。
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-chmate-ng-version.yml'
 
 permissions:
   contents: write
@@ -14,7 +18,23 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  dispatch-manual-test:
+    # Workflow自体の変更時だけ、実際の手動起動経路を実行する。
+    # workflow_dispatchではこのJobを起動せず、再帰的な起動を防ぐ。
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: mainの手動実行を起動
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run update-chmate-ng-version.yml --repo "$GITHUB_REPOSITORY" --ref main
+
   update-version:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -23,6 +43,8 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          # 書き込み先はmain固定のため、手動実行で選択した別BranchのCommitを持ち込まない。
+          ref: main
 
       - name: Version日時の更新
         shell: bash
