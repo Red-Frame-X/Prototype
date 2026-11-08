@@ -4,6 +4,8 @@
 
 mainに記録済みのCommitは書き換えません。PR作成後からマージまでを自動化します。Branchへのpushだけで新しいPRを作成する機能はありません。既存の自動更新Workflowによるmainへの直接pushも変更しません。
 
+翻訳内容の承認に加え、GitHub側のWorkflow実行承認やCodex Reviewの再依頼が必要になる場合があります。完全無人でのマージを保証するものではありません。
+
 ## 初回設定
 
 1. WorkflowはCPU版`torch==2.9.1+cpu`と`requirements-translation.txt`のArgos TranslateをRunnerへ導入します。外部の有料翻訳APIは不要です。既存のSecret `OPENAI_API_KEY`は削除しません。
@@ -48,6 +50,12 @@ Repository Variable `COMMIT_JA_AUTOMATION_ENABLED`を`false`にすると、翻�
 特定のPRだけを確認する場合は、Actionsの「PRのCommit日本語化とレビュー後の自動マージ」を手動実行し、`pr_number`にPR番号を指定します。空欄なら開いているPRを確認します。`dry_run`は手動実行では既定で`true`です。このモードでは翻訳前後をJSONでログに表示し、push・PR更新・Comment投稿・Review依頼・CI起動・マージを行いません。取得・整合性・翻訳検査が失敗した場合はテストモードも停止します。定期実行にはこの入力は適用されず、既存の実行経路を維持します。
 
 ## 待機・失敗時の扱い
+
+`GITHUB_TOKEN`でCommitを書き換えた後、`pull_request`の`opened`・`synchronize`・`reopened`によるWorkflowは、GitHub側の実行承認待ちになる場合があります。Runの`action_required`と、PR画面の「Approve workflows to run」を確認してください。書き込み権限者が差分を確認して実行を承認し、必要な検査を完了させます。これは翻訳内容を承認するCommentとは別の操作で、専用の`workflow_dispatch`品質検査が成功しても、その承認を代行したことにはなりません。マージ状態が`clean`でなければ、既存のWorkflowは保留します。
+
+Botが`@codex review`を投稿しても、最新SHAのReviewが開始されず、要約に以前のSHAだけが残る場合があります。通常のユーザー権限で`@codex review`を再依頼し、最新SHAの完了・指摘なしを確認してください。古いSHAのReviewや通常の手動検査を、専用の最新SHA検証の代わりに使いません。
+
+これらの外部連携による待機を、CI・Reviewの省略、マージ条件の緩和、無条件の成功扱いで回避しません。画面操作やReviewの再依頼ができない場合は、確認できた段階までを部分検証として報告します。
 
 - モデル未確認、モデルの取得・hash・Metadata検証失敗、翻訳処理失敗、翻訳結果の欠落・不正、取得失敗、同時pushの検出はエラーにします。他のPRの確認は継続します。
 - 翻訳の対象は1～100 Commit、入力JSONは120,000 bytesまでです。翻訳前後のレビュー記録がCommentの上限に収まらない場合も、省略せず停止します。

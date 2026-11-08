@@ -1,7 +1,7 @@
 name: PRのCommit日本語化とレビュー後の自動マージ
 
 on:
-  # GITHUB_TOKENによる更新は通常のpush/PR Workflowを起動しないため、
+  # GITHUB_TOKENのpushは通常のpush Workflowを起動せず、更新後のPR Workflowは実行承認待ちになるため、
   # 定期実行も用意し、品質検査はworkflow_dispatchで明示的に起動する。
   schedule:
     - cron: '*/5 * * * *'
