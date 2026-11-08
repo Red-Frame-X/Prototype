@@ -85,7 +85,8 @@ class ArgosTranslationTests(unittest.TestCase):
         root.package.get_installed_packages.return_value = [types.SimpleNamespace(
             from_code='en', to_code='ja', package_version='1.1')]
         manifest = {'sha256': digest or hashlib.sha256(data).hexdigest(), 'license_verified': True}
-        with patch.object(Path, 'read_text', return_value=json.dumps(manifest)), \
+        with patch.object(argos, 'configure_offline_engine'), \
+                patch.object(Path, 'read_text', return_value=json.dumps(manifest)), \
                 patch.dict(sys.modules, {'argostranslate': root,
                                         'argostranslate.package': root.package,
                                         'argostranslate.translate': root.translate}), \

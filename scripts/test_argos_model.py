@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """固定モデルの実翻訳をRunner上で確認する。GitHubの更新APIは使わない。"""
 import json
+from unittest.mock import patch
 from argos_commit_translation import load_engine, translate_text
 
 
@@ -17,7 +18,9 @@ def main():
         'Fix GitHub Actions configuration',
     ]
     for source in samples:
-        target = translate_text(source, engine)
+        # モデル導入後はネットワークを禁止して実翻訳する。
+        with patch('socket.socket.connect', side_effect=AssertionError('翻訳中の外部通信')):
+            target = translate_text(source, engine)
         print(json.dumps({'source': source, 'target': target}, ensure_ascii=False))
         assert target.strip()
         for term in ('README.md', 'https://example.com/a', '#12', '`my_func`', 'v1.2.3', 'GitHub Actions'):

@@ -40,7 +40,7 @@ def load_engine():
     digest = manifest.get('sha256')
     if not isinstance(digest, str) or not re.fullmatch(r'[0-9a-f]{64}', digest):
         raise TranslationError('英日モデルのSHA256が未確認です。取得・実物確認後に固定してください。')
-    if not manifest.get('license_verified'):
+    if manifest.get('license_verified') is not True:
         raise TranslationError('英日モデル個別のライセンス確認が未完了です。')
     try:
         import argostranslate.package as package
@@ -78,12 +78,27 @@ def load_engine():
                                   installed[0].package_version) != ('en', 'ja', '1.1'):
             raise TranslationError('固定モデル以外がインストールされています。')
         engine = translate.get_translation_from_codes('en', 'ja')
+        configure_offline_engine(engine, installed[0])
         return engine.translate
     except TranslationError:
         raise
     except Exception as error:
         # 入力本文・外部応答はログへ出さない。
         raise TranslationError('Argosモデルの取得・検証・初期化に失敗しました。') from error
+
+
+def configure_offline_engine(engine, installed):
+    """ハッシュで検証した配布物内のStanzaだけを使い、追加取得を禁止する。"""
+    import stanza
+    from argostranslate.sbd import StanzaSentencizer
+    sentencizer = engine.underlying.sentencizer
+    if not isinstance(sentencizer, StanzaSentencizer):
+        raise TranslationError('固定モデルの文分割方式が変わったため停止しました。')
+    sentencizer.stanza_pipeline = stanza.Pipeline(
+        lang='en', dir=str(installed.package_path / 'stanza'),
+        processors={'tokenize': 'ewt'}, package=None,
+        download_method=None, use_gpu=False, logging_level='WARNING',
+    )
 
 
 # 翻訳器に本文の文脈を渡し、保護表記は衝突しない識別子で置き換える。
@@ -120,7 +135,7 @@ def translate_text(text, engine):
         except Exception as error:
             raise TranslationError('Argosによる翻訳に失敗しました。') from error
         if (not isinstance(target, str) or not target.strip() or '\x00' in target
-                or '\n' in target or not JAPANESE.search(target)):
+                or '\n' in target or '\r' in target or not JAPANESE.search(target)):
             raise TranslationError('翻訳結果が空・不正・未翻訳のため停止しました。')
         if sorted(MARKER.findall(source)) != sorted(MARKER.findall(target)):
             raise TranslationError('翻訳結果で保護表記が欠落・重複・変更されました。')
