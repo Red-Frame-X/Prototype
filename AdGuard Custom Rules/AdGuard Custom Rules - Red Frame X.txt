@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611080952
+! Version: 202611081007
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -184,6 +184,8 @@ news.google.com##[role="tablist"] [role="tab"][aria-label="ショーケース"]
 ! news.mynavi.jp#%#//scriptlet('prevent-addEventListener', 'DOMContentLoaded', 'registration_guide_modal')
 
 ! news.yahoo.co.jp
+! 記事ページの「あわせて読みたい記事」と同種の推薦記事フィードを見出し・余白ごと非表示
+news.yahoo.co.jp##aside.articleNewsFeed
 ! 「みんなの意見」の投票欄を、viewable_pollsと後続sectionを直下に持つ外枠ごと非表示
 news.yahoo.co.jp##div:has(> div#viewable_polls + section)
 ! 記事ページのコメント概要・フローティング表示を非表示
