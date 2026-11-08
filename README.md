@@ -24,6 +24,8 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 | バージョン | [Version日時の更新（日本標準時）](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-version-timestamps.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-version-timestamps.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
 | 保守 | [AdGuard変更履歴の更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-adguard-changelogs.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-adguard-changelogs.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
 | 保守 | [NG Word Regex for ChMate のVersion更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-chmate-ng-version.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| PR運用 | [PRのCommit日本語化とレビュー後の自動マージ](https://github.com/Red-Frame-X/Prototype/actions/workflows/japanese-commits.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/japanese-commits.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 翻訳検証 | [Argos英日モデルの実物検証](https://github.com/Red-Frame-X/Prototype/actions/workflows/argos-translation-test.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/argos-translation-test.yml?event=pull_request&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
 
 ## Repository案内
 
@@ -81,6 +83,15 @@ GitHub Actionsで、更新処理・変換・品質確認を自動化していま
 - Workflow失敗時は原因を確認して修正し、必要に応じて再発防止策を反映します。
 - uB-filter-by-kdroidwin (AdGuard Optimized)の定期同期・変換を行います。
 - AdGuard公式の変更履歴を定期確認します。
+
+英語のCommit messageやPull Requestのtitle/bodyの一般説明は、ローカルで動作するオープンソース翻訳ライブラリ[Argos Translate](https://github.com/argosopentech/argos-translate)の固定英日モデルを使い、GitHub ActionsのRunner内で日本語化します。この翻訳処理はOpenAI APIを使用せず、失敗時もAPIへ切り替えません。
+
+- `japanese-commits.yml`は5分ごとの定期実行、品質検査完了、手動実行でPRを確認します。同じRepository内でmainを対象とし、作成者に書き込み権限がある通常のPRが対象で、Fork・Draft・Bot作成のPRは対象外です。日本語化が不要なPRを新たに自動マージの対象には加えません。
+- `scripts/automate_japanese_commits.py`と`scripts/argos_commit_translation.py`が翻訳・検証を行います。モデルのSHA256・Metadataや、正式表記・URL・コードなどの保持を確認し、取得・翻訳・検証に失敗した場合は停止します。
+- 翻訳前後を確認した書き込み権限者の承認、最新SHAのCodex Review完了・指摘なし、専用の品質検査と他のCheck・Statusの成功などを確認してSquash mergeします。未解決のReview thread・変更要求・競合がある場合はマージしません。mainの既存履歴は書き換えません。
+- `argos-translation-test.yml`は翻訳関連ファイルを変更したPRで固定モデルの実翻訳・表記保護・翻訳開始後の通信禁止を検証し、PR更新やマージは行いません。
+
+依存関係は`requirements-translation.txt`、モデル情報は`.github/argos-model.json`で管理します。翻訳承認、手動実行のテストモード、停止設定、Workflow実行承認待ちなどの詳細は[PRのCommit日本語化と自動マージ](./.github/COMMIT_JA_AUTOMATION.md)を参照してください。
 
 ローカルで主要な検査を実行する場合：
 
