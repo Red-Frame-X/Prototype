@@ -14,6 +14,27 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_squash_merge_command_keeps_merge_as_english_prose(self):
+        from automate_japanese_commits import validate_translation
+        source = 'Squash merge main'
+        engine = Mock(side_effect=lambda value: value.replace(' merge ', 'で統合 '))
+        target = argos.translate_text(source, engine)
+        self.assertEqual(target, 'Squashで統合 main')
+        self.assertIn(' merge ', engine.call_args[0][0])
+        validate_translation({'title': source, 'body': '', 'commits': []},
+                             {'title': target, 'body': '', 'commits': []})
+
+    def test_term_suffix_does_not_mask_ordinary_english_word(self):
+        engine = Mock(return_value='字幕の描画を更新')
+        self.assertEqual(argos.translate_text('Update subtitle rendering', engine), '字幕の描画を更新')
+        engine.assert_called_once_with('Update subtitle rendering')
+
+    def test_japanese_commit_message_term_is_preserved(self):
+        source = '日本語の本文と全Commit messageを原文のまま扱います。'
+        engine = Mock()
+        self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+
     def test_english_merge_and_push_commands_are_translated(self):
         from automate_japanese_commits import validate_translation
         for verb in ('Merge', 'merge', 'push'):

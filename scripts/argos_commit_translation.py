@@ -28,15 +28,16 @@ TERMS = (
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
     'Yahoo!', 'ExtendedCss',
     'concurrency group', 'Commit Hook', 'Metadata', 'Committer', 'Bot',
-    'Squash merge', 'Squash', 'Merge SHA', 'pull-requests: read',
+    'Merge SHA', 'pull-requests: read',
     'AGENTS.md', 'CONTRIBUTING.md', 'Actions', 'actionlint', 'Review', 'fixture',
-    'Hook', 'title',
+    'Hook', 'title', 'message',
 )
 HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
     HASH_REFERENCE.pattern + r'|https?://[^\s<>]+|'
     r'(?<![A-Za-z0-9_])(?:[\w.-]+/[\w.-]+)?#\d+(?![A-Za-z0-9_])|'
-    + '|'.join(re.escape(term) + r'(?![A-Za-z0-9_./-])' for term in TERMS)
+    + '|'.join(r'(?<![A-Za-z0-9_./-])' + re.escape(term) + r'(?![A-Za-z0-9_./-])'
+               for term in sorted(TERMS, key=len, reverse=True))
     + r'|\b(?:[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+|v?\d+(?:\.\d+)+(?:[-+][\w.-]+)?|[A-Z][A-Z0-9_]+|'
       r'\w*[a-z][A-Z]\w*|\w+_\w+|[\w.-]+(?:/|\.)[\w./-]+)\b'
 )
@@ -149,7 +150,7 @@ MARKER = re.compile(r'ZXQ[0-9]+QXZ')
 TOKENS = re.compile(PROTECTED.pattern + r'|[ぁ-んァ-ヶ一-龠々ー][ぁ-んァ-ヶ一-龠々ー。、！？「」『』…]*')
 # 動詞としても使う表記は日本語の行だけで保持し、英語の命令文は翻訳する。
 JAPANESE_TOKENS = re.compile(
-    r'(?<![A-Za-z0-9_./-])(?:Merge|merge|push)(?![A-Za-z0-9_./-])|'
+    r'(?<![A-Za-z0-9_./-])(?:Squash merge|Squash|Merge|merge|push)(?![A-Za-z0-9_./-])|'
     + TOKENS.pattern)
 
 
