@@ -157,13 +157,14 @@ def validate_translation(original: dict, translated: dict) -> dict:
         if len(message.encode()) > 32_000:
             raise AutomationError('翻訳後のCommit messageが長すぎます。')
         messages[sha] = message
+    from argos_commit_translation import HASH_REFERENCE
     # URLやIssue参照など、翻訳によって壊してはいけない表記を機械的にも照合する。
     for before, after in [(original['title'], translated['title']),
                           (original['body'], translated['body']),
                           *[(expected[sha], messages[sha]) for sha in expected]]:
-        for pattern in (r'https?://[^\s<>\)]+', r'(?<!\w)#\d+\b', r'`[^`\n]+`'):
+        for pattern in (r'https?://[^\s<>\)]+', r'(?<!\w)#\d+\b', r'`[^`\n]+`', HASH_REFERENCE.pattern):
             if sorted(re.findall(pattern, before)) != sorted(re.findall(pattern, after)):
-                raise AutomationError('翻訳結果でURL・Issue参照・Code spanが変更されました。')
+                raise AutomationError('翻訳結果でURL・Issue参照・Code span・Commit hashが変更されました。')
     return {**translated, 'messages': messages}
 
 

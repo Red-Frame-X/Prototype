@@ -14,6 +14,38 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_naked_short_and_full_commit_hashes_are_protected(self):
+        hashes = ('c77ede4b', '1a2b3c4', 'a1' * 20)
+        source = 'Update ' + ' and '.join(hashes)
+        engine = Mock(side_effect=lambda value: value.replace('Update ', '').replace(' and ', 'と') + 'を更新')
+        target = argos.translate_text(source, engine)
+        for sha in hashes:
+            self.assertEqual(target.count(sha), 1)
+            self.assertNotIn(sha, engine.call_args[0][0])
+
+    def test_inflected_commit_verbs_are_translated(self):
+        for verb in ('Updated', 'Added', 'Fixed', 'Updating', 'Fixes', 'Removed', 'Built'):
+            engine = Mock(side_effect=lambda value: value.replace(verb + ' ', '') + 'を更新')
+            with self.subTest(verb=verb):
+                self.assertEqual(argos.translate_text(verb + ' README.md', engine), 'README.mdを更新')
+                self.assertTrue(engine.call_args[0][0].startswith(verb + ' '))
+
+    def test_japanese_conventional_commit_does_not_call_engine(self):
+        for text in ('fix: 説明を修正', 'feat(core): READMEの説明を更新', 'fix!: 説明を修正\n'):
+            engine = Mock()
+            with self.subTest(text=text):
+                self.assertEqual(argos.translate_text(text, engine), text)
+                engine.assert_not_called()
+
+    def test_code_span_and_other_fence_contents_are_opaque(self):
+        for text in ('`~~~`', '```python\nvalue = "~~~"\n```',
+                     '~~~python\nvalue = "```"\n~~~', '``literal ` character``',
+                     '````python\n```\n````'):
+            engine = Mock()
+            with self.subTest(text=text):
+                self.assertEqual(argos.translate_text(text, engine), text)
+                engine.assert_not_called()
+
     def test_english_is_translated(self):
         engine = Mock(return_value='説明を更新')
         self.assertEqual(argos.translate_text('Update description\n', engine), '説明を更新\n')

@@ -27,8 +27,9 @@ TERMS = (
     'Prototype', 'Red-Frame-X', 'Python', 'JavaScript', 'TypeScript', 'Node.js',
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
 )
+HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
-    r'```[\s\S]*?```|~~~[\s\S]*?~~~|`[^`\n]+`|https?://[^\s<>]+|'
+    HASH_REFERENCE.pattern + r'|https?://[^\s<>]+|'
     r'(?<!\w)(?:[\w.-]+/[\w.-]+)?#\d+\b|'
     + '|'.join(re.escape(term) + r'(?![A-Za-z0-9_./-])' for term in TERMS)
     + r'|\b(?:[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+|v?\d+(?:\.\d+)+(?:[-+][\w.-]+)?|[A-Z][A-Z0-9_]+|'
@@ -41,6 +42,17 @@ PROSE_WORDS = (
     'Configure|Enable|Disable|Bump|Pin|Migrate|Replace|Restore|Revert|Merge|Build|'
     'Sync|See|Do|This|The|A|An|In|For|To|With|Without|When|If|It|Please|Note'
 )
+# Commitで一般的な動詞は活用形も一般説明として扱う。
+verb_forms = set(PROSE_WORDS.split('|'))
+for verb in ('Update Fix Add Remove Delete Rename Refactor Improve Correct Create Change '
+             'Ensure Preserve Prevent Allow Use Support Handle Check Validate Test Document '
+             'Configure Enable Disable Bump Migrate Replace Restore Revert Merge Sync').split():
+    verb_forms.update((verb + ('d' if verb.endswith('e') else 'ed'),
+                       verb + ('es' if verb.endswith('x') else 's'),
+                       (verb[:-1] if verb.endswith('e') else verb) + 'ing'))
+verb_forms.update(('Kept', 'Keeping', 'Built', 'Building', 'Pinned', 'Pinning',
+                   'Did', 'Done', 'Doing', 'Saw', 'Seen', 'Seeing'))
+PROSE_WORDS = '|'.join(sorted(verb_forms, key=lambda word: (-len(word), word)))
 PROTECTED = re.compile(PROTECTED.pattern + r'|\b(?!(?:' + PROSE_WORDS
                        + r')\b)[A-Z][a-z]+\b')
 
@@ -125,30 +137,59 @@ MARKER = re.compile(r'ZXQ[0-9]+QXZ')
 TOKENS = re.compile(PROTECTED.pattern + r'|[ぁ-んァ-ヶ一-龠々ー][ぁ-んァ-ヶ一-龠々ー。、！？「」『』…]*')
 
 
+def markdown_segments(text):
+    """実際の行頭フェンスとCode spanを解析し、コードの中を再解釈しない。"""
+    opening_pattern = re.compile(r' {0,3}(`{3,}|~{3,})([^\r\n]*)(?:\r?\n|$)')
+    backticks = re.compile(r'`+')
+    position = plain_start = 0
+    while position < len(text):
+        end = None
+        if position == 0 or text[position - 1] == '\n':
+            opening = opening_pattern.match(text, position)
+            if opening and not (opening[1][0] == '`' and '`' in opening[2]):
+                fence = opening[1]
+                closing = re.compile(r'^ {0,3}' + re.escape(fence[0])
+                                     + r'{' + str(len(fence)) + r',}[ \t]*(?=\r?$)', re.MULTILINE)
+                match = closing.search(text, opening.end())
+                if match is None:
+                    raise TranslationError('コードブロックが完結していません。')
+                end = match.end()
+        if end is None and text[position] == '`':
+            delimiter = backticks.match(text, position)[0]
+            closing = re.compile(r'(?<!`)' + re.escape(delimiter) + r'(?!`)')
+            match = closing.search(text, position + len(delimiter))
+            if match is None:
+                raise TranslationError('Code spanが完結していません。')
+            end = match.end()
+        if end is None:
+            position += 1
+            continue
+        if plain_start < position:
+            yield False, text[plain_start:position]
+        yield True, text[position:end]
+        position = plain_start = end
+    if plain_start < len(text):
+        yield False, text[plain_start:]
+
+
 def translate_text(text, engine):
     if '\x00' in text or MARKER.search(text):
         raise TranslationError('入力にNULまたは予約した保護識別子があります。')
-    if text.count('```') % 2 or text.count('~~~') % 2:
-        raise TranslationError('コードブロックが完結していません。')
     tokens = {}
     def protect(match):
         marker = f'ZXQ{len(tokens):04d}QXZ'
         tokens[marker] = match[0]
         return marker
-    masked = TOKENS.sub(protect, text)
-    if '`' in masked:
-        raise TranslationError('Code spanが完結していません。')
+    masked = ''.join(protect((value,)) if code else TOKENS.sub(protect, value)
+                     for code, value in markdown_segments(text))
     result = []
     for line in masked.splitlines(keepends=True):
-        if not re.search(r'[A-Za-z]', MARKER.sub('', line)):
-            result.append(line)
-            continue
         # Markdownの行構造と公式原文の引用はそのまま残す。
         match = re.fullmatch(r'(\s*(?:(?:[a-z]+(?:\([^()\n]+\))?!?:[ \t]*)|(?:#{1,6}|[-*+]|[0-9]+[.)]|>) +)?)(.*?)(\s*)', line)
         if match is None:
             raise TranslationError('本文の行構造を解釈できません。')
         leading, source, trailing = match.groups()
-        if leading.lstrip().startswith('>'):
+        if leading.lstrip().startswith('>') or not re.search(r'[A-Za-z]', MARKER.sub('', source)):
             result.append(line)
             continue
         try:

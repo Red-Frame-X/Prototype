@@ -134,6 +134,17 @@ class TranslationTests(unittest.TestCase):
         with self.assertRaises(automation.AutomationError):
             automation.validate_translation(self.original, self.translated)
 
+    def test_changed_naked_commit_hash_is_rejected(self):
+        for sha in ('c77ede4b', 'a1' * 20):
+            original = copy.deepcopy(self.original)
+            translated = copy.deepcopy(self.translated)
+            original['body'] += ' ' + sha
+            translated['body'] += ' ' + sha
+            automation.validate_translation(original, translated)
+            translated['body'] = translated['body'].replace(sha, 'b2' * 20)
+            with self.subTest(sha=sha), self.assertRaises(automation.AutomationError):
+                automation.validate_translation(original, translated)
+
     def test_truncated_argos_output_is_rejected(self):
         with patch('argos_commit_translation.load_engine', return_value=lambda text: ''):
             with self.assertRaises(automation.AutomationError):
