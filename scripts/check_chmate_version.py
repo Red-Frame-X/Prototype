@@ -23,7 +23,7 @@ def show(ref: str, path=CHMATE_FILE) -> str | None:
 
 
 def check(before: str | None, after: str | None, reference: datetime,
-          checkpoint: str | None = None) -> None:
+          checkpoint: str | None = None, *, automated_sync: bool = False) -> None:
     if before == after:
         if after is not None:
             chmate_version(after)
@@ -33,16 +33,17 @@ def check(before: str | None, after: str | None, reference: datetime,
     stamp = chmate_version(after)
     actual = datetime.strptime(stamp, '%Y%m%d%H%M').replace(tzinfo=JST)
     normalized = version_text(CHMATE_FILE, after, '<VERSION>')
-    if before is not None and normalized != version_text(CHMATE_FILE, before, '<VERSION>'):
+    body_changed = before is None or normalized != version_text(CHMATE_FILE, before, '<VERSION>')
+    if before is not None and body_changed:
         if chmate_version(before) == stamp and stamp != reference.astimezone(JST).strftime('%Y%m%d%H%M'):
             raise ValueError('内容が変更されていますがVersionが更新されていません')
-    # mainに残った更新漏れの補完は、内容チェックポイントが未同期の場合だけ許可する。
-    if before is not None and normalized == version_text(CHMATE_FILE, before, '<VERSION>'):
+    if before is not None and not body_changed:
+        # チェックポイントの古さだけではVersion単独更新を正当化できない。
+        # 同期Script自身が生成したCommitで、かつ未同期ハッシュがある場合だけ許容する。
         state = json.loads(checkpoint) if checkpoint else {}
         digest = hashlib.sha256(normalized.encode('utf-8')).hexdigest()
-        if state.get(CHMATE_FILE.as_posix()) == digest:
+        if not automated_sync or state.get(CHMATE_FILE.as_posix()) == digest:
             raise ValueError('内容変更のない不要なVersion更新です')
-    # 分精度のMetadataとCommit直前の処理時間の差を許容する。UTCの値は9時間ずれる。
     delta = (reference.astimezone(JST) - actual).total_seconds()
     if not -60 < delta < 300:
         raise ValueError(f'Version {stamp} は更新時刻のJSTと一致しません '
@@ -69,7 +70,13 @@ def main() -> int:
             comparisons.append((commit[:12], f'{commit}^', commit, reference))
     for label, base, head, reference in comparisons:
         try:
-            check(show(base), show(head), reference, show(base, STATE_FILE))
+            message = git('show', '-s', '--format=%s', head).strip() if head else ''
+            automated_sync = message in {
+                'chore: Versionの日時を日本標準時で同期',
+                'NG Word Regex for ChMate のVersionを更新',
+            }
+            check(show(base), show(head), reference, show(base, STATE_FILE),
+                  automated_sync=automated_sync)
         except (ValueError, TypeError) as error:
             print(f'エラー: {label}: {CHMATE_FILE}: {error}。'
                   '内容変更と同じCommitに現在のJSTの ! Version: YYYYMMDDHHMM を含めてください。', file=sys.stderr)
