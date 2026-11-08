@@ -17,7 +17,7 @@ class VersionPrecommitTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        for name in ('scripts/check_adguard_version_timestamp.py', 'scripts/check_adguard_user_rule_edit.py', '.githooks/pre-commit'):
+        for name in ('scripts/check_chmate_version.py', 'scripts/update_version_timestamps.py', 'scripts/check_adguard_version_timestamp.py', 'scripts/check_adguard_user_rule_edit.py', '.githooks/pre-commit'):
             dest = self.root / name
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / name, dest)

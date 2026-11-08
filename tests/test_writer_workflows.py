@@ -52,15 +52,19 @@ class WriterWorkflowTests(unittest.TestCase):
 
     def test_chmate_manual_writer_retries_push_conflicts(self):
         _, text = self._load("update-chmate-ng-version.yml")
-        commit_index = text.index("git commit -m 'NG Word Regex for ChMate のVersionを更新'")
-        loop_index = text.index("for attempt in 1 2 3; do", commit_index)
+        loop_index = text.index("for attempt in 1 2 3; do")
         fetch_index = text.index("git fetch origin main", loop_index)
-        rebase_index = text.index("git rebase origin/main", fetch_index)
-        push_index = text.index("git push origin HEAD:main", rebase_index)
-        self.assertLess(commit_index, loop_index)
+        reset_index = text.index("git reset --hard origin/main", fetch_index)
+        update_index = text.index('python scripts/update_version_timestamps.py --pending --path "$file"', reset_index)
+        commit_index = text.index("git commit -m 'NG Word Regex for ChMate のVersionを更新'", update_index)
+        push_index = text.index("git push origin HEAD:main", commit_index)
         self.assertLess(loop_index, fetch_index)
-        self.assertLess(fetch_index, rebase_index)
-        self.assertLess(rebase_index, push_index)
+        self.assertLess(reset_index, update_index)
+        self.assertLess(commit_index, push_index)
+        self.assertNotIn("git rebase", text)
+        common, _ = self._load("update-version-timestamps.yml")
+        manual, _ = self._load("update-chmate-ng-version.yml")
+        self.assertEqual(common['concurrency'], manual['concurrency'])
 
     def test_chmate_workflow_change_dispatches_once_without_recursion(self):
         workflow, _ = self._load("update-chmate-ng-version.yml")

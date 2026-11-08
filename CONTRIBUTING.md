@@ -175,3 +175,36 @@ mainを対象に、Web直接編集、各Merge方式、許容する英語を検�
 GitHub Web UIやGitHub APIではHookが動きません。ルールとVersionを同じ書き込みに含め、
 PR作成前にCommitの差分を確認してください。PRの `AdGuardのVersion日時検査` は引き続き必須の確認です。
 後続CommitによるVersion更新では、先行Commitの更新漏れは解消しません。
+
+## NG Word Regex for ChMateのVersion同期
+
+対象は `NG Word Regex for ChMate/NG Word Regex for ChMate.txt` です。
+Chat / Work / Codexも本文変更と現在のJSTのVersionを同じCommitに含めます。
+ローカルでは `datetime.now(ZoneInfo("Asia/Tokyo")).strftime("%Y%m%d%H%M")`
+または `TZ=Asia/Tokyo date +%Y%m%d%H%M` で取得します。内容変更がなければ更新しません。
+
+品質検査はPRの各Commitとmainへのpushを検査します。Version行の欠落・重複・形式不正、
+存在しない日時、更新漏れ、不要なVersionのみの更新、Commit日時をJSTへ変換した値との
+ずれを検出します。処理からCommitまで5分未満を許容し、同じ分の編集は同値を許容します。
+数値だけの日時から元のタイムゾーンや実際の処理時刻を証明することはできません。
+Commit日時との照合でUTC等の9時間のずれを検出しますが、Commit日時の偽装までは防げません。
+
+既存の共通Workflow `update-version-timestamps.yml` はmainへのpush、品質検査完了、
+定期実行、手動実行で内容ハッシュとチェックポイントを比較し、未同期の編集を実行時のJSTで補完します。
+ChMate専用の手動Workflowも同じScriptを使い、同じconcurrency groupで直列化します。
+push競合時は最新mainから再生成し、3回失敗した場合はCIを失敗させます。
+欠落・重複・不正なVersion行は推測で修復せず、明確なエラーで停止します。
+
+| 編集経路 | 対応と制約 |
+| --- | --- |
+| Chat / Work / Codex | AGENTS.mdで同時更新を指示。指示を読まないツールもあるため、指示だけでは保証しない |
+| Git CLI | 導入済みHookでindexを検査。Hookは回避でき、全環境への自動導入はできない |
+| GitHub上の直接編集 | mainへのpush後に検査・補完。元のCommitに遡って追記はできない |
+| Pull Request | 各Commitの更新漏れを検出してCIを失敗させる。外部PRへ権限付きで自動書き込みしない |
+| GitHub Actions / API | 編集主体に関係なくハッシュで検出。GITHUB_TOKENのpushでWorkflowが起動しない場合は定期実行で回収 |
+
+mainの補完は別Commitとなり、チェックポイントも同時に記録します。同じ内容への再実行はCommitを作りません。
+Versionだけの手動変更はハッシュを変えないため自動同期の対象外であり、品質検査で検出します。
+Actions停止、権限不足、Branch保護、定期実行の遅延時は即時反映を保証できません。
+失敗したPRのマージを禁止するには品質検査を必須チェックにする保護設定が別途必要です。
+補完成功で過去の失敗したRunの結果が書き換わることもありません。

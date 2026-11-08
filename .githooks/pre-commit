@@ -5,6 +5,7 @@ set -euo pipefail
 repo_root="$(git rev-parse --show-toplevel)"
 python3 "$repo_root/scripts/check_adguard_version_timestamp.py" --staged
 python3 "$repo_root/scripts/check_adguard_user_rule_edit.py" --staged
+python3 "$repo_root/scripts/check_chmate_version.py" --staged
 tmp_dir="$(mktemp -d)"
 trap 'rm -rf "$tmp_dir"' EXIT
 git checkout-index --all --prefix="$tmp_dir/"
