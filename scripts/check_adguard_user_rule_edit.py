@@ -67,10 +67,16 @@ def active_rules(text: str) -> list[str]:
     ]
 
 
-def read(path: Path) -> str:
+def read(path: Path, *, staged: bool = False) -> str:
     try:
-        raw = path.read_bytes()
-    except OSError as exc:
+        if staged:
+            raw = subprocess.check_output(
+                ["git", "show", f":{path.relative_to(ROOT).as_posix()}"],
+                cwd=ROOT, stderr=subprocess.DEVNULL,
+            )
+        else:
+            raw = path.read_bytes()
+    except (OSError, subprocess.CalledProcessError) as exc:
         fail(f"読み取れません: {path}: {exc}")
 
     if b"\r" in raw:
@@ -97,6 +103,7 @@ def git_show(ref: str, path: Path) -> str | None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-ref", default=None)
+    parser.add_argument("--staged", action="store_true", help="作業ツリーではなくindexをHEADと比較します")
     parser.add_argument("--print-rules-sha256", action="store_true", help="有効ルール群の承認用SHA-256を表示します")
     parser.add_argument(
         "--allow-rule-removal",
@@ -107,8 +114,19 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    text = read(FILTER)
-    current_approvals = parse_approvals(read(APPROVALS)) if APPROVALS.exists() else {}
+    if args.staged:
+        if args.base_ref or args.allow_rule_removal:
+            parser.error("--staged は --base-ref / --allow-rule-removal と併用できません")
+        # HookでもCIと同じ承認記録を使う。未ステージの復元や承認消費で隠さない。
+        args.base_ref = "HEAD" if git_show("HEAD", FILTER) is not None else None
+        if git_show("", FILTER) is None and args.base_ref is None:
+            return 0
+        text = read(FILTER, staged=True)
+        raw_approvals = git_show("", APPROVALS)
+        current_approvals = parse_approvals(raw_approvals) if raw_approvals is not None else {}
+    else:
+        text = read(FILTER)
+        current_approvals = parse_approvals(read(APPROVALS)) if APPROVALS.exists() else {}
     lines = text.splitlines()
 
     trailing = [i for i, line in enumerate(lines, 1) if line.rstrip() != line]

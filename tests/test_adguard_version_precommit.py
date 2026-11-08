@@ -17,7 +17,7 @@ class VersionPrecommitTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        for name in ('scripts/check_adguard_version_timestamp.py', '.githooks/pre-commit'):
+        for name in ('scripts/check_adguard_version_timestamp.py', 'scripts/check_adguard_user_rule_edit.py', '.githooks/pre-commit'):
             dest = self.root / name
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / name, dest)
@@ -45,7 +45,7 @@ class VersionPrecommitTests(unittest.TestCase):
                               capture_output=True, check=check, env=self.env)
 
     def edit(self, name, stamp='202611080900'):
-        (self.root / name).write_text(f'! Version: {stamp}\nexample.com##.new\n')
+        (self.root / name).write_text(f'! Version: {stamp}\nexample.com##.old\nexample.com##.new\n')
 
     def test_hook_rejects_rule_changes_without_version_for_both_filters(self):
         for name in TARGETS:
@@ -68,6 +68,13 @@ class VersionPrecommitTests(unittest.TestCase):
         self.edit(TARGETS[0], '202611080901')
         self.git('add', TARGETS[0])
         self.git('commit', '-qm', 'ルールとVersionを更新')
+
+    def test_hook_rejects_unapproved_removal_with_version_update(self):
+        (self.root / TARGETS[0]).write_text('! Version: 202611080901\n')
+        self.git('add', TARGETS[0])
+        result = self.git('commit', '-qm', 'ルールを削除', check=False)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('明示的な承認がない', result.stdout + result.stderr)
 
     def test_hook_accepts_unrelated_commit(self):
         (self.root / 'other.txt').write_text('無関係な変更\n')

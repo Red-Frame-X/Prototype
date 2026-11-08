@@ -126,7 +126,7 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
             }],
         }
 
-    def exercise(self, base_approval=None, head_approval=None, after=None, workflow_event=None, missing_base=False, cli_approval=None):
+    def exercise(self, base_approval=None, head_approval=None, after=None, workflow_event=None, missing_base=False, cli_approval=None, staged=False, unstaged_after=None, unstaged_approval=None):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             (root / "scripts").mkdir()
@@ -155,6 +155,16 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
                 config.write_text(json.dumps({"version": 1, "approvals": []}), encoding="utf-8")
             if head_approval is not None:
                 config.write_text(json.dumps(head_approval), encoding="utf-8")
+            if staged:
+                git("add", ".")
+                if unstaged_after is not None:
+                    target.write_text(unstaged_after, encoding="utf-8")
+                if unstaged_approval is not None:
+                    config.write_text(json.dumps(unstaged_approval), encoding="utf-8")
+                return subprocess.run(
+                    ["python", str(script), "--staged"],
+                    cwd=root, text=True, capture_output=True,
+                )
             if workflow_event:
                 workflow = yaml.load((SCRIPT.parents[1] / ".github/workflows/quality.yml").read_text(), Loader=yaml.BaseLoader)
                 step = next(s for s in workflow["jobs"]["quality"]["steps"] if s["name"] == "AdGuardユーザールールの編集前検査")
@@ -173,6 +183,39 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
         result = self.exercise()
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("明示的な承認がない", result.stderr)
+
+    def test_staged_rejects_unapproved_yahoo_pair_removal(self):
+        selector = "div#newsFeed:has(> h2:contains(/^あなたにおすすめ$/)):has(> ul.newsFeed_list)"
+        self.baseline = (f"news.yahoo.co.jp#?#{selector}\n"
+                         f"news.yahoo.co.jp#@?#{selector}\nexample.net##.banner\n")
+        result = self.exercise(after="example.net##.banner\n", staged=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("(2件）", result.stderr)
+
+    def test_staged_accepts_exact_approval_and_consumption(self):
+        result = self.exercise(base_approval=self.approval(), staged=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_unstaged_restore_cannot_hide_staged_removal(self):
+        result = self.exercise(staged=True, unstaged_after=self.baseline)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("明示的な承認がない", result.stderr)
+
+    def test_unstaged_consumption_cannot_hide_staged_approval_reuse(self):
+        result = self.exercise(base_approval=self.approval(), head_approval=self.approval(),
+                               staged=True, unstaged_approval={"version": 1, "approvals": []})
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("承認の再利用", result.stderr)
+
+    def test_staged_cannot_self_approve(self):
+        result = self.exercise(head_approval=self.approval(), staged=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("明示的な承認がない", result.stderr)
+
+    def test_staged_rejects_crlf(self):
+        result = self.exercise(after=self.baseline.replace("\n", "\r\n"), staged=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("CR文字を検出", result.stderr)
 
     def test_diamond_container_addition_preserves_existing_rules(self):
         self.baseline = (

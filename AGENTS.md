@@ -24,6 +24,19 @@
   削除や根拠のない事実変更が許可されたことにはならない。
 - 日本語の文書を作成・修正する際は、日常の意思疎通で使う明確で自然な日本語を優先する。技術的な正確さと元の意味を保ち、不必要に硬い表現や機械的・定型的な言い回しを避ける。
 
+## AdGuardルール削除前の確認
+
+- 標準AdGuard Custom Rulesの削除は、ユーザーが依頼済みでも、先に
+  `AdGuard Custom Rules/README.md` の2段階の承認登録手順を実施する。
+  比較元のmainに承認があることを確認し、削除と同じ変更で承認を消費する。
+- Git CLIではHookを有効にし、Commit前に
+  `python scripts/check_adguard_user_rule_edit.py --staged` を実行する。
+  GitHub API / Web UIではHookが動かないため、最新mainから作業し、書き込み前に
+  `python scripts/check_adguard_user_rule_edit.py --base-ref origin/main` を実行する。
+  `--allow-rule-removal` の指定だけではCIの承認にならない。
+- 反映後は該当Commitの品質検査結果を確認する。失敗Runの再実行は当時の
+  Commitと比較元を使うため、後からの承認登録だけで過去の違反は解消しない。
+
 ## AdGuardルール編集時のVersion更新
 
 - `AdGuard Custom Rules` と `AdGuard DNS Custom Rules` の内容を変更する場合は、同じCommitに `! Version: YYYYMMDDHHMM` の更新を含める。日時は日本標準時を使う。
