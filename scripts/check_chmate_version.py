@@ -97,11 +97,13 @@ def merged_pr_source(commit: str) -> tuple[str, str] | None:
             git('fetch', '--no-tags', 'origin', sha)
         if show(head) != show(commit):
             raise ValueError('Squash後のTXTが元PRと一致しません')
-        if show(base) != show(commit + '^'):
-            raise ValueError('Squash前のTXTが元PRの比較元と一致しません')
+        parent = git('rev-parse', commit + '^').strip()
+        common = git('merge-base', parent, head).strip()
+        if show(common) != show(parent):
+            raise ValueError('元PRがSquash前のmainのTXT変更を取り込んでいません')
         if head == commit:
             raise ValueError('Squash元と反映後のSHAが同じです')
-        return base, head
+        return parent, head
     return None
 
 
@@ -113,17 +115,17 @@ def check_history(base: str, head: str, *, github_provenance: bool = False) -> b
             continue
         reference = datetime.fromisoformat(git('show', '-s', '--format=%cI', commit).strip())
         try:
+            # 許容時間内のSquashでも、元PRの途中の更新漏れを検査する。
+            if github_provenance and show(commit + '^') != show(commit):
+                source = merged_pr_source(commit)
+                if source:
+                    if check_history(*source):
+                        raise ValueError('Squash元PRのVersion検査に失敗しました')
+                    print(f'正常: {commit[:12]}: Squash元PRの内容・全CommitのJST日時を確認しました')
+                    continue
             check(show(commit + '^'), show(commit), reference, show(commit + '^', STATE_FILE),
                   automated_sync=synchronized_commit(commit))
-        except (ValueError, TypeError) as error:
-            if github_provenance and show(commit + '^') != show(commit):
-                try:
-                    source = merged_pr_source(commit)
-                    if source and not check_history(*source):
-                        print(f'正常: {commit[:12]}: Squash元PRの内容・全CommitのJST日時を確認しました')
-                        continue
-                except (ValueError, KeyError, OSError, subprocess.CalledProcessError) as provenance_error:
-                    print(f'エラー: Squash元の照合に失敗しました: {provenance_error}', file=sys.stderr)
+        except (ValueError, TypeError, KeyError, OSError, subprocess.CalledProcessError) as error:
             print(f'エラー: {commit[:12]}: {CHMATE_FILE}: {error}。'
                   '内容変更と同じCommitに現在のJSTの ! Version: YYYYMMDDHHMM を含めてください。', file=sys.stderr)
             failed = True
@@ -137,7 +139,7 @@ def main() -> int:
     mode.add_argument('--staged', action='store_true')
     parser.add_argument('--head', default='HEAD')
     parser.add_argument('--github-provenance', action='store_true',
-                        help='日時が異なるSquash CommitをGitHubのマージ済みPRと照合')
+                        help='変更CommitをGitHubのマージ済みPRと照合し、Squash元履歴も検査')
     args = parser.parse_args()
     if not args.staged:
         return int(check_history(args.base, args.head, github_provenance=args.github_provenance))

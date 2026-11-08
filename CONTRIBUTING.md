@@ -188,7 +188,7 @@ Chat / Work / Codexも本文変更と現在のJSTのVersionを同じCommitに含
 ずれを検出します。処理からCommitまで5分未満を許容し、同じ分の編集は同値を許容します。
 数値だけの日時から元のタイムゾーンや実際の処理時刻を証明することはできません。
 Commit日時との照合でUTC等の9時間のずれを検出しますが、Commit日時の偽装までは防げません。
-Squash mergeで日時が変わった場合は、GitHub APIのマージ済みPRとMerge SHA、
+Squash mergeは時間差にかかわらず、GitHub APIのマージ済みPRとMerge SHA、
 変更前後のTXTの一致を確認してから、元PRの全CommitのVersionと編集日時を再検査します。
 API取得や履歴取得に失敗した場合はCIを失敗させます。
 自動同期の例外にはBotのCommitter情報と、同じCommit内の内容チェックポイントも必要です。

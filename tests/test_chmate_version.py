@@ -158,7 +158,7 @@ class ChmateMergeHistoryTests(unittest.TestCase):
         with patch.dict(os.environ, GIT_AUTHOR_DATE=date, GIT_COMMITTER_DATE=date):
             self.git('commit', '-qm', title)
 
-    def squash(self, missing=False):
+    def squash(self, missing=False, merge_date='2026-11-08T00:45:00+09:00'):
         text = BEFORE + '! Dummy edit\n'
         if not missing:
             text = text.replace('202611080030', '202611080031')
@@ -170,7 +170,7 @@ class ChmateMergeHistoryTests(unittest.TestCase):
         self.source = self.git('rev-parse', 'HEAD')
         self.git('switch', '-q', 'main')
         self.git('checkout', 'source', '--', str(updater.CHMATE_FILE))
-        self.commit('遅延したSquash merge', '2026-11-08T00:45:00+09:00')
+        self.commit('Squash merge', merge_date)
         self.merged = self.git('rev-parse', 'HEAD')
         return {'merged_at': '2026-11-07T15:45:00Z', 'merge_commit_sha': self.merged,
                 'base': {'sha': self.base, 'repo': {'full_name': 'Example/Test'}},
@@ -179,7 +179,7 @@ class ChmateMergeHistoryTests(unittest.TestCase):
     def verify(self, payload):
         import io
         with patch.dict(os.environ, GITHUB_REPOSITORY='Example/Test', GH_TOKEN='test-placeholder'), patch.object(
-            checker.urllib.request, 'urlopen', return_value=io.BytesIO(json.dumps(payload).encode())
+            checker.urllib.request, 'urlopen', side_effect=lambda *args, **kwargs: io.BytesIO(json.dumps(payload).encode())
         ):
             return checker.check_history(self.base, self.merged, github_provenance=True)
 
@@ -191,6 +191,36 @@ class ChmateMergeHistoryTests(unittest.TestCase):
 
     def test_late_fix_in_original_pr_is_not_hidden_by_squash(self):
         pr = self.squash(missing=True)
+        self.assertTrue(self.verify([pr]))
+
+    def test_squash_after_source_incorporates_new_main_target_edit(self):
+        pr = self.squash()
+        # Squashをまだ行っていないmainと、既存PRのsourceを再現する。
+        self.git('reset', '--hard', self.base)
+        updater.CHMATE_FILE.write_text(BEFORE.replace('202611080030', '202611080032') + '! Main edit\n')
+        self.commit('mainの別編集', '2026-11-08T00:32:00+09:00')
+        parent = self.git('rev-parse', 'HEAD')
+        self.git('switch', '-q', 'source')
+        # Mergeの競合解消後のTreeを作り、両親を記録する。
+        updater.CHMATE_FILE.write_text(BEFORE.replace('202611080030', '202611080033') + '! Dummy edit\n! Main edit\n')
+        self.git('add', '.')
+        tree = self.git('write-tree')
+        with patch.dict(os.environ, GIT_AUTHOR_DATE='2026-11-08T00:33:00+09:00', GIT_COMMITTER_DATE='2026-11-08T00:33:00+09:00'):
+            source = self.git('commit-tree', tree, '-p', self.source, '-p', parent, '-m', 'mainの変更を統合')
+        self.git('reset', '--hard', source)
+        self.git('switch', '-q', 'main')
+        self.git('checkout', 'source', '--', str(updater.CHMATE_FILE))
+        self.commit('Squash merge', '2026-11-08T00:45:00+09:00')
+        self.merged = self.git('rev-parse', 'HEAD')
+        pr['merge_commit_sha'] = self.merged
+        pr['head']['sha'] = source
+        # APIのbase SHAがPR作成時のままでも、実際の共通祖先とmainを照合する。
+        self.assertFalse(self.verify([pr]))
+
+    def test_fast_squash_also_checks_original_missing_version(self):
+        pr = self.squash(missing=True, merge_date='2026-11-08T00:32:00+09:00')
+        # Squash後の最終差分だけなら通過しても、元履歴の違反は拒否する。
+        self.assertFalse(checker.check_history(self.base, self.merged))
         self.assertTrue(self.verify([pr]))
 
     def test_open_or_unrelated_pr_and_different_content_do_not_bypass(self):
