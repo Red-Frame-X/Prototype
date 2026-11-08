@@ -14,6 +14,18 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_english_merge_and_push_commands_are_translated(self):
+        from automate_japanese_commits import validate_translation
+        for verb in ('Merge', 'merge', 'push'):
+            with self.subTest(verb=verb):
+                source = verb + ' main'
+                engine = Mock(side_effect=lambda value: value.replace(verb + ' ', '') + 'へ統合')
+                target = argos.translate_text(source, engine)
+                self.assertEqual(target, 'mainへ統合')
+                engine.assert_called_once()
+                original = {'title': source, 'body': '', 'commits': []}
+                validate_translation(original, {'title': target, 'body': '', 'commits': []})
+
     def test_pr259_payload_is_unchanged_without_calling_translation_engine(self):
         from automate_japanese_commits import validate_translation
         original = json.loads((Path(__file__).parent / 'fixtures/pr259-japanese-translation.json').read_text())

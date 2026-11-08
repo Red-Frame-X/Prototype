@@ -28,9 +28,9 @@ TERMS = (
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
     'Yahoo!', 'ExtendedCss',
     'concurrency group', 'Commit Hook', 'Metadata', 'Committer', 'Bot',
-    'Squash merge', 'Squash', 'Merge SHA', 'Merge', 'push', 'pull-requests: read',
+    'Squash merge', 'Squash', 'Merge SHA', 'pull-requests: read',
     'AGENTS.md', 'CONTRIBUTING.md', 'Actions', 'actionlint', 'Review', 'fixture',
-    'Hook', 'title', 'merge',
+    'Hook', 'title',
 )
 HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
@@ -147,6 +147,10 @@ def configure_offline_engine(engine, installed):
 # 翻訳器に本文の文脈を渡し、保護表記は衝突しない識別子で置き換える。
 MARKER = re.compile(r'ZXQ[0-9]+QXZ')
 TOKENS = re.compile(PROTECTED.pattern + r'|[ぁ-んァ-ヶ一-龠々ー][ぁ-んァ-ヶ一-龠々ー。、！？「」『』…]*')
+# 動詞としても使う表記は日本語の行だけで保持し、英語の命令文は翻訳する。
+JAPANESE_TOKENS = re.compile(
+    r'(?<![A-Za-z0-9_./-])(?:Merge|merge|push)(?![A-Za-z0-9_./-])|'
+    + TOKENS.pattern)
 
 
 def markdown_segments(text):
@@ -212,8 +216,10 @@ def translate_text(text, engine):
         marker = f'ZXQ{len(tokens):04d}QXZ'
         tokens[marker] = match[0]
         return marker
-    masked = ''.join(protect((value,)) if code else TOKENS.sub(protect, value)
-                     for code, value in markdown_segments(text))
+    masked = ''.join(protect((value,)) if code else ''.join(
+        (JAPANESE_TOKENS if JAPANESE.search(line) else TOKENS).sub(protect, line)
+        for line in value.splitlines(keepends=True))
+        for code, value in markdown_segments(text))
     result = []
     for line in masked.splitlines(keepends=True):
         # Markdownの行構造と公式原文の引用はそのまま残す。
