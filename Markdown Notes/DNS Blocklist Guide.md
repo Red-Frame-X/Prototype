@@ -141,7 +141,7 @@ personalDNSfilterでは、購読リストにも親ドメイン照合が適用さ
 ### 複数リストを併用するときの注意
 複数リストの併用にはカバー範囲を補完できる利点がありますが、重複ドメインが増え、読み込み時間・メモリ使用量・更新負荷・誤ブロック原因の特定難易度が上がる可能性があります。特に、複数ソースを統合・最適化したリスト同士をさらに重ねても、増える保護範囲が小さい一方で切り分けが難しくなる場合があります。
 
-HaGeZiの主要なMultiリストは Multi LIGHT / Multi NORMAL / Multi PRO / Multi PRO++ / Multi ULTIMATE が段階的に積み上がる構成で、作者は最初の5種類について「いずれか1つを選ぶ」前提を明記しています。サイズ最適化版も通常版へ重ねるのではなく代替として扱います。
+HaGeZiの主要なMultiリストは Multi LIGHT / HaGeZi's Multi NORMAL - all-round protection / Multi PRO / Multi PRO++ / Multi ULTIMATE が段階的に積み上がる構成で、作者は最初の5種類について「いずれか1つを選ぶ」前提を明記しています。サイズ最適化版も通常版へ重ねるのではなく代替として扱います。
 
 #### 重ねる前に確認すること
 
@@ -175,11 +175,11 @@ SDNSFilterの [公式README](https://github.com/AdguardTeam/AdGuardSDNSFilter) �
 
 AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別します。AndroidでもDNS用の入力欄で使います。ただし、共通文書に載る `$client` などの一部修飾子はHome / DNS専用です。ブラウザ用の要素非表示ルールはDNS欄へ追加しません。
 
-### HaGeZi Multi NORMAL（総合保護）（personalDNSfilter向け）
+### HaGeZi's Multi NORMAL - all-round protection（personalDNSfilter向け）
 
 複数ソースを統合したコミュニティ管理リストです。作者の分類では「Relaxed to Balanced / Low」で、控えめ〜バランス型の開始候補です。personalDNSfilterには下記のDomains only形式を使用します。
 
-* **購読用URL**：HaGeZi Multi NORMAL（総合保護）
+* **購読用URL**：HaGeZi's Multi NORMAL - all-round protection
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi-onlydomains.txt
   ```
@@ -188,13 +188,13 @@ AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別し�
 
 | リスト | 作者の強度 / 機能破損リスク | 選ぶときの目安 |
 | :--- | :--- | :--- |
-| Light | Relaxed / Minimal | 軽量・保守的。Normalでも支障がある場合や低メモリ環境の候補 |
-| Normal | Relaxed to Balanced / Low | バランスを取りつつ控えめに開始。常時管理者がいない環境にも作者が案内 |
+| Light | Relaxed / Minimal | 軽量・保守的。HaGeZi's Multi NORMAL - all-round protectionでも支障がある場合や低メモリ環境の候補 |
+| HaGeZi's Multi NORMAL - all-round protection | Relaxed to Balanced / Low | バランスを取りつつ控えめに開始。常時管理者がいない環境にも作者が案内 |
 | Pro | Balanced / Low to moderate | 作者の推奨デフォルト。例外を調整できる管理者がいる環境向け |
 | Pro++ | Balanced to Aggressive / Moderate | 強力。問題発生時に調整できる経験者向け |
 | Ultimate | Aggressive / High | 非常に強力。正常機能への影響も許容して調整する熟練者向け |
 
-作者の [Cheat Sheet](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#cheat_multi) に基づく分類です。作者の推奨デフォルトはProですが、本ガイドでは控えめなNormalから開始します。Mini版はサイズ最適化版で、通常版への追加は不要です。
+作者の [Cheat Sheet](https://github.com/hagezi/dns-blocklists/blob/main/CHEATSHEET.md#cheat_multi) に基づく分類です。作者の推奨デフォルトはProですが、本ガイドでは控えめなHaGeZi's Multi NORMAL - all-round protectionから開始します。Mini版はサイズ最適化版で、通常版への追加は不要です。
 
 ### HaGeZi Threat Intelligence Feedsのmedium版（ブラウザー・モバイル用広告ブロッカー向け）
 
@@ -219,11 +219,11 @@ AdGuard DNS filtering syntaxはAdblock-style、Hosts、Domains onlyを区別し�
 
 ### AdGuard for Androidの場合
 
-**AdGuard DNS filter** または **HaGeZi Multi NORMAL（総合保護）** のAdblock形式を1つ選びます。導入手順とURLは本章の「初めて導入するときの手順」を参照してください。
+**AdGuard DNS filter** または **HaGeZi's Multi NORMAL - all-round protection** のAdblock形式を1つ選びます。導入手順とURLは本章の「初めて導入するときの手順」を参照してください。
 
 ### personalDNSfilterの場合
 
-2章の **HaGeZi Multi NORMAL（総合保護）** をDomains only形式で購読します。例外は `additionalHosts.txt` で管理します。これはAdGuardのAdblock-style構文とは異なる独自構文です。
+2章の **HaGeZi's Multi NORMAL - all-round protection** をDomains only形式で購読します。例外は `additionalHosts.txt` で管理します。これはAdGuardのAdblock-style構文とは異なる独自構文です。
 
 #### personalDNSfilterの例外を小さく作る
 
@@ -272,7 +272,7 @@ ads.example.com
 1. 現在のDNSサーバー、DNSフィルタ、ユーザールールを記録し、変更前に普段使うサイトやアプリが動くことを確認する。
 2. 「保護（Protection）→ DNS保護（DNS protection）」を開き、有効にする。DNSサーバーとDNSフィルタは別項目として確認する。
 3. DNSフィルタでAdGuard DNS filterが既に有効なら、同じURLを重複追加しない。なければ2章の購読URLをDNSフィルタとして追加する。
-4. HaGeZi Multi NORMAL（総合保護）を代わりに使う場合はAdGuard向けAdblock形式を選ぶ。下記URLは既存のDomains only版とは別形式である。
+4. HaGeZi's Multi NORMAL - all-round protectionを代わりに使う場合はAdGuard向けAdblock形式を選ぶ。下記URLは既存のDomains only版とは別形式である。
 
    ```text
    https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt
@@ -294,7 +294,7 @@ AdGuard DNSユーザールールの説明用例：
 #### personalDNSfilterへの導入
 
 1. 現在の購読URL、DNS設定、`additionalHosts.txt` の内容を保存する。
-2. 購読フィルタの設定欄へ、2章のHaGeZi Multi NORMAL（総合保護）（Domains only）のURLを指定する。初回の動作確認では、他の購読リストを一時的に外すか無効にして構成を把握する。
+2. 購読フィルタの設定欄へ、2章のHaGeZi's Multi NORMAL - all-round protection（Domains only）のURLを指定する。初回の動作確認では、他の購読リストを一時的に外すか無効にして構成を把握する。
 3. リストを更新し、ダウンロードと索引作成が完了するまで確認する。巨大なリストを `additionalHosts.txt` へ貼り付けない。
 4. 保護を有効にし、問い合わせのログと普段使うアプリの動作を確認する。リストを取得できただけでは、そのアプリのDNS通信が保護を経由している確認にはならない。
 5. 不具合が出たら5章で切り分け、必要な名前だけを `!login.example.com` のように追加する。保存後はアプリの再読み込み・再起動の案内に従い、例外が反映されたかログで確認する。
