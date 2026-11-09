@@ -4,6 +4,7 @@ import io
 import json
 from pathlib import Path
 import sys
+import subprocess
 import unittest
 import types
 import zipfile
@@ -66,6 +67,15 @@ class ArgosTranslationTests(unittest.TestCase):
                          '説明を更新\n\n注意: 説明を更新\n')
         engine.assert_called_once()
         self.assertIsNone(argos.find_trailer_block(source))
+
+    def test_whitespace_lines_cannot_cause_exponential_trailer_matching(self):
+        source = '説明\n\nCo-authored-by: Alice\n' + (' ' * 10 + '\n') * 100 + 'Update documentation'
+        script = ('import sys; sys.path.insert(0, sys.argv[1]); '
+                  'from argos_commit_translation import find_trailer_block; '
+                  'assert find_trailer_block(sys.stdin.read()) is None')
+        result = subprocess.run([sys.executable, '-c', script, str(argos.ROOT / 'scripts')],
+                                input=source, text=True, capture_output=True, timeout=5)
+        self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_diagnostic_identifies_field_without_disclosing_input(self):
         for location in ('title', 'body', 'commits[0].message'):

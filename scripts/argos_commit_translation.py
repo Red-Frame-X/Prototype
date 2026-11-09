@@ -159,7 +159,7 @@ MARKER = re.compile(r'ZXQ[0-9]+QXZ')
 # https://git-scm.com/docs/git-interpret-trailers
 TRAILER_BLOCK = re.compile(
     r'(?:\r?\n){2}((?:[A-Za-z0-9][A-Za-z0-9-]*:[^\r\n]*'
-    r'(?:\r?\n[ \t]+[^\r\n]+)*(?:\r?\n|$))+)[ \t\r\n]*\Z')
+    r'(?:\r?\n[ \t]+[^ \t\r\n][^\r\n]*)*(?:\r?\n|$))+)[ \t\r\n]*\Z')
 
 
 def find_trailer_block(text):
