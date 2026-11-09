@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611091730
+! Version: 202611100521
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -274,6 +274,10 @@ s.response.jp##.sp-ifad
 s.response.jp###danglingList
 ! サイドバーの広告枠とその余白を非表示
 s.response.jp##.aside-box-ad
+
+! reddit.com
+! Redditの左サイドバーに表示されるログイン・会員登録案内のみを非表示
+reddit.com##div#left-sidebar-container > faceplate-tracker[source="xpromo"][action="view"][noun="static_left_rail_banner"]
 
 ! sankei.com
 ! 無効化中：sankei.comでPianoのダミーofferId付き購入テンプレート通信を許可し、有料プランの申込・ログイン導線を復元
