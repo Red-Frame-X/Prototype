@@ -160,6 +160,16 @@ MARKER = re.compile(r'ZXQ[0-9]+QXZ')
 TRAILER_BLOCK = re.compile(
     r'(?:\r?\n){2}((?:[A-Za-z0-9][A-Za-z0-9-]*:[^\r\n]*'
     r'(?:\r?\n[ \t]+[^\r\n]+)*(?:\r?\n|$))+)[ \t\r\n]*\Z')
+
+
+def find_trailer_block(text):
+    """Note等の一般説明を避け、明示的なMetadata keyを含む末尾だけを扱う。"""
+    match = TRAILER_BLOCK.search(text)
+    if match and re.search(r'(?m)^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+:', match[1]):
+        return match
+    return None
+
+
 TOKENS = re.compile(PROTECTED.pattern + r'|[ぁ-んァ-ヶ一-龠々ー][ぁ-んァ-ヶ一-龠々ー。、！？「」『』…]*')
 # 動詞としても使う表記は日本語の行だけで保持し、英語の命令文は翻訳する。
 JAPANESE_TOKENS = re.compile(
@@ -188,7 +198,7 @@ def markdown_segments(text):
                 raise TranslationError('コードブロックが完結していません。')
         ranges.append((offsets[start], offsets[end]))
 
-    trailer = TRAILER_BLOCK.search(text)
+    trailer = find_trailer_block(text)
     if trailer and not any(start < len(text) and end > trailer.start(1)
                            for start, end in ranges):
         # コード範囲を優先し、Markdown本文中の例をMetadataと誤認しない。

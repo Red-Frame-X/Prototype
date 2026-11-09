@@ -58,6 +58,15 @@ class ArgosTranslationTests(unittest.TestCase):
         with self.assertRaises(argos.TranslationError):
             argos.translate_text('```text\n\nCo-authored-by: Alice <alice@example.com>', Mock())
 
+    def test_final_note_is_prose_rather_than_metadata(self):
+        source = '説明を更新\n\nNote: Update documentation\n'
+        engine = Mock(side_effect=lambda value: value.replace('Note:', '注意:')
+                      .replace('Update documentation', '説明を更新'))
+        self.assertEqual(argos.translate_text(source, engine),
+                         '説明を更新\n\n注意: 説明を更新\n')
+        engine.assert_called_once()
+        self.assertIsNone(argos.find_trailer_block(source))
+
     def test_diagnostic_identifies_field_without_disclosing_input(self):
         for location in ('title', 'body', 'commits[0].message'):
             original = {'title': '説明を更新', 'body': '',
