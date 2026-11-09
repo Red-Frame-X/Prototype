@@ -1,13 +1,4 @@
 {
   "version": 1,
-  "approvals": [
-    {
-      "rules_sha256": "48cce0a2d56b54a7be1ccb3287c2f09de2b9669982444a16498cf03b8ce0f1c2",
-      "rules": [
-        "news.yahoo.co.jp##div:has(> a[href^=\"/polls/\"][href$=\"/comments\"][data-cl-params*=\"_cl_vmodule:cmtfloat;\"])"
-      ],
-      "reason": "Yahoo!ニュースのcmtfloat限定条件は同じドメインの広いcmtfloat条件に包含されるため、PR #272で統合する。ユーザーがPR #272のマージを明示的に許可。",
-      "reference": "https://github.com/Red-Frame-X/Prototype/pull/272"
-    }
-  ]
+  "approvals": []
 }
