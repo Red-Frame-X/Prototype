@@ -9,6 +9,18 @@ SCRIPT = Path(__file__).resolve().parents[1] / "scripts/check_commit_titles.py"
 
 
 class CommitTitleTests(unittest.TestCase):
+    def test_diagnostic_examples_follow_japanese_message_policy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            message = Path(directory) / 'COMMIT_EDITMSG'
+            message.write_text('fix\n', encoding='utf-8')
+            result = subprocess.run(
+                ['python3', str(SCRIPT), '--message-file', str(message)],
+                capture_output=True, text=True,
+            )
+            self.assertEqual(result.returncode, 1)
+            self.assertIn('Markdown Notes のVersionを更新', result.stdout)
+            self.assertNotIn('Update Markdown Notes Version', result.stdout)
+
     def test_japanese_description_with_canonical_identifiers(self):
         self.assertTrue(valid_title("fix: AdGuard Custom Rules のVersion更新を修正 (#123)"))
         self.assertTrue(valid_title("Pull Request #123 をマージ"))

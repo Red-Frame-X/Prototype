@@ -155,6 +155,9 @@ def configure_offline_engine(engine, installed):
 
 # 翻訳器に本文の文脈を渡し、保護表記は衝突しない識別子で置き換える。
 MARKER = re.compile(r'ZXQ[0-9]+QXZ')
+# 式内の文字列と二重の単一引用符を先に消費し、文字列中の }} で閉じない。
+# 単一行の式を対象とし、不完全な式は翻訳せず停止する。
+ACTION_EXPRESSION = re.compile(r"\$\{\{(?:(?>'(?:''|[^'\r\n])*')|[^'}\r\n]|}(?!}))*}}")
 # Git公式の基本形式（空行に続く末尾のkey: valueと継続行）を保持する。
 # https://git-scm.com/docs/git-interpret-trailers
 TRAILER_BLOCK = re.compile(
@@ -208,6 +211,15 @@ def markdown_segments(text):
         position = plain_start = 0
         backticks = re.compile(r'`+')
         while position < len(value):
+            if value.startswith('${{', position):
+                expression = ACTION_EXPRESSION.match(value, position)
+                if expression is None:
+                    raise TranslationError('GitHub Actionsの式が未完結または複数行のため停止しました。')
+                if plain_start < position:
+                    yield False, value[plain_start:position]
+                yield True, expression[0]
+                position = plain_start = expression.end()
+                continue
             if value[position] != '`':
                 position += 1
                 continue

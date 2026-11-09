@@ -22,6 +22,8 @@ def main():
         '既存の説明\nUpdate README.md',
         '既存の説明: Update README.md',
         'Fix GitHub Actions configuration',
+        "Fix ${{ github.event_name == 'pull_request' }}",
+        "起動条件は${{ contains(github.ref, 'release') }}を使用",
         'Updated README.md',
         'Added documentation',
         'Fixed a bug',
@@ -43,6 +45,13 @@ def main():
             target = translate_text(source, engine)
         print(json.dumps({'source': source, 'target': target}, ensure_ascii=False))
         assert target.strip()
+        if '${{' in source:
+            from argos_commit_translation import ACTION_EXPRESSION
+            assert ACTION_EXPRESSION.findall(target) == ACTION_EXPRESSION.findall(source)
+            if source.startswith('Fix '):
+                assert '修正' in target
+            else:
+                assert target == source
         if '\nCo-authored-by:' in source:
             assert target.split('\n\n', 1)[1] == source.split('\n\n', 1)[1]
             assert '更新' in target.splitlines()[0]
