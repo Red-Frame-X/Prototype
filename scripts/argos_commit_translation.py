@@ -155,6 +155,11 @@ def configure_offline_engine(engine, installed):
 
 # 翻訳器に本文の文脈を渡し、保護表記は衝突しない識別子で置き換える。
 MARKER = re.compile(r'ZXQ[0-9]+QXZ')
+# Git公式の基本形式（空行に続く末尾のkey: valueと継続行）を保持する。
+# https://git-scm.com/docs/git-interpret-trailers
+TRAILER_BLOCK = re.compile(
+    r'(?:\r?\n){2}((?:[A-Za-z0-9][A-Za-z0-9-]*:[^\r\n]*'
+    r'(?:\r?\n[ \t]+[^\r\n]+)*(?:\r?\n|$))+)[ \t\r\n]*\Z')
 TOKENS = re.compile(PROTECTED.pattern + r'|[ぁ-んァ-ヶ一-龠々ー][ぁ-んァ-ヶ一-龠々ー。、！？「」『』…]*')
 # 動詞としても使う表記は日本語の行だけで保持し、英語の命令文は翻訳する。
 JAPANESE_TOKENS = re.compile(
@@ -182,6 +187,12 @@ def markdown_segments(text):
             if end - start < 2 or not re.fullmatch(closing, lines[end - 1]):
                 raise TranslationError('コードブロックが完結していません。')
         ranges.append((offsets[start], offsets[end]))
+
+    trailer = TRAILER_BLOCK.search(text)
+    if trailer and not any(start < len(text) and end > trailer.start(1)
+                           for start, end in ranges):
+        # コード範囲を優先し、Markdown本文中の例をMetadataと誤認しない。
+        ranges.append((trailer.start(1), len(text)))
 
     def inline_segments(value):
         position = plain_start = 0

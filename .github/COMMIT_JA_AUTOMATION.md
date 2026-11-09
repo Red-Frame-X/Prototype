@@ -84,6 +84,41 @@ PathをASCIIの境界・文字集合で先に保護し、未登録の固有名�
 固定実モデルの検証で原文の完全保持を確認します。英語説明、部分翻訳、参照破損、
 モデル失敗の既存Testを維持し、終了済みPR・処理中の終了・重複実行のTestも追加しています。
 
+## Git trailerの保護漏れと継続検証
+
+2026年11月9日の調査では、`Co-authored-by: Alice Example <alice@example.com>`と
+`Signed-off-by`のキー・メールアドレスが部分的に分割され、翻訳器へ渡ることを再現しました。
+分類は保護対象の取りこぼしと翻訳処理の停止です。実際の過去Runでこの問題が
+発生したことや、当時の日本語訳は確認していません。再現Testの入力を実障害の訳文として扱いません。
+
+Git公式の基本構文に従い、空行に続く末尾の`key: value`と継続行をブロック全体で
+保護します。コードブロックの判定を優先し、本文の説明まで一括で保護しません。
+翻訳後の検証でも元のtrailer末尾との完全一致を要求し、キー・著者・メールアドレス・
+重複・改行を保持します。独自の区切り文字やGit設定によるtrailer構文の拡張は対象外です。
+
+回帰Testは日本語本文の無変更、英語説明の翻訳、複数・重複trailer、日本語の名前、
+継続行、CRLF、trailerの改変・欠落・追加の拒否を検証します。
+`scripts/test_argos_model.py`にも英語Commitとtrailerの組み合わせを追加し、
+既存の固定モデルCIで実翻訳と原文保持を確認します。モデル・辞書・依存Versionは変更しません。
+
+調査した経路は次のとおりです。
+
+- `japanese-commits.yml`は既定BranchのScriptと固定Argos依存を導入します。
+  `automate_japanese_commits.py`がPR title・body・各Commit messageを取得し、
+  `argos_commit_translation.py`でMarkdown・技術表記・日本語を保護して行単位に翻訳し、
+  保護識別子の一致と未翻訳を検証して復元します。最終検証後、変更のあるPRにだけ適用します。
+- 翻訳の承認、最新SHAのCodex Review、品質検査、他のCheck、競合・未解決指摘の確認後に
+  PR title・bodyをSquash messageとして明示指定し、マージ後の実messageを照合します。
+  手動マージにはこのScriptの検証が自動適用されないため、確定前の確認が必要です。
+- Workflowのname・run-name・Step表示と、自動更新のCommitは各Workflowに日本語を
+  直接指定しています。Job ID・Step ID・式を翻訳する別の処理はありません。
+  Chat / Work / Codexの作成方針は`AGENTS.md`、HookとCIのtitle検査は
+  `scripts/check_commit_titles.py`です。これらはArgos翻訳器とは役割が異なります。
+
+今後の不具合は、原文・実際の結果・RunとSHA・分類・原因・公式根拠・対応Testを
+この文書と回帰Testへ追記します。一般説明の意味保持は識別子の一致だけでは保証できないため、
+翻訳前後の比較と人による承認を維持します。
+
 ## 一次資料
 
 - [Argos Translateの導入とPython API](https://github.com/argosopentech/argos-translate)
@@ -93,6 +128,7 @@ PathをASCIIの境界・文字集合で先に保護し、未登録の固有名�
 - [Codex Code Review](https://developers.openai.com/codex/cloud/code-review)
 - [GitHub Actionsによるイベント起動の制限](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)
 - [GitHub Pull Request Merge API](https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request)
+- [Git trailerの構文](https://git-scm.com/docs/git-interpret-trailers)
 
 ## OPENAI_API_KEYの依存関係
 
