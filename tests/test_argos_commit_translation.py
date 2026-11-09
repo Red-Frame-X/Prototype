@@ -366,6 +366,13 @@ class ArgosTranslationTests(unittest.TestCase):
                 argos.translate_text('Update README.md', lambda value: target)
 
     def test_fix_action_is_japanese_and_general_english_cannot_remain(self):
+        expression = "${{ github.event_name == 'pull_request' }}"
+        self.assertEqual(argos.translate_text('Fix ' + expression, lambda value: value),
+                         expression + 'を修正')
+        with self.assertRaises(argos.TranslationError):
+            argos.translate_text('Fix untranslated description', lambda value: value)
+        with self.assertRaises(argos.TranslationError):
+            argos.translate_text('Fix a bug', lambda value: 'Fix ')
         self.assertEqual(argos.translate_text('Fix README.md', lambda value: 'Fix ZXQ0000QXZの説明'),
                          'README.mdの説明を修正')
         with self.assertRaises(argos.TranslationError):

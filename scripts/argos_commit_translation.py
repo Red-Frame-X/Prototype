@@ -276,15 +276,15 @@ def translate_text(text, engine):
             target = engine(source)
         except Exception as error:
             raise TranslationError('Argosによる翻訳に失敗しました。') from error
+        # Fixと保護識別子だけの応答にも、既存の固定表現を適用してから検証する。
+        if (isinstance(target, str) and source.startswith('Fix ') and target.startswith('Fix ')
+                and target[4:].strip()):
+            target = target[4:].rstrip('。') + 'を修正'
         if (not isinstance(target, str) or not target.strip() or '\x00' in target
                 or '\n' in target or '\r' in target or not JAPANESE.search(target)):
             raise TranslationError('翻訳結果が空・不正・未翻訳のため停止しました。')
         if sorted(MARKER.findall(source)) != sorted(MARKER.findall(target)):
             raise TranslationError('翻訳結果で保護表記が欠落・重複・変更されました。')
-        # 英日モデルがCommitの命令形Fixだけを英語で残す場合の固定表現。
-        # 残りの句の訳と保護識別子は保持し、動作を日本語で明示する。
-        if source.startswith('Fix ') and target.startswith('Fix '):
-            target = target[4:].rstrip('。') + 'を修正'
         if re.search(r'[A-Za-z]', MARKER.sub('', target)):
             raise TranslationError('一般説明に未翻訳の英語が残っています。')
         result.append(leading + target + trailing)
