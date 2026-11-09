@@ -309,7 +309,7 @@ AdGuard for AndroidのDNS protectionでは、**DNS server / DNS filters / user r
 
 * **DNS server**：DNS問い合わせをどこで解決するかを決める
 * **DNS filter**：問い合わせ先ドメインをブロック・許可するためのルールセット
-* **User rules**：ユーザーが独自に追加するDNSブロック／例外ルール
+* **User rules**：ユーザーが独自に追加するDNSブロック / 例外ルール
 
 したがって、「DNSサーバー」と「DNSブロックリスト」は同じものではありません。フィルタリングDNSサーバー自体がblocklistを持つ場合もありますが、AdGuard for Android側でDNS filterを追加してローカルに判定する構成も可能です。
 
