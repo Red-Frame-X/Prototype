@@ -15,6 +15,50 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_actions_expressions_are_opaque_while_prose_is_translated(self):
+        for expression in ("${{ github.event_name == 'pull_request' }}",
+                           "${{ contains(github.ref, 'release') }}",
+                           "${{ format('It''s }} `text` {0}', github.ref) }}"):
+            with self.subTest(expression=expression):
+                engine = Mock(side_effect=lambda value: value.replace('Fix ', '') + 'を修正')
+                self.assertEqual(argos.translate_text('Fix ' + expression, engine),
+                                 expression + 'を修正')
+                engine.assert_called_once_with('Fix ZXQ0000QXZ')
+                unchanged = Mock()
+                source = expression + 'の起動条件を確認'
+                self.assertEqual(argos.translate_text(source, unchanged), source)
+                unchanged.assert_not_called()
+
+    def test_actions_expression_validation_rejects_changes_and_duplicates(self):
+        from automate_japanese_commits import validate_translation, AutomationError
+        expression = "${{ github.event_name == 'pull_request' }}"
+        source = '起動条件を確認: ' + expression
+        original = {'title': '起動条件を確認', 'body': source, 'commits': []}
+        validate_translation(original, original)
+        for target in (source.replace('==', '!='), source.replace('pull_request', 'push'),
+                       '起動条件を確認', source + expression):
+            with self.subTest(target=target), self.assertRaisesRegex(AutomationError, '式'):
+                validate_translation(original, {**original, 'body': target})
+
+    def test_incomplete_actions_expressions_stop_without_engine_call(self):
+        for source in ("Fix ${{ github.ref", "Fix ${{ 'unclosed }}",
+                       "Fix ${{ github.ref\n}}"):
+            engine = Mock()
+            with self.subTest(source=source), self.assertRaises(argos.TranslationError):
+                argos.translate_text(source, engine)
+            engine.assert_not_called()
+        source = '`' + '${{ incomplete' + '`'
+        self.assertEqual(argos.translate_text(source, Mock()), source)
+
+    def test_unclosed_expression_with_many_quotes_finishes_promptly(self):
+        script = ('import sys; sys.path.insert(0, sys.argv[1]); '
+                  'from argos_commit_translation import ACTION_EXPRESSION; '
+                  'assert ACTION_EXPRESSION.match(sys.stdin.read()) is None')
+        result = subprocess.run([sys.executable, '-c', script, str(argos.ROOT / 'scripts')],
+                                input='${{' + "'" * 1000 + 'x', text=True,
+                                capture_output=True, timeout=5)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_trailer_block_is_opaque_and_prose_is_translated(self):
         from automate_japanese_commits import validate_translation
         for newline in ('\n', '\r\n'):
@@ -322,6 +366,13 @@ class ArgosTranslationTests(unittest.TestCase):
                 argos.translate_text('Update README.md', lambda value: target)
 
     def test_fix_action_is_japanese_and_general_english_cannot_remain(self):
+        expression = "${{ github.event_name == 'pull_request' }}"
+        self.assertEqual(argos.translate_text('Fix ' + expression, lambda value: value),
+                         expression + 'を修正')
+        with self.assertRaises(argos.TranslationError):
+            argos.translate_text('Fix untranslated description', lambda value: value)
+        with self.assertRaises(argos.TranslationError):
+            argos.translate_text('Fix a bug', lambda value: 'Fix ')
         self.assertEqual(argos.translate_text('Fix README.md', lambda value: 'Fix ZXQ0000QXZの説明'),
                          'README.mdの説明を修正')
         with self.assertRaises(argos.TranslationError):

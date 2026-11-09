@@ -71,7 +71,7 @@ def main() -> int:
             continue
         if vague_title(title):
             print(f"{commit}: 変更対象と内容を具体的に記述してください: {title!r}")
-            print("例: Markdown Notes のリンク表記を修正 / Update Markdown Notes Version")
+            print("例: Markdown Notes のリンク表記を修正 / Markdown Notes のVersionを更新")
             failed = True
         for non_canonical, canonical in invalid_names(title):
             print(

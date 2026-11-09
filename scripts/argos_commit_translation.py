@@ -155,6 +155,9 @@ def configure_offline_engine(engine, installed):
 
 # 翻訳器に本文の文脈を渡し、保護表記は衝突しない識別子で置き換える。
 MARKER = re.compile(r'ZXQ[0-9]+QXZ')
+# 式内の文字列と二重の単一引用符を先に消費し、文字列中の }} で閉じない。
+# 単一行の式を対象とし、不完全な式は翻訳せず停止する。
+ACTION_EXPRESSION = re.compile(r"\$\{\{(?:(?>'(?:''|[^'\r\n])*')|[^'}\r\n]|}(?!}))*}}")
 # Git公式の基本形式（空行に続く末尾のkey: valueと継続行）を保持する。
 # https://git-scm.com/docs/git-interpret-trailers
 TRAILER_BLOCK = re.compile(
@@ -208,6 +211,15 @@ def markdown_segments(text):
         position = plain_start = 0
         backticks = re.compile(r'`+')
         while position < len(value):
+            if value.startswith('${{', position):
+                expression = ACTION_EXPRESSION.match(value, position)
+                if expression is None:
+                    raise TranslationError('GitHub Actionsの式が未完結または複数行のため停止しました。')
+                if plain_start < position:
+                    yield False, value[plain_start:position]
+                yield True, expression[0]
+                position = plain_start = expression.end()
+                continue
             if value[position] != '`':
                 position += 1
                 continue
@@ -264,15 +276,15 @@ def translate_text(text, engine):
             target = engine(source)
         except Exception as error:
             raise TranslationError('Argosによる翻訳に失敗しました。') from error
+        # Fixと保護識別子だけの応答にも、既存の固定表現を適用してから検証する。
+        if (isinstance(target, str) and source.startswith('Fix ') and target.startswith('Fix ')
+                and target[4:].strip()):
+            target = target[4:].rstrip('。') + 'を修正'
         if (not isinstance(target, str) or not target.strip() or '\x00' in target
                 or '\n' in target or '\r' in target or not JAPANESE.search(target)):
             raise TranslationError('翻訳結果が空・不正・未翻訳のため停止しました。')
         if sorted(MARKER.findall(source)) != sorted(MARKER.findall(target)):
             raise TranslationError('翻訳結果で保護表記が欠落・重複・変更されました。')
-        # 英日モデルがCommitの命令形Fixだけを英語で残す場合の固定表現。
-        # 残りの句の訳と保護識別子は保持し、動作を日本語で明示する。
-        if source.startswith('Fix ') and target.startswith('Fix '):
-            target = target[4:].rstrip('。') + 'を修正'
         if re.search(r'[A-Za-z]', MARKER.sub('', target)):
             raise TranslationError('一般説明に未翻訳の英語が残っています。')
         result.append(leading + target + trailing)

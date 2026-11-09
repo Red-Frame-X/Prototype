@@ -125,6 +125,68 @@ Git設定によるtrailer構文の拡張は対象外です。
 この文書と回帰Testへ追記します。一般説明の意味保持は識別子の一致だけでは保証できないため、
 翻訳前後の比較と人による承認を維持します。
 
+## GitHub Actionsの式の保護と翻訳品質の継続確認
+
+2026年11月9日の追加調査では、Code spanの外にある式
+`${{ github.event_name == 'pull_request' }}`が単語単位に分割され、演算子や
+文字列が翻訳器へ渡ることを確認しました。これは前処理の保護漏れです。
+過去Runでの破損や当時の訳文は未確認です。
+単一行の式全体を翻訳前に保護し、復元後も出現数を含めて完全一致を要求します。
+式内の文字列にある`}}`と`''`は区切りと混同しません。未完結・複数行の式は
+推測で補わず停止します。Code span・コードブロック内は従来どおり原文を保持します。
+固定Argosモデル、依存Version、承認、Codex Review、CI、マージ条件は維持します。
+
+回帰Testでは式の完全保持、周囲の英語説明の翻訳、日本語文面の無変更、式の変更・
+欠落・重複の拒否、未完結時の停止を確認します。固定実モデルの検証にも同じ入力を
+追加します。Mockによる前処理検証と実モデルによる翻訳品質の検証は区別します。
+引用文字列の照合を確定し、大量の引用符を含む不一致入力でも指数的な
+バックトラックを起こさないことを、別プロセスの5秒制限付きTestで確認します。
+追加した実モデル入力`Fix`と式の組み合わせでは、保護後の応答に日本語がなく、
+既存の`Fix`の固定表現を適用する前に検証が停止しました。既存の固定表現を
+日本語検証より先に適用し、式だけを伴う変更説明にも使えるようにします。
+空の目的語・残った英語説明・保護識別子の破損は引き続き拒否します。
+
+訳語はGitHub Docsの英語版・日本語版、Git公式文書、対象製品の公式資料の順に
+意味を照合します。未確認の訳語を確定せず、自然な日本語と原文の意味を人が確認します。
+次の表は文脈判断の指針であり、一括置換用の辞書ではありません。
+
+| 原語 | 判断の指針 |
+| --- | --- |
+| Workflow / Job / Step / Runner | Workflowは自動化全体、JobはRunner上の処理単位、StepはJob内の手順、Runnerは実行環境として区別する |
+| Check / Review / Run | 一般説明は確認・検査、レビュー、実行とする。GitHub Checks、Codex Review、実行履歴との違いを確認する |
+| Action / Dispatch / Trigger | GitHub Actionと一般の操作を区別する。`workflow_dispatch`は識別子を保持し、説明では手動実行など実際の起動条件を述べる |
+| Merge / Squash / Rebase | マージ・リベースの意味を維持し、Squash mergeを一般的な圧縮と混同しない |
+| Artifact / Cache | 成果物・キャッシュとする。Workflow成果物かビルド成果物かを原文から判断する |
+| Failed / Skipped / Cancelled / Pending / Required | 失敗・スキップ・キャンセル・保留中または待機中・必須を文脈に応じて使う。API値は原表記を保持する |
+| Fix / Improve / Add / Remove / Restore / Update | 修正・改善・追加・削除・復元・更新を区別する。実施していない変更や検証を補わない |
+| Validation / Verification / Regression test / Syntax check | 検証・確認、回帰テスト、構文検査を使う。Testの追加と修正を混同しない |
+
+GitHub・Git・Commit・Commit message・Pull Request・Issue・Branch・Repository・
+GitHub Actions・Workflow・GitHub CLI・GitHub API・Codex Review、CI・CI/CD・Lint・
+Test・Script・Python・JavaScript・YAML・JSON・API・SDK・CLIとプロジェクト固有名詞は
+英語表記を優先します。一般説明まで英語化しません。これは作成・レビューの方針であり、
+既存の保護辞書が任意の大小文字・未知の固有名詞を完全に扱う保証ではありません。
+
+翻訳の変更時は原文・結果・Run・SHAを確認し、共通原因を特定してから最小限修正します。
+回帰Testでは重要な意味と保護対象を検証し、自然な訳文の違いだけで不合格にしません。
+URL・ファイル名・SHA・Issue参照・CLIと引数・環境変数は原表記と照合します。
+複雑なコマンド・Shell展開・未知の名前はCode spanで明示的に保護してください。
+全Python Test、Lint、内容消失防止検査、diff、品質CIと固定実モデルCIを確認し、
+新しい入力に限らず既存PRのスナップショットへの影響も確認します。
+
+自動翻訳対象はPR title・body・Commit messageです。Issue本文・コメント・Reviewコメント・
+CI診断・README本文を自動翻訳する機能は確認していません。これらの編集は同じ用語方針で
+人が確認し、公式原文の引用やログを保持します。継続改善は既存CIとこの記録で行い、
+アカウント全体の常時監視が設定済みとは扱いません。
+
+- [GitHub Actionsの概念（英語）](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)
+- [GitHub Actionsの概念（日本語）](https://docs.github.com/ja/actions/concepts/workflows-and-actions/workflows)
+- [式と引用符の仕様（英語）](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions)
+- [式と引用符の仕様（日本語）](https://docs.github.com/ja/actions/reference/workflows-and-actions/expressions)
+
+日本語版の説明に区切り表記の揺れがあるため、式の構文は英語版と両版のコード例を
+照合しました。日本語の一般説明と、構文・コード識別子の原表記は別に確認します。
+
 ## 一次資料
 
 - [Argos Translateの導入とPython API](https://github.com/argosopentech/argos-translate)
