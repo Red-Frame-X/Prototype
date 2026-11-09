@@ -34,6 +34,8 @@ def main():
         '    ~~~sh\n    echo hello\n',
         '- [x] Update README.md',
         '- [x] 説明を更新',
+        'Update documentation\n\nCo-authored-by: Alice Example <alice@example.com>\n'
+        'Signed-off-by: 日本語の名前 <author@example.com>\n',
     ]
     for source in samples:
         # モデル導入後はネットワークを禁止して実翻訳する。
@@ -41,6 +43,9 @@ def main():
             target = translate_text(source, engine)
         print(json.dumps({'source': source, 'target': target}, ensure_ascii=False))
         assert target.strip()
+        if '\nCo-authored-by:' in source:
+            assert target.split('\n\n', 1)[1] == source.split('\n\n', 1)[1]
+            assert '更新' in target.splitlines()[0]
         expected = {
             'Update documentation': ('ドキュメント', '更新'),
             'Fix a bug': ('バグ', '修正'),

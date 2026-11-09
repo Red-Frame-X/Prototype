@@ -4,6 +4,7 @@ import io
 import json
 from pathlib import Path
 import sys
+import subprocess
 import unittest
 import types
 import zipfile
@@ -14,6 +15,68 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_trailer_block_is_opaque_and_prose_is_translated(self):
+        from automate_japanese_commits import validate_translation
+        for newline in ('\n', '\r\n'):
+            trailers = newline.join((
+                'Co-authored-by: Alice Example <alice@example.com>',
+                'Signed-off-by: 日本語の名前 <author@example.com>',
+                'Reviewed-by: Bob Example <bob@example.com>',
+                'Reviewed-by: Bob Example <bob@example.com>',
+                'Custom-Metadata: Keep original English',
+                ' continuation with #12 and abcdef1', ''))
+            source = 'Update documentation' + newline * 2 + trailers
+            engine = Mock(side_effect=lambda value: value.replace('Update documentation', '説明を更新'))
+            target = argos.translate_text(source, engine)
+            self.assertEqual(target, '説明を更新' + newline * 2 + trailers)
+            engine.assert_called_once_with('Update documentation')
+            original = {'title': '説明を更新', 'body': '',
+                        'commits': [{'sha': 'a' * 40, 'message': source}]}
+            validate_translation(original, {**original, 'commits': [
+                {'sha': 'a' * 40, 'message': target}]})
+
+    def test_japanese_message_with_trailers_never_calls_engine(self):
+        source = '説明を更新\n\nCo-authored-by: Alice Example <alice@example.com>\n'
+        engine = Mock()
+        self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+
+    def test_payload_validation_rejects_trailer_changes(self):
+        from automate_japanese_commits import validate_translation, AutomationError
+        source = '説明を更新\n\nCo-authored-by: Alice Example <alice@example.com>\n'
+        original = {'title': '説明を更新', 'body': source, 'commits': []}
+        for target in (source.replace('Co-authored-by', '共同著者'),
+                       source.replace('Alice', 'Bob'), source.split('\n\n')[0],
+                       source.replace('Co-authored-by:', 'Reviewed-by: Bob\nCo-authored-by:'),
+                       source + 'Co-authored-by: Bob <bob@example.com>\n'):
+            with self.subTest(target=target), self.assertRaisesRegex(AutomationError, 'trailer'):
+                validate_translation(original, {**original, 'body': target})
+
+    def test_trailer_examples_do_not_hide_prose_or_unclosed_fences(self):
+        source = '説明を更新\n\nCo-authored-by: Alice <alice@example.com>\n\nUpdate documentation'
+        self.assertIsNone(argos.TRAILER_BLOCK.search(source))
+        self.assertEqual(list(argos.markdown_segments(source)), [(False, source)])
+        with self.assertRaises(argos.TranslationError):
+            argos.translate_text('```text\n\nCo-authored-by: Alice <alice@example.com>', Mock())
+
+    def test_final_note_is_prose_rather_than_metadata(self):
+        source = '説明を更新\n\nNote: Update documentation\n'
+        engine = Mock(side_effect=lambda value: value.replace('Note:', '注意:')
+                      .replace('Update documentation', '説明を更新'))
+        self.assertEqual(argos.translate_text(source, engine),
+                         '説明を更新\n\n注意: 説明を更新\n')
+        engine.assert_called_once()
+        self.assertIsNone(argos.find_trailer_block(source))
+
+    def test_whitespace_lines_cannot_cause_exponential_trailer_matching(self):
+        source = '説明\n\nCo-authored-by: Alice\n' + (' ' * 10 + '\n') * 100 + 'Update documentation'
+        script = ('import sys; sys.path.insert(0, sys.argv[1]); '
+                  'from argos_commit_translation import find_trailer_block; '
+                  'assert find_trailer_block(sys.stdin.read()) is None')
+        result = subprocess.run([sys.executable, '-c', script, str(argos.ROOT / 'scripts')],
+                                input=source, text=True, capture_output=True, timeout=5)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_diagnostic_identifies_field_without_disclosing_input(self):
         for location in ('title', 'body', 'commits[0].message'):
             original = {'title': '説明を更新', 'body': '',
