@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611100521
+! Version: 202611100704
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -120,6 +120,10 @@ google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 ! googleapis.com
 ! Googleアプリでsearchnotifications-pa.googleapis.comへの通信を許可し、Gemini・Googleアシスタントの通信エラーやタイムアウトを回避
 @@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox
+
+! jomo-p.co.jp
+! Cookie同意バナーを非表示（同意状態は変更しない）
+jomo-p.co.jp##.c-cookie__box
 
 ! jbpress.ismedia.jp
 ! JBpressのセミナー案内ポップアップを非表示
@@ -286,6 +290,10 @@ reddit.com##div#left-sidebar-container > faceplate-tracker[source="xpromo"][acti
 ! sellmylaptops.com
 ! 画面下部に固定されたPrivacy Policyリンク付きCookieバナーを非表示
 sellmylaptops.com##div[style*="position:"][style*="fixed"][style*="bottom:"]:has(> p > a[href$="/privacy"])
+
+! teraokatape.co.jp
+! Cookie同意バナーを非表示（同意状態は変更しない）
+teraokatape.co.jp##.g-cookie-alert[data-js="alert"]
 
 ! tiktok.com
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避
