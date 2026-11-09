@@ -86,7 +86,7 @@ GitHub Actionsで、更新処理・変換・品質確認を自動化していま
 - uB-filter-by-kdroidwin (AdGuard Optimized)の定期同期・変換を行います。
 - AdGuard公式の変更履歴を定期確認します。
 
-英語のCommit messageやPull Requestのtitle/bodyの一般説明は、ローカルで動作するオープンソース翻訳ライブラリ [Argos Translate](https://github.com/argosopentech/argos-translate) の固定英日モデルを使い、GitHub ActionsのRunner内で日本語化します。この翻訳処理はOpenAI APIを使用せず、失敗時もAPIへ切り替えません。
+英語のCommit messageやPull Requestのtitle / bodyの一般説明は、ローカルで動作するオープンソース翻訳ライブラリ [Argos Translate](https://github.com/argosopentech/argos-translate) の固定英日モデルを使い、GitHub ActionsのRunner内で日本語化します。この翻訳処理はOpenAI APIを使用せず、失敗時もAPIへ切り替えません。
 
 - `japanese-commits.yml`は5分ごとの定期実行、品質検査完了、手動実行でPRを確認します。同じRepository内でmainを対象とし、作成者に書き込み権限がある通常のPRが対象で、Fork・Draft・Bot作成のPRは対象外です。日本語化が不要なPRを新たに自動マージの対象には加えません。
 - `scripts/automate_japanese_commits.py`と`scripts/argos_commit_translation.py`が翻訳・検証を行います。モデルのSHA256・Metadataや、正式表記・URL・コードなどの保持を確認し、取得・翻訳・検証に失敗した場合は停止します。
