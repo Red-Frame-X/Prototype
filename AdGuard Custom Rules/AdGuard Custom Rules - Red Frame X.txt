@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611081710
+! Version: 202611091727
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -230,6 +230,8 @@ officeforest.org##div[id^="offic-"]
 old.klz9.com,klto9.com,jestful.net#?#.title_doctruyen:contains(Recent Comments)
 ! show_new_commentを直下に持つ新着コメントウィジェット全体を非表示
 old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
+! old.klz9.comで新着コメントの見出しと.list-commentを包む外枠を非表示
+old.klz9.com##div:has(> .manga-reader-title + .list-comment)
 
 ! paypal.com
 ! PayPalのdata.service.paypal.comへの通信を許可し、ログイン・決済の不具合を回避
