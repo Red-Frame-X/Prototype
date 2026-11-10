@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611101842
+! Version: 202611110522
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -141,6 +141,8 @@ jbpress.ismedia.jp##.js-popup-info
 ! jbpress.ismedia.jp##.m-info.js-popup-info
 
 ! jp.ign.com
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/246535
+! IssueはA: Invalidで終了。対象は広告ではなくサイト固有のギャラリーと判断されたため、以下は公式対処ルールではなく独自の表示調整
 ! 記事84548のscreens-final-fantasy-vi-pcギャラリー枠を非表示にし、空白を除去
 jp.ign.com##body:matches-path(/^\/final-fantasy-vii-remake-part-3\/84548\/ff\/?$/) .gallery_embed:has(> iframe.gallery[albumslug="screens-final-fantasy-vi-pc"])
 
@@ -195,6 +197,10 @@ news.google.com##[role="tablist"] [role="tab"][aria-label="科学＆テクノロ
 news.google.com##[role="tablist"] [role="tab"][aria-label="ショーケース"]
 
 ! news.mynavi.jp
+! 参考Source（以下の既存scriptletとは別件）：Yuki2718氏が関与した記事一覧の余白修正。AdGuardメンテナーが採用ルールを明示
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/72416#issuecomment-761821493
+! 当該Issueで採用されたCSS修正（記録用・無効化中）
+! news.mynavi.jp#$#.articleList-attention[style^="min-height"] { min-height: auto !important; }
 ! 以下は無効：registration_guide_modal用DOMContentLoadedリスナーの登録を阻止し、会員登録モーダルによるスクロール固定を回避
 ! news.mynavi.jp#%#//scriptlet('prevent-addEventListener', 'DOMContentLoaded', 'registration_guide_modal')
 
@@ -308,6 +314,10 @@ response.jp##.top-banner
 reddit.com##div#left-sidebar-container > faceplate-tracker[source="xpromo"][action="view"][noun="static_left_rail_banner"]
 
 ! sankei.com
+! 参考Source（以下のPiano通信例外とは別件）：Yuki2718氏がAd-Shield対策のHTMLフィルタおよびFirefox互換性について具体的なルールを検討
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/202314#issuecomment-2790156309
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/202314#issuecomment-2790302492
+! 対策の環境依存性があるため、このSourceを根拠に新しい有効ルールは追加しない
 ! 無効化中：sankei.comでPianoのダミーofferId付き購入テンプレート通信を許可し、有料プランの申込・ログイン導線を復元
 ! @@||buy-ap.piano.io/checkout/template/cacheableShow.html?*&offerId=fakeOfferId$domain=sankei.com
 
@@ -324,6 +334,10 @@ teraokatape.co.jp##.g-cookie-alert[data-js="alert"]
 @@||analytics.tiktok.com^$app=jp.kappasushi.app
 
 ! togetter.com
+! 参考Source：Yuki2718氏が.more_tweet_box内のボタン周辺ルールの移動先を提示。以下のtrusted-click-element例外とは別ルール
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/139377#issuecomment-1377081669
+! Yuki2718氏の提示ルール（記録用・無効化中）
+! togetter.com##.more_tweet_box > button.more_tweets_btn ~ :not(script)
 ! 臨時Fix：AdGuard Filtersリポジトリで修正されるまで、以下のtrusted-click-elementルールを例外化
 ! AdGuard Filtersで対処済みのため無効化
 ! togetter.com#@%#//scriptlet('trusted-click-element', '.more_tweet_box > button', '', '1000')
