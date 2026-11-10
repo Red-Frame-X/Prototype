@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611101729
+! Version: 202611101832
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -33,6 +33,9 @@
 ! amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-ref_$="_displayAds"])
 
 ! blog.hatena.ne.jp
+! 関連資料：記事公開後の共有案内の非表示。以下の購読管理画面向けルールとは別の対処
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/218700
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/b085afb066f0b8ee7b39c67f7f947b31f1672615
 ! はてなブログの購読管理画面に表示される購読案内の見出しを非表示
 blog.hatena.ne.jp##.admin-subscribe-heading
 ! はてなブログのアンテナ一覧（antenna-circle-list）を非表示
@@ -55,6 +58,9 @@ chatgpt.com##aside:has(button[aria-label="ChatGPT ビーコンバナーを閉じ
 chatgpt.com##[data-prompt-textarea-header]
 
 ! daily-gadget.net
+! 参考：AdGuard Japanese filterで同一セレクタの広告枠対処ルールを収録（下記の統合案は無効化中）
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/244417
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/c313ad7680dcc03bf34eb3027a058dd86802f5d5
 ! PC向けの上部ビルボード広告枠を非表示
 ! daily-gadget.net##.JP_DGG_pc_top_billboard_cls
 ! PC向けの右側第1広告枠を非表示
@@ -65,6 +71,9 @@ chatgpt.com##[data-prompt-textarea-header]
 ! daily-gadget.net##div[class^="JP_DGG_"][class$="_cls"]
 
 ! diamond.jp
+! 関連資料：AdGuard Social Media filterで共有ボタンを部分的に残す修正。以下のおすすめ記事欄対策とは別の対処
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/242302
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/f2072e293f11a5186f7bdab89bf810ee7f5bf552
 ! おすすめ記事の内部枠も非表示（従来のルールを保持）
 diamond.jp###cx-recommend-member-articles
 diamond.jp###cx-recommend
@@ -78,6 +87,9 @@ diamond.jp##.sub-column:has(> #cx-recommend)
 @@||stats.g.doubleclick.net^$app=jp.kappasushi.app
 
 ! downdetector.jp
+! 参考：AdGuard Japanese filterの対処ルールと同一（現在は無効化中）
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/234436
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/0f6ff7b96deb07079397d267ae2fe335135d988b
 ! 無効化中：Downdetectorのサービス一覧に挿入される広告カードをdata-service-list-ad属性で識別して非表示
 ! AdGuard SiteReportへの投稿時は、属性セレクタ内の特殊文字が自動的にエスケープされる点に注意
 ! downdetector.jp##[data-service-list-ad="true"]
@@ -189,6 +201,9 @@ news.google.com##[role="tablist"] [role="tab"][aria-label="科学＆テクノロ
 news.google.com##[role="tablist"] [role="tab"][aria-label="ショーケース"]
 
 ! news.mynavi.jp
+! 関連資料：AdGuard Mobile App Banners filterのアプリ案内バナー対策。以下の無効化中の会員登録モーダル対策とは別の対処
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/224628
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/a17fe2a7dae1807ede26b579929adcdcd917bfd3
 ! 以下は無効：registration_guide_modal用DOMContentLoadedリスナーの登録を阻止し、会員登録モーダルによるスクロール固定を回避
 ! news.mynavi.jp#%#//scriptlet('prevent-addEventListener', 'DOMContentLoaded', 'registration_guide_modal')
 
@@ -246,6 +261,9 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 old.klz9.com##div:has(> .manga-reader-title + .list-comment)
 
 ! paypal.com
+! 関連資料：AdGuard Tracking Protection filterの通信許可ルール。以下のユーザールールと対象ホストは一致するが、公式ルールの終端指定などは異なる
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/219743
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/f2bbf350a57f6c0d9d725f58443d18e8eee54a45
 ! PayPalのdata.service.paypal.comへの通信を許可し、ログイン・決済の不具合を回避
 @@||data.service.paypal.com^
 
@@ -315,11 +333,20 @@ teraokatape.co.jp##.g-cookie-alert[data-js="alert"]
 @@||analytics.tiktok.com^$app=jp.kappasushi.app
 
 ! togetter.com
+! 関連資料：AdGuard Japanese filterのAmazonアフィリエイト広告枠対策。下記の無効化中のScriptlet例外とは別の対処
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/245592
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/1c34aefa593e1346170f2fc1010cb523c9577bd7
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/1dbd6149f37f95e3446c32cce37156230aa17135
 ! 臨時Fix：AdGuard Filtersリポジトリで修正されるまで、以下のtrusted-click-elementルールを例外化
 ! AdGuard Filtersで対処済みのため無効化
 ! togetter.com#@%#//scriptlet('trusted-click-element', '.more_tweet_box > button', '', '1000')
 
 ! topics.smt.docomo.ne.jp
+! 直接関連する報告資料：広告スクリプトのブロックと広告枠の余白に関するIssue。対処Commitとの対応は未確認
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/216289
+! 関連資料：AdGuard Mobile Ads filterで広告専用枠の余白と広告要素を対処。以下の広告スクリプト対策とは別の対処
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/240142
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/a52d0bdc3694b4b48f990894c0bcd364343beecb
 ! dメニューニュースでalxc.addlv.smt.docomo.ne.jpから読み込まれる広告スクリプトをブロック
 ||alxc.addlv.smt.docomo.ne.jp^$script,domain=topics.smt.docomo.ne.jp
 ! dメニューニュースで広告スクリプトのブロック後に残る中央広告枠（ad_middle05）を非表示にし、空白を除去
