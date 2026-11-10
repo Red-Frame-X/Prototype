@@ -55,7 +55,7 @@ AdGuard for Android v4.15 is a small update focused on usability improvements an
 
 One of these improvements is the new option to temporarily pause protection. When disabling protection, you can now choose to have it automatically turn back on after 30 seconds, 2 minutes, or 5 minutes.
 
-![Pause protection *mobile](https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.15/pause-protection-en.png)
+<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4.15/pause-protection-en.png" alt="Pause protection *mobile" width="300">
 
 This feature is particularly useful when you need to check whether a website, app, or network issue is related to filtering. Instead of disabling protection and having to remember to turn it back on later, you can set a timer and allow AdGuard to restore protection automatically. It’s a small quality-of-life improvement, but one that can save time and help ensure you don’t accidentally leave your device unprotected after a quick test or troubleshooting session.
 
