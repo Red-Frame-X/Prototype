@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611110524
+! Version: 202611110540
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -281,6 +281,7 @@ phileweb.com###sp_article_undertitle_wrapper
 printeezondemand.com##.printeez-consent__panel--banner
 
 ! raw1001.net,mangakoma01.net
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/242161#issuecomment-5836552509
 ! ジャンル一覧の高さを画面内に収め、縦スクロールを有効化
 raw1001.net,mangakoma01.net#$#.dropMenu ~ ul.genresList { max-height: calc(100vh - 80px) !important; overflow-y: auto !important; scrollbar-width: thin !important; }
 ! ジャンル一覧のリンクをコンパクトに表示
