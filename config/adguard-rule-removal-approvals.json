@@ -1,4 +1,13 @@
 {
   "version": 1,
-  "approvals": []
+  "approvals": [
+    {
+      "rules_sha256": "142e8a41369bacce6fd182b4534d145d5e7a18b85751e4f0dd90a648e338f00f",
+      "rules": [
+        "jbpress.ismedia.jp##.m-info.js-popup-info"
+      ],
+      "reason": "AdGuardFiltersの公式Popupsルールを収録するため、重複する自己対処ルールを削除せずコメントアウトして保持する。",
+      "reference": "https://github.com/AdguardTeam/AdguardFilters/commit/538cd428756330f4b43bc7b42b845bee732488ac"
+    }
+  ]
 }
