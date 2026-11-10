@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611101708
+! Version: 202611101715
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -283,13 +283,11 @@ rawkuma.net##iframe[src*="cbox.ws"]
 response.jp##div[class^="aside-box-ifad"]
 response.jp##.aside-box-ad
 response.jp##.top-banner
-! 以下は従来の自己対処ルール。PR #275で承認済みのため、元の記述を削除せずコメントアウトして保持
+! 以下は従来の自己対処ルール。メンテナの対処ルールと同一性を確認できないためコメントアウトして保持
 ! レスポンスの記事ページに表示される広告枠とその余白を非表示
 ! s.response.jp##.sp-ifad
 ! 画面上部に固定表示される関連記事枠を非表示
 ! s.response.jp###danglingList
-! サイドバーの広告枠とその余白を非表示
-! s.response.jp##.aside-box-ad
 
 ! reddit.com
 ! Redditの左サイドバーに表示されるログイン・会員登録案内のみを非表示
