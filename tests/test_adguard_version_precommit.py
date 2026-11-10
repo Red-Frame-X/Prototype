@@ -87,5 +87,33 @@ class VersionPrecommitTests(unittest.TestCase):
         self.assertNotEqual(self.git('commit', '-qm', '不正な日時', check=False).returncode, 0)
 
 
+    def test_later_version_only_commit_does_not_hide_invalid_history(self):
+        base = self.git('rev-parse', 'HEAD').stdout.strip()
+        self.edit(TARGETS[0])
+        self.git('add', TARGETS[0])
+        # GitHub Contents API等のHookを経由しない更新を再現する。
+        self.git('-c', 'core.hooksPath=/dev/null', 'commit', '-qm', 'Version未更新のルール変更')
+        self.edit(TARGETS[0], '202611080901')
+        self.git('add', TARGETS[0])
+        self.git('-c', 'core.hooksPath=/dev/null', 'commit', '-qm', '後続CommitでVersionのみ更新')
+        result = subprocess.run(
+            ['python3', 'scripts/check_adguard_version_timestamp.py', '--base', base, '--head', 'HEAD'],
+            cwd=self.root, text=True, capture_output=True, env=self.env,
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('同じCommit内での更新が必要', result.stdout + result.stderr)
+
+    def test_single_commit_with_rule_and_version_passes_history_check(self):
+        base = self.git('rev-parse', 'HEAD').stdout.strip()
+        self.edit(TARGETS[0], '202611080901')
+        self.git('add', TARGETS[0])
+        self.git('commit', '-qm', 'ルールとVersionを同時更新')
+        result = subprocess.run(
+            ['python3', 'scripts/check_adguard_version_timestamp.py', '--base', base, '--head', 'HEAD'],
+            cwd=self.root, text=True, capture_output=True, env=self.env,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+
 if __name__ == '__main__':
     unittest.main()
