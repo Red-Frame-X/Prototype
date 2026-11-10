@@ -1,15 +1,4 @@
 {
   "version": 1,
-  "approvals": [
-    {
-      "rules_sha256": "bfd6ec3962bb1f6e2daeb571bae3f1f6ae93747eebd7c5fd056f17691beda89c",
-      "rules": [
-        "s.response.jp##.sp-ifad",
-        "s.response.jp###danglingList",
-        "s.response.jp##.aside-box-ad"
-      ],
-      "reason": "ユーザーがPR #274の自己対処ルール3件を削除せずコメントアウトすることを明示承認。原文と説明を保持して無効化する。",
-      "reference": "https://github.com/Red-Frame-X/Prototype/pull/274"
-    }
-  ]
+  "approvals": []
 }

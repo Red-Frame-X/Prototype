@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611100833
+! Version: 202611101704
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -249,6 +249,8 @@ old.klz9.com##div:has(> .manga-reader-title + .list-comment)
 pex.kantangame.com##.c-n-game-start__info
 
 ! phileweb.com
+! AdGuardフィルタメンテナによる対処ルール（AdGuard Japanese filter、学習用）
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/a1cee958512d19ad304f3057f8aa8c1d9ce574b9
 ! スマートフォン向け記事ページのヘッダー広告枠を非表示
 phileweb.com###sp_article_header
 ! スマートフォン向け記事ページのタイトル下広告枠を余白ごと非表示
@@ -274,13 +276,20 @@ rawkuma.net##a[href*="ko-fi.com"]:has(img)
 ! rawkuma.netに埋め込まれたcbox.wsの外部チャットiframeを非表示
 rawkuma.net##iframe[src*="cbox.ws"]
 
-! s.response.jp
+! response.jp
+! AdGuardフィルタメンテナによる対処ルール（AdGuard Japanese filter、学習用）
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/1db308b341f4e3a8c4ee1d8465d58741619eee8a
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/a1cee958512d19ad304f3057f8aa8c1d9ce574b9
+response.jp##div[class^="aside-box-ifad"]
+response.jp##.aside-box-ad
+response.jp##.top-banner
+! 以下は従来の自己対処ルール。PR #275で承認済みのため、元の記述を削除せずコメントアウトして保持
 ! レスポンスの記事ページに表示される広告枠とその余白を非表示
-s.response.jp##.sp-ifad
+! s.response.jp##.sp-ifad
 ! 画面上部に固定表示される関連記事枠を非表示
-s.response.jp###danglingList
+! s.response.jp###danglingList
 ! サイドバーの広告枠とその余白を非表示
-s.response.jp##.aside-box-ad
+! s.response.jp##.aside-box-ad
 
 ! reddit.com
 ! Redditの左サイドバーに表示されるログイン・会員登録案内のみを非表示
