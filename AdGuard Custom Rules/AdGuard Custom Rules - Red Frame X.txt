@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611101720
+! Version: 202611101726
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -126,8 +126,13 @@ google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 jomo-p.co.jp##.c-cookie__box
 
 ! jbpress.ismedia.jp
+! AdGuard Popupsフィルタのメンテナによる対処ルール
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/538cd428756330f4b43bc7b42b845bee732488ac
+! JBpressのポップアップを非表示（公式ルール）
+jbpress.ismedia.jp##.js-popup-info
+! 以下は従来の自己対処ルール。公式ルールの適用範囲に包含されるため、削除せずコメントアウトして保持
 ! JBpressのセミナー案内ポップアップを非表示
-jbpress.ismedia.jp##.m-info.js-popup-info
+! jbpress.ismedia.jp##.m-info.js-popup-info
 
 ! jp.ign.com
 ! 記事84548のscreens-final-fantasy-vi-pcギャラリー枠を非表示にし、空白を除去
