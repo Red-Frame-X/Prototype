@@ -135,7 +135,7 @@ jomo-p.co.jp##.c-cookie__box
 ! AdGuard Popupsフィルタのメンテナによる対処ルール
 ! Source: https://github.com/AdguardTeam/AdguardFilters/commit/538cd428756330f4b43bc7b42b845bee732488ac
 ! JBpressのポップアップを非表示（公式ルール）
-jbpress.ismedia.jp##.js-popup-info
+! jbpress.ismedia.jp##.js-popup-info
 ! 以下は従来の自己対処ルール。公式ルールの適用範囲に包含されるため、削除せずコメントアウトして保持
 ! JBpressのセミナー案内ポップアップを非表示
 ! jbpress.ismedia.jp##.m-info.js-popup-info
@@ -272,9 +272,9 @@ pex.kantangame.com##.c-n-game-start__info
 ! AdGuardフィルタメンテナによる対処ルール（AdGuard Japanese filter、学習用）
 ! Source: https://github.com/AdguardTeam/AdguardFilters/commit/a1cee958512d19ad304f3057f8aa8c1d9ce574b9
 ! スマートフォン向け記事ページのヘッダー広告枠を非表示
-phileweb.com###sp_article_header
+! phileweb.com###sp_article_header
 ! スマートフォン向け記事ページのタイトル下広告枠を余白ごと非表示
-phileweb.com###sp_article_undertitle_wrapper
+! phileweb.com###sp_article_undertitle_wrapper
 
 ! printeezondemand.com
 ! プライバシー設定の案内バナーを非表示（同意・拒否の設定は変更しない）
@@ -302,15 +302,15 @@ rawkuma.net##iframe[src*="cbox.ws"]
 ! Source: https://github.com/AdguardTeam/AdguardFilters/issues/246498
 ! Source: https://github.com/AdguardTeam/AdguardFilters/commit/0ab94fa8415bc0887ecc85ddf88e4e3c89508e8f
 ! 複数サイト共通の公式ルールから、既存収録ドメイン response.jp のみを抽出
-response.jp###danglingList
-/feature/adb/*$domain=response.jp
-/cx-fbq.js$domain=response.jp
+! response.jp###danglingList
+! /feature/adb/*$domain=response.jp
+! /cx-fbq.js$domain=response.jp
 ! AdGuardフィルタメンテナによる対処ルール（AdGuard Japanese filter、学習用）
 ! Source: https://github.com/AdguardTeam/AdguardFilters/commit/1db308b341f4e3a8c4ee1d8465d58741619eee8a
 ! Source: https://github.com/AdguardTeam/AdguardFilters/commit/a1cee958512d19ad304f3057f8aa8c1d9ce574b9
-response.jp##div[class^="aside-box-ifad"]
-response.jp##.aside-box-ad
-response.jp##.top-banner
+! response.jp##div[class^="aside-box-ifad"]
+! response.jp##.aside-box-ad
+! response.jp##.top-banner
 ! 以下は従来の自己対処ルール。メンテナの対処ルールと同一性を確認できないためコメントアウトして保持
 ! レスポンスの記事ページに表示される広告枠とその余白を非表示
 ! s.response.jp##.sp-ifad
