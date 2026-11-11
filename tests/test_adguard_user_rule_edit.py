@@ -198,6 +198,12 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("明示的な承認がない", result.stderr)
 
+    def test_existing_comment_cannot_authorize_removal(self):
+        self.baseline += "! " + self.removed + "\n"
+        result = self.exercise()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("明示的な承認がない", result.stderr)
+
     def test_rejects_unapproved_removal(self):
         result = self.exercise()
         self.assertNotEqual(result.returncode, 0)
