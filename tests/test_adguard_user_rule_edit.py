@@ -179,6 +179,25 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
                 cwd=root, text=True, capture_output=True,
             )
 
+    def test_accepts_exact_commentout_on_pr_and_push(self):
+        after = self.baseline.replace(self.removed + "\\n", "! " + self.removed + "\\n")
+        for event in ("pull_request", "push"):
+            with self.subTest(event=event):
+                result = self.exercise(after=after, workflow_event=event)
+                self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_rejects_commentout_with_changed_rule(self):
+        after = self.baseline.replace(self.removed + "\\n", "! example.com##.different\\n")
+        result = self.exercise(after=after)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("明示的な承認がない", result.stderr)
+
+    def test_commentout_does_not_hide_other_removals(self):
+        after = "! " + self.removed + "\\nexample.net##.banner\\n"
+        result = self.exercise(after=after)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("明示的な承認がない", result.stderr)
+
     def test_rejects_unapproved_removal(self):
         result = self.exercise()
         self.assertNotEqual(result.returncode, 0)
