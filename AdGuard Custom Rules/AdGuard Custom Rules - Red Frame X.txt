@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611110542
+! Version: 202611111748
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -298,6 +298,13 @@ rawkuma.net##a[href*="ko-fi.com"]:has(img)
 rawkuma.net##iframe[src*="cbox.ws"]
 
 ! response.jp
+! AdGuardフィルタメンテナによる追加対処ルール（2026-11-10、AdGuard Japanese filter / Popups）
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/246498
+! Source: https://github.com/AdguardTeam/AdguardFilters/commit/0ab94fa8415bc0887ecc85ddf88e4e3c89508e8f
+! 複数サイト共通の公式ルールから、既存収録ドメイン response.jp のみを抽出
+response.jp###danglingList
+/feature/adb/*$domain=response.jp
+/cx-fbq.js$domain=response.jp
 ! AdGuardフィルタメンテナによる対処ルール（AdGuard Japanese filter、学習用）
 ! Source: https://github.com/AdguardTeam/AdguardFilters/commit/1db308b341f4e3a8c4ee1d8465d58741619eee8a
 ! Source: https://github.com/AdguardTeam/AdguardFilters/commit/a1cee958512d19ad304f3057f8aa8c1d9ce574b9
@@ -307,8 +314,6 @@ response.jp##.top-banner
 ! 以下は従来の自己対処ルール。メンテナの対処ルールと同一性を確認できないためコメントアウトして保持
 ! レスポンスの記事ページに表示される広告枠とその余白を非表示
 ! s.response.jp##.sp-ifad
-! 画面上部に固定表示される関連記事枠を非表示
-! s.response.jp###danglingList
 
 ! reddit.com
 ! Redditの左サイドバーに表示されるログイン・会員登録案内のみを非表示
