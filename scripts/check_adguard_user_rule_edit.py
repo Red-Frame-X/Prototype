@@ -166,12 +166,15 @@ def main() -> int:
                     fail("使用した削除承認を同じ変更内で削除してください。承認の再利用は許可しません")
             # コメントアウトは原文を保持した無効化として扱う。
             # 対象の有効ルールと完全一致するコメントが存在する場合のみ認める。
-            commented = Counter(
-                line[2:]
-                for line in lines
-                if line.startswith("! ") and line[2:] in removed_counts
-            )
-            allowed_counts |= removed_counts & commented
+            def commented_rules(source: str) -> Counter[str]:
+                return Counter(
+                    line[2:]
+                    for line in source.splitlines()
+                    if line.startswith("! ") and line[2:] in removed_counts
+                )
+
+            newly_commented = commented_rules(text) - commented_rules(base)
+            allowed_counts |= removed_counts & newly_commented
 
             unauthorized = sorted((removed_counts - allowed_counts).elements())
             overauthorized = sorted((allowed_counts - removed_counts).elements())
