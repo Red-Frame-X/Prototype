@@ -164,25 +164,14 @@ def main() -> int:
                 allowed_counts |= Counter(recorded)
                 if recorded and rules_sha256(base) in current_approvals:
                     fail("使用した削除承認を同じ変更内で削除してください。承認の再利用は許可しません")
-            # 明示承認されたコメントアウトのみ、削除とは区別して扱う。
-            # 元のルール文字列がコメントとして完全に残っていることを必須とする。
-            approved_commentouts = {
-                "jbpress.ismedia.jp##.js-popup-info",
-                "phileweb.com###sp_article_header",
-                "phileweb.com###sp_article_undertitle_wrapper",
-                "response.jp###danglingList",
-                "/feature/adb/*$domain=response.jp",
-                "/cx-fbq.js$domain=response.jp",
-                'response.jp##div[class^="aside-box-ifad"]',
-                "response.jp##.aside-box-ad",
-                "response.jp##.top-banner",
-            }
+            # コメントアウトは原文を保持した無効化として扱う。
+            # 対象の有効ルールと完全一致するコメントが存在する場合のみ認める。
             commented = Counter(
-                line.removeprefix("! ").strip()
+                line[2:]
                 for line in lines
-                if line.startswith("! ") and line.removeprefix("! ").strip() in approved_commentouts
+                if line.startswith("! ") and line[2:] in removed_counts
             )
-            allowed_counts |= removed_counts & commented & Counter(approved_commentouts)
+            allowed_counts |= removed_counts & commented
 
             unauthorized = sorted((removed_counts - allowed_counts).elements())
             overauthorized = sorted((allowed_counts - removed_counts).elements())
