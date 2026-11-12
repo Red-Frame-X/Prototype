@@ -19,7 +19,7 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | ドキュメント | 主な内容 |
 | --- | --- |
 | [コンテンツブロックのよくある質問（2026年版）](Content%20Blocking%20FAQ%202026.md) | uBlock Origin、uBlock Origin Lite、AdGuard Browser Extension MV3、Brave、Vivaldi、DNS併用、フィルタ設計を一次情報中心に整理したFAQ |
-| [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) | AdGuard Custom Rulesの基礎、設計、主要構文、MV3/DNRとCoreLibsの差異、検証、デバッグ、誤ブロック対応、保守をまとめた実用リファレンス |
+| [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) | AdGuard Custom Rulesの基礎、設計、主要構文、MV3 / DNRとCoreLibsの差異、検証、デバッグ、誤ブロック対応、保守をまとめた実用リファレンス |
 | [DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md) | DNSブロックリストの主要形式、選び方、ブラウザ用コンテンツブロッカーとの役割分担・切り分けを整理したガイド |
 | [厳格ブロックの例外テスト](Strict%20Blocking%20Exceptions%20Test.md) | My docomoを対象に、AdGuardのStrict blockingと`$document`例外ルールの挙動を実機検証した記録 |
 
@@ -38,7 +38,7 @@ Chromium系ではManifest V3の影響を受けるため、フル版uBlock Origin
 
 | ドキュメント | 主な内容 |
 | --- | --- |
-| [GitHub GistでフィルターとUserScriptを配布する方法](Distributing%20Filters%20and%20UserScripts%20with%20GitHub%20Gist.md) | GitHub Gistを使ったコンテンツブロックフィルタ／UserScriptの配布・更新方法とMetadataテンプレート |
+| [GitHub GistでフィルタとUserScriptを配布する方法](Distributing%20Filters%20and%20UserScripts%20with%20GitHub%20Gist.md) | GitHub Gistを使ったコンテンツブロックフィルタ / UserScriptの配布・更新方法とMetadataテンプレート |
 | [GitHubのCI失敗（✕）への対応と報告](Handling%20and%20Reporting%20GitHub%20CI%20Failures%20%28%E2%9C%95%29.md) | GitHub Actions / CI失敗時の確認、原因切り分け、ログ確認、報告手順 |
 | [文書ヘッダーのテンプレート](Header%20Template.md) | Markdown Notesで共通利用するMetadata、ライセンス案内、Version表記のヘッダーテンプレート |
 | [GitHubのIssue・Pull Requestコメントを折りたたむ方法](Collapse%20Comments%20on%20GitHub%20Issues%20and%20Pull%20Requests.md) | GitHub Issues / Pull Requestで長文や補足情報を`<details>`で折りたたむためのスニペット |
