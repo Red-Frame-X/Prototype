@@ -44,6 +44,58 @@ Safe choices include:
 - [Release channel](https://agrd.io/tvapk)
 - [Beta channel ](https://agrd.io/ag_android_tv_beta)
 
+## 4.16 Beta 1
+
+- 公開日時: 2026-11-12T18:01:41Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.16-beta-1
+
+AdGuard for Android v4.16 beta 1 brings two new features designed to make your experience with the app more convenient.
+First, we’ve added a search bar to Settings. AdGuard offers a wide range of options, and finding a specific one can be tricky, especially if you don’t use the settings often. Now you can simply type what you’re looking for and jump straight to the relevant setting, just like you would in Android’s system settings.
+This improvement makes AdGuard easier to explore and configure, whether you’re discovering the app for the first time or looking for a specific option. They also make it easier to follow instructions from our support team, as you can quickly find the settings you need.
+We’ve also added *Stories* to the home screen. They help you discover useful features, learn more about what AdGuard can do, and find tips to get the most out of the app.
+## Changelog
+
+
+### Improved
+
+
+* Added Stories
+* Added search to Settings
+* Added support for displaying the keyboard on Android TV devices running API level 29 or lower
+* Preserved the selected update channel after app updates
+* Updated the VPN integration texts and icon
+* Updated the help link behind the “?” icon in DNS protection
+* Changed the button color for inactive custom firewall rules
+
+
+### Fixed
+
+
+* Dialog boxes are closed when scrolling outside an address [#4980](https://github.com/AdguardTeam/AdguardForAndroid/issues/4980)
+* DNS protection doesn’t work in automatic proxy mode when IPv6 filtering is enabled in Low-level settings [#5223](https://github.com/AdguardTeam/AdguardForAndroid/issues/5223)
+* The mobile UI layout to appear instead of the TV layout after installing the Android TV version [#5483](https://github.com/AdguardTeam/AdguardForAndroid/issues/5483)
+* Incorrect export of statistics filter settings
+* *Reset all to default* fails to reset some settings
+* Incorrect download of files with excessively long names in Private browser
+* The check-alive alarm remains active after Watchdog is disabled
+
+
+### FilterListManager
+
+
+* Updated FilterListManager to v2.7.0 [#6226](https://github.com/AdguardTeam/AdguardForAndroid/issues/6226)
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.15
 
 - 公開日時: 2026-10-19T15:46:27Z
@@ -4682,29 +4734,3 @@ If you'd like to disable Compatibility Mode for any reason, it's very simple to 
 * [Fixed] Problematic userscripts [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
 * [Fixed] Process name detection causes warnings in Windows Security [#1316](https://github.com/AdguardTeam/CoreLibs/issues/1316)
 * [Other] Connection speed is capped when AdGuard is enabled [#702](https://github.com/AdguardTeam/CoreLibs/issues/702)
-
-## 3.4 beta 2
-
-- 公開日時: 2020-05-14T13:18:29Z
-- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.4-beta-2
-
-In this run-of-the-mill beta we fix few bugs and update CoreLibs. It will transform into the next release version if all goes well.
-
-## Changelog
-
-* [Bug] 'Back' button on the Settings screen works incorrectly #3427
-* [Bug] The app crashes when switching from 4G to Wi-Fi in Local HTTP Proxy Mode #3431 
-* [Bug] AdGuard doesn't launch #3430
-* [Other] HTTPS exclusions list has been updated #3419, #3425
-* [Other] Brave Nightly added to the list of supported browsers #3432
-* [Other] Yuzu Browser Plus added to the list of supported browsers #3424
-
-### CoreLibs updated to v1.5.265
-
-* [Bug] Incorrect extended CSS rule causes problems with JS rules #1147
-* [Bug] Cosmetic rules can be used as CSS rules #1293
-* [Bug] 'Proceed anyway' option doesn't work correctly if the website is blocked by a rule with `$all` modifier #1267
-
-### DnsLibs updated to v1.2.26
-
-* [Other] 'Unblock' button is not visible in Filtering Log details #3429
