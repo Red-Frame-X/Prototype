@@ -80,6 +80,47 @@ def is_protected_path(path: str) -> bool:
     return path.endswith(PROTECTED_SUFFIXES) and not path.startswith(EXCLUDED_PREFIXES)
 
 
+def verified_readme_guidelines_move(base_ref: str) -> bool:
+    """READMEの指定末尾が欠落なく独立文書へ移行した場合のみ承認する。"""
+    source = "README.md"
+    destination = ".github/REPOSITORY_GUIDELINES.md"
+    try:
+        old = run_git("show", f"{base_ref}:{source}")
+        new = run_git("show", f"HEAD:{source}")
+        guide = run_git("show", f"HEAD:{destination}")
+        # 移行前に同名の文書がある場合は今回の新規移行とみなさない。
+        if line_count(base_ref, destination) is not None:
+            return False
+    except subprocess.CalledProcessError:
+        return False
+
+    heading = "## 編集・更新の原則\\n"
+    if old.count(heading) != 1:
+        return False
+    prefix, moved = old.split(heading, 1)
+    moved = heading + moved
+    replacement = (
+        "## 編集・更新・品質管理方針\\n\\n"
+        "詳細は [Repositoryの編集・更新・品質管理方針]"
+        "(./.github/REPOSITORY_GUIDELINES.md) を参照してください。\\n"
+    )
+    # READMEの移行対象外は一文字も変更しない。
+    if new != prefix + replacement:
+        return False
+    # 移動後に必要な相対リンクの補正だけを許す。
+    moved = moved.replace("[AGENTS.md](AGENTS.md)", "[AGENTS.md](../AGENTS.md)")
+    moved = moved.replace(
+        "[CONTRIBUTING.md](CONTRIBUTING.md)",
+        "[CONTRIBUTING.md](../CONTRIBUTING.md)",
+    )
+    moved = moved.replace(
+        "(./.github/COMMIT_JA_AUTOMATION.md)",
+        "(./COMMIT_JA_AUTOMATION.md)",
+    )
+    # 元の全セクションを順序・改行を含めて連続して保持する。
+    return guide.count(moved) == 1
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-ref", required=True)
@@ -111,8 +152,11 @@ def main() -> int:
         if is_protected_path(change[2]) or is_protected_path(change[3])
     ]
     failures: list[str] = []
+    verified_move = verified_readme_guidelines_move(comparison_ref)
 
     for added, deleted, path, before_path in protected_changes:
+        if path == "README.md" and verified_move:
+            continue
         # 行数の閾値未満でも、出力の省略表示は本文の代わりにならない。
         # 削除承認は省略表示の混入を許可するものではない。
         for marker in added_truncation_markers(comparison_ref, path):
