@@ -55,6 +55,8 @@ jobs:
             git reset --hard origin/main
 
             python -m pip install --disable-pip-version-check -r requirements-ci.txt
+            # 全TestにはNode.js依存を使う回帰Testも含まれる。
+            npm ci
             mkdir -p dist
             python -m unittest discover -s tests -v
             python scripts/convert.py
@@ -64,7 +66,6 @@ jobs:
               exit 0
             fi
 
-            npm ci
             # 未修正のdeepmergeによる__proto__操作は、Node.js側で拒否する。
             node --disable-proto=throw node_modules/@adguard/aglint/dist/index.cli.js "$output"
             git add -- "$output"
