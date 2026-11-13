@@ -341,6 +341,8 @@ Googlebook公式サイトでは対応端末についてAndroid 17以上を要件
 
 初期GooglebookはIntel Core Ultra Series 3またはSnapdragon X Eliteと45 TOPS超のNPUを搭載し、GoogleはオンデバイスAI処理能力を強調しています。ただし、各Gemini機能がNPU・CPU・クラウドのどこでどの処理を行うかは完全公開されていません。
 
+2026年11月14日の補足：[Google公式比較表](https://googlebook.google/shop/compare/)のNPU性能は、XPS / HPが最大45 TOPS、Acer / Lenovoが最大47 TOPS、ASUSが最大49 TOPSです。上記の「45 TOPS超」を全モデル共通の仕様としては扱わず、モデルごとの最大値を確認してください。最大値は、すべての処理でその性能が出ることを保証する値ではありません。
+
 ### セキュリティ
 
 確認済みの主要項目：
