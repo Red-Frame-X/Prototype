@@ -33,6 +33,8 @@ TERMS = (
     'Hook', 'title', 'message',
     'body', 'Runner', 'Secret', 'cache',
     'npm ci', 'npm run lint:markdown', 'git diff --check',
+    'npm audit', 'source-map-js', 'js-yaml', 'markdownlint-cli2', 'Markdown parser',
+    'deepmerge', 'smol-toml', 'Branch protection', 'X',
 )
 HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
@@ -73,7 +75,10 @@ PROTECTED = re.compile(PROTECTED.pattern + r'|(?<![A-Za-z0-9_])(?!(?:' + PROSE_W
 
 # Unicodeの\bや\wは隣接する日本語も単語に含めるため、README.md等の
 # PathはASCIIの境界・文字集合で先に照合し、拡張子だけが翻訳器へ漏れるのを防ぐ。
+# main.protected=false等の設定値も全体を保持し、一般説明中のfalseは保護しない。
 PROTECTED = re.compile(
+    r'(?<![A-Za-z0-9_./-])(?:[A-Za-z_][A-Za-z0-9_]*\.)+'
+    r'[A-Za-z_][A-Za-z0-9_]*=(?:true|false|null|None)(?![A-Za-z0-9_])|'
     r'(?<![A-Za-z0-9_./-])[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+'
     r'(?![A-Za-z0-9_./-])|' + PROTECTED.pattern)
 

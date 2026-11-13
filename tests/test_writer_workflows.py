@@ -14,6 +14,20 @@ EXPECTED_GROUP = "${{ github.workflow }}-${{ github.ref }}"
 
 
 class WriterWorkflowTests(unittest.TestCase):
+    def test_full_test_runs_have_node_and_npm_dependencies_ready(self):
+        for name in WRITER_WORKFLOWS:
+            with self.subTest(workflow=name):
+                workflow, text = self._load(name)
+                steps = next(iter(workflow['jobs'].values()))['steps']
+                setup = [step for step in steps if step.get('uses', '').startswith('actions/setup-node@')]
+                self.assertEqual(len(setup), 1)
+                self.assertGreaterEqual(int(setup[0]['with']['node-version'].split('.')[0]), 22)
+                loop_index = text.index('for attempt in 1 2 3 4 5; do')
+                test_index = text.index('python -m unittest discover -s tests -v', loop_index)
+                install_index = text.index('npm ci', loop_index)
+                self.assertLess(install_index, test_index)
+                self.assertEqual(text[loop_index:].count('npm ci'), 1)
+
     def _load(self, name: str) -> tuple[dict, str]:
         text = (WORKFLOW_DIR / name).read_text(encoding="utf-8")
         data = yaml.load(text, Loader=yaml.BaseLoader)

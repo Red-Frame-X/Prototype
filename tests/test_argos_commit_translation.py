@@ -15,6 +15,44 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_pr292_dependency_names_and_platform_name_stay_unchanged(self):
+        from automate_japanese_commits import validate_translation
+        original = json.loads((Path(__file__).parent / 'fixtures/pr292-japanese-translation.json').read_text())
+        engine = Mock(side_effect=AssertionError('監査PRの用語を翻訳器へ渡しています。'))
+        translated = argos.translate_payload(original, engine)
+        self.assertEqual(translated, original)
+        validate_translation(original, translated)
+        engine.assert_not_called()
+
+    def test_pr291_audit_terms_do_not_retranslate_japanese_payload(self):
+        from automate_japanese_commits import validate_translation
+        original = json.loads((Path(__file__).parent / 'fixtures/pr291-japanese-translation.json').read_text())
+        engine = Mock(side_effect=AssertionError('日本語PRの依存名・設定値を翻訳器へ渡しています。'))
+        translated = argos.translate_payload(original, engine)
+        self.assertEqual(translated, original)
+        validate_translation(original, translated)
+        engine.assert_not_called()
+
+    def test_registered_package_names_do_not_hide_english_prose(self):
+        source = 'Update source-map-js and js-yaml after npm audit'
+        engine = Mock(side_effect=lambda value: value.replace('Update ', '')
+                      .replace(' and ', 'と').replace(' after ', 'を使って') + 'を更新')
+        self.assertEqual(argos.translate_text(source, engine),
+                         'source-map-jsとjs-yamlを使ってnpm auditを更新')
+        engine.assert_called_once()
+        self.assertIn('Update ', engine.call_args[0][0])
+
+    def test_property_literals_are_protected_without_hiding_prose(self):
+        engine = Mock()
+        for literal in ('main.protected=false', 'settings.enabled=true', 'value.next=null', 'state.value=None'):
+            source = literal + 'の値を確認'
+            with self.subTest(source=source):
+                self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+        prose = Mock(return_value='誤検知を修正')
+        self.assertEqual(argos.translate_text('Fix false positives', prose), '誤検知を修正')
+        self.assertIn('false positives', prose.call_args[0][0])
+
     def test_actions_expressions_are_opaque_while_prose_is_translated(self):
         for expression in ("${{ github.event_name == 'pull_request' }}",
                            "${{ contains(github.ref, 'release') }}",

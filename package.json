@@ -5,11 +5,18 @@
     "check:haiagaru": "python -m unittest discover -s tests -p test_haiagaru_fixed_environment.py -v",
     "hooks:install": "git config --local core.hooksPath .githooks",
     "lint:markdown:fix": "markdownlint-cli2 --fix",
-    "lint:adguard": "aglint \"dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt\" \"AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt\" \"AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt\"",
+    "lint:adguard": "node --disable-proto=throw node_modules/@adguard/aglint/dist/index.cli.js \"dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt\" \"AdGuard Custom Rules/AdGuard Custom Rules - Red Frame X.txt\" \"AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt\"",
     "lint:markdown": "markdownlint-cli2"
   },
   "devDependencies": {
     "@adguard/aglint": "3.0.2",
     "markdownlint-cli2": "0.23.2"
+  },
+  "overrides": {
+    "markdownlint-cli2": {
+      "markdown-it": "14.3.3",
+      "js-yaml": "5.4.1",
+      "smol-toml": "1.9.1"
+    }
   }
 }
