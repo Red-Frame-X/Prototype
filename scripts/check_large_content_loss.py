@@ -94,15 +94,15 @@ def verified_readme_guidelines_move(base_ref: str) -> bool:
     except subprocess.CalledProcessError:
         return False
 
-    heading = "## 編集・更新の原則\\n"
+    heading = "## 編集・更新の原則\n"
     if old.count(heading) != 1:
         return False
     prefix, moved = old.split(heading, 1)
     moved = heading + moved
     replacement = (
-        "## 編集・更新・品質管理方針\\n\\n"
+        "## 編集・更新・品質管理方針\n\n"
         "詳細は [Repositoryの編集・更新・品質管理方針]"
-        "(./.github/REPOSITORY_GUIDELINES.md) を参照してください。\\n"
+        "(./.github/REPOSITORY_GUIDELINES.md) を参照してください。\n"
     )
     # READMEの移行対象外は一文字も変更しない。
     if new != prefix + replacement:
