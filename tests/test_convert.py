@@ -321,6 +321,33 @@ class ModifierConversionTests(unittest.TestCase):
         rule = "www.example.com##.advertisement"
         self.assertEqual(self.optimizer.optimize_line(rule), rule)
 
+    def test_cosmetic_selector_dollars_are_not_network_modifiers(self):
+        for separator in ('##', '#@#', '#?#', '#@?#'):
+            for value in ('$3p,foo', '$queryprune=foo', '$redirect-rule=foo', '$cname'):
+                rule = f'example.com{separator}div[data-label="{value}"]'
+                with self.subTest(rule=rule):
+                    self.assertEqual(self.optimizer.optimize_line(rule), rule)
+
+    def test_extended_css_dollars_keep_selector_and_exception_scope(self):
+        for source, target in (('##', '#?#'), ('#@#', '#@?#')):
+            rule = f'example.com{source}div:contains("$3p,foo")'
+            with self.subTest(rule=rule):
+                self.assertEqual(
+                    self.optimizer.optimize_line(rule),
+                    f'example.com{target}div:contains("$3p,foo")',
+                )
+
+    def test_regex_hash_sequences_still_use_network_modifier_processing(self):
+        for characters in ('##', '#@#', '?#?#', '?#@?#'):
+            regex = f'/ads[{characters}]/'
+            with self.subTest(regex=regex):
+                self.assertEqual(self.optimizer.optimize_line(regex + '$3p'), regex + '$third-party')
+                rule = regex + '$redirect-rule=noopjs'
+                self.assertEqual(
+                    self.optimizer.optimize_line(rule),
+                    '! [MV3未対応の修飾子: redirect-rule] ' + rule,
+                )
+
     def test_extended_css_exception_uses_adguard_separator(self):
         rule = "example.com#@#div:contains(sponsored)"
         self.assertEqual(

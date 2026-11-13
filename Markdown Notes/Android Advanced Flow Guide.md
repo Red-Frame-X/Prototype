@@ -27,6 +27,8 @@ Android Helpで示されている流れは次のとおりです。
 
 Advanced Flowは2026年8月に提供開始されました。2026年9月30日からは、ブラジル、インドネシア、シンガポール、タイの認定Android端末で、指定された参加ストアからのインストールを対象にデベロッパー確認要件が適用されます。その他のストアや直接サイドロードには、この地域限定の初期フェーズでは同要件はまだ適用されません。2027年以降に認定Android端末へグローバル展開する予定です。なお、GoogleのAndroid Helpでは、この取り組みの対象をAndroid 8以降の認定Android端末と説明しています。
 
+2026年11月14日の再確認では、[Android Help](https://support.google.com/android/answer/17065026)はAndroid 8以降、[Android DevelopersのFAQ](https://developer.android.com/developer-verification/guides/faq)はAndroid 7以降と記載しており、公式資料間に差があります。FAQの該当回答は2026年3月23日更新、ページ全体は2026年9月30日更新ですが、Android Helpには本文の更新日が表示されていません。この情報だけでどちらが新しい仕様かは判断できないため、Android 7の実際の適用状況は未確認とし、端末で表示される案内も確認してください。
+
 ADBによる開発・テスト用途のWorkflowは従来どおり維持されると公式資料で案内されています。
 
 ## 対象を混同しないための整理

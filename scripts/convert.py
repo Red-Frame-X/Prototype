@@ -276,7 +276,7 @@ class AdGuardOptimizer:
 
             line = f"{prefix}{regex_part}{modifier_part}"
 
-        if '##' in line or '#@#' in line:
+        if regex_data is None and ('##' in line or '#@#' in line):
             separator = '##' if '##' in line else '#@#'
             parts = line.split(separator, 1)
             if len(parts) == 2:
@@ -295,6 +295,12 @@ class AdGuardOptimizer:
                     separator = '#?#' if separator == '##' else '#@?#'
 
                 line = f"{rule_scope}{separator}{selector_part}"
+
+            # セレクター中の$はCSSの文字列や演算子であり、通信ルールの修飾子ではない。
+            return line
+
+        if regex_data is None and ('#?#' in line or '#@?#' in line):
+            return line
 
         if '$' in line:
             regex_data = self._parse_regex_rule(line)

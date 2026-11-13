@@ -148,13 +148,15 @@ Commit前にも同じ検査を行う場合は、`npm ci` の後に `npm run hook
 - Script
 - Test
 
-Commit messageおよびPull Requestでは、日本語の説明文と英語の正式名称を組み合わせる形式を基本とします。英語のみのCommit titleも、正式名称と意味が明確であれば使用できます。
+Commit messageおよびPull Requestのtitleとbodyでは、日本語の説明文と英語の正式名称を組み合わせることを必須とします。[AGENTS.md](AGENTS.md)と[CONTRIBUTING.md](CONTRIBUTING.md)に従い、新しく作成する一般説明は日本語にします。既存の自動検査が英語titleを通過させる場合も、この作成方針への適合を保証するものではありません。
 
 例：
 
 `Markdown Notes のVersion自動更新処理を修正`
 
 `AdGuard Custom Rules の生成処理を修正`
+
+以下の英語例は以前の方針の記録として保持します。新しく作成するCommit titleには使わず、`Markdown Notes のVersionを更新`のように日本語で説明します。
 
 `Update Markdown Notes Version`
 
