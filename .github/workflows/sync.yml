@@ -65,7 +65,8 @@ jobs:
             fi
 
             npm ci
-            npx --no-install aglint "$output"
+            # 未修正のdeepmergeによる__proto__操作は、Node.js側で拒否する。
+            node --disable-proto=throw node_modules/@adguard/aglint/dist/index.cli.js "$output"
             git add -- "$output"
             if git diff --cached --quiet -- "$output"; then
               echo 'Gitによる正規化後に差分はありません。'

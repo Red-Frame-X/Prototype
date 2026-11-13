@@ -15,6 +15,15 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_pr292_dependency_names_and_platform_name_stay_unchanged(self):
+        from automate_japanese_commits import validate_translation
+        original = json.loads((Path(__file__).parent / 'fixtures/pr292-japanese-translation.json').read_text())
+        engine = Mock(side_effect=AssertionError('監査PRの用語を翻訳器へ渡しています。'))
+        translated = argos.translate_payload(original, engine)
+        self.assertEqual(translated, original)
+        validate_translation(original, translated)
+        engine.assert_not_called()
+
     def test_pr291_audit_terms_do_not_retranslate_japanese_payload(self):
         from automate_japanese_commits import validate_translation
         original = json.loads((Path(__file__).parent / 'fixtures/pr291-japanese-translation.json').read_text())

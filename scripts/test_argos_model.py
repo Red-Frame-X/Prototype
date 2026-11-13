@@ -121,6 +121,14 @@ def main():
     validate_translation(original291, unchanged291)
     print('PR #291: 依存名・npm audit・設定値を含む日本語本文を原文のまま保持しました。')
 
+    original292 = json.loads(snapshot.with_name('pr292-japanese-translation.json').read_text())
+    with patch('socket.socket.connect', side_effect=AssertionError('翻訳中の外部通信')):
+        unchanged292 = translate_payload(original292, forbidden_translation)
+        assert translate_payload(original292, engine) == original292
+    assert unchanged292 == original292
+    validate_translation(original292, unchanged292)
+    print('PR #292: 追加の依存名・Branch protection・Xを原文のまま保持しました。')
+
     original = {'title': 'Update README.md',
                 'body': '既存の説明\nSee https://example.com/a #12 `my_func` v1.2.3',
                 'commits': [{'sha': 'a' * 40, 'message': 'Fix GitHub Actions configuration'}]}

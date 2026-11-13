@@ -34,6 +34,7 @@ TERMS = (
     'body', 'Runner', 'Secret', 'cache',
     'npm ci', 'npm run lint:markdown', 'git diff --check',
     'npm audit', 'source-map-js', 'js-yaml', 'markdownlint-cli2', 'Markdown parser',
+    'deepmerge', 'smol-toml', 'Branch protection', 'X',
 )
 HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
