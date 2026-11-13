@@ -21,8 +21,8 @@
 
 ## 過去の事例（2026-11-10）
 
-- PR #279：Source追記CommitでVersionが未更新のため、`check-adguard-version` が失敗。Versionを同じCommitに含めた後継PR #280で解消。
-- PR #280：同一ドメインの別問題までSourceとして収録。直接の関連性を再査読し、明示的な削除許可を得たPR #281でSource 12行と説明コメント6行を整理。
-- PR #281：PRの両CI成功後にマージし、main反映とマージ後の `quality`・`update-version-timestamps` 成功を確認。
+- [PR #279](https://github.com/Red-Frame-X/Prototype/pull/279)：Source追記CommitでVersionが未更新のため、`check-adguard-version` が失敗。Versionを同じCommitに含めた後継[PR #280](https://github.com/Red-Frame-X/Prototype/pull/280)で解消。
+- [PR #280](https://github.com/Red-Frame-X/Prototype/pull/280)：同一ドメインの別問題までSourceとして収録。直接の関連性を再査読し、明示的な削除許可を得た[PR #281](https://github.com/Red-Frame-X/Prototype/pull/281)でSource 12行と説明コメント6行を整理。
+- [PR #281](https://github.com/Red-Frame-X/Prototype/pull/281)：PRの両CI成功後にマージし、main反映とマージ後の `quality`・`update-version-timestamps` 成功を確認。
 
 このチェックリストは査読の補助であり、実際のWebサイト上での動作確認や、Sourceの意味的な一致を自動保証するものではありません。
