@@ -337,6 +337,17 @@ class ModifierConversionTests(unittest.TestCase):
                     f'example.com{target}div:contains("$3p,foo")',
                 )
 
+    def test_regex_hash_sequences_still_use_network_modifier_processing(self):
+        for characters in ('##', '#@#', '?#?#', '?#@?#'):
+            regex = f'/ads[{characters}]/'
+            with self.subTest(regex=regex):
+                self.assertEqual(self.optimizer.optimize_line(regex + '$3p'), regex + '$third-party')
+                rule = regex + '$redirect-rule=noopjs'
+                self.assertEqual(
+                    self.optimizer.optimize_line(rule),
+                    '! [MV3未対応の修飾子: redirect-rule] ' + rule,
+                )
+
     def test_extended_css_exception_uses_adguard_separator(self):
         rule = "example.com#@#div:contains(sponsored)"
         self.assertEqual(
