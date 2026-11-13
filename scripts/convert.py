@@ -296,6 +296,12 @@ class AdGuardOptimizer:
 
                 line = f"{rule_scope}{separator}{selector_part}"
 
+            # セレクター中の$はCSSの文字列や演算子であり、通信ルールの修飾子ではない。
+            return line
+
+        if '#?#' in line or '#@?#' in line:
+            return line
+
         if '$' in line:
             regex_data = self._parse_regex_rule(line)
             if regex_data:
