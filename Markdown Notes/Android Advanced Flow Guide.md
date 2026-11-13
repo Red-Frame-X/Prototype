@@ -6,7 +6,7 @@ Androidの未確認デベロッパー製アプリをインストールする「A
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610251310 |
+| **Version** | 202611140605 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
