@@ -17,11 +17,11 @@ mainに記録済みのCommitは書き換えません。PR作成後からマー�
 
 公式配布URLの取得にはUser-Agentを明示します。GitHub-hosted runner上で配布物のMetadata・README・SHA256を確認し、`.github/argos-model.json`に固定しました。SHA256は`16300cc4eaa85320520cabcf433b63d01be40ef6966251de72043a083408f716`です。取得失敗や不一致を別モデルへの切替やOpenAI APIで補わず、停止します。
 
-ライセンスは、Argosの開発者による[公式Issue #76の回答](https://github.com/argosopentech/argos-translate/issues/76)に基づき、Argosプロジェクトのモデル学習成果についてMIT / CC0として確認しました。配布物のREADMEにはOPUS、Wiktionary / Wiktextract、Stanzaと学習データの出典が記載されています。英日モデル個別のライセンス表記不足を扱う[未解決Issue #507](https://github.com/argosopentech/argos-translate/issues/507)は残っており、READMEにライセンスが明記されたとは説明しません。学習データや同梱物の権利まで一律にMIT / CC0とする判断ではありません。配布物の再配布は行わず、Runnerが公式配布先から取得します。
+ライセンスは、Argosの開発者による [公式Issue #76の回答](https://github.com/argosopentech/argos-translate/issues/76) に基づき、Argosプロジェクトのモデル学習成果についてMIT / CC0として確認しました。配布物のREADMEにはOPUS、Wiktionary / Wiktextract、Stanzaと学習データの出典が記載されています。英日モデル個別のライセンス表記不足を扱う [未解決Issue #507](https://github.com/argosopentech/argos-translate/issues/507) は残っており、READMEにライセンスが明記されたとは説明しません。学習データや同梱物の権利まで一律にMIT / CC0とする判断ではありません。配布物の再配布は行わず、Runnerが公式配布先から取得します。
 
 Version 1.1に同梱されたStanzaの重みは、現在のStanzaとの互換性に問題があります。重みを書き換えたり、最新版の別モデルを暗黙に取得したりせず、文分割にはspaCyの`blank('en')`とルールによる`sentencizer`を使います。翻訳の学習済みモデルは固定したArgosの英日モデルだけです。翻訳開始後に外部通信を行わないことを専用CIでも検査します。推論・文分割に使うCTranslate2、SentencePiece、spaCyのVersionも`requirements-translation.txt`で固定しています。
 
-モデル実物の確認記録は[公式配布物の検証Run](https://github.com/Red-Frame-X/Prototype/actions/runs/42447418170)、文脈・表記保護・通信禁止・PR title/bodyとCommitの実翻訳確認は[実モデル検証Run](https://github.com/Red-Frame-X/Prototype/actions/runs/42448065454)で参照できます。`Update README.md`→`README.mdの更新`、`Fix GitHub Actions configuration`→`GitHub Actionsの設定を修正`、`Do not remove existing tests.`→`既存のテストを削除しないでください。`を確認しました。これらの代表例の成功で、任意の文章の意味の正確性まで証明されたとは扱いません。マージ前の翻訳内容の確認は引き続き必須です。
+モデル実物の確認記録は [公式配布物の検証Run](https://github.com/Red-Frame-X/Prototype/actions/runs/42447418170)、文脈・表記保護・通信禁止・PR title/bodyとCommitの実翻訳確認は [実モデル検証Run](https://github.com/Red-Frame-X/Prototype/actions/runs/42448065454) で参照できます。`Update README.md`→`README.mdの更新`、`Fix GitHub Actions configuration`→`GitHub Actionsの設定を修正`、`Do not remove existing tests.`→`既存のテストを削除しないでください。`を確認しました。これらの代表例の成功で、任意の文章の意味の正確性まで証明されたとは扱いません。マージ前の翻訳内容の確認は引き続き必須です。
 
 ## マージを行わない実モデル検証
 
@@ -67,7 +67,7 @@ Botが`@codex review`を投稿しても、最新SHAのReviewが開始されず�
 
 ## PR #261の翻訳誤停止と回帰検証
 
-Run [42530138140](https://github.com/Red-Frame-X/Prototype/actions/runs/42530138140)は、
+Run [42530138140](https://github.com/Red-Frame-X/Prototype/actions/runs/42530138140) は、
 PR #261が開いていた時点で既定Branchの`ddd87c10`を取得し、翻訳直後の検証で停止しました。
 PRのtitle・body・Commit messageは日本語でしたが、日本語に隣接する`README.md`を
 Unicodeの単語境界では完全に保護できず、拡張子`.md`がArgosへ渡っていました。
