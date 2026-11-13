@@ -3,7 +3,7 @@
 // @name:ja      Xのコミュニティを直近順に自動選択
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      202610241010
+// @version      202611140618
 // @description  Xのタイムラインで「並べ替え」メニューが開かれるたびに、未選択であれば自動的に「直近」を選択し直し、その後は手動での変更も可能にします。
 // @author       Red-Frame-X
 // @match        https://x.com/*
@@ -83,6 +83,10 @@
             }
         });
         observer.observe(layers, { childList: true, subtree: true });
+        // layersとメニューが同時に追加された場合も、最初のメニューを処理する。
+        for (const menu of layers.querySelectorAll('[role="menu"]')) {
+            queueMenu(menu);
+        }
     };
 
     const layers = document.getElementById('layers');
