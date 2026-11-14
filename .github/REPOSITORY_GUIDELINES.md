@@ -1,6 +1,13 @@
 # Repositoryの編集・更新・品質管理方針
 
 この文書は、ルート [README](../README.md) に記載されていた編集・更新・品質管理方針を移行したものです。関連する詳細手順は [AGENTS.md](../AGENTS.md)、[CONTRIBUTING.md](../CONTRIBUTING.md)、[PRのCommit日本語化と自動マージ](./COMMIT_JA_AUTOMATION.md) を参照してください。
+## 基本方針
+
+- このRepositoryは、個人の学習記録、検証ログ、設定バックアップとして維持します。
+- 技術情報を確認する際は、対象プロジェクトの公式ドキュメント、公式Repository、公開ソース、変更履歴、Issuesなどの一次情報を優先します。
+- 互換性を推測だけで拡張せず、必要な検証や回帰テストを行ってから変換処理・設定を変更します。
+- 誤ブロック、互換性、視認性、性能、保守性、プライバシーなどのトレードオフを考慮します。
+- 製品のUI名や機能名を記載する場合は、可能な限り対象バージョンの公式表記に合わせます。
 
 ## 編集・更新の原則
 
@@ -8,29 +15,24 @@
 - ルートの`dist/`は自動生成物のため、直接編集せず、原本または変換処理を修正して再生成します。
 - `AdGuard Custom Rules/ChangeLog/`と`upstream/`は上流情報の追跡・ミラー用で、取得Scriptや追跡設定から更新します。
 - `Markdown Notes/`やChatGPTで推敲した内容は、重要な技術情報を可能な限り一次情報・公開ソース・対象バージョン・実環境で再確認します。
+- 自動生成物は原則として直接編集せず、原本または変換処理を修正して再生成します。
 
-## 自動更新と品質確認
+## 自動更新・生成処理
 
 GitHub Actionsで、更新処理・変換・品質確認を自動化しています。
 
-- フィルタ・コードの整合性、回帰テスト、構文・Lintを自動検査します。
-- GitHub Actions Workflowの安全性・構文、UserScriptのJavaScript構文、大量の内容消失も品質検査で確認します。
 - 対象ディレクトリの変更をmainへpushします。
 - push後、コメントだけの編集も含め、`AdGuard Custom Rules`、`Markdown Notes`、`NG Word Regex for ChMate`、`UserScript`の対応するVersion MetadataをGitHub ActionsでJSTの現在時刻へ同期します。
 - push時に同期が起動しなかった場合に備え、品質チェック完了後の実行、15分おきの定期実行、手動実行でも最新mainの未同期の変更を確認します。Versionだけを更新済みのファイルは再更新しません。
-- AdGuard Custom Rules / AdGuard DNS Custom Rulesでは、Pull Request内の各Commitを検査し、ルール変更と! Version:の更新が同じCommitに含まれていることをCIで検証します。
-- Workflow失敗時は原因を確認して修正し、必要に応じて再発防止策を反映します。
 - uB-filter-by-kdroidwin (AdGuard Optimized)の定期同期・変換を行います。
 - AdGuard公式の変更履歴を定期確認します。
 
-英語のCommit messageやPull Requestのtitle / bodyの一般説明は、ローカルで動作するオープンソース翻訳ライブラリ [Argos Translate](https://github.com/argosopentech/argos-translate) の固定英日モデルを使い、GitHub ActionsのRunner内で日本語化します。この翻訳処理はOpenAI APIを使用せず、失敗時もAPIへ切り替えません。
+## 品質管理・検証
 
-- `japanese-commits.yml`は5分ごとの定期実行、品質検査完了、手動実行でPRを確認します。同じRepository内でmainを対象とし、作成者に書き込み権限がある通常のPRが対象で、Fork・Draft・Bot作成のPRは対象外です。日本語化が不要なPRを新たに自動マージの対象には加えません。
-- `scripts/automate_japanese_commits.py`と`scripts/argos_commit_translation.py`が翻訳・検証を行います。モデルのSHA256・Metadataや、正式表記・URL・コードなどの保持を確認し、取得・翻訳・検証に失敗した場合は停止します。
-- 翻訳前後を確認した書き込み権限者の承認、最新SHAのCodex Review完了・指摘なし、専用の品質検査と他のCheck・Statusの成功などを確認してSquash mergeします。未解決のReview thread・変更要求・競合がある場合はマージしません。mainの既存履歴は書き換えません。
-- `argos-translation-test.yml`は翻訳関連ファイルを変更したPRで固定モデルの実翻訳・表記保護・翻訳開始後の通信禁止を検証し、PR更新やマージは行いません。
-
-依存関係は`requirements-translation.txt`、モデル情報は`.github/argos-model.json`で管理します。翻訳承認、手動実行のテストモード、停止設定、Workflow実行承認待ちなどの詳細は [PRのCommit日本語化と自動マージ](./COMMIT_JA_AUTOMATION.md) を参照してください。
+- フィルタ・コードの整合性、回帰テスト、構文・Lintを自動検査します。
+- GitHub Actions Workflowの安全性・構文、UserScriptのJavaScript構文、大量の内容消失も品質検査で確認します。
+- AdGuard Custom Rules / AdGuard DNS Custom Rulesでは、Pull Request内の各Commitを検査し、ルール変更と! Version:の更新が同じCommitに含まれていることをCIで検証します。
+- Workflow失敗時は原因を確認して修正し、必要に応じて再発防止策を反映します。
 
 ローカルで主要な検査を実行する場合：
 
@@ -51,16 +53,18 @@ Markdownの行末にスペース1つが残ると、CIのMD009検査が失敗し�
 
 Commit前にも同じ検査を行う場合は、`npm ci` の後に `npm run hooks:install` を実行します。この設定は、このクローンの `core.hooksPath` を `.githooks` に変更するため、独自のフックがある場合は先に統合してください。フックはステージ済みの内容を一時ディレクトリへ取り出して検査し、未ステージの修正で問題が隠れることを防ぎます。GitHubのWeb編集などローカルフックを通らない変更も、既存のCIで検査します。
 
-## 方針
+## Commit・Pull Requestの運用
 
-- このRepositoryは、個人の学習記録、検証ログ、設定バックアップとして維持します。
-- 技術情報を確認する際は、対象プロジェクトの公式ドキュメント、公式Repository、公開ソース、変更履歴、Issuesなどの一次情報を優先します。
-- 互換性を推測だけで拡張せず、必要な検証や回帰テストを行ってから変換処理・設定を変更します。
-- 誤ブロック、互換性、視認性、性能、保守性、プライバシーなどのトレードオフを考慮します。
-- 自動生成物は原則として直接編集せず、原本または変換処理を修正して再生成します。
-- 製品のUI名や機能名を記載する場合は、可能な限り対象バージョンの公式表記に合わせます。
+英語のCommit messageやPull Requestのtitle / bodyの一般説明は、ローカルで動作するオープンソース翻訳ライブラリ [Argos Translate](https://github.com/argosopentech/argos-translate) の固定英日モデルを使い、GitHub ActionsのRunner内で日本語化します。この翻訳処理はOpenAI APIを使用せず、失敗時もAPIへ切り替えません。
 
-## 表記の方針
+- `japanese-commits.yml`は5分ごとの定期実行、品質検査完了、手動実行でPRを確認します。同じRepository内でmainを対象とし、作成者に書き込み権限がある通常のPRが対象で、Fork・Draft・Bot作成のPRは対象外です。日本語化が不要なPRを新たに自動マージの対象には加えません。
+- `scripts/automate_japanese_commits.py`と`scripts/argos_commit_translation.py`が翻訳・検証を行います。モデルのSHA256・Metadataや、正式表記・URL・コードなどの保持を確認し、取得・翻訳・検証に失敗した場合は停止します。
+- 翻訳前後を確認した書き込み権限者の承認、最新SHAのCodex Review完了・指摘なし、専用の品質検査と他のCheck・Statusの成功などを確認してSquash mergeします。未解決のReview thread・変更要求・競合がある場合はマージしません。mainの既存履歴は書き換えません。
+- `argos-translation-test.yml`は翻訳関連ファイルを変更したPRで固定モデルの実翻訳・表記保護・翻訳開始後の通信禁止を検証し、PR更新やマージは行いません。
+
+依存関係は`requirements-translation.txt`、モデル情報は`.github/argos-model.json`で管理します。翻訳承認、手動実行のテストモード、停止設定、Workflow実行承認待ちなどの詳細は [PRのCommit日本語化と自動マージ](./COMMIT_JA_AUTOMATION.md) を参照してください。
+
+## 表記・文書作成の方針
 
 本文の説明は、読みやすさを優先して原則として日本語で記述します。
 
