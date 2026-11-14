@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202611132002
+! Version: 202611140900
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -3955,6 +3955,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||fumi2019.com^$document
 ||fumienaffi.com^$document
 ||fun-frisco.co.jp^$document
+||funai.co.jp^$document
 ||funbox.wpx.jp^$document
 ||fund.lifeplay.co.jp^$document
 ||fundacionbuenasemilla.org^$document
@@ -5882,6 +5883,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||ketchytune.com^$document
 ||ketiketidenki.com^$document
 ||keukenhulponline.nl^$document
+||key4dn.com^$document
 ||keyakizaka46matomemory.net^$document
 ||keyforum.kumamoto-u.org^$document
 ||kfcjapan.onelink.me^$document
@@ -6576,6 +6578,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||luxweavecarpets.com^$document
 ||lvyou168.cn^$document
 ||lynxinst.com^$document
+||lyricjp.com^$document
 ||lysaeqisk.melanie-reinecke.de^$document
 ||lzz-mall.com^$document
 ||m-artist.net^$document
@@ -10269,6 +10272,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||schwarzkain.com^$document
 ||science-gohan.com^$document
 ||scienceplus2ch.com^$document
+||scintillating-duckanoo-f19592.netlify.app^$document
 ||scottcomputersystems.com^$document
 ||scotthel.me^$document
 ||scrap-shop.online^$document
