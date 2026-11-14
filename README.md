@@ -41,6 +41,7 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 | config / upstream | 変換能力の定義、上流情報の追跡・ミラー | [config](./config/) / [upstream](./upstream/) |
 | scripts / tests | フィルタ変換・更新処理、整合性検査、回帰テスト | [scripts](./scripts/) / [tests](./tests/) |
 | GitHub Actions | 品質確認、同期、変換、変更履歴の追跡などのWorkflow | [Actions](https://github.com/Red-Frame-X/Prototype/actions) |
+| Repositoryの編集・更新・品質管理方針 | Repositoryの編集・更新、品質管理、表記、Commit・Pull Request運用の方針 | [運用方針](./.github/REPOSITORY_GUIDELINES.md) / [AGENTS.md](./AGENTS.md) / [CONTRIBUTING.md](./CONTRIBUTING.md) |
 | License | Repository全体のライセンス情報 | [LICENSE](./LICENSE) / [LICENSES.md](./LICENSES.md) |
 
 フィルタ、UserScript、NG Word Regex for ChMateなど、ソフトウェアへの購読・登録・コピーに使うファイルのリンクはRaw URLに統一しています。
