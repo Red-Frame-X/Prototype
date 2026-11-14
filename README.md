@@ -67,6 +67,3 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 - ChromeOSでの動作保証がない点も明記しています。
 - Chromebook上でChMateを操作するだけであれば、スマートフォン ハブを使うのがお手軽です。
 
-## 編集・更新・品質管理方針
-
-詳細は [Repositoryの編集・更新・品質管理方針](./.github/REPOSITORY_GUIDELINES.md) を参照してください。
