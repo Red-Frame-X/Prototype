@@ -11,7 +11,7 @@ Googlebookの仕様、対応アプリ、ハードウェア、Chrome、Linux、�
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
 > [!IMPORTANT]
-> 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。さらに9月23日、Chrome Enterprise and Education Helpで既存ChromebookのGooglebook OS移行方針を公開しました。一方、日本発売、Googlebook上のAPKサイドロードの具体的な操作手順、Play Integrity、Linux環境の詳細構成、Chromebookの具体的な移行対象モデルなど未確認事項も残っています。公式発表、報道、推測を引き続き区別してください。
+> 2026年9月21日にGoogleがGooglebookの予約開始、Googlebook OSの主要仕様、初期5モデル、価格・発売地域を正式発表しました。さらに9月23日、Chrome Enterprise and Education Helpで既存ChromebookのGooglebook OS移行方針を公開しました。一方、日本発売、ファイルマネージャーからのAPK導入など一般利用者向けのサイドロード手順、Play Integrity、Linux環境の詳細構成、Chromebookの具体的な移行対象モデルなど未確認事項も残っています。ADBによるアプリのインストール・実行・デバッグは [Google公式資料](https://developer.android.com/develop/adaptive-apps/guides/googlebook/adb-debugging) で確認済みです。公式発表、報道、推測を引き続き区別してください。
 
 ## 要約
 
