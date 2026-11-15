@@ -1505,6 +1505,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 **カスタムフィルタ・ユーザールール**
 * **カスタムフィルタ**
   * **[AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)** ：Yuki2718氏自身がフィルタの監修をしています。AdGuard用moduleはサブリストとして自動的にincludeされるため、別途登録する必要はありません。
+  * **[Peter Lowe](https://pgl.yoyo.org/adservers/)** ：AdGuard Browser Extension MV3では、Online Malicious URL BlocklistをOFFにして、代わりに [Peter Lowe's Blocklist](https://filters.adtidy.org/extension/chromium/filters/204.txt) を追加しています。（Online Malicious URL Blocklistの更新が遅れたり、ルールが肥大化する傾向があるため）
   * **[自作のカスタムフィルタ](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex)** ：各フィルタ作者様のルールを参考にしたり、自作のルールと組み合わせたりして作成しています。
 
 **参考サイト**
