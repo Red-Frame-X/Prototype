@@ -145,6 +145,26 @@ class TranslationTests(unittest.TestCase):
             with self.subTest(sha=sha), self.assertRaises(automation.AutomationError):
                 automation.validate_translation(original, translated)
 
+    def test_japanese_payload_does_not_initialize_model(self):
+        for number in (311, 312):
+            source = json.loads((Path(__file__).parent / f'fixtures/pr{number}-japanese-translation.json').read_text())
+            with self.subTest(number=number), patch('argos_commit_translation.load_engine') as load:
+                result = automation.translate(source)
+                self.assertEqual(result['title'], source['title'])
+                self.assertEqual(result['body'], source['body'])
+                self.assertEqual(result['commits'], source['commits'])
+                load.assert_not_called()
+
+    def test_english_segments_share_one_model_initialization(self):
+        engine = Mock(return_value='説明を更新')
+        source = {'title': 'Update documentation', 'body': 'Update documentation', 'commits': []}
+        with patch('argos_commit_translation.load_engine', return_value=engine) as load:
+            result = automation.translate(source)
+        self.assertEqual(result['title'], '説明を更新')
+        self.assertEqual(result['body'], '説明を更新')
+        load.assert_called_once_with()
+        self.assertEqual(engine.call_count, 2)
+
     def test_truncated_argos_output_is_rejected(self):
         with patch('argos_commit_translation.load_engine', return_value=lambda text: ''):
             with self.assertRaises(automation.AutomationError):

@@ -1,0 +1,14 @@
+{
+  "title": "ローカル検証前の依存確認と実行手順を追加",
+  "body": "Python・Node.js依存を揃えずに全Testを実行すると、同じ依存不足による多数の失敗が発生していました。事前チェックを追加し、check:localでは依存確認に成功した場合だけ既存のAGLintと全Python Testを順に実行します。\n\n現在のPythonの依存Versionとyaml / markdown_itの実際のimport、Node.jsの固定依存Version、AGLint CLIの起動を検査します。本体や推移的依存が欠落し、Metadataだけが残った環境も失敗として報告します。\n\nCONTRIBUTING.mdに、使用中のPython環境への依存導入、書き込み可能なnpmキャッシュ、RepositoryルートでのAGLint実行、最新mainの確認、管理者ポリシー拒否時の中止とブラウザのfinally終了処理を追記しました。既存のCI・検証・フィルタルールは維持しています。\n\n検証:\n- 依存不足の実環境で非ゼロ停止し、Lint・全Testを開始しないことを確認。\n- .dist-infoのみを配置した環境で、MetadataのVersionが一致してもyaml / markdown_itのimport失敗を検出することを実測。\n- 準備済み環境でcheck:localが成功。全365 Test、AGLint、Markdownlint、固定名称・内容消失防止・diffチェックに成功。\n- 5件の回帰Testで依存不足の一括報告、Python本体・推移的依存の欠落、不完全なNode.js導入、Version相違、準備済み環境を確認。\n- Codex ReviewのPython import検査追加の指摘に対応済み。最新先端で再ReviewとCIを確認してマージします。\n\nこの変更は実行エラーと検証手順の再発防止に限定し、例外ルールの再選定やブラウザの管理者ポリシー変更は含みません。",
+  "commits": [
+    {
+      "sha": "2259369d5a48e806e1f7a1e578d097f861fcdb02",
+      "message": "ローカル検証前の依存確認と実行手順を追加\n\nPython・Node.jsの依存不足を全Test前に検出する事前チェックとcheck:localを追加。\nキャッシュ・作業ディレクトリ・最新main・ブラウザ終了処理の手順を整理し、再発防止の回帰Testを追加。"
+    },
+    {
+      "sha": "d04b76018747857abfb9763fed8a6e72d9ec4586",
+      "message": "ローカル検証前にPython依存の実際のimportを確認\n\nMetadataだけが残りモジュール本体や推移的依存が欠けた環境も事前検出し、Codex Reviewの指摘に対応。\n回帰TestとMetadataのみの実環境で検出を確認し、全365 Testを再実行。"
+    }
+  ]
+}

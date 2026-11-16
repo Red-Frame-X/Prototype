@@ -12,6 +12,7 @@ def main():
     samples = [
         'Update documentation',
         'Fix a bug',
+        'Update check:offline',
         'Merge main',
         'Merge SHA abcdef1',
         'Squash merge main',
@@ -128,6 +129,14 @@ def main():
     assert unchanged292 == original292
     validate_translation(original292, unchanged292)
     print('PR #292: 追加の依存名・Branch protection・Xを原文のまま保持しました。')
+
+    for number in (311, 312):
+        source = json.loads(snapshot.with_name(f'pr{number}-japanese-translation.json').read_text())
+        with patch('socket.socket.connect', side_effect=AssertionError('翻訳中の外部通信')):
+            assert translate_payload(source, forbidden_translation) == source
+            assert translate_payload(source, engine) == source
+        validate_translation(source, source)
+        print(f'PR #{number}: 日本語本文中のコマンド名・技術表記を原文のまま保持しました。')
 
     original = {'title': 'Update README.md',
                 'body': '既存の説明\nSee https://example.com/a #12 `my_func` v1.2.3',
