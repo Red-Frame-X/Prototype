@@ -34,6 +34,40 @@ class AdGuardVersionTimestampTests(unittest.TestCase):
         ):
             self.assertEqual(check.main(), 1)
 
+    def test_comment_only_change_requires_version_in_same_commit(self) -> None:
+        target = check.TARGETS[0]
+        old = filter_text("202611161725", "! Baremetrics内の通信を許可\n@@||baremetrics.com^$domain=baremetrics.com")
+        new = filter_text("202611161725", "! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用\n! Baremetrics用の独自補完例外。Baremetrics内からの通信のみ許可\n@@||baremetrics.com^$domain=baremetrics.com")
+        snapshots = {
+            ("comment-change^", target): old,
+            ("comment-change", target): new,
+            ("base", target): old,
+            ("head", target): new,
+        }
+        with (
+            patch.object(check, "git", return_value="comment-change\n"),
+            patch.object(check, "show", side_effect=lambda ref, path: snapshots.get((ref, path))),
+            patch.object(sys, "argv", ["check", "--base", "base", "--head", "head"]),
+        ):
+            self.assertEqual(check.main(), 1)
+
+    def test_comment_only_change_with_updated_version_passes(self) -> None:
+        target = check.TARGETS[0]
+        old = filter_text("202611161725", "! 旧コメント\n@@||baremetrics.com^$domain=baremetrics.com")
+        new = filter_text("202611161830", "! 新コメント\n@@||baremetrics.com^$domain=baremetrics.com")
+        snapshots = {
+            ("comment-change^", target): old,
+            ("comment-change", target): new,
+            ("base", target): old,
+            ("head", target): new,
+        }
+        with (
+            patch.object(check, "git", return_value="comment-change\n"),
+            patch.object(check, "show", side_effect=lambda ref, path: snapshots.get((ref, path))),
+            patch.object(sys, "argv", ["check", "--base", "base", "--head", "head"]),
+        ):
+            self.assertEqual(check.main(), 0)
+
     def test_final_range_check_accepts_updated_version(self) -> None:
         target = check.TARGETS[0]
         snapshots = {
