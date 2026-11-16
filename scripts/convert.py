@@ -233,7 +233,7 @@ class AdGuardOptimizer:
         """
         prefix = r'^https?:\/\/[^\/]*pay'
         lookahead = r'(?=[^\/]*\d[^\/]*\d[^\/]*\d)'
-        ending = r'[^\/]*\.com(?:[/?#]|$)'
+        ending = r'[^\/]*\.com(?:[\/?#]|$)'
         if pattern_str != prefix + lookahead + ending:
             return pattern_str
         alternatives = []
@@ -245,6 +245,7 @@ class AdGuardOptimizer:
                 tail = r'[?#]' + r'[^\/]*\d' * (3 - before)
             alternatives.append(host + tail)
         return prefix + '(?:' + '|'.join(alternatives) + ')'
+
     def optimize_line(self, line: str) -> Optional[str]:
         original_line = line.strip()
         line = original_line
