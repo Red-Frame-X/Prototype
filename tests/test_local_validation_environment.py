@@ -16,6 +16,9 @@ class LocalValidationEnvironmentTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
+        importer = patch.object(check, "import_module")
+        self.importer = importer.start()
+        self.addCleanup(importer.stop)
         (self.root / "requirements-ci.txt").write_text(
             "# CI依存\nPyYAML==6.0.2\nmarkdown-it-py==4.2.0\n", encoding="utf-8",
         )
@@ -41,6 +44,21 @@ class LocalValidationEnvironmentTests(unittest.TestCase):
         self.assertTrue(any("@adguard/aglint" in error for error in errors))
         self.assertTrue(any("Node.jsが見つかりません" in error for error in errors))
         run.assert_not_called()
+        self.importer.assert_not_called()
+
+    def test_python_metadata_does_not_hide_missing_modules_or_transitive_dependencies(self):
+        self.install_node_manifest()
+        self.importer.side_effect = [
+            ModuleNotFoundError("No module named 'yaml'"),
+            ModuleNotFoundError("No module named 'mdurl'"),
+        ]
+        with patch.object(check.metadata, "version", side_effect=["6.0.2", "4.2.0"]), \
+                patch.object(check.shutil, "which", return_value="node"), \
+                patch.object(check.subprocess, "run", return_value=subprocess.CompletedProcess([], 0)):
+            errors = check.check_environment(self.root)
+        self.assertEqual(len(errors), 2)
+        self.assertTrue(any("yaml" in error for error in errors))
+        self.assertTrue(any("markdown_it" in error and "mdurl" in error for error in errors))
 
     def test_existing_manifests_do_not_hide_missing_transitive_dependencies(self):
         self.install_node_manifest()

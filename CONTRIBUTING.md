@@ -82,7 +82,7 @@ npm ci --cache /tmp/prototype-npm-cache
 npm run check:local
 ```
 
-`check:local` は現在のPython環境、Node.jsの依存、AGLintの起動を先に確認し、
+`check:local` は現在のPython環境（依存のVersionと実際のimport）、Node.jsの依存、AGLintの起動を先に確認し、
 成功した場合だけ既存のAGLintと全Python Testを順に実行します。事前確認だけなら
 `npm run check:environment` を使います。依存不足をTestの不具合と誤認したり、
 多数の同じImportErrorが出るまでTestを続けたりしないための補助です。

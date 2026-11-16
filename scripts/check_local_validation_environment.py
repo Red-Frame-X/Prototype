@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from importlib import metadata
+from importlib import import_module, metadata
 import json
 from pathlib import Path
 import re
@@ -12,6 +12,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+PYTHON_IMPORTS = {"PyYAML": "yaml", "markdown-it-py": "markdown_it"}
 
 
 def check_environment(root: Path) -> list[str]:
@@ -32,6 +33,12 @@ def check_environment(root: Path) -> list[str]:
             continue
         if actual != expected:
             errors.append(f"Python依存のVersionが異なります: {name}: {actual}（必要: {expected}）")
+        module = PYTHON_IMPORTS[name]
+        try:
+            import_module(module)
+        except Exception as exc:
+            # Metadataだけが残った環境や、推移的依存・本体の破損も集約して報告する。
+            errors.append(f"Python依存をimportできません: {module}: {type(exc).__name__}: {exc}")
 
     package = json.loads((root / "package.json").read_text(encoding="utf-8"))
     lock = json.loads((root / "package-lock.json").read_text(encoding="utf-8"))
