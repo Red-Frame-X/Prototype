@@ -1,11 +1,14 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611112232
+! Version: 202611161715
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
 ! License: CC0-1.0
 ! Note: 日本のコミュニティ主導ルールと自作ルールを組み合わせたものです。
+
+! Peter Lowe's Blocklist補完例外は、AdGuard Browser Extension MV3でrecommendedフィルタとの併用を想定した独自ルールです。
+! 解析サービス向けの例外は各サービス内からの通信に限定します。
 
 ! Global
 ! 全サイトでreCAPTCHA v3の画面右下に表示されるプライバシー・利用規約バッジを非表示
@@ -32,6 +35,14 @@
 ! EasyListに同等のルールが収録済みのため、重複を避けるため無効化
 ! amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-ref_$="_displayAds"])
 
+! analytics.google.com
+! Google Analytics管理画面からanalytics.google.comとそのサブドメインへの通信を許可
+@@||analytics.google.com^$domain=analytics.google.com
+
+! baremetrics.com
+! Baremetrics内からbaremetrics.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+@@||baremetrics.com^$domain=baremetrics.com
+
 ! blog.hatena.ne.jp
 ! はてなブログの購読管理画面に表示される購読案内の見出しを非表示
 blog.hatena.ne.jp##.admin-subscribe-heading
@@ -45,6 +56,10 @@ blog.hatena.ne.jp##.js-admin-subscribe-recommended-wrapper
 blog.hatena.ne.jp##.recommendList-wrapper
 ! はてなブログのサイドバーに表示されるスタッフおすすめ枠を非表示
 blog.hatena.ne.jp##aside.antenna-staffPicks
+
+! chartbeat.com
+! Chartbeat内からchartbeat.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+@@||chartbeat.com^$domain=chartbeat.com
 
 ! chatgpt.com
 ! ChatGPTで閉じるボタンを持つaside型の案内バナー（プラグイン・ChatGPT Work案内など）を非表示
@@ -89,6 +104,10 @@ diamond.jp##.sub-column:has(> #cx-recommend)
 ! downdetector.jp##[data-service-list-ad="true"]
 ! downdetector.jp##div[data-service-list-ad]
 
+! fullstory.com
+! Fullstory内からfullstory.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+@@||fullstory.com^$domain=fullstory.com
+
 ! gigazine.net
 ! 「試食」カテゴリへのリンクを非表示
 gigazine.net##a[href="https://gigazine.net/news/C13/"]
@@ -118,6 +137,8 @@ gigazine.net#?#section:has(> .card .catab:contains(/^ヘッドライン$/))
 ! google-analytics.com
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避（他のアプリ・Webサイトには適用しない）
 @@||www.google-analytics.com^$app=jp.kappasushi.app
+! Google Analytics管理画面からgoogle-analytics.comとそのサブドメインへの通信だけを許可（全サイト向けの許可ではない）
+@@||google-analytics.com^$domain=analytics.google.com
 
 ! google.com
 ! Google検索の検索タブに表示される「ショート動画」項目を非表示
@@ -126,6 +147,12 @@ google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 ! googleapis.com
 ! Googleアプリでsearchnotifications-pa.googleapis.comへの通信を許可し、Gemini・Googleアシスタントの通信エラーやタイムアウトを回避
 @@||searchnotifications-pa.googleapis.com^$app=com.google.android.googlequicksearchbox
+
+! googletagmanager.com
+! Source: https://github.com/uBlockOrigin/uAssets/blob/master/filters/unbreak.txt
+! Slack内でGoogle Tag ManagerとGoogle tagのScript取得を許可する互換性例外
+@@||googletagmanager.com/gtm.js$script,domain=slack.com
+@@||googletagmanager.com/gtag/js$script,domain=slack.com
 
 ! jomo-p.co.jp
 ! Cookie同意バナーを非表示（同意状態は変更しない）
@@ -183,6 +210,10 @@ m.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)
 m.youtube.com##ytm-rich-section-renderer
 ! 単独で大きく表示されるShortsカードを非表示
 m.youtube.com##ytm-video-with-context-renderer:has(.big-shorts-singleton)
+
+! mixpanel.com
+! Mixpanel内からmixpanel.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+@@||mixpanel.com^$domain=mixpanel.com
 
 ! news.google.com
 ! 上部カテゴリタブの「エンタメ」を非表示
@@ -257,6 +288,14 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 ! old.klz9.comで新着コメントの見出しと.list-commentを包む外枠を非表示
 old.klz9.com##div:has(> .manga-reader-title + .list-comment)
 
+! optimizely.com
+! Optimizely内からoptimizely.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+@@||optimizely.com^$domain=optimizely.com
+
+! parsely.com
+! Parse.ly公式サイト（parse.ly）と管理画面（parsely.com）内からparsely.comとそのサブドメインへの通信を許可
+@@||parsely.com^$domain=parse.ly|parsely.com
+
 ! paypal.com
 ! 関連資料：AdGuard Tracking Protection filterの通信許可ルール。以下のユーザールールと対象ホストは一致するが、公式ルールの終端指定などは異なる
 ! Source: https://github.com/AdguardTeam/AdguardFilters/issues/219743
@@ -276,9 +315,17 @@ pex.kantangame.com##.c-n-game-start__info
 ! スマートフォン向け記事ページのタイトル下広告枠を余白ごと非表示
 ! phileweb.com###sp_article_undertitle_wrapper
 
+! piano.io
+! Piano内からpiano.ioとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+@@||piano.io^$domain=piano.io
+
 ! printeezondemand.com
 ! プライバシー設定の案内バナーを非表示（同意・拒否の設定は変更しない）
 printeezondemand.com##.printeez-consent__panel--banner
+
+! quantcast.com
+! Quantcast内からquantcast.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+@@||quantcast.com^$domain=quantcast.com
 
 ! raw1001.net,mangakoma01.net
 ! Source: https://github.com/AdguardTeam/AdguardFilters/issues/242161#issuecomment-5836552509
@@ -330,6 +377,11 @@ reddit.com##div#left-sidebar-container > faceplate-tracker[source="xpromo"][acti
 ! sellmylaptops.com
 ! 画面下部に固定されたPrivacy Policyリンク付きCookieバナーを非表示
 sellmylaptops.com##div[style*="position:"][style*="fixed"][style*="bottom:"]:has(> p > a[href$="/privacy"])
+
+! statcounter.com
+! StatCounterとGlobal Stats（gs.statcounter.com）内からstatcounter.comとそのサブドメインへの通信を許可
+! 他サイトに埋め込まれたStatCounterへの通信を全サイト向けに許可するルールではない
+@@||statcounter.com^$domain=statcounter.com
 
 ! teraokatape.co.jp
 ! Cookie同意バナーを非表示（同意状態は変更しない）
