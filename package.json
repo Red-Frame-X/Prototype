@@ -2,6 +2,8 @@
   "name": "prototype-filter-tooling",
   "private": true,
   "scripts": {
+    "check:environment": "python scripts/check_local_validation_environment.py",
+    "check:local": "npm run check:environment && npm run lint:adguard && python -m unittest discover -s tests -v",
     "check:haiagaru": "python -m unittest discover -s tests -p test_haiagaru_fixed_environment.py -v",
     "hooks:install": "git config --local core.hooksPath .githooks",
     "lint:markdown:fix": "markdownlint-cli2 --fix",

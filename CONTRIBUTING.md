@@ -70,6 +70,38 @@ Actionsは翻訳・生成・Pushの事前阻止を行いません。
 また、`GITHUB_TOKEN`によるPushは通常、新たなPush Workflowを起動しません。
 既存の自動更新Workflowの生成元でも適切なmessageを維持してください。
 
+## ローカル検証の事前確認
+
+全Testの前に、現在使うPython環境へ `requirements-ci.txt` の依存を導入し、
+Repositoryルートで `npm ci` を実行してください。Pythonの依存は別の仮想環境へ
+導入しただけでは有効になりません。検証するシェルでその環境を有効にします。
+
+```sh
+python -m pip install -r requirements-ci.txt
+npm ci --cache /tmp/prototype-npm-cache
+npm run check:local
+```
+
+`check:local` は現在のPython環境（依存のVersionと実際のimport）、Node.jsの依存、AGLintの起動を先に確認し、
+成功した場合だけ既存のAGLintと全Python Testを順に実行します。事前確認だけなら
+`npm run check:environment` を使います。依存不足をTestの不具合と誤認したり、
+多数の同じImportErrorが出るまでTestを続けたりしないための補助です。
+単独で実行するTestやCIの検証を省略する仕組みではありません。
+
+- AGLintはRepositoryルートから実行し、このRepositoryの設定を読み込みます。
+  別ディレクトリの下書きも、Repositoryの設定を使用する場合は同じ場所から
+  対象ファイルのパスを渡します。
+- npmの既定キャッシュに書き込めない環境では、上の `--cache` のように
+  書き込み可能な作業用ディレクトリを指定します。`HOME` は変更しません。
+- 編集開始前に未Commitの変更を確認し、最新mainの対象ファイルを取得します。
+  mainが進んだ場合は既存内容を保持して差分だけを移し、Versionも同じ変更に含めます。
+- HTTP 403、404、GitHub CLIの認証失敗は、依存不足やルールの不具合と区別します。
+  参照Path・Branch・利用可能な連携を確認し、取得できていない本文を補完しません。
+- ブラウザ検証では、最初に拡張機能を読み込めるか確認します。管理者ポリシーの
+  拒否後に同じ読み込みを繰り返したり、制限を回避したりしません。
+  自動化で起動したブラウザは例外時も `finally` で閉じ、使用中のprofileを再利用しません。
+  公式converterの検証と、拡張機能・実サイトでの検証は分けて報告します。
+
 ## Haiagaruガイド編集時の事前検査
 
 `Markdown Notes/ChromeOS & Android Optimization Guide.md`のHaiagaru説明を編集する場合は、Commit前に次を実行してください。Pythonの標準ライブラリだけで動作し、`npm ci`は不要です。
