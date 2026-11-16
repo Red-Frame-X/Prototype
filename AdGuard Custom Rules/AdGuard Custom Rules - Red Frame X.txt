@@ -7,9 +7,6 @@
 ! License: CC0-1.0
 ! Note: 日本のコミュニティ主導ルールと自作ルールを組み合わせたものです。
 
-! Peter Lowe's Blocklist補完例外は、AdGuard Browser Extension MV3でrecommendedフィルタとの併用を想定した独自ルールです。
-! 解析サービス向けの例外は各サービス内からの通信に限定します。
-
 ! Global
 ! 全サイトでreCAPTCHA v3の画面右下に表示されるプライバシー・利用規約バッジを非表示
 ##.grecaptcha-badge
@@ -36,10 +33,12 @@
 ! amazon.co.jp###gwm-window-xl-container > div.gwm-window-wrapper:has(> div[data-ref_$="_displayAds"])
 
 ! analytics.google.com
+! Google Analytics用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Google Analytics管理画面からanalytics.google.comとそのサブドメインへの通信を許可
 @@||analytics.google.com^$domain=analytics.google.com
 
 ! baremetrics.com
+! Baremetrics用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Baremetrics内からbaremetrics.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||baremetrics.com^$domain=baremetrics.com
 
@@ -58,6 +57,7 @@ blog.hatena.ne.jp##.recommendList-wrapper
 blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! chartbeat.com
+! Chartbeat用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Chartbeat内からchartbeat.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||chartbeat.com^$domain=chartbeat.com
 
@@ -105,6 +105,7 @@ diamond.jp##.sub-column:has(> #cx-recommend)
 ! downdetector.jp##div[data-service-list-ad]
 
 ! fullstory.com
+! Fullstory用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Fullstory内からfullstory.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||fullstory.com^$domain=fullstory.com
 
@@ -212,6 +213,7 @@ m.youtube.com##ytm-rich-section-renderer
 m.youtube.com##ytm-video-with-context-renderer:has(.big-shorts-singleton)
 
 ! mixpanel.com
+! Mixpanel用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Mixpanel内からmixpanel.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||mixpanel.com^$domain=mixpanel.com
 
@@ -289,10 +291,12 @@ old.klz9.com,klto9.com,jestful.net##div:has(> div#show_new_comment)
 old.klz9.com##div:has(> .manga-reader-title + .list-comment)
 
 ! optimizely.com
+! Optimizely用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Optimizely内からoptimizely.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||optimizely.com^$domain=optimizely.com
 
 ! parsely.com
+! Parse.ly用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Parse.ly公式サイト（parse.ly）と管理画面（parsely.com）内からparsely.comとそのサブドメインへの通信を許可
 @@||parsely.com^$domain=parse.ly|parsely.com
 
@@ -316,6 +320,7 @@ pex.kantangame.com##.c-n-game-start__info
 ! phileweb.com###sp_article_undertitle_wrapper
 
 ! piano.io
+! Piano用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Piano内からpiano.ioとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||piano.io^$domain=piano.io
 
@@ -324,6 +329,7 @@ pex.kantangame.com##.c-n-game-start__info
 printeezondemand.com##.printeez-consent__panel--banner
 
 ! quantcast.com
+! Quantcast用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! Quantcast内からquantcast.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||quantcast.com^$domain=quantcast.com
 
@@ -379,6 +385,7 @@ reddit.com##div#left-sidebar-container > faceplate-tracker[source="xpromo"][acti
 sellmylaptops.com##div[style*="position:"][style*="fixed"][style*="bottom:"]:has(> p > a[href$="/privacy"])
 
 ! statcounter.com
+! StatCounter用の独自補完例外（AdGuard MV3・recommendedフィルタ併用）。通信許可は対象サービス内に限定
 ! StatCounterとGlobal Stats（gs.statcounter.com）内からstatcounter.comとそのサブドメインへの通信を許可
 ! 他サイトに埋め込まれたStatCounterへの通信を全サイト向けに許可するルールではない
 @@||statcounter.com^$domain=statcounter.com
