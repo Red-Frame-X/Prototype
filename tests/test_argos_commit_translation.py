@@ -38,7 +38,8 @@ class ArgosTranslationTests(unittest.TestCase):
     def test_english_prose_in_japanese_still_requires_translation(self):
         for source in ('既存の説明 and update details', '既存の説明: Update body',
                        '既存の説明: improve validation', '既存の説明: Allow requests',
-                       '既存の説明: cache expires', '既存の説明: existing cache'):
+                       '既存の説明: cache expires', '既存の説明: existing cache',
+                       '検証結果: CI failed', '既存の説明: GitHub configuration'):
             with self.subTest(source=source):
                 engine = Mock(return_value=source)
                 with self.assertRaises(argos.TranslationError):
