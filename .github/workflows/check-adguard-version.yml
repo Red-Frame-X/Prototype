@@ -7,6 +7,7 @@ on:
       - 'AdGuard Custom Rules/AdGuard DNS Custom Rules - Red Frame X.txt'
       - 'scripts/check_adguard_version_timestamp.py'
       - 'tests/test_adguard_version_precommit.py'
+      - 'tests/test_check_adguard_version_timestamp.py'
       - '.githooks/pre-commit'
       - '.github/workflows/check-adguard-version.yml'
   workflow_dispatch:
@@ -26,6 +27,9 @@ jobs:
 
       - name: Commit前のVersion検査の回帰テスト
         run: python -m unittest discover -s tests -p test_adguard_version_precommit.py -v
+
+      - name: Version変更検査の回帰テスト
+        run: python -m unittest discover -s tests -p test_check_adguard_version_timestamp.py -v
 
       - name: 比較元の決定
         id: base
