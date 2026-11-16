@@ -225,16 +225,26 @@ class AdGuardOptimizer:
 
     @staticmethod
     def _rewrite_re2_safe_lookahead(pattern_str: str) -> str:
-        """意味を厳密に維持できる既知の先読みだけRE2互換形へ変換する。
+        """既知のURLルールの一致集合を維持してRE2互換形へ変換する。
 
-        `pay` 以降かつスラッシュ以前に数字が3個以上存在することを確認する
-        positive lookahead は、同じ範囲を実際に消費する表現へ展開できる。
+        数字3個はホストだけでなく、スラッシュ以前のクエリーや
+        フラグメントにも存在し得る。前後の数字の配分を列挙する。
         一般のlookaroundを推測変換すると一致集合が変わり得るため扱わない。
         """
-        digit_triplet_lookahead = r'(?=[^\/]*\d[^\/]*\d[^\/]*\d)[^\/]*\.com'
-        digit_triplet_consuming = r'[^\/]*\d[^\/]*\d[^\/]*\d[^\/]*\.com'
-        return pattern_str.replace(digit_triplet_lookahead, digit_triplet_consuming)
-
+        prefix = r'^https?:\/\/[^\/]*pay'
+        lookahead = r'(?=[^\/]*\d[^\/]*\d[^\/]*\d)'
+        ending = r'[^\/]*\.com(?:[/?#]|$)'
+        if pattern_str != prefix + lookahead + ending:
+            return pattern_str
+        alternatives = []
+        for before in range(4):
+            host = r'[^\/]*\d' * before + r'[^\/]*\.com'
+            if before == 3:
+                tail = r'(?:[/?#]|$)'
+            else:
+                tail = r'[?#]' + r'[^\/]*\d' * (3 - before)
+            alternatives.append(host + tail)
+        return prefix + '(?:' + '|'.join(alternatives) + ')'
     def optimize_line(self, line: str) -> Optional[str]:
         original_line = line.strip()
         line = original_line
