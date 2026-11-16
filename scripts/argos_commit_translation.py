@@ -71,7 +71,7 @@ verb_forms.update(('Kept', 'Keeping', 'Built', 'Building', 'Pinned', 'Pinning',
                    'Did', 'Done', 'Doing', 'Saw', 'Seen', 'Seeing'))
 PROSE_WORDS = '|'.join(sorted(verb_forms, key=lambda word: (-len(word), word)))
 PROTECTED = re.compile(PROTECTED.pattern + r'|(?<![A-Za-z0-9_])(?!(?:' + PROSE_WORDS
-                       + r')(?![A-Za-z0-9_]))[A-Z][a-z]+(?![A-Za-z0-9_])')
+                       + r')(?![A-Za-z0-9_]))[A-Z][a-z]+(?:[\'’]s)?(?![A-Za-z0-9_])')
 
 # Unicodeの\bや\wは隣接する日本語も単語に含めるため、README.md等の
 # PathはASCIIの境界・文字集合で先に照合し、拡張子だけが翻訳器へ漏れるのを防ぐ。
@@ -214,6 +214,12 @@ def mask_line(line, protect):
         if ':' in word or '_' in word or word.startswith('.'):
             return protect(match)
         if not japanese or word.casefold() in PROSE_IDENTIFIERS:
+            return word
+        before = line[:match.start()].rstrip()
+        after = line[match.end():].lstrip()
+        # 別の日本語文が同じ行にあるだけでは、後続の英文まで保護しない。
+        if not ((before and JAPANESE.fullmatch(before[-1]))
+                or (after and JAPANESE.fullmatch(after[0]))):
             return word
         previous = re.search(r'([A-Za-z_][A-Za-z0-9_-]*)[ \t]+$', line[:match.start()])
         following = re.compile(r'[ \t]+([A-Za-z_][A-Za-z0-9_-]*)').match(line, match.end())

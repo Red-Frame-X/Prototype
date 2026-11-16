@@ -30,14 +30,15 @@ class ArgosTranslationTests(unittest.TestCase):
         for source in ('新しいcheck:offlineを追加', '.custom-infoの不足を検出',
                        'Python import検査を追加', 'finallyで終了処理を保証',
                        '未登録のwidget_nameを保持', '新しいfrobnicatorを確認',
-                       'DNR allowルールを確認'):
+                       "Peter Lowe's Blocklistを確認", 'DNR allowルールを確認'):
             with self.subTest(source=source):
                 self.assertEqual(argos.translate_text(source, engine), source)
         engine.assert_not_called()
 
     def test_english_prose_in_japanese_still_requires_translation(self):
         for source in ('既存の説明 and update details', '既存の説明: Update body',
-                       '既存の説明: improve validation', '既存の説明: Allow requests'):
+                       '既存の説明: improve validation', '既存の説明: Allow requests',
+                       '既存の説明: cache expires', '既存の説明: existing cache'):
             with self.subTest(source=source):
                 engine = Mock(return_value=source)
                 with self.assertRaises(argos.TranslationError):
