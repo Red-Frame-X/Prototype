@@ -1,0 +1,10 @@
+{
+  "title": "AdGuard Custom Rules に解析サービス向けの限定例外を追加",
+  "body": "Peter Lowe's Blocklist の購読時に解析サービス自身の利用を補完する、サイト限定の例外13本を追加します。StatCounter / Global Stats、Google Analytics、Quantcast、Mixpanel、Chartbeat、Parse.ly、Fullstory、Baremetrics、Optimizely、Piano と Slack を対象に、ドメイン別セクションへ許可範囲の説明コメント付きで統合しました。\n\n最新mainの既存ルール・コメント・順序を保持し、同じCommitでVersionをJSTに更新しています。フィルタ本体には、ユーザーの指定どおり未検証についての注記を追加していません。\n\n検証結果:\n- AGLint、AdGuard整合性、有効ルール保持、内容消失防止、固定名称、Version staged検査、diffチェックに成功。\n- 追加した有効ルールが指定13本と完全一致し、既存行に欠落がないことを確認。\n- Repositoryの全360 Testに成功（requirements-ci.txtとNode.js依存を導入した環境）。\n- AdGuard Browser Extension v5.5.4の依存と同じ @adguard/tsurlfilter 6.0.3 / @adguard/dnr-converter 2.0.0で13本を変換し、DNR allowルール13本、変換エラー・制限とも0件を確認。\n- Peter Lowe's Blocklist単独、および取得した全recommendedフィルタ併用の2構成で計200項目に成功。対象サイト・サブドメインでの許可、無関係なサイト・紛らわしい別ドメインでの非許可、SlackのScript種別・パス限定、DNRのinitiatorDomainsとresourceTypesを確認。\n- Codex Reviewは先端414bee58f978712b006de2990d316e80d7b34247に対して指摘なし。qualityとcheck-adguard-versionも成功。\n\n実ブラウザ検証の範囲:\nChromium 151と公式のAdGuard MV3 v5.5.4.55を用意しましたが、ブラウザが管理者ポリシーによる未パッケージ化拡張機能の読み込み禁止を返したため、拡張機能上での試験は実施できませんでした。ポリシーは変更していません。上記の公式converterとエンジンによる検証は、実サイトでのログイン・グラフ操作などの検証を代替するものではありません。",
+  "commits": [
+    {
+      "sha": "414bee58f978712b006de2990d316e80d7b34247",
+      "message": "AdGuard Custom Rules に解析サービス向けの限定例外を追加"
+    }
+  ]
+}

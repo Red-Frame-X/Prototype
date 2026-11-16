@@ -15,6 +15,42 @@ import argos_commit_translation as argos
 
 
 class ArgosTranslationTests(unittest.TestCase):
+    def test_pr311_and_pr312_keep_japanese_text_and_technical_identifiers(self):
+        from automate_japanese_commits import validate_translation
+        for number in (311, 312):
+            with self.subTest(number=number):
+                source = json.loads((Path(__file__).parent / f'fixtures/pr{number}-japanese-translation.json').read_text())
+                engine = Mock(side_effect=AssertionError('日本語PRに不要な翻訳を実行しました。'))
+                self.assertEqual(argos.translate_payload(source, engine), source)
+                validate_translation(source, source)
+                engine.assert_not_called()
+
+    def test_unregistered_identifiers_in_japanese_do_not_require_dictionary_entries(self):
+        engine = Mock(side_effect=AssertionError('技術表記を翻訳しています。'))
+        for source in ('新しいcheck:offlineを追加', '.custom-infoの不足を検出',
+                       'Python import検査を追加', 'finallyで終了処理を保証',
+                       '未登録のwidget_nameを保持', '新しいfrobnicatorを確認',
+                       "Peter Lowe's Blocklistを確認", 'DNR allowルールを確認'):
+            with self.subTest(source=source):
+                self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+
+    def test_english_prose_in_japanese_still_requires_translation(self):
+        for source in ('既存の説明 and update details', '既存の説明: Update body',
+                       '既存の説明: improve validation', '既存の説明: Allow requests',
+                       '既存の説明: cache expires', '既存の説明: existing cache',
+                       '検証結果: CI failed', '既存の説明: GitHub configuration'):
+            with self.subTest(source=source):
+                engine = Mock(return_value=source)
+                with self.assertRaises(argos.TranslationError):
+                    argos.translate_text(source, engine)
+                engine.assert_called_once()
+
+    def test_structured_cli_identifier_is_preserved_in_english_prose(self):
+        engine = Mock(side_effect=lambda value: value.replace('Update ', '') + 'を更新')
+        self.assertEqual(argos.translate_text('Update check:offline', engine), 'check:offlineを更新')
+        engine.assert_called_once_with('Update ZXQ0000QXZ')
+
     def test_pr292_dependency_names_and_platform_name_stay_unchanged(self):
         from automate_japanese_commits import validate_translation
         original = json.loads((Path(__file__).parent / 'fixtures/pr292-japanese-translation.json').read_text())

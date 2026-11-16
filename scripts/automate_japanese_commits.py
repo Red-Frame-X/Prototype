@@ -179,8 +179,14 @@ def translate(original: dict) -> dict:
     from argos_commit_translation import load_engine, translate_payload, TranslationError
     if len(json.dumps(original, ensure_ascii=False).encode()) > MAX_MESSAGE_BYTES:
         raise AutomationError('翻訳対象が上限を超えました。内容を省略せず停止します。')
+    engine = None
+    def translate_segment(source):
+        nonlocal engine
+        if engine is None:
+            engine = load_engine()
+        return engine(source)
     try:
-        translated = translate_payload(original, load_engine())
+        translated = translate_payload(original, translate_segment)
     except TranslationError as error:
         raise AutomationError(str(error)) from None
     return validate_translation(original, translated)

@@ -23,7 +23,7 @@ TERMS = (
     'Markdown Notes', 'GitHub Actions', 'Pull Request', 'uBlock Origin',
     'Argos Translate', 'Codex Review', 'UserScript', 'Workflow', 'Commit', 'Branch',
     'Repository', 'README', 'GitHub', 'AdGuard', 'Version', 'AGLint', 'Markdownlint',
-    'CI', 'Lint', 'Test', 'Script', 'API', 'PR', 'Issue',
+    'CI', 'Lint', 'Test', 'Script', 'API', 'PR', 'Issue', 'DNR allow',
     'Prototype', 'Red-Frame-X', 'Python', 'JavaScript', 'TypeScript', 'Node.js',
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
     'Yahoo!', 'ExtendedCss',
@@ -71,7 +71,7 @@ verb_forms.update(('Kept', 'Keeping', 'Built', 'Building', 'Pinned', 'Pinning',
                    'Did', 'Done', 'Doing', 'Saw', 'Seen', 'Seeing'))
 PROSE_WORDS = '|'.join(sorted(verb_forms, key=lambda word: (-len(word), word)))
 PROTECTED = re.compile(PROTECTED.pattern + r'|(?<![A-Za-z0-9_])(?!(?:' + PROSE_WORDS
-                       + r')(?![A-Za-z0-9_]))[A-Z][a-z]+(?![A-Za-z0-9_])')
+                       + r')(?![A-Za-z0-9_]))[A-Z][a-z]+(?:[\'’]s)?(?![A-Za-z0-9_])')
 
 # Unicodeの\bや\wは隣接する日本語も単語に含めるため、README.md等の
 # PathはASCIIの境界・文字集合で先に照合し、拡張子だけが翻訳器へ漏れるのを防ぐ。
@@ -184,6 +184,52 @@ JAPANESE_TOKENS = re.compile(
     r'(?<![A-Za-z0-9_./-])(?:Squash merge|Squash|Merge|merge|push)(?![A-Za-z0-9_./-])|'
     + TOKENS.pattern)
 
+# CLIのScript名・非公開モジュール名等を、PRごとの製品名辞書へ追加せず扱う。
+# ASCIIの文字集合を使い、日本語に隣接する識別子も単独で判定する。
+ASCII_IDENTIFIER = (r'(?<![A-Za-z0-9_./:-])\.?[A-Za-z_][A-Za-z0-9_-]*'
+                    r'(?:[.:][A-Za-z0-9_-]+)*(?![A-Za-z0-9_./:-])')
+IDENTIFIER_CANDIDATES = re.compile(
+    '(?P<known>' + TOKENS.pattern + ')|(?P<identifier>' + ASCII_IDENTIFIER + ')')
+JAPANESE_IDENTIFIER_CANDIDATES = re.compile(
+    '(?P<known>' + JAPANESE_TOKENS.pattern + ')|(?P<identifier>' + ASCII_IDENTIFIER + ')')
+PROSE_IDENTIFIERS = {word.casefold() for word in PROSE_WORDS.split('|')}
+PROSE_IDENTIFIERS.update(('and', 'or', 'not', 'is', 'are', 'was', 'were', 'be', 'has', 'have'))
+
+
+def mask_line(line, protect):
+    """日本語文中の単独識別子を保持し、英語の単語列・更新動詞は翻訳へ残す。"""
+    japanese = bool(JAPANESE.search(line))
+    tokens = JAPANESE_TOKENS if japanese else TOKENS
+    known = [(match.start(), match.end()) for match in tokens.finditer(line)]
+
+    def ordinary_neighbour(match):
+        return match is not None and not any(
+            start <= match.start(1) and match.end(1) <= end for start, end in known)
+
+    def replace(match):
+        if match.lastgroup == 'known':
+            return protect(match)
+        word = match[0]
+        # check:local、.dist-info等の構造を持つ識別子は英語文中でも保持する。
+        if ':' in word or '_' in word or word.startswith('.'):
+            return protect(match)
+        if not japanese or word.casefold() in PROSE_IDENTIFIERS:
+            return word
+        before = line[:match.start()].rstrip()
+        after = line[match.end():].lstrip()
+        # 別の日本語文が同じ行にあるだけでは、後続の英文まで保護しない。
+        if not ((before and JAPANESE.fullmatch(before[-1]))
+                or (after and JAPANESE.fullmatch(after[0]))):
+            return word
+        previous = re.search(r'([A-Za-z_][A-Za-z0-9_-]*)[ \t]+$', line[:match.start()])
+        following = re.compile(r'[ \t]+([A-Za-z_][A-Za-z0-9_-]*)').match(line, match.end())
+        if ordinary_neighbour(previous) or ordinary_neighbour(following):
+            return word
+        return protect(match)
+
+    candidates = JAPANESE_IDENTIFIER_CANDIDATES if japanese else IDENTIFIER_CANDIDATES
+    return candidates.sub(replace, line)
+
 
 def markdown_segments(text):
     """CommonMarkが判定したコードブロックとCode spanを原文で保持する。"""
@@ -264,7 +310,7 @@ def translate_text(text, engine):
         tokens[marker] = match[0]
         return marker
     masked = ''.join(protect((value,)) if code else ''.join(
-        (JAPANESE_TOKENS if JAPANESE.search(line) else TOKENS).sub(protect, line)
+        mask_line(line, protect)
         for line in value.splitlines(keepends=True))
         for code, value in markdown_segments(text))
     result = []
