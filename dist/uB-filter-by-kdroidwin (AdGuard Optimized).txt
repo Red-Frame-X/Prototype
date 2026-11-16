@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202611162024
+! Version: 202611170803
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -61,7 +61,7 @@
 /^https?:\/\/[^.\/]+\.pages\.dev\/\?PubID=\d{1,10}&SubID=[^&]+&Camp=\d{1,10}&Browser=edge&clid=/$document
 /^https?:\/\/[^\/]*\.cloudfree\.jp\/hitomi-doujin-raw\/d_\d{6}.*$/$document
 ! aglint-disable-next-line invalid-modifiers
-/^https?:\/\/[^\/]*pay[^\/]*\d[^\/]*\d[^\/]*\d[^\/]*\.com(?:[\/?#]|$)/
+/^https?:\/\/[^\/]*pay(?:[^\/]*\.com[?#][^\/]*\d[^\/]*\d[^\/]*\d|[^\/]*\d[^\/]*\.com[?#][^\/]*\d[^\/]*\d|[^\/]*\d[^\/]*\d[^\/]*\.com[?#][^\/]*\d|[^\/]*\d[^\/]*\d[^\/]*\d[^\/]*\.com(?:[/?#]|$))/
 /^https?:\/\/[a-z0-9]{20,}\.[a-z0-9.-]*\.cn\//$document
 /^https?:\/\/[a-z0-9]{25,}\.[a-z0-9.-]*\.br\//$document
 /^https?:\/\/[a-z0-9]{25,}\.[a-z0-9.-]*\.online\//$document
