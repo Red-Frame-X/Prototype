@@ -150,7 +150,7 @@ class TranslationTests(unittest.TestCase):
                 automation.validate_translation(original, translated)
 
     def test_japanese_payload_does_not_initialize_model(self):
-        for number in (311, 312):
+        for number in (311, 312, 319):
             source = json.loads((Path(__file__).parent / f'fixtures/pr{number}-japanese-translation.json').read_text())
             with self.subTest(number=number), patch('argos_commit_translation.load_engine') as load:
                 result = automation.translate(source)

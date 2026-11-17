@@ -16,6 +16,7 @@ def main():
         print('固定hashを再検証し、モデルのarchiveを再取得せず再利用しました。')
     samples = [
         'Update documentation',
+        'Update hash calculation',
         'Fix a bug',
         'Update check:offline',
         'Merge main',
@@ -69,6 +70,8 @@ def main():
         }
         for word in expected.get(source, ()):
             assert word in target, (source, target, word)
+        if source == 'Update hash calculation':
+            assert 'hash' in target and '更新' in target, target
         if source.startswith('- [x]'):
             assert target.startswith('- [x] ')
         if 'Update README.md' in source:
@@ -135,7 +138,7 @@ def main():
     validate_translation(original292, unchanged292)
     print('PR #292: 追加の依存名・Branch protection・Xを原文のまま保持しました。')
 
-    for number in (311, 312):
+    for number in (311, 312, 319):
         source = json.loads(snapshot.with_name(f'pr{number}-japanese-translation.json').read_text())
         with patch('socket.socket.connect', side_effect=AssertionError('翻訳中の外部通信')):
             assert translate_payload(source, forbidden_translation) == source
