@@ -55,7 +55,8 @@ jobs:
           cache-dependency-path: requirements-translation.txt
 
       - name: hashを毎回照合する固定モデルのarchiveを再利用
-        uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        id: argos-cache
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
           path: ${{ runner.temp }}/commit-ja-model-cache
           key: ${{ runner.os }}-argos-archive-v1-${{ hashFiles('.github/argos-model.json') }}
@@ -77,6 +78,20 @@ jobs:
           COMMIT_JA_AUTOMATION_ENABLED: ${{ vars.COMMIT_JA_AUTOMATION_ENABLED }}
           TARGET_PR: ${{ inputs.pr_number }}
         run: python scripts/automate_japanese_commits.py
+
+      - name: 保存対象の固定モデルarchiveを検証
+        id: argos-cache-ready
+        if: success() && steps.argos-cache.outputs.cache-hit != 'true'
+        env:
+          ARGOS_MODEL_CACHE_DIR: ${{ runner.temp }}/commit-ja-model-cache
+        run: python scripts/check_argos_model_cache.py
+
+      - name: 検証済みの固定モデルarchiveだけを保存
+        if: success() && steps.argos-cache-ready.outputs.ready == 'true'
+        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: ${{ runner.temp }}/commit-ja-model-cache
+          key: ${{ steps.argos-cache.outputs.cache-primary-key }}
 
   diagnose:
     name: 失敗時の保守診断と回帰Test

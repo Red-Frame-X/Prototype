@@ -1,0 +1,40 @@
+name: 別RunでのArgosモデルcache復元検証
+
+on:
+  workflow_run:
+    workflows: ['Argos英日モデルの実物検証']
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-cache:
+    # mainのpushによる実モデル検証成功だけを採用し、PR側のコード・Artifactは実行しない。
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 成功したmainのCommitを取得
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          persist-credentials: false
+      - name: Pythonの準備
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: 別Runが保存した固定モデルのarchiveを復元
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: ${{ runner.temp }}/commit-ja-model-cache
+          key: ${{ runner.os }}-argos-archive-v1-${{ hashFiles('.github/argos-model.json') }}
+          fail-on-cache-miss: true
+      - name: 再取得せずにhash・言語・Versionを検証
+        env:
+          ARGOS_MODEL_CACHE_DIR: ${{ runner.temp }}/commit-ja-model-cache
+        run: python scripts/check_argos_model_cache.py --require

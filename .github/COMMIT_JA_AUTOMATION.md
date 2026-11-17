@@ -257,3 +257,11 @@ APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/action
 調査時はPRの最新Bot Commentの状態、Actionsのエラーと`RETRY_WAIT`、診断Artifactを確認してください。権限不足、保護ルール、未解決Review、競合、不明な履歴不整合、起動結果が不明な書き込みは手動対応の対象です。古い意図の記録を消して再試行させる前に、GitHub上で元の要求が受け付けられていないことを確認してください。通常運用で状態Commentを削除する必要はありません。
 
 `test_argos_automation_lifecycle.py`は、一時的なローカルGit Repositoryで実際の履歴書き換え・著者保持・Squashを行い、MockのGitHub API・Review・CIで`VERIFIED`まで検証します。品質検査では固定の訳文、Argos専用CIでは実モデルを使います。PR段階とマージ後で異なるSHAのCIを使い、繰り返し呼び出しても再マージ・再起動しないことを確認します。外部RepositoryのPRは作成・変更しません。この検証を本番GitHubでの自動マージ実績とは扱いません。
+
+## 固定モデルcacheの保存条件と別Runでの検証
+
+[Run #252](https://github.com/Red-Frame-X/Prototype/actions/runs/44016493135) は成功しましたが、翻訳不要でモデル未取得だったため、cacheの自動保存時に保存対象Pathがないという警告が出ていました。復元と保存を公式Actionの別Stepに分け、`check_argos_model_cache.py`で固定hash・Metadata・言語・Versionを検証できたarchiveだけを保存します。モデル未取得は正常な保存省略、存在するが不正なarchiveは失敗として区別します。空のディレクトリを作って保存成功とみなすことはしません。
+
+`Argos英日モデルの実物検証`は関連ファイルのmainへのpushでも実行し、実モデル検証後のarchiveを同じcache keyとPathで保存します。その成功後に別Workflowの`別RunでのArgosモデルcache復元検証`を起動します。後続Runは同じRepositoryのmainへのpushに由来する成功Runだけを採用し、そのCommitのコードを読み取り専用で取得します。cacheの未復元は失敗にし、モデル配布先への通信やインストールを行わずに実物のhash・Metadataを再確認します。後続Workflowは元の実モデル検証Workflowを起動しないため、再帰的な起動経路はありません。PR由来の完了イベントでは後続Jobを実行しません。
+
+この確認は、同一Process内での再利用と、GitHub Actionsのcacheから別Runへ復元できることを区別するためのものです。別Runが成功するまでは復元確認済みとは扱いません。公式仕様は、使用する固定Commitの [restore Action](https://github.com/actions/cache/blob/caa296126883cff596d87d8935842f9db880ef25/restore/action.yml)、[save Action](https://github.com/actions/cache/blob/caa296126883cff596d87d8935842f9db880ef25/save/action.yml)、[README](https://github.com/actions/cache/blob/caa296126883cff596d87d8935842f9db880ef25/README.md) の本文で照合しました。
