@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202611171258
+! Version: 202611180754
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -1181,6 +1181,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||apkpure.com/nekogram^$document
 ||apkpure.com/revanced-extended^$document
 ||apkpure.com/telegram/org.telegram.messenger^$doc
+||apkpure.com/youtube-morphe^$document
 ||apkpure.com/youtube-revanced^$document
 ||apkpure.net/graph-messenger^$document
 ||apkpure.net/happymod-2025^$document
@@ -1206,6 +1207,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||app-info.xyz^$document
 ||app-liv.jp^$document
 ||app-loader.com^$document
+||app-store-get.com^$document
 ||app-story.net^$document
 ||app-tatsujin.com^$document
 ||app-valley.vip^$document
@@ -1860,6 +1862,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||books.makianosaihu.com^$document
 ||booktakeaway.com^$document
 ||bookwiz.me^$document
+||boostlink.cc^$document
 ||boqxywd.art^$document
 ||border-verse.jp^$document
 ||borovena.com^$document
@@ -4359,6 +4362,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||gofile-ero.com^$document
 ||gofile-pass.mystrikingly.com^$document
 ||gofile-sns.com^$document
+||gofile.cc^$document
 ||gofile.my.canva.site^$document
 ||gogomama.net^$document
 ||gogozoromi.com^$document
@@ -4562,6 +4566,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||hal08.com^$document
 ||halilibrahimoslo.online^$document
 ||halnostyle.com^$document
+||halogen.jpn.org^$document
 ||haluene.co.jp^$document
 ||hamajira.com^$document
 ||hamame.xyz^$document
@@ -7414,6 +7419,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||morphe-app.com^$document
 ||morphe-official.com^$document
 ||morphe-youtube.ru.malavida.com^$document
+||morphe.en.uptodown.com^$document
 ||morphe.jp.uptodown.com^$document
 ||morpheapp.net^$document
 ||morpheapp.software^$document
@@ -11962,6 +11968,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||update.7zip.cloud^$document
 ||updatestar.com^$document
 ||updays.me^$document
+||upld.cc^$document
 ||uploaderjp-full-archive.activetk.jp/dl/ujp-client-win-*.zip$document
 ||uprass.com^$document
 ||uprobrocher.ucoz.ru^$document
