@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611171955 |
+| **Version** | 202611172008 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -1500,6 +1500,11 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 * **[Online Malicious URL Blocklist](https://gitlab.com/malware-filter/urlhaus-filter)**：過去に使用していたURLhaus由来のマルウェア配布先対策フィルタです。現在はChromeOS・Androidの両方でOFFにしています。
 * **[uBlock Origin – Badware risks](https://github.com/uBlockOrigin/uAssets)**：ChromeOS・Android共通のセキュリティ系コンテンツブロックフィルタとして使用します。Yuki2718氏がフィルタの監修に関わっています。
 
+**DNSフィルタ**
+* AdGuard for Android：「DNS通信を保護 > DNSフィルタ」で`HaGeZi's Multi NORMAL - all-round protection`を登録し、`AdGuard DNS filter (Optimized)`は使用しません。従来の [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) ・派生版の対処記録と、個別例外・TIF mediumの運用は [AndroidのDNS設定](#android-アプリ-有償版-adguard-for-androidandroid) を参照してください。
+
+**コンテンツブロックフィルタの補足**
+
 ChromeOS・Androidとも、まずAdGuard公式の推奨フィルタと日本語フィルタを有効にし、セキュリティ系は`uBlock Origin – Badware risks`を選びます。`Online Malicious URL Blocklist`は`#recommended`付きでもOFFにします。これは本ガイドの運用方針であり、AdGuard公式の推奨変更ではありません。
 
 Badware risksは、危険性を示す資料に基づき、アドウェア・不要なソフトウェア・マルウェアの導入や認証情報窃取のリスクがあるサイトを収録します。該当するアクセスをブロックし、uBOの`$document`ルールではサイト全体をいったん止めて警告し、続行するか利用者が選べます。URLhaus由来のリストとは収録基準・更新経路が異なり、一本化後の保護の同等性は未検証です。DNS対策は別レイヤーとして扱います（ [uAssetsの原典](https://github.com/uBlockOrigin/uAssets/blob/568ce1c8eb537b0e940a03f5a780abb728579ddd/filters/badware.txt) / [AdGuardのOnline Malicious URL Blocklist定義](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/filters/ThirdParty/filter_208_Online_Malicious_URL_Blocklist/metadata.json) ）。
@@ -1520,9 +1525,6 @@ AdGuard公式FiltersRegistryの`main`（Commit `c35e4d48a6df093b3c6fdd644f6f104f
 * [Yuki2718/adblock2 > AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)
   
   AdGuard Japanese filterを補完するフィルタ。迂回広告や悪質ポップアップ、一部のAnti-Adblockへの汎用的な追加対策。
-
-**DNSフィルタ**
-* AdGuard for Android：「DNS通信を保護 > DNSフィルタ」で`HaGeZi's Multi NORMAL - all-round protection`を登録し、`AdGuard DNS filter (Optimized)`は使用しません。従来の [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) ・派生版の対処記録と、個別例外・TIF mediumの運用は [AndroidのDNS設定](#android-アプリ-有償版-adguard-for-androidandroid) を参照してください。
 
 **例外ルール**
 * 例外ルールの作成方針：サイトの機能やAndroidアプリの動作を阻害するルールを例外（`@@`）にすることが多いです。
