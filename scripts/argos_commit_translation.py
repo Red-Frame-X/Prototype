@@ -3,10 +3,16 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import random
+import time
+from email.utils import parsedate_to_datetime
+from http.client import IncompleteRead
 from pathlib import Path
 import re
 import tempfile
 import urllib.request
+import urllib.error
 import zipfile
 
 
@@ -83,6 +89,65 @@ PROTECTED = re.compile(
     r'(?![A-Za-z0-9_./-])|' + PROTECTED.pattern)
 
 
+def download_model(archive):
+    """部分取得を毎回捨て、明示した一時障害だけを最大3回再試行する。"""
+    for attempt in range(4):
+        try:
+            # 認証情報も翻訳対象本文も送信しない。配布先は固定する。
+            with urllib.request.urlopen(urllib.request.Request(
+                    'https://argos-net.com/v1/translate-en_ja-1_1.argosmodel',
+                    headers={'User-Agent': 'ArgosTranslate/1.11.0'}), timeout=90) as response:
+                with archive.open('wb') as output:
+                    total = 0
+                    while chunk := response.read(1024 * 1024):
+                        total += len(chunk)
+                        if total > 500_000_000:
+                            raise TranslationError('モデルが取得上限を超えました。')
+                        output.write(chunk)
+            return
+        except urllib.error.HTTPError as error:
+            if error.code not in {429, 500, 502, 503, 504}:
+                raise TranslationError(f'モデル配布先がHTTP {error.code}を返しました。') from None
+            delay = 60 * 2 ** attempt if error.code == 429 else 2 ** attempt + random.uniform(0, 1)
+            value = error.headers.get('Retry-After')
+            if value:
+                try:
+                    delay = max(0, float(value))
+                except ValueError:
+                    try:
+                        delay = max(0, parsedate_to_datetime(value).timestamp() - time.time())
+                    except (ValueError, TypeError, OverflowError):
+                        pass
+            if attempt == 3 or delay > 60:
+                raise TranslationError('モデル取得の再試行上限または待機時間上限に達しました。') from None
+        except (urllib.error.URLError, TimeoutError, ConnectionError, IncompleteRead):
+            if attempt == 3:
+                raise TranslationError('モデル取得の通信失敗が再試行上限に達しました。') from None
+            delay = 2 ** attempt + random.uniform(0, 1)
+        print(f'RETRY_WAIT: モデル取得 retry={attempt + 1}/3, wait={delay:.1f}s')
+        time.sleep(delay)
+
+
+def model_archive(directory, digest):
+    """cacheも毎回hashを検証し、検証済みのarchiveだけを原子的に保存する。"""
+    cache = os.environ.get('ARGOS_MODEL_CACHE_DIR')
+    archive = Path(cache) / (digest + '.argosmodel') if cache else Path(directory) / 'model.argosmodel'
+    if archive.exists():
+        if archive.stat().st_size > 500_000_000:
+            raise TranslationError('cache内のモデルが取得上限を超えました。')
+        if hashlib.sha256(archive.read_bytes()).hexdigest() != digest:
+            raise TranslationError('cache内のモデルのSHA256が一致しません。手動確認が必要です。')
+        return archive
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=archive.parent) as temporary:
+        partial = Path(temporary) / 'model.argosmodel'
+        download_model(partial)
+        if hashlib.sha256(partial.read_bytes()).hexdigest() != digest:
+            raise TranslationError('モデルのSHA256が一致しません。')
+        partial.replace(archive)
+    return archive
+
+
 def load_engine():
     """既定Branchの固定情報だけから取得し、hashとMetadataを確認する。"""
     manifest = json.loads((ROOT / '.github/argos-model.json').read_text())
@@ -95,19 +160,7 @@ def load_engine():
         import argostranslate.package as package
         import argostranslate.translate as translate
         with tempfile.TemporaryDirectory() as directory:
-            archive = Path(directory) / 'model.argosmodel'
-            # 認証情報も翻訳対象本文も送信しない。配布先は固定する。
-            with urllib.request.urlopen(
-                    urllib.request.Request(
-                        'https://argos-net.com/v1/translate-en_ja-1_1.argosmodel',
-                        headers={'User-Agent': 'ArgosTranslate/1.11.0'}), timeout=90) as response:
-                with archive.open('wb') as output:
-                    total = 0
-                    while chunk := response.read(1024 * 1024):
-                        total += len(chunk)
-                        if total > 500_000_000:
-                            raise TranslationError('モデルが取得上限を超えました。')
-                        output.write(chunk)
+            archive = model_archive(directory, digest)
             if hashlib.sha256(archive.read_bytes()).hexdigest() != digest:
                 raise TranslationError('モデルのSHA256が一致しません。')
             with zipfile.ZipFile(archive) as zipped:

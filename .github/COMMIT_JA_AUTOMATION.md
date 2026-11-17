@@ -235,12 +235,25 @@ PR #311・#312の公開スナップショットを回帰Testと固定実モデ�
 
 APIのGETはTimeout・通信失敗・429・500 / 502 / 503 / 504に限り、指数BackoffとJitterで最大3回再試行します。`Retry-After`の秒数とHTTP日時を優先し、Rate Limit残数が0なら`X-RateLimit-Reset`を確認します。429で待機指示がなければ、GitHubの公式方針に従い少なくとも60秒待ちます。60秒を超える待機指示は短縮せず、その実行を失敗として終了します。403・409・422は無条件に再試行しません。409は状態変化（B）、認可・入力の拒否は安全停止（D）、再試行対象は一時障害（A）としてログへ記録します。422の詳細原因は個別調査が必要です。
 
-書き込みAPIは応答喪失時に重複Commentや二重の起動要求を防ぐため、その場で再送しません。次の実行でGitHubの最新状態を確認します。書き込みの結果が不明な場合の完全な重複排除は未実装であり、保証しません。
+書き込みAPIは応答喪失時に重複Commentや二重の起動要求を防ぐため、その場で再送しません。次の実行でGitHubの最新状態を確認します。Review依頼と品質検査・Version同期の起動では、PRのBot Commentへ意図を保存してから要求します。次回は最新SHAのRun、Reviewの機械可読状態、SHA付き依頼Commentを照合します。記録済みの要求を確認できなければ5分は反映を待ち、その後は重複を防ぐため再送せず手動確認を要求します。GitHub APIに共通のTransactionや冪等キーがないため、意図の保存と送信の間で停止した場合の無条件な自動再送は行いません。
 
 翻訳の検証失敗はPRのBot Commentに`MANUAL_ACTION_REQUIRED`として記録します。PRのHead SHA・title・bodyのfingerprintと、Script・翻訳実装・依存定義・モデル定義のhashを保存し、同じ入力と実装では再翻訳しません。失敗はWorkflowの失敗として引き続き報告し、翻訳済みとは扱いません。入力や実装を修正すると再評価します。Dry Runは停止記録があっても書き込みなしで検証できます。モデルの取得・初期化失敗は入力検証の失敗と区別し、この停止記録には加えません。自動で任意のコードを修正する保守Workflowは追加していません。
 
 マージ直前にはComment・翻訳承認・Review・未解決thread・Checkを再取得します。Merge APIには引き続き期待するHead SHAを指定します。ただし、複数APIの読み取りを一つのTransactionにはできません。GitHub側の保護ルールは引き続き最終的な制約です。
 
-マージ後はBot Commentに`MERGED`とマージSHAを保存します。定期実行では直近に更新されたClosed PRを最大30件確認し、記録したマージSHAとPRの`merge_commit_sha`が一致する場合だけ、同じSHA・mainへの独立した`workflow_dispatch`品質検査を追跡します。待機中は次回再確認し、失敗・未確認はエラーとして報告します。成功時だけ`VERIFIED`とRun IDを保存します。PR段階のCIや異なるSHAは流用しません。30件より古いPRは`pr_number`を指定して確認してください。起動前の途中失敗やmainが先に進んだ場合の検査再起動、未検証SHAの自動修復、修復用Workflowへの連携は未実装です。CI未成功や未解決Reviewを回避してマージする機能は追加しません。
+マージ後はBot Commentに`MERGED`とマージSHAを保存します。定期実行では直近に更新されたClosed PRを最大30件確認し、記録したマージSHAとPRの`merge_commit_sha`が一致する場合だけ、同じSHA・mainへの独立した`workflow_dispatch`品質検査を追跡します。待機中は次回再確認し、失敗・未確認はエラーとして報告します。成功時だけ`VERIFIED`とRun IDを保存します。PR段階のCIや異なるSHAは流用しません。30件より古いPRは`pr_number`を指定して確認してください。マージ直前には`MERGE_READY`と期待するCommit messageのhashを保存し、マージ応答を失ってもClosed PRのHead SHA・マージSHA・実際のCommit messageを照合して`MERGED`へ復帰します。CI起動前に停止した場合は、mainがそのマージSHAと一致し、起動意図が未記録なら、記録した比較元で独立CIを起動します。mainが先に進んだ場合や記録が一致しない場合は自動で別SHAへ読み替えず停止します。CI未成功や未解決Reviewを回避してマージする機能は追加しません。
 
 APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)、[Merge API](https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request)、[Rate limit対応](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api#handle-rate-limit-errors-appropriately) を確認対象とします。GitHub公式docs Repositoryの`data/reusables/actions/actions-do-not-trigger-workflows.md`と`content/rest/using-the-rest-api/best-practices-for-using-the-rest-api.md`でも、GITHUB_TOKENのイベント制約とRate Limit待機方針を照合しました。資料確認を実環境の動作確認とは扱いません。
+
+
+## 途中停止からの再開と保守診断
+
+固定モデルのarchiveは`ARGOS_MODEL_CACHE_DIR`へSHA256をファイル名として保存します。取得途中のファイルは別の一時ディレクトリに置き、hash一致後に原子的に保存します。再利用時もhash・Metadata・言語・Versionを検証し、破損cacheを暗黙に上書きしません。GitHub Actionsではモデル定義のhashをcache keyに使い、別Versionへのrestore keyは設けません。pipのwheel cacheも再利用します。インストール済みモデルやPRの実行コードはcacheに含めません。
+
+モデル取得ではTimeout・通信失敗・429・500 / 502 / 503 / 504に最大3回のBackoffとJitterを適用します。429の待機指示を優先し、待機が60秒を超える場合は短縮せず失敗にします。403、hash不一致、Metadata不一致は再試行で回避しません。原文を保持し、取得の失敗を翻訳済みとは扱いません。
+
+自動化Jobが失敗すると、最初のRun attemptだけ読み取り専用の保守診断Jobを起動します。既定Branchの構文と関連する回帰Testを検査し、`commit-ja-diagnostics-<Run ID>`のArtifactに7日間保存します。PRのコードやArtifactは実行せず、失敗したJobを成功へ変更せず、自分自身や他のWorkflowを再起動しません。診断Testが成功しても、一時障害や翻訳内容の問題が解決済みとは扱いません。任意のコード不具合を自動生成で修正・マージする機能は追加していません。恒久的不具合はログ・Artifactを基に修正し、通常のPR・Review・最新SHAのCIを通します。
+
+調査時はPRの最新Bot Commentの状態、Actionsのエラーと`RETRY_WAIT`、診断Artifactを確認してください。権限不足、保護ルール、未解決Review、競合、不明な履歴不整合、起動結果が不明な書き込みは手動対応の対象です。古い意図の記録を消して再試行させる前に、GitHub上で元の要求が受け付けられていないことを確認してください。通常運用で状態Commentを削除する必要はありません。
+
+`test_argos_automation_lifecycle.py`は、一時的なローカルGit Repositoryで実際の履歴書き換え・著者保持・Squashを行い、MockのGitHub API・Review・CIで`VERIFIED`まで検証します。品質検査では固定の訳文、Argos専用CIでは実モデルを使います。PR段階とマージ後で異なるSHAのCIを使い、繰り返し呼び出しても再マージ・再起動しないことを確認します。外部RepositoryのPRは作成・変更しません。この検証を本番GitHubでの自動マージ実績とは扱いません。

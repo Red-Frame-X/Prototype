@@ -385,12 +385,63 @@ def save_state(gh: GitHub, number: int, state: dict, text: str):
                + json.dumps(state, ensure_ascii=False, separators=(',', ':')) + ' -->')
 
 
+def perform_once(gh: GitHub, number: int, state: dict, key: str, send):
+    """POSTの前に意図を永続化する。結果不明の書き込みは再送しない。"""
+    intents = state.setdefault('intents', {})
+    previous = intents.get(key)
+    if previous:
+        if time.time() - previous['at'] < 300:
+            print(f'PR #{number}: 書き込み結果の反映を待機しています。処理: {key}')
+            return False
+        raise AutomationError('書き込みの意図は記録済みですが結果を確認できません。'
+                              '重複を防ぐため再送しません。GitHubの実状態を手動確認してください。'
+                              f' 処理: {key}')
+    intents[key] = {'at': time.time(), 'status': 'reserved'}
+    save_state(gh, number, state, f'外部書き込みの意図を記録しました。処理: {key}')
+    send()
+    intents[key]['status'] = 'sent'
+    save_state(gh, number, state, f'外部書き込みの要求が受け付けられました。結果は別途確認します。処理: {key}')
+    return True
+
+
+def review_observed(comments, sha):
+    marker = f'<!-- commit-ja-review-request:{sha} -->'
+    for comment in comments:
+        user = comment['user']
+        if user.get('type') != 'Bot':
+            continue
+        if user['login'] == BOT_LOGIN and marker in comment['body']:
+            return True
+        if user['login'] == CODEX_LOGIN:
+            match = re.search(r'<!-- codex-review-state:v1 (\{[^\n]*\}) -->', comment['body'])
+            if match:
+                try:
+                    observed = json.loads(match[1])
+                    review = observed.get('code_review') if isinstance(observed, dict) else None
+                    if isinstance(review, dict) and review.get('commit_sha') == sha:
+                        return True
+                except (TypeError, json.JSONDecodeError):
+                    pass
+    return False
+
+
 def verify_merged_pr(gh: GitHub, pr: dict, dry_run: bool = False):
     """閉じたPRも記録済みのmerge SHAに結び付く独立CIだけで検証する。"""
     if dry_run or not pr.get('merged'):
         return
     number = pr['number']
     state = read_state(gh.pages(f'/issues/{number}/comments'))
+    if state.get('phase') == 'MERGE_READY':
+        sha = pr.get('merge_commit_sha')
+        if (not SHA_PATTERN.fullmatch(sha or '')
+                or pr['head']['sha'] != state.get('sha')):
+            raise AutomationError('マージ要求後のPRと記録済みHead SHAが一致しません。')
+        merged = gh.api('/git/commits/' + sha)
+        digest = hashlib.sha256(merged['message'].rstrip('\n').encode()).hexdigest()
+        if digest != state.get('merge_message_digest'):
+            raise AutomationError('マージ要求後の実際のCommit messageが記録と一致しません。')
+        state.update(phase='MERGED', merge_sha=sha, merge_parent=merged['parents'][0]['sha'])
+        save_state(gh, number, state, '応答を失ったマージの成功とCommit messageを確認しました。')
     if state.get('phase') != 'MERGED' or not state.get('merge_sha'):
         return
     sha = state['merge_sha']
@@ -402,13 +453,30 @@ def verify_merged_pr(gh: GitHub, pr: dict, dry_run: bool = False):
                 and run['head_branch'] == pr['base']['ref']
                 and run['event'] == 'workflow_dispatch'), None)
     if run is None:
-        raise AutomationError('マージ後SHAの独立した品質検査Runが未確認です。'
-                              'mainの移動・起動要求・権限を確認してください。')
+        if not state.get('merge_parent'):
+            raise AutomationError('マージ後CIの比較元が未記録です。手動確認が必要です。')
+        branch = pr['base']['ref']
+        current = gh.api('/git/ref/heads/' + urllib.parse.quote(branch, safe=''))['object']['sha']
+        if current != sha:
+            raise AutomationError('mainがマージ後SHAから進んでいます。別SHAのCIでは代用せず手動確認が必要です。')
+        perform_once(gh, number, state, 'post-quality:' + sha, lambda: gh.api(
+            '/actions/workflows/quality.yml/dispatches', 'POST',
+            {'ref': branch, 'inputs': {'automation_main_before': state['merge_parent']}}))
+        return
     if run['status'] != 'completed':
         print(f'PR #{number}: マージ後CIを待機しています。SHA: {sha}, Run: {run["id"]}')
         return
     if run['conclusion'] != 'success':
         raise AutomationError(f'マージ後CIが成功していません。SHA: {sha}, Run: {run["id"]}')
+    if state.get('merge_parent'):
+        sync_key = 'post-sync:' + sha
+        sync = state.get('intents', {}).get(sync_key)
+        if not sync:
+            perform_once(gh, number, state, sync_key, lambda: gh.api(
+                '/actions/workflows/update-version-timestamps.yml/dispatches', 'POST',
+                {'ref': pr['base']['ref']}))
+        elif sync.get('status') != 'sent':
+            raise AutomationError('Version同期の起動結果が不明です。重複を防ぐため手動確認が必要です。')
     save_state(gh, number, {**state, 'phase': 'VERIFIED', 'post_merge_run': run['id']},
                f'マージ後SHA {sha} の独立した品質検査Run {run["id"]} の成功を確認しました。')
 
@@ -522,18 +590,23 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
         raise AutomationError('品質検査Workflowが既定Branchと異なります。通常のレビューとマージが必要です。')
     if not state.get('review_requested'):
         # 機械可読状態で既に最新SHAのレビューが完了していれば、重複依頼しない。
-        if not codex_passed(comments, head):
-            gh.comment(number, '@codex review\n\n最新Commitの差分と、Commit message・PR title/bodyの'
+        if not codex_passed(comments, head) and not review_observed(comments, head):
+            if not perform_once(gh, number, state, 'review:' + head, lambda: gh.comment(
+                    number, '@codex review\n\n最新Commitの差分と、Commit message・PR title/bodyの'
                        '日本語表記をレビューしてください。Botの「翻訳前後とSHA対応のレビュー記録」と'
                        '照合し、意味・情報・正式表記が保たれていることも確認してください。'
-                       '説明と指摘は日本語で記述してください。')
+                       '説明と指摘は日本語で記述してください。'
+                       + f'\n\n<!-- commit-ja-review-request:{head} -->')):
+                return
         state['review_requested'] = True
         save_state(gh, number, state, '最新CommitへのCodex Reviewを確認・依頼しました。')
     run = quality_run(gh, head, pr['head']['ref'], number)
     if run is None:
-        gh.api('/actions/workflows/quality.yml/dispatches', 'POST', {
-            'ref': pr['head']['ref'], 'inputs': {'automation_pr': str(number)},
-        })
+        if not perform_once(gh, number, state, 'quality:' + head, lambda: gh.api(
+                '/actions/workflows/quality.yml/dispatches', 'POST', {
+                    'ref': pr['head']['ref'], 'inputs': {'automation_pr': str(number)},
+                })):
+            return
         print(f'PR #{number}: 最新Commitの品質検査を起動しました。')
         return
     if run['status'] != 'completed' or run['conclusion'] != 'success':
@@ -572,6 +645,12 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
             or fresh['mergeable'] is not True or fresh['mergeable_state'] != 'clean'):
         print(f'PR #{number}: マージ直前にPRの状態が変わりました。次回再確認します。')
         return
+    expected_message = f"{fresh['title']} (#{number})" + (
+        '\n\n' + fresh['body'] if fresh['body'] else '')
+    state.update(phase='MERGE_READY', merge_message_digest=hashlib.sha256(
+        expected_message.rstrip('\n').encode()).hexdigest())
+    # マージ後に応答・状態記録を失っても、Closed PRから成功を照合できる。
+    save_state(gh, number, state, '最新SHAのマージ条件を確認し、Squash要求の内容を記録しました。')
     result = gh.api(f'/pulls/{number}/merge', 'PUT', {
         'sha': head, 'merge_method': 'squash',
         'commit_title': f"{fresh['title']} (#{number})", 'commit_message': fresh['body'] or '',
@@ -583,14 +662,17 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
         '\n\n' + fresh['body'] if fresh['body'] else '')
     if merged['message'].rstrip('\n') != expected_message.rstrip('\n'):
         raise AutomationError('マージ後のCommit messageが指定した内容と一致しません。')
-    save_state(gh, number, {**state, 'phase': 'MERGED', 'merge_sha': result['sha']},
+    state.update(phase='MERGED', merge_sha=result['sha'], merge_parent=merged['parents'][0]['sha'])
+    save_state(gh, number, state,
                'Squash後のCommit messageを照合しました。マージ後SHAの独立CIは未確認です。')
     # GITHUB_TOKENのmergeではpush Workflowが抑止されるため、同期と品質検査を明示起動する。
     # 通常pushと同じく、厳格なVersion日時照合は同期処理へ任せる。
-    gh.api('/actions/workflows/update-version-timestamps.yml/dispatches', 'POST', {'ref': default_branch})
-    gh.api('/actions/workflows/quality.yml/dispatches', 'POST', {
-        'ref': default_branch, 'inputs': {'automation_main_before': merged['parents'][0]['sha']},
-    })
+    perform_once(gh, number, state, 'post-quality:' + result['sha'], lambda: gh.api(
+        '/actions/workflows/quality.yml/dispatches', 'POST', {
+            'ref': default_branch, 'inputs': {'automation_main_before': merged['parents'][0]['sha']},
+        }))
+    perform_once(gh, number, state, 'post-sync:' + result['sha'], lambda: gh.api(
+        '/actions/workflows/update-version-timestamps.yml/dispatches', 'POST', {'ref': default_branch}))
     print(f"PR #{number}: 日本語のCommit messageでマージ済みです。SHA: {result['sha']}")
 
 

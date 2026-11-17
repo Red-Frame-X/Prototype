@@ -40,4 +40,5 @@ jobs:
           ARGOS_CHUNK_TYPE: STANZA
           ARGOS_DEVICE_TYPE: cpu
           ARGOS_PACKAGES_DIR: ${{ runner.temp }}/commit-ja-argos-packages
+          ARGOS_MODEL_CACHE_DIR: ${{ runner.temp }}/commit-ja-test-model-cache
         run: python scripts/test_argos_model.py
