@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611160725 |
+| **Version** | 202611171849 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -1497,15 +1497,23 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 
 **コンテンツブロックフィルタ**
 * **[AdGuard 公式フィルタ](https://github.com/AdguardTeam/AdguardFilters)**：AdGuardの接頭語 or `#recommended` のタグが付く各種フィルタ + 日本語フィルタ。
-* **[Online Malicious URL Blocklist](https://gitlab.com/malware-filter/urlhaus-filter)**：uBlock Origin ＆ AdGuardの標準セキュリティフィルタ。
-* **[uBlock Origin – Badware risks](https://github.com/uBlockOrigin/uAssets)**：Yuki2718氏がフィルタの監修に関わっています。
+* **[Online Malicious URL Blocklist](https://gitlab.com/malware-filter/urlhaus-filter)**：過去に使用していたURLhaus由来のマルウェア配布先対策フィルタです。現在はChromeOS・Androidの両方でOFFにし、下記のBadware risksとの併用は推奨しません。
+* **[uBlock Origin – Badware risks](https://github.com/uBlockOrigin/uAssets)**：ChromeOS・Android共通のセキュリティ系コンテンツブロックフィルタとして使用します。Yuki2718氏がフィルタの監修に関わっています。
 
-※ ChromeのDNR静的ルールは、拡張機能ごとに30,000件以上が保証されます。保証枠を超えて利用できる件数は、他の拡張機能の使用状況などで変動するため、固定の上限として扱わず `getAvailableStaticRuleCount()` で確認する必要があります。
+本ガイドではAdGuard公式の推奨フィルタと日本語フィルタを基本にし、セキュリティ系はBadware risksへ一本化します。Online Malicious URL Blocklistに`#recommended`が付いていても、この運用では有効にしません。これは本ガイドの選択であり、AdGuard公式の推奨変更を意味しません。
+
+Badware risksは、マルウェア・不要なソフトウェアのインストールや認証情報の窃取などの危険が確認されたサイトを対象とします。URLhaus由来のマルウェア配布先リストとは収録基準・更新経路が異なるため、一本化で保護対象が変わる可能性があります。同等の保護を保証するものではなく、DNSレイヤーの脅威対策も別に扱います（ [uAssetsの原典](https://github.com/uBlockOrigin/uAssets/blob/568ce1c8eb537b0e940a03f5a780abb728579ddd/filters/badware.txt) / [AdGuardのOnline Malicious URL Blocklist定義](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/filters/ThirdParty/filter_208_Online_Malicious_URL_Blocklist/metadata.json) ）。
+
+**Badware risksの対応確認（2026年11月17日）**
+
+AdGuard公式FiltersRegistryの`main`（Commit `c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c`）では、filterId `257`として [Chrome MV3用](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/platforms/extension/chromium-mv3/filters.json) と [Android用](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/platforms/android/filters.json) の両方に登録されています。確認した配布Versionは`2.0.13.28`です。原典はuAssetsの`master`にある`filters/badware.txt`で、AdGuard配布版には`||domain^`や`$document`などのネットワークルールがあり、MV3版では除外・変換された行もあります。公式の組み込みフィルタを選択し、uBO原典の全構文やstrict blockingの警告・続行画面まで同じになるとは判断しません。これは登録情報・配布形式の確認であり、実機での全ルール発火や保護効果の検証ではありません。
+
+※ ChromeのDNR静的ルールは、拡張機能ごとに最低30,000件が保証されます。AdGuard公式が示す累積330,000件は、同じユーザーの拡張機能全体で共有する上限であり、AdGuard単体の固定上限ではありません。保証枠を超えて使える件数は他の拡張機能の使用状況などで変わるため、APIの`getAvailableStaticRuleCount()`で確認します。動的ルールには別の上限があり、フィルタ原文の行数とDNR変換後の適用件数も一致するとは限りません。 [MV3の詳細](#フィルタの更新経路と制限) を参照してください。
 
 **カスタムフィルタ・ユーザールール**
 * **カスタムフィルタ**
   * **[AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)**：Yuki2718氏自身がフィルタの監修をしています。AdGuard用moduleはサブリストとして自動的にincludeされるため、別途登録する必要はありません。
-  * **[Peter Lowe](https://pgl.yoyo.org/adservers/)**：AdGuard Browser Extension MV3では、Online Malicious URL BlocklistをOFFにして、代わりに [Peter Lowe's Blocklist](https://filters.adtidy.org/extension/chromium/filters/204.txt) を追加しています。（Online Malicious URL Blocklistの更新が遅れたり、ルールが肥大化する傾向があるため）
+  * **[Peter Lowe](https://pgl.yoyo.org/adservers/)**：ChromeOSのAdGuard Browser Extension MV3では、広告・トラッカー対策として [Peter Lowe's Blocklist](https://filters.adtidy.org/extension/chromium/filters/204.txt) をカスタム購読します。セキュリティ系はBadware risksを使用し、Online Malicious URL BlocklistはOFFにします。MV3のルール枠を考慮した構成の調整であり、両リストを同じ目的・保護対象の代替品とは扱いません。以前はOnline Malicious URL Blocklistの更新遅延・ルール肥大化を理由に切り替えていましたが、現在の更新状況やDNR件数をその記録だけで判断しません。Peter Loweは [公式Registryの定義](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/filters/ThirdParty/filter_204_PeterLowesList/metadata.json) でMV3の組み込み対象外のため、カスタム購読では動的ルール枠の残量も確認します。
   * **[自作のカスタムフィルタ](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex)**：各フィルタ作者様のルールを参考にしたり、自作のルールと組み合わせたりして作成しています。
 
 **参考サイト**
@@ -1514,10 +1522,20 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
   AdGuard Japanese filterを補完するフィルタ。迂回広告や悪質ポップアップ、一部のAnti-Adblockへの汎用的な追加対策。
 
 **DNSフィルタ**
-* AdGuard for Android：DNS通信を保護 > DNSフィルタ > [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter)
+* AdGuard for Android：DNS通信を保護 > DNSフィルタでは`HaGeZi's Multi NORMAL - all-round protection`を基本とし、`AdGuard DNS filter (Optimized)`は採用しません。従来の [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) と派生版の対処記録は [AndroidのDNS設定](#android-アプリ-有償版-adguard-for-androidandroid) に保持しています。DNSユーザーフィルタの個別例外とTIF mediumの追加候補は維持します。
+
+**Peter Lowe's BlocklistとHaGeZi Multi NORMALの関係**
+
+2026年11月17日に確認したHaGeZi公式`main`（Commit `e681da879e1b4aaed4962170d0e278d6817542df`）の [Source一覧](https://github.com/hagezi/dns-blocklists/blob/e681da879e1b4aaed4962170d0e278d6817542df/sources.md) には、Peter Lowe公式のhosts形式の配布URLが直接掲載されています。別の統合リストを経由した間接入力だけではありません。ただし、これはプロジェクトの入力Sourceであることの根拠で、Multi NORMALへの全件収録を示す一覧ではありません。
+
+[公式FAQの生成手順](https://github.com/hagezi/dns-blocklists/blob/e681da879e1b4aaed4962170d0e278d6817542df/FAQ.md#sources) によると、入力をドメインへ正規化し、用途・影響・強度ごとに選別したうえで、例外・除外・重複排除を適用します。公開Repositoryで確認できたWorkflowには、この選別を再現できる生成Script・全設定・ドメインごとの出典対応表は見つかりませんでした。確認したMulti NORMALのAdblock版はVersion `2026.1117.0825.09`ですが、Peter Lowe由来として実際に採用された範囲・件数と間接入力の寄与は未確認です。同じドメインがあることだけで収録経路を断定しません。ChromeOSのブラウザ内フィルタとAndroidのDNSフィルタは適用環境・方式が異なるため、Sourceの重複だけを理由にどちらかを削除しません。
 
 **例外ルール**
 サイトの機能やAndroidアプリの動作を阻害するルールを例外（`@@`）にすることが多いです。
+
+ChromeOSではPeter Lowe's Blocklistによる誤ブロックを`AdGuard Custom Rules - Red Frame X`で個別に調整します。許可先のドメイン・必要なパス・通信種別・適用元サイトをできるだけ絞り、全サイトに及ぶ許可を避けます。既存の`@@||analytics.google.com^$domain=analytics.google.com`は、許可先と適用元サイトを限定する例です。`$domain`はそのドメインのサブドメインも含むため、必要な範囲か確認します。AdGuard公式フィルタや他のカスタムルールとの競合、`$important`の有無、実際に機能が回復する通信をログで確認してから調整してください。
+
+[AdGuard公式構文の製品別対応表](https://adguard.com/kb/general/ad-filtering/create-own-filters/) では`$domain`はMV3でも対応しますが、`$app`はブラウザ拡張機能では使えません。正規表現・修飾子の組み合わせやDNR変換にも制限があるため、Android用の例外をそのまま流用せず、MV3の適用結果とルール枠を確認します。今回、自作フィルタ本体は変更していません。
 
 **AdGuardユーザールール作成ガイド**
 * [なんJ AdGuard部 Wiki* > フィルタ構文](https://wikiwiki.jp/nanj-adguard/%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E6%A7%8B%E6%96%87)
@@ -1557,6 +1575,8 @@ Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への
 * **[Chrome Web Store](https://chromewebstore.google.com/detail/adguard-%E5%BA%83%E5%91%8A%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC/bgnkhhnnamicmpeenaelnjfhikgbkllg)**
 * **[公式サイト](https://adguard.com/ja/adguard-browser-extension/overview.html)** / **[GitHub](https://github.com/AdguardTeam/AdguardBrowserExtension)**
 
+ChromeOSではAdGuard公式の推奨フィルタと日本語フィルタに、セキュリティ系の`uBlock Origin – Badware risks`と、広告・トラッカー対策の`Peter Lowe's Blocklist`を組み合わせます。`Online Malicious URL Blocklist`はOFFです。 [公式フィルタの運用基準](#adguard-公式フィルタ) に従い、Peter Loweの誤ブロックは`AdGuard Custom Rules - Red Frame X`で個別に調整します。
+
 ### User Scripts APIの実行許可
 
 AdGuard Browser Extension MV3でカスタムフィルタ・ユーザールールのJavaScript処理を使う場合、**Chrome側**で実行を許可します。Chrome 138以降は`chrome://extensions` > AdGuard > **詳細** > **ユーザースクリプトを許可する**を有効にします。Chrome 120〜137のUser Scripts APIは拡張機能ページのデベロッパーモードが必要です。AdGuard内部のフィルタ設定だけでは代わりになりません（[AdGuard公式手順](https://adguard.com/kb/adguard-browser-extension/user-scripts-api/) / [Chrome公式API](https://developer.chrome.com/docs/extensions/reference/api/userScripts)）。
@@ -1572,7 +1592,9 @@ AdGuard Browser Extension MV3でカスタムフィルタ・ユーザールール
 
 出典： [AdGuard公式MV3解説](https://adguard.com/kb/adguard-browser-extension/mv3-version/) / [Filters](https://adguard.com/kb/adguard-browser-extension/features/filters/) 。通常版のFiltering logは、DNR制限により実際の発火ルールではなく推定ルールを表示する場合があります。表示されたルールだけで原因を断定しないでください。
 
-ChromeのDNRには静的・動的・sessionごとの枠があり、Chrome 121以降はsafeな動的ルールに30,000件、unsafeには5,000件の制限があります。正規表現は各ルール種別で1,000件までです。これはブラウザAPIの上限であり、AdGuardが受け付けるルール数や変換できる構文を保証するものではありません（[Chrome公式DNR仕様](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest#rule-limits)）。
+ChromeのDNRには静的・動的・sessionごとの枠があり、Chrome 121以降は動的ルール全体に30,000件、その内数としてunsafeには5,000件の制限があります。正規表現は各ルール種別で1,000件までです。これはブラウザAPIの上限であり、AdGuardが受け付けるルール数や変換できる構文を保証するものではありません（[Chrome公式DNR仕様](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest#rule-limits)）。
+
+静的ルールの最低保証は拡張機能ごとに30,000件で、AdGuard公式が示す累積330,000件は拡張機能全体の共有上限です。他の拡張機能の有効・無効などで使える枠が変わるため、AdGuard単体に常に330,000件使えるとは判断しません。一方、AdGuard公式MV3解説は、許可リスト・ユーザールール・カスタムフィルタについて、変換後の動的ルールをこの順で最大5,000件適用すると説明しています。Chrome APIの30,000件とAdGuard公式解説にある適用上限を混同しないでください。変換時には未対応ルールの除外、`$badfilter`による無効化、`$removeparam`の統合などもあるため、元リストの行数だけで適用件数を計算しません。Peter Loweのカスタム購読もこの動的枠を使うため、全件適用できるとは保証せず、追加後に上限通知と適用状態を確認します。
 
 以下のVersion別記録は、当時のカスタムフィルタ手動更新の導入経緯です。現行版の画面や組み込みフィルタの更新方法は、上記の公式案内と区別して確認します。
 
@@ -1590,7 +1612,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 ### カスタムフィルタの購読と手動コピー
 
-`AdGuard Japanese filter Plus` だけを登録します。`AdGuard module - not for independent use` はサブリストとして自動的にincludeされるため、カスタムフィルタ一覧へ別途登録する必要はありません。
+日本語の補完には`AdGuard Japanese filter Plus`だけを登録し、別用途のPeter Lowe's Blocklistと自作フィルタは上記の運用基準に従います。`AdGuard module - not for independent use`はサブリストとして自動的にincludeされるため、カスタムフィルタ一覧へ別途登録する必要はありません。
 
 **ユーザールールにルールを全コピー & 全ペーストする場合**
 
@@ -1604,7 +1626,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
 
 **❗️留意点**
 
- [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。
+ [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。ChromeOSで採用するPeter Lowe's Blocklistと`AdGuard Custom Rules - Red Frame X`は例外とし、不具合報告では追加フィルタと例外ルールの影響を切り分けます。
 
 **フィルターの課題・不具合報告**
 * [AdGuard Japanese filter Plusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
@@ -1861,10 +1883,22 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
 **フィルターの課題・不具合報告**
 * [AdGuard Japanese filter Plusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
 
+**コンテンツブロックフィルタの構成**
+
+AdGuard公式の推奨フィルタと日本語フィルタを基本に、セキュリティ系は`uBlock Origin – Badware risks`を使用し、`Online Malicious URL Blocklist`はOFFにします。`AdGuard Japanese filter Plus`などの日本語補完の運用は維持します。 [共通の運用基準](#adguard-公式フィルタ) とDNS保護は別レイヤーです。
+
 **DNS通信を保護 > DNSフィルタ**
 
+現在の基本構成は`HaGeZi's Multi NORMAL - all-round protection`です。AdGuard for Androidでは次のAdblock形式を登録し、`AdGuard DNS filter (Optimized)`は採用しません。
+
+```text
+https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt
+```
+
+DNSユーザーフィルタによる個別例外は維持します。以下のAdGuard DNS filter・派生版は、過去の不具合対処と参考情報です。HaGeZiとの同時有効化を現在の推奨構成には含めません。
+
 [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) は、AdGuardのDNS保護が処理する問い合わせに対し、アプリをまたいでドメイン単位のブロックを行います。VPN対象外アプリ、別プロファイル、独自の暗号化DNSなど、処理経路を外れる通信まで必ず対象になるわけではありません（[公式：DNS保護](https://adguard.com/kb/adguard-for-android/features/protection/dns-protection/) / [公式：Private DNSとの互換性](https://adguard.com/kb/adguard-for-android/solving-problems/compatibility-issues/#private-dns) / [DNS書き換えの基本](https://writening.net/page?keELEF)）。
-プライバシー関連のルールによる不具合（[Issues #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896), [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178)）を緩和する方法。
+過去に記録した、プライバシー関連のルールによる不具合（ [Issues #217896](https://github.com/AdguardTeam/AdguardFilters/issues/217896) , [#220178](https://github.com/AdguardTeam/AdguardFilters/issues/220178) ）を緩和する方法です。①②はAdGuard DNS filterの派生版、③は現在採用する別の統合リスト、④は継続する個別例外の運用です。
 
 ① **[AdGuard DNS filter (without privacy filters)](https://github.com/kitadai31/AdGuardSDNSFilter_withoutPrivacyFilters)**
 
@@ -1880,7 +1914,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   ```
   https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.medium.txt
   ```
-  * TIFのmedium版です。AdGuard for AndroidではAdblock形式を使用し、「DNS通信を保護 > DNSフィルタ」から追加します。
+  * TIFのmedium版です。AdGuard for AndroidではAdblock形式を使用し、「DNS通信を保護 > DNSフィルタ」から追加します。DNSレイヤーのマルウェア・フィッシング対策を補う追加候補として維持し、コンテンツブロックフィルタの一本化を理由に無効化しません。Multi NORMALはTIF全体を含むわけではありません（ [HaGeZi公式FAQ](https://github.com/hagezi/dns-blocklists/blob/e681da879e1b4aaed4962170d0e278d6817542df/FAQ.md#whatshouldiuse) ）。
 
 **DNSサーバー & ChromeOS追加設定**
 
