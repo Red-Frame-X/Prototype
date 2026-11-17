@@ -273,3 +273,19 @@ APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/action
 ## PR #319のhash表記による誤停止
 
 [Run #253](https://github.com/Red-Frame-X/Prototype/actions/runs/44043142537) はPR #319のbodyで「翻訳結果が空・不正・未翻訳のため停止しました。」と報告しました。実際の日本語本文では、句読点に挟まれた`hash`だけが保護表記に未登録で翻訳器へ渡っていました。一般説明全体が英語だったとは判断しません。固定の技術表記に`hash`を追加し、PR #319の公開スナップショットを翻訳器の呼出しなしで保持することと、周囲に英語の一般説明があれば引き続き翻訳することを回帰Testで確認します。誤停止の元のRunや本文は検証記録として保持します。
+
+## 追加料金を避ける簡略版の監視と保守引き継ぎ
+
+既存の上限付きRetry・最新SHAの再評価・Review・CI・翻訳承認・マージ条件は維持します。公開Repositoryの標準`ubuntu-latest` Runnerだけに、新しい観測Jobと保守引き継ぎJobを追加します。新しいJobは非公開Repositoryでは起動しません。有料AI API・追加Runner・外部の定期実行サービスは使わず、新しいモデルCacheやArtifactも作りません。既存の翻訳Cacheと7日間の診断Artifactは維持します。既存機能の利用分やアカウント全体の請求額がゼロになることを保証するものではありません。
+
+`observe-schedule` Jobは毎回、最新100件以内の自然な`schedule` Runを取得し、直近24時間の実測をJob Summaryへ記録します。手動起動、再実行、別Workflow、別Branchは対象外です。Run ID・SHA・実行結果・起動間隔・最新Runからの経過時間・履歴の取得範囲を残します。3件未満は`INSUFFICIENT_SAMPLES`、10分超の間隔または最新Runの遅延は`DELAYED`と警告します。`OBSERVED`はこの観測条件を満たす意味であり、厳密な5分間隔や復旧・翻訳・マージの成功を意味しません。API失敗は観測不足へ置き換えずJobを失敗させます。Workflow自体が起動しなければ観測Jobも動かないため、外部監視の代替にはなりません。
+
+自動化Jobが失敗した最初のRun attemptでは、既存の保守診断後に`maintenance-handoff` Jobが修復用Issueを作成します。Issueには元のRunへのリンク、実際に診断する既定BranchのSHA、診断結果、再現手順、安全な修復手順を記録します。診断失敗をコード不具合と断定しません。実装・Workflow・依存定義・モデル定義のhashに対応するBotのIssueをClosedも含めて確認し、同じ実装では再投稿しません。API一覧の取得失敗時は投稿せず、POSTの応答喪失後も自動再送しません。Workflow全体の既存の`concurrency`で並行投稿を防ぎます。Issue権限がない場合はJobの失敗として報告します。
+
+診断対象のcheckoutやSHAの記録に失敗した場合は、対象コードを特定できないためIssueを作らず、失敗Runから手動で調査します。引き継ぎJobは診断時に記録したSHAをcheckoutし、途中でmainが更新されても別の実装のhashを使いません。
+
+この簡略版は障害の検知・記録と保守作業への引き継ぎです。未知のコードを生成・実行して任意の不具合を自動修正する機能は含みません。恒久的不具合はIssueから通常の修正PR・回帰Test・Review・最新SHAのCIへ進め、Squash Merge後も独立したCIを確認します。Issueを閉じても障害解決とは自動判定せず、同じ実装で障害が続く場合は元のIssueと新しい失敗Runを確認してください。
+
+手元での観測は`GH_TOKEN`と`GITHUB_REPOSITORY`を設定し、`python scripts/report_commit_automation_health.py cadence`で行えます。これは読み取り専用です。`maintenance`はIssueを書き込むためDry Runには使用しません。
+
+公式資料: [GitHub Actionsの料金](https://docs.github.com/en/billing/concepts/product-billing/github-actions) 、 [scheduleの遅延・実行条件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule) 。公開Repositoryの標準Runnerは無料ですが、GitHubの定期実行には遅延・実行欠落があり、5分ごとの起動は保証されません。
