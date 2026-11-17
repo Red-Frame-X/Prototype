@@ -6,6 +6,8 @@ import json
 import os
 from pathlib import Path
 import sys
+import shlex
+import subprocess
 import tempfile
 import unittest
 import urllib.error
@@ -114,6 +116,23 @@ class IntentTests(unittest.TestCase):
 
 
 class ClosedResumeTests(unittest.TestCase):
+    def test_diagnostic_artifact_exists_even_when_python_syntax_is_broken(self):
+        import yaml
+        root = Path(__file__).resolve().parents[1]
+        workflow = yaml.load((root / '.github/workflows/japanese-commits.yml').read_text(),
+                             Loader=yaml.BaseLoader)
+        script = next(step['run'] for step in workflow['jobs']['diagnose']['steps']
+                      if 'py_compile' in step.get('run', ''))
+        with tempfile.TemporaryDirectory() as directory:
+            invalid = Path(directory) / 'invalid.py'
+            invalid.write_text('def broken(:\n')
+            script = script.replace('scripts/automate_japanese_commits.py scripts/argos_commit_translation.py',
+                                    shlex.quote(str(invalid)))
+            result = subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', script],
+                                    env={**os.environ, 'RUNNER_TEMP': directory}, capture_output=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('SyntaxError', (Path(directory) / 'commit-ja-diagnostics.txt').read_text())
+
     def test_real_git_lifecycle_uses_separate_post_merge_ci_and_is_idempotent(self):
         from test_argos_automation_lifecycle import run_end_to_end
         translations = {'Update documentation': 'ドキュメントを更新',
