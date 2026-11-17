@@ -5,6 +5,10 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import random
+import time
+import socket
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 import re
 import subprocess
@@ -28,6 +32,29 @@ class AutomationError(RuntimeError):
     pass
 
 
+class TranslationSetupError(AutomationError):
+    pass
+
+
+class APIError(AutomationError):
+    def __init__(self, message, category):
+        super().__init__(message)
+        self.category = category
+
+
+def retry_delay(headers, attempt):
+    value = headers.get('Retry-After')
+    if value:
+        try:
+            return max(0, float(value))
+        except ValueError:
+            try:
+                return max(0, parsedate_to_datetime(value).timestamp() - time.time())
+            except (ValueError, TypeError, OverflowError):
+                pass
+    return 2 ** attempt + random.uniform(0, 1)
+
+
 def git(*args: str, data: bytes | None = None) -> bytes:
     return subprocess.check_output(['git', *args], input=data, stderr=subprocess.PIPE)
 
@@ -43,14 +70,31 @@ def request_json(url: str, token: str, method: str = 'GET', data=None):
         payload = json.dumps(data, ensure_ascii=False).encode()
         headers['Content-Type'] = 'application/json'
     request = urllib.request.Request(url, headers=headers, data=payload, method=method)
-    try:
-        with urllib.request.urlopen(request, timeout=90) as response:
-            body = response.read()
-        return json.loads(body) if body else None
-    except urllib.error.HTTPError as error:
-        # 認証情報やAPI応答内の入力本文をログに出さない。
-        raise AutomationError(f'APIがHTTP {error.code}を返しました: {method} '
-                              f'{urllib.parse.urlsplit(url).path}') from None
+    # GETだけを再送する。書き込みは応答喪失後の重複投稿・マージを防ぐため再送しない。
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(request, timeout=90) as response:
+                body = response.read()
+            return json.loads(body) if body else None
+        except urllib.error.HTTPError as error:
+            transient = error.code == 429 or error.code in {500, 502, 503, 504}
+            category = 'A' if transient else ('B' if error.code == 409 else 'D')
+            delay = retry_delay(error.headers, attempt) if transient else 0
+            # 長いRetry-Afterは短縮せず、次回の定期実行へ委ねる。
+            if transient and method == 'GET' and attempt < 3 and delay <= 60:
+                print(f'RETRY_WAIT: HTTP {error.code}, retry={attempt + 1}/3, wait={delay:.1f}s')
+                time.sleep(delay)
+                continue
+            raise APIError(f'APIがHTTP {error.code}を返しました: {method} '
+                           f'{urllib.parse.urlsplit(url).path} (分類{category})', category) from None
+        except (urllib.error.URLError, TimeoutError, socket.timeout) as error:
+            if method == 'GET' and attempt < 3:
+                delay = retry_delay({}, attempt)
+                print(f'RETRY_WAIT: 通信失敗, retry={attempt + 1}/3, wait={delay:.1f}s')
+                time.sleep(delay)
+                continue
+            raise APIError('API通信が失敗しました。書き込み結果は最新状態から確認してください。 (分類A)', 'A') from None
+
 
 
 class GitHub:
@@ -183,7 +227,10 @@ def translate(original: dict) -> dict:
     def translate_segment(source):
         nonlocal engine
         if engine is None:
-            engine = load_engine()
+            try:
+                engine = load_engine()
+            except TranslationError as error:
+                raise TranslationSetupError(str(error)) from None
         return engine(source)
     try:
         translated = translate_payload(original, translate_segment)
@@ -350,7 +397,30 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
         original = {'title': pr['title'], 'body': pr['body'] or '', 'commits': [
             {'sha': sha, 'message': git('cat-file', 'commit', sha).split(b'\n\n', 1)[1].decode()}
             for sha in commits]}
-        translated = translate(original)
+        implementation = hashlib.sha256(
+            Path(__file__).read_bytes() + Path(__file__).with_name('argos_commit_translation.py').read_bytes()
+            + Path('requirements-translation.txt').read_bytes()
+            + Path('.github/argos-model.json').read_bytes()).hexdigest()
+        if (not dry_run and state.get('translation_failed') == current
+                and state.get('implementation') == implementation):
+            raise AutomationError('同じ入力・実装で翻訳が失敗済みです。原文を保持しています。'
+                                  '入力または実装の修正後に再開します。Dry Runで再検証できます。')
+        try:
+            translated = translate(original)
+        except TranslationSetupError:
+            # モデル配布先の一時障害と恒久的な初期化不具合は同一視しない。
+            # 原文を保持し失敗を報告するが、入力検証の停止記録には加えない。
+            raise
+        except AutomationError:
+            if not dry_run:
+                # managed等の既存状態も保持し、未翻訳を翻訳済みにはしない。
+                save_state(gh, number, {**state, 'translation_failed': current,
+                           'implementation': implementation, 'phase': 'MANUAL_ACTION_REQUIRED',
+                           'sha': head},
+                           '翻訳検証が失敗しました。Commit・PRの原文は保持しています。'
+                           'ログを確認し、入力または翻訳実装を修正してください。'
+                           '同じ入力・実装の定期的な再翻訳は停止します。')
+            raise
         if dry_run:
             print(json.dumps({'pr': number, 'before': original,
                               'after': translated}, ensure_ascii=False).replace('@', r'\u0040'))
@@ -441,6 +511,14 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
     if not translation_approved(gh, comments, current):
         print(f'PR #{number}: 翻訳の意味・完全性の確認が必要です。'
               f'確認後の承認Comment: /approve-commit-translation {current}')
+        return
+    # 承認確認中にもReview・Checkは変化し得るため、マージAPI直前に再取得する。
+    latest_comments = gh.pages(f'/issues/{number}/comments')
+    if (not codex_passed(latest_comments, head)
+            or not translation_approved(gh, latest_comments, current)
+            or not reviews_clear(gh.pages(f'/pulls/{number}/reviews'))
+            or not threads_clear(gh, number) or not all_checks_passed(gh, head)):
+        print(f'PR #{number}: マージ直前のReview・承認・Checkが条件を満たしません。')
         return
     result = gh.api(f'/pulls/{number}/merge', 'PUT', {
         'sha': head, 'merge_method': 'squash',

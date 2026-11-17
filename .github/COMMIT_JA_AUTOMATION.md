@@ -225,3 +225,22 @@ PR #311・#312の公開スナップショットを回帰Testと固定実モデ�
 ## OPENAI_API_KEYの依存関係
 
 移行前の最新mainでは、実行時参照は`japanese-commits.yml`と`automate_japanese_commits.py`だけでした。Repository内の他のWorkflowに参照はありません。説明文はこの文書と`CONTRIBUTING.md`にありました。今回、翻訳処理への注入と参照を取り除きましたが、GitHub Secretsの値・登録状態は変更していません。Repository外のWorkflow、Organizationの共有Secret、動的な参照の依存関係はこの調査では確認できません。
+
+## 2026年11月16日の失敗調査と復旧の境界
+
+- [Run #225](https://github.com/Red-Frame-X/Prototype/actions/runs/43830187140) はPR #311のbodyで「翻訳結果で保護表記が欠落・重複・変更されました。」と報告して停止しました。
+- [Run #227](https://github.com/Red-Frame-X/Prototype/actions/runs/43833204046) と [Run #228](https://github.com/Red-Frame-X/Prototype/actions/runs/43834239765) はPR #312のbodyで「一般説明に未翻訳の英語が残っています。」と報告して停止しました。
+- 3件ともArgosの依存導入後の日本語化Stepでの検証エラーです。この3件のログにはPython TracebackやGitHub APIのHTTPエラーはありません。API障害や権限不足をこの失敗の原因とは判断しません。
+- PR #313（`3b11cec7`）には、日本語に含まれる技術表記の保護と不要なモデル起動の修正、およびPR #311・#312のfixtureが既にあります。今回もその回帰Testを維持します。後続Runの成功だけで、実翻訳・レビュー・マージまで回復したとは判断しません。
+
+APIのGETはTimeout・通信失敗・429・500 / 502 / 503 / 504に限り、指数BackoffとJitterで最大3回再試行します。`Retry-After`の秒数とHTTP日時を優先します。60秒を超える待機指示は短縮せず、その実行を失敗として終了します。403・409・422は無条件に再試行しません。409は状態変化（B）、認可・入力の拒否は安全停止（D）、再試行対象は一時障害（A）としてログへ記録します。422の詳細原因は個別調査が必要です。
+
+書き込みAPIは応答喪失時に重複Commentや二重の起動要求を防ぐため、その場で再送しません。次の実行でGitHubの最新状態を確認します。書き込みの結果が不明な場合の完全な重複排除は未実装であり、保証しません。
+
+翻訳の検証失敗はPRのBot Commentに`MANUAL_ACTION_REQUIRED`として記録します。PRのHead SHA・title・bodyのfingerprintと、Script・翻訳実装・依存定義・モデル定義のhashを保存し、同じ入力と実装では再翻訳しません。失敗はWorkflowの失敗として引き続き報告し、翻訳済みとは扱いません。入力や実装を修正すると再評価します。Dry Runは停止記録があっても書き込みなしで検証できます。モデルの取得・初期化失敗は入力検証の失敗と区別し、この停止記録には加えません。自動で任意のコードを修正する保守Workflowは追加していません。
+
+マージ直前にはComment・翻訳承認・Review・未解決thread・Checkを再取得します。Merge APIには引き続き期待するHead SHAを指定します。ただし、複数APIの読み取りを一つのTransactionにはできません。GitHub側の保護ルールは引き続き最終的な制約です。
+
+調査時点の限界として、マージ後CIの起動と成功結果の永続的な追跡は別の処理です。既存実装は起動要求までで、`VERIFIED`までの自動追跡、未検証SHAの自動修復、修復用Workflowへの連携は未実装です。CI未成功や未解決Reviewを回避してマージする機能は追加しません。
+
+APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)、[Merge API](https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request)、[Rate limit対応](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api#handle-rate-limit-errors-appropriately) を確認対象とします。公式資料のリンクだけで実環境の動作確認済みとは扱いません。
