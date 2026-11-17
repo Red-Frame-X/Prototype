@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611171935 |
+| **Version** | 202611171953 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -1525,9 +1525,9 @@ AdGuard公式FiltersRegistryの`main`（Commit `c35e4d48a6df093b3c6fdd644f6f104f
 * AdGuard for Android：「DNS通信を保護 > DNSフィルタ」で`HaGeZi's Multi NORMAL - all-round protection`を登録し、`AdGuard DNS filter (Optimized)`は使用しません。従来の [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) ・派生版の対処記録と、個別例外・TIF mediumの運用は [AndroidのDNS設定](#android-アプリ-有償版-adguard-for-androidandroid) を参照してください。
 
 **例外ルール**
-サイトの機能やAndroidアプリの動作を阻害するルールを例外（`@@`）にすることが多いです。
+* 例外ルールの作成方針：サイトの機能やAndroidアプリの動作を阻害するルールを例外（`@@`）にすることが多いです。
 
-ChromeOSのPeter Loweによる誤ブロックは`AdGuard Custom Rules - Red Frame X`で個別調整します。許可先ドメイン・パス・通信種別・適用元サイトを絞ってください。既存の`@@||analytics.google.com^$domain=analytics.google.com`は許可先と適用元を限定する例ですが、`$domain`はサブドメインも含みます。公式・カスタムルールとの競合や`$important`の有無を確認し、ログで必要な通信と機能回復を確かめます。
+ChromeOSのPeter Loweによる誤ブロックは`AdGuard Custom Rules - Red Frame X`で個別調整します。許可先ドメイン・パス・通信種別・適用元サイトを絞ります。既存の`@@||analytics.google.com^$domain=analytics.google.com`は許可先と適用元を限定する例ですが、`$domain`はサブドメインも含みます。公式・カスタムルールとの競合や`$important`の有無を確認し、ログで必要な通信と機能回復を確かめます。
 
 [AdGuard公式構文の製品別対応表](https://adguard.com/kb/general/ad-filtering/create-own-filters/) では、MV3は`$domain`に対応し、`$app`には非対応です。Android用の例外はそのまま流用せず、正規表現・修飾子の組み合わせ、DNR変換、適用結果と残りの枠を確認します。自作フィルタ本体は今回の変更対象外です。
 
@@ -1557,7 +1557,7 @@ Issues報告はGitHubアカウントがなくても可能ですが、GitHubア�
 報告時に重要となるのは「**問題が発生するサイトのURL**」「**問題の再現手順**」「**問題発生時のスクリーンショット**」「**ロガーのスクリーンショット**」です。必要に応じてスクリーンショットにマーキングしたり、ログや設定ファイルを添付します。
 GitHubでのやり取りは基本的に英語ですが、ツールを使い分けるとスムーズです（Google翻訳で全体を把握し、DeepL翻訳を活用するなど）。▶ [Issues例](https://github.com/AdguardTeam/AdguardFilters/issues/217897)
 
-Issuesのコメント欄を下書きし、Geminiに推敲とMarkdown形式への変換を依頼することもできます。▶ [Issues例](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues/11)
+Issuesのコメント欄を下書きし、ChatGPTに推敲とMarkdown形式への変換を依頼することもできます。▶ [Issues例](https://github.com/Kdroidwin/uB-filter-by-kdroidwin/issues/11)
 
 **Issues報告・補足**
 * [AdGuardフィルタポリシー](https://adguard.com/kb/ja/general/ad-filtering/filter-policy/) に従って処理されます。
