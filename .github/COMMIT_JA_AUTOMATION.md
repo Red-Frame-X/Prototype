@@ -233,7 +233,7 @@ PR #311・#312の公開スナップショットを回帰Testと固定実モデ�
 - 3件ともArgosの依存導入後の日本語化Stepでの検証エラーです。この3件のログにはPython TracebackやGitHub APIのHTTPエラーはありません。API障害や権限不足をこの失敗の原因とは判断しません。
 - PR #313（`3b11cec7`）には、日本語に含まれる技術表記の保護と不要なモデル起動の修正、およびPR #311・#312のfixtureが既にあります。今回もその回帰Testを維持します。後続Runの成功だけで、実翻訳・レビュー・マージまで回復したとは判断しません。
 
-APIのGETはTimeout・通信失敗・429・500 / 502 / 503 / 504に限り、指数BackoffとJitterで最大3回再試行します。`Retry-After`の秒数とHTTP日時を優先します。60秒を超える待機指示は短縮せず、その実行を失敗として終了します。403・409・422は無条件に再試行しません。409は状態変化（B）、認可・入力の拒否は安全停止（D）、再試行対象は一時障害（A）としてログへ記録します。422の詳細原因は個別調査が必要です。
+APIのGETはTimeout・通信失敗・429・500 / 502 / 503 / 504に限り、指数BackoffとJitterで最大3回再試行します。`Retry-After`の秒数とHTTP日時を優先し、Rate Limit残数が0なら`X-RateLimit-Reset`を確認します。429で待機指示がなければ、GitHubの公式方針に従い少なくとも60秒待ちます。60秒を超える待機指示は短縮せず、その実行を失敗として終了します。403・409・422は無条件に再試行しません。409は状態変化（B）、認可・入力の拒否は安全停止（D）、再試行対象は一時障害（A）としてログへ記録します。422の詳細原因は個別調査が必要です。
 
 書き込みAPIは応答喪失時に重複Commentや二重の起動要求を防ぐため、その場で再送しません。次の実行でGitHubの最新状態を確認します。書き込みの結果が不明な場合の完全な重複排除は未実装であり、保証しません。
 
@@ -243,4 +243,4 @@ APIのGETはTimeout・通信失敗・429・500 / 502 / 503 / 504に限り、指�
 
 マージ後はBot Commentに`MERGED`とマージSHAを保存します。定期実行では直近に更新されたClosed PRを最大30件確認し、記録したマージSHAとPRの`merge_commit_sha`が一致する場合だけ、同じSHA・mainへの独立した`workflow_dispatch`品質検査を追跡します。待機中は次回再確認し、失敗・未確認はエラーとして報告します。成功時だけ`VERIFIED`とRun IDを保存します。PR段階のCIや異なるSHAは流用しません。30件より古いPRは`pr_number`を指定して確認してください。起動前の途中失敗やmainが先に進んだ場合の検査再起動、未検証SHAの自動修復、修復用Workflowへの連携は未実装です。CI未成功や未解決Reviewを回避してマージする機能は追加しません。
 
-APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)、[Merge API](https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request)、[Rate limit対応](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api#handle-rate-limit-errors-appropriately) を確認対象とします。公式資料のリンクだけで実環境の動作確認済みとは扱いません。
+APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)、[Merge API](https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request)、[Rate limit対応](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api#handle-rate-limit-errors-appropriately) を確認対象とします。GitHub公式docs Repositoryの`data/reusables/actions/actions-do-not-trigger-workflows.md`と`content/rest/using-the-rest-api/best-practices-for-using-the-rest-api.md`でも、GITHUB_TOKENのイベント制約とRate Limit待機方針を照合しました。資料確認を実環境の動作確認とは扱いません。

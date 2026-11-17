@@ -52,6 +52,11 @@ def retry_delay(headers, attempt):
                 return max(0, parsedate_to_datetime(value).timestamp() - time.time())
             except (ValueError, TypeError, OverflowError):
                 pass
+    if headers.get('X-RateLimit-Remaining') == '0':
+        try:
+            return max(0, float(headers['X-RateLimit-Reset']) - time.time())
+        except (KeyError, ValueError):
+            pass
     return 2 ** attempt + random.uniform(0, 1)
 
 
@@ -81,6 +86,10 @@ def request_json(url: str, token: str, method: str = 'GET', data=None):
             transient = error.code == 429 or error.code in {500, 502, 503, 504}
             category = 'A' if transient else ('B' if error.code == 409 else 'D')
             delay = retry_delay(error.headers, attempt) if transient else 0
+            if (error.code == 429 and not error.headers.get('Retry-After')
+                    and error.headers.get('X-RateLimit-Remaining') != '0'):
+                delay = 60 * (2 ** attempt)
+
             # 長いRetry-Afterは短縮せず、次回の定期実行へ委ねる。
             if transient and method == 'GET' and attempt < 3 and delay <= 60:
                 print(f'RETRY_WAIT: HTTP {error.code}, retry={attempt + 1}/3, wait={delay:.1f}s')

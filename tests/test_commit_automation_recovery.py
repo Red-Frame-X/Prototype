@@ -64,6 +64,13 @@ class APIRecoveryTests(unittest.TestCase):
         sleep.assert_not_called()
 
     @patch.object(automation.time, 'sleep')
+    def test_rate_limit_without_header_waits_at_least_one_minute(self, sleep):
+        with patch.object(automation.urllib.request, 'urlopen',
+                          side_effect=[self.error(429), self.response()]):
+            automation.request_json('https://api.github.com/test', 'secret')
+        sleep.assert_called_once_with(60)
+
+    @patch.object(automation.time, 'sleep')
     def test_long_retry_after_is_not_shortened(self, sleep):
         with patch.object(automation.urllib.request, 'urlopen',
                           side_effect=self.error(429, {'Retry-After': '120'})) as request:
