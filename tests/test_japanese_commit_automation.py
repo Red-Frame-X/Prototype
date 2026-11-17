@@ -365,6 +365,31 @@ class LifecycleTests(unittest.TestCase):
         self.assertFalse(self.merged)
         self.assertEqual(self.changes, [])
 
+    def test_translation_failure_keeps_managed_sha_for_safe_rollback(self):
+        self.pr['head']['sha'] = BASE
+        previous_api = self.gh.api.side_effect
+        self.gh.api.side_effect = lambda path, *args: (
+            {'object': {'sha': SHA}} if path.startswith('/git/ref/') else previous_api(path, *args))
+        def objects(*args, **kwargs):
+            if args[0] == 'rev-list':
+                return (BASE + '\n').encode()
+            return b'tree dummy\n\nUpdate documentation'
+        with patch.object(automation, 'git', side_effect=objects), patch.object(
+                automation, 'translate', side_effect=automation.AutomationError('検証失敗')):
+            with self.assertRaises(automation.AutomationError):
+                self.run_pr()
+        saved = self.gh.comment.call_args[0][1]
+        state = automation.read_state([comment(automation.BOT_LOGIN, saved)])
+        self.assertEqual(state['sha'], SHA)
+        self.assertEqual(state['failed_sha'], BASE)
+        self.assertEqual(state['fingerprint'], self.state['fingerprint'])
+        self.comments.append(comment(automation.BOT_LOGIN, saved))
+        self.pr['head']['sha'] = SHA
+        with patch.object(automation, 'translate') as translate:
+            self.run_pr()
+            translate.assert_not_called()
+        self.assertTrue(self.merged)
+
     def test_review_changed_at_final_gate_never_merges(self):
         responses = iter((self.comments, [codex_comment(status='in_progress')]))
         self.gh.pages.side_effect = lambda path: next(responses) if 'comments' in path else []

@@ -453,7 +453,7 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
                 # managed等の既存状態も保持し、未翻訳を翻訳済みにはしない。
                 save_state(gh, number, {**state, 'translation_failed': current,
                            'implementation': implementation, 'phase': 'MANUAL_ACTION_REQUIRED',
-                           'sha': head},
+                           'failed_sha': head},
                            '翻訳検証が失敗しました。Commit・PRの原文は保持しています。'
                            'ログを確認し、入力または翻訳実装を修正してください。'
                            '同じ入力・実装の定期的な再翻訳は停止します。')
