@@ -29,6 +29,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  observe-schedule:
+    name: 自然な定期実行の間隔を実測
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: 既定Branchの観測Scriptを取得
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - name: Pythonの準備
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: 手動再実行を除いた実行間隔を記録
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/report_commit_automation_health.py cadence
+
   translate-review-merge:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -101,6 +124,8 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: read
+    outputs:
+      source_sha: ${{ steps.diagnostic-source.outputs.sha }}
     steps:
       # 失敗したPRのコード・Artifact・入力本文を実行せず、現在の既定Branchだけを検査する。
       - name: 既定Branchの診断対象を取得
@@ -108,6 +133,9 @@ jobs:
         with:
           ref: ${{ github.event.repository.default_branch }}
           persist-credentials: false
+      - name: 診断対象SHAを記録
+        id: diagnostic-source
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Pythonの準備
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
@@ -126,3 +154,32 @@ jobs:
           path: ${{ runner.temp }}/commit-ja-diagnostics.txt
           if-no-files-found: error
           retention-days: 7
+
+  maintenance-handoff:
+    name: 失敗を保守用Issueへ引き継ぐ
+    needs: [translate-review-merge, diagnose]
+    if: >-
+      always() && !cancelled() && github.event.repository.private == false &&
+      needs.translate-review-merge.result == 'failure' && github.run_attempt == 1 &&
+      needs.diagnose.outputs.source_sha != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      # PRのコード・本文・Artifact・生成コードを実行する権限は渡さない。
+      - name: 既定Branchの引き継ぎScriptを取得
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.diagnose.outputs.source_sha }}
+          persist-credentials: false
+      - name: Pythonの準備
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: 同じ実装のIssueを確認してから引き継ぐ
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DIAGNOSTIC_RESULT: ${{ needs.diagnose.result }}
+        run: python scripts/report_commit_automation_health.py maintenance --diagnostic-result "$DIAGNOSTIC_RESULT"
