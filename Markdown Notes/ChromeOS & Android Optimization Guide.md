@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611171908 |
+| **Version** | 202611171932 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -1497,16 +1497,16 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 
 **コンテンツブロックフィルタ**
 * **[AdGuard 公式フィルタ](https://github.com/AdguardTeam/AdguardFilters)**：AdGuardの接頭語 or `#recommended` のタグが付く各種フィルタ + 日本語フィルタ。
-* **[Online Malicious URL Blocklist](https://gitlab.com/malware-filter/urlhaus-filter)**：過去に使用していたURLhaus由来のマルウェア配布先対策フィルタです。現在はChromeOS・Androidの両方でOFFにし、下記のBadware risksとの併用は推奨しません。
+* **[Online Malicious URL Blocklist](https://gitlab.com/malware-filter/urlhaus-filter)**：過去に使用していたURLhaus由来のマルウェア配布先対策フィルタです。現在はChromeOS・Androidの両方でOFFにしています。
 * **[uBlock Origin – Badware risks](https://github.com/uBlockOrigin/uAssets)**：ChromeOS・Android共通のセキュリティ系コンテンツブロックフィルタとして使用します。Yuki2718氏がフィルタの監修に関わっています。
 
 ChromeOS・Androidとも、まずAdGuard公式の推奨フィルタと日本語フィルタを有効にし、セキュリティ系は`uBlock Origin – Badware risks`を選びます。`Online Malicious URL Blocklist`は`#recommended`付きでもOFFにします。これは本ガイドの運用方針であり、AdGuard公式の推奨変更ではありません。
 
-Badware risksは、マルウェア・不要なソフトウェアの導入や認証情報窃取の危険が確認されたサイト向けです。URLhaus由来のマルウェア配布先リストとは収録基準・更新経路が異なり、一本化で保護対象も変わり得ます。保護の同等性は保証せず、DNS対策は別レイヤーとして扱います（ [uAssetsの原典](https://github.com/uBlockOrigin/uAssets/blob/568ce1c8eb537b0e940a03f5a780abb728579ddd/filters/badware.txt) / [AdGuardのOnline Malicious URL Blocklist定義](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/filters/ThirdParty/filter_208_Online_Malicious_URL_Blocklist/metadata.json) ）。
+Badware risksは、危険性を示す資料に基づき、アドウェア・不要なソフトウェア・マルウェアの導入や認証情報窃取のリスクがあるサイトを収録します。該当するアクセスをブロックし、uBOの`$document`ルールではサイト全体をいったん止めて警告し、続行するか利用者が選べます。URLhaus由来のリストとは収録基準・更新経路が異なり、一本化後の保護の同等性は未検証です。DNS対策は別レイヤーとして扱います（ [uAssetsの原典](https://github.com/uBlockOrigin/uAssets/blob/568ce1c8eb537b0e940a03f5a780abb728579ddd/filters/badware.txt) / [AdGuardのOnline Malicious URL Blocklist定義](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/filters/ThirdParty/filter_208_Online_Malicious_URL_Blocklist/metadata.json) ）。
 
 **Badware risksの対応確認（2026年11月17日）**
 
-AdGuard公式FiltersRegistryの`main`（Commit `c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c`）で、filterId `257`・Version `2.0.13.28`の [Chrome MV3用](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/platforms/extension/chromium-mv3/filters.json) と [Android用](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/platforms/android/filters.json) を確認しました。uAssetsの`master`・`filters/badware.txt`が原典で、AdGuard版は`||domain^`・`$document`などを含み、MV3向けの除外・変換もあります。組み込み版を選び、uBOの全構文やstrict blockingの警告・続行画面と同じとは考えません。確認は登録情報と配布形式までで、実機の全ルール発火・保護効果は未検証です。
+AdGuard公式FiltersRegistryの`main`（Commit `c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c`）で、filterId `257`・Version `2.0.13.28`の [Chrome MV3用](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/platforms/extension/chromium-mv3/filters.json) と [Android用](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/platforms/android/filters.json) を確認済みです。両製品では組み込み版を選びます。原典はuAssetsの`master`・`filters/badware.txt`で、AdGuard版は`||domain^`・`$document`などを含み、MV3向けに除外・変換されるルールもあります。uBOの全構文・警告画面の再現は保証せず、実機での全ルール発火・保護効果は未検証です。
 
 ※ MV3の静的・動的ルール枠と変換後件数は [MV3の詳細](#フィルタの更新経路と制限) を参照してください。
 
@@ -1523,12 +1523,6 @@ AdGuard公式FiltersRegistryの`main`（Commit `c35e4d48a6df093b3c6fdd644f6f104f
 
 **DNSフィルタ**
 * AdGuard for Android：「DNS通信を保護 > DNSフィルタ」で`HaGeZi's Multi NORMAL - all-round protection`を登録し、`AdGuard DNS filter (Optimized)`は使用しません。従来の [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter) ・派生版の対処記録と、個別例外・TIF mediumの運用は [AndroidのDNS設定](#android-アプリ-有償版-adguard-for-androidandroid) を参照してください。
-
-**Peter Lowe's BlocklistとHaGeZi Multi NORMALの関係**
-
-2026年11月17日時点のHaGeZi公式`main`（Commit `e681da879e1b4aaed4962170d0e278d6817542df`）の [Source一覧](https://github.com/hagezi/dns-blocklists/blob/e681da879e1b4aaed4962170d0e278d6817542df/sources.md) に、Peter Lowe公式のhosts配布URLが直接掲載されています。間接入力だけではありませんが、Multi NORMALへの全件収録を示すものでもありません。
-
-[公式FAQの生成手順](https://github.com/hagezi/dns-blocklists/blob/e681da879e1b4aaed4962170d0e278d6817542df/FAQ.md#sources) では、ドメインへの正規化、用途・影響・強度による選別、例外・除外・重複排除を行います。公開Workflowには再現用の生成Script・全設定・出典対応表が見つからず、Multi NORMAL（Adblock版Version `2026.1117.0825.09`）でのPeter Lowe由来の採用範囲・件数や間接入力の寄与は未確認です。ドメインの一致だけで由来を断定せず、端末・方式の異なるChromeOSとAndroidの設定をSource重複だけで削除しません。
 
 **例外ルール**
 サイトの機能やAndroidアプリの動作を阻害するルールを例外（`@@`）にすることが多いです。
@@ -1588,7 +1582,6 @@ AdGuard Browser Extension MV3でカスタムフィルタ・ユーザールール
 | 組み込みフィルタ | 静的DNR rulesetを含む拡張機能本体の更新で配信されます。カスタムフィルタの手動更新と同じ経路ではありません。 |
 | URL購読のカスタムフィルタ | 本体と独立して更新されます。再取得できても、未対応構文やDNR上限により全ルールが有効になるとは限りません。 |
 | ユーザールール | 利用者が編集します。購読元の変更がコピー済みのルールへ自動反映されるわけではありません。 |
-| AdGuard Quick Fixes filter | 組み込みrulesetのリリース間を補う動的ルールです。通常の組み込み静的フィルタと区別します。 |
 
 出典： [AdGuard公式MV3解説](https://adguard.com/kb/adguard-browser-extension/mv3-version/) / [Filters](https://adguard.com/kb/adguard-browser-extension/features/filters/) 。通常版のFiltering logは、DNR制限により実際の発火ルールではなく推定ルールを表示する場合があります。表示されたルールだけで原因を断定しないでください。
 
