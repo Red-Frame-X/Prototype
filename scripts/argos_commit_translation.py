@@ -37,7 +37,7 @@ TERMS = (
     'pull-requests: read',
     'AGENTS.md', 'CONTRIBUTING.md', 'Actions', 'actionlint', 'Review', 'fixture',
     'Hook', 'title', 'message',
-    'body', 'Runner', 'Secret', 'cache',
+    'body', 'Runner', 'Secret', 'cache', 'hash',
     'npm ci', 'npm run lint:markdown', 'git diff --check',
     'npm audit', 'source-map-js', 'js-yaml', 'markdownlint-cli2', 'Markdown parser',
     'deepmerge', 'smol-toml', 'Branch protection', 'X',

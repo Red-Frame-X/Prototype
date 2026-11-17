@@ -452,6 +452,14 @@ class ArgosTranslationTests(unittest.TestCase):
         with self.assertRaises(argos.TranslationError):
             argos.translate_text('Update README.md', lambda value: 'Update ZXQ0000QXZを更新')
 
+    def test_hash_notation_is_preserved_while_surrounding_english_is_translated(self):
+        engine = Mock(side_effect=lambda value: value.replace('Update ', '').replace(
+            ' calculation', 'の計算を更新'))
+        self.assertEqual(argos.translate_text('Update hash calculation', engine), 'hashの計算を更新')
+        engine.assert_called_once()
+        self.assertNotIn('hash', engine.call_args.args[0])
+        self.assertIn('Update', engine.call_args.args[0])
+
     def test_names_code_and_identifiers_never_reach_engine(self):
         text = 'AdGuard Custom Rules GitHub Actions Prototype Python Acme myFunction my_func CONFIG_KEY\n```python\nx = 1\n```'
         engine = Mock()

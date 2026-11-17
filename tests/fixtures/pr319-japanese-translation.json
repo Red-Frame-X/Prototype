@@ -1,0 +1,10 @@
+{
+  "title": "Argosモデルcacheの保存条件と別Runでの復元検証を追加",
+  "body": "モデル未取得時にもcache保存を試みていたため、本番Run #252で保存対象Pathがないという警告が出ていました。復元と保存を公式Actionの別Stepに分け、hash・Metadata・言語・Versionを検証できたarchiveだけを保存します。\n\n関連するmainへのpushでも実モデル検証を行い、その成功後、別の読み取り専用Workflowで同じcacheを復元・検証します。cache未復元を失敗として検出し、モデルを再取得して成功扱いにすることはしません。PR由来の完了イベントでは後続Jobを実行せず、自己再起動の経路も作りません。\n\n検証: 全402 Test、cache関連Test、Python構文検査、Markdownlint、actionlint、Workflow安全性、内容消失防止検査、固定名称検査が成功しました。既存の翻訳・Review・マージ条件、5分間隔、権限は維持しています。別Runでの実際の復元はmain反映後に確認します。",
+  "commits": [
+    {
+      "sha": "65a4353bec9e253a3658d5454669cde0cd541a86",
+      "message": "Argosモデルcacheの保存条件と別Runでの復元検証を追加\n"
+    }
+  ]
+}
