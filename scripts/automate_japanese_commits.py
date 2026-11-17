@@ -77,6 +77,7 @@ def request_json(url: str, token: str, method: str = 'GET', data=None):
                 body = response.read()
             return json.loads(body) if body else None
         except urllib.error.HTTPError as error:
+            # 認証情報やAPI応答内の入力本文をログに出さない。
             transient = error.code == 429 or error.code in {500, 502, 503, 504}
             category = 'A' if transient else ('B' if error.code == 409 else 'D')
             delay = retry_delay(error.headers, attempt) if transient else 0
@@ -224,17 +225,21 @@ def translate(original: dict) -> dict:
     if len(json.dumps(original, ensure_ascii=False).encode()) > MAX_MESSAGE_BYTES:
         raise AutomationError('翻訳対象が上限を超えました。内容を省略せず停止します。')
     engine = None
+    setup_failure = None
     def translate_segment(source):
-        nonlocal engine
+        nonlocal engine, setup_failure
         if engine is None:
             try:
                 engine = load_engine()
             except TranslationError as error:
-                raise TranslationSetupError(str(error)) from None
+                setup_failure = str(error)
+                raise
         return engine(source)
     try:
         translated = translate_payload(original, translate_segment)
     except TranslationError as error:
+        if setup_failure is not None:
+            raise TranslationSetupError(setup_failure) from None
         raise AutomationError(str(error)) from None
     return validate_translation(original, translated)
 
@@ -311,6 +316,8 @@ def eligible(pr: dict, repository: str, default_branch: str) -> bool:
 def reviews_clear(reviews: list[dict]) -> bool:
     latest = {}
     for review in reviews:
+        if review['state'] == 'PENDING':
+            return False
         if review['state'] != 'COMMENTED' and review['state'] != 'PENDING':
             latest[review['user']['login']] = review['state']
     return 'CHANGES_REQUESTED' not in latest.values()
@@ -369,8 +376,38 @@ def save_state(gh: GitHub, number: int, state: dict, text: str):
                + json.dumps(state, ensure_ascii=False, separators=(',', ':')) + ' -->')
 
 
+def verify_merged_pr(gh: GitHub, pr: dict, dry_run: bool = False):
+    """閉じたPRも記録済みのmerge SHAに結び付く独立CIだけで検証する。"""
+    if dry_run or not pr.get('merged'):
+        return
+    number = pr['number']
+    state = read_state(gh.pages(f'/issues/{number}/comments'))
+    if state.get('phase') != 'MERGED' or not state.get('merge_sha'):
+        return
+    sha = state['merge_sha']
+    if pr.get('merge_commit_sha') != sha:
+        raise AutomationError('記録したマージSHAとGitHubのPR情報が一致しません。')
+    query = urllib.parse.urlencode({'head_sha': sha, 'event': 'workflow_dispatch', 'per_page': 100})
+    runs = gh.api('/actions/workflows/quality.yml/runs?' + query)['workflow_runs']
+    run = next((run for run in runs if run['head_sha'] == sha
+                and run['head_branch'] == pr['base']['ref']
+                and run['event'] == 'workflow_dispatch'), None)
+    if run is None:
+        raise AutomationError('マージ後SHAの独立した品質検査Runが未確認です。'
+                              'mainの移動・起動要求・権限を確認してください。')
+    if run['status'] != 'completed':
+        print(f'PR #{number}: マージ後CIを待機しています。SHA: {sha}, Run: {run["id"]}')
+        return
+    if run['conclusion'] != 'success':
+        raise AutomationError(f'マージ後CIが成功していません。SHA: {sha}, Run: {run["id"]}')
+    save_state(gh, number, {**state, 'phase': 'VERIFIED', 'post_merge_run': run['id']},
+               f'マージ後SHA {sha} の独立した品質検査Run {run["id"]} の成功を確認しました。')
+
+
 def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = False):
     pr = gh.api(f'/pulls/{number}')
+    if pr['state'] == 'closed':
+        verify_merged_pr(gh, pr, dry_run)
     if not eligible(pr, gh.repository, default_branch):
         print(f'PR #{number}: 同一Repositoryの既定Branch宛ての通常PRではないため対象外です。')
         return
@@ -520,6 +557,12 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
             or not threads_clear(gh, number) or not all_checks_passed(gh, head)):
         print(f'PR #{number}: マージ直前のReview・承認・Checkが条件を満たしません。')
         return
+    fresh = gh.api(f'/pulls/{number}')
+    if (not eligible(fresh, gh.repository, default_branch) or fresh['head']['sha'] != head
+            or fingerprint(head, fresh['title'], fresh['body'] or '') != current
+            or fresh['mergeable'] is not True or fresh['mergeable_state'] != 'clean'):
+        print(f'PR #{number}: マージ直前にPRの状態が変わりました。次回再確認します。')
+        return
     result = gh.api(f'/pulls/{number}/merge', 'PUT', {
         'sha': head, 'merge_method': 'squash',
         'commit_title': f"{fresh['title']} (#{number})", 'commit_message': fresh['body'] or '',
@@ -531,6 +574,8 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
         '\n\n' + fresh['body'] if fresh['body'] else '')
     if merged['message'].rstrip('\n') != expected_message.rstrip('\n'):
         raise AutomationError('マージ後のCommit messageが指定した内容と一致しません。')
+    save_state(gh, number, {**state, 'phase': 'MERGED', 'merge_sha': result['sha']},
+               'Squash後のCommit messageを照合しました。マージ後SHAの独立CIは未確認です。')
     # GITHUB_TOKENのmergeではpush Workflowが抑止されるため、同期と品質検査を明示起動する。
     # 通常pushと同じく、厳格なVersion日時照合は同期処理へ任せる。
     gh.api('/actions/workflows/update-version-timestamps.yml/dispatches', 'POST', {'ref': default_branch})
@@ -550,6 +595,10 @@ def main() -> int:
     if target and not re.fullmatch(r'[1-9][0-9]*', target):
         raise AutomationError('PR番号には正の整数を指定してください。')
     numbers = [int(target)] if target else [pr['number'] for pr in gh.pages('/pulls?state=open')]
+    if not target:
+        # 直近に更新された閉じたPRを上限付きで確認する。PR本文は状態に使用しない。
+        closed = gh.api('/pulls?state=closed&sort=updated&direction=desc&per_page=30')
+        numbers += [pr['number'] for pr in closed if pr.get('merged_at')]
     failures = []
     for number in numbers:
         try:

@@ -71,6 +71,10 @@ class ReviewGateTests(unittest.TestCase):
                        + json.dumps(state) + ' -->')
         self.assertFalse(automation.codex_passed([item], SHA))
 
+    def test_pending_review_blocks_merge(self):
+        self.assertFalse(automation.reviews_clear([
+            {'user': {'login': 'reviewer'}, 'state': 'PENDING'}]))
+
     def test_changes_requested_cannot_be_cleared_by_comment_only(self):
         reviews = [{'user': {'login': 'reviewer'}, 'state': 'CHANGES_REQUESTED'},
                    {'user': {'login': 'reviewer'}, 'state': 'COMMENTED'}]

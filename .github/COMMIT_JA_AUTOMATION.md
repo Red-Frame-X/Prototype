@@ -241,6 +241,6 @@ APIのGETはTimeout・通信失敗・429・500 / 502 / 503 / 504に限り、指�
 
 マージ直前にはComment・翻訳承認・Review・未解決thread・Checkを再取得します。Merge APIには引き続き期待するHead SHAを指定します。ただし、複数APIの読み取りを一つのTransactionにはできません。GitHub側の保護ルールは引き続き最終的な制約です。
 
-調査時点の限界として、マージ後CIの起動と成功結果の永続的な追跡は別の処理です。既存実装は起動要求までで、`VERIFIED`までの自動追跡、未検証SHAの自動修復、修復用Workflowへの連携は未実装です。CI未成功や未解決Reviewを回避してマージする機能は追加しません。
+マージ後はBot Commentに`MERGED`とマージSHAを保存します。定期実行では直近に更新されたClosed PRを最大30件確認し、記録したマージSHAとPRの`merge_commit_sha`が一致する場合だけ、同じSHA・mainへの独立した`workflow_dispatch`品質検査を追跡します。待機中は次回再確認し、失敗・未確認はエラーとして報告します。成功時だけ`VERIFIED`とRun IDを保存します。PR段階のCIや異なるSHAは流用しません。30件より古いPRは`pr_number`を指定して確認してください。起動前の途中失敗やmainが先に進んだ場合の検査再起動、未検証SHAの自動修復、修復用Workflowへの連携は未実装です。CI未成功や未解決Reviewを回避してマージする機能は追加しません。
 
 APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)、[Merge API](https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request)、[Rate limit対応](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api#handle-rate-limit-errors-appropriately) を確認対象とします。公式資料のリンクだけで実環境の動作確認済みとは扱いません。

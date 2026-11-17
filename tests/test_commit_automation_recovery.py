@@ -73,5 +73,38 @@ class APIRecoveryTests(unittest.TestCase):
         sleep.assert_not_called()
 
 
+class PostMergeTests(unittest.TestCase):
+    def test_only_independent_exact_merge_sha_ci_can_verify(self):
+        sha = 'c' * 40
+        pr = {'number': 1, 'merged': True, 'merge_commit_sha': sha, 'base': {'ref': 'main'}}
+        state = {'phase': 'MERGED', 'merge_sha': sha, 'managed': True}
+        from unittest.mock import Mock
+        gh = Mock()
+        run = {'id': 99, 'head_sha': sha, 'head_branch': 'main', 'event': 'workflow_dispatch',
+               'status': 'completed', 'conclusion': 'success'}
+        with patch.object(automation, 'read_state', return_value=state), patch.object(
+                automation, 'save_state') as save:
+            for change in ({'head_sha': 'b' * 40}, {'event': 'pull_request'},
+                           {'conclusion': 'failure'}):
+                gh.api.return_value = {'workflow_runs': [{**run, **change}]}
+                with self.subTest(change=change), self.assertRaises(automation.AutomationError):
+                    automation.verify_merged_pr(gh, pr)
+                save.assert_not_called()
+            gh.api.return_value = {'workflow_runs': [{**run, 'status': 'in_progress'}]}
+            automation.verify_merged_pr(gh, pr)
+            save.assert_not_called()
+            gh.api.return_value = {'workflow_runs': [run]}
+            automation.verify_merged_pr(gh, pr)
+            self.assertEqual(save.call_args.args[2]['phase'], 'VERIFIED')
+            self.assertEqual(save.call_args.args[2]['post_merge_run'], 99)
+
+    def test_initialization_failure_is_distinct_from_translation_validation(self):
+        from argos_commit_translation import TranslationError
+        original = {'title': 'Update documentation', 'body': '', 'commits': []}
+        with patch('argos_commit_translation.load_engine', side_effect=TranslationError('初期化失敗')):
+            with self.assertRaises(automation.TranslationSetupError):
+                automation.translate(original)
+
+
 if __name__ == '__main__':
     unittest.main()
