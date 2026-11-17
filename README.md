@@ -26,6 +26,7 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 | 保守 | [NG Word Regex for ChMate のVersion更新](https://github.com/Red-Frame-X/Prototype/actions/workflows/update-chmate-ng-version.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/update-chmate-ng-version.yml?branch=main&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
 | PR運用 | [PRのCommit日本語化とレビュー後の自動マージ](https://github.com/Red-Frame-X/Prototype/actions/workflows/japanese-commits.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/japanese-commits.yml?branch=main&event=schedule&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
 | 翻訳検証 | [Argos英日モデルの実物検証](https://github.com/Red-Frame-X/Prototype/actions/workflows/argos-translation-test.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/argos-translation-test.yml?event=pull_request&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
+| 翻訳検証 | [別RunでのArgosモデルcache復元検証](https://github.com/Red-Frame-X/Prototype/actions/workflows/argos-cache-verification.yml) | ![Workflowの状態](https://img.shields.io/github/actions/workflow/status/Red-Frame-X/Prototype/argos-cache-verification.yml?branch=main&event=workflow_run&style=for-the-badge&label=%E7%8A%B6%E6%85%8B&labelColor=555&color=brightgreen) |
 
 ## Repository案内
 
