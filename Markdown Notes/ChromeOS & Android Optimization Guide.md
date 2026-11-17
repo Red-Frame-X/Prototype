@@ -1624,7 +1624,7 @@ v5.2.400で強化された機能は、設定画面内でカスタムフィルタ
  [AdGuard Filters Issues](https://github.com/AdguardTeam/AdguardFilters/issues) への報告が煩雑になるため、カスタムフィルタは基本的に上記フィルタ以外は追加しないほうが良いです。ChromeOSで採用するPeter Lowe's Blocklistと`AdGuard Custom Rules - Red Frame X`は例外とし、不具合報告では追加フィルタと例外ルールの影響を切り分けます。
 
 **フィルターの課題・不具合報告**
-* [AdGuard Japanese filter Plusの課題・不具合報告](https://github.com/Yuki2718/adblock2/issues)
+* [AdGuard Japanese filter Plus Issues](https://github.com/Yuki2718/adblock2/issues)
 
 **開発者ツールと連動した手動ブロック機能**
 
