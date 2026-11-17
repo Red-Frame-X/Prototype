@@ -162,7 +162,9 @@ google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 @@||googletagmanager.com/gtag/js$script,domain=slack.com
 
 ! hb.afl.rakuten.co.jp / hbb.afl.rakuten.co.jp
-! 楽天アフィリエイトのリンク先ホスト自身からの通信のみ許可
+! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
+! 楽天アフィリエイト用の独自補完例外。対象ホスト自身からの通信のみ許可
+! hb.afl.rakuten.co.jpとhbb.afl.rakuten.co.jpへの通信を、それぞれ同じホスト内からのみ許可し、他サイトからの通信は許可対象に含めない
 @@||hb.afl.rakuten.co.jp^$domain=hb.afl.rakuten.co.jp
 @@||hbb.afl.rakuten.co.jp^$domain=hbb.afl.rakuten.co.jp
 
@@ -198,7 +200,9 @@ klz9.com#?#div:has(> h2:contains(最近のコメント))
 @@||uts-front.line-apps.com^$app=jp.naver.line.android
 
 ! linksynergy.com
-! LinkSynergyのドメイン自身からの通信のみ許可
+! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
+! LinkSynergy用の独自補完例外。対象ドメイン内からの通信のみ許可
+! linksynergy.com内からlinksynergy.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||linksynergy.com^$domain=linksynergy.com
 
 ! m.youtube.com
