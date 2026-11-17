@@ -58,3 +58,22 @@ jobs:
         run: |
           set -euo pipefail
           python scripts/check_adguard_version_timestamp.py --base '${{ steps.base.outputs.base }}' --head HEAD
+
+      - name: Version検査失敗時の修正案内
+        if: failure()
+        shell: bash
+        run: |
+          {
+            echo '### AdGuard Version日時検査に失敗しました'
+            echo ''
+            echo 'ルール・コメントを変更したCommitでは、対象ファイルの `! Version: YYYYMMDDHHMM` を同じCommit内で更新する必要があります。'
+            echo '後続のVersion専用Commitやmainの定期同期では、過去のCommitの違反は解消されません。'
+            echo ''
+            echo '対応手順:'
+            echo '1. 失敗した「同じCommit内のVersion更新を検査」のログで対象Commitとファイルを確認します。'
+            echo '2. 対象Commitを修正し、日本標準時のVersion更新をそのCommitに含めます。'
+            echo '3. 変更履歴を保持すべき場合は、履歴の書き換えについて関係者と合意してから実施します。'
+            echo '4. 回帰テストとVersion検査を再実行し、成功を確認します。'
+            echo ''
+            echo '検査の無効化や失敗の隠蔽は行わないでください。'
+          } >> "$GITHUB_STEP_SUMMARY"
