@@ -1507,7 +1507,7 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 
 ChromeOS・Androidとも、まずAdGuard公式の推奨フィルタと日本語フィルタを有効にし、セキュリティ系は`uBlock Origin – Badware risks`を選びます。`Online Malicious URL Blocklist`は`#recommended`付きでもOFFにします。これは本ガイドの運用方針であり、AdGuard公式の推奨変更ではありません。
 
-Badware risksは、危険性を示す資料に基づき、アドウェア・不要なソフトウェア・マルウェアの導入や認証情報窃取のリスクがあるサイトを収録します。該当するアクセスをブロックし、uBOの`$document`ルールではサイト全体をいったん止めて警告し、続行するか利用者が選べます。URLhaus由来のリストとは収録基準・更新経路が異なり、一本化後の保護の同等性は未検証です。DNS対策は別レイヤーとして扱います（[uAssetsの元データ](https://github.com/uBlockOrigin/uAssets/blob/568ce1c8eb537b0e940a03f5a780abb728579ddd/filters/badware.txt) / [AdGuardのOnline Malicious URL Blocklist定義](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/filters/ThirdParty/filter_208_Online_Malicious_URL_Blocklist/metadata.json)）。
+Badware risksは、危険性を示す資料に基づき、アドウェア・不要なソフトウェア・マルウェアの導入や認証情報窃取のリスクがあるサイトを収録します。該当するアクセスをブロックし、uBOの`$document`ルールではサイト全体をいったん止めて警告し、続行するか利用者が選べます。URLhaus由来のリストとは収録基準・更新経路が異なり、一本化後の保護の同等性は未検証です。DNS対策は別レイヤーとして扱います([uAssetsの元データ](https://github.com/uBlockOrigin/uAssets/blob/568ce1c8eb537b0e940a03f5a780abb728579ddd/filters/badware.txt)/[AdGuardのOnline Malicious URL Blocklist定義](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/filters/ThirdParty/filter_208_Online_Malicious_URL_Blocklist/metadata.json))。
 
 **Badware risksの対応確認（2026年11月17日）**
 
