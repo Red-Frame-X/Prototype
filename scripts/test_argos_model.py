@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """固定モデルの実翻訳をRunner上で確認する。GitHubの更新APIは使わない。"""
 import json
+import os
 from pathlib import Path
 from unittest.mock import patch
 from argos_commit_translation import load_engine, translate_text, translate_payload
@@ -9,6 +10,10 @@ from automate_japanese_commits import validate_translation
 
 def main():
     engine = load_engine()
+    if os.environ.get('ARGOS_MODEL_CACHE_DIR'):
+        with patch('urllib.request.urlopen', side_effect=AssertionError('cache利用中の再取得')):
+            assert callable(load_engine())
+        print('固定hashを再検証し、モデルのarchiveを再取得せず再利用しました。')
     samples = [
         'Update documentation',
         'Fix a bug',
@@ -145,6 +150,9 @@ def main():
         translated = validate_translation(original, translate_payload(original, engine))
     assert translated['messages']['a' * 40] == translated['commits'][0]['message']
     print(json.dumps({'pipeline': translated}, ensure_ascii=False))
+    from test_argos_automation_lifecycle import run_end_to_end
+    with patch('socket.socket.connect', side_effect=AssertionError('一連の検証中の外部通信')):
+        run_end_to_end(engine)
 
 
 if __name__ == '__main__':
