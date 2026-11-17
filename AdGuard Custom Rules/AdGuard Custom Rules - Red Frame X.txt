@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611161836
+! Version: 202611172134
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -161,6 +161,11 @@ google.com#?#div[role="listitem"]:has(a:contains(ショート動画))
 @@||googletagmanager.com/gtm.js$script,domain=slack.com
 @@||googletagmanager.com/gtag/js$script,domain=slack.com
 
+! hb.afl.rakuten.co.jp / hbb.afl.rakuten.co.jp
+! 楽天アフィリエイトのリンク先ホスト自身からの通信のみ許可
+@@||hb.afl.rakuten.co.jp^$domain=hb.afl.rakuten.co.jp
+@@||hbb.afl.rakuten.co.jp^$domain=hbb.afl.rakuten.co.jp
+
 ! jomo-p.co.jp
 ! Cookie同意バナーを非表示（同意状態は変更しない）
 jomo-p.co.jp##.c-cookie__box
@@ -191,6 +196,10 @@ klz9.com#?#div:has(> h2:contains(最近のコメント))
 ! line-apps.com
 ! LINEアプリでuts-front.line-apps.comへの通信を許可し、通信エラーやバッテリー異常消費を回避
 @@||uts-front.line-apps.com^$app=jp.naver.line.android
+
+! linksynergy.com
+! LinkSynergyのドメイン自身からの通信のみ許可
+@@||linksynergy.com^$domain=linksynergy.com
 
 ! m.youtube.com
 ! チャンネル投稿を含むコンパクト型フィード項目を非表示
