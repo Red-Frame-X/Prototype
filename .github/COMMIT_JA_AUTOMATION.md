@@ -265,3 +265,7 @@ APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/action
 `Argos英日モデルの実物検証`は関連ファイルのmainへのpushでも実行し、実モデル検証後のarchiveを同じcache keyとPathで保存します。その成功後に別Workflowの`別RunでのArgosモデルcache復元検証`を起動します。後続Runは同じRepositoryのmainへのpushに由来する成功Runだけを採用し、そのCommitのコードを読み取り専用で取得します。cacheの未復元は失敗にし、モデル配布先への通信やインストールを行わずに実物のhash・Metadataを再確認します。後続Workflowは元の実モデル検証Workflowを起動しないため、再帰的な起動経路はありません。PR由来の完了イベントでは後続Jobを実行しません。
 
 この確認は、同一Process内での再利用と、GitHub Actionsのcacheから別Runへ復元できることを区別するためのものです。別Runが成功するまでは復元確認済みとは扱いません。公式仕様は、使用する固定Commitの [restore Action](https://github.com/actions/cache/blob/caa296126883cff596d87d8935842f9db880ef25/restore/action.yml)、[save Action](https://github.com/actions/cache/blob/caa296126883cff596d87d8935842f9db880ef25/save/action.yml)、[README](https://github.com/actions/cache/blob/caa296126883cff596d87d8935842f9db880ef25/README.md) の本文で照合しました。
+
+## 本番での実動作確認記録
+
+本番の日本語化経路を確認する専用PRでは、この節の追記だけを差分とし、既存の実装・設定・本文を変更しません。検証用の英語はPR title/bodyとCommit messageに限定します。日本語化前後の文章・著者・日時・SHA対応はPRのBot Commentを原本とし、翻訳内容の承認・Review・CI・マージ後検証は同じPRと対応するRunで確認します。この節の存在だけを、実動作確認が成功した根拠にはしません。
