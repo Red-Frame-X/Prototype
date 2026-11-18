@@ -1362,6 +1362,10 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 * [Octane 2.0 plus](https://octane.webmarks.info/ja/)
 * [AdBlock Tester](https://adblock-tester.com/)
 * [Test Ad Block - Toolz](https://adblock.turtlecute.org/)
+
+### ファイル・URLの安全性確認
+ファイルやURLにマルウェアなどの脅威が報告されているかを確認するサービスです。
+* [VirusTotal](https://www.virustotal.com/gui/home/upload)
 * [Norton Safe Web](https://safeweb.norton.com/)
 
 ### サービス稼働状況・障害検知
