@@ -1484,8 +1484,8 @@ SNSでは短期間で高収入を得られる副業や闇バイトの勧誘が�
 
 **参考サイト**
 * [詐欺サイト対策 Wiki*（Kdroidwin氏寄稿）](https://wikiwiki.jp/antiscamsite/)
-* [おたくま経済新聞｜【特集】STOP！ネット詐欺！](https://otakuma.net/category/internet/internet-scam)
-* [ソレサギ（それって詐欺かも？）｜ネット詐欺の手口を調べる - おたくま経済新聞](https://otakuma.net/soresagi)
+* [【特集】STOP！ネット詐欺！｜おたくま経済新聞](https://otakuma.net/category/internet/internet-scam)
+* [ソレサギ（それって詐欺かも？）ネット詐欺の手口を調べる｜おたくま経済新聞](https://otakuma.net/soresagi)
 * [SEOポイズニングとは？仕組みや対策をわかりやすく解説](https://www.lanscope.jp/blogs/cyber_attack_cpdi_blog/20240530_20684/)
 
 ---
