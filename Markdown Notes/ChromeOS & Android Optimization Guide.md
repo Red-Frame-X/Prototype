@@ -2208,7 +2208,7 @@ AndroidアプリにPatchを適用して機能や表示を調整するプロジ�
 
 **公式サイト・開発元**： [revanced.app](https://revanced.app/) / [GitHub Organization](https://github.com/ReVanced) / [ReVanced Manager](https://github.com/ReVanced/revanced-manager) / [Release](https://github.com/ReVanced/revanced-manager/releases/latest)
 
-**RVX** はinotia00氏版です（ [開発終了の告知（Issue #3334）](https://github.com/inotia00/ReVanced_Extended/issues/3334) ）。
+**RVX** はinotia00氏版です / [開発終了の告知（Issue #3334）](https://github.com/inotia00/ReVanced_Extended/issues/3334)。
 
 ReVancedはAndroidアプリにPatchを適用するプロジェクトです。Managerは操作画面、Patcherは改変処理、Patchは変更内容を担当します。ManagerをインストールしただけでYouTubeなどが改変されるわけではありません。公式サイトはVancedの終了を出発点としていますが、対象はYouTubeだけに限定されません（[公式説明](https://revanced.app/) / [Manager README](https://github.com/ReVanced/revanced-manager/blob/main/README.md)）。
 
