@@ -2197,17 +2197,18 @@ DNSブロックは、DNS問い合わせに対してドメイン名単位で応�
 AndroidアプリにPatchを適用して機能や表示を調整するプロジェクトとManagerをまとめます。ReVanced・Morphe・ReseamはそれぞれのPatch系統を持ち、Universal Patch Manager（UPM、旧Universal ReVanced Manager / URV）は複数の系統を扱うManagerです。
 ※ビルドツール（Manager）の利用は**自己責任**です（[VirusTotal](https://www.virustotal.com/gui/home/upload) でのスキャン推奨）。元APKは各Managerの案内や [APKMirror](https://www.apkmirror.com/) などから、選んだPatchに対応するVersion・形式を確認して用意します。スキャン結果だけで安全性は保証できません。
 
-**略称・ツール**
-* **[ReVanced 公式](https://revanced.app/)** / [GitHub](https://github.com/revanced)
-* **RVX**：inotia00氏版（[※開発終了 Issues #3334](https://github.com/inotia00/ReVanced_Extended/issues/3334)）
-* **[Morphe 公式](https://morphe.software/)** / [GitHub](https://github.com/MorpheApp) （RVX開発陣も合流した新プロジェクト）
-  * [Morphe Community Patches](https://morphe-patches.software/) （コミュニティが作成したパッチバンドル）
-* **[Reseam 公式](https://reseam.app/)** / [GitHub mirror](https://github.com/Reseam) / [開発元（Forgejo）](https://git.reseam.app/reseam) （元ReVanced開発者による独立プロジェクト）
-* **[UPM 公式](https://jmancentral.com/)** / [開発者GitHub](https://github.com/Jman-Github) / [Repository](https://github.com/Jman-Github/Universal-Patch-Manager) （旧URV。ReVanced・Morphe・ReseamのBundleを扱うManager）
+**各項目への案内**
+
+* [ReVanced](#revanced公式patchとmanager)
+* [Morphe](#morphesimple--expert-modeと追加patch-source)
+* [UPM（旧URV）](#upm複数のpatch系統を扱うmanager旧urv)
+* [Reseam](#reseamrust製エンジンとandroidwindowslinux対応)
 
 ### ReVanced：公式PatchとManager
 
 **公式サイト・開発元**： [revanced.app](https://revanced.app/) / [GitHub Organization](https://github.com/ReVanced) / [ReVanced Manager](https://github.com/ReVanced/revanced-manager) / [Release](https://github.com/ReVanced/revanced-manager/releases/latest)
+
+**RVX** はinotia00氏版です（ [開発終了の告知（Issue #3334）](https://github.com/inotia00/ReVanced_Extended/issues/3334) ）。
 
 ReVancedはAndroidアプリにPatchを適用するプロジェクトです。Managerは操作画面、Patcherは改変処理、Patchは変更内容を担当します。ManagerをインストールしただけでYouTubeなどが改変されるわけではありません。公式サイトはVancedの終了を出発点としていますが、対象はYouTubeだけに限定されません（[公式説明](https://revanced.app/) / [Manager README](https://github.com/ReVanced/revanced-manager/blob/main/README.md)）。
 
@@ -2251,6 +2252,8 @@ Manager・Patcher・CLIのREADMEはGPLv3を掲げています。追加sourceや�
 
 **公式サイト・開発元**： [morphe.software](https://morphe.software/) / [GitHub Organization](https://github.com/MorpheApp) / [Morphe Manager](https://github.com/MorpheApp/morphe-manager) / [Release](https://github.com/MorpheApp/morphe-manager/releases/latest)
 
+MorpheにはRVX開発陣も合流しています。コミュニティが作成したパッチバンドルは [Morphe Community Patches](https://morphe-patches.software/) で確認できます。
+
 MorpheはReVancedとは独立したプロジェクトです。公式FAQは元ReVanced開発者・貢献者による設立を説明し、Manager READMEはReVanced ManagerとURVを基盤とすることを明記しています。標準の対象はYouTube・YouTube Music・Redditで、追加sourceの対応アプリとは区別します（[FAQ](https://morphe.software/faq) / [README](https://github.com/MorpheApp/morphe-manager/blob/main/README.md)）。
 
 **機能・対応の確認**
@@ -2290,7 +2293,7 @@ Manager・Patch source・改変後のアプリを分けて更新します。sour
 
 ### UPM：複数のPatch系統を扱うManager（旧URV）
 
-**開発者サイト・Repository**： [Jman Central](https://jmancentral.com/) / [Universal Patch Manager](https://github.com/Jman-Github/Universal-Patch-Manager) / [Release](https://github.com/Jman-Github/Universal-Patch-Manager/releases) / [Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)
+**開発者サイト・Repository**： [Jman Central](https://jmancentral.com/) / [開発者GitHub](https://github.com/Jman-Github) / [Universal Patch Manager](https://github.com/Jman-Github/Universal-Patch-Manager) / [Release](https://github.com/Jman-Github/Universal-Patch-Manager/releases) / [Issues](https://github.com/Jman-Github/Universal-Patch-Manager/issues)
 
 旧配布先の記録： [Universal ReVanced Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager) / [Release](https://github.com/Jman-Github/Universal-ReVanced-Manager/releases) 。旧Repository URLは現行Repositoryへ転送され、URVのRelease履歴も引き継がれています。旧版を調べる場合は [URV v1.10.0](https://github.com/Jman-Github/Universal-Patch-Manager/releases/tag/v1.10.0) のようにtagを固定します。
 
@@ -2342,6 +2345,8 @@ Runtime PluginはUPM用を使います。ReVanced v21 / v22のPackage nameは`ap
 自動再Patch用に保存した元APKも、PatchがそのVersionをサポートしなくなれば見直しが必要です。失敗時はRuntime、Bundle、元APK、選択Patch、Installerが分かるログを保存します。処理時間はAPK・Split構成・端末・Runtimeで変わり、Reseamを含めた共通条件の比較測定は本ガイドでは行っていません。
 
 ### Reseam：Rust製エンジンとAndroid・Windows・Linux対応
+
+**公式サイト・開発元**： [Reseam 公式](https://reseam.app/) / [開発元（Forgejo）](https://git.reseam.app/reseam) / [GitHub mirror](https://github.com/Reseam)
 
 Reseamは、コミュニティが作成したパッチを端末上でAndroidアプリに適用するプロジェクトです。公式サイトは元ReVanced開発者によるものと説明し、開発者はRedditのAMAでReVancedのForkではなく新規に構築したと説明しています。AMAでは関係者のGitHubとしてAunali321、Ushie、alexandreteles（afterSt0rm）、madkarmaaが紹介されています。これは参加者全員の名簿や、他プロジェクトの現行体制を示すものではありません（[公式サイト](https://reseam.app/) / [開発チームのAMA](https://www.reddit.com/r/Piracy/comments/1xb5ys8/reseam_a_new_android_app_patcher_from_most_of_the/)）。
 
