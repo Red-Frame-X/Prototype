@@ -2538,7 +2538,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 ### 代替ブラウザ
 
-* [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid)
+* [したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm) / [Channeler](https://play.google.com/store/apps/details?id=pro.hirooka.channeler) / [CuspiDroid](https://github.com/Chipppppppppp/CuspiDroid) / [SikiArc](https://sikiapp.net/sikiarc/)
 
 * ChromeOS上でのChMateの完全な動作は保証されていません。（[動作環境](https://chmate.airfront.co.jp/docs/supported-os/#%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6)）
 
