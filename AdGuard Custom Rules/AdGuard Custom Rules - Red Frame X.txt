@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611172217
+! Version: 202611192016
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -12,6 +12,12 @@
 ##.grecaptcha-badge
 ! clickfuse.comへのリンク要素を汎用的に非表示対象から除外
 #@#a[href^="https://srv.clickfuse.com/"]
+
+! www.47news.jp
+! サイドバーの「[PR]特別企画」を見出しごと非表示
+www.47news.jp##div.side_pc_row4:has(> section.col > div#slick_pr)
+! サイドバーのバナーカルーセルを外枠ごと非表示
+www.47news.jp##div.side_pc_row5:has(> div.inner_row2 > ul#slick_feat)
 
 ! ads-twitter.com
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避
