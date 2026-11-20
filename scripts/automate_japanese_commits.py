@@ -9,6 +9,7 @@ import random
 import time
 import socket
 from email.utils import parsedate_to_datetime
+from functools import cache
 from pathlib import Path
 import re
 import subprocess
@@ -229,6 +230,22 @@ def validate_translation(original: dict, translated: dict) -> dict:
     return {**translated, 'messages': messages}
 
 
+@cache
+def install_translation_dependencies() -> bool:
+    # 固定の依存関係だけを導入し、PR処理用のTokenをpipへ渡さない。
+    env = os.environ.copy()
+    env.pop('GH_TOKEN', None)
+    pip = [sys.executable, '-m', 'pip', 'install', '--disable-pip-version-check']
+    torch = subprocess.run(
+        pip + ['torch==2.9.1+cpu', '--index-url', 'https://download.pytorch.org/whl/cpu'],
+        env=env, check=False,
+    )
+    if torch.returncode:
+        return False
+    requirements = subprocess.run(pip + ['-r', 'requirements-translation.txt'], env=env, check=False)
+    return requirements.returncode == 0
+
+
 def translate(original: dict) -> dict:
     from argos_commit_translation import load_engine, translate_payload, TranslationError
     if len(json.dumps(original, ensure_ascii=False).encode()) > MAX_MESSAGE_BYTES:
@@ -239,6 +256,9 @@ def translate(original: dict) -> dict:
         nonlocal engine, setup_failure
         if engine is None:
             try:
+                if (os.environ.get('COMMIT_JA_INSTALL_TRANSLATION_DEPS') == 'true'
+                        and not install_translation_dependencies()):
+                    raise TranslationError('Argos Translateの依存関係をインストールできませんでした。')
                 engine = load_engine()
             except TranslationError as error:
                 setup_failure = str(error)
