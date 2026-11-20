@@ -1381,6 +1381,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 ブラウザ上で大容量ファイルの転送や、画像・動画・圧縮ファイルの加工・変換を行います。
 * [GigaFile便](https://gigafile.nu/)
 * [Gofile](https://gofile.io/home)
+* [imgpile](https://imgpile.com/ja)
 * [123apps](https://123apps.com/ja/)
 * [iLoveIMG](https://www.iloveimg.com/ja)
 * [Fotoramio](https://fotoram.io/jp)
