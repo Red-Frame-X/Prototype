@@ -29,6 +29,8 @@ Advanced Flowは2026年8月に提供開始されました。2026年9月30日か�
 
 2026年11月14日の再確認では、[Android Help](https://support.google.com/android/answer/17065026)はAndroid 8以降、[Android DevelopersのFAQ](https://developer.android.com/developer-verification/guides/faq)はAndroid 7以降と記載しており、公式資料間に差があります。FAQの該当回答は2026年3月23日更新、ページ全体は2026年9月30日更新ですが、Android Helpには本文の更新日が表示されていません。この情報だけでどちらが新しい仕様かは判断できないため、Android 7の実際の適用状況は未確認とし、端末で表示される案内も確認してください。
 
+2026年11月20日に再確認したところ、[Android DevelopersのFAQ](https://developer.android.com/developer-verification/guides/faq) の該当回答は「Android 8（API level 26）以降」となり、更新日は2026年11月10日と表示されています。[Android Help](https://support.google.com/android/answer/17065026) もAndroid 8以降と記載しており、現在の公式資料では対象Versionの不一致は解消しています。前段は2026年11月14日に確認した際の記録として保持し、現在の適用範囲はAndroid 8以降の認定Android端末として扱います。
+
 ADBによる開発・テスト用途のWorkflowは従来どおり維持されると公式資料で案内されています。
 
 ## 対象を混同しないための整理
