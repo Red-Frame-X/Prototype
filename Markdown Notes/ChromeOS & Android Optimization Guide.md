@@ -52,7 +52,6 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 
 * Google One ベーシック 100 GB（年額）
 * ChatGPT Plus（月額）
-* ChMate スタンダードプラン（月額）
 
 ### メンバーシップ・開発者支援
 
