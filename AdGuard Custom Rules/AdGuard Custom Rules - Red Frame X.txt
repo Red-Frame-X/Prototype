@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611192204
+! Version: 202611201743
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -340,6 +340,7 @@ old.klz9.com##div:has(> .manga-reader-title + .list-comment)
 ! Source: https://github.com/AdguardTeam/AdguardFilters/issues/219743
 ! Source: https://github.com/AdguardTeam/AdguardFilters/commit/f2bbf350a57f6c0d9d725f58443d18e8eee54a45
 ! PayPalのdata.service.paypal.comへの通信を許可し、ログイン・決済の不具合を回避
+! 適用範囲の注意：$domainによるリクエスト元の限定はなく、他サイトからの同ホスト宛て通信も許可対象になる。限定の可否は未検証
 @@||data.service.paypal.com^
 
 ! pex.kantangame.com
@@ -462,6 +463,7 @@ translate.google.com##[role="tab"][data-language-code="ko"]
 ! web.nhk
 ! NHK ONEアカウント登録の強制状態を返すregistrationEnforcement APIへの通信をブロック
 ! NHK ONEの同意・地域入力ポップアップ抑止用として、同意済み状態と非実在の中立的な地域値を設定
+! 保守上の注意：以下のAPIブロックとCookie設定は単なる要素非表示ではなく、登録案内や同意状態に影響する。製品互換性・実機動作は未検証
 ||apps.web.nhk/ops/api/v1/common/registrationEnforcement.json$xhr,domain=web.nhk
 ! NHK ONEアカウントページへのリンクを直下に含むアカウント登録案内を非表示
 web.nhk##div:has(> a[href*="/nhkone/account/"])
