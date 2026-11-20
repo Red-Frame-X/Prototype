@@ -67,4 +67,5 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 - 関連ツールのIOMateとHaiagaru-Morpheは、ChMate本体と区別して用途・対応Version・導入方法を案内し、Haiagaru-Morpheの更新・データ移行・不具合の検証手順もまとめています。
 - ChromeOSでの動作保証がない点も明記しています。
 - Chromebook上でChMateを操作するだけであれば、スマートフォン ハブを使うのがお手軽です。
+- 2026/11/14：Chromebook上のAndroid環境ではスレッド内でのマウス操作を受け付けないため、したらばStormへ移行しました。
 
