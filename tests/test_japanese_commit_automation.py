@@ -169,6 +169,42 @@ class TranslationTests(unittest.TestCase):
         load.assert_called_once_with()
         self.assertEqual(engine.call_count, 2)
 
+    def test_workflow_installs_dependencies_only_for_translation_and_only_once(self):
+        source = {'title': 'Update documentation', 'body': '', 'commits': []}
+        self.addCleanup(automation.install_translation_dependencies.cache_clear)
+        automation.install_translation_dependencies.cache_clear()
+        with (
+            patch.dict(os.environ, {'COMMIT_JA_INSTALL_TRANSLATION_DEPS': 'true', 'GH_TOKEN': 'test'}),
+            patch.object(automation.subprocess, 'run', return_value=Mock(returncode=0)) as run,
+            patch('argos_commit_translation.load_engine', return_value=lambda _: '説明を更新') as load,
+        ):
+            automation.translate({**source, 'title': '説明を更新'})
+            run.assert_not_called()
+            load.assert_not_called()
+            for _ in range(2):
+                self.assertEqual(automation.translate(source)['title'], '説明を更新')
+            self.assertEqual(run.call_count, 2)
+            torch, requirements = run.call_args_list
+            self.assertIn('torch==2.9.1+cpu', torch.args[0])
+            self.assertEqual(requirements.args[0][-2:], ['-r', 'requirements-translation.txt'])
+            for call in (torch, requirements):
+                self.assertNotIn('GH_TOKEN', call.kwargs['env'])
+
+    def test_failed_dependency_install_is_reported_as_setup_failure(self):
+        source = {'title': 'Update documentation', 'body': '', 'commits': []}
+        self.addCleanup(automation.install_translation_dependencies.cache_clear)
+        automation.install_translation_dependencies.cache_clear()
+        with (
+            patch.dict(os.environ, {'COMMIT_JA_INSTALL_TRANSLATION_DEPS': 'true'}),
+            patch.object(automation.subprocess, 'run', return_value=Mock(returncode=1)) as run,
+            patch('argos_commit_translation.load_engine') as load,
+        ):
+            for _ in range(2):
+                with self.assertRaises(automation.TranslationSetupError):
+                    automation.translate(source)
+            run.assert_called_once()
+            load.assert_not_called()
+
     def test_truncated_argos_output_is_rejected(self):
         with patch('argos_commit_translation.load_engine', return_value=lambda text: ''):
             with self.assertRaises(automation.AutomationError):

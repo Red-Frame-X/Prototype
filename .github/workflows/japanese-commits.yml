@@ -84,15 +84,14 @@ jobs:
           path: ${{ runner.temp }}/commit-ja-model-cache
           key: ${{ runner.os }}-argos-archive-v1-${{ hashFiles('.github/argos-model.json') }}
 
-      - name: Argos Translateの準備
-        run: |
-          python -m pip install --disable-pip-version-check 'torch==2.9.1+cpu' --index-url https://download.pytorch.org/whl/cpu
-          python -m pip install --disable-pip-version-check -r requirements-translation.txt
+      - name: 翻訳要否の判定に使うMarkdown parserの準備
+        run: python -m pip install --disable-pip-version-check -c requirements-translation.txt markdown-it-py
 
       - name: 日本語化・Codex Review確認・品質検査・マージ
         env:
           GH_TOKEN: ${{ github.token }}
           COMMIT_JA_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          COMMIT_JA_INSTALL_TRANSLATION_DEPS: 'true'
           ARGOS_MODEL_PROVIDER: OPENNMT
           ARGOS_CHUNK_TYPE: STANZA
           ARGOS_DEVICE_TYPE: cpu

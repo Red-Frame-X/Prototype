@@ -250,6 +250,8 @@ APIの参照仕様は [Workflow dispatch](https://docs.github.com/en/rest/action
 
 固定モデルのarchiveは`ARGOS_MODEL_CACHE_DIR`へSHA256をファイル名として保存します。取得途中のファイルは別の一時ディレクトリに置き、hash一致後に原子的に保存します。再利用時もhash・Metadata・言語・Versionを検証し、破損cacheを暗黙に上書きしません。GitHub Actionsではモデル定義のhashをcache keyに使い、別Versionへのrestore keyは設けません。pipのwheel cacheも再利用します。インストール済みモデルやPRの実行コードはcacheに含めません。
 
+PyTorchとArgos Translateの依存関係は、実際に翻訳が必要な文が最初に見つかった時点で導入します。翻訳する文がない実行でも、定期実行の観測、対象PRの確認、マージ済みPRの追跡は行います。
+
 モデル取得ではTimeout・通信失敗・429・500 / 502 / 503 / 504に最大3回のBackoffとJitterを適用します。429の待機指示を優先し、待機が60秒を超える場合は短縮せず失敗にします。403、hash不一致、Metadata不一致は再試行で回避しません。原文を保持し、取得の失敗を翻訳済みとは扱いません。
 
 自動化Jobが失敗すると、最初のRun attemptだけ読み取り専用の保守診断Jobを起動します。既定Branchの構文と関連する回帰Testを検査し、`commit-ja-diagnostics-<Run ID>`のArtifactに7日間保存します。PRのコードやArtifactは実行せず、失敗したJobを成功へ変更せず、自分自身や他のWorkflowを再起動しません。診断Testが成功しても、一時障害や翻訳内容の問題が解決済みとは扱いません。任意のコード不具合を自動生成で修正・マージする機能は追加していません。恒久的不具合はログ・Artifactを基に修正し、通常のPR・Review・最新SHAのCIを通します。
