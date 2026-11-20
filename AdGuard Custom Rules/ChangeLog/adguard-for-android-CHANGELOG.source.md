@@ -3,6 +3,63 @@
 > 取得元: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > 公式GitHub Releasesから生成しています。新しいリリースから順に掲載します。
 
+## 4.16
+
+- 公開日時: 2026-11-19T17:28:05Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.16
+
+AdGuard for Android v4.16 brings two new features designed to make your experience with the app more convenient.
+First, we’ve added a search bar to Settings. AdGuard offers a wide range of options, and finding a specific one can be tricky, especially if you don’t use the settings often. Now you can simply type what you’re looking for and jump straight to the relevant setting, just like you would in Android’s system settings.
+This improvement makes AdGuard easier to explore and configure, whether you’re discovering the app for the first time or looking for a specific option. They also make it easier to follow instructions from our support team, as you can quickly find the settings you need.
+We’ve also added *Stories* to the home screen. They help you discover useful features, learn more about what AdGuard can do, and find tips to get the most out of the app.
+
+<p align="center">
+<img src="https://cdn.adtidy.org/content/release_notes/ad_blocker/android/v4-16/stories-en.png" alt="Stories" width="300">
+<p/>
+
+## Changelog
+
+
+### Improvements
+
+
+* Added Stories
+* Added search to Settings
+* Added support for displaying the keyboard on Android TV devices running API level 29 or lower
+* Preserved the selected update channel after app updates
+* Updated the VPN integration texts and icon
+* Updated the help link behind the “?” icon in DNS protection
+* Changed the button color for inactive custom firewall rules
+
+
+### Fixes
+
+
+* Dialog boxes are closed when scrolling outside an address [#4980](https://github.com/AdguardTeam/AdguardForAndroid/issues/4980)
+* DNS protection doesn’t work in automatic proxy mode when IPv6 filtering is enabled in Low-level settings [#5223](https://github.com/AdguardTeam/AdguardForAndroid/issues/5223)
+* The mobile UI layout appears instead of the TV layout after installing the Android TV version [#5483](https://github.com/AdguardTeam/AdguardForAndroid/issues/5483)
+* Incorrect export of statistics filter settings
+* *Reset all to default* fails to reset some settings
+* Incorrect download of files with excessively long names in Private browser
+* The check-alive alarm remains active after Watchdog is disabled
+
+
+### FilterListManager
+
+
+* Updated FilterListManager to v2.7.0 [#6226](https://github.com/AdguardTeam/AdguardForAndroid/issues/6226)
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.15.2
 
 - 公開日時: 2026-11-03T13:27:41Z
@@ -4676,61 +4733,3 @@ In this update, we added a few finishing touches, updated CoreLibs filtering eng
 * [Enhancement] #@# without any domains specified should disable the rule completely  [#1296](https://github.com/AdguardTeam/CoreLibs/issues/1296)
 * [Fixed] Connection has timed out in state have-result  [#1180](https://github.com/AdguardTeam/CoreLibs/issues/1180) 
 * [Fixed] OCSP checks aren't passed through the selected DNS  [#1328](https://github.com/AdguardTeam/CoreLibs/issues/1328)
-
-## 3.5 beta 1
-
-- 公開日時: 2020-08-14T17:11:03Z
-- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-1
-
-Today we release the first beta version of AdGuard v3.5 for Android. It features a long list of various impovements in its changelog, but the main focus is, without a doubt, on the freshly introduced compatibility mode with AdGuard VPN for Android.
-
-**[Enhancement] Compatibility Mode with AdGuard VPN Android app [#3441](https://github.com/AdguardTeam/AdguardForAndroid/issues/3441)**
-
-Since AdGuard VPN for Android [was first introduced](https://adguard.com/en/blog/introducing-adguard-vpn-for-android.html), there was already a way to make it work along with AdGuard ad blocker. But to make the two apps coexist in peace, you were required to jump through some hoops. Anyone who went ahead and did the thing 100% has been waiting for a proper integration ever since — and we oblige.
-
-The best kind of compatibility is when you install two apps and they just start working together. We did exactly that. Presuming you already have AdGuard ad blocker installed, just download AdGuard VPN from [Play Store](https://play.google.com/store/apps/details?id=com.adguard.vpn) (you can get there right from the ad blocker app, there's a new item in General Settings menu). 
-
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/settings.gif" width="300">
-
-Both apps will detect each other and do everything that's needed for smooth joint work. All that will be left for you is to enjoy both ad-free Internet and all the benefits of a VPN. By the way, it works the other way around just as well: install AdGuard ad blocker on top of an already-running AdGuard VPN and you're good.
-
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/compatibility.gif" width="300">
-
-If you'd like to disable Compatibility Mode for any reason, it's very simple to do so from AdGuard ad blocker settings, just toggle the switch. Additionally, you can add AdGuard ad blocker and AdGuard VPN tiles to your device's notification bar and toggle them in one tap at your own will  — thanks to Compatibility Mode the configuration will change immediately and silently.
-
-<img src="https://cdn.adguard.com/public/Adguard/Release_notes/Android/v3.5/tiles.png" width="300">
-
-* [Enhancement] Adaptive icons for app shortcuts [#2656](https://github.com/AdguardTeam/AdguardForAndroid/issues/2656)
-* [Enhancement] New rules are now added to the top of User filter [#2962](https://github.com/AdguardTeam/AdguardForAndroid/issues/2962)
-* [Enhancement] Huawei browser added to the list of default browsers [#3495](https://github.com/AdguardTeam/AdguardForAndroid/issues/3495)
-* [Enhancement] Firefox Fenix browser added to the list of default browsers [#2861](https://github.com/AdguardTeam/AdguardForAndroid/issues/2861)
-* [Enhancement] Mozilla Reference browser added to the list of default browsers [#3408](https://github.com/AdguardTeam/AdguardForAndroid/issues/3408)
-* [Enhancement] 'Block' button now immediately switches to 'Unblock' after adding a custom rule via Filtering Log [#3012](https://github.com/AdguardTeam/AdguardForAndroid/issues/3012)
-* [Enhancement] Added automation API for proxy servers [#3363](https://github.com/AdguardTeam/AdguardForAndroid/issues/3363)
-* [Enhancement] Added an option to disable DNS fallback [#3447](https://github.com/AdguardTeam/AdguardForAndroid/issues/3447)
-* [Enhancement] Extended information written to `state.txt` when logs are exported [#3063](https://github.com/AdguardTeam/AdguardForAndroid/issues/3063)
-* [Enhancement] AdGuard Simplified Domain Names filter renamed to AdGuard DNS filter [#3475](https://github.com/AdguardTeam/AdguardForAndroid/issues/3475)
-* [Enhancement] Enabled userscripts are now included in the query string for the web reporting tool [#3288](https://github.com/AdguardTeam/AdguardForAndroid/issues/3288)
-* [Enhancement] Updates screen now shown when "Check for updates" shortcut is used [#3318](https://github.com/AdguardTeam/AdguardForAndroid/issues/3318)
-* [Fixed] Downloads in some apps don't work properly on Android 11 [#3516](https://github.com/AdguardTeam/AdguardForAndroid/issues/3516)
-* [Fixed] AdGuard doesn't work on devices with Restricted Account [#3299](https://github.com/AdguardTeam/AdguardForAndroid/issues/3299)
-* [Fixed] First letter in the sentence is not capitalized automatically on the 'Message to support' screen [#3079](https://github.com/AdguardTeam/AdguardForAndroid/issues/3079)
-* [Fixed] Unnecessary "Android Private DNS is enabled" notification on Android 11 [#3478](https://github.com/AdguardTeam/AdguardForAndroid/issues/3478)
-* [Fixed] Toast notification for "Checking for updates" shows late [#3343](https://github.com/AdguardTeam/AdguardForAndroid/issues/3343)
-* [Other] Updated options for default DNS resolveres [#3428](https://github.com/AdguardTeam/AdguardForAndroid/issues/3428)
-* [Other] DnsLibs updated to v1.3.19
-* [Other] CoreLibs updated to v1.7.49
-* [Other] Compatibility issues
-
-### DnsLibs
-
-* [Enhancement] Added support for comments at the end of line in hosts rules [#75](https://github.com/AdguardTeam/DnsLibs/issues/75)
-* [Fixed] LDNS logging [#73](https://github.com/AdguardTeam/DnsLibs/issues/73)
-* [Other] Added upstreams sorting by RTT [#39](https://github.com/AdguardTeam/DnsLibs/issues/39)
-
-### CoreLibs
-
-* [Enhancement] Added verification for trusted-types CSP [#1320](https://github.com/AdguardTeam/CoreLibs/issues/1320)
-* [Fixed] Problematic userscripts [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
-* [Fixed] Process name detection causes warnings in Windows Security [#1316](https://github.com/AdguardTeam/CoreLibs/issues/1316)
-* [Other] Connection speed is capped when AdGuard is enabled [#702](https://github.com/AdguardTeam/CoreLibs/issues/702)
