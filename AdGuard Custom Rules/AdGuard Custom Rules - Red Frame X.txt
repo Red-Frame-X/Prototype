@@ -83,6 +83,12 @@ chatgpt.com##aside:has(button[aria-label="ChatGPT ビーコンバナーを閉じ
 ! ChatGPTの入力欄上部に表示される案内バナー領域を直接非表示にし、描画時のチラつきを回避
 chatgpt.com##[data-prompt-textarea-header]
 
+! www.chunichi.co.jp
+! トップページの「【PR】イチオシ情報」見出しを非表示
+chunichi.co.jp##.cmp-hdg005:has(> a[href*="/k/pr_ichioshi"])
+! 「【PR】イチオシ情報」直下の広告・PRコンテンツ一覧を非表示
+chunichi.co.jp##.cmp-hdg005:has(> a[href*="/k/pr_ichioshi"]) + .cmp-lst001
+
 ! daily-gadget.net
 ! 参考：AdGuard Japanese filterで同一セレクタの広告枠対処ルールを収録（下記の統合案は無効化中）
 ! Source: https://github.com/AdguardTeam/AdguardFilters/issues/244417
