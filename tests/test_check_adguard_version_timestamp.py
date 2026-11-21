@@ -68,6 +68,40 @@ class AdGuardVersionTimestampTests(unittest.TestCase):
         ):
             self.assertEqual(check.main(), 0)
 
+    def test_description_change_requires_version_in_same_commit(self) -> None:
+        target = check.TARGETS[0]
+        old = "! Title: test\n! Description: 個人用のAdGuard Custom Rules\n! Version: 202611211653\n"
+        new = old.replace("Custom Rules\n", "Custom Rules.\n")
+        snapshots = {
+            ("description-change^", target): old,
+            ("description-change", target): new,
+            ("base", target): old,
+            ("head", target): new,
+        }
+        with (
+            patch.object(check, "git", return_value="description-change\n"),
+            patch.object(check, "show", side_effect=lambda ref, path: snapshots.get((ref, path))),
+            patch.object(sys, "argv", ["check", "--base", "base", "--head", "head"]),
+        ):
+            self.assertEqual(check.main(), 1)
+
+    def test_description_change_with_version_in_same_commit_passes(self) -> None:
+        target = check.TARGETS[1]
+        old = "! Title: test\n! Description: 個人用のAdGuard DNS Custom Rules\n! Version: 202610241030\n"
+        new = old.replace("Custom Rules\n", "Custom Rules.\n").replace("202610241030", "202611211735")
+        snapshots = {
+            ("description-change^", target): old,
+            ("description-change", target): new,
+            ("base", target): old,
+            ("head", target): new,
+        }
+        with (
+            patch.object(check, "git", return_value="description-change\n"),
+            patch.object(check, "show", side_effect=lambda ref, path: snapshots.get((ref, path))),
+            patch.object(sys, "argv", ["check", "--base", "base", "--head", "head"]),
+        ):
+            self.assertEqual(check.main(), 0)
+
     def test_final_range_check_accepts_updated_version(self) -> None:
         target = check.TARGETS[0]
         snapshots = {
