@@ -115,6 +115,14 @@
 - 最終報告は日本語とし、作成したCommitのhashとtitle、mainへの反映状況、実際のCommit messageの確認結果を簡潔に示す。Commitを作成していない場合は、その旨を示す。
 - `npm run hooks:install`でCommit Hookを有効にできる。既存のHookとCIによるCommit title検査だけでは、この方針全体への準拠を保証できないため、titleとbodyの内容も確認する。
 
+## GitHub連携での変更確認と完了報告
+
+- GitHubへの書き込み前に最新の対象ファイル全文とBlob SHAを取得し、変更前後のdiffを確認する。既存行の削除・置換がある場合は、明示された許可範囲と照合し、許可外の変更があれば書き込まない。
+- 書き込みAPIの成功応答だけで完了とせず、作成したCommit・Pull Request・変更ファイルをGitHubから再取得し、実際のSHAと差分を照合する。番号やSHAを推測して報告しない。
+- CIは対象のCommit SHAに紐づくCheck Run・Workflow Runの結論を確認する。Status APIの空配列、Run未検出、実行待ち、失敗は「CI成功」と扱わない。取得手段に制約がある場合は未確認として残す。
+- マージ前に承認・Review・必須CI・差分を確認し、マージ後はMerge Commit、mainへの反映、対象SHAのCIをそれぞれ独立して確認する。GitHubの応答で確認できた工程だけを完了済みと報告する。
+- この手順は既存の品質検査・内容消失防止Test・Squash merge検証を置き換えない。新しいWorkflowを追加する前に既存の検査と重複しないか確認する。
+
 ## ソフトウェアで使用するファイルへのリンク
 
 - フィルタ、UserScript、NG Word Regex for ChMateなど、ソフトウェアへの購読・登録・コピーに使うファイルへのリンクはRaw URLに統一する。GitHubのファイル表示画面へのリンクを購読・登録用に案内しない。
