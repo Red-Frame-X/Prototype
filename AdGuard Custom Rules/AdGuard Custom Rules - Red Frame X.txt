@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules
-! Version: 202611201745
+! Version: 202611211650
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -451,6 +451,10 @@ teraokatape.co.jp##.g-cookie-alert[data-js="alert"]
 ||alxc.addlv.smt.docomo.ne.jp^$script,domain=topics.smt.docomo.ne.jp
 ! dメニューニュースで広告スクリプトのブロック後に残る中央広告枠（ad_middle05）を非表示にし、空白を除去
 topics.smt.docomo.ne.jp##.ad_middle05
+
+! toyscabin.com
+! Cookie利用の案内バナーを非表示
+toyscabin.com###cookieField
 
 ! translate.google.com
 ! Google翻訳の翻訳元・翻訳先の言語選択欄から韓国語タブを非表示
