@@ -3,6 +3,24 @@
 > 取得元: https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases?per_page=100
 > 公式GitHub Releasesから生成しています。新しいリリースから順に掲載します。
 
+## 4.16.1
+
+- 公開日時: 2026-11-21T14:39:46Z
+- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.16.1
+
+Not all updates are flashy, but they’re still important. This release focuses on the small but crucial fixes that keep things running as they should.
+
+## AdGuard for Android direct download links:
+
+- [Release channel](https://agrd.io/apk)
+- [Beta channel](https://agrd.io/apkb)
+- [Nightly channel](https://agrd.io/android_nightly)
+
+## AdGuard for Android TV direct download links:
+
+- [Release channel](https://agrd.io/tvapk)
+- [Beta channel ](https://agrd.io/ag_android_tv_beta)
+
 ## 4.16
 
 - 公開日時: 2026-11-19T17:28:05Z
@@ -4712,24 +4730,3 @@ This update includes a couple of small fixes and a CoreLibs upgrade – we are e
 
 * [Fixed] Problematic userscripts  [#1273](https://github.com/AdguardTeam/CoreLibs/issues/1273)
 * [Fixed] AGFDVSocket doesn't return original peer address in case of outbound proxy set  [#1330](https://github.com/AdguardTeam/CoreLibs/issues/1330)
-
-## 3.5 beta 2
-
-- 公開日時: 2020-08-21T10:56:44Z
-- リリース: https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v3.5-beta-2
-
-In this update, we added a few finishing touches, updated CoreLibs filtering engine and fixed a couple of bugs. Almost there.
-
-## Changelog
-
-* [Enhancement] Add the "What's new" dialog  [#3532](https://github.com/AdguardTeam/AdguardForAndroid/issues/3532)
-* [Enhancement] Rename adguard.crt to AdGuardCertificate.pem  [#3489](https://github.com/AdguardTeam/AdguardForAndroid/issues/3489)
-* [Fixed] Wrong state of the disabled option  [#3538](https://github.com/AdguardTeam/AdguardForAndroid/issues/3538)
-
-## CoreLibs
-
-#### Upgraded CoreLibs to v1.7.58
-
-* [Enhancement] #@# without any domains specified should disable the rule completely  [#1296](https://github.com/AdguardTeam/CoreLibs/issues/1296)
-* [Fixed] Connection has timed out in state have-result  [#1180](https://github.com/AdguardTeam/CoreLibs/issues/1180) 
-* [Fixed] OCSP checks aren't passed through the selected DNS  [#1328](https://github.com/AdguardTeam/CoreLibs/issues/1328)

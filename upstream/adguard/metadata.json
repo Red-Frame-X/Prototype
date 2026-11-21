@@ -4,8 +4,8 @@
       "product": "AdGuard Browser Extension",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardBrowserExtension/releases/latest",
       "latest_version": "5.5.4",
-      "sha256": "ccf57406cc0be59f19bebb183786b38ae5e18f83f5f606c1bfe7311287124822",
-      "checked_at": "2026-11-21T00:45:14+00:00",
+      "sha256": "ebfb33ef652b23dcd87a758490e7feef76857aae22b2f4b1b331c3c1822091bf",
+      "checked_at": "2026-11-21T23:45:14+00:00",
       "converter_relevant_entries": [
         "### How to install MV3 stable:",
         "### How to install MV3 beta:",
@@ -19,14 +19,14 @@
     {
       "product": "AdGuard for Android",
       "source": "https://api.github.com/repos/AdguardTeam/AdguardForAndroid/releases/latest",
-      "latest_version": "4.16",
-      "sha256": "955eb080944e19de7ed6cf28357259f49e5ea8d476b726c04fe8ba3c88790c30",
-      "checked_at": "2026-11-21T00:45:14+00:00",
+      "latest_version": "4.16.1",
+      "sha256": "5c1abae42417055867a8bb210ed04be785047148c1b47f886a1cd125c2f15757",
+      "checked_at": "2026-11-21T23:45:14+00:00",
       "converter_relevant_entries": [],
       "automatic_code_changes": false,
       "review_policy": "リリースノートの文章は根拠資料であり、実行可能な仕様ではありません。フィルタリングエンジンの公式文書やソースコードを確認したうえで、対応機能プロファイルと回帰テストを更新してください。",
-      "release_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.16",
-      "published_at": "2026-11-19T17:28:05Z"
+      "release_url": "https://github.com/AdguardTeam/AdguardForAndroid/releases/tag/v4.16.1",
+      "published_at": "2026-11-21T14:39:46Z"
     }
   ]
 }
