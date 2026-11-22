@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202611212007
+! Version: 202611222029
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -1438,6 +1438,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||auto01.wpx.jp^$document
 ||autocosmeticsny.com^$document
 ||autodesk.me^$document
+||autoeditai.booth.pm^$document
 ||av-matome.jp^$document
 ||av.matohub.net^$document
 ||av1.manga119.com^$document
@@ -6115,6 +6116,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||kominamiyasuha.jp^$document
 ||komine-gangu.jp^$document
 ||komono.me^$document
+||komonohanbaiten.booth.pm^$document
 ||komugi-web.site^$document
 ||konan-connect.jp^$document
 ||konbun.jp^$document
@@ -7338,6 +7340,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||mogimikan.my.canva.site^$document
 ||mogura-final.jp^$document
 ||mogura-movie.com^$document
+||moketa.booth.pm^$document
 ||mokugeki.hatenablog.com^$document
 ||mola-k.com^$document
 ||mollymam.com^$document
@@ -11232,6 +11235,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||takara3.com^$document
 ||takarazuka-life.com^$document
 ||takasaki-iju.jp^$document
+||takasaki-lab.booth.pm^$document
 ||takataka.jp^$document
 ||takatarou.xyz^$document
 ||take0820.gymnastics47.com^$document
