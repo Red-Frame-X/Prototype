@@ -1524,7 +1524,7 @@ AdGuard公式FiltersRegistryの`main`（Commit `c35e4d48a6df093b3c6fdd644f6f104f
 * **カスタムフィルタ**
   * **[AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)**：Yuki2718氏自身がフィルタの監修をしています。AdGuard用moduleはサブリストとして自動的にincludeされるため、別途登録する必要はありません。
   * **[Peter Lowe](https://pgl.yoyo.org/adservers/)**：ChromeOSの広告・トラッカー対策に [Peter Lowe's Blocklist](https://filters.adtidy.org/extension/chromium/filters/204.txt) をカスタム購読します。MV3の枠を考慮した構成で、Online Malicious URL Blocklistと同等の代替品ではありません。 [公式Registryの定義](https://github.com/AdguardTeam/FiltersRegistry/blob/c35e4d48a6df093b3c6fdd644f6f104fc69a7a3c/filters/ThirdParty/filter_204_PeterLowesList/metadata.json) ではMV3組み込み対象外のため、動的枠の残量を確認します。過去の切替理由はOnline Malicious URL Blocklistの更新遅延・ルール肥大化でしたが、現在の更新状況やDNR件数を示す記録ではありません。
-  * **[自作のカスタムフィルタ](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex)**：各フィルタ作者様のルールを参考にしたり、自作のルールと組み合わせたりして作成しています。
+  * **[フォーク版・自作のカスタムフィルタ](https://github.com/Red-Frame-X/AdGuard-Custom-Rules-UserScript-Regex)**：各フィルタ作者様のルールを参考にしたり、自作のルールと組み合わせたりして作成しています。
 
 **参考サイト**
 * [Yuki2718/adblock2 > AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2)
