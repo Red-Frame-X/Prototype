@@ -66,6 +66,6 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 - 掲示板アプリChMateの公式配布元と対応環境、板の登録、ログの保存・バックアップ、NG設定、操作・表示、プライバシー・広告について説明しています。
 - 関連ツールのIOMateとHaiagaru-Morpheは、ChMate本体と区別して用途・対応Version・導入方法を案内し、Haiagaru-Morpheの更新・データ移行・不具合の検証手順もまとめています。
 - ChromeOSでの動作保証がない点も明記しています。
-- Chromebook上でChMateを操作するだけであれば、スマートフォン ハブを使うのがお手軽です。
+- Chromebook上でChMateを操作するだけであれば、動作は安定しませんが、スマートフォンハブを使う方法もあります。
 - 2026/11/14：Chromebook上のAndroid環境ではスレッド内でのマウス操作を受け付けないため、したらばStormへ移行しました。
 
