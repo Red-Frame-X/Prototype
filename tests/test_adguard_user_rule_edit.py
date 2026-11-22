@@ -179,6 +179,19 @@ class AdGuardRemovalApprovalTests(unittest.TestCase):
                 cwd=root, text=True, capture_output=True,
             )
 
+    def test_metadata_change_reports_before_and_after_without_allowing_change(self):
+        header = (
+            "! Title: AdGuard Custom Rules - Red Frame X\n"
+            "! Description: Before\n"
+            "! Version: 202611220900\n"
+        )
+        self.baseline = header + self.baseline
+        result = self.exercise(after=self.baseline.replace("! Description: Before", "! Description: After"))
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("保護対象のMetadataに想定外の変更があります: ! Description:", result.stderr)
+        self.assertIn("変更前: '! Description: Before'", result.stderr)
+        self.assertIn("変更後: '! Description: After'", result.stderr)
+
     def test_accepts_exact_commentout_on_pr_and_push(self):
         after = self.baseline.replace(self.removed + "\n", "! " + self.removed + "\n")
         for event in ("pull_request", "push"):
