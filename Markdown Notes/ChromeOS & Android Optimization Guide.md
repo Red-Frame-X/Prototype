@@ -1326,13 +1326,75 @@ SingleFileは保存時にHTMLやCSSを加工し、既定ではScriptも除去し
 
 以下は上記の筆者による短評を補う公式資料ベースの情報です。実際の提供機能は、地域・アカウント・契約プラン・管理者設定・Web版とアプリ版で異なります。各サービスの機能を横断的に同一条件で性能測定した比較ではありません。
 
-* **ChatGPT（OpenAI）**：WebブラウザとAndroidアプリで質問応答、文書・ファイルの分析、検索、調査、画像・音声関連の機能を利用できます（利用できる機能・上限はプラン等によります）。GitHubのコードを検索・分析する連携と、変更を作成する開発支援の **Codex** は区別します。OpenAIのGitHub接続ヘルプは、GitHub appによるRepositoryの検索・解析を読み取り用途として説明し、コードの編集・PushはCodexを案内しています。連携アプリに書き込み機能がある場合も、認可された操作・権限を別途確認してください。参考： [GitHubとの接続（OpenAI）](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt) / [Appsと連携（OpenAI）](https://help.openai.com/en/articles/11487775-connected-apps-in-chatgpt) 。
-* **Claude（Anthropic）**：文章の読解・作成とコードに関する対話に加え、開発作業向けに **Claude Code** が提供されています。Claude CodeのWeb版はブラウザからクラウド上のコーディング作業を扱えるため、ChromebookではローカルIDEの導入と別の選択肢になります。端末のローカルファイルやRepositoryを直接編集する機能と、クラウド環境で変更を作成する機能は区別してください。学習利用などのデータ設定は個人向けと法人向けで同一とは限りません。参考： [Claude Code on the web（Anthropic）](https://code.claude.com/docs/en/claude-code-on-the-web) / [モデル改善のプライバシー設定（Anthropic）](https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings) 。
-* **Gemini（Google）**：GeminiアプリはWebとAndroidで利用でき、**Deep Research** ではWeb情報を調査・整理できます。GmailやGoogle Driveを調査ソースとして使うには、対応するGoogle Workspace連携が必要です。連携後も、Drive内の画像・動画の参照やフォルダ管理など、公式に示された制約があります。開発向けの **Google Antigravity** はGeminiのチャットアプリとは異なるIDE・拡張機能・CLI関連の製品で、Chromebookでの利用可否はその実行環境・要件に応じて確認します。参考： [Deep Research（Google）](https://support.google.com/gemini/answer/15719111?hl=ja) / [Google Workspace連携の制約](https://support.google.com/gemini/answer/15229592?hl=en) / [Google Antigravity導入要件](https://antigravity.google/docs/getting-started) 。
-* **GitHub Copilot（GitHub）**：GitHubとIDEを中心に、コード補完、チャット、Pull Requestのレビュー、Issueからのコード変更依頼などを支援する開発向けサービスです。GitHub上のAgentに作業を依頼しPull Requestを作るワークフローと、IDE内の支援機能は区別します。Copilot cloud agent自身による承認・マージには公式に制約があるため、「PRを作れる」ことと「無条件でマージできる」ことを同一視しません。参考： [GitHub Copilot概要](https://docs.github.com/en/copilot/get-started/about-github-copilot) / [Issue・Pull Requestの操作](https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests) / [Copilot cloud agentの安全上の制約](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/risks-and-mitigations) 。
-* **Grok（xAI）**：対話と情報収集に利用するサービスです。xAIの開発者向け **X Search** は𝕏の投稿・ユーザー・スレッドなどを検索できますが、API向け機能の説明を一般向けGrokアプリにそのまま当てはめないでください。𝕏の投稿を検索・要約できることは、投稿内容の真偽を独立して保証することではありません。投稿の一次資料・日時・他の独立した情報源を照合する必要があります。参考： [X Search（xAI開発者ドキュメント）](https://docs.x.ai/developers/tools/x-search) 。
-* **SDXL（Stability AI）**：**Stable Diffusion XL** は画像生成用のモデル系列であり、特定のWebサービスだけを指す名称ではありません。ローカル実行にはモデル本体に加え、対応する推論ソフトウェアや十分な計算資源が必要です。Web上の生成サービスはそれぞれ独自の利用規約・料金・機能を持ち、モデルをローカルで実行することとは異なります。人物や複雑な構図の生成結果は、Prompt・設定・追加モデル・実行環境に左右されます。参考： [SDXL公式モデルカード（Stability AI）](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) 。
-* **z.ai GLM-4.5（Z.ai）**：**Z.aiのWebチャット** と **GLM-4.5というモデル** を区別してください。GLM-4.5は推論・コーディング・Agent用途を想定した公開ウェイトのモデル系列で、公式モデルカードはMITライセンスとローカル推論方法を説明しています。ただし通常構成での実行には大きなGPUメモリ等を必要とし、「ローカル実行可能」は一般的なChromebookやAndroid端末で実用的に動作するという意味ではありません。Webサービスの無料枠やモデル選択は変わる可能性があります。参考： [GLM-4.5公式モデルカード（Z.ai）](https://huggingface.co/zai-org/GLM-4.5) 。
+* **ChatGPT（OpenAI）**：
+
+  WebブラウザとAndroidアプリで質問応答、文書・ファイルの分析、検索、調査、画像・音声関連の機能を利用できます（利用できる機能・上限はプラン等によります）。GitHubのコードを検索・分析する連携と、変更を作成する開発支援の **Codex** は区別します。
+
+  OpenAIのGitHub接続ヘルプは、GitHub appによるRepositoryの検索・解析を読み取り用途として説明し、コードの編集・PushはCodexを案内しています。連携アプリに書き込み機能がある場合も、認可された操作・権限を別途確認してください。
+
+  **参考リンク**
+
+  * [GitHubとの接続（OpenAI）](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt)
+  * [Appsと連携（OpenAI）](https://help.openai.com/en/articles/11487775-connected-apps-in-chatgpt)
+* **Claude（Anthropic）**：
+
+  文章の読解・作成とコードに関する対話に加え、開発作業向けに **Claude Code** が提供されています。Claude CodeのWeb版はブラウザからクラウド上のコーディング作業を扱えるため、ChromebookではローカルIDEの導入と別の選択肢になります。
+
+  端末のローカルファイルやRepositoryを直接編集する機能と、クラウド環境で変更を作成する機能は区別してください。学習利用などのデータ設定は個人向けと法人向けで同一とは限りません。
+
+  **参考リンク**
+
+  * [Claude Code on the web（Anthropic）](https://code.claude.com/docs/en/claude-code-on-the-web)
+  * [モデル改善のプライバシー設定（Anthropic）](https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings)
+* **Gemini（Google）**：
+
+  GeminiアプリはWebとAndroidで利用でき、**Deep Research** ではWeb情報を調査・整理できます。GmailやGoogle Driveを調査ソースとして使うには、対応するGoogle Workspace連携が必要です。
+
+  連携後も、Drive内の画像・動画の参照やフォルダ管理など、公式に示された制約があります。開発向けの **Google Antigravity** はGeminiのチャットアプリとは異なるIDE・拡張機能・CLI関連の製品で、Chromebookでの利用可否はその実行環境・要件に応じて確認します。
+
+  **参考リンク**
+
+  * [Deep Research（Google）](https://support.google.com/gemini/answer/15719111?hl=ja)
+  * [Google Workspace連携の制約](https://support.google.com/gemini/answer/15229592?hl=en)
+  * [Google Antigravity導入要件](https://antigravity.google/docs/getting-started)
+* **GitHub Copilot（GitHub）**：
+
+  GitHubとIDEを中心に、コード補完、チャット、Pull Requestのレビュー、Issueからのコード変更依頼などを支援する開発向けサービスです。GitHub上のAgentに作業を依頼しPull Requestを作るワークフローと、IDE内の支援機能は区別します。
+
+  Copilot cloud agent自身による承認・マージには公式に制約があるため、「PRを作れる」ことと「無条件でマージできる」ことを同一視しません。
+
+  **参考リンク**
+
+  * [GitHub Copilot概要](https://docs.github.com/en/copilot/get-started/about-github-copilot)
+  * [Issue・Pull Requestの操作](https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests)
+  * [Copilot cloud agentの安全上の制約](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/risks-and-mitigations)
+* **Grok（xAI）**：
+
+  対話と情報収集に利用するサービスです。xAIの開発者向け **X Search** は𝕏の投稿・ユーザー・スレッドなどを検索できますが、API向け機能の説明を一般向けGrokアプリにそのまま当てはめないでください。
+
+  𝕏の投稿を検索・要約できることは、投稿内容の真偽を独立して保証することではありません。投稿の一次資料・日時・他の独立した情報源を照合する必要があります。
+
+  **参考リンク**
+
+  * [X Search（xAI開発者ドキュメント）](https://docs.x.ai/developers/tools/x-search)
+* **SDXL（Stability AI）**：
+
+  **Stable Diffusion XL** は画像生成用のモデル系列であり、特定のWebサービスだけを指す名称ではありません。ローカル実行にはモデル本体に加え、対応する推論ソフトウェアや十分な計算資源が必要です。
+
+  Web上の生成サービスはそれぞれ独自の利用規約・料金・機能を持ち、モデルをローカルで実行することとは異なります。人物や複雑な構図の生成結果は、Prompt・設定・追加モデル・実行環境に左右されます。
+
+  **参考リンク**
+
+  * [SDXL公式モデルカード（Stability AI）](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0)
+* **z.ai GLM-4.5（Z.ai）**：
+
+  **Z.aiのWebチャット** と **GLM-4.5というモデル** を区別してください。GLM-4.5は推論・コーディング・Agent用途を想定した公開ウェイトのモデル系列で、公式モデルカードはMITライセンスとローカル推論方法を説明しています。
+
+  ただし通常構成での実行には大きなGPUメモリ等を必要とし、「ローカル実行可能」は一般的なChromebookやAndroid端末で実用的に動作するという意味ではありません。Webサービスの無料枠やモデル選択は変わる可能性があります。
+
+  **参考リンク**
+
+  * [GLM-4.5公式モデルカード（Z.ai）](https://huggingface.co/zai-org/GLM-4.5)
 
 ### 用途別の選び方と共通の注意点
 
