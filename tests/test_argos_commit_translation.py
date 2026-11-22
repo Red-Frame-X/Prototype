@@ -25,6 +25,27 @@ class ArgosTranslationTests(unittest.TestCase):
                 validate_translation(source, source)
                 engine.assert_not_called()
 
+    def test_pr366_original_title_and_body_require_no_translation(self):
+        from automate_japanese_commits import validate_translation
+        original = {
+            'title': 'VirusTotal Mobile の設定例とAndroidアプリ一覧を更新',
+            'body': ('## 変更内容\n'
+                     '- AdGuard for Android「最新のアクティビティ」設定表に VirusTotal Mobile：OFF を追加\n'
+                     '- Morpheと併用すると便利なAndroidアプリにセキュリティ・アプリ検査の項目を追加\n'
+                     '- VirusTotal Mobileの用途、リアルタイム保護ではないこと、プライバシー上の注意を記載\n'
+                     '\n## 検証\n'
+                     '- 変更箇所のアンカーを確認\n'
+                     '- 既存内容の保持を文字列比較で確認\n'
+                     '- Branch上の変更内容を再取得して確認\n'
+                     '- CI・Lintは未実施（Pull Requestで確認予定）'),
+            'commits': [],
+        }
+        engine = Mock(side_effect=AssertionError('日本語のPR本文を再翻訳しています。'))
+        result = argos.translate_payload(original, engine)
+        self.assertEqual(result, original)
+        validate_translation(original, result)
+        engine.assert_not_called()
+
     def test_pr366_adguard_for_android_is_preserved_in_japanese_body(self):
         source = ('## 変更内容\n'
                   '- AdGuard for Android「最新のアクティビティ」設定表に VirusTotal Mobile：OFF を追加\n'
