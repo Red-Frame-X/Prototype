@@ -2029,6 +2029,7 @@ ChromeOSでGoogle Public DNSを選ぶ例：設定 > ネットワーク > Wi-Fi >
 | <div align="center">分類</div> | <div align="center">項目</div> | <div align="center">設定</div> |
 |---|---|:---:|
 | 対象 | VPN対象外アプリ | 指定なし |
+| 対象 | VirusTotal Mobile | OFF |
 | 対象 | 企業に関する統計 | 指定なし |
 | ステータス | 処理済み | OFF |
 | ステータス | ブロック済み | ON |
@@ -2581,6 +2582,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **ファイル・GitHub管理**： [File Manager Plus](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager) / [GitHub](https://play.google.com/store/apps/details?id=com.github.android)
 * **動画関連ツール**： [YTDLnis](https://github.com/deniscerri/ytdlnis) / [Seal Plus](https://github.com/MaheshTechnicals/Sealplus)
 * **端末情報の確認**： [Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)
+* **セキュリティ・アプリ検査**： [VirusTotal Mobile](https://play.google.com/store/apps/details?id=com.funnycat.virustotal) （VirusTotalによるアプリ・ファイル等の検査。リアルタイム保護ではなく、ファイルの送信時はプライバシーに注意）
 * **その他の補助アプリ**： [floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1) / [Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)
 
 **参考サイト**
