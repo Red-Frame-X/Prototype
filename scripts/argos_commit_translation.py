@@ -25,6 +25,7 @@ JAPANESE = re.compile(r'[ぁ-んァ-ヶ一-龠]')
 # 固定名称は長いものから照合する。引用・コード・URLは原文のまま残す。
 TERMS = (
     'AdGuard Browser Extension MV3', 'AdGuard DNS Custom Rules', 'AdGuard Custom Rules',
+    'AdGuard for Android',
     'uB-filter-by-kdroidwin (AdGuard Optimized)', 'NG Word Regex for ChMate',
     'Markdown Notes', 'GitHub Actions', 'Pull Request', 'uBlock Origin',
     'Argos Translate', 'Codex Review', 'UserScript', 'Workflow', 'Commit', 'Branch',
