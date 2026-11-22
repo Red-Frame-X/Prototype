@@ -219,7 +219,9 @@ def main() -> int:
                 old = next((x for x in header_before if x.startswith(prefix)), None)
                 new = next((x for x in header_after if x.startswith(prefix)), None)
                 if old != new:
-                    fail(f"保護対象のMetadataに想定外の変更があります: {prefix}")
+                    fail(f"保護対象のMetadataに想定外の変更があります: {prefix}\n"
+                         f"変更前: {old!r}\n変更後: {new!r}\n"
+                         "変更が意図的な場合も、既存の保護検査を無効化せず、承認と影響を確認してください。")
 
     print(f"AdGuard編集前検査に合格: {len(rules)}件の有効ルール、重複なし")
     return 0
