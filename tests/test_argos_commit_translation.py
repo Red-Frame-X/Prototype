@@ -25,6 +25,14 @@ class ArgosTranslationTests(unittest.TestCase):
                 validate_translation(source, source)
                 engine.assert_not_called()
 
+    def test_pr366_adguard_for_android_is_preserved_in_japanese_body(self):
+        source = ('## 変更内容\n'
+                  '- AdGuard for Android「最新のアクティビティ」設定表に VirusTotal Mobile：OFF を追加\n'
+                  '- VirusTotal Mobileの用途、リアルタイム保護ではないこと、プライバシー上の注意を記載\n')
+        engine = Mock(side_effect=AssertionError('日本語の製品名を翻訳しています。'))
+        self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+
     def test_unregistered_identifiers_in_japanese_do_not_require_dictionary_entries(self):
         engine = Mock(side_effect=AssertionError('技術表記を翻訳しています。'))
         for source in ('新しいcheck:offlineを追加', '.custom-infoの不足を検出',
