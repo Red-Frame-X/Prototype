@@ -2592,7 +2592,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 **floccus ブックマーク同期の注意事項**
 
-異なるブラウザや端末間でブックマークを比較的簡単に共有できますが、筆者の利用環境では同期エラーが多発しています。安定性を優先する場合は、対応するブラウザの標準同期機能をおすすめします。floccusは補助的な同期手段として利用してください。
+異なるブラウザや端末間でブックマークを比較的簡単に共有できます。安定性を優先する場合は、対応するブラウザの標準同期機能をおすすめします。floccusは補助的な同期手段として利用してください。
 
 **参考サイト**
 * [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/) / [r/reseamapp](https://www.reddit.com/r/reseamapp/)
