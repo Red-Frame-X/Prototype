@@ -36,9 +36,9 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 | --- | --- | --- |
 | AdGuard Custom Rules | AdGuard向けの個人用コンテンツブロックルール、DNSルール、関連する変更履歴 | [ディレクトリ](./AdGuard%20Custom%20Rules/) / [README](./AdGuard%20Custom%20Rules/README.md) / [コンテンツブロックフィルタ](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [DNSフィルタ](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) / [変更履歴](./AdGuard%20Custom%20Rules/ChangeLog/) |
 | uB-filter-by-kdroidwin (AdGuard Optimized) | 上流フィルタをAdGuard向けに変換した自動生成物 | [ディレクトリ](./dist/) / [README](./dist/README.md) / [生成フィルタ](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt) |
-| UserScript | 𝕏・YouTube・GIGAZINEなどの表示や挙動を調整する個人用UserScript | [README](./UserScript/README.md) / [ディレクトリ](./UserScript/) |
+| UserScript | 𝕏・YouTube・GIGAZINEなどの表示や挙動を調整する個人用UserScript | [ディレクトリ](./UserScript/) / [README](./UserScript/README.md) |
 | NG Word Regex for ChMate | ChMateで使用するJava正規表現 | [ディレクトリ](./NG%20Word%20Regex%20for%20ChMate/) / [README](./NG%20Word%20Regex%20for%20ChMate/README.md) / [正規表現](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/NG%20Word%20Regex%20for%20ChMate/NG%20Word%20Regex%20for%20ChMate.txt) |
-| Markdown Notes | ChromeOS、Android、Linux / Linux Mint、Googlebook、GitHub、コンテンツブロック、DNSなどの学習・調査メモ | [README](./Markdown%20Notes/README.md) / [ディレクトリ](./Markdown%20Notes/) |
+| Markdown Notes | ChromeOS、Android、Linux / Linux Mint、Googlebook、GitHub、コンテンツブロック、DNSなどの学習・調査メモ | [ディレクトリ](./Markdown%20Notes/) / [README](./Markdown%20Notes/README.md) |
 | config / upstream | 変換能力の定義、上流情報の追跡・ミラー | [config](./config/) / [upstream](./upstream/) |
 | scripts / tests | フィルタ変換・更新処理、整合性検査、回帰テスト | [scripts](./scripts/) / [tests](./tests/) |
 | GitHub Actions | 品質確認、同期、変換、変更履歴の追跡などのWorkflow | [ディレクトリ](./.github/workflows/) / [Actions](https://github.com/Red-Frame-X/Prototype/actions) |
