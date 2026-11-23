@@ -172,7 +172,7 @@ Chrome 138以降でViolentmonkeyを使用する場合は、`chrome://extensions`
 ### 検索・ブラウジング補助
 * **[Buster: Captcha Solver for Humans](https://chromewebstore.google.com/detail/buster-captcha-solver-for/mpbjkejclgfgadiemmefgebjfooflfhl)**：音声認証とAIを活用してreCAPTCHAを自動で突破する。
 * **[Cesturefy](https://chromewebstore.google.com/detail/cesturefy-navigate-operat/bifgfhokfobhebifcogneljkpaaloonp)**：マウス、ロッカー、ホイールジェスチャーでブラウザ操作を効率化する拡張機能。
-* **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザのネイティブブックマークを、Google Drive、WebDAV、Nextcloudなどを利用して複数のブラウザや端末間で同期する。
+* **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを共有できますが、同期エラーが起こりやすいため、安定性を重視する場合は各ブラウザの標準同期機能をおすすめします。
 * **[google-search-title-qualified](https://chromewebstore.google.com/detail/google-search-title-quali/bjcnnhojddnonjmhlpdjcdcfmofliagb)**：Google検索結果にサイト本来のタイトルを表示させる。
 * **[Search Result Previews](https://chromewebstore.google.com/detail/search-result-previews/cedcejfiniojnlhlfhcppenochinijfo)**：検索結果のリンク横にウェブサイトのプレビュー画像（サムネイル）を表示させる。
 * **[SingleFile](https://github.com/gildas-lormeau/SingleFile)**：閲覧中のWebページを画像やスタイルなどとともに1つのHTMLファイルに保存し、オフラインで閲覧できる。
@@ -1928,7 +1928,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   * **特徴**：Googleへのサインイン・テレメトリ・AI機能を取り除いたChromium系Androidブラウザ。
   * **注意点**：Android 10以降のARM端末向けで、x86版はありません。Safe Browsingによるフィッシング・マルウェア警告も利用できません。
   * **動作確認済みのChrome 拡張機能**
-    * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを共有できますが、同期エラーが起こりやすいため、安定性を重視する場合は各ブラウザの標準同期機能をおすすめします。詳しくは [floccus ブックマーク同期の注意事項](#floccus-ブックマーク同期の注意事項) を参照して下さい。
+    * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを共有できますが、同期エラーが起こりやすいため、安定性を重視する場合は各ブラウザの標準同期機能をおすすめします。
     * **[TWP - Translate Web Pages](https://chromewebstore.google.com/detail/gkkkcomfmldkigajkmljnbpiajbpbgdg)**：GoogleやYandexの翻訳エンジンを利用し、Webページ全体を別タブを開かずに翻訳する。翻訳先言語の変更や自動翻訳にも対応する。
     * **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**：新しく作成したタブを最前面に表示する。
     * **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**：指定したサイトをGoogleなどの検索結果から非表示にする。設定・購読リストは「Chrome 拡張機能 uBlacklist」の項目を参照。
