@@ -1928,7 +1928,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   * **特徴**：Googleへのサインイン・テレメトリ・AI機能を取り除いたChromium系Androidブラウザ。
   * **注意点**：Android 10以降のARM端末向けで、x86版はありません。Safe Browsingによるフィッシング・マルウェア警告も利用できません。
   * **動作確認済みのChrome 拡張機能**
-    * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを同期する。同期エラー多発
+    * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを共有できますが、同期エラーが起こりやすいため、安定性を重視する場合は各ブラウザの標準同期機能をおすすめします。詳しくは [floccus ブックマーク同期の注意事項](#floccus-ブックマーク同期の注意事項) を参照して下さい。
     * **[TWP - Translate Web Pages](https://chromewebstore.google.com/detail/gkkkcomfmldkigajkmljnbpiajbpbgdg)**：GoogleやYandexの翻訳エンジンを利用し、Webページ全体を別タブを開かずに翻訳する。翻訳先言語の変更や自動翻訳にも対応する。
     * **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**：新しく作成したタブを最前面に表示する。
     * **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**：指定したサイトをGoogleなどの検索結果から非表示にする。設定・購読リストは「Chrome 拡張機能 uBlacklist」の項目を参照。
@@ -2578,7 +2578,7 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 * **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)**：Pikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開するRepositoryです。通常のPikoとは配布先を分けており、利用するBundle側の説明を確認します（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
 * **関連するビルド済みAPK・プロジェクト**： [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo) 。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
 
-### Morpheと併用すると便利なAndroidアプリ
+### Morpheと併用すると便利と思われるAndroidアプリ
 
 Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助に利用できるアプリです。すべてがMorpheの必須アプリという意味ではなく、用途に応じて必要なものだけを併用します。
 
@@ -2589,6 +2589,10 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 * **端末情報の確認**： [Device Info](https://play.google.com/store/apps/details?id=com.ytheekshana.deviceinfo&hl=ja)
 * **セキュリティ・アプリ検査**： [VirusTotal Mobile](https://play.google.com/store/apps/details?id=com.funnycat.virustotal) （VirusTotalによるアプリ・ファイル等の検査。リアルタイム保護ではなく、ファイルの送信時はプライバシーに注意）
 * **その他の補助アプリ**： [floccus ブックマーク同期](https://play.google.com/store/apps/details?id=org.handmadeideas.floccus&pli=1) / [Yahoo!リアルタイム検索](https://play.google.com/store/apps/details?id=jp.co.yahoo.android.ybuzzdetection&hl=ja)
+
+**floccus ブックマーク同期の注意事項**
+
+異なるブラウザや端末間でブックマークを比較的簡単に共有できますが、同期エラーが起こりやすいため、安定性を優先する場合は各ブラウザの標準同期機能をおすすめします。floccusは補助的な同期手段として利用してください。
 
 **参考サイト**
 * [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/) / [r/reseamapp](https://www.reddit.com/r/reseamapp/)
