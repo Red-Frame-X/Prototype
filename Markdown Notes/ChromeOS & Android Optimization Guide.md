@@ -1023,9 +1023,6 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 
 **Issues報告**
 * [Visual Studio Codeの課題・不具合報告](https://github.com/microsoft/vscode/issues)
-* [Virtual Gistsの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualGists/issues)
-* [Virtual Gitの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualGit/issues)
-* [Virtual Repositoriesの課題・不具合報告](https://github.com/carlocardella/vscode-VirtualRepos/issues)
 * [Japanese IME failure on VS Code 1.107.1 （Crostini） #285154](https://github.com/microsoft/vscode/issues/285154) （計画されていないため閉鎖）
 
 ※ 現在はCrostini（Linux 開発環境）およびVSCodiumをデバイスから削除し、ブラウザとAndroidアプリベースの環境へ完全移行済みです。
