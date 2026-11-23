@@ -36,7 +36,7 @@ class PendingVersionTests(unittest.TestCase):
                 path = root / relative
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(source.read_bytes())
-                if relative not in (Path('Markdown Notes/Header Template.md'), Path('Markdown Notes/README.md')):
+                if relative not in (Path('Markdown Notes/Header Template.md'), Path('Markdown Notes/README.md'), Path('AdGuard Custom Rules/AdGuard Custom Rules - Archive.txt')):
                     expected.append(relative)
             git('add', '.')
             git('commit', '-qm', 'base')
