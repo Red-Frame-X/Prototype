@@ -1,11 +1,11 @@
 ! Title: AdGuard Custom Rules - Archive
-! Description: 全行コメントアウト済みのセクションを保存する学習用資料。ルールはすべて無効です。
+! Description: コメントアウト済みのAdGuardルールを保存する学習・参照用Archiveです。
 ! Version: 202611232129
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
 ! License: CC0-1.0
-! Note: 学習・参照用のArchiveです。フィルタとして購読・適用せず、コメントアウト済みのルールと参考資料を追記して管理します。
+! Note: すべてのルールは無効であり、フィルタとして購読・適用しません。
 
 ! www.47news.jp
 ! 自作ルール（資料）
