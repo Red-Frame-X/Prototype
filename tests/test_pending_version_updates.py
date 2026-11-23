@@ -14,6 +14,26 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PendingVersionTests(unittest.TestCase):
+    def test_archive_metadata_is_supported_by_version_updater(self):
+        archive = ROOT / 'AdGuard Custom Rules/AdGuard Custom Rules - Archive.txt'
+        text = archive.read_text(encoding='utf-8')
+        self.assertRegex(text, r'(?m)^! Version: [0-9]{12}')
+        self.assertIn('! Syntax: AdGuard\n', text)
+        self.assertIn('! Expires: 1 day\n', text)
+        self.assertIn('! Note:', text)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'AdGuard Custom Rules/AdGuard Custom Rules - Archive.txt'
+            path.parent.mkdir(parents=True)
+            path.write_text(text + '\n! Regression test comment.\n', encoding='utf-8')
+            self.assertTrue(update_file(path, '209901010001'))
+            updated = path.read_text(encoding='utf-8')
+            self.assertEqual(updated.count('! Version: 209901010001'), 1)
+            self.assertIn('! Regression test comment.', updated)
+            self.assertEqual(
+                re.sub(r'(?m)^! Version: [0-9]{12}', '! Version: <VERSION>', updated),
+                re.sub(r'(?m)^! Version: [0-9]{12}', '! Version: <VERSION>', text + '\n! Regression test comment.\n'),
+            )
+
     def test_manual_comment_edits_all_supported_files_and_no_repeat(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
