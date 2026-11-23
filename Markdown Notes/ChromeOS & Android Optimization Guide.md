@@ -1013,6 +1013,7 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 
 **Android アプリ**
 * **[QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)** / **[ヘルプセンター](https://rhmsoft.com/qedit/help.html)**
+  * 説明：Androidで利用できるテキスト・コードエディタです。
 
 ### QuickEdit Proで使うGitHubトークンの権限
 
