@@ -1007,13 +1007,13 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 ---
 
 ## コードエディタ
-**Visual Studio Code**
+### [Visual Studio Code](https://vscode.dev/?vscode-lang=ja-jp)
 * **[Visual Studio Codeのワークスペース](https://vscode.dev/?vscode-lang=ja-jp)** / **[GitHub](https://github.com/microsoft/vscode)**
   * 説明：インストールせずにブラウザから利用できるWeb版のVisual Studio Codeです。
   * 主な機能：GitHubのRepositoryを直接開いて、コードの閲覧や編集、変更のCommitができます。
   * 制限事項：デスクトップ版とは異なり、TerminalやDebuggerは利用できず、対応する拡張機能にも制限があります。
 
-**Android アプリ**
+### [QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)
 * **[QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)** / **[ヘルプセンター](https://rhmsoft.com/qedit/help.html)**
   * 説明：Androidのスマートフォンやタブレットで、テキストファイルやプログラムのコードを編集できるアプリです。
   * 主な機能：プログラミング言語ごとの構文ハイライト、複数タブでの編集、検索・置換、Google Driveなどのクラウドストレージへのアクセスに対応しています。
