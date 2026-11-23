@@ -1020,10 +1020,22 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 
 ### QuickEdit Proで使うGitHubトークンの権限
 
-* GitHubサイト・右上アイコン > Settings > Developer Settings > Personal access tokens > Tokens（classic）。
+**トークンの設定場所**
 
-* 旧来の設定例は`repo`・`gist`スコープですが、**両方を常に付ける構成を最小権限とは扱いません**。`repo`はprivate Repositoryを含む広いアクセスを許可するため、Gistだけなら`gist`、公開Repositoryだけなら対応クライアントで必要な範囲を確認します。
-* GitHubは可能な場合にfine-grained personal access tokenを推奨しており、現行の権限一覧には`gists`もあります。ただし、APIやクライアントごとに対応する権限・トークン方式が異なり、QuickEdit Proが各方式に対応するかは本レビューでは未確認です。対応を推測して方式を変更せず、有効期限を設け、用途別に分け、不要になったトークンは失効させます（[GitHub公式：トークン管理と制限](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)）。
+* GitHubサイトの右上にあるプロフィール画像から、Settings > Developer settings > Personal access tokens を開きます。従来型のトークンを確認・作成する場合は Tokens (classic)、fine-grained personal access tokenの場合は Fine-grained tokens を選びます。
+
+**必要な権限の選び方**
+
+* 従来の設定例では`repo`と`gist`を指定していますが、**両方を常に付与することは最小権限の設定ではありません**。利用目的に応じて必要な権限だけを選びます。
+  * `repo`：公開・非公開Repositoryに対する広範な読み書き権限を含みます。公開Repositoryだけを対象とする場合は`public_repo`など、必要な範囲を検討します。
+  * `gist`：Gistへの書き込み権限です。Gistのみを扱う場合、Repository用の`repo`を追加する必要があるとは限りません。
+* GitHubは、可能であれば**fine-grained personal access token**の使用を推奨しています。対象Repositoryと操作に必要な権限を細かく制限できます。fine-grained personal access tokenには`Gists`の権限もありますが、従来型トークンで可能な操作のすべてに対応しているわけではありません。
+* **QuickEdit Proが各トークン方式や権限に対応しているかは未確認です。** GitHub側で選べる権限だけを根拠に、QuickEdit Proで利用できるとは判断しないでください。
+
+**セキュリティ上の注意**
+
+* トークンはパスワードと同様に扱い、用途に応じて分け、必要最小限の権限と有効期限を設定します。不要になったトークンは失効させてください。
+* 参考： [GitHub公式：トークン管理と制限](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) / [GitHub公式：OAuth scopes](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps) / [GitHub公式：fine-grained tokenの権限](https://docs.github.com/en/rest/authentication/permissions-required-for-fine-grained-personal-access-tokens)
 
 **Issues報告**
 * [Visual Studio Codeの課題・不具合報告](https://github.com/microsoft/vscode/issues)
