@@ -1928,7 +1928,7 @@ AdGuard for AndroidでHTTPS通信のネットワーク内容を検査・変更�
   * **特徴**：Googleへのサインイン・テレメトリ・AI機能を取り除いたChromium系Androidブラウザ。
   * **注意点**：Android 10以降のARM端末向けで、x86版はありません。Safe Browsingによるフィッシング・マルウェア警告も利用できません。
   * **動作確認済みのChrome 拡張機能**
-    * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを共有できるが、筆者の環境では同期エラーが多発。安定性を重視する場合はブラウザ標準の同期機能を推奨。詳しくは [floccus ブックマーク同期の注意事項](#floccus-ブックマーク同期の注意事項) を参照。
+    * **[floccus bookmarks sync](https://chromewebstore.google.com/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg)**：ブラウザや端末間でブックマークを共有できるが、同期エラーが起こりやすい。安定性を重視する場合は各ブラウザの標準同期機能を推奨。詳しくは [floccus ブックマーク同期の注意事項](#floccus-ブックマーク同期の注意事項) を参照。
     * **[TWP - Translate Web Pages](https://chromewebstore.google.com/detail/gkkkcomfmldkigajkmljnbpiajbpbgdg)**：GoogleやYandexの翻訳エンジンを利用し、Webページ全体を別タブを開かずに翻訳する。翻訳先言語の変更や自動翻訳にも対応する。
     * **[Tabs to Front v2](https://chromewebstore.google.com/detail/tabs-to-front-v2/iiojfifkpjkhcdjfgekmfobhfdohlecg)**：新しく作成したタブを最前面に表示する。
     * **[uBlacklist](https://chromewebstore.google.com/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)**：指定したサイトをGoogleなどの検索結果から非表示にする。設定・購読リストは「Chrome 拡張機能 uBlacklist」の項目を参照。
@@ -2592,7 +2592,7 @@ Morpheの導入・更新・APK管理や、YouTubeを含むAndroid環境の補助
 
 **floccus ブックマーク同期の注意事項**
 
-異なるブラウザや端末間でブックマークを比較的簡単に共有できます。安定性を優先する場合は、対応するブラウザの標準同期機能をおすすめします。floccusは補助的な同期手段として利用してください。
+異なるブラウザや端末間でブックマークを比較的簡単に共有できますが、同期エラーが起こりやすいため、安定性を優先する場合は各ブラウザの標準同期機能をおすすめします。floccusは補助的な同期手段として利用してください。
 
 **参考サイト**
 * [r/revancedapp](https://www.reddit.com/r/revancedapp/) / [r/revancedextended](https://www.reddit.com/r/revancedextended/) / [r/MorpheApp](https://www.reddit.com/r/MorpheApp/) / [r/reseamapp](https://www.reddit.com/r/reseamapp/)
