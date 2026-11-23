@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Archive
 ! Description: コメントアウト済みのAdGuardルールを保存する学習・参照用Archiveです。
-! Version: 202611232129
+! Version: 202611232148
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
