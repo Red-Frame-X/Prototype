@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611220641
+! Version: 202611232053
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -460,7 +460,7 @@ topics.smt.docomo.ne.jp##.ad_middle05
 
 ! toyscabin.com
 ! Cookie利用の案内バナーを非表示
-toyscabin.com###cookieField
+! toyscabin.com###cookieField
 
 ! translate.google.com
 ! Google翻訳の翻訳元・翻訳先の言語選択欄から韓国語タブを非表示
