@@ -1011,14 +1011,6 @@ Redditでは、ChatGPTを計画・整理、Codexを実装・検証に分け、`A
 * **[Visual Studio Codeのワークスペース](https://vscode.dev/?vscode-lang=ja-jp)** / **[GitHub](https://github.com/microsoft/vscode)**
   * 説明：インストール不要でブラウザから直接利用できる軽量かつ高機能なコードエディタです。
 
-**Visual Studio Code 拡張機能**
-* **[Virtual Gists for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=CarloCardella.vscode-virtualgists)** / **[GitHub](https://github.com/carlocardella/vscode-VirtualGists)**
-  * 説明：VS Code上でGitHub Gistを直接管理・編集できる拡張機能です。
-* **[Virtual Git extension pack](https://marketplace.visualstudio.com/items?itemName=CarloCardella.vscode-virtualgit)** / **[GitHub](https://github.com/carlocardella/vscode-VirtualGit)**
-  * 説明：端末にGit環境を構築しなくても、ブラウザから直接GitHubやGistのファイルを編集・保存できるようになる便利なパックです。
-* **[Virtual Repositories for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=CarloCardella.vscode-virtualrepos)** / **[GitHub](https://github.com/carlocardella/vscode-VirtualRepos)**
-  * 説明：リモートRepositoryをクローン、Commit、プッシュすることなく開いて編集できる拡張機能です。
-
 **Android アプリ**
 * **[QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro)** / **[ヘルプセンター](https://rhmsoft.com/qedit/help.html)**
 
