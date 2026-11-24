@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611250458 |
+| **Version** | 202611250459 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -2412,7 +2412,7 @@ PikoはMorphe Managerに追加して使う、𝕏 / Twitter・Instagram向けの
 
 1. [Add Piko to Morphe](https://morphe.software/add-source?github=crimera/piko) から `crimera/piko` を追加します。登録済みなら既存のSourceを使います。
 2. 対象アプリの対応Versionを確認し、APKMirrorから未改変のAPKMを用意します。APKMはMorpheで直接Patchし、生成されたAPKをインストールします。更新時は既存の署名鍵を使います。
-3. NewXで旧𝕏向けPatchの互換性エラーが出た場合は、Patch選択画面の **Selection (🔖)** から推奨Patchにリセットし、旧𝕏向けPatchが選ばれていないことを確認します。NewX向けは機能が異なり、旧𝕏のPiko設定は引き継がれません。 [Piko Issue #2320](https://github.com/crimera/piko/issues/2320) / [5chの追加説明（投稿266）](https://egg.5ch.io/test/read.cgi/android/1793857783/266)
+3. NewXで旧𝕏向けPatchの互換性エラーが出た場合は、Patch選択画面の **Selections (🔖) → Recommended patches** で選択をリセットし、旧𝕏向けPatchが選ばれていないことを確認します。NewX向けは機能が異なり、旧𝕏のPiko設定は引き継がれません。 [互換性エラーの案内](https://github.com/crimera/piko/blob/v3.12.0-dev.6/patches/src/main/kotlin/app/crimera/patches/twitter/misc/settings/CheckCompatibilityPatch.kt#L30-L32) / [Piko Issue #2320](https://github.com/crimera/piko/issues/2320)
 
 PikoのREADMEでは、𝕏 `12.5.0-release.0` 以降では、ログインやXChatにX-Shimの併用が不要と案内しています。 [X-Shimの説明](https://github.com/crimera/piko#x-shim)
 
