@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611250411 |
+| **Version** | 202611250459 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -2401,78 +2401,26 @@ Manager・Patch source・改変後のアプリを分けて更新します。sour
 
 ### Piko：𝕏 / Twitter・Instagram向けMorphe Patches
 
-**開発・配布先**
+PikoはMorphe Managerに追加して使う、𝕏 / Twitter・Instagram向けのPatchです。広告の非表示やメディアの保存に加え、InstagramではFocus LockやInbox lockなどが使えます。アプリの対応Versionと機能は、利用するReleaseのPatch一覧で確認してください。 [Piko README](https://github.com/crimera/piko/blob/main/README.md) / [Piko Releases](https://github.com/crimera/piko/releases)
 
-* **開発チーム**：crimera氏を中心に開発されるPikoは、𝕏 / Twitter・Instagram向けのPatchプロジェクトです。Morphe Manager本体とは別に追加するPatch sourceで、v3.0.0以降はMorpheを利用します（[README](https://github.com/crimera/piko/blob/main/README.md)）。
-* **開発者GitHub**： [crimera](https://github.com/crimera)
-* **Repository・更新履歴**： [crimera/piko](https://github.com/crimera/piko) / [Release](https://github.com/crimera/piko/releases) / [Issues](https://github.com/crimera/piko/issues)
-* **告知・翻訳への参加**： [Telegram](https://t.me/pikopatches) / [Crowdin](https://crowdin.com/project/piko)
-* **License**：GNU GPLv3以降の自由・オープンソースソフトウェアです（[Licenseの説明](https://github.com/crimera/piko#license)）。
+**NewXと旧𝕏の配布先（2026年11月25日確認）**
 
-**対象アプリ・主な機能**
-
-* **𝕏 / Twitter**：広告・おすすめ項目の非表示、動画・GIFのDownload、共有リンクの追跡パラメータ除去、Navigation Bar・Side Barの調整、Font・Themeの変更などに対応します。
-* **Instagram**：広告・分析通信の抑制、画像・動画・StoriesのDownload、Navigation Barの調整、外部ブラウザでのリンク表示などに対応します。Reelsなどの利用を一定時間制限するFocus Lockや、受信箱を生体認証・画面ロックで保護するInbox lockもあります。
-* **対応Version**：安定版 [v3.10.0](https://github.com/crimera/piko/releases/tag/v3.10.0) の [Patch一覧](https://github.com/crimera/piko/blob/v3.10.0/README.md#%EF%B8%8F-patch-details) には、𝕏 / Twitter `12.19.1-release.0`、Instagram `447.0.0.55.81` が掲載されています。Patchは計137件（Twitter 75件・Instagram 62件）で、機能・対応Versionは更新により変わります。
+* **NewX**：試験配布に使われていた `crimera/piko-newx` はアーカイブ済みです。NewX向けPatchはメインの `crimera/piko` に統合されました。Morphe Managerに `crimera/piko-newx` を登録していた場合は、メインのSourceに切り替えてください。確認時点でNewXを使うには、対応するPre-release（例： [v3.12.0-dev.6](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.6) ）を選びます。安定版 [v3.11.1](https://github.com/crimera/piko/releases/tag/v3.11.1) は統合前のReleaseです。 [piko-newx README](https://github.com/crimera/piko-newx/blob/main/README.md)
+* **旧𝕏**：安定版は引き続き `crimera/piko` から入手できます。Morphe Managerに保存されたPatch選択などで互換性のないPatchが混ざる問題への対処として、旧𝕏向けBundleを `piko-oldx` に分離する予定が示されています。公開と切り替え時期は未確認です。 [5chの追加説明（投稿266）](https://egg.5ch.io/test/read.cgi/android/1793857783/266)
 
 **Morphe Managerでの導入**
 
-* [Add Piko to Morphe](https://morphe.software/add-source?github=crimera/piko) からPikoをPatch sourceに追加します。手動で登録する場合は、前述のMorpheのsource管理手順で `crimera/piko` を指定します。
-* Managerで𝕏またはInstagramを選び、対応Versionの未改変APKMをAPKMirrorから用意します。PikoのREADMEは、APKMを事前に結合・改変せず、Morpheで直接Patchするよう案内しています。
-* 必要なPatchを選び、処理の完了後に生成APKをインストールします。利用できる機能やOptionは、選んだPatchと対象アプリのVersionで確認します。
-* 更新時はPikoのReleaseと対応Versionを確認し、対応する元APKMから再Patchします。署名鍵などの保存は、前述のMorpheのバックアップ手順を参照してください。
+1. [Add Piko to Morphe](https://morphe.software/add-source?github=crimera/piko) から `crimera/piko` を追加します。登録済みなら既存のSourceを使います。
+2. 対象アプリの対応Versionを確認し、APKMirrorから未改変のAPKMを用意します。APKMはMorpheで直接Patchし、生成されたAPKをインストールします。更新時は既存の署名鍵を使います。
+3. NewXで旧𝕏向けPatchの互換性エラーが出た場合は、Patch選択画面の **Selections (🔖) → Recommended patches** で選択をリセットし、旧𝕏向けPatchが選ばれていないことを確認します。NewX向けは機能が異なり、旧𝕏のPiko設定は引き継がれません。 [互換性エラーの案内](https://github.com/crimera/piko/blob/v3.12.0-dev.6/patches/src/main/kotlin/app/crimera/patches/twitter/misc/settings/CheckCompatibilityPatch.kt#L30-L32) / [Piko Issue #2320](https://github.com/crimera/piko/issues/2320)
 
-**ログイン・X-Shimの注意**
+PikoのREADMEでは、𝕏 `12.5.0-release.0` 以降では、ログインやXChatにX-Shimの併用が不要と案内しています。 [X-Shimの説明](https://github.com/crimera/piko#x-shim)
 
-* 過去にはModアプリ検知によるログイン問題が報告されていました（[Issue #714](https://github.com/crimera/piko/issues/714)）。現在の対応状況は、当時の報告と分けて確認します。
-* 現行READMEでは、𝕏 `12.5.0-release.0`以降はPikoにX-Shimを併用する必要がなく、𝕏へのログインとXChatが動作すると案内しています（[X-Shimの説明](https://github.com/crimera/piko#x-shim)）。
-* 旧𝕏 `11.88～12.4`向けには、inotia00氏の [X-Shim](https://gitlab.com/inotia00/x-shim) を併用する手順がありました。これは旧Version用の情報で、現在の導入手順にそのまま追加しません。
-* 問題が起きた場合は、Manager・Piko・対象アプリのVersion、選択Patch、ログを確認し、Piko Issuesの既存報告を調べます。
+旧𝕏 `11.88～12.4` 向けには、inotia00氏のX-Shimを併用する手順がありました。 [X-Shim（旧Version向け）](https://gitlab.com/inotia00/x-shim)
 
-**NewXの統合と現在の配布状況（2026年11月24日確認）**
+筆者は `v3.12.0-dev.6` でNewXのPiko設定画面が日本語で表示されたと報告しています。翻訳範囲と初回対応Versionは未確認です。 [筆者の𝕏ポスト](https://x.com/Red_Frame_X/status/2124824786341908556)
 
-以前は [Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx) がPikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX向けPatch Bundleをビルド・公開していました。
-
-2026年11月21日に同Repositoryはアーカイブ化され、NewX向けPatchの開発・配布はPikoのメインRepositoryに統合されました（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
-
-| 配布先・Version | 現在の状況 |
-| :--- | :--- |
-| `crimera/piko-newx` | アーカイブ済み。新規のPatch sourceには使用しません。 |
-| `crimera/piko` | 統合後の正式な配布先 |
-| 安定版 [v3.11.1](https://github.com/crimera/piko/releases/tag/v3.11.1) | NewX向けPatchの統合前のRelease |
-| 開発版 [v3.12.0-dev.6](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.6) | NewX向けPatchを含むPre-release（2026年11月23日公開） |
-
-**NewX利用者の移行手順**
-
-1. Morphe ManagerのSourceを、従来の旧𝕏向けPikoと同じメインRepository（`crimera/piko`）に戻します。未登録の場合は [Add Piko to Morphe](https://morphe.software/add-source?github=crimera/piko) から追加します。登録済みの場合は重複して追加する必要はありません。
-2. NewX向けPatchを含むPre-releaseを選択します。Repositoryの統合と安定版への収録は別であり、安定版を選ぶだけではNewXに対応しない場合があります。
-3. Managerで対象アプリの対応VersionとNewX向けの利用可能なPatchを確認します。旧𝕏向けPatchとすべてが共通というわけではありません。
-4. 署名鍵を確認し、対応する未改変APKMから再Patchします。開発版は安定版と区別して利用してください。
-
-**筆者の利用報告・日本語対応**
-
-筆者の利用報告では、Morphe ManagerのSourceを旧𝕏向けPikoに戻し、Pre-release版を適用することでNewXの移行手順を確認しました。また、`v3.12.0-dev.6` でPiko NewXの設定画面が日本語に対応したことを報告しています。
-
-日本語対応は筆者の利用報告に基づく情報です。公式Release Notesには日本語対応の明記がなく、翻訳範囲や初回対応Versionは未確認です。
-
-参考： [筆者の𝕏ポスト](https://x.com/Red_Frame_X/status/2124824786341908556) （提示された投稿内容に基づく記録。投稿ページの直接確認は未実施）
-
-**旧𝕏とNewXのPatch互換性**
-
-* [v3.12.0-dev.2](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.2) ：NewX向けと旧𝕏向けのPatchを分類。
-* [v3.12.0-dev.3](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.3) ：NewXに旧𝕏向けPatchを適用しようとした場合のエラー表示を追加。
-
-**旧𝕏向けPatchの今後の分離予定（未確認）**
-
-単一のPatch Bundleでは扱いにくくなったため、旧𝕏向けPatchを今後 `piko-oldx` という別Repositoryに分離する予定との [5chの投稿](https://egg.5ch.io/test/read.cgi/android/1790307002/365) が紹介されています（投稿本文は未確認）。
-
-2026年11月24日時点では投稿者の本人確認、公式告知、Repositoryの公開および移行時期は未確認です。正式な配布先と移行手順が確認できるまでは、未公開のRepositoryをPatch sourceに設定せず、Pikoの公式ReleaseとREADMEを参照してください。
-
-**参考情報・関連する配布先**
-
-* 公式情報： [Piko Releases](https://github.com/crimera/piko/releases)
-* コミュニティ情報： [Reddit：Piko-NewX Repository Has Been Archived](https://www.reddit.com/r/MorpheApp/comments/1xymprc/pikonewx_repository_has_been_archived/)
-* **関連するビルド済みAPK・プロジェクト**： [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo) 。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
+告知・翻訳への参加先は [Telegram](https://t.me/pikopatches) / [Crowdin](https://crowdin.com/project/piko) です。
 
 <a id="urv複数のpatch系統を扱うmanager"></a>
 
