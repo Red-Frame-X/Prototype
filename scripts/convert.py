@@ -416,7 +416,7 @@ class AdGuardOptimizer:
                 )
 
             metadata_matches = all(line in existing_lines[:12] for line in expected_metadata)
-            if new_signature == self.get_rule_signature(existing_lines) and metadata_matches:
+            if new_signature == existing_signature and metadata_matches:
                 print("変更なし: ルール本体と固定Metadataに差分がないため、ファイルの更新をスキップしました。")
                 return
 
