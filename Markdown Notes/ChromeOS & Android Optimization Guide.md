@@ -2399,8 +2399,6 @@ Manager・Patch source・改変後のアプリを分けて更新します。sour
 
 `Settings > Signing key`から鍵を保存し、`Morphe settings`からManager設定を別に保存します。設定JSONにはKeystoreが含まれません。Managerのアンインストールやデータ消去で鍵を失うと、以前の鍵で署名したアプリをそのまま更新できなくなります。機種変更では先に鍵をインポートし、必要なsourceとPatch選択を復元します（[バックアップ手順](https://github.com/MorpheApp/morphe-manager/blob/main/docs/backup-and-keystore.md)）。処理速度の優劣や他Managerとの設定互換性は、これらの機能だけからは判断できません。
 
-<a id="urv複数のpatch系統を扱うmanager"></a>
-
 ### Piko：𝕏 / Twitter・Instagram向けMorphe Patches
 
 **開発・配布先**
@@ -2475,6 +2473,8 @@ Manager・Patch source・改変後のアプリを分けて更新します。sour
 * 公式情報： [Piko Releases](https://github.com/crimera/piko/releases)
 * コミュニティ情報： [Reddit：Piko-NewX Repository Has Been Archived](https://www.reddit.com/r/MorpheApp/comments/1xymprc/pikonewx_repository_has_been_archived/)
 * **関連するビルド済みAPK・プロジェクト**： [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo) 。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
+
+<a id="urv複数のpatch系統を扱うmanager"></a>
 
 ### UPM：複数のPatch系統を扱うManager（旧URV）
 
