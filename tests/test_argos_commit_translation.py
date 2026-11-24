@@ -366,6 +366,19 @@ class ArgosTranslationTests(unittest.TestCase):
                 self.assertEqual(argos.translate_text(source, engine), source)
                 engine.assert_not_called()
 
+    def test_pr393_prerelease_term_does_not_trigger_translation(self):
+        source = ('- 互換性エラーの操作名を対象Pre-releaseの表記に合わせました。'
+                  '最新先端の[品質検査](https://github.com/Red-Frame-X/Prototype/actions/runs/45476004379)'
+                  'は成功し、Codex Reviewも指摘なしで完了しました。\n')
+        engine = Mock(side_effect=AssertionError('日本語のPR本文を翻訳しています。'))
+        self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+
+    def test_prerelease_term_does_not_hide_english_prose(self):
+        engine = Mock(side_effect=lambda source: source.removeprefix('Update ') + 'を更新')
+        self.assertEqual(argos.translate_text('Update Pre-release', engine), 'Pre-releaseを更新')
+        engine.assert_called_once_with('Update ZXQ0000QXZ')
+
     def test_main_substring_does_not_hide_ordinary_english(self):
         for source in ('Update domain description', 'Fix mainly failing tests'):
             engine = Mock(return_value='一般説明を更新')
