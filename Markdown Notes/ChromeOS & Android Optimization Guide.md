@@ -2578,7 +2578,11 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 
 **NewX・関連する配布先**
 
-* **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)**：Pikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開するRepositoryです。通常のPikoとは配布先を分けており、利用するBundle側の説明を確認します（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
+* **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)**：以前はPikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開していましたが、2026年11月21日にアーカイブ化されました。NewX向けPatchはPikoのメインRepositoryに統合され、開発・配布が継続されています（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
+* **NewXからの移行**：Morphe Managerで旧 `crimera/piko-newx` をPatch sourceとして使用している場合は、 [Add Piko to Morphe](https://morphe.software/add-source?github=crimera/piko) からメインRepositoryに切り替えます。既に登録済みの場合は重複して追加する必要はありません。NewX対応のPatchが含まれるReleaseを確認し、必要に応じて開発版を選択します。開発版は安定版と区別し、対応Versionと署名鍵を確認してから再Patchしてください。
+* **Patchの互換性**：2026年11月24日に公式Releaseで確認した安定版は [v3.11.1](https://github.com/crimera/piko/releases/tag/v3.11.1) 、開発版は [v3.12.0-dev.6](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.6) です。開発版 [v3.12.0-dev.2](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.2) ではNewX向けと旧𝕏向けのPatchが分類され、 [v3.12.0-dev.3](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.3) ではNewXに旧𝕏向けPatchを適用する際のエラー表示が追加されています。安定版にも統合済みとは限りません。統合後もすべてのPatchが共通で利用できるわけではないため、Managerで対象アプリの対応Versionと利用可能なPatchを確認してください。
+* **旧𝕏向けPatchの分離予定（未確認）**：2026年11月24日時点では、旧𝕏向けPatchを今後 `piko-oldx` という別Repositoryに分離する予定との [5chの投稿](https://egg.5ch.io/test/read.cgi/android/1790307002/365) が紹介されています（投稿本文は未確認）。単一のPatch Bundleでは扱いにくくなったことが理由とされていますが、投稿者の本人確認、公式告知、Repositoryの公開および移行時期は未確認です。正式な配布先と移行手順が確認できるまでは、未公開のRepositoryをPatch sourceに設定せず、Pikoの公式ReleaseとREADMEを参照してください。
+* **参考情報**： [Piko Releases](https://github.com/crimera/piko/releases) / [Reddit：Piko-NewX Repository Has Been Archived](https://www.reddit.com/r/MorpheApp/comments/1xymprc/pikonewx_repository_has_been_archived/)
 * **関連するビルド済みAPK・プロジェクト**： [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo) 。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
 
 ### Morpheと併用すると便利と思われるAndroidアプリ
