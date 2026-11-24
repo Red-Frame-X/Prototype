@@ -2310,6 +2310,7 @@ AndroidアプリにPatchを適用して機能や表示を調整するプロジ�
 
 * [ReVanced](#revanced公式patchとmanager)
 * [Morphe](#morphesimple--expert-modeと追加patch-source)
+* [Piko](#piko𝕏--twitterinstagram向けmorphe-patches)
 * [UPM（旧URV）](#upm複数のpatch系統を扱うmanager旧urv)
 * [Reseam](#reseamrust製エンジンとandroidwindowslinux対応)
 
