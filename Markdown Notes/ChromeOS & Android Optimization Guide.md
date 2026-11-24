@@ -2578,7 +2578,10 @@ Morpheの再生対策には、主に「Spoof video streams」と「PoToken provi
 
 **NewX・関連する配布先**
 
-* **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)**：Pikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開するRepositoryです。通常のPikoとは配布先を分けており、利用するBundle側の説明を確認します（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
+* **[Piko New 𝕏（crimera/piko-newx）](https://github.com/crimera/piko-newx)**：以前はPikoの [`x-lite` Branch](https://github.com/crimera/piko/tree/x-lite) からNewX Patch Bundleをビルド・公開していましたが、2026年11月21日にアーカイブ化されました。NewX向けPatchはPikoのメインRepositoryに統合され、開発・配布が継続されています（[NewX README](https://github.com/crimera/piko-newx/blob/main/README.md)）。
+* **NewXからの移行**：Morphe Managerで旧 `crimera/piko-newx` をPatch sourceとして使用している場合は、 [Add Piko to Morphe](https://morphe.software/add-source?github=crimera/piko) からメインRepositoryに切り替えます。既に登録済みの場合は重複して追加する必要はありません。
+* **Patchの互換性**：2026年11月24日時点の安定版は [v3.11.1](https://github.com/crimera/piko/releases/tag/v3.11.1) 、開発版は [v3.12.0-dev.6](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.6) です。開発版 [v3.12.0-dev.2](https://github.com/crimera/piko/releases/tag/v3.12.0-dev.2) ではNewX向けと旧𝕏向けのPatchが分類されています。統合後もすべてのPatchが共通で利用できるわけではないため、Managerで対象アプリの対応Versionと利用可能なPatchを確認してください。
+* **参考情報**： [Piko Releases](https://github.com/crimera/piko/releases) / [Reddit：Piko-NewX Repository Has Been Archived](https://www.reddit.com/r/MorpheApp/comments/1xymprc/pikonewx_repository_has_been_archived/)
 * **関連するビルド済みAPK・プロジェクト**： [monsivamon](https://github.com/monsivamon/twitter-apk) / [Origin Twitter Neo](https://github.com/YuzuMikan404/Origin-Twitter-Neo) 。PikoのPatch配布先とは区別し、それぞれの提供元・内容・更新状況を確認します。
 
 ### Morpheと併用すると便利と思われるAndroidアプリ
