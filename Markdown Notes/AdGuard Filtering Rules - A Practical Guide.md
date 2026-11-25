@@ -94,6 +94,8 @@ news.example.org##aside.sponsor
 
 こちらは記事内の広告枠を選び、ラベルと画像をまとめて非表示にするCosmetic Ruleです。画像のダウンロードを防げたかは、画面から判断できません。Filtering logで画像のURLを探し、処理結果と適用ルールを照合します。二つのルールを同時に追加すると、どちらの効果を見ているか判別しにくいため、演習では一行ずつ試します。
 
+ChromiumのAdGuard Browser Extension MV3のストア配布版では、Filtering logに表示される適用ルールはエンジンによる推定です。画像の取得結果はDevToolsのNetworkで確認し、どのDNRルールが実際に適用されたかを特定する場合は、公式手順に従ってunpacked版で確認します。 [AdGuard公式のFiltering logの説明](https://adguard.com/kb/adguard-browser-extension/mv3-version/#main-changes-in-features-and-settings)
+
 DNSではホスト名を扱います。同じホストの /banner.png と /weather.png を、Pathだけを根拠に区別することはできません。画像サーバーが記事の天気図も配信している場合、ホスト全体をDNSで止めると天気図にも影響します。
 
 ### 演習　「広告」の文字だけが残った
@@ -580,7 +582,7 @@ Array.from(document.querySelectorAll('article[data-kind="sponsor"]'),
   card => card.querySelector('h2')?.textContent?.trim())
 ```
 
-6. AdGuardのFiltering logを開き、同じ操作を繰り返します。Networkの要求とログをURL・時刻・発生元で照合します。ルールを一行追加し、協賛カード、通常記事、次ページへの移動を再確認します。
+6. AdGuardのFiltering logを開き、同じ操作を繰り返します。Networkの要求とログをURL・時刻・発生元で照合します。Chromium MV3のストア配布版では、ログに示されたルールを候補として扱います。競合する候補から実際に適用されたルールを特定するときはunpacked版を使います。ルールを一行追加し、協賛カード、通常記事、次ページへの移動を再確認します。
 
 ### 結果が揃わない場合
 
