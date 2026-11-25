@@ -6,7 +6,7 @@ AdGuardで広告や不要な要素をブロックするルールの書き方と�
 | --- | --- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611260023 |
+| **Version** | 202611260058 |
 
 ## はじめに
 
