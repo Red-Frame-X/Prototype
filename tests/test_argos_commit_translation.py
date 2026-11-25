@@ -366,6 +366,28 @@ class ArgosTranslationTests(unittest.TestCase):
                 self.assertEqual(argos.translate_text(source, engine), source)
                 engine.assert_not_called()
 
+    def test_pr397_japanese_body_with_appendix_range_is_not_retranslated(self):
+        from automate_japanese_commits import validate_translation
+        body = ('全16章・付録A〜Jの統合Markdown原稿を英語タイトルで追加しました。'
+                '日本語タイトルを副題に残し、Markdown Notesのドキュメント案内と'
+                '資料の使い分けから参照できるようにしました。')
+        original = {'title': 'Markdown Notes にAdGuardのフィルタリングルール実践ガイドを収録',
+                    'body': body, 'commits': []}
+        engine = Mock(side_effect=AssertionError('日本語のPR本文を翻訳器へ渡しています。'))
+        self.assertEqual(argos.translate_payload(original, engine), original)
+        validate_translation(original, original)
+        engine.assert_not_called()
+
+    def test_uppercase_range_is_protected_while_english_prose_is_translated(self):
+        engine = Mock(side_effect=lambda text: text.replace('Update ', '') + 'を更新')
+        self.assertEqual(argos.translate_text('Update A〜J', engine), 'A〜Jを更新')
+        engine.assert_called_once_with('Update ZXQ0000QXZ')
+        for source in ('付録A〜Jを確認', '付録A～Jの一覧を確認'):
+            with self.subTest(source=source):
+                engine = Mock(side_effect=AssertionError('範囲表記を再翻訳しています。'))
+                self.assertEqual(argos.translate_text(source, engine), source)
+                engine.assert_not_called()
+
     def test_pr393_prerelease_term_does_not_trigger_translation(self):
         source = ('- 互換性エラーの操作名を対象Pre-releaseの表記に合わせました。'
                   '最新先端の[品質検査](https://github.com/Red-Frame-X/Prototype/actions/runs/45476004379)'
