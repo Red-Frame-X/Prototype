@@ -6,7 +6,7 @@
 | --- | --- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | [Repositoryのライセンス案内](../LICENSES.md) |
-| **Version** | 20261125 |
+| **Version** | 202611251817 |
 
 ## はじめに
 
