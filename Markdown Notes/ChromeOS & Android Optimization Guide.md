@@ -239,6 +239,8 @@ Androidアプリを使えるのは対応するChromebookに限られ、組織の
 
 * **[ChMate](https://play.google.com/store/apps/details?id=jp.co.airfront.android.a2chMate)** （\*）
   * 説明：5ちゃんねるを高速・快適に閲覧できる多機能なAndroid専用ブラウザアプリ。（※ ChromeOSでの不具合は後述）
+* **[したらばStorm](https://play.google.com/store/apps/details?id=jp.everystorm.shitarabastorm)**
+  * 説明：したらば掲示板、5ちゃんねる、おーぷん2ちゃんねる、まちBBSなどに対応した多機能なAndroid向け掲示板専用ブラウザ。
 * **[personalDNSfilter](https://play.google.com/store/apps/details?id=dnsfilter.android)** （\*）
   * 説明：主にChMateでの広告ブロックに使用している軽量なDNSフィルタリングアプリです。他のAndroidアプリやChromeOS用Chromeブラウザにも効くかは、DNS経路とVPN設定を個別に確認します。ページ内の広告枠を直接非表示にする機能とは異なります。（※ 詳細後述）
 * **[Google Home](https://play.google.com/store/apps/details?id=com.google.android.apps.chromecast.app)**
