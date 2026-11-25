@@ -104,7 +104,7 @@ DNSではホスト名を扱います。同じホストの /banner.png と /weath
 
 **解答**　画像の親要素を調べます。上のHTMLでは aside が広告ラベルと画像をまとめています。article を選ぶと記事本文まで消えます。aside.sponsor が複数あれば、一致するすべての要素を確認してから適用します。
 
-参考資料　[AdGuardのフィルタ構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/) ／ [AdGuard DNSの構文](https://adguard-dns.io/kb/general/dns-filtering-syntax/)
+参考資料　[AdGuardのフィルタ構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/) / [AdGuard DNSの構文](https://adguard-dns.io/kb/general/dns-filtering-syntax/)
 
 
 ### 図で追う　最初の記事と、その中の画像
@@ -140,7 +140,7 @@ https://news.example.org と https://img.example.org はホストが違うため
 
 Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル版では設定のFilteringからユーザールールの編集画面を開きます。既存の一覧を控え、教材の一行を改行で区切って追記します。保存・反映して対象ページを再読み込みし、Filtering logで処理したルールを開きます。再現時に戻せるよう、まず行頭に `!` を付けて無効化した状態とも比較してください。削除する場合は追加した一行を特定してから取り除きます。
 
-予約済みドメインの架空のPathには、この本のHTMLが公開されているわけではありません。DOMの演習はHTMLをローカルに保存して試せます。ドメイン限定のネットワークルールを評価するには、同じホスト名・要求元・リソース種別を再現するTest環境が必要です。 [Androidの設定](https://adguard.com/kb/adguard-for-android/features/settings/) ／ [拡張機能の公式資料](https://adguard.com/kb/adguard-browser-extension/)
+予約済みドメインの架空のPathには、この本のHTMLが公開されているわけではありません。DOMの演習はHTMLをローカルに保存して試せます。ドメイン限定のネットワークルールを評価するには、同じホスト名・要求元・リソース種別を再現するTest環境が必要です。 [Androidの設定](https://adguard.com/kb/adguard-for-android/features/settings/) / [拡張機能の公式資料](https://adguard.com/kb/adguard-browser-extension/)
 
 
 <a id="ch-02"></a>
@@ -276,7 +276,7 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 
 **応用問題**　`$image,media` を `$~script` にまとめてよいでしょうか。**解答**　後者には画像・動画以外の非Script要求も入るため、同等ではありません。フォント要求を一件加えるだけで違いを確認できます。
 
-参考資料　[条件・種別・処理の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#basic-rule-modifiers) ／ [TSUrlFilterの使い方](https://github.com/AdguardTeam/tsurlfilter)
+参考資料　[条件・種別・処理の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#basic-rule-modifiers) / [TSUrlFilterの使い方](https://github.com/AdguardTeam/tsurlfilter)
 
 <a id="ch-04"></a>
 
@@ -492,7 +492,7 @@ ChromeのDNRはRE2系の制約を持ちます。JavaScriptで成立する先読�
 
 **練習**　issue- の後ろをちょうど2桁に限定してください。**解答**　`[0-9]{2}` に変更します。issue-0.png と issue-408.png が対象から外れるため、これは適用範囲の変更です。
 
-参考資料　[AdGuardの正規表現](https://adguard.com/kb/general/ad-filtering/create-own-filters/#regexp-support) ／ [DNRのregexFilter](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
+参考資料　[AdGuardの正規表現](https://adguard.com/kb/general/ad-filtering/create-own-filters/#regexp-support) / [DNRのregexFilter](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
 
 <a id="ch-09"></a>
 
@@ -533,7 +533,7 @@ news.example.org#@%#//scriptlet('set-constant', 'demoSponsorEnabled', 'false')
 
 **練習**　画像URLを変えずにダウンロードも防ぎたいとき、表示フラグを変えただけで成功と言えるでしょうか。**解答**　Networkで要求を観察します。ページが画像を先読みしていれば、描画分岐を止めても要求は残ります。
 
-参考資料　[Scriptletの名称と引数](https://github.com/AdguardTeam/Scriptlets/blob/420ffa66c6e713ffa95c80e4bfa356b1a796c3a3/wiki/about-scriptlets.md) ／ [置換リソース](https://github.com/AdguardTeam/Scriptlets/blob/420ffa66c6e713ffa95c80e4bfa356b1a796c3a3/wiki/about-redirects.md)
+参考資料　[Scriptletの名称と引数](https://github.com/AdguardTeam/Scriptlets/blob/420ffa66c6e713ffa95c80e4bfa356b1a796c3a3/wiki/about-scriptlets.md) / [置換リソース](https://github.com/AdguardTeam/Scriptlets/blob/420ffa66c6e713ffa95c80e4bfa356b1a796c3a3/wiki/about-redirects.md)
 
 <a id="ch-10"></a>
 
@@ -563,7 +563,7 @@ Cookieは条件に応じてHTTP要求と共に送られます。Local Storageの
 
 **練習**　「バナーが消えてページがスクロールできる」を同意処理の合格条件にしてよいでしょうか。**解答**　表示上の条件として記録し、拒否の保存と外部要求の変化には別の合格条件を設けます。
 
-参考資料　[Cookie処理](https://adguard.com/kb/general/ad-filtering/create-own-filters/#cookie-modifier) ／ [Queryの処理](https://adguard.com/kb/general/ad-filtering/create-own-filters/#removeparam-modifier)
+参考資料　[Cookie処理](https://adguard.com/kb/general/ad-filtering/create-own-filters/#cookie-modifier) / [Queryの処理](https://adguard.com/kb/general/ad-filtering/create-own-filters/#removeparam-modifier)
 
 <a id="ch-11"></a>
 
@@ -592,7 +592,7 @@ Android版Chromeのページは、対応した端末でUSBデバッグを有効�
 
 **練習**　Consoleで候補が0件なのに画面には広告があります。**解答**　フレーム、Shadow DOM、遅延読み込み、擬似要素の順に描画場所を確かめます。候補が0件という観測だけを理由にセレクタを全サイトへ広げません。
 
-参考資料　[Networkパネル](https://developer.chrome.com/docs/devtools/network/reference) ／ [AndroidのRemote Debugging](https://developer.chrome.com/docs/devtools/remote-debugging)
+参考資料　[Networkパネル](https://developer.chrome.com/docs/devtools/network/reference) / [AndroidのRemote Debugging](https://developer.chrome.com/docs/devtools/remote-debugging)
 
 <a id="ch-12"></a>
 
@@ -610,7 +610,7 @@ Android版Chromeのページは、対応した端末でUSBデバッグを有効�
 
 DNR（declarativeNetRequest）には拡張に同梱するStatic Rules、更新できてブラウザ再起動後も残るDynamic Rules、セッションをまたいで保持しないSession Rulesがあります。Chromiumのエンジンが登録ルールの条件・優先度・アクションを評価します。AdGuardのテキスト一行とDNR一件の対応は保証されません。DOMを隠すルールまで同じネットワーク枠で数えると見積もりを誤ります。
 
-AdGuardのMV3製品資料には、静的ルールについて拡張ごとの最低30,000、全拡張で共有する総枠330,000、動的ルールについて変換後5,000、正規表現はそのうち最大1,000との説明があります。上限に達した場合の適用順はAllowlist、User rules、Custom filtersです。エディタに残った行がすべて適用中とは限りません。Chrome API自体には別の版別上限があり、Chrome 121以降の安全な動的ルールの枠30,000を、そのままAdGuardのカスタムフィルタの利用可能枠と読むことはできません。 [AdGuardの製品説明](https://adguard.com/kb/adguard-browser-extension/mv3-version/) ／ [ChromeのDNR仕様](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
+AdGuardのMV3製品資料には、静的ルールについて拡張ごとの最低30,000、全拡張で共有する総枠330,000、動的ルールについて変換後5,000、正規表現はそのうち最大1,000との説明があります。上限に達した場合の適用順はAllowlist、User rules、Custom filtersです。エディタに残った行がすべて適用中とは限りません。Chrome API自体には別の版別上限があり、Chrome 121以降の安全な動的ルールの枠30,000を、そのままAdGuardのカスタムフィルタの利用可能枠と読むことはできません。 [AdGuardの製品説明](https://adguard.com/kb/adguard-browser-extension/mv3-version/) / [ChromeのDNR仕様](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
 
 ### AndroidのローカルVPNとHTTPS
 
@@ -803,12 +803,12 @@ Lintと機能Testは別の工程です。たとえば .card は正しいセレ�
 | `!` | コメント、またはMetadata | 配布用の `! Title:` などは遮断条件にならない |
 | URLパターンと `$` | 宛先とModifier | 送信先ホストと要求元ドメインを区別 |
 | `@@` | ネットワーク例外 | 対応する遮断・優先順位を確認 |
-| `##` ／ `#@#` | 要素非表示と例外 | 右側はCSSセレクタ |
-| `#$#` ／ `#@$#` | CSS injectionと例外 | セレクタに宣言ブロックを続ける |
-| `#?#` ／ `#@?#` | Extended CSSと例外 | 標準CSSだけでは検査できない |
+| `##` / `#@#` | 要素非表示と例外 | 右側はCSSセレクタ |
+| `#$#` / `#@$#` | CSS injectionと例外 | セレクタに宣言ブロックを続ける |
+| `#?#` / `#@?#` | Extended CSSと例外 | 標準CSSだけでは検査できない |
 | `#%#//scriptlet(...)` | 指定したScriptletの呼び出し | 引数と実行可能な製品・権限を確認 |
 | `$$` | AdGuardのHTML filtering | 応答内容の処理。DOMへの後処理とは適用時期が異なる |
-| `!#if` ／ `!#else` ／ `!#endif` | 条件に応じたリストの前処理 | エンジンが解釈する条件とビルド環境を確認 |
+| `!#if` / `!#else` / `!#endif` | 条件に応じたリストの前処理 | エンジンが解釈する条件とビルド環境を確認 |
 | `!#include` | 別ファイルの取り込み | 相対位置・同一Origin・循環に注意。単独行だけの配布と区別 |
 | DNSのドメイン列挙・hosts・Adblock-style | 名前解決に対するポリシー | Path、リソース種別、DOMは対象外 |
 
@@ -910,9 +910,9 @@ DNSの基本遮断はホスト名に対するものです。$jsonprune はCoreLi
 | 標準・複合 | `div.banner` | bannerクラスを持つdiv |
 | 標準・属性存在 | `[data-ad]` | 値が空でも属性があれば一致 |
 | 標準・部分一致 | `[class*="ad"]` | headerにもadが含まれる |
-| 標準・接頭／接尾 | `[class^="ad-"]` ／ `[class$="-banner"]` | 属性値全体の先頭・末尾を見る |
-| 標準・子／子孫 | `main > article` ／ `main article` | 後者は孫以下も選ぶ |
-| 標準・兄弟 | `h2 + p` ／ `h2 ~ p` | 直後の段落／後続の兄弟段落 |
+| 標準・接頭 / 接尾 | `[class^="ad-"]` / `[class$="-banner"]` | 属性値全体の先頭・末尾を見る |
+| 標準・子 / 子孫 | `main > article` / `main article` | 後者は孫以下も選ぶ |
+| 標準・兄弟 | `h2 + p` / `h2 ~ p` | 直後の段落 / 後続の兄弟段落 |
 | 標準・否定 | `article:not(.lead)` | leadを持たない記事 |
 | 標準・関係 | `article:has(> .label)` | ラベルを直接の子に持つ記事 |
 | 拡張・文字 | `.label:contains(/^広告$/)` | テキストを条件にする。通常のquerySelectorAllには渡せない |
@@ -925,13 +925,13 @@ DNSの基本遮断はホスト名に対するものです。$jsonprune はCoreLi
 | 表現 | 用途 | 小さな確認例 |
 |---|---|---|
 | `\.` | リテラルのドット | a.pngのドット |
-| `[0-9]` ／ `[^0-9]` | 数字／数字以外の一文字 | 7 ／ A |
-| `?` ／ `+` ／ `*` | 直前の要素が0か1回／1回以上／0回以上 | ab? は a と ab |
+| `[0-9]` / `[^0-9]` | 数字 / 数字以外の一文字 | 7 / A |
+| `?` / `+` / `*` | 直前の要素が0か1回 / 1回以上 / 0回以上 | ab? は a と ab |
 | `{2,4}` | 2〜4回 | 桁数の上限は後続境界と組み合わせる |
-| `^` ／ `$` | 先頭／末尾 | 部分一致を全体一致に絞る |
+| `^` / `$` | 先頭 / 末尾 | 部分一致を全体一致に絞る |
 | `(ad\|promo)` | 選択・キャプチャ | ad または promo |
 | `.*?` | 最短一致 | 長い入力では後続条件を具体化 |
-| `(?=…)` ／ `(?<=…)` | ECMAScriptの先読み／後読み | DNRへ移すときは別設計 |
+| `(?=…)` / `(?<=…)` | ECMAScriptの先読み / 後読み | DNRへ移すときは別設計 |
 | `\\` | 正規表現でバックスラッシュ自体 | JSON文字列内ではさらに文字列のエスケープが必要 |
 
 URLフィルタの区切り、JavaScriptの正規表現リテラル、JSON文字列では、同じ式でも外側の表記が変わります。文字列化した結果を確かめてから、実際のエンジンで確認してください。
@@ -1143,7 +1143,7 @@ Cookie同意UIは、選択済みでも表示される案内と、未選択で操
 | 応答内容の処理 | 製品・エンジンごとに対応差 | 構文と実行可能環境に差 | 文字置換で移植しない |
 | MV3上の配布 | AdGuard MV3の変換・登録制約 | uBlock Origin Liteは別製品 | 通常版uBOでの成功を根拠にしない |
 
-Adblock Plusの基本構文と共通する記号があっても、拡張機能独自のScriptletやModifierまで同じとは限りません。 [uBlock OriginのStatic filter syntax](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax) ／ [公式Scriptlets互換性表](https://github.com/AdguardTeam/Scriptlets/blob/master/wiki/compatibility-table.md)
+Adblock Plusの基本構文と共通する記号があっても、拡張機能独自のScriptletやModifierまで同じとは限りません。 [uBlock OriginのStatic filter syntax](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax) / [公式Scriptlets互換性表](https://github.com/AdguardTeam/Scriptlets/blob/master/wiki/compatibility-table.md)
 
 <a id="app-h"></a>
 
