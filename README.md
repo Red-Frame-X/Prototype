@@ -69,3 +69,7 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 - Chromebook上でChMateを操作するだけであれば、動作は安定しませんが、スマートフォン ハブを使う方法もあります。
 - 2026/11/14：ChromebookのAndroid環境でChMateがスレッド内のマウス操作を受け付けなくなったため、したらばStormに移行しました。
 
+### [AdGuard フィルタリングルール実践ガイド](./Markdown%20Notes/AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md)
+
+- AdGuard Browser Extension MV3とAdGuard for Androidを主な対象に、通信をブロックしたり、ページ内の要素を非表示にしたりするルールの書き方を、実例と演習で解説しています。
+- 製品ごとの対応構文の違い、Chrome DevToolsを使った動作確認、誤ブロックの調べ方もまとめています。
