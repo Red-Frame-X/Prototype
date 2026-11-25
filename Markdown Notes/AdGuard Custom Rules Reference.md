@@ -1,5 +1,7 @@
 # AdGuard Custom Rulesの構文リファレンス
 
+> 構文の確認やルールの作成は [AdGuard フィルタリングルール実践ガイド](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md) を参照してください。構文は [付録A](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md#app-a) 、製品別の対応は [付録B](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md#app-b) から引けます。以下は統合前の記録です。
+
 AdGuardのカスタムルールについて、主要な構文、対応環境、設計・検証方法、誤ブロックへの対処などを体系的にまとめた実用リファレンスです。
 
 ---

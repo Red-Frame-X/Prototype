@@ -19,16 +19,14 @@ ChromeOS、Android、コンテンツブロック、GitHub運用に関する調�
 | ドキュメント | 主な内容 |
 | --- | --- |
 | [コンテンツブロックのよくある質問（2026年版）](Content%20Blocking%20FAQ%202026.md) | uBlock Origin、uBlock Origin Lite、AdGuard Browser Extension MV3、Brave、Vivaldi、DNS併用、フィルタ設計を一次情報中心に整理したFAQ |
-| [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) | AdGuard Custom Rulesの基礎、設計、主要構文、MV3 / DNRとCoreLibsの差異、検証、デバッグ、誤ブロック対応、保守をまとめた実用リファレンス |
-| [AdGuard フィルタリングルール実践ガイド](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md) | ユーザールールの作成・検証・誤ブロックの修正を演習で学ぶ全16章の実践ガイド |
+| [AdGuard フィルタリングルール実践ガイド](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md) | 全16章の演習と構文リファレンス。ルールの設計・検証・誤ブロック対応、製品別互換性、保守を扱う。 [統合前の構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) も参照可 |
 | [DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md) | DNSブロックリストの主要形式、選び方、ブラウザ用コンテンツブロッカーとの役割分担・切り分けを整理したガイド |
 | [厳格ブロックの例外テスト](Strict%20Blocking%20Exceptions%20Test.md) | My docomoを対象に、AdGuardのStrict blockingと`$document`例外ルールの挙動を実機検証した記録 |
 
 ### コンテンツブロック資料の使い分け
 
 - [コンテンツブロックのよくある質問（2026年版）](Content%20Blocking%20FAQ%202026.md)：**製品選択・MV3・フィルタ併用の考え方を確認する**
-- [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md)：**AdGuard User Ruleの設計方法を学び、構文・検証・デバッグ方法を確認する**
-- [AdGuard フィルタリングルール実践ガイド](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md) を章順に読み、教材のHTMLと通信例でルールを検証する
+- [AdGuard フィルタリングルール実践ガイド](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md) を章順に読み、教材のHTMLと通信例でルールを検証する。構文は [付録A](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md#app-a) 、製品の違いは [付録B](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md#app-b) 、デバッグや誤ブロックは [第11章](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md#ch-11) と [第13章](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md#ch-13) から確認する。
 - [DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md)：**DNSレイヤーのブロックリストとブラウザブロッカーの違いを確認する**
 - [厳格ブロックの例外テスト](Strict%20Blocking%20Exceptions%20Test.md)：**Strict blockingと例外ルールの実機挙動を確認する**
 

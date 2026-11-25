@@ -18,6 +18,8 @@ AdGuard フィルタリングルール実践ガイド
 
 主な対象はChromiumのAdGuard Browser Extension MV3とAdGuard for Androidです。公式Releasesで確認した参照版は拡張機能5.5.4、Android 4.16.1。更新される構文資料にはこれらより新しいVersionの説明も含まれるため、版条件がある箇所は製品名とともに示します。実機のインストール版との照合は行っていません。各章の通信例は架空の教材で、表の期待結果は個々のルールを評価する条件を示します。
 
+構文を引くときは [付録A](#app-a) 、製品やVersionによる違いを調べるときは [付録B](#app-b) を参照してください。旧リファレンスから移した設計・検証の手順は、該当する章の実例と合わせて読めます。従来の記述と例は [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) で確認できます。
+
 ## 目次
 
 - [第1章　広告ブロックとフィルタリングの基本原理](#ch-01)
@@ -142,6 +144,12 @@ Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル�
 
 予約済みドメインの架空のPathには、この本のHTMLが公開されているわけではありません。DOMの演習はHTMLをローカルに保存して試せます。ドメイン限定のネットワークルールを評価するには、同じホスト名・要求元・リソース種別を再現するTest環境が必要です。 [Androidの設定](https://adguard.com/kb/adguard-for-android/features/settings/) / [拡張機能の公式資料](https://adguard.com/kb/adguard-browser-extension/)
 
+
+### どの順番で読み進めるか
+
+まず、要素選択ツールが作ったルールを一行だけ読み、対象サイトとセレクタを見比べます。次に、画像の通信を止める場合と、残った枠を隠す場合を試します。すでに購読フィルタで処理される対象は、同じルールを手元に重ねる必要があるかログで確認してください。
+
+基本の一行が読めるようになったら、公式フィルタの実例で条件の絞り方を学び、誤ブロックをログで切り分けます。最後に、使っている製品で変換や実行に制約があるかを確認します。 [第11章](#ch-11) 、 [第12章](#ch-12) 、 [第13章](#ch-13) で順に扱います。
 
 <a id="ch-02"></a>
 
@@ -277,6 +285,18 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 **応用問題**　`$image,media` を `$~script` にまとめてよいでしょうか。**解答**　後者には画像・動画以外の非Script要求も入るため、同等ではありません。フォント要求を一件加えるだけで違いを確認できます。
 
 参考資料　[条件・種別・処理の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#basic-rule-modifiers) / [TSUrlFilterの使い方](https://github.com/AdguardTeam/tsurlfilter)
+
+### 埋め込み枠と記事ページを見分ける
+
+記事内に広告用の iframe と決済用の iframe があるとします。広告用の枠だけを止めるなら、ログで埋め込み文書のURLと種別を確認してから、Pathまで含むパターンに `$subdocument` を付けます。たとえば次の教材では、広告枠に一致し、決済枠と記事本体が読み込まれることを確かめます。
+
+```adblock
+||embed.example.net/ad-frame.html^$subdocument,domain=news.example.org
+```
+
+ページそのものを扱う `$document` と、埋め込まれた文書を扱う `$subdocument` の違いは、例外を作るときにも効いてきます。
+
+通知や共同編集が止まったときは `$websocket`、計測用ビーコンが残ったときは `$ping` が調査の手がかりになります。Fetchで送る計測データや動画プレーヤーのAPIなど、見た目だけでは種別が分からない通信もあります。実際の種別をログで確かめ、必要な場合だけ `$method` でメソッドを絞ります。 [付録AのModifier辞典](#app-a)
 
 <a id="ch-04"></a>
 
@@ -423,6 +443,12 @@ news.example.org#@#article[data-kind="sponsor"]
 
 参考資料　[AdGuardのCosmetic Rules](https://adguard.com/kb/general/ad-filtering/create-own-filters/#cosmetic-rules)
 
+### 枠の表示だけを変えるか、要素を取り除くか
+
+広告枠を非表示にしたあと本文がスクロールできない場合は、開発者ツールでスクロールを止めている要素とプロパティを確認します。スタイルの調整が必要なら、通常のセレクタを使う `#$#` と、Extended CSSで選んだ要素に宣言を適用する `#$?#` を使い分けます。 [付録Aのフィルタリング構文一覧](#app-a)
+
+DOMから要素を取り除く `:remove()` を試す場合は、同じページで更新される動画や操作ボタンも確認します。表示だけを変える場合と比べて、サイトのScriptが参照する要素自体が失われるためです。 [付録CのCSSセレクタ早見表](#app-c)
+
 <a id="ch-07"></a>
 
 ## 第7章 Extended CSS
@@ -463,6 +489,18 @@ news.example.org#?#article.card:has(> .label:contains(/^協賛$/))
 | 表示されないテンプレート内にラベルあり | 実際のDOMを検査 | 実際のDOMを検査 |
 
 二行目の変化は望ましいかもしれませんが、同一動作の最適化とは区別して変更履歴に残します。ExtendedCssの旧記法には互換用の形式があり、`:if-not()` のように現在のライブラリで無効とされるものもあります。古いブログ記事のセレクタは対象Versionの構文一覧と照合します。
+
+### ラベルがテキストノードに見つからないとき
+
+「広告」の文字が `::before` や `::after` の `content` で描かれていれば、開発者ツールの計算済みスタイルを確認します。 `:matches-css-before()` と `:matches-css-after()` は、その値を条件にできます。 `:matches-css()` は要素自身の計算済みスタイル、 `:matches-attr()` は属性名や属性値を調べる場合の候補です。
+
+同じ記事一覧で、まずカードやその親要素まで候補を絞り、広告ラベル付きの記事と通常記事を一つずつ見比べます。たとえばカードの `::before` に「広告」が入る教材なら、次のように条件を組み立てます。
+
+```adblock
+news.example.org#?#.article-card:matches-css-before(content: *広告*)
+```
+
+広告ラベルが子要素に入っているときは `:has()`、見つけたラベルから外枠へさかのぼるときは `:upward()` も候補です。 [AdGuard公式構文リファレンスのExtended CSS](https://adguard.com/kb/general/ad-filtering/create-own-filters/#extended-css-selectors)
 
 <a id="ch-08"></a>
 
@@ -535,6 +573,12 @@ news.example.org#@%#//scriptlet('set-constant', 'demoSponsorEnabled', 'false')
 
 参考資料　[Scriptletの名称と引数](https://github.com/AdguardTeam/Scriptlets/blob/420ffa66c6e713ffa95c80e4bfa356b1a796c3a3/wiki/about-scriptlets.md) / [置換リソース](https://github.com/AdguardTeam/Scriptlets/blob/420ffa66c6e713ffa95c80e4bfa356b1a796c3a3/wiki/about-redirects.md)
 
+### 応答が届くかどうかも確かめる
+
+計測用のScriptを止めるとページが読み込み中のままになる場合は、統計用の処理が止まったかに加えて、ページがScriptの応答を待ち続けていないかを調べます。 `$redirect` は一致した通信を指定のリソースに置き換えます。 `$redirect-rule` は別のルールでブロックされる通信に置換先を指定する構文で、AdGuard Browser Extension MV3では使えません。旧ルールの `$empty` は非推奨で、公式リファレンスでは `$redirect=nooptext` として扱われます。 [AdGuard公式構文リファレンス](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+
+応答のJSONから項目を外すなら、ページ側でJSONを処理する `json-prune` と、通信経路上で本文を書き換える `$replace` では介入する場所が異なります。FetchとXHRでは対応するScriptletも異なります。ログに残る通信と画面上の結果を両方確認し、注入だけを取り消す場合は元のルールに対応する `#@%#` の例外を確認します。 [付録EのScriptlet・Redirect Resources一覧](#app-e)
+
 <a id="ch-10"></a>
 
 ## 第10章 Cookie・トラッキング・迷惑要素への対処
@@ -564,6 +608,12 @@ Cookieは条件に応じてHTTP要求と共に送られます。Local Storageの
 **練習**　「バナーが消えてページがスクロールできる」を同意処理の合格条件にしてよいでしょうか。**解答**　表示上の条件として記録し、拒否の保存と外部要求の変化には別の合格条件を設けます。
 
 参考資料　[Cookie処理](https://adguard.com/kb/general/ad-filtering/create-own-filters/#cookie-modifier) / [Queryの処理](https://adguard.com/kb/general/ad-filtering/create-own-filters/#removeparam-modifier)
+
+### 通信を止めずに変更したいとき
+
+商品ページへの遷移を残したいなら、まず何を変更するのかを決めます。Queryから名前で項目を取り除くなら `$removeparam`、URLの一部を置き換える必要があるなら `$urltransform` を調べます。元のURLと変更後のURLを記録し、商品IDや署名付きURLなど、残すべき値を含む例も試します。
+
+応答ヘッダーの名前や値で通信を選ぶ `$header` と、指定のヘッダーを取り除く `$removeheader` も用途が異なります。Cookieを扱う `$cookie` では、計測の有無に加えてログインや同意の状態が残るかを確認します。製品によって書き換えの対応範囲が異なるため、記法を選んだら互換性表と各Modifierの公式説明を確認します。 [付録A](#app-a) / [付録B](#app-b)
 
 <a id="ch-11"></a>
 
@@ -646,6 +696,20 @@ DNRで一つの拡張内に複数の候補がある場合、数値priorityの大
 
 静的RulesetについてChrome 120以降は宣言100、同時有効50の上限が仕様に記載されています。これは**ルールセットの個数**で、配下にあるフィルタ行数ではありません。ChromeのAPI上限、AdGuardが製品として採用する上限、現在のブラウザで使える残り枠を別の欄に記録すると調査結果が再現しやすくなります。
 
+### Androidで通信がログに出てこないとき
+
+同じURLでも、ブラウザでは見えるのにアプリで試すとログに出ないことがあります。最初にAdGuardの保護と、対象アプリがフィルタリング対象かを確認します。そこで原因を絞れない場合は、症状に対応する設定だけを確認します。設定名や表示場所はインストール版のUIと公式資料を照合してください。
+
+| 症状 | 確認する設定や記録 |
+| --- | --- |
+| しばらくすると保護が止まる | VPNの状態、Watchdog、Android側のバッテリー管理 |
+| 名前解決の経路が想定と違う | アプリ独自のDoHと、AdGuardがその通信をフィルタリングする経路 |
+| HTTPSの応答にルールが効かない | アプリがHTTPSフィルタリングの対象か、HTTP/3やECHに関連する設定が症状に関わるか |
+| IPv6接続のときだけ問題が出る | IPv6フィルタリング。DNSでブロック時に返す応答方式は別項目として確認する |
+| 通常のログで原因を追えない | 調査に必要な範囲でログレベルやPCAPを確認し、記録後は元の設定へ戻す |
+
+ローレベル設定を変更すると接続やプライバシーに影響することがあります。元の値を控え、変更前後で同じ操作を試します。公開するログに含まれるCookieや認証URLは取り除きます。 [AdGuard for Androidのローレベル設定](https://adguard.com/kb/adguard-for-android/features/low-level-settings/)
+
 <a id="ch-13"></a>
 
 ## 第13章 誤ブロックの調査と修正
@@ -674,6 +738,12 @@ flowchart TD
 | 紹介リンクが開かない | 最初の文書要求と遷移後の宛先 | リンクのホストと最終サイトを区別 |
 
 **練習**　公式フィルタの更新後に独自例外が不要に見えます。**解答**　独自例外だけを無効にして元の症状と反例を再試行します。報告には対象フィルタの更新日時と上流IssueまたはCommitを添えます。 [AdGuard Filtersの報告先](https://github.com/AdguardTeam/AdguardFilters/issues)
+
+### フィルタの問題を再現できる形で報告する
+
+広告が残る、正常な機能が壊れる、同意バナーが邪魔になる、広告ブロッカーを検出したという警告が出る、計測通信が残る。どれが起きたかを最初に書くと、調べる箇所が伝わります。たとえばコメント欄が消えたなら、フィルタリングログで該当する要求のURL、種別、処理結果、一致したルールを確認します。ログに遮断が見つからない場合は、要素非表示やScriptletも候補に挙げます。
+
+報告には、製品とVersion、URL、端末とブラウザ、有効なフィルタやTracking protection、操作手順、期待した結果と実際の結果を添えます。AdGuard有効時、無効時、原因候補のルールだけを外した場合の結果がそろうと比較できます。ほかのブロッカーやDNS、VPNを併用している場合は、その状態も記録します。スクリーンショットやログを公開する前に、認証情報と個人情報を伏せてください。 [AdGuard Web Reporting Toolの案内](https://adguard.com/kb/guides/report-website/)
 
 <a id="ch-14"></a>
 
@@ -1223,6 +1293,8 @@ Adblock Plusの基本構文と共通する記号があっても、拡張機能�
 | DevTools、Filtering log、iframe | [第11章](#ch-11) |
 | Android、DNR、MV3、製品差 | [第12章](#ch-12) ・ [付録B](#app-b) |
 | 最適化、回帰Test、AGLint | [第14章](#ch-14) ・ [第15章](#ch-15) |
+| Androidのローレベル設定、VPN、PCAP | [第12章](#ch-12) |
+| 調査ログとフィルタの問題報告 | [第13章](#ch-13) |
 | フィルタ作成の総合演習 | [第16章](#ch-16) |
 
 <a id="afterword"></a>
@@ -1234,6 +1306,8 @@ Adblock Plusの基本構文と共通する記号があっても、拡張機能�
 <a id="revisions"></a>
 
 ## 改訂履歴と検証記録
+
+2026年11月26日　旧リファレンスの構文例、Androidの設定調査、フィルタの問題報告を関連章に組み込みました。
 
 2026年11月25日　既存の第1・2章を引き継ぎ、全16章・付録A〜J・索引を一つのMarkdown原本に統合。検証範囲は下記のとおりです。
 
