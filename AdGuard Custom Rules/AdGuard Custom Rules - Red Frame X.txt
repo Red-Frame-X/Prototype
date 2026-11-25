@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611232122
+! Version: 202611251923
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -211,6 +211,10 @@ m.youtube.com##ytm-video-with-context-renderer:has(.big-shorts-singleton)
 ! Mixpanel用の独自補完例外。対象サービス内からの通信のみ許可
 ! Mixpanel内からmixpanel.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
 @@||mixpanel.com^$domain=mixpanel.com
+
+! ndc.co.jp
+! Cookie同意バナーを非表示（同意状態は変更しない）
+ndc.co.jp###cookieBannerWrap
 
 ! news.google.com
 ! 上部カテゴリタブの「エンタメ」を非表示
