@@ -6,7 +6,7 @@ AdGuard フィルタリングルール実践ガイド
 | --- | --- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | [Repositoryのライセンス案内](../LICENSES.md) |
-| **Version** | 202611251817 |
+| **Version** | 202611251825 |
 
 ## はじめに
 
