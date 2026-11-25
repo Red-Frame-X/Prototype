@@ -1,6 +1,6 @@
-# AdGuard Filtering Rules — A Practical Guide
+# AdGuard フィルタリングルール実践ガイド
 
-*AdGuard フィルタリングルール実践ガイド*
+AdGuard フィルタリングルール実践ガイド
 
 | Metadata | 情報 |
 | --- | --- |
