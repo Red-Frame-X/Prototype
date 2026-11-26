@@ -1,14 +1,4 @@
 {
   "version": 1,
-  "approvals": [
-    {
-      "rules_sha256": "12d614875cb4659b2051c4ec8ed4462ef1efbb3c810bbca89a3c300dd1ed87c1",
-      "rules": [
-        "chunichi.co.jp##.cmp-hdg005:has(> a[href*=\"/k/pr_ichioshi\"])",
-        "chunichi.co.jp##.cmp-hdg005:has(> a[href*=\"/k/pr_ichioshi\"]) + .cmp-lst001"
-      ],
-      "reason": "中日新聞の「【PR】イチオシ情報」は広告ではないと判断し、コンテンツ非表示ルール2件を削除するため。",
-      "reference": "https://github.com/Red-Frame-X/Prototype/pull/417"
-    }
-  ]
+  "approvals": []
 }
