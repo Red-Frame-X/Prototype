@@ -73,3 +73,4 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 
 - AdGuard Browser Extension MV3とAdGuard for Androidを主な対象に、通信をブロックしたり、ページ内の要素を非表示にしたりするルールの書き方を、実例と演習で解説しています。
 - 製品ごとの対応構文の違い、Chrome DevToolsを使った動作確認、誤ブロックの調べ方もまとめています。
+- AdGuardの公式ドキュメントではなく、自身の利用環境や使用傾向に合わせて生成・編集した非公式ドキュメントです。
