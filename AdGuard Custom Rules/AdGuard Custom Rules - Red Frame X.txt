@@ -72,6 +72,12 @@ chatgpt.com##aside:has(button[aria-label="ChatGPT ビーコンバナーを閉じ
 ! ChatGPTの入力欄上部に表示される案内バナー領域を直接非表示にし、描画時のチラつきを回避
 chatgpt.com##[data-prompt-textarea-header]
 
+! www.chunichi.co.jp
+! トップページの「【PR】イチオシ情報」見出しを非表示
+chunichi.co.jp##.cmp-hdg005:has(> a[href*="/k/pr_ichioshi"])
+! 「【PR】イチオシ情報」直下の広告・PRコンテンツ一覧を非表示
+chunichi.co.jp##.cmp-hdg005:has(> a[href*="/k/pr_ichioshi"]) + .cmp-lst001
+
 ! diamond.jp
 ! おすすめ記事の内部枠も非表示（従来のルールを保持）
 diamond.jp###cx-recommend-member-articles
