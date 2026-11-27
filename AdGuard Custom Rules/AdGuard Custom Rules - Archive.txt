@@ -110,5 +110,6 @@
 ! togetter.com#@%#//scriptlet('trusted-click-element', '.more_tweet_box > button', '', '1000')
 
 ! toyscabin.com
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/247712
 ! Cookie利用の案内バナーを非表示
 ! toyscabin.com###cookieField
