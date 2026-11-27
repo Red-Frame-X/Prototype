@@ -26,6 +26,12 @@ UserScriptは対象ページ上でJavaScriptを実行するため、保存した
 
 UserScriptの日本語表示名は`@name:ja`に定義しています。更新時の識別に使われる`@name`と`@namespace`は保持します。実際の表示名は、使用するUserScriptマネージャーの言語設定と対応状況によって異なります。
 
+### Metadataと処理を照合する
+
+`@match` や `@include` は実行対象のURL、 `@run-at` は実行を始める時期、 `@grant` は使用するUserScriptマネージャーのAPIを指定します。たとえばYouTubeのシェルフを展開するScriptでは、 `@run-at document-start` を指定し、 `GM_addStyle` でCSSを追加します。 `@grant none` のScriptも、ページ上の要素を読み取ったり変更したりできます。 [ViolentmonkeyのMetadata仕様](https://violentmonkey.github.io/api/metadata-block/)
+
+対象ページを開いたら、Scriptを有効にした場合と一時停止した場合で、表示や操作結果を比べます。サイト内の画面移動でだけ症状が出る場合は、ページを直接開いた場合の結果も記録します。
+
 ## GIGAZINEの利用メモ
 
 `gigazine-fill-article-grid.user.js`はViolentmonkey向けに作成した個人用UserScriptです。カテゴリー表示の`.catab`と、記事一覧の`#section .content > section > .card`を基準に処理します。AdGuardで同じカテゴリーを非表示にしている場合も併用を想定しています。

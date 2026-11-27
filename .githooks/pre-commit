@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Versionとルールはステージ済みの内容を検査する。
+# Markdownlintには、その内容を一時ディレクトリへ展開して渡す。
 # 作業ツリーの未ステージ修正で、Commit対象の不備が隠れないようにする。
 repo_root="$(git rev-parse --show-toplevel)"
 python3 "$repo_root/scripts/check_adguard_version_timestamp.py" --staged

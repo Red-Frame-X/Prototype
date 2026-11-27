@@ -70,6 +70,13 @@ Actionsは翻訳・生成・Pushの事前阻止を行いません。
 また、`GITHUB_TOKEN`によるPushは通常、新たなPush Workflowを起動しません。
 既存の自動更新Workflowの生成元でも適切なmessageを維持してください。
 
+## 変更を検証する順序
+
+1. 作業用Branchで対象ファイルを編集し、`git diff` で変更の目的と影響範囲を確認します。
+2. 関連するLintとTestを実行します。Lintでは構文や記述規則を調べ、Testでは用意された入力に対する処理結果を確かめます。実機が必要な確認は、使用した製品とVersionを記録します。
+3. `git add` 後に `git diff --cached` を読みます。ステージ済みの差分が、次のCommitに入る内容です。
+4. Pull RequestのChecksで、対象CommitのCI結果を確認します。失敗した場合はWorkflowのRunを開き、Job内の失敗したstepとログを確認します。
+
 ## ローカル検証の事前確認
 
 全Testの前に、現在使うPython環境へ `requirements-ci.txt` の依存を導入し、

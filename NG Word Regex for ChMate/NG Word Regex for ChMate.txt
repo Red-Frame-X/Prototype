@@ -1,6 +1,6 @@
 ! Title: NG Word Regex for ChMate
 ! Description: ChMateのNGワード用正規表現。正規表現と非表示を有効にして登録。
-! Version: 202611230814
+! Version: 202611280532
 ! Syntax: Java Regex (ChMate NG)
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -26,7 +26,7 @@
 ! 外国語を含むネットスラングや顔文字をNGにします
 [A-Za-z]{50,}+|\bJAP\b|BB(?:A|QN)|DQN|\bF[Uu]ck\b|Fラン|NEET|Qアノン|SEX|ggrks|[∀ωд]
 
-! 「w」がちょうど10個連続しているレス、3個以上の「w」で行末またはレスの最後を締めているレスをNGにします
+! 半角・全角のwが10個以上連続する箇所、または行末・レス末尾に続く3個以上のwを検出します
 (?:[wｗ]{10}|[wｗ]{3,}+(?:\n|$))
 
 ! 1つのレスの中に「imgur.com/」という文字列が9回以上含まれる書き込みをNGにします
