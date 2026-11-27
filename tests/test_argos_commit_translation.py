@@ -378,6 +378,18 @@ class ArgosTranslationTests(unittest.TestCase):
         validate_translation(original, original)
         engine.assert_not_called()
 
+    def test_pr420_pixel_widths_do_not_trigger_translation(self):
+        source = ('Chromiumで対象記事に非表示スタイルを適用し、画面幅1280pxと390pxで'
+                  '案内の表示条件に達してもホイールスクロールが続くことを確認しました。')
+        engine = Mock(side_effect=AssertionError('日本語のPR本文を翻訳しています。'))
+        self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+
+    def test_pixel_value_is_preserved_while_english_prose_is_translated(self):
+        engine = Mock(side_effect=lambda source: source.removeprefix('Use ') + 'を使用')
+        self.assertEqual(argos.translate_text('Use 10.5px', engine), '10.5pxを使用')
+        engine.assert_called_once_with('Use ZXQ0000QXZ')
+
     def test_uppercase_range_is_protected_while_english_prose_is_translated(self):
         engine = Mock(side_effect=lambda text: text.replace('Update ', '') + 'を更新')
         self.assertEqual(argos.translate_text('Update A〜J', engine), 'A〜Jを更新')

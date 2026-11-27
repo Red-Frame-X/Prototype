@@ -84,6 +84,8 @@ PROTECTED = re.compile(PROTECTED.pattern + r'|(?<![A-Za-z0-9_])(?!(?:' + PROSE_W
 # PathはASCIIの境界・文字集合で先に照合し、拡張子だけが翻訳器へ漏れるのを防ぐ。
 # main.protected=false等の設定値も全体を保持し、一般説明中のfalseは保護しない。
 PROTECTED = re.compile(
+    # 小数を含むピクセル値はPathの照合より先に一体で保持する。
+    r'(?<![A-Za-z0-9_./-])[0-9]+(?:\.[0-9]+)?px(?![A-Za-z0-9_/-])|'
     # 付録A〜Jなどの範囲表記は日本語文中の識別子として一体で保護する。
     r'(?<![A-Za-z0-9_])[A-Z][〜～][A-Z](?![A-Za-z0-9_])|'
     r'(?<![A-Za-z0-9_./-])(?:[A-Za-z_][A-Za-z0-9_]*\.)+'
