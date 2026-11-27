@@ -8,7 +8,7 @@
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | GPL-3.0 |
-| **Version** | 202611280532 |
+| **Version** | 202611280534 |
 
 第三者コンテンツの扱いおよび無保証については [LICENSES.md](../LICENSES.md) を参照してください。
 

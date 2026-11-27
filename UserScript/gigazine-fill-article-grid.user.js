@@ -3,7 +3,7 @@
 // @name:ja      GIGAZINE 記事の空き枠補充
 // @namespace    local.gigazine
 // @license      CC0-1.0
-// @version      202610310740
+// @version      202611280534
 // @description  AdGuardユーザールールによる記事の非表示を補完し、取得できた次ページの記事で最終行の空き枠を埋めます。
 // @author       Red Frame X
 // @match        https://gigazine.net/*
