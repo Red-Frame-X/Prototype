@@ -603,7 +603,7 @@ Cookieは条件に応じてHTTP要求と共に送られます。Local Storageの
 ||shop.example.org/catalog/$removeparam=demo_campaign
 ```
 
-商品URLが `/catalog/item?id=42&demo_campaign=summer` なら、残したいのは商品を選ぶ `id=42` です。公式仕様では `$removeparam` の対象はGET、HEAD、OPTIONSと一部のPOSTです。対象製品で、送信前後の要求URLとメソッドを確認します。削除対象のないURL、同名の値が別の意味を持つ画面、署名付きURLも別々に比較します。署名の計算にQueryが含まれるサービスでは変更が認証失敗につながり得ます。広告計測、購入紹介の帰属、ログイン遷移はURLを介していても目的が違います。
+商品URLが `/catalog/item?id=42&demo_campaign=summer` なら、残したいのは商品を選ぶ `id=42` です。公式仕様では `$removeparam` の対象はGET、HEAD、OPTIONSと一部のPOSTです。ChromiumのAdGuard Browser Extension MV3では、正規表現、値の否定、例外ルールの形式に制約があります。対象製品で、送信前後の要求URLとメソッドを確認します。削除対象のないURL、同名の値が別の意味を持つ画面、署名付きURLも別々に比較します。署名の計算にQueryが含まれるサービスでは変更が認証失敗につながり得ます。広告計測、購入紹介の帰属、ログイン遷移はURLを介していても目的が違います。
 
 ニュースレターのオーバーレイは特定要素の非表示で足りるかもしれません。自動再生は映像通信を全面遮断すると、読者が再生したい本編まで壊れます。通知要求はサイト内の予告バナーとブラウザ自身の権限ダイアログを区別します。追跡Pixelは目に見えなくても要求されるので、通信を止める目的ならNetworkで判定します。
 
@@ -897,7 +897,7 @@ DNS固有の `$dnstype` は問い合わせ種別、`$dnsrewrite` は返答の書
 | Modifier・公式仕様 | 処理と適用条件 | 主な別表記 |
 |---|---|---|
 | [`$app`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#app-modifier) | 発生元アプリのプロセス名・パッケージ名を条件にする | — |
-| [`$denyallow`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#denyallow-modifier) | 指定した宛先をそのルールの対象から外す。ChromiumのAdGuard Browser Extension MV3では `$domain` の指定が必要 | — |
+| [`$denyallow`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#denyallow-modifier) | 指定した宛先をそのルールの対象から外す。`$to` との併用は不可 | — |
 | [`$domain`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#domain-modifier) | 要求元ドメインを含める、または除外する | — |
 | [`$header`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#header-modifier) | 応答ヘッダー名と任意の値を照合する | — |
 | [`$important`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#important-modifier) | 通常の例外より強い遮断など優先関係を変更する | — |
