@@ -10,7 +10,7 @@ IssueやPull Requestで、結論の下に長いログや検証結果を添える
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611280535 |
+| **Version** | 202611280538 |
 
 ```
 <details>
