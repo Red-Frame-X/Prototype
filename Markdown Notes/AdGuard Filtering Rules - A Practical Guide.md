@@ -10,13 +10,13 @@ AdGuardで広告や不要な要素をブロックするルールの書き方と�
 
 ## はじめに
 
-記事を読みながら「この広告だけ消したい」と思ったとき、最初に何を選べばよいでしょうか。画像のURL、画像を囲む枠、「広告」と書いたラベルはそれぞれ別の対象です。本書では一つの記事ページを出発点にして、対象を決め、ルールを一行書き、消したくないものが残るところまで確かめます。
+記事を読みながら「この広告だけ消したい」と思ったとき、最初に何を選べばよいでしょうか。画像のURL、画像を囲む枠、「広告」と書いたラベルはそれぞれ別の対象です。本書は、自身の利用環境に合わせた非公式の実践ガイドです。一つの記事ページを出発点に、対象を決め、ルールを一行書き、残したい要素や機能に影響がないかを確かめます。
 
 初めてルールを書く方は第1〜6章を順に読み、見覚えのある症状がある方は索引から該当箇所へ進んでください。コードブロックは個別の教材です。比較用の広い例外や互いを打ち消すルールもあるので、一冊分をまとめて購読する用途には向きません。
 
 ### 対象製品と読み方
 
-主な対象はChromiumのAdGuard Browser Extension MV3とAdGuard for Androidです。公式Releasesで確認した参照版は拡張機能5.5.4、Android 4.16.1。更新される構文資料にはこれらより新しいVersionの説明も含まれるため、版条件がある箇所は製品名とともに示します。実機のインストール版との照合は行っていません。各章の通信例は架空の教材で、表の期待結果は個々のルールを評価する条件を示します。
+主な対象はChromiumのAdGuard Browser Extension MV3とAdGuard for Androidです。公式Releasesで確認した参照版は拡張機能5.5.4とAndroid 4.16.1です。更新される構文資料にはこれらより新しいVersionの説明も含まれるため、版条件がある箇所は製品名とともに示します。実機のインストール版との照合は行っていません。各章の通信例は架空の教材で、表の期待結果は個々のルールを評価する条件を示します。
 
 構文を引くときは [付録A](#app-a) 、製品やVersionによる違いを調べるときは [付録B](#app-b) を参照してください。旧リファレンスから移した設計・検証の手順は、該当する章の実例と合わせて読めます。従来の記述と例は [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) で確認できます。
 
@@ -220,9 +220,9 @@ Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル�
 
 ### 「同じサイト」の境界を試す
 
-news.example.org から img.example.org へ画像を要求すると、ホスト名は異なります。通常のThird-party条件ではこの組み合わせは同一登録可能ドメイン側です。一方、strict系はホスト名を厳密に比べるので結果が変わります。ポートやスキームを含むOriginの比較とも区別しましょう。適用元を特定できない要求の扱いにはエンジンの版による差があります。
+news.example.org から img.example.org へ画像を要求すると、ホスト名は異なります。TSUrlFilterの通常のThird-party判定では、登録可能ドメインが同じこの組み合わせはFirst-partyです。AdGuard公式資料では通常の判定に `Sec-Fetch-Site: cross-site` が関わる場合も説明されています。CoreLibs 1.16以降で利用できるstrict系では、ホスト名の違いも判定に反映されます。ポートやスキームを含むOriginの比較とも区別しましょう。適用元を特定できない要求の扱いにはエンジンの版による差があります。
 
-**練習**　閲覧元が一定で送信先が複数あるとき、送信先を列挙する候補は何でしょう。**解答**　`$to` です。要求元の `$domain` と取り違えると、写し間違いのないドメイン名でも期待した通信に一致しません。設定後は別サイトから同じ送信先へアクセスする反例も記録します。
+**練習**　閲覧元が一定で送信先が複数あるとき、送信先を列挙する候補は何でしょう。**解答**　`$to` です。要求元の `$domain` と取り違えると、写し間違いのないドメイン名でも期待した通信に一致しません。設定後は別サイトから同じ送信先へアクセスする反例も記録します。`$to` は指定した宛先とそのサブドメインに一致し、先頭に `~` を付けた値で除外できます。`$denyallow` も宛先の除外に使えますが、`$to` と併用できず、`||` などで宛先ドメインを固定したパターンにも付けられません。 [`$to` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#to-modifier) / [`$denyallow` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#denyallow-modifier)
 
 ### 実習　同じURLで種別だけを変える
 
@@ -280,7 +280,7 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 
 ### ページ例外が効く範囲
 
-`$generichide` は広い範囲に配布された非表示ルール、`$specifichide` は特定サイト向けの非表示ルールに着目します。両方の種類を解除する `$elemhide` まで広げる前に、問題の要素を隠しているルール自身に対応する `#@#` で足りるかを確認しましょう。`$genericblock`・`$urlblock` は通信側の例外、`$jsinject` はScript注入関連、`$content` はHTMLなどの応答処理関連です。ページの症状が見た目に現れていても、必要な例外が表示側とは限りません。
+`$generichide` は適用先を特定ドメインに限定していないCosmetic Rulesを解除します。除外ドメインだけを指定した `~example.org##.banner` も汎用ルールです。`$specifichide` は適用先を特定ドメインに限定した要素非表示とCSS Injectionを解除します。すべてのCosmetic Rulesを解除する `$elemhide` まで広げる前に、問題の要素を隠しているルール自身に対応する `#@#` で足りるかを確認しましょう。`$genericblock`・`$urlblock` は通信側の例外、`$jsinject` はScript注入関連、`$content` はHTMLなどの応答処理関連です。ChromiumのAdGuard Browser Extension MV3では `$genericblock` と `$urlblock` は非対応です。AdGuard for iOSとAdGuard Mini for Macでは、どちらも `$document` 相当の広い例外として動作します。ページの症状が見た目に現れていても、必要な例外が表示側とは限りません。 [汎用ルールの定義](https://adguard.com/kb/general/ad-filtering/create-own-filters/#generic-rules) / [`$genericblock` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#genericblock-modifier) / [`$urlblock` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#urlblock-modifier)
 
 **応用問題**　`$image,media` を `$~script` にまとめてよいでしょうか。**解答**　後者には画像・動画以外の非Script要求も入るため、同等ではありません。フォント要求を一件加えるだけで違いを確認できます。
 
@@ -294,7 +294,7 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 ||embed.example.net/ad-frame.html^$subdocument,domain=news.example.org
 ```
 
-ページそのものを扱う `$document` と、埋め込まれた文書を扱う `$subdocument` の違いは、例外を作るときにも効いてきます。
+`$document` はタブの主文書に一致し、iframeには `$subdocument` を使います。`@@` と組み合わせた `$document` はページ単位の例外で、要素非表示、応答本文の処理、通信のブロック、JavaScript注入、UserScriptなどに影響します。 [`$document` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#document-modifier)
 
 通知や共同編集が止まったときは `$websocket`、計測用ビーコンが残ったときは `$ping` が調査の手がかりになります。Fetchで送る計測データや動画プレーヤーのAPIなど、見た目だけでは種別が分からない通信もあります。実際の種別をログで確かめ、必要な場合だけ `$method` でメソッドを絞ります。 [付録AのModifier辞典](#app-a)
 
@@ -324,7 +324,9 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 | 5 | 対象ドキュメントへの例外 | ページ単位の広い除外。画像一枚の障害には過大 |
 | 6 | URL、画像種別、要求元 | Queryが追加されれば一致しなくなる |
 
-通常の遮断と通常の許可が競合すれば例外が優先されます。`$important` を付けた遮断には通常の例外だけで勝てません。まず適用されたルールを読んでください。`$badfilter` は同じ対象ルールを無効化する手段です。元のルールが全サイト向けなら無効化の影響も全サイトに及び得ます。
+通常の遮断と通常の許可が競合すれば例外が優先されます。`$important` を付けた遮断は通常の例外より優先され、両方に `$important` が付く場合は例外が優先されます。まず適用されたルールを確認します。 [`$important` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#important-modifier)
+
+`$badfilter` は同じ対象ルールを無効化する手段です。元のルールが全サイト向けなら無効化の影響も全サイトに及び得ます。ChromiumのAdGuard Browser Extension MV3では、DNRへの変換時に元のルールを完全に無効化する指定だけが適用されます。 [`$badfilter` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#badfilter-modifier)
 
 ### 表示だけを戻す
 
@@ -567,7 +569,9 @@ news.example.org#@%#//scriptlet('set-constant', 'demoSponsorEnabled', 'false')
 
 `$redirect` は遮断と代替を一つのルールで指定します。`$redirect-rule` は別のルールで遮断されることを前提に置換条件を加えます。後者はChromium MV3版で非対応です。JSONを期待する呼び出しに空のScriptを返した場合、通信上のエラーが消えてもJSONの解析に失敗します。形式と呼び出し側の契約を確認してください。
 
-任意のJavaScriptを記述するルールやUserScriptには別の権限・配布条件があります。公式資料はユーザールールをTrusted filtersに含めていますが、製品が実装しない機能まで有効になるわけではありません。特にMV3では製品に同梱された機能、呼び出せるScriptletとその引数の制限を確認します。
+任意のJavaScriptを記述するルールやUserScriptには別の権限・配布条件があります。公式資料はユーザールールをTrusted filtersに含めていますが、製品が実装しない機能まで有効になるわけではありません。AdGuard Browser Extension MV3 5.2以降では、ユーザールールやカスタムフィルタのJavaScript RulesにUser Scripts APIが使われます。Chrome 138以降では拡張機能の詳細で「Allow user scripts」を有効にし、138未満では拡張機能のDeveloper modeを有効にします。 [User Scripts APIの製品説明](https://adguard.com/kb/adguard-browser-extension/user-scripts-api/)
+
+Scriptletの例外で引数まで指定する場合は、製品が例外の完全構文に対応しているか確認します。 [JavaScript Rulesの制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#javascript-rules) / [Scriptletの仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#scriptlets)
 
 **練習**　画像URLを変えずにダウンロードも防ぎたいとき、表示フラグを変えただけで成功と言えるでしょうか。**解答**　Networkで要求を観察します。ページが画像を先読みしていれば、描画分岐を止めても要求は残ります。
 
@@ -601,7 +605,7 @@ Cookieは条件に応じてHTTP要求と共に送られます。Local Storageの
 ||shop.example.org/catalog/$removeparam=demo_campaign
 ```
 
-商品URLが `/catalog/item?id=42&demo_campaign=summer` なら、残したいのは商品を選ぶ id=42 です。削除対象のないURL、同名の値が別の意味を持つ画面、署名付きURLも別々に比較します。署名の計算にQueryが含まれるサービスでは変更が認証失敗につながり得ます。広告計測、購入紹介の帰属、ログイン遷移はURLを介していても目的が違います。
+商品URLが `/catalog/item?id=42&demo_campaign=summer` なら、残したいのは商品を選ぶ `id=42` です。公式仕様では `$removeparam` の対象はGET、HEAD、OPTIONSと一部のPOSTです。ChromiumのAdGuard Browser Extension MV3では、正規表現、値の否定、例外ルールの形式に制約があります。対象製品で、送信前後の要求URLとメソッドを確認します。削除対象のないURL、同名の値が別の意味を持つ画面、署名付きURLも別々に比較します。署名の計算にQueryが含まれるサービスでは変更が認証失敗につながり得ます。広告計測、購入紹介の帰属、ログイン遷移はURLを介していても目的が違います。
 
 ニュースレターのオーバーレイは特定要素の非表示で足りるかもしれません。自動再生は映像通信を全面遮断すると、読者が再生したい本編まで壊れます。通知要求はサイト内の予告バナーとブラウザ自身の権限ダイアログを区別します。追跡Pixelは目に見えなくても要求されるので、通信を止める目的ならNetworkで判定します。
 
@@ -613,7 +617,9 @@ Cookieは条件に応じてHTTP要求と共に送られます。Local Storageの
 
 商品ページへの遷移を残したいなら、まず何を変更するのかを決めます。Queryから名前で項目を取り除くなら `$removeparam`、URLの一部を置き換える必要があるなら `$urltransform` を調べます。元のURLと変更後のURLを記録し、商品IDや署名付きURLなど、残すべき値を含む例も試します。
 
-応答ヘッダーの名前や値で通信を選ぶ `$header` と、指定のヘッダーを取り除く `$removeheader` も用途が異なります。Cookieを扱う `$cookie` では、計測の有無に加えてログインや同意の状態が残るかを確認します。製品によって書き換えの対応範囲が異なるため、記法を選んだら互換性表と各Modifierの公式説明を確認します。 [付録A](#app-a) / [付録B](#app-b)
+応答ヘッダーの名前や値で通信を選ぶ `$header` と、指定のヘッダーを取り除く `$removeheader` も用途が異なります。`$cookie` は対応環境で要求のCookieヘッダーと応答のSet-Cookieヘッダーを抑制・変更します。ChromiumのAdGuard Browser Extension MV3ではCookieを削除できる場面に制約があります。計測の有無に加えて、ログインや同意の状態が残るかも確認します。 [`$cookie` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#cookie-modifier)
+
+製品によって書き換えの対応範囲が異なるため、記法を選んだら互換性表と各Modifierの公式説明を確認します。 [付録A](#app-a) / [付録B](#app-b)
 
 <a id="ch-11"></a>
 
@@ -766,6 +772,8 @@ flowchart TD
 
 **練習**　30回の比較で一度だけ新ルールが速くなりました。**解答**　計測条件とばらつきを確かめます。動作が一致することと速度差が再現することの両方を示せるまでは、性能改善とは結論しません。
 
+AdGuard公式フィルタのポリシーでは、不要な許可を避けるため例外をできるだけ限定し、CSSやJavaScriptの注入はほかの方法で広告をブロックできない場合に絞るよう求めています。サイトのアクセス規模などは公式フィルタへの採用基準です。自身のユーザールールでは、影響範囲と保守の負担を見て判断します。 [AdGuard公式フィルタポリシー](https://adguard.com/kb/general/ad-filtering/filter-policy/#quality-requirements-for-filtering-rules)
+
 参考資料　[フィルタ保守用の構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/#information-for-filter-maintainers)
 
 <a id="ch-15"></a>
@@ -891,7 +899,7 @@ DNS固有の `$dnstype` は問い合わせ種別、`$dnsrewrite` は返答の書
 | Modifier・公式仕様 | 処理と適用条件 | 主な別表記 |
 |---|---|---|
 | [`$app`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#app-modifier) | 発生元アプリのプロセス名・パッケージ名を条件にする | — |
-| [`$denyallow`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#denyallow-modifier) | 指定した宛先をそのルールの対象から外す | — |
+| [`$denyallow`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#denyallow-modifier) | 指定した宛先をそのルールの対象から外す。`$to` との併用は不可 | — |
 | [`$domain`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#domain-modifier) | 要求元ドメインを含める、または除外する | — |
 | [`$header`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#header-modifier) | 応答ヘッダー名と任意の値を照合する | — |
 | [`$important`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#important-modifier) | 通常の例外より強い遮断など優先関係を変更する | — |
@@ -917,15 +925,15 @@ DNS固有の `$dnstype` は問い合わせ種別、`$dnsrewrite` は返答の書
 | [`$object-subrequest`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#object-subrequest-modifier) | 廃止済み。古いリストの調査用 | — |
 | [`$webrtc`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#webrtc-modifier) | 廃止済み。WebRTC全般を止める現行手段として使わない | — |
 | [`$content`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#content-modifier) | ページのHTML filteringや特定の本文変換を例外化 | — |
-| [`$elemhide`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#elemhide-modifier) | 対象ページの要素非表示を例外化 | $ehide |
+| [`$elemhide`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#elemhide-modifier) | 対象ページのすべてのCosmetic Rulesを例外化 | $ehide |
 | [`$extension`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#extension-modifier) | 指定したUserScript等の適用を解除 | — |
 | [`$jsinject`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#jsinject-modifier) | 対象ページへのJavaScript注入を例外化 | — |
 | [`$stealth`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#stealth-modifier) | 追跡防止機能の処理を例外化 | — |
 | [`$urlblock`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#urlblock-modifier) | 対象ページから発生する通信の遮断などを例外化 | — |
 | [`$genericblock`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#genericblock-modifier) | 対象ページで汎用の基本遮断ルールを例外化 | — |
 | [`$generichide`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#generichide-modifier) | 汎用の要素非表示を例外化。サイト個別ルールは別 | $ghide |
-| [`$specifichide`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#specifichide-modifier) | 個別ドメイン指定の要素非表示を例外化 | $shide |
-| [`$all`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#all-modifier) | 全コンテンツ種別とpopupを指定 | — |
+| [`$specifichide`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#specifichide-modifier) | 個別ドメイン指定の要素非表示とCSS Injectionを例外化 | $shide |
+| [`$all`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#all-modifier) | 全コンテンツ種別と `$popup` を指定。例外ルールとChromiumのAdGuard Browser Extension MV3では非対応 | — |
 | [`$badfilter`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#badfilter-modifier) | 対応する元の基本ルールを無効化 | — |
 | [`$cookie`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#cookie-modifier) | CookieおよびSet-Cookieヘッダーを抑制・変更 | — |
 | [`$csp`](https://adguard.com/kb/general/ad-filtering/create-own-filters/#csp-modifier) | Content Security Policyによる制約を加える | — |
@@ -966,8 +974,10 @@ DNS固有の `$dnstype` は問い合わせ種別、`$dnsrewrite` は返答の書
 | $jsonprune | △ | △ | △ | △ | × | × | × | × | × | × | × |
 | $strict-third-party | △ | △ | △ | △ | ？ | ？ | ？ | ？ | ？ | × | × |
 | 応答ヘッダー条件 $header | △ | △ | △ | △ | △ | △ | △ | ？ | ？ | × | × |
+| HTML Filtering | ○ | ○ | ○ | ○ | × | × | ○ | × | × | × | × |
+| ページ例外 $genericblock / $urlblock | ○ | ○ | ○ | ○ | ○ | × | ○ | △ | △ | × | × |
 
-DNSの基本遮断はホスト名に対するものです。$jsonprune はCoreLibs 1.10以降、strict系はCoreLibs 1.16以降が公式資料に記載されています。$header はCoreLibs 1.11以降、TSUrlFilter 3.0.0以降、MV3版5.3以降の記載があります。Mini for Android（旧AdGuard Content Blocker）はSamsung Internet・Yandex向けで、Extended CSSを含まない基本的な要素非表示に対応します。iOSとMini for MacはSafariへの変換や追加機能の有効状態にも注意します。非推奨と廃止済みのModifierは付録Aを参照してください。 [公式の互換性説明](https://adguard.com/kb/general/ad-filtering/create-own-filters/#restrictions-and-limitations)
+DNSの基本遮断はホスト名に対するものです。$jsonprune はCoreLibs 1.10以降、strict系はCoreLibs 1.16以降が公式資料に記載されています。$header はCoreLibs 1.11以降、TSUrlFilter 3.0.0以降、MV3版5.3以降の記載があります。MV3ではヘッダー値に正規表現を指定できません。iOSとMini for Macの `$genericblock` / `$urlblock` は `$document` 相当です。HTML Filteringの属性値を省略できる条件は [HTML Filteringの互換性](https://adguard.com/kb/general/ad-filtering/create-own-filters/#html-filtering-rules) を参照してください。Mini for Android（旧AdGuard Content Blocker）はSamsung Internet・Yandex向けで、Extended CSSを含まない基本的な要素非表示に対応します。iOSとMini for MacはSafariへの変換や追加機能の有効状態にも注意します。非推奨と廃止済みのModifierは付録Aを参照してください。 [公式の互換性説明](https://adguard.com/kb/general/ad-filtering/create-own-filters/#restrictions-and-limitations)
 
 <a id="app-c"></a>
 
@@ -1211,7 +1221,7 @@ Cookie同意UIは、選択済みでも表示される案内と、未選択で操
 | ドメイン限定非表示 | `news.example.org##.sponsor` | 同じ基本表記 | 対象ブラウザが解釈できるCSSか確認 |
 | 組み込み処理の呼び出し | `#%#//scriptlet(...)` | `##+js(...)` | 対応する名前、引数、省略時の挙動を比較 |
 | 応答内容の処理 | 製品・エンジンごとに対応差 | 構文と実行可能環境に差 | 文字置換で移植しない |
-| MV3上の配布 | AdGuard MV3の変換・登録制約 | uBlock Origin Liteは別製品 | 通常版uBOでの成功を根拠にしない |
+| MV3上の配布 | AdGuard Browser Extension MV3の変換・登録制約 | uBlock Origin Liteは別製品 | 通常版uBOでの成功を根拠にしない |
 
 Adblock Plusの基本構文と共通する記号があっても、拡張機能独自のScriptletやModifierまで同じとは限りません。 [uBlock OriginのStatic filter syntax](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax) / [公式Scriptlets互換性表](https://github.com/AdguardTeam/Scriptlets/blob/master/wiki/compatibility-table.md)
 
