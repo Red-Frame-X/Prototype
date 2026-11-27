@@ -16,9 +16,12 @@ ChromeOS・Android・Linux向けの設定、コンテンツブロックフィル
 
 ## 学習と保守の進め方
 
-1. **ルールやScriptの仕組みを知る**。 [Markdown Notes](./Markdown%20Notes/README.md) で対象製品の解説を選び、実際に使っている設定を各ディレクトリのREADMEで確認します。
-2. **設定を一か所ずつ試す**。対象製品とVersion、試した操作、期待した結果、実際の結果を記録します。フィルタでは、消したい広告と、残したい画像や機能の両方を確認します。
-3. **Repositoryに反映する**。 [CONTRIBUTING.md](./CONTRIBUTING.md) の手順で差分と検査結果を確認します。生成物の更新やCIで失敗した場合は、 [Workflowと生成元の対応](./.github/REPOSITORY_GUIDELINES.md#workflowと生成元の対応) から該当する処理を探します。
+1. **ルールやScriptの仕組みを知る**
+   - [Markdown Notes](./Markdown%20Notes/README.md) で対象製品の解説を選び、実際に使っている設定を各ディレクトリのREADMEで確認します。
+2. **設定を一か所ずつ試す**
+   - 対象製品とVersion、試した操作、期待した結果、実際の結果を記録します。フィルタでは、消したい広告と、残したい画像や機能の両方を確認します。
+3. **Repositoryに反映する**
+   - [CONTRIBUTING.md](./CONTRIBUTING.md) の手順で差分と検査結果を確認します。生成物の更新やCIで失敗した場合は、 [Workflowと生成元の対応](./.github/REPOSITORY_GUIDELINES.md#workflowと生成元の対応) から該当する処理を探します。
 
 ## Workflow
 
