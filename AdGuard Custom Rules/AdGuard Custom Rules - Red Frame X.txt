@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611270147
+! Version: 202611271717
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -37,6 +37,10 @@
 ! Google Analytics用の独自補完例外。Google Analytics管理画面内からの通信のみ許可
 ! Google Analytics管理画面からanalytics.google.comとそのサブドメインへの通信を許可
 @@||analytics.google.com^$domain=analytics.google.com
+
+! aya-aiba.com
+! 記事末尾のSNS・メール共有ボタンを非表示
+aya-aiba.com##.article__footer > ul.social-media--block
 
 ! baremetrics.com
 ! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
