@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611272012
+! Version: 202611272016
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -85,6 +85,7 @@ chatgpt.com##aside:has(button[aria-label="ChatGPT ビーコンバナーを閉じ
 chatgpt.com##[data-prompt-textarea-header]
 
 ! chunichi.co.jp
+! Source: https://github.com/AdguardTeam/AdguardFilters/issues/247703#issuecomment-7069569647
 ! 中日新聞Webの「【PR】イチオシ情報」の見出しと直後の記事一覧を非表示
 chunichi.co.jp##.cmp-hdg005:has(> .sub[href^="https://www.chunichi.co.jp/k/pr_ichioshi"])
 chunichi.co.jp##.cmp-hdg005:has(> .sub[href^="https://www.chunichi.co.jp/k/pr_ichioshi"]) + .cmp-lst001
