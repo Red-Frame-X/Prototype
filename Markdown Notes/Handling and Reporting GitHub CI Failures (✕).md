@@ -6,7 +6,7 @@ GitHubのステータスチェック失敗を確認・報告するためのメ�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610251310 |
+| **Version** | 202611280535 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -25,6 +25,8 @@ GitHubでは、Pull RequestやCommitにChecks APIまたはCommit Status APIか�
 5. 修正後に新しいCommitまたは再実行で検証します。
 
 CI失敗の原因を「コードの不具合」と「Workflowの構成不備」の2種類だけに限定することはできません。外部サービス障害、runner環境、依存関係、権限、Secretなども原因になり得るため、以前の版にあった二分類は統合しました。
+
+同じPull Requestでも、失敗したRunの対象Commitと最新Commitが異なることがあります。調べるときは、Runに表示されるCommit SHAとPull RequestのChecksを照合します。過去の失敗ログは原因の記録に使い、修正が効いたかは修正後のCommitに対するチェックで確かめます。 [GitHub Docsのステータスチェック](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)
 
 ## Issues / Pull Requestsで報告する場合
 

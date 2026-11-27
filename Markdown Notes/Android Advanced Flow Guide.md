@@ -6,7 +6,7 @@ Androidの未確認デベロッパー製アプリをインストールする「A
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611201454 |
+| **Version** | 202611280535 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -27,11 +27,15 @@ Android Helpで示されている流れは次のとおりです。
 
 Advanced Flowは2026年8月に提供開始されました。2026年9月30日からは、ブラジル、インドネシア、シンガポール、タイの認定Android端末で、指定された参加ストアからのインストールを対象にデベロッパー確認要件が適用されます。その他のストアや直接サイドロードには、この地域限定の初期フェーズでは同要件はまだ適用されません。2027年以降に認定Android端末へグローバル展開する予定です。なお、GoogleのAndroid Helpでは、この取り組みの対象をAndroid 8以降の認定Android端末と説明しています。
 
+ADBによる開発・テスト用途のWorkflowは従来どおり維持されると公式資料で案内されています。
+
+### 対象Androidの確認履歴
+
+現在参照しているAndroid DevelopersのFAQでは、Android 8（API level 26）以降の認定端末が対象です。次の2段落は、Android HelpとFAQの記載差を確認した順に残した記録です。
+
 2026年11月14日の再確認では、[Android Help](https://support.google.com/android/answer/17065026)はAndroid 8以降、[Android DevelopersのFAQ](https://developer.android.com/developer-verification/guides/faq)はAndroid 7以降と記載しており、公式資料間に差があります。FAQの該当回答は2026年3月23日更新、ページ全体は2026年9月30日更新ですが、Android Helpには本文の更新日が表示されていません。この情報だけでどちらが新しい仕様かは判断できないため、Android 7の実際の適用状況は未確認とし、端末で表示される案内も確認してください。
 
 2026年11月20日に再確認したところ、[Android DevelopersのFAQ](https://developer.android.com/developer-verification/guides/faq) の該当回答は「Android 8（API level 26）以降」となり、更新日は2026年11月10日と表示されています。[Android Help](https://support.google.com/android/answer/17065026) もAndroid 8以降と記載しており、現在の公式資料では対象Versionの不一致は解消しています。前段は2026年11月14日に確認した際の記録として保持し、現在の適用範囲はAndroid 8以降の認定Android端末として扱います。
-
-ADBによる開発・テスト用途のWorkflowは従来どおり維持されると公式資料で案内されています。
 
 ## 対象を混同しないための整理
 

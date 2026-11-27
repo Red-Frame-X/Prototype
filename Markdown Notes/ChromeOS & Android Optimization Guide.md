@@ -8,7 +8,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611261653 |
+| **Version** | 202611280535 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -28,7 +28,7 @@ ChromeOSとAndroidを中心に、ブラウザ、コンテンツブロック、�
 | 契約時の注意・過去の不具合 | [購読・支援](#購読支援) |
 | 関連する資料・サービス | [Webサービス一覧](#web-サービス統合リスト) / [Linux Mint](#linux-mint) / [謝辞・参考情報](#謝辞参考情報) |
 
-詳しい仕様は [コンテンツブロックFAQ](Content%20Blocking%20FAQ%202026.md) 、 [AdGuard構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) 、 [DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md) を参照してください。ChromeOSの更新・復旧は [専用ガイド](ChromeOS%20Manual%20Update%20and%20Troubleshooting.md) で扱います。本文のVersionは文書の更新情報であり、すべての外部サービスや実機の再検証日時を表すものではありません。
+ルールの仕組みや動作確認は [AdGuard フィルタリングルール実践ガイド](AdGuard%20Filtering%20Rules%20-%20A%20Practical%20Guide.md) から始められます。詳しい仕様は [コンテンツブロックFAQ](Content%20Blocking%20FAQ%202026.md) 、 [AdGuard構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) 、 [DNSブロックリストのガイド](DNS%20Blocklist%20Guide.md) を参照してください。ChromeOSの更新・復旧は [専用ガイド](ChromeOS%20Manual%20Update%20and%20Troubleshooting.md) で扱います。本文のVersionは文書の更新情報であり、すべての外部サービスや実機の再検証日時を表すものではありません。
 
 ## 購読・支援
 
