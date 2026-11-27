@@ -4,7 +4,7 @@
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
 // @version      202611140644
-// @description  Xのタイムラインで「並べ替え」メニューが開かれるたびに、未選択であれば自動的に「直近」を選択し直し、その後は手動での変更も可能にします。
+// @description  Xの並べ替えメニューで「直近」または「Latest」が未選択なら自動で選びます。同じメニュー要素への自動選択は一度で、その後は手動で変更できます。
 // @author       Red-Frame-X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
@@ -73,7 +73,7 @@
         }
     };
 
-    // 動的に追加されるメニューを監視
+    // #layers内の追加要素を監視し、並べ替えメニューが表示された後に処理する。
     const attachObserver = (layers) => {
         const observer = new MutationObserver((mutations) => {
             for (const mutation of mutations) {

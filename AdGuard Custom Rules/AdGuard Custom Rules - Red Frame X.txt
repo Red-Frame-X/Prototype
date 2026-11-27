@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611280440
+! Version: 202611280539
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -34,7 +34,7 @@ aimanavo.com###reading-sheet.reading-sheet[role="dialog"]
 @@||aax-fe.amazon-adsystem.com^$app=com.amazon.mShop.android.shopping
 
 ! amazon.co.jp
-! amazon.co.jpの商品ページからaax-fe.amazon.co.jpへの広告リクエストをブロック
+! Amazonの商品ページの広告対策。要求元をamazon.co.jp、宛先をaax-fe.amazon.co.jpに絞って通信をブロック（それぞれサブドメインを含む。商品ページのPathによる限定なし）
 ||aax-fe.amazon.co.jp^$domain=amazon.co.jp
 ! Amazonトップページで、広告表示を示すdata-ref_属性（末尾が_displayAds）の直下要素を含む広告コンテナのみ非表示
 ! EasyListに同等のルールが収録済みのため、重複を避けるため無効化
@@ -42,8 +42,7 @@ aimanavo.com###reading-sheet.reading-sheet[role="dialog"]
 
 ! analytics.google.com
 ! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
-! Google Analytics用の独自補完例外。Google Analytics管理画面内からの通信のみ許可
-! Google Analytics管理画面からanalytics.google.comとそのサブドメインへの通信を許可
+! Google Analytics用の補完例外。要求元と宛先をともにanalytics.google.comとそのサブドメインに限定して通信を許可
 @@||analytics.google.com^$domain=analytics.google.com
 
 ! aya-aiba.com
@@ -52,8 +51,7 @@ aya-aiba.com##.article__footer > ul.social-media--block > li.social-media__item.
 
 ! baremetrics.com
 ! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
-! Baremetrics用の独自補完例外。対象サービス内からの通信のみ許可
-! Baremetrics内からbaremetrics.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+! Baremetrics用の補完例外。要求元と宛先をともにbaremetrics.comとそのサブドメインに限定して通信を許可
 @@||baremetrics.com^$domain=baremetrics.com
 
 ! blog.hatena.ne.jp
@@ -72,8 +70,7 @@ blog.hatena.ne.jp##aside.antenna-staffPicks
 
 ! chartbeat.com
 ! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
-! Chartbeat用の独自補完例外。対象サービス内からの通信のみ許可
-! Chartbeat内からchartbeat.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+! Chartbeat用の補完例外。要求元と宛先をともにchartbeat.comとそのサブドメインに限定して通信を許可
 @@||chartbeat.com^$domain=chartbeat.com
 
 ! chatgpt.com
@@ -111,8 +108,7 @@ eiga.com##div.adBox-a:has(> #div-gpt-ad-es-contents-1st_320x100)
 
 ! fullstory.com
 ! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
-! Fullstory用の独自補完例外。対象サービス内からの通信のみ許可
-! Fullstory内からfullstory.comとそのサブドメインへの通信を許可し、他サイトからの通信は許可対象に含めない
+! Fullstory用の補完例外。要求元と宛先をともにfullstory.comとそのサブドメインに限定して通信を許可
 @@||fullstory.com^$domain=fullstory.com
 
 ! gigazine.net

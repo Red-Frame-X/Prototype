@@ -1,6 +1,6 @@
 ! Title: AdGuard DNS Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard DNS Custom Rules.
-! Version: 202611211733
+! Version: 202611280539
 ! Syntax: AdGuard DNS
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -9,7 +9,9 @@
 ! Note: Yuki2718/adblock2 の「dns-unbreak」を参考に、現在も上流に存在する例外ルールと、個人環境で保持している独自・旧来の例外ルールを分けて管理します。
 
 ! 上流由来の例外ルール
-! Yuki2718/adblock2 の dns-unbreak に現在も含まれているルールです。
+! Yuki2718/adblock2 の dns-unbreak に含まれる例外のうち、このファイルで使用するルールです。
+! Source: https://github.com/Yuki2718/adblock2/blob/f417a206f62d7267839d9c5c06c647ca905c7003/japanese/dns-unbreak.txt
+! @@ は許可の例外を示します。DNSでは問い合わせ名を照合し、WebページのURLやAndroidのアプリ名は条件にしません。
 @@||a-adq.mediation.unity3d.com^|
 @@||analytics-ipv6.tiktokw.us^|
 @@||analytics.google.com^|
@@ -32,7 +34,7 @@
 @@||www.google-analytics.com^|
 
 ! 個人環境で保持する独自・旧来の例外ルール
-! 現在の dns-unbreak には含まれていませんが、個人用バックアップとして保持します。
+! 上記の参照Commitの dns-unbreak には含まれていませんが、個人用バックアップとして保持します。
 ! 必要性が確認できないことだけを理由に削除せず、実環境で不要と判断した場合に個別に見直します。
 @@||ad.doubleclick.net^|
 @@||ad2.trafficgate.net^|
