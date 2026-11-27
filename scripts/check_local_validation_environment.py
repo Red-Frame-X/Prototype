@@ -40,6 +40,7 @@ def check_environment(root: Path) -> list[str]:
             # Metadataだけが残った環境や、推移的依存・本体の破損も集約して報告する。
             errors.append(f"Python依存をimportできません: {module}: {type(exc).__name__}: {exc}")
 
+    # 宣言した直接依存をLockfileと照合し、npm ciで準備した状態か確認する。
     package = json.loads((root / "package.json").read_text(encoding="utf-8"))
     lock = json.loads((root / "package-lock.json").read_text(encoding="utf-8"))
     for name in package.get("devDependencies", {}):

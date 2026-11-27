@@ -4,7 +4,7 @@
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
 // @version      202610241010
-// @description  「𝕏でライブ放送する」「スペース」バーを強制的に排除します（低負荷・CSS注入＆高堅牢性対応版）
+// @description  CSSと追加要素の監視を使い、Xのライブ放送・スペースに関する日本語の見出しやボタンを含む表示を隠します。
 // @author       Red Frame X
 // @match        https://x.com/*
 // @match        https://twitter.com/*
