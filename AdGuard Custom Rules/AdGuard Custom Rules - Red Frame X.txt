@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611271806
+! Version: 202611271820
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -96,6 +96,10 @@ diamond.jp##.sub-column:has(> #cx-recommend)
 ! doubleclick.net
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避
 @@||stats.g.doubleclick.net^$app=jp.kappasushi.app
+
+! eiga.com
+! ヘッダーの広告枠を外側のコンテナごと非表示にして余白を詰める
+eiga.com##div.adBox-a:has(> #div-gpt-ad-es-contents-1st_320x100)
 
 ! fullstory.com
 ! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
