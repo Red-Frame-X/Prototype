@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611271723
+! Version: 202611271743
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -20,6 +20,12 @@
 ! ads-x.com
 ! かっぱ寿司アプリで必要な通信を許可し、起動・通信エラーを回避
 @@||static.ads-x.com^$app=jp.kappasushi.app
+
+! aimanavo.com
+! 記事のPC用共有バーでX・Facebook・LINEのボタンを非表示
+aimanavo.com##.pc-share-bar > a.pc-share-bar__btn[data-share="twitter"], .pc-share-bar > a.pc-share-bar__btn[data-share="facebook"], .pc-share-bar > a.pc-share-bar__btn[data-share="line"]
+! 記事の会員登録案内を、背景の操作を遮るオーバーレイごと非表示
+aimanavo.com###reading-sheet.reading-sheet[role="dialog"]
 
 ! amazon-adsystem.com
 ! Amazonショッピングアプリでaax-fe.amazon-adsystem.comへの通信を許可し、商品ページの読み込み・画面遷移エラーを回避
