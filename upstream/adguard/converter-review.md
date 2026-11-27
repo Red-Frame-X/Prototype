@@ -4,7 +4,7 @@
 
 ## AdGuard Browser Extension 5.6.1
 
-- ![Chrome MV3](https://img.shields.io/badge/Chrome%20MV3%3A%20Published%201%25-purple)
+- ![Chrome MV3](https://img.shields.io/badge/Chrome%20MV3%3A%20Published%205%25-purple)
 - ![Edge MV3](https://img.shields.io/badge/Edge%20MV3%3A%20In%20review-yellow)
 - > In the Manifest V3 extension, *Block fingerprinting* requires an extra browser permission. To use this feature, enable the *Allow user scripts* toggle in your AdGuard browser settings.
 - * **Manifest V2 only:** This feature applies specifically to the MV2 extension. (In Manifest V3, language-specific filters are automatically handled based on your browser’s preferred language settings).
