@@ -6,7 +6,7 @@ GitHub Gistを利用して、コンテンツブロックフィルタやUserScrip
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610251310 |
+| **Version** | 202611280535 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -15,6 +15,8 @@ GitHub Gistを利用して、コンテンツブロックフィルタやUserScrip
 Gistは少数のコード・テキストファイルを公開・共有する用途に向いており、各Gist自体がGit Repositoryとして履歴を持ちます。一方、通常のGitHub RepositoryはIssues、Pull Requests、GitHub Actionsなどを組み合わせた継続的な開発・保守に向いています。
 
 フィルタやUserScriptを長期運用し、lint・テスト・Issues管理まで行う場合は通常のRepositoryの方が管理機能を利用しやすくなります。
+
+GistのSecret設定は、一覧や検索から見つかりにくくするための設定です。URLを知っている人は閲覧できます。設定のバックアップを公開する前に、認証情報や個人用の設定値が含まれていないか確認します。 [GitHub DocsのGist公開範囲](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists#about-gists)
 
 ## Raw URLを使う
 

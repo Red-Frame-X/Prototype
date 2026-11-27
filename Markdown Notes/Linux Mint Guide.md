@@ -8,7 +8,7 @@ Linux Mintの導入から初期設定、日常利用、ソフトウェア管理�
 | :--- | :--- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202610271405 |
+| **Version** | 202611280535 |
 
 ライセンス、第三者コンテンツの扱いおよび無保証については [`LICENSES.md`](../LICENSES.md) を参照してください。
 
@@ -42,6 +42,8 @@ Linux Mintは、デスクトップ / ノートPC向けに使いやすさを重�
 * [Linux Mint 全バージョンとサポート期間](https://linuxmint.com/download_all.php)
 
 ## エディションの選び方
+
+ここでのエディションの違いは、主にデスクトップ環境です。デスクトップ環境は、メニュー、パネル、設定画面など、普段操作する画面を提供します。[Linux Mint公式のエディション選択](https://linuxmint-installation-guide.readthedocs.io/en/latest/choose.html)
 
 | エディション | 特徴 | 向いている環境 |
 | :--- | :--- | :--- |
