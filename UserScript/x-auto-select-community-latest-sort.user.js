@@ -3,7 +3,7 @@
 // @name:ja      Xのコミュニティを直近順に自動選択
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      202611140644
+// @version      202611280541
 // @description  Xの並べ替えメニューで「直近」または「Latest」が未選択なら自動で選びます。同じメニュー要素への自動選択は一度で、その後は手動で変更できます。
 // @author       Red-Frame-X
 // @match        https://x.com/*

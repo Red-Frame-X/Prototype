@@ -3,7 +3,7 @@
 // @name:ja      Xのスペース・ライブ放送を非表示
 // @namespace    https://github.com/Red-Frame-X/Prototype
 // @license      CC0-1.0
-// @version      202610241010
+// @version      202611280541
 // @description  CSSと追加要素の監視を使い、Xのライブ放送・スペースに関する日本語の見出しやボタンを含む表示を隠します。
 // @author       Red Frame X
 // @match        https://x.com/*
