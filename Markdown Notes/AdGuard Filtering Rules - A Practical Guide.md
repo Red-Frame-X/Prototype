@@ -75,7 +75,7 @@ AdGuardで広告や不要な要素をブロックするルールの書き方と�
 
 | 段階 | ブラウザの処理 | この例で観察するもの |
 |---|---|---|
-| 名前解決 | 接続に必要なホストのアドレスを調べる | media.example.net |
+| 名前解決 | 接続に必要なホストのアドレスを調べる | `media.example.net` |
 | HTTP Request | 対象リソースを要求する | /banner.png |
 | HTTP Response | サーバーが要求に応答する | ステータスと画像データ |
 | 描画 | 文書の構造とスタイルに従って表示する | 記事、広告ラベル、協賛画像 |
@@ -136,7 +136,7 @@ flowchart TD
 
 ### OriginとSiteをアドレスで見比べる
 
-https://news.example.org と https://img.example.org はホストが違うため別Originですが、同じスキームと登録可能ドメインを持ちます。https://news.example.org:8443 はポートが違うため元の記事と別Originです。登録可能ドメインを末尾二語で機械的に切り出すと、co.jp のような公開サフィックスを誤って一つのサイトと見なしてしまいます。ブラウザのCookie判断、Web標準の同一Origin判定、AdGuardのThird-party判定のどれを調べているかを明記してください。
+`https://news.example.org` と `https://img.example.org` はホストが違うため別Originですが、同じスキームと登録可能ドメインを持ちます。`https://news.example.org:8443` はポートが違うため元の記事と別Originです。登録可能ドメインを末尾二語で機械的に切り出すと、co.jp のような公開サフィックスを誤って一つのサイトと見なしてしまいます。ブラウザのCookie判断、Web標準の同一Origin判定、AdGuardのThird-party判定のどれを調べているかを明記してください。
 
 ### はじめて一行を追加するとき
 
@@ -157,16 +157,16 @@ Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル�
 
 ### ホスト名に見える文字列を、どこで照合するか
 
-`example.com` がURLに含まれることと、接続先が example.com であることは別の条件です。たとえば `https://news.example.org/help/example.com` の接続先は news.example.org です。次の表では各行を独立したルールとして扱います。許可・遮断の最終結果は他の有効なルールにも依存します。
+`example.com` がURLに含まれることと、接続先が `example.com` であることは別の条件です。たとえば `https://news.example.org/help/example.com` の接続先は `news.example.org` です。次の表では各行を独立したルールとして扱います。許可・遮断の最終結果は他の有効なルールにも依存します。
 
 | ルール | 対象になる例 | 対象から外れる例・条件 |
 |---|---|---|
-| `example.com` | 上のヘルプ記事にも文字列がある | example.org のトップにはない |
-| `\|\|example.com^` | https://img.example.com/p.png | https://example.com.invalid/p.png |
-| `\|\|example.com/ads/` | https://example.com/ads/a.png | https://example.com/news/ads/a.png |
+| `example.com` | 上のヘルプ記事にも文字列がある | `example.org` のトップにはない |
+| `\|\|example.com^` | `https://img.example.com/p.png` | `https://example.com.invalid/p.png` |
+| `\|\|example.com/ads/` | `https://example.com/ads/a.png` | `https://example.com/news/ads/a.png` |
 | `\|https://example.com/ads/banner.js\|` | 指定したURL | 末尾に ?v=2 を付けたURL |
-| `\|\|example.com^$third-party` | example.org の記事が example.com の画像を要求 | example.com の記事が同じホストの画像を要求 |
-| `@@\|\|example.com^` | example.com の画像への通常の遮断に対する例外 | example.net の画像への遮断 |
+| `\|\|example.com^$third-party` | `example.org` の記事が `example.com` の画像を要求 | `example.com` の記事が同じホストの画像を要求 |
+| `@@\|\|example.com^` | `example.com` の画像への通常の遮断に対する例外 | `example.net` の画像への遮断 |
 
 先頭の縦線二本はホスト名の境界に着目し、末尾の山形記号は区切り文字またはURL末尾を表します。ピリオドはこの区切り文字に含まれません。一方、縦線一本はパターンの先頭ならURLの先頭、末尾ならURLの末尾を固定します。URL全体を固定すると意図を読みやすい反面、配信側がQueryを追加しただけでも一致しなくなります。
 
@@ -199,7 +199,7 @@ Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル�
 
 ### 画像を配信しているのは誰か
 
-記事を開くと広告画像が一枚表示されました。Filtering logで得た情報を、一度日本語の文章にしてみましょう。「news.example.org の記事が、media.example.net の /campaign/ から画像を読み込んだ」。ここには要求元、送信先、Path、リソースの種類という四つの条件があります。
+記事を開くと広告画像が一枚表示されました。Filtering logで得た情報を、一度日本語の文章にしてみましょう。「`news.example.org` の記事が、`media.example.net` の /campaign/ から画像を読み込んだ」。ここには要求元、送信先、Path、リソースの種類という四つの条件があります。
 
 ```adblock
 ||media.example.net/campaign/$image,domain=news.example.org
@@ -211,7 +211,7 @@ Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル�
 |---|---|---|
 | 基準 | 指定の記事が /campaign/a を画像として要求 | 遮断 |
 | 種別だけ | 同じURLをデータとしてfetch | 画像条件から外れる |
-| 要求元だけ | shop.example.org から同じ画像を要求 | ドメイン条件から外れる |
+| 要求元だけ | `shop.example.org` から同じ画像を要求 | ドメイン条件から外れる |
 | Pathだけ | 記事が /weather/map.png を要求 | URL条件から外れる |
 
 ### ANDとORを読み分ける
@@ -220,7 +220,7 @@ Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル�
 
 ### 「同じサイト」の境界を試す
 
-news.example.org から img.example.org へ画像を要求すると、ホスト名は異なります。TSUrlFilterの通常のThird-party判定では、登録可能ドメインが同じこの組み合わせはFirst-partyです。AdGuard公式資料では通常の判定に `Sec-Fetch-Site: cross-site` が関わる場合も説明されています。CoreLibs 1.16以降で利用できるstrict系では、ホスト名の違いも判定に反映されます。ポートやスキームを含むOriginの比較とも区別しましょう。適用元を特定できない要求の扱いにはエンジンの版による差があります。
+`news.example.org` から `img.example.org` へ画像を要求すると、ホスト名は異なります。TSUrlFilterの通常のThird-party判定では、登録可能ドメインが同じこの組み合わせはFirst-partyです。AdGuard公式資料では通常の判定に `Sec-Fetch-Site: cross-site` が関わる場合も説明されています。CoreLibs 1.16以降で利用できるstrict系では、ホスト名の違いも判定に反映されます。ポートやスキームを含むOriginの比較とも区別しましょう。適用元を特定できない要求の扱いにはエンジンの版による差があります。
 
 **練習**　閲覧元が一定で送信先が複数あるとき、送信先を列挙する候補は何でしょう。**解答**　`$to` です。要求元の `$domain` と取り違えると、写し間違いのないドメイン名でも期待した通信に一致しません。設定後は別サイトから同じ送信先へアクセスする反例も記録します。`$to` は指定した宛先とそのサブドメインに一致し、先頭に `~` を付けた値で除外できます。`$denyallow` も宛先の除外に使えますが、`$to` と併用できず、`||` などで宛先ドメインを固定したパターンにも付けられません。 [`$to` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#to-modifier) / [`$denyallow` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#denyallow-modifier)
 
@@ -256,7 +256,7 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 |---|---|---|
 | 要求元を二つに限定 | `$domain=news.example.org\|shop.example.org` | 同じ宛先へ別サイトから送ると一致しない |
 | 要求元の一部を除外 | `$domain=example.org\|~pay.example.org` | 決済サブドメインからの要求を除く |
-| 宛先を限定 | `$to=media.example.net` | news.example.orgが送信先になる場合は条件外 |
+| 宛先を限定 | `$to=media.example.net` | `news.example.org`が送信先になる場合は条件外 |
 | 取得メソッドを限定 | `$method=get\|head` | POSTは条件外。値は小文字で記述 |
 | アプリで限定 | `$app=org.example.reader` | 同じ端末のブラウザにも適用したい場合は対象外になる |
 | 通常の同一サイト要求 | `$~third-party` | サブドメイン間でも対象になり得る |
@@ -304,7 +304,7 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 
 ### ログイン用の画像だけを戻す
 
-あるフィルタが assets.example.net を遮断し、記事サイトのログイン画面で確認画像が欠けました。次の候補を一度に登録するのでなく、どの通信まで許可されるかを比較してください。
+あるフィルタが `assets.example.net` を遮断し、記事サイトのログイン画面で確認画像が欠けました。次の候補を一度に登録するのでなく、どの通信まで許可されるかを比較してください。
 
 ```adblock
 @@||assets.example.net^
@@ -345,10 +345,10 @@ news.example.org#@#.sponsor
 
 | 記録 | 要求元の観測 | 送信先 | 読み取り方 |
 |---|---|---|---|
-| A | news.example.org の記事 | links.example.net の画像 | links側自身を要求元とする条件には通常合わない |
-| B | links.example.net の文書 | 同じホストのCSS | 宛先と要求元の両方がlinks側 |
-| C | アドレス欄から直接入力 | links.example.net の主文書 | 発生元情報がない場合を含む。Bから結果を推定しない |
-| D | Bを表示した後の別サイトへの遷移 | shop.example.org | 宛先が異なるのでlinks用のホストパターンから外れる |
+| A | `news.example.org` の記事 | `links.example.net` の画像 | links側自身を要求元とする条件には通常合わない |
+| B | `links.example.net` の文書 | 同じホストのCSS | 宛先と要求元の両方がlinks側 |
+| C | アドレス欄から直接入力 | `links.example.net` の主文書 | 発生元情報がない場合を含む。Bから結果を推定しない |
+| D | Bを表示した後の別サイトへの遷移 | `shop.example.org` | 宛先が異なるのでlinks用のホストパターンから外れる |
 
 ### 優先順位を切り分ける四つの試行
 
@@ -841,9 +841,9 @@ Lintと機能Testは別の工程です。たとえば .card は正しいセレ�
 
 | 番&#8288;号 | 観測した内容 | 目的 |
 |---|---|---|
-| 1 | news.example.org が media.example.net/campaign/a.png と /weather/a.png を画像として要求 | 天気図を残す |
+| 1 | `news.example.org` が `media.example.net/campaign/a.png` と /weather/a.png を画像として要求 | 天気図を残す |
 | 2 | 同じページに通常カード三枚と data-kind="sponsor" のカード一枚 | 協賛カードだけ非表示 |
-| 3 | shop.example.org/catalog/item?id=42&demo_campaign=mail | 商品IDを残す |
+| 3 | `shop.example.org/catalog/item?id=42&demo_campaign=mail` | 商品IDを残す |
 | 4 | 外部の埋め込み文書内に .signup がある | 親ページの申し込み欄を残す |
 | 5 | ラベル文字だけが違うカードが追加読み込みで現れる | 「協賛募集」の普通の記事を残す |
 | 6 | 配信用ホストの遮断でログイン画像まで欠ける | 画像一枚だけ許可 |
@@ -857,7 +857,7 @@ Lintと機能Testは別の工程です。たとえば .card は正しいセレ�
 1. 第3章の画像ルールを使い、/weather/a.png と別サイトからの要求を反例にします。配信ホスト全体を対象にすると天気図も失います。第三者からの要求だけを止めたい課題なら `third-party` を追加し、同一サイトからの要求が残ることを確かめます。
 2. 第6章のドメイン限定ルールでカードを選びます。通常カードの見出しを記録し、順番を変えた後も同じ三枚が残ることを確かめます。
 3. 第10章のパラメータ名指定を使います。URLの見た目に加え、商品番号・商品詳細・戻る操作が維持されるかを検証します。
-4. iframeの文書が embed.example.net なら、この教材の候補は `embed.example.net##.signup` です。同じドメインの他の埋め込みや直接訪問にも効き得る点を報告します。
+4. iframeの文書が `embed.example.net` なら、この教材の候補は `embed.example.net##.signup` です。同じドメインの他の埋め込みや直接訪問にも効き得る点を報告します。
 5. 第7章のラベル限定ルールを試し、通常記事が消えていないこと、SPAの追加読み込み後も対象に合うことを確認します。安定した協賛属性が見つかった場合は標準CSSとの一致範囲を比較します。
 6. 第4章のURL両端・種別・要求元を固定した例外を使います。Queryが毎回変わる場合は完全一致の設計を再考し、隣の画像にまで広がらない条件を比較します。
 7. 第12章の表と付録BでModifierの対応を調べます。Androidアプリ名を条件にしたルールをChrome拡張で再現することはできません。Chrome側で利用できる条件が同じ意味を表すかを検討します。
