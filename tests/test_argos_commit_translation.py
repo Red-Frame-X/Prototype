@@ -25,6 +25,17 @@ class ArgosTranslationTests(unittest.TestCase):
                 validate_translation(source, source)
                 engine.assert_not_called()
 
+    def test_pr425_japanese_title_preserves_qa_without_translation(self):
+        title = 'AdGuard実践ガイドの付録HをQ&A形式に整える'
+        engine = Mock(side_effect=lambda source: source)
+        self.assertEqual(argos.translate_text(title, engine), title)
+        engine.assert_not_called()
+
+    def test_qa_is_preserved_while_english_prose_is_translated(self):
+        engine = Mock(return_value='ZXQ0000QXZを更新')
+        self.assertEqual(argos.translate_text('Update Q&A', engine), 'Q&Aを更新')
+        engine.assert_called_once_with('Update ZXQ0000QXZ')
+
     def test_pr366_original_title_and_body_require_no_translation(self):
         from automate_japanese_commits import validate_translation
         original = {
