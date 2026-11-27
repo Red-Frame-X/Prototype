@@ -20,6 +20,8 @@ AdGuardで広告や不要な要素をブロックするルールの書き方と�
 
 構文を引くときは [付録A](#app-a) 、製品やVersionによる違いを調べるときは [付録B](#app-b) を参照してください。旧リファレンスから移した設計・検証の手順は、該当する章の実例と合わせて読めます。従来の記述と例は [AdGuard Custom Rulesの構文リファレンス](AdGuard%20Custom%20Rules%20Reference.md) で確認できます。
 
+架空のニュースサイト `news.example.org` を通して学ぶ場合は、まず [画像の取得と広告枠の表示](#通信と表示を別々に調べる) を見比べます。次に [画像の要求条件](#画像を配信しているのは誰か) と [協賛カードの非表示](#どこを隠せば空白まで消えるか) をそれぞれ試し、 [DevToolsでの照合](#記事に追加される二枚目のカードを調べる) で、止めたいものと残したいものを確認します。最後に [総合演習](#ch-16) で、同じ手順を例外や製品差の調査にも使います。
+
 ## 目次
 
 - [第1章　広告ブロックとフィルタリングの基本原理](#ch-01)
@@ -98,7 +100,11 @@ news.example.org##aside.sponsor
 
 ChromiumのAdGuard Browser Extension MV3のストア配布版では、Filtering logに表示される適用ルールはエンジンによる推定です。画像の取得結果はDevToolsのNetworkで確認し、どのDNRルールが実際に適用されたかを特定する場合は、公式手順に従ってunpacked版で確認します。 [AdGuard公式のFiltering logの説明](https://adguard.com/kb/adguard-browser-extension/mv3-version/#main-changes-in-features-and-settings)
 
+ここでいうDOMは、ブラウザが文書を組み立てたときの要素と親子関係です。広告ラベルを含む枠をどう選ぶかは [HTMLとDOMの例](#ch-05) で扱います。
+
 DNSではホスト名を扱います。同じホストの /banner.png と /weather.png を、Pathだけを根拠に区別することはできません。画像サーバーが記事の天気図も配信している場合、ホスト全体をDNSで止めると天気図にも影響します。
+
+同じ配信先の天気図を残すには、名前解決でホスト全体を止める方法よりも、 [URLのPathを扱う基本構文](#ホスト名に見える文字列をどこで照合するか) が適しています。登録先を選ぶときは [DNSと広告フィルタの処理経路](#ルールが適用されるまでの経路) と [製品別互換性表](#app-b) を確認します。
 
 ### 演習　「広告」の文字だけが残った
 
@@ -186,6 +192,8 @@ Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル�
 参考資料　[AdGuardのBasic rules](https://adguard.com/kb/general/ad-filtering/create-own-filters/#basic-rules)
 
 
+同じURLでも、記事に埋め込んだ画像とScriptからの取得では、ルールに渡される種別が異なることがあります。 [種別だけを変える実習](#request-type-exercise) で照合し、正常な要求が巻き込まれた場合は [画像一枚に限定する例外](#ログイン用の画像だけを戻す) を検討します。
+
 ### 同じ文字に見えるURLをログと照合する
 
 日本語のPathやスペースは、画面に見える表記と、要求URLのパーセントエンコード表記が違うことがあります。DevToolsのRequest URLとFiltering logを見比べ、どの文字列に一致させるかを確定します。たとえば `a%2Fb` の %2F を機械的にスラッシュへ展開すると、一つのPath成分と二つの階層を混同し得ます。Basic Rulesは通常、英字の大文字と小文字を区別しません。サーバーが /Ads/ と /ads/ を区別する場合は `$match-case` を検討し、両方を反例に入れます。
@@ -218,11 +226,15 @@ Chrome系拡張ではAdGuardの設定からUser rulesを開き、Androidフル�
 
 `$image,media,third-party` の種別部分は「画像または音声・動画」、その集合に対して「かつThird-party」です。すべてのカンマを機械的にANDと読むと、一度の要求に画像と動画の両方を要求するという不自然な解釈になります。`$domain=news.example.org|shop.example.org` は要求元の候補を並べます。`~` を値の先頭に置く除外と、Modifier名の前に置く否定は文法上別です。各Modifierで使える記法は付録Aの仕様節で調べます。
 
+同じドメイン文字列でも、`$domain` では要求元の条件、URLパターンでは要求先の条件になります。 [OriginとSiteの比較](#originとsiteをアドレスで見比べる) でサイト境界を確認し、 [適用元と配信元が重なる例](#source-destination-example) で各条件の役割を比べます。使う製品での制約は [Modifier辞典](#modifier辞典) と [製品別互換性表](#app-b) から引けます。
+
 ### 「同じサイト」の境界を試す
 
 `news.example.org` から `img.example.org` へ画像を要求すると、ホスト名は異なります。TSUrlFilterの通常のThird-party判定では、登録可能ドメインが同じこの組み合わせはFirst-partyです。AdGuard公式資料では通常の判定に `Sec-Fetch-Site: cross-site` が関わる場合も説明されています。CoreLibs 1.16以降で利用できるstrict系では、ホスト名の違いも判定に反映されます。ポートやスキームを含むOriginの比較とも区別しましょう。適用元を特定できない要求の扱いにはエンジンの版による差があります。
 
 **練習**　閲覧元が一定で送信先が複数あるとき、送信先を列挙する候補は何でしょう。**解答**　`$to` です。要求元の `$domain` と取り違えると、写し間違いのないドメイン名でも期待した通信に一致しません。設定後は別サイトから同じ送信先へアクセスする反例も記録します。`$to` は指定した宛先とそのサブドメインに一致し、先頭に `~` を付けた値で除外できます。`$denyallow` も宛先の除外に使えますが、`$to` と併用できず、`||` などで宛先ドメインを固定したパターンにも付けられません。 [`$to` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#to-modifier) / [`$denyallow` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#denyallow-modifier)
+
+<a id="request-type-exercise"></a>
 
 ### 実習　同じURLで種別だけを変える
 
@@ -280,7 +292,7 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 
 ### ページ例外が効く範囲
 
-`$generichide` は適用先を特定ドメインに限定していないCosmetic Rulesを解除します。除外ドメインだけを指定した `~example.org##.banner` も汎用ルールです。`$specifichide` は適用先を特定ドメインに限定した要素非表示とCSS Injectionを解除します。すべてのCosmetic Rulesを解除する `$elemhide` まで広げる前に、問題の要素を隠しているルール自身に対応する `#@#` で足りるかを確認しましょう。`$genericblock`・`$urlblock` は通信側の例外、`$jsinject` はScript注入関連、`$content` はHTMLなどの応答処理関連です。ChromiumのAdGuard Browser Extension MV3では `$genericblock` と `$urlblock` は非対応です。AdGuard for iOSとAdGuard Mini for Macでは、どちらも `$document` 相当の広い例外として動作します。ページの症状が見た目に現れていても、必要な例外が表示側とは限りません。 [汎用ルールの定義](https://adguard.com/kb/general/ad-filtering/create-own-filters/#generic-rules) / [`$genericblock` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#genericblock-modifier) / [`$urlblock` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#urlblock-modifier)
+`$generichide` は適用先を特定ドメインに限定していないCosmetic Rulesを解除します。除外ドメインだけを指定した `~example.org##.banner` も汎用ルールです。`$specifichide` は適用先を特定ドメインに限定した要素非表示とCSS Injectionを解除します。すべてのCosmetic Rulesを解除する `$elemhide` まで広げる前に、問題の要素を隠しているルール自身に対応する `#@#` で足りるかを確認しましょう。`$genericblock`・`$urlblock` は通信側の例外、`$jsinject` はScript注入関連、`$content` はHTMLなどの応答処理関連です。ChromiumのAdGuard Browser Extension MV3では `$genericblock` と `$urlblock` は非対応です。AdGuard for iOSとAdGuard Mini for Macでは、どちらも `$document` 相当の広い例外として動作します。ページの症状が見た目に現れていても、必要な例外が表示側とは限りません。 [汎用ルールの定義](https://adguard.com/kb/general/ad-filtering/create-own-filters/#exception-modifiers-generic-rules) / [`$genericblock` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#genericblock-modifier) / [`$urlblock` の制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#urlblock-modifier)
 
 **応用問題**　`$image,media` を `$~script` にまとめてよいでしょうか。**解答**　後者には画像・動画以外の非Script要求も入るため、同等ではありません。フォント要求を一件加えるだけで違いを確認できます。
 
@@ -328,6 +340,8 @@ assert.equal(isBlocked('https://media.example.net/weather/a', page, RequestType.
 
 `$badfilter` は同じ対象ルールを無効化する手段です。元のルールが全サイト向けなら無効化の影響も全サイトに及び得ます。ChromiumのAdGuard Browser Extension MV3では、DNRへの変換時に元のルールを完全に無効化する指定だけが適用されます。 [`$badfilter` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#badfilter-modifier)
 
+協賛画像が遮断されたままかも、例外の確認に含めます。 [NetworkとFiltering logの照合手順](#記事に追加される二枚目のカードを調べる) を使い、ログイン用画像と協賛画像を別々に記録すると、必要な画像だけが復帰したか判断できます。
+
 ### 表示だけを戻す
 
 ```adblock
@@ -338,6 +352,8 @@ news.example.org#@#.sponsor
 後者は対応する非表示ルールを打ち消します。別の親要素を隠すルール、サイト自身のCSS、画像通信の遮断が残っていれば表示は復帰しません。Scriptletにも対応する例外記号があり、名前と引数を元のルールと照合します。
 
 **練習**　最後のネットワーク例外で画像が復帰しました。例外が広すぎないことをどう調べますか。**解答**　記事上の別画像、別サイトに埋めた同じ画像、同じPathにQueryを付けた要求を試し、許可された記録と比較します。
+
+<a id="source-destination-example"></a>
 
 ### ケーススタディ　同じ宛先を「サイト」と「配信元」の両方に使う
 
@@ -396,6 +412,8 @@ CSSの詳細度は競合するスタイルの決定に関わります。一致�
 
 **練習**　カードの順序を入れ替えても協賛記事を特定できる候補は何でしょう。**解答**　このHTMLなら `article[data-kind="sponsor"]` です。実際のページでは通常記事、検索結果、追加読み込み後にも同じ属性の意味が保たれるか調べます。
 
+同じセレクタを別のカードにも試すときは、 [CSSセレクタ早見表](#app-c) で一致条件を確認します。選んだ範囲が協賛カード一枚なら [Cosmetic Ruleの組み立て](#どこを隠せば空白まで消えるか) へ進みます。通常記事と区別できる属性が見つからず、ラベルの文字だけが手掛かりなら [Extended CSSの例](#同じ構造で違いがラベルの文字だけの場合) を参照します。
+
 ### 画面では隣に見えても、DOMでは兄弟とは限らない
 
 ```mermaid
@@ -445,6 +463,8 @@ news.example.org#@#article[data-kind="sponsor"]
 
 参考資料　[AdGuardのCosmetic Rules](https://adguard.com/kb/general/ad-filtering/create-own-filters/#cosmetic-rules)
 
+通常記事まで非表示になったら、 [セレクタの一致範囲](#画面では隣に見えてもdomでは兄弟とは限らない) と [非表示を取り消す例外](#表示だけを戻す) を確認します。
+
 ### 枠の表示だけを変えるか、要素を取り除くか
 
 広告枠を非表示にしたあと本文がスクロールできない場合は、開発者ツールでスクロールを止めている要素とプロパティを確認します。スタイルの調整が必要なら、通常のセレクタを使う `#$#` と、Extended CSSで選んだ要素に宣言を適用する `#$?#` を使い分けます。 [付録Aのフィルタリング構文一覧](#app-a)
@@ -479,6 +499,8 @@ news.example.org#?#article.card:has(> .label:contains(/^協賛$/))
 
 **練習**　見出しが「協賛募集」の通常記事が消えました。**解答**　カード全体に部分一致をかけていないか調べます。ラベルへ探索範囲を限定し、見出しだけの通常記事を反例に残します。 [ExtendedCssの構文とAlias](https://github.com/AdguardTeam/ExtendedCss)
 
+文字を条件にする前に、カードのDOMに安定した属性があるかを確認します。属性で区別できれば [標準CSSの属性セレクタ](#app-c) で対象を表せます。拡張セレクタを選ぶ場合は [追加読み込み後の観察](#記事に追加される二枚目のカードを調べる) と [性能比較で固定する条件](#短く書けたのに対象が増える例) を確認します。
+
 ### 実験ノート　セレクタを置き換えてよい条件
 
 ページの実装が変わり、協賛ラベルに data-role="ad-label" が追加されたとします。通常CSSへ移行する前に次のケースを表にして、旧候補と新候補が選ぶarticleを比較します。
@@ -507,6 +529,8 @@ news.example.org#?#.article-card:matches-css-before(content: *広告*)
 <a id="ch-08"></a>
 
 ## 第8章 正規表現の活用
+
+[基本構文のワイルドカード](#一行を読める単位に分ける) でPathを表せるなら、まずその一致範囲を確かめます。文字種や桁数を条件にする場合は、 [正規表現早見表](#app-d) を参照しながら、許可したい境界と除外したい境界を一つずつ試します。MV3での確認は [変換と登録の経路](#ルールが適用されるまでの経路) に続きます。
 
 ### 号数だけが変わる画像を選ぶ
 
@@ -577,6 +601,8 @@ Scriptletの例外で引数まで指定する場合は、製品が例外の完�
 
 参考資料　[Scriptletの名称と引数](https://github.com/AdguardTeam/Scriptlets/blob/420ffa66c6e713ffa95c80e4bfa356b1a796c3a3/wiki/about-scriptlets.md) / [置換リソース](https://github.com/AdguardTeam/Scriptlets/blob/420ffa66c6e713ffa95c80e4bfa356b1a796c3a3/wiki/about-redirects.md)
 
+同じ協賛カードを対象にしても、表示フラグの変更は文書側の処理を変え、RedirectはScriptの要求に対する応答を変えます。前者は [文書のフレームとDOM](#結果が揃わない場合) 、後者は [URL・種別・要求元の組み合わせ](#画像を配信しているのは誰か) から調べます。使う名前と引数は [付録Eの通常Scriptlet](#通常のscriptlet81件) と [Redirect Resources](#redirect-resources44件) で確認できます。
+
 ### 応答が届くかどうかも確かめる
 
 計測用のScriptを止めるとページが読み込み中のままになる場合は、統計用の処理が止まったかに加えて、ページがScriptの応答を待ち続けていないかを調べます。 `$redirect` は一致した通信を指定のリソースに置き換えます。 `$redirect-rule` は別のルールでブロックされる通信に置換先を指定する構文で、AdGuard Browser Extension MV3では使えません。旧ルールの `$empty` は非推奨で、公式リファレンスでは `$redirect=nooptext` として扱われます。 [AdGuard公式構文リファレンス](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
@@ -598,6 +624,8 @@ Scriptletの例外で引数まで指定する場合は、製品が例外の完�
 | 外部通信が変わったか | NetworkとFiltering log | 同じページ操作・同じ観察時間 |
 
 Cookieは条件に応じてHTTP要求と共に送られます。Local Storageの値は同じ仕組みで自動送信されませんが、ページのScriptが読み取って通信に含めることはできます。Session Storageの寿命や共有範囲はLocal Storageと違います。Cookieが増えないことだけで追跡全体の有無を判断できません。Fingerprintingではブラウザの特徴が利用される場合があります。
+
+バナーを非表示にする場合は [Cosmetic Ruleが変える範囲](#どこを隠せば空白まで消えるか) を確認します。操作後の画面まで変わったときは、同意を選んだ直後と再読み込み後を比較し、 [ページ側の処理に作用するScriptlet](#何が実行されるかと何が返るか) を併用していないかも調べます。
 
 ### URLから計測用パラメータを一つ取り除く
 
@@ -640,6 +668,8 @@ Array.from(document.querySelectorAll('article[data-kind="sponsor"]'),
 
 6. AdGuardのFiltering logを開き、同じ操作を繰り返します。Networkの要求とログをURL・時刻・発生元で照合します。Chromium MV3のストア配布版では、ログに示されたルールを候補として扱います。競合する候補から実際に適用されたルールを特定するときはunpacked版を使います。ルールを一行追加し、協賛カード、通常記事、次ページへの移動を再確認します。
 
+協賛カードの例では、NetworkでURLとType、Filtering logで処理結果、Elementsで残った枠、という順に観察を記録できます。画像の要求が遮断されても枠が残るなら、 [DOM上の親子関係](#画面では隣に見えてもdomでは兄弟とは限らない) から、通常記事を含まない非表示範囲を選びます。通常記事や次ページへの移動に影響した場合は [誤ブロックの切り分け](#ch-13) に進みます。
+
 ### 結果が揃わない場合
 
 Service Workerから応答が返る場合、キャッシュ無効化だけで同じ通信経路を再現できるとは限りません。ApplicationでService Workerの有無を確認します。iframe内ならその文書のドメインと実行コンテキストを記録します。ログに複数の拡張機能が関与し得る環境では、同じ結果を単独構成でも再現できるかを比較します。
@@ -667,6 +697,8 @@ Android版Chromeのページは、対応した端末でUSBデバッグを有効�
 DNR（declarativeNetRequest）には拡張に同梱するStatic Rules、更新できてブラウザ再起動後も残るDynamic Rules、セッションをまたいで保持しないSession Rulesがあります。Chromiumのエンジンが登録ルールの条件・優先度・アクションを評価します。AdGuardのテキスト一行とDNR一件の対応は保証されません。DOMを隠すルールまで同じネットワーク枠で数えると見積もりを誤ります。
 
 AdGuardのMV3製品資料には、静的ルールについて拡張ごとの最低30,000、全拡張で共有する総枠330,000、動的ルールについて変換後5,000、正規表現はそのうち最大1,000との説明があります。上限に達した場合の適用順はAllowlist、User rules、Custom filtersです。エディタに残った行がすべて適用中とは限りません。Chrome API自体には別の版別上限があり、Chrome 121以降の安全な動的ルールの枠30,000を、そのままAdGuardのカスタムフィルタの利用可能枠と読むことはできません。 [AdGuardの製品説明](https://adguard.com/kb/adguard-browser-extension/mv3-version/) / [ChromeのDNR仕様](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
+
+変換と登録の状態を確認したうえで、再読み込み後の要求を [NetworkとFiltering logで照合](#記事に追加される二枚目のカードを調べる) します。製品間で結果が異なるときは、 [製品別互換性表](#app-b) の対象行と各製品のVersionを記録します。
 
 ### AndroidのローカルVPNとHTTPS
 
@@ -745,6 +777,8 @@ flowchart TD
 
 **練習**　公式フィルタの更新後に独自例外が不要に見えます。**解答**　独自例外だけを無効にして元の症状と反例を再試行します。報告には対象フィルタの更新日時と上流IssueまたはCommitを添えます。 [AdGuard Filtersの報告先](https://github.com/AdguardTeam/AdguardFilters/issues)
 
+例外を加えたら、発生した症状と並べて、引き続き遮断したい要求も記録します。協賛画像が止まり、ログイン画像だけが戻るという二つの期待値は、そのまま [ルール変更後の回帰確認](#短く書けたのに対象が増える例) に使えます。
+
 ### フィルタの問題を再現できる形で報告する
 
 広告が残る、正常な機能が壊れる、同意バナーが邪魔になる、広告ブロッカーを検出したという警告が出る、計測通信が残る。どれが起きたかを最初に書くと、調べる箇所が伝わります。たとえばコメント欄が消えたなら、フィルタリングログで該当する要求のURL、種別、処理結果、一致したルールを確認します。ログに遮断が見つからない場合は、要素非表示やScriptletも候補に挙げます。
@@ -772,7 +806,9 @@ flowchart TD
 
 **練習**　30回の比較で一度だけ新ルールが速くなりました。**解答**　計測条件とばらつきを確かめます。動作が一致することと速度差が再現することの両方を示せるまでは、性能改善とは結論しません。
 
-AdGuard公式フィルタのポリシーでは、不要な許可を避けるため例外をできるだけ限定し、CSSやJavaScriptの注入はほかの方法で広告をブロックできない場合に絞るよう求めています。サイトのアクセス規模などは公式フィルタへの採用基準です。自身のユーザールールでは、影響範囲と保守の負担を見て判断します。 [AdGuard公式フィルタポリシー](https://adguard.com/kb/general/ad-filtering/filter-policy/#quality-requirements-for-filtering-rules)
+AdGuard公式フィルタの共通基準では、不要な許可を避けるため例外をできるだけ限定し、JavaScript Rulesはほかの方法で広告をブロックできない場合に限って使うよう求めています。サイトのアクセス規模などは公式フィルタへの採用基準です。自身のユーザールールでは、CSSの注入も含め、必要な効果を得られる方法を影響範囲と保守の負担から選びます。 [AdGuard公式フィルタポリシーの共通基準](https://adguard.com/kb/general/ad-filtering/filter-policy/#common-criteria)
+
+一致範囲と例外の比較結果を残したら、 [AGLintを通す手順](#手元で再現できる構成を作る) をPull Requestでも再現できるようにします。
 
 参考資料　[フィルタ保守用の構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/#information-for-filter-maintainers)
 
@@ -804,6 +840,17 @@ syntax:
 ```
 
 警告・エラーが出たら、ファイル名、行、診断ルール名を読みます。自動修正を使う場合はCLIのhelpで対象オプションを確かめ、変更前後のdiffを確認します。適用範囲を意味するModifierの変更は手動レビューが必要です。
+
+協賛カードと天気図の教材を検査する場合は、次のように工程ごとに判定を記録します。
+
+| 工程 | 確かめること | 教材での記録例 |
+|---|---|---|
+| AGLint | 設定した構文と検査規則に沿うか | ファイル、行、診断名 |
+| エンジン単体Test | 用意した要求条件でルールが一致するか | 協賛画像は一致、天気図と別サイトは不一致 |
+| DNRへの変換・登録 | 対象Versionで変換したルールを登録できるか | 対象ブラウザと拡張機能のVersion、変換・登録結果 |
+| 利用環境での確認 | 実際の操作で表示と機能が期待どおりか | 要求の処理結果、通常記事と天気図の表示、次ページへの移動 |
+
+利用環境の確認には [DevToolsの調査手順](#記事に追加される二枚目のカードを調べる) を使います。DNRの確認は [Chromium MV3の処理経路](#ルールが適用されるまでの経路) に沿って行い、実施できなかった工程も記録します。
 
 ### Pull Requestで同じ検査を動かす
 
@@ -862,6 +909,12 @@ Lintと機能Testは別の工程です。たとえば .card は正しいセレ�
 6. 第4章のURL両端・種別・要求元を固定した例外を使います。Queryが毎回変わる場合は完全一致の設計を再考し、隣の画像にまで広がらない条件を比較します。
 7. 第12章の表と付録BでModifierの対応を調べます。Androidアプリ名を条件にしたルールをChrome拡張で再現することはできません。Chrome側で利用できる条件が同じ意味を表すかを検討します。
 8. 第5章のHTMLをTest用データにし、残す見出しの文字列と協賛カードの件数を検査します。通過後も実際の製品で同じフィルタが読み込まれたか確認します。
+
+**追加演習　通信を止めたあとに残る枠を調べる**
+
+課題1と2を同じ記事で試します。協賛カードが課題1の画像を読み込むと仮定し、変更前、画像ルールだけを有効にした状態、カードの非表示ルールも有効にした状態を同じ読み込み操作で比較します。天気図と通常カードも各試行で確認してください。
+
+**解答**　画像ルールだけの試行では、協賛画像の要求が遮断され、記事に含まれるカードの枠が残ると予想します。非表示ルールを加えた試行では枠が見えなくなり、通常カードと天気図は残る想定です。通信の結果は [NetworkとFiltering log](#記事に追加される二枚目のカードを調べる) 、枠と通常カードは [DOM上の一致範囲](#画面では隣に見えてもdomでは兄弟とは限らない) で確かめます。天気図も欠けた場合は [要求条件の比較](#画像を配信しているのは誰か) に戻り、通常カードが消えた場合は [セレクタの一致範囲](#短く書けたのに対象が増える例) を見直します。
 
 ### 発展課題　実装と保守を一緒に検討する
 
@@ -1281,13 +1334,16 @@ Adblock Plusの基本構文と共通する記号があっても、拡張機能�
 | Regression Test | 変更によって過去の不具合が再発していないか確かめるTest |
 | Upstream | 購読フィルタや依存ソフトウェアの元の開発・配布側 |
 
+要求元と適用範囲を調べるときは [OriginとSiteの比較](#originとsiteをアドレスで見比べる) と [Modifierの条件例](#画像を配信しているのは誰か) を参照してください。DNRの登録と回帰Testの記録例は [品質管理の検証表](#手元で再現できる構成を作る) にあります。
+
 <a id="app-j"></a>
 
 ## 付録J 公式参考資料・参考文献
 
-参照日は2026年11月25日（JST）。製品のリリース番号と、更新され続けるKnowledge Baseが説明するエンジンの最低Versionは別に記録しました。
+参照日は2026年11月25日（JST）。フィルタポリシーの共通基準とChrome DevToolsのElementsは2026年11月27日（JST）に確認しました。製品のリリース番号と、更新され続けるKnowledge Baseが説明するエンジンの最低Versionは別に記録しました。
 
 - [AdGuard Knowledge Base・構文の総覧](https://adguard.com/kb/general/ad-filtering/create-own-filters/)
+- [AdGuard公式フィルタポリシー](https://adguard.com/kb/general/ad-filtering/filter-policy/)
 - [AdGuard DNS・DNS構文](https://adguard-dns.io/kb/general/dns-filtering-syntax/)
 - [拡張機能・MV3への変換と制限](https://adguard.com/kb/adguard-browser-extension/mv3-version/)
 - [AdGuard Browser Extension 5.5.4](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.5.4)
@@ -1298,6 +1354,7 @@ Adblock Plusの基本構文と共通する記号があっても、拡張機能�
 - [AGLint・設定とCLI](https://github.com/AdguardTeam/AGLint)
 - [Chrome・DNRのルール評価](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
 - [Chrome DevTools・Network](https://developer.chrome.com/docs/devtools/network/reference)
+- [Chrome DevTools・Elements](https://developer.chrome.com/docs/devtools/elements/)
 - [AndroidのRemote Debugging](https://developer.chrome.com/docs/devtools/remote-debugging)
 - [W3C・Selectors Level 4](https://www.w3.org/TR/selectors-4/)
 - [uBlock Origin・Static filter syntax](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax)
@@ -1325,6 +1382,9 @@ Adblock Plusの基本構文と共通する記号があっても、拡張機能�
 | 最適化、回帰Test、AGLint | [第14章](#ch-14) ・ [第15章](#ch-15) |
 | Androidのローレベル設定、VPN、PCAP | [第12章](#ch-12) |
 | 調査ログとフィルタの問題報告 | [第13章](#ch-13) |
+| DNSと広告フィルタの登録先 | [処理経路](#ルールが適用されるまでの経路) ・ [製品別互換性表](#app-b) |
+| 構文・一致判定・DNR登録・実機確認 | [品質管理の検証表](#手元で再現できる構成を作る) |
+| 広告画像を止めたあとに枠が残る | [通信と表示の比較](#通信と表示を別々に調べる) ・ [追加演習](#解答と検証) |
 | フィルタ作成の総合演習 | [第16章](#ch-16) |
 
 <a id="afterword"></a>
@@ -1336,6 +1396,8 @@ Adblock Plusの基本構文と共通する記号があっても、拡張機能�
 <a id="revisions"></a>
 
 ## 改訂履歴と検証記録
+
+2026年11月27日　ニュース記事の教材を軸に章間の相互参照を追加し、通信と表示を比較する演習、検証工程の比較表、索引を補いました。
 
 2026年11月26日　旧リファレンスの構文例、Androidの設定調査、フィルタの問題報告を関連章に組み込みました。
 
