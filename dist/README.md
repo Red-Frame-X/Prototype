@@ -41,6 +41,8 @@ Android側で試す場合は、次の順序で上記URLを登録します。
 
 ただし、この生成物は主にAdGuard Browser Extension MV3との互換性を確認する目的で変換しており、CoreLibs固有機能の保持やAndroid向けの完全な最適化は前提としていません。
 
+変換を調べるときは、上流のルールを入力、 `config/adguard-converter-capabilities.json` を変換時の判断材料、生成フィルタを出力として読み比べます。定期実行と変更の反映は [同期Workflow](../.github/workflows/sync.yml) 、変換条件の回帰テストは [`tests/test_convert.py`](../tests/test_convert.py) で確認できます。
+
 ## 更新記録
 
 GitHub Actionsで上流フィルタを定期的に確認し、変換結果に変更がある場合だけ生成物を更新します。生成物のMetadataでは更新間隔を12時間としています。

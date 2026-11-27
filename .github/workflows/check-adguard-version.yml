@@ -1,5 +1,8 @@
 name: AdGuardのVersion日時検査
 
+# フィルタの内容とVersionが同じCommitで更新されたかを調べる。
+# mainへの反映後に行うVersionの自動同期とは別の検査。
+
 on:
   pull_request:
     paths:

@@ -12,10 +12,9 @@
 ## 編集・更新の原則
 
 - `AdGuard Custom Rules` / `AdGuard DNS Custom Rules`の変更時は、変更したファイルの`! Version:`をJSTの現在時刻（`YYYYMMDDHHMM`）へ同じCommit内で更新します。
-- ルートの`dist/`は自動生成物のため、直接編集せず、原本または変換処理を修正して再生成します。
 - `AdGuard Custom Rules/ChangeLog/`と`upstream/`は上流情報の追跡・ミラー用で、取得Scriptや追跡設定から更新します。
 - `Markdown Notes/`やChatGPTで推敲した内容は、重要な技術情報を可能な限り一次情報・公開ソース・対象バージョン・実環境で再確認します。
-- 自動生成物は原則として直接編集せず、原本または変換処理を修正して再生成します。
+- 自動生成物（ルートの `dist/` にある変換フィルタなど）は、原本または変換処理を修正して再生成します。
 
 ## 自動更新・生成処理
 
@@ -26,6 +25,18 @@ GitHub Actionsで、更新処理・変換・品質確認を自動化していま
 - push時に同期が起動しなかった場合に備え、品質チェック完了後の実行、15分おきの定期実行、手動実行でも最新mainの未同期の変更を確認します。Versionだけを更新済みのファイルは再更新しません。
 - uB-filter-by-kdroidwin (AdGuard Optimized)の定期同期・変換を行います。
 - AdGuard公式の変更履歴を定期確認します。
+
+### Workflowと生成元の対応
+
+WorkflowはGitHub Actionsで実行する一連の処理です。Runは実行1回分を指します。失敗時は、GitHubのActionsで対象Runを開き、実行のきっかけと対象Commitを確認します。
+
+| 処理 | 主な入口 | 確認するファイル・結果 |
+| --- | --- | --- |
+| 品質検査 | [`quality.yml`](workflows/quality.yml) | Lint・構文検査・回帰Testのログ。フィルタのVersionは [専用Workflow](workflows/check-adguard-version.yml) の結果も確認 |
+| 上流フィルタの変換 | [`sync.yml`](workflows/sync.yml) | [`convert.py`](../scripts/convert.py) と [変換能力定義](../config/adguard-converter-capabilities.json) を使い、 [生成フィルタ](../dist/README.md) を更新 |
+| 公式変更履歴の収集 | [`update-adguard-changelogs.yml`](workflows/update-adguard-changelogs.yml) | [変更履歴ミラーと取得方法](../AdGuard%20Custom%20Rules/ChangeLog/README.md) |
+| Versionの同期 | [`update-version-timestamps.yml`](workflows/update-version-timestamps.yml) | [更新Script](../scripts/update_version_timestamps.py) がVersionと内容のチェックポイントを更新。 [ChMate用Workflow](workflows/update-chmate-ng-version.yml) も同じScriptを使用 |
+| Commitの翻訳とレビュー後のマージ | [`japanese-commits.yml`](workflows/japanese-commits.yml) | 品質検査完了などをきっかけに、対象PRの翻訳と承認状況を確認。 [翻訳モデルの検証](workflows/argos-translation-test.yml) の完了で [キャッシュ復元Workflow](workflows/argos-cache-verification.yml) が起動し、mainへのpushによる検証が成功した場合に復元を検証 |
 
 ## 品質管理・検証
 
@@ -78,6 +89,12 @@ Commit前にも同じ検査を行う場合は、`npm ci` の後に `npm run hook
 依存関係は`requirements-translation.txt`、モデル情報は`.github/argos-model.json`で管理します。翻訳承認、手動実行のテストモード、停止設定、Workflow実行承認待ちなどの詳細は [PRのCommit日本語化と自動マージ](./COMMIT_JA_AUTOMATION.md) を参照してください。
 
 ## 表記・文書作成の方針
+
+### 学習者向けの文書作成
+
+ITパスポート試験・基本情報技術者試験相当の基礎知識を想定します。AdGuard固有の構文やGitHub Actionsの運用などは、まず目的を示し、手順を読むために必要な用語を初出で説明します。共通の解説がある場合は、概要を添えて参照先へ案内します。知識水準の目安は [IPAの試験シラバス](https://www.ipa.go.jp/shiken/syllabus/gaiyou.html) を参照します。
+
+設定例には対象製品・Versionと確認方法を添えます。公式仕様、手元で確認した結果、未確認事項が文面から分かるようにし、技術判断の根拠となる一次情報にリンクします。
 
 本文の説明は、読みやすさを優先して原則として日本語で記述します。
 

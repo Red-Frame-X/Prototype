@@ -13,6 +13,12 @@ AdGuard向けに自分の環境で使用・検証している個人用フィル�
 | AdGuard DNS Custom Rules | DNSレベルのブロックに使用している個人用AdGuard DNSフィルタ | [`AdGuard DNS Custom Rules - Red Frame X.txt`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt) |
 | 変更履歴 | AdGuard Browser Extension / AdGuard for Androidの公式更新情報を追跡するミラー | [`ChangeLog/README.md`](ChangeLog/README.md) / [`ChangeLog/`](ChangeLog/) |
 
+## ルールを読むときの目印
+
+コンテンツブロックでは、通信を止めるルールと、ページにある要素を隠すルールを使います。DNSフィルタは名前解決の段階でドメインを照合します。ページ内の要素やURLのPathを条件にする場合は、コンテンツブロック側の対応構文を確認します。 [AdGuardのフィルタ構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/) / [DNSフィルタのガイド](../Markdown%20Notes/DNS%20Blocklist%20Guide.md)
+
+通常ルールのファイルで `!` から始まる説明やコメントアウトしたルールは、設定の背景を読む手がかりです。 `!#` から始まる行には前処理指令があるため、通常のコメントと区別します。 [Archive](AdGuard%20Custom%20Rules%20-%20Archive.txt) は過去のルールを確認するための参照資料です。
+
 ## 自分の環境での登録先メモ
 
 ### コンテンツブロックフィルタ

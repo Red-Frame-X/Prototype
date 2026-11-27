@@ -11,7 +11,7 @@
 
 ## GPL-3.0の派生物
 
-次の生成物は、GPL-3.0で公開されている第三者フィルタを基にしています。原作品の著作権表示とライセンス条件を維持し、GNU General Public License v3.0に従います。
+次のファイルには、GPL-3.0で公開されている第三者の作品を基にした内容が含まれます。原作品の著作権表示とライセンス条件を維持し、GNU General Public License v3.0に従います。
 
 - [`AdGuard DNS Custom Rules - Red Frame X.txt`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/AdGuard%20Custom%20Rules/AdGuard%20DNS%20Custom%20Rules%20-%20Red%20Frame%20X.txt)
 - [`dist/uB-filter-by-kdroidwin (AdGuard Optimized).txt`](https://raw.githubusercontent.com/Red-Frame-X/Prototype/main/dist/uB-filter-by-kdroidwin%20%28AdGuard%20Optimized%29.txt)
