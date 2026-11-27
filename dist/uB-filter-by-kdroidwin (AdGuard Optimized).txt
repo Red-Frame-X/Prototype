@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202611270853
+! Version: 202611271756
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -1313,6 +1313,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||arosyfuture.net^$document
 ||around-topics.net^$document
 ||aroundfortylife.net^$document
+||arpokrat.com^$document
 ||arquidiocesisd.org^$document
 ||arrow-steel-f4f.notion.site^$document
 ||art.team-lab.cn^$document
@@ -5108,6 +5109,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||human-profile.hatenablog.com^$document
 ||human.happinessisthailand.com^$document
 ||humi.jp^$document
+||hundreds.co.jp^$document
 ||hungryz.app^$document
 ||hunting4gold.com^$document
 ||hunyuanvideo.org^$document
@@ -8020,6 +8022,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||note.com/amagitsune^$document
 ||note.com/amasuki^$document
 ||note.com/amazon_sale_now^$document
+||note.com/amiotsuka^$document
 ||note.com/anatato_jp^$document
 ||note.com/androiddimension^$document
 ||note.com/androidgeek^$document
@@ -9330,7 +9333,6 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||pirorinsensei.com^$document
 ||pistiloaccesorios.com^$document
 ||pittsburghdancexplosion.com^$document
-||pixabay.com^$document
 ||pixel-leaker.com^$document
 ||pixela.co.jp^$document
 ||pixelgamingrealm.com^$document
@@ -12667,6 +12669,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||www.amazon.co.jp/stores/YA-MAN%E3%83%A4%E3%83%BC%E3%83%9E%E3%83%B3^$document
 ||www.amazon.com/stores/KINUJO^$document
 ||www.amigolibreria.com^$document
+||www.amiotsuka.com^$document
 ||www.amjad.xyz^$document
 ||www.amourinteriors.in^$document
 ||www.analytiqs.io^$document
