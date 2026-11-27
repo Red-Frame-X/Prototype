@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611271748
+! Version: 202611271802
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -24,6 +24,8 @@
 ! aimanavo.com
 ! 記事のPC用共有バーでX・Facebook・LINEのボタンを非表示
 aimanavo.com##.pc-share-bar > a.pc-share-bar__btn[data-share="twitter"], .pc-share-bar > a.pc-share-bar__btn[data-share="facebook"], .pc-share-bar > a.pc-share-bar__btn[data-share="line"]
+! 記事の操作欄でX・Facebook・LINEの共有項目を非表示
+aimanavo.com##.action__box > ul.social-list > li.item:has(> a[data-share="twitter"], > a[data-share="facebook"], > a[data-share="line"])
 ! 記事の会員登録案内を、背景の操作を遮るオーバーレイごと非表示
 aimanavo.com###reading-sheet.reading-sheet[role="dialog"]
 
