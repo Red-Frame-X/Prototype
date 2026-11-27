@@ -569,7 +569,9 @@ news.example.org#@%#//scriptlet('set-constant', 'demoSponsorEnabled', 'false')
 
 `$redirect` は遮断と代替を一つのルールで指定します。`$redirect-rule` は別のルールで遮断されることを前提に置換条件を加えます。後者はChromium MV3版で非対応です。JSONを期待する呼び出しに空のScriptを返した場合、通信上のエラーが消えてもJSONの解析に失敗します。形式と呼び出し側の契約を確認してください。
 
-任意のJavaScriptを記述するルールやUserScriptには別の権限・配布条件があります。公式資料はユーザールールをTrusted filtersに含めていますが、製品が実装しない機能まで有効になるわけではありません。ChromiumのAdGuard Browser Extension MV3では、任意のJavaScript Rulesは同梱時に事前承認されたものに限られます。Scriptletの例外で引数まで指定する場合は、製品が例外の完全構文に対応しているか確認します。 [JavaScript Rulesの制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#javascript-rules) / [Scriptletの仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#scriptlets)
+任意のJavaScriptを記述するルールやUserScriptには別の権限・配布条件があります。公式資料はユーザールールをTrusted filtersに含めていますが、製品が実装しない機能まで有効になるわけではありません。AdGuard Browser Extension MV3 5.2以降では、ユーザールールやカスタムフィルタのJavaScript RulesにUser Scripts APIが使われます。Chrome 138以降では拡張機能の詳細で「Allow user scripts」を有効にし、138未満では拡張機能のDeveloper modeを有効にします。 [User Scripts APIの製品説明](https://adguard.com/kb/adguard-browser-extension/user-scripts-api/)
+
+Scriptletの例外で引数まで指定する場合は、製品が例外の完全構文に対応しているか確認します。 [JavaScript Rulesの制約](https://adguard.com/kb/general/ad-filtering/create-own-filters/#javascript-rules) / [Scriptletの仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#scriptlets)
 
 **練習**　画像URLを変えずにダウンロードも防ぎたいとき、表示フラグを変えただけで成功と言えるでしょうか。**解答**　Networkで要求を観察します。ページが画像を先読みしていれば、描画分岐を止めても要求は残ります。
 
