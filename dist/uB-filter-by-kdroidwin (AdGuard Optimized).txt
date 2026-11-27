@@ -1,6 +1,6 @@
 ! Title: uB-filter-by-kdroidwin (AdGuard Optimized)
 ! Description: 詐欺・悪質アフィリエイトサイト向けブロックリスト。
-! Version: 202611271756
+! Version: 202611280829
 ! Syntax: AdGuard
 ! Expires: 12 hours
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -2195,6 +2195,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||chii-memo.com^$document
 ||chiiki-sousei.com^$document
 ||chiirosan.com^$document
+||chiisanaimai.jp^$document
 ||chikanyanta.com^$document
 ||chikiyasuibuki1104.com^$document
 ||chikiyumi12.com^$document
@@ -3011,6 +3012,7 @@ ziperto.com##button[style*="background-color: rgb(0, 191, 230)"]
 ||doujinsokuhou45.com^$document
 ||doujinsukebeinu.com^$document
 ||doujinwiki.com^$document
+||doujinworks.net^$document
 ||doukaiko.jp^$document
 ||doutera.com^$document
 ||douyasu.blog.jp^$document
