@@ -1,6 +1,6 @@
 ! Title: AdGuard Custom Rules - Red Frame X
 ! Description: 個人用のAdGuard Custom Rules.
-! Version: 202611271718
+! Version: 202611271721
 ! Syntax: AdGuard
 ! Expires: 1 day
 ! Homepage: https://github.com/Red-Frame-X/Prototype
@@ -39,8 +39,10 @@
 @@||analytics.google.com^$domain=analytics.google.com
 
 ! aya-aiba.com
-! 記事末尾のSNS・メール共有ボタンを非表示
-aya-aiba.com##.article__footer > ul.social-media--block
+! メール共有ボタンを表示するため、共有リスト全体を非表示にするルールを無効化
+! aya-aiba.com##.article__footer > ul.social-media--block
+! 記事末尾のFacebook・X（Twitter）・Pinterest共有ボタンを非表示
+aya-aiba.com##.article__footer > ul.social-media--block > li.social-media__item.branding-colors--facebook, .article__footer > ul.social-media--block > li.social-media__item.branding-colors--twitter, .article__footer > ul.social-media--block > li.social-media__item.branding-colors--pinterest
 
 ! baremetrics.com
 ! AdGuard Browser Extension MV3 / recommendedフィルタ / Peter Lowe's Blocklist併用
