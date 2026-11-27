@@ -6,7 +6,7 @@ AdGuardで広告や不要な要素をブロックするルールの書き方と�
 | --- | --- |
 | **ホームページ** | [Red-Frame-X/Prototype](https://github.com/Red-Frame-X/Prototype) |
 | **ライセンス** | CC0-1.0 |
-| **Version** | 202611280534 |
+| **Version** | 202611280537 |
 
 ## はじめに
 
@@ -643,7 +643,13 @@ Cookieは条件に応じてHTTP要求と共に送られます。Local Storageの
 ||shop.example.org/catalog/$removeparam=demo_campaign
 ```
 
-商品URLが `/catalog/item?id=42&demo_campaign=summer` なら、残したいのは商品を選ぶ `id=42` です。公式仕様では `$removeparam` の対象はGET、HEAD、OPTIONSと一部のPOSTです。ChromiumのAdGuard Browser Extension MV3では、正規表現、値の否定、例外ルールの形式に制約があります。対象製品で、送信前後の要求URLとメソッドを確認します。削除対象のないURL、同名の値が別の意味を持つ画面、署名付きURLも別々に比較します。署名の計算にQueryが含まれるサービスでは変更が認証失敗につながり得ます。広告計測、購入紹介の帰属、ログイン遷移はURLを介していても目的が違います。
+商品URLが `/catalog/item?id=42&demo_campaign=summer` なら、残したいのは商品を選ぶ `id=42` です。公式仕様では `$removeparam` の対象はGET、HEAD、OPTIONSと一部のPOSTです。
+
+この例のようにコンテンツ種別を指定しないルールは、主文書（`document`）の要求に適用されます。 `$removeparam` はTrusted filtersで使用します。ChromiumのAdGuard Browser Extension MV3では `$domain` と併用できません。正規表現、値の否定、例外ルールの形式にも制約があります。
+
+対象製品で、送信前後の要求URLとメソッドを確認します。削除対象のないURL、同名の値が別の意味を持つ画面、署名付きURLも別々に比較します。署名の計算にQueryが含まれるサービスでは変更が認証失敗につながり得ます。広告計測、購入紹介の帰属、ログイン遷移はURLを介していても目的が違います。
+
+削除対象のパラメータがQueryの先頭にある場合も確認します。AdGuard Browser Extension v5.6.1には、MV3で名前を指定した `$removeparam` が先頭のパラメータを削除できなかった問題の修正が含まれます。 [v5.6.1のリリースノート](https://github.com/AdguardTeam/AdguardBrowserExtension/releases/tag/v5.6.1)
 
 ニュースレターのオーバーレイは特定要素の非表示で足りるかもしれません。自動再生は映像通信を全面遮断すると、読者が再生したい本編まで壊れます。通知要求はサイト内の予告バナーとブラウザ自身の権限ダイアログを区別します。追跡Pixelは目に見えなくても要求されるので、通信を止める目的ならNetworkで判定します。
 
@@ -1054,7 +1060,9 @@ DNS固有の `$dnstype` は問い合わせ種別、`$dnsrewrite` は返答の書
 | HTML Filtering | ○ | ○ | ○ | ○ | × | × | ○ | × | × | × | × |
 | ページ例外 $genericblock / $urlblock | ○ | ○ | ○ | ○ | ○ | × | ○ | △ | △ | × | × |
 
-DNSの基本遮断はホスト名に対するものです。$jsonprune はCoreLibs 1.10以降、strict系はCoreLibs 1.16以降が公式資料に記載されています。$header はCoreLibs 1.11以降、TSUrlFilter 3.0.0以降、MV3版5.3以降の記載があります。MV3ではヘッダー値に正規表現を指定できません。iOSとMini for Macの `$genericblock` / `$urlblock` は `$document` 相当です。HTML Filteringの属性値を省略できる条件は [HTML Filteringの互換性](https://adguard.com/kb/general/ad-filtering/create-own-filters/#html-filtering-rules) を参照してください。Mini for Android（旧AdGuard Content Blocker）はSamsung Internet・Yandex向けで、Extended CSSを含まない基本的な要素非表示に対応します。iOSとMini for MacはSafariへの変換や追加機能の有効状態にも注意します。非推奨と廃止済みのModifierは付録Aを参照してください。 [公式の互換性説明](https://adguard.com/kb/general/ad-filtering/create-own-filters/#restrictions-and-limitations)
+DNSの基本遮断はホスト名に対するものです。 `$app` の正規表現と、名前・ワイルドカード・正規表現の混在にはCoreLibs 1.19以降が必要です。 [`$app` の仕様](https://adguard.com/kb/general/ad-filtering/create-own-filters/#app-modifier)
+
+$jsonprune はCoreLibs 1.10以降、strict系はCoreLibs 1.16以降が公式資料に記載されています。$header はCoreLibs 1.11以降、TSUrlFilter 3.0.0以降、MV3版5.3以降の記載があります。MV3ではヘッダー値に正規表現を指定できません。iOSとMini for Macの `$genericblock` / `$urlblock` は `$document` 相当です。HTML Filteringの属性値を省略できる条件は [HTML Filteringの互換性](https://adguard.com/kb/general/ad-filtering/create-own-filters/#html-filtering-rules) を参照してください。Mini for Android（旧AdGuard Content Blocker）はSamsung Internet・Yandex向けで、Extended CSSを含まない基本的な要素非表示に対応します。iOSとMini for MacはSafariへの変換や追加機能の有効状態にも注意します。非推奨と廃止済みのModifierは付録Aを参照してください。 [公式の互換性説明](https://adguard.com/kb/general/ad-filtering/create-own-filters/#restrictions-and-limitations)
 
 <a id="app-c"></a>
 
