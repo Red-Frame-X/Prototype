@@ -2,7 +2,7 @@
 
 このファイルは自動生成されます。以下は最新安定版のリリースノートから抽出した確認候補の原文であり、ルール構文の対応を証明するものではありません。
 
-## AdGuard Browser Extension 5.6.1
+## AdGuard Browser Extension 5.6.2
 
 - ![Chrome MV3](https://img.shields.io/badge/Chrome%20MV3%3A%20Published%205%25-purple)
 - ![Edge MV3](https://img.shields.io/badge/Edge%20MV3%3A%20In%20review-yellow)
