@@ -124,6 +124,12 @@ npm run check:haiagaru
 
 CIでも依存パッケージ導入前に同じ整合性検査を実行します。全Python Test・Markdownlint・内容消失防止検査も引き続き実行します。
 
+## 障害をIssueで追跡する手順
+
+1. WorkflowやPull Requestの失敗を確認したら、修正前にOpenとClosedのIssueを検索します。同じ原因のOpen IssueがあればRun、対象SHA、失敗したJobとStep、影響範囲を追記します。未登録の場合はIssueを作成し、取得できなかった情報と調査中の項目も記録します。解決済みの問題が再発した場合は、元のIssueをReopenするか、関連Issueを作成して相互に参照します。
+2. Issue番号を含む作業用Branchで根本原因を修正し、Pull Request本文で `Refs #123` のように参照します。マージ後の検証までIssueをOpenに保つため、PR本文・各Commit message・最終的なSquash messageに `Closes #123`、`Fixes #123`、`Resolves #123` などを使わず、マージ時に自動Closeされるリンクも設定しません。 [GitHub公式の関連付け仕様](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)
+3. マージ後は `main` のMerge Commitと関連Workflowの結果を確認し、後続処理も含めて修正と再発防止の効果を検証します。原因、修正内容、PR、Merge Commit SHA、Workflow Run、Lint・Test・CIの結果をIssueに記録してから手動でCloseします。検証待ちや阻害要因がある場合はIssueをOpenのままにし、残作業と再開条件を記録します。
+
 ## Rulesetsと保護設定
 
 ### 現在の連携で行うマージ前の確認
