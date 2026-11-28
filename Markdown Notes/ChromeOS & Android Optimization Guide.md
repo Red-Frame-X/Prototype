@@ -1464,7 +1464,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 ### ネットワーク環境・ブラウザ性能の確認
 接続環境の情報確認、インターネット回線の通信速度測定、ブラウザのJavaScript処理性能の比較に利用するツールです。通信速度やベンチマークの結果は、広告ブロッカーやセキュリティ保護機能の有効性を示すものではありません。
 * [確認君+（Plus）](https://env.b4iine.net/)
-* [インターネット回線スピードテスト | USEN GATE 02](https://speedtest.gate02.ne.jp/)（2026年10月22日から提供を一時停止中。再開時期は未定）
+* [Speedtest by Ookla](https://www.speedtest.net/ja)
 * [Octane 2.0 plus](https://octane.webmarks.info/ja/)
 
 ### ファイル・URLの安全性確認
