@@ -522,9 +522,16 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
     current = fingerprint(head, pr['title'], pr['body'] or '')
     if dry_run or state.get('fingerprint') != current:
         # PR側のScriptやHookを実行しない。Git objectは既定Branchの作業領域へ取得する。
-        git('fetch', '--no-tags', 'origin', f'refs/heads/{default_branch}', f'refs/pull/{number}/head')
-        base = gh.api('/git/ref/heads/' + urllib.parse.quote(default_branch, safe=''))['object']['sha']
-        git('cat-file', '-e', base + '^{commit}')
+        # fetch後に既定Branchが進んでも、同じfetchで取得した比較元を使う。
+        base_ref = f'refs/remotes/origin/{default_branch}'
+        git('fetch', '--no-tags', 'origin', f'+refs/heads/{default_branch}:{base_ref}',
+            f'refs/pull/{number}/head')
+        base = git('rev-parse', '--verify', base_ref + '^{commit}').decode().strip()
+        fresh = gh.api(f'/pulls/{number}')
+        if (not eligible(fresh, gh.repository, default_branch)
+                or fingerprint(fresh['head']['sha'], fresh['title'], fresh['body'] or '') != current):
+            print(f'PR #{number}: Git objectの取得中にPRが更新されたため、最新状態は次回確認します。')
+            return
         commits = git('rev-list', '--reverse', '--topo-order', f'{base}..{head}').decode().splitlines()
         if not commits or len(commits) > MAX_COMMITS:
             raise AutomationError('PR Commit数が自動化の対象範囲（1～100件）を超えています。')
