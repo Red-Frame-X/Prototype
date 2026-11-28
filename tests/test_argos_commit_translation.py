@@ -36,6 +36,20 @@ class ArgosTranslationTests(unittest.TestCase):
         self.assertEqual(argos.translate_text('Update Q&A', engine), 'Q&Aを更新')
         engine.assert_called_once_with('Update ZXQ0000QXZ')
 
+    def test_pr451_japanese_body_keeps_speedtest_product_name(self):
+        body = ('USEN GATE 02のリンクと提供停止注記をSpeedtest by Ooklaに差し替えます。'
+                '指定の1行以外に変更がないことを全文比較で確認済みです。'
+                'リンク先の本文確認は未実施です。')
+        engine = Mock(side_effect=AssertionError('日本語のPR本文を翻訳器へ渡しています。'))
+        self.assertEqual(argos.translate_text(body, engine), body)
+        engine.assert_not_called()
+
+    def test_speedtest_product_name_is_preserved_while_english_prose_is_translated(self):
+        engine = Mock(return_value='ZXQ0000QXZへのリンクを更新')
+        self.assertEqual(argos.translate_text('Update link to Speedtest by Ookla', engine),
+                         'Speedtest by Ooklaへのリンクを更新')
+        engine.assert_called_once_with('Update link to ZXQ0000QXZ')
+
     def test_pr366_original_title_and_body_require_no_translation(self):
         from automate_japanese_commits import validate_translation
         original = {
