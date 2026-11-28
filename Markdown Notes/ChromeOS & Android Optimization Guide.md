@@ -1461,10 +1461,10 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 * [Imgurの削除依頼](https://imgur.com/removalrequest)
 * [Redact](https://redact.dev/)
 
-### ネットワーク環境・コンテンツブロック検証
-接続環境の性能評価や、広告ブロッカー・セキュリティ保護機能の有効性を確認する専門ツールです。
+### ネットワーク環境・ブラウザ性能の確認
+接続環境の情報確認、インターネット回線の通信速度測定、ブラウザのJavaScript処理性能の比較に利用するツールです。通信速度やベンチマークの結果は、広告ブロッカーやセキュリティ保護機能の有効性を示すものではありません。
 * [確認君+（Plus）](https://env.b4iine.net/)
-* [インターネット回線スピードテスト | USEN GATE 02](https://speedtest.gate02.ne.jp/)
+* [インターネット回線スピードテスト | USEN GATE 02](https://speedtest.gate02.ne.jp/)（2026年10月22日から提供を一時停止中。再開時期は未定）
 * [Octane 2.0 plus](https://octane.webmarks.info/ja/)
 
 ### ファイル・URLの安全性確認
