@@ -424,6 +424,19 @@ class ArgosTranslationTests(unittest.TestCase):
         self.assertEqual(argos.translate_text('Update Pre-release', engine), 'Pre-releaseを更新')
         engine.assert_called_once_with('Update ZXQ0000QXZ')
 
+    def test_pr438_trusted_filters_does_not_trigger_translation(self):
+        source = ('- AdGuardの公式構文資料とv5.6.1のリリースノートを確認し、実践ガイドに '
+                  '`$removeparam` の文書要求・Trusted filters・MV3での制約と、 '
+                  '`$app` のCoreLibsのVersion条件を補足した。')
+        engine = Mock(side_effect=AssertionError('日本語のPR本文を翻訳しています。'))
+        self.assertEqual(argos.translate_text(source, engine), source)
+        engine.assert_not_called()
+
+    def test_trusted_filters_is_preserved_while_english_prose_is_translated(self):
+        engine = Mock(side_effect=lambda source: source.removeprefix('Use ') + 'を使用')
+        self.assertEqual(argos.translate_text('Use Trusted filters', engine), 'Trusted filtersを使用')
+        engine.assert_called_once_with('Use ZXQ0000QXZ')
+
     def test_main_substring_does_not_hide_ordinary_english(self):
         for source in ('Update domain description', 'Fix mainly failing tests'):
             engine = Mock(return_value='一般説明を更新')

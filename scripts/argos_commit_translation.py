@@ -33,7 +33,7 @@ TERMS = (
     'CI', 'Lint', 'Test', 'Script', 'API', 'PR', 'Issue', 'DNR allow',
     'Prototype', 'Red-Frame-X', 'Python', 'JavaScript', 'TypeScript', 'Node.js',
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
-    'Yahoo!', 'ExtendedCss', 'Q&A',
+    'Yahoo!', 'ExtendedCss', 'Q&A', 'Trusted filters',
     'concurrency group', 'Commit Hook', 'Metadata', 'Committer', 'Bot',
     'pull-requests: read',
     'AGENTS.md', 'CONTRIBUTING.md', 'Actions', 'actionlint', 'Review', 'fixture',
