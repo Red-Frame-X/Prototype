@@ -236,13 +236,18 @@ def install_translation_dependencies() -> bool:
     env = os.environ.copy()
     env.pop('GH_TOKEN', None)
     pip = [sys.executable, '-m', 'pip', 'install', '--disable-pip-version-check']
-    torch = subprocess.run(
-        pip + ['torch==2.9.1+cpu', '--index-url', 'https://download.pytorch.org/whl/cpu'],
-        env=env, check=False,
-    )
-    if torch.returncode:
+    try:
+        torch = subprocess.run(
+            pip + ['torch==2.9.1+cpu', '--index-url', 'https://download.pytorch.org/whl/cpu'],
+            env=env, check=False, timeout=240,
+        )
+        if torch.returncode:
+            return False
+        requirements = subprocess.run(
+            pip + ['-r', 'requirements-translation.txt'], env=env, check=False, timeout=240)
+    except subprocess.TimeoutExpired:
+        print('DEPENDENCY_TIMEOUT: Argos Translateの依存関係のインストールが時間上限に達しました。')
         return False
-    requirements = subprocess.run(pip + ['-r', 'requirements-translation.txt'], env=env, check=False)
     return requirements.returncode == 0
 
 
@@ -538,9 +543,10 @@ def process_pr(gh: GitHub, number: int, default_branch: str, dry_run: bool = Fal
         original = {'title': pr['title'], 'body': pr['body'] or '', 'commits': [
             {'sha': sha, 'message': git('cat-file', 'commit', sha).split(b'\n\n', 1)[1].decode()}
             for sha in commits]}
+        from argos_commit_translation import GLOSSARY_PATH
         implementation = hashlib.sha256(
             Path(__file__).read_bytes() + Path(__file__).with_name('argos_commit_translation.py').read_bytes()
-            + Path('requirements-translation.txt').read_bytes()
+            + GLOSSARY_PATH.read_bytes() + Path('requirements-translation.txt').read_bytes()
             + Path('.github/argos-model.json').read_bytes()).hexdigest()
         if (not dry_run and state.get('translation_failed') == current
                 and state.get('implementation') == implementation):

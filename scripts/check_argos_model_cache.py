@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """取得やインストールをせず、固定モデルのcacheが保存・再利用可能か確認する。"""
 import argparse
-import hashlib
 import json
 import os
 from pathlib import Path
 import re
 import zipfile
+
+from argos_commit_translation import archive_digest
 
 
 def check_cache(manifest_path, directory, required=False):
@@ -23,7 +24,7 @@ def check_cache(manifest_path, directory, required=False):
         return False
     if archive.stat().st_size > 500_000_000:
         raise ValueError('モデルのcacheが取得上限を超えました。')
-    if hashlib.sha256(archive.read_bytes()).hexdigest() != digest:
+    if archive_digest(archive) != digest:
         raise ValueError('復元したモデルのSHA256が一致しません。')
     with zipfile.ZipFile(archive) as zipped:
         names = zipped.namelist()

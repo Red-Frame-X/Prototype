@@ -88,6 +88,31 @@ def main():
         if source.startswith('既存の説明\n'):
             assert target.startswith('既存の説明\n')
 
+    # 辞書を使った定型表現と、実モデルが組み立てる英文を別々に検証する。
+    glossary_titles = {
+        'Fix workflow failure': ('Workflow', '実行エラー', '修正'),
+        'Update translation glossary': ('翻訳用語辞書', '更新'),
+        'Fix pull request merge conflict': ('Pull Request', 'マージ競合', '修正'),
+        'Add regression tests': ('回帰テスト', '追加'),
+        'Update GitHub Actions dependencies': ('GitHub Actions', '依存関係', '更新'),
+        'Fix Argos model cache restoration': ('Argosモデル', 'Cache復元処理', '修正'),
+        'Preserve filter rule syntax': ('フィルタリングルール', '構文', '維持'),
+        'Fix false positive in DNS filtering': ('DNSフィルタリング', '誤ブロック', '修正'),
+        'Prevent duplicate workflow runs': ('Workflow', '重複実行', '防止'),
+        'Fix UserScript metadata handling': ('UserScript', 'Metadata処理', '修正'),
+        'Improve Markdown Notes validation': ('Markdown Notes', '検証', '改善'),
+        'Fix placeholder restoration': ('Placeholder', '復元処理', '修正'),
+        'Update AdGuard Custom Rules': ('AdGuard Custom Rules', '更新'),
+        'Fix upstream filter conversion': ('上流フィルタ', '変換処理', '修正'),
+        'Prevent infinite translation loops': ('翻訳処理', '無限ループ', '防止'),
+        'Check documentation for regression tests': ('回帰テスト', 'ドキュメント'),
+        'Use the new DNS resolver': ('DNSリゾルバー', '新しい', '使用'),
+    }
+    with patch('socket.socket.connect', side_effect=AssertionError('翻訳中の外部通信')):
+        for source, expected in glossary_titles.items():
+            target = translate_text(source, engine)
+            assert all(word in target for word in expected), (source, target, expected)
+
     # 実際に停止した日本語PRのスナップショット。本文はGitHubへ送信・更新しない。
     snapshot = Path(__file__).resolve().parents[1] / 'tests/fixtures/pr248-japanese-translation.json'
     original_japanese = json.loads(snapshot.read_text())

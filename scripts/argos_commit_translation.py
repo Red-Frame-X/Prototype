@@ -44,12 +44,81 @@ TERMS = (
     'npm audit', 'source-map-js', 'js-yaml', 'markdownlint-cli2', 'Markdown parser',
     'deepmerge', 'smol-toml', 'Branch protection', 'Pre-release', 'X',
 )
+GLOSSARY_PATH = ROOT / 'config/argos-glossary.tsv'
+TERM_LEFT = r'(?<![A-Za-z0-9_./-])'
+TERM_RIGHT = r'(?![A-Za-z0-9_/.-])'
+
+
+def load_glossary(path):
+    """分野別の登録を読み込み、既存表記との衝突も検査する。"""
+    seen = {term.casefold() for term in TERMS}
+    sections = {}
+    section = None
+    for number, line in enumerate(path.read_text(encoding='utf-8').splitlines(), 1):
+        if not line or line.startswith('#'):
+            continue
+        if re.fullmatch(r'\[[A-Za-z /]+\]', line):
+            section = line[1:-1]
+            if section in sections:
+                raise TranslationError(f'用語辞書の分野が重複しています（{number}行目）。')
+            sections[section] = {}
+            continue
+        policy, *fields = line.split('\t')
+        if (section is None or policy not in {'A', 'B'}
+                or len(fields) != (1 if policy == 'A' else 2)
+                or any(not field or field != field.strip() for field in fields)
+                or not re.fullmatch(r"[ -~]+", fields[0])
+                or not re.search(r'[A-Za-z]', fields[0])
+                or (policy == 'B' and not JAPANESE.search(fields[1]))):
+            raise TranslationError(f'用語辞書の形式が不正です（{number}行目）。')
+        source = fields[0].casefold()
+        if source in seen:
+            raise TranslationError(f'用語辞書の表記が重複しています（{number}行目）。')
+        seen.add(source)
+        sections[section][fields[0]] = fields[1] if policy == 'B' else None
+    if not sections or any(not entries for entries in sections.values()):
+        raise TranslationError('用語辞書に空の分野があります。')
+    return sections
+
+
+GLOSSARY = {term: target for group in load_glossary(GLOSSARY_PATH).values()
+            for term, target in group.items()}
+GLOSSARY_TRANSLATIONS = {term.casefold(): target for term, target in GLOSSARY.items()
+                         if target is not None}
+TERM_PATTERN = TERM_LEFT + '(?:' + '|'.join(
+    re.escape(term) if GLOSSARY.get(term) is None else '(?ai:' + re.escape(term) + ')'
+    for term in sorted((*TERMS, *GLOSSARY), key=len, reverse=True)
+) + ')' + TERM_RIGHT
+
+# URL・識別子に重なる場合は、用語より先に原文の構造を保護する。
+LITERAL = (
+    r"[A-Za-z][A-Za-z0-9+.-]*://[^\s<>]+|"
+    r"(?i:mailto:|urn:)[^\s<>]+|"
+    r"[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+|"
+    r"(?<![A-Za-z0-9_:])(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}(?![A-Za-z0-9_:])|"
+    r"(?<![A-Za-z0-9_:])(?:[0-9a-fA-F]{1,4}:)*[0-9a-fA-F]{0,4}::"
+    r"(?:[0-9a-fA-F]{1,4}:)*[0-9a-fA-F]{0,4}(?![A-Za-z0-9_:])|"
+    r"(?<![A-Za-z0-9_./:-])(?:[A-Za-z]:[\\/]|/)[A-Za-z0-9_.-]+"
+    r"(?:[\\/][A-Za-z0-9_.-]+)*[\\/]?(?![A-Za-z0-9_.-])|"
+    r"(?<!\S)--[A-Za-z0-9][A-Za-z0-9-]*(?:=[^\s]+)?(?![A-Za-z0-9_-])|"
+    r"(?<!\S)(?:@@|\|\||#@?#|#@?\?#|##\+js)(?!\S)|"
+    r"(?<![A-Za-z0-9_])(?:\$[A-Za-z_][A-Za-z_0-9-]*|@[a-z][a-z-]*:[a-z][a-z-]*)(?![A-Za-z0-9_])"
+)
+STRUCTURED_LINE = re.compile(
+    r"^[ \t]*(?:"
+    r"(?:@@|\|\|)(?=\S)|[^\s]*#(?:@?\?#|@?#)(?=\S)|"
+    r"<!--[\s\S]*-->|//[ \t]*@[A-Za-z]|"
+    r"""(?:\{|\[)[ \t]*(?:["'{\[]|\])|"""
+    r"\$(?= )|[A-Za-z_][A-Za-z0-9_]*=(?=\S))"
+)
+
 HASH_REFERENCE = re.compile(r'(?<![A-Za-z0-9_])[0-9a-fA-F]{7,40}(?![A-Za-z0-9_])')
 PROTECTED = re.compile(
     HASH_REFERENCE.pattern + r'|https?://[^\s<>]+|'
     r'(?<![A-Za-z0-9_])(?:[\w.-]+/[\w.-]+)?#\d+(?![A-Za-z0-9_])|'
-    + '|'.join(r'(?<![A-Za-z0-9_./-])' + re.escape(term) + r'(?![A-Za-z0-9_./-])'
-               for term in sorted(TERMS, key=len, reverse=True))
+    + TERM_PATTERN
+    # ハイフン付き識別子より先に複合語全体を照合する。
+    + r'|(?<![A-Za-z0-9_])[A-Za-z][A-Za-z0-9_]+(?:-[A-Za-z0-9_]+){2,}(?![A-Za-z0-9_-])'
     + r'|\b(?:[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+|v?\d+(?:\.\d+)+(?:[-+][\w.-]+)?|[A-Z][A-Z0-9_]+|'
       r'\w*[a-z][A-Z]\w*|\w+_\w+|[\w.-]+(?:/|\.)[\w./-]+)\b'
 )
@@ -86,6 +155,7 @@ PROTECTED = re.compile(PROTECTED.pattern + r'|(?<![A-Za-z0-9_])(?!(?:' + PROSE_W
 # main.protected=false等の設定値も全体を保持し、一般説明中のfalseは保護しない。
 PROTECTED = re.compile(
     # 小数を含むピクセル値はPathの照合より先に一体で保持する。
+    LITERAL + r'|'
     r'(?<![A-Za-z0-9_./-])[0-9]+(?:\.[0-9]+)?px(?![A-Za-z0-9_/-])|'
     # 付録A〜Jなどの範囲表記は日本語文中の識別子として一体で保護する。
     r'(?<![A-Za-z0-9_])[A-Z][〜～][A-Z](?![A-Za-z0-9_])|'
@@ -100,12 +170,15 @@ def download_model(archive):
     for attempt in range(4):
         try:
             # 認証情報も翻訳対象本文も送信しない。配布先は固定する。
+            deadline = time.monotonic() + 120
             with urllib.request.urlopen(urllib.request.Request(
                     'https://argos-net.com/v1/translate-en_ja-1_1.argosmodel',
                     headers={'User-Agent': 'ArgosTranslate/1.11.0'}), timeout=90) as response:
                 with archive.open('wb') as output:
                     total = 0
                     while chunk := response.read(1024 * 1024):
+                        if time.monotonic() > deadline:
+                            raise TimeoutError('モデルの取得時間が上限を超えました。')
                         total += len(chunk)
                         if total > 500_000_000:
                             raise TranslationError('モデルが取得上限を超えました。')
@@ -134,21 +207,26 @@ def download_model(archive):
         time.sleep(delay)
 
 
-def model_archive(directory, digest):
+def archive_digest(archive):
+    with archive.open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def model_archive(directory, digest, *, recover_cache=False):
     """cacheも毎回hashを検証し、検証済みのarchiveだけを原子的に保存する。"""
     cache = os.environ.get('ARGOS_MODEL_CACHE_DIR')
     archive = Path(cache) / (digest + '.argosmodel') if cache else Path(directory) / 'model.argosmodel'
-    if archive.exists():
-        if archive.stat().st_size > 500_000_000:
-            raise TranslationError('cache内のモデルが取得上限を超えました。')
-        if hashlib.sha256(archive.read_bytes()).hexdigest() != digest:
-            raise TranslationError('cache内のモデルのSHA256が一致しません。手動確認が必要です。')
-        return archive
+    if archive.is_file():
+        if archive.stat().st_size <= 500_000_000 and archive_digest(archive) == digest:
+            return archive
+        if not recover_cache:
+            raise TranslationError('cache内のモデルのサイズまたはSHA256が不正です。')
+        print('CACHE_INVALID: archiveのサイズまたはSHA256が不正です。公式配布元から再取得します。')
     archive.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=archive.parent) as temporary:
         partial = Path(temporary) / 'model.argosmodel'
         download_model(partial)
-        if hashlib.sha256(partial.read_bytes()).hexdigest() != digest:
+        if archive_digest(partial) != digest:
             raise TranslationError('モデルのSHA256が一致しません。')
         partial.replace(archive)
     return archive
@@ -166,8 +244,8 @@ def load_engine():
         import argostranslate.package as package
         import argostranslate.translate as translate
         with tempfile.TemporaryDirectory() as directory:
-            archive = model_archive(directory, digest)
-            if hashlib.sha256(archive.read_bytes()).hexdigest() != digest:
+            archive = model_archive(directory, digest, recover_cache=True)
+            if archive_digest(archive) != digest:
                 raise TranslationError('モデルのSHA256が一致しません。')
             with zipfile.ZipFile(archive) as zipped:
                 names = zipped.namelist()
@@ -222,6 +300,16 @@ MARKER = re.compile(r'ZXQ[0-9]+QXZ')
 # 式内の文字列と二重の単一引用符を先に消費し、文字列中の }} で閉じない。
 # 単一行の式を対象とし、不完全な式は翻訳せず停止する。
 ACTION_EXPRESSION = re.compile(r"\$\{\{(?:(?>'(?:''|[^'\r\n])*')|[^'}\r\n]|}(?!}))*}}")
+# Markdownのリンクはラベル・リンク先・titleを一体として扱う。
+INLINE_LITERAL = re.compile(
+    r"""!?\[(?:\\.|[^\[\]\\\r\n])*\]\((?:\\.|[^()\\\r\n]|\([^()\r\n]*\))*\)|"""
+    r"""</?[A-Za-z][A-Za-z0-9:-]*(?:[ \t]+(?:[^<>"'\r\n]|"[^"\r\n]*"|'[^'\r\n]*')*)?[ \t]*/?>|"""
+    r'(?<![A-Za-z0-9_])/(?:\\.|\[(?:\\.|[^\]\\\r\n])+\]|[^/\[\\\r\n])+/[dgimsuvy]+(?![A-Za-z0-9_])')
+ACTION_OR_LITERAL = re.compile(ACTION_EXPRESSION.pattern + '|' + INLINE_LITERAL.pattern)
+GLOSSARY_COMMAND = re.compile(r'(Fix|Update|Add|Preserve|Prevent|Improve) (ZXQ[0-9]+QXZ)')
+GLOSSARY_VERBS = {'Fix': '修正', 'Update': '更新', 'Add': '追加',
+                  'Preserve': '維持', 'Prevent': '防止', 'Improve': '改善'}
+
 # Git公式の基本形式（空行に続く末尾のkey: valueと継続行）を保持する。
 # https://git-scm.com/docs/git-interpret-trailers
 TRAILER_BLOCK = re.compile(
@@ -290,18 +378,36 @@ def mask_line(line, protect):
     return candidates.sub(replace, line)
 
 
-def markdown_segments(text):
-    """CommonMarkが判定したコードブロックとCode spanを原文で保持する。"""
+def parse_markdown(text):
     from markdown_it import MarkdownIt
+    environment = {}
+    tokens = MarkdownIt('commonmark').enable('table').parse(text, environment)
+    return tokens, environment.get('references', {})
+
+
+def markdown_shape(parsed):
+    tokens, references = parsed
+    def shapes(items):
+        return [(token.type, token.markup, token.attrs, shapes(token.children or []))
+                for token in items if token.type != 'text']
+    return shapes(tokens), references
+
+
+def markdown_segments(text, parsed=None):
+    """CommonMarkが判定したコードブロックとCode spanを原文で保持する。"""
     lines = re.findall(r'[^\r\n]*(?:\r\n|\r|\n|$)', text)
     if lines and not lines[-1]:
         lines.pop()
     offsets = [0]
     for line in lines:
         offsets.append(offsets[-1] + len(line))
-    ranges = []
-    for token in MarkdownIt('commonmark').parse(text):
-        if token.type not in {'fence', 'code_block'}:
+    ranges = [(offsets[index], offsets[index + 1]) for index, line in enumerate(lines)
+              if STRUCTURED_LINE.match(line)]
+    tokens, references = parsed if parsed is not None else parse_markdown(text)
+    ranges.extend((offsets[start], offsets[end])
+                  for reference in references.values() for start, end in [reference['map']])
+    for token in tokens:
+        if token.type not in {'fence', 'code_block', 'html_block', 'blockquote_open', 'table_open'}:
             continue
         start, end = token.map
         if token.type == 'fence':
@@ -321,14 +427,14 @@ def markdown_segments(text):
         position = plain_start = 0
         backticks = re.compile(r'`+')
         while position < len(value):
-            if value.startswith('${{', position):
-                expression = ACTION_EXPRESSION.match(value, position)
-                if expression is None:
+            literal = ACTION_OR_LITERAL.match(value, position)
+            if literal or value.startswith('${{', position):
+                if literal is None:
                     raise TranslationError('GitHub Actionsの式が未完結または複数行のため停止しました。')
                 if plain_start < position:
                     yield False, value[plain_start:position]
-                yield True, expression[0]
-                position = plain_start = expression.end()
+                yield True, literal[0]
+                position = plain_start = literal.end()
                 continue
             if value[position] != '`':
                 position += 1
@@ -346,7 +452,9 @@ def markdown_segments(text):
             yield False, value[plain_start:]
 
     position = 0
-    for start, end in sorted(ranges):
+    for start, end in sorted(ranges, key=lambda span: (span[0], -span[1])):
+        if end <= position:
+            continue
         yield from inline_segments(text[position:start])
         # 改行は保護識別子の外へ残し、後続の本文と同じ行にしない。
         raw = text[start:end]
@@ -364,14 +472,31 @@ def translate_text(text, engine):
     if '\x00' in text or MARKER.search(text):
         raise TranslationError('入力にNULまたは予約した保護識別子があります。')
     tokens = {}
-    def protect(match):
+    rendered = {}
+    structural = set()
+
+    def protect(value, *, opaque=False):
         marker = f'ZXQ{len(tokens):04d}QXZ'
-        tokens[marker] = match[0]
+        tokens[marker] = value
+        if opaque:
+            structural.add(marker)
+        elif target := GLOSSARY_TRANSLATIONS.get(value.casefold()):
+            rendered[marker] = target
         return marker
-    masked = ''.join(protect((value,)) if code else ''.join(
-        mask_line(line, protect)
+
+    # PR本文全体がJSONの場合は文字列値、キー、改行をまとめて保持する。
+    if text.lstrip().startswith(('{', '[')):
+        try:
+            json.loads(text)
+        except (ValueError, RecursionError):
+            pass
+        else:
+            return text
+    parsed = parse_markdown(text)
+    masked = ''.join(protect(value, opaque=True) if code else ''.join(
+        mask_line(line, lambda match: protect(match[0]))
         for line in value.splitlines(keepends=True))
-        for code, value in markdown_segments(text))
+        for code, value in markdown_segments(text, parsed))
     result = []
     for line in masked.splitlines(keepends=True):
         # Markdownの行構造と公式原文の引用はそのまま残す。
@@ -379,8 +504,19 @@ def translate_text(text, engine):
         if match is None:
             raise TranslationError('本文の行構造を解釈できません。')
         leading, source, trailing = match.groups()
-        if leading.lstrip().startswith('>') or not re.search(r'[A-Za-z]', MARKER.sub('', source)):
+        if leading.lstrip().startswith('>'):
             result.append(line)
+            continue
+        if not re.search(r'[A-Za-z]', MARKER.sub('', source)):
+            # 用語だけの英語見出しにもB区分を適用し、日本語の行は原文を維持する。
+            original = MARKER.sub(lambda match: tokens[match[0]], source)
+            target = (source if JAPANESE.search(original) else
+                      MARKER.sub(lambda match: rendered.get(match[0], match[0]), source))
+            result.append(leading + target + trailing)
+            continue
+        command = GLOSSARY_COMMAND.fullmatch(source)
+        if command and command[2] in rendered:
+            result.append(leading + rendered[command[2]] + 'を' + GLOSSARY_VERBS[command[1]] + trailing)
             continue
         try:
             target = engine(source)
@@ -393,13 +529,21 @@ def translate_text(text, engine):
         if (not isinstance(target, str) or not target.strip() or '\x00' in target
                 or '\n' in target or '\r' in target or not JAPANESE.search(target)):
             raise TranslationError('翻訳結果が空・不正・未翻訳のため停止しました。')
-        if sorted(MARKER.findall(source)) != sorted(MARKER.findall(target)):
+        before_markers = MARKER.findall(source)
+        after_markers = MARKER.findall(target)
+        if sorted(before_markers) != sorted(after_markers):
             raise TranslationError('翻訳結果で保護表記が欠落・重複・変更されました。')
+        if ([marker for marker in before_markers if marker in structural]
+                != [marker for marker in after_markers if marker in structural]):
+            raise TranslationError('翻訳結果でコード・リンク・構造の順序が変更されました。')
         if re.search(r'[A-Za-z]', MARKER.sub('', target)):
             raise TranslationError('一般説明に未翻訳の英語が残っています。')
-        result.append(leading + target + trailing)
-    translated = ''.join(result)
-    return MARKER.sub(lambda match: tokens[match[0]], translated)
+        result.append(MARKER.sub(lambda match: rendered.get(match[0], tokens[match[0]]),
+                                 leading + target + trailing))
+    translated = MARKER.sub(lambda match: tokens[match[0]], ''.join(result))
+    if translated != text and markdown_shape(parse_markdown(translated)) != markdown_shape(parsed):
+        raise TranslationError('翻訳結果でMarkdownの構造が変更されました。')
+    return translated
 
 
 def translate_payload(original, engine):

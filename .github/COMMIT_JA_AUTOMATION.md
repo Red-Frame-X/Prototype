@@ -291,3 +291,35 @@ PyTorchとArgos Translateの依存関係は、実際に翻訳が必要な文が�
 手元での観測は`GH_TOKEN`と`GITHUB_REPOSITORY`を設定し、`python scripts/report_commit_automation_health.py cadence`で行えます。これは読み取り専用です。`maintenance`はIssueを書き込むためDry Runには使用しません。
 
 公式資料: [GitHub Actionsの料金](https://docs.github.com/en/billing/concepts/product-billing/github-actions) 、 [scheduleの遅延・実行条件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule) 。公開Repositoryの標準Runnerは無料ですが、GitHubの定期実行には遅延・実行欠落があり、5分ごとの起動は保証されません。
+
+## Argosの翻訳用語辞書を更新する
+
+既存の固定表記に加えて、 `config/argos-glossary.tsv` で分野ごとの用語を管理します。
+`A` の行には原表記を保持する語を、 `B` の行には原語と推奨する日本語表記を、タブで区切って記載します。
+`A` は大文字小文字を区別し、 `B` は英字の大文字小文字を区別せずに照合します。
+複合語を先に照合します。複数形や活用形は、その形でも同じ意味になることを確認してから個別に登録します。
+Issue、Branch、Filterなど文脈で意味が変わる語は、意味を特定できる複合語で登録するか、文脈を含めて翻訳器に渡します。
+
+1. `git log --format=%B -n 200 | python scripts/find_argos_glossary_candidates.py` で最近のCommitから候補を抽出します。取得済みのPR、Issue、Workflowログ、上流のRelease Notesのテキストも標準入力に渡せます。
+2. 当該製品や対象Versionの公式資料で候補の綴り、意味、適用範囲を確認します。
+   曖昧な語や提案例は自動登録せず、実際の利用文と誤訳時の影響を確認します。
+3. 辞書と回帰Testを更新し、 `python -m unittest discover -s tests -p 'test_argos*.py'` を実行します。
+   辞書変更時は、既存の「Argos英日モデルの実物検証」でも固定モデルの翻訳を確認します。
+
+用語の参照先は [Git Glossary](https://git-scm.com/docs/gitglossary) 、
+[GitHub Glossary](https://docs.github.com/en/get-started/learning-about-github/github-glossary) 、
+[GitHub Actions](https://docs.github.com/en/actions/get-started/understand-github-actions) 、
+[Python Glossary](https://docs.python.org/3/glossary.html) 、
+[MDN Glossary](https://developer.mozilla.org/en-US/docs/Glossary) 、
+[Chrome Extensions API](https://developer.chrome.com/docs/extensions/reference/api) 、
+[AdGuardのフィルタ構文](https://adguard.com/kb/general/ad-filtering/create-own-filters/) 、
+[uBlock Originの静的フィルタ構文](https://github.com/gorhill/uBlock/wiki/Static-filter-syntax) 、
+[DNS Terminology](https://www.rfc-editor.org/rfc/rfc9499.html) 、
+[OWASP Top 10](https://owasp.org/www-project-top-ten/) 、
+[Android Developers](https://developer.android.com/) 、
+[Argos Translate 1.11.0のソースコード](https://github.com/argosopentech/argos-translate/blob/v1.11.0/argostranslate/translate.py) 、
+[SPDX License List](https://spdx.org/licenses/) です。
+
+保護表記の欠落・重複やMarkdown構造の変化を検出すると、PR・Commitの書き込み前に停止します。
+`CACHE_INVALID` が記録された場合は、同じ固定SHA256を満たすarchiveを公式配布元から再取得してRunner内で置き換えます。
+別RunのCache検証は、実際に復元したarchiveを再取得なしで検査します。

@@ -1,0 +1,401 @@
+[Git]
+A	Git
+A	Git LFS
+A	Detached HEAD
+A	Commit SHA
+A	Git hook
+A	Git hooks
+A	pre-commit hook
+A	commit-msg hook
+A	post-merge hook
+A	git add
+A	git am
+A	git bisect
+A	git blame
+A	git branch
+A	git cat-file
+A	git checkout
+A	git cherry-pick
+A	git clean
+A	git clone
+A	git commit
+A	git config
+A	git describe
+A	git diff
+A	git fetch
+A	git for-each-ref
+A	git format-patch
+A	git grep
+A	git init
+A	git log
+A	git ls-files
+A	git ls-remote
+A	git merge
+A	git merge-base
+A	git merge-tree
+A	git pull
+A	git push
+A	git range-diff
+A	git rebase
+A	git reflog
+A	git remote
+A	git reset
+A	git restore
+A	git rev-list
+A	git rev-parse
+A	git revert
+A	git rm
+A	git show
+A	git stash
+A	git status
+A	git submodule
+A	git switch
+A	git tag
+A	git update-ref
+A	git verify-commit
+A	git worktree
+A	force-with-lease
+A	Refspec
+A	Git trailer
+A	Git trailers
+B	merge conflict	マージ競合
+B	merge conflicts	マージ競合
+B	working tree	作業ツリー
+B	working trees	作業ツリー
+B	staging area	ステージング領域
+B	annotated tag	注釈付きタグ
+B	tracking branch	追跡Branch
+B	remote-tracking branch	リモート追跡Branch
+B	merge base	マージの共通祖先
+B	shallow clone	浅いクローン
+B	sparse checkout	スパースチェックアウト
+B	fast-forward merge	早送りマージ
+[GitHub]
+B	pull request merge conflict	Pull Requestのマージ競合
+B	GitHub Actions dependencies	GitHub Actionsの依存関係
+A	GitHub API
+A	GitHub REST API
+A	GitHub GraphQL API
+A	GitHub App
+A	GitHub Apps
+A	GitHub Pages
+A	GitHub Packages
+A	GitHub CLI
+A	GitHub Codespaces
+A	GitHub Copilot
+A	GitHub Flavored Markdown
+A	GitHub Enterprise Cloud
+A	GitHub Enterprise Server
+A	Dependabot
+A	Dependabot alerts
+A	Dependabot security updates
+A	Dependabot version updates
+A	CodeQL
+A	CODEOWNERS
+A	GITHUB_TOKEN
+A	GITHUB_OUTPUT
+A	GITHUB_ENV
+A	GITHUB_STEP_SUMMARY
+A	GITHUB_EVENT_PATH
+A	GITHUB_WORKSPACE
+A	RUNNER_TEMP
+A	workflow_dispatch
+A	workflow_run
+A	pull_request
+A	pull_request_target
+A	repository_dispatch
+A	check_run
+A	check_suite
+A	Workflow run
+A	Workflow runs
+A	Reusable workflow
+A	Matrix strategy
+A	Merge queue
+A	Ruleset
+A	Rulesets
+A	Personal Access Token
+A	Draft Pull Request
+B	required status check	必須ステータスチェック
+B	required status checks	必須ステータスチェック
+B	merge method	マージ方式
+B	self-hosted runner	セルフホストRunner
+B	GitHub-hosted runner	GitHubホストRunner
+B	duplicate workflow runs	Workflowの重複実行
+B	workflow failure	Workflowの実行エラー
+[CI/CD]
+A	CI/CD
+A	Continuous Integration
+A	Continuous Delivery
+A	Semantic Versioning
+A	SemVer
+A	Conventional Commits
+A	Check Run
+A	Check Suite
+A	Test fixture
+A	ShellCheck
+B	quality check	品質検査
+B	quality checks	品質検査
+B	automatic update	自動更新
+B	automatic updates	自動更新
+B	syntax check	構文検査
+B	syntax checks	構文検査
+B	regression test	回帰テスト
+B	regression tests	回帰テスト
+B	test coverage	テストカバレッジ
+B	root cause	根本原因
+B	backward compatibility	後方互換性
+B	forward compatibility	前方互換性
+B	breaking change	互換性を損なう変更
+B	breaking changes	互換性を損なう変更
+B	dependency resolution	依存関係の解決
+B	dependency	依存関係
+B	dependencies	依存関係
+B	exit code	終了コード
+B	exit status	終了ステータス
+B	stack trace	スタックトレース
+B	exception handling	例外処理
+B	static analysis	静的解析
+B	dynamic analysis	動的解析
+B	unit tests	単体テスト
+B	integration tests	統合テスト
+B	generation process	生成処理
+[Programming]
+A	ECMAScript
+A	Bash
+A	PowerShell
+A	Kotlin
+A	Rust
+A	C++
+A	JSONC
+A	Markdown
+A	CommonMark
+A	UTF-8
+A	UTF-16
+A	Unicode
+A	Unicode normalization
+A	CamelCase
+A	PascalCase
+A	snake_case
+A	kebab-case
+B	regular expression	正規表現
+A	POSIX
+A	CPython
+A	PyPI
+A	PEP 440
+A	PEP 508
+A	npm run
+A	Promise.all
+A	setup-python
+B	regular expressions	正規表現
+B	escape sequence	エスケープシーケンス
+B	capture group	キャプチャグループ
+B	return value	戻り値
+B	keyword argument	キーワード引数
+B	positional argument	位置引数
+B	list comprehension	リスト内包表記
+B	generator expression	ジェネレータ式
+B	context manager	コンテキストマネージャー
+B	type hint	型ヒント
+B	virtual environment	仮想環境
+B	default argument	デフォルト引数
+[Web]
+A	Chromium
+A	Firefox
+A	Chrome DevTools
+A	WebExtension
+A	WebExtensions
+A	Manifest V2
+A	Manifest V3
+A	Declarative Net Request
+A	declarativeNetRequest
+A	Content Script
+A	Background Script
+A	Service Worker
+A	Web Worker
+A	Fetch API
+A	MutationObserver
+A	Shadow DOM
+A	IndexedDB
+A	WebSocket
+A	Local Storage
+A	Session Storage
+A	HTTP/2
+A	HTTP/3
+A	QUIC
+A	Same-origin policy
+A	SameSite
+A	Tampermonkey
+A	HTML Living Standard
+A	ECMAScript modules
+A	Document Object Model
+A	Content Security Policy
+A	ARIA
+A	WebAssembly
+A	URLSearchParams
+A	AbortController
+A	IntersectionObserver
+A	ResizeObserver
+A	Custom Elements
+A	Web Components
+A	CacheStorage
+A	matchMedia
+A	requestAnimationFrame
+B	CSS selector	CSSセレクター
+B	CSS selectors	CSSセレクター
+B	pseudo-class	擬似クラス
+B	pseudo-element	擬似要素
+B	event listener	イベントリスナー
+B	user agent string	User-Agent文字列
+[Filtering]
+A	AdGuard DNS
+A	AdGuard Browser Extension
+A	AdGuard for Windows
+A	AdGuard for Mac
+A	AdGuard for iOS
+A	AdGuard Home
+A	uBlock Origin Lite
+A	uAssets
+A	uBO
+A	uBOL
+A	Extended CSS
+A	CNAME uncloaking
+A	AdGuard Base filter
+A	EasyList
+A	EasyPrivacy
+A	Peter Lowe's Blocklist
+A	AdGuard Tracking Protection filter
+A	AdGuard URL Tracking filter
+A	AdGuard Annoyances filter
+B	filter rule	フィルタリングルール
+B	filter rules	フィルタリングルール
+B	filtering rule	フィルタリングルール
+B	filtering rules	フィルタリングルール
+B	filter list	フィルタリスト
+B	filter lists	フィルタリスト
+B	network filtering	ネットワークフィルタリング
+B	cosmetic filtering	コスメティックフィルタリング
+B	DNS filtering	DNSフィルタリング
+B	dynamic filtering	動的フィルタリング
+B	static filtering	静的フィルタリング
+B	exception rule	例外ルール
+B	exception rules	例外ルール
+B	element hiding	要素の非表示
+B	false positive in DNS filtering	DNSフィルタリングの誤ブロック
+B	false positive	誤検知
+B	false negative	検出漏れ
+B	upstream filter conversion	上流フィルタの変換処理
+B	filter rule syntax	フィルタリングルールの構文
+[Network]
+A	TCP/IP
+A	DNS over HTTPS
+A	DNS over TLS
+A	DNS over QUIC
+A	IPv4
+A	IPv6
+A	DNSSEC
+A	DoH
+A	DoT
+A	DoQ
+A	CNAME
+A	CGNAT
+A	WireGuard
+A	OpenVPN
+A	HTTP Strict Transport Security
+B	DNS resolver	DNSリゾルバー
+B	recursive resolver	再帰リゾルバー
+B	authoritative DNS server	権威DNSサーバー
+B	DNS cache	DNSキャッシュ
+B	packet loss	パケット損失
+B	reverse proxy	リバースプロキシ
+B	split DNS	分割DNS
+B	negative caching	ネガティブキャッシュ
+B	resource record	リソースレコード
+[Security]
+A	OAuth 2.0
+A	OAuth
+A	OpenID Connect
+A	WebAuthn
+A	FIDO2
+A	OWASP
+A	OWASP Top 10
+A	Cross-Site Scripting
+A	Cross-Site Request Forgery
+A	Server-Side Request Forgery
+A	Content-Security-Policy
+A	Subresource Integrity
+B	least privilege	最小権限
+B	digital signature	デジタル署名
+B	public key	公開鍵
+B	private key	秘密鍵
+B	supply chain attack	サプライチェーン攻撃
+B	privilege escalation	権限昇格
+B	data breach	データ侵害
+B	threat modeling	脅威モデリング
+B	multi-factor authentication	多要素認証
+[Android]
+A	ChromeOS
+A	Chromebook Plus
+A	Chromebook
+A	AOSP
+A	Android App Bundle
+A	Android Studio
+A	Android SDK
+A	Android NDK
+A	Android Runtime
+A	Android Debug Bridge
+A	Google Play Protect
+A	Google Play Console
+A	Google Play
+A	SELinux
+A	WebView
+A	Dalvik
+A	Jetpack Compose
+A	AndroidX
+A	Gradle
+A	apkanalyzer
+A	apksigner
+A	bundletool
+A	fastboot
+B	runtime permission	実行時権限
+B	runtime permissions	実行時権限
+B	scoped storage	スコープ付きストレージ
+B	app signing	アプリ署名
+B	package installer	パッケージインストーラー
+[Translation]
+A	OpenNMT
+A	CTranslate2
+A	SentencePiece
+A	spaCy
+A	Placeholder
+A	Argos model
+B	Argos model cache restoration	ArgosモデルのCache復元処理
+B	translation glossary	翻訳用語辞書
+B	machine translation	機械翻訳
+B	neural machine translation	ニューラル機械翻訳
+B	translation model	翻訳モデル
+B	sentence segmentation	文分割
+B	translation memory	翻訳メモリ
+B	beam search	ビーム探索
+B	model cache	モデルのCache
+B	placeholder restoration	Placeholderの復元処理
+B	infinite translation loops	翻訳処理の無限ループ
+[Repository]
+A	ChromeOS & Android Optimization Guide
+A	AdGuard Filtering Rules - A Practical Guide
+A	uB-filter-by-kdroidwin
+A	ChMate
+A	Morphe
+A	ReVanced
+A	Piko
+A	FOSS
+A	FLOSS
+A	CC0-1.0
+A	Apache-2.0
+A	GPL-2.0
+A	GPL-3.0
+A	MPL-2.0
+A	LICENSE
+A	SECURITY.md
+B	changelog	変更履歴
+B	change log	変更履歴
+B	UserScript metadata handling	UserScriptのMetadata処理

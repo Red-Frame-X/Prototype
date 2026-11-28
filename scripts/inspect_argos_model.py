@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """GitHub-hosted runnerで公式英日モデルの実物と出典を確認する。"""
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -8,9 +7,11 @@ import urllib.request
 import urllib.error
 import zipfile
 
+from argos_commit_translation import ROOT, archive_digest, model_archive
 
-def main():
-    path = Path(os.environ['RUNNER_TEMP']) / 'translate-en_ja-1_1.argosmodel'
+
+def download_for_inspection(directory):
+    path = directory / 'translate-en_ja-1_1.argosmodel'
     # 両URLはArgos公式Indexに記載された同じen→ja Version 1.1の配布先。
     urls = (
         'https://argos-net.com/v1/translate-en_ja-1_1.argosmodel',
@@ -33,7 +34,17 @@ def main():
             print(f'公式配布先の取得失敗: {url}: HTTP {error.code}')
     else:
         raise RuntimeError('公式配布先からモデルを取得できません。')
-    print('MODEL_SHA256=' + hashlib.sha256(path.read_bytes()).hexdigest())
+    return path
+
+
+def main():
+    directory = Path(os.environ['RUNNER_TEMP'])
+    if os.environ.get('ARGOS_MODEL_CACHE_DIR'):
+        manifest = json.loads((ROOT / '.github/argos-model.json').read_text(encoding='utf-8'))
+        path = model_archive(directory, manifest['sha256'], recover_cache=True)
+    else:
+        path = download_for_inspection(directory)
+    print('MODEL_SHA256=' + archive_digest(path))
     with zipfile.ZipFile(path) as archive:
         for info in archive.infolist():
             if info.filename.endswith(('metadata.json', 'README.md', 'LICENSE')) and info.file_size < 100_000:
