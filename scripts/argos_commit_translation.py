@@ -34,6 +34,7 @@ TERMS = (
     'Prototype', 'Red-Frame-X', 'Python', 'JavaScript', 'TypeScript', 'Node.js',
     'Linux', 'Windows', 'macOS', 'Docker', 'React', 'OpenAI',
     'Yahoo!', 'ExtendedCss', 'Q&A', 'Trusted filters',
+    'Speedtest by Ookla',
     'concurrency group', 'Commit Hook', 'Metadata', 'Committer', 'Bot',
     'pull-requests: read',
     'AGENTS.md', 'CONTRIBUTING.md', 'Actions', 'actionlint', 'Review', 'fixture',
