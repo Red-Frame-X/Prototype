@@ -10,7 +10,9 @@ on:
       - 'scripts/*argos*'
       - 'scripts/automate_japanese_commits.py'
       - 'tests/*commit*'
+      - 'tests/test_argos_glossary.py'
       - 'requirements-translation.txt'
+      - 'config/argos-glossary.tsv'
   pull_request:
     paths:
       - '.github/workflows/argos-translation-test.yml'
@@ -19,7 +21,9 @@ on:
       - 'scripts/*argos*'
       - 'scripts/automate_japanese_commits.py'
       - 'tests/*commit*'
+      - 'tests/test_argos_glossary.py'
       - 'requirements-translation.txt'
+      - 'config/argos-glossary.tsv'
 
 permissions:
   contents: read
@@ -45,6 +49,8 @@ jobs:
           key: ${{ runner.os }}-argos-archive-v1-${{ hashFiles('.github/argos-model.json') }}
       # PR・Commitの更新やマージを行わず、公式配布物だけを検証する。
       - name: 公式英日モデルのSHA256・Metadata・READMEを確認
+        env:
+          ARGOS_MODEL_CACHE_DIR: ${{ runner.temp }}/commit-ja-model-cache
         run: python scripts/inspect_argos_model.py
 
       - name: CPU版の翻訳依存パッケージを導入
