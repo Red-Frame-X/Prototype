@@ -1462,7 +1462,7 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 * [Redact](https://redact.dev/)
 
 ### ネットワーク環境・ブラウザ性能の確認
-接続環境の情報確認、インターネット回線の通信速度測定、ブラウザのJavaScript処理性能の比較に利用するツールです。通信速度やベンチマークの結果は、広告ブロッカーやセキュリティ保護機能の有効性を示すものではありません。
+ネットワーク情報の確認、インターネット回線の通信速度・遅延の測定、ブラウザのJavaScript処理性能の比較に利用するツールです。
 * [確認君+（Plus）](https://env.b4iine.net/)
 * [Speedtest by Ookla](https://www.speedtest.net/ja)
 * [Octane 2.0 plus](https://octane.webmarks.info/ja/)
