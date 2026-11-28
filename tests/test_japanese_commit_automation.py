@@ -317,6 +317,52 @@ class GitRewriteTests(unittest.TestCase):
         self.assertNotIn(b'gpgsig ', result)
         self.assertEqual(result.split(b'\n\n', 1)[0], header)
 
+    def test_main_advance_after_fetch_uses_fetched_base_and_skips_closed_pr(self):
+        remote = Path(self.temp.name) / 'remote.git'
+        self.git('clone', '--bare', '.', str(remote))
+        self.git('checkout', '-qb', 'topic')
+        head = self.commit('PR contents\n', 'Update content')
+        self.git('push', str(remote), 'HEAD:refs/pull/1/head')
+        self.git('checkout', '-q', 'main')
+        new_base = self.commit('merged contents\n', 'Merge PR')
+        runner = Path(self.temp.name) / 'runner'
+        self.git('clone', '--no-local', '--single-branch', str(remote), str(runner))
+        os.chdir(runner)
+
+        pr = pull_request()
+        pr['head']['sha'] = head
+        gh = Mock(repository=REPO)
+        gh.pages.return_value = []
+
+        def api(path):
+            if path.endswith('/permission'):
+                return {'permission': 'write'}
+            if path == '/pulls/1':
+                return pr
+            if path == '/git/ref/heads/main':
+                return {'object': {'sha': new_base}}
+            raise AssertionError(path)
+
+        gh.api.side_effect = api
+        real_git = automation.git
+
+        def git_after_merge(*args):
+            result = real_git(*args)
+            if args[0] == 'fetch':
+                real_git('-C', self.temp.name, 'push', str(remote), 'main')
+                pr['state'] = 'closed'
+                pr['merged'] = True
+            return result
+
+        with patch.object(automation, 'git', side_effect=git_after_merge), \
+                patch.object(automation, 'translate') as translate:
+            automation.process_pr(gh, 1, 'main')
+        self.assertEqual(self.git('rev-parse', 'refs/remotes/origin/main'), self.base)
+        with self.assertRaises(subprocess.CalledProcessError):
+            self.git('cat-file', '-e', new_base + '^{commit}')
+        translate.assert_not_called()
+        gh.comment.assert_not_called()
+
     def test_force_with_lease_rejects_concurrent_push(self):
         remote = Path(self.temp.name) / 'remote.git'
         self.git('clone', '--bare', '.', str(remote))
@@ -375,10 +421,9 @@ class LifecycleTests(unittest.TestCase):
 
     def test_failed_translation_is_recorded_and_not_repeated_until_input_changes(self):
         self.comments = []
-        previous_api = self.gh.api.side_effect
-        self.gh.api.side_effect = lambda path, *args: (
-            {'object': {'sha': BASE}} if path.startswith('/git/ref/') else previous_api(path, *args))
         def objects(*args, **kwargs):
+            if args[0] == 'rev-parse':
+                return (BASE + '\n').encode()
             if args[0] == 'rev-list':
                 return (SHA + '\n').encode()
             return b'tree dummy\n\nUpdate documentation'
@@ -403,10 +448,9 @@ class LifecycleTests(unittest.TestCase):
 
     def test_translation_failure_keeps_managed_sha_for_safe_rollback(self):
         self.pr['head']['sha'] = BASE
-        previous_api = self.gh.api.side_effect
-        self.gh.api.side_effect = lambda path, *args: (
-            {'object': {'sha': SHA}} if path.startswith('/git/ref/') else previous_api(path, *args))
         def objects(*args, **kwargs):
+            if args[0] == 'rev-parse':
+                return (SHA + '\n').encode()
             if args[0] == 'rev-list':
                 return (BASE + '\n').encode()
             return b'tree dummy\n\nUpdate documentation'
@@ -473,10 +517,9 @@ class LifecycleTests(unittest.TestCase):
         self.pr['title'], self.pr['body'] = original['title'], original['body']
         self.comments = []
         before = copy.deepcopy(self.pr)
-        previous_api = self.gh.api.side_effect
-        self.gh.api.side_effect = lambda path, *args: (
-            {'object': {'sha': BASE}} if path.startswith('/git/ref/') else previous_api(path, *args))
         def objects(*args, **kwargs):
+            if args[0] == 'rev-parse':
+                return (BASE + '\n').encode()
             if args[0] == 'rev-list':
                 return (SHA + '\n').encode()
             if args[:2] == ('cat-file', 'commit'):
@@ -513,12 +556,11 @@ class LifecycleTests(unittest.TestCase):
         original = {'title': self.pr['title'], 'body': self.pr['body'],
                     'commits': [{'sha': SHA, 'message': '既存Commitの説明'}]}
         def objects(*args, **kwargs):
+            if args[0] == 'rev-parse':
+                return (BASE + '\n').encode()
             if args[0] == 'rev-list':
                 return (SHA + '\n').encode()
             return 'tree dummy\n\n既存Commitの説明'.encode()
-        previous_api = self.gh.api.side_effect
-        self.gh.api.side_effect = lambda path, *args: (
-            {'object': {'sha': BASE}} if path.startswith('/git/ref/') else previous_api(path, *args))
         with patch.object(automation, 'git', side_effect=objects), \
                 patch.object(automation, 'translate', return_value=original):
             automation.process_pr(self.gh, 1, 'main', dry_run=True)
