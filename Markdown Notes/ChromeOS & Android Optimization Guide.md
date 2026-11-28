@@ -1466,8 +1466,6 @@ Imgur（imgur.com）のアップロード・削除申請、およびオンライ
 * [確認君+（Plus）](https://env.b4iine.net/)
 * [インターネット回線スピードテスト | USEN GATE 02](https://speedtest.gate02.ne.jp/)
 * [Octane 2.0 plus](https://octane.webmarks.info/ja/)
-* [AdBlock Tester](https://adblock-tester.com/)
-* [Test Ad Block - Toolz](https://adblock.turtlecute.org/)
 
 ### ファイル・URLの安全性確認
 ファイルやURLにマルウェアなどの脅威が報告されているかを確認するサービスです。
