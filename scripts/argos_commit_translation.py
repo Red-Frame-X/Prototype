@@ -102,8 +102,7 @@ LITERAL = (
     r"(?:[\\/][A-Za-z0-9_.-]+)*[\\/]?(?![A-Za-z0-9_.-])|"
     r"(?<!\S)--[A-Za-z0-9][A-Za-z0-9-]*(?:=[^\s]+)?(?![A-Za-z0-9_-])|"
     r"(?<!\S)(?:@@|\|\||#@?#|#@?\?#|##\+js)(?!\S)|"
-    r"(?<![A-Za-z0-9_])(?:\$[A-Za-z_][A-Za-z_0-9-]*|@[a-z][a-z-]*:[a-z][a-z-]*)(?![A-Za-z0-9_])|"
-    r"(?<![A-Za-z0-9_])[A-Za-z][A-Za-z0-9_]+(?:-[A-Za-z0-9_]+){2,}(?![A-Za-z0-9_-])"
+    r"(?<![A-Za-z0-9_])(?:\$[A-Za-z_][A-Za-z_0-9-]*|@[a-z][a-z-]*:[a-z][a-z-]*)(?![A-Za-z0-9_])"
 )
 STRUCTURED_LINE = re.compile(
     r"^[ \t]*(?:"
@@ -118,6 +117,8 @@ PROTECTED = re.compile(
     HASH_REFERENCE.pattern + r'|https?://[^\s<>]+|'
     r'(?<![A-Za-z0-9_])(?:[\w.-]+/[\w.-]+)?#\d+(?![A-Za-z0-9_])|'
     + TERM_PATTERN
+    # ハイフン付き識別子より先に複合語全体を照合する。
+    + r'|(?<![A-Za-z0-9_])[A-Za-z][A-Za-z0-9_]+(?:-[A-Za-z0-9_]+){2,}(?![A-Za-z0-9_-])'
     + r'|\b(?:[A-Za-z0-9_.-]+(?:/|\.)[A-Za-z0-9_./-]+|v?\d+(?:\.\d+)+(?:[-+][\w.-]+)?|[A-Z][A-Z0-9_]+|'
       r'\w*[a-z][A-Z]\w*|\w+_\w+|[\w.-]+(?:/|\.)[\w./-]+)\b'
 )
@@ -503,8 +504,15 @@ def translate_text(text, engine):
         if match is None:
             raise TranslationError('本文の行構造を解釈できません。')
         leading, source, trailing = match.groups()
-        if leading.lstrip().startswith('>') or not re.search(r'[A-Za-z]', MARKER.sub('', source)):
+        if leading.lstrip().startswith('>'):
             result.append(line)
+            continue
+        if not re.search(r'[A-Za-z]', MARKER.sub('', source)):
+            # 用語だけの英語見出しにもB区分を適用し、日本語の行は原文を維持する。
+            original = MARKER.sub(lambda match: tokens[match[0]], source)
+            target = (source if JAPANESE.search(original) else
+                      MARKER.sub(lambda match: rendered.get(match[0], match[0]), source))
+            result.append(leading + target + trailing)
             continue
         command = GLOSSARY_COMMAND.fullmatch(source)
         if command and command[2] in rendered:

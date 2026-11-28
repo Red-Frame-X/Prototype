@@ -43,6 +43,19 @@ class GlossaryTests(unittest.TestCase):
                 self.assertEqual(argos.translate_text(result, engine), result)
                 engine.assert_not_called()
 
+    def test_glossary_only_lines_are_translated_without_argos(self):
+        source = 'regression tests\n## Dependency resolution\n既存のregression testsを確認\n'
+        engine = Mock(side_effect=AssertionError)
+        self.assertEqual(argos.translate_text(source, engine),
+                         '回帰テスト\n## 依存関係の解決\n既存のregression testsを確認\n')
+        engine.assert_not_called()
+
+    def test_full_product_name_precedes_generic_hyphenated_identifiers(self):
+        product = 'uB-filter-by-kdroidwin (AdGuard Optimized)'
+        engine = Mock(return_value='ZXQ0000QXZを更新')
+        self.assertEqual(argos.translate_text('Update ' + product, engine), product + 'を更新')
+        engine.assert_called_once_with('Update ZXQ0000QXZ')
+
     def test_case_boundaries_and_context(self):
         engine = Mock(return_value='ZXQ0000QXZを確認')
         argos.translate_text('Check doh and dependenciesExtra', engine)
